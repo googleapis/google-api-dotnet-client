@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis</RootNamespace>
+    <AssemblyName>GoogleApis</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Apis\JSON\JSON.cs" />
+    <Compile Include="Apis\Discovery\Service.cs" />
+    <Compile Include="Apis\Discovery\DiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StreamDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StringDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\WebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactory.cs" />
+    <Compile Include="Apis\Requests\PUTRequest.cs" />
+    <Compile Include="Apis\Requests\DELETERequest.cs" />
+    <Compile Include="Apis\Requests\GETRequest.cs" />
+    <Compile Include="Apis\Requests\POSTRequest.cs" />
+    <Compile Include="Apis\Requests\Request.cs" />
+    <Compile Include="Apis\Discovery\Method.cs" />
+    <Compile Include="Apis\Discovery\Parameter.cs" />
+    <Compile Include="Apis\Discovery\Resource.cs" />
+    <Compile Include="Apis\Discovery\Utilities.cs" />
+    <Compile Include="Apis\oauthbase.cs" />
+    <Compile Include="Apis\oauthutil.cs" />
+    <Compile Include="Apis\utilities.cs" />
+    <Compile Include="Apis\Authentication\Authentication.cs" />
+    <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
+    <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
+    <Compile Include="Apis\Authentication\Authenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuthAuthenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuth2LeggedAuthenticator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="API\" />
+    <Folder Include="API\" />
+    <Folder Include="API\" />
+    <Folder Include="API\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\JSON\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\Discovery\" />
+    <Folder Include="Apis\Requests\" />
+    <Folder Include="Apis\Authentication\" />
+    <Folder Include="Apis\Authentication\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
