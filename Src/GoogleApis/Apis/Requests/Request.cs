@@ -31,6 +31,11 @@ namespace Google.Apis.Requests
 	/// </summary>
 	public class Request {
 		
+		public enum ReturnTypeEnum {
+			Json,
+			Atom
+		}
+		
 		private Authenticator Authenticator {get; set;}
 		private Service Service {get; set;}
 		private Method Method {get;set;}
@@ -40,6 +45,7 @@ namespace Google.Apis.Requests
 		private string Body {get;set;}
 		private Dictionary<string, string> Parameters {get;set;}
 		private Uri RequestUrl;
+		private ReturnTypeEnum ReturnType {get; set; }
 		
 		
 		/// <summary>
@@ -52,8 +58,6 @@ namespace Google.Apis.Requests
 		/// A <see cref="Request"/>
 		/// </returns>
 		public static Request CreateRequest(Service service, Method method) {
-			
-			
 			
 			switch(method.HttpMethod) {
 			case "GET":
@@ -78,6 +82,22 @@ namespace Google.Apis.Requests
 		public Request On(string rpcName) {
 			RPCName = rpcName;
 			
+			return this;
+		}
+		
+		/// <summary>
+		/// Sets the type of data that is expected to be returned from the request.
+		/// 
+		/// Defaults to Json
+		/// </summary>
+		/// <param name="returnType">
+		/// A <see cref="ReturnType"/>
+		/// </param>
+		/// <returns>
+		/// A <see cref="Request"/>
+		/// </returns>
+		public Request Returning(ReturnTypeEnum returnType) {
+			this.ReturnType = returnType;
 			return this;
 		}
 		
@@ -217,7 +237,13 @@ namespace Google.Apis.Requests
 			var queryParams = new List<string>();
 			var restQuery = "";
 			
-			queryParams.Add("alt=json");
+			if(this.ReturnType == Request.ReturnTypeEnum.Json) {
+				queryParams.Add("alt=json");
+			}
+			else {
+				queryParams.Add("alt=atom");	
+			}
+			
 			
 			// Replace the substitution parameters
 			foreach(var parameter in this.Parameters) {
@@ -258,9 +284,14 @@ namespace Google.Apis.Requests
 			
 			//
 			HttpWebRequest request = this.Authenticator.CreateHttpWebRequest(this.Method.HttpMethod, RequestUrl);
-			
-			//All requests are JSON.
-			request.ContentType =  "application/json";
+	
+			if(this.ReturnType == Request.ReturnTypeEnum.Json) {
+				//All requests are JSON.
+				request.ContentType =  "application/json";
+			}
+			else {
+				request.ContentType =  "application/atom+xml";
+			}
 			
 			// Attach a body if a POST and there is something to attach.
 			if(String.IsNullOrEmpty(Body) == false && (this.Method.HttpMethod == "POST" || this.Method.HttpMethod == "PUT")) {
