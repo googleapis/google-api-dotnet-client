@@ -21,8 +21,8 @@ Desktop.ini
 *.Log
  
 # c-sharp
-#ProjectName/bin
-#ProjectName/obj
+/bin
+/obj
 *.user
 *.suo
 _ReSharper.*
