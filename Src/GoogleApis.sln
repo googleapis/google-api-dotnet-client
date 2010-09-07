@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Extensions.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{386E39BA-EDDF-46CB-BC65-C4BDF61FCEC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,12 @@ Global
 		Default|Any CPU = Default|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.Build.0 = Release|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,6 +76,7 @@ Global
 		{BF7C37A7-6CDA-435F-A96A-8A13432B9237} = {7ADA3D85-5AA5-4CF8-9FBA-C8F75AD6AD17}
 		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D} = {32A1028E-2627-40DC-8491-005376BB2CA1}
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC} = {32A1028E-2627-40DC-8491-005376BB2CA1}
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032} = {386E39BA-EDDF-46CB-BC65-C4BDF61FCEC2}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = GoogleApis\GoogleApis.csproj
