@@ -68,7 +68,6 @@
     <Folder Include="API\" />
     <Folder Include="API\" />
     <Folder Include="API\" />
-    <Folder Include="API\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\JSON\" />
     <Folder Include="Apis\" />

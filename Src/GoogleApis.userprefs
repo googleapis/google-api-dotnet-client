@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GoogleApis.Extensions.Tests/AssemblyInfo.cs" ctype="Workbench">
+    <Files>
+      <File FileName="GoogleApis/Apis/Discovery/Service.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Requests/Request.cs" Line="288" Column="14" />
+      <File FileName="GoogleApis.Extensions/AssemblyInfo.cs" Line="15" Column="3" />
+      <File FileName="GoogleApis.Extensions/Extensions.cs" Line="15" Column="3" />
+      <File FileName="GoogleApis.Extensions.Tests/AssemblyInfo.cs" Line="15" Column="3" />
+      <File FileName="GoogleApis.Tests/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/WebDiscoveryDeviceTests.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

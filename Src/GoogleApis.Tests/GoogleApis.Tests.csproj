@@ -43,7 +43,7 @@
     <Compile Include="StringDiscoveryDeviceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Apiary\GoogleApis.csproj">
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
     </ProjectReference>
