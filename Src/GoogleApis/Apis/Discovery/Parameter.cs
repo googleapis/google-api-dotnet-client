@@ -24,24 +24,21 @@ namespace Google.Apis.Discovery
 {
 	public class Parameter
 	{
-		private string name;
 		private JSONDictionary information;
 
-		private Parameter ()
+		public Parameter ()
 		{
 		}
 
-		internal Parameter (KeyValuePair<string, object> kvp)
+		public Parameter (KeyValuePair<string, object> kvp)
 		{
-			this.name = kvp.Key;
+			this.Name = kvp.Key;
 			this.information = kvp.Value as JSONDictionary;
 			if (this.information == null)
 				throw new ArgumentException ("got no valid dictionary");
 		}
 
-		public string Name {
-			get { return this.name; }
-		}
+		public string Name { get; private set;}
 
 		public string ParameterType {
 			get { return this.information.GetValueAsNull (ServiceFactory.discovery_parameterType) as string; }

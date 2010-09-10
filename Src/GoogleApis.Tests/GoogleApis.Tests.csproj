@@ -41,9 +41,10 @@
     <Compile Include="FileDiscoveryDeviceTests.cs" />
     <Compile Include="StreamDiscoveryDeviceTests.cs" />
     <Compile Include="StringDiscoveryDeviceTests.cs" />
-    <Compile Include="JSONReaderTest.cs" />
-    <Compile Include="JSONTokenTest.cs" />
-    <Compile Include="TokenStreamTest.cs" />
+    <Compile Include="Requests\MethodValidator.cs" />
+    <Compile Include="JSON\JSONReaderTests.cs" />
+    <Compile Include="JSON\JSONTokenTests.cs" />
+    <Compile Include="JSON\TokenStreamTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -52,4 +53,8 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Requests\" />
+    <Folder Include="JSON\" />
+  </ItemGroup>
 </Project>

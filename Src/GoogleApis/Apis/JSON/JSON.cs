@@ -23,8 +23,8 @@ using System.Diagnostics;
 
 namespace Google.Apis.JSON {
 
-  public class JSONToken {
-    public enum Type {
+  internal class JSONToken {
+    internal enum Type {
       ObjectStart,
       ArrayStart,
       ObjectEnd,
@@ -45,7 +45,7 @@ namespace Google.Apis.JSON {
   }
 
 
-  public class TokenStream {
+  internal class TokenStream {
     private const int BuilderBufferSize = 24;
     private TextReader reader = null;
     JSONToken.Type lastType = JSONToken.Type.Undefined;
@@ -189,14 +189,17 @@ namespace Google.Apis.JSON {
       return true;
     }
   }
-  public class JSONDictionary : Dictionary<string, object>
-  {}
+	
+  internal class JSONDictionary : Dictionary<string, object>
+  {
+		
+	}
 
   /// <summary>
   /// basic JSONReader that can parse eitehr strings or streams into some
   /// dictionary form.
   /// </summary>
-  public class JSONReader {
+  internal class JSONReader {
     private static JSONReader theInstance;
 
     private JSONReader() { }

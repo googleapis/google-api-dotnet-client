@@ -28,7 +28,7 @@ namespace Google.Apis.Discovery
 		public string Name {get;set;}
 		private Dictionary<string, Parameter> parameters;
 
-		private Method ()
+		public Method ()
 		{
 		}
 

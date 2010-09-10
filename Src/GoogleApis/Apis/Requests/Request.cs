@@ -183,51 +183,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
-		private bool ValidateParameters() {
-			// Itterate accross all the parameters in the discovery document, and check them against supplied arguments.
-			foreach(var parameter in Method.Parameters) {
-				var parameterInfo = parameter.Value;
-				string currentParam;
-				bool parameterPresent = Parameters.TryGetValue(parameter.Key, out currentParam);
-				
-				// If a required parameter is not present. bail
-				if(parameterInfo.Required && String.IsNullOrEmpty(currentParam)) {
-					return false;
-				}
-				
-				if(parameterPresent == false) {
-					// The parameter is not present in the input and is not required, skip validation.
-					continue;	
-				}
-				else {
-					// The parameter is present, validte the regex.
-					bool isValidData = ValidateRegex(parameterInfo.Pattern, currentParam.ToString());
-					if(isValidData == false) {
-						return false;
-					}
-				}
-			}
-			
-			return true;
-		}
 		
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="pattern">
-		/// A <see cref="System.String"/>
-		/// </param>
-		/// <param name="stringValue">
-		/// A <see cref="System.String"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="System.Boolean"/>
-		/// </returns>
-		private bool ValidateRegex(string pattern, string stringValue) {
-			Regex r = new Regex(pattern);
-			
-			return r.IsMatch(stringValue);;	
-		}
 		
 		/// <summary>
 		/// 
@@ -235,7 +191,6 @@ namespace Google.Apis.Requests
 		private void BuildRequestUrl() {
 			var restPath = Method.RestPath;
 			var queryParams = new List<string>();
-			var restQuery = "";
 			
 			if(this.ReturnType == Request.ReturnTypeEnum.Json) {
 				queryParams.Add("alt=json");
@@ -276,7 +231,10 @@ namespace Google.Apis.Requests
 		/// </returns>
 		public Stream ExecuteRequest() {
 			
-			if(ValidateParameters() == false)
+			var validator = new MethodValidator(this.Method, this.Parameters);
+			
+			
+			if(validator.ValidateAllParameters() == false)
 				return Stream.Null;
 			
 			// Formulate the RequestUrl
