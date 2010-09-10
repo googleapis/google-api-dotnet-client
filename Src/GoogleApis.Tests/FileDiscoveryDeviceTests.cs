@@ -17,7 +17,7 @@ limitations under the License.
 
 using System;
 using NUnit.Framework;
-namespace Apiary.Tests
+namespace Google.Apis.Tests
 {
 	[TestFixture()]
 	public class FileDiscoveryDeviceTests

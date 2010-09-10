@@ -41,6 +41,9 @@
     <Compile Include="FileDiscoveryDeviceTests.cs" />
     <Compile Include="StreamDiscoveryDeviceTests.cs" />
     <Compile Include="StringDiscoveryDeviceTests.cs" />
+    <Compile Include="JSONReaderTest.cs" />
+    <Compile Include="JSONTokenTest.cs" />
+    <Compile Include="TokenStreamTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

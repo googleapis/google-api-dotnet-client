@@ -23,8 +23,8 @@ using System.Diagnostics;
 
 namespace Google.Apis.JSON {
 
-  internal class JSONToken {
-    internal enum Type {
+  public class JSONToken {
+    public enum Type {
       ObjectStart,
       ArrayStart,
       ObjectEnd,
@@ -45,16 +45,16 @@ namespace Google.Apis.JSON {
   }
 
 
-  internal class TokenStream {
+  public class TokenStream {
     private const int BuilderBufferSize = 24;
     private TextReader reader = null;
     JSONToken.Type lastType = JSONToken.Type.Undefined;
 
-    internal TokenStream(string inputText) {
+    public TokenStream(string inputText) {
       reader = new StringReader(inputText);
     }
 
-    internal TokenStream(Stream inputStream) {
+    public TokenStream(Stream inputStream) {
       reader = new StreamReader(inputStream);
     }
 
@@ -62,7 +62,7 @@ namespace Google.Apis.JSON {
     /// From the current position, extract the next token
     /// </summary>
     /// <returns></returns>
-    internal JSONToken GetNextToken() {
+    public JSONToken GetNextToken() {
       JSONToken token = new JSONToken();
       StringBuilder sb;
       try {
