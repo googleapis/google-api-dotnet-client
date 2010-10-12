@@ -25,7 +25,7 @@ namespace Google.Apis.Tests
 	public class StringDiscoveryDeviceTests {
 		[Test()]
 		public void Construct () {
-			Assert.IsInstanceOfType(typeof(StringDiscoveryDevice), new StringDiscoveryDevice());
+            Assert.IsInstanceOf<StringDiscoveryDevice>(new StringDiscoveryDevice());
 		}
 		
 		[Test()]

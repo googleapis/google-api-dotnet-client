@@ -1,4 +1,4 @@
-using System;/*
+/*
 Copyright 2010 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ namespace Google.Apis.Tests.Requests
 			Method m = new Method();
 			m.Name = "Test";
 			
-			Assert.IsInstanceOfType(typeof(MethodValidator), new MethodValidator(m, new Dictionary<string, string>()));
+            Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new Dictionary<string, string>()));
 		}
 		
 		[Test()]

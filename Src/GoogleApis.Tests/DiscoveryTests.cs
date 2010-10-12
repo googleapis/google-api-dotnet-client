@@ -40,13 +40,13 @@ namespace Google.Apis.Tests
 	{
 		[Test()]
 		public void Construct () {
-			Assert.IsInstanceOfType(typeof(DiscoveryService), new DiscoveryService(null));
+            Assert.IsInstanceOf<DiscoveryService>(new DiscoveryService(null));
 		}
 		
 		[Test()]
 		public void ConstructWithDiscoveryDevice() {
 			var d = new DiscoveryService(new StubDiscoveryDevice());
-			Assert.IsInstanceOfType(typeof(StubDiscoveryDevice), d.DiscoveryDevice);
+            Assert.IsInstanceOf<StubDiscoveryDevice>(d.DiscoveryDevice);
 		}
 		
 		[Test()]

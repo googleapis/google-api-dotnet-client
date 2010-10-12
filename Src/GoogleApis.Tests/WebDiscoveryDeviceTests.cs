@@ -26,7 +26,7 @@ namespace Google.Apis.Tests
 	public class WebDiscoveryDeviceTests {
 		[Test()]
 		public void Construct () {
-			Assert.IsInstanceOfType(typeof(WebDiscoveryDevice), new WebDiscoveryDevice());
+            Assert.IsInstanceOf<WebDiscoveryDevice>(new WebDiscoveryDevice());
 		}
 		
 		[Test()]
