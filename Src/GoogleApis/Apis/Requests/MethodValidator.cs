@@ -69,6 +69,10 @@ namespace Google.Apis
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
 		public bool ValidateParameter(Parameter param) {
+			if (Parameters == null) {
+				return false;
+			}
+
 			string currentParam;
 			bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 				
