@@ -40,6 +40,8 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="CodeGen.cs" />
+    <Compile Include="ServiceClassGenerator.cs" />
+    <Compile Include="CommonGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
