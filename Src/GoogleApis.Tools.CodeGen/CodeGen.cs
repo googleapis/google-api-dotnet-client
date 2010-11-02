@@ -91,9 +91,8 @@ namespace Google.Apis.Tools.CodeGen
 			// Add Required parameters to the method.
 			var paramList = method.Parameters.Values;
 			foreach(var param in paramList) {
-				if(param.Required) {
-					
-				}
+				member.Parameters.Add( 
+				  new CodeParameterDeclarationExpression(typeof(string), param.Name));
 			}
 			
 			return member;
