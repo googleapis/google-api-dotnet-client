@@ -18,18 +18,19 @@ limitations under the License.
 using System;
 using NUnit.Framework;
 
+
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class WebDiscoveryDeviceTests {
-		[Test()]
+		[Test]
 		public void Construct () {
             Assert.IsInstanceOf<WebDiscoveryDevice>(new WebDiscoveryDevice());
 		}
 		
-		[Test()]
+		[Test]
 		public void SetURI() {
 			var device = new WebDiscoveryDevice { DiscoveryUri = new Uri("http://test.com") };
 			Assert.IsNotNull(device.DiscoveryUri);
