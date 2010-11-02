@@ -41,8 +41,6 @@ namespace Google.Apis.Discovery
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
 			
 			Stream responseData;
-			StreamReader reader;
-			var document = String.Empty;
 			
 			response = (HttpWebResponse) request.GetResponse();
 			responseData = response.GetResponseStream();

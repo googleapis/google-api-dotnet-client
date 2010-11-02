@@ -250,7 +250,6 @@ namespace Google.Apis.JSON {
           break;
         case JSONToken.Type.Undefined:
           throw new ArgumentException("parse error");
-          break;
       }
 
       return value;
