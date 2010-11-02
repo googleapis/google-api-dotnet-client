@@ -7,12 +7,37 @@ namespace Google.Apis.Tools.CodeGen {
 
 
 	public class ResourceClassGenerator: CommonGenerator{
+		private const string ServiceFieldName = "service";
 
 		public ResourceClassGenerator() {
 		}
 		
 		private static String GetMethodName(Method method){
 			return UpperFirstLetter(method.Name);
+		}
+		
+		private void AddConstructor(CodeTypeDeclaration resourceClass, String serviceClassName){
+			var constructor = new CodeConstructor();
+			constructor.Attributes = MemberAttributes.Public;
+			constructor.Parameters.Add(
+			   new CodeParameterDeclarationExpression(serviceClassName, ServiceFieldName));
+			
+			constructor.Statements.Add(
+				new CodeAssignStatement(
+			    	new CodeFieldReferenceExpression(
+			     		new CodeThisReferenceExpression(),
+			        	ServiceFieldName),
+			        new CodeArgumentReferenceExpression(ServiceFieldName)			                                                   
+			        )
+			  	);
+			
+			resourceClass.Members.Add(constructor);
+		}
+		
+		private void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
+			var serciveField = new CodeMemberField(serviceClassName,ServiceFieldName);				
+			serciveField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			resourceClass.Members.Add(serciveField);
 		}
 		
 		/// <summary>
@@ -26,6 +51,9 @@ namespace Google.Apis.Tools.CodeGen {
 		/// </returns>
 		public CodeTypeDeclaration CreateClass(Resource res, String serviceClassName) {
 			var resourceClass = new CodeTypeDeclaration(GetClassName(res));			
+			
+			AddServiceField(resourceClass, serviceClassName);
+			AddConstructor(resourceClass, serviceClassName);
 			
 			foreach(var method in res.Methods.Values) {
 				resourceClass.Members.Add(CreateClassMethod(method));
@@ -48,6 +76,7 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			member.Name = GetMethodName(method);
 			member.ReturnType = new CodeTypeReference("System.IO.Stream");
+			member.Attributes = MemberAttributes.Public;
 			
 			// Add Required parameters to the method.
 			var paramList = method.Parameters.Values;
