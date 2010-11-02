@@ -46,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen {
 		private void AddResourceAssignment(CodeConstructor constructor, Resource resource){
 			constructor.Statements.Add(
 				new CodeAssignStatement(GetFieldReference(resource),
-			        new CodeObjectCreateExpression(GetClassName(resource))                                           
+			        new CodeObjectCreateExpression(GetClassName(resource), new CodeThisReferenceExpression())                                           
 			        ));
 			                       
 		}
