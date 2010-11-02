@@ -8,6 +8,9 @@ namespace Google.Apis.Tools.CodeGen
 {
 	public class MainClass
 	{
+		
+		public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(MainClass));
+		
 		/// <summary>
 		/// Creates an Strongly Typed Client API for a given service.
 		/// 
@@ -37,10 +40,12 @@ namespace Google.Apis.Tools.CodeGen
 		/// </example>
 		public static void Main (string[] args)
 		{
+			Logger.Debug("Entering CodeGen.Main");
 			if(args.Length == 0) {
-				// Show the help
+				Console.Error.WriteLine("Please Provide Argments.");
 				return;	
 			}
+			Logger.Debug("Entering");
 			
 			var version = "v1";
 			var serviceName = "buzz";
@@ -48,12 +53,18 @@ namespace Google.Apis.Tools.CodeGen
 			var language = "CSharp";
 			var outputFile = "";
 			
-			if(args.Length > 0)
+			if(args.Length >= 1)
 			{
 				serviceName = args[0];
 				
-				if(args.Length == 2) 
+				if(args.Length >= 2) { 
 					version = args[1];
+					
+					if(args.Length >= 3){
+						outputFile = args[2];
+					}
+				}
+				
 			}
 				
 			
