@@ -73,17 +73,5 @@ namespace Google.Apis.Samples.CommandLine
 			controller.Run();
 		}
 	}
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
 }
 
