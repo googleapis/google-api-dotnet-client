@@ -31,6 +31,9 @@ namespace Google.Apis.Tools.CodeGen
 			return compileUnit;
 		}
 		
+		private static String getClassName(Resource resource){
+			return Char.ToUpper(resource.Name[0]) + resource.Name.Substring(1);
+		}
 		
 		/// <summary>
 		/// Create the class for a given resource and add all the methods.
@@ -42,7 +45,8 @@ namespace Google.Apis.Tools.CodeGen
 		/// A <see cref="CodeTypeDeclaration"/>
 		/// </returns>
 		private CodeTypeDeclaration CreateClass(Resource res) {
-			var className = client.Name;
+			var className = getClassName(res);
+			
 			var resourceClass = new CodeTypeDeclaration(className);
 			
 			var methods = res.Methods.Values;
