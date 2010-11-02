@@ -5,7 +5,7 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen
 {
-	public class CodeGen {
+	public class CodeGen:CommonGenerator {
 		
 		private readonly CodeCompileUnit compileUnit;
 		private CodeNamespace client;
@@ -23,6 +23,8 @@ namespace Google.Apis.Tools.CodeGen
 			CreateClient();
 			AddUsings();
 			
+			client.Types.Add(new ServiceClassGenerator().CreateServiceClass(service));
+			
 			foreach(var res in service.Resources) {
 				// Create a class for the resource
 				client.Types.Add(CreateClass(res.Value));
@@ -31,20 +33,13 @@ namespace Google.Apis.Tools.CodeGen
 			return compileUnit;
 		}
 		
-		private static String UpperFirstLetter(String str){
-			if(str == null || str.Length == 0){
-				return str;
-			}
-			if(str.Length == 1){
-				return Char.ToUpper(str[0]).ToString();
-			}
-			
-			return Char.ToUpper(str[0]) + str.Substring(1);
-		}
 		
-		private static String GetClassName(Resource resource){
-			return UpperFirstLetter(resource.Name);
-		}
+		
+		
+		
+		
+		
+		
 		
 		private static String GetMethodName(Method method){
 			return UpperFirstLetter(method.Name);
