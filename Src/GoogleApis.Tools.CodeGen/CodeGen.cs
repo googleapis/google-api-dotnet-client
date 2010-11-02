@@ -15,6 +15,7 @@ namespace Google.Apis.Tools.CodeGen
 		public CodeGen (Service _service, string clientNamespace) {
 			compileUnit = new CodeCompileUnit();
 			_clientNamespace = clientNamespace;
+			this._service = _service;
 		}
 		
 		public CodeCompileUnit Generate() {

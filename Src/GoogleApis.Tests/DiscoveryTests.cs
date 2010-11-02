@@ -52,7 +52,7 @@ namespace Google.Apis.Tests
 		[Test]
 		public void Create() {
 			var d = new DiscoveryService(new StubDiscoveryDevice());
-			
+			Assert.IsNotNull(d);
 		}
 			
 	}
