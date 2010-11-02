@@ -7,15 +7,15 @@ namespace Google.Apis.Tools.CodeGen
 {
 	public class CodeGen {
 		
-		private CodeCompileUnit compileUnit;
+		private readonly CodeCompileUnit compileUnit;
 		private CodeNamespace client;
-		private Service _service;
-		private string _clientNamespace;
+		private readonly Service service;
+		private readonly string clientNamespace;
 		
-		public CodeGen (Service _service, string clientNamespace) {
+		public CodeGen (Service service, string clientNamespace) {
 			compileUnit = new CodeCompileUnit();
-			_clientNamespace = clientNamespace;
-			this._service = _service;
+			this.clientNamespace = clientNamespace;
+			this.service = service;
 		}
 		
 		public CodeCompileUnit Generate() {
@@ -23,7 +23,7 @@ namespace Google.Apis.Tools.CodeGen
 			CreateClient();
 			AddUsings();
 			
-			foreach(var res in _service.Resources) {
+			foreach(var res in service.Resources) {
 				// Create a class for the resource
 				client.Types.Add(CreateClass(res.Value));
 			}
@@ -31,8 +31,23 @@ namespace Google.Apis.Tools.CodeGen
 			return compileUnit;
 		}
 		
-		private static String getClassName(Resource resource){
-			return Char.ToUpper(resource.Name[0]) + resource.Name.Substring(1);
+		private static String UpperFirstLetter(String str){
+			if(str == null || str.Length == 0){
+				return str;
+			}
+			if(str.Length == 1){
+				return Char.ToUpper(str[0]).ToString();
+			}
+			
+			return Char.ToUpper(str[0]) + str.Substring(1);
+		}
+		
+		private static String GetClassName(Resource resource){
+			return UpperFirstLetter(resource.Name);
+		}
+		
+		private static String GetMethodName(Method method){
+			return UpperFirstLetter(method.Name);
 		}
 		
 		/// <summary>
@@ -45,7 +60,7 @@ namespace Google.Apis.Tools.CodeGen
 		/// A <see cref="CodeTypeDeclaration"/>
 		/// </returns>
 		private CodeTypeDeclaration CreateClass(Resource res) {
-			var className = getClassName(res);
+			var className = GetClassName(res);
 			
 			var resourceClass = new CodeTypeDeclaration(className);
 			
@@ -70,7 +85,7 @@ namespace Google.Apis.Tools.CodeGen
 		private CodeMemberMethod CreateClassMethod(Method method) {
 			var member = new CodeMemberMethod();
 			
-			member.Name = method.Name;
+			member.Name = GetMethodName(method);
 			member.ReturnType = new CodeTypeReference("System.IO.Stream");
 			
 			// Add Required parameters to the method.
@@ -85,13 +100,13 @@ namespace Google.Apis.Tools.CodeGen
 		}
 		
 		private void CreateClient() {
-			client = new CodeNamespace(_clientNamespace + "." + _service.Name);	
+			client = new CodeNamespace(clientNamespace + "." + UpperFirstLetter(service.Name));	
 			compileUnit.Namespaces.Add(client);
 		}
 	
 		private void AddUsings() {
 			client.Imports.Add(new CodeNamespaceImport("System"));
-			client.Imports.Add(new CodeNamespaceImport("System.IO."));
+			client.Imports.Add(new CodeNamespaceImport("System.IO"));
 			client.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
 		}
 	}
