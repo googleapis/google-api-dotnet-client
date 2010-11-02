@@ -19,10 +19,10 @@ using System;
 using NUnit.Framework;
 namespace Google.Apis.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class FileDiscoveryDeviceTests
 	{
-		[Test()]
+		[Test]
 		public void TestCase ()
 		{
 		}

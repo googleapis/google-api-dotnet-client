@@ -56,7 +56,10 @@ namespace GoogleApis.Extensions
 		/// A <see cref="XDocument"/>
 		/// </returns>
 		public static XDocument ToXDocument(this Stream dataStream) {
-			return XDocument.Load(dataStream);
+			//TODO(davidwaters): the following line does not compile
+			//return XDocument.Load(dataStream);
+			throw new NotImplementedException(
+				"TODO(davidwaters): the above line does not compile");
 		}
 	}
 }

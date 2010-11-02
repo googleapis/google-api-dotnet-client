@@ -35,21 +35,21 @@ namespace Google.Apis.Tests
 		#endregion
 	}
 	
-	[TestFixture()]
+	[TestFixture]
 	public class DiscoveryTests
 	{
-		[Test()]
+		[Test]
 		public void Construct () {
             Assert.IsInstanceOf<DiscoveryService>(new DiscoveryService(null));
 		}
 		
-		[Test()]
+		[Test]
 		public void ConstructWithDiscoveryDevice() {
 			var d = new DiscoveryService(new StubDiscoveryDevice());
             Assert.IsInstanceOf<StubDiscoveryDevice>(d.DiscoveryDevice);
 		}
 		
-		[Test()]
+		[Test]
 		public void Create() {
 			var d = new DiscoveryService(new StubDiscoveryDevice());
 			

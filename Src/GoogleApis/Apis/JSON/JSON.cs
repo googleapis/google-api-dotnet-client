@@ -124,19 +124,18 @@ namespace Google.Apis.JSON {
                 sb.Append((char)reader.Read());
               }
               token.value = sb.ToString();
-              try {
-                token.number = Decimal.Parse(token.value);
-                token.type = JSONToken.Type.Number;
-              }
-              catch (Exception e) {
-              }
+			  decimal decNumber;
+			  if(Decimal.TryParse(token.value, out decNumber)){
+				token.number = decNumber;
+				token.type = JSONToken.Type.Number;
+			  }
             }
             break;
           
 
         }
       }
-      catch (IOException e) {
+      catch (IOException) {
         return null;
       }
       this.lastType = token.type;
