@@ -1,0 +1,43 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GoogleApis.Tools.CodeGen/Main.cs" ctype="Workbench">
+    <Files>
+      <File FileName="GoogleApis/Apis/Discovery/Service.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Requests/Request.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Requests/MethodValidator.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/Requests/MethodValidator.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Discovery/Method.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Discovery/Parameter.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/JSON/JSON.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/JSONReaderTests.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/JSONTokenTests.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/TokenStreamTest.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Requests/DELETERequest.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tools.CodeGen/Main.cs" Line="2" Column="18" />
+      <File FileName="../Samples/CommandLine/Main.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tools.CodeGen/CodeGen.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tools.CodeGen/AssemblyInfo.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Samples" expanded="True">
+            <Node name="CommandLine" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

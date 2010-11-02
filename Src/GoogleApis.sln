@@ -1,0 +1,115 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{123687DC-0B3E-43EC-AB3D-B22800EAB8CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{7ADA3D85-5AA5-4CF8-9FBA-C8F75AD6AD17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLine", "..\Samples\CommandLine\CommandLine.csproj", "{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListServices", "..\Samples\ListServices\ListServices.csproj", "{BF7C37A7-6CDA-435F-A96A-8A13432B9237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Extensions", "GoogleApis.Extensions\GoogleApis.Extensions.csproj", "{EEA6B346-836D-4A86-A061-22AF86A86B44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{32A1028E-2627-40DC-8491-005376BB2CA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Extensions.Tests", "GoogleApis.Extensions.Tests\GoogleApis.Extensions.Tests.csproj", "{BEA7949C-13D5-41BF-AC85-853EE1C3B80D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{386E39BA-EDDF-46CB-BC65-C4BDF61FCEC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7C37A7-6CDA-435F-A96A-8A13432B9237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7C37A7-6CDA-435F-A96A-8A13432B9237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7C37A7-6CDA-435F-A96A-8A13432B9237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7C37A7-6CDA-435F-A96A-8A13432B9237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402B394C-4BDD-425F-B7DE-49078E9089D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402B394C-4BDD-425F-B7DE-49078E9089D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{843CC68E-2EDE-4527-98CE-DE1634C8ABC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{843CC68E-2EDE-4527-98CE-DE1634C8ABC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{843CC68E-2EDE-4527-98CE-DE1634C8ABC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{843CC68E-2EDE-4527-98CE-DE1634C8ABC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD634718-DAD4-421C-8A2A-39A41632BC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD634718-DAD4-421C-8A2A-39A41632BC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD634718-DAD4-421C-8A2A-39A41632BC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD634718-DAD4-421C-8A2A-39A41632BC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60} = {7ADA3D85-5AA5-4CF8-9FBA-C8F75AD6AD17}
+		{BF7C37A7-6CDA-435F-A96A-8A13432B9237} = {7ADA3D85-5AA5-4CF8-9FBA-C8F75AD6AD17}
+		{BEA7949C-13D5-41BF-AC85-853EE1C3B80D} = {32A1028E-2627-40DC-8491-005376BB2CA1}
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC} = {32A1028E-2627-40DC-8491-005376BB2CA1}
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032} = {386E39BA-EDDF-46CB-BC65-C4BDF61FCEC2}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = GoogleApis\GoogleApis.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.NamespaceBraceStyle = EndOfLine
+		$2.ClassBraceStyle = EndOfLine
+		$2.InterfaceBraceStyle = EndOfLine
+		$2.StructBraceStyle = EndOfLine
+		$2.EnumBraceStyle = EndOfLine
+		$2.MethodBraceStyle = EndOfLine
+		$2.ConstructorBraceStyle = EndOfLine
+		$2.DestructorBraceStyle = EndOfLine
+		$2.IfElseBraceForcement = AddBraces
+		$2.ForBraceForcement = AddBraces
+		$2.ForEachBraceForcement = AddBraces
+		$2.WhileBraceForcement = AddBraces
+		$2.UsingBraceForcement = AddBraces
+		$2.FixedBraceForcement = AddBraces
+		$2.BeforeMethodCallParentheses = False
+		$2.BeforeMethodDeclarationParentheses = False
+		$2.BeforeConstructorDeclarationParentheses = False
+		$2.BeforeDelegateDeclarationParentheses = False
+		$2.NewParentheses = False
+		$2.CatchParentheses = False
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
