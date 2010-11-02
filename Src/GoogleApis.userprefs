@@ -3,38 +3,29 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="GoogleApis.Tools.CodeGen/Main.cs" ctype="Workbench">
     <Files>
       <File FileName="GoogleApis/Apis/Discovery/Service.cs" Line="1" Column="1" />
-      <File FileName="GoogleApis/Apis/Requests/Request.cs" Line="237" Column="38" />
-      <File FileName="GoogleApis/Apis/Requests/MethodValidator.cs" Line="110" Column="4" />
-      <File FileName="GoogleApis.Tests/Requests/MethodValidator.cs" Line="44" Column="12" />
-      <File FileName="GoogleApis/Apis/Discovery/Method.cs" Line="31" Column="9" />
-      <File FileName="GoogleApis/Apis/Discovery/Parameter.cs" Line="36" Column="50" />
-      <File FileName="GoogleApis/Apis/JSON/JSON.cs" Line="193" Column="11" />
+      <File FileName="GoogleApis/Apis/Requests/Request.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Requests/MethodValidator.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/Requests/MethodValidator.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Discovery/Method.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/Discovery/Parameter.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis/Apis/JSON/JSON.cs" Line="1" Column="1" />
       <File FileName="GoogleApis.Tests/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="GoogleApis/AssemblyInfo.cs" Line="33" Column="48" />
-      <File FileName="GoogleApis.Tests/JSON/JSONReaderTests.cs" Line="52" Column="1" />
-      <File FileName="GoogleApis.Tests/JSON/JSONTokenTests.cs" Line="27" Column="1" />
-      <File FileName="GoogleApis.Tests/JSON/TokenStreamTest.cs" Line="150" Column="1" />
+      <File FileName="GoogleApis/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/JSONReaderTests.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/JSONTokenTests.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tests/JSON/TokenStreamTest.cs" Line="1" Column="1" />
       <File FileName="GoogleApis/Apis/Requests/DELETERequest.cs" Line="1" Column="1" />
       <File FileName="GoogleApis.Tools.CodeGen/Main.cs" Line="2" Column="18" />
-      <File FileName="../Samples/CommandLine/Main.cs" Line="68" Column="48" />
-      <File FileName="GoogleApis.Tools.CodeGen/CodeGen.cs" Line="14" Column="1" />
-      <File FileName="GoogleApis.Tools.CodeGen/AssemblyInfo.cs" Line="7" Column="33" />
+      <File FileName="../Samples/CommandLine/Main.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tools.CodeGen/CodeGen.cs" Line="1" Column="1" />
+      <File FileName="GoogleApis.Tools.CodeGen/AssemblyInfo.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Samples" expanded="True">
-            <Node name="CommandLine" expanded="True">
-              <Node name="Controllers" expanded="True" />
-            </Node>
+            <Node name="CommandLine" selected="True" />
           </Node>
-          <Node name="Tests" expanded="True">
-            <Node name="GoogleApis.Extensions.Tests" expanded="True" />
-          </Node>
-          <Node name="Tools" expanded="True">
-            <Node name="GoogleApis.Tools.CodeGen" expanded="True" selected="True" />
-          </Node>
-          <Node name="GoogleApis" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -42,12 +33,6 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
-      </Pad>
-      <Pad Id="ConnectionManagerPad">
-        <State selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

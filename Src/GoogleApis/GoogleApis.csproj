@@ -75,6 +75,9 @@
     <Folder Include="Apis\Requests\" />
     <Folder Include="Apis\Authentication\" />
     <Folder Include="Apis\Authentication\" />
+    <Folder Include="API\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\Authentication\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
