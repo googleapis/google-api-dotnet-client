@@ -42,6 +42,7 @@
     <Compile Include="CodeGen.cs" />
     <Compile Include="ServiceClassGenerator.cs" />
     <Compile Include="CommonGenerator.cs" />
+    <Compile Include="ResourceClassGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
