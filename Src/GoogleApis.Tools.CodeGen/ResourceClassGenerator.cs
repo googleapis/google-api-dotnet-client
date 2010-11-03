@@ -9,6 +9,7 @@ namespace Google.Apis.Tools.CodeGen {
 
 	public class ResourceClassGenerator: CommonGenerator{
 		private const string ServiceFieldName = "service";
+		private const string ResourceNameConst = "RESOURCE";
 		private const string ParameterDictionaryName = "parameters";
 		private readonly Resource resource; 
 		private readonly String serviceClassName; 
@@ -33,6 +34,7 @@ namespace Google.Apis.Tools.CodeGen {
 			var resourceClass = new CodeTypeDeclaration(GetClassName(resource, resourceNumber));			
 			
 			AddServiceField(resourceClass, serviceClassName);
+			AddResourceNameConst(resourceClass);
 			AddConstructor(resourceClass, serviceClassName);
 			
 			int methodNumber = 1;
@@ -62,9 +64,23 @@ namespace Google.Apis.Tools.CodeGen {
 			resourceClass.Members.Add(constructor);
 		}
 		
+		/// <summary>
+		/// Adds <code>private BuzzService service;</code> to the resource class.
+		/// </summary>
 		private void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
 			var serciveField = new CodeMemberField(serviceClassName,ServiceFieldName);				
 			serciveField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			resourceClass.Members.Add(serciveField);
+		}
+		
+		/// <summary>
+		/// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
+		/// </summary>
+		private void AddResourceNameConst(CodeTypeDeclaration resourceClass){
+			var serciveField = new CodeMemberField(typeof(string),ResourceNameConst);				
+			serciveField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+			serciveField.InitExpression = new CodePrimitiveExpression(resource.Name);
+			
 			resourceClass.Members.Add(serciveField);
 		}
 		
