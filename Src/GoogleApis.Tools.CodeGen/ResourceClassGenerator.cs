@@ -39,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			int methodNumber = 1;
 			foreach(var method in resource.Methods.Values) {
-				resourceClass.Members.Add(CreateClassMethod(method, methodNumber));
+				resourceClass.Members.Add(CreateMethod(method, methodNumber));
 				methodNumber++;
 			}
 		
@@ -68,20 +68,20 @@ namespace Google.Apis.Tools.CodeGen {
 		/// Adds <code>private BuzzService service;</code> to the resource class.
 		/// </summary>
 		private void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
-			var serciveField = new CodeMemberField(serviceClassName,ServiceFieldName);				
-			serciveField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-			resourceClass.Members.Add(serciveField);
+			var serviceField = new CodeMemberField(serviceClassName,ServiceFieldName);				
+			serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			resourceClass.Members.Add(serviceField);
 		}
 		
 		/// <summary>
 		/// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
 		/// </summary>
 		private void AddResourceNameConst(CodeTypeDeclaration resourceClass){
-			var serciveField = new CodeMemberField(typeof(string),ResourceNameConst);				
-			serciveField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			serciveField.InitExpression = new CodePrimitiveExpression(resource.Name);
+			var serviceField = new CodeMemberField(typeof(string),ResourceNameConst);				
+			serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+			serviceField.InitExpression = new CodePrimitiveExpression(resource.Name);
 			
-			resourceClass.Members.Add(serciveField);
+			resourceClass.Members.Add(serviceField);
 		}
 		
 	
@@ -96,7 +96,7 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <returns>
 		/// A <see cref="CodeMemberMethod"/>
 		/// </returns>
-		private CodeMemberMethod CreateClassMethod(Method method, int methodNumber) {
+		private CodeMemberMethod CreateMethod(Method method, int methodNumber) {
 			var member = new CodeMemberMethod();
 			
 			member.Name = GetMethodName(method, methodNumber);
@@ -115,7 +115,25 @@ namespace Google.Apis.Tools.CodeGen {
 				parameterCount++;
 			}
 			
+			member.Statements.Add(CreateExecuteRequest(method));
+			
 			return member;
+		}
+		
+		private CodeExpression CreateExecuteRequest(Method method){
+			var call = new CodeMethodInvokeExpression();
+			
+			call.Method = new CodeMethodReferenceExpression(
+				new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
+			    "ExecuteRequest");
+			
+			call.Parameters.Add(
+			     new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ResourceNameConst));
+			call.Parameters.Add(
+			     new CodePrimitiveExpression(method.Name));
+			call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
+
+			return call;
 		}
 		
 		private CodeAssignStatement AssignParameterToDictionary(
