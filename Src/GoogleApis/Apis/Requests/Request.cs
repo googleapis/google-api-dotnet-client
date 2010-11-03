@@ -37,7 +37,7 @@ namespace Google.Apis.Requests
 		}
 		
 		private Authenticator Authenticator {get; set;}
-		private Service Service {get; set;}
+		private IService Service {get; set;}
 		private Method Method {get;set;}
 		private Uri BaseURI {get; set;}
 		private string PathUrl {get;set;}
@@ -57,7 +57,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public static Request CreateRequest(Service service, Method method) {
+		public static Request CreateRequest(IService service, Method method) {
 			
 			switch(method.HttpMethod) {
 			case "GET":

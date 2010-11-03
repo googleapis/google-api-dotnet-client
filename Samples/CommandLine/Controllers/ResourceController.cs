@@ -27,11 +27,11 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 {
 	public class ResourceController {
 		
-		private Service _service {get;set;}
+		private IService _service {get;set;}
 		private ResourceView _view {get;set;}
 		private Resource _resource {get;set;}
 		
-		public ResourceController(Service service, Resource resource, ResourceView view) {
+		public ResourceController(IService service, Resource resource, ResourceView view) {
 			_service = service;
 			_view = view;
 			_resource = resource;

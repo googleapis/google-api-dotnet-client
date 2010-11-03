@@ -27,10 +27,10 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 {
 	public class ServiceController {
 	
-		private Service _service {get;set;}
+		private IService _service {get;set;}
 		private ServiceView _view {get;set;}
 		
-		public ServiceController(Service service, ServiceView view) {
+		public ServiceController(IService service, ServiceView view) {
 			_service = service;
 			_view = view;
 		}
