@@ -11,44 +11,47 @@ namespace Google.Apis.Tools.CodeGen {
 		public ServiceClassGenerator() {
 		}
 		
-		private string GetFieldName(Resource resource){
-			return resource.Name;
-		}
+		
 		
 		private void AddResourceField(CodeTypeDeclaration serviceType,
-		                               Resource resource){
+		                               Resource resource, int resourceNumber){
 			// Add local private variables for each Resource
-			var localVar = new CodeMemberField(GetClassName(resource),GetFieldName(resource));				
+			var localVar = new CodeMemberField(
+				GetClassName(resource,resourceNumber),GetFieldName(resource, resourceNumber));				
 			localVar.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			serviceType.Members.Add(localVar);
 		}
 		
 		private void AddResourceGetter(CodeTypeDeclaration serviceType, 
-		                              Resource resource){
+		                              Resource resource, int resourceNumber){
 			var getter = new CodeMemberProperty();
-			getter.Name = GetClassName(resource);
+			getter.Name = GetClassName(resource,resourceNumber);
 			getter.HasGet = true;
 			getter.HasSet = false;
-			getter.Type = new CodeTypeReference(GetClassName(resource));
+			getter.Type = new CodeTypeReference(GetClassName(resource, resourceNumber));
 			getter.GetStatements.Add(
-			     new CodeMethodReturnStatement(GetFieldReference(resource)));
+			     new CodeMethodReturnStatement(GetFieldReference(resource, resourceNumber)));
 			
 			serviceType.Members.Add(getter);
 		}
 		
-		private CodeExpression GetFieldReference(Resource resource){
+		private CodeExpression GetFieldReference(Resource resource, int resourceNumber){
 			return new CodeFieldReferenceExpression(
 			     	new CodeThisReferenceExpression(),
-			        GetFieldName(resource));
+			        GetFieldName(resource, resourceNumber));
 		}
 		
 		
-		private void AddResourceAssignment(CodeConstructor constructor, Resource resource){
+		private void AddResourceAssignment(
+		                                   CodeConstructor constructor, 
+		                                   Resource resource, 
+		                                   int resourceNumber){
 			constructor.Statements.Add(
-				new CodeAssignStatement(GetFieldReference(resource),
-			        new CodeObjectCreateExpression(GetClassName(resource), new CodeThisReferenceExpression())                                           
+				new CodeAssignStatement(GetFieldReference(resource, resourceNumber),
+			        new CodeObjectCreateExpression(
+			        	GetClassName(resource, resourceNumber), 
+			            new CodeThisReferenceExpression())                                           
 			        ));
-			                       
 		}
 		
 		public CodeTypeDeclaration CreateServiceClass(Service service){
@@ -57,12 +60,13 @@ namespace Google.Apis.Tools.CodeGen {
 			var constructor = new CodeConstructor();
 			constructor.Attributes = MemberAttributes.Public;
 			
-			
+			int resourceNumber = 1;
 			foreach(var pair in service.Resources){
 				Resource resource = pair.Value;
-				AddResourceGetter(serviceType, resource);				
-				AddResourceField(serviceType, resource);
-				AddResourceAssignment(constructor, resource);
+				AddResourceGetter(serviceType, resource, resourceNumber);				
+				AddResourceField(serviceType, resource, resourceNumber);
+				AddResourceAssignment(constructor, resource, resourceNumber);
+				resourceNumber++;
 			}
 			
 			serviceType.Members.Add(constructor);
