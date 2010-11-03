@@ -8,12 +8,38 @@ namespace Google.Apis.Tools.CodeGen {
 
 	public class ResourceClassGenerator: CommonGenerator{
 		private const string ServiceFieldName = "service";
+		private readonly Resource resource; 
+		private readonly String serviceClassName; 
+		private readonly int resourceNumber;
 
-		public ResourceClassGenerator() {
+		public ResourceClassGenerator(Resource resource, String serviceClassName, int resourceNumber) {
+			this.resource = resource;
+			this.serviceClassName = serviceClassName;
+			this.resourceNumber = resourceNumber;
 		}
 		
-		private static String GetMethodName(Method method){
-			return UpperFirstLetter(method.Name);
+			/// <summary>
+		/// Create the class for a given resource and add all the methods.
+		/// </summary>
+		/// <param name="res">
+		/// A <see cref="Resource"/>
+		/// </param>
+		/// <returns>
+		/// A <see cref="CodeTypeDeclaration"/>
+		/// </returns>
+		public CodeTypeDeclaration CreateClass() {
+			var resourceClass = new CodeTypeDeclaration(GetClassName(resource, resourceNumber));			
+			
+			AddServiceField(resourceClass, serviceClassName);
+			AddConstructor(resourceClass, serviceClassName);
+			
+			int methodNumber = 1;
+			foreach(var method in resource.Methods.Values) {
+				resourceClass.Members.Add(CreateClassMethod(method, methodNumber));
+				methodNumber++;
+			}
+		
+			return resourceClass;
 		}
 		
 		private void AddConstructor(CodeTypeDeclaration resourceClass, String serviceClassName){
@@ -40,30 +66,11 @@ namespace Google.Apis.Tools.CodeGen {
 			resourceClass.Members.Add(serciveField);
 		}
 		
-		/// <summary>
-		/// Create the class for a given resource and add all the methods.
-		/// </summary>
-		/// <param name="res">
-		/// A <see cref="Resource"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="CodeTypeDeclaration"/>
-		/// </returns>
-		public CodeTypeDeclaration CreateClass(Resource res, String serviceClassName) {
-			var resourceClass = new CodeTypeDeclaration(GetClassName(res));			
-			
-			AddServiceField(resourceClass, serviceClassName);
-			AddConstructor(resourceClass, serviceClassName);
-			
-			foreach(var method in res.Methods.Values) {
-				resourceClass.Members.Add(CreateClassMethod(method));
-			}
-		
-			return resourceClass;
-		}
+	
 		
 		/// <summary>
-		/// For a given resource, there are number of methods, this function creates a single method
+		/// For a given resource, there are number of methods, this function creates a single 
+		/// method
 		/// </summary>
 		/// <param name="method">
 		/// A <see cref="Method"/>
@@ -71,18 +78,23 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <returns>
 		/// A <see cref="CodeMemberMethod"/>
 		/// </returns>
-		private CodeMemberMethod CreateClassMethod(Method method) {
+		private CodeMemberMethod CreateClassMethod(Method method, int methodNumber) {
 			var member = new CodeMemberMethod();
 			
-			member.Name = GetMethodName(method);
+			member.Name = GetMethodName(method, methodNumber);
 			member.ReturnType = new CodeTypeReference("System.IO.Stream");
 			member.Attributes = MemberAttributes.Public;
 			
 			// Add Required parameters to the method.
 			var paramList = method.Parameters.Values;
+			
+			int parameterCount = 1;
 			foreach(var param in paramList) {
 				member.Parameters.Add( 
-				  new CodeParameterDeclarationExpression(typeof(string), param.Name));
+				  new CodeParameterDeclarationExpression(
+				  	typeof(string), 
+				    GetParameterName(param, parameterCount)));
+				parameterCount++;
 			}
 			
 			return member;

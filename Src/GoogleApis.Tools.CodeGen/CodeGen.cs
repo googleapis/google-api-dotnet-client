@@ -22,15 +22,21 @@ namespace Google.Apis.Tools.CodeGen
 						
 			CreateClient();
 			AddUsings();
-			
+
 			var serviceClass = new ServiceClassGenerator().CreateServiceClass(service);
 			string serviceClassName = serviceClass.Name;
-			
+
 			client.Types.Add(serviceClass);
-			var resourceGenerator = new ResourceClassGenerator();
-			foreach(var res in service.Resources) {
+
+			int resourceNumber = 1;
+			foreach(var res in service.Resources.Values) {
 				// Create a class for the resource
-				client.Types.Add(resourceGenerator.CreateClass(res.Value, serviceClassName));
+				var resourceGenerator = new ResourceClassGenerator(
+				     res, 
+				     serviceClassName, 
+				     resourceNumber);
+				client.Types.Add(resourceGenerator.CreateClass());
+				resourceNumber++;
 			}
 			
 			return compileUnit;
