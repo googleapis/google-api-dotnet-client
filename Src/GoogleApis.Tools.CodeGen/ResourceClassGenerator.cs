@@ -1,6 +1,7 @@
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen {
@@ -8,6 +9,7 @@ namespace Google.Apis.Tools.CodeGen {
 
 	public class ResourceClassGenerator: CommonGenerator{
 		private const string ServiceFieldName = "service";
+		private const string ParameterDictionaryName = "parameters";
 		private readonly Resource resource; 
 		private readonly String serviceClassName; 
 		private readonly int resourceNumber;
@@ -18,7 +20,7 @@ namespace Google.Apis.Tools.CodeGen {
 			this.resourceNumber = resourceNumber;
 		}
 		
-			/// <summary>
+		/// <summary>
 		/// Create the class for a given resource and add all the methods.
 		/// </summary>
 		/// <param name="res">
@@ -88,16 +90,35 @@ namespace Google.Apis.Tools.CodeGen {
 			// Add Required parameters to the method.
 			var paramList = method.Parameters.Values;
 			
+			member.Statements.Add(DeclareParamaterDictionary());
+			
 			int parameterCount = 1;
 			foreach(var param in paramList) {
-				member.Parameters.Add( 
-				  new CodeParameterDeclarationExpression(
-				  	typeof(string), 
-				    GetParameterName(param, parameterCount)));
+				member.Parameters.Add(DeclareParameter(param, parameterCount));
 				parameterCount++;
 			}
 			
 			return member;
+		}
+		
+		private CodeParameterDeclarationExpression DeclareParameter(
+			Parameter param, 
+		    int parameterCount){
+			return  new CodeParameterDeclarationExpression(
+				  	typeof(string), 
+				    GetParameterName(param, parameterCount));
+		}
+		
+		/// <summary>
+		/// produces
+		/// Dictionary<string, string> parameters = new Dictionary<string, string>();
+		/// </summary>
+		private CodeStatement DeclareParamaterDictionary(){
+			// produces
+			//Dictionary<string, string> parameters = new Dictionary<string, string>();
+			return new CodeVariableDeclarationStatement(
+				typeof(Dictionary<string, string>),ParameterDictionaryName, 
+			    new CodeObjectCreateExpression(typeof(Dictionary<string, string>)));
 		}
 	}
 }
