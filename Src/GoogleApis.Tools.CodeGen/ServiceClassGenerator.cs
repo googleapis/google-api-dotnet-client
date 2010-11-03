@@ -7,7 +7,7 @@ namespace Google.Apis.Tools.CodeGen {
 
 
 	public class ServiceClassGenerator:CommonGenerator {
-		private const string DISCOVERY_DEVICE_NAME = "discoveryDevice";
+		private const string GENERIC_SERVICE_NAME = "genericService";
 
 		public ServiceClassGenerator() {
 		}
@@ -35,11 +35,7 @@ namespace Google.Apis.Tools.CodeGen {
 		}
 
 		private void AddServiceFields(CodeTypeDeclaration serviceType){
-			var field = new CodeMemberField(typeof(IDiscoveryDevice),DISCOVERY_DEVICE_NAME);				
-			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-			serviceType.Members.Add(field);
-			
-			field = new CodeMemberField(typeof(IDiscoveryDevice),DISCOVERY_DEVICE_NAME);				
+			var field = new CodeMemberField(typeof(IService),GENERIC_SERVICE_NAME);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			serviceType.Members.Add(field);			
 		}
