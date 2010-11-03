@@ -25,14 +25,15 @@ using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
 	// represents a single version of a service
-	public class Service
+	public class Service:IService
 	{
 		private JSONDictionary information;
+		private Dictionary<string, Method> serviceMethods;
+		private Dictionary<string, Resource> resources;
+
 		public string Name {get; private set;}
 		public string Version {get; private set;}
 		
-		private Dictionary<string, Method> serviceMethods;
-		private Dictionary<string, Resource> resources;
 
 		internal Service (string version, string name, JSONDictionary js)
 		{

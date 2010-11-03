@@ -9,10 +9,10 @@ namespace Google.Apis.Tools.CodeGen
 		
 		private readonly CodeCompileUnit compileUnit;
 		private CodeNamespace client;
-		private readonly Service service;
+		private readonly IService service;
 		private readonly string clientNamespace;
 		
-		public CodeGen (Service service, string clientNamespace) {
+		public CodeGen (IService service, string clientNamespace) {
 			compileUnit = new CodeCompileUnit();
 			this.clientNamespace = clientNamespace;
 			this.service = service;
@@ -53,6 +53,8 @@ namespace Google.Apis.Tools.CodeGen
 			client.Imports.Add(new CodeNamespaceImport("System"));
 			client.Imports.Add(new CodeNamespaceImport("System.IO"));
 			client.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
+			client.Imports.Add(new CodeNamespaceImport("Google.Apis"));
+			client.Imports.Add(new CodeNamespaceImport("Google.Apis.Discovery"));
 		}
 	}
 }

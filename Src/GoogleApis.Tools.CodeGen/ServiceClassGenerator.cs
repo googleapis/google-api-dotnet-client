@@ -7,19 +7,51 @@ namespace Google.Apis.Tools.CodeGen {
 
 
 	public class ServiceClassGenerator:CommonGenerator {
+		private const string DISCOVERY_DEVICE_NAME = "discoveryDevice";
 
 		public ServiceClassGenerator() {
 		}
 		
+		public CodeTypeDeclaration CreateServiceClass(IService service){
+			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
+			var serviceType = new CodeTypeDeclaration(serviceClassName);
+			var constructor = new CodeConstructor();
+			constructor.Attributes = MemberAttributes.Public;
+			
+			AddServiceFields(serviceType);
+			
+			int resourceNumber = 1;
+			foreach(var pair in service.Resources){
+				Resource resource = pair.Value;
+				AddResourceGetter(serviceType, resource, resourceNumber);				
+				AddResourceField(serviceType, resource, resourceNumber);
+				AddResourceAssignment(constructor, resource, resourceNumber);
+				resourceNumber++;
+			}
+			
+			serviceType.Members.Add(constructor);
+			
+			return serviceType;			
+		}
+
+		private void AddServiceFields(CodeTypeDeclaration serviceType){
+			var field = new CodeMemberField(typeof(IDiscoveryDevice),DISCOVERY_DEVICE_NAME);				
+			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			serviceType.Members.Add(field);
+			
+			field = new CodeMemberField(typeof(IDiscoveryDevice),DISCOVERY_DEVICE_NAME);				
+			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			serviceType.Members.Add(field);			
+		}
 		
 		
 		private void AddResourceField(CodeTypeDeclaration serviceType,
 		                               Resource resource, int resourceNumber){
 			// Add local private variables for each Resource
-			var localVar = new CodeMemberField(
+			var field = new CodeMemberField(
 				GetClassName(resource,resourceNumber),GetFieldName(resource, resourceNumber));				
-			localVar.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-			serviceType.Members.Add(localVar);
+			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+			serviceType.Members.Add(field);
 		}
 		
 		private void AddResourceGetter(CodeTypeDeclaration serviceType, 
@@ -54,24 +86,5 @@ namespace Google.Apis.Tools.CodeGen {
 			        ));
 		}
 		
-		public CodeTypeDeclaration CreateServiceClass(Service service){
-			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
-			var serviceType = new CodeTypeDeclaration(serviceClassName);
-			var constructor = new CodeConstructor();
-			constructor.Attributes = MemberAttributes.Public;
-			
-			int resourceNumber = 1;
-			foreach(var pair in service.Resources){
-				Resource resource = pair.Value;
-				AddResourceGetter(serviceType, resource, resourceNumber);				
-				AddResourceField(serviceType, resource, resourceNumber);
-				AddResourceAssignment(constructor, resource, resourceNumber);
-				resourceNumber++;
-			}
-			
-			serviceType.Members.Add(constructor);
-			
-			return serviceType;			
-		}
 	}
 }

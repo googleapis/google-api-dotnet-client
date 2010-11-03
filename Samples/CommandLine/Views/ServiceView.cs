@@ -26,7 +26,7 @@ using Google.Apis.Samples.CommandLine.Controllers;
 namespace Google.Apis.Samples.CommandLine.Views
 {
 	public class ServiceView {
-		public void Render(Service service) {
+		public void Render(IService service) {
 			foreach(var resource in service.Resources) {
 				Console.Out.WriteLine("{0}", resource.Key);
 			}

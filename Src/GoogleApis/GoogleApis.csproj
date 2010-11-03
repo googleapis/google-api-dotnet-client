@@ -64,6 +64,8 @@
     <Compile Include="Apis\Authentication\OAuthAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth2LeggedAuthenticator.cs" />
     <Compile Include="Apis\Requests\MethodValidator.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />

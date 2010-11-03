@@ -40,7 +40,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 	/// </summary>
 	public class MethodController {
 		
-		private Service _service {get;set;}
+		private IService _service {get;set;}
 		private MethodView _view {get;set;}
 		
 		private Method _method {get;set;}
@@ -78,7 +78,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 			
 		}
 		
-		public MethodController(Service service, Resource resource, Method method, MethodView view) {
+		public MethodController(IService service, Resource resource, Method method, MethodView view) {
 			_service = service;
 			_view = view;
 			_resource = resource;

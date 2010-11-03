@@ -47,7 +47,7 @@ namespace Google.Apis.Discovery
 	/// 
 	/// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
 	/// </example>
-	public class DiscoveryService
+	public class DiscoveryService:IDiscoveryService
 	{
 		/// <summary>
 		/// The discovery mechanism to use.
@@ -66,7 +66,7 @@ namespace Google.Apis.Discovery
 		/// <summary>
 		/// Creates an API object that provides access to the methods defined in the discovery document.
 		/// </summary>
-		public Service GetService(string version) {
+		public IService GetService(string version) {
 			ServiceFactory factory;
 			
 			using(var documentStream = DiscoveryDevice.Fetch()) {
