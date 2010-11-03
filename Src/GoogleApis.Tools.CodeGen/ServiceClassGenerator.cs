@@ -15,8 +15,7 @@ namespace Google.Apis.Tools.CodeGen {
 		public CodeTypeDeclaration CreateServiceClass(IService service){
 			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
-			var constructor = new CodeConstructor();
-			constructor.Attributes = MemberAttributes.Public;
+			var constructor = CreateConstructor();
 			
 			AddServiceFields(serviceClass);
 			
@@ -31,9 +30,29 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			serviceClass.Members.Add(constructor);
 			
-			return serviceClass;			
+			return serviceClass;					
+		}
+		
+		private CodeConstructor CreateConstructor(){
+			var constructor = new CodeConstructor();
+			constructor.Attributes = MemberAttributes.Public;
+			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IService),GENERIC_SERVICE_NAME));
+			
+			
+			var assignService = new CodeAssignStatement();
+			assignService.Left = new CodeFieldReferenceExpression(
+				new CodeThisReferenceExpression(),
+			    GENERIC_SERVICE_NAME);
+			
+			assignService.Right = new CodeVariableReferenceExpression(GENERIC_SERVICE_NAME);
+			
+			constructor.Statements.Add(assignService);
+			
+			
+			return constructor;
 		}
 
+		
 		private void AddServiceFields(CodeTypeDeclaration serviceClass){
 			var field = new CodeMemberField(typeof(IService),GENERIC_SERVICE_NAME);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;

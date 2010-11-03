@@ -62,6 +62,10 @@ namespace Google.Apis.Tools.CodeGen
 					
 					if(args.Length >= 3){
 						outputFile = args[2];
+						
+						if(args.Length >=4){
+							language = args[3];
+						}
 					}
 				}
 				
