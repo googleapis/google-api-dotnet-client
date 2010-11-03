@@ -95,10 +95,26 @@ namespace Google.Apis.Tools.CodeGen {
 			int parameterCount = 1;
 			foreach(var param in paramList) {
 				member.Parameters.Add(DeclareParameter(param, parameterCount));
+				member.Statements.Add(AssignParameterToDictionary(param, parameterCount));
 				parameterCount++;
 			}
 			
 			return member;
+		}
+		
+		private CodeAssignStatement AssignParameterToDictionary(
+			Parameter param, 
+		    int parameterCount){
+			
+			var assign = new CodeAssignStatement();
+			assign.Left = new CodeArrayIndexerExpression(
+			    new CodeVariableReferenceExpression(ParameterDictionaryName),
+			    new CodePrimitiveExpression(param.Name));
+			
+			assign.Right = new CodeVariableReferenceExpression(GetParameterName(param, parameterCount));
+			                                             
+			
+			return assign;
 		}
 		
 		private CodeParameterDeclarationExpression DeclareParameter(
