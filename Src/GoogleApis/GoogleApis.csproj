@@ -66,6 +66,7 @@
     <Compile Include="Apis\Requests\MethodValidator.cs" />
     <Compile Include="Apis\Discovery\IDiscoveryService.cs" />
     <Compile Include="Apis\Discovery\IService.cs" />
+    <Compile Include="Apis\Authentication\IAuthenticator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
@@ -76,6 +77,12 @@
     <Folder Include="Apis\Discovery\" />
     <Folder Include="Apis\Requests\" />
     <Folder Include="Apis\Authentication\" />
+    <Folder Include="Apis\Authentication\" />
+    <Folder Include="API\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\Authentication\" />
+    <Folder Include="API\" />
+    <Folder Include="Apis\" />
     <Folder Include="Apis\Authentication\" />
     <Folder Include="API\" />
     <Folder Include="Apis\" />
