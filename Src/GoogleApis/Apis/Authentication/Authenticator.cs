@@ -30,7 +30,7 @@ namespace Google.Apis.Authentication
 	/// authentication
 	/// </summary>
 	/// <returns></returns>
-	public abstract class Authenticator
+	public abstract class Authenticator:IAuthenticator
 	{
 		private string applicationName;
 		private ICreateHttpRequest requestFactory;

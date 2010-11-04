@@ -36,7 +36,7 @@ namespace Google.Apis.Requests
 			Atom
 		}
 		
-		private Authenticator Authenticator {get; set;}
+		private IAuthenticator Authenticator {get; set;}
 		private IService Service {get; set;}
 		private Method Method {get;set;}
 		private Uri BaseURI {get; set;}
