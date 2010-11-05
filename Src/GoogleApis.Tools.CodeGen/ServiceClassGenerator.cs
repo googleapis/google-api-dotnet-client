@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Authentication;
 
 namespace Google.Apis.Tools.CodeGen {
 
