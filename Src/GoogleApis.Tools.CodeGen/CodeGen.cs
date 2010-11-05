@@ -16,6 +16,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator;
 
 
 namespace Google.Apis.Tools.CodeGen
@@ -42,14 +43,18 @@ namespace Google.Apis.Tools.CodeGen
 			string serviceClassName = serviceClass.Name;
 
 			client.Types.Add(serviceClass);
-
+			
+			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
+				new Log4NetResourceDecorator()};
+			
 			int resourceNumber = 1;
 			foreach(var res in service.Resources.Values) {
 				// Create a class for the resource
 				var resourceGenerator = new ResourceClassGenerator(
 				     res, 
 				     serviceClassName, 
-				     resourceNumber);
+				     resourceNumber,
+				     resourceDecorators);
 				client.Types.Add(resourceGenerator.CreateClass());
 				resourceNumber++;
 			}
