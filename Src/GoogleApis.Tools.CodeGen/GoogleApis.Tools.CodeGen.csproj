@@ -44,7 +44,7 @@
     <Compile Include="CommonGenerator.cs" />
     <Compile Include="ResourceClassGenerator.cs" />
     <Compile Include="Decorator\IResourceDecorator.cs" />
-    <Compile Include="Decorator\LoggingResourceDecorator.cs" />
+    <Compile Include="Decorator\Log4NetResourceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
