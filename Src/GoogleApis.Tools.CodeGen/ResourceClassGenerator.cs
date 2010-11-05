@@ -134,6 +134,8 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 			
+			AddBodyDeclaration(method, member);
+			
 			int parameterCount = 1;
 			foreach(var param in paramList) {
 				member.Parameters.Add(DeclareInputParameter(param, parameterCount));
@@ -166,6 +168,28 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			return member;
 		}
+
+		private void AddBodyDeclaration(Method method, CodeMemberMethod member) {
+			switch (method.HttpMethod) {
+				case "GET":
+				case "DELETE":
+					// string body = null;
+					var bodyVarDeclaration = 
+						new CodeVariableDeclarationStatement(typeof(string),"body");
+					bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
+					member.Statements.Add(bodyVarDeclaration);
+					break;
+				case "PUT":
+				case "POST":
+					// add body Parameter
+					member.Parameters.Add(
+				  		new CodeParameterDeclarationExpression(typeof(string), "body"));
+					break;
+				default:
+					throw new NotSupportedException("Unsupported HttpMethod ["+method.HttpMethod+"]");
+			}
+		}
+
 		
 		private CodeStatement CreateExecuteRequest(Method method){
 			var call = new CodeMethodInvokeExpression();
