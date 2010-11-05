@@ -1,8 +1,24 @@
+/*
+Copyright 2010 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator;
 
 namespace Google.Apis.Tools.CodeGen {
 
@@ -11,14 +27,18 @@ namespace Google.Apis.Tools.CodeGen {
 		private const string ServiceFieldName = "service";
 		private const string ResourceNameConst = "RESOURCE";
 		private const string ParameterDictionaryName = "parameters";
+		private const string ReturnVariableName = "ret";
 		private readonly Resource resource; 
 		private readonly String serviceClassName; 
 		private readonly int resourceNumber;
+		private readonly IResourceDecorator[] decorators;
 
-		public ResourceClassGenerator(Resource resource, String serviceClassName, int resourceNumber) {
+		public ResourceClassGenerator(Resource resource, String serviceClassName, int resourceNumber, 
+		                              params IResourceDecorator[] decorators) {
 			this.resource = resource;
 			this.serviceClassName = serviceClassName;
 			this.resourceNumber = resourceNumber;
+			this.decorators = decorators;
 		}
 		
 		/// <summary>
@@ -106,21 +126,32 @@ namespace Google.Apis.Tools.CodeGen {
 			// Add Required parameters to the method.
 			var paramList = method.Parameters.Values;
 			
-			member.Statements.Add(DeclareParamaterDictionary());
+			CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 			
 			int parameterCount = 1;
 			foreach(var param in paramList) {
 				member.Parameters.Add(DeclareParameter(param, parameterCount));
-				member.Statements.Add(AssignParameterToDictionary(param, parameterCount));
+				assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount));
 				parameterCount++;
+			}
+			
+			member.Statements.Add(DeclareParamaterDictionary());
+			member.Statements.AddRange(assignmentStatments);
+			
+			foreach(IResourceDecorator decorator in this.decorators){
+				decorator.DecorateMethodBeforeExecute(this.resource, method, member);
 			}
 			
 			member.Statements.Add(CreateExecuteRequest(method));
 			
+			foreach(IResourceDecorator decorator in this.decorators){
+				decorator.DecorateMethodAfterExecute(this.resource, method, member);
+			}
+			
 			return member;
 		}
 		
-		private CodeExpression CreateExecuteRequest(Method method){
+		private CodeStatement CreateExecuteRequest(Method method){
 			var call = new CodeMethodInvokeExpression();
 			
 			call.Method = new CodeMethodReferenceExpression(
@@ -132,8 +163,10 @@ namespace Google.Apis.Tools.CodeGen {
 			call.Parameters.Add(
 			     new CodePrimitiveExpression(method.Name));
 			call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
+			
+			var assign = new CodeVariableDeclarationStatement(typeof(System.IO.Stream), ReturnVariableName, call);
 
-			return call;
+			return assign;
 		}
 		
 		private CodeAssignStatement AssignParameterToDictionary(
