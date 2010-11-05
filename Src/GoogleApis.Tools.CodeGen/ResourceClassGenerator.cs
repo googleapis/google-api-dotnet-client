@@ -62,7 +62,11 @@ namespace Google.Apis.Tools.CodeGen {
 				resourceClass.Members.Add(CreateMethod(method, methodNumber));
 				methodNumber++;
 			}
-		
+			
+			foreach(IResourceDecorator decorator in this.decorators){
+				decorator.DecorateClass(this.resource, serviceClassName, resourceClass);
+			}
+					
 			return resourceClass;
 		}
 		
@@ -135,18 +139,28 @@ namespace Google.Apis.Tools.CodeGen {
 				parameterCount++;
 			}
 			
+			//System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
 			member.Statements.Add(DeclareParamaterDictionary());
+			
+			//parameters["<%=parameterName%>"] = <%=parameterName%>;
 			member.Statements.AddRange(assignmentStatments);
 			
 			foreach(IResourceDecorator decorator in this.decorators){
 				decorator.DecorateMethodBeforeExecute(this.resource, method, member);
 			}
 			
+			// System.IO.Stream ret = this.service.ExecuteRequest(this.RESOURCE, "<%=methodName%>", parameters);
 			member.Statements.Add(CreateExecuteRequest(method));
 			
 			foreach(IResourceDecorator decorator in this.decorators){
 				decorator.DecorateMethodAfterExecute(this.resource, method, member);
 			}
+			
+			// return ret;
+			var returnStatment = new CodeMethodReturnStatement(
+			                       	new CodeVariableReferenceExpression(ReturnVariableName));
+			
+			member.Statements.Add(returnStatment);
 			
 			return member;
 		}
