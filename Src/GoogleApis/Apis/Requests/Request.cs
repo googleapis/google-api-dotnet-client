@@ -43,7 +43,7 @@ namespace Google.Apis.Requests
 		private string PathUrl {get;set;}
 		private string RPCName {get;set;}
 		private string Body {get;set;}
-		private Dictionary<string, string> Parameters {get;set;}
+		private IDictionary<string, string> Parameters {get;set;}
 		private Uri RequestUrl;
 		private ReturnTypeEnum ReturnType {get; set; }
 		
@@ -108,7 +108,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithParameters(Dictionary<string, string> parameters) {
+		public Request WithParameters(IDictionary<string, string> parameters) {
 			// Convert the parameters
 			
 			Parameters = parameters;
@@ -170,7 +170,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithAuthentication(Authenticator authenticator) {
+		public Request WithAuthentication(IAuthenticator authenticator) {
 			this.Authenticator = authenticator;
 			// Check to ensure that the 
 			return this;
