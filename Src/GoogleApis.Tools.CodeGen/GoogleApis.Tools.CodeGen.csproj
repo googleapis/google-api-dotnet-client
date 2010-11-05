@@ -43,6 +43,8 @@
     <Compile Include="ServiceClassGenerator.cs" />
     <Compile Include="CommonGenerator.cs" />
     <Compile Include="ResourceClassGenerator.cs" />
+    <Compile Include="Decorator\IResourceDecorator.cs" />
+    <Compile Include="Decorator\LoggingResourceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -50,5 +52,8 @@
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Decorator\" />
   </ItemGroup>
 </Project>
