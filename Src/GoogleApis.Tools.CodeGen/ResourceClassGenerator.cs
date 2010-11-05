@@ -40,7 +40,7 @@ namespace Google.Apis.Tools.CodeGen {
 			this.serviceClassName = serviceClassName;
 			this.resourceNumber = resourceNumber;
 			this.decorators = decorators;
-			this.className = GetClassName(resource, resourceNumber);
+			this.className = GetClassName(resource, this.resourceNumber);
 		}
 		
 		/// <summary>
@@ -136,7 +136,7 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			int parameterCount = 1;
 			foreach(var param in paramList) {
-				member.Parameters.Add(DeclareParameter(param, parameterCount));
+				member.Parameters.Add(DeclareInputParameter(param, parameterCount));
 				assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount));
 				parameterCount++;
 			}
@@ -180,7 +180,7 @@ namespace Google.Apis.Tools.CodeGen {
 			       	ResourceNameConst));
 			call.Parameters.Add(
 			     new CodePrimitiveExpression(method.Name));
-			call.Parameters.Add(new CodePrimitiveExpression(null));
+			call.Parameters.Add(new CodeVariableReferenceExpression("body"));
 			call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
 			
 			var assign = new CodeVariableDeclarationStatement(typeof(System.IO.Stream), ReturnVariableName, call);
@@ -203,7 +203,7 @@ namespace Google.Apis.Tools.CodeGen {
 			return assign;
 		}
 		
-		private CodeParameterDeclarationExpression DeclareParameter(
+		private CodeParameterDeclarationExpression DeclareInputParameter(
 			Parameter param, 
 		    int parameterCount){
 			return  new CodeParameterDeclarationExpression(

@@ -17,12 +17,29 @@ limitations under the License.
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
-
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen {
 
 	public class CommonGenerator {
+		private static readonly string[] UNSAFE_WORDS = new string[]{
+			//C# reserved words
+			"abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", 
+			"checked", "class", "const", "continue", "decimal", "default", "delegate", 
+			"do", "double", "else", "enum", "event", "explicit", "extern", "false", "finally", 
+			"fixed", "float", "for", "foreach", "goto", "if", "implicit", "in", "int", 
+			"interface", "internal", "is", "lock", "long", "namespace", "new", "null", 
+			"object", "operator", "out", "override", "params", "private", "protected", "public", 
+			"readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", 
+			"static", "string", "struct", "switch", "this", "throw", "true", "try", "typeof", 
+			"uint", "ulong", "unchecked", "unsafe", "ushort", "using", "virtual", "void", 
+			"volatile", "while", 
+			//C# proposed reserved words
+			"await", "async",
+			//CodeGen Specific
+			"body",
+		};
 		
 		public CommonGenerator() {
 		}
@@ -75,14 +92,26 @@ namespace Google.Apis.Tools.CodeGen {
 			return Char.ToUpper(str[0]) + str.Substring(1);
 		}
 		
-		private String GetSafeMemberName(String baseName, String uniquieifier){
+		private String GetSafeMemberName(string baseName, String uniquieifier){
+			return GetSafeMemberName(baseName, uniquieifier, UNSAFE_WORDS);
+		}
+		
+		private String GetSafeMemberName(string baseName, String uniquieifier, IEnumerable<String> unsafeWords){
 			StringBuilder sb = new StringBuilder();
 			bool isFirst = true;
-			bool changed = false;
+			bool requiresUniqueAddition = false;
+			
+			string lowerbaseName = baseName.ToLower();
+			foreach(string word in unsafeWords){
+				if(lowerbaseName.Equals(word.ToLower())){
+					requiresUniqueAddition = true;
+				}
+			}
+			
 			foreach(char c in baseName){
 				if(isFirst){
 					if(IsValidFirstChar(c) == false){
-						changed = true;
+						requiresUniqueAddition = true;
 						continue;
 					}
 					sb.Append(c);
@@ -91,12 +120,12 @@ namespace Google.Apis.Tools.CodeGen {
 				}
 				
 				if(IsValidBodyChar(c) == false){
-					changed = true;
+					requiresUniqueAddition = true;
 					continue;
 				}
 				sb.Append(c);
 			}
-			if(changed){
+			if(requiresUniqueAddition){
 				sb.Append(uniquieifier);
 			}
 			
