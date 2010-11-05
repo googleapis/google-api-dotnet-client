@@ -177,6 +177,7 @@ namespace Google.Apis.Tools.CodeGen {
 			getter.Name = GetClassName(resource,resourceNumber);
 			getter.HasGet = true;
 			getter.HasSet = false;
+			getter.Attributes = MemberAttributes.Public;
 			getter.Type = new CodeTypeReference(GetClassName(resource, resourceNumber));
 			getter.GetStatements.Add(
 			     new CodeMethodReturnStatement(GetFieldReference(resource, resourceNumber)));

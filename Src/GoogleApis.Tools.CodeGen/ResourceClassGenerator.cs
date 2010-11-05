@@ -32,6 +32,7 @@ namespace Google.Apis.Tools.CodeGen {
 		private readonly String serviceClassName; 
 		private readonly int resourceNumber;
 		private readonly IResourceDecorator[] decorators;
+		private readonly String className;
 
 		public ResourceClassGenerator(Resource resource, String serviceClassName, int resourceNumber, 
 		                              params IResourceDecorator[] decorators) {
@@ -39,6 +40,7 @@ namespace Google.Apis.Tools.CodeGen {
 			this.serviceClassName = serviceClassName;
 			this.resourceNumber = resourceNumber;
 			this.decorators = decorators;
+			this.className = GetClassName(resource, resourceNumber);
 		}
 		
 		/// <summary>
@@ -51,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen {
 		/// A <see cref="CodeTypeDeclaration"/>
 		/// </returns>
 		public CodeTypeDeclaration CreateClass() {
-			var resourceClass = new CodeTypeDeclaration(GetClassName(resource, resourceNumber));			
+			var resourceClass = new CodeTypeDeclaration(this.className);			
 			
 			AddServiceField(resourceClass, serviceClassName);
 			AddResourceNameConst(resourceClass);
@@ -173,9 +175,12 @@ namespace Google.Apis.Tools.CodeGen {
 			    "ExecuteRequest");
 			
 			call.Parameters.Add(
-			     new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ResourceNameConst));
+			     new CodeFieldReferenceExpression(
+			     	new CodeTypeReferenceExpression(this.className), 
+			       	ResourceNameConst));
 			call.Parameters.Add(
 			     new CodePrimitiveExpression(method.Name));
+			call.Parameters.Add(new CodePrimitiveExpression(null));
 			call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
 			
 			var assign = new CodeVariableDeclarationStatement(typeof(System.IO.Stream), ReturnVariableName, call);
