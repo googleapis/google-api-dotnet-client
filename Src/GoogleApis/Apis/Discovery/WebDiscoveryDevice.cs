@@ -31,6 +31,10 @@ namespace Google.Apis.Discovery
 		public WebDiscoveryDevice() {
 		}
 		
+		public WebDiscoveryDevice(Uri discoveryUri):this(){
+			this.DiscoveryUri = discoveryUri;
+		}
+		
 		/// <summary>
 		/// Fetches the discovery document from a Webserver using HttpWebRequest.
 		/// </summary>

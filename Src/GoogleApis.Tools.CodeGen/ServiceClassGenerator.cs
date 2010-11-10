@@ -26,14 +26,24 @@ namespace Google.Apis.Tools.CodeGen {
 	public class ServiceClassGenerator:CommonGenerator {
 		private const string GENERIC_SERVICE_NAME = "genericService";
 		private const string AUTHENTICATOR_NAME = "authenticator";
+		public const string VERSION_NAME = "VERSION";
+		public const string NAME_NAME = "NAME";
+		public const string BASE_URI_NAME = "BASE_URI";
+		
+		private readonly IServiceDecorator[] decorators;
+		private readonly IService service;
 
-		public ServiceClassGenerator() {
+		public ServiceClassGenerator(IService service, params IServiceDecorator[] decorators) {
+			this.decorators = decorators;
+			this.service = service;
 		}
 		
-		public CodeTypeDeclaration CreateServiceClass(IService service){
+		public CodeTypeDeclaration CreateServiceClass(){
 			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
-			var baseConstructor = CreateConstructorArgService();
+			var baseConstructor = CreateConstructorWithArgs();
+			
+			AddVersionFields(serviceClass, service);
 			
 			serviceClass.Members.Add(CreateExecuteRequest());
 			
@@ -50,7 +60,38 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			serviceClass.Members.Add(baseConstructor);
 			
+			foreach(IServiceDecorator serviceDecorator in decorators){
+				serviceDecorator.DecorateClass(service, serviceClass);
+			}
+			
 			return serviceClass;					
+		}
+		
+		private void AddVersionFields(CodeTypeDeclaration serviceClass, IService service){
+			AddVersionField(service, serviceClass);
+			AddNameField(service, serviceClass);			
+			AddUriField(service, serviceClass);
+		}
+		
+		private void AddVersionField(IService service, CodeTypeDeclaration serviceClass) {
+			var version = new CodeMemberField(typeof(string), VERSION_NAME);
+			version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+			version.InitExpression = new CodePrimitiveExpression(service.Version);
+			serviceClass.Members.Add(version);
+		}
+		
+		private void AddNameField(IService service, CodeTypeDeclaration serviceClass) {
+			var name = new CodeMemberField(typeof(string),NAME_NAME);
+			name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+			name.InitExpression = new CodePrimitiveExpression(service.Name);
+			serviceClass.Members.Add(name);
+		}
+		
+		private void AddUriField(IService service, CodeTypeDeclaration serviceClass) {
+			var uri = new CodeMemberField(typeof(string),BASE_URI_NAME);
+			uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+			uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
+			serviceClass.Members.Add(uri);			
 		}
 		
 		/// <summary>
@@ -120,7 +161,7 @@ namespace Google.Apis.Tools.CodeGen {
 			return method;
 		}
 		
-		private CodeConstructor CreateConstructorArgService(){
+		private CodeConstructor CreateConstructorWithArgs(){
 			var constructor = new CodeConstructor();
 			constructor.Attributes = MemberAttributes.Public;
 			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IService),GENERIC_SERVICE_NAME));
