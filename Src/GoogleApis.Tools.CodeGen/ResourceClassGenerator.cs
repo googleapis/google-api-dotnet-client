@@ -66,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen {
 			}
 			
 			foreach(IResourceDecorator decorator in this.decorators){
-				decorator.DecorateClass(this.resource, serviceClassName, resourceClass);
+				decorator.DecorateClass(this.resource, serviceClassName, resourceClass, this.decorators);
 			}
 					
 			return resourceClass;
