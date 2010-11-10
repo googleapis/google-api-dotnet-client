@@ -23,11 +23,7 @@ using Google.Apis.Tools.CodeGen.Decorator;
 namespace Google.Apis.Tools.CodeGen {
 
 
-	public class ResourceClassGenerator: CommonGenerator{
-		private const string ServiceFieldName = "service";
-		private const string ResourceNameConst = "RESOURCE";
-		private const string ParameterDictionaryName = "parameters";
-		private const string ReturnVariableName = "ret";
+	public class ResourceClassGenerator: ResourceBaseGenerator{					
 		private readonly Resource resource; 
 		private readonly String serviceClassName; 
 		private readonly int resourceNumber;
@@ -66,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen {
 			}
 			
 			foreach(IResourceDecorator decorator in this.decorators){
-				decorator.DecorateClass(this.resource, serviceClassName, resourceClass, this.decorators);
+				decorator.DecorateClass(this.resource, className, resourceClass, this, this.decorators);
 			}
 					
 			return resourceClass;
@@ -129,12 +125,12 @@ namespace Google.Apis.Tools.CodeGen {
 			member.ReturnType = new CodeTypeReference("System.IO.Stream");
 			member.Attributes = MemberAttributes.Public;
 			
-			// Add Required parameters to the method.
+			// Add All parameters to the method.
 			var paramList = method.Parameters.Values;
 			
 			CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 			
-			AddBodyDeclaration(method, member);
+			ResourceCallAddBodyDeclaration(method, member);
 			
 			int parameterCount = 1;
 			foreach(var param in paramList) {
@@ -168,72 +164,7 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			return member;
 		}
-
-		private void AddBodyDeclaration(Method method, CodeMemberMethod member) {
-			switch (method.HttpMethod) {
-				case "GET":
-				case "DELETE":
-					// string body = null;
-					var bodyVarDeclaration = 
-						new CodeVariableDeclarationStatement(typeof(string),"body");
-					bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
-					member.Statements.Add(bodyVarDeclaration);
-					break;
-				case "PUT":
-				case "POST":
-					// add body Parameter
-					member.Parameters.Add(
-				  		new CodeParameterDeclarationExpression(typeof(string), "body"));
-					break;
-				default:
-					throw new NotSupportedException("Unsupported HttpMethod ["+method.HttpMethod+"]");
-			}
-		}
-
-		
-		private CodeStatement CreateExecuteRequest(Method method){
-			var call = new CodeMethodInvokeExpression();
-			
-			call.Method = new CodeMethodReferenceExpression(
-				new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
-			    "ExecuteRequest");
-			
-			call.Parameters.Add(
-			     new CodeFieldReferenceExpression(
-			     	new CodeTypeReferenceExpression(this.className), 
-			       	ResourceNameConst));
-			call.Parameters.Add(
-			     new CodePrimitiveExpression(method.Name));
-			call.Parameters.Add(new CodeVariableReferenceExpression("body"));
-			call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
-			
-			var assign = new CodeVariableDeclarationStatement(typeof(System.IO.Stream), ReturnVariableName, call);
-
-			return assign;
-		}
-		
-		private CodeAssignStatement AssignParameterToDictionary(
-			Parameter param, 
-		    int parameterCount){
-			
-			var assign = new CodeAssignStatement();
-			assign.Left = new CodeArrayIndexerExpression(
-			    new CodeVariableReferenceExpression(ParameterDictionaryName),
-			    new CodePrimitiveExpression(param.Name));
-			
-			assign.Right = new CodeVariableReferenceExpression(GetParameterName(param, parameterCount));
-			                                             
-			
-			return assign;
-		}
-		
-		private CodeParameterDeclarationExpression DeclareInputParameter(
-			Parameter param, 
-		    int parameterCount){
-			return  new CodeParameterDeclarationExpression(
-				  	typeof(string), 
-				    GetParameterName(param, parameterCount));
-		}
+	
 		
 		/// <summary>
 		/// produces
@@ -246,5 +177,12 @@ namespace Google.Apis.Tools.CodeGen {
 				typeof(Dictionary<string, string>),ParameterDictionaryName, 
 			    new CodeObjectCreateExpression(typeof(Dictionary<string, string>)));
 		}
+		
+		protected override string GetClassName ()
+		{
+			return className;
+		}
+		
+		
 	}
 }

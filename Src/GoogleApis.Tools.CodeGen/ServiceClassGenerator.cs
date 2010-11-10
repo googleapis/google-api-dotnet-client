@@ -23,7 +23,7 @@ using Google.Apis.Authentication;
 namespace Google.Apis.Tools.CodeGen {
 
 
-	public class ServiceClassGenerator:CommonGenerator {
+	public class ServiceClassGenerator:BaseGenerator {
 		private const string GENERIC_SERVICE_NAME = "genericService";
 		private const string AUTHENTICATOR_NAME = "authenticator";
 		public const string VERSION_NAME = "VERSION";
