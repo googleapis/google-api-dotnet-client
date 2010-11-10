@@ -8,27 +8,26 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 
 
 	public class DictonaryOptionalParameterResourceDecorator:IResourceDecorator {
-		#region IResourceDecorator implementation
 		public void DecorateClass (Google.Apis.Discovery.Resource resource, 
 		                           string className, 
-		                           CodeTypeDeclaration resourceClass)
+		                           CodeTypeDeclaration resourceClass,
+		                           IResourceDecorator[] allDecorators)
 		{
 			throw new System.NotImplementedException();
 		}
 		
 		
-		public void DecorateMethodBeforeExecute (Google.Apis.Discovery.Resource resource, Google.Apis.Discovery.Method method, System.CodeDom.CodeMemberMethod codeMember)
+		public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
 		{
 			;
 		}
 		
 		
-		public void DecorateMethodAfterExecute (Google.Apis.Discovery.Resource resource, Google.Apis.Discovery.Method method, System.CodeDom.CodeMemberMethod codeMember)
+		public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
 		{
 			;
 		}
 		
-		#endregion
 
 		public DictonaryOptionalParameterResourceDecorator() {
 		}
