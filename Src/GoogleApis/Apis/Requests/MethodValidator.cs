@@ -109,6 +109,9 @@ namespace Google.Apis
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
 		public bool ValidateRegex(Parameter param, string paramValue) {
+			if(param.Pattern == null){
+				return true; // No Validation so anything is valid.
+			}
 			string pattern = param.Pattern;
 			string stringValue = paramValue;
 			

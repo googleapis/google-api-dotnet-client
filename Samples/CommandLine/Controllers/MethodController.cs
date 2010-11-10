@@ -52,7 +52,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 		private DesktopConsumer consumer;
 		
 		
-		private class TokenManager : IConsumerTokenManager {
+		public class TokenManager : IConsumerTokenManager {
 			
 			private Dictionary<string, string> secrets;
 			

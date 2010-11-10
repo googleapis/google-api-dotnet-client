@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
+using System.Collections.Generic;
 using System.CodeDom.Compiler;
 using System.IO;
 
@@ -25,6 +26,37 @@ namespace Google.Apis.Tools.CodeGen
 	{
 		
 		public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(MainClass));
+		
+		public static void Main (IDictionary<string, string> args){
+			var version = "v1";
+			var serviceName = "buzz";
+			var clientNamespace = "Google.Apis.Clients";
+			var language = "CSharp";
+			var outputFile = "";
+			
+			if(args.ContainsKey("version")){
+				version = args["version"];
+			}
+			
+			if(args.ContainsKey("serviceName")){
+				serviceName = args["serviceName"];
+			}
+			
+			if(args.ContainsKey("clientNamespace")){
+				clientNamespace = args["clientNamespace"];
+			}
+			
+			if(args.ContainsKey("language")){
+				language = args["language"];
+			}
+			
+			if(args.ContainsKey("outputFile")){
+				outputFile = args["outputFile"];
+			}
+			
+			
+			GenerateClass(serviceName, version, clientNamespace, language, outputFile);			
+		}
 		
 		/// <summary>
 		/// Creates an Strongly Typed Client API for a given service.
@@ -87,6 +119,11 @@ namespace Google.Apis.Tools.CodeGen
 			}
 				
 			
+			GenerateClass(serviceName, version, clientNamespace, language, outputFile);
+			
+		}
+		
+		public static void GenerateClass(string serviceName, string version, string clientNamespace, string language, string outputFile) {
 			// Set up how discovery works.
 			var webfetcher = new WebDiscoveryDevice { DiscoveryUri = new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)};
 			
@@ -110,7 +147,6 @@ namespace Google.Apis.Tools.CodeGen
 		        // Close the output file.
 		        tw.Close();
 		    }
-			
 		}
 	}
 }

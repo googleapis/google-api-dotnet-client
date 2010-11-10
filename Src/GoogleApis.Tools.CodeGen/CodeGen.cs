@@ -35,17 +35,20 @@ namespace Google.Apis.Tools.CodeGen
 		}
 		
 		public CodeCompileUnit Generate() {
+			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
+				new Log4NetResourceDecorator()};
+			IServiceDecorator[] serviceDecorators = new IServiceDecorator[]{
+				new EasyConstructServiceDecorator()
+			};
 						
 			CreateClient();
 			AddUsings();
 
-			var serviceClass = new ServiceClassGenerator().CreateServiceClass(service);
+			var serviceClass = new ServiceClassGenerator(service, serviceDecorators).
+				CreateServiceClass();
 			string serviceClassName = serviceClass.Name;
 
 			client.Types.Add(serviceClass);
-			
-			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
-				new Log4NetResourceDecorator()};
 			
 			int resourceNumber = 1;
 			foreach(var res in service.Resources.Values) {
@@ -65,7 +68,8 @@ namespace Google.Apis.Tools.CodeGen
 		
 		
 		private void CreateClient() {
-			client = new CodeNamespace(clientNamespace + "." + UpperFirstLetter(service.Name));	
+			//client = new CodeNamespace(clientNamespace + "." + UpperFirstLetter(service.Name));	
+			client = new CodeNamespace(clientNamespace);	
 			compileUnit.Namespaces.Add(client);
 		}
 	
