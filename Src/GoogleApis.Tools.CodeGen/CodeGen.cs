@@ -21,7 +21,7 @@ using Google.Apis.Tools.CodeGen.Decorator;
 
 namespace Google.Apis.Tools.CodeGen
 {
-	public class CodeGen:CommonGenerator {
+	public class CodeGen:BaseGenerator {
 		
 		private readonly CodeCompileUnit compileUnit;
 		private CodeNamespace client;
@@ -36,7 +36,8 @@ namespace Google.Apis.Tools.CodeGen
 		
 		public CodeCompileUnit Generate() {
 			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
-				new Log4NetResourceDecorator()};
+				new Log4NetResourceDecorator(), 
+				new DictonaryOptionalParameterResourceDecorator()};
 			IServiceDecorator[] serviceDecorators = new IServiceDecorator[]{
 				new EasyConstructServiceDecorator()
 			};
