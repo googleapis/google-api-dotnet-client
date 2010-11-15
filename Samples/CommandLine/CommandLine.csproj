@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="GoogleApis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\GoogleApis.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -54,12 +58,6 @@
     <Compile Include="Views\ServiceView.cs" />
     <Compile Include="Scopes.cs" />
     <Compile Include="Utilities.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Src\GoogleApis\GoogleApis.csproj">
-      <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
-      <Name>GoogleApis</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
