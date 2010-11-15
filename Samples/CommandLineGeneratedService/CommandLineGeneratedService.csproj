@@ -46,6 +46,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Buzz\BuzzService.cs" />
+    <Compile Include="Buzz\ConsoleAuthenticator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buzz\" />
