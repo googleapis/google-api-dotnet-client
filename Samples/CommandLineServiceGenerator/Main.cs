@@ -10,7 +10,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 		{
 			var serviceName = "buzz";
 			var version = "v1";
-			var clientNameSpace ="Google.Apis.Samples.ComandLineGeneratedService.Buzz";
+			var clientNameSpace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
 			var lang = "CSharp";
 			var output = "../../../CommandLineGeneratedService/Buzz/BuzzService.cs";
 			
