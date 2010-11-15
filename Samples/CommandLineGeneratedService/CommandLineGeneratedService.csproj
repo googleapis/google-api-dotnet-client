@@ -41,6 +41,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth, Version=3.4.5.10202, Culture=neutral, PublicKeyToken=2780ccd10d57b246">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\DotNetOpenAuth.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -52,4 +56,10 @@
     <Folder Include="Buzz\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CommandLine\CommandLine.csproj">
+      <Project>{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}</Project>
+      <Name>CommandLine</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
