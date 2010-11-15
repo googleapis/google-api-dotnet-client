@@ -1,3 +1,4 @@
 syntax: glob
 bin/***
-bin/Debug/*
+bin/Debug/**
+bin/Debug/*.dll

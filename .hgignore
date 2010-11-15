@@ -27,3 +27,6 @@ Desktop.ini
 *.suo
 _ReSharper.*
 *.sln.cache
+
+bin/**
+bin/Debug/**
