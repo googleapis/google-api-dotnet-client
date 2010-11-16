@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator {
@@ -29,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 		                          string className, 
 		                          CodeTypeDeclaration resourceClass, 
 		                          ResourceClassGenerator generator, 
-		                          IResourceDecorator[] allDecorators) {
+		                          IEnumerable<IResourceDecorator> allDecorators) {
 			//public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(<className>));
 			Logger.Debug("Adding logger to ResourceClass.");
 			var loggerField = new CodeMemberField("log4net.ILog", LOGGER_NAME);

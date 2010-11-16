@@ -25,7 +25,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 
 	public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator {
 
-		public void DecorateClass(Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, IResourceDecorator[] allDecorators) {
+		public void DecorateClass(Resource resource, string className, CodeTypeDeclaration resourceClass, 
+		                          ResourceClassGenerator generator, IEnumerable<IResourceDecorator> allDecorators) {
 			ResourceGenerator gen = new ResourceGenerator(className);
 			int methodNumber = 1;
 			foreach (var method in resource.Methods.Values) {
@@ -58,9 +59,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 				this.className = className;
 			}
 			
-			
-
-			public CodeTypeMember CreateMethod(Resource resource, Method method, int methodNumber, IResourceDecorator[] allDecorators) {
+			public CodeTypeMember CreateMethod(Resource resource, Method method, int methodNumber, 
+					IEnumerable<IResourceDecorator> allDecorators) {
 				if (HasOptionalParameters(method) == false) {
 					return null;
 				}
