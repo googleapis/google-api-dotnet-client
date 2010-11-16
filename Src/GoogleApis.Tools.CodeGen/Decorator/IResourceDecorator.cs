@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator {
@@ -25,7 +26,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 		void DecorateClass(Resource resource, string className, 
 		                   CodeTypeDeclaration resourceClass, 
 		                   ResourceClassGenerator generator, 
-		                   IResourceDecorator[] allDecorators);
+		                   IEnumerable<IResourceDecorator> allDecorators);
 		
 		void DecorateMethodBeforeExecute(Resource resource, 
 		                                 Method method, CodeMemberMethod codeMember);

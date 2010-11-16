@@ -17,7 +17,7 @@ using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator;
-
+using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -30,20 +30,45 @@ namespace Google.Apis.Tools.CodeGen
 		private readonly IService service;
 		private readonly string clientNamespace;
 		
-		public CodeGen (IService service, string clientNamespace) {
+		private readonly IEnumerable<IResourceDecorator> resourceDecorators;
+		private readonly IEnumerable<IServiceDecorator> serviceDecorators;
+		
+		
+		
+		public CodeGen (IService service, string clientNamespace, 
+		                IEnumerable<IResourceDecorator> resourceDecorators, 
+		                IEnumerable<IServiceDecorator> serviceDecorators) {
 			compileUnit = new CodeCompileUnit();
 			this.clientNamespace = clientNamespace;
 			this.service = service;
+			
+			this.resourceDecorators = resourceDecorators;
+			this.serviceDecorators = serviceDecorators;
+		}
+		
+		public CodeGen (IService service, string clientNamespace): 
+			this(service, clientNamespace, 
+			     new IResourceDecorator[]{
+					new Log4NetResourceDecorator(), 
+					new DictonaryOptionalParameterResourceDecorator()},
+				new IServiceDecorator[]{
+					new EasyConstructServiceDecorator()}) {
+			
 		}
 		
 		public CodeCompileUnit Generate() {
-			Logger.Debug("Starting Generation...");	
-			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
-				new Log4NetResourceDecorator(), 
-				new DictonaryOptionalParameterResourceDecorator()};
-			IServiceDecorator[] serviceDecorators = new IServiceDecorator[]{
-				new EasyConstructServiceDecorator()
-			};
+			Logger.Debug("Starting Generation...");
+			if ( Logger.IsDebugEnabled ) {
+				Logger.Debug("With Service Decorators:");
+				foreach(IServiceDecorator dec in serviceDecorators){
+					Logger.Debug(">>>>" + dec.ToString());
+				}
+				Logger.Debug("With Resource Decorators:");
+				foreach(IResourceDecorator dec in resourceDecorators){
+					Logger.Debug(">>>>" + dec.ToString());
+				}
+			}
+
 						
 			CreateClient();
 			AddUsings();

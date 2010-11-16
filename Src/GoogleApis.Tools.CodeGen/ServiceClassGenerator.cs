@@ -32,10 +32,10 @@ namespace Google.Apis.Tools.CodeGen {
 		public const string NAME_NAME = "NAME";
 		public const string BASE_URI_NAME = "BASE_URI";
 		
-		private readonly IServiceDecorator[] decorators;
+		private readonly IEnumerable<IServiceDecorator> decorators;
 		private readonly IService service;
 
-		public ServiceClassGenerator(IService service, params IServiceDecorator[] decorators) {
+		public ServiceClassGenerator(IService service, IEnumerable<IServiceDecorator> decorators) {
 			this.decorators = decorators;
 			this.service = service;
 		}

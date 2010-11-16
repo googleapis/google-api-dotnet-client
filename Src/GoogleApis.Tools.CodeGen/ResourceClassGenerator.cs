@@ -27,11 +27,11 @@ namespace Google.Apis.Tools.CodeGen {
 		private readonly Resource resource; 
 		private readonly String serviceClassName; 
 		private readonly int resourceNumber;
-		private readonly IResourceDecorator[] decorators;
+		private readonly IEnumerable<IResourceDecorator> decorators;
 		private readonly String className;
 
 		public ResourceClassGenerator(Resource resource, String serviceClassName, int resourceNumber, 
-		                              params IResourceDecorator[] decorators) {
+		                              IEnumerable<IResourceDecorator> decorators) {
 			this.resource = resource;
 			this.serviceClassName = serviceClassName;
 			this.resourceNumber = resourceNumber;
