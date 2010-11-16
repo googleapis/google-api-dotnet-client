@@ -33,6 +33,6 @@ Global
 		{BF7C37A7-6CDA-435F-A96A-8A13432B9237}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = CommandLine\CommandLine.csproj
+		StartupItem = CommandLineServiceGenerator\CommandLineServiceGenerator.csproj
 	EndGlobalSection
 EndGlobal
