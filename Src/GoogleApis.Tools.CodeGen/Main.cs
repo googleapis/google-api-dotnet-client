@@ -125,10 +125,15 @@ namespace Google.Apis.Tools.CodeGen
 		
 		public static void GenerateClass(string serviceName, string version, string clientNamespace, string language, string outputFile) {
 			// Set up how discovery works.
+			string cacheDirectory = Path.Combine(
+				Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+			    "GoogleApis.Tools.CodeGenCache");
+			if(Directory.Exists(cacheDirectory) == false){
+				Directory.CreateDirectory(cacheDirectory);
+			}
 			var webfetcher = new CachedWebDiscoveryDevice(
 			    new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName),
-			    new DirectoryInfo("/var/tmp/WebServiceCache"));
-			
+			    new DirectoryInfo(cacheDirectory));
 			var discovery = new DiscoveryService(webfetcher);
 			// Build the service based on discovery information.
 			var service = discovery.GetService(version);

@@ -23,6 +23,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 
 	public class Log4NetResourceDecorator : IResourceDecorator {
 		private const string LOGGER_NAME = "logger";
+		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
 
 		public void DecorateClass(Resource resource, 
 		                          string className, 
@@ -30,6 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 		                          ResourceClassGenerator generator, 
 		                          IResourceDecorator[] allDecorators) {
 			//public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(<className>));
+			Logger.Debug("Adding logger to ResourceClass.");
 			var loggerField = new CodeMemberField("log4net.ILog", LOGGER_NAME);
 			var initialiser = new CodeMethodInvokeExpression();
 			initialiser.Method = new CodeMethodReferenceExpression(
