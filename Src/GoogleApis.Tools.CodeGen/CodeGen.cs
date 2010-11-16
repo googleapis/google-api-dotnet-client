@@ -23,6 +23,8 @@ namespace Google.Apis.Tools.CodeGen
 {
 	public class CodeGen:BaseGenerator {
 		
+		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CodeGen));
+		
 		private readonly CodeCompileUnit compileUnit;
 		private CodeNamespace client;
 		private readonly IService service;
@@ -35,6 +37,7 @@ namespace Google.Apis.Tools.CodeGen
 		}
 		
 		public CodeCompileUnit Generate() {
+			Logger.Debug("Starting Generation...");	
 			IResourceDecorator[] resourceDecorators = new IResourceDecorator[]{
 				new Log4NetResourceDecorator(), 
 				new DictonaryOptionalParameterResourceDecorator()};
@@ -54,6 +57,7 @@ namespace Google.Apis.Tools.CodeGen
 			int resourceNumber = 1;
 			foreach(var res in service.Resources.Values) {
 				// Create a class for the resource
+				Logger.DebugFormat("Adding Resource {0}", res.Name);
 				var resourceGenerator = new ResourceClassGenerator(
 				     res, 
 				     serviceClassName, 
@@ -63,6 +67,7 @@ namespace Google.Apis.Tools.CodeGen
 				resourceNumber++;
 			}
 			
+			Logger.Debug("Generation Complete.");
 			return compileUnit;
 		}
 		
