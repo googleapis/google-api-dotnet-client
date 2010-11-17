@@ -25,8 +25,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 
 	public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator {
 
-		public void DecorateClass(Resource resource, string className, CodeTypeDeclaration resourceClass, 
-		                          ResourceClassGenerator generator, IEnumerable<IResourceDecorator> allDecorators) {
+		public void DecorateClass(Resource resource, 
+		                          string className, 
+		                          CodeTypeDeclaration resourceClass, 
+		                          ResourceClassGenerator generator, 
+		                          string serviceClassName,
+		                          IEnumerable<IResourceDecorator> allDecorators) {
 			ResourceGenerator gen = new ResourceGenerator(className);
 			int methodNumber = 1;
 			foreach (var method in resource.Methods.Values) {

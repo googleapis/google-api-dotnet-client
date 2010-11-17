@@ -53,31 +53,12 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			AddServiceField(resourceClass, serviceClassName);
 			AddResourceNameConst(resourceClass);
-			AddConstructor(resourceClass, serviceClassName);
 			
 			foreach(IResourceDecorator decorator in this.decorators){
-				decorator.DecorateClass(this.resource, className, resourceClass, this, this.decorators);
+				decorator.DecorateClass(this.resource, className, resourceClass, this,this.serviceClassName, this.decorators);
 			}
 					
 			return resourceClass;
-		}
-		
-		private void AddConstructor(CodeTypeDeclaration resourceClass, String serviceClassName){
-			var constructor = new CodeConstructor();
-			constructor.Attributes = MemberAttributes.Public;
-			constructor.Parameters.Add(
-			   new CodeParameterDeclarationExpression(serviceClassName, ServiceFieldName));
-			
-			constructor.Statements.Add(
-				new CodeAssignStatement(
-			    	new CodeFieldReferenceExpression(
-			     		new CodeThisReferenceExpression(),
-			        	ServiceFieldName),
-			        new CodeArgumentReferenceExpression(ServiceFieldName)			                                                   
-			        )
-			  	);
-			
-			resourceClass.Members.Add(constructor);
 		}
 		
 		/// <summary>

@@ -50,6 +50,7 @@
     <Compile Include="Decorator\DictonaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="ResourceBaseGenerator.cs" />
     <Compile Include="Decorator\StandardMethodResourceDecorator.cs" />
+    <Compile Include="Decorator\StandardConstructorResourceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

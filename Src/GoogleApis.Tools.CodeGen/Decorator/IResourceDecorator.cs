@@ -25,7 +25,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 	public interface IResourceDecorator {
 		void DecorateClass(Resource resource, string className, 
 		                   CodeTypeDeclaration resourceClass, 
-		                   ResourceClassGenerator generator, 
+		                   ResourceClassGenerator generator,
+		                   string serviceClassName,
 		                   IEnumerable<IResourceDecorator> allDecorators);
 		
 		void DecorateMethodBeforeExecute(Resource resource, 
