@@ -55,12 +55,6 @@ namespace Google.Apis.Tools.CodeGen {
 			AddResourceNameConst(resourceClass);
 			AddConstructor(resourceClass, serviceClassName);
 			
-			int methodNumber = 1;
-			foreach(var method in resource.Methods.Values) {
-				resourceClass.Members.Add(CreateMethod(method, methodNumber));
-				methodNumber++;
-			}
-			
 			foreach(IResourceDecorator decorator in this.decorators){
 				decorator.DecorateClass(this.resource, className, resourceClass, this, this.decorators);
 			}
@@ -104,78 +98,6 @@ namespace Google.Apis.Tools.CodeGen {
 			serviceField.InitExpression = new CodePrimitiveExpression(resource.Name);
 			
 			resourceClass.Members.Add(serviceField);
-		}
-		
-	
-		
-		/// <summary>
-		/// For a given resource, there are number of methods, this function creates a single 
-		/// method
-		/// </summary>
-		/// <param name="method">
-		/// A <see cref="Method"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="CodeMemberMethod"/>
-		/// </returns>
-		private CodeMemberMethod CreateMethod(Method method, int methodNumber) {
-			var member = new CodeMemberMethod();
-			
-			member.Name = GetMethodName(method, methodNumber);
-			member.ReturnType = new CodeTypeReference("System.IO.Stream");
-			member.Attributes = MemberAttributes.Public;
-			
-			// Add All parameters to the method.
-			var paramList = method.Parameters.Values;
-			
-			CodeStatementCollection assignmentStatments = new CodeStatementCollection();
-			
-			ResourceCallAddBodyDeclaration(method, member);
-			
-			int parameterCount = 1;
-			foreach(var param in paramList) {
-				member.Parameters.Add(DeclareInputParameter(param, parameterCount));
-				assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount));
-				parameterCount++;
-			}
-			
-			//System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-			member.Statements.Add(DeclareParamaterDictionary());
-			
-			//parameters["<%=parameterName%>"] = <%=parameterName%>;
-			member.Statements.AddRange(assignmentStatments);
-			
-			foreach(IResourceDecorator decorator in this.decorators){
-				decorator.DecorateMethodBeforeExecute(this.resource, method, member);
-			}
-			
-			// System.IO.Stream ret = this.service.ExecuteRequest(this.RESOURCE, "<%=methodName%>", parameters);
-			member.Statements.Add(CreateExecuteRequest(method));
-			
-			foreach(IResourceDecorator decorator in this.decorators){
-				decorator.DecorateMethodAfterExecute(this.resource, method, member);
-			}
-			
-			// return ret;
-			var returnStatment = new CodeMethodReturnStatement(
-			                       	new CodeVariableReferenceExpression(ReturnVariableName));
-			
-			member.Statements.Add(returnStatment);
-			
-			return member;
-		}
-	
-		
-		/// <summary>
-		/// produces
-		/// Dictionary<string, string> parameters = new Dictionary<string, string>();
-		/// </summary>
-		private CodeStatement DeclareParamaterDictionary(){
-			// produces
-			//Dictionary<string, string> parameters = new Dictionary<string, string>();
-			return new CodeVariableDeclarationStatement(
-				typeof(Dictionary<string, string>),ParameterDictionaryName, 
-			    new CodeObjectCreateExpression(typeof(Dictionary<string, string>)));
 		}
 		
 		protected override string GetClassName ()

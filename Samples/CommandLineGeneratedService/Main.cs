@@ -37,7 +37,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 
 		public static void Main(string[] args) {
 			ServicePointManager.ServerCertificateValidationCallback += CheckValidationResult;
-			
+			/*
 			BuzzService buzzService = new BuzzService();
 			Stream result = buzzService.People.Search("b", "c", "d", "5", "David Waters");
 			 
@@ -56,6 +56,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			strResult = sr.ReadToEnd();
 			Console.Write(strResult);
 			Logger.Info(strResult);
+			*/
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 
 	public class Log4NetResourceDecorator : IResourceDecorator {
 		private const string LOGGER_NAME = "logger";
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
+		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(Log4NetResourceDecorator));
 
 		public void DecorateClass(Resource resource, 
 		                          string className, 
