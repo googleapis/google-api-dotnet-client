@@ -29,7 +29,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 		public void DecorateClass(Resource resource, 
 		                          string className, 
 		                          CodeTypeDeclaration resourceClass, 
-		                          ResourceClassGenerator generator, 
+		                          ResourceClassGenerator generator,
+		                          string serviceClassName,
 		                          IEnumerable<IResourceDecorator> allDecorators) {
 			//public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(<className>));
 			Logger.Debug("Adding logger to ResourceClass.");

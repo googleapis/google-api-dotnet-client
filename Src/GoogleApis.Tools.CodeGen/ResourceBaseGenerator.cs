@@ -28,7 +28,7 @@ namespace Google.Apis.Tools.CodeGen {
 		protected const string ResourceNameConst = "RESOURCE";		
 		protected const string ParameterDictionaryName = "parameters";
 		protected const string ReturnVariableName = "ret";
-		protected const string ServiceFieldName = "service";
+		public const string ServiceFieldName = "service";
 
 
 		public ResourceBaseGenerator() {
