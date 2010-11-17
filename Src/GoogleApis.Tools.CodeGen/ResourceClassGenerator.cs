@@ -104,7 +104,5 @@ namespace Google.Apis.Tools.CodeGen {
 		{
 			return className;
 		}
-		
-		
 	}
 }
