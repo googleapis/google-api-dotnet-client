@@ -8,7 +8,7 @@
     <ProjectGuid>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Google.Apis.Tools.CodeGen</RootNamespace>
-    <AssemblyName>GoogleApis.Tools.CodeGen</AssemblyName>
+    <AssemblyName>Google.Apis.Tools.CodeGen</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

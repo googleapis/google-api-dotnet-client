@@ -8,7 +8,7 @@
     <ProjectGuid>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Google.Apis.Tests</RootNamespace>
-    <AssemblyName>GoogleApis.Tests</AssemblyName>
+    <AssemblyName>Google.Apis.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
