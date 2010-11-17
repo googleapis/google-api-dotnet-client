@@ -20,7 +20,7 @@ using System.Xml.Linq;
 
 using System.IO;
 
-namespace GoogleApis.Extensions
+namespace Google.Apis.Extensions
 {
 	public static class Extensions
 	{

@@ -23,8 +23,8 @@ using System.Diagnostics;
 
 namespace Google.Apis.JSON {
 
-  internal class JSONToken {
-    internal enum Type {
+  public class JSONToken {
+    public enum Type {
       ObjectStart,
       ArrayStart,
       ObjectEnd,
@@ -45,7 +45,7 @@ namespace Google.Apis.JSON {
   }
 
 
-  internal class TokenStream {
+  public class TokenStream {
     private const int BuilderBufferSize = 24;
     private TextReader reader = null;
     JSONToken.Type lastType = JSONToken.Type.Undefined;
@@ -189,7 +189,7 @@ namespace Google.Apis.JSON {
     }
   }
 	
-  internal class JSONDictionary : Dictionary<string, object>
+  public class JSONDictionary : Dictionary<string, object>
   {
 		
 	}
