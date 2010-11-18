@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GoogleApis.Extensions/Extensions.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GoogleApis/Apis/JSON/JSON.cs" ctype="Workbench">
     <Files>
       <File FileName="GoogleApis.Tools.CodeGen/Main.cs" Line="141" Column="28" />
       <File FileName="GoogleApis.Tools.CodeGen/CodeGen.cs" Line="52" Column="49" />
@@ -16,15 +16,15 @@
       <File FileName="GoogleApis.Tools.CodeGen/Decorator/IServiceDecorator.cs" Line="21" Column="46" />
       <File FileName="GoogleApis/Apis/oauthbase.cs" Line="24" Column="11" />
       <File FileName="GoogleApis.Extensions/Extensions.cs" Line="23" Column="33" />
+      <File FileName="GoogleApis.Tests/Requests/MethodValidator.cs" Line="43" Column="28" />
+      <File FileName="GoogleApis/Apis/JSON/JSON.cs" Line="39" Column="16" />
+      <File FileName="GoogleApis.Tests/JSON/JSONTokenTests.cs" Line="22" Column="36" />
+      <File FileName="GoogleApis.Tests/JSON/TokenStreamTest.cs" Line="22" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
-          <Node name="Tests" expanded="True">
-            <Node name="GoogleApis.Tests" selected="True" />
-          </Node>
-          <Node name="GoogleApis.Extensions" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
