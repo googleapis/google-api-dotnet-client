@@ -30,3 +30,6 @@ _ReSharper.*
 
 bin/**
 bin/Debug/**
+
+# MonoDevelp
+*.pidb
