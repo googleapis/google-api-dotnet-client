@@ -42,15 +42,15 @@
     <Compile Include="CodeGen.cs" />
     <Compile Include="ServiceClassGenerator.cs" />
     <Compile Include="ResourceClassGenerator.cs" />
-    <Compile Include="Decorator\IResourceDecorator.cs" />
-    <Compile Include="Decorator\Log4NetResourceDecorator.cs" />
     <Compile Include="BaseGenerator.cs" />
-    <Compile Include="Decorator\IServiceDecorator.cs" />
-    <Compile Include="Decorator\EasyConstructServiceDecorator.cs" />
-    <Compile Include="Decorator\DictonaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="ResourceBaseGenerator.cs" />
-    <Compile Include="Decorator\StandardMethodResourceDecorator.cs" />
-    <Compile Include="Decorator\StandardConstructorResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,5 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Decorator\" />
+    <Folder Include="Decorator\ResourceDecorator\" />
+    <Folder Include="Decorator\ServiceDecorator\" />
   </ItemGroup>
 </Project>
