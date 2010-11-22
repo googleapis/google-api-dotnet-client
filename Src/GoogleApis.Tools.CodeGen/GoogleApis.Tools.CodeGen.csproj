@@ -52,6 +52,7 @@
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

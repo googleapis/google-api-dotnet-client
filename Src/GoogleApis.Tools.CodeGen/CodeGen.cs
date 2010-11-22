@@ -56,7 +56,8 @@ namespace Google.Apis.Tools.CodeGen
 					new DictonaryOptionalParameterResourceDecorator()},
 				new IServiceDecorator[]{
 					new EasyConstructServiceDecorator(),
-					new VersionInformationServiceDecorator()}) {
+					new VersionInformationServiceDecorator(),
+					new StandardExecuteMethodServiceDecorator()}) {
 			
 		}
 		
