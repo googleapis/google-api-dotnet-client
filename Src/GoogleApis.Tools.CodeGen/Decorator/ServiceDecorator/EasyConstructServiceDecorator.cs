@@ -18,7 +18,7 @@ using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Decorator {
+namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 
 	public class EasyConstructServiceDecorator : IServiceDecorator {
 		public void DecorateClass (Google.Apis.Discovery.IService service, CodeTypeDeclaration serviceClass)
@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 			var discoveryUrl = new CodePrimitiveExpression("http://www.googleapis.com/discovery/0.1/describe?api=");
 			var serviceName = new CodeFieldReferenceExpression(
 			                  	new CodeTypeReferenceExpression(serviceClass.Name), 
-			                    ServiceClassGenerator.NAME_NAME);
+			                    VersionInformationServiceDecorator.NAME_NAME);
 			
 			
 			var uriConstructor = new CodeObjectCreateExpression();
@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator {
 			getServiceCall.Parameters.Add(
 				new CodeFieldReferenceExpression(
 			    	new CodeTypeReferenceExpression(serviceClass.Name), 
-			        ServiceClassGenerator.VERSION_NAME));
+			        VersionInformationServiceDecorator.VERSION_NAME));
 			
 			return getServiceCall;
 		}

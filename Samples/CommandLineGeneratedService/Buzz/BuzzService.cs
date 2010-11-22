@@ -18,12 +18,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
     
     public class BuzzService {
         
-        private const string VERSION = "v1";
-        
-        private const string NAME = "buzz";
-        
-        private const string BASE_URI = "https://www.googleapis.com/buzz/v1/";
-        
         private Google.Apis.Discovery.IService genericService;
         
         private Google.Apis.Authentication.IAuthenticator authenticator;
@@ -39,6 +33,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         private Photos photos;
         
         private Related related;
+        
+        private const string VERSION = "v1";
+        
+        private const string NAME = "buzz";
+        
+        private const string BASE_URI = "https://www.googleapis.com/buzz/v1/";
         
         public BuzzService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
             this.genericService = genericService;

@@ -30,9 +30,6 @@ namespace Google.Apis.Tools.CodeGen {
 		
 		private const string GENERIC_SERVICE_NAME = "genericService";
 		private const string AUTHENTICATOR_NAME = "authenticator";
-		public const string VERSION_NAME = "VERSION";
-		public const string NAME_NAME = "NAME";
-		public const string BASE_URI_NAME = "BASE_URI";
 		
 		private readonly IEnumerable<IServiceDecorator> decorators;
 		private readonly IService service;
@@ -47,8 +44,6 @@ namespace Google.Apis.Tools.CodeGen {
 			Logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
 			var baseConstructor = CreateConstructorWithArgs();
-			
-			AddVersionFields(serviceClass, service);
 			
 			serviceClass.Members.Add(CreateExecuteRequest());
 			
@@ -72,32 +67,7 @@ namespace Google.Apis.Tools.CodeGen {
 			return serviceClass;					
 		}
 		
-		private void AddVersionFields(CodeTypeDeclaration serviceClass, IService service){
-			AddVersionField(service, serviceClass);
-			AddNameField(service, serviceClass);			
-			AddUriField(service, serviceClass);
-		}
 		
-		private void AddVersionField(IService service, CodeTypeDeclaration serviceClass) {
-			var version = new CodeMemberField(typeof(string), VERSION_NAME);
-			version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			version.InitExpression = new CodePrimitiveExpression(service.Version);
-			serviceClass.Members.Add(version);
-		}
-		
-		private void AddNameField(IService service, CodeTypeDeclaration serviceClass) {
-			var name = new CodeMemberField(typeof(string),NAME_NAME);
-			name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			name.InitExpression = new CodePrimitiveExpression(service.Name);
-			serviceClass.Members.Add(name);
-		}
-		
-		private void AddUriField(IService service, CodeTypeDeclaration serviceClass) {
-			var uri = new CodeMemberField(typeof(string),BASE_URI_NAME);
-			uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
-			serviceClass.Members.Add(uri);			
-		}
 		
 		/// <summary>
 		/// <code>Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);</code>
