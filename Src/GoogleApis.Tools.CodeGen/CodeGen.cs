@@ -17,6 +17,7 @@ using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen
@@ -54,7 +55,8 @@ namespace Google.Apis.Tools.CodeGen
 					new Log4NetResourceDecorator(), 
 					new DictonaryOptionalParameterResourceDecorator()},
 				new IServiceDecorator[]{
-					new EasyConstructServiceDecorator()}) {
+					new EasyConstructServiceDecorator(),
+					new VersionInformationServiceDecorator()}) {
 			
 		}
 		
