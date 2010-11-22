@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Decorator {
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 	public class StandardConstructorResourceDecorator : IResourceDecorator {
 		
 		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));

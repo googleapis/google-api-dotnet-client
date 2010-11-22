@@ -18,7 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
-using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen {
 

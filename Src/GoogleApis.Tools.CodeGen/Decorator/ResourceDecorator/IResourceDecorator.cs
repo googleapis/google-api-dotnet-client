@@ -19,7 +19,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Decorator {
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 
 
 	public interface IResourceDecorator {

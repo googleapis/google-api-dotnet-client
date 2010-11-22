@@ -18,7 +18,7 @@ using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Decorator {
+namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 	public interface IServiceDecorator {
 		void DecorateClass(IService service, CodeTypeDeclaration serviceClass);	
 	}
