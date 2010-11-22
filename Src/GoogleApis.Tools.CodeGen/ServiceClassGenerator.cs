@@ -28,7 +28,7 @@ namespace Google.Apis.Tools.CodeGen {
 	public class ServiceClassGenerator:BaseGenerator {
 		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(ServiceClassGenerator));
 		
-		private const string GENERIC_SERVICE_NAME = "genericService";
+		public const string GENERIC_SERVICE_NAME = "genericService";
 		private const string AUTHENTICATOR_NAME = "authenticator";
 		
 		private readonly IEnumerable<IServiceDecorator> decorators;
@@ -45,7 +45,6 @@ namespace Google.Apis.Tools.CodeGen {
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
 			var baseConstructor = CreateConstructorWithArgs();
 			
-			serviceClass.Members.Add(CreateExecuteRequest());
 			
 			AddServiceFields(serviceClass);
 			
@@ -69,72 +68,9 @@ namespace Google.Apis.Tools.CodeGen {
 		
 		
 		
-		/// <summary>
-		/// <code>Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);</code>
-		/// </summary>
-		private CodeVariableDeclarationStatement CreateRequestLocalVar(){
-			var createRequest = new CodeMethodInvokeExpression();
-			createRequest.Method = new CodeMethodReferenceExpression(
-			                         new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), GENERIC_SERVICE_NAME),
-			                         "CreateRequest");
-			createRequest.Parameters.Add(new CodeVariableReferenceExpression("resource"));
-			createRequest.Parameters.Add(new CodeVariableReferenceExpression("method"));
-			
-			var createAndAssignRequest = new CodeVariableDeclarationStatement();
-			createAndAssignRequest.Type = new CodeTypeReference(typeof(Requests.Request));
-			createAndAssignRequest.Name = "request";
-			createAndAssignRequest.InitExpression = createRequest;
-			
-			return createAndAssignRequest;
-		}
+	
 		
-		private CodeTypeMember CreateExecuteRequest(){
-			var method = new CodeMemberMethod();
-			
-			method.Name = "ExecuteRequest";
-			method.ReturnType = new CodeTypeReference(typeof(System.IO.Stream));
-			method.Attributes = MemberAttributes.Public;
-			method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string),"resource"));
-			method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string),"method"));
-			method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string),"body"));
-			method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IDictionary<string,string>),"parameters"));
-			
-			//Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
-			method.Statements.Add(CreateRequestLocalVar());
-			
-			
-			
-			// return request
-			//		.WithAuthentication(authentication)
-			//	    .WithParameters(parameterDictionary)
-			//		.WithBody(bodyString)
-			//		.ExecuteRequest()
-			
-			//request.WithParameters(parameters)
-			var methodInvoke = new CodeMethodInvokeExpression(
-								new CodeMethodReferenceExpression(
-			                        new CodeVariableReferenceExpression("request"),
-					    			"WithParameters"),
-					    		new CodeVariableReferenceExpression("parameters"));
-			
-			methodInvoke = new CodeMethodInvokeExpression(
-					    new CodeMethodReferenceExpression(methodInvoke,"WithAuthentication"),
-					    new CodeVariableReferenceExpression("authenticator"));
-			
-			//.WithBody(body)
-			methodInvoke = new CodeMethodInvokeExpression(
-					    new CodeMethodReferenceExpression(methodInvoke,"WithBody"),
-					    new CodeVariableReferenceExpression("body"));
-			//.ExecuteRequest()	
-			methodInvoke = new CodeMethodInvokeExpression(
-			    new CodeMethodReferenceExpression(methodInvoke, "ExecuteRequest"));
-			var returnStatment = new CodeMethodReturnStatement(methodInvoke);
-			 
-			method.Statements.Add(returnStatment);
-			                                                                                             
-			
-			return method;
-		}
+		
 		
 		private CodeConstructor CreateConstructorWithArgs(){
 			var constructor = new CodeConstructor();
