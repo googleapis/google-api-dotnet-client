@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
-using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 namespace Google.Apis.Tools.CodeGen {
 

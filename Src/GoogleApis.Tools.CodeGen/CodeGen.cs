@@ -16,7 +16,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
-using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using System.Collections.Generic;
 
