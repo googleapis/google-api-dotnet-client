@@ -134,7 +134,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public IRequest WithBody(Dictionary<string, string> parameters) {
+		public IRequest WithBody(IDictionary<string, string> parameters) {
 			// Check to ensure that the 
 			Body = parameters.ToString();
 			return this;
