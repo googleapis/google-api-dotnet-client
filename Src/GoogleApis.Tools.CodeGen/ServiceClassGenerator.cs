@@ -45,7 +45,6 @@ namespace Google.Apis.Tools.CodeGen {
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
 			var baseConstructor = CreateConstructorWithArgs();
 			
-			
 			AddServiceFields(serviceClass);
 			
 			int resourceNumber = 1;
@@ -65,12 +64,6 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			return serviceClass;					
 		}
-		
-		
-		
-	
-		
-		
 		
 		private CodeConstructor CreateConstructorWithArgs(){
 			var constructor = new CodeConstructor();
@@ -104,6 +97,15 @@ namespace Google.Apis.Tools.CodeGen {
 		}
 
 		
+		/// <summary>
+		/// Declars the fields genericService and authenticator
+		/// <code>
+		/// 	private Google.Apis.Discovery.IService genericService;
+		///     private Google.Apis.Authentication.IAuthenticator authenticator;
+		/// </code>
+		/// </summary>
+		/// <param name="serviceClass">
+		/// </param>
 		private void AddServiceFields(CodeTypeDeclaration serviceClass){
 			var field = new CodeMemberField(typeof(IService),GENERIC_SERVICE_NAME);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
