@@ -54,7 +54,7 @@ namespace Google.Apis.Discovery
 			get { return new Uri (this.information[ServiceFactory.discovery_rpcUrl] as string); }
 		}
 
-		public Dictionary<string, Resource> Resources {
+		public IDictionary<string, Resource> Resources {
 			get {
 				if (this.resources == null) {
 					JSONDictionary js = this.information[ServiceFactory.discovery_resources] as JSONDictionary;
