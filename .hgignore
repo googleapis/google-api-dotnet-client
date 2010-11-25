@@ -33,3 +33,4 @@ bin/Debug/**
 
 # MonoDevelp
 *.pidb
+*.userprefs
