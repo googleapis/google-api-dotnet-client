@@ -72,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 			createRequest.Parameters.Add(new CodeVariableReferenceExpression("method"));
 			
 			var createAndAssignRequest = new CodeVariableDeclarationStatement();
-			createAndAssignRequest.Type = new CodeTypeReference(typeof(Requests.Request));
+			createAndAssignRequest.Type = new CodeTypeReference(typeof(Requests.IRequest));
 			createAndAssignRequest.Name = "request";
 			createAndAssignRequest.InitExpression = createRequest;
 			

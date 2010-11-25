@@ -33,6 +33,6 @@ namespace Google.Apis.Discovery {
 		/// <summary>
 		/// Creates a Request Object based on the HTTP Method Type.
 		/// </summary>
-		Request CreateRequest (string resource, string methodName);		
+		IRequest CreateRequest (string resource, string methodName);		
 	}
 }
