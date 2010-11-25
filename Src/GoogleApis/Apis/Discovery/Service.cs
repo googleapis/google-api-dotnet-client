@@ -79,7 +79,7 @@ namespace Google.Apis.Discovery
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request CreateRequest (string resource, string methodName)
+		public IRequest CreateRequest (string resource, string methodName)
 		{
 			var method = this.Resources[resource].Methods[methodName];
 			var request = Request.CreateRequest(this, method);

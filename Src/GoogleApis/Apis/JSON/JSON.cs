@@ -198,7 +198,7 @@ namespace Google.Apis.JSON {
   /// basic JSONReader that can parse eitehr strings or streams into some
   /// dictionary form.
   /// </summary>
-  internal class JSONReader {
+  public class JSONReader {
     private static JSONReader theInstance;
 
     private JSONReader() { }

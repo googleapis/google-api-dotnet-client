@@ -4,7 +4,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen.Testing {
 	public class MockService:IService {
 		#region IService implementation
-		public Google.Apis.Requests.Request CreateRequest (string resource, string methodName)
+		public Google.Apis.Requests.IRequest CreateRequest (string resource, string methodName)
 		{
 			throw new System.NotImplementedException();
 		}
