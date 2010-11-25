@@ -29,12 +29,7 @@ namespace Google.Apis.Requests
 	/// <summary>
 	/// 
 	/// </summary>
-	public class Request {
-		
-		public enum ReturnTypeEnum {
-			Json,
-			Atom
-		}
+	public class Request:IRequest{
 		
 		private IAuthenticator Authenticator {get; set;}
 		private IService Service {get; set;}
@@ -45,7 +40,7 @@ namespace Google.Apis.Requests
 		private string Body {get;set;}
 		private IDictionary<string, string> Parameters {get;set;}
 		private Uri RequestUrl;
-		private ReturnTypeEnum ReturnType {get; set; }
+		private ReturnType ReturnType {get; set; }
 		
 		
 		/// <summary>
@@ -79,7 +74,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request On(string rpcName) {
+		public IRequest On(string rpcName) {
 			RPCName = rpcName;
 			
 			return this;
@@ -96,7 +91,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request Returning(ReturnTypeEnum returnType) {
+		public IRequest Returning(ReturnType returnType) {
 			this.ReturnType = returnType;
 			return this;
 		}
@@ -108,7 +103,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithParameters(IDictionary<string, string> parameters) {
+		public IRequest WithParameters(IDictionary<string, string> parameters) {
 			// Convert the parameters
 			
 			Parameters = parameters;
@@ -124,7 +119,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithParameters(string parameters) {
+		public IRequest WithParameters(string parameters) {
 			// Check to ensure that the 
 			Parameters = Utilities.QueryStringToDictionary(parameters);
 			return this;
@@ -139,7 +134,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithBody(Dictionary<string, string> parameters) {
+		public IRequest WithBody(Dictionary<string, string> parameters) {
 			// Check to ensure that the 
 			Body = parameters.ToString();
 			return this;
@@ -154,7 +149,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithBody(string body) {
+		public IRequest WithBody(string body) {
 			// Check to ensure that the 
 			Body = body;
 			return this;
@@ -170,7 +165,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public Request WithAuthentication(IAuthenticator authenticator) {
+		public IRequest WithAuthentication(IAuthenticator authenticator) {
 			this.Authenticator = authenticator;
 			// Check to ensure that the 
 			return this;
@@ -192,7 +187,7 @@ namespace Google.Apis.Requests
 			var restPath = Method.RestPath;
 			var queryParams = new List<string>();
 			
-			if(this.ReturnType == Request.ReturnTypeEnum.Json) {
+			if(this.ReturnType == ReturnType.Json) {
 				queryParams.Add("alt=json");
 			}
 			else {
@@ -243,7 +238,7 @@ namespace Google.Apis.Requests
 			//
 			HttpWebRequest request = this.Authenticator.CreateHttpWebRequest(this.Method.HttpMethod, RequestUrl);
 	
-			if(this.ReturnType == Request.ReturnTypeEnum.Json) {
+			if(this.ReturnType == ReturnType.Json) {
 				//All requests are JSON.
 				request.ContentType =  "application/json";
 			}

@@ -72,6 +72,8 @@
     <Compile Include="Apis\Discovery\IService.cs" />
     <Compile Include="Apis\Authentication\IAuthenticator.cs" />
     <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Requests\IRequest.cs" />
+    <Compile Include="Apis\Requests\ReturnType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />

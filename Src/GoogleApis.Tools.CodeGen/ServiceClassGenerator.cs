@@ -117,6 +117,9 @@ namespace Google.Apis.Tools.CodeGen {
 		}
 		
 		
+		/// <summary>
+		/// 
+		/// </summary>
 		private void AddResourceField(CodeTypeDeclaration serviceClass,
 		                               Resource resource, int resourceNumber){
 			// Add local private variables for each Resource
