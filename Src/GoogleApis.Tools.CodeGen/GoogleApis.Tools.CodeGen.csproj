@@ -53,6 +53,7 @@
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
+    <Compile Include="Testing\MockService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -65,5 +66,6 @@
     <Folder Include="Decorator\" />
     <Folder Include="Decorator\ResourceDecorator\" />
     <Folder Include="Decorator\ServiceDecorator\" />
+    <Folder Include="Testing\" />
   </ItemGroup>
 </Project>
