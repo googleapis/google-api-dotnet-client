@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
 
-namespace Google.Apis.Tools.CodeGen.Testing {
+namespace Google.Apis.Testing {
 
 
 	public class MockRequest : IRequest {
