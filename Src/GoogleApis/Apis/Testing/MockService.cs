@@ -19,50 +19,45 @@ using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using System.Collections.Generic;
 
-namespace Google.Apis.Tools.CodeGen.Testing {
-	public class MockService:IService {
-		
+namespace Google.Apis.Testing {
+	public class MockService : IService {
+		public MockRequest Request { get; set; }
 
-		public IRequest CreateRequest (string resource, string methodName)
-		{
-			throw new System.NotImplementedException();
+		public IRequest CreateRequest(string resource, string methodName) {
+			Request = new MockRequest();
+			return Request;
 		}
-		
-		
+
 		public string Name {
 			get {
 				throw new System.NotImplementedException();
 			}
 		}
-		
-		
+
 		public string Version {
 			get {
 				throw new System.NotImplementedException();
 			}
 		}
-		
-		
+
 		public Uri BaseUri {
 			get {
 				throw new System.NotImplementedException();
 			}
 		}
-		
-		
+
 		public Uri RpcUri {
 			get {
 				throw new System.NotImplementedException();
 			}
 		}
-		
-		
+
 		public IDictionary<string, Resource> Resources {
 			get {
 				throw new System.NotImplementedException();
 			}
 		}
-		
+
 		public MockService() {
 		}
 	}

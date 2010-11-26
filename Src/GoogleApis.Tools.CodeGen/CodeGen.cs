@@ -13,108 +13,183 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
+
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
-using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen
 {
-	public class CodeGen:BaseGenerator {
-		
-		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CodeGen));
-		
+	public class CodeGen : BaseGenerator
+	{
+
+		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger (typeof(CodeGen));
+
 		private readonly CodeCompileUnit compileUnit;
-		private CodeNamespace client;
 		private readonly IService service;
-		private readonly string clientNamespace;
-		
+		private readonly string codeClientNamespace;
+		private readonly string testClientNamespace;
+
 		private readonly IEnumerable<IResourceDecorator> resourceDecorators;
 		private readonly IEnumerable<IServiceDecorator> serviceDecorators;
-		
-		
-		
-		public CodeGen (IService service, string clientNamespace, 
-		                IEnumerable<IResourceDecorator> resourceDecorators, 
-		                IEnumerable<IServiceDecorator> serviceDecorators) {
-			compileUnit = new CodeCompileUnit();
-			this.clientNamespace = clientNamespace;
+		private readonly TestGenerationConfiguration testGenerationConfiguration;
+
+		private CodeNamespace client;
+
+		public CodeGen (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, IEnumerable<IServiceDecorator> serviceDecorators, TestGenerationConfiguration testGenerationConfiguration)
+		{
+			compileUnit = new CodeCompileUnit ();
+			this.codeClientNamespace = clientNamespace;
 			this.service = service;
 			
-			this.resourceDecorators = resourceDecorators;
-			this.serviceDecorators = serviceDecorators;
+			// Defensive copy and readonly
+			this.resourceDecorators = new List<IResourceDecorator> (resourceDecorators).AsReadOnly ();
+			this.serviceDecorators = new List<IServiceDecorator> (serviceDecorators).AsReadOnly ();
+			
+			this.testGenerationConfiguration = testGenerationConfiguration;
 		}
-		
-		public CodeGen (IService service, string clientNamespace): 
-			this(service, clientNamespace, 
-			     new IResourceDecorator[]{
-					new StandardConstructorResourceDecorator(),
-					new StandardMethodResourceDecorator(),
-					new Log4NetResourceDecorator(), 
-					new DictonaryOptionalParameterResourceDecorator()},
-				new IServiceDecorator[]{
-					new EasyConstructServiceDecorator(),
-					new VersionInformationServiceDecorator(),
-					new StandardExecuteMethodServiceDecorator()}) {
+
+		public CodeGen (IService service, string clientNamespace, bool generateTests) : this(service, clientNamespace, new IResourceDecorator[] { new StandardConstructorResourceDecorator (), new StandardMethodResourceDecorator (), new Log4NetResourceDecorator (), new DictonaryOptionalParameterResourceDecorator () }, new IServiceDecorator[] { new EasyConstructServiceDecorator (), new VersionInformationServiceDecorator (), new StandardExecuteMethodServiceDecorator () }, new TestGenerationConfiguration { GenerateTests = generateTests })
+		{
 			
 		}
-		
-		public CodeCompileUnit Generate() {
-			Logger.Debug("Starting Generation...");
-			if ( Logger.IsDebugEnabled ) {
-				Logger.Debug("With Service Decorators:");
-				foreach(IServiceDecorator dec in serviceDecorators){
-					Logger.Debug(">>>>" + dec.ToString());
-				}
-				Logger.Debug("With Resource Decorators:");
-				foreach(IResourceDecorator dec in resourceDecorators){
-					Logger.Debug(">>>>" + dec.ToString());
-				}
-			}
 
-						
-			CreateClient();
-			AddUsings();
-
-			var serviceClass = new ServiceClassGenerator(service, serviceDecorators).
-				CreateServiceClass();
+		public CodeCompileUnit GenerateCode ()
+		{
+			Logger.Debug ("Starting Code Generation...");
+			LogDecorators ();
+			
+			
+			CreateClient (codeClientNamespace);
+			AddUsings (false);
+			
+			var serviceClass = new ServiceClassGenerator (service, serviceDecorators).CreateServiceClass ();
 			string serviceClassName = serviceClass.Name;
-
-			client.Types.Add(serviceClass);
+			
+			client.Types.Add (serviceClass);
 			
 			int resourceNumber = 1;
-			foreach(var res in service.Resources.Values) {
+			foreach (var res in service.Resources.Values) {
 				// Create a class for the resource
-				Logger.DebugFormat("Adding Resource {0}", res.Name);
-				var resourceGenerator = new ResourceClassGenerator(
-				     res, 
-				     serviceClassName, 
-				     resourceNumber,
-				     resourceDecorators);
-				client.Types.Add(resourceGenerator.CreateClass());
+				Logger.DebugFormat ("Adding Resource {0}", res.Name);
+				var resourceGenerator = new ResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
+				client.Types.Add (resourceGenerator.CreateClass ());
 				resourceNumber++;
 			}
 			
-			Logger.Debug("Generation Complete.");
+			Logger.Debug ("Generation Complete.");
 			return compileUnit;
 		}
-		
-		
-		
-		private void CreateClient() {
-			//client = new CodeNamespace(clientNamespace + "." + UpperFirstLetter(service.Name));	
-			client = new CodeNamespace(clientNamespace);	
-			compileUnit.Namespaces.Add(client);
+
+		private void LogDecorators ()
+		{
+			if (Logger.IsDebugEnabled) {
+				Logger.Debug ("With Service Decorators:");
+				foreach (IServiceDecorator dec in serviceDecorators) {
+					Logger.Debug (">>>>" + dec.ToString ());
+				}
+				Logger.Debug ("With Resource Decorators:");
+				foreach (IResourceDecorator dec in resourceDecorators) {
+					Logger.Debug (">>>>" + dec.ToString ());
+				}
+			}
 		}
-	
-		private void AddUsings() {
-			client.Imports.Add(new CodeNamespaceImport("System"));
-			client.Imports.Add(new CodeNamespaceImport("System.IO"));
-			client.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
-			client.Imports.Add(new CodeNamespaceImport("Google.Apis"));
-			client.Imports.Add(new CodeNamespaceImport("Google.Apis.Discovery"));
+
+		public CodeCompileUnit GenerateTests ()
+		{
+			Logger.Debug ("Starting Test Generation...");
+			LogDecorators ();
+			
+			CreateClient (testClientNamespace);
+			AddUsings (true);
+			
+			var serviceClass = new TestServiceClassGenerator (service, serviceDecorators).CreateServiceClass ();
+			string serviceClassName = serviceClass.Name;
+			
+			client.Types.Add (serviceClass);
+			
+			int resourceNumber = 1;
+			foreach (var res in service.Resources.Values) {
+				// Create a class for the resource
+				Logger.DebugFormat ("Adding Test Resource {0}", res.Name);
+				var resourceGenerator = new TestResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
+				client.Types.Add (resourceGenerator.CreateClass ());
+				resourceNumber++;
+			}
+			
+			Logger.Debug ("Generation Complete.");
+			return compileUnit;
+		}
+
+		private void CreateClient (string nameSpace)
+		{
+			client = new CodeNamespace (nameSpace);
+			compileUnit.Namespaces.Add (client);
+		}
+
+		private void AddUsings (bool forTest)
+		{
+			client.Imports.Add (new CodeNamespaceImport ("System"));
+			client.Imports.Add (new CodeNamespaceImport ("System.IO"));
+			client.Imports.Add (new CodeNamespaceImport ("System.Collections.Generic"));
+			client.Imports.Add (new CodeNamespaceImport ("Google.Apis"));
+			client.Imports.Add (new CodeNamespaceImport ("Google.Apis.Discovery"));
+			
+			if (forTest) {
+				client.Imports.Add (new CodeNamespaceImport ("NUnit.Framework"));
+			}
+		}
+
+		public class TestGenerationConfiguration
+		{
+			private readonly ICollection<ITestResourceDecorator> additionalTestResourceDecorators;
+			private readonly ICollection<ITestServiceDecorator> additionalTestServiceDecorators;
+
+			public bool GenerateTests { get; set; }
+			public string Namespace { get; set; }
+			public System.IO.DirectoryInfo OutputDirectory { get; set; }
+			public ICollection<ITestResourceDecorator> AdditionalTestResourceDecorators 
+			{
+				get { return additionalTestResourceDecorators; }
+			}
+
+			public ICollection<ITestServiceDecorator> AdditionalTestServiceDecorators 
+			{
+				get { return additionalTestServiceDecorators; }
+			}
+
+			public TestGenerationConfiguration (): 
+				this(new List<ITestResourceDecorator> (), new List<ITestServiceDecorator> ())
+			{
+
+			}
+			
+			public TestGenerationConfiguration(
+					ICollection<ITestResourceDecorator> additionalTestResourceDecorators, 
+			    	ICollection<ITestServiceDecorator> additionalTestServiceDecorators)
+			{
+				this.GenerateTests = false;
+				this.Namespace = null;
+				this.OutputDirectory = null;
+				
+				if(additionalTestResourceDecorators == null){
+					this.additionalTestResourceDecorators = new List<ITestResourceDecorator> ().AsReadOnly();
+				} else {
+					this.additionalTestResourceDecorators = 
+						new List<ITestResourceDecorator> (additionalTestResourceDecorators).AsReadOnly();
+				}
+				if(additionalTestServiceDecorators == null){
+					this.additionalTestServiceDecorators = new List<ITestServiceDecorator> ().AsReadOnly();
+				} else {
+					this.additionalTestServiceDecorators = 
+						new List<ITestServiceDecorator> (additionalTestServiceDecorators).AsReadOnly();
+				}
+
+			}
 		}
 	}
 }

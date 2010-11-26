@@ -92,7 +92,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         }
         
         public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, string> parameters) {
-            Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
+            Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
             return request.WithParameters(parameters).WithAuthentication(authenticator).WithBody(body).ExecuteRequest();
         }
     }
@@ -631,7 +631,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string userId) {
+        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -640,6 +640,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
+            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.liked");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "liked", body, parameters);
@@ -662,19 +663,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream RelatedToUri(string alt, string hl, string uri) {
+        public virtual System.IO.Stream RelatedToUri(string alt, string hl, string uri, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["uri"] = uri;
+            parameters["userId"] = userId;
             logger.Debug("Executing people.relatedToUri");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "relatedToUri", body, parameters);
             logger.Debug("Done Executing people.relatedToUri");
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string userId) {
+        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -683,6 +685,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
+            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.reshared");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "reshared", body, parameters);
@@ -737,10 +740,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
+            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.liked");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "liked", body, parameters);
@@ -758,18 +762,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream RelatedToUri(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream RelatedToUri(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
+            parameters["userId"] = userId;
             logger.Debug("Executing people.relatedToUri");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "relatedToUri", body, parameters);
             logger.Debug("Done Executing people.relatedToUri");
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
+            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.reshared");
             System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "reshared", body, parameters);
