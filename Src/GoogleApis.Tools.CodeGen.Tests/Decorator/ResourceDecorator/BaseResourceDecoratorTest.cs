@@ -21,7 +21,7 @@ using NUnit.Framework;
 
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Tests
+namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
 	public abstract class BaseResourceDecoratorTest: BaseCodeGeneratorTest
 	{
