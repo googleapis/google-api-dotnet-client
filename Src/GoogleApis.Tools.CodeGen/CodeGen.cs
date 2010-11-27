@@ -27,7 +27,7 @@ namespace Google.Apis.Tools.CodeGen
 	public class CodeGen : BaseGenerator
 	{
 
-		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger (typeof(CodeGen));
+		private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(CodeGen));
 
 		private readonly CodeCompileUnit compileUnit;
 		private readonly IService service;
@@ -59,7 +59,7 @@ namespace Google.Apis.Tools.CodeGen
 
 		public CodeCompileUnit GenerateCode ()
 		{
-			Logger.Debug ("Starting Code Generation...");
+			logger.Debug ("Starting Code Generation...");
 			LogDecorators ();
 			
 			
@@ -74,26 +74,26 @@ namespace Google.Apis.Tools.CodeGen
 			int resourceNumber = 1;
 			foreach (var res in service.Resources.Values) {
 				// Create a class for the resource
-				Logger.DebugFormat ("Adding Resource {0}", res.Name);
+				logger.DebugFormat ("Adding Resource {0}", res.Name);
 				var resourceGenerator = new ResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
 				client.Types.Add (resourceGenerator.CreateClass ());
 				resourceNumber++;
 			}
 			
-			Logger.Debug ("Generation Complete.");
+			logger.Debug ("Generation Complete.");
 			return compileUnit;
 		}
 
 		private void LogDecorators ()
 		{
-			if (Logger.IsDebugEnabled) {
-				Logger.Debug ("With Service Decorators:");
+			if (logger.IsDebugEnabled) {
+				logger.Debug ("With Service Decorators:");
 				foreach (IServiceDecorator dec in serviceDecorators) {
-					Logger.Debug (">>>>" + dec.ToString ());
+					logger.Debug (">>>>" + dec.ToString ());
 				}
-				Logger.Debug ("With Resource Decorators:");
+				logger.Debug ("With Resource Decorators:");
 				foreach (IResourceDecorator dec in resourceDecorators) {
-					Logger.Debug (">>>>" + dec.ToString ());
+					logger.Debug (">>>>" + dec.ToString ());
 				}
 			}
 		}
@@ -104,7 +104,7 @@ namespace Google.Apis.Tools.CodeGen
 				return null;
 			}
 			
-			Logger.Debug ("Starting Test Generation...");
+			logger.Debug ("Starting Test Generation...");
 			LogDecorators ();
 			
 			CreateClient (testGenerationConfiguration.GetNameSpaceOrDefault(codeClientNamespace));
@@ -118,13 +118,13 @@ namespace Google.Apis.Tools.CodeGen
 			int resourceNumber = 1;
 			foreach (var res in service.Resources.Values) {
 				// Create a class for the resource
-				Logger.DebugFormat ("Adding Test Resource {0}", res.Name);
+				logger.DebugFormat ("Adding Test Resource {0}", res.Name);
 				var resourceGenerator = new TestResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
 				client.Types.Add (resourceGenerator.CreateClass ());
 				resourceNumber++;
 			}
 			
-			Logger.Debug ("Generation Complete.");
+			logger.Debug ("Generation Complete.");
 			return compileUnit;
 		}
 

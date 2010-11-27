@@ -26,7 +26,7 @@ namespace Google.Apis.Tools.CodeGen {
 
 
 	public class ServiceClassGenerator:BaseGenerator {
-		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(ServiceClassGenerator));
+		private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ServiceClassGenerator));
 		
 		public const string GenericServiceName = "genericService";
 		private const string AuthenticatorName = "authenticator";
@@ -41,7 +41,7 @@ namespace Google.Apis.Tools.CodeGen {
 		
 		public CodeTypeDeclaration CreateServiceClass(){
 			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
-			Logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
+			logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
 			var baseConstructor = CreateConstructorWithArgs();
 			

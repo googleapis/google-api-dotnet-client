@@ -23,14 +23,14 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 	public class StandardConstructorResourceDecorator : IResourceDecorator {
 		
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));
+		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));
 		
 		public void DecorateClass(Resource resource, string className, 
 		                          CodeTypeDeclaration resourceClass, 
 		                          ResourceClassGenerator generator, 
 		                          string serviceClassName, 
 		                          IEnumerable<IResourceDecorator> allDecorators) {
-			Logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
+			logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
 			resourceClass.Members.Add(CreateConstructor(serviceClassName));
 		}
 

@@ -22,7 +22,7 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 	public class StandardMethodResourceDecorator : IResourceDecorator {
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(StandardMethodResourceDecorator));
+		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(StandardMethodResourceDecorator));
 
 		public void DecorateClass(Resource resource, 
 		                          string className, 
@@ -33,7 +33,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 			ResourceGenerator gen = new ResourceGenerator(className);
 			int methodNumber = 1;
 			foreach (var method in resource.Methods.Values) {
-				Logger.DebugFormat("Adding Standard Method {0}.{1}", resource.Name, method.Name);
+				logger.DebugFormat("Adding Standard Method {0}.{1}", resource.Name, method.Name);
 				CodeTypeMember convenienceMethod = gen.CreateMethod(resource, method, methodNumber, allDecorators);
 				if (convenienceMethod != null) {
 					resourceClass.Members.Add(convenienceMethod);

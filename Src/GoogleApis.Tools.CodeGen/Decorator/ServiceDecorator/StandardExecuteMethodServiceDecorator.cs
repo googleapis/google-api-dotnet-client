@@ -20,11 +20,11 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 	public class StandardExecuteMethodServiceDecorator : IServiceDecorator {
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(StandardExecuteMethodServiceDecorator));
+		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(StandardExecuteMethodServiceDecorator));
 		
 		public void DecorateClass (Google.Apis.Discovery.IService service, System.CodeDom.CodeTypeDeclaration serviceClass)
 		{
-			Logger.Debug("Entering DecorateClass");
+			logger.Debug("Entering DecorateClass");
 			serviceClass.Members.Add(CreateExecuteRequestMethod());
 		}
 		
