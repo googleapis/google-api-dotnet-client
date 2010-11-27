@@ -23,61 +23,8 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-	public abstract class BaseResourceDecoratorTest
+	public abstract class BaseResourceDecoratorTest: BaseCodeGeneratorTest
 	{
-		protected const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
-		protected const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
-		protected const string ResourceName = "TestResource";
-		protected const string ResourceAsJson = @"
-		{
-			""methods"":{
-				""getTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""req_a"":{""parameterType"":""query"",""required"":true},
-						""req_b"":{""parameterType"":""query"",""required"":true},
-						""opt_a"":{""parameterType"":""query"",""required"":false},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
-					}
-				},
-				""postTest"":{
-					""pathUrl"":""activities/{userId}/{scope}/{postId}"",
-					""rpcName"":""chili.activities.delete"",
-					""httpMethod"":""POST"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""alt"":{""parameterType"":""query"",""required"":false},
-						""hl"":{""parameterType"":""query"",""required"":false},
-						""postId"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
-						""scope"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
-						""userId"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true}
-					}
-				}
-			}
-		}
-		";
 		
-		protected KeyValuePair<string, object> CreateJsonResourceDefinition(){
-			JSON.JSONDictionary json = (JSON.JSONDictionary)JSON.JSONReader.Parse(ResourceAsJson);
-			
-			return new KeyValuePair<string, object>(ResourceName,json);
-		}
-		
-		protected Resource CreateResource(){
-			return new Resource(CreateJsonResourceDefinition());
-		}
-		
-		[Test()]
-		public void TestCreateResource(){
-			var resource = CreateResource();
-			Assert.AreEqual(ResourceName, resource.Name);
-			Assert.AreEqual(2, resource.Methods.Count);
-			Assert.IsNotNull(resource.Methods["getTest"]);
-			Assert.IsNotNull(resource.Methods["postTest"]);
-			
-		}
 	}
 }
