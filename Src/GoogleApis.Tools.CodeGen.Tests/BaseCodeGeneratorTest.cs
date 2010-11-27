@@ -23,11 +23,17 @@ using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
+	/// <summary>
+	/// Is a base class for testing of code generators
+	/// </summary>
 	public abstract class BaseCodeGeneratorTest
 	{
 		public enum TestMethodNames{
 			getTest,
-			postTest
+			postTest,
+			noParameterTest,
+			oneOptionalParameterTest,
+			oneRequiredParameterTest
 		}
 		
 		protected const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
@@ -60,6 +66,27 @@ namespace Google.Apis.Tools.CodeGen.Tests
 						""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
 						""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true}
 					}
+				},
+				""noParameterTest"":{
+					""pathUrl"":""activities/count"",
+					""rpcName"":""chili.activities.count"",
+					""httpMethod"":""GET"",
+					""methodType"":""rest"",
+					""parameters"":null
+				},
+				""oneOptionalParameterTest"":{
+					""pathUrl"":""activities/count"",
+					""rpcName"":""chili.activities.count"",
+					""httpMethod"":""GET"",
+					""methodType"":""rest"",
+					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":false}}
+				},
+				""oneRequiredParameterTest"":{
+					""pathUrl"":""activities/count"",
+					""rpcName"":""chili.activities.count"",
+					""httpMethod"":""GET"",
+					""methodType"":""rest"",
+					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":true}}
 				}
 			}
 		}
@@ -82,9 +109,16 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		public void TestCreateResource(){
 			var resource = CreateResource();
 			Assert.AreEqual(ResourceName, resource.Name);
-			Assert.AreEqual(2, resource.Methods.Count);
-			Assert.IsNotNull(resource.Methods["getTest"]);
+			Assert.AreEqual(Enum.GetValues(typeof(TestMethodNames)).Length, resource.Methods.Count);
+			// Test one
 			Assert.IsNotNull(resource.Methods["postTest"]);
+			
+			// Then test all
+			foreach(TestMethodNames name in Enum.GetValues(typeof(TestMethodNames)))
+			{
+				Assert.IsNotNull(resource.Methods[name.ToString()]);
+			}
+			
 		}
 	}
 }
