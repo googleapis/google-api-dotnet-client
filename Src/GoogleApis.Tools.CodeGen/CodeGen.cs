@@ -32,7 +32,6 @@ namespace Google.Apis.Tools.CodeGen
 		private readonly CodeCompileUnit compileUnit;
 		private readonly IService service;
 		private readonly string codeClientNamespace;
-		private readonly string testClientNamespace;
 
 		private readonly IEnumerable<IResourceDecorator> resourceDecorators;
 		private readonly IEnumerable<IServiceDecorator> serviceDecorators;
@@ -101,10 +100,14 @@ namespace Google.Apis.Tools.CodeGen
 
 		public CodeCompileUnit GenerateTests ()
 		{
+			if ( testGenerationConfiguration == null || testGenerationConfiguration.GenerateTests == false){
+				return null;
+			}
+			
 			Logger.Debug ("Starting Test Generation...");
 			LogDecorators ();
 			
-			CreateClient (testClientNamespace);
+			CreateClient (testGenerationConfiguration.GetNameSpaceOrDefault(codeClientNamespace));
 			AddUsings (true);
 			
 			var serviceClass = new TestServiceClassGenerator (service, serviceDecorators).CreateServiceClass ();
@@ -141,6 +144,7 @@ namespace Google.Apis.Tools.CodeGen
 			
 			if (forTest) {
 				client.Imports.Add (new CodeNamespaceImport ("NUnit.Framework"));
+				client.Imports.Add (new CodeNamespaceImport (codeClientNamespace));
 			}
 		}
 
@@ -189,6 +193,11 @@ namespace Google.Apis.Tools.CodeGen
 						new List<ITestServiceDecorator> (additionalTestServiceDecorators).AsReadOnly();
 				}
 
+			}
+		
+			public string GetNameSpaceOrDefault (string defaultNamespace)
+			{
+				return Namespace == null ? defaultNamespace : Namespace;
 			}
 		}
 	}
