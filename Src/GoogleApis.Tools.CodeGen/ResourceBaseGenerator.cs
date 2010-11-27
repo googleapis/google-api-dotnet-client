@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.CodeDom;
+using System.Linq;
 
 using Google.Apis.Discovery;
 
@@ -34,6 +35,8 @@ namespace Google.Apis.Tools.CodeGen {
 		}
 		
 		protected IEnumerable<Parameter> GetRequiredParameters(Method method){
+			if ( method.Parameters == null || method.Parameters.Count == 0 )
+				yield break;
 			foreach(Parameter param in method.Parameters.Values){
 				if(param.Required){
 					yield return param;
@@ -43,6 +46,8 @@ namespace Google.Apis.Tools.CodeGen {
 
 		
 		protected IEnumerable<Parameter> GetOptionalParameters(Method method){
+			if ( method.Parameters == null || method.Parameters.Count == 0 )
+				yield break;
 			foreach(Parameter param in method.Parameters.Values){
 				if(param.Required == false){
 					yield return param;
@@ -50,14 +55,12 @@ namespace Google.Apis.Tools.CodeGen {
 			}
 		}
 		
+		protected bool HasRequiredParameters(Method method){
+			return GetRequiredParameters(method).Any();
+		}
+		
 		protected bool HasOptionalParameters(Method method){
-			foreach(Parameter param in method.Parameters.Values){
-				if(param.Required == false){
-					return true;
-				}
-			}
-			
-			return false;
+			return GetOptionalParameters(method).Any();
 		}
 		
 		protected void ResourceCallAddBodyDeclaration(Method method, CodeMemberMethod member) {
