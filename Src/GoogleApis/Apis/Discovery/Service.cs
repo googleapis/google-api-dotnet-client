@@ -47,17 +47,17 @@ namespace Google.Apis.Discovery
 		}
 
 		public Uri BaseUri {
-			get { return new Uri (this.information[ServiceFactory.discovery_baseUrl] as string); }
+			get { return new Uri (this.information[ServiceFactory.BaseUrl] as string); }
 		}
 
 		public Uri RpcUri {
-			get { return new Uri (this.information[ServiceFactory.discovery_rpcUrl] as string); }
+			get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
 		}
 
 		public IDictionary<string, Resource> Resources {
 			get {
 				if (this.resources == null) {
-					JSONDictionary js = this.information[ServiceFactory.discovery_resources] as JSONDictionary;
+					JSONDictionary js = this.information[ServiceFactory.Resources] as JSONDictionary;
 					if (js != null) {
 						this.resources = new Dictionary<string, Resource> ();
 						foreach (KeyValuePair<string, object> kvp in js) {
