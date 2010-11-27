@@ -82,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 		private CodeVariableDeclarationStatement CreateRequestLocalVar(){
 			var createRequest = new CodeMethodInvokeExpression();
 			createRequest.Method = new CodeMethodReferenceExpression(
-			                         new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceClassGenerator.GENERIC_SERVICE_NAME),
+			                         new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceClassGenerator.GenericServiceName),
 			                         "CreateRequest");
 			createRequest.Parameters.Add(new CodeVariableReferenceExpression("resource"));
 			createRequest.Parameters.Add(new CodeVariableReferenceExpression("method"));

@@ -28,8 +28,8 @@ namespace Google.Apis.Tools.CodeGen {
 	public class TestServiceClassGenerator : BaseGenerator {
 		private static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(TestServiceClassGenerator));
 		
-		public const string GENERIC_SERVICE_NAME = "genericService";
-		private const string AUTHENTICATOR_NAME = "authenticator";
+		public const string GenericServiceName = "genericService";
+		private const string AuthenticatorName = "authenticator";
 		
 		private readonly IEnumerable<IServiceDecorator> decorators;
 		private readonly IService service;
@@ -68,16 +68,16 @@ namespace Google.Apis.Tools.CodeGen {
 		private CodeConstructor CreateConstructorWithArgs(){
 			var constructor = new CodeConstructor();
 			constructor.Attributes = MemberAttributes.Public;
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IService),GENERIC_SERVICE_NAME));
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IAuthenticator),AUTHENTICATOR_NAME));
+			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IService),GenericServiceName));
+			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IAuthenticator),AuthenticatorName));
 			
 			
 			{
 				var assignService = new CodeAssignStatement();
 				assignService.Left = new CodeFieldReferenceExpression(
 					new CodeThisReferenceExpression(),
-				    GENERIC_SERVICE_NAME);			
-				assignService.Right = new CodeVariableReferenceExpression(GENERIC_SERVICE_NAME);
+				    GenericServiceName);			
+				assignService.Right = new CodeVariableReferenceExpression(GenericServiceName);
 				
 				constructor.Statements.Add(assignService);
 			}
@@ -86,8 +86,8 @@ namespace Google.Apis.Tools.CodeGen {
 				var assignAuthenticator = new CodeAssignStatement();
 				assignAuthenticator.Left = new CodeFieldReferenceExpression(
 					new CodeThisReferenceExpression(),
-				    AUTHENTICATOR_NAME);			
-				assignAuthenticator.Right = new CodeVariableReferenceExpression(AUTHENTICATOR_NAME);
+				    AuthenticatorName);			
+				assignAuthenticator.Right = new CodeVariableReferenceExpression(AuthenticatorName);
 				
 				constructor.Statements.Add(assignAuthenticator); 
 			}
@@ -107,11 +107,11 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <param name="serviceClass">
 		/// </param>
 		private void AddServiceFields(CodeTypeDeclaration serviceClass){
-			var field = new CodeMemberField(typeof(IService),GENERIC_SERVICE_NAME);				
+			var field = new CodeMemberField(typeof(IService),GenericServiceName);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			serviceClass.Members.Add(field);			
 			
-			field = new CodeMemberField(typeof(IAuthenticator),AUTHENTICATOR_NAME);				
+			field = new CodeMemberField(typeof(IAuthenticator),AuthenticatorName);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			serviceClass.Members.Add(field);
 		}

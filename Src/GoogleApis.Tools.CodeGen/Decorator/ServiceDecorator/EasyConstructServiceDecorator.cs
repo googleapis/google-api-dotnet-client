@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 			var discoveryUrl = new CodePrimitiveExpression("http://www.googleapis.com/discovery/0.1/describe?api=");
 			var serviceName = new CodeFieldReferenceExpression(
 			                  	new CodeTypeReferenceExpression(serviceClass.Name), 
-			                    VersionInformationServiceDecorator.NAME_NAME);
+			                    VersionInformationServiceDecorator.NameName);
 			
 			
 			var uriConstructor = new CodeObjectCreateExpression();
@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 			getServiceCall.Parameters.Add(
 				new CodeFieldReferenceExpression(
 			    	new CodeTypeReferenceExpression(serviceClass.Name), 
-			        VersionInformationServiceDecorator.VERSION_NAME));
+			        VersionInformationServiceDecorator.VersionName));
 			
 			return getServiceCall;
 		}
