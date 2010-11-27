@@ -24,7 +24,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen {
 
 	public abstract class BaseGenerator {
-		private static readonly string[] UNSAFE_WORDS = new string[]{
+		private static readonly string[] UnsafeWords = new string[]{
 			//C# reserved words
 			"abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", 
 			"checked", "class", "const", "continue", "decimal", "default", "delegate", 
@@ -94,7 +94,7 @@ namespace Google.Apis.Tools.CodeGen {
 		}
 		
 		private String GetSafeMemberName(string baseName, String uniquieifier){
-			return GetSafeMemberName(baseName, uniquieifier, UNSAFE_WORDS);
+			return GetSafeMemberName(baseName, uniquieifier, UnsafeWords);
 		}
 		
 		private String GetSafeMemberName(string baseName, String uniquieifier, IEnumerable<String> unsafeWords){

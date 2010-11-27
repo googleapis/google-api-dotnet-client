@@ -23,8 +23,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 
 
 	public class Log4NetResourceDecorator : IResourceDecorator {
-		private const string LOGGER_NAME = "logger";
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(Log4NetResourceDecorator));
+		private const string LoggerName = "logger";
+		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Log4NetResourceDecorator));
 
 		public void DecorateClass(Resource resource, 
 		                          string className, 
@@ -33,8 +33,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		                          string serviceClassName,
 		                          IEnumerable<IResourceDecorator> allDecorators) {
 			//public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(<className>));
-			Logger.Debug("Adding logger to ResourceClass.");
-			var loggerField = new CodeMemberField("log4net.ILog", LOGGER_NAME);
+			logger.Debug("Adding logger to ResourceClass.");
+			var loggerField = new CodeMemberField("log4net.ILog", LoggerName);
 			var initialiser = new CodeMethodInvokeExpression();
 			initialiser.Method = new CodeMethodReferenceExpression(
 				new CodeTypeReferenceExpression("log4net.LogManager"), 
@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		   		CodeMemberMethod codeMember) {
 			var logCall = new CodeMethodInvokeExpression();
 			logCall.Method = new CodeMethodReferenceExpression(
-				new CodeVariableReferenceExpression(LOGGER_NAME), "Debug");
+				new CodeVariableReferenceExpression(LoggerName), "Debug");
 			logCall.Parameters.Add(
 				new CodePrimitiveExpression(
 			        String.Format("Executing {0}.{1}", resource.Name, method.Name)));
@@ -60,7 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 				CodeMemberMethod codeMember) {
 			var logCall = new CodeMethodInvokeExpression();
 			logCall.Method = new CodeMethodReferenceExpression(
-				new CodeVariableReferenceExpression(LOGGER_NAME), "Debug");
+				new CodeVariableReferenceExpression(LoggerName), "Debug");
 			logCall.Parameters.Add(
 				new CodePrimitiveExpression(
 					String.Format("Done Executing {0}.{1}", resource.Name, method.Name)));

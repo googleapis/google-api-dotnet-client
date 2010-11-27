@@ -24,9 +24,9 @@ namespace Google.Apis.Discovery {
 	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
 	/// </summary>
 	public class CachedWebDiscoveryDevice : IDiscoveryDevice {
-		private const int BUFFER_SIZE = 1024 * 1024; // 1MB
-		private static readonly Regex INVALID_FILE_CHARS = new Regex("[^A-Za-z0-9_-]", RegexOptions.Compiled);
-		private static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
+		private const int BufferSize = 1024 * 1024; // 1MB
+		private static readonly Regex InvalidFileChars = new Regex("[^A-Za-z0-9_-]", RegexOptions.Compiled);
+		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
 		
 		private FileStream fileStream; 
 		private DirectoryInfo cacheDirectory;
@@ -67,7 +67,7 @@ namespace Google.Apis.Discovery {
 			// add hash code for unqiueness, in case removing invalid chars cause collision
 			fileName = fileName + "-" + fileName.GetHashCode().ToString();
 			// replace all but known safe chars
-			fileName = INVALID_FILE_CHARS.Replace(fileName, "_");			
+			fileName = InvalidFileChars.Replace(fileName, "_");			
 			return fileName;
 		}
 
@@ -80,7 +80,7 @@ namespace Google.Apis.Discovery {
 			using(Stream webDocument = device.Fetch()){
 				FileInfo fileInfo = GetCacheFile();
 				using(FileStream cachedFileStream = fileInfo.OpenWrite()){
-					byte[] buffer = new byte[BUFFER_SIZE];
+					byte[] buffer = new byte[BufferSize];
 					int read;
 					while((read = webDocument.Read(buffer,0,buffer.Length)) > 0){
 						cachedFileStream.Write(buffer, 0, read);	
@@ -100,12 +100,12 @@ namespace Google.Apis.Discovery {
 		public Stream Fetch() {
 			FileInfo cachedFile = GetCacheFile();
 			if (cachedFile.Exists == false) {
-				Logger.Debug("Document Not Found In Cache, fetching from web");
+				logger.Debug("Document Not Found In Cache, fetching from web");
 				using(WebDiscoveryDevice device = new WebDiscoveryDevice(this.DiscoveryUri)){
 					WriteToCache(device);
 				}
 			} else {
-				Logger.Debug("Found Document In Cache");
+				logger.Debug("Found Document In Cache");
 			}
 			fileStream = cachedFile.OpenRead();
 			return fileStream;
