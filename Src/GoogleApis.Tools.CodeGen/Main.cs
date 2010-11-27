@@ -25,7 +25,7 @@ namespace Google.Apis.Tools.CodeGen
 	public class MainClass
 	{
 		
-		public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(MainClass));
+		public static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(MainClass));
 		
 		public static void Main (IDictionary<string, string> args){
 			var version = "v1";
@@ -87,12 +87,12 @@ namespace Google.Apis.Tools.CodeGen
 		/// </example>
 		public static void Main (string[] args)
 		{
-			Logger.Debug("Entering CodeGen.Main");
+			logger.Debug("Entering CodeGen.Main");
 			if(args.Length == 0) {
 				Console.Error.WriteLine("Please Provide Argments.");
 				return;	
 			}
-			Logger.Debug("Entering");
+			logger.Debug("Entering");
 			
 			var version = "v1";
 			var serviceName = "buzz";
