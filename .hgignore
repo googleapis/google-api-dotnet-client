@@ -34,3 +34,4 @@ bin/Debug/**
 # MonoDevelp
 *.pidb
 *.userprefs
+*.Tests.csproj-Debug-*.xml

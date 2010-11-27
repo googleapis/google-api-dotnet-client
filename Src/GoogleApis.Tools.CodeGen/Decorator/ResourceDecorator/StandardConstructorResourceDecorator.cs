@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		                          string serviceClassName, 
 		                          IEnumerable<IResourceDecorator> allDecorators) {
 			Logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
-			resourceClass.Members.Add(CreateConstructor(resourceClass, serviceClassName));
+			resourceClass.Members.Add(CreateConstructor(serviceClassName));
 		}
 
 
@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		public void DecorateMethodAfterExecute(Resource resource, Method method, CodeMemberMethod codeMember) {
 		}
 
-		private CodeConstructor CreateConstructor(CodeTypeDeclaration resourceClass, String serviceClassName) {
+		internal CodeConstructor CreateConstructor(String serviceClassName) {
 			var constructor = new CodeConstructor();
 			
 			// public [ResourceClass]([ServiceClass] service)
