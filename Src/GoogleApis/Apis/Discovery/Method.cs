@@ -41,21 +41,21 @@ namespace Google.Apis.Discovery
 		}
 
 		public string RestPath {
-			get { return this.information[ServiceFactory.discovery_pathUrl] as string; }
+			get { return this.information[ServiceFactory.PathUrl] as string; }
 		}
 
 		public string RpcName {
-			get { return this.information[ServiceFactory.discovery_rpcName] as string; }
+			get { return this.information[ServiceFactory.RpcName] as string; }
 		}
 
 		public string HttpMethod {
-			get { return this.information.GetValueAsNull (ServiceFactory.discovery_httpMethod) as string; }
+			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
 
 		public Dictionary<string, Parameter> Parameters {
 			get {
 				if (this.parameters == null) {
-					JSONDictionary js = this.information[ServiceFactory.discovery_parameters] as JSONDictionary;
+					JSONDictionary js = this.information[ServiceFactory.Parameters] as JSONDictionary;
 					if (js != null) {
 						this.parameters = new Dictionary<string, Parameter> ();
 						foreach (KeyValuePair<string, object> kvp in js) {

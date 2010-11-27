@@ -24,21 +24,21 @@ using Google.Apis.JSON;
 namespace Google.Apis.Discovery {
 
   public class ServiceFactory {
-    internal const string discovery_versionInfo = "versionInfo";
-    internal const string discovery_baseUrl = "baseUrl";
-    internal const string discovery_rpcUrl = "rpcUrl";
-    internal const string discovery_resources = "resources";
-    internal const string discovery_methods = "methods";
-    internal const string discovery_pathUrl = "pathUrl";
-    internal const string discovery_rpcName = "rpcName";
-    internal const string discovery_httpMethod = "httpMethod";
-    internal const string discovery_parameters = "parameters";
+    internal const string VersionInfo = "versionInfo";
+    internal const string BaseUrl = "baseUrl";
+    internal const string RpcUrl = "rpcUrl";
+    internal const string Resources = "resources";
+    internal const string Methods = "methods";
+    internal const string PathUrl = "pathUrl";
+    internal const string RpcName = "rpcName";
+    internal const string HttpMethod = "httpMethod";
+    internal const string Parameters = "parameters";
 
-    internal const string discovery_parameterType = "parameterType";
-    internal const string discovery_pattern = "pattern";
-    internal const string discovery_required = "required";
-    internal const string discovery_defaultValue = "defaultValue";
-    internal const string discovery_valueType = "valueType";
+    internal const string ParameterType = "parameterType";
+    internal const string Pattern = "pattern";
+    internal const string Required = "required";
+    internal const string DefaultValue = "defaultValue";
+    internal const string ValueType = "valueType";
     
     
     private JSONDictionary information;

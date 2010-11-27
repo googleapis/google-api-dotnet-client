@@ -41,23 +41,23 @@ namespace Google.Apis.Discovery
 		public string Name { get; private set;}
 
 		public string ParameterType {
-			get { return this.information.GetValueAsNull (ServiceFactory.discovery_parameterType) as string; }
+			get { return this.information.GetValueAsNull (ServiceFactory.ParameterType) as string; }
 		}
 
 		public string Pattern {
-			get { return this.information.GetValueAsNull (ServiceFactory.discovery_pattern) as string; }
+			get { return this.information.GetValueAsNull (ServiceFactory.Pattern) as string; }
 		}
 
 		public bool Required {
-			get { return (bool)this.information.GetValueAsNull (ServiceFactory.discovery_required); }
+			get { return (bool)this.information.GetValueAsNull (ServiceFactory.Required); }
 		}
 
 		public string DefaultValue {
-			get { return this.information.GetValueAsNull (ServiceFactory.discovery_defaultValue) as string; }
+			get { return this.information.GetValueAsNull (ServiceFactory.DefaultValue) as string; }
 		}
 
 		public string ValueType {
-			get { return this.information.GetValueAsNull (ServiceFactory.discovery_valueType) as string; }
+			get { return this.information.GetValueAsNull (ServiceFactory.ValueType) as string; }
 		}
 	}
 }

@@ -43,7 +43,7 @@ namespace Google.Apis.Discovery
 		public Dictionary<string, Method> Methods {
 			get {
 				if (this.methods == null) {
-					JSONDictionary js = this.information[ServiceFactory.discovery_methods] as JSONDictionary;
+					JSONDictionary js = this.information[ServiceFactory.Methods] as JSONDictionary;
 					if (js != null) {
 						this.methods = new Dictionary<string, Method> ();
 						foreach (KeyValuePair<string, object> kvp in js) {
