@@ -23,6 +23,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Authentication;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
 
 namespace Google.Apis.Samples.CommandLineGeneratedService {
@@ -37,7 +38,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 
 		public static void Main(string[] args) {
 			ServicePointManager.ServerCertificateValidationCallback += CheckValidationResult;
-			/*
+			
+			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator());
 			BuzzService buzzService = new BuzzService();
 			Stream result = buzzService.People.Search("b", "c", "d", "5", "David Waters");
 			 
@@ -56,7 +58,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			strResult = sr.ReadToEnd();
 			Console.Write(strResult);
 			Logger.Info(strResult);
-			*/
+			
 		}
 	}
 }

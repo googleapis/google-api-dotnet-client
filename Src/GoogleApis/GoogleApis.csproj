@@ -76,6 +76,7 @@
     <Compile Include="Apis\Requests\ReturnType.cs" />
     <Compile Include="Apis\Testing\MockRequest.cs" />
     <Compile Include="Apis\Testing\MockService.cs" />
+    <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
