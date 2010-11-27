@@ -255,7 +255,7 @@ namespace Google.Apis.JSON {
       return value;
     }
 
-    private static object ParseObject(TokenStream ts) {
+    private static JSONDictionary ParseObject(TokenStream ts) {
       // to parse an object, you get the object name, and then parse the value
       JSONToken token = ts.GetNextToken();
 			
