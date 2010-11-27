@@ -13,11 +13,11 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			Logger.Debug("Logging Started");
 			var serviceName = "buzz";
 			var version = "v1";
-			var clientNameSpace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
-			var lang = "CSharp";
+			var clientNamespace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
+			var language = "CSharp";
 			var output = "../../../CommandLineGeneratedService/Buzz/BuzzService.cs";
 			
-			Google.Apis.Tools.CodeGen.MainClass.GenerateClass(serviceName, version, clientNameSpace, lang, output); 
+			Google.Apis.Tools.CodeGen.MainClass.GenerateClass(serviceName, version, clientNamespace, language, output); 
 			Logger.Debug("All Done");
 		}
 	}
