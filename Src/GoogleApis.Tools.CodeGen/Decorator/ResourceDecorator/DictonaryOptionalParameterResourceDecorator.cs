@@ -55,15 +55,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 
 		public DictonaryOptionalParameterResourceDecorator() {
 		}
-
-		private class ResourceGenerator : ResourceBaseGenerator {
+		
+		/// <summary>
+		/// Visiable For Test
+		/// </summary>
+		internal class ResourceGenerator : ResourceBaseGenerator {
 			private readonly string className;
 			
 			public ResourceGenerator(string className){
 				this.className = className;
 			}
 			
-			public CodeTypeMember CreateMethod(Resource resource, Method method, int methodNumber, 
+			public CodeMemberMethod CreateMethod(Resource resource, Method method, int methodNumber, 
 					IEnumerable<IResourceDecorator> allDecorators) {
 				if (HasOptionalParameters(method) == false) {
 					return null;
@@ -89,7 +92,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 					parameterCount++;
 				}
 				
-				member.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IDictionary<string, string>), ParameterDictionaryName));
+				var dictType = new CodeTypeReference("System.Collections.Generic.IDictionary");
+				dictType.TypeArguments.Add(typeof(string));
+				dictType.TypeArguments.Add(typeof(string));
+				var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
+				member.Parameters.Add(dictParameter);
 				
 				
 				//parameters["<%=parameterName%>"] = <%=parameterName%>;
@@ -117,9 +124,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 			{
 				return className;
 			}			
-		}
-		
-		
-		
+		}	
 	}
 }
