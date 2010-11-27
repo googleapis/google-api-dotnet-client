@@ -19,7 +19,10 @@ using System.CodeDom;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
-
+	/// <summary>
+	/// Adds a conveniounce zero argument constructor to the service.
+	/// Using the AuthenticatorFactory to get the IAuthenticator and using a DiscoverService based on a WebDiscoveryDevice
+	/// </summary>
 	public class EasyConstructServiceDecorator : IServiceDecorator {
 		public void DecorateClass (Google.Apis.Discovery.IService service, CodeTypeDeclaration serviceClass)
 		{
@@ -70,8 +73,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 			return getServiceCall;
 		}
 		
+		/// <summary>
+		/// Generatrs the following code
+		/// <code>
+		/// 	Authentication.AuthenticatorFactory.
+		///			GetInstance().
+		///			GetRegisteredAuthenticator(); 	
+		///	</code>
+		/// </summary>
 		protected CodeExpression GetAuthenticator(){
-			return new CodeObjectCreateExpression("ConsoleAuthenticator");
+			var authenticatorFactory = new CodeMethodInvokeExpression(
+				new CodeMethodReferenceExpression(
+			    	new CodeTypeReferenceExpression(typeof(Authentication.AuthenticatorFactory)), 
+			        "GetInstance"));
+			return new CodeMethodInvokeExpression(authenticatorFactory, "GetRegisteredAuthenticator");                                                          
+			//return new CodeObjectCreateExpression("ConsoleAuthenticator");
 		}
 	}
 }

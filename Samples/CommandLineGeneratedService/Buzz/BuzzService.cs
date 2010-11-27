@@ -34,11 +34,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private Related related;
         
-        private const string VERSION = "v1";
+        private const string Version = "v1";
         
-        private const string NAME = "buzz";
+        private const string Name = "buzz";
         
-        private const string BASE_URI = "https://www.googleapis.com/buzz/v1/";
+        private const string BaseUri = "https://www.googleapis.com/buzz/v1/";
         
         public BuzzService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
             this.genericService = genericService;
@@ -52,7 +52,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         }
         
         public BuzzService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("http://www.googleapis.com/discovery/0.1/describe?api=" + BuzzService.NAME)))).GetService(BuzzService.VERSION), new ConsoleAuthenticator()) {
+                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("http://www.googleapis.com/discovery/0.1/describe?api=" + BuzzService.Name)))).GetService(BuzzService.Version), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
         public virtual Activities Activities {
@@ -101,7 +101,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "activities";
+        private const string Resource = "activities";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Activities));
         
@@ -115,7 +115,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["url"] = url;
             logger.Debug("Executing activities.count");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "count", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
             logger.Debug("Done Executing activities.count");
             return ret;
         }
@@ -129,7 +129,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
             logger.Debug("Done Executing activities.delete");
             return ret;
         }
@@ -148,7 +148,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["q"] = q;
             parameters["radius"] = radius;
             logger.Debug("Executing activities.extractPeopleFromSearch");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "extractPeopleFromSearch", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
             logger.Debug("Done Executing activities.extractPeopleFromSearch");
             return ret;
         }
@@ -162,7 +162,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["targetLang"] = targetLang;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "get", body, parameters);
             logger.Debug("Done Executing activities.get");
             return ret;
         }
@@ -175,7 +175,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["preview"] = preview;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
             logger.Debug("Done Executing activities.insert");
             return ret;
         }
@@ -193,7 +193,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["targetLang"] = targetLang;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "list", body, parameters);
             logger.Debug("Done Executing activities.list");
             return ret;
         }
@@ -213,7 +213,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["radius"] = radius;
             parameters["targetLang"] = targetLang;
             logger.Debug("Executing activities.search");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "search", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
             logger.Debug("Done Executing activities.search");
             return ret;
         }
@@ -232,7 +232,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["q"] = q;
             parameters["radius"] = radius;
             logger.Debug("Executing activities.track");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "track", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
             logger.Debug("Done Executing activities.track");
             return ret;
         }
@@ -246,7 +246,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
             logger.Debug("Done Executing activities.update");
             return ret;
         }
@@ -254,7 +254,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             logger.Debug("Executing activities.count");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "count", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
             logger.Debug("Done Executing activities.count");
             return ret;
         }
@@ -265,7 +265,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
             logger.Debug("Done Executing activities.delete");
             return ret;
         }
@@ -273,7 +273,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             logger.Debug("Executing activities.extractPeopleFromSearch");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "extractPeopleFromSearch", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
             logger.Debug("Done Executing activities.extractPeopleFromSearch");
             return ret;
         }
@@ -283,7 +283,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "get", body, parameters);
             logger.Debug("Done Executing activities.get");
             return ret;
         }
@@ -291,7 +291,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
             logger.Debug("Done Executing activities.insert");
             return ret;
         }
@@ -301,7 +301,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "list", body, parameters);
             logger.Debug("Done Executing activities.list");
             return ret;
         }
@@ -309,7 +309,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             logger.Debug("Executing activities.search");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "search", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
             logger.Debug("Done Executing activities.search");
             return ret;
         }
@@ -317,7 +317,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             logger.Debug("Executing activities.track");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "track", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
             logger.Debug("Done Executing activities.track");
             return ret;
         }
@@ -327,7 +327,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Activities.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
             logger.Debug("Done Executing activities.update");
             return ret;
         }
@@ -337,7 +337,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "comments";
+        private const string Resource = "comments";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Comments));
         
@@ -354,7 +354,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
             logger.Debug("Done Executing comments.delete");
             return ret;
         }
@@ -369,7 +369,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["targetLang"] = targetLang;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
             logger.Debug("Done Executing comments.get");
             return ret;
         }
@@ -381,7 +381,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
             logger.Debug("Done Executing comments.insert");
             return ret;
         }
@@ -398,7 +398,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["targetLang"] = targetLang;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
             logger.Debug("Done Executing comments.list");
             return ret;
         }
@@ -413,7 +413,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
             logger.Debug("Done Executing comments.update");
             return ret;
         }
@@ -424,7 +424,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
             logger.Debug("Done Executing comments.delete");
             return ret;
         }
@@ -435,7 +435,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
             logger.Debug("Done Executing comments.get");
             return ret;
         }
@@ -444,7 +444,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
             logger.Debug("Done Executing comments.insert");
             return ret;
         }
@@ -455,7 +455,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
             logger.Debug("Done Executing comments.list");
             return ret;
         }
@@ -466,7 +466,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Comments.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
             logger.Debug("Done Executing comments.update");
             return ret;
         }
@@ -476,7 +476,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "groups";
+        private const string Resource = "groups";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Groups));
         
@@ -492,7 +492,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
             logger.Debug("Done Executing groups.delete");
             return ret;
         }
@@ -505,7 +505,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
             logger.Debug("Done Executing groups.get");
             return ret;
         }
@@ -516,7 +516,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
             logger.Debug("Done Executing groups.insert");
             return ret;
         }
@@ -530,7 +530,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["max-results"] = maxresultsParam4;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
             logger.Debug("Done Executing groups.list");
             return ret;
         }
@@ -541,7 +541,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
             logger.Debug("Done Executing groups.update");
             return ret;
         }
@@ -551,7 +551,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
             logger.Debug("Done Executing groups.delete");
             return ret;
         }
@@ -561,7 +561,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
             logger.Debug("Done Executing groups.get");
             return ret;
         }
@@ -569,7 +569,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
             logger.Debug("Done Executing groups.insert");
             return ret;
         }
@@ -578,7 +578,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
             logger.Debug("Done Executing groups.list");
             return ret;
         }
@@ -587,7 +587,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(Groups.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
             logger.Debug("Done Executing groups.update");
             return ret;
         }
@@ -597,7 +597,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "people";
+        private const string Resource = "people";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(People));
         
@@ -614,7 +614,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["personId"] = personId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
             logger.Debug("Done Executing people.delete");
             return ret;
         }
@@ -626,12 +626,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing people.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
             logger.Debug("Done Executing people.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -640,10 +640,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
-            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.liked");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "liked", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
             logger.Debug("Done Executing people.liked");
             return ret;
         }
@@ -658,25 +657,24 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["max-results"] = maxresultsParam5;
             parameters["userId"] = userId;
             logger.Debug("Executing people.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
             logger.Debug("Done Executing people.list");
             return ret;
         }
         
-        public virtual System.IO.Stream RelatedToUri(string alt, string hl, string uri, string userId) {
+        public virtual System.IO.Stream RelatedToUri(string alt, string hl, string uri) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["uri"] = uri;
-            parameters["userId"] = userId;
             logger.Debug("Executing people.relatedToUri");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "relatedToUri", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "relatedToUri", body, parameters);
             logger.Debug("Done Executing people.relatedToUri");
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -685,10 +683,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["hl"] = hl;
             parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
-            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.reshared");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "reshared", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
             logger.Debug("Done Executing people.reshared");
             return ret;
         }
@@ -702,7 +699,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["max-results"] = maxresultsParam4;
             parameters["q"] = q;
             logger.Debug("Executing people.search");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "search", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
             logger.Debug("Done Executing people.search");
             return ret;
         }
@@ -715,7 +712,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["personId"] = personId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
             logger.Debug("Done Executing people.update");
             return ret;
         }
@@ -726,7 +723,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["personId"] = personId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.delete");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "delete", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
             logger.Debug("Done Executing people.delete");
             return ret;
         }
@@ -735,19 +732,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing people.get");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "get", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
             logger.Debug("Done Executing people.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Liked(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
-            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.liked");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "liked", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
             logger.Debug("Done Executing people.liked");
             return ret;
         }
@@ -757,28 +753,26 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
             logger.Debug("Done Executing people.list");
             return ret;
         }
         
-        public virtual System.IO.Stream RelatedToUri(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream RelatedToUri(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
-            parameters["userId"] = userId;
             logger.Debug("Executing people.relatedToUri");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "relatedToUri", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "relatedToUri", body, parameters);
             logger.Debug("Done Executing people.relatedToUri");
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
-            parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing people.reshared");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "reshared", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
             logger.Debug("Done Executing people.reshared");
             return ret;
         }
@@ -786,7 +780,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
             string body = null;
             logger.Debug("Executing people.search");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "search", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
             logger.Debug("Done Executing people.search");
             return ret;
         }
@@ -796,7 +790,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["personId"] = personId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.update");
-            System.IO.Stream ret = this.service.ExecuteRequest(People.RESOURCE, "update", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
             logger.Debug("Done Executing people.update");
             return ret;
         }
@@ -806,7 +800,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "photos";
+        private const string Resource = "photos";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Photos));
         
@@ -821,7 +815,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["media"] = media;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Photos.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
             logger.Debug("Done Executing photos.insert");
             return ret;
         }
@@ -830,7 +824,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
-            System.IO.Stream ret = this.service.ExecuteRequest(Photos.RESOURCE, "insert", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
             logger.Debug("Done Executing photos.insert");
             return ret;
         }
@@ -840,7 +834,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
         
         private BuzzService service;
         
-        private const string RESOURCE = "related";
+        private const string Resource = "related";
         
         private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Related));
         
@@ -859,7 +853,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing related.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Related.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
             logger.Debug("Done Executing related.list");
             return ret;
         }
@@ -870,7 +864,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing related.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Related.RESOURCE, "list", body, parameters);
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
             logger.Debug("Done Executing related.list");
             return ret;
         }

@@ -20,9 +20,12 @@ using System.CodeDom.Compiler;
 using System.IO;
 using System.Text;
 
+using NUnit.Framework;
+using log4net;
+
 using Google.Apis.Discovery;
 
-using NUnit.Framework;
+
 namespace Google.Apis.Tools.CodeGen.Tests
 {
 	[TestFixture()]
@@ -58,8 +61,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
 		    // Add an assembly reference.
 		    cp.ReferencedAssemblies.Add( "System.dll" );
-			cp.ReferencedAssemblies.Add( "/Users/davidwaters/apiary/google-api-dotnet-client/Src/GoogleApis/bin/Debug/Google.Apis.dll" );
-			cp.ReferencedAssemblies.Add( "/Users/davidwaters/apiary/google-api-dotnet-client/Src/GoogleApis/bin/Debug/log4net.dll" );
+			AddRefereenceToDelararingAssembly(typeof(DiscoveryService), cp);
+			AddRefereenceToDelararingAssembly(typeof(ILog), cp);
+			
 		    cp.GenerateExecutable = false;		
 		    cp.GenerateInMemory = true;
 			
@@ -74,6 +78,11 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				}
 				Assert.Fail(sb.ToString());
 			}
+		}
+		
+		private void AddRefereenceToDelararingAssembly(Type target, CompilerParameters cp)
+		{
+			cp.ReferencedAssemblies.Add(target.Assembly.CodeBase);
 		}
 	}
 }
