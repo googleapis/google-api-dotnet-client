@@ -95,6 +95,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 				var dictType = new CodeTypeReference("System.Collections.Generic.IDictionary");
 				dictType.TypeArguments.Add(typeof(string));
 				dictType.TypeArguments.Add(typeof(string));
+				dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
 				var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
 				member.Parameters.Add(dictParameter);
 				
