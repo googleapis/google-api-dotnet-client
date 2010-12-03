@@ -26,8 +26,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 	public class StandardMethodResourceDecoratorTest:BaseResourceDecoratorTest
 	{
 		[Test()]
-		public void TestCase ()
+		public void TestDecorateClass ()
 		{
+			var decorator = new StandardMethodResourceDecorator();
+			var decoratedClass = CreateDecoratedResourceClass(decorator);
+			
+			CheckCompile(decoratedClass, false, "Failed To Compile using StandardMethodResourceDecorator()");
 		}
 	}
 }

@@ -29,13 +29,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		/// <summary>
 		/// Creates a CodeTypeDeclaration decorated with the given IResourceDecorator.
 		/// </summary>
-		protected CodeTypeDeclaration CreateDecoratedResourceClass(IResourceDecorator decorator)
+		protected CodeTypeDeclaration CreateDecoratedResourceClass(params IResourceDecorator[] allDecorators)
 		{
 			var parts = ResourceClassName.Split('.');
 			var shortClassName = parts[parts.Length -1]; 
 			var resourceClass = new CodeTypeDeclaration(shortClassName);
 			var resource = CreateResource(ResourceName, ResourceAsJson);
-			decorator.DecorateClass(resource, ResourceClassName, resourceClass, null, ServiceClassName, null);
+			foreach(var decorator in allDecorators)
+			{
+				decorator.DecorateClass(resource, ResourceClassName, resourceClass, null, ServiceClassName, allDecorators);
+			}
 			return resourceClass;
 		}	
 	}
