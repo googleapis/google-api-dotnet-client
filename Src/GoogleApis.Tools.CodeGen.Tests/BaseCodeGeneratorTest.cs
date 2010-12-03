@@ -96,14 +96,28 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		}
 		";
 		
-		protected KeyValuePair<string, object> CreateJsonResourceDefinition(){
-			JSON.JSONDictionary json = (JSON.JSONDictionary)JSON.JSONReader.Parse(ResourceAsJson);
+		protected const string SimpleResource = @"
+		{
+			""methods"":{
+				""simpleMethod"":{
+					""pathUrl"":""activities/count"",
+					""rpcName"":""chili.activities.count"",
+					""httpMethod"":""GET"",
+					""methodType"":""rest"",
+					""parameters"":null
+				}
+			}
+		}
+		";
+		
+		protected KeyValuePair<string, object> CreateJsonResourceDefinition(string resourceName, string jsonString){
+			JSON.JSONDictionary json = (JSON.JSONDictionary)JSON.JSONReader.Parse(jsonString);
 			
-			return new KeyValuePair<string, object>(ResourceName,json);
+			return new KeyValuePair<string, object>(resourceName, json);
 		}
 		
-		protected Resource CreateResource(){
-			return new Resource(CreateJsonResourceDefinition());
+		protected Resource CreateResource(string resourceName, string json){
+			return new Resource(CreateJsonResourceDefinition(resourceName, json));
 		}
 		
 		/// <summary>
@@ -111,7 +125,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		/// </summary>
 		[Test()]
 		public void TestCreateResource(){
-			var resource = CreateResource();
+			var resource = CreateResource(ResourceName, ResourceAsJson);
 			Assert.AreEqual(ResourceName, resource.Name);
 			Assert.AreEqual(Enum.GetValues(typeof(TestMethodNames)).Length, resource.Methods.Count);
 			// Test one

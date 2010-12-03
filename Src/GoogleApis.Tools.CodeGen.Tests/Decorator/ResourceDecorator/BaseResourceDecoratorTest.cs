@@ -34,7 +34,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			var parts = ResourceClassName.Split('.');
 			var shortClassName = parts[parts.Length -1]; 
 			var resourceClass = new CodeTypeDeclaration(shortClassName);
-			var resource = CreateResource();
+			var resource = CreateResource(ResourceName, ResourceAsJson);
 			decorator.DecorateClass(resource, ResourceClassName, resourceClass, null, ServiceClassName, null);
 			return resourceClass;
 		}	

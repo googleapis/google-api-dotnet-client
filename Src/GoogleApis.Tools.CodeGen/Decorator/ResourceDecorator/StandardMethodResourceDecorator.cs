@@ -59,7 +59,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 				this.className = className;
 			}
 
-			public CodeTypeMember CreateMethod(Resource resource, Method method, int methodNumber, IEnumerable<IResourceDecorator> allDecorators) {
+			public CodeMemberMethod CreateMethod(Resource resource, Method method, int methodNumber, IEnumerable<IResourceDecorator> allDecorators) {
 				var member = new CodeMemberMethod();
 				
 				member.Name = GetMethodName(method, methodNumber);
