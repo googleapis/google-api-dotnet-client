@@ -77,6 +77,7 @@
     <Compile Include="Apis\Testing\MockRequest.cs" />
     <Compile Include="Apis\Testing\MockService.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
+    <Compile Include="Apis\Discovery\IRequestExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
@@ -204,7 +205,6 @@
     <Folder Include="API\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\Authentication\" />
-    <Folder Include="API\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\Authentication\" />
     <Folder Include="Apis\" />

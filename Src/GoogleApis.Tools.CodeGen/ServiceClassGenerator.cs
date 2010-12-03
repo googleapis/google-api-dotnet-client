@@ -43,6 +43,7 @@ namespace Google.Apis.Tools.CodeGen {
 			string serviceClassName = UpperFirstLetter(service.Name) + "Service";
 			logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
+			serviceClass.BaseTypes.Add(typeof(IRequestExecutor));
 			var baseConstructor = CreateConstructorWithArgs();
 			
 			AddServiceFields(serviceClass);

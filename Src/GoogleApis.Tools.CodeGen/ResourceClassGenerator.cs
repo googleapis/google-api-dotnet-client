@@ -51,8 +51,8 @@ namespace Google.Apis.Tools.CodeGen {
 		public CodeTypeDeclaration CreateClass() {
 			var resourceClass = new CodeTypeDeclaration(this.className);			
 			
-			AddServiceField(resourceClass, serviceClassName);
-			AddResourceNameConst(resourceClass);
+			AddServiceField(resourceClass);
+			AddResourceNameConst(resourceClass, resource.Name);
 			
 			foreach(IResourceDecorator decorator in this.decorators){
 				decorator.DecorateClass(this.resource, className, resourceClass, this,this.serviceClassName, this.decorators);
@@ -64,8 +64,8 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <summary>
 		/// Adds <code>private BuzzService service;</code> to the resource class.
 		/// </summary>
-		internal static void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
-			var serviceField = new CodeMemberField(serviceClassName,ServiceFieldName);				
+		internal static void AddServiceField(CodeTypeDeclaration resourceClass){
+			var serviceField = new CodeMemberField(typeof(IRequestExecutor),ServiceFieldName);				
 			serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			resourceClass.Members.Add(serviceField);
 		}
@@ -73,10 +73,10 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <summary>
 		/// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
 		/// </summary>
-		private void AddResourceNameConst(CodeTypeDeclaration resourceClass){
+		internal static void AddResourceNameConst(CodeTypeDeclaration resourceClass, string resourceName){
 			var serviceField = new CodeMemberField(typeof(string),ResourceNameConst);				
 			serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			serviceField.InitExpression = new CodePrimitiveExpression(resource.Name);
+			serviceField.InitExpression = new CodePrimitiveExpression(resourceName);
 			
 			resourceClass.Members.Add(serviceField);
 		}
