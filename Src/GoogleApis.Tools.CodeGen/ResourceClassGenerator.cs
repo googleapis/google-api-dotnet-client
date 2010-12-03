@@ -64,7 +64,7 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <summary>
 		/// Adds <code>private BuzzService service;</code> to the resource class.
 		/// </summary>
-		private void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
+		internal static void AddServiceField(CodeTypeDeclaration resourceClass, String serviceClassName){
 			var serviceField = new CodeMemberField(serviceClassName,ServiceFieldName);				
 			serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			resourceClass.Members.Add(serviceField);
