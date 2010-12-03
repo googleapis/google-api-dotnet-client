@@ -93,7 +93,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		#region Helper methods
 		
 		public Method GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-			var resource = this.CreateResource ();
+			var resource = this.CreateResource (ResourceName, ResourceAsJson);
 			return resource.Methods[testMethod.ToString()];
 		}
 		
