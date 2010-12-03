@@ -37,7 +37,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		[Test()]
 		public void TestCompilationWithDefaultDecorators ()
 		{
-			var serviceName = "buzz";
 			var version = "v1";
 			var clientNamespace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
 			
@@ -49,10 +48,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				Directory.CreateDirectory(cacheDirectory);
 			}
 			
-			var webfetcher = new CachedWebDiscoveryDevice(
-			    new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName),
-			    new DirectoryInfo(cacheDirectory));
-			var discovery = new DiscoveryService(webfetcher);
+			var buzzTestFetcher = new StringDiscoveryDevice(){Document = BuzzServiceAsJson};
+			var discovery = new DiscoveryService(buzzTestFetcher);
 			// Build the service based on discovery information.
 			var service = discovery.GetService(version);
 			
@@ -62,7 +59,5 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			// Full Compile we should not have any warnings.
 			CheckCompile(codeCompileUnit, true, "Failed To compile resultant code with default decorators.");
 		}
-		
-		
-}
+	}
 }
