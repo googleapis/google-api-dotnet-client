@@ -40,7 +40,7 @@ namespace Google.Apis.Discovery
 		/// A <see cref="System.String"/>
 		/// </returns>
 		public Stream Fetch() {
-			byte[] text = Encoding.ASCII.GetBytes( Document );
+			byte[] text = Encoding.UTF8.GetBytes( Document );
 			outputStream = new MemoryStream(text);
 			return outputStream;
 		}
