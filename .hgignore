@@ -36,4 +36,4 @@ bin/Debug/**
 *.userprefs
 *.Tests.csproj-Debug-*.xml
 *.csproj.test-cache
-
+test-results/**
