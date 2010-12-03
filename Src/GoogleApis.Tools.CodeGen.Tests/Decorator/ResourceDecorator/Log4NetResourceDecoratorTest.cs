@@ -57,5 +57,35 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			
 			CheckCompile(resourceClass, false, "Failed To Compile after Log4NetResourDecorator.DecorteMethodBeforeExecute");
 		}
+		
+		[Test()]
+		public void TestDecorateMethodAfterExecute()
+		{
+			var decorator = new Log4NetResourceDecorator();
+			var resourceClass = CreateDecoratedResourceClass(decorator);
+			var codeMember = new CodeMemberMethod();
+			codeMember.Name = "OneTestMethod";
+			resourceClass.Members.Add(codeMember);
+			Resource resource = CreateResource("TestResource", SimpleResource);
+			decorator.DecorateMethodBeforeExecute(
+				resource, 
+				resource.Methods["simpleMethod"], 
+				codeMember);
+			decorator.DecorateMethodAfterExecute(
+				resource, 
+				resource.Methods["simpleMethod"], 
+				codeMember);
+			
+			Assert.AreEqual(2, codeMember.Statements.Count);
+			var statment = codeMember.Statements[1];
+			Assert.IsInstanceOf(typeof(CodeExpressionStatement), statment);
+			
+			CodeMethodInvokeExpression methodInvoke = (CodeMethodInvokeExpression)((CodeExpressionStatement)statment).Expression;
+			Assert.AreEqual(1, methodInvoke.Parameters.Count);
+			Assert.IsInstanceOf(typeof(CodePrimitiveExpression), methodInvoke.Parameters[0]);
+			Assert.AreEqual("Done Executing TestResource.simpleMethod", ((CodePrimitiveExpression)methodInvoke.Parameters[0]).Value);
+			
+			CheckCompile(resourceClass, false, "Failed To Compile after Log4NetResourDecorator.DecorateMethodAfterExecute");
+		}
 	}
 }
