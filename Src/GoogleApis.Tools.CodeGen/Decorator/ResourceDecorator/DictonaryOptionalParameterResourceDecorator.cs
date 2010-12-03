@@ -92,10 +92,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 					parameterCount++;
 				}
 				
+				/*
+				 * TODO(davidwaters@google.com) I belive the commented out code is more correct and works in MS.net but 
+				 * not mono see mono bugid 353744
 				var dictType = new CodeTypeReference("System.Collections.Generic.IDictionary");
 				dictType.TypeArguments.Add(typeof(string));
 				dictType.TypeArguments.Add(typeof(string));
 				dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
+				*/
+				var dictType = new CodeTypeReference(typeof(IDictionary<string, string>));
 				var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
 				member.Parameters.Add(dictParameter);
 				

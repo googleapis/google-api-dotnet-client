@@ -15,10 +15,14 @@ limitations under the License.
 */
 using System;
 using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 using Google.Apis.Discovery;
 
+using log4net;
 using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests
@@ -119,6 +123,65 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				Assert.IsNotNull(resource.Methods[name.ToString()]);
 			}
 			
+		}
+		
+		protected void AddRefereenceToDelararingAssembly(Type target, CompilerParameters cp)
+		{
+			cp.ReferencedAssemblies.Add(target.Assembly.CodeBase);
+		}
+		
+		protected void CheckCompile(CodeTypeDeclaration codeType, bool warnAsError,  string errorMessage)
+		{
+			CodeCompileUnit compileUnit = new CodeCompileUnit();
+			var client = new CodeNamespace ("Google.Apis.Tools.CodeGen.Tests");
+			compileUnit.Namespaces.Add (client);
+			client.Types.Add(codeType);
+			
+			CheckCompile(compileUnit, warnAsError, errorMessage);
+		}
+		
+		protected void CheckCompile(CodeCompileUnit codeCompileUnit, bool warnAsError, string errorMessage)
+		{
+			var language = "CSharp";
+			var provider = CodeDomProvider.CreateProvider(language);
+			CompilerParameters cp = new CompilerParameters();
+			// Add an assembly reference.
+			   cp.ReferencedAssemblies.Add( "System.dll" );
+			AddRefereenceToDelararingAssembly(typeof(DiscoveryService), cp);
+			AddRefereenceToDelararingAssembly(typeof(ILog), cp);
+			
+			cp.GenerateExecutable = false;		
+			cp.GenerateInMemory = true;
+			cp.TreatWarningsAsErrors = warnAsError; // Warnings are errors.
+			
+			CompilerResults compilerResults = provider.CompileAssemblyFromDom (cp, codeCompileUnit);
+			bool hasError = false;
+			if ( compilerResults.Errors.Count > 0 )
+			{
+				var sb = new StringBuilder(errorMessage).AppendLine();
+				foreach(CompilerError error in compilerResults.Errors)
+				{
+					sb.AppendLine(error.ToString());
+					if(error.IsWarning == false || warnAsError)
+					{
+						hasError = true;	
+					}
+				}
+				sb.AppendLine();
+				sb.AppendLine("Generated Code Follows");
+				
+				using(StringWriter sw = new StringWriter(sb))
+				{
+					IndentedTextWriter tw = new IndentedTextWriter(sw);
+					provider.GenerateCodeFromCompileUnit(codeCompileUnit, tw, new CodeGeneratorOptions());
+				}
+				Console.Out.WriteLine(sb.ToString());
+				
+				if(hasError)
+				{
+					Assert.Fail(sb.ToString());
+				}
+			}
 		}
 	}
 }
