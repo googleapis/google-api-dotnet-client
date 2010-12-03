@@ -22,6 +22,7 @@ using System.Text.RegularExpressions;
 namespace Google.Apis.Discovery {
 	/// <summary>
 	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
+	/// TODO(davidwaters): Add expirey time based on modified time in the filesystem
 	/// </summary>
 	public class CachedWebDiscoveryDevice : IDiscoveryDevice {
 		private const int BufferSize = 1024 * 1024; // 1MB
