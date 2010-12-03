@@ -21,6 +21,11 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
+	/// <summary>
+	/// Adds the standard methods to the given Resource class, 
+	/// one method for each one described in the discovery document.
+	/// There will be parameters added for each of the parameters described in the discovery document
+	/// </summary>
 	public class StandardMethodResourceDecorator : IResourceDecorator {
 		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(StandardMethodResourceDecorator));
 
@@ -66,19 +71,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 				member.ReturnType = new CodeTypeReference("System.IO.Stream");
 				member.Attributes = MemberAttributes.Public;
 				
-				// Add All parameters to the method.
-				var paramList = method.Parameters.Values;
+				
 				
 				CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 				
 				ResourceCallAddBodyDeclaration(method, member);
 				
-				int parameterCount = 1;
-				foreach (var param in paramList) {
-					member.Parameters.Add(DeclareInputParameter(param, parameterCount));
-					assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount));
-					parameterCount++;
-				}
+				AddAllDeclaredParameters(method, member, assignmentStatments);
 				
 				//System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
 				member.Statements.Add(DeclareParamaterDictionary());
@@ -105,6 +104,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 				return member;
 			}
 			
+			protected void AddAllDeclaredParameters (Method method, CodeMemberMethod member, CodeStatementCollection assignmentStatments)
+			{
+				// Add All parameters to the method.
+				if( method.Parameters != null && method.Parameters != null){
+					var paramList = method.Parameters.Values;
+					int parameterCount = 1;
+					foreach (var param in paramList) {
+						member.Parameters.Add(DeclareInputParameter(param, parameterCount));
+						assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount));
+						parameterCount++;
+					}
+				}
+			}
+
 			protected override string GetClassName() {
 				return className;
 			}
