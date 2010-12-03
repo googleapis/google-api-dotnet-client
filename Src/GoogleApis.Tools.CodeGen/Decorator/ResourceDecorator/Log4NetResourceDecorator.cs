@@ -23,7 +23,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 
 
 	public class Log4NetResourceDecorator : IResourceDecorator {
-		private const string LoggerName = "logger";
+		public const string LoggerName = "logger";
 		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Log4NetResourceDecorator));
 
 		public void DecorateClass(Resource resource, 

@@ -16,15 +16,27 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.CodeDom;
 
 using NUnit.Framework;
 
-using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
 	public abstract class BaseResourceDecoratorTest: BaseCodeGeneratorTest
 	{
-		
+		/// <summary>
+		/// Creates a CodeTypeDeclaration decorated with the given IResourceDecorator.
+		/// </summary>
+		protected CodeTypeDeclaration CreateDecoratedResourceClass(IResourceDecorator decorator)
+		{
+			var parts = ResourceClassName.Split('.');
+			var shortClassName = parts[parts.Length -1]; 
+			var resourceClass = new CodeTypeDeclaration(shortClassName);
+			var resource = CreateResource();
+			decorator.DecorateClass(resource, ResourceClassName, resourceClass, null, ServiceClassName, null);
+			return resourceClass;
+		}	
 	}
 }

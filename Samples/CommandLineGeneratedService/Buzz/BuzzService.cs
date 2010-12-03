@@ -251,7 +251,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing activities.count");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
@@ -259,7 +259,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Delete(string postId, string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -270,7 +270,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing activities.extractPeopleFromSearch");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
@@ -278,7 +278,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Get(string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -288,7 +288,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
@@ -296,7 +296,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -306,7 +306,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing activities.search");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
@@ -314,7 +314,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing activities.track");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
@@ -322,7 +322,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -418,7 +418,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
@@ -429,7 +429,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
@@ -440,7 +440,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.insert");
@@ -449,7 +449,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -460,7 +460,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -546,7 +546,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -556,7 +556,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -566,7 +566,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
@@ -574,7 +574,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.list");
@@ -583,7 +583,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.update");
@@ -717,7 +717,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
@@ -728,7 +728,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing people.get");
@@ -737,7 +737,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Liked(string groupId, string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
@@ -748,7 +748,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -758,7 +758,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream RelatedToUri(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream RelatedToUri(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing people.relatedToUri");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "relatedToUri", body, parameters);
@@ -766,7 +766,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string groupId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
@@ -777,7 +777,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary parameters) {
             string body = null;
             logger.Debug("Executing people.search");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
@@ -785,7 +785,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -820,7 +820,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary parameters) {
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
@@ -858,7 +858,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;

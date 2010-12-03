@@ -52,7 +52,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			
 			IDictionary<string,string> parameters = new Dictionary<string, string>();
 			parameters.Add("q", "Fred");
-			result = buzzService.People.Search(parameters);
+			//result = buzzService.People.Search(parameters);
 			 
 			sr = new StreamReader(result);
 			strResult = sr.ReadToEnd();
