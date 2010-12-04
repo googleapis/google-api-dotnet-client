@@ -37,7 +37,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		[Test()]
 		public void TestCompilationWithDefaultDecorators ()
 		{
-			var version = "v1";
 			var clientNamespace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
 			
 			string cacheDirectory = Path.Combine(
@@ -48,10 +47,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				Directory.CreateDirectory(cacheDirectory);
 			}
 			
-			var buzzTestFetcher = new StringDiscoveryDevice(){Document = BuzzServiceAsJson};
-			var discovery = new DiscoveryService(buzzTestFetcher);
-			// Build the service based on discovery information.
-			var service = discovery.GetService(version);
+			var service = CreateBuzzService();
 			
 			var generator = new CodeGen(service, clientNamespace, true);	
 			var codeCompileUnit = generator.GenerateCode ();

@@ -16,10 +16,24 @@ limitations under the License.
 
 using System;
 
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
+
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
 	public abstract class BaseServiceDecoratorTest : BaseCodeGeneratorTest
 	{
+		protected const string Name = "TestName";
+		protected const string Version = "TestVersion1";
+		protected readonly Uri BaseUri = new Uri("http://www.test.example.google.com/");
+		
+		protected IService CreateService()
+		{
+			return new MockService(){
+				Name = Name, 
+				Version = Version, 
+				BaseUri = BaseUri};
+		}
 	}
 }
 

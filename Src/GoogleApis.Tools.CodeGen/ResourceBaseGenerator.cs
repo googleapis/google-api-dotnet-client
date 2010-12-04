@@ -20,6 +20,7 @@ using System.CodeDom;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 namespace Google.Apis.Tools.CodeGen {
 
@@ -112,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen {
 			
 			call.Method = new CodeMethodReferenceExpression(
 				new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
-			    "ExecuteRequest");
+			    StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
 			
 			call.Parameters.Add(
 			     new CodeFieldReferenceExpression(

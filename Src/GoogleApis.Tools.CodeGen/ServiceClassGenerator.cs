@@ -18,8 +18,9 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 
-using Google.Apis.Discovery;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 namespace Google.Apis.Tools.CodeGen {
@@ -29,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen {
 		private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ServiceClassGenerator));
 		
 		public const string GenericServiceName = "genericService";
-		private const string AuthenticatorName = "authenticator";
+		public const string AuthenticatorName = "authenticator";
 		
 		private readonly IEnumerable<IServiceDecorator> decorators;
 		private readonly IService service;
@@ -44,7 +45,6 @@ namespace Google.Apis.Tools.CodeGen {
 			logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
 			var serviceClass = new CodeTypeDeclaration(serviceClassName);
 			serviceClass.BaseTypes.Add(typeof(IRequestExecutor));
-			var baseConstructor = CreateConstructorWithArgs();
 			
 			AddServiceFields(serviceClass);
 			
@@ -53,11 +53,8 @@ namespace Google.Apis.Tools.CodeGen {
 				Resource resource = pair.Value;
 				AddResourceGetter(serviceClass, resource, resourceNumber);				
 				AddResourceField(serviceClass, resource, resourceNumber);
-				AddResourceAssignment(baseConstructor, resource, resourceNumber);
 				resourceNumber++;
 			}
-			
-			serviceClass.Members.Add(baseConstructor);
 			
 			foreach(IServiceDecorator serviceDecorator in decorators){
 				serviceDecorator.DecorateClass(service, serviceClass);
@@ -66,37 +63,6 @@ namespace Google.Apis.Tools.CodeGen {
 			return serviceClass;					
 		}
 		
-		private CodeConstructor CreateConstructorWithArgs(){
-			var constructor = new CodeConstructor();
-			constructor.Attributes = MemberAttributes.Public;
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IService),GenericServiceName));
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IAuthenticator),AuthenticatorName));
-			
-			
-			{
-				var assignService = new CodeAssignStatement();
-				assignService.Left = new CodeFieldReferenceExpression(
-					new CodeThisReferenceExpression(),
-				    GenericServiceName);			
-				assignService.Right = new CodeVariableReferenceExpression(GenericServiceName);
-				
-				constructor.Statements.Add(assignService);
-			}
-			
-			{
-				var assignAuthenticator = new CodeAssignStatement();
-				assignAuthenticator.Left = new CodeFieldReferenceExpression(
-					new CodeThisReferenceExpression(),
-				    AuthenticatorName);			
-				assignAuthenticator.Right = new CodeVariableReferenceExpression(AuthenticatorName);
-				
-				constructor.Statements.Add(assignAuthenticator); 
-			}
-			
-			
-			return constructor;
-		}
-
 		
 		/// <summary>
 		/// Declars the fields genericService and authenticator
@@ -107,7 +73,8 @@ namespace Google.Apis.Tools.CodeGen {
 		/// </summary>
 		/// <param name="serviceClass">
 		/// </param>
-		private void AddServiceFields(CodeTypeDeclaration serviceClass){
+		[VisibleForTestOnly]
+		internal static void AddServiceFields(CodeTypeDeclaration serviceClass){
 			var field = new CodeMemberField(typeof(IService),GenericServiceName);				
 			field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
 			serviceClass.Members.Add(field);			
@@ -144,24 +111,10 @@ namespace Google.Apis.Tools.CodeGen {
 			serviceClass.Members.Add(getter);
 		}
 		
-		private CodeExpression GetFieldReference(Resource resource, int resourceNumber){
+		public static CodeFieldReferenceExpression GetFieldReference(Resource resource, int resourceNumber){
 			return new CodeFieldReferenceExpression(
 			     	new CodeThisReferenceExpression(),
 			        GetFieldName(resource, resourceNumber));
 		}
-		
-		
-		private void AddResourceAssignment(
-		                                   CodeConstructor constructor, 
-		                                   Resource resource, 
-		                                   int resourceNumber){
-			constructor.Statements.Add(
-				new CodeAssignStatement(GetFieldReference(resource, resourceNumber),
-			        new CodeObjectCreateExpression(
-			        	GetClassName(resource, resourceNumber), 
-			            new CodeThisReferenceExpression())                                           
-			        ));
-		}
-		
 	}
 }

@@ -19,7 +19,13 @@ using System.CodeDom;
 using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
+	/// <summary>
+	/// Adds the Method <code>ExecuteRequest(string resource, string method, string body, IDictionary<string,string> parameters)</code>
+	/// This method is required. So either this decorator or another that creates this method is required.
+	/// </summary>
 	public class StandardExecuteMethodServiceDecorator : IServiceDecorator {
+		public const string ExecuteRequestMethodName = "ExecuteRequest";
+			
 		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(StandardExecuteMethodServiceDecorator));
 		
 		public void DecorateClass (Google.Apis.Discovery.IService service, System.CodeDom.CodeTypeDeclaration serviceClass)
@@ -28,10 +34,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 			serviceClass.Members.Add(CreateExecuteRequestMethod());
 		}
 		
-		private CodeTypeMember CreateExecuteRequestMethod(){
+		internal CodeMemberMethod CreateExecuteRequestMethod(){
 			var method = new CodeMemberMethod();
 			
-			method.Name = "ExecuteRequest";
+			method.Name = ExecuteRequestMethodName;
 			method.ReturnType = new CodeTypeReference(typeof(System.IO.Stream));
 			method.Attributes = MemberAttributes.Public;
 			method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string),"resource"));
@@ -67,7 +73,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 					    new CodeVariableReferenceExpression("body"));
 			//.ExecuteRequest()	
 			methodInvoke = new CodeMethodInvokeExpression(
-			    new CodeMethodReferenceExpression(methodInvoke, "ExecuteRequest"));
+			    new CodeMethodReferenceExpression(methodInvoke, ExecuteRequestMethodName));
 			var returnStatment = new CodeMethodReturnStatement(methodInvoke);
 			 
 			method.Statements.Add(returnStatment);
