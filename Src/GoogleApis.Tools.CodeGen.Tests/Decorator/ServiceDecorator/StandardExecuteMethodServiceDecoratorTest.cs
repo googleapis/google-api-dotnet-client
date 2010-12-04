@@ -46,10 +46,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 		[Test()]
 		public void TestDecorateClass ()
 		{
+            var service = CreateService();
 			var decorator = new StandardExecuteMethodServiceDecorator();
 			CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
-			ServiceClassGenerator.AddServiceFields(codeType);
-			decorator.DecorateClass(CreateService(), codeType);
+			var requiredDecorator = new StandardServiceFieldResourceDecorator();
+            requiredDecorator.DecorateClass(service, codeType);
+			decorator.DecorateClass(service, codeType);
 			
 			CheckCompile(codeType, false, "Failed To Compile StandardExecuteMethodServiceDecorator");
 		}

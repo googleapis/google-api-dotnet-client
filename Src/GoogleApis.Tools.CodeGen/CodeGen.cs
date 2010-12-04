@@ -49,9 +49,20 @@ namespace Google.Apis.Tools.CodeGen
             this.serviceDecorators = new List<IServiceDecorator> (serviceDecorators).AsReadOnly ();
         }
 
-        public CodeGen (IService service, string clientNamespace) : this(service, clientNamespace, new IResourceDecorator[] { new StandardConstructorResourceDecorator (), new StandardMethodResourceDecorator (), new Log4NetResourceDecorator (), new DictonaryOptionalParameterResourceDecorator () }, new IServiceDecorator[] { new StandardConstructServiceDecorator (), new EasyConstructServiceDecorator (), new VersionInformationServiceDecorator (), new StandardExecuteMethodServiceDecorator () })
-        {
-            
+        public CodeGen (IService service, string clientNamespace) : 
+            this(service, clientNamespace, 
+                new IResourceDecorator[] { 
+                    new StandardConstructorResourceDecorator (), 
+                    new StandardMethodResourceDecorator (), 
+                    new Log4NetResourceDecorator (), 
+                    new DictonaryOptionalParameterResourceDecorator () }, 
+                new IServiceDecorator[] { 
+                    new StandardServiceFieldResourceDecorator(),
+                    new StandardConstructServiceDecorator (), 
+                    new EasyConstructServiceDecorator (), 
+                    new VersionInformationServiceDecorator (), 
+                    new StandardExecuteMethodServiceDecorator () })
+        {   
         }
 
         public CodeCompileUnit GenerateCode ()
