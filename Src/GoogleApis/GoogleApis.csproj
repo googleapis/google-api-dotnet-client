@@ -78,6 +78,7 @@
     <Compile Include="Apis\Testing\MockService.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
     <Compile Include="Apis\Discovery\IRequestExecutor.cs" />
+    <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
