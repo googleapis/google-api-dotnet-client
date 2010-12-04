@@ -16,7 +16,9 @@ limitations under the License.
 
 using System;
 
-namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
-	public interface ITestResourceDecorator {
-	}
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
+{
+    public interface ITestResourceDecorator
+    {
+    }
 }

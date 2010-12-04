@@ -19,20 +19,16 @@ using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
+{
 
 
-	public interface IResourceDecorator {
-		void DecorateClass(Resource resource, string className, 
-		                   CodeTypeDeclaration resourceClass, 
-		                   ResourceClassGenerator generator,
-		                   string serviceClassName,
-		                   IEnumerable<IResourceDecorator> allDecorators);
-		
-		void DecorateMethodBeforeExecute(Resource resource, 
-		                                 Method method, CodeMemberMethod codeMember);
-		
-		void DecorateMethodAfterExecute(Resource resource, 
-		                                Method method, CodeMemberMethod codeMember);
-	}
+    public interface IResourceDecorator
+    {
+        void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators);
+
+        void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember);
+
+        void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember);
+    }
 }

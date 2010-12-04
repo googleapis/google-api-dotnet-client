@@ -24,13 +24,13 @@ using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
-	/// <summary>
-	/// Adds the standard constuctor to the service class, 
-	/// 	assing genericService and authenticator to local vars
-	/// 	and create a Resouce for each resource mentioned in the discovery document.
-	/// e.g.
-	/// 	<code>
-	/// 	public BuzzService(IService genericService, IAuthenticator authenticator) {
+    /// <summary>
+    /// Adds the standard constuctor to the service class, 
+    ///     assing genericService and authenticator to local vars
+    ///     and create a Resouce for each resource mentioned in the discovery document.
+    /// e.g.
+    ///     <code>
+    ///     public BuzzService(IService genericService, IAuthenticator authenticator) {
     ///        this.genericService = genericService;
     ///        this.authenticator = authenticator;
     ///        this.activities = new Activities(this);
@@ -40,96 +40,84 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     ///        this.photos = new Photos(this);
     ///        this.related = new Related(this);
     ///    }
-	/// 	</code>
-	/// </summary>
-	public class StandardConstructServiceDecorator:IServiceDecorator
-	{
-		public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
-		{
-			var baseConstructor = CreateConstructorWithArgs();
-			
-			AddResourceAssignments(service, baseConstructor);
-			
-			serviceClass.Members.Add(baseConstructor);
-		}
-		
-		
-		/// <summary>
-		/// 	Adds an assignment line for each Resource e.g.
-		/// 	<code>
-		/// 		this.people = new People(this);
-		/// 	</code>
-		/// </summary>
-		[VisibleForTestOnly]
-		internal void AddResourceAssignments(IService service, CodeMemberMethod baseConstructor)
-		{
-			int resourceNumber = 1;
-			foreach(var pair in service.Resources){
-				Resource resource = pair.Value;
-				AddResourceAssignment(baseConstructor, resource, resourceNumber);
-				resourceNumber++;
-			}
-		}
-		
-		
-		/// <summary>
-		/// Creates the constructor with two arguments, ISerivce and IAuthenticator.
-		/// Then assignes these to local variables.
-		/// e.g.
-		/// 	<code>
-		/// 		public BuzzService(IService genericService, IAuthenticator authenticator) {
-    	///        		this.genericService = genericService;
-    	///        		this.authenticator = authenticator;
-		/// 	</code>
-		/// </summary>
-		[VisibleForTestOnly]
-		internal CodeConstructor CreateConstructorWithArgs(){
-			var constructor = new CodeConstructor();
-			constructor.Attributes = MemberAttributes.Public;
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(
-				typeof(IService),ServiceClassGenerator.GenericServiceName));
-			constructor.Parameters.Add(new CodeParameterDeclarationExpression(
-				typeof(IAuthenticator),ServiceClassGenerator.AuthenticatorName));
-			
-			{
-				var assignService = new CodeAssignStatement();
-				// this.genericService = 
-				assignService.Left = new CodeFieldReferenceExpression(
-					new CodeThisReferenceExpression(),
-				    ServiceClassGenerator.GenericServiceName);			
-				// generricService
-				assignService.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.GenericServiceName);
-				
-				constructor.Statements.Add(assignService);
-			}
-			
-			{
-				var assignAuthenticator = new CodeAssignStatement();
-				// this.authenticator = 
-				assignAuthenticator.Left = new CodeFieldReferenceExpression(
-					new CodeThisReferenceExpression(),
-				    ServiceClassGenerator.AuthenticatorName);			
-				// authenticator
-				assignAuthenticator.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName);
-				
-				constructor.Statements.Add(assignAuthenticator); 
-			}
-			
-			return constructor;
-		}
-		
-		private void AddResourceAssignment(
-		                                   CodeMemberMethod constructor, 
-		                                   Resource resource, 
-		                                   int resourceNumber){
-			constructor.Statements.Add(
-				new CodeAssignStatement(ServiceClassGenerator.GetFieldReference(resource, resourceNumber),
-			        new CodeObjectCreateExpression(
-			        	ServiceClassGenerator.GetClassName(resource, resourceNumber), 
-			            new CodeThisReferenceExpression())                                           
-			        ));
-		}
-		
-	}
+    ///     </code>
+    /// </summary>
+    public class StandardConstructServiceDecorator : IServiceDecorator
+    {
+        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
+        {
+            var baseConstructor = CreateConstructorWithArgs ();
+            
+            AddResourceAssignments (service, baseConstructor);
+            
+            serviceClass.Members.Add (baseConstructor);
+        }
+
+
+        /// <summary>
+        ///     Adds an assignment line for each Resource e.g.
+        ///     <code>
+        ///         this.people = new People(this);
+        ///     </code>
+        /// </summary>
+        [VisibleForTestOnly]
+        internal void AddResourceAssignments (IService service, CodeMemberMethod baseConstructor)
+        {
+            int resourceNumber = 1;
+            foreach (var pair in service.Resources) {
+                Resource resource = pair.Value;
+                AddResourceAssignment (baseConstructor, resource, resourceNumber);
+                resourceNumber++;
+            }
+        }
+
+
+        /// <summary>
+        /// Creates the constructor with two arguments, ISerivce and IAuthenticator.
+        /// Then assignes these to local variables.
+        /// e.g.
+        ///     <code>
+        ///         public BuzzService(IService genericService, IAuthenticator authenticator) {
+        ///             this.genericService = genericService;
+        ///             this.authenticator = authenticator;
+        ///     </code>
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeConstructor CreateConstructorWithArgs ()
+        {
+            var constructor = new CodeConstructor ();
+            constructor.Attributes = MemberAttributes.Public;
+            constructor.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IService), ServiceClassGenerator.GenericServiceName));
+            constructor.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName));
+            
+            {
+                var assignService = new CodeAssignStatement ();
+                // this.genericService = 
+                assignService.Left = new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceClassGenerator.GenericServiceName);
+                // generricService
+                assignService.Right = new CodeVariableReferenceExpression (ServiceClassGenerator.GenericServiceName);
+                
+                constructor.Statements.Add (assignService);
+            }
+            
+            {
+                var assignAuthenticator = new CodeAssignStatement ();
+                // this.authenticator = 
+                assignAuthenticator.Left = new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceClassGenerator.AuthenticatorName);
+                // authenticator
+                assignAuthenticator.Right = new CodeVariableReferenceExpression (ServiceClassGenerator.AuthenticatorName);
+                
+                constructor.Statements.Add (assignAuthenticator);
+            }
+            
+            return constructor;
+        }
+
+        private void AddResourceAssignment (CodeMemberMethod constructor, Resource resource, int resourceNumber)
+        {
+            constructor.Statements.Add (new CodeAssignStatement (ServiceClassGenerator.GetFieldReference (resource, resourceNumber), new CodeObjectCreateExpression (ServiceClassGenerator.GetClassName (resource, resourceNumber), new CodeThisReferenceExpression ())));
+        }
+        
+    }
 }
 
