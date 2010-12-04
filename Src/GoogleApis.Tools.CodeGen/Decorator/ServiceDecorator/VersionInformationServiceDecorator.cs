@@ -20,47 +20,52 @@ using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 
-namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
-	
-	/// <summary>
-	/// Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
-	/// To the ServiceClass.
-	/// </summary>
-	public class VersionInformationServiceDecorator: IServiceDecorator{
-		public const string VersionName = "Version";
-		public const string NameName = "Name";
-		public const string BaseUriName = "BaseUri";
-		
-		public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
-		{
-			serviceClass.Members.Add(CreateVersionField(service));
-			serviceClass.Members.Add(CreateNameField(service));			
-			serviceClass.Members.Add(CreateUriField(service));
-		}
-		
-		[VisibleForTestOnly]
-		internal CodeMemberField CreateVersionField(IService service) {
-			var version = new CodeMemberField(typeof(string), VersionName);
-			version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			version.InitExpression = new CodePrimitiveExpression(service.Version);
-			return version;
-		}
-		
-		[VisibleForTestOnly]
-		internal CodeMemberField CreateNameField(IService service) {
-			var name = new CodeMemberField(typeof(string),NameName);
-			name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			name.InitExpression = new CodePrimitiveExpression(service.Name);
-			return name;
-		}
-		
-		[VisibleForTestOnly]
-		internal CodeMemberField CreateUriField(IService service) {
-			var uri = new CodeMemberField(typeof(string),BaseUriName);
-			uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-			uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
-			return uri;			
-		}
-	}
+namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
+{
+
+    /// <summary>
+    /// Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
+    /// To the ServiceClass.
+    /// </summary>
+    public class VersionInformationServiceDecorator : IServiceDecorator
+    {
+        public const string VersionName = "Version";
+        public const string NameName = "Name";
+        public const string BaseUriName = "BaseUri";
+
+        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
+        {
+            serviceClass.Members.Add (CreateVersionField (service));
+            serviceClass.Members.Add (CreateNameField (service));
+            serviceClass.Members.Add (CreateUriField (service));
+        }
+
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateVersionField (IService service)
+        {
+            var version = new CodeMemberField (typeof(string), VersionName);
+            version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+            version.InitExpression = new CodePrimitiveExpression (service.Version);
+            return version;
+        }
+
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateNameField (IService service)
+        {
+            var name = new CodeMemberField (typeof(string), NameName);
+            name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+            name.InitExpression = new CodePrimitiveExpression (service.Name);
+            return name;
+        }
+
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateUriField (IService service)
+        {
+            var uri = new CodeMemberField (typeof(string), BaseUriName);
+            uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+            uri.InitExpression = new CodePrimitiveExpression (service.BaseUri.ToString ());
+            return uri;
+        }
+    }
 }
 

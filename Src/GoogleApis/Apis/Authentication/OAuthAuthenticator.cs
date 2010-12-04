@@ -24,15 +24,15 @@ using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
-	public abstract class OAuthAuthenticator : Authenticator
-	{
-		public string ConsumerKey{get; private set;}
-		public string ConsumerSecret{get; private set;}
-		
-		public OAuthAuthenticator (string applicationName, string consumerKey, string consumerSecret) : base(applicationName)
-		{
-			this.ConsumerKey = consumerKey;
-			this.ConsumerSecret = consumerSecret;
-		}
-	}
+    public abstract class OAuthAuthenticator : Authenticator
+    {
+        public string ConsumerKey { get; private set; }
+        public string ConsumerSecret { get; private set; }
+
+        public OAuthAuthenticator (string applicationName, string consumerKey, string consumerSecret) : base(applicationName)
+        {
+            this.ConsumerKey = consumerKey;
+            this.ConsumerSecret = consumerSecret;
+        }
+    }
 }
