@@ -24,39 +24,7 @@ namespace Google.Apis.Tools.CodeGen
 {
 	public class MainClass
 	{
-		
 		public static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(MainClass));
-		
-		public static void Main (IDictionary<string, string> args){
-			var version = "v1";
-			var serviceName = "buzz";
-			var clientNamespace = "Google.Apis.Clients";
-			var language = "CSharp";
-			var outputFile = "";
-			
-			if(args.ContainsKey("version")){
-				version = args["version"];
-			}
-			
-			if(args.ContainsKey("serviceName")){
-				serviceName = args["serviceName"];
-			}
-			
-			if(args.ContainsKey("clientNamespace")){
-				clientNamespace = args["clientNamespace"];
-			}
-			
-			if(args.ContainsKey("language")){
-				language = args["language"];
-			}
-			
-			if(args.ContainsKey("outputFile")){
-				outputFile = args["outputFile"];
-			}
-			
-			
-			GenerateClass(serviceName, version, clientNamespace, language, outputFile);			
-		}
 		
 		/// <summary>
 		/// Creates an Strongly Typed Client API for a given service.
@@ -88,7 +56,8 @@ namespace Google.Apis.Tools.CodeGen
 		public static void Main (string[] args)
 		{
 			logger.Debug("Entering CodeGen.Main");
-			if(args.Length == 0) {
+			if(args.Length == 0) 
+			{
 				Console.Error.WriteLine("Please Provide Argments.");
 				return;	
 			}
@@ -104,31 +73,31 @@ namespace Google.Apis.Tools.CodeGen
 			{
 				serviceName = args[0];
 				
-				if(args.Length >= 2) { 
+				if(args.Length >= 2) 
+				{ 
 					version = args[1];
 					
-					if(args.Length >= 3){
+					if(args.Length >= 3)
+					{
 						outputFile = args[2];
 						
-						if(args.Length >=4){
+						if(args.Length >=4)
+						{
 							language = args[3];
 						}
 					}
 				}
-				
 			}
-				
-			
 			GenerateClass(serviceName, version, clientNamespace, language, outputFile);
-			
 		}
 		
-		public static void GenerateClass(string serviceName, string version, string clientNamespace, string language, string outputFile) {
+		public static void GenerateClass(string serviceName, string version, string clientNamespace, string language, string outputFile) {		
 			// Set up how discovery works.
 			string cacheDirectory = Path.Combine(
 				Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
 			    "GoogleApis.Tools.CodeGenCache");
-			if(Directory.Exists(cacheDirectory) == false){
+			if(Directory.Exists(cacheDirectory) == false)
+			{
 				Directory.CreateDirectory(cacheDirectory);
 			}
 			var webfetcher = new CachedWebDiscoveryDevice(
@@ -157,4 +126,3 @@ namespace Google.Apis.Tools.CodeGen
 		}
 	}
 }
-
