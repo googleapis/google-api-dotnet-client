@@ -28,23 +28,11 @@ namespace Google.Apis.Testing {
 			return Request;
 		}
 
-		public string Name {
-			get {
-				throw new System.NotImplementedException();
-			}
-		}
+		public string Name {get ; set;}
 
-		public string Version {
-			get {
-				throw new System.NotImplementedException();
-			}
-		}
+		public string Version {get; set;}
 
-		public Uri BaseUri {
-			get {
-				throw new System.NotImplementedException();
-			}
-		}
+		public Uri BaseUri {get; set;}
 
 		public Uri RpcUri {
 			get {

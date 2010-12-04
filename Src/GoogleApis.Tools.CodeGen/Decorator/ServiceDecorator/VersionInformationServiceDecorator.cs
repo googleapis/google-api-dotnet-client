@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 		public const string NameName = "Name";
 		public const string BaseUriName = "BaseUri";
 		
-		public void DecorateClass (Google.Apis.Discovery.IService service, System.CodeDom.CodeTypeDeclaration serviceClass)
+		public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
 		{
 			serviceClass.Members.Add(CreateVersionField(service));
 			serviceClass.Members.Add(CreateNameField(service));			
