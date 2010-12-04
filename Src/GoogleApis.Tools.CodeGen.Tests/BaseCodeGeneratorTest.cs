@@ -21,6 +21,7 @@ using System.IO;
 using System.Text;
 
 using Google.Apis.Discovery;
+using Google.Apis.Json;
 
 using log4net;
 using NUnit.Framework;
@@ -125,7 +126,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
 		protected KeyValuePair<string, object> CreateJsonResourceDefinition (string resourceName, string jsonString)
 		{
-			JSON.JSONDictionary json = (JSON.JSONDictionary)JSON.JSONReader.Parse (jsonString);
+			JsonDictionary json = (JsonDictionary)JsonReader.Parse (jsonString);
 			
 			return new KeyValuePair<string, object> (resourceName, json);
 		}

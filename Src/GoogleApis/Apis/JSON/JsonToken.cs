@@ -13,24 +13,33 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Google.Apis.Json;
-using Google.Apis.Requests;
-namespace Google.Apis.Discovery
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+namespace Google.Apis.Json
 {
-	public static class Utilities
-	{
-		public static TValue GetValueAsNull<TKey, TValue> (this IDictionary<TKey, TValue> data, TKey key)
-		{
-			TValue result;
-			if (!data.TryGetValue (key, out result)) {
-				return default(TValue);
-			}
-			return result;
-		}
-	}
+  public class JsonToken {
+	
+    public enum Type {
+      ObjectStart,
+      ArrayStart,
+      ObjectEnd,
+      ArrayEnd,
+      NameSeperator,
+      MemberSeperator,
+      String,
+      Number,
+      False,
+      True,
+      Null,
+      Undefined
+    }
+	
+    public Type type;
+    public string value;
+    public decimal number;
+  }
 }

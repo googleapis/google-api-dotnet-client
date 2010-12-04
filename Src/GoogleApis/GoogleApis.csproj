@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Apis\JSON\JSON.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />
     <Compile Include="Apis\Discovery\DiscoveryService.cs" />
     <Compile Include="Apis\Discovery\IDiscoveryDevice.cs" />
@@ -79,6 +78,10 @@
     <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
     <Compile Include="Apis\Discovery\IRequestExecutor.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
+    <Compile Include="Apis\JSON\JsonToken.cs" />
+    <Compile Include="Apis\JSON\TokenStream.cs" />
+    <Compile Include="Apis\JSON\JsonDictionary.cs" />
+    <Compile Include="Apis\JSON\JsonReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
