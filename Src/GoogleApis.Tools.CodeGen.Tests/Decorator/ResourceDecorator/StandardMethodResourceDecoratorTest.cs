@@ -15,10 +15,12 @@ limitations under the License.
 */
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 
 using NUnit.Framework;
 
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
+using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
@@ -31,7 +33,48 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			var decorator = new StandardMethodResourceDecorator();
 			var decoratedClass = CreateDecoratedResourceClass(decorator);
 			
+			Assert.AreEqual(2 + Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)).Length, decoratedClass.Members.Count);
+			
+			var dict = CreateMethodDictionary(decoratedClass);
+			
+			// check that a method is generated for each of the TestMethodNames 
+			foreach(BaseCodeGeneratorTest.TestMethodNames methodName in Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)))
+			{
+				if(dict.ContainsKey(methodName) == false)
+				{
+					Assert.Fail("Failed to Produce a method for " + methodName.ToString());
+				}
+			}
+			
+			// check the parameters are as expected
+			var method = dict[TestMethodNames.getTest];
+			Assert.AreEqual(4, method.Parameters.Count);
+			
+			method = dict[TestMethodNames.postTest];
+			Assert.AreEqual(6, method.Parameters.Count);
+			
+			method = dict[TestMethodNames.noParameterTest];
+			Assert.AreEqual(0, method.Parameters.Count);
+			
 			CheckCompile(decoratedClass, false, "Failed To Compile using StandardMethodResourceDecorator()");
+		}
+		
+		private IDictionary<BaseCodeGeneratorTest.TestMethodNames, CodeMemberMethod> 
+			CreateMethodDictionary(CodeTypeDeclaration decoratedClass)
+		{
+			var dict = new Dictionary<BaseCodeGeneratorTest.TestMethodNames, CodeMemberMethod>();
+			foreach(var member in decoratedClass.Members)
+			{
+				if ( member is CodeMemberMethod == false )
+				{
+					continue;
+				}
+				var method = (CodeMemberMethod)member;
+				var methodName = (BaseCodeGeneratorTest.TestMethodNames)
+					Enum.Parse(typeof(BaseCodeGeneratorTest.TestMethodNames), method.Name, true);
+				dict.Add(methodName, method);
+			}
+			return dict;
 		}
 	}
 }
