@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 using Google.Apis.Discovery;
-using Google.Apis.JSON;
+using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Requests
 {
@@ -40,7 +40,7 @@ namespace Google.Apis.Tests.Requests
 		public void ValidateRegexTest ()
 		{
 			Method m = new Method();
-			var dict = new JSONDictionary { 
+			var dict = new JsonDictionary { 
 				{ "name" , "test" },
 				{ "pattern", ".+" }
 			};
@@ -58,7 +58,7 @@ namespace Google.Apis.Tests.Requests
 		public void ValidateRegexEmptyNeedsDataTest ()
 		{
 			Method m = new Method();
-			var dict = new JSONDictionary { 
+			var dict = new JsonDictionary { 
 				{ "name" , "test" },
 				{ "pattern", ".+" }
 			};

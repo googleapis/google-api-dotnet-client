@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-using Google.Apis.JSON;
+using Google.Apis.Json;
 
 namespace Google.Apis.Discovery {
 
@@ -41,22 +41,22 @@ namespace Google.Apis.Discovery {
     internal const string ValueType = "valueType";
     
     
-    private JSONDictionary information;
+    private JsonDictionary information;
     private string name;
     public ServiceFactory(Stream discovery) {
-      this.information = JSONReader.Parse(discovery) as JSONDictionary;
+      this.information = JsonReader.Parse(discovery) as JsonDictionary;
       if (this.information == null)
         throw new ArgumentException("Discovery document in invalid form");
 
       // discard the data element
-      this.information = this.information["data"] as JSONDictionary;
+      this.information = this.information["data"] as JsonDictionary;
       if (this.information == null)
         throw new ArgumentException("Discovery document has no data element");
       if (this.information.Count != 1)
         throw new ArgumentException("More than one element found");
       foreach (KeyValuePair<string, object> kvp in this.information) {
         this.name = kvp.Key;
-        this.information = kvp.Value as JSONDictionary;
+        this.information = kvp.Value as JsonDictionary;
       }
       if (this.information == null)
         throw new ArgumentException("Discovery document has no service dictionary");
@@ -74,7 +74,7 @@ namespace Google.Apis.Discovery {
     public Service GetService(string version) {
 
       // now find the right versioninfo set
-      JSONDictionary js = this.information[version] as JSONDictionary;
+      JsonDictionary js = this.information[version] as JsonDictionary;
       if (js == null)
         throw new ArgumentException("Did not find version: " + version + " in the discovery document");
 

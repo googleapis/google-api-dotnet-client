@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-using Google.Apis.JSON;
+using Google.Apis.Json;
 using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
@@ -27,15 +27,14 @@ namespace Google.Apis.Discovery
 	// represents a single version of a service
 	public class Service:IService
 	{
-		private JSONDictionary information;
-		private Dictionary<string, Method> serviceMethods;
+		private JsonDictionary information;
 		private Dictionary<string, Resource> resources;
 
 		public string Name {get; private set;}
 		public string Version {get; private set;}
 		
 
-		internal Service (string version, string name, JSONDictionary js)
+		internal Service (string version, string name, JsonDictionary js)
 		{
 			this.Version = version;
 			this.Name = name;
@@ -57,7 +56,7 @@ namespace Google.Apis.Discovery
 		public IDictionary<string, Resource> Resources {
 			get {
 				if (this.resources == null) {
-					JSONDictionary js = this.information[ServiceFactory.Resources] as JSONDictionary;
+					JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
 					if (js != null) {
 						this.resources = new Dictionary<string, Resource> ();
 						foreach (KeyValuePair<string, object> kvp in js) {

@@ -18,13 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Google.Apis.JSON;
+using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
 	public class Method
 	{
-		private JSONDictionary information;
+		private JsonDictionary information;
 		public string Name {get;set;}
 		private Dictionary<string, Parameter> parameters;
 
@@ -35,7 +35,7 @@ namespace Google.Apis.Discovery
 		internal Method (KeyValuePair<string, object> kvp)
 		{
 			this.Name = kvp.Key;
-			this.information = kvp.Value as JSONDictionary;
+			this.information = kvp.Value as JsonDictionary;
 			if (this.information == null)
 				throw new ArgumentException ("got no valid dictionary");
 		}
@@ -55,7 +55,7 @@ namespace Google.Apis.Discovery
 		public Dictionary<string, Parameter> Parameters {
 			get {
 				if (this.parameters == null) {
-					JSONDictionary js = this.information[ServiceFactory.Parameters] as JSONDictionary;
+					JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
 					if (js != null) {
 						this.parameters = new Dictionary<string, Parameter> ();
 						foreach (KeyValuePair<string, object> kvp in js) {
