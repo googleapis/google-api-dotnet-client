@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 	public class StandardConstructorResourceDecorator : IResourceDecorator {
@@ -42,6 +43,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		public void DecorateMethodAfterExecute(Resource resource, Method method, CodeMemberMethod codeMember) {
 		}
 
+		[VisibleForTestOnly]
 		internal CodeConstructor CreateConstructor(String serviceClassName) {
 			var constructor = new CodeConstructor();
 			

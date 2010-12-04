@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 
@@ -56,9 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 		public DictonaryOptionalParameterResourceDecorator() {
 		}
 		
-		/// <summary>
-		/// Visiable For Test
-		/// </summary>
+		[VisibleForTestOnly]
 		internal class ResourceGenerator : ResourceBaseGenerator {
 			private readonly string className;
 			
