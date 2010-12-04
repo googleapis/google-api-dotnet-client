@@ -136,25 +136,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			return new Resource (CreateJsonResourceDefinition (resourceName, json));
 		}
 
-		/// <summary>
-		/// Test our assumptions about the string ResourceAsJson are correct.
-		/// </summary>
-		[Test()]
-		public void TestCreateResource ()
-		{
-			var resource = CreateResource (ResourceName, ResourceAsJson);
-			Assert.AreEqual (ResourceName, resource.Name);
-			Assert.AreEqual (Enum.GetValues (typeof(TestMethodNames)).Length, resource.Methods.Count);
-			// Test one
-			Assert.IsNotNull (resource.Methods["postTest"]);
-			
-			// Then test all
-			foreach (TestMethodNames name in Enum.GetValues (typeof(TestMethodNames))) {
-				Assert.IsNotNull (resource.Methods[name.ToString ()]);
-			}
-			
-		}
-
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
 		{
 			cp.ReferencedAssemblies.Add (target.Assembly.CodeBase);
@@ -219,4 +200,3 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		}
 	}
 }
-
