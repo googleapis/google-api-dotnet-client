@@ -16,8 +16,16 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
+
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
+	
+	/// <summary>
+	/// Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
+	/// To the ServiceClass.
+	/// </summary>
 	public class VersionInformationServiceDecorator: IServiceDecorator{
 		public const string VersionName = "Version";
 		public const string NameName = "Name";
@@ -25,34 +33,33 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 		
 		public void DecorateClass (Google.Apis.Discovery.IService service, System.CodeDom.CodeTypeDeclaration serviceClass)
 		{
-			AddInformationFields(serviceClass, service);
+			serviceClass.Members.Add(CreateVersionField(service));
+			serviceClass.Members.Add(CreateNameField(service));			
+			serviceClass.Members.Add(CreateUriField(service));
 		}
 		
-		private void AddInformationFields(CodeTypeDeclaration serviceClass, IService service){
-			AddVersionField(service, serviceClass);
-			AddNameField(service, serviceClass);			
-			AddUriField(service, serviceClass);
-		}
-		
-		private void AddVersionField(IService service, CodeTypeDeclaration serviceClass) {
+		[VisibleForTestOnly]
+		internal CodeMemberField CreateVersionField(IService service) {
 			var version = new CodeMemberField(typeof(string), VersionName);
 			version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
 			version.InitExpression = new CodePrimitiveExpression(service.Version);
-			serviceClass.Members.Add(version);
+			return version;
 		}
 		
-		private void AddNameField(IService service, CodeTypeDeclaration serviceClass) {
+		[VisibleForTestOnly]
+		internal CodeMemberField CreateNameField(IService service) {
 			var name = new CodeMemberField(typeof(string),NameName);
 			name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
 			name.InitExpression = new CodePrimitiveExpression(service.Name);
-			serviceClass.Members.Add(name);
+			return name;
 		}
 		
-		private void AddUriField(IService service, CodeTypeDeclaration serviceClass) {
+		[VisibleForTestOnly]
+		internal CodeMemberField CreateUriField(IService service) {
 			var uri = new CodeMemberField(typeof(string),BaseUriName);
 			uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
 			uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
-			serviceClass.Members.Add(uri);			
+			return uri;			
 		}
 	}
 }

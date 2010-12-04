@@ -16,7 +16,9 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 	/// <summary>
@@ -26,16 +28,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 	public class EasyConstructServiceDecorator : IServiceDecorator {
 		public void DecorateClass (Google.Apis.Discovery.IService service, CodeTypeDeclaration serviceClass)
 		{
+			var constructor = CreateConstructor(serviceClass);
+			serviceClass.Members.Add(constructor);
+		}
+		
+		[VisibleForTestOnly]
+		internal CodeConstructor CreateConstructor(CodeTypeDeclaration serviceClass)
+		{
 			var constructor = new CodeConstructor();
 			
 			constructor.Attributes = MemberAttributes.Public;
 			constructor.ChainedConstructorArgs.Add(GetService(serviceClass));
 			constructor.ChainedConstructorArgs.Add(GetAuthenticator());
-				
-			serviceClass.Members.Add(constructor);
+			return constructor;
 		}
-
-		protected CodeExpression GetService(CodeTypeDeclaration serviceClass){
+		
+		[VisibleForTestOnly]
+		internal CodeExpression GetService(CodeTypeDeclaration serviceClass){
 			/*
 			new DiscoveryService(
 				new WebDiscoveryDevice(
@@ -81,7 +90,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator {
 		///			GetRegisteredAuthenticator(); 	
 		///	</code>
 		/// </summary>
-		protected CodeExpression GetAuthenticator(){
+		[VisibleForTestOnly]
+		internal CodeExpression GetAuthenticator(){
 			var authenticatorFactory = new CodeMethodInvokeExpression(
 				new CodeMethodReferenceExpression(
 			    	new CodeTypeReferenceExpression(typeof(Authentication.AuthenticatorFactory)), 
