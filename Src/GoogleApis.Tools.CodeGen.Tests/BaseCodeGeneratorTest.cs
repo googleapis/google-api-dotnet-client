@@ -207,6 +207,15 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				}
 			}
 		}
+		
+		protected IService CreateBuzzService()
+		{
+			var version = "v1";
+			var buzzTestFetcher = new StringDiscoveryDevice(){Document = BuzzServiceAsJson};
+			var discovery = new DiscoveryService(buzzTestFetcher);
+			// Build the service based on discovery information.
+			return discovery.GetService(version);
+		}
 	}
 }
 

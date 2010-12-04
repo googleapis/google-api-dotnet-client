@@ -49,11 +49,11 @@ namespace Google.Apis.Tools.CodeGen {
 			return UpperFirstLetter(GetSafeMemberName(method.Name,"Method" + methodNumber));
 		}
 		
-		protected String GetClassName(Resource resource, int resourceNumber){
+		public static String GetClassName(Resource resource, int resourceNumber){
 			return UpperFirstLetter(GetSafeMemberName(resource.Name,"Resource" + resourceNumber));
 		}
 		
-		protected String GetFieldName(Resource resource, int resourceNumber){
+		protected static String GetFieldName(Resource resource, int resourceNumber){
 			return GetSafeMemberName(resource.Name, "Field" + resourceNumber);
 		}
 		
@@ -82,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen {
 			return Char.ToLower(str[0]) + str.Substring(1);
 		}
 		
-		protected String UpperFirstLetter(String str){
+		protected static String UpperFirstLetter(String str){
 			if(str == null || str.Length == 0){
 				return str;
 			}
@@ -93,11 +93,11 @@ namespace Google.Apis.Tools.CodeGen {
 			return Char.ToUpper(str[0]) + str.Substring(1);
 		}
 		
-		private String GetSafeMemberName(string baseName, String uniquieifier){
+		private static String GetSafeMemberName(string baseName, String uniquieifier){
 			return GetSafeMemberName(baseName, uniquieifier, UnsafeWords);
 		}
 		
-		private String GetSafeMemberName(string baseName, String uniquieifier, IEnumerable<String> unsafeWords){
+		private static String GetSafeMemberName(string baseName, String uniquieifier, IEnumerable<String> unsafeWords){
 			StringBuilder sb = new StringBuilder();
 			bool isFirst = true;
 			bool requiresUniqueAddition = false;
@@ -133,12 +133,12 @@ namespace Google.Apis.Tools.CodeGen {
 			return sb.ToString();
 		}
 		
-		private bool IsValidFirstChar(char c){
+		private static bool IsValidFirstChar(char c){
 			return (c >= 'a' && c <= 'z') ||
 				(c >= 'A' && c <= 'Z'); // [A-Za-z]
 		}
 		
-		private bool IsValidBodyChar(char c){
+		private static bool IsValidBodyChar(char c){
 			return (c >= 'a' && c <= 'z') ||
 				(c >= 'A' && c <= 'Z') ||
 				(c >= '0' && c <= '9'); // [A-Za-z0-9]

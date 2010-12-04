@@ -52,7 +52,19 @@ namespace Google.Apis.Tools.CodeGen
 			this.testGenerationConfiguration = testGenerationConfiguration;
 		}
 
-		public CodeGen (IService service, string clientNamespace, bool generateTests) : this(service, clientNamespace, new IResourceDecorator[] { new StandardConstructorResourceDecorator (), new StandardMethodResourceDecorator (), new Log4NetResourceDecorator (), new DictonaryOptionalParameterResourceDecorator () }, new IServiceDecorator[] { new EasyConstructServiceDecorator (), new VersionInformationServiceDecorator (), new StandardExecuteMethodServiceDecorator () }, new TestGenerationConfiguration { GenerateTests = generateTests })
+		public CodeGen (IService service, string clientNamespace, bool generateTests) : 
+			this(service, clientNamespace, 
+			     new IResourceDecorator[] { 
+					new StandardConstructorResourceDecorator (), 
+					new StandardMethodResourceDecorator (), 
+					new Log4NetResourceDecorator (), 
+					new DictonaryOptionalParameterResourceDecorator () }, 
+				new IServiceDecorator[] {
+					new StandardConstructServiceDecorator(),
+					new EasyConstructServiceDecorator (), 
+					new VersionInformationServiceDecorator (), 
+					new StandardExecuteMethodServiceDecorator () }, 
+				new TestGenerationConfiguration { GenerateTests = generateTests })
 		{
 			
 		}

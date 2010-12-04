@@ -28,9 +28,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 	[TestFixture()]
 	public class VersionInformationServiceDecoratorTest:BaseServiceDecoratorTest
 	{
-		private const string Name = "TestName";
-		private const string Version = "TestVersion1";
-		private readonly Uri BaseUri = new Uri("http://www.test.example.google.com/");
+		
 		[Test()]
 		public void TestCreateVersionField ()
 		{
@@ -73,13 +71,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 			CheckCompile(codeType, true, "Failed to compile VersionInformationServiceDecorator output");
 		}
 		
-		private IService CreateService()
-		{
-			return new MockService(){
-				Name = Name, 
-				Version = Version, 
-				BaseUri = BaseUri};
-		}
+		
 			
 	}
 }

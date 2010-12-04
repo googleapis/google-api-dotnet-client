@@ -54,6 +54,8 @@
     <Compile Include="Decorator\ResourceDecorator\MockResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecoratorTest.cs" />
     <Compile Include="Decorator\ServiceDecorator\BaseServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecoratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
