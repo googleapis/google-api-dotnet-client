@@ -59,6 +59,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			CheckCompile(decoratedClass, false, "Failed To Compile using StandardMethodResourceDecorator()");
 		}
 		
+		public void TestResourceGenerator()
+		{
+			var generator = new StandardMethodResourceDecorator.ResourceGenerator("TestClassName");
+			var resource = CreateResource(ResourceName, ResourceAsJson);
+			var method = resource.Methods[TestMethodNames.getTest.ToString()];
+			var mockDecorator = new MockResourceDecorator();
+			
+			CodeMemberMethod generatedMember = 
+				generator.CreateMethod (resource, method, 1, new List<IResourceDecorator> { mockDecorator });
+			
+			Assert.AreEqual(0, mockDecorator.DecorateClassCalled);
+			Assert.AreEqual(1, mockDecorator.DecorateMethodBeforeExecuteCalled);
+			Assert.AreEqual(1, mockDecorator.DecorateMethodAfterExecuteCalled);
+			
+			Assert.AreEqual(4, generatedMember.Parameters.Count);
+		}
+		
 		private IDictionary<BaseCodeGeneratorTest.TestMethodNames, CodeMemberMethod> 
 			CreateMethodDictionary(CodeTypeDeclaration decoratedClass)
 		{
@@ -76,6 +93,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			}
 			return dict;
 		}
+		
+		
 	}
 }
 
