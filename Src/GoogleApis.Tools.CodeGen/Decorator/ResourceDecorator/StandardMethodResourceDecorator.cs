@@ -57,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator {
 			;
 		}
 
-		private class ResourceGenerator : ResourceBaseGenerator {
+		internal class ResourceGenerator : ResourceBaseGenerator {
 			private readonly string className;
 
 			public ResourceGenerator(string className) {
