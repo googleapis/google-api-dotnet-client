@@ -51,6 +51,7 @@
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\MockResourceDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
