@@ -49,7 +49,8 @@ namespace Google.Apis.Authentication
 		/// returns the Token for oAuth
 		/// </summary>
 		/// <returns></returns>
-		public string Token {
+		public string Token 
+		{
 			get { return this.token; }
 		}
 
@@ -57,7 +58,8 @@ namespace Google.Apis.Authentication
 		/// returns the TokenSecret for oAuth
 		/// </summary>
 		/// <returns></returns>
-		public string TokenSecret {
+		public string TokenSecret 
+		{
 			get { return this.tokenSecret; }
 		}
 

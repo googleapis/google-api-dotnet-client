@@ -15,9 +15,11 @@ limitations under the License.
 */
 using System;
 
-namespace Google.Apis.Discovery {
+namespace Google.Apis.Discovery
+{
 	
-	public interface IDiscoveryService {
+	public interface IDiscoveryService 
+	{
 		IService GetService(string version);
 	}
 }

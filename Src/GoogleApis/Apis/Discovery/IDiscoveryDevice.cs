@@ -16,12 +16,14 @@ limitations under the License.
 
 using System;
 using System.IO;
+
 namespace Google.Apis.Discovery
 {
 	/// <summary>
 	/// An interface for the fetching of discovery documents.
 	/// </summary>
-	public interface IDiscoveryDevice: IDisposable {
+	public interface IDiscoveryDevice: IDisposable 
+	{
 		/// <summary>
 		/// Fetchs a discovery document.
 		/// </summary>

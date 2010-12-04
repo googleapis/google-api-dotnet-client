@@ -24,7 +24,8 @@ namespace Google.Apis.Discovery {
 	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
 	/// TODO(davidwaters): Add expirey time based on modified time in the filesystem
 	/// </summary>
-	public class CachedWebDiscoveryDevice : IDiscoveryDevice {
+	public class CachedWebDiscoveryDevice : IDiscoveryDevice 
+	{
 		private const int BufferSize = 1024 * 1024; // 1MB
 		private static readonly Regex InvalidFileChars = new Regex("[^A-Za-z0-9_-]", RegexOptions.Compiled);
 		private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
@@ -33,9 +34,11 @@ namespace Google.Apis.Discovery {
 		private DirectoryInfo cacheDirectory;
 			
 		public Uri DiscoveryUri { get; set; }
-		public DirectoryInfo CacheDirectory {
+		public DirectoryInfo CacheDirectory 
+		{
 			get{return cacheDirectory;}
-			set{
+			set
+			{
 				if(value == null){
 					throw new ArgumentNullException("CachedDirectory", "Must not be null");
 				}
@@ -47,22 +50,27 @@ namespace Google.Apis.Discovery {
 			}
 		}
 		
-		public CachedWebDiscoveryDevice() :this(null){
+		public CachedWebDiscoveryDevice() :this(null)
+		{
 		}
 
-		public CachedWebDiscoveryDevice(Uri discoveryUri):this(discoveryUri, GetDefaultCacheDirectory()) {
+		public CachedWebDiscoveryDevice(Uri discoveryUri):this(discoveryUri, GetDefaultCacheDirectory()) 
+		{
 		}
 
-		public CachedWebDiscoveryDevice(Uri discoveryUri, DirectoryInfo cacheDirectory) {
+		public CachedWebDiscoveryDevice(Uri discoveryUri, DirectoryInfo cacheDirectory) 
+		{
 			this.DiscoveryUri = discoveryUri;
 			this.CacheDirectory = cacheDirectory;
 		}
 		
-		private static DirectoryInfo GetDefaultCacheDirectory(){
+		private static DirectoryInfo GetDefaultCacheDirectory()
+		{
 			return new DirectoryInfo(Path.GetTempPath());
 		}
 		
-		private string CreateFileName() {
+		private string CreateFileName() 
+		{
 			// Start with uri
 			string fileName = DiscoveryUri.ToString();
 			// add hash code for unqiueness, in case removing invalid chars cause collision
@@ -72,12 +80,14 @@ namespace Google.Apis.Discovery {
 			return fileName;
 		}
 
-		private FileInfo GetCacheFile() {
+		private FileInfo GetCacheFile() 
+		{
 			string path = Path.Combine(CacheDirectory.ToString(), CreateFileName());
 			return new FileInfo(path);
 		}
 
-		private void WriteToCache(WebDiscoveryDevice device) {
+		private void WriteToCache(WebDiscoveryDevice device) 
+		{
 			using(Stream webDocument = device.Fetch()){
 				FileInfo fileInfo = GetCacheFile();
 				using(FileStream cachedFileStream = fileInfo.OpenWrite()){
@@ -98,7 +108,8 @@ namespace Google.Apis.Discovery {
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public Stream Fetch() {
+		public Stream Fetch() 
+		{
 			FileInfo cachedFile = GetCacheFile();
 			if (cachedFile.Exists == false) {
 				logger.Debug("Document Not Found In Cache, fetching from web");
@@ -112,7 +123,8 @@ namespace Google.Apis.Discovery {
 			return fileStream;
 		}
 
-		public void Dispose() {
+		public void Dispose() 
+		{
 			if (fileStream != null) {
 				fileStream.Dispose();
 			}

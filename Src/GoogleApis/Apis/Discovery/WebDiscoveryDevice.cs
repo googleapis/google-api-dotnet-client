@@ -23,15 +23,17 @@ namespace Google.Apis.Discovery
 	/// <summary>
 	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
 	/// </summary>
-	public class WebDiscoveryDevice : IDiscoveryDevice {
+	public class WebDiscoveryDevice : IDiscoveryDevice 
+	{
 		public Uri DiscoveryUri {get;set;}
 		private Stream responseStream {get;set;}
 		private HttpWebResponse response {get;set;}
 		
-		public WebDiscoveryDevice() {
-		}
+		public WebDiscoveryDevice() 
+		{}
 		
-		public WebDiscoveryDevice(Uri discoveryUri):this(){
+		public WebDiscoveryDevice(Uri discoveryUri):this()
+		{
 			this.DiscoveryUri = discoveryUri;
 		}
 		
@@ -41,7 +43,8 @@ namespace Google.Apis.Discovery
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public Stream Fetch() {
+		public Stream Fetch() 
+		{
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
 			
 			Stream responseData;
@@ -55,14 +58,11 @@ namespace Google.Apis.Discovery
 		#region IDisposable implementation
 		public void Dispose ()
 		{	
-			if(responseStream != null) {
+			if(responseStream != null) 
+			{
 				responseStream.Dispose();
 			}
 		}
-		
-		#endregion
-		
+		#endregion	
 	}
-	
-
 }

@@ -40,13 +40,17 @@ namespace Google.Apis.Discovery
 				throw new ArgumentException ("got no valid dictionary");
 		}
 
-		public Dictionary<string, Method> Methods {
+		public Dictionary<string, Method> Methods 
+		{
 			get {
-				if (this.methods == null) {
+				if (this.methods == null) 
+				{
 					JsonDictionary js = this.information[ServiceFactory.Methods] as JsonDictionary;
-					if (js != null) {
+					if (js != null) 
+					{
 						this.methods = new Dictionary<string, Method> ();
-						foreach (KeyValuePair<string, object> kvp in js) {
+						foreach (KeyValuePair<string, object> kvp in js) 
+						{
 							Method m = new Method (kvp);
 							this.methods.Add (kvp.Key, m);
 						}

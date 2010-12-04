@@ -27,7 +27,8 @@ namespace Google.Apis.Discovery
 		public static TValue GetValueAsNull<TKey, TValue> (this IDictionary<TKey, TValue> data, TKey key)
 		{
 			TValue result;
-			if (!data.TryGetValue (key, out result)) {
+			if (!data.TryGetValue (key, out result)) 
+			{
 				return default(TValue);
 			}
 			return result;

@@ -19,10 +19,12 @@ using System.Collections.Generic;
 
 using Google.Apis.Requests;
 
-namespace Google.Apis.Discovery {
+namespace Google.Apis.Discovery 
+{
 
 
-	public interface IService {
+	public interface IService 
+	{
 		string Name {get;}
 		string Version {get;}
 		Uri BaseUri {get;}

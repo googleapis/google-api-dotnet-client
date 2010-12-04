@@ -26,7 +26,8 @@ namespace Google.Apis.Discovery
 	/// 
 	/// Handy for testing.
 	/// </summary>
-	public class StringDiscoveryDevice: IDiscoveryDevice {
+	public class StringDiscoveryDevice: IDiscoveryDevice 
+	{
 		/// <summary>
 		/// The discovery document.
 		/// </summary>
@@ -39,7 +40,8 @@ namespace Google.Apis.Discovery
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public Stream Fetch() {
+		public Stream Fetch() 
+		{
 			byte[] text = Encoding.UTF8.GetBytes( Document );
 			outputStream = new MemoryStream(text);
 			return outputStream;
@@ -52,8 +54,6 @@ namespace Google.Apis.Discovery
 				outputStream.Dispose();
 			}
 		}
-		
 		#endregion
-		
 	}
 }

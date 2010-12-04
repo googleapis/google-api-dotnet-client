@@ -25,15 +25,11 @@ namespace Google.Apis.Authentication
 	/// <seealso cref="IAuthenticator"/> 
 	public class AuthenticatorFactory
 	{
-		public delegate IAuthenticator CreateAuthenticator();
-		
 		private static readonly AuthenticatorFactory instance = new AuthenticatorFactory();
 		
 		private CreateAuthenticator authenticatorCreator = null;
 		
-		public AuthenticatorFactory ()
-		{
-		}
+		public delegate IAuthenticator CreateAuthenticator();
 		
 		public static AuthenticatorFactory GetInstance()
 		{
@@ -71,4 +67,3 @@ namespace Google.Apis.Authentication
 		}
 	}
 }
-
