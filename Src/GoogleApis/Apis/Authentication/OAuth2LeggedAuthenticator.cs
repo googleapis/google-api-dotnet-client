@@ -24,79 +24,59 @@ using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
-	public class OAuth2LeggedAuthenticator : OAuthAuthenticator
-	{
-		private string oAuthUser;
-		private string oAuthDomain;
+    public class OAuth2LeggedAuthenticator : OAuthAuthenticator
+    {
+        public string OAuthUser{get; private set;}
+        public string OAuthDomain{get; private set;}
 
-		public static string OAuthParameter = "xoauth_requestor_id";
+        public static string OAuthParameter = "xoauth_requestor_id";
 
-		/// <summary>
-		///  a constructor for OpenAuthentication login use cases
-		/// </summary>
-		/// <param name="applicationName">The name of the application</param>
-		/// <param name="consumerKey">the consumerKey to use</param>
-		/// <param name="consumerSecret">the consumerSecret to use</param>
-		/// <param name="user">the username to use</param>
-		/// <param name="domain">the domain to use</param>
-		/// <returns></returns>
-		public OAuth2LeggedAuthenticator (string applicationName, string consumerKey, string consumerSecret, string user, string domain) : base(applicationName, consumerKey, consumerSecret)
-		{
-			this.oAuthUser = user;
-			this.oAuthDomain = domain;
-		}
+        /// <summary>
+        ///  a constructor for OpenAuthentication login use cases
+        /// </summary>
+        /// <param name="applicationName">The name of the application</param>
+        /// <param name="consumerKey">the consumerKey to use</param>
+        /// <param name="consumerSecret">the consumerSecret to use</param>
+        /// <param name="user">the username to use</param>
+        /// <param name="domain">the domain to use</param>
+        /// <returns></returns>
+        public OAuth2LeggedAuthenticator (string applicationName, string consumerKey, string consumerSecret, string user, string domain) : base(applicationName, consumerKey, consumerSecret)
+        {
+            this.OAuthUser = user;
+            this.OAuthDomain = domain;
+        }
 
-		/// <summary>
-		/// returns the OAuth User
-		/// </summary>
-		/// <returns></returns>
-		public string OAuthUser 
-		{
-			get { return this.oAuthUser; }
-		}
+        /// <summary>
+        /// Takes an existing httpwebrequest and modifies it's headers according to
+        /// the authentication system used.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public override void ApplyAuthenticationToRequest (HttpWebRequest request)
+        {
+            base.ApplyAuthenticationToRequest (request);
+            
+            string oauthHeader = OAuthUtil.GenerateHeader (request.RequestUri, this.ConsumerKey, this.ConsumerSecret, null, null, request.Method);
+            request.Headers.Add (oauthHeader);
+        }
 
-		/// <summary>
-		/// returns the OAuth Domain
-		/// </summary>
-		/// <returns></returns>
-		public string OAuthDomain 
-		{
-			get { return this.oAuthDomain; }
-		}
-
-
-		/// <summary>
-		/// Takes an existing httpwebrequest and modifies it's headers according to
-		/// the authentication system used.
-		/// </summary>
-		/// <param name="request"></param>
-		/// <returns></returns>
-		public override void ApplyAuthenticationToRequest (HttpWebRequest request)
-		{
-			base.ApplyAuthenticationToRequest (request);
-			
-			string oauthHeader = OAuthUtil.GenerateHeader (request.RequestUri, this.ConsumerKey, this.ConsumerSecret, null, null, request.Method);
-			request.Headers.Add (oauthHeader);
-		}
-
-		/// <summary>
-		/// Takes an existing httpwebrequest and modifies it's uri according to 
-		/// the authentication system used. Only overridden in 2leggedoauth case
-		/// Here we need to add the xoauthrequestor parameter
-		/// </summary>
-		/// <param name="source">the original uri</param>
-		/// <returns></returns>
-		public override Uri ApplyAuthenticationToUri (Uri source)
-		{
-			UriBuilder builder = new UriBuilder (source);
-			string queryToAppend = OAuth2LeggedAuthenticator.OAuthParameter + "=" + this.oAuthUser + "%40" + this.OAuthDomain;
-			
-			if (builder.Query != null && builder.Query.Length > 1)
-				builder.Query = builder.Query + "&" + queryToAppend;
-			else
-				builder.Query = queryToAppend;
-			
-			return builder.Uri;
-		}
-	}
+        /// <summary>
+        /// Takes an existing httpwebrequest and modifies it's uri according to 
+        /// the authentication system used. Only overridden in 2leggedoauth case
+        /// Here we need to add the xoauthrequestor parameter
+        /// </summary>
+        /// <param name="source">the original uri</param>
+        /// <returns></returns>
+        public override Uri ApplyAuthenticationToUri (Uri source)
+        {
+            UriBuilder builder = new UriBuilder (source);
+            string queryToAppend = OAuth2LeggedAuthenticator.OAuthParameter + "=" + this.OAuthUser + "%40" + this.OAuthDomain;
+            
+            if (builder.Query != null && builder.Query.Length > 1)
+                builder.Query = builder.Query + "&" + queryToAppend;
+            else
+                builder.Query = queryToAppend;
+            return builder.Uri;
+        }
+    }
 }

@@ -24,11 +24,11 @@ using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
-	public class HttpRequestFactory : ICreateHttpRequest
-	{
-		public HttpWebRequest Create (Uri target)
-		{
-			return WebRequest.Create (target) as HttpWebRequest;
-		}
-	}
+    public class HttpRequestFactory : ICreateHttpRequest
+    {
+        public HttpWebRequest Create (Uri target)
+        {
+            return WebRequest.Create (target) as HttpWebRequest;
+        }
+    }
 }
