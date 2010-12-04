@@ -25,56 +25,54 @@ using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
-	public class OAuth3LeggedAuthenticator : OAuthAuthenticator
-	{
-		private string token;
-		private string tokenSecret;
+    public class OAuth3LeggedAuthenticator : OAuthAuthenticator
+    {
+        private string token;
+        private string tokenSecret;
 
-		/// <summary>
-		///  a constructor for OpenAuthentication login use cases using 3 legged oAuth
-		/// </summary>
-		/// <param name="applicationName">The name of the application</param>
-		/// <param name="consumerKey">the consumerKey to use</param>
-		/// <param name="consumerSecret">the consumerSecret to use</param>
-		/// <param name="token">The token to be used</param>
-		/// <param name="tokenSecret">The tokenSecret to be used</param>
-		/// <returns></returns>
-		public OAuth3LeggedAuthenticator (string applicationName, string consumerKey, string consumerSecret, string token, string tokenSecret) : base(applicationName, consumerKey, consumerSecret)
-		{
-			this.token = token;
-			this.tokenSecret = tokenSecret;
-		}
+        /// <summary>
+        ///  a constructor for OpenAuthentication login use cases using 3 legged oAuth
+        /// </summary>
+        /// <param name="applicationName">The name of the application</param>
+        /// <param name="consumerKey">the consumerKey to use</param>
+        /// <param name="consumerSecret">the consumerSecret to use</param>
+        /// <param name="token">The token to be used</param>
+        /// <param name="tokenSecret">The tokenSecret to be used</param>
+        /// <returns></returns>
+        public OAuth3LeggedAuthenticator (string applicationName, string consumerKey, string consumerSecret, string token, string tokenSecret) : base(applicationName, consumerKey, consumerSecret)
+        {
+            this.token = token;
+            this.tokenSecret = tokenSecret;
+        }
 
-		/// <summary>
-		/// returns the Token for oAuth
-		/// </summary>
-		/// <returns></returns>
-		public string Token 
-		{
-			get { return this.token; }
-		}
+        /// <summary>
+        /// returns the Token for oAuth
+        /// </summary>
+        /// <returns></returns>
+        public string Token {
+            get { return this.token; }
+        }
 
-		/// <summary>
-		/// returns the TokenSecret for oAuth
-		/// </summary>
-		/// <returns></returns>
-		public string TokenSecret 
-		{
-			get { return this.tokenSecret; }
-		}
+        /// <summary>
+        /// returns the TokenSecret for oAuth
+        /// </summary>
+        /// <returns></returns>
+        public string TokenSecret {
+            get { return this.tokenSecret; }
+        }
 
-		/// <summary>
-		/// Takes an existing httpwebrequest and modifies it's headers according to
-		/// the authentication system used.
-		/// </summary>
-		/// <param name="request"></param>
-		/// <returns></returns>
-		public override void ApplyAuthenticationToRequest (HttpWebRequest request)
-		{
-			base.ApplyAuthenticationToRequest (request);
-			
-			string oauthHeader = OAuthUtil.GenerateHeader (request.RequestUri, this.ConsumerKey, this.ConsumerSecret, this.Token, this.TokenSecret, request.Method);
-			request.Headers.Add (oauthHeader);
-		}
-	}
+        /// <summary>
+        /// Takes an existing httpwebrequest and modifies it's headers according to
+        /// the authentication system used.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public override void ApplyAuthenticationToRequest (HttpWebRequest request)
+        {
+            base.ApplyAuthenticationToRequest (request);
+            
+            string oauthHeader = OAuthUtil.GenerateHeader (request.RequestUri, this.ConsumerKey, this.ConsumerSecret, this.Token, this.TokenSecret, request.Method);
+            request.Headers.Add (oauthHeader);
+        }
+    }
 }

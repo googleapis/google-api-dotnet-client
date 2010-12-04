@@ -16,54 +16,54 @@ limitations under the License.
 using System;
 namespace Google.Apis.Authentication
 {
-	/// <summary>
-	/// A simple factory class for producing <code>IAuthenticator</code>
-	/// This can be used as with a signlton pattern with GetInstance.
-	/// Or can be constructed and passed around. Either way you must
-	/// RegisterAuthenticator before you can GetRegisterdAuthenticator
-	/// </summary>
-	/// <seealso cref="IAuthenticator"/> 
-	public class AuthenticatorFactory
-	{
-		private static readonly AuthenticatorFactory instance = new AuthenticatorFactory();
-		
-		private CreateAuthenticator authenticatorCreator = null;
-		
-		public delegate IAuthenticator CreateAuthenticator();
-		
-		public static AuthenticatorFactory GetInstance()
-		{
-			return instance;
-		}
-		
-		/// <summary>
-		/// The delegate passed in will be used to construct IAuthenticators in multiple contexts. If
-		/// you do not consturct a new IAuthenticator on each call please ensure you are fetching old ones from 
-		/// the correct location.
-		/// </summary>
-		/// <example>
-		/// 	<code>
-		/// 		AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new YourAuthenticator());
-		/// 		AuthenticatorFactory.GetInstance().RegisterAuthenticator(delegate(){return new YourAuthenticator()});
-		/// 	</code>
-		/// </example>
-		public void RegisterAuthenticator(CreateAuthenticator authenticatorCreator)
-		{
-			if ( authenticatorCreator == null )
-			{
-				throw new ArgumentNullException("authenticatorCreator");
-			}
-			this.authenticatorCreator = authenticatorCreator;
-		}
-		
-		public IAuthenticator GetRegisteredAuthenticator()
-		{
-			if ( instance.authenticatorCreator == null )
-			{
-				throw new ApplicationException("No Authenticator registered");
-			}
-			
-			return authenticatorCreator();
-		}
-	}
+    /// <summary>
+    /// A simple factory class for producing <code>IAuthenticator</code>
+    /// This can be used as with a signlton pattern with GetInstance.
+    /// Or can be constructed and passed around. Either way you must
+    /// RegisterAuthenticator before you can GetRegisterdAuthenticator
+    /// </summary>
+    /// <seealso cref="IAuthenticator"/> 
+    public class AuthenticatorFactory
+    {
+        private static readonly AuthenticatorFactory instance = new AuthenticatorFactory ();
+
+        private CreateAuthenticator authenticatorCreator = null;
+
+        public delegate IAuthenticator CreateAuthenticator ();
+
+        public static AuthenticatorFactory GetInstance ()
+        {
+            return instance;
+        }
+
+        /// <summary>
+        /// The delegate passed in will be used to construct IAuthenticators in multiple contexts. If
+        /// you do not consturct a new IAuthenticator on each call please ensure you are fetching old ones from 
+        /// the correct location.
+        /// </summary>
+        /// <example>
+        ///     <code>
+        ///         AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new YourAuthenticator());
+        ///         AuthenticatorFactory.GetInstance().RegisterAuthenticator(delegate(){return new YourAuthenticator()});
+        ///     </code>
+        /// </example>
+        public void RegisterAuthenticator (CreateAuthenticator authenticatorCreator)
+        {
+            if (authenticatorCreator == null)
+            {
+                throw new ArgumentNullException ("authenticatorCreator");
+            }
+            this.authenticatorCreator = authenticatorCreator;
+        }
+
+        public IAuthenticator GetRegisteredAuthenticator ()
+        {
+            if (instance.authenticatorCreator == null) 
+            {
+                throw new ApplicationException ("No Authenticator registered");
+            }
+            
+            return authenticatorCreator ();
+        }
+    }
 }

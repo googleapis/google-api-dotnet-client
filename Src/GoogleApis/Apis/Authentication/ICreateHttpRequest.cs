@@ -24,9 +24,8 @@ using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
-	public interface ICreateHttpRequest
-	{
-		HttpWebRequest Create (Uri target);
-		
-	}
+    public interface ICreateHttpRequest
+    {
+        HttpWebRequest Create (Uri target);
+    }
 }

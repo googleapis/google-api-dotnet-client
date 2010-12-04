@@ -17,10 +17,10 @@ limitations under the License.
 using System;
 using System.Net;
 
-namespace Google.Apis.Authentication 
+namespace Google.Apis.Authentication
 {
-	public interface IAuthenticator 
-	{
-		HttpWebRequest CreateHttpWebRequest (string httpMethod, Uri targetUri);		
-	}
+    public interface IAuthenticator
+    {
+        HttpWebRequest CreateHttpWebRequest (string httpMethod, Uri targetUri);
+    }
 }
