@@ -138,7 +138,7 @@ namespace Google.Apis.Tools.CodeGen
 			// Build the service based on discovery information.
 			var service = discovery.GetService(version);
 			
-			var generator = new CodeGen(service, clientNamespace, true);
+			var generator = new CodeGen(service, clientNamespace);
 			
 			var provider = CodeDomProvider.CreateProvider(language);
 			

@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			
 			var service = CreateBuzzService();
 			
-			var generator = new CodeGen(service, clientNamespace, true);	
+			var generator = new CodeGen(service, clientNamespace);	
 			var codeCompileUnit = generator.GenerateCode ();
 			
 			// Full Compile we should not have any warnings.

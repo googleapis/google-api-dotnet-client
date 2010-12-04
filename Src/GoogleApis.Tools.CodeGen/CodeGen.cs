@@ -35,11 +35,12 @@ namespace Google.Apis.Tools.CodeGen
 
 		private readonly IEnumerable<IResourceDecorator> resourceDecorators;
 		private readonly IEnumerable<IServiceDecorator> serviceDecorators;
-		private readonly TestGenerationConfiguration testGenerationConfiguration;
-
+		
 		private CodeNamespace client;
 
-		public CodeGen (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, IEnumerable<IServiceDecorator> serviceDecorators, TestGenerationConfiguration testGenerationConfiguration)
+		public CodeGen (IService service, string clientNamespace, 
+		                IEnumerable<IResourceDecorator> resourceDecorators, 
+		                IEnumerable<IServiceDecorator> serviceDecorators)
 		{
 			compileUnit = new CodeCompileUnit ();
 			this.codeClientNamespace = clientNamespace;
@@ -48,11 +49,9 @@ namespace Google.Apis.Tools.CodeGen
 			// Defensive copy and readonly
 			this.resourceDecorators = new List<IResourceDecorator> (resourceDecorators).AsReadOnly ();
 			this.serviceDecorators = new List<IServiceDecorator> (serviceDecorators).AsReadOnly ();
-			
-			this.testGenerationConfiguration = testGenerationConfiguration;
 		}
 
-		public CodeGen (IService service, string clientNamespace, bool generateTests) : 
+		public CodeGen (IService service, string clientNamespace) : 
 			this(service, clientNamespace, 
 			     new IResourceDecorator[] { 
 					new StandardConstructorResourceDecorator (), 
@@ -63,8 +62,7 @@ namespace Google.Apis.Tools.CodeGen
 					new StandardConstructServiceDecorator(),
 					new EasyConstructServiceDecorator (), 
 					new VersionInformationServiceDecorator (), 
-					new StandardExecuteMethodServiceDecorator () }, 
-				new TestGenerationConfiguration { GenerateTests = generateTests })
+					new StandardExecuteMethodServiceDecorator () })
 		{
 			
 		}
@@ -110,35 +108,6 @@ namespace Google.Apis.Tools.CodeGen
 			}
 		}
 
-		public CodeCompileUnit GenerateTests ()
-		{
-			if ( testGenerationConfiguration == null || testGenerationConfiguration.GenerateTests == false){
-				return null;
-			}
-			
-			logger.Debug ("Starting Test Generation...");
-			LogDecorators ();
-			
-			CreateClient (testGenerationConfiguration.GetNameSpaceOrDefault(codeClientNamespace));
-			AddUsings (true);
-			
-			var serviceClass = new TestServiceClassGenerator (service, serviceDecorators).CreateServiceClass ();
-			string serviceClassName = serviceClass.Name;
-			
-			client.Types.Add (serviceClass);
-			
-			int resourceNumber = 1;
-			foreach (var res in service.Resources.Values) {
-				// Create a class for the resource
-				logger.DebugFormat ("Adding Test Resource {0}", res.Name);
-				var resourceGenerator = new TestResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
-				client.Types.Add (resourceGenerator.CreateClass ());
-				resourceNumber++;
-			}
-			
-			logger.Debug ("Generation Complete.");
-			return compileUnit;
-		}
 
 		private void CreateClient (string nameSpace)
 		{
@@ -157,59 +126,6 @@ namespace Google.Apis.Tools.CodeGen
 			if (forTest) {
 				client.Imports.Add (new CodeNamespaceImport ("NUnit.Framework"));
 				client.Imports.Add (new CodeNamespaceImport (codeClientNamespace));
-			}
-		}
-
-		public class TestGenerationConfiguration
-		{
-			private readonly ICollection<ITestResourceDecorator> additionalTestResourceDecorators;
-			private readonly ICollection<ITestServiceDecorator> additionalTestServiceDecorators;
-
-			public bool GenerateTests { get; set; }
-			public string Namespace { get; set; }
-			public System.IO.DirectoryInfo OutputDirectory { get; set; }
-			public ICollection<ITestResourceDecorator> AdditionalTestResourceDecorators 
-			{
-				get { return additionalTestResourceDecorators; }
-			}
-
-			public ICollection<ITestServiceDecorator> AdditionalTestServiceDecorators 
-			{
-				get { return additionalTestServiceDecorators; }
-			}
-
-			public TestGenerationConfiguration (): 
-				this(new List<ITestResourceDecorator> (), new List<ITestServiceDecorator> ())
-			{
-
-			}
-			
-			public TestGenerationConfiguration(
-					ICollection<ITestResourceDecorator> additionalTestResourceDecorators, 
-			    	ICollection<ITestServiceDecorator> additionalTestServiceDecorators)
-			{
-				this.GenerateTests = false;
-				this.Namespace = null;
-				this.OutputDirectory = null;
-				
-				if(additionalTestResourceDecorators == null){
-					this.additionalTestResourceDecorators = new List<ITestResourceDecorator> ().AsReadOnly();
-				} else {
-					this.additionalTestResourceDecorators = 
-						new List<ITestResourceDecorator> (additionalTestResourceDecorators).AsReadOnly();
-				}
-				if(additionalTestServiceDecorators == null){
-					this.additionalTestServiceDecorators = new List<ITestServiceDecorator> ().AsReadOnly();
-				} else {
-					this.additionalTestServiceDecorators = 
-						new List<ITestServiceDecorator> (additionalTestServiceDecorators).AsReadOnly();
-				}
-
-			}
-		
-			public string GetNameSpaceOrDefault (string defaultNamespace)
-			{
-				return Namespace == null ? defaultNamespace : Namespace;
 			}
 		}
 	}
