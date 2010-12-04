@@ -27,6 +27,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 		protected const string Version = "TestVersion1";
 		protected readonly Uri BaseUri = new Uri("http://www.test.example.google.com/");
 		
+        /// <summary>
+        /// Creates a MokeService with Name,Version and BaseUri set to the constants in this class.
+        /// </summary>
 		protected IService CreateService()
 		{
 			return new MockService(){

@@ -50,8 +50,6 @@ namespace Google.Apis.Tools.CodeGen
             var serviceClass = new CodeTypeDeclaration (serviceClassName);
             serviceClass.BaseTypes.Add (typeof(IRequestExecutor));
             
-            AddServiceFields (serviceClass);
-            
             int resourceNumber = 1;
             foreach (var pair in service.Resources) {
                 Resource resource = pair.Value;
@@ -66,29 +64,6 @@ namespace Google.Apis.Tools.CodeGen
             
             return serviceClass;
         }
-
-
-        /// <summary>
-        /// Declars the fields genericService and authenticator
-        /// <code>
-        ///     private Google.Apis.Discovery.IService genericService;
-        ///     private Google.Apis.Authentication.IAuthenticator authenticator;
-        /// </code>
-        /// </summary>
-        /// <param name="serviceClass">
-        /// </param>
-        [VisibleForTestOnly]
-        static internal void AddServiceFields (CodeTypeDeclaration serviceClass)
-        {
-            var field = new CodeMemberField (typeof(IService), GenericServiceName);
-            field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            serviceClass.Members.Add (field);
-            
-            field = new CodeMemberField (typeof(IAuthenticator), AuthenticatorName);
-            field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            serviceClass.Members.Add (field);
-        }
-
 
         /// <summary>
         /// 
