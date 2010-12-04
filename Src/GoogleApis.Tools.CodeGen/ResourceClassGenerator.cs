@@ -17,7 +17,9 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen {
@@ -64,6 +66,7 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <summary>
 		/// Adds <code>private BuzzService service;</code> to the resource class.
 		/// </summary>
+		[VisibleForTestOnly]
 		internal static void AddServiceField(CodeTypeDeclaration resourceClass){
 			var serviceField = new CodeMemberField(typeof(IRequestExecutor),ServiceFieldName);				
 			serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
@@ -73,6 +76,7 @@ namespace Google.Apis.Tools.CodeGen {
 		/// <summary>
 		/// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
 		/// </summary>
+		[VisibleForTestOnly]
 		internal static void AddResourceNameConst(CodeTypeDeclaration resourceClass, string resourceName){
 			var serviceField = new CodeMemberField(typeof(string),ResourceNameConst);				
 			serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
