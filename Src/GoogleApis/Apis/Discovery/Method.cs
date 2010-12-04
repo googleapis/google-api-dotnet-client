@@ -18,8 +18,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
 	public class Method
@@ -40,25 +42,32 @@ namespace Google.Apis.Discovery
 				throw new ArgumentException ("got no valid dictionary");
 		}
 
-		public string RestPath {
+		public string RestPath 
+		{
 			get { return this.information[ServiceFactory.PathUrl] as string; }
 		}
 
-		public string RpcName {
+		public string RpcName 
+		{
 			get { return this.information[ServiceFactory.RpcName] as string; }
 		}
 
-		public string HttpMethod {
+		public string HttpMethod 
+		{
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
 
-		public Dictionary<string, Parameter> Parameters {
+		public Dictionary<string, Parameter> Parameters 
+		{
 			get {
-				if (this.parameters == null) {
+				if (this.parameters == null) 
+				{
 					JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
-					if (js != null) {
+					if (js != null) 
+					{
 						this.parameters = new Dictionary<string, Parameter> ();
-						foreach (KeyValuePair<string, object> kvp in js) {
+						foreach (KeyValuePair<string, object> kvp in js) 
+						{
 							Parameter p = new Parameter (kvp);
 							this.parameters.Add (kvp.Key, p);
 						}

@@ -50,7 +50,8 @@ namespace Google.Apis.Authentication
 		/// returns the OAuth User
 		/// </summary>
 		/// <returns></returns>
-		public string OAuthUser {
+		public string OAuthUser 
+		{
 			get { return this.oAuthUser; }
 		}
 
@@ -58,7 +59,8 @@ namespace Google.Apis.Authentication
 		/// returns the OAuth Domain
 		/// </summary>
 		/// <returns></returns>
-		public string OAuthDomain {
+		public string OAuthDomain 
+		{
 			get { return this.oAuthDomain; }
 		}
 

@@ -26,32 +26,13 @@ namespace Google.Apis.Authentication
 {
 	public abstract class OAuthAuthenticator : Authenticator
 	{
-		private string consumerKey;
-		private string consumerSecret;
-
+		public string ConsumerKey{get; private set;}
+		public string ConsumerSecret{get; private set;}
+		
 		public OAuthAuthenticator (string applicationName, string consumerKey, string consumerSecret) : base(applicationName)
 		{
-			this.consumerKey = consumerKey;
-			this.consumerSecret = consumerSecret;
+			this.ConsumerKey = consumerKey;
+			this.ConsumerSecret = consumerSecret;
 		}
-
-		/// <summary>
-		/// returns the ConsumerKey
-		/// </summary>
-		/// <returns></returns>
-		public string ConsumerKey {
-			get { return this.consumerKey; }
-		}
-
-		/// <summary>
-		/// returns the ConsumerSecret
-		/// </summary>
-		/// <returns></returns>
-		public string ConsumerSecret {
-			get { return this.consumerSecret; }
-		}
-		
-		
-		
 	}
 }

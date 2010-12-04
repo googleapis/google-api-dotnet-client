@@ -22,7 +22,5 @@ using System.Diagnostics;
 namespace Google.Apis.Json
 {
   public class JsonDictionary : Dictionary<string, object>
-  {
-		
-	}
+  {}
 }

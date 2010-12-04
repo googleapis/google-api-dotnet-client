@@ -18,8 +18,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
 	public class Parameter
@@ -40,23 +42,28 @@ namespace Google.Apis.Discovery
 
 		public string Name { get; private set;}
 
-		public string ParameterType {
+		public string ParameterType 
+		{
 			get { return this.information.GetValueAsNull (ServiceFactory.ParameterType) as string; }
 		}
 
-		public string Pattern {
+		public string Pattern 
+		{
 			get { return this.information.GetValueAsNull (ServiceFactory.Pattern) as string; }
 		}
 
-		public bool Required {
+		public bool Required 
+		{
 			get { return (bool)this.information.GetValueAsNull (ServiceFactory.Required); }
 		}
 
-		public string DefaultValue {
+		public string DefaultValue 
+		{
 			get { return this.information.GetValueAsNull (ServiceFactory.DefaultValue) as string; }
 		}
 
-		public string ValueType {
+		public string ValueType 
+		{
 			get { return this.information.GetValueAsNull (ServiceFactory.ValueType) as string; }
 		}
 	}

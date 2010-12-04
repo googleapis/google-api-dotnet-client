@@ -39,13 +39,15 @@ namespace Google.Apis.Discovery
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public Stream Fetch() {
+		public Stream Fetch() 
+		{
 			return DiscoveryStream;
 		}
 		
 		public void Dispose ()
 		{
-			if(DiscoveryStream != null) {
+			if(DiscoveryStream != null) 
+			{
 				DiscoveryStream.Dispose();
 			}
 		}

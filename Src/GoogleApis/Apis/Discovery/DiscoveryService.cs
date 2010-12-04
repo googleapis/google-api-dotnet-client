@@ -16,7 +16,6 @@ limitations under the License.
 
 using System;
 
-
 namespace Google.Apis.Discovery
 {
 	/// <summary>
@@ -52,24 +51,28 @@ namespace Google.Apis.Discovery
 		/// <summary>
 		/// The discovery mechanism to use.
 		/// </summary>
-		public IDiscoveryDevice DiscoveryDevice{
+		public IDiscoveryDevice DiscoveryDevice
+		{
 			get; private set;
 		}
 		
 		/// <summary>
 		/// Insantiates the discovery class
 		/// </summary>
-		public DiscoveryService(IDiscoveryDevice discovery) {
+		public DiscoveryService(IDiscoveryDevice discovery) 
+		{
 			DiscoveryDevice = discovery;
 		}
 		
 		/// <summary>
 		/// Creates an API object that provides access to the methods defined in the discovery document.
 		/// </summary>
-		public IService GetService(string version) {
+		public IService GetService(string version)
+		{
 			ServiceFactory factory;
 			
-			using(var documentStream = DiscoveryDevice.Fetch()) {
+			using(var documentStream = DiscoveryDevice.Fetch()) 
+			{
 				// Parse the document.
 				factory = new ServiceFactory(documentStream);
 			}

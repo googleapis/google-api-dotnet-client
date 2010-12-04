@@ -45,21 +45,28 @@ namespace Google.Apis.Discovery
 		{
 		}
 
-		public Uri BaseUri {
+		public Uri BaseUri 
+		{
 			get { return new Uri (this.information[ServiceFactory.BaseUrl] as string); }
 		}
 
-		public Uri RpcUri {
+		public Uri RpcUri 
+		{
 			get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
 		}
 
-		public IDictionary<string, Resource> Resources {
-			get {
-				if (this.resources == null) {
+		public IDictionary<string, Resource> Resources 
+		{
+			get 
+			{
+				if (this.resources == null) 
+				{
 					JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
-					if (js != null) {
+					if (js != null) 
+					{
 						this.resources = new Dictionary<string, Resource> ();
-						foreach (KeyValuePair<string, object> kvp in js) {
+						foreach (KeyValuePair<string, object> kvp in js) 
+						{
 							Resource r = new Resource (kvp);
 							this.resources.Add (kvp.Key, r);
 						}

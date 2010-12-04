@@ -47,7 +47,8 @@ namespace Google.Apis.Authentication
 		}
 
 
-		public ICreateHttpRequest RequestFactory {
+		public ICreateHttpRequest RequestFactory 
+		{
 			get { return this.requestFactory; }
 			set { this.requestFactory = value; }
 		}
@@ -84,7 +85,8 @@ namespace Google.Apis.Authentication
 		/// returns the application name
 		/// </summary>
 		/// <returns></returns>
-		public string Application {
+		public string Application 
+		{
 			get { return this.applicationName; }
 		}
 
