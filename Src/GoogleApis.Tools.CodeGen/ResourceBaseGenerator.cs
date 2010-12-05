@@ -63,13 +63,10 @@ namespace Google.Apis.Tools.CodeGen
 
         protected CodeAssignStatement AssignParameterToDictionary (Parameter param, int parameterCount)
         {
-            
             var assign = new CodeAssignStatement ();
             assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));
             
             assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount));
-            
-            
             return assign;
         }
 
