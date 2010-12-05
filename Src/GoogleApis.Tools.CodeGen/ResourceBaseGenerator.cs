@@ -93,7 +93,7 @@ namespace Google.Apis.Tools.CodeGen
 
         protected CodeParameterDeclarationExpression DeclareInputParameter (Parameter param, int parameterCount)
         {
-            return new CodeParameterDeclarationExpression (typeof(string), GetParameterName (param, parameterCount));
+            return new CodeParameterDeclarationExpression (typeof(string), GeneratorUtils.GetParameterName (param, parameterCount));
         }
 
         protected CodeAssignStatement AssignParameterToDictionary (Parameter param, int parameterCount)
@@ -102,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen
             var assign = new CodeAssignStatement ();
             assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));
             
-            assign.Right = new CodeVariableReferenceExpression (GetParameterName (param, parameterCount));
+            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount));
             
             
             return assign;

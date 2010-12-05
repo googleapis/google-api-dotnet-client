@@ -72,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 var member = new CodeMemberMethod ();
                 
-                member.Name = GetMethodName (method, methodNumber);
+                member.Name = GeneratorUtils.GetMethodName (method, methodNumber);
                 member.ReturnType = new CodeTypeReference ("System.IO.Stream");
                 member.Attributes = MemberAttributes.Public;
                 

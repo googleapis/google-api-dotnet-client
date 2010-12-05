@@ -17,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using Google.Apis.Discovery;
+
 namespace Google.Apis.Tools.CodeGen
 {
     public sealed class GeneratorUtils
@@ -86,7 +88,9 @@ namespace Google.Apis.Tools.CodeGen
             // [A-Za-z0-9]
         }
         #endregion
-
+  
+        #region Safe  Names
+        
         public static String GetSafeMemberName (string baseName, String uniquieifier, IEnumerable<String> unsafeWords)
         {
             StringBuilder sb = new StringBuilder ();
@@ -133,5 +137,38 @@ namespace Google.Apis.Tools.CodeGen
             return sb.ToString ();
         }
         
+        private static String GetSafeMemberName (string baseName, String uniquieifier)
+        {
+            return GetSafeMemberName (baseName, uniquieifier, UnsafeWords);
+        }
+        
+        /// <summary>
+        /// From the Parameter and its placment constructs a safe name.
+        /// </summary>
+        /// <param name="parameter">
+        ///     The Parameter
+        /// </param>
+        /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
+        public static String GetParameterName (Parameter parameter, int paramNumber)
+        {
+            return LowwerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
+        }
+        
+        public static String GetMethodName (Method method, int methodNumber)
+        {
+            return UpperFirstLetter( GetSafeMemberName( method.Name, "Method" + methodNumber));
+        }
+
+        public static String GetClassName (Resource resource, int resourceNumber)
+        {
+            return UpperFirstLetter( GetSafeMemberName( resource.Name, "Resource" + resourceNumber));
+        }
+
+        public static String GetFieldName (Resource resource, int resourceNumber)
+        {
+            return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
+        }
+        
+        #endregion
     }
 }
