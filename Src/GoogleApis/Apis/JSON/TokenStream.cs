@@ -115,7 +115,6 @@ namespace Google.Apis.Json
       catch (IOException) {
         return null;
       }
-      logger.DebugFormat("Got token: %s - %s", token.type, token.value);
       return token;
     }
 
