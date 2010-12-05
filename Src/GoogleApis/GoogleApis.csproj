@@ -57,9 +57,6 @@
     <Compile Include="Apis\Discovery\Parameter.cs" />
     <Compile Include="Apis\Discovery\Resource.cs" />
     <Compile Include="Apis\Discovery\Utilities.cs" />
-    <Compile Include="Apis\oauthbase.cs" />
-    <Compile Include="Apis\oauthutil.cs" />
-    <Compile Include="Apis\utilities.cs" />
     <Compile Include="Apis\Authentication\Authentication.cs" />
     <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
     <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
@@ -82,6 +79,9 @@
     <Compile Include="Apis\JSON\TokenStream.cs" />
     <Compile Include="Apis\JSON\JsonDictionary.cs" />
     <Compile Include="Apis\JSON\JsonReader.cs" />
+    <Compile Include="Apis\Oauthbase.cs" />
+    <Compile Include="Apis\Oauthutil.cs" />
+    <Compile Include="Apis\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
