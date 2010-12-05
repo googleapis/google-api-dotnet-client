@@ -35,7 +35,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			var shortClassName = parts[parts.Length -1]; 
 			var resourceClass = new CodeTypeDeclaration(shortClassName);
 			var resource = CreateResource(ResourceName, ResourceAsJson);
-			ResourceClassGenerator.AddServiceField(resourceClass);
 			
 			foreach(var decorator in allDecorators)
 			{

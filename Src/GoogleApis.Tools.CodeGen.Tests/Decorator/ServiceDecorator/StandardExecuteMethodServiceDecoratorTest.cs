@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var service = CreateService();
 			var decorator = new StandardExecuteMethodServiceDecorator();
 			CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
-			var requiredDecorator = new StandardServiceFieldResourceDecorator();
+			var requiredDecorator = new StandardServiceFieldServiceDecorator();
             requiredDecorator.DecorateClass(service, codeType);
 			decorator.DecorateClass(service, codeType);
 			

@@ -29,7 +29,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     ///     private Google.Apis.Authentication.IAuthenticator authenticator;
     /// </code>
     /// </summary>
-    public class StandardServiceFieldResourceDecorator : IServiceDecorator
+    public class StandardServiceFieldServiceDecorator : IServiceDecorator
     {
         public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
         {

@@ -56,10 +56,11 @@
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\ITestResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardResourcePropertyServiceDecorator.cs" />
     <Compile Include="GeneratorUtils.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

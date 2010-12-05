@@ -32,8 +32,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		public void TestDecorateClass ()
 		{
 			var resourceClass = CreateDecoratedResourceClass(new Log4NetResourceDecorator());
-			Assert.AreEqual(2, resourceClass.Members.Count); // Assert One Member was added
-			var declaration = resourceClass.Members[1];
+			Assert.AreEqual(1, resourceClass.Members.Count); // Assert One Member was added
+			var declaration = resourceClass.Members[0];
 			Assert.IsNotNull(declaration);
 			Assert.IsInstanceOf(typeof(CodeMemberField), declaration);
 			

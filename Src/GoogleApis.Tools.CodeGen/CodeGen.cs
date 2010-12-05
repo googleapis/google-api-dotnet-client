@@ -51,14 +51,15 @@ namespace Google.Apis.Tools.CodeGen
 
         public CodeGen (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
-                new IResourceDecorator[] { 
+                new IResourceDecorator[] {
+                    new StandardServiceFieldResourceDecorator(),
                     new StandardResourceNameResourceDecorator(),
                     new StandardConstructorResourceDecorator (), 
                     new StandardMethodResourceDecorator (), 
                     new Log4NetResourceDecorator (), 
                     new DictonaryOptionalParameterResourceDecorator () }, 
                 new IServiceDecorator[] { 
-                    new StandardServiceFieldResourceDecorator(),
+                    new StandardServiceFieldServiceDecorator(),
                     new StandardResourcePropertyServiceDecorator(),
                     new StandardConstructServiceDecorator (), 
                     new EasyConstructServiceDecorator (), 
