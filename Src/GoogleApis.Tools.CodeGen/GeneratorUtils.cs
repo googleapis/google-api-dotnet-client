@@ -15,6 +15,7 @@ limitations under the License.
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using Google.Apis.Discovery;
@@ -169,6 +170,41 @@ namespace Google.Apis.Tools.CodeGen
             return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
         }
         
+        #endregion
+        
+        #region Required and Optional Parameters
+        public static IEnumerable<Parameter> GetRequiredParameters (Method method)
+        {
+            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
+            {
+                return new List<Parameter>(0);
+            }
+            return from p in method.Parameters 
+                    where p.Value.Required 
+                    select p.Value;
+        }
+
+
+        public static IEnumerable<Parameter> GetOptionalParameters (Method method)
+        {
+            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
+            {
+                return new List<Parameter>(0);
+            }
+            return from p in method.Parameters 
+                    where p.Value.Required == false
+                    select p.Value;
+        }
+
+        public static bool HasRequiredParameters (Method method)
+        {
+            return GetRequiredParameters (method).Any ();
+        }
+
+        public static bool HasOptionalParameters (Method method)
+        {
+            return GetOptionalParameters (method).Any ();
+        }
         #endregion
     }
 }
