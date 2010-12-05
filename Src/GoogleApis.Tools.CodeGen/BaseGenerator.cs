@@ -26,46 +26,8 @@ namespace Google.Apis.Tools.CodeGen
 
     public abstract class BaseGenerator
     {
-        
-
         public BaseGenerator ()
         {
-        }
-
-        protected String GetMethodName (Method method, int methodNumber)
-        {
-            return GeneratorUtils.UpperFirstLetter (GetSafeMemberName (method.Name, "Method" + methodNumber));
-        }
-
-        public static String GetClassName (Resource resource, int resourceNumber)
-        {
-            return GeneratorUtils.UpperFirstLetter (GetSafeMemberName (resource.Name, "Resource" + resourceNumber));
-        }
-
-        protected static String GetFieldName (Resource resource, int resourceNumber)
-        {
-            return GetSafeMemberName (GeneratorUtils.LowwerFirstLetter(resource.Name), "Field" + resourceNumber);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameter">
-        /// A <see cref="Parameter"/>
-        /// </param>
-        /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
-        /// <returns>
-        /// A <see cref="String"/>
-        /// </returns>
-        protected String GetParameterName (Parameter parameter, int paramNumber)
-        {
-            return GetSafeMemberName (GeneratorUtils.LowwerFirstLetter(parameter.Name), "Param" + paramNumber);
-        }
-
-        private static String GetSafeMemberName (string baseName, String uniquieifier)
-        {
-            return GeneratorUtils.GetSafeMemberName (baseName, uniquieifier, GeneratorUtils.UnsafeWords);
-        }
-
+        }        
     }
 }

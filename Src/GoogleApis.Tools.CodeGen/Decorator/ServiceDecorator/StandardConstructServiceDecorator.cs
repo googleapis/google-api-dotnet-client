@@ -115,7 +115,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
         private void AddResourceAssignment (CodeMemberMethod constructor, Resource resource, int resourceNumber)
         {
-            constructor.Statements.Add (new CodeAssignStatement (ServiceClassGenerator.GetFieldReference (resource, resourceNumber), new CodeObjectCreateExpression (ServiceClassGenerator.GetClassName (resource, resourceNumber), new CodeThisReferenceExpression ())));
+            constructor.Statements.Add (
+                new CodeAssignStatement (
+                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber), 
+                    new CodeObjectCreateExpression (
+                        GeneratorUtils.GetClassName (resource, resourceNumber), 
+                        new CodeThisReferenceExpression ())));
         }
         
         public override string ToString ()

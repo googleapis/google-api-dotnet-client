@@ -49,7 +49,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal CodeMemberField CreateResourceField (Resource resource, int resourceNumber)
         {
             // Add local private variables for each Resource
-            var field = new CodeMemberField (GetClassName (resource, resourceNumber), GetFieldName (resource, resourceNumber));
+            var field = new CodeMemberField (
+                GeneratorUtils.GetClassName (resource, resourceNumber), 
+                GeneratorUtils.GetFieldName (resource, resourceNumber));
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return field;
         }
@@ -58,11 +60,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal CodeMemberProperty CreateResourceGetter (Resource resource, int resourceNumber)
         {
             var getter = new CodeMemberProperty ();
-            getter.Name = GetClassName (resource, resourceNumber);
+            getter.Name = GeneratorUtils.GetClassName (resource, resourceNumber);
             getter.HasGet = true;
             getter.HasSet = false;
             getter.Attributes = MemberAttributes.Public;
-            getter.Type = new CodeTypeReference (GetClassName (resource, resourceNumber));
+            getter.Type = new CodeTypeReference (GeneratorUtils.GetClassName (resource, resourceNumber));
             getter.GetStatements.Add (
                 new CodeMethodReturnStatement (
                     ServiceClassGenerator.GetFieldReference (resource, resourceNumber)));

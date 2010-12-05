@@ -60,7 +60,8 @@ namespace Google.Apis.Tools.CodeGen
 
         public static CodeFieldReferenceExpression GetFieldReference (Resource resource, int resourceNumber)
         {
-            return new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), GetFieldName (resource, resourceNumber));
+            return new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), 
+                          GeneratorUtils.GetFieldName (resource, resourceNumber));
         }
     }
 }

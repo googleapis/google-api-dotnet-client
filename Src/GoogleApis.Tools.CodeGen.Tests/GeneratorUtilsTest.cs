@@ -19,7 +19,9 @@ using System.Collections.Generic;
 
 using NUnit.Framework;
 
+using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen;
+using Google.Apis.Json;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
@@ -120,7 +122,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
         
         [Test()]
-        public void GetSafeMemberName()
+        public void GetSafeMemberNameTest()
         {
             IList<string> simpleSafeWords = new List<string>(){"unsafe", "words", "abound"};
             string uniquie = "UnIqUie";
@@ -133,6 +135,25 @@ namespace Google.Apis.Tools.CodeGen.Tests
                 Assert.AreEqual(word + uniquie, GeneratorUtils.GetSafeMemberName(word, uniquie, GeneratorUtils.UnsafeWords));
             }
         }
+        
+        [Test()]
+        public void GetParameterNameTest()
+        {
+            var paramArgs = new KeyValuePair<string,object>("safeName", new JsonDictionary());
+            Parameter param = new Parameter(paramArgs);
+            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
+            
+            paramArgs = new KeyValuePair<string,object>("string", new JsonDictionary());
+            param = new Parameter(paramArgs);
+            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
+            
+            paramArgs = new KeyValuePair<string,object>("String", new JsonDictionary());
+            param = new Parameter(paramArgs);
+            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
+            
+            paramArgs = new KeyValuePair<string,object>("SafeName", new JsonDictionary());
+            param = new Parameter(paramArgs);
+            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
+        }
     }
 }
-
