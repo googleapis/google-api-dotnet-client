@@ -42,8 +42,10 @@ namespace Google.Apis.Tools.CodeGen
         {
             if (method.Parameters == null || method.Parameters.Count == 0)
                 yield break;
-            foreach (Parameter param in method.Parameters.Values) {
-                if (param.Required) {
+            foreach (Parameter param in method.Parameters.Values)
+            {
+                if (param.Required)
+                {
                     yield return param;
                 }
             }
@@ -54,8 +56,10 @@ namespace Google.Apis.Tools.CodeGen
         {
             if (method.Parameters == null || method.Parameters.Count == 0)
                 yield break;
-            foreach (Parameter param in method.Parameters.Values) {
-                if (param.Required == false) {
+            foreach (Parameter param in method.Parameters.Values)
+            {
+                if (param.Required == false)
+                {
                     yield return param;
                 }
             }
@@ -73,7 +77,8 @@ namespace Google.Apis.Tools.CodeGen
 
         protected void ResourceCallAddBodyDeclaration (Method method, CodeMemberMethod member)
         {
-            switch (method.HttpMethod) {
+            switch (method.HttpMethod)
+            {
             case "GET":
             case "DELETE":
                 // string body = null;
