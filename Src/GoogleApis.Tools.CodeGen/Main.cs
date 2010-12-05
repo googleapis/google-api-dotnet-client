@@ -14,11 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
-using System.Collections.Generic;
-using System.CodeDom.Compiler;
-using System.IO;
-
-using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -83,35 +78,7 @@ namespace Google.Apis.Tools.CodeGen
                     }
                 }
             }
-            GenerateClass (serviceName, version, clientNamespace, language, outputFile);
-        }
-
-        public static void GenerateClass (string serviceName, string version, string clientNamespace, string language, string outputFile)
-        {
-            // Set up how discovery works.
-            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
-            if (Directory.Exists (cacheDirectory) == false) {
-                Directory.CreateDirectory (cacheDirectory);
-            }
-            var webfetcher = new CachedWebDiscoveryDevice (new Uri ("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), new DirectoryInfo (cacheDirectory));
-            var discovery = new DiscoveryService (webfetcher);
-            // Build the service based on discovery information.
-            var service = discovery.GetService (version);
-            
-            var generator = new CodeGen (service, clientNamespace);
-            
-            var provider = CodeDomProvider.CreateProvider (language);
-            
-            using (StreamWriter sw = new StreamWriter (outputFile, false)) {
-                IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");
-                
-                // Generate source code using the code provider.
-                
-                provider.GenerateCodeFromCompileUnit (generator.GenerateCode (), tw, new CodeGeneratorOptions ());
-                
-                // Close the output file.
-                tw.Close ();
-            }
+            CodeGen.GenerateService (serviceName, version, clientNamespace, language, outputFile);
         }
     }
 }
