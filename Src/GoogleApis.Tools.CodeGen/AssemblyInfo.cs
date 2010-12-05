@@ -23,9 +23,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("GoogleApis.Tools.CodeGen")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Google")]
+[assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("Google 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
