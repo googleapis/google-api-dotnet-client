@@ -46,5 +46,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             serviceClass.Members.Add (field);
         }
+        
+        public override string ToString ()
+        {
+            return this.GetType().Name;
+        }
     }
 }

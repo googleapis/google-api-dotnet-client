@@ -35,9 +35,11 @@ namespace Google.Apis.Tools.CodeGen
         "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public",
         "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string",
         "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked",
+        "unsafe", "ushort", "using", "virtual", "void", "volatile", "while",    
         //C# proposed reserved words
+        "await", "async",
         //CodeGen Specific
-        "unsafe", "ushort", "using", "virtual", "void", "volatile", "while", "await", "async", "body" };
+        "body" };
 
         public BaseGenerator ()
         {
@@ -55,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen
 
         protected static String GetFieldName (Resource resource, int resourceNumber)
         {
-            return GetSafeMemberName (resource.Name, "Field" + resourceNumber);
+            return GetSafeMemberName (LowwerFirstLetter(resource.Name), "Field" + resourceNumber);
         }
 
         /// <summary>
@@ -70,10 +72,10 @@ namespace Google.Apis.Tools.CodeGen
         /// </returns>
         protected String GetParameterName (Parameter parameter, int paramNumber)
         {
-            return GetSafeMemberName (parameter.Name, "Param" + paramNumber);
+            return GetSafeMemberName (LowwerFirstLetter(parameter.Name), "Param" + paramNumber);
         }
 
-        protected String LowwerFirstLetter (String str)
+        protected static String LowwerFirstLetter (String str)
         {
             if (str == null || str.Length == 0) {
                 return str;
@@ -111,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen
             string lowerbaseName = baseName.ToLower ();
             foreach (string word in unsafeWords) 
             {
-                if (lowerbaseName.Equals (word.ToLower ())) 
+                if (lowerbaseName.Equals (word)) 
                 {
                     requiresUniqueAddition = true;
                 }
