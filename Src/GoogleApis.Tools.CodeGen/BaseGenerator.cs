@@ -26,20 +26,7 @@ namespace Google.Apis.Tools.CodeGen
 
     public abstract class BaseGenerator
     {
-        //C# reserved words
-        private static readonly string[] UnsafeWords = new string[] { 
-        "abstract", "as", "base", "bool", "break", "byte", "case", "catch", "char", "checked",
-        "class", "const", "continue", "decimal", "default", "delegate", "do", "double", "else", "enum",
-        "event", "explicit", "extern", "false", "finally", "fixed", "float", "for", "foreach", "goto",
-        "if", "implicit", "in", "int", "interface", "internal", "is", "lock", "long", "namespace",
-        "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public",
-        "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string",
-        "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked",
-        "unsafe", "ushort", "using", "virtual", "void", "volatile", "while",    
-        //C# proposed reserved words
-        "await", "async",
-        //CodeGen Specific
-        "body" };
+        
 
         public BaseGenerator ()
         {
@@ -47,17 +34,17 @@ namespace Google.Apis.Tools.CodeGen
 
         protected String GetMethodName (Method method, int methodNumber)
         {
-            return UpperFirstLetter (GetSafeMemberName (method.Name, "Method" + methodNumber));
+            return GeneratorUtils.UpperFirstLetter (GetSafeMemberName (method.Name, "Method" + methodNumber));
         }
 
         public static String GetClassName (Resource resource, int resourceNumber)
         {
-            return UpperFirstLetter (GetSafeMemberName (resource.Name, "Resource" + resourceNumber));
+            return GeneratorUtils.UpperFirstLetter (GetSafeMemberName (resource.Name, "Resource" + resourceNumber));
         }
 
         protected static String GetFieldName (Resource resource, int resourceNumber)
         {
-            return GetSafeMemberName (LowwerFirstLetter(resource.Name), "Field" + resourceNumber);
+            return GetSafeMemberName (GeneratorUtils.LowwerFirstLetter(resource.Name), "Field" + resourceNumber);
         }
 
         /// <summary>
@@ -72,92 +59,13 @@ namespace Google.Apis.Tools.CodeGen
         /// </returns>
         protected String GetParameterName (Parameter parameter, int paramNumber)
         {
-            return GetSafeMemberName (LowwerFirstLetter(parameter.Name), "Param" + paramNumber);
-        }
-
-        protected static String LowwerFirstLetter (String str)
-        {
-            if (str == null || str.Length == 0) {
-                return str;
-            }
-            if (str.Length == 1) {
-                return Char.ToLower (str[0]).ToString ();
-            }
-            
-            return Char.ToLower (str[0]) + str.Substring (1);
-        }
-
-        protected static String UpperFirstLetter (String str)
-        {
-            if (str == null || str.Length == 0) {
-                return str;
-            }
-            if (str.Length == 1) {
-                return Char.ToUpper (str[0]).ToString ();
-            }
-            
-            return Char.ToUpper (str[0]) + str.Substring (1);
+            return GetSafeMemberName (GeneratorUtils.LowwerFirstLetter(parameter.Name), "Param" + paramNumber);
         }
 
         private static String GetSafeMemberName (string baseName, String uniquieifier)
         {
-            return GetSafeMemberName (baseName, uniquieifier, UnsafeWords);
+            return GeneratorUtils.GetSafeMemberName (baseName, uniquieifier, GeneratorUtils.UnsafeWords);
         }
 
-        private static String GetSafeMemberName (string baseName, String uniquieifier, IEnumerable<String> unsafeWords)
-        {
-            StringBuilder sb = new StringBuilder ();
-            bool isFirst = true;
-            bool requiresUniqueAddition = false;
-            
-            string lowerbaseName = baseName.ToLower ();
-            foreach (string word in unsafeWords) 
-            {
-                if (lowerbaseName.Equals (word)) 
-                {
-                    requiresUniqueAddition = true;
-                }
-            }
-            
-            foreach (char c in baseName) {
-                if (isFirst) 
-                {
-                    if (IsValidFirstChar (c) == false) 
-                    {
-                        requiresUniqueAddition = true;
-                        continue;
-                    }
-                    sb.Append (c);
-                    isFirst = false;
-                    continue;
-                }
-                
-                if (IsValidBodyChar (c) == false) 
-                {
-                    requiresUniqueAddition = true;
-                    continue;
-                }
-                sb.Append (c);
-            }
-            if (requiresUniqueAddition) 
-            {
-                sb.Append (uniquieifier);
-            }
-            
-            return sb.ToString ();
-        }
-
-        private static bool IsValidFirstChar (char c)
-        {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-            // [A-Za-z]
-        }
-
-        private static bool IsValidBodyChar (char c)
-        {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
-            // [A-Za-z0-9]
-        }
-        
     }
 }
