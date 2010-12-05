@@ -16,7 +16,9 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
 
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
@@ -38,7 +40,8 @@ namespace Google.Apis.Tools.CodeGen
 
         private CodeNamespace client;
 
-        public CodeGen (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, IEnumerable<IServiceDecorator> serviceDecorators)
+        public CodeGen (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, 
+                        IEnumerable<IServiceDecorator> serviceDecorators)
         {
             compileUnit = new CodeCompileUnit ();
             this.codeClientNamespace = clientNamespace;
@@ -67,7 +70,41 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardExecuteMethodServiceDecorator () })
         {   
         }
-
+  
+        /// <summary>
+        /// Generates the given service saving to the outputFile in the language passed in.
+        /// </summary>
+        public static void GenerateService (string serviceName, string version, string clientNamespace, 
+                                            string language, string outputFile)
+        {
+            // Set up how discovery works.
+            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+            if (Directory.Exists (cacheDirectory) == false) {
+                Directory.CreateDirectory (cacheDirectory);
+            }
+            var webfetcher = new CachedWebDiscoveryDevice (
+                                new Uri ("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), 
+                                new DirectoryInfo (cacheDirectory));
+            var discovery = new DiscoveryService (webfetcher);
+            // Build the service based on discovery information.
+            var service = discovery.GetService (version);
+            
+            var generator = new CodeGen (service, clientNamespace);
+            
+            var provider = CodeDomProvider.CreateProvider (language);
+            
+            using (StreamWriter sw = new StreamWriter (outputFile, false)) {
+                IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");
+                
+                // Generate source code using the code provider.
+                
+                provider.GenerateCodeFromCompileUnit (generator.GenerateCode (), tw, new CodeGeneratorOptions ());
+                
+                // Close the output file.
+                tw.Close ();
+            }
+        }
+        
         public CodeCompileUnit GenerateCode ()
         {
             logger.Debug ("Starting Code Generation...");
