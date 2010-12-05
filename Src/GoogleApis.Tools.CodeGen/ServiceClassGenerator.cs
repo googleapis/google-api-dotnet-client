@@ -26,7 +26,11 @@ using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 namespace Google.Apis.Tools.CodeGen
 {
 
-
+    /// <summary>
+    /// Responsible for generating the Service class, this is handled primarly by calling
+    /// a secsesion of IServiceDecorator's 
+    /// </summary>
+    /// <seealso cref="IServiceDecorator"/>
     public class ServiceClassGenerator : BaseGenerator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceClassGenerator));
