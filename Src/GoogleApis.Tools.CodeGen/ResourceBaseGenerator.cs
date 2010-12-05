@@ -24,8 +24,6 @@ using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 namespace Google.Apis.Tools.CodeGen
 {
-
-
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
         public const string ResourceNameConst = "Resource";
@@ -33,36 +31,31 @@ namespace Google.Apis.Tools.CodeGen
         protected const string ReturnVariableName = "ret";
         public const string ServiceFieldName = "service";
 
-
         public ResourceBaseGenerator ()
         {
         }
 
         protected IEnumerable<Parameter> GetRequiredParameters (Method method)
         {
-            if (method.Parameters == null || method.Parameters.Count == 0)
-                yield break;
-            foreach (Parameter param in method.Parameters.Values)
+            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
-                if (param.Required)
-                {
-                    yield return param;
-                }
+                return new List<Parameter>(0);
             }
+            return from p in method.Parameters 
+                    where p.Value.Required 
+                    select p.Value;
         }
 
 
         protected IEnumerable<Parameter> GetOptionalParameters (Method method)
         {
-            if (method.Parameters == null || method.Parameters.Count == 0)
-                yield break;
-            foreach (Parameter param in method.Parameters.Values)
+            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
-                if (param.Required == false)
-                {
-                    yield return param;
-                }
+                return new List<Parameter>(0);
             }
+            return from p in method.Parameters 
+                    where p.Value.Required == false
+                    select p.Value;
         }
 
         protected bool HasRequiredParameters (Method method)
