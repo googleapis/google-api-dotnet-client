@@ -24,9 +24,7 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen
 {
-
-
-    public class ResourceClassGenerator : ResourceBaseGenerator
+    public class ResourceClassGenerator : BaseGenerator
     {
         private readonly Resource resource;
         private readonly String serviceClassName;
@@ -72,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen
         [VisibleForTestOnly]
         static internal void AddServiceField (CodeTypeDeclaration resourceClass)
         {
-            var serviceField = new CodeMemberField (typeof(IRequestExecutor), ServiceFieldName);
+            var serviceField = new CodeMemberField (typeof(IRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             resourceClass.Members.Add (serviceField);
         }
@@ -83,16 +81,11 @@ namespace Google.Apis.Tools.CodeGen
         [VisibleForTestOnly]
         static internal void AddResourceNameConst (CodeTypeDeclaration resourceClass, string resourceName)
         {
-            var serviceField = new CodeMemberField (typeof(string), ResourceNameConst);
+            var serviceField = new CodeMemberField (typeof(string), ResourceBaseGenerator.ResourceNameConst);
             serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
             serviceField.InitExpression = new CodePrimitiveExpression (resourceName);
             
             resourceClass.Members.Add (serviceField);
-        }
-
-        protected override string GetClassName ()
-        {
-            return className;
         }
     }
 }
