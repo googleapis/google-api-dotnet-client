@@ -59,6 +59,7 @@
     <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardResourcePropertyServiceDecorator.cs" />
     <Compile Include="GeneratorUtils.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

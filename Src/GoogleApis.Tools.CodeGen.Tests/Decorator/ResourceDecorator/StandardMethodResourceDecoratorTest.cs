@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		public void TestDecorateClass ()
 		{
 			var decorator = new StandardMethodResourceDecorator();
-			var decoratedClass = CreateDecoratedResourceClass(decorator);
+			var decoratedClass = CreateDecoratedResourceClass(new StandardResourceNameResourceDecorator(), decorator);
 			
 			Assert.AreEqual(2 + Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)).Length, decoratedClass.Members.Count);
 			

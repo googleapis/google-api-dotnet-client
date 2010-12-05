@@ -55,7 +55,6 @@ namespace Google.Apis.Tools.CodeGen
             var resourceClass = new CodeTypeDeclaration (this.className);
             
             AddServiceField (resourceClass);
-            AddResourceNameConst (resourceClass, resource.Name);
             
             foreach (IResourceDecorator decorator in this.decorators) {
                 decorator.DecorateClass (this.resource, className, resourceClass, this, this.serviceClassName, this.decorators);
@@ -75,17 +74,6 @@ namespace Google.Apis.Tools.CodeGen
             resourceClass.Members.Add (serviceField);
         }
 
-        /// <summary>
-        /// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
-        /// </summary>
-        [VisibleForTestOnly]
-        static internal void AddResourceNameConst (CodeTypeDeclaration resourceClass, string resourceName)
-        {
-            var serviceField = new CodeMemberField (typeof(string), ResourceBaseGenerator.ResourceNameConst);
-            serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            serviceField.InitExpression = new CodePrimitiveExpression (resourceName);
-            
-            resourceClass.Members.Add (serviceField);
-        }
+       
     }
 }
