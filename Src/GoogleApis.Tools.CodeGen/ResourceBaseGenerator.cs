@@ -35,39 +35,6 @@ namespace Google.Apis.Tools.CodeGen
         {
         }
 
-        protected IEnumerable<Parameter> GetRequiredParameters (Method method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<Parameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required 
-                    select p.Value;
-        }
-
-
-        protected IEnumerable<Parameter> GetOptionalParameters (Method method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<Parameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required == false
-                    select p.Value;
-        }
-
-        protected bool HasRequiredParameters (Method method)
-        {
-            return GetRequiredParameters (method).Any ();
-        }
-
-        protected bool HasOptionalParameters (Method method)
-        {
-            return GetOptionalParameters (method).Any ();
-        }
-
         protected void ResourceCallAddBodyDeclaration (Method method, CodeMemberMethod member)
         {
             switch (method.HttpMethod)

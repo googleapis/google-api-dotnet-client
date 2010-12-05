@@ -42,9 +42,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			oneRequiredParameterTest
 		}
 
-		protected const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
-		protected const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
-		protected const string ResourceName = "TestResource";
+		public const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
+		public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
+		public const string ResourceName = "TestResource";
 		public const string ResourceAsJson = @"
 		{
 			""methods"":{
@@ -124,14 +124,14 @@ namespace Google.Apis.Tools.CodeGen.Tests
 							""photos"":{""methods"":{""insert"":{""pathUrl"":""photos/{userId}/{albumId}"",""rpcName"":""chili.photos.insert"",""httpMethod"":""POST"",""methodType"":""rest"",""parameters"":{""albumId"":{""parameterType"":""path"",""pattern"":""(@new|[^@].*)"",""required"":true},""hl"":{""parameterType"":""query"",""required"":false},""media"":{""parameterType"":""query"",""required"":false},""userId"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true}}}}},
 							""related"":{""methods"":{""list"":{""pathUrl"":""activities/{userId}/{scope}/{postId}/@related"",""rpcName"":""chili.related.list"",""httpMethod"":""GET"",""methodType"":""rest"",""parameters"":{""alt"":{""parameterType"":""query"",""required"":false},""c"":{""parameterType"":""query"",""required"":false},""hl"":{""parameterType"":""query"",""required"":false},""max-results"":{""parameterType"":""query"",""required"":false},""postId"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},""scope"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},""userId"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true}}}}}}},""v1partners"":{""baseUrl"":""https://www.googleapis.com/""}}}}";
 
-		protected KeyValuePair<string, object> CreateJsonResourceDefinition (string resourceName, string jsonString)
+		public static KeyValuePair<string, object> CreateJsonResourceDefinition (string resourceName, string jsonString)
 		{
 			JsonDictionary json = (JsonDictionary)JsonReader.Parse (jsonString);
 			
 			return new KeyValuePair<string, object> (resourceName, json);
 		}
 
-		protected Resource CreateResource (string resourceName, string json)
+		public static Resource CreateResource (string resourceName, string json)
 		{
 			return new Resource (CreateJsonResourceDefinition (resourceName, json));
 		}

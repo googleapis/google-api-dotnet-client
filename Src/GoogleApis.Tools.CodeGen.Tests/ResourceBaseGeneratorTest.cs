@@ -31,50 +31,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
 	public class ResourceBaseGeneratorTest: BaseCodeGeneratorTest
 	{
 		[Test()]
-		public void TestGetRequiredParameters(){
-			var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-			var tester = new ForTestOnly();
-			List<Parameter> parameters = tester.GetRequiredParameters(method).ToList();
-			Assert.AreEqual(2, parameters.Count);
-			Assert.AreEqual("req_a", parameters[0].Name);
-			Assert.AreEqual("req_b", parameters[1].Name);
-		}
-		
-		[Test()]
-		public void TestGetOptionalParameters(){
-			var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-			var tester = new ForTestOnly();
-			List<Parameter> parameters = tester.GetOptionalParameters(method).ToList();
-			Assert.AreEqual(2, parameters.Count);
-			Assert.AreEqual("opt_a", parameters[0].Name);
-			Assert.AreEqual("opt_b", parameters[1].Name);
-			
-			method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest);
-			parameters = tester.GetOptionalParameters(method).ToList();
-			Assert.AreEqual(0, parameters.Count);
-		}
-		
-		[Test()]
-		public void TestHasOptionalParameters(){
-			var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-			var tester = new ForTestOnly();
-			Assert.That(tester.HasOptionalParameters(method));
-			Assert.That(tester.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneOptionalParameterTest)));
-			Assert.IsFalse(tester.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneRequiredParameterTest)));
-			Assert.IsFalse(tester.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest)));
-		}
-		
-		[Test()]
-		public void TestHasRequiredParameters(){
-			var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-			var tester = new ForTestOnly();
-			Assert.That(tester.HasRequiredParameters(method));
-			Assert.IsFalse(tester.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneOptionalParameterTest)));
-			Assert.That(tester.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneRequiredParameterTest)));
-			Assert.IsFalse(tester.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest)));
-		}
-		
-		[Test()]
 		public void TestResourceCallAddBodyDeclaration(){
 			var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
 			var tester = new ForTestOnly();
@@ -93,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		#region Helper methods
 		
 		public Method GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-			var resource = this.CreateResource (ResourceName, ResourceAsJson);
+			var resource = BaseCodeGeneratorTest.CreateResource (ResourceName, ResourceAsJson);
 			return resource.Methods[testMethod.ToString()];
 		}
 		
@@ -107,23 +63,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			new public const string ResourceNameConst = ResourceBaseGenerator.ResourceNameConst;		
 			new public const string ParameterDictionaryName = ResourceBaseGenerator.ParameterDictionaryName;
 			new public const string ReturnVariableName = ResourceBaseGenerator.ReturnVariableName;
-	
-			new	public IEnumerable<Parameter> GetRequiredParameters(Method method){
-					return base.GetRequiredParameters(method);
-			}
-	
-			
-			new public IEnumerable<Parameter> GetOptionalParameters(Method method){
-				return base.GetOptionalParameters(method);
-			}
-			
-			new public bool HasOptionalParameters(Method method){
-				return base.HasOptionalParameters(method);
-			}
-			
-			new public bool HasRequiredParameters(Method method){
-				return base.HasRequiredParameters(method);
-			}
 			
 			new public void ResourceCallAddBodyDeclaration(Method method, CodeMemberMethod member) {
 				base.ResourceCallAddBodyDeclaration(method, member);
