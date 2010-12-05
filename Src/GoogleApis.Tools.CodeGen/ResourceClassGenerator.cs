@@ -54,26 +54,11 @@ namespace Google.Apis.Tools.CodeGen
         {
             var resourceClass = new CodeTypeDeclaration (this.className);
             
-            AddServiceField (resourceClass);
-            
             foreach (IResourceDecorator decorator in this.decorators) {
                 decorator.DecorateClass (this.resource, className, resourceClass, this, this.serviceClassName, this.decorators);
             }
             
             return resourceClass;
         }
-
-        /// <summary>
-        /// Adds <code>private BuzzService service;</code> to the resource class.
-        /// </summary>
-        [VisibleForTestOnly]
-        static internal void AddServiceField (CodeTypeDeclaration resourceClass)
-        {
-            var serviceField = new CodeMemberField (typeof(IRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
-            serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            resourceClass.Members.Add (serviceField);
-        }
-
-       
     }
 }

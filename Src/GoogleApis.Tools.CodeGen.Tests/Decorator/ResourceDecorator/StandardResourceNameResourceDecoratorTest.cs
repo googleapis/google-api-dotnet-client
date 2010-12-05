@@ -15,9 +15,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var decorator = new StandardResourceNameResourceDecorator();
             var decoratedClass = CreateDecoratedResourceClass(decorator);
             
-            Assert.AreEqual(2, decoratedClass.Members.Count);
-            Assert.IsInstanceOf(typeof(CodeMemberField), decoratedClass.Members[1]);
-            Assert.AreEqual(ResourceBaseGenerator.ResourceNameConst, decoratedClass.Members[1].Name);
+            Assert.AreEqual(1, decoratedClass.Members.Count);
+            Assert.IsInstanceOf(typeof(CodeMemberField), decoratedClass.Members[0]);
+            Assert.AreEqual(ResourceBaseGenerator.ResourceNameConst, decoratedClass.Members[0].Name);
             
             CheckCompile(decoratedClass, false, "Failed To Compile StandardResourceNameResourceDecorator");
         }

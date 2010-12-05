@@ -15,7 +15,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         [Test()]
         public void TestDecorateClass ()
         {
-            var decorator = new StandardServiceFieldResourceDecorator();
+            var decorator = new StandardServiceFieldServiceDecorator();
             var service = CreateService();
             var codeType = new CodeTypeDeclaration("TestClass");
             

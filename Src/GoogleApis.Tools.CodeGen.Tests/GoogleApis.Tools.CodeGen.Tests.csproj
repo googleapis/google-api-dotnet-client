@@ -60,6 +60,7 @@
     <Compile Include="Decorator\ServiceDecorator\StandardResourcePropertyServiceDecoratorTest.cs" />
     <Compile Include="GeneratorUtilsTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
