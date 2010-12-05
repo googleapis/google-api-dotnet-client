@@ -92,5 +92,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return new CodeMethodInvokeExpression (authenticatorFactory, "GetRegisteredAuthenticator");
             //return new CodeObjectCreateExpression("ConsoleAuthenticator");
         }
+        
+        public override string ToString ()
+        {
+            return this.GetType().Name;
+        }
     }
 }

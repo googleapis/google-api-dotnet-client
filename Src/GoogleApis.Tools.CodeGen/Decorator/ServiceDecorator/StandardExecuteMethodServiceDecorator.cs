@@ -93,6 +93,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             
             return createAndAssignRequest;
         }
+        
+        public override string ToString ()
+        {
+            return this.GetType().Name;
+        }
     }
 }
 

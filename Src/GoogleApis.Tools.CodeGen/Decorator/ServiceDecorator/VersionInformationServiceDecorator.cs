@@ -66,6 +66,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             uri.InitExpression = new CodePrimitiveExpression (service.BaseUri.ToString ());
             return uri;
         }
+        
+        public override string ToString ()
+        {
+            return this.GetType().Name;
+        }
     }
 }
 

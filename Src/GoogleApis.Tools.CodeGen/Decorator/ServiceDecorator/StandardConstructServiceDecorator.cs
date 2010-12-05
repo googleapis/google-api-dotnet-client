@@ -118,6 +118,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             constructor.Statements.Add (new CodeAssignStatement (ServiceClassGenerator.GetFieldReference (resource, resourceNumber), new CodeObjectCreateExpression (ServiceClassGenerator.GetClassName (resource, resourceNumber), new CodeThisReferenceExpression ())));
         }
         
+        public override string ToString ()
+        {
+            return this.GetType().Name;
+        }
+        
     }
 }
 

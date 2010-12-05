@@ -50,43 +50,12 @@ namespace Google.Apis.Tools.CodeGen
             var serviceClass = new CodeTypeDeclaration (serviceClassName);
             serviceClass.BaseTypes.Add (typeof(IRequestExecutor));
             
-            int resourceNumber = 1;
-            foreach (var pair in service.Resources) {
-                Resource resource = pair.Value;
-                AddResourceGetter (serviceClass, resource, resourceNumber);
-                AddResourceField (serviceClass, resource, resourceNumber);
-                resourceNumber++;
-            }
-            
             foreach (IServiceDecorator serviceDecorator in decorators) {
+                logger.DebugFormat("Decorating Class {0} with {1}", serviceClassName, serviceDecorator.ToString());
                 serviceDecorator.DecorateClass (service, serviceClass);
             }
             
             return serviceClass;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void AddResourceField (CodeTypeDeclaration serviceClass, Resource resource, int resourceNumber)
-        {
-            // Add local private variables for each Resource
-            var field = new CodeMemberField (GetClassName (resource, resourceNumber), GetFieldName (resource, resourceNumber));
-            field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            serviceClass.Members.Add (field);
-        }
-
-        private void AddResourceGetter (CodeTypeDeclaration serviceClass, Resource resource, int resourceNumber)
-        {
-            var getter = new CodeMemberProperty ();
-            getter.Name = GetClassName (resource, resourceNumber);
-            getter.HasGet = true;
-            getter.HasSet = false;
-            getter.Attributes = MemberAttributes.Public;
-            getter.Type = new CodeTypeReference (GetClassName (resource, resourceNumber));
-            getter.GetStatements.Add (new CodeMethodReturnStatement (GetFieldReference (resource, resourceNumber)));
-            
-            serviceClass.Members.Add (getter);
         }
 
         public static CodeFieldReferenceExpression GetFieldReference (Resource resource, int resourceNumber)
