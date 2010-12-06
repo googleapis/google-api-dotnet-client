@@ -21,7 +21,7 @@ using System.Collections.Generic;
 
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tools.CodeGen
+namespace Google.Apis.Tools.CodeGen.Generator
 {
 
     public abstract class BaseGenerator

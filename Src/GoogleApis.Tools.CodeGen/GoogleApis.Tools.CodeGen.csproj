@@ -40,8 +40,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="BaseGenerator.cs" />
-    <Compile Include="ResourceBaseGenerator.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
@@ -61,6 +59,8 @@
     <Compile Include="GoogleServiceGenerator.cs" />
     <Compile Include="Generator\ResourceClassGenerator.cs" />
     <Compile Include="Generator\ServiceClassGenerator.cs" />
+    <Compile Include="Generator\BaseGenerator.cs" />
+    <Compile Include="Generator\ResourceBaseGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
