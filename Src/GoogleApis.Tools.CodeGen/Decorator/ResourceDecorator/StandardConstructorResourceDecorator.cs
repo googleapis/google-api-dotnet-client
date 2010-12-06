@@ -24,9 +24,12 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
+    /// <summary>
+    /// Creates a constructor for this resource, this is a standard decorator so this either needs to be 
+    /// present or another decorator that creates a constructor with the same signature put in.
+    /// </summary>
     public class StandardConstructorResourceDecorator : IResourceDecorator
     {
-
         private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardConstructorResourceDecorator));
 
         public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)

@@ -27,6 +27,15 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen
 {
+    /// <summary>
+    /// The main entry for generating code to access google services.
+    /// For a default generation try calling 
+    /// <example>
+    ///     <code>
+    ///         GoogleServiceGenerator.GenerateService("buzz", "v1", "Com.Example.Namespace", "CSharp", "c:\example\");
+    ///     </code>
+    /// </example>
+    /// </summary>
     public class GoogleServiceGenerator : BaseGenerator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleServiceGenerator));

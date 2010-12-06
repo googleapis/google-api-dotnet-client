@@ -25,6 +25,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// <summary>
     /// Adds a conveniounce zero argument constructor to the service.
     /// Using the AuthenticatorFactory to get the IAuthenticator and using a DiscoverService based on a WebDiscoveryDevice
+    /// This is an optional decorator.
     /// </summary>
     public class EasyConstructServiceDecorator : IServiceDecorator
     {
