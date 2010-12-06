@@ -24,7 +24,10 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
 
-
+    /// <summary>
+    /// An optional decorator that adds logging to the Resrouces as they are called.
+    /// This uses log4Net as the logging framework.
+    /// </summary>
     public class Log4NetResourceDecorator : IResourceDecorator
     {
         public const string LoggerName = "logger";

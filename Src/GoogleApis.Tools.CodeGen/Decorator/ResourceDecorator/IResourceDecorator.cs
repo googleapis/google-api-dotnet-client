@@ -24,10 +24,14 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
 
-
+    /// <summary>
+    /// Classes that implement this interface will be called when building a resource class.
+    /// </summary>
     public interface IResourceDecorator
     {
-        void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators);
+        void DecorateClass (Resource resource, string className, 
+                            CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, 
+                            string serviceClassName, IEnumerable<IResourceDecorator> allDecorators);
 
         void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember);
 

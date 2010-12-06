@@ -23,6 +23,10 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
+    /// <summary>
+    /// Adds a reference to the IRequestExecutor, this is a standard decorator so must be present 
+    /// or another Decorator that provides adds the same field.
+    /// </summary>
     public class StandardServiceFieldResourceDecorator: IResourceDecorator
     {
         public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)

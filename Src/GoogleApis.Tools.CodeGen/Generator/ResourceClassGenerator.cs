@@ -24,6 +24,10 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
+    /// <summary>
+    /// Generates a class for one Resource. This uses the passed in decroators to do the work.
+    /// </summary>
+    /// <seealso cref="IResourceDecorator"/>
     public class ResourceClassGenerator : BaseGenerator
     {
         private readonly Resource resource;
@@ -32,7 +36,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         private readonly IEnumerable<IResourceDecorator> decorators;
         private readonly String className;
 
-        public ResourceClassGenerator (Resource resource, String serviceClassName, int resourceNumber, IEnumerable<IResourceDecorator> decorators)
+        public ResourceClassGenerator (Resource resource, String serviceClassName, int resourceNumber, 
+                                        IEnumerable<IResourceDecorator> decorators)
         {
             this.resource = resource;
             this.serviceClassName = serviceClassName;

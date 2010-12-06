@@ -22,6 +22,9 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen
 {
+    /// <summary>
+    /// A collection of static utility methods for generators and decorators to use. 
+    /// </summary>
     public sealed class GeneratorUtils
     {
         #region unsafe words
@@ -33,9 +36,11 @@ namespace Google.Apis.Tools.CodeGen
         "new", "null", "object", "operator", "out", "override", "params", "private", "protected", "public",
         "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof", "stackalloc", "static", "string",
         "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked",
+        "unsafe", "ushort", "using", "virtual", "void", "volatile", "while",    
         //C# proposed reserved words
+        "await", "async",
         //CodeGen Specific
-        "unsafe", "ushort", "using", "virtual", "void", "volatile", "while", "await", "async", "body" };
+        "body" };
         public static readonly IList<string> UnsafeWords = new List<string> (UnsafeWordsArray).AsReadOnly ();
         #endregion
 

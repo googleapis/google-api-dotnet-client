@@ -24,8 +24,15 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
-
-
+    /// <summary>
+    /// An optional Decorator that add a Method to the resource class for each Method.
+    /// The method added will have a parameter for each of the required parameters, all the optional parameters will be 
+    /// passed in a IDictionary&lt;string,string&gt;
+    /// e.g.
+    /// <code>
+    ///     public virtual Stream Search(IDictionary&lt;string, string&gt; parameters)
+    /// </code>
+    /// </summary>
     public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator
     {
 

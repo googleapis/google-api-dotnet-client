@@ -20,6 +20,9 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
+    /// <summary>
+    /// IServiceDecorators will decorate the generated Service class.
+    /// </summary>
     public interface IServiceDecorator
     {
         void DecorateClass (IService service, CodeTypeDeclaration serviceClass);

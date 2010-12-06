@@ -24,6 +24,11 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
+    /// <summary>
+    /// Adds the resource name as a private const field to the generated resource class.
+    /// This is a standard class so this need to be present or another decorator that add a field 
+    /// with the same name and type.
+    /// </summary>
     public class StandardResourceNameResourceDecorator : IResourceDecorator
     {
         public void DecorateClass (Resource resource, string className, 
@@ -46,7 +51,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         }
 
         /// <summary>
-        /// Adds <code>private const string RESOURCE = "activities";</code> to the resource class
+        /// Adds <code>private const string Resource = "activities";</code> to the resource class
         /// </summary>
         [VisibleForTestOnly]
         internal CodeMemberField CreateResourceNameConst (string resourceName)
