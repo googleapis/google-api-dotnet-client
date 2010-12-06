@@ -22,7 +22,7 @@ using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
-namespace Google.Apis.Tools.CodeGen
+namespace Google.Apis.Tools.CodeGen.Generator
 {
     public abstract class ResourceBaseGenerator : BaseGenerator
     {

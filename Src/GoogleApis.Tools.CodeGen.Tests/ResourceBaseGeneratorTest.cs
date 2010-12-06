@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Generator;
 
 using NUnit.Framework;
 namespace Google.Apis.Tools.CodeGen.Tests
