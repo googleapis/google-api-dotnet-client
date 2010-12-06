@@ -26,10 +26,9 @@ using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 namespace Google.Apis.Tools.CodeGen
 {
-    public class CodeGen : BaseGenerator
+    public class GoogleServiceGenerator : BaseGenerator
     {
-
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(CodeGen));
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleServiceGenerator));
 
         private readonly CodeCompileUnit compileUnit;
         private readonly IService service;
@@ -40,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen
 
         private CodeNamespace client;
 
-        public CodeGen (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, 
+        public GoogleServiceGenerator (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, 
                         IEnumerable<IServiceDecorator> serviceDecorators)
         {
             compileUnit = new CodeCompileUnit ();
@@ -52,7 +51,7 @@ namespace Google.Apis.Tools.CodeGen
             this.serviceDecorators = new List<IServiceDecorator> (serviceDecorators).AsReadOnly ();
         }
 
-        public CodeGen (IService service, string clientNamespace) : 
+        public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
                 new IResourceDecorator[] {
                     new StandardServiceFieldResourceDecorator(),
@@ -89,7 +88,7 @@ namespace Google.Apis.Tools.CodeGen
             // Build the service based on discovery information.
             var service = discovery.GetService (version);
             
-            var generator = new CodeGen (service, clientNamespace);
+            var generator = new GoogleServiceGenerator (service, clientNamespace);
             
             var provider = CodeDomProvider.CreateProvider (language);
             
