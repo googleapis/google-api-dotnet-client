@@ -23,7 +23,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
-namespace Google.Apis.Tools.CodeGen
+namespace Google.Apis.Tools.CodeGen.Generator
 {
 
     /// <summary>
