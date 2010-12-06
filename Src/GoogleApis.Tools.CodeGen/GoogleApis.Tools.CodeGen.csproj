@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="CodeGen.cs" />
     <Compile Include="ServiceClassGenerator.cs" />
     <Compile Include="ResourceClassGenerator.cs" />
     <Compile Include="BaseGenerator.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
+    <Compile Include="GoogleServiceGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

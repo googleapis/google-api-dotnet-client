@@ -17,7 +17,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			var language = "CSharp";
 			var output = "../../../CommandLineGeneratedService/Buzz/BuzzService.cs";
 			
-			Google.Apis.Tools.CodeGen.MainClass.GenerateClass(serviceName, version, clientNamespace, language, output); 
+			GoogleServiceGenerator.GenerateService(serviceName, version, clientNamespace, language, output); 
 			Logger.Debug("All Done");
 		}
 	}

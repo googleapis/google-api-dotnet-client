@@ -78,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen
                     }
                 }
             }
-            CodeGen.GenerateService (serviceName, version, clientNamespace, language, outputFile);
+            GoogleServiceGenerator.GenerateService (serviceName, version, clientNamespace, language, outputFile);
         }
     }
 }
