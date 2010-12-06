@@ -19,6 +19,7 @@ using System.CodeDom;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
