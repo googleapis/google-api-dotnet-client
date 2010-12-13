@@ -32,13 +32,17 @@ namespace Com.Google.AdSense.Gadget.Ui.ViewModel
              new Point(5,52), new Point(15,10), new Point(25,80), new Point(35,50), new Point(45,12), new Point(55,40), new Point(65,50)
         };
 
-        PointCollection CurrentPoints { get; set; }
-        PointCollection PreviousPoints { get; set; }
+        public PointCollection CurrentPoints { get; set; }
+        public PointCollection PreviousPoints { get; set; }
+        public String Name { get; set; }
 
         public RevenueBy7DaysViewModel()
         {
             CurrentPoints = new PointCollection(mockCurrentPoints);
             PreviousPoints = new PointCollection(mockPreviousPoints);
+            Name = "FoundObject";
         }
+
+
     }
 }
