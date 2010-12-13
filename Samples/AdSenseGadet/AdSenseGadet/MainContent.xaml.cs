@@ -26,6 +26,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.DataVisualization.Charting;
+
 
 using Com.Google.AdSense.Gadget.Ui.ViewModel;
 
@@ -40,6 +42,52 @@ namespace Com.Google.AdSense.Gadget.Ui
         {
             InitializeComponent();
             DataContext = new RevenueBy7DaysViewModel();
+
+            {
+                var recent7Days = new LineSeries();
+                recent7Days.Name = "recent7Days";
+                recent7Days.Title = "Recent 7 Days";
+                recent7Days.DependentValuePath = "Y";
+                recent7Days.IndependentValuePath = "X";
+                PointCollection points = new PointCollection(10);
+                points.Add(new Point(7, 55.95));
+                points.Add(new Point(6, 45.95));
+                points.Add(new Point(5, 35.95));
+                points.Add(new Point(4, 65.95));
+                points.Add(new Point(3, 85.95));
+                points.Add(new Point(2, 75.95));
+                points.Add(new Point(1, 55.95));
+                //for (double i = 1; i <= 7; i++)
+                //{
+                //    points.Add(new Point(i, i + i));
+                //}
+                recent7Days.ItemsSource = points;
+
+                testChart.Series.Add(recent7Days);
+            }
+
+            {
+                var past7Days = new LineSeries();
+                past7Days.Name = "past7Days";
+                past7Days.Title = "7 Days before";
+                past7Days.DependentValuePath = "Y";
+                past7Days.IndependentValuePath = "X";
+                PointCollection points = new PointCollection(10);
+                points.Add(new Point(1, 55.95));
+                points.Add(new Point(2, 45.95));
+                points.Add(new Point(3, 35.95));
+                points.Add(new Point(4, 65.95));
+                points.Add(new Point(5, 85.95));
+                points.Add(new Point(6, 75.95));
+                points.Add(new Point(7, 55.95));
+                //for (double i = 1; i <= 7; i++)
+                //{
+                //    points.Add(new Point(10 - i, i + i));
+                //}
+                past7Days.ItemsSource = points;
+
+                testChart.Series.Add(past7Days);
+            }
         }
     }
 }
