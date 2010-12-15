@@ -41,14 +41,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\DotNetOpenAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Google.Apis.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.5.8.10295, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis, Version=1.0.4001.19528, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -56,10 +57,13 @@
     <Compile Include="Buzz\BuzzService.cs" />
     <Compile Include="Buzz\ConsoleAuthenticator.cs" />
     <Compile Include="Target\TestBuzzService.cs" />
+    <Compile Include="AdSense\AdSenseService.cs" />
+    <Compile Include="AdSense\ClientAuth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buzz\" />
     <Folder Include="Target\" />
+    <Folder Include="AdSense\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -67,5 +71,10 @@
       <Project>{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}</Project>
       <Name>CommandLine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="CommandLineGeneratedService.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ApplicationDefinition>
   </ItemGroup>
 </Project>

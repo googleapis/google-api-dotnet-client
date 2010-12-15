@@ -26,7 +26,7 @@ using Google.Apis.Samples.CommandLine.Controllers;
 namespace Google.Apis.Samples.CommandLine.Views
 {
 	public class MethodView {
-		public void Render(Method method) {
+		public void Render(IMethod method) {
 			foreach(var parameter in method.Parameters.Values) {
 				if(parameter.Required) {
 					Console.Out.Write("*");

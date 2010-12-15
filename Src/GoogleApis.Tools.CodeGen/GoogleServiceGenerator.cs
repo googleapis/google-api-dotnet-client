@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -46,19 +47,26 @@ namespace Google.Apis.Tools.CodeGen
 
         private readonly IEnumerable<IResourceDecorator> resourceDecorators;
         private readonly IEnumerable<IServiceDecorator> serviceDecorators;
+        private readonly IEnumerable<IResourceContainerDecorator> resourceContainerDecorators;
 
         private CodeNamespace client;
 
-        public GoogleServiceGenerator (IService service, string clientNamespace, IEnumerable<IResourceDecorator> resourceDecorators, 
-                        IEnumerable<IServiceDecorator> serviceDecorators)
+        public GoogleServiceGenerator (IService service, string clientNamespace, 
+                    IEnumerable<IResourceDecorator> resourceDecorators, 
+                    IEnumerable<IServiceDecorator> serviceDecorators,
+                    IEnumerable<IResourceContainerDecorator> resourceContainerDecorators)
         {
             compileUnit = new CodeCompileUnit ();
             this.codeClientNamespace = clientNamespace;
             this.service = service;
             
             // Defensive copy and readonly
-            this.resourceDecorators = new List<IResourceDecorator> (resourceDecorators).AsReadOnly ();
-            this.serviceDecorators = new List<IServiceDecorator> (serviceDecorators).AsReadOnly ();
+            this.resourceDecorators = new List<IResourceDecorator> 
+                (resourceDecorators).AsReadOnly ();
+            this.serviceDecorators = new List<IServiceDecorator> 
+                (serviceDecorators).AsReadOnly ();
+            this.resourceContainerDecorators = new List<IResourceContainerDecorator> 
+                (resourceContainerDecorators).AsReadOnly ();
         }
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
@@ -72,11 +80,14 @@ namespace Google.Apis.Tools.CodeGen
                     new DictonaryOptionalParameterResourceDecorator () }, 
                 new IServiceDecorator[] { 
                     new StandardServiceFieldServiceDecorator(),
-                    new StandardResourcePropertyServiceDecorator(),
+                    
                     new StandardConstructServiceDecorator (), 
                     new EasyConstructServiceDecorator (), 
                     new VersionInformationServiceDecorator (), 
-                    new StandardExecuteMethodServiceDecorator () })
+                    new StandardExecuteMethodServiceDecorator () },
+                new IResourceContainerDecorator[]{
+                    new StandardResourcePropertyServiceDecorator(),
+            })
         {   
         }
   
@@ -96,7 +107,7 @@ namespace Google.Apis.Tools.CodeGen
                                 new DirectoryInfo (cacheDirectory));
             var discovery = new DiscoveryService (webfetcher);
             // Build the service based on discovery information.
-            var service = discovery.GetService (version);
+            var service = discovery.GetService (version, DiscoveryVersion.Version_0_1, null);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
             
@@ -123,22 +134,38 @@ namespace Google.Apis.Tools.CodeGen
             CreateClient (codeClientNamespace);
             AddUsings (false);
             
-            var serviceClass = new ServiceClassGenerator (service, serviceDecorators).CreateServiceClass ();
+            ResourceContainerGenerator resourceContainerGenerator = 
+                new ResourceContainerGenerator(resourceContainerDecorators);
+            
+            var serviceClass = new ServiceClassGenerator (service, serviceDecorators, resourceContainerGenerator)
+                .CreateServiceClass ();
             string serviceClassName = serviceClass.Name;
             
             client.Types.Add (serviceClass);
-            
-            int resourceNumber = 1;
-            foreach (var res in service.Resources.Values) {
-                // Create a class for the resource
-                logger.DebugFormat ("Adding Resource {0}", res.Name);
-                var resourceGenerator = new ResourceClassGenerator (res, serviceClassName, resourceNumber, resourceDecorators);
-                client.Types.Add (resourceGenerator.CreateClass ());
-                resourceNumber++;
-            }
+            CreateResources (serviceClassName,service, resourceContainerGenerator, 1);
             
             logger.Debug ("Generation Complete.");
             return compileUnit;
+        }
+        
+        private int CreateResources (string serviceClassName, 
+                                      IResourceContainer resourceContainer,
+                                      ResourceContainerGenerator resourceContainerGenerator,
+                                      int resourceNumber)
+        {
+            
+            foreach (var res in resourceContainer.Resources.Values) {
+                // Create a class for the resource
+                logger.DebugFormat ("Adding Resource {0}", res.Name);
+                var resourceGenerator = new ResourceClassGenerator (
+                    res, serviceClassName, 
+                    resourceNumber, resourceDecorators, resourceContainerGenerator);
+                client.Types.Add (resourceGenerator.CreateClass ());
+                resourceNumber++;
+                resourceNumber = CreateResources(serviceClassName, res, 
+                                                 resourceContainerGenerator, resourceNumber);
+            }
+            return resourceNumber;
         }
 
         private void LogDecorators ()

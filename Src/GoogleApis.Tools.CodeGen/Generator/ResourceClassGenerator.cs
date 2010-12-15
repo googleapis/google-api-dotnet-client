@@ -30,20 +30,23 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// <seealso cref="IResourceDecorator"/>
     public class ResourceClassGenerator : BaseGenerator
     {
-        private readonly Resource resource;
+        private readonly IResource resource;
         private readonly String serviceClassName;
         private readonly int resourceNumber;
         private readonly IEnumerable<IResourceDecorator> decorators;
         private readonly String className;
+        private readonly ResourceContainerGenerator resourceConainerGenerator;
 
-        public ResourceClassGenerator (Resource resource, String serviceClassName, int resourceNumber, 
-                                        IEnumerable<IResourceDecorator> decorators)
+        public ResourceClassGenerator (IResource resource, String serviceClassName, int resourceNumber, 
+                                        IEnumerable<IResourceDecorator> decorators,
+                                       ResourceContainerGenerator resourceConainerGenerator)
         {
             this.resource = resource;
             this.serviceClassName = serviceClassName;
             this.resourceNumber = resourceNumber;
             this.decorators = decorators;
             this.className = GeneratorUtils.GetClassName (resource, this.resourceNumber);
+            this.resourceConainerGenerator = resourceConainerGenerator;
         }
 
         /// <summary>
@@ -62,6 +65,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
             foreach (IResourceDecorator decorator in this.decorators) {
                 decorator.DecorateClass (this.resource, className, resourceClass, this, this.serviceClassName, this.decorators);
             }
+            
+            resourceConainerGenerator.AddResourceContainerDecorations(resource, resourceClass);
             
             return resourceClass;
         }

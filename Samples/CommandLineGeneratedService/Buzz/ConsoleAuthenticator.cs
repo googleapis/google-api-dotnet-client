@@ -27,13 +27,23 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
 
 
 	public class ConsoleAuthenticator:IAuthenticator {
+		private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ConsoleAuthenticator));
 		private IAuthenticator internalAuthenticator;
 		private const string _consumerKey = "anonymous";
 		private const string _consumerSecret = "anonymous";
-
+		private readonly string scope;
+		private readonly string application;
+		
+		public ConsoleAuthenticator(string scope, string application)
+		{
+			this.scope = scope;
+			this.application = application;
+			logger.DebugFormat("Initilising ConsoleAuthenticator with scope[{0}]",scope);
+		}
 
 		public System.Net.HttpWebRequest CreateHttpWebRequest (string httpMethod, Uri targetUri)
 		{
+			logger.DebugFormat("Creating Http Request for [{0}]", targetUri.AbsolutePath);
 			if(internalAuthenticator == null){
 				internalAuthenticator = CreateAuthority();
 			}
@@ -41,7 +51,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
 		}
 		
 		private DesktopConsumer CreateConsumer(){
-			var scope = Scopes.scopes["buzz"];
+			var scope = Scopes.scopes[this.application];
 			var serviceProvider = new ServiceProviderDescription {
 				ProtocolVersion = ProtocolVersion.V10a,
 				AccessTokenEndpoint = new MessageReceivingEndpoint(scope.AccessTokenUrl, HttpDeliveryMethods.GetRequest),
@@ -60,26 +70,26 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
 		
 		private IAuthenticator CreateAuthority(){
 			var requestParameters = new Dictionary<string, string>();
-				string requestToken;
-				
-				requestParameters.Add("scope", "https://www.googleapis.com/auth/buzz");
-				requestParameters.Add("domain", "BuzzGeneratedIntegration");
+			string requestToken;
 			
-				var consumer = CreateConsumer();
+			requestParameters.Add("scope", scope);
+			requestParameters.Add("domain", "BuzzGeneratedIntegration");
+		
+			var consumer = CreateConsumer();
+		
+			// The Google OAuth API will do OOB automatically
+			var authUri = consumer.RequestUserAuthorization(requestParameters, null, out requestToken);
 			
-				// The Google OAuth API will do OOB automatically
-				var authUri = consumer.RequestUserAuthorization(requestParameters, null, out requestToken);
-				
-				AskForCredentials(authUri, requestParameters);
-				var pin = Console.ReadLine().Trim();
-				
-				// Read the response.
-				
-				// Upgrade the token.
-				var authToken = consumer.ProcessUserAuthorization(requestToken, pin);
-				var tokenSecret = consumer.TokenManager.GetTokenSecret(authToken.AccessToken);
-											
-				return new OAuth3LeggedAuthenticator("", _consumerKey, _consumerSecret, authToken.AccessToken, tokenSecret);
+			AskForCredentials(authUri, requestParameters);
+			var pin = Console.ReadLine().Trim();
+			
+			// Read the response.
+			
+			// Upgrade the token.
+			var authToken = consumer.ProcessUserAuthorization(requestToken, pin);
+			var tokenSecret = consumer.TokenManager.GetTokenSecret(authToken.AccessToken);
+										
+			return new OAuth3LeggedAuthenticator("", _consumerKey, _consumerSecret, authToken.AccessToken, tokenSecret);
 				
 		}
 		

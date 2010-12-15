@@ -32,19 +32,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     {
         private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardConstructorResourceDecorator));
 
-        public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
+                                   ResourceClassGenerator generator, string serviceClassName, 
+                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             logger.DebugFormat ("Adding standard constructor to Resource[{0}]", resource.Name);
             resourceClass.Members.Add (CreateConstructor (serviceClassName));
         }
 
 
-        public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
         }
 
 
-        public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
         }
 
@@ -55,10 +57,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             
             // public [ResourceClass]([ServiceClass] service)
             constructor.Attributes = MemberAttributes.Public;
-            constructor.Parameters.Add (new CodeParameterDeclarationExpression (serviceClassName, ResourceBaseGenerator.ServiceFieldName));
+            constructor.Parameters.Add (new CodeParameterDeclarationExpression (serviceClassName, 
+                                                ResourceBaseGenerator.ServiceFieldName));
             
             // this.service = service
-            constructor.Statements.Add (new CodeAssignStatement (new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ResourceBaseGenerator.ServiceFieldName), new CodeArgumentReferenceExpression (ResourceBaseGenerator.ServiceFieldName)));
+            constructor.Statements.Add (
+                new CodeAssignStatement (
+                    new CodeFieldReferenceExpression (
+                        new CodeThisReferenceExpression (), 
+                        ResourceBaseGenerator.ServiceFieldName), 
+                    new CodeArgumentReferenceExpression (ResourceBaseGenerator.ServiceFieldName)));
             return constructor;
         }
     }

@@ -23,14 +23,13 @@ namespace Google.Apis.Discovery
 {
 
 
-	public interface IService 
+	public interface IService : IResourceContainer
 	{
-		string Name {get;}
+		
 		string Version {get;}
 		Uri BaseUri {get;}
 		Uri RpcUri {get;}
-
-		IDictionary<string, Resource> Resources {get;}
+        DiscoveryVersion DiscoveryVersion{get;}
 
 		/// <summary>
 		/// Creates a Request Object based on the HTTP Method Type.

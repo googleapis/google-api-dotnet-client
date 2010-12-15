@@ -49,8 +49,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		
 		#region Helper methods
 		
-		public Method GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-			var resource = BaseCodeGeneratorTest.CreateResource (ResourceName, ResourceAsJson);
+		public IMethod GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
+			var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_0_1 (ResourceName, ResourceAsJson);
 			return resource.Methods[testMethod.ToString()];
 		}
 		
@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			new public const string ParameterDictionaryName = ResourceBaseGenerator.ParameterDictionaryName;
 			new public const string ReturnVariableName = ResourceBaseGenerator.ReturnVariableName;
 			
-			new public void ResourceCallAddBodyDeclaration(Method method, CodeMemberMethod member) {
+			new public void ResourceCallAddBodyDeclaration(IMethod method, CodeMemberMethod member) {
 				base.ResourceCallAddBodyDeclaration(method, member);
 			}
 			
@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 				return base.AssignParameterToDictionary(param, parameterCount);
 			}
 			
-			new public CodeStatement CreateExecuteRequest(Method method){
+			new public CodeStatement CreateExecuteRequest(IMethod method){
 				return base.CreateExecuteRequest(method);
 			}
 			

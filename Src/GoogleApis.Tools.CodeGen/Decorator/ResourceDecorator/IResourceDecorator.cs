@@ -29,12 +29,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public interface IResourceDecorator
     {
-        void DecorateClass (Resource resource, string className, 
+        void DecorateClass (IResource resource, string className, 
                             CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, 
                             string serviceClassName, IEnumerable<IResourceDecorator> allDecorators);
 
-        void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember);
+        void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember);
 
-        void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember);
+        void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember);
     }
 }
