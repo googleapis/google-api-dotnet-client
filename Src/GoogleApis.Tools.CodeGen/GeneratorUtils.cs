@@ -143,7 +143,7 @@ namespace Google.Apis.Tools.CodeGen
             return sb.ToString ();
         }
         
-        private static String GetSafeMemberName (string baseName, String uniquieifier)
+        public static String GetSafeMemberName (string baseName, String uniquieifier)
         {
             return GetSafeMemberName (baseName, uniquieifier, UnsafeWords);
         }
@@ -160,17 +160,17 @@ namespace Google.Apis.Tools.CodeGen
             return LowwerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
         }
         
-        public static String GetMethodName (Method method, int methodNumber)
+        public static String GetMethodName (IMethod method, int methodNumber)
         {
             return UpperFirstLetter( GetSafeMemberName( method.Name, "Method" + methodNumber));
         }
 
-        public static String GetClassName (Resource resource, int resourceNumber)
+        public static String GetClassName (IResourceContainer resource, int resourceNumber)
         {
             return UpperFirstLetter( GetSafeMemberName( resource.Name, "Resource" + resourceNumber));
         }
-
-        public static String GetFieldName (Resource resource, int resourceNumber)
+        
+        public static String GetFieldName (IResource resource, int resourceNumber)
         {
             return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
         }
@@ -178,7 +178,7 @@ namespace Google.Apis.Tools.CodeGen
         #endregion
         
         #region Required and Optional Parameters
-        public static IEnumerable<Parameter> GetRequiredParameters (Method method)
+        public static IEnumerable<Parameter> GetRequiredParameters (IMethod method)
         {
             if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
@@ -190,7 +190,7 @@ namespace Google.Apis.Tools.CodeGen
         }
 
 
-        public static IEnumerable<Parameter> GetOptionalParameters (Method method)
+        public static IEnumerable<Parameter> GetOptionalParameters (IMethod method)
         {
             if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
@@ -201,12 +201,12 @@ namespace Google.Apis.Tools.CodeGen
                     select p.Value;
         }
 
-        public static bool HasRequiredParameters (Method method)
+        public static bool HasRequiredParameters (IMethod method)
         {
             return GetRequiredParameters (method).Any ();
         }
 
-        public static bool HasOptionalParameters (Method method)
+        public static bool HasOptionalParameters (IMethod method)
         {
             return GetOptionalParameters (method).Any ();
         }

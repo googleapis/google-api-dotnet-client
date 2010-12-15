@@ -13,22 +13,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 using System;
-using Google.Apis;
+using System.CodeDom;
+
 using Google.Apis.Discovery;
 
-
-using Google.Apis.Samples.CommandLine.Views;
-using Google.Apis.Samples.CommandLine.Controllers;
-
-namespace Google.Apis.Samples.CommandLine.Views
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
-	public class ResourceView {
-		public void Render(IResource resource) {
-			foreach(var method in resource.Methods) {
-				Console.Out.WriteLine("{0}", method.Key);
-			}
-		}
-	}
+    public interface IResourceContainerDecorator
+    {
+        void DecorateClass (IResourceContainer service, CodeTypeDeclaration containerClass);
+    }
 }

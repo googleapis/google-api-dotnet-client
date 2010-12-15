@@ -58,6 +58,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 			Assert.AreEqual(VersionInformationServiceDecorator.BaseUriName, codeMemberField.Name);
 			Assert.AreEqual(BaseUri.ToString(), ((CodePrimitiveExpression)codeMemberField.InitExpression).Value);
 		}
+        
+        [Test()]
+        public void TestCreateDiscoveryVersionField ()
+        {
+            var decorator = new VersionInformationServiceDecorator();
+            var codeMemberField = decorator.CreateDiscoveryVersionField(CreateService ());
+            
+            Assert.AreEqual(VersionInformationServiceDecorator.DiscoveryVersionName, codeMemberField.Name);
+        }
 		
 		[Test()]
 		public void TestDecorateClass ()
@@ -66,7 +75,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 			CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
 			decorator.DecorateClass(CreateService(), codeType);
 			
-			Assert.AreEqual(3, codeType.Members.Count);
+			Assert.AreEqual(4, codeType.Members.Count);
 			
 			CheckCompile(codeType, true, "Failed to compile VersionInformationServiceDecorator output");
 		}

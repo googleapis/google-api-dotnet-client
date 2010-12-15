@@ -13,22 +13,28 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 using System;
-using Google.Apis;
+using System.Collections.Generic; 
+
 using Google.Apis.Discovery;
-
-
-using Google.Apis.Samples.CommandLine.Views;
-using Google.Apis.Samples.CommandLine.Controllers;
-
-namespace Google.Apis.Samples.CommandLine.Views
+namespace Google.Apis.Tests.Requests
 {
-	public class ResourceView {
-		public void Render(IResource resource) {
-			foreach(var method in resource.Methods) {
-				Console.Out.WriteLine("{0}", method.Key);
-			}
-		}
-	}
+
+
+    public class MockMethod : IMethod
+    {
+        public string Name {get;set;}
+
+        public string RestPath {get;set;}
+
+        public string RpcName {get;set;}
+
+        public string HttpMethod {get;set;}
+
+        public Dictionary<string, Parameter> Parameters {get;set;}
+
+        public MockMethod ()
+        {
+        }
+    }
 }

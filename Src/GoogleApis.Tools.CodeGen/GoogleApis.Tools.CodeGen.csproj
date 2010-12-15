@@ -49,7 +49,6 @@
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\StandardResourcePropertyServiceDecorator.cs" />
     <Compile Include="GeneratorUtils.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
@@ -59,6 +58,9 @@
     <Compile Include="Generator\ServiceClassGenerator.cs" />
     <Compile Include="Generator\BaseGenerator.cs" />
     <Compile Include="Generator\ResourceBaseGenerator.cs" />
+    <Compile Include="Generator\ResourceContainerGenerator.cs" />
+    <Compile Include="Decorator\ResourceContainerDecorator\StandardResourcePropertyServiceDecorator.cs" />
+    <Compile Include="Decorator\ResourceContainerDecorator\IResourceContainerDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -72,5 +74,6 @@
     <Folder Include="Decorator\ResourceDecorator\" />
     <Folder Include="Decorator\ServiceDecorator\" />
     <Folder Include="Generator\" />
+    <Folder Include="Decorator\ResourceContainerDecorator\" />
   </ItemGroup>
 </Project>

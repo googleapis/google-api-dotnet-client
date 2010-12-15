@@ -25,11 +25,27 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
+using Google.Apis.Samples.GeneratedService.AdSense;
 
 namespace Google.Apis.Samples.CommandLineGeneratedService {
 	class MainClass {
 
-		public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(MainClass));
+		public readonly static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(MainClass));
+		public const string bodyJason = @"
+{
+  ""scope"": {
+    ""property_codes"": [""ca-pub-0556581589806023""]
+  },
+  ""dimensions"": [""DATE""],
+  ""metrics"": [""PAGE_VIEWS_ALL"", ""QUERIES_PUBLISHER"", ""QUERIES_COVERAGE"", ""CLICKS_PUBLISHER"", ""QUERIES_CTR"", ""COST_PER_CLICK"", ""QUERIES_RPM"", ""PUBLISHER_EARNINGS""],
+  ""period"": {
+  ""start_date"": ""200000101"",
+  ""end_date"": ""20101231""
+  }
+}
+";
+		// , ""WEB_PROPERTY_CODE""
+		//,""PUBLISHER_EARNINGS"", ""PAGE_VIEWS_NONSPAM""
 		
 		public static bool CheckValidationResult(object sender, X509Certificate cert, X509Chain X509Chain, SslPolicyErrors errors) {
 			return true;
@@ -38,14 +54,25 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 
 		public static void Main(string[] args) {
 			ServicePointManager.ServerCertificateValidationCallback += CheckValidationResult;
-			
-			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator());
+			try{
+				//BuzzTest();
+				AdSenseTest ();
+				Console.WriteLine("All Done.");
+				Console.ReadLine();
+			}catch(Exception ex)
+			{
+				Logger.Error("Failed",ex);
+			}
+		}
+		
+		private static void BuzzTest()
+		{			
+			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			
 			BuzzService buzzService = new BuzzService();
 			Stream result = buzzService.People.Search("b", "c", "d", "5", "David Waters");
 			 
 			StreamReader sr = new StreamReader(result);
 			String strResult = sr.ReadToEnd();
-			Console.Write(strResult);
 			Logger.Info(strResult);
 			
 			Console.ReadLine();
@@ -56,6 +83,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			 
 			sr = new StreamReader(result);
 			strResult = sr.ReadToEnd();
+			Logger.Info(strResult);
+		}
+		
+		private static void AdSenseTest ()
+		{
+			Console.Write("Please enter adSenseUser:");
+			var userName = Console.ReadLine().Trim();
+			Console.Write("Please enter password:");
+			var password = Console.ReadLine().Trim();
+			var passwordSupplier = new PrefetchedUserNamePasswordSupplier(userName,password);					
+			AuthenticatorFactory.GetInstance().RegisterAuthenticator(
+				() => new ClientAuth(passwordSupplier, "adsense", "adsense"));
+			var version = "v1beta1";
+			string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+            if (Directory.Exists (cacheDirectory) == false) {
+                Directory.CreateDirectory (cacheDirectory);
+            }
+            var webfetcher = new CachedWebDiscoveryDevice (
+                                new Uri ("http://elephant.lon:9996/discovery/v0.2beta1/describe/adsense-mgmt/v1beta1"), 
+                                new DirectoryInfo (cacheDirectory));
+            var discovery = new DiscoveryService (webfetcher);
+            // Build the service based on discovery information.
+			var param = new ServiceFactory.FactoryV_0_2Parameter("http://elephant.lon:9996",null);
+            var service = discovery.GetService (version, DiscoveryVersion.Version_0_2, param);
+			
+			AdsensemgmtService adSense = new AdsensemgmtService(service , AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator());
+			
+			var result = adSense.Reports.Generate(bodyJason);
+			
+			var sr = new StreamReader(result);
+			String strResult = sr.ReadToEnd();
 			Console.Write(strResult);
 			Logger.Info(strResult);
 			

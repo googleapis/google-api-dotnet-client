@@ -27,10 +27,10 @@ namespace Google.Apis
 	/// </summary>
 	public class MethodValidator
 	{
-		public Method CurrentMethod {get; private set;}
+		public IMethod CurrentMethod {get; private set;}
 		public IDictionary<string, string> Parameters {get; private set;}
 		
-		public MethodValidator (Method method, IDictionary<string, string> parameters)
+		public MethodValidator (IMethod method, IDictionary<string, string> parameters)
 		{
 			this.CurrentMethod = method;
 			this.Parameters = parameters;

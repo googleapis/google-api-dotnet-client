@@ -22,17 +22,25 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
-	public class Resource
+    public interface IResource : IResourceContainer
+    {
+        string Name {get;set;}
+        Dictionary<string, IMethod> Methods{get;}
+        IDictionary<string, IResource> Resources {get;}
+    }
+    
+    
+    
+	internal abstract class BaseResource : IResource
 	{
-		public string Name {get;set;}
-		private Dictionary<string, Method> methods;
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(IResource));
+        private Dictionary<string, IMethod> methods;
+        private Dictionary<string, IResource> resources;
 		private JsonDictionary information;
-
-		private Resource ()
-		{
-		}
+        
+        public string Name {get;set;}
 		
-		internal Resource (KeyValuePair<string, object> kvp)
+		internal BaseResource (KeyValuePair<string, object> kvp)
 		{
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
@@ -40,24 +48,112 @@ namespace Google.Apis.Discovery
 				throw new ArgumentException ("got no valid dictionary");
 		}
 
-		public Dictionary<string, Method> Methods 
+		public Dictionary<string, IMethod> Methods 
 		{
 			get {
 				if (this.methods == null) 
 				{
-					JsonDictionary js = this.information[ServiceFactory.Methods] as JsonDictionary;
-					if (js != null) 
-					{
-						this.methods = new Dictionary<string, Method> ();
-						foreach (KeyValuePair<string, object> kvp in js) 
-						{
-							Method m = new Method (kvp);
-							this.methods.Add (kvp.Key, m);
-						}
-					}
+					this.methods = FetchMethods ();
 				}
 				return this.methods;
 			}
 		}
+        
+        
+        public IDictionary<string, IResource> Resources 
+        {
+            get 
+            {
+                if (this.resources == null) 
+                {                    
+                    this.resources = FetchResources ();
+                }
+                return this.resources;
+            }
+        }
+        
+        private Dictionary<string, IMethod> FetchMethods ()
+        {
+            if(this.information.ContainsKey(ServiceFactory.Methods) == false)
+            {
+                return new Dictionary<string, IMethod>(0);
+            }
+            
+            JsonDictionary js = this.information[ServiceFactory.Methods] as JsonDictionary;
+            if (js == null)
+            {
+                return new Dictionary<string, IMethod>(0);
+            }
+            
+            var methods = new Dictionary<string, IMethod> ();
+            foreach (KeyValuePair<string, object> kvp in js) 
+            {
+                IMethod m = CreateMethod(kvp);
+                methods.Add (kvp.Key, m);
+            }   
+            return methods;
+        }
+
+        
+        private Dictionary<string, IResource> FetchResources ()
+        {
+            if(this.information.ContainsKey(ServiceFactory.Resources) == false)
+            {
+                return new Dictionary<string, IResource>(0);
+            }
+            
+            JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
+            if (js == null)
+            {
+                return new Dictionary<string, IResource>(0);
+            }
+                
+            var resources = new Dictionary<string, IResource> ();
+            foreach (KeyValuePair<string, object> kvp in js) 
+            {
+                IResource r = CreateResource(kvp);
+                resources.Add (kvp.Key, r);
+            }
+            return resources;                
+        }
+        
+        protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
+        protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
 	}
+    
+    internal class ResourceV_0_1: BaseResource
+    {
+        internal ResourceV_0_1 (KeyValuePair<string, object> kvp):base(kvp)
+        {
+        }
+        
+        protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
+        {
+            return new MethodV_0_1(kvp);
+        }
+        
+        protected override IResource CreateResource (KeyValuePair<string, object> kvp)
+        {
+            return new ResourceV_0_1(kvp);
+        }
+    }
+    
+    internal class ResourceV_0_2: BaseResource
+    {
+        internal ResourceV_0_2 (KeyValuePair<string, object> kvp):base(kvp)
+        {
+        }
+        
+        protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
+        {
+            return new MethodV_0_2(kvp);
+        }
+        
+        protected override IResource CreateResource (KeyValuePair<string, object> kvp)
+        {
+            return new ResourceV_0_2(kvp);
+        }
+        
+    }
+    
 }

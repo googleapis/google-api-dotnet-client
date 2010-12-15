@@ -30,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		public int DecorateMethodAfterExecuteCalled{get; private set;}
 		
 		#region IResourceDecorator implementation
-		public void DecorateClass (Resource resource, string className, 
+		public void DecorateClass (IResource resource, string className, 
 		                           CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, 
 		                           string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
 		{
@@ -38,13 +38,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		}
 		
 		
-		public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+		public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
 		{
 			DecorateMethodBeforeExecuteCalled += 1;
 		}
 		
 		
-		public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+		public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
 		{
 			DecorateMethodAfterExecuteCalled += 1;
 		}

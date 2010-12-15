@@ -33,6 +33,10 @@ namespace Google.Apis.Testing {
 		public string Version {get; set;}
 
 		public Uri BaseUri {get; set;}
+        
+        public DiscoveryVersion DiscoveryVersion {
+            get { return DiscoveryVersion.Version_0_1;}
+        }
 
 		public Uri RpcUri {
 			get {
@@ -40,7 +44,7 @@ namespace Google.Apis.Testing {
 			}
 		}
 
-		public IDictionary<string, Resource> Resources {
+		public IDictionary<string, IResource> Resources {
 			get {
 				throw new System.NotImplementedException();
 			}

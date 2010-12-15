@@ -56,7 +56,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			var codeMember = new CodeMemberMethod();
 			codeMember.Name = "OneTestMethod";
 			resourceClass.Members.Add(codeMember);
-			Resource resource = CreateResource("TestResource", SimpleResource);
+			IResource resource = CreateResourceDivcoveryV_0_1("TestResource", SimpleResource);
 			decorator.DecorateMethodBeforeExecute(
 				resource, 
 				resource.Methods["simpleMethod"], 
@@ -82,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			var codeMember = new CodeMemberMethod();
 			codeMember.Name = "OneTestMethod";
 			resourceClass.Members.Add(codeMember);
-			Resource resource = CreateResource("TestResource", SimpleResource);
+			IResource resource = CreateResourceDivcoveryV_0_1("TestResource", SimpleResource);
 			decorator.DecorateMethodBeforeExecute(
 				resource, 
 				resource.Methods["simpleMethod"], 

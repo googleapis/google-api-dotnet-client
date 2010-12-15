@@ -33,7 +33,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         public const string LoggerName = "logger";
         private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(Log4NetResourceDecorator));
 
-        public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
+                                   ResourceClassGenerator generator, string serviceClassName, 
+                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             //public static log4net.ILog Logger = log4net.LogManager.GetLogger(typeof(<className>));
             logger.Debug ("Adding logger to ResourceClass.");
@@ -46,7 +48,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             resourceClass.Members.Add (loggerField);
         }
 
-        public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             var logCall = new CodeMethodInvokeExpression ();
             logCall.Method = new CodeMethodReferenceExpression (new CodeVariableReferenceExpression (LoggerName), "Debug");
@@ -54,7 +56,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             codeMember.Statements.Add (logCall);
         }
 
-        public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             var logCall = new CodeMethodInvokeExpression ();
             logCall.Method = new CodeMethodReferenceExpression (new CodeVariableReferenceExpression (LoggerName), "Debug");
