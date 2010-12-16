@@ -57,39 +57,31 @@ namespace Google.Apis.Json
 
         private static object ParseExpression (JsonToken token, TokenStream ts)
         {
-            
             if (token == null)
+            {
                 token = ts.GetNextToken ();
+            }
             
-            object value = null;
             switch (token.type) 
             {
             case JsonToken.Type.String:
-                value = token.value;
-                break;
+                return token.value;
             case JsonToken.Type.Number:
-                value = token.number;
-                break;
+                return token.number;
             case JsonToken.Type.False:
-                value = false;
-                break;
+                return false;
             case JsonToken.Type.True:
-                value = true;
-                break;
+                return true;
             case JsonToken.Type.Null:
-                value = null;
+                return null;
                 break;
             case JsonToken.Type.ObjectStart:
-                value = ParseObject (ts);
-                break;
+                return ParseObject (ts);
             case JsonToken.Type.ArrayStart:
-                value = ParseArray (ts);
-                break;
+                return ParseArray (ts);
             case JsonToken.Type.Undefined:
                 throw new ArgumentException ("parse error");
             }
-            
-            return value;
         }
 
         private static JsonDictionary ParseObject (TokenStream ts)
