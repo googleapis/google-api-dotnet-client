@@ -28,9 +28,10 @@ namespace Google.Apis.Samples.GeneratedService.AdSense
 	{
 		private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ClientAuth));
 		private readonly static Regex authTokenRegex = new Regex(@"Auth=([0-9a-zA-Z-_]+)", 
-		                                                         RegexOptions.Compiled | 
-		                                                         RegexOptions.Singleline | 
-		                                                         RegexOptions.ECMAScript);
+		                                                         //RegexOptions.Compiled 
+		                                                          RegexOptions.Singleline 
+		                                                         //| RegexOptions.ECMAScript
+		                                                         );
 		
 		private readonly IUserNamePasswordSupplier supplier;
 		private readonly string scope;

@@ -50,6 +50,10 @@
       <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="LumenWorks.Framework.IO, Version=3.7.1.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="Target\TestBuzzService.cs" />
     <Compile Include="AdSense\AdSenseService.cs" />
     <Compile Include="AdSense\ClientAuth.cs" />
+    <Compile Include="AdSense\RevenueReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buzz\" />
