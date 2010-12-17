@@ -11,7 +11,8 @@
     <RootNamespace>Com.Google.AdSense.Gadget.Ui</RootNamespace>
     <AssemblyName>Com.Google.AdSense.Gadget.Ui</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -36,6 +37,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis">
+      <HintPath>Lib\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Samples.AdSenseApi">
+      <HintPath>Lib\Google.Apis.Samples.AdSenseApi.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>Lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -100,6 +113,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
