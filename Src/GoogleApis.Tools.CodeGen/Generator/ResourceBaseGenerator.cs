@@ -35,7 +35,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
         }
 
-        protected void ResourceCallAddBodyDeclaration (Method method, CodeMemberMethod member)
+        protected void ResourceCallAddBodyDeclaration (IMethod method, CodeMemberMethod member)
         {
             switch (method.HttpMethod)
             {
@@ -70,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             return assign;
         }
 
-        protected CodeStatement CreateExecuteRequest (Method method)
+        protected CodeStatement CreateExecuteRequest (IMethod method)
         {
             var call = new CodeMethodInvokeExpression ();
             

@@ -67,17 +67,20 @@ namespace Google.Apis.Discovery
 		/// <summary>
 		/// Creates an API object that provides access to the methods defined in the discovery document.
 		/// </summary>
-		public IService GetService(string version)
+		public IService GetService(string version, 
+                                   DiscoveryVersion discoveryVersion, 
+                                   ServiceFactory.IFactoryParameter param)
 		{
-			ServiceFactory factory;
+			IServiceFactory factory;
 			
 			using(var documentStream = DiscoveryDevice.Fetch()) 
 			{
 				// Parse the document.
-				factory = new ServiceFactory(documentStream);
+				factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
 			}
 			
 			return factory.GetService(version);
 		}
-	}
+
+     }
 }

@@ -56,7 +56,7 @@ namespace Google.Apis.Samples.ListServices
 			var discovery = new DiscoveryService(webfetcher);
 			
 			// Build the service based on discovery information.
-			var service = discovery.GetService("v1");
+			var service = discovery.GetService("v1", DiscoveryVersion.Version_0_1, null);
 			
 			// Output sevice information
 			foreach(var resource in service.Resources) {

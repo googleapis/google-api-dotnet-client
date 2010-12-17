@@ -25,7 +25,7 @@ using Google.Apis.Samples.CommandLine.Controllers;
 namespace Google.Apis.Samples.CommandLine.Views
 {
 	public class ResourceView {
-		public void Render(Resource resource) {
+		public void Render(IResource resource) {
 			foreach(var method in resource.Methods) {
 				Console.Out.WriteLine("{0}", method.Key);
 			}

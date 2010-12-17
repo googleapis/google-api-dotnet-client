@@ -24,17 +24,22 @@ using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
 {
-	public class Method
+    public interface IMethod
+    {
+        string Name {get;set;}
+        string RestPath{get;} 
+        string RpcName {get;}
+        string HttpMethod {get;}
+        Dictionary<string, Parameter> Parameters{get;} 
+    }
+    
+	internal abstract class BaseMethod:IMethod
 	{
-		private JsonDictionary information;
-		public string Name {get;set;}
-		private Dictionary<string, Parameter> parameters;
-
-		public Method ()
-		{
-		}
-
-		internal Method (KeyValuePair<string, object> kvp)
+		internal protected JsonDictionary information;
+		
+		internal protected Dictionary<string, Parameter> parameters;
+        
+		internal BaseMethod (KeyValuePair<string, object> kvp)
 		{
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
@@ -42,10 +47,9 @@ namespace Google.Apis.Discovery
 				throw new ArgumentException ("got no valid dictionary");
 		}
 
-		public string RestPath 
-		{
-			get { return this.information[ServiceFactory.PathUrl] as string; }
-		}
+        public string Name {get;set;}
+        
+		public abstract string RestPath {get;}
 
 		public string RpcName 
 		{
@@ -62,19 +66,56 @@ namespace Google.Apis.Discovery
 			get {
 				if (this.parameters == null) 
 				{
-					JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
-					if (js != null) 
-					{
-						this.parameters = new Dictionary<string, Parameter> ();
-						foreach (KeyValuePair<string, object> kvp in js) 
-						{
-							Parameter p = new Parameter (kvp);
-							this.parameters.Add (kvp.Key, p);
-						}
-					}
+					this.parameters = FetchParameters ();
 				}
 				return this.parameters;
 			}
 		}
+        
+        private Dictionary<string, Parameter> FetchParameters ()
+        {
+            if( this.information.ContainsKey(ServiceFactory.Parameters) == false)
+            {
+                return new Dictionary<string, Parameter>(0);
+            }
+            
+            JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
+            if (js == null) 
+            {
+                return new Dictionary<string, Parameter>(0);                
+            }
+            
+            var parameters = new Dictionary<string, Parameter> ();
+            foreach (KeyValuePair<string, object> kvp in js) 
+            {
+                Parameter p = new Parameter (kvp);
+                parameters.Add (kvp.Key, p);
+            }
+            return parameters;
+        }
 	}
+    
+    internal class MethodV_0_1:BaseMethod
+    {
+        public MethodV_0_1(KeyValuePair<string, object> kvp):base(kvp)
+        {
+        }
+        
+        public override string RestPath 
+        {
+            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_1.PathUrl] as string; }
+        }
+        
+    }
+    internal class MethodV_0_2:BaseMethod
+    {
+        public MethodV_0_2(KeyValuePair<string, object> kvp):base(kvp)
+        {
+        }
+        
+        public override string RestPath 
+        {
+            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_2.PathUrl] as string; }
+        }
+    }
 }

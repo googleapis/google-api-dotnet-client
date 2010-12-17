@@ -33,7 +33,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     {
         private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardMethodResourceDecorator));
 
-        public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
+                                   ResourceClassGenerator generator, string serviceClassName, 
+                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             ResourceGenerator gen = new ResourceGenerator (className);
             int methodNumber = 1;
@@ -48,13 +50,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             
         }
 
-        public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
 
 
-        public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
@@ -69,7 +71,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.className = className;
             }
 
-            public CodeMemberMethod CreateMethod (Resource resource, Method method, int methodNumber, IEnumerable<IResourceDecorator> allDecorators)
+            public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
+                                                  IEnumerable<IResourceDecorator> allDecorators)
             {
                 var member = new CodeMemberMethod ();
                 
@@ -103,14 +106,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 }
                 
                 // return ret;
-                var returnStatment = new CodeMethodReturnStatement (new CodeVariableReferenceExpression (ReturnVariableName));
+                var returnStatment = new CodeMethodReturnStatement (
+                                        new CodeVariableReferenceExpression (ReturnVariableName));
                 
                 member.Statements.Add (returnStatment);
                 
                 return member;
             }
 
-            protected void AddAllDeclaredParameters (Method method, CodeMemberMethod member, CodeStatementCollection assignmentStatments)
+            protected void AddAllDeclaredParameters (IMethod method, CodeMemberMethod member, 
+                                                     CodeStatementCollection assignmentStatments)
             {
                 // Add All parameters to the method.
                 if (method.Parameters != null && method.Parameters != null) {
@@ -137,7 +142,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 // produces
                 //Dictionary<string, string> parameters = new Dictionary<string, string>();
-                return new CodeVariableDeclarationStatement (typeof(Dictionary<string, string>), ParameterDictionaryName, new CodeObjectCreateExpression (typeof(Dictionary<string, string>)));
+                return new CodeVariableDeclarationStatement (typeof(Dictionary<string, string>),
+                    ParameterDictionaryName, 
+                    new CodeObjectCreateExpression (typeof(Dictionary<string, string>)));
             }
         }
     }

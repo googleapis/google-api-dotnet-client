@@ -40,16 +40,19 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         private readonly IEnumerable<IServiceDecorator> decorators;
         private readonly IService service;
+        private readonly ResourceContainerGenerator resourceConainerGenerator;
 
-        public ServiceClassGenerator (IService service, IEnumerable<IServiceDecorator> decorators)
+        public ServiceClassGenerator (IService service, IEnumerable<IServiceDecorator> decorators,
+                                      ResourceContainerGenerator resourceConainerGenerator)
         {
             this.decorators = decorators;
             this.service = service;
+            this.resourceConainerGenerator = resourceConainerGenerator;
         }
 
         public CodeTypeDeclaration CreateServiceClass ()
         {
-            string serviceClassName = GeneratorUtils.UpperFirstLetter (service.Name) + "Service";
+            string serviceClassName = GeneratorUtils.UpperFirstLetter( GeneratorUtils.GetSafeMemberName( service.Name + "Service", ""));
             logger.DebugFormat ("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration (serviceClassName);
             serviceClass.BaseTypes.Add (typeof(IRequestExecutor));
@@ -59,10 +62,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 serviceDecorator.DecorateClass (service, serviceClass);
             }
             
+            resourceConainerGenerator.AddResourceContainerDecorations(service, serviceClass);
+            
             return serviceClass;
         }
 
-        public static CodeFieldReferenceExpression GetFieldReference (Resource resource, int resourceNumber)
+        public static CodeFieldReferenceExpression GetFieldReference (IResource resource, int resourceNumber)
         {
             return new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), 
                           GeneratorUtils.GetFieldName (resource, resourceNumber));

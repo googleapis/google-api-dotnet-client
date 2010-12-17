@@ -36,7 +36,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator
     {
 
-        public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
+                                   ResourceClassGenerator generator, string serviceClassName, 
+                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             ResourceGenerator gen = new ResourceGenerator (className);
             int methodNumber = 1;
@@ -50,13 +52,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             
         }
 
-        public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
 
 
-        public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
@@ -76,7 +78,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.className = className;
             }
 
-            public CodeMemberMethod CreateMethod (Resource resource, Method method, int methodNumber, IEnumerable<IResourceDecorator> allDecorators)
+            public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
+                                                  IEnumerable<IResourceDecorator> allDecorators)
             {
                 if (GeneratorUtils.HasOptionalParameters (method) == false) {
                     return null;
@@ -130,7 +133,8 @@ var dictType = new CodeTypeReference (typeof(IDictionary<string, string>));
                 }
                 
                 // return ret;
-                var returnStatment = new CodeMethodReturnStatement (new CodeVariableReferenceExpression (ReturnVariableName));
+                var returnStatment = new CodeMethodReturnStatement (
+                    new CodeVariableReferenceExpression (ReturnVariableName));
                 
                 member.Statements.Add (returnStatment);
                 

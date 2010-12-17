@@ -29,34 +29,35 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// </summary>
     public class EasyConstructServiceDecorator : IServiceDecorator
     {
-        public void DecorateClass (Google.Apis.Discovery.IService service, CodeTypeDeclaration serviceClass)
+        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
         {
-            var constructor = CreateConstructor (serviceClass);
+            var constructor = CreateConstructor (service, serviceClass);
             serviceClass.Members.Add (constructor);
         }
 
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructor (CodeTypeDeclaration serviceClass)
+        internal CodeConstructor CreateConstructor (IService service, CodeTypeDeclaration serviceClass)
         {
             var constructor = new CodeConstructor ();
             
             constructor.Attributes = MemberAttributes.Public;
-            constructor.ChainedConstructorArgs.Add (GetService (serviceClass));
+            constructor.ChainedConstructorArgs.Add (GetService (service, serviceClass));
             constructor.ChainedConstructorArgs.Add (GetAuthenticator ());
             return constructor;
         }
 
         [VisibleForTestOnly]
-        internal CodeExpression GetService (CodeTypeDeclaration serviceClass)
+        internal CodeExpression GetService (IService service, CodeTypeDeclaration serviceClass)
         {
             /*
             new DiscoveryService(
                 new WebDiscoveryDevice(
                     new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
-                    )).GetService(version)
+                    )).GetService(version, DiscoveryVersionUsed)
             */            
             var discoveryUrl = new CodePrimitiveExpression ("http://www.googleapis.com/discovery/0.1/describe?api=");
-            var serviceName = new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.NameName);
+            var serviceName = new CodeFieldReferenceExpression (
+                new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.NameName);
             
             
             var uriConstructor = new CodeObjectCreateExpression ();
@@ -73,9 +74,31 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             
             var getServiceCall = new CodeMethodInvokeExpression ();
             getServiceCall.Method = new CodeMethodReferenceExpression (discoveryConstructor, "GetService");
-            getServiceCall.Parameters.Add (new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.VersionName));
+            getServiceCall.Parameters.Add (new CodeFieldReferenceExpression (
+                new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.VersionName));
+            getServiceCall.Parameters.Add (new CodeFieldReferenceExpression (
+                new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.DiscoveryVersionName));
+            getServiceCall.Parameters.Add (GetVersionSpecificParameter(service, serviceClass));
             
             return getServiceCall;
+        }
+        
+        [VisibleForTestOnly]
+        internal CodeExpression GetVersionSpecificParameter(IService service, CodeTypeDeclaration serviceClass)
+        {
+            switch(service.DiscoveryVersion)
+            {
+            case DiscoveryVersion.Version_0_1:
+                return new CodePrimitiveExpression(null);
+            case DiscoveryVersion.Version_0_2:
+                return new CodeObjectCreateExpression(typeof(ServiceFactory.FactoryV_0_2Parameter),
+                    new CodePrimitiveExpression(null),
+                    new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
+
+            case DiscoveryVersion.Version_0_3:
+            default:
+                throw new NotSupportedException("The Discovery version "+service.DiscoveryVersion+" is not yet supported");
+            }
         }
 
         /// <summary>

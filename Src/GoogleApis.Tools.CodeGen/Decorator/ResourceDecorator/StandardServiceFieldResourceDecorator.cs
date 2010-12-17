@@ -29,17 +29,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardServiceFieldResourceDecorator: IResourceDecorator
     {
-        public void DecorateClass (Resource resource, string className, CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
+                                   ResourceClassGenerator generator, string serviceClassName, 
+                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             resourceClass.Members.Add (CreateServiceField());
         }
 
-        public void DecorateMethodBeforeExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             // NoOp
         }
 
-        public void DecorateMethodAfterExecute (Resource resource, Method method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             // NoOp
         }

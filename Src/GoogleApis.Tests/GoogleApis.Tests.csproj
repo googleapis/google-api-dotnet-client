@@ -35,6 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -47,6 +50,8 @@
     <Compile Include="JSON\TokenStreamTest.cs" />
     <Compile Include="JSON\JsonTokenTests.cs" />
     <Compile Include="JSON\JsonReaderTests.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
+    <Compile Include="Requests\MockMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -58,5 +63,7 @@
   <ItemGroup>
     <Folder Include="Requests\" />
     <Folder Include="JSON\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\Discovery\" />
   </ItemGroup>
 </Project>

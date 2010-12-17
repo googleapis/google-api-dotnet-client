@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		{
 			var decorator = new StandardConstructorResourceDecorator();
 			var resourceClass = new CodeTypeDeclaration(ResourceClassName);
-			var resource = CreateResource(ResourceName, ResourceAsJson);
+			var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
 			decorator.DecorateClass(resource, null, resourceClass, null, ServiceClassName, null);
 			
 			Assert.AreEqual(1, resourceClass.Members.Count);

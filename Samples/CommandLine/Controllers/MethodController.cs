@@ -40,14 +40,14 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 	/// </summary>
 	public class MethodController {
 		
-		private IService _service {get;set;}
-		private MethodView _view {get;set;}
+		private IService service {get;set;}
+		private MethodView view {get;set;}
 		
-		private Method _method {get;set;}
-		private Resource _resource {get;set;}
+		private IMethod method {get;set;}
+		private IResource resource {get;set;}
 		
-		private const string _consumerKey = "anonymous";
-		private const string _consumerSecret = "anonymous";
+		private const string consumerKey = "anonymous";
+		private const string consumerSecret = "anonymous";
 		
 		private DesktopConsumer consumer;
 		
@@ -78,12 +78,12 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 			
 		}
 		
-		public MethodController(IService service, Resource resource, Method method, MethodView view) {
-			_service = service;
-			_view = view;
-			_resource = resource;
-			_method = method;
-			var scope = Scopes.scopes[_service.Name];
+		public MethodController(IService service, IResource resource, IMethod method, MethodView view) {
+			this.service = service;
+			this.view = view;
+			this.resource = resource;
+			this.method = method;
+			var scope = Scopes.scopes[service.Name];
 			var serviceProvider = new ServiceProviderDescription {
 				ProtocolVersion = ProtocolVersion.V10a,
 				AccessTokenEndpoint = new MessageReceivingEndpoint(scope.AccessTokenUrl, HttpDeliveryMethods.GetRequest),
@@ -92,7 +92,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 				TamperProtectionElements = new ITamperProtectionChannelBindingElement[] { new HmacSha1SigningBindingElement() }
 			};
 			
-			var tokenManager = new TokenManager { ConsumerKey = _consumerKey, ConsumerSecret = _consumerSecret };
+			var tokenManager = new TokenManager { ConsumerKey = consumerKey, ConsumerSecret = consumerSecret };
 			
 			consumer = new DesktopConsumer(serviceProvider, tokenManager);
 		}
@@ -102,7 +102,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 		}
 		
 		public bool GetSelection() {
-			Console.Out.Write("{0}\\{1} > ", _resource.Name ,_method.Name);
+			Console.Out.Write("{0}\\{1} > ", resource.Name ,method.Name);
 			string command = Console.In.ReadLine();
 			
 			if(command.StartsWith("cd ")) 
@@ -119,13 +119,13 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 				var requestParameters = new Dictionary<string, string>();
 				string requestToken;
 				
-				requestParameters.Add("scope", Scopes.scopes[_service.Name].Name);
+				requestParameters.Add("scope", Scopes.scopes[service.Name].Name);
 				requestParameters.Add("domain", "example.com");
 				
 				// The Google OAuth API will do OOB automatically
 				var authUri = consumer.RequestUserAuthorization(requestParameters, null, out requestToken);
 				
-				_view.AskForCredentials(authUri, requestParameters);
+				view.AskForCredentials(authUri, requestParameters);
 				var pin = Console.ReadLine().Trim();
 				
 				// Read the response.
@@ -137,23 +137,23 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 				
 				var parameterDictionary = new Dictionary<string, string>();
 				// Get the parameters from the user
-				foreach(var p in _method.Parameters) {
-					_view.AskForParameter(p.Value);
+				foreach(var p in method.Parameters) {
+					view.AskForParameter(p.Value);
 					var paramData = Console.ReadLine();
 					if(String.IsNullOrEmpty(paramData) == false) 
 						parameterDictionary.Add(p.Key, paramData);
 				}
 				
 				// Execute a request, not that we are not using the same oAuth library.
-				var request = Request.CreateRequest(_service, _method);
+				var request = Request.CreateRequest(service, method);
 				
-				var authentication = new OAuth3LeggedAuthenticator("", _consumerKey, _consumerSecret, authToken.AccessToken, tokenSecret);
+				var authentication = new OAuth3LeggedAuthenticator("", consumerKey, consumerSecret, authToken.AccessToken, tokenSecret);
 				
 				string bodyString = null;
 				// Ask for the Body (If a Post or PUT)
-				if(_method.HttpMethod == "POST" || _method.HttpMethod == "PUT") {
+				if(method.HttpMethod == "POST" || method.HttpMethod == "PUT") {
 					
-					_view.AskForBody();
+					view.AskForBody();
 					
 					bodyString = Console.ReadLine();
 				}
@@ -174,7 +174,7 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 				// Execute a request
 			}
 			else if (command == "ls") {
-				_view.Render(_method);
+				view.Render(method);
 			}
 			else {
 				Console.Out.WriteLine();

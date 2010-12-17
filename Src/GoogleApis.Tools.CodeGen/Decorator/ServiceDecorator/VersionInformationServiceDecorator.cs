@@ -32,12 +32,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         public const string VersionName = "Version";
         public const string NameName = "Name";
         public const string BaseUriName = "BaseUri";
+        public const string DiscoveryVersionName = "DiscoveryVersionUsed";
 
         public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.Members.Add (CreateVersionField (service));
             serviceClass.Members.Add (CreateNameField (service));
             serviceClass.Members.Add (CreateUriField (service));
+            serviceClass.Members.Add (CreateDiscoveryVersionField (service));
         }
 
         [VisibleForTestOnly]
@@ -64,6 +66,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var uri = new CodeMemberField (typeof(string), BaseUriName);
             uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
             uri.InitExpression = new CodePrimitiveExpression (service.BaseUri.ToString ());
+            return uri;
+        }
+        
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateDiscoveryVersionField (IService service)
+        {
+            var uri = new CodeMemberField (typeof(DiscoveryVersion), DiscoveryVersionName);
+            uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
+            uri.InitExpression = new CodeFieldReferenceExpression(
+                new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
+                Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion));
+
             return uri;
         }
         
