@@ -28,7 +28,9 @@ using LumenWorks.Framework.IO.Csv;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
-using Google.Apis.Samples.GeneratedService.AdSense;
+using Google.Apis.Samples.AdSenseApi;
+using Google.Apis.Samples.AdSenseApi.Service;
+using Google.Apis.Samples.AdSenseApi.Auth;
 
 namespace Google.Apis.Samples.CommandLineGeneratedService {
 	class MainClass {
