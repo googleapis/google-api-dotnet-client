@@ -15,81 +15,26 @@ limitations under the License.
 */
     -->
 <Grid x:Class="Com.Google.AdSense.Gadget.Ui.MainContent"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ch="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        xmlns:chprim="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-
-        xmlns:vm="clr-namespace:Com.Google.AdSense.Gadget.Ui.ViewModel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:vm="clr-namespace:Com.Google.AdSense.Gadget.Ui.ViewModel"
+      xmlns:ch="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+      xmlns:chprim="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+      xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
       Width="250" Height="200"
       Name="outerGrid"
        >
     <Grid.Resources>
-        <Style TargetType="ch:Chart">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ch:Chart">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        Padding="10">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <!--<visualizationToolkit:Title Style="{TemplateBinding TitleStyle}"
-                                                  Content="{TemplateBinding Title}" />-->
-
-                                <Grid Margin="0,15,0,15"
-                              Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <!--<visualizationToolkit:Legend x:Name="Legend"
-                                               Style="{TemplateBinding LegendStyle}"
-                                               Grid.Column="1"
-                                               Title="{TemplateBinding LegendTitle}" />-->
-
-                                    <chprim:EdgePanel x:Name="ChartArea"
-                                               Style="{TemplateBinding ChartAreaStyle}">
-                                        <Grid Style="{TemplateBinding PlotAreaStyle}"
-                                      Canvas.ZIndex="-1" />
-
-                                        <!-- I removed the border-->
-                                        <!--<Border Canvas.ZIndex="10"
-                                        BorderBrush="#FF919191"
-                                        BorderThickness="1" />-->
-                                    </chprim:EdgePanel>
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SharedResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Grid.Resources>
-    <Border BorderBrush="Silver" BorderThickness="5" HorizontalAlignment="Left" Name="border1" VerticalAlignment="Top" CornerRadius="10" IsHitTestVisible="True">
-        <!--
-        <Border.RenderTransform>
-            <ScaleTransform ScaleX="1.5" ScaleY="1.5"></ScaleTransform>
-        </Border.RenderTransform>
-        -->
-        <Border.Background>
-            <LinearGradientBrush Opacity="0.5" >
-                <GradientStop Offset="0.2" Color="AliceBlue"/>
-                <GradientStop Offset="0.85" Color="Red"/>
-            </LinearGradientBrush>
-        </Border.Background>
+
+    <Border Style="{StaticResource OuterBorder}">
         <Grid Width="250" Height="200">
-            
-            <ch:Chart Name="testChart" Title="Est. Revenue" >
-                
-            </ch:Chart>
-            
+            <ch:Chart Name="testChart" Title="Est. Revenue" />
         </Grid>
-        
     </Border>
 </Grid>
