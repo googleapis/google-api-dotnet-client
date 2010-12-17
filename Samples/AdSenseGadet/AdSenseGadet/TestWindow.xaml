@@ -1,0 +1,20 @@
+﻿<Window x:Class="Com.Google.AdSense.Gadget.Ui.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TestWindow" Height="400" Width="260" xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <chartingToolkit:Chart Grid.Row="0" DataContext="1,10 2,20 3,30 4,40" HorizontalAlignment="Left" Name="chart1" Title="Chart Title" VerticalAlignment="Top" Height="150" Width="250">
+            <chartingToolkit:ColumnSeries DependentValuePath="X" IndependentValuePath="Y" ItemsSource="{Binding}" />
+        </chartingToolkit:Chart>
+        <chartingToolkit:Chart Grid.Row="1" DataContext="1,10 2,20 3,30 4,40" HorizontalAlignment="Left" Name="chart2" Title="Other Title" VerticalAlignment="Top" Height="150" Width="250"
+                               LegendStyle="None">
+            <chartingToolkit:ColumnSeries DependentValuePath="X" IndependentValuePath="Y" ItemsSource="{Binding}" />
+            <chartingToolkit:LineSeries DependentValuePath="X" IndependentValuePath="Y" ItemsSource="{Binding}" />
+            
+        </chartingToolkit:Chart>
+    </Grid>
+</Window>
