@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineGeneratedService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineServiceGenerator", "CommandLineServiceGenerator\CommandLineServiceGenerator.csproj", "{28AA3D0D-94E7-45A7-8575-50208AD5F6AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Samples.AdSenseApi", "AdSenseApi\Google.Apis.Samples.AdSenseApi.csproj", "{3883D960-3BE4-466E-81DE-6BE6930797AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{28AA3D0D-94E7-45A7-8575-50208AD5F6AA}.Debug|x86.Build.0 = Debug|x86
 		{28AA3D0D-94E7-45A7-8575-50208AD5F6AA}.Release|x86.ActiveCfg = Release|x86
 		{28AA3D0D-94E7-45A7-8575-50208AD5F6AA}.Release|x86.Build.0 = Release|x86
+		{3883D960-3BE4-466E-81DE-6BE6930797AC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3883D960-3BE4-466E-81DE-6BE6930797AC}.Debug|x86.Build.0 = Debug|Any CPU
+		{3883D960-3BE4-466E-81DE-6BE6930797AC}.Release|x86.ActiveCfg = Release|Any CPU
+		{3883D960-3BE4-466E-81DE-6BE6930797AC}.Release|x86.Build.0 = Release|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Debug|x86.Build.0 = Debug|Any CPU
 		{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}.Release|x86.ActiveCfg = Release|Any CPU
