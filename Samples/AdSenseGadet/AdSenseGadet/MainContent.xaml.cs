@@ -42,7 +42,7 @@ namespace Com.Google.AdSense.Gadget.Ui
         {
             InitializeComponent();
             DataContext = new RevenueBy7DaysViewModel();
-
+            //Chart testChart = new Chart();
             {
                 var recent7Days = new LineSeries();
                 recent7Days.Name = "recent7Days";
