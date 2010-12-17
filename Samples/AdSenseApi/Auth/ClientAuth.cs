@@ -22,7 +22,7 @@ using System.Text.RegularExpressions;
 
 using Google.Apis.Authentication;
 
-namespace Google.Apis.Samples.GeneratedService.AdSense
+namespace Google.Apis.Samples.AdSenseApi.Auth
 {
 	public class ClientAuth:Authenticator, IAuthenticator
 	{

@@ -61,9 +61,6 @@
     <Compile Include="Buzz\BuzzService.cs" />
     <Compile Include="Buzz\ConsoleAuthenticator.cs" />
     <Compile Include="Target\TestBuzzService.cs" />
-    <Compile Include="AdSense\AdSenseService.cs" />
-    <Compile Include="AdSense\ClientAuth.cs" />
-    <Compile Include="AdSense\RevenueReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buzz\" />
@@ -75,6 +72,10 @@
     <ProjectReference Include="..\CommandLine\CommandLine.csproj">
       <Project>{907A00DF-BB9F-4B4C-800F-C5BCA3E3FA60}</Project>
       <Name>CommandLine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdSenseApi\Google.Apis.Samples.AdSenseApi.csproj">
+      <Project>{3883D960-3BE4-466E-81DE-6BE6930797AC}</Project>
+      <Name>Google.Apis.Samples.AdSenseApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

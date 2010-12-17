@@ -21,7 +21,9 @@ using System.Globalization;
 
 using LumenWorks.Framework.IO.Csv;
 
-namespace Google.Apis.Samples.GeneratedService.AdSense
+using Google.Apis.Samples.AdSenseApi.Service;
+
+namespace Google.Apis.Samples.AdSenseApi
 {
 	public class RevenueReport
 	{
