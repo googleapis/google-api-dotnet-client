@@ -65,7 +65,10 @@ namespace Google.Apis.Samples.AdSenseApi
 		public IEnumerable<ResultRow> ExecuteReport()
 		{
 			var result = this.Service.Reports.Generate(GenerateRequestJson());
-			var dict = Json.JsonReader.Parse(result) as Json.JsonDictionary;
+            StreamReader st = new StreamReader(result);
+            String resultAsString = st.ReadToEnd();
+            logger.Debug("Result was :\n" + resultAsString);
+			var dict = Json.JsonReader.Parse(resultAsString) as Json.JsonDictionary;
 			string csv = dict["csv"] as string;
 			csv = csv.Replace("\\n", "\n");
 			logger.Debug(csv);
