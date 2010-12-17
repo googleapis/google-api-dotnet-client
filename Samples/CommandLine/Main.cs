@@ -65,7 +65,7 @@ namespace Google.Apis.Samples.CommandLine
 			
 			var discovery = new DiscoveryService(webfetcher);
 			// Build the service based on discovery information.
-			var service = discovery.GetService(version);
+			var service = discovery.GetService(version, DiscoveryVersion.Version_0_1, null);
 			
 			// Output sevice information
 			var serviceView = new ServiceView();

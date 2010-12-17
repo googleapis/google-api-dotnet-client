@@ -97,6 +97,166 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			}
 		}
 		";
+        
+        private const string AdSenseV02AsJson = @"
+{
+ ""name"": ""adsense-mgmt"",
+ ""version"": ""v1beta1"",
+ ""description"": ""AdSense Management API"",
+ ""restBasePath"": ""/adsense-mgmt/v1beta1/"",
+ ""rpcPath"": ""/rpc"",
+ ""resources"": {
+  ""adunits"": {
+   ""methods"": {
+    ""list"": {
+     ""restPath"": ""web_properties/{property_code}/ad_units"",
+     ""rpcMethod"": ""adsensemgmt.adunits.list"",
+     ""httpMethod"": ""GET"",
+     ""parameters"": {
+      ""property_code"": {
+       ""restParameterType"": ""path"",
+       ""pattern"": ""[^/]+"",
+       ""required"": true
+      }
+     }
+    }
+   }
+  },
+  ""customchannels"": {
+   ""methods"": {
+    ""list"": {
+     ""restPath"": ""web_properties/{property_code}/custom_channels"",
+     ""rpcMethod"": ""adsensemgmt.customchannels.list"",
+     ""httpMethod"": ""GET"",
+     ""parameters"": {
+      ""property_code"": {
+       ""restParameterType"": ""path"",
+       ""pattern"": ""[^/]+"",
+       ""required"": true
+      }
+     }
+    }
+   }
+  },
+  ""reports"": {
+   ""methods"": {
+    ""generate"": {
+     ""restPath"": ""reports/generate"",
+     ""rpcMethod"": ""adsensemgmt.reports.generate"",
+     ""httpMethod"": ""GET""
+    }
+   }
+  },
+  ""urlchannels"": {
+   ""methods"": {
+    ""list"": {
+     ""restPath"": ""web_properties/{property_code}/url_channels"",
+     ""rpcMethod"": ""adsensemgmt.urlchannels.list"",
+     ""httpMethod"": ""GET"",
+     ""parameters"": {
+      ""property_code"": {
+       ""restParameterType"": ""path"",
+       ""pattern"": ""[^/]+"",
+       ""required"": true
+      }
+     }
+    }
+   }
+  },
+  ""webproperties"": {
+   ""methods"": {
+    ""list"": {
+     ""restPath"": ""web_properties"",
+     ""rpcMethod"": ""adsensemgmt.webproperties.list"",
+     ""httpMethod"": ""GET""
+    }
+   }
+  }
+ }
+}";
+            
+        
+        private const string AdSenseV02WithMultiLevelAsJson = @"
+{
+ ""name"": ""adsense-mgmt"",
+ ""version"": ""v1beta1"",
+ ""description"": ""AdSense Management API"",
+ ""restBasePath"": ""/adsense-mgmt/v1beta1/"",
+ ""rpcPath"": ""/rpc"",
+ ""resources"": {
+  ""mgmt"": {
+   ""resources"": {
+    ""adunits"": {
+     ""methods"": {
+      ""list"": {
+       ""restPath"": ""web_properties/{property_code}/ad_units"",
+       ""rpcMethod"": ""adsense.mgmt.adunits.list"",
+       ""httpMethod"": ""GET"",
+       ""parameters"": {
+        ""property_code"": {
+         ""restParameterType"": ""path"",
+         ""pattern"": ""[^/]+"",
+         ""required"": true
+        }
+       }
+      }
+     }
+    },
+    ""customchannels"": {
+     ""methods"": {
+      ""list"": {
+       ""restPath"": ""web_properties/{property_code}/custom_channels"",
+       ""rpcMethod"": ""adsense.mgmt.customchannels.list"",
+       ""httpMethod"": ""GET"",
+       ""parameters"": {
+        ""property_code"": {
+         ""restParameterType"": ""path"",
+         ""pattern"": ""[^/]+"",
+         ""required"": true
+        }
+       }
+      }
+     }
+    },
+    ""reports"": {
+     ""methods"": {
+      ""generate"": {
+       ""restPath"": ""reports/generate"",
+       ""rpcMethod"": ""adsense.mgmt.reports.generate"",
+       ""httpMethod"": ""GET""
+      }
+     }
+    },
+    ""urlchannels"": {
+     ""methods"": {
+      ""list"": {
+       ""restPath"": ""web_properties/{property_code}/url_channels"",
+       ""rpcMethod"": ""adsense.mgmt.urlchannels.list"",
+       ""httpMethod"": ""GET"",
+       ""parameters"": {
+        ""property_code"": {
+         ""restParameterType"": ""path"",
+         ""pattern"": ""[^/]+"",
+         ""required"": true
+        }
+       }
+      }
+     }
+    },
+    ""webproperties"": {
+     ""methods"": {
+      ""list"": {
+       ""restPath"": ""web_properties"",
+       ""rpcMethod"": ""adsense.mgmt.webproperties.list"",
+       ""httpMethod"": ""GET""
+      }
+     }
+    }
+   }
+  }
+ }
+}
+";
 
 		public const string SimpleResource = @"
 		{
@@ -131,9 +291,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			return new KeyValuePair<string, object> (resourceName, json);
 		}
 
-		public static Resource CreateResource (string resourceName, string json)
+		public static IResource CreateResourceDivcoveryV_0_1 (string resourceName, string json)
 		{
-			return new Resource (CreateJsonResourceDefinition (resourceName, json));
+			return new ResourceV_0_1 (CreateJsonResourceDefinition (resourceName, json));
 		}
 
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
@@ -196,7 +356,19 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			var buzzTestFetcher = new StringDiscoveryDevice(){Document = BuzzServiceAsJson};
 			var discovery = new DiscoveryService(buzzTestFetcher);
 			// Build the service based on discovery information.
-			return discovery.GetService(version);
+			return discovery.GetService(version, DiscoveryVersion.Version_0_1, null);
 		}
+        
+        protected IService CreateAdSenseV02Service()
+        {
+            var version = "v1beta1";
+            var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseV02AsJson};
+            var discovery = new DiscoveryService(buzzTestFetcher);
+            var param = new ServiceFactory.FactoryV_0_2Parameter();
+            param.ServerUrl = "http://elephant.lon:9996/";
+
+            // Build the service based on discovery information.
+            return discovery.GetService(version, DiscoveryVersion.Version_0_2, param);
+        }
 	}
 }

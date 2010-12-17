@@ -33,7 +33,7 @@ namespace Google.Apis.Requests
 		
 		private IAuthenticator Authenticator {get; set;}
 		private IService Service {get; set;}
-		private Method Method {get;set;}
+		private IMethod Method {get;set;}
 		private Uri BaseURI {get; set;}
 		private string PathUrl {get;set;}
 		private string RPCName {get;set;}
@@ -52,7 +52,7 @@ namespace Google.Apis.Requests
 		/// <returns>
 		/// A <see cref="Request"/>
 		/// </returns>
-		public static Request CreateRequest(IService service, Method method) {
+		public static Request CreateRequest(IService service, IMethod method) {
 			
 			switch(method.HttpMethod) {
 			case "GET":

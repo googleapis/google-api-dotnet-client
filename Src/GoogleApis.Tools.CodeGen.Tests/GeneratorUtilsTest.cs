@@ -197,8 +197,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
             Assert.IsFalse(GeneratorUtils.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest)));
         }
         
-        private Method GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-            var resource = BaseCodeGeneratorTest.CreateResource (BaseCodeGeneratorTest.ResourceName, BaseCodeGeneratorTest.ResourceAsJson);
+        private IMethod GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
+            var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_0_1 (BaseCodeGeneratorTest.ResourceName, BaseCodeGeneratorTest.ResourceAsJson);
             return resource.Methods[testMethod.ToString()];
         }
     }

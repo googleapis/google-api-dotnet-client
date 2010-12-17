@@ -66,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         {
             int resourceNumber = 1;
             foreach (var pair in service.Resources) {
-                Resource resource = pair.Value;
+                IResource resource = pair.Value;
                 AddResourceAssignment (baseConstructor, resource, resourceNumber);
                 resourceNumber++;
             }
@@ -114,7 +114,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return constructor;
         }
 
-        private void AddResourceAssignment (CodeMemberMethod constructor, Resource resource, int resourceNumber)
+        private void AddResourceAssignment (CodeMemberMethod constructor, IResource resource, int resourceNumber)
         {
             constructor.Statements.Add (
                 new CodeAssignStatement (

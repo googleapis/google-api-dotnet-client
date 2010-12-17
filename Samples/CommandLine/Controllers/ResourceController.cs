@@ -29,9 +29,9 @@ namespace Google.Apis.Samples.CommandLine.Controllers
 		
 		private IService _service {get;set;}
 		private ResourceView _view {get;set;}
-		private Resource _resource {get;set;}
+		private IResource _resource {get;set;}
 		
-		public ResourceController(IService service, Resource resource, ResourceView view) {
+		public ResourceController(IService service, IResource resource, ResourceView view) {
 			_service = service;
 			_view = view;
 			_resource = resource;

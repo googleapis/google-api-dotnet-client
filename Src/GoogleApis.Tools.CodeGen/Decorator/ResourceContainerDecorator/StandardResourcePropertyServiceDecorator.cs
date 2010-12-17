@@ -20,7 +20,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 
-namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
+namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
     /// <summary>
     /// Foreach resource that is part of this service this decorator will add a field
@@ -32,14 +32,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     ///         public virtual Comments Comments {get {return this.comments;}}
     ///     </code> 
     /// </summary>
-    public class StandardResourcePropertyServiceDecorator : BaseGenerator, IServiceDecorator
+    public class StandardResourcePropertyServiceDecorator : BaseGenerator, IResourceContainerDecorator
     {
-        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
-        {
+        public void DecorateClass (IResourceContainer service, CodeTypeDeclaration serviceClass)
+        {           
             int resourceNumber = 1;
             foreach (var pair in service.Resources)
             {
-                Resource resource = pair.Value;
+                IResource resource = pair.Value;
                 serviceClass.Members.Add(CreateResourceGetter (resource, resourceNumber));
                 serviceClass.Members.Add(CreateResourceField (resource, resourceNumber));
                 resourceNumber++;
@@ -47,7 +47,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
         
         [VisibleForTestOnly]        
-        internal CodeMemberField CreateResourceField (Resource resource, int resourceNumber)
+        internal CodeMemberField CreateResourceField (IResource resource, int resourceNumber)
         {
             // Add local private variables for each Resource
             var field = new CodeMemberField (
@@ -58,7 +58,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
   
         [VisibleForTestOnly]
-        internal CodeMemberProperty CreateResourceGetter (Resource resource, int resourceNumber)
+        internal CodeMemberProperty CreateResourceGetter (IResource resource, int resourceNumber)
         {
             var getter = new CodeMemberProperty ();
             getter.Name = GeneratorUtils.GetClassName (resource, resourceNumber);
