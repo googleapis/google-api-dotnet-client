@@ -40,6 +40,7 @@ namespace Google.Apis.Discovery
 		
 		internal BaseResource (KeyValuePair<string, object> kvp)
 		{
+            logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
 			if (this.information == null)
@@ -119,37 +120,37 @@ namespace Google.Apis.Discovery
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
 	}
     
-    internal class ResourceV_0_1: BaseResource
+    internal class ResourceV0_1: BaseResource
     {
-        internal ResourceV_0_1 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV_0_1(kvp);
+            return new MethodV0_1(kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV_0_1(kvp);
+            return new ResourceV0_1(kvp);
         }
     }
     
-    internal class ResourceV_0_2: BaseResource
+    internal class ResourceV0_2: BaseResource
     {
-        internal ResourceV_0_2 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_2 (KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV_0_2(kvp);
+            return new MethodV0_2(kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV_0_2(kvp);
+            return new ResourceV0_2(kvp);
         }
         
     }

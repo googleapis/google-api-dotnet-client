@@ -95,9 +95,9 @@ namespace Google.Apis.Discovery
         }
 	}
     
-    internal class MethodV_0_1:BaseMethod
+    internal class MethodV0_1:BaseMethod
     {
-        public MethodV_0_1(KeyValuePair<string, object> kvp):base(kvp)
+        public MethodV0_1(KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
@@ -107,9 +107,9 @@ namespace Google.Apis.Discovery
         }
         
     }
-    internal class MethodV_0_2:BaseMethod
+    internal class MethodV0_2:BaseMethod
     {
-        public MethodV_0_2(KeyValuePair<string, object> kvp):base(kvp)
+        public MethodV0_2(KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
