@@ -93,9 +93,9 @@ namespace Google.Apis.Discovery
 		}
 	}
     
-    internal class ServiceV01 : BaseService
+    internal class ServiceV0_1 : BaseService
     {
-        internal ServiceV01 (string version, string name, JsonDictionary js):
+        internal ServiceV0_1 (string version, string name, JsonDictionary js):
             base(version, name, js)
         {
             
