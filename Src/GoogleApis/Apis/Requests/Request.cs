@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Reflection;
 using System.IO;
 using System.Net;
 using System.Collections.Generic;
@@ -40,7 +41,16 @@ namespace Google.Apis.Requests
 		private string Body {get;set;}
 		private IDictionary<string, string> Parameters {get;set;}
 		private Uri RequestUrl;
-		private ReturnType ReturnType {get; set; }
+		private ReturnType ReturnType {get; set;}
+		private String AppName {get;set;}
+		private String ApiVersion {get;set;}
+		
+		private const string userAgent = "%s google-api-dotnet-client/%s";
+		
+		public Request() {
+			AppName = "Unknown Application";
+			ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
+		}
 		
 		
 		/// <summary>
@@ -155,6 +165,16 @@ namespace Google.Apis.Requests
 			return this;
 		}
 		
+		/// <summary>
+		/// Sets the Application name on the UserAgent String
+		/// </summary>
+		/// <param name="name">
+		/// A <see cref="System.String"/>
+		/// </param>
+		public IRequest WithAppName(string name) {
+			AppName = name;
+			return this;
+		}
 		
 		/// <summary>
 		/// 
@@ -245,6 +265,8 @@ namespace Google.Apis.Requests
 			else {
 				request.ContentType =  "application/atom+xml";
 			}
+			
+			request.UserAgent = String.Format(userAgent, AppName, ApiVersion);
 			
 			// Attach a body if a POST and there is something to attach.
 			if(String.IsNullOrEmpty(Body) == false && (this.Method.HttpMethod == "POST" || this.Method.HttpMethod == "PUT")) {

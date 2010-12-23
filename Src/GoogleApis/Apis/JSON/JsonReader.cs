@@ -74,13 +74,14 @@ namespace Google.Apis.Json
                 return true;
             case JsonToken.Type.Null:
                 return null;
-                break;
             case JsonToken.Type.ObjectStart:
                 return ParseObject (ts);
             case JsonToken.Type.ArrayStart:
                 return ParseArray (ts);
             case JsonToken.Type.Undefined:
                 throw new ArgumentException ("parse error");
+			default:
+				throw new ArgumentException ("parse error");
             }
         }
 
