@@ -26,7 +26,7 @@ namespace Google.Apis.Discovery
 {
 	internal abstract class BaseMethod:IMethod
 	{
-		internal protected JsonDictionary information;
+		internal readonly protected JsonDictionary information;
 		
 		internal protected Dictionary<string, IParameter> parameters;
         
@@ -86,6 +86,9 @@ namespace Google.Apis.Discovery
         }
 	}
     
+    /// <summary>
+    /// Represents a Method from Discovery Version 0.1
+    /// </summary>
     internal class MethodV0_1:BaseMethod
     {
         public MethodV0_1(KeyValuePair<string, object> kvp):base(kvp)
@@ -98,6 +101,10 @@ namespace Google.Apis.Discovery
         }
         
     }
+    
+    /// <summary>
+    /// Represents a Method from Discovery Version 0.2
+    /// </summary>
     internal class MethodV0_2:BaseMethod
     {
         public MethodV0_2(KeyValuePair<string, object> kvp):base(kvp)
