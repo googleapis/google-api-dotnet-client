@@ -54,7 +54,7 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_0_1:
                     return new ServiceFactoryDiscoveryV0_1(information);
                 case DiscoveryVersion.Version_0_2:
-                    return new ServiceFactoryDiscoveryV0_2(information, (FactoryV_0_2Parameter)param);
+                    return new ServiceFactoryDiscoveryV0_2(information, (FactoryV0_2Parameter)param);
                 case DiscoveryVersion.Version_0_3:
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
@@ -65,13 +65,13 @@ namespace Google.Apis.Discovery
         {
         }
         
-        public class FactoryV_0_2Parameter:IFactoryParameter
+        public class FactoryV0_2Parameter:IFactoryParameter
         {
-            public FactoryV_0_2Parameter():this(null, null)
+            public FactoryV0_2Parameter():this(null, null)
             {
                 ;
             }
-            public FactoryV_0_2Parameter(string serverUrl, string baseUrl)
+            public FactoryV0_2Parameter(string serverUrl, string baseUrl)
             {
                 this.ServerUrl = serverUrl;
                 this.BaseUrl = baseUrl;
@@ -87,9 +87,9 @@ namespace Google.Apis.Discovery
             internal const string PathUrl = "restPath";
             
             private readonly JsonDictionary information;
-            private readonly FactoryV_0_2Parameter param;
+            private readonly FactoryV0_2Parameter param;
             private readonly string name;
-            public ServiceFactoryDiscoveryV0_2(JsonDictionary discovery, FactoryV_0_2Parameter param) 
+            public ServiceFactoryDiscoveryV0_2(JsonDictionary discovery, FactoryV0_2Parameter param) 
             {
                 this.information = discovery;
                 this.name = information["name"].ToString();                
