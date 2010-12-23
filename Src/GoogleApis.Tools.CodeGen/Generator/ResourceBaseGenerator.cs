@@ -56,12 +56,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
             }
         }
 
-        protected CodeParameterDeclarationExpression DeclareInputParameter (Parameter param, int parameterCount)
+        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount)
         {
             return new CodeParameterDeclarationExpression (typeof(string), GeneratorUtils.GetParameterName (param, parameterCount));
         }
 
-        protected CodeAssignStatement AssignParameterToDictionary (Parameter param, int parameterCount)
+        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount)
         {
             var assign = new CodeAssignStatement ();
             assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));

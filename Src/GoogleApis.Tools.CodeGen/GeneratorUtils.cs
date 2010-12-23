@@ -155,7 +155,7 @@ namespace Google.Apis.Tools.CodeGen
         ///     The Parameter
         /// </param>
         /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
-        public static String GetParameterName (Parameter parameter, int paramNumber)
+        public static String GetParameterName (IParameter parameter, int paramNumber)
         {
             return LowwerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
         }
@@ -178,11 +178,11 @@ namespace Google.Apis.Tools.CodeGen
         #endregion
         
         #region Required and Optional Parameters
-        public static IEnumerable<Parameter> GetRequiredParameters (IMethod method)
+        public static IEnumerable<IParameter> GetRequiredParameters (IMethod method)
         {
             if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
-                return new List<Parameter>(0);
+                return new List<IParameter>(0);
             }
             return from p in method.Parameters 
                     where p.Value.Required 
@@ -190,11 +190,11 @@ namespace Google.Apis.Tools.CodeGen
         }
 
 
-        public static IEnumerable<Parameter> GetOptionalParameters (IMethod method)
+        public static IEnumerable<IParameter> GetOptionalParameters (IMethod method)
         {
             if(method == null || method.Parameters == null || method.Parameters.Count == 0)
             {
-                return new List<Parameter>(0);
+                return new List<IParameter>(0);
             }
             return from p in method.Parameters 
                     where p.Value.Required == false

@@ -28,7 +28,7 @@ namespace Google.Apis.Discovery
 	{
 		internal protected JsonDictionary information;
 		
-		internal protected Dictionary<string, Parameter> parameters;
+		internal protected Dictionary<string, IParameter> parameters;
         
 		internal BaseMethod (KeyValuePair<string, object> kvp)
 		{
@@ -52,7 +52,7 @@ namespace Google.Apis.Discovery
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
 
-		public Dictionary<string, Parameter> Parameters 
+		public Dictionary<string, IParameter> Parameters 
 		{
 			get {
 				if (this.parameters == null) 
@@ -63,23 +63,23 @@ namespace Google.Apis.Discovery
 			}
 		}
         
-        private Dictionary<string, Parameter> FetchParameters ()
+        private Dictionary<string, IParameter> FetchParameters ()
         {
             if( this.information.ContainsKey(ServiceFactory.Parameters) == false)
             {
-                return new Dictionary<string, Parameter>(0);
+                return new Dictionary<string, IParameter>(0);
             }
             
             JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
             if (js == null) 
             {
-                return new Dictionary<string, Parameter>(0);                
+                return new Dictionary<string, IParameter>(0);                
             }
             
-            var parameters = new Dictionary<string, Parameter> ();
+            var parameters = new Dictionary<string, IParameter> ();
             foreach (KeyValuePair<string, object> kvp in js) 
             {
-                Parameter p = new Parameter (kvp);
+                IParameter p = new Parameter (kvp);
                 parameters.Add (kvp.Key, p);
             }
             return parameters;

@@ -70,13 +70,13 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			}
 			
 			new public CodeParameterDeclarationExpression DeclareInputParameter(
-					Parameter param, 
+					IParameter param, 
 				    int parameterCount){
 				return  base.DeclareInputParameter(param, parameterCount);
 			}
 			
 			new public CodeAssignStatement AssignParameterToDictionary(
-					Parameter param, 
+					IParameter param, 
 				    int parameterCount){
 				return base.AssignParameterToDictionary(param, parameterCount);
 			}

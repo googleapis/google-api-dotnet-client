@@ -22,12 +22,13 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
-    public interface IMethod
+    public interface IParameter
     {
-        string Name {get;set;}
-        string RestPath{get;} 
-        string RpcName {get;}
-        string HttpMethod {get;}
-        Dictionary<string, IParameter> Parameters{get;} 
+        string Name {get;}
+        string ParameterType {get;}
+        string Pattern {get;}
+        bool Required {get;}
+        string DefaultValue {get;}
+        string ValueType {get;}
     }
 }

@@ -24,7 +24,7 @@ using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
 {
-	public class Parameter
+	internal class Parameter : IParameter
 	{
 		private JsonDictionary information;
 
