@@ -145,7 +145,7 @@ namespace Google.Apis.Discovery
     				throw new ArgumentException("Did not find version: " + version + " in the discovery document");
     			}
     			
-    			return new ServiceV01(version, this.name, js);
+    			return new ServiceV0_1(version, this.name, js);
     	    }
     	  }	
     }
