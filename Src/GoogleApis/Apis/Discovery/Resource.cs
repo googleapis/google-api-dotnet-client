@@ -24,9 +24,7 @@ namespace Google.Apis.Discovery
 {
     public interface IResource : IResourceContainer
     {
-        string Name {get;set;}
         Dictionary<string, IMethod> Methods{get;}
-        IDictionary<string, IResource> Resources {get;}
     }
     
     
