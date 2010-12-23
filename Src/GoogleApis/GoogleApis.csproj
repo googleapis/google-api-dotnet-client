@@ -54,7 +54,6 @@
     <Compile Include="Apis\Requests\POSTRequest.cs" />
     <Compile Include="Apis\Requests\Request.cs" />
     <Compile Include="Apis\Discovery\Method.cs" />
-    <Compile Include="Apis\Discovery\Parameter.cs" />
     <Compile Include="Apis\Discovery\Resource.cs" />
     <Compile Include="Apis\Discovery\Utilities.cs" />
     <Compile Include="Apis\Authentication\Authentication.cs" />
@@ -85,6 +84,8 @@
     <Compile Include="Apis\Discovery\IResourceContainer.cs" />
     <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
     <Compile Include="Apis\Discovery\IMethod.cs" />
+    <Compile Include="Apis\Discovery\Parameter.cs" />
+    <Compile Include="Apis\Discovery\IParamter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
