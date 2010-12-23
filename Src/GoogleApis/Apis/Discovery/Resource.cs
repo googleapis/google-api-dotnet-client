@@ -27,14 +27,12 @@ namespace Google.Apis.Discovery
         Dictionary<string, IMethod> Methods{get;}
     }
     
-    
-    
 	internal abstract class BaseResource : IResource
 	{
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(IResource));
         private Dictionary<string, IMethod> methods;
         private Dictionary<string, IResource> resources;
-		private JsonDictionary information;
+		private readonly JsonDictionary information;
         
         public string Name {get;set;}
 		
@@ -75,13 +73,13 @@ namespace Google.Apis.Discovery
         {
             if(this.information.ContainsKey(ServiceFactory.Methods) == false)
             {
-                return new Dictionary<string, IMethod>(0);
+                return new Dictionary<string, IMethod>(0); // return empty, not null.
             }
             
             JsonDictionary js = this.information[ServiceFactory.Methods] as JsonDictionary;
             if (js == null)
             {
-                return new Dictionary<string, IMethod>(0);
+                return new Dictionary<string, IMethod>(0); // return empty, not null.
             }
             
             var methods = new Dictionary<string, IMethod> ();
@@ -98,13 +96,13 @@ namespace Google.Apis.Discovery
         {
             if(this.information.ContainsKey(ServiceFactory.Resources) == false)
             {
-                return new Dictionary<string, IResource>(0);
+                return new Dictionary<string, IResource>(0); // return empty, not null.
             }
             
             JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
             if (js == null)
             {
-                return new Dictionary<string, IResource>(0);
+                return new Dictionary<string, IResource>(0); // return empty, not null.
             }
                 
             var resources = new Dictionary<string, IResource> ();
@@ -120,6 +118,9 @@ namespace Google.Apis.Discovery
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
 	}
     
+    /// <summary>
+    /// Represents a Resource as defined by Discovery V0.1
+    /// </summary>
     internal class ResourceV0_1: BaseResource
     {
         internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(kvp)
@@ -137,6 +138,9 @@ namespace Google.Apis.Discovery
         }
     }
     
+    /// <summary>
+    /// Represents a Resource as defined by Discovery V0.1
+    /// </summary>
     internal class ResourceV0_2: BaseResource
     {
         internal ResourceV0_2 (KeyValuePair<string, object> kvp):base(kvp)

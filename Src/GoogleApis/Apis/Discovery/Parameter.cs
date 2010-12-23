@@ -26,7 +26,7 @@ namespace Google.Apis.Discovery
 {
 	internal class Parameter : IParameter
 	{
-		private JsonDictionary information;
+		private readonly JsonDictionary information;
 
 		public Parameter ()
 		{
