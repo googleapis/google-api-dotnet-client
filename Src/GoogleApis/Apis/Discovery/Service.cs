@@ -27,7 +27,7 @@ namespace Google.Apis.Discovery
 	// represents a single version of a service
 	internal abstract class BaseService:IService
 	{
-		protected internal JsonDictionary information;
+		protected readonly internal JsonDictionary information;
 		private Dictionary<string, IResource> resources;
 
 		public string Name {get; private set;}
@@ -93,6 +93,9 @@ namespace Google.Apis.Discovery
 		}
 	}
     
+    /// <summary>
+    /// Represents a Service as defined in Discovery V0.1
+    /// </summary>
     internal class ServiceV0_1 : BaseService
     {
         internal ServiceV0_1 (string version, string name, JsonDictionary js):
@@ -119,6 +122,9 @@ namespace Google.Apis.Discovery
 
     }
     
+    /// <summary>
+    /// Represents a Service as defined in Discovery V0.1
+    /// </summary>
     internal class ServiceV0_2 : BaseService
     {
         private string ServerUrl{get;set;}
