@@ -293,7 +293,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
 		public static IResource CreateResourceDivcoveryV_0_1 (string resourceName, string json)
 		{
-			return new ResourceV_0_1 (CreateJsonResourceDefinition (resourceName, json));
+			return new ResourceV0_1 (CreateJsonResourceDefinition (resourceName, json));
 		}
 
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
