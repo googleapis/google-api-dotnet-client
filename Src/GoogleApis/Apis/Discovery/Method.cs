@@ -24,15 +24,6 @@ using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
 {
-    public interface IMethod
-    {
-        string Name {get;set;}
-        string RestPath{get;} 
-        string RpcName {get;}
-        string HttpMethod {get;}
-        Dictionary<string, Parameter> Parameters{get;} 
-    }
-    
 	internal abstract class BaseMethod:IMethod
 	{
 		internal protected JsonDictionary information;
