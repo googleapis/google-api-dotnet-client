@@ -58,7 +58,9 @@ namespace Google.Apis.Discovery
                 throw new ArgumentNullException("param");
             }
             
-            if ( discovery["name"] == null || ((string)discovery["name"]).Length == 0)
+            if ( discovery.ContainsKey("name")  == false ||
+                 discovery["name"] as string == null || 
+                ((string)discovery["name"]).Length == 0)
             {
                 throw new ArgumentException("No Name present in discovery");
             }
