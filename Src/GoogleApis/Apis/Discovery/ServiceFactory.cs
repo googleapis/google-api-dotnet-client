@@ -29,6 +29,10 @@ namespace Google.Apis.Discovery
         IService GetService(string version);
     }
     
+    public interface IFactoryParameter
+    {
+    }
+    
     public abstract class ServiceFactory
     {
         internal const string VersionInfo = "versionInfo";
@@ -54,31 +58,11 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_0_1:
                     return new ServiceFactoryDiscoveryV0_1(information);
                 case DiscoveryVersion.Version_0_2:
-                    return new ServiceFactoryDiscoveryV0_2(information, (FactoryV0_2Parameter)param);
+                    return new ServiceFactoryDiscoveryV0_2(information, (FactoryParameterV0_2)param);
                 case DiscoveryVersion.Version_0_3:
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
             }
-        }
-        
-        public interface IFactoryParameter
-        {
-        }
-        
-        public class FactoryV0_2Parameter:IFactoryParameter
-        {
-            public FactoryV0_2Parameter():this(null, null)
-            {
-                ;
-            }
-            public FactoryV0_2Parameter(string serverUrl, string baseUrl)
-            {
-                this.ServerUrl = serverUrl;
-                this.BaseUrl = baseUrl;
-            }
-            
-            public string ServerUrl{get;set;}
-            public string BaseUrl{get;set;}
         }
     }
 }

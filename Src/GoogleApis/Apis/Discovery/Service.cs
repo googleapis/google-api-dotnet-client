@@ -129,7 +129,7 @@ namespace Google.Apis.Discovery
     {
         private string ServerUrl{get;set;}
         private readonly Uri baseUri;
-        internal ServiceV0_2 (string version, string name, ServiceFactory.FactoryV0_2Parameter param, JsonDictionary js):
+        internal ServiceV0_2 (string version, string name, FactoryParameterV0_2 param, JsonDictionary js):
             base(version, name, js)
         {
             this.ServerUrl = param.ServerUrl;

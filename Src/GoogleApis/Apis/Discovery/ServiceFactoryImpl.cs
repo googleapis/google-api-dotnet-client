@@ -22,15 +22,32 @@ using Google.Apis.Json;
 using Google.Apis.Testing;
 namespace Google.Apis.Discovery
 {
+    
+    public class FactoryParameterV0_2 : IFactoryParameter
+    {
+        public FactoryParameterV0_2():this(null, null)
+        {
+            ;
+        }
+        public FactoryParameterV0_2(string serverUrl, string baseUrl)
+        {
+            this.ServerUrl = serverUrl;
+            this.BaseUrl = baseUrl;
+        }
+        
+        public string ServerUrl{get;set;}
+        public string BaseUrl{get;set;}
+    }
+    
     internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
     {
         internal const string BaseUrl = "restBasePath";
         internal const string PathUrl = "restPath";
 
         private readonly JsonDictionary information;
-        private readonly ServiceFactory.FactoryV0_2Parameter param;
+        private readonly FactoryParameterV0_2 param;
         private readonly string name;
-        public ServiceFactoryDiscoveryV0_2 (JsonDictionary discovery, ServiceFactory.FactoryV0_2Parameter param)
+        public ServiceFactoryDiscoveryV0_2 (JsonDictionary discovery, FactoryParameterV0_2 param)
         {
             this.information = discovery;
             this.name = information["name"].ToString ();

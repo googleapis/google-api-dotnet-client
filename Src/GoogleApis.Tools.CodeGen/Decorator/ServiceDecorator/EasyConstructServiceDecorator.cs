@@ -91,7 +91,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             case DiscoveryVersion.Version_0_1:
                 return new CodePrimitiveExpression(null);
             case DiscoveryVersion.Version_0_2:
-                return new CodeObjectCreateExpression(typeof(ServiceFactory.FactoryV0_2Parameter),
+                return new CodeObjectCreateExpression(typeof(FactoryParameterV0_2),
                     new CodePrimitiveExpression(null),
                     new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
 
