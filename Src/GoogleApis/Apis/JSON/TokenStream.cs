@@ -72,11 +72,13 @@ namespace Google.Apis.Json
             token.type = JsonToken.Type.MemberSeperator;
             break;
           case '"':
+          case '\'':
+            char seperator = cur;
             token.type = JsonToken.Type.String;
             // let's read in the string
             sb = new StringBuilder(BuilderBufferSize);
             char next;
-            while ((next = (char)reader.Read()) != '"') {
+            while ((next = (char)reader.Read()) != seperator) {
               sb.Append(next);
             }
             token.value = sb.ToString();
