@@ -52,6 +52,7 @@
     <Compile Include="JSON\JsonReaderTests.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
     <Compile Include="Requests\MockMethod.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

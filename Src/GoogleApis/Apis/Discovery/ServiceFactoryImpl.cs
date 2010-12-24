@@ -49,6 +49,20 @@ namespace Google.Apis.Discovery
         private readonly string name;
         public ServiceFactoryDiscoveryV0_2 (JsonDictionary discovery, FactoryParameterV0_2 param)
         {
+            if ( discovery == null )
+            {
+                throw new ArgumentNullException("discovery");
+            }
+            if ( param == null )
+            {
+                throw new ArgumentNullException("param");
+            }
+            
+            if ( discovery["name"] == null || ((string)discovery["name"]).Length == 0)
+            {
+                throw new ArgumentException("No Name present in discovery");
+            }
+                
             this.information = discovery;
             this.name = information["name"].ToString ();
             this.param = param;
@@ -58,6 +72,13 @@ namespace Google.Apis.Discovery
         {
             return new ServiceV0_2 (version, this.name, param, information);
         }
+        
+        [VisibleForTestOnly]
+        internal string Name{get{return name;}}
+        [VisibleForTestOnly]
+        internal FactoryParameterV0_2 Param{get{return param;}}
+        [VisibleForTestOnly]
+        internal JsonDictionary Information{get{return information;}}
     }
 
     internal class ServiceFactoryDiscoveryV0_1 : IServiceFactory
