@@ -20,16 +20,11 @@ using System.IO;
 using System.Text;
 
 using Google.Apis.Json;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery 
 {
-    public interface IServiceFactory
-    {
-        
-        IService GetService(string version);
-    }
-    
-    public class ServiceFactory
+    public abstract class ServiceFactory
     {
         internal const string VersionInfo = "versionInfo";
         
@@ -81,6 +76,7 @@ namespace Google.Apis.Discovery
             public string BaseUrl{get;set;}
         }
     
+        [VisibleForTestOnly]
         internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
         {
             internal const string BaseUrl = "restBasePath";
@@ -102,7 +98,8 @@ namespace Google.Apis.Discovery
             }
         }
         
-    	internal class ServiceFactoryDiscoveryV0_1 :IServiceFactory
+    	[VisibleForTestOnly]
+        internal class ServiceFactoryDiscoveryV0_1 :IServiceFactory
     	{
             internal const string BaseUrl = "baseUrl";
             internal const string PathUrl = "pathUrl";
