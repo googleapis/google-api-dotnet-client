@@ -364,7 +364,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var version = "v1beta1";
             var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseV02AsJson};
             var discovery = new DiscoveryService(buzzTestFetcher);
-            var param = new ServiceFactory.FactoryV0_2Parameter();
+            var param = new FactoryParameterV0_2();
             param.ServerUrl = "http://elephant.lon:9996/";
 
             // Build the service based on discovery information.

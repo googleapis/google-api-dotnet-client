@@ -118,7 +118,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             UTF8Encoding.UTF8.GetBytes(V02_SAMPLE_DISCOVERY);
             MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V02_SAMPLE_DISCOVERY));
-            var param = new ServiceFactory.FactoryV0_2Parameter();
+            var param = new FactoryParameterV0_2();
             param.ServerUrl = "http://elephant.lon:9996/";
             IServiceFactory factory = ServiceFactory.CreateServiceFactory (ms, DiscoveryVersion.Version_0_2, param);
             IService service = factory.GetService ("v1beta1");
