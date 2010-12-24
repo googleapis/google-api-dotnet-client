@@ -24,6 +24,11 @@ using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery 
 {
+    public interface IServiceFactory
+    {
+        IService GetService(string version);
+    }
+    
     public abstract class ServiceFactory
     {
         internal const string VersionInfo = "versionInfo";
@@ -76,73 +81,4 @@ namespace Google.Apis.Discovery
             public string BaseUrl{get;set;}
         }
     }
-    
-
-        internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
-        {
-            internal const string BaseUrl = "restBasePath";
-            internal const string PathUrl = "restPath";
-            
-            private readonly JsonDictionary information;
-            private readonly ServiceFactory.FactoryV0_2Parameter param;
-            private readonly string name;
-            public ServiceFactoryDiscoveryV0_2(JsonDictionary discovery, ServiceFactory.FactoryV0_2Parameter param) 
-            {
-                this.information = discovery;
-                this.name = information["name"].ToString();                
-                this.param = param;
-            }
-            
-            public IService GetService(string version) 
-            {
-                return new ServiceV0_2(version, this.name, param, information);
-            }
-        }
-        
-        internal class ServiceFactoryDiscoveryV0_1 :IServiceFactory
-        {
-            internal const string BaseUrl = "baseUrl";
-            internal const string PathUrl = "pathUrl";
-            
-            private JsonDictionary information;
-            private string name;
-            public ServiceFactoryDiscoveryV0_1(JsonDictionary discovery) 
-            {
-              this.information = discovery;
-              if (this.information == null)
-                throw new ArgumentException("Discovery document in invalid form");
-        
-              // if present discard the data element
-              this.information = this.information["data"] as JsonDictionary;
-                if (this.information == null)
-                throw new ArgumentException("Discovery document has no data element");
-              if (this.information.Count != 1)
-                throw new ArgumentException("More than one element found");
-              foreach (KeyValuePair<string, object> kvp in this.information) {
-                this.name = kvp.Key;
-                this.information = kvp.Value as JsonDictionary;
-              }
-              if (this.information == null)
-                throw new ArgumentException("Discovery document has no service dictionary");
-              /*
-              if (this.information.Count >= 2)
-                throw new ArgumentException("Discovery document has too many children beneath the service name");
-        
-              this.information = this.information["versionInfo"] as JSONDictionary;
-              if (this.information == null)
-                throw new ArgumentException("Discovery document has no versionInfo for the service");*/
-            }
-        
-            public IService GetService(string version) 
-            {
-                // now find the right versioninfo set
-                JsonDictionary js = this.information[version] as JsonDictionary;
-                if (js == null)
-                {
-                    throw new ArgumentException("Did not find version: " + version + " in the discovery document");
-                }
-                
-                return new ServiceV0_1(version, this.name, js);
-            }
-          }
 }
