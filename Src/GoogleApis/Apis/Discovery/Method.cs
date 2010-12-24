@@ -97,7 +97,7 @@ namespace Google.Apis.Discovery
         
         public override string RestPath 
         {
-            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_1.PathUrl] as string; }
+            get { return this.information[ServiceFactoryDiscoveryV0_1.PathUrl] as string; }
         }
         
     }
@@ -113,7 +113,7 @@ namespace Google.Apis.Discovery
         
         public override string RestPath 
         {
-            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_2.PathUrl] as string; }
+            get { return this.information[ServiceFactoryDiscoveryV0_2.PathUrl] as string; }
         }
     }
 }

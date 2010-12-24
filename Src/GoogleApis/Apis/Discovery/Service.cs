@@ -112,7 +112,7 @@ namespace Google.Apis.Discovery
         public override Uri BaseUri 
         {
             get { return new Uri (
-                    this.information[ServiceFactory.ServiceFactoryDiscoveryV0_1.BaseUrl] as string); }
+                    this.information[ServiceFactoryDiscoveryV0_1.BaseUrl] as string); }
         }
         
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
@@ -140,7 +140,7 @@ namespace Google.Apis.Discovery
             else
             {
                 this.baseUri = new Uri (this.ServerUrl +
-                    this.information[ServiceFactory.ServiceFactoryDiscoveryV0_2.BaseUrl] as string);
+                    this.information[ServiceFactoryDiscoveryV0_2.BaseUrl] as string);
             }
         }
         
