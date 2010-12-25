@@ -48,8 +48,6 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("adsense-mgmt", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
-            
-            
         }
     }
 }

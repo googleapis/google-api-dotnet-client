@@ -107,13 +107,15 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class MethodV0_2:BaseMethod
     {
+        private const string PathUrl = "restPath";
+
         public MethodV0_2(KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         public override string RestPath 
         {
-            get { return this.information[ServiceFactoryDiscoveryV0_2.PathUrl] as string; }
+            get { return this.information[PathUrl] as string; }
         }
     }
 }
