@@ -98,6 +98,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ServiceV0_1 : BaseService
     {
+        internal const string BaseUrl = "baseUrl";
+        
         internal ServiceV0_1 (string version, string name, JsonDictionary js):
             base(version, name, js)
         {
@@ -111,8 +113,7 @@ namespace Google.Apis.Discovery
         
         public override Uri BaseUri 
         {
-            get { return new Uri (
-                    this.information[ServiceFactoryDiscoveryV0_1.BaseUrl] as string); }
+            get { return new Uri (this.information[BaseUrl] as string); }
         }
         
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
@@ -128,7 +129,8 @@ namespace Google.Apis.Discovery
     internal class ServiceV0_2 : BaseService
     {
         private const string BaseUrl = "restBasePath";
-        
+        private const string PathUrl = "restPath";
+
         private string ServerUrl{get;set;}
         private readonly Uri baseUri;
         internal ServiceV0_2 (string version, string name, FactoryParameterV0_2 param, JsonDictionary js):
