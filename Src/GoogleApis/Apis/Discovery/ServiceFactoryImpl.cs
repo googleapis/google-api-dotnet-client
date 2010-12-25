@@ -41,9 +41,6 @@ namespace Google.Apis.Discovery
     
     internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
     {
-        internal const string BaseUrl = "restBasePath";
-        internal const string PathUrl = "restPath";
-
         private readonly JsonDictionary information;
         private readonly FactoryParameterV0_2 param;
         private readonly string name;

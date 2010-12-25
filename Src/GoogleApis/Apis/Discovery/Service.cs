@@ -127,6 +127,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ServiceV0_2 : BaseService
     {
+        private const string BaseUrl = "restBasePath";
+        
         private string ServerUrl{get;set;}
         private readonly Uri baseUri;
         internal ServiceV0_2 (string version, string name, FactoryParameterV0_2 param, JsonDictionary js):
@@ -140,7 +142,7 @@ namespace Google.Apis.Discovery
             else
             {
                 this.baseUri = new Uri (this.ServerUrl +
-                    this.information[ServiceFactoryDiscoveryV0_2.BaseUrl] as string);
+                    this.information[BaseUrl] as string);
             }
         }
         
