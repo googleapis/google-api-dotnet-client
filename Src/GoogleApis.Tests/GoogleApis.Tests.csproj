@@ -53,6 +53,7 @@
     <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
     <Compile Include="Requests\MockMethod.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\UtilitiesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

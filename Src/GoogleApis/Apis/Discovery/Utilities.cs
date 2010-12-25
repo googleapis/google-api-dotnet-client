@@ -24,7 +24,10 @@ namespace Google.Apis.Discovery
 {
 	public static class Utilities
 	{
-		public static TValue GetValueAsNull<TKey, TValue> (this IDictionary<TKey, TValue> data, TKey key)
+        /// <summary>
+        /// Fetches an element from a dictionary in a safe way, returning null if there is no value present.
+        /// </summary>
+        public static TValue GetValueAsNull<TKey, TValue> (this IDictionary<TKey, TValue> data, TKey key)
 		{
 			TValue result;
 			if (!data.TryGetValue (key, out result)) 
