@@ -42,7 +42,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
         
         [Test()]
-        public void GetValueAsNullPrimTest ()
+        public void GetValueAsNullPrimitiveTest ()
         {
             var dict = new Dictionary<int, int>();
             dict[0] = 0;
