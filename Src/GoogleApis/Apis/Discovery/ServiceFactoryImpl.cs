@@ -39,6 +39,7 @@ namespace Google.Apis.Discovery
         public string BaseUrl{get;set;}
     }
     
+    [VisibleForTestOnly]
     internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
     {
         private readonly JsonDictionary information;
@@ -79,12 +80,11 @@ namespace Google.Apis.Discovery
         [VisibleForTestOnly]
         internal JsonDictionary Information{get{return information;}}
     }
-
+ 
+    [VisibleForTestOnly]
     internal class ServiceFactoryDiscoveryV0_1 : IServiceFactory
     {
-        internal const string BaseUrl = "baseUrl";
-        internal const string PathUrl = "pathUrl";
-
+  
         private JsonDictionary information;
         private string name;
         public ServiceFactoryDiscoveryV0_1 (JsonDictionary discovery)
