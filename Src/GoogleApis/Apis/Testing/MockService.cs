@@ -52,6 +52,13 @@ namespace Google.Apis.Testing {
 
 		public MockService() {
 		}
-	}
+    
+        public IDictionary<string, ISchema> Schemas {
+            get {
+                throw new System.NotImplementedException();
+            }
+        }
+  
+      	}
 }
 

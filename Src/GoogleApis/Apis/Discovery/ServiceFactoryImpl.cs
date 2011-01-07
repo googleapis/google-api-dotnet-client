@@ -22,6 +22,60 @@ using Google.Apis.Json;
 using Google.Apis.Testing;
 namespace Google.Apis.Discovery
 {
+    public class FactoryParameterV0_3 : FactoryParameterV0_2, IFactoryParameter
+    {
+        public FactoryParameterV0_3():this(null,null)
+        {
+            ;
+        }
+        
+        public FactoryParameterV0_3(string serverUrl, string baseUrl): base(serverUrl, baseUrl)
+        {
+            ;
+        }
+    }
+    
+    internal class ServiceFactoryDiscoveryV0_3 : IServiceFactory
+    {
+         private readonly JsonDictionary information;
+        private readonly FactoryParameterV0_3 param;
+        private readonly string name;
+        public ServiceFactoryDiscoveryV0_3 (JsonDictionary discovery, FactoryParameterV0_3 param)
+        {
+            if ( discovery == null )
+            {
+                throw new ArgumentNullException("discovery");
+            }
+            if ( param == null )
+            {
+                throw new ArgumentNullException("param");
+            }
+            
+            if ( discovery.ContainsKey("name")  == false ||
+                 discovery["name"] as string == null || 
+                ((string)discovery["name"]).Length == 0)
+            {
+                throw new ArgumentException("No Name present in discovery");
+            }
+                
+            this.information = discovery;
+            this.name = information["name"].ToString ();
+            this.param = param;
+        }
+
+        public IService GetService (string version)
+        {
+            return new ServiceV0_2 (version, this.name, param, information);
+        }
+        
+        [VisibleForTestOnly]
+        internal string Name{get{return name;}}
+        [VisibleForTestOnly]
+        internal FactoryParameterV0_3 Param{get{return param;}}
+        [VisibleForTestOnly]
+        internal JsonDictionary Information{get{return information;}}
+        
+    }
     
     public class FactoryParameterV0_2 : IFactoryParameter
     {

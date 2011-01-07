@@ -53,6 +53,14 @@ namespace Google.Apis.Discovery
 		{
 			get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
 		}
+        
+        public virtual IDictionary<string, ISchema> Schemas
+        {
+            get
+            {
+                return new Dictionary<string, ISchema>(0);
+            }
+        }
 
 		public IDictionary<string, IResource> Resources 
 		{
