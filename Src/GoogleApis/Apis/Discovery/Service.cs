@@ -24,6 +24,9 @@ using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
 {
+    
+    #region BaseService
+    
 	// represents a single version of a service
 	internal abstract class BaseService:IService
 	{
@@ -36,6 +39,10 @@ namespace Google.Apis.Discovery
 
 		internal BaseService (string version, string name, JsonDictionary js)
 		{
+            version.ThrowIfNull("version");
+            name.ThrowIfNull("name");
+            js.ThrowIfNull("js");
+            
 			this.Version = version;
 			this.Name = name;
 			this.information = js;
@@ -101,6 +108,9 @@ namespace Google.Apis.Discovery
 		}
 	}
     
+    #endregion
+    
+    #region Service V0.1
     /// <summary>
     /// Represents a Service as defined in Discovery V0.1
     /// </summary>
@@ -131,8 +141,11 @@ namespace Google.Apis.Discovery
 
     }
     
+    #endregion
+    
+    #region Service V0.2
     /// <summary>
-    /// Represents a Service as defined in Discovery V0.1
+    /// Represents a Service as defined in Discovery V0.2
     /// </summary>
     internal class ServiceV0_2 : BaseService
     {
@@ -171,4 +184,50 @@ namespace Google.Apis.Discovery
             return new ResourceV0_2(kvp);
         }
     }
+    #endregion
+    
+    #region Service V0.3
+    /// <summary>
+    /// Represents a Service as defined in Discovery V0.2
+    /// </summary>
+    internal class ServiceV0_3 : BaseService
+    {
+        private const string BaseUrl = "restBasePath";
+        private const string PathUrl = "restPath";
+
+        private string ServerUrl{get;set;}
+        private readonly Uri baseUri;
+        internal ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
+            base(version, name, js)
+        {
+            param.ThrowIfNull("param");
+            
+            this.ServerUrl = param.ServerUrl;
+            if(param.BaseUrl != null && param.BaseUrl.Length > 0)
+            {
+                this.baseUri = new Uri(param.BaseUrl);
+            } 
+            else
+            {
+                this.baseUri = new Uri (this.ServerUrl +
+                    this.information[BaseUrl] as string);
+            }
+        }
+        
+        public override DiscoveryVersion DiscoveryVersion 
+        {
+            get {return DiscoveryVersion.Version_0_3;}
+        }
+        
+        public override Uri BaseUri 
+        { 
+            get {return baseUri;}
+        }
+        
+        public override IResource CreateResource (KeyValuePair<string, object> kvp)
+        {
+            throw new NotImplementedException("WIP");
+        }
+    }
+    #endregion
 }
