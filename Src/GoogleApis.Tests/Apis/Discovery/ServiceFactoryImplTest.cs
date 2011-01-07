@@ -41,13 +41,14 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test()]
         public void ServiceFactoryDiscoveryV0_2ConstructorSucsessTest ()
         {
-            var param = new FactoryParameterV0_2("server", "base");
+            var param = new FactoryParameterV0_2("server", "http://base");
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.V0_2SAMPLE_DISCOVERY);
             var fact = new ServiceFactoryDiscoveryV0_2(json, param);
             
             Assert.AreEqual("adsense-mgmt", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
+            Assert.IsInstanceOf(typeof(ServiceV0_2), fact.GetService("v1"));
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\UtilitiesTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

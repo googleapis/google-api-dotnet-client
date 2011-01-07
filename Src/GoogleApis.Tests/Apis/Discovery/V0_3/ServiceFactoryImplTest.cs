@@ -1599,7 +1599,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         #endregion
         
         [Test()]
-        public void ServiceFactoryDiscoveryV0_3ConstructorSucsessFail ()
+        public void ServiceFactoryDiscovery_ConstructorFailTest ()
         {
             var param = new FactoryParameterV0_3("server", "base");
             var json = (JsonDictionary)JsonReader.Parse(BuzzV0_3_Json);
@@ -1612,15 +1612,16 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         }
         
         [Test()]
-        public void ServiceFactoryDiscoveryV0_3ConstructorSucsessTest ()
+        public void ServiceFactoryDiscovery_ConstructorSucsessTest ()
         {
-            var param = new FactoryParameterV0_3("server", "base");
+            var param = new FactoryParameterV0_3("server", "http://base");
             var json = (JsonDictionary)JsonReader.Parse(BuzzV0_3_Json);
             var fact = new ServiceFactoryDiscoveryV0_3(json, param);
             
             Assert.AreEqual("buzz", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
+            Assert.IsInstanceOf(typeof(ServiceV0_3), fact.GetService("v1"));
         }
     }
 }

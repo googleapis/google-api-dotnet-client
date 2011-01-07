@@ -36,5 +36,14 @@ namespace Google.Apis.Discovery
 			}
 			return result;
 		}
+        
+        /// <summary>Extension method on object, which throws a ArgumentNullException if obj is null</summary>
+        public static void ThrowIfNull(this object obj, string paramName)
+        {
+            if(obj == null)
+            {
+                throw new ArgumentNullException(paramName);
+            }
+        }
 	}
 }

@@ -65,7 +65,7 @@ namespace Google.Apis.Discovery
 
         public IService GetService (string version)
         {
-            return new ServiceV0_2 (version, this.name, param, information);
+            return new ServiceV0_3 (version, this.name, param, information);
         }
         
         [VisibleForTestOnly]

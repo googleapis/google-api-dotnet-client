@@ -55,6 +55,15 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(0, dict.GetValueAsNull(-1));
             Assert.AreEqual(0, dict.GetValueAsNull(3));
         }
+        
+        [Test]
+        public void ThrowIfNullTest()
+        {
+            string str = null;
+            Assert.Throws(typeof(ArgumentNullException), () => str.ThrowIfNull("str"));
+            str = "123";
+            str.ThrowIfNull("Not throwen");
+        }
     }
 }
 
