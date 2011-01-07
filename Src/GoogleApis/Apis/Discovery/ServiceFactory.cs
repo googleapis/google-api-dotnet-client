@@ -60,6 +60,7 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_0_2:
                     return new ServiceFactoryDiscoveryV0_2(information, (FactoryParameterV0_2)param);
                 case DiscoveryVersion.Version_0_3:
+                    return new ServiceFactoryDiscoveryV0_3(information, (FactoryParameterV0_3)param);
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
             }

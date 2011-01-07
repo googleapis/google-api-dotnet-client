@@ -167,17 +167,20 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
         
         [Test()]
-        public void TestCreateServiceFactoryV0_3()
-        {
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY));
-            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (ms, DiscoveryVersion.Version_0_3, null));
-        }
-        
-        [Test()]
         public void TestCreateServiceFactoryInvalidVersion()
         {
             MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY));
             Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (ms, (DiscoveryVersion)56, null));
+        }
+        
+        [Test()]
+        public void TestCreateServiceFactoryV0_3()
+        {
+            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_3.ServiceFactoryImplTest.BuzzV0_3_Json));
+            var param = new FactoryParameterV0_3();
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory(ms, DiscoveryVersion.Version_0_3, param);
+            Assert.NotNull(factory);
+            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
         }
     }
 }

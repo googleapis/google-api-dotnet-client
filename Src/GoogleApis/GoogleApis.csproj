@@ -87,6 +87,7 @@
     <Compile Include="Apis\Discovery\Parameter.cs" />
     <Compile Include="Apis\Discovery\IParamter.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImpl.cs" />
+    <Compile Include="Apis\Discovery\ISchema.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />

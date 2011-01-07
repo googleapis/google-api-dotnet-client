@@ -54,6 +54,7 @@
     <Compile Include="Requests\MockMethod.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\UtilitiesTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -67,5 +68,6 @@
     <Folder Include="JSON\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\Discovery\" />
+    <Folder Include="Apis\Discovery\V0_3\" />
   </ItemGroup>
 </Project>

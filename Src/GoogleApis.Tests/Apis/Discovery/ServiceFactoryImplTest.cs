@@ -10,7 +10,7 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture()]
     public class ServiceFactoryImplTest
     {
-        private const string BadDiscoveryv0_2_No_Name =  @"{
+        internal const string BadDiscoveryv0_2_No_Name =  @"{
  'NO_name': 'adsense-mgmt',
  'version': 'v1beta1',
  'description': 'AdSense Management API',
