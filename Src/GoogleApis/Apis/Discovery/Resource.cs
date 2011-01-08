@@ -18,8 +18,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
     public interface IResource : IResourceContainer
