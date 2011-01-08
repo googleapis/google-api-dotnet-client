@@ -89,7 +89,8 @@
     <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
     <Compile Include="Apis\Util\Utilities.cs" />
     <Compile Include="Apis\Discovery\Schema\ISchema.cs" />
-    <Compile Include="Apis\Discovery\Schema\Schema.cs" />
+    <Compile Include="Apis\Discovery\Schema\ISchemaProperty.cs" />
+    <Compile Include="Apis\Discovery\Schema\SchemaImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />

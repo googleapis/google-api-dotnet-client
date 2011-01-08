@@ -56,6 +56,7 @@
     <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
     <Compile Include="Apis\Utils\UtilitiesTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\SchemaImplTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -71,5 +72,6 @@
     <Folder Include="Apis\Discovery\" />
     <Folder Include="Apis\Discovery\V0_3\" />
     <Folder Include="Apis\Utils\" />
+    <Folder Include="Apis\Discovery\Schema\" />
   </ItemGroup>
 </Project>
