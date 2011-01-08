@@ -15,50 +15,76 @@ limitations under the License.
 */
 
 using System;
-using Google.Apis.Discovery;
-using Google.Apis.Requests;
 using System.Collections.Generic;
 
-namespace Google.Apis.Testing {
-	public class MockService : IService {
-		public MockRequest Request { get; set; }
+using Google.Apis.Discovery;
+using Google.Apis.Discovery.Schema;
+using Google.Apis.Requests;
 
-		public IRequest CreateRequest(string resource, string methodName) {
-			Request = new MockRequest();
-			return Request;
-		}
-
-		public string Name {get ; set;}
-
-		public string Version {get; set;}
-
-		public Uri BaseUri {get; set;}
-        
-        public DiscoveryVersion DiscoveryVersion {
-            get { return DiscoveryVersion.Version_0_1;}
+namespace Google.Apis.Testing
+{
+    public class MockService : IService
+    {
+        public MockRequest Request
+        {
+            get;
+            set;
         }
 
-		public Uri RpcUri {
-			get {
-				throw new System.NotImplementedException();
-			}
-		}
+        public IRequest CreateRequest (string resource, string methodName)
+        {
+            Request = new MockRequest ();
+            return Request;
+        }
 
-		public IDictionary<string, IResource> Resources {
-			get {
-				throw new System.NotImplementedException();
-			}
-		}
+        public string Name
+        {
+            get;
+            set;
+        }
 
-		public MockService() {
-		}
-    
-        public IDictionary<string, ISchema> Schemas {
+        public string Version
+        {
+            get;
+            set;
+        }
+
+        public Uri BaseUri
+        {
+            get;
+            set;
+        }
+
+        public DiscoveryVersion DiscoveryVersion
+        {
+            get { return DiscoveryVersion.Version_0_1; }
+        }
+
+        public Uri RpcUri
+        {
             get {
-                throw new System.NotImplementedException();
+                throw new System.NotImplementedException ();
             }
         }
-  
-      	}
+
+        public IDictionary<string, IResource> Resources
+        {
+            get {
+                throw new System.NotImplementedException ();
+            }
+        }
+
+        public MockService ()
+        {
+        }
+
+        public IDictionary<string, ISchema> Schemas
+        {
+            get {
+                throw new System.NotImplementedException ();
+            }
+        }
+        
+    }
 }
 
