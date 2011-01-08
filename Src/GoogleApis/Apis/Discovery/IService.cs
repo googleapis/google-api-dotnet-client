@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 
 using Google.Apis.Requests;
+using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Discovery 
 {

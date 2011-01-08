@@ -86,10 +86,10 @@
     <Compile Include="Apis\Discovery\Parameter.cs" />
     <Compile Include="Apis\Discovery\IParamter.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImpl.cs" />
-    <Compile Include="Apis\Discovery\ISchema.cs" />
     <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
     <Compile Include="Apis\Util\Utilities.cs" />
-    <Compile Include="Apis\Discovery\Schema.cs" />
+    <Compile Include="Apis\Discovery\Schema\ISchema.cs" />
+    <Compile Include="Apis\Discovery\Schema\Schema.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
@@ -99,6 +99,7 @@
     <Folder Include="Apis\Authentication\" />
     <Folder Include="Apis\Testing\" />
     <Folder Include="Apis\Util\" />
+    <Folder Include="Apis\Discovery\Schema\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

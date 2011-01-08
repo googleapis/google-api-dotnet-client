@@ -22,6 +22,7 @@ using System.Text;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Util;
+using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Discovery
 {
@@ -231,7 +232,7 @@ namespace Google.Apis.Discovery
                 {
                     foreach (KeyValuePair<string, object> kvp in js) 
                     {
-                        ISchema schema = new Schema(kvp);
+                        ISchema schema = new SchemaImpl(kvp);
                         working.Add (schema.Name, schema);
                     }
                 }
