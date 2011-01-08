@@ -32,12 +32,37 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test()]
         public void VersionTest ()
         {
+            var service = CreateService();
+            Assert.AreEqual(service.DiscoveryVersion, DiscoveryVersion.Version_0_3);
+        }
+        
+        
+        
+        [Test()]
+        public void RessourceTest()
+        {
+            var service = CreateService();
+            Assert.AreEqual(1, service.Resources.Count);
+            Assert.IsNotNull(service.Resources["activities"]);
+        }
+        
+        [Test()]
+        public void SchemaTest()
+        {
+            var service = CreateService();
+            Assert.AreEqual(31, service.Schemas.Count);
+            Assert.IsNotNull(service.Schemas["Activitiylist"]);
+            Assert.IsNotNull(service.Schemas["ChiliActivitiesCountJson"]);
+            Assert.IsNotNull(service.Schemas["ChiliPeopleListJson"]);
+            Assert.IsNotNull(service.Schemas["Video"]);
+        }
+        
+        private ServiceV0_3 CreateService()
+        {
             var param = new FactoryParameterV0_3(){
                 ServerUrl = "http://server/"};
-            var js = new JsonDictionary();
-            js["restBasePath"] = "test/path";
-            var service = new ServiceV0_3(TestVersion, TestName, param, js);
-            Assert.AreEqual(service.DiscoveryVersion, DiscoveryVersion.Version_0_3);
+            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
+            return new ServiceV0_3(TestVersion, TestName, param, json);
         }
     }
 }

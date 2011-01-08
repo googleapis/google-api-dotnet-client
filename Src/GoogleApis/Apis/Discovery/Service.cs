@@ -21,6 +21,7 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery
 {
@@ -194,6 +195,8 @@ namespace Google.Apis.Discovery
     {
         private const string BaseUrl = "restBasePath";
         private const string PathUrl = "restPath";
+        
+        private IDictionary<String, ISchema> schemas = null;
 
         private string ServerUrl{get;set;}
         private readonly Uri baseUri;
@@ -203,7 +206,7 @@ namespace Google.Apis.Discovery
             param.ThrowIfNull("param");
             
             this.ServerUrl = param.ServerUrl;
-            if(param.BaseUrl != null && param.BaseUrl.Length > 0)
+            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
             {
                 this.baseUri = new Uri(param.BaseUrl);
             } 
@@ -211,6 +214,20 @@ namespace Google.Apis.Discovery
             {
                 this.baseUri = new Uri (this.ServerUrl +
                     this.information[BaseUrl] as string);
+            }
+        }
+        
+        public override IDictionary<string, ISchema> Schemas {
+            get {
+                if (schemas != null)
+                {
+                    return schemas;
+                }
+                
+                var working = new Dictionary<string, ISchema>();
+                
+                schemas = working.AsReadOnly();
+                return schemas;
             }
         }
         
@@ -226,7 +243,8 @@ namespace Google.Apis.Discovery
         
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            throw new NotImplementedException("WIP");
+            //TODO(davidwaters): We will return resource 0.2 until we need more functionality
+            return new ResourceV0_2(kvp);
         }
     }
     #endregion

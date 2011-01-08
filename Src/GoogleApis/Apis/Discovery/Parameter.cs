@@ -21,6 +21,7 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery
 {

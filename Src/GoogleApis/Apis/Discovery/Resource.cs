@@ -26,7 +26,7 @@ namespace Google.Apis.Discovery
     {
         Dictionary<string, IMethod> Methods{get;}
     }
-    
+    #region Base Resource
 	internal abstract class BaseResource : IResource
 	{
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(IResource));
@@ -117,7 +117,9 @@ namespace Google.Apis.Discovery
         protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
 	}
+    #endregion
     
+    #region ResourceV0_1
     /// <summary>
     /// Represents a Resource as defined by Discovery V0.1
     /// </summary>
@@ -137,9 +139,11 @@ namespace Google.Apis.Discovery
             return new ResourceV0_1(kvp);
         }
     }
+    #endregion
     
+    #region ResourceV0_2
     /// <summary>
-    /// Represents a Resource as defined by Discovery V0.1
+    /// Represents a Resource as defined by Discovery V0.2
     /// </summary>
     internal class ResourceV0_2: BaseResource
     {
@@ -158,5 +162,6 @@ namespace Google.Apis.Discovery
         }
         
     }
+    #endregion
     
 }

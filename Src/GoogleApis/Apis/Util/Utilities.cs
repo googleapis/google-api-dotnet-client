@@ -20,7 +20,7 @@ using System.IO;
 using System.Text;
 using Google.Apis.Json;
 using Google.Apis.Requests;
-namespace Google.Apis.Discovery
+namespace Google.Apis.Util
 {
 	public static class Utilities
 	{
@@ -45,5 +45,12 @@ namespace Google.Apis.Discovery
                 throw new ArgumentNullException(paramName);
             }
         }
+        
+        public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)
+        {
+            dict.ThrowIfNull("this");
+            return new ReadOnlyDictionary<TKey, TValue>(dict);
+        }
+                                                                         
 	}
 }
