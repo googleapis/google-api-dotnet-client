@@ -55,7 +55,6 @@
     <Compile Include="Apis\Requests\Request.cs" />
     <Compile Include="Apis\Discovery\Method.cs" />
     <Compile Include="Apis\Discovery\Resource.cs" />
-    <Compile Include="Apis\Discovery\Utilities.cs" />
     <Compile Include="Apis\Authentication\Authentication.cs" />
     <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
     <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
@@ -88,6 +87,8 @@
     <Compile Include="Apis\Discovery\IParamter.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImpl.cs" />
     <Compile Include="Apis\Discovery\ISchema.cs" />
+    <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
+    <Compile Include="Apis\Util\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
@@ -96,6 +97,7 @@
     <Folder Include="Apis\Requests\" />
     <Folder Include="Apis\Authentication\" />
     <Folder Include="Apis\Testing\" />
+    <Folder Include="Apis\Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
