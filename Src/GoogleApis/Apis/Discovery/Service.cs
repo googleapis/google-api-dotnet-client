@@ -226,6 +226,16 @@ namespace Google.Apis.Discovery
                 
                 var working = new Dictionary<string, ISchema>();
                 
+                JsonDictionary js = this.information[ServiceFactory.Schemas] as JsonDictionary;
+                if (js != null) 
+                {
+                    foreach (KeyValuePair<string, object> kvp in js) 
+                    {
+                        ISchema schema = new Schema(kvp);
+                        working.Add (schema.Name, schema);
+                    }
+                }
+                
                 schemas = working.AsReadOnly();
                 return schemas;
             }

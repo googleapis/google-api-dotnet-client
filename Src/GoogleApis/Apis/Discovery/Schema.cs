@@ -14,11 +14,25 @@
 // limitations under the License.
 // */
 using System;
+
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+using Google.Apis.Json;
+using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
-    public interface ISchema
+    public class Schema : ISchema
     {
-        string Name{get;}
+        private readonly string name;
+        public Schema (KeyValuePair<string, object> kvp)
+        {
+            this.name = kvp.Key;
+        }
+        
+        public string Name { get { return name;} }
     }
 }
 

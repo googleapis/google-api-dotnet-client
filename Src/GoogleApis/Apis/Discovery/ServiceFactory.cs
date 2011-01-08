@@ -39,6 +39,7 @@ namespace Google.Apis.Discovery
         
         internal const string RpcUrl = "rpcUrl";
         internal const string Resources = "resources";
+        internal const string Schemas = "schemas";
         internal const string Methods = "methods";
         internal const string RpcName = "rpcName";
         internal const string HttpMethod = "httpMethod";
