@@ -17,7 +17,7 @@ using Google.Apis.Json;
 using NUnit.Framework;
 using System.IO;
 
-namespace Google.Apis.Tests
+namespace Google.Apis.Tests.Json
 {
     
     
@@ -27,7 +27,52 @@ namespace Google.Apis.Tests
     ///</summary>
   [TestFixture()]
   public class TokenStreamTest {
-
+        
+    [Test()]
+    public void GetNextTokenTestEscapeUniCode()
+    {
+      TokenStream target = new TokenStream("'\\uABCD'");
+      var actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("\uABCD", actual.value);
+      
+      target = new TokenStream("'\\u0000'");
+      actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("\u0000", actual.value);
+            
+      target = new TokenStream("'\\uFFFF'");
+      actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("\uFFFF", actual.value);
+    }
+  
+    [Test()]
+    public void GetNextTokenTestEscapeTab()
+    {
+      TokenStream target = new TokenStream("'\\t'");
+      var actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("\t", actual.value);
+    }
+    
+    [Test()]
+    public void GetNextTokenTestEscapeSingleQuoteSimple()
+    {
+      TokenStream target = new TokenStream("'{\\'id\\':\\'Activitiylist\\'}'");
+      var actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("{'id':'Activitiylist'}", actual.value);            
+    }
+        
+    [Test()]
+    public void GetNextTokenTestEscapeSingleQuoteFull()
+    {
+      TokenStream target = new TokenStream("'{\\'id\\':\\'Activitiylist\\',\\'properties\\':{\\'id\\':{\\'type\\':\\'any\\'},\\'title\\':{\\'type\\':\\'any\\'},\\'items\\':{\\'items\\':{\\'$ref\\':\\'ChiliActivitiesResourceJson\\'},\\'type\\':\\'array\\'},\\'updated\\':{\\'type\\':\\'string\\'},\\'links\\':{\\'additionalProperties\\':{\\'items\\':{\\'properties\\':{\\'title\\':{\\'type\\':\\'any\\'},\\'height\\':{\\'type\\':\\'any\\'},\\'count\\':{\\'type\\':\\'any\\'},\\'updated\\':{\\'type\\':\\'string\\'},\\'width\\':{\\'type\\':\\'any\\'},\\'type\\':{\\'type\\':\\'any\\'},\\'href\\':{\\'type\\':\\'any\\'}},\\'type\\':\\'object\\'},\\'type\\':\\'array\\'},\\'type\\':\\'object\\'},\\'kind\\':{\\'default\\':\\'buzz#activityFeed\\',\\'type\\':\\'string\\'}},\\'type\\':\\'object\\'}'");
+      var actual = target.GetNextToken();
+      Assert.AreEqual(JsonToken.Type.String, actual.type);
+      Assert.AreEqual("{\'id\':\'Activitiylist\',\'properties\':{\'id\':{\'type\':\'any\'},\'title\':{\'type\':\'any\'},\'items\':{\'items\':{\'$ref\':\'ChiliActivitiesResourceJson\'},\'type\':\'array\'},\'updated\':{\'type\':\'string\'},\'links\':{\'additionalProperties\':{\'items\':{\'properties\':{\'title\':{\'type\':\'any\'},\'height\':{\'type\':\'any\'},\'count\':{\'type\':\'any\'},\'updated\':{\'type\':\'string\'},\'width\':{\'type\':\'any\'},\'type\':{\'type\':\'any\'},\'href\':{\'type\':\'any\'}},\'type\':\'object\'},\'type\':\'array\'},\'type\':\'object\'},\'kind\':{\'default\':\'buzz#activityFeed\',\'type\':\'string\'}},\'type\':\'object\'}", actual.value);
+    }
 
     /// <summary>
     ///A test for GetNextToken
