@@ -19,7 +19,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace Google.Apis.Tests
+namespace Google.Apis.Tests.Json
 {
     
     
