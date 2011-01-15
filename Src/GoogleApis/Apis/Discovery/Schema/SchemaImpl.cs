@@ -21,18 +21,44 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery.Schema
 {
     internal class SchemaImpl : ISchema
     {
         private readonly string name;
+        private readonly JsonDictionary dictionay;
+        private List<ISchemaProperty> properties;
+        
         public SchemaImpl (KeyValuePair<string, object> kvp)
         {
             this.name = kvp.Key;
+            this.dictionay = (JsonDictionary)kvp.Value; 
         }
         
         public string Name { get { return name;} }
+        public string Id {get{return (string)dictionay["id"];}}
+        
+        public IList<ISchemaProperty> Properties
+        {
+            get
+            {
+                if (properties == null)
+                {
+                    properties = fetchProperties(dictionay);
+                }
+                return properties.AsReadOnly();
+            }
+            
+        }
+        
+        [VisibleForTestOnly]
+        internal static List<ISchemaProperty> fetchProperties(JsonDictionary dict)
+        {
+            var list = new List<ISchemaProperty>();
+            return list;
+        }
     }
 }
 

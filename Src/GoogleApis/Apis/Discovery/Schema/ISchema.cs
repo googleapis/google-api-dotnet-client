@@ -13,12 +13,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // */
+
 using System;
+using System.Collections.Generic;
+
 namespace Google.Apis.Discovery.Schema
 {
     public interface ISchema
     {
         string Name{get;}
+        string Id{get;}
+        IList<ISchemaProperty> Properties{get;}
     }
 }
 
