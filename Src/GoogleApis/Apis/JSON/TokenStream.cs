@@ -19,6 +19,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 namespace Google.Apis.Json
 {
   public class TokenStream {
@@ -34,6 +35,64 @@ namespace Google.Apis.Json
     public TokenStream(Stream inputStream) {
       reader = new StreamReader(inputStream);
     }
+    
+    /// <summary>
+    /// Parses a Json String as per http://www.json.org/ acknolwedging escaped chars
+    /// </summary>
+    private void ParseString(JsonToken token, char cur)
+    {
+        char seperator = cur;
+        token.type = JsonToken.Type.String;
+        // let's read in the string
+        var sb = new StringBuilder(BuilderBufferSize);
+        char next;
+        while ((next = (char)reader.Read()) != seperator) {
+          if(next == '\\') {
+            next = (char)reader.Read();
+            switch (next){
+                case 'n':
+                    next = '\n';
+                    break;
+                case 'r':
+                    next = '\r';
+                    break;
+                case 't':
+                    next = '\t';
+                    break;
+                case '\'':
+                    next = '\'';
+                    break;
+                case '/':
+                    next = '/';
+                    break;
+                case '"' :
+                    next = '\"';
+                    break;
+                case '\\':
+                    next = '\\';
+                    break;
+                case 'b':  // backspace
+                    next = '\b';
+                    break;
+                case 'u':  // 4 digit hexidicamal unicode escape
+                    char[] escapedCharAry = new char[4];
+                    for(int i = 0; i<4; i++)
+                    {
+                        escapedCharAry[i] = (char)reader.Read();      
+                    }
+                        
+                    String escapedCharStr = new String(escapedCharAry);
+                    int escapedCharInt = int.Parse (escapedCharStr, NumberStyles.HexNumber, NumberFormatInfo.InvariantInfo);
+                    next = Convert.ToChar(escapedCharInt);
+                    break; 
+                default:
+                    break;
+            }
+          }
+          sb.Append(next);
+        }
+        token.value = sb.ToString();
+    }
 
     /// <summary>
     /// From the current position, extract the next token
@@ -41,7 +100,6 @@ namespace Google.Apis.Json
     /// <returns></returns>
     public JsonToken GetNextToken() {
       JsonToken token = new JsonToken();
-      StringBuilder sb;
       try {
         // first skip over all whitespace.
         while (Char.IsWhiteSpace((char)reader.Peek())) {
@@ -73,15 +131,7 @@ namespace Google.Apis.Json
             break;
           case '"':
           case '\'':
-            char seperator = cur;
-            token.type = JsonToken.Type.String;
-            // let's read in the string
-            sb = new StringBuilder(BuilderBufferSize);
-            char next;
-            while ((next = (char)reader.Read()) != seperator) {
-              sb.Append(next);
-            }
-            token.value = sb.ToString();
+            ParseString(token, cur);
             break;
           case 'f':
             GetFalseToken(token);
@@ -97,7 +147,7 @@ namespace Google.Apis.Json
           default:
             token.type = JsonToken.Type.Undefined;
             if (Char.IsNumber(cur)) {
-              sb = new StringBuilder(BuilderBufferSize);
+              var sb = new StringBuilder(BuilderBufferSize);
               sb.Append(cur);
               while (IsTokenSeperator((char)reader.Peek()) == false) {
                 sb.Append((char)reader.Read());
