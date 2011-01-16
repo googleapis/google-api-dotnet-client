@@ -61,6 +61,8 @@
     <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
     <Compile Include="Apis\Utils\UtilitiesTest.cs" />
     <Compile Include="Apis\Discovery\Schema\SchemaImplTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolverTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

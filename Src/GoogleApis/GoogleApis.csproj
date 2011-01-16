@@ -95,6 +95,8 @@
     <Compile Include="Apis\Discovery\Schema\ISchema.cs" />
     <Compile Include="Apis\Discovery\Schema\ISchemaProperty.cs" />
     <Compile Include="Apis\Discovery\Schema\SchemaImpl.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolver.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />

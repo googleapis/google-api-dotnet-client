@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using Newtonsoft.Json.Schema;
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -27,6 +29,8 @@ namespace Google.Apis.Discovery.Schema
 {
     internal class SchemaImpl : ISchema
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(SchemaImpl));
+        
         private readonly string name;
         private readonly JsonDictionary dictionay;
         private List<ISchemaProperty> properties;
@@ -34,7 +38,13 @@ namespace Google.Apis.Discovery.Schema
         public SchemaImpl (KeyValuePair<string, object> kvp)
         {
             this.name = kvp.Key;
-            this.dictionay = (JsonDictionary)kvp.Value; 
+            logger.Debug("Parsing Schema " + this.name);
+            this.dictionay = null;
+//            try{
+                var schema = JsonSchema.Parse((string)kvp.Value);
+//            } catch (Exception ex) {
+//              logger.Error("Failed to parse schema "+this.name+" string was ["+kvp.Value.ToString()+"]", ex);  
+//            }
         }
         
         public string Name { get { return name;} }
