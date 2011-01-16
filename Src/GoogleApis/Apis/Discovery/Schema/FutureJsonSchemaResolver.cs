@@ -46,13 +46,33 @@ namespace Google.Apis.Discovery.Schema
             return future;
         }
         
-        public void Verify()
+        public void ResolveAndVerify()
         {
             
-            var query = from schmea in this.LoadedSchemas
+            var unresolved = from schmea in this.LoadedSchemas
                 where schmea is FutureJsonSchema && ((FutureJsonSchema)schmea).Resolved == false
-                    select schmea;
-            string errors = query.Aggregate("", (s,x) => s += ", " +x.Id );
+                    select schmea as FutureJsonSchema;
+
+            foreach (var futureSchema in unresolved)
+            {
+                var actual = (from schmea in this.LoadedSchemas
+                             where schmea.Id == futureSchema.Id &&
+                                    ( schmea is FutureJsonSchema == false ||
+                                      ((FutureJsonSchema)schmea).Resolved)
+                             select schmea).FirstOrDefault();
+                if (actual != null)
+                {
+                    futureSchema.Resolve(actual);
+                    Console.WriteLine("Last minite resolving of " + futureSchema.Id);
+                }
+            }
+
+            unresolved = from schmea in this.LoadedSchemas
+                             where schmea is FutureJsonSchema && ((FutureJsonSchema)schmea).Resolved == false
+                             select schmea as FutureJsonSchema;
+
+
+            string errors = unresolved.Aggregate("", (s, x) => s += ", " + x.Id);
                 
             if(errors.Length == 0) // no errors
             {
