@@ -241,6 +241,7 @@ namespace Google.Apis.Discovery
                         ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
                         working.Add (schema.Name, schema);
                     }
+                    resolver.Verify();
                 }
                 
                 schemas = working.AsReadOnly();
