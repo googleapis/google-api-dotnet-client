@@ -22,6 +22,7 @@ using System.Text;
 using Newtonsoft.Json.Schema;
 
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery.Schema
 {
@@ -120,7 +121,11 @@ namespace Google.Apis.Discovery.Schema
             #region ICollection<JsonSchema> implementation
             public void Add (JsonSchema item)
             {
-                 JsonSchema alreadyPresent = innerList.SingleOrDefault( js => js.Id == item.Id);
+                item.ThrowIfNull("item");
+                //TODO(davidwaters): remove console
+                Console.WriteLine(string.Format("Adding [{0}] [{1}]",item.Id, item.ToString()));
+                
+                JsonSchema alreadyPresent = innerList.SingleOrDefault(js => js.Id == item.Id && item.Id != null && item.Id.Length > 0);
                 
                 // New simple entry just add
                 if( alreadyPresent == null)

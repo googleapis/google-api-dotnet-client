@@ -35,6 +35,7 @@ namespace Google.Apis.Discovery.Schema
         private readonly string name;
         private readonly JsonDictionary dictionay;
         private List<ISchemaProperty> properties;
+        private JsonSchema schema;
         
         public SchemaImpl (string name, string jsonSchemaDefinition, FutureJsonSchemaResolver resolver)
         {
@@ -45,15 +46,14 @@ namespace Google.Apis.Discovery.Schema
             this.name = name;
             logger.Debug("Parsing Schema " + this.name);
             this.dictionay = null;
-            JsonSchema schema = null;
             try{
-                schema = JsonSchema.Parse(jsonSchemaDefinition, resolver);
+                this.schema = JsonSchema.Parse(jsonSchemaDefinition, resolver);
             } catch (Exception ex) 
             {
                 throw new ApplicationException(
                     string.Format("Failed to parse schema [{0}] which was defined as [{1}]", name, jsonSchemaDefinition),
                     ex);
-            }            
+            }
         }
         
         public string Name { get { return name;} }

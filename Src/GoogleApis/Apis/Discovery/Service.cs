@@ -30,7 +30,7 @@ namespace Google.Apis.Discovery
     #region BaseService
     
 	// represents a single version of a service
-	internal abstract class BaseService:IService
+	public abstract class BaseService:IService
 	{
 		protected readonly internal JsonDictionary information;
 		private Dictionary<string, IResource> resources;
@@ -192,7 +192,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V0.2
     /// </summary>
-    internal class ServiceV0_3 : BaseService
+    public class ServiceV0_3 : BaseService
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceV0_3));
         
@@ -203,7 +203,7 @@ namespace Google.Apis.Discovery
 
         private string ServerUrl{get;set;}
         private readonly Uri baseUri;
-        internal ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
+        public ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
             base(version, name, js)
         {
             param.ThrowIfNull("param");
