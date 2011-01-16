@@ -46,11 +46,28 @@ namespace Google.Apis.Util
             }
         }
         
+        public static void ThrowIfNullOrEmpty(this string str, string paramName)
+        {
+            str.ThrowIfNull(paramName);
+            if ( str.Length == 0 )
+            {
+                throw new ArgumentException("Parameter was empty", paramName);
+            }
+        }
+        
+        public static void ThrowIfNullOrEmpty<T>(this ICollection<T> coll, string paramName)
+        {
+            coll.ThrowIfNull(paramName);
+            if ( coll.Count == 0 )
+            {
+                throw new ArgumentException("Parameter was empty", paramName);
+            }
+        }
+        
         public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)
         {
             dict.ThrowIfNull("this");
             return new ReadOnlyDictionary<TKey, TValue>(dict);
         }
-                                                                         
 	}
 }
