@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]/Users/davidwaters/apiary/google-api-dotnet-client/Src/NUnitTests.nunit</TopNode>
+  <SelectedNode>[0-1048]Google.Apis.Tests.Apis.Discovery.V0_3.ServiceTest.SchemaTest</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]/Users/davidwaters/apiary/google-api-dotnet-client/Src/NUnitTests.nunit" Expanded="true" />
+    <Node UniqueName="[0-1068]/Users/davidwaters/apiary/google-api-dotnet-client/Src/GoogleApis.Tests/bin/Debug/Google.Apis.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1069]Google" Expanded="true" />
+    <Node UniqueName="[0-1070]Google.Apis" Expanded="true" />
+    <Node UniqueName="[0-1071]Google.Apis.Tests" Expanded="true" />
+    <Node UniqueName="[0-1074]Google.Apis.Tests.Apis" Expanded="true" />
+    <Node UniqueName="[0-1075]Google.Apis.Tests.Apis.Discovery" Expanded="true" />
+    <Node UniqueName="[0-1078]Google.Apis.Tests.Apis.Discovery.Schema" Expanded="true" />
+    <Node UniqueName="[0-1076]Google.Apis.Tests.Apis.Discovery.V0_3" Expanded="true" />
+    <Node UniqueName="[0-1044]Google.Apis.Tests.Apis.Discovery.V0_3.ServiceTest" Expanded="true" />
+    <Node UniqueName="[0-1077]Google.Apis.Tests.Apis.Util" Expanded="true" />
+    <Node UniqueName="[0-1073]Google.Apis.Tests.Json" Expanded="true" />
+    <Node UniqueName="[0-1072]Google.Apis.Tests.Requests" Expanded="true" />
+    <Node UniqueName="[0-1132]Google" Expanded="true" />
+    <Node UniqueName="[0-1133]Google.Apis" Expanded="true" />
+    <Node UniqueName="[0-1134]Google.Apis.Tools" Expanded="true" />
+    <Node UniqueName="[0-1135]Google.Apis.Tools.CodeGen" Expanded="true" />
+    <Node UniqueName="[0-1136]Google.Apis.Tools.CodeGen.Tests" Expanded="true" />
+    <Node UniqueName="[0-1084]Google.Apis.Tools.CodeGen.Tests.CodeGenTest" Expanded="true" />
+    <Node UniqueName="[0-1137]Google.Apis.Tools.CodeGen.Tests.Decorator" Expanded="true" />
+    <Node UniqueName="[0-1138]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator" Expanded="true" />
+    <Node UniqueName="[0-1087]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.DictonaryOptionalParameterResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1089]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.Log4NetResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1079]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.StandardConstructorResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1093]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.StandardMethodResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1125]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.StandardResourceNameResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1128]Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.StandardServiceFieldResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1139]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator" Expanded="true" />
+    <Node UniqueName="[0-1104]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator.StandardConstructServiceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1101]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator.StandardExecuteMethodServiceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1110]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator.StandardResourcePropertyServiceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1108]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator.StandardServiceFieldResourceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1095]Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator.VersionInformationServiceDecoratorTest" Expanded="true" />
+    <Node UniqueName="[0-1114]Google.Apis.Tools.CodeGen.Tests.GeneratorUtilsTest" Expanded="true" />
+    <Node UniqueName="[0-1082]Google.Apis.Tools.CodeGen.Tests.ResourceBaseGeneratorTest" Expanded="true" />
+  </Nodes>
+</VisualState>
