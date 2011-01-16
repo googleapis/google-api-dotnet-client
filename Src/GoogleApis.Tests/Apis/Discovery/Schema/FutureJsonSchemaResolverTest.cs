@@ -164,15 +164,15 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
             resolver.GetSchema("4"); // Adds 4
             resolver.GetSchema("5"); // Adds 5
             
-            Assert.Throws<ApplicationException>(() => resolver.Verify());
+            Assert.Throws<ApplicationException>(() => resolver.ResolveAndVerify());
             
             resolver.LoadedSchemas.Add(schema5);
             
-            Assert.Throws<ApplicationException>(() => resolver.Verify());
+            Assert.Throws<ApplicationException>(() => resolver.ResolveAndVerify());
             
             resolver.LoadedSchemas.Add(schema4);
             
-            Assert.DoesNotThrow(() => resolver.Verify());
+            Assert.DoesNotThrow(() => resolver.ResolveAndVerify());
         }
     }
 }

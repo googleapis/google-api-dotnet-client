@@ -34,6 +34,11 @@ namespace Google.Apis.Discovery.Schema
         public void Resolve(JsonSchema schema)
         {
             schema.ThrowIfNull("schema");
+            if (schema is FutureJsonSchema && ((FutureJsonSchema)schema).Resolved == false)
+            {
+                throw new ArgumentException("Schema given to resolve this future was an unresolved future.","schema");
+            }
+
             if (schema is FutureJsonSchema)
             {
                 throw new ArgumentException("schema","Resolved schema cannot be a FutureJsonSchema");
