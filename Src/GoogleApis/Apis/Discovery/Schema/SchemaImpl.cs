@@ -24,6 +24,7 @@ using Newtonsoft.Json.Schema;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery.Schema
 {
@@ -35,16 +36,24 @@ namespace Google.Apis.Discovery.Schema
         private readonly JsonDictionary dictionay;
         private List<ISchemaProperty> properties;
         
-        public SchemaImpl (KeyValuePair<string, object> kvp)
+        public SchemaImpl (string name, string jsonSchemaDefinition, FutureJsonSchemaResolver resolver)
         {
-            this.name = kvp.Key;
+            name.ThrowIfNullOrEmpty("name");
+            jsonSchemaDefinition.ThrowIfNullOrEmpty("jsonSchemaDefinition");
+            resolver.ThrowIfNull("resolver");
+            
+            this.name = name;
             logger.Debug("Parsing Schema " + this.name);
             this.dictionay = null;
-//            try{
-                var schema = JsonSchema.Parse((string)kvp.Value);
-//            } catch (Exception ex) {
-//              logger.Error("Failed to parse schema "+this.name+" string was ["+kvp.Value.ToString()+"]", ex);  
-//            }
+            JsonSchema schema = null;
+            try{
+                schema = JsonSchema.Parse(jsonSchemaDefinition, resolver);
+            } catch (Exception ex) 
+            {
+                throw new ApplicationException(
+                    string.Format("Failed to parse schema [{0}] which was defined as [{1}]", name, jsonSchemaDefinition),
+                    ex);
+            }            
         }
         
         public string Name { get { return name;} }
@@ -71,4 +80,3 @@ namespace Google.Apis.Discovery.Schema
         }
     }
 }
-

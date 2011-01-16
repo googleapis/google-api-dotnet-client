@@ -34,13 +34,7 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
         [Test()]
         public void TestCase ()
         {
-            JsonSchemaResolver resolver = new JsonSchemaResolver();
-            resolver.LoadedSchemas.Add(new JsonSchema(){Id = "ChiliActivitiesResourceJson"});
-            JsonSchema jsonSchema = JsonSchema.Parse (JsonSchemaElement,resolver);
-            Console.Out.WriteLine("Parsed Json Schema ");
-            Console.Out.WriteLine(jsonSchema.ToString());
-            Assert.AreEqual("Activitiylist", jsonSchema.Id );
-            Assert.AreEqual(6, jsonSchema.Properties.Count);
+            Assert.Fail("No Test Yet");
             
         }
     }

@@ -194,6 +194,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ServiceV0_3 : BaseService
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceV0_3));
+        
         private const string BaseUrl = "restBasePath";
         private const string PathUrl = "restPath";
         
@@ -225,14 +227,18 @@ namespace Google.Apis.Discovery
                     return schemas;
                 }
                 
+                logger.DebugFormat("Fetching Schemas for service {0}", this.Name);
                 var working = new Dictionary<string, ISchema>();
                 
                 JsonDictionary js = this.information[ServiceFactory.Schemas] as JsonDictionary;
                 if (js != null) 
                 {
+                    var resolver = new FutureJsonSchemaResolver();
                     foreach (KeyValuePair<string, object> kvp in js) 
                     {
-                        ISchema schema = new SchemaImpl(kvp);
+                        logger.DebugFormat("Found schema {1}.{0}", kvp.Key, this.Name);
+                        Console.WriteLine(string.Format("Found schema {1}.{0}", kvp.Key, this.Name));
+                        ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
                         working.Add (schema.Name, schema);
                     }
                 }
