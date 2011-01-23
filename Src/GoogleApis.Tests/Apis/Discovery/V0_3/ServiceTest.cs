@@ -78,10 +78,14 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         {
             var service = CreateService();
             Assert.AreEqual(31, service.Schemas.Count);
-            Assert.IsNotNull(service.Schemas["Activitiylist"]);
-            Assert.IsNotNull(service.Schemas["ChiliActivitiesCountJson"]);
-            Assert.IsNotNull(service.Schemas["ChiliPeopleListJson"]);
-            Assert.IsNotNull(service.Schemas["Video"]);
+            Assert.IsTrue(service.Schemas.ContainsKey("Activitiylist"));
+            Assert.IsTrue(service.Schemas.ContainsKey("ChiliActivitiesCountJson"));
+            Assert.IsTrue(service.Schemas.ContainsKey("ChiliPeopleListJson"));
+            Assert.IsTrue(service.Schemas.ContainsKey("Video"));
+            Assert.IsNotNull(service.Schemas["Activitiylist"].SchemaDetails);
+            Assert.IsNotNull(service.Schemas["ChiliActivitiesCountJson"].SchemaDetails);
+            Assert.IsNotNull(service.Schemas["ChiliPeopleListJson"].SchemaDetails);
+            Assert.IsNotNull(service.Schemas["Video"].SchemaDetails);
         }
         
         [Test()]
@@ -122,4 +126,3 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         }
     }
 }
-
