@@ -33,9 +33,7 @@ namespace Google.Apis.Discovery.Schema
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(SchemaImpl));
         
         private readonly string name;
-        private readonly JsonDictionary dictionay;
-        private List<ISchemaProperty> properties;
-        private JsonSchema schema;
+        private readonly JsonSchema schema;
         
         public SchemaImpl (string name, string jsonSchemaDefinition, FutureJsonSchemaResolver resolver)
         {
@@ -45,7 +43,6 @@ namespace Google.Apis.Discovery.Schema
             
             this.name = name;
             logger.Debug("Parsing Schema " + this.name);
-            this.dictionay = null;
             try{
                 this.schema = JsonSchema.Parse(jsonSchemaDefinition, resolver);
             } catch (Exception ex) 
@@ -57,26 +54,7 @@ namespace Google.Apis.Discovery.Schema
         }
         
         public string Name { get { return name;} }
-        public string Id {get{return (string)dictionay["id"];}}
-        
-        public IList<ISchemaProperty> Properties
-        {
-            get
-            {
-                if (properties == null)
-                {
-                    properties = fetchProperties(dictionay);
-                }
-                return properties.AsReadOnly();
-            }
-            
-        }
-        
-        [VisibleForTestOnly]
-        internal static List<ISchemaProperty> fetchProperties(JsonDictionary dict)
-        {
-            var list = new List<ISchemaProperty>();
-            return list;
-        }
+        public string Id { get { return schema.Id;}}
+        public JsonSchema SchemaDetails { get { return schema;}}
     }
 }
