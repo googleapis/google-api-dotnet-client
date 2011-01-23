@@ -28,6 +28,8 @@ namespace Google.Apis.Discovery.Schema
 {
     public class FutureJsonSchemaResolver: JsonSchemaResolver
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(FutureJsonSchemaResolver));
+        
         public FutureJsonSchemaResolver () : base()
         {
             this.LoadedSchemas = new FutureAwearList(this.LoadedSchemas);
@@ -63,7 +65,7 @@ namespace Google.Apis.Discovery.Schema
                 if (actual != null)
                 {
                     futureSchema.Resolve(actual);
-                    Console.WriteLine("Last minite resolving of " + futureSchema.Id);
+                    logger.Debug("Last minite resolving of " + futureSchema.Id);
                 }
             }
 

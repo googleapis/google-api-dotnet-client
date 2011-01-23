@@ -220,6 +220,25 @@ namespace Google.Apis.Discovery
             }
         }
         
+        internal static IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
+        {
+            js.ThrowIfNull("js");
+            
+            var working = new Dictionary<string, ISchema>();
+            
+            var resolver = new FutureJsonSchemaResolver();
+            foreach (KeyValuePair<string, object> kvp in js) 
+            {
+                logger.DebugFormat("Found schema {0}", kvp.Key);
+                ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
+                working.Add (schema.Name, schema);
+            }
+            
+            resolver.ResolveAndVerify();
+            
+            return working.AsReadOnly();
+        }
+        
         public override IDictionary<string, ISchema> Schemas {
             get {
                 if (schemas != null)
@@ -228,23 +247,14 @@ namespace Google.Apis.Discovery
                 }
                 
                 logger.DebugFormat("Fetching Schemas for service {0}", this.Name);
-                var working = new Dictionary<string, ISchema>();
-                
                 JsonDictionary js = this.information[ServiceFactory.Schemas] as JsonDictionary;
                 if (js != null) 
                 {
-                    var resolver = new FutureJsonSchemaResolver();
-                    foreach (KeyValuePair<string, object> kvp in js) 
-                    {
-                        logger.DebugFormat("Found schema {1}.{0}", kvp.Key, this.Name);
-                        Console.WriteLine(string.Format("Found schema {1}.{0}", kvp.Key, this.Name));
-                        ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
-                        working.Add (schema.Name, schema);
-                    }
-                    resolver.ResolveAndVerify();
+                    schemas = ParseSchemas(js);
+                } else {
+                    schemas = new Dictionary<string, ISchema>(0).AsReadOnly(); 
                 }
                 
-                schemas = working.AsReadOnly();
                 return schemas;
             }
         }

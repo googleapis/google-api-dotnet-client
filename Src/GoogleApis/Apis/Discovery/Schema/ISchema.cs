@@ -17,13 +17,15 @@
 using System;
 using System.Collections.Generic;
 
+using Newtonsoft.Json.Schema;
+
 namespace Google.Apis.Discovery.Schema
 {
     public interface ISchema
     {
         string Name{get;}
         string Id{get;}
-        IList<ISchemaProperty> Properties{get;}
+        JsonSchema SchemaDetails{get;}
     }
 }
 
