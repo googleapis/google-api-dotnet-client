@@ -103,7 +103,7 @@ namespace Google.Apis.Tools.CodeGen
                 Directory.CreateDirectory (cacheDirectory);
             }
             var webfetcher = new CachedWebDiscoveryDevice (
-                                new Uri ("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), 
+                                new Uri ("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), 
                                 new DirectoryInfo (cacheDirectory));
             var discovery = new DiscoveryService (webfetcher);
             // Build the service based on discovery information.
