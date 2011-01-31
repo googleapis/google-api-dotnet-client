@@ -22,7 +22,7 @@ using NUnit.Framework;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
-namespace Google.Apis.Tests.Requests
+namespace Google.Apis.Tests.Apis.Requests
 {
 	[TestFixture()]
 	public class MethodValidatorTests

@@ -46,14 +46,14 @@
     <Compile Include="FileDiscoveryDeviceTests.cs" />
     <Compile Include="StreamDiscoveryDeviceTests.cs" />
     <Compile Include="StringDiscoveryDeviceTests.cs" />
-    <Compile Include="Requests\MethodValidator.cs" />
     <Compile Include="JSON\TokenStreamTest.cs" />
     <Compile Include="JSON\JsonTokenTests.cs" />
     <Compile Include="JSON\JsonReaderTests.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
-    <Compile Include="Requests\MockMethod.cs" />
     <Compile Include="Apis\Authentication\NullAuthenticatorTest.cs" />
     <Compile Include="Apis\Requests\RequestTest.cs" />
+    <Compile Include="Apis\Requests\MethodValidator.cs" />
+    <Compile Include="Apis\Requests\MockMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
