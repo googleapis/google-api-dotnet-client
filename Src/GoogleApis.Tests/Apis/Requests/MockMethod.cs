@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic; 
 
 using Google.Apis.Discovery;
-namespace Google.Apis.Tests.Requests
+namespace Google.Apis.Tests.Apis.Requests
 {
 
 
