@@ -61,6 +61,8 @@
     <Compile Include="Generator\ResourceContainerGenerator.cs" />
     <Compile Include="Decorator\ResourceContainerDecorator\StandardResourcePropertyServiceDecorator.cs" />
     <Compile Include="Decorator\ResourceContainerDecorator\IResourceContainerDecorator.cs" />
+    <Compile Include="Generator\SchemaGenerator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ISchemaDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -75,5 +77,6 @@
     <Folder Include="Decorator\ServiceDecorator\" />
     <Folder Include="Generator\" />
     <Folder Include="Decorator\ResourceContainerDecorator\" />
+    <Folder Include="Decorator\SchemaDecorator\" />
   </ItemGroup>
 </Project>
