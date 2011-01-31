@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 
 using Google.Apis.Discovery;
+using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -173,6 +174,11 @@ namespace Google.Apis.Tools.CodeGen
         public static String GetFieldName (IResource resource, int resourceNumber)
         {
             return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
+        }
+        
+        public static String GetClassName (ISchema schema)
+        {
+            return UpperFirstLetter( GetSafeMemberName(schema.Name, "") );
         }
         
         #endregion

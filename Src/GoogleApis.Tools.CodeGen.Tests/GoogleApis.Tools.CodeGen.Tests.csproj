@@ -61,6 +61,7 @@
     <Compile Include="GeneratorUtilsTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
+    <Compile Include="Generator\SchemaGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -76,6 +77,7 @@
     <Folder Include="Decorator\" />
     <Folder Include="Decorator\ResourceDecorator\" />
     <Folder Include="Decorator\ServiceDecorator\" />
+    <Folder Include="Generator\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
