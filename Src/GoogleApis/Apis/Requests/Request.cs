@@ -31,8 +31,9 @@ namespace Google.Apis.Requests
 	/// 
 	/// </summary>
 	public class Request:IRequest{
+        private static readonly String ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
 		
-		private IAuthenticator Authenticator {get; set;}
+		internal IAuthenticator Authenticator {get; private set;}
 		private IService Service {get; set;}
 		private IMethod Method {get;set;}
 		private Uri BaseURI {get; set;}
@@ -42,14 +43,13 @@ namespace Google.Apis.Requests
 		private IDictionary<string, string> Parameters {get;set;}
 		private Uri RequestUrl;
 		private ReturnType ReturnType {get; set;}
-		private String AppName {get;set;}
-		private String ApiVersion {get;set;}
+		internal String AppName {get; private set;}
 		
 		private const string userAgent = "%s google-api-dotnet-client/%s";
 		
 		public Request() {
-			AppName = "Unknown Application";
-			ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
+			this.AppName = "Unknown Application";
+		    this.Authenticator = new NullAuthenticator();
 		}
 		
 		
