@@ -49,6 +49,7 @@ namespace Google.Apis.Tools.CodeGen
         private readonly IEnumerable<IResourceDecorator> resourceDecorators;
         private readonly IEnumerable<IServiceDecorator> serviceDecorators;
         private readonly IEnumerable<IResourceContainerDecorator> resourceContainerDecorators;
+        private readonly GoogleSchemaGenerator schemaGenerator;
         
         public static readonly IList<IResourceDecorator> StandardResourceDecorators = (new List<IResourceDecorator>(){
                     new StandardServiceFieldResourceDecorator(),
@@ -73,7 +74,8 @@ namespace Google.Apis.Tools.CodeGen
         public GoogleServiceGenerator (IService service, string clientNamespace, 
                     IEnumerable<IResourceDecorator> resourceDecorators, 
                     IEnumerable<IServiceDecorator> serviceDecorators,
-                    IEnumerable<IResourceContainerDecorator> resourceContainerDecorators)
+                    IEnumerable<IResourceContainerDecorator> resourceContainerDecorators,
+                    GoogleSchemaGenerator schemaGenerator)
         {
             service.ThrowIfNull("service");
             clientNamespace.ThrowIfNull("cleintNamespace");
@@ -91,13 +93,15 @@ namespace Google.Apis.Tools.CodeGen
                 (serviceDecorators).AsReadOnly ();
             this.resourceContainerDecorators = new List<IResourceContainerDecorator> 
                 (resourceContainerDecorators).AsReadOnly ();
+            this.schemaGenerator = schemaGenerator;
         }
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
                 StandardResourceDecorators, 
                 StandardServiceDecorators,
-                StandardResourceContainerDecorator
+                StandardResourceContainerDecorator,
+                null
                 )
         {   
         }
@@ -142,9 +146,19 @@ namespace Google.Apis.Tools.CodeGen
         }
         
         [VisibleForTestOnly]
-        internal CodeNamespace  GenerateClientCode(CodeCompileUnit compileUnit)
+        internal CodeNamespace GenerateSchemaCode()
         {
-            var clientNamespace = CreateNamespace (codeClientNamespace, compileUnit);
+            if(this.schemaGenerator != null)
+            {
+                return schemaGenerator.GenerateSchemaClasses(this.service);
+            }
+            return null;
+        }
+        
+        [VisibleForTestOnly]
+        internal CodeNamespace GenerateClientCode()
+        {
+            var clientNamespace = CreateNamespace (codeClientNamespace);
             AddClientUsings (clientNamespace);
             
             ResourceContainerGenerator resourceContainerGenerator = 
@@ -167,7 +181,13 @@ namespace Google.Apis.Tools.CodeGen
             
             var compileUnit = new CodeCompileUnit ();
             
-            GenerateClientCode(compileUnit);
+            var schemaCode = GenerateSchemaCode();
+            if ( schemaCode != null )
+            {
+                compileUnit.Namespaces.Add(schemaCode);
+            }
+            
+            compileUnit.Namespaces.Add(GenerateClientCode());
             
             logger.Debug ("Generation Complete.");
             return compileUnit;
@@ -211,11 +231,9 @@ namespace Google.Apis.Tools.CodeGen
             }
         }
 
-        private CodeNamespace CreateNamespace (string nameSpace, CodeCompileUnit compileUnit)
+        private CodeNamespace CreateNamespace (string nameSpace)
         {
-            var codeNamespace = new CodeNamespace (nameSpace);
-            compileUnit.Namespaces.Add (codeNamespace);
-            return codeNamespace;
+            return new CodeNamespace (nameSpace);
         }
 
         private void AddClientUsings (CodeNamespace codeNamespace)
