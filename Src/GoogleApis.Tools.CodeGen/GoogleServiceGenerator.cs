@@ -138,7 +138,7 @@ namespace Google.Apis.Tools.CodeGen
             
             
             CreateClient (codeClientNamespace);
-            AddUsings (false);
+            AddUsings (client);
             
             ResourceContainerGenerator resourceContainerGenerator = 
                 new ResourceContainerGenerator(resourceContainerDecorators);
@@ -195,18 +195,13 @@ namespace Google.Apis.Tools.CodeGen
             compileUnit.Namespaces.Add (client);
         }
 
-        private void AddUsings (bool forTest)
+        private void AddUsings (CodeNamespace client)
         {
             client.Imports.Add (new CodeNamespaceImport ("System"));
             client.Imports.Add (new CodeNamespaceImport ("System.IO"));
             client.Imports.Add (new CodeNamespaceImport ("System.Collections.Generic"));
             client.Imports.Add (new CodeNamespaceImport ("Google.Apis"));
-            client.Imports.Add (new CodeNamespaceImport ("Google.Apis.Discovery"));
-            
-            if (forTest) {
-                client.Imports.Add (new CodeNamespaceImport ("NUnit.Framework"));
-                client.Imports.Add (new CodeNamespaceImport (codeClientNamespace));
-            }
+            client.Imports.Add (new CodeNamespaceImport ("Google.Apis.Discovery"));            
         }
     }
 }
