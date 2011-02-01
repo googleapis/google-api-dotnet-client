@@ -67,6 +67,7 @@
     <Compile Include="Generator\MockSchema.cs" />
     <Compile Include="GoogleServiceGeneratorTest.cs" />
     <Compile Include="BaseCodeGeneratorTest.cs" />
+    <Compile Include="GoogleSchemaGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">

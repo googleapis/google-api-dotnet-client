@@ -144,7 +144,7 @@ namespace Google.Apis.Tools.CodeGen
         [VisibleForTestOnly]
         internal CodeNamespace  GenerateClientCode(CodeCompileUnit compileUnit)
         {
-            var clientNamespace = CreateClient (codeClientNamespace, compileUnit);
+            var clientNamespace = CreateNamespace (codeClientNamespace, compileUnit);
             AddClientUsings (clientNamespace);
             
             ResourceContainerGenerator resourceContainerGenerator = 
@@ -179,7 +179,6 @@ namespace Google.Apis.Tools.CodeGen
                                       ResourceContainerGenerator resourceContainerGenerator,
                                       int resourceNumber)
         {
-            
             foreach (var res in resourceContainer.Resources.Values) {
                 // Create a class for the resource
                 logger.DebugFormat ("Adding Resource {0}", res.Name);
@@ -212,7 +211,7 @@ namespace Google.Apis.Tools.CodeGen
             }
         }
 
-        private CodeNamespace CreateClient (string nameSpace, CodeCompileUnit compileUnit)
+        private CodeNamespace CreateNamespace (string nameSpace, CodeCompileUnit compileUnit)
         {
             var codeNamespace = new CodeNamespace (nameSpace);
             compileUnit.Namespaces.Add (codeNamespace);

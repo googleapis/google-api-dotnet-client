@@ -63,6 +63,7 @@
     <Compile Include="Decorator\ResourceContainerDecorator\IResourceContainerDecorator.cs" />
     <Compile Include="Generator\SchemaGenerator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ISchemaDecorator.cs" />
+    <Compile Include="GoogleSchemaGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
