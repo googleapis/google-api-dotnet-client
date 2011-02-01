@@ -116,6 +116,7 @@ namespace Google.Apis.Tools.CodeGen
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_1, null);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
+            var generatedCode = generator.GenerateCode ();
             
             var provider = CodeDomProvider.CreateProvider (language);
             
@@ -123,8 +124,7 @@ namespace Google.Apis.Tools.CodeGen
                 IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");
                 
                 // Generate source code using the code provider.
-                
-                provider.GenerateCodeFromCompileUnit (generator.GenerateCode (), tw, new CodeGeneratorOptions ());
+                provider.GenerateCodeFromCompileUnit (generatedCode, tw, new CodeGeneratorOptions ());
                 
                 // Close the output file.
                 tw.Close ();
