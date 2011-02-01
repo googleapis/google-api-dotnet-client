@@ -50,7 +50,6 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
-    <Compile Include="CodeGenTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecoratorTest.cs" />
@@ -66,7 +65,8 @@
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
     <Compile Include="Generator\SchemaGeneratorTest.cs" />
     <Compile Include="Generator\MockSchema.cs" />
-    <Compile Include="Generator\BaseCodeGeneratorTest.cs" />
+    <Compile Include="GoogleServiceGeneratorTest.cs" />
+    <Compile Include="BaseCodeGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
