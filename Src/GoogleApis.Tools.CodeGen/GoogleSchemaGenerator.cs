@@ -21,17 +21,19 @@ namespace Google.Apis.Tools.CodeGen
         
         public readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = (new List<ISchemaDecorator>(){}).AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;
+        private readonly string schemaNamespace;
         
-        public GoogleSchemaGenerator (IEnumerable<ISchemaDecorator> decorators)
+        public GoogleSchemaGenerator (IEnumerable<ISchemaDecorator> decorators, string schemaNamespace)
         {
             decorators.ThrowIfNull("decorators");
+            schemaNamespace.ThrowIfNull("schemaNamespace");
             this.decorators = new List<ISchemaDecorator>(decorators).AsReadOnly();
+            this.schemaNamespace = schemaNamespace;
         }
         
-        public CodeNamespace GenerateSchemaClasses(IService service, string schemaNamespace)
+        public CodeNamespace GenerateSchemaClasses(IService service)
         {
             service.ThrowIfNull("service");
-            schemaNamespace.ThrowIfNull("schemaNamespace");
             
             logger.DebugFormat("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
@@ -39,6 +41,7 @@ namespace Google.Apis.Tools.CodeGen
             SchemaGenerator generator = new SchemaGenerator(decorators);
             foreach(var schemaPair in service.Schemas)
             {
+                logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
                 codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value));
             }
             return codeNamespace;
