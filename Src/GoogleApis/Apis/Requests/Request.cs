@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 using Google.Apis.Discovery;
 using Google.Apis;
 using Google.Apis.Authentication;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Requests
 {
@@ -44,6 +45,7 @@ namespace Google.Apis.Requests
 		private Uri RequestUrl;
 		private ReturnType ReturnType {get; set;}
 		internal String AppName {get; private set;}
+        internal String DeveloperKey{get; private set;}
 		
 		private const string userAgent = "%s google-api-dotnet-client/%s";
 		
@@ -121,14 +123,8 @@ namespace Google.Apis.Requests
 		}
 		
 		/// <summary>
-		/// 
+		/// Adds the parameters which are URL encoded to the request
 		/// </summary>
-		/// <param name="parameters">
-		/// A <see cref="Dictionary<System.String, System.String>"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
 		public IRequest WithParameters(string parameters) {
 			// Check to ensure that the 
 			Parameters = Utilities.QueryStringToDictionary(parameters);
@@ -136,14 +132,8 @@ namespace Google.Apis.Requests
 		}
 		
 		/// <summary>
-		/// 
+		/// Adds the parameters provided to the body of the request
 		/// </summary>
-		/// <param name="parameters">
-		/// A <see cref="Dictionary<System.String, Object>"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
 		public IRequest WithBody(IDictionary<string, string> parameters) {
 			// Check to ensure that the 
 			Body = parameters.ToString();
@@ -151,14 +141,8 @@ namespace Google.Apis.Requests
 		}
 		
 		/// <summary>
-		/// 
+		/// Uses the string provied as the body of the request.
 		/// </summary>
-		/// <param name="body">
-		/// A <see cref="System.String"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
 		public IRequest WithBody(string body) {
 			// Check to ensure that the 
 			Body = body;
@@ -177,33 +161,25 @@ namespace Google.Apis.Requests
 		}
 		
 		/// <summary>
-		/// 
+		/// Uses the provided authenticator to add authentication information to this request.
 		/// </summary>
-		/// <param name="authenticator">
-		/// A <see cref="Authenticator"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
 		public IRequest WithAuthentication(IAuthenticator authenticator) {
 			this.Authenticator = authenticator;
 			// Check to ensure that the 
 			return this;
 		}
-		
-		
-		/// <summary>
-		/// Checks that the supplied parameters are valid given the discovery document
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.Boolean"/>
-		/// </returns>
-		
+        
+        public IRequest WithDeveloperKey (string key)
+        {
+            this.DeveloperKey = key;
+            return this;
+        }
 		
 		/// <summary>
 		/// 
 		/// </summary>
-		private void BuildRequestUrl() {
+        [VisibleForTestOnly] 
+		internal Uri BuildRequestUrl() {
 			var restPath = Method.RestPath;
 			var queryParams = new List<string>();
 			
@@ -213,8 +189,14 @@ namespace Google.Apis.Requests
 			else {
 				queryParams.Add("alt=atom");	
 			}
-			
-			
+            
+            if(DeveloperKey != null && DeveloperKey.Length >0)
+            {
+                queryParams.Add("key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need
+                                Replace("&","%26").                         // Also escaped & and ?
+                                Replace("?", "%3F"));
+            }
+            
 			// Replace the substitution parameters
 			foreach(var parameter in this.Parameters) {
 				var parameterDefinition = Method.Parameters[parameter.Key];
@@ -234,7 +216,7 @@ namespace Google.Apis.Requests
 			}
 			
 			
-			RequestUrl = new Uri(BaseURI,path);
+			return new Uri(BaseURI,path);
 		}
 		
 	
@@ -253,7 +235,7 @@ namespace Google.Apis.Requests
 				return Stream.Null;
 			
 			// Formulate the RequestUrl
-			BuildRequestUrl();
+			this.RequestUrl = BuildRequestUrl();
 			
 			//
 			HttpWebRequest request = this.Authenticator.CreateHttpWebRequest(this.Method.HttpMethod, RequestUrl);

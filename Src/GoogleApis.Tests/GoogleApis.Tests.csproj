@@ -54,6 +54,7 @@
     <Compile Include="Apis\Requests\RequestTest.cs" />
     <Compile Include="Apis\Requests\MethodValidator.cs" />
     <Compile Include="Apis\Requests\MockMethod.cs" />
+    <Compile Include="Apis\Requests\MockService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
