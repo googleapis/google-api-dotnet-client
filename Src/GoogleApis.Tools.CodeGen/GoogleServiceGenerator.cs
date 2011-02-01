@@ -48,6 +48,25 @@ namespace Google.Apis.Tools.CodeGen
         private readonly IEnumerable<IResourceDecorator> resourceDecorators;
         private readonly IEnumerable<IServiceDecorator> serviceDecorators;
         private readonly IEnumerable<IResourceContainerDecorator> resourceContainerDecorators;
+        
+        public static readonly IList<IResourceDecorator> StandardResourceDecorators = (new List<IResourceDecorator>(){
+                    new StandardServiceFieldResourceDecorator(),
+                    new StandardResourceNameResourceDecorator(),
+                    new StandardConstructorResourceDecorator (), 
+                    new StandardMethodResourceDecorator (), 
+                    new Log4NetResourceDecorator (), 
+                    new DictonaryOptionalParameterResourceDecorator ()}).
+                    AsReadOnly();
+        public static readonly IList<IServiceDecorator> StandardServiceDecorators = (new List<IServiceDecorator>(){
+                    new StandardServiceFieldServiceDecorator(),
+                    new StandardConstructServiceDecorator (), 
+                    new EasyConstructServiceDecorator (), 
+                    new VersionInformationServiceDecorator (), 
+                    new StandardExecuteMethodServiceDecorator ()}).
+                    AsReadOnly();
+        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){
+                    new StandardResourcePropertyServiceDecorator()}).
+                    AsReadOnly();
 
         private CodeNamespace client;
 
@@ -71,23 +90,10 @@ namespace Google.Apis.Tools.CodeGen
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
-                new IResourceDecorator[] {
-                    new StandardServiceFieldResourceDecorator(),
-                    new StandardResourceNameResourceDecorator(),
-                    new StandardConstructorResourceDecorator (), 
-                    new StandardMethodResourceDecorator (), 
-                    new Log4NetResourceDecorator (), 
-                    new DictonaryOptionalParameterResourceDecorator () }, 
-                new IServiceDecorator[] { 
-                    new StandardServiceFieldServiceDecorator(),
-                    
-                    new StandardConstructServiceDecorator (), 
-                    new EasyConstructServiceDecorator (), 
-                    new VersionInformationServiceDecorator (), 
-                    new StandardExecuteMethodServiceDecorator () },
-                new IResourceContainerDecorator[]{
-                    new StandardResourcePropertyServiceDecorator(),
-            })
+                StandardResourceDecorators, 
+                StandardServiceDecorators,
+                StandardResourceContainerDecorator
+                )
         {   
         }
   
