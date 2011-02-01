@@ -26,7 +26,7 @@ using Google.Apis.Json;
 using log4net;
 using NUnit.Framework;
 
-namespace Google.Apis.Tools.CodeGen.Tests.Generator
+namespace Google.Apis.Tools.CodeGen.Tests
 {
 	/// <summary>
 	/// Is a base class for testing of code generators
