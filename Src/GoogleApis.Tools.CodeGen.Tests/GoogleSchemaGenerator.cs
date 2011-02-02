@@ -24,4 +24,3 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
     }
 }
-

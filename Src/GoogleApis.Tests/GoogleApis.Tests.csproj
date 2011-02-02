@@ -79,7 +79,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Requests\" />
     <Folder Include="JSON\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\Discovery\" />
