@@ -67,7 +67,7 @@
     <Compile Include="Generator\MockSchema.cs" />
     <Compile Include="GoogleServiceGeneratorTest.cs" />
     <Compile Include="BaseCodeGeneratorTest.cs" />
-    <Compile Include="GoogleSchemaGenerator.cs" />
+    <Compile Include="GoogleSchemaGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -77,6 +77,10 @@
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tests\GoogleApis.Tests.csproj">
+      <Project>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</Project>
+      <Name>GoogleApis.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
