@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,11 +39,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.4001.19528, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.4001.19529, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.Tools.CodeGen.dll</HintPath>
     </Reference>
@@ -51,9 +51,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

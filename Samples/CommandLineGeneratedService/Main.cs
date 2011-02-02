@@ -113,7 +113,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
                                 new DirectoryInfo (cacheDirectory));
             var discovery = new DiscoveryService (webfetcher);
             // Build the service based on discovery information.
-			var param = new ServiceFactory.FactoryV_0_2Parameter("http://elephant.lon:9996",null);
+			var param = new FactoryParameterV0_2("http://elephant.lon:9996",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_2, param);
 			
 			AdsensemgmtService adSense = new AdsensemgmtService(service , AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator());

@@ -42,7 +42,7 @@ namespace Google.Apis.Samples.CommandLine.Views
 			Console.Out.Write("> ", url.ToString());
 		}
 		
-		public void AskForParameter(Parameter p) {
+		public void AskForParameter(IParameter p) {
 			
 			Console.Out.Write("{0} [{1}] > ", p.Name, p.Pattern);
 		}

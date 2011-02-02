@@ -176,6 +176,16 @@ namespace Google.Apis.Tools.CodeGen
             return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
         }
         
+        public static String GetFieldName (string name, int resourceNumber)
+        {
+            return LowwerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber));
+        }
+        
+        public static string GetPropertyName(string name, int resourceNumber)
+        {
+            return UpperFirstLetter( GetSafeMemberName( name, "Property" + resourceNumber));
+        }
+        
         public static String GetClassName (ISchema schema)
         {
             return UpperFirstLetter( GetSafeMemberName(schema.Name, "") );
