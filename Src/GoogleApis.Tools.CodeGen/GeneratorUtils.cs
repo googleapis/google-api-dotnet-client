@@ -53,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen
         #endregion
 
         #region Lowwer/UpperFirst
-        public static String LowwerFirstLetter (String str)
+        public static string LowwerFirstLetter (string str)
         {
             if (str == null || str.Length == 0)
             {
@@ -67,7 +67,7 @@ namespace Google.Apis.Tools.CodeGen
             return Char.ToLower (str[0]) + str.Substring (1);
         }
 
-        public static String UpperFirstLetter (String str)
+        public static string UpperFirstLetter (string str)
         {
             if (str == null || str.Length == 0)
             {
@@ -98,7 +98,7 @@ namespace Google.Apis.Tools.CodeGen
   
         #region Safe  Names
         
-        public static String GetSafeMemberName (string baseName, String uniquieifier, IEnumerable<String> unsafeWords)
+        public static string GetSafeMemberName (string baseName, string uniquieifier, IEnumerable<string> unsafeWords)
         {
             StringBuilder sb = new StringBuilder ();
             bool isFirst = true;
@@ -144,7 +144,7 @@ namespace Google.Apis.Tools.CodeGen
             return sb.ToString ();
         }
         
-        public static String GetSafeMemberName (string baseName, String uniquieifier)
+        public static string GetSafeMemberName (string baseName, string uniquieifier)
         {
             return GetSafeMemberName (baseName, uniquieifier, UnsafeWords);
         }
@@ -156,27 +156,27 @@ namespace Google.Apis.Tools.CodeGen
         ///     The Parameter
         /// </param>
         /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
-        public static String GetParameterName (IParameter parameter, int paramNumber)
+        public static string GetParameterName (IParameter parameter, int paramNumber)
         {
             return LowwerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
         }
         
-        public static String GetMethodName (IMethod method, int methodNumber)
+        public static string GetMethodName (IMethod method, int methodNumber)
         {
             return UpperFirstLetter( GetSafeMemberName( method.Name, "Method" + methodNumber));
         }
 
-        public static String GetClassName (IResourceContainer resource, int resourceNumber)
+        public static string GetClassName (IResourceContainer resource, int resourceNumber)
         {
             return UpperFirstLetter( GetSafeMemberName( resource.Name, "Resource" + resourceNumber));
         }
         
-        public static String GetFieldName (IResource resource, int resourceNumber)
+        public static string GetFieldName (IResource resource, int resourceNumber)
         {
             return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
         }
         
-        public static String GetFieldName (string name, int resourceNumber)
+        public static string GetFieldName (string name, int resourceNumber)
         {
             return LowwerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber));
         }
@@ -186,7 +186,7 @@ namespace Google.Apis.Tools.CodeGen
             return UpperFirstLetter( GetSafeMemberName( name, "Property" + resourceNumber));
         }
         
-        public static String GetClassName (ISchema schema)
+        public static string GetClassName (ISchema schema)
         {
             return UpperFirstLetter( GetSafeMemberName(schema.Name, "") );
         }
