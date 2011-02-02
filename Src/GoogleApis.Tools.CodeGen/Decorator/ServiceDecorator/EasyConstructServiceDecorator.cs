@@ -52,10 +52,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             /*
             new DiscoveryService(
                 new WebDiscoveryDevice(
-                    new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
+                    new Uri("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
                     )).GetService(version, DiscoveryVersionUsed)
             */            
-            var discoveryUrl = new CodePrimitiveExpression ("http://www.googleapis.com/discovery/0.1/describe?api=");
+            var discoveryUrl = new CodePrimitiveExpression ("https://www.googleapis.com/discovery/0.1/describe?api=");
             var serviceName = new CodeFieldReferenceExpression (
                 new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.NameName);
             

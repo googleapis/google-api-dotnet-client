@@ -41,7 +41,7 @@ namespace Google.Apis.Samples.CommandLine
 				UserAuthorizationUrl = "https://www.google.com/accounts/OAuthAuthorizeToken" });
 			
 			scopes.Add("translate", new Scope { 
-				Name = "http://translate.google.com/toolkit/feeds", 
+				Name = "https://translate.google.com/toolkit/feeds", 
 				AccessTokenUrl = "https://www.google.com/accounts/OAuthGetAccessToken" , 
 				RequestTokenUrl = "https://www.google.com/accounts/OAuthGetRequestToken", 
 				UserAuthorizationUrl = "https://www.google.com/accounts/OAuthAuthorizeToken" });

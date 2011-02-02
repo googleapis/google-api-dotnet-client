@@ -32,6 +32,7 @@ namespace Google.Apis.Testing {
 		public IAuthenticator Authenticator { get; set; }
 		public bool HasExecuted { get; set; }
 		public Stream StreamToReturn { get; set; }
+        public string DeveloperKey {get; set;}
 
 		public IRequest On(string rpcName) {
 			this.RpcName = rpcName;
@@ -71,6 +72,12 @@ namespace Google.Apis.Testing {
 			this.Authenticator = authenticator;
 			return this;
 		}
+        
+        public IRequest WithDeveloperKey (string key)
+        {
+            this.DeveloperKey = key;
+            return this;
+        }
 
 
 		public System.IO.Stream ExecuteRequest() {
