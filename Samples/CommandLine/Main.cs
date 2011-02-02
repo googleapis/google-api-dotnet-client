@@ -61,7 +61,7 @@ namespace Google.Apis.Samples.CommandLine
 			
 			
 			// Set up how discovery works.
-			var webfetcher = new WebDiscoveryDevice { DiscoveryUri = new Uri("http://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)};
+			var webfetcher = new WebDiscoveryDevice { DiscoveryUri = new Uri("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)};
 			
 			var discovery = new DiscoveryService(webfetcher);
 			// Build the service based on discovery information.
