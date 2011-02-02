@@ -36,6 +36,10 @@
       <HintPath>..\..\Third Party\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="Generator\SchemaGenerator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ISchemaDecorator.cs" />
     <Compile Include="GoogleSchemaGenerator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

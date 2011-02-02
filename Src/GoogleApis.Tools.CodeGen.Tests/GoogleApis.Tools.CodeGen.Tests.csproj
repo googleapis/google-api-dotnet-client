@@ -68,6 +68,7 @@
     <Compile Include="GoogleServiceGeneratorTest.cs" />
     <Compile Include="BaseCodeGeneratorTest.cs" />
     <Compile Include="GoogleSchemaGeneratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecoratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -88,6 +89,7 @@
     <Folder Include="Decorator\ResourceDecorator\" />
     <Folder Include="Decorator\ServiceDecorator\" />
     <Folder Include="Generator\" />
+    <Folder Include="Decorator\SchemaDecorator\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

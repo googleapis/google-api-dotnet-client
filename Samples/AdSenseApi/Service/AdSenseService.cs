@@ -51,7 +51,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         }
         
         public AdsensemgmtService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + AdsensemgmtService.Name)))).GetService(AdsensemgmtService.Version, AdsensemgmtService.DiscoveryVersionUsed, new Google.Apis.Discovery.ServiceFactory.FactoryV_0_2Parameter(null, AdsensemgmtService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
+                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + AdsensemgmtService.Name)))).GetService(AdsensemgmtService.Version, AdsensemgmtService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_2(null, AdsensemgmtService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
         public virtual Adunits Adunits {
