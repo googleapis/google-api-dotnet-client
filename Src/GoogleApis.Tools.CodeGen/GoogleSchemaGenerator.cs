@@ -19,7 +19,7 @@ namespace Google.Apis.Tools.CodeGen
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleSchemaGenerator));
         
-        public readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = (new List<ISchemaDecorator>(){}).AsReadOnly();
+        public static readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = (new List<ISchemaDecorator>(){}).AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;
         private readonly string schemaNamespace;
         
