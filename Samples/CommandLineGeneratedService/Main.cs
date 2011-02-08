@@ -49,10 +49,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
   }
 }
 ";
-		private static readonly string[] stringFormats = new string[]{"{0} {1} {2}",@"{0}
-{1}
-{2}",
-		bodyJason};
 		
 		public static bool CheckValidationResult(object sender, X509Certificate cert, X509Chain X509Chain, SslPolicyErrors errors) {
 			return true;
