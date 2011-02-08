@@ -19,7 +19,12 @@ namespace Google.Apis.Tools.CodeGen
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleSchemaGenerator));
         
-        public static readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = (new List<ISchemaDecorator>(){}).AsReadOnly();
+        public static readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = 
+            (new List<ISchemaDecorator>(){
+                new StandardPropertyFieldDecorator(),
+                new StandardPropertyDecorator(),
+            }).
+            AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;
         private readonly string schemaNamespace;
         
@@ -53,7 +58,7 @@ namespace Google.Apis.Tools.CodeGen
             {
                 return;
             }
-            logger.Debug("With descorators:");
+            logger.Debug("With Schema descorators:");
             if(decorators.Any() == false)
             {
                 logger.Debug(">>>NO DECORATORS");

@@ -69,5 +69,15 @@ namespace Google.Apis.Util
             dict.ThrowIfNull("this");
             return new ReadOnlyDictionary<TKey, TValue>(dict);
         }
+        
+        public static bool IsNullOrEmpty(this string str)
+        {
+            return str == null || str.Length == 0;
+        }
+        
+        public static bool IsNullOrEmpty<T>(this ICollection<T> coll)
+        {
+            return coll == null || coll.Count == 0;
+        }
 	}
 }

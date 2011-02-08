@@ -41,18 +41,54 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             typeDeclaration.Members.AddRange(GenerateAllProperties(schema).ToArray());
         }
         
-       
-        
         [VisibleForTestOnly]
-        internal IList<CodeTypeMember> GenerateAllProperties (ISchema schema)
+        internal IList<CodeMemberProperty> GenerateAllProperties (ISchema schema)
         {
-            var properties = new List<CodeTypeMember>();
-            return properties;
+            schema.ThrowIfNull("schema");
+            schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
+            logger.DebugFormat("Adding properties for {0}", schema.Name);
+            
+            
+            var fields = new List<CodeMemberProperty>();
+            
+            if ( schema.SchemaDetails.Properties.IsNullOrEmpty() )
+            {
+                logger.Debug("No proeprties found for schema " + schema.Name);
+                return fields;
+            }
+            
+            int index = 0;
+            foreach (var propertyPair in schema.SchemaDetails.Properties)
+            {
+                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index));
+                index++;
+            }
+            return fields;
         }
         
-        
-        
-        
+        [VisibleForTestOnly]
+        internal CodeMemberProperty GenerateProperty(string name, JsonSchema propertySchema, int index)
+        {
+            name.ThrowIfNullOrEmpty("name");
+            propertySchema.ThrowIfNull("propertySchema");
+            
+            var ret = new CodeMemberProperty();
+            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index);
+            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema);
+            ret.Attributes = MemberAttributes.Public;
+            
+            ret.HasGet = true;
+            var fieldReference = new CodeFieldReferenceExpression(
+                                     new CodeThisReferenceExpression(), 
+                                     SchemaDecoratorUtil.GetFieldName(name,index));
+            ret.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
+            
+            ret.HasSet = true;
+            var parameterReference = new CodeVariableReferenceExpression("value");
+            ret.SetStatements.Add(new CodeAssignStatement(fieldReference, parameterReference));
+            
+            return ret;
+        }
     }
 }
 

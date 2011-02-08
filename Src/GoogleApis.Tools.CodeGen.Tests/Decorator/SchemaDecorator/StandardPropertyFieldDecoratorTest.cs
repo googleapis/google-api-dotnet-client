@@ -29,7 +29,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
     [TestFixture()]
     public class StandardPropertyFieldDecoratorTest
     {
-        private readonly IDictionary<string, JsonSchemaType> namesToType = new SortedDictionary<string, JsonSchemaType>(){
+        internal static readonly IDictionary<string, JsonSchemaType> NamesToType = new SortedDictionary<string, JsonSchemaType>(){
             {"a", JsonSchemaType.Boolean},
             {"b", JsonSchemaType.Integer},
             {"c", JsonSchemaType.Float},
@@ -38,6 +38,25 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {"f", JsonSchemaType.Integer},
         };
         
+        
+        [Test()]
+        public void GenerateAllFieldsTestEdgeCases()
+        {
+            var decorator = new StandardPropertyFieldDecorator();
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(null));
+            
+            var schema = new MockSchema();
+            schema.Name = "test";
+            schema.SchemaDetails = null;
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema));
+            
+            schema.SchemaDetails = new JsonSchema();
+            schema.SchemaDetails.Properties = null;
+            var expectedEmpty = decorator.GenerateAllFields(schema);
+            Assert.IsNotNull(expectedEmpty);
+            Assert.AreEqual(0, expectedEmpty.Count);
+        }
+        
         [Test()]
         public void GenerateAllFieldsTest ()
         {
@@ -45,7 +64,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Object;
             schema.SchemaDetails.Properties = new Dictionary<string, JsonSchema>();
-            foreach(var pair in namesToType)
+            foreach(var pair in NamesToType)
             {
                 JsonSchema property = new JsonSchema();
                 property.Type = pair.Value;
@@ -57,14 +76,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             IList<CodeMemberField> generatedFields = decorator.GenerateAllFields(schema);
             
             Assert.NotNull(generatedFields);
-            Assert.AreEqual(namesToType.Count, generatedFields.Count);
+            Assert.AreEqual(NamesToType.Count, generatedFields.Count);
             foreach(var field in generatedFields)
             {
-                Assert.That(namesToType.ContainsKey(field.Name), "field name was not present in namesToType " + field.Name);                
+                Assert.That(NamesToType.ContainsKey(field.Name), "field name was not present in namesToType " + field.Name);                
             }
             
             int item = 0;
-            foreach(var pair in namesToType)
+            foreach(var pair in NamesToType)
             {
                 var field = generatedFields[item++];
                 Assert.AreEqual(pair.Key, field.Name, string.Format("Name different for expected at index {0}", item -1));

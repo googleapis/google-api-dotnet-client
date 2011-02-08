@@ -27,6 +27,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
     public class StandardPropertyFieldDecorator:ISchemaDecorator
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyFieldDecorator));
+        
         public StandardPropertyFieldDecorator ()
         {
         }
@@ -42,8 +44,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         internal IList<CodeMemberField> GenerateAllFields (ISchema schema)
         {
             schema.ThrowIfNull("schema");
+            schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
             
             var fields = new List<CodeMemberField>();
+            if ( schema.SchemaDetails.Properties.IsNullOrEmpty() )
+            {
+                logger.Debug("No Properties found for " + schema.Name);
+                return fields;
+            }
+            
             int index = 0;
             foreach (var propertyPair in schema.SchemaDetails.Properties)
             {

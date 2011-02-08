@@ -12,18 +12,414 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     
     public class Activitiylist {
+        
+        private object id;
+        
+        private object title;
+        
+        private object items;
+        
+        private string updated;
+        
+        private object links;
+        
+        private string kind;
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliActivitiesCountJson {
+        
+        private object counts;
+        
+        private string kind;
+        
+        public virtual object Counts {
+            get {
+                return this.counts;
+            }
+            set {
+                this.counts = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliActivitiesExtractpeoplefromsearchJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliActivitiesListJson {
     }
     
     public class ChiliActivitiesResourceJson {
+        
+        private object visibility;
+        
+        private object placeholder;
+        
+        private object targetLang;
+        
+        private object placeName;
+        
+        private object links;
+        
+        private object crosspostSource;
+        
+        private object actor;
+        
+        private object objectField7;
+        
+        private object detectedlLang;
+        
+        private string kind;
+        
+        private object geocode;
+        
+        private object annotation;
+        
+        private object id;
+        
+        private object title;
+        
+        private object source;
+        
+        private object placeId;
+        
+        private object address;
+        
+        private string updated;
+        
+        private object verbs;
+        
+        private object radius;
+        
+        private object categories;
+        
+        private object untranslatedTitle;
+        
+        private string published;
+        
+        public virtual object Visibility {
+            get {
+                return this.visibility;
+            }
+            set {
+                this.visibility = value;
+            }
+        }
+        
+        public virtual object Placeholder {
+            get {
+                return this.placeholder;
+            }
+            set {
+                this.placeholder = value;
+            }
+        }
+        
+        public virtual object TargetLang {
+            get {
+                return this.targetLang;
+            }
+            set {
+                this.targetLang = value;
+            }
+        }
+        
+        public virtual object PlaceName {
+            get {
+                return this.placeName;
+            }
+            set {
+                this.placeName = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual object CrosspostSource {
+            get {
+                return this.crosspostSource;
+            }
+            set {
+                this.crosspostSource = value;
+            }
+        }
+        
+        public virtual object Actor {
+            get {
+                return this.actor;
+            }
+            set {
+                this.actor = value;
+            }
+        }
+        
+        public virtual object ObjectProperty7 {
+            get {
+                return this.objectField7;
+            }
+            set {
+                this.objectField7 = value;
+            }
+        }
+        
+        public virtual object DetectedlLang {
+            get {
+                return this.detectedlLang;
+            }
+            set {
+                this.detectedlLang = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public virtual object Geocode {
+            get {
+                return this.geocode;
+            }
+            set {
+                this.geocode = value;
+            }
+        }
+        
+        public virtual object Annotation {
+            get {
+                return this.annotation;
+            }
+            set {
+                this.annotation = value;
+            }
+        }
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Source {
+            get {
+                return this.source;
+            }
+            set {
+                this.source = value;
+            }
+        }
+        
+        public virtual object PlaceId {
+            get {
+                return this.placeId;
+            }
+            set {
+                this.placeId = value;
+            }
+        }
+        
+        public virtual object Address {
+            get {
+                return this.address;
+            }
+            set {
+                this.address = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object Verbs {
+            get {
+                return this.verbs;
+            }
+            set {
+                this.verbs = value;
+            }
+        }
+        
+        public virtual object Radius {
+            get {
+                return this.radius;
+            }
+            set {
+                this.radius = value;
+            }
+        }
+        
+        public virtual object Categories {
+            get {
+                return this.categories;
+            }
+            set {
+                this.categories = value;
+            }
+        }
+        
+        public virtual object UntranslatedTitle {
+            get {
+                return this.untranslatedTitle;
+            }
+            set {
+                this.untranslatedTitle = value;
+            }
+        }
+        
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
     }
     
     public class ChiliActivitiesSearchJson {
@@ -33,75 +429,2099 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     }
     
     public class ChiliCommentsListJson {
+        
+        private object id;
+        
+        private object title;
+        
+        private object items;
+        
+        private string updated;
+        
+        private object links;
+        
+        private string kind;
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliCommentsResourceJson {
+        
+        private object content;
+        
+        private object id;
+        
+        private object detectedLang;
+        
+        private object untranslatedContent;
+        
+        private string updated;
+        
+        private object targetLang;
+        
+        private object placeholder;
+        
+        private object links;
+        
+        private object actor;
+        
+        private string published;
+        
+        private string kind;
+        
+        private object originalContent;
+        
+        public virtual object Content {
+            get {
+                return this.content;
+            }
+            set {
+                this.content = value;
+            }
+        }
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object DetectedLang {
+            get {
+                return this.detectedLang;
+            }
+            set {
+                this.detectedLang = value;
+            }
+        }
+        
+        public virtual object UntranslatedContent {
+            get {
+                return this.untranslatedContent;
+            }
+            set {
+                this.untranslatedContent = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object TargetLang {
+            get {
+                return this.targetLang;
+            }
+            set {
+                this.targetLang = value;
+            }
+        }
+        
+        public virtual object Placeholder {
+            get {
+                return this.placeholder;
+            }
+            set {
+                this.placeholder = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual object Actor {
+            get {
+                return this.actor;
+            }
+            set {
+                this.actor = value;
+            }
+        }
+        
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public virtual object OriginalContent {
+            get {
+                return this.originalContent;
+            }
+            set {
+                this.originalContent = value;
+            }
+        }
     }
     
     public class ChiliEntitiesListJson {
+        
+        private object entry;
+        
+        private string kind;
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliEntitiesStarredAddJson {
     }
     
     public class ChiliEntitiesStarredListJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliEntitiesStarredResource {
+        
+        private object summary;
+        
+        private object id;
+        
+        private object viewerStarAcl;
+        
+        private object title;
+        
+        private object chipsUiAcl;
+        
+        private object totalNumStars;
+        
+        private object starredBy;
+        
+        private object starredByViewer;
+        
+        private object comment;
+        
+        private string kind;
+        
+        public virtual object Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object ViewerStarAcl {
+            get {
+                return this.viewerStarAcl;
+            }
+            set {
+                this.viewerStarAcl = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object ChipsUiAcl {
+            get {
+                return this.chipsUiAcl;
+            }
+            set {
+                this.chipsUiAcl = value;
+            }
+        }
+        
+        public virtual object TotalNumStars {
+            get {
+                return this.totalNumStars;
+            }
+            set {
+                this.totalNumStars = value;
+            }
+        }
+        
+        public virtual object StarredBy {
+            get {
+                return this.starredBy;
+            }
+            set {
+                this.starredBy = value;
+            }
+        }
+        
+        public virtual object StarredByViewer {
+            get {
+                return this.starredByViewer;
+            }
+            set {
+                this.starredByViewer = value;
+            }
+        }
+        
+        public virtual object Comment {
+            get {
+                return this.comment;
+            }
+            set {
+                this.comment = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliEntitiesdefaultaclResourceJson {
+        
+        private object viewerStarAcl;
+        
+        private string chipsUiAcl;
+        
+        private string kind;
+        
+        public virtual object ViewerStarAcl {
+            get {
+                return this.viewerStarAcl;
+            }
+            set {
+                this.viewerStarAcl = value;
+            }
+        }
+        
+        public virtual string ChipsUiAcl {
+            get {
+                return this.chipsUiAcl;
+            }
+            set {
+                this.chipsUiAcl = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliGroupsListJson {
+        
+        private object items;
+        
+        private object links;
+        
+        private string kind;
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliGroupsResourceJson {
+        
+        private object id;
+        
+        private object title;
+        
+        private object links;
+        
+        private object memberCount;
+        
+        private string kind;
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual object MemberCount {
+            get {
+                return this.memberCount;
+            }
+            set {
+                this.memberCount = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPeopleLikedJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPeopleListJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPeopleResharedJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPeopleResourceJson {
+        
+        private object turnOffs;
+        
+        private object heroes;
+        
+        private object ims;
+        
+        private object connected;
+        
+        private object sports;
+        
+        private object languagesSpoken;
+        
+        private object religion;
+        
+        private object turnOns;
+        
+        private object languages;
+        
+        private string updated;
+        
+        private object cars;
+        
+        private object pets;
+        
+        private object gender;
+        
+        private object humor;
+        
+        private object activities;
+        
+        private object preferredUsername;
+        
+        private object hasApp;
+        
+        private object books;
+        
+        private object happiestWhen;
+        
+        private object scaredOf;
+        
+        private object nickname;
+        
+        private object status;
+        
+        private object emails;
+        
+        private object profileUrl;
+        
+        private object food;
+        
+        private object utcOffset;
+        
+        private object profileVideo;
+        
+        private object smoker;
+        
+        private object addresses;
+        
+        private object birthday;
+        
+        private object fashion;
+        
+        private object interests;
+        
+        private object drinker;
+        
+        private object movies;
+        
+        private object jobInterests;
+        
+        private object children;
+        
+        private object lookingFor;
+        
+        private object romance;
+        
+        private object aboutMe;
+        
+        private string kind;
+        
+        private object bodyType;
+        
+        private object id;
+        
+        private object tvShows;
+        
+        private object name;
+        
+        private object thumbnailUrl;
+        
+        private string published;
+        
+        private object relationships;
+        
+        private object profileSong;
+        
+        private object note;
+        
+        private object music;
+        
+        private object tags;
+        
+        private object anniversary;
+        
+        private object politicalViews;
+        
+        private object accounts;
+        
+        private object urls;
+        
+        private object organizations;
+        
+        private object relationshipStatus;
+        
+        private object phoneNumbers;
+        
+        private object livingArrangement;
+        
+        private object currentLocation;
+        
+        private object photos;
+        
+        private object quotes;
+        
+        private object sexualOrientation;
+        
+        private object displayName;
+        
+        private object ethnicity;
+        
+        public virtual object TurnOffs {
+            get {
+                return this.turnOffs;
+            }
+            set {
+                this.turnOffs = value;
+            }
+        }
+        
+        public virtual object Heroes {
+            get {
+                return this.heroes;
+            }
+            set {
+                this.heroes = value;
+            }
+        }
+        
+        public virtual object Ims {
+            get {
+                return this.ims;
+            }
+            set {
+                this.ims = value;
+            }
+        }
+        
+        public virtual object Connected {
+            get {
+                return this.connected;
+            }
+            set {
+                this.connected = value;
+            }
+        }
+        
+        public virtual object Sports {
+            get {
+                return this.sports;
+            }
+            set {
+                this.sports = value;
+            }
+        }
+        
+        public virtual object LanguagesSpoken {
+            get {
+                return this.languagesSpoken;
+            }
+            set {
+                this.languagesSpoken = value;
+            }
+        }
+        
+        public virtual object Religion {
+            get {
+                return this.religion;
+            }
+            set {
+                this.religion = value;
+            }
+        }
+        
+        public virtual object TurnOns {
+            get {
+                return this.turnOns;
+            }
+            set {
+                this.turnOns = value;
+            }
+        }
+        
+        public virtual object Languages {
+            get {
+                return this.languages;
+            }
+            set {
+                this.languages = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object Cars {
+            get {
+                return this.cars;
+            }
+            set {
+                this.cars = value;
+            }
+        }
+        
+        public virtual object Pets {
+            get {
+                return this.pets;
+            }
+            set {
+                this.pets = value;
+            }
+        }
+        
+        public virtual object Gender {
+            get {
+                return this.gender;
+            }
+            set {
+                this.gender = value;
+            }
+        }
+        
+        public virtual object Humor {
+            get {
+                return this.humor;
+            }
+            set {
+                this.humor = value;
+            }
+        }
+        
+        public virtual object Activities {
+            get {
+                return this.activities;
+            }
+            set {
+                this.activities = value;
+            }
+        }
+        
+        public virtual object PreferredUsername {
+            get {
+                return this.preferredUsername;
+            }
+            set {
+                this.preferredUsername = value;
+            }
+        }
+        
+        public virtual object HasApp {
+            get {
+                return this.hasApp;
+            }
+            set {
+                this.hasApp = value;
+            }
+        }
+        
+        public virtual object Books {
+            get {
+                return this.books;
+            }
+            set {
+                this.books = value;
+            }
+        }
+        
+        public virtual object HappiestWhen {
+            get {
+                return this.happiestWhen;
+            }
+            set {
+                this.happiestWhen = value;
+            }
+        }
+        
+        public virtual object ScaredOf {
+            get {
+                return this.scaredOf;
+            }
+            set {
+                this.scaredOf = value;
+            }
+        }
+        
+        public virtual object Nickname {
+            get {
+                return this.nickname;
+            }
+            set {
+                this.nickname = value;
+            }
+        }
+        
+        public virtual object Status {
+            get {
+                return this.status;
+            }
+            set {
+                this.status = value;
+            }
+        }
+        
+        public virtual object Emails {
+            get {
+                return this.emails;
+            }
+            set {
+                this.emails = value;
+            }
+        }
+        
+        public virtual object ProfileUrl {
+            get {
+                return this.profileUrl;
+            }
+            set {
+                this.profileUrl = value;
+            }
+        }
+        
+        public virtual object Food {
+            get {
+                return this.food;
+            }
+            set {
+                this.food = value;
+            }
+        }
+        
+        public virtual object UtcOffset {
+            get {
+                return this.utcOffset;
+            }
+            set {
+                this.utcOffset = value;
+            }
+        }
+        
+        public virtual object ProfileVideo {
+            get {
+                return this.profileVideo;
+            }
+            set {
+                this.profileVideo = value;
+            }
+        }
+        
+        public virtual object Smoker {
+            get {
+                return this.smoker;
+            }
+            set {
+                this.smoker = value;
+            }
+        }
+        
+        public virtual object Addresses {
+            get {
+                return this.addresses;
+            }
+            set {
+                this.addresses = value;
+            }
+        }
+        
+        public virtual object Birthday {
+            get {
+                return this.birthday;
+            }
+            set {
+                this.birthday = value;
+            }
+        }
+        
+        public virtual object Fashion {
+            get {
+                return this.fashion;
+            }
+            set {
+                this.fashion = value;
+            }
+        }
+        
+        public virtual object Interests {
+            get {
+                return this.interests;
+            }
+            set {
+                this.interests = value;
+            }
+        }
+        
+        public virtual object Drinker {
+            get {
+                return this.drinker;
+            }
+            set {
+                this.drinker = value;
+            }
+        }
+        
+        public virtual object Movies {
+            get {
+                return this.movies;
+            }
+            set {
+                this.movies = value;
+            }
+        }
+        
+        public virtual object JobInterests {
+            get {
+                return this.jobInterests;
+            }
+            set {
+                this.jobInterests = value;
+            }
+        }
+        
+        public virtual object Children {
+            get {
+                return this.children;
+            }
+            set {
+                this.children = value;
+            }
+        }
+        
+        public virtual object LookingFor {
+            get {
+                return this.lookingFor;
+            }
+            set {
+                this.lookingFor = value;
+            }
+        }
+        
+        public virtual object Romance {
+            get {
+                return this.romance;
+            }
+            set {
+                this.romance = value;
+            }
+        }
+        
+        public virtual object AboutMe {
+            get {
+                return this.aboutMe;
+            }
+            set {
+                this.aboutMe = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public virtual object BodyType {
+            get {
+                return this.bodyType;
+            }
+            set {
+                this.bodyType = value;
+            }
+        }
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object TvShows {
+            get {
+                return this.tvShows;
+            }
+            set {
+                this.tvShows = value;
+            }
+        }
+        
+        public virtual object Name {
+            get {
+                return this.name;
+            }
+            set {
+                this.name = value;
+            }
+        }
+        
+        public virtual object ThumbnailUrl {
+            get {
+                return this.thumbnailUrl;
+            }
+            set {
+                this.thumbnailUrl = value;
+            }
+        }
+        
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        public virtual object Relationships {
+            get {
+                return this.relationships;
+            }
+            set {
+                this.relationships = value;
+            }
+        }
+        
+        public virtual object ProfileSong {
+            get {
+                return this.profileSong;
+            }
+            set {
+                this.profileSong = value;
+            }
+        }
+        
+        public virtual object Note {
+            get {
+                return this.note;
+            }
+            set {
+                this.note = value;
+            }
+        }
+        
+        public virtual object Music {
+            get {
+                return this.music;
+            }
+            set {
+                this.music = value;
+            }
+        }
+        
+        public virtual object Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        public virtual object Anniversary {
+            get {
+                return this.anniversary;
+            }
+            set {
+                this.anniversary = value;
+            }
+        }
+        
+        public virtual object PoliticalViews {
+            get {
+                return this.politicalViews;
+            }
+            set {
+                this.politicalViews = value;
+            }
+        }
+        
+        public virtual object Accounts {
+            get {
+                return this.accounts;
+            }
+            set {
+                this.accounts = value;
+            }
+        }
+        
+        public virtual object Urls {
+            get {
+                return this.urls;
+            }
+            set {
+                this.urls = value;
+            }
+        }
+        
+        public virtual object Organizations {
+            get {
+                return this.organizations;
+            }
+            set {
+                this.organizations = value;
+            }
+        }
+        
+        public virtual object RelationshipStatus {
+            get {
+                return this.relationshipStatus;
+            }
+            set {
+                this.relationshipStatus = value;
+            }
+        }
+        
+        public virtual object PhoneNumbers {
+            get {
+                return this.phoneNumbers;
+            }
+            set {
+                this.phoneNumbers = value;
+            }
+        }
+        
+        public virtual object LivingArrangement {
+            get {
+                return this.livingArrangement;
+            }
+            set {
+                this.livingArrangement = value;
+            }
+        }
+        
+        public virtual object CurrentLocation {
+            get {
+                return this.currentLocation;
+            }
+            set {
+                this.currentLocation = value;
+            }
+        }
+        
+        public virtual object Photos {
+            get {
+                return this.photos;
+            }
+            set {
+                this.photos = value;
+            }
+        }
+        
+        public virtual object Quotes {
+            get {
+                return this.quotes;
+            }
+            set {
+                this.quotes = value;
+            }
+        }
+        
+        public virtual object SexualOrientation {
+            get {
+                return this.sexualOrientation;
+            }
+            set {
+                this.sexualOrientation = value;
+            }
+        }
+        
+        public virtual object DisplayName {
+            get {
+                return this.displayName;
+            }
+            set {
+                this.displayName = value;
+            }
+        }
+        
+        public virtual object Ethnicity {
+            get {
+                return this.ethnicity;
+            }
+            set {
+                this.ethnicity = value;
+            }
+        }
     }
     
     public class ChiliPeopleSearchJson {
+        
+        private object startIndex;
+        
+        private object totalResults;
+        
+        private object entry;
+        
+        private object itemsPerPage;
+        
+        private string kind;
+        
+        public virtual object StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        public virtual object TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+        
+        public virtual object Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        public virtual object ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPhotoalbumsListJson {
+        
+        private object items;
+        
+        private string kind;
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPhotoalbumsResourceJson {
+        
+        private object tags;
+        
+        private long id;
+        
+        private long firstPhotoId;
+        
+        private string title;
+        
+        private string lastModified;
+        
+        private string created;
+        
+        private string description;
+        
+        private object owner;
+        
+        private object links;
+        
+        private string kind;
+        
+        private long version;
+        
+        public virtual object Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        public virtual long Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual long FirstPhotoId {
+            get {
+                return this.firstPhotoId;
+            }
+            set {
+                this.firstPhotoId = value;
+            }
+        }
+        
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        public virtual string Created {
+            get {
+                return this.created;
+            }
+            set {
+                this.created = value;
+            }
+        }
+        
+        public virtual string Description {
+            get {
+                return this.description;
+            }
+            set {
+                this.description = value;
+            }
+        }
+        
+        public virtual object Owner {
+            get {
+                return this.owner;
+            }
+            set {
+                this.owner = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public virtual long Version {
+            get {
+                return this.version;
+            }
+            set {
+                this.version = value;
+            }
+        }
     }
     
     public class ChiliPhotosInsertJson {
+        
+        private object collection;
+        
+        private string kind;
+        
+        public virtual object Collection {
+            get {
+                return this.collection;
+            }
+            set {
+                this.collection = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPhotosListJson {
+        
+        private object items;
+        
+        private string kind;
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliPhotosResourceJson {
+        
+        private string lastModified;
+        
+        private object album;
+        
+        private object links;
+        
+        private string kind;
+        
+        private long version;
+        
+        private long id;
+        
+        private double timestamp;
+        
+        private long fileSize;
+        
+        private string title;
+        
+        private string created;
+        
+        private string description;
+        
+        private object owner;
+        
+        private object video;
+        
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        public virtual object Album {
+            get {
+                return this.album;
+            }
+            set {
+                this.album = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public virtual long Version {
+            get {
+                return this.version;
+            }
+            set {
+                this.version = value;
+            }
+        }
+        
+        public virtual long Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual double Timestamp {
+            get {
+                return this.timestamp;
+            }
+            set {
+                this.timestamp = value;
+            }
+        }
+        
+        public virtual long FileSize {
+            get {
+                return this.fileSize;
+            }
+            set {
+                this.fileSize = value;
+            }
+        }
+        
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual string Created {
+            get {
+                return this.created;
+            }
+            set {
+                this.created = value;
+            }
+        }
+        
+        public virtual string Description {
+            get {
+                return this.description;
+            }
+            set {
+                this.description = value;
+            }
+        }
+        
+        public virtual object Owner {
+            get {
+                return this.owner;
+            }
+            set {
+                this.owner = value;
+            }
+        }
+        
+        public virtual object Video {
+            get {
+                return this.video;
+            }
+            set {
+                this.video = value;
+            }
+        }
     }
     
     public class ChiliRelatedListJson {
+        
+        private object id;
+        
+        private object title;
+        
+        private object items;
+        
+        private string updated;
+        
+        private object links;
+        
+        private string kind;
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual object Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliRelatedResourceJson {
+        
+        private object summary;
+        
+        private object id;
+        
+        private object title;
+        
+        private object href;
+        
+        private string kind;
+        
+        public virtual object Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        public virtual object Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        public virtual object Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual object Href {
+            get {
+                return this.href;
+            }
+            set {
+                this.href = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class ChiliVideosListJson {
+        
+        private object items;
+        
+        private string kind;
+        
+        public virtual object Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
     }
     
     public class Link {
+        
+        private string title;
+        
+        private long height;
+        
+        private long count;
+        
+        private string updated;
+        
+        private long width;
+        
+        private string type;
+        
+        private string href;
+        
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public virtual long Height {
+            get {
+                return this.height;
+            }
+            set {
+                this.height = value;
+            }
+        }
+        
+        public virtual long Count {
+            get {
+                return this.count;
+            }
+            set {
+                this.count = value;
+            }
+        }
+        
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public virtual long Width {
+            get {
+                return this.width;
+            }
+            set {
+                this.width = value;
+            }
+        }
+        
+        public virtual string Type {
+            get {
+                return this.type;
+            }
+            set {
+                this.type = value;
+            }
+        }
+        
+        public virtual string Href {
+            get {
+                return this.href;
+            }
+            set {
+                this.href = value;
+            }
+        }
     }
     
     public class Video {
+        
+        private long duration;
+        
+        private object streams;
+        
+        private long size;
+        
+        public virtual long Duration {
+            get {
+                return this.duration;
+            }
+            set {
+                this.duration = value;
+            }
+        }
+        
+        public virtual object Streams {
+            get {
+                return this.streams;
+            }
+            set {
+                this.streams = value;
+            }
+        }
+        
+        public virtual long Size {
+            get {
+                return this.size;
+            }
+            set {
+                this.size = value;
+            }
+        }
     }
 }
 namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
