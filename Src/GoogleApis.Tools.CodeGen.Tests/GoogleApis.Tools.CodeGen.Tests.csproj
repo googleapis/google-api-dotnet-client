@@ -69,6 +69,8 @@
     <Compile Include="BaseCodeGeneratorTest.cs" />
     <Compile Include="GoogleSchemaGeneratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">

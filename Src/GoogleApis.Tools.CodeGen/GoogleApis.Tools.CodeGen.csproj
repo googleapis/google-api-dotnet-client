@@ -69,6 +69,8 @@
     <Compile Include="Decorator\SchemaDecorator\ISchemaDecorator.cs" />
     <Compile Include="GoogleSchemaGenerator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
