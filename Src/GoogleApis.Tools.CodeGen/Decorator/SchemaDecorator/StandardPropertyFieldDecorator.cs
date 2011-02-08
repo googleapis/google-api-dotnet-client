@@ -23,14 +23,11 @@ using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
-    public class StandardPropertyDecorator: ISchemaDecorator
+    public class StandardPropertyFieldDecorator:ISchemaDecorator
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyDecorator));
-        
-        public StandardPropertyDecorator ()
+        public StandardPropertyFieldDecorator ()
         {
         }
         
@@ -38,21 +35,35 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(schema).ToArray());
+            typeDeclaration.Members.AddRange(GenerateAllFields(schema).ToArray());            
         }
-        
-       
         
         [VisibleForTestOnly]
-        internal IList<CodeTypeMember> GenerateAllProperties (ISchema schema)
+        internal IList<CodeMemberField> GenerateAllFields (ISchema schema)
         {
-            var properties = new List<CodeTypeMember>();
-            return properties;
+            schema.ThrowIfNull("schema");
+            
+            var fields = new List<CodeMemberField>();
+            int index = 0;
+            foreach (var propertyPair in schema.SchemaDetails.Properties)
+            {
+                fields.Add(GenerateField(propertyPair.Key, propertyPair.Value, index));
+                index++;
+            }
+            return fields;
         }
         
-        
-        
-        
+        [VisibleForTestOnly]
+        internal CodeMemberField GenerateField(string name, JsonSchema propertySchema, int index)
+        {
+            name.ThrowIfNullOrEmpty("name");
+            propertySchema.ThrowIfNull("propertySchema");
+            
+            var ret = new CodeMemberField(SchemaDecoratorUtil.GetCodeType(propertySchema), SchemaDecoratorUtil.GetFieldName(name, index));
+            ret.Attributes = MemberAttributes.Private;
+            
+            return ret;
+        }
     }
 }
 
