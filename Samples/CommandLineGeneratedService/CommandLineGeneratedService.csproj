@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ABE4D1B8-DB81-4025-AA5D-CC6741935A20}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -64,9 +64,6 @@
     <Compile Include="Buzz\BuzzService.cs" />
     <Compile Include="Buzz\ConsoleAuthenticator.cs" />
     <Compile Include="Target\TestBuzzService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdSense\" />
