@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis</RootNamespace>
+    <AssemblyName>Google.Apis</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Apis\Discovery\Service.cs" />
+    <Compile Include="Apis\Discovery\DiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StreamDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StringDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\WebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactory.cs" />
+    <Compile Include="Apis\Requests\PUTRequest.cs" />
+    <Compile Include="Apis\Requests\DELETERequest.cs" />
+    <Compile Include="Apis\Requests\GETRequest.cs" />
+    <Compile Include="Apis\Requests\POSTRequest.cs" />
+    <Compile Include="Apis\Requests\Request.cs" />
+    <Compile Include="Apis\Discovery\Method.cs" />
+    <Compile Include="Apis\Discovery\Parameter.cs" />
+    <Compile Include="Apis\Discovery\Resource.cs" />
+    <Compile Include="Apis\Discovery\Utilities.cs" />
+    <Compile Include="Apis\Authentication\Authentication.cs" />
+    <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
+    <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
+    <Compile Include="Apis\Authentication\Authenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuthAuthenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuth2LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Requests\MethodValidator.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IService.cs" />
+    <Compile Include="Apis\Authentication\IAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Requests\IRequest.cs" />
+    <Compile Include="Apis\Requests\ReturnType.cs" />
+    <Compile Include="Apis\Testing\MockRequest.cs" />
+    <Compile Include="Apis\Testing\MockService.cs" />
+    <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
+    <Compile Include="Apis\Discovery\IRequestExecutor.cs" />
+    <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
+    <Compile Include="Apis\JSON\JsonToken.cs" />
+    <Compile Include="Apis\JSON\TokenStream.cs" />
+    <Compile Include="Apis\JSON\JsonDictionary.cs" />
+    <Compile Include="Apis\JSON\JsonReader.cs" />
+    <Compile Include="Apis\Oauthbase.cs" />
+    <Compile Include="Apis\Oauthutil.cs" />
+    <Compile Include="Apis\Utilities.cs" />
+    <Compile Include="Apis\Discovery\IResourceContainer.cs" />
+    <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
+    <Compile Include="Apis\Authentication\NullAuthenticator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\JSON\" />
+    <Folder Include="Apis\Discovery\" />
+    <Folder Include="Apis\Requests\" />
+    <Folder Include="Apis\Authentication\" />
+    <Folder Include="Apis\Testing\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="/*&#xA;Copyright 2010 Google Inc&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;    http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;*/" inheritsSet="Apache2License" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

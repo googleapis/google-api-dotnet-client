@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis.Tools.CodeGen</RootNamespace>
+    <AssemblyName>Google.Apis.Tools.CodeGen</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
+    <Compile Include="GeneratorUtils.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
+    <Compile Include="GoogleServiceGenerator.cs" />
+    <Compile Include="Generator\ResourceClassGenerator.cs" />
+    <Compile Include="Generator\ServiceClassGenerator.cs" />
+    <Compile Include="Generator\BaseGenerator.cs" />
+    <Compile Include="Generator\ResourceBaseGenerator.cs" />
+    <Compile Include="Generator\ResourceContainerGenerator.cs" />
+    <Compile Include="Decorator\ResourceContainerDecorator\StandardResourcePropertyServiceDecorator.cs" />
+    <Compile Include="Decorator\ResourceContainerDecorator\IResourceContainerDecorator.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+      <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
+      <Name>GoogleApis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Decorator\" />
+    <Folder Include="Decorator\ResourceDecorator\" />
+    <Folder Include="Decorator\ServiceDecorator\" />
+    <Folder Include="Generator\" />
+    <Folder Include="Decorator\ResourceContainerDecorator\" />
+  </ItemGroup>
+</Project>
