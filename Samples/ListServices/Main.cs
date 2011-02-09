@@ -46,7 +46,7 @@ namespace Google.Apis.Samples.ListServices
 		public static void Main (string[] args)
 		{
 			string serviceName = "moderator";
-			string uri = "https://www.googleapis.com/discovery/0.1/describe?api={0}&apiVersion=1";
+			string uri = "https://www.googleapis.com/discovery/0.1/describe?api={0}&apiVersion=v1";
 			
 			if(args.Length == 1) {
 				serviceName = args[0];
