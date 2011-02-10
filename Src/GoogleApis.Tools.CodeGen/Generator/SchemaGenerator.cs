@@ -17,7 +17,8 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 
-
+using Newtonsoft.Json.Schema;
+    
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
@@ -39,12 +40,51 @@ namespace Google.Apis.Tools.CodeGen.Generator
             schema.ThrowIfNull("schema");
             string className = GeneratorUtils.GetClassName (schema);
             var typeDeclaration = new CodeTypeDeclaration(className);
+            var internalClassGenerator = new InternalClassGenerator(typeDeclaration, decorators);
             foreach( ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecoratClass(typeDeclaration, schema);
+                schemaDecorator.DecoratClass(typeDeclaration, schema, internalClassGenerator);
             }
+            internalClassGenerator.GenerateInternalClasses();
             
             return typeDeclaration;
+        }
+        
+        private class InternalClassGenerator: IInternalClassProvider
+        {
+            private readonly CodeTypeDeclaration typeDeclaration;
+            private readonly IEnumerable<ISchemaDecorator> decorators;
+            private readonly IDictionary<JsonSchema, int> schemaOrder;
+            private int nextSchemaNumber; 
+            
+            public InternalClassGenerator(CodeTypeDeclaration typeDeclaration, IEnumerable<ISchemaDecorator> decorators)
+            {
+                this.typeDeclaration = typeDeclaration;
+                this.decorators = decorators;
+                this.schemaOrder = new Dictionary<JsonSchema, int>();
+                nextSchemaNumber = 1;
+            }
+            
+            public void GenerateInternalClasses()
+            {
+            }
+            
+            public CodeTypeReference GetInternalClassName (JsonSchema definition)
+            {
+                if( schemaOrder.ContainsKey(definition) )
+                {
+                    return GetSchemaName(schemaOrder[definition]);
+                }
+                int schemaNumber = nextSchemaNumber++;
+                schemaOrder.Add(definition, schemaNumber);
+                return GetSchemaName(schemaNumber);
+            }
+            
+            private static CodeTypeReference GetSchemaName(int schemaNumber)
+            {
+                return new CodeTypeReference(string.Format("InternalClass{0}", schemaNumber));
+            }
+            
         }
     }
 }

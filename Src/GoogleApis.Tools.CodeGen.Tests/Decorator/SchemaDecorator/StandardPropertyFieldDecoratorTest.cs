@@ -38,21 +38,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {"f", JsonSchemaType.Integer},
         };
         
+        private IInternalClassProvider internalClassProvider = new ObjectInternalClassProvider();
         
         [Test()]
         public void GenerateAllFieldsTestEdgeCases()
         {
             var decorator = new StandardPropertyFieldDecorator();
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(null));
-            
             var schema = new MockSchema();
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(null, internalClassProvider));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema, null));
+            
             schema.Name = "test";
             schema.SchemaDetails = null;
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema, internalClassProvider));
             
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Properties = null;
-            var expectedEmpty = decorator.GenerateAllFields(schema);
+            var expectedEmpty = decorator.GenerateAllFields(schema, internalClassProvider);
             Assert.IsNotNull(expectedEmpty);
             Assert.AreEqual(0, expectedEmpty.Count);
         }
@@ -73,7 +75,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             }
             
             var decorator = new StandardPropertyFieldDecorator();
-            IList<CodeMemberField> generatedFields = decorator.GenerateAllFields(schema);
+            IList<CodeMemberField> generatedFields = decorator.GenerateAllFields(schema, internalClassProvider);
             
             Assert.NotNull(generatedFields);
             Assert.AreEqual(NamesToType.Count, generatedFields.Count);
@@ -87,7 +89,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {
                 var field = generatedFields[item++];
                 Assert.AreEqual(pair.Key, field.Name, string.Format("Name different for expected at index {0}", item -1));
-                Assert.AreEqual(SchemaDecoratorUtil.GetCodeType(new JsonSchema(){Type = pair.Value}).BaseType, field.Type.BaseType);
+                Assert.AreEqual(SchemaDecoratorUtil.GetCodeType(new JsonSchema(){Type = pair.Value}, internalClassProvider).BaseType, 
+                                field.Type.BaseType);
             }
         }
         
@@ -98,7 +101,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var decorator = new StandardPropertyFieldDecorator();
             
             schema.Type = JsonSchemaType.String;
-            CodeMemberField generatedField = decorator.GenerateField("normalName", schema, 1);
+            CodeMemberField generatedField = decorator.GenerateField("normalName", schema, 1, internalClassProvider);
             
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(string).FullName, generatedField.Type.BaseType);
@@ -106,14 +109,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
             
             schema.Type = JsonSchemaType.Boolean;
-            generatedField = decorator.GenerateField("public", schema, 2);
+            generatedField = decorator.GenerateField("public", schema, 2, internalClassProvider);
             
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
             Assert.AreEqual("publicField2", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
             
-            generatedField = decorator.GenerateField("UPPERCASE", schema, 2);
+            generatedField = decorator.GenerateField("UPPERCASE", schema, 2, internalClassProvider);
             
             Assert.NotNull(generatedField);
             Assert.AreEqual("uPPERCASE", generatedField.Name);

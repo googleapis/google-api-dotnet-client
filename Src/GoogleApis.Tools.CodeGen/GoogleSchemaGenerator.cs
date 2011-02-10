@@ -43,6 +43,9 @@ namespace Google.Apis.Tools.CodeGen
             logger.DebugFormat("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
             var codeNamespace = new CodeNamespace(schemaNamespace);
+            codeNamespace.Imports.Add(new CodeNamespaceImport("System"));
+            codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections"));
+            codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             SchemaGenerator generator = new SchemaGenerator(decorators);
             foreach(var schemaPair in service.Schemas)
             {

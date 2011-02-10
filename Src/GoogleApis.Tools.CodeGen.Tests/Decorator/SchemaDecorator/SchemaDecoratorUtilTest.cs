@@ -42,23 +42,27 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test()]
         public void GetCodeTypeArgumentValidationTest ()
         {
-            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(null));
+            var internalClassProvider = new ObjectInternalClassProvider();
+            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(null, internalClassProvider));
             var schema = new JsonSchema();
-            Assert.Throws(typeof(NotSupportedException), () => SchemaDecoratorUtil.GetCodeType(schema));
+            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(schema, null));
+            
+            Assert.Throws(typeof(NotSupportedException), () => SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider));
         }
         
         [Test()]
         public void GetCodeTypeTest ()
         {
             var schema = new JsonSchema();
+            var internalClassProvider = new ObjectInternalClassProvider();
             schema.Type = JsonSchemaType.String;
-            Assert.AreEqual(typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema).BaseType);
+            Assert.AreEqual(typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Integer;
-            Assert.AreEqual(typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema).BaseType);
+            Assert.AreEqual(typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Float;
-            Assert.AreEqual(typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema).BaseType);
+            Assert.AreEqual(typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Boolean;
-            Assert.AreEqual(typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema).BaseType);
+            Assert.AreEqual(typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
         }
     }
 }
