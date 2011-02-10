@@ -33,15 +33,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema)
+        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            typeDeclaration.Members.AddRange(GenerateAllFields(schema).ToArray());            
+            typeDeclaration.Members.AddRange(GenerateAllFields(schema, internalClassProvider).ToArray());            
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberField> GenerateAllFields (ISchema schema)
+        internal IList<CodeMemberField> GenerateAllFields (ISchema schema, IInternalClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
             schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
@@ -56,19 +56,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.SchemaDetails.Properties)
             {
-                fields.Add(GenerateField(propertyPair.Key, propertyPair.Value, index));
+                fields.Add(GenerateField(propertyPair.Key, propertyPair.Value, index, internalClassProvider));
                 index++;
             }
             return fields;
         }
         
         [VisibleForTestOnly]
-        internal CodeMemberField GenerateField(string name, JsonSchema propertySchema, int index)
+        internal CodeMemberField GenerateField(string name, JsonSchema propertySchema, int index, IInternalClassProvider internalClassProvider)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");
             
-            var ret = new CodeMemberField(SchemaDecoratorUtil.GetCodeType(propertySchema), SchemaDecoratorUtil.GetFieldName(name, index));
+            var ret = new CodeMemberField(SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider), SchemaDecoratorUtil.GetFieldName(name, index));
             ret.Attributes = MemberAttributes.Private;
             
             return ret;

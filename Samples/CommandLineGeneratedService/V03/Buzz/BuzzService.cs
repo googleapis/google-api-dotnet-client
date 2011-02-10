@@ -9,6 +9,9 @@
 // ------------------------------------------------------------------------------
 
 namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     
     
     public class Activitiylist {
@@ -17,7 +20,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object title;
         
-        private object items;
+        private IList<ChiliActivitiesResourceJson> items;
         
         private string updated;
         
@@ -43,7 +46,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Items {
+        public virtual IList<ChiliActivitiesResourceJson> Items {
             get {
                 return this.items;
             }
@@ -111,7 +114,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliPeopleResourceJson> entry;
         
         private object itemsPerPage;
         
@@ -135,7 +138,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliPeopleResourceJson> Entry {
             get {
                 return this.entry;
             }
@@ -204,11 +207,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string updated;
         
-        private object verbs;
+        private IList<System.String> verbs;
         
         private object radius;
         
-        private object categories;
+        private IList<System.Object> categories;
         
         private object untranslatedTitle;
         
@@ -376,7 +379,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Verbs {
+        public virtual IList<System.String> Verbs {
             get {
                 return this.verbs;
             }
@@ -394,7 +397,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Categories {
+        public virtual IList<System.Object> Categories {
             get {
                 return this.categories;
             }
@@ -434,7 +437,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object title;
         
-        private object items;
+        private IList<ChiliCommentsResourceJson> items;
         
         private string updated;
         
@@ -460,7 +463,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Items {
+        public virtual IList<ChiliCommentsResourceJson> Items {
             get {
                 return this.items;
             }
@@ -634,11 +637,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliEntitiesListJson {
         
-        private object entry;
+        private IList<ChiliEntitiesStarredResource> entry;
         
         private string kind;
         
-        public virtual object Entry {
+        public virtual IList<ChiliEntitiesStarredResource> Entry {
             get {
                 return this.entry;
             }
@@ -666,7 +669,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliEntitiesStarredResource> entry;
         
         private object itemsPerPage;
         
@@ -690,7 +693,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliEntitiesStarredResource> Entry {
             get {
                 return this.entry;
             }
@@ -724,7 +727,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object id;
         
-        private object viewerStarAcl;
+        private IList<System.Object> viewerStarAcl;
         
         private object title;
         
@@ -732,7 +735,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalNumStars;
         
-        private object starredBy;
+        private IList<ChiliPeopleResourceJson> starredBy;
         
         private object starredByViewer;
         
@@ -758,7 +761,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ViewerStarAcl {
+        public virtual IList<System.Object> ViewerStarAcl {
             get {
                 return this.viewerStarAcl;
             }
@@ -794,7 +797,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object StarredBy {
+        public virtual IList<ChiliPeopleResourceJson> StarredBy {
             get {
                 return this.starredBy;
             }
@@ -833,13 +836,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliEntitiesdefaultaclResourceJson {
         
-        private object viewerStarAcl;
+        private IList<System.Object> viewerStarAcl;
         
         private string chipsUiAcl;
         
         private string kind;
         
-        public virtual object ViewerStarAcl {
+        public virtual IList<System.Object> ViewerStarAcl {
             get {
                 return this.viewerStarAcl;
             }
@@ -869,13 +872,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliGroupsListJson {
         
-        private object items;
+        private IList<ChiliGroupsResourceJson> items;
         
         private object links;
         
         private string kind;
         
-        public virtual object Items {
+        public virtual IList<ChiliGroupsResourceJson> Items {
             get {
                 return this.items;
             }
@@ -967,7 +970,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliPeopleResourceJson> entry;
         
         private object itemsPerPage;
         
@@ -991,7 +994,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliPeopleResourceJson> Entry {
             get {
                 return this.entry;
             }
@@ -1025,7 +1028,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliPeopleResourceJson> entry;
         
         private object itemsPerPage;
         
@@ -1049,7 +1052,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliPeopleResourceJson> Entry {
             get {
                 return this.entry;
             }
@@ -1083,7 +1086,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliPeopleResourceJson> entry;
         
         private object itemsPerPage;
         
@@ -1107,7 +1110,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliPeopleResourceJson> Entry {
             get {
                 return this.entry;
             }
@@ -1137,41 +1140,41 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleResourceJson {
         
-        private object turnOffs;
+        private IList<System.Object> turnOffs;
         
-        private object heroes;
+        private IList<System.Object> heroes;
         
-        private object ims;
+        private IList<System.Object> ims;
         
         private object connected;
         
-        private object sports;
+        private IList<System.Object> sports;
         
-        private object languagesSpoken;
+        private IList<System.Object> languagesSpoken;
         
         private object religion;
         
-        private object turnOns;
+        private IList<System.Object> turnOns;
         
-        private object languages;
+        private IList<System.Object> languages;
         
         private string updated;
         
-        private object cars;
+        private IList<System.Object> cars;
         
-        private object pets;
+        private IList<System.Object> pets;
         
         private object gender;
         
         private object humor;
         
-        private object activities;
+        private IList<System.Object> activities;
         
         private object preferredUsername;
         
         private object hasApp;
         
-        private object books;
+        private IList<System.Object> books;
         
         private object happiestWhen;
         
@@ -1181,11 +1184,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object status;
         
-        private object emails;
+        private IList<System.Object> emails;
         
         private object profileUrl;
         
-        private object food;
+        private IList<System.Object> food;
         
         private object utcOffset;
         
@@ -1193,21 +1196,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object smoker;
         
-        private object addresses;
+        private IList<System.Object> addresses;
         
         private object birthday;
         
         private object fashion;
         
-        private object interests;
+        private IList<System.Object> interests;
         
         private object drinker;
         
-        private object movies;
+        private IList<System.Object> movies;
         
-        private object jobInterests;
+        private IList<System.Object> jobInterests;
         
-        private object children;
+        private IList<System.Object> children;
         
         private object lookingFor;
         
@@ -1221,7 +1224,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object id;
         
-        private object tvShows;
+        private IList<System.Object> tvShows;
         
         private object name;
         
@@ -1229,37 +1232,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string published;
         
-        private object relationships;
+        private IList<System.Object> relationships;
         
         private object profileSong;
         
         private object note;
         
-        private object music;
+        private IList<System.Object> music;
         
-        private object tags;
+        private IList<System.Object> tags;
         
         private object anniversary;
         
-        private object politicalViews;
+        private IList<System.Object> politicalViews;
         
-        private object accounts;
+        private IList<System.Object> accounts;
         
-        private object urls;
+        private IList<System.Object> urls;
         
-        private object organizations;
+        private IList<System.Object> organizations;
         
         private object relationshipStatus;
         
-        private object phoneNumbers;
+        private IList<System.Object> phoneNumbers;
         
         private object livingArrangement;
         
         private object currentLocation;
         
-        private object photos;
+        private IList<System.Object> photos;
         
-        private object quotes;
+        private IList<System.Object> quotes;
         
         private object sexualOrientation;
         
@@ -1267,7 +1270,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object ethnicity;
         
-        public virtual object TurnOffs {
+        public virtual IList<System.Object> TurnOffs {
             get {
                 return this.turnOffs;
             }
@@ -1276,7 +1279,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Heroes {
+        public virtual IList<System.Object> Heroes {
             get {
                 return this.heroes;
             }
@@ -1285,7 +1288,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Ims {
+        public virtual IList<System.Object> Ims {
             get {
                 return this.ims;
             }
@@ -1303,7 +1306,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Sports {
+        public virtual IList<System.Object> Sports {
             get {
                 return this.sports;
             }
@@ -1312,7 +1315,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object LanguagesSpoken {
+        public virtual IList<System.Object> LanguagesSpoken {
             get {
                 return this.languagesSpoken;
             }
@@ -1330,7 +1333,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TurnOns {
+        public virtual IList<System.Object> TurnOns {
             get {
                 return this.turnOns;
             }
@@ -1339,7 +1342,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Languages {
+        public virtual IList<System.Object> Languages {
             get {
                 return this.languages;
             }
@@ -1357,7 +1360,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Cars {
+        public virtual IList<System.Object> Cars {
             get {
                 return this.cars;
             }
@@ -1366,7 +1369,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Pets {
+        public virtual IList<System.Object> Pets {
             get {
                 return this.pets;
             }
@@ -1393,7 +1396,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Activities {
+        public virtual IList<System.Object> Activities {
             get {
                 return this.activities;
             }
@@ -1420,7 +1423,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Books {
+        public virtual IList<System.Object> Books {
             get {
                 return this.books;
             }
@@ -1465,7 +1468,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Emails {
+        public virtual IList<System.Object> Emails {
             get {
                 return this.emails;
             }
@@ -1483,7 +1486,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Food {
+        public virtual IList<System.Object> Food {
             get {
                 return this.food;
             }
@@ -1519,7 +1522,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Addresses {
+        public virtual IList<System.Object> Addresses {
             get {
                 return this.addresses;
             }
@@ -1546,7 +1549,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Interests {
+        public virtual IList<System.Object> Interests {
             get {
                 return this.interests;
             }
@@ -1564,7 +1567,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Movies {
+        public virtual IList<System.Object> Movies {
             get {
                 return this.movies;
             }
@@ -1573,7 +1576,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object JobInterests {
+        public virtual IList<System.Object> JobInterests {
             get {
                 return this.jobInterests;
             }
@@ -1582,7 +1585,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Children {
+        public virtual IList<System.Object> Children {
             get {
                 return this.children;
             }
@@ -1645,7 +1648,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TvShows {
+        public virtual IList<System.Object> TvShows {
             get {
                 return this.tvShows;
             }
@@ -1681,7 +1684,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Relationships {
+        public virtual IList<System.Object> Relationships {
             get {
                 return this.relationships;
             }
@@ -1708,7 +1711,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Music {
+        public virtual IList<System.Object> Music {
             get {
                 return this.music;
             }
@@ -1717,7 +1720,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Tags {
+        public virtual IList<System.Object> Tags {
             get {
                 return this.tags;
             }
@@ -1735,7 +1738,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object PoliticalViews {
+        public virtual IList<System.Object> PoliticalViews {
             get {
                 return this.politicalViews;
             }
@@ -1744,7 +1747,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Accounts {
+        public virtual IList<System.Object> Accounts {
             get {
                 return this.accounts;
             }
@@ -1753,7 +1756,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Urls {
+        public virtual IList<System.Object> Urls {
             get {
                 return this.urls;
             }
@@ -1762,7 +1765,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Organizations {
+        public virtual IList<System.Object> Organizations {
             get {
                 return this.organizations;
             }
@@ -1780,7 +1783,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object PhoneNumbers {
+        public virtual IList<System.Object> PhoneNumbers {
             get {
                 return this.phoneNumbers;
             }
@@ -1807,7 +1810,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Photos {
+        public virtual IList<System.Object> Photos {
             get {
                 return this.photos;
             }
@@ -1816,7 +1819,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Quotes {
+        public virtual IList<System.Object> Quotes {
             get {
                 return this.quotes;
             }
@@ -1859,7 +1862,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object totalResults;
         
-        private object entry;
+        private IList<ChiliPeopleResourceJson> entry;
         
         private object itemsPerPage;
         
@@ -1883,7 +1886,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Entry {
+        public virtual IList<ChiliPeopleResourceJson> Entry {
             get {
                 return this.entry;
             }
@@ -1913,11 +1916,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPhotoalbumsListJson {
         
-        private object items;
+        private IList<ChiliPhotoalbumsResourceJson> items;
         
         private string kind;
         
-        public virtual object Items {
+        public virtual IList<ChiliPhotoalbumsResourceJson> Items {
             get {
                 return this.items;
             }
@@ -1938,7 +1941,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPhotoalbumsResourceJson {
         
-        private object tags;
+        private IList<System.String> tags;
         
         private long id;
         
@@ -1960,7 +1963,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private long version;
         
-        public virtual object Tags {
+        public virtual IList<System.String> Tags {
             get {
                 return this.tags;
             }
@@ -2087,11 +2090,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPhotosListJson {
         
-        private object items;
+        private IList<ChiliPhotosResourceJson> items;
         
         private string kind;
         
-        public virtual object Items {
+        public virtual IList<ChiliPhotosResourceJson> Items {
             get {
                 return this.items;
             }
@@ -2136,7 +2139,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object owner;
         
-        private object video;
+        private Video video;
         
         public virtual string LastModified {
             get {
@@ -2246,7 +2249,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Video {
+        public virtual Video Video {
             get {
                 return this.video;
             }
@@ -2262,7 +2265,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object title;
         
-        private object items;
+        private IList<ChiliRelatedResourceJson> items;
         
         private string updated;
         
@@ -2288,7 +2291,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Items {
+        public virtual IList<ChiliRelatedResourceJson> Items {
             get {
                 return this.items;
             }
@@ -2385,11 +2388,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliVideosListJson {
         
-        private object items;
+        private IList<ChiliPhotosResourceJson> items;
         
         private string kind;
         
-        public virtual object Items {
+        public virtual IList<ChiliPhotosResourceJson> Items {
             get {
                 return this.items;
             }
@@ -2492,7 +2495,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private long duration;
         
-        private object streams;
+        private IList<Link> streams;
         
         private long size;
         
@@ -2505,7 +2508,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Streams {
+        public virtual IList<Link> Streams {
             get {
                 return this.streams;
             }

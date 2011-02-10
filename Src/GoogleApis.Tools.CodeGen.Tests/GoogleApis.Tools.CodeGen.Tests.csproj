@@ -71,6 +71,7 @@
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">

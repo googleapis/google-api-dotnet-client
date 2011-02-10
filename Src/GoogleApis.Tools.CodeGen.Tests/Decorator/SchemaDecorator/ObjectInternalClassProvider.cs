@@ -16,12 +16,16 @@ limitations under the License.
 using System;
 using System.CodeDom;
 
-using Google.Apis.Discovery.Schema;
-
-namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
+namespace Google.Apis.Tools.CodeGen.Tests
 {
-    public interface ISchemaDecorator
+    /// <summary>
+    /// Simple implementation of IInteralClassProvider, always returns object. For use in tests only. 
+    /// </summary>
+    public class ObjectInternalClassProvider : IInternalClassProvider
     {
-        void DecoratClass(CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider);
+        public CodeTypeReference GetInternalClassName (Newtonsoft.Json.Schema.JsonSchema definition)
+        {
+            return new CodeTypeReference(typeof(object));
+        }
     }
 }

@@ -34,15 +34,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema)
+        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(schema).ToArray());
+            typeDeclaration.Members.AddRange(GenerateAllProperties(schema, internalClassProvider).ToArray());
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberProperty> GenerateAllProperties (ISchema schema)
+        internal IList<CodeMemberProperty> GenerateAllProperties (ISchema schema, IInternalClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
             schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
@@ -60,21 +60,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.SchemaDetails.Properties)
             {
-                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index));
+                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index, internalClassProvider));
                 index++;
             }
             return fields;
         }
         
         [VisibleForTestOnly]
-        internal CodeMemberProperty GenerateProperty(string name, JsonSchema propertySchema, int index)
+        internal CodeMemberProperty GenerateProperty(string name, JsonSchema propertySchema, int index, 
+                                                     IInternalClassProvider internalClassProvider)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");
             
             var ret = new CodeMemberProperty();
             ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index);
-            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema);
+            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
             
             ret.HasGet = true;
