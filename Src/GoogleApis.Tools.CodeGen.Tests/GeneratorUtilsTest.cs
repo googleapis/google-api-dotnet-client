@@ -141,7 +141,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void GetParameterNameTest()
         {
             var paramArgs = new KeyValuePair<string,object>("safeName", new JsonDictionary());
-            Parameter param = new Parameter(paramArgs);
+            IParameter param = new Parameter(paramArgs);
             Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
             
             paramArgs = new KeyValuePair<string,object>("string", new JsonDictionary());
@@ -160,7 +160,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         [Test()]
         public void TestGetRequiredParameters(){
             var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<Parameter> parameters = GeneratorUtils.GetRequiredParameters(method).ToList();
+            List<IParameter> parameters = GeneratorUtils.GetRequiredParameters(method).ToList();
             Assert.AreEqual(2, parameters.Count);
             Assert.AreEqual("req_a", parameters[0].Name);
             Assert.AreEqual("req_b", parameters[1].Name);
@@ -169,7 +169,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         [Test()]
         public void TestGetOptionalParameters(){
             var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<Parameter> parameters = GeneratorUtils.GetOptionalParameters(method).ToList();
+            List<IParameter> parameters = GeneratorUtils.GetOptionalParameters(method).ToList();
             Assert.AreEqual(2, parameters.Count);
             Assert.AreEqual("opt_a", parameters[0].Name);
             Assert.AreEqual("opt_b", parameters[1].Name);

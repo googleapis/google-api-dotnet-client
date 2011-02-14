@@ -21,12 +21,13 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery
 {
-	public class Parameter
+	internal class Parameter : IParameter
 	{
-		private JsonDictionary information;
+		private readonly JsonDictionary information;
 
 		public Parameter ()
 		{

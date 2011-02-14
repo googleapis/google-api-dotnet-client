@@ -17,7 +17,7 @@ using Google.Apis.Json;
 using Google.Apis.Tests;
 using NUnit.Framework;
 
-namespace Google.Apis.Tests
+namespace Google.Apis.Tests.Json
 {
     
     

@@ -21,10 +21,12 @@ using System.Collections.Generic;
 using System.IO;
 
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -41,22 +43,46 @@ namespace Google.Apis.Tools.CodeGen
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleServiceGenerator));
 
-        private readonly CodeCompileUnit compileUnit;
         private readonly IService service;
         private readonly string codeClientNamespace;
 
         private readonly IEnumerable<IResourceDecorator> resourceDecorators;
         private readonly IEnumerable<IServiceDecorator> serviceDecorators;
         private readonly IEnumerable<IResourceContainerDecorator> resourceContainerDecorators;
+        private readonly GoogleSchemaGenerator schemaGenerator;
+        
+        public static readonly IList<IResourceDecorator> StandardResourceDecorators = (new List<IResourceDecorator>(){
+                    new StandardServiceFieldResourceDecorator(),
+                    new StandardResourceNameResourceDecorator(),
+                    new StandardConstructorResourceDecorator (), 
+                    new StandardMethodResourceDecorator (), 
+                    new Log4NetResourceDecorator (), 
+                    new DictonaryOptionalParameterResourceDecorator ()}).
+                    AsReadOnly();
+        public static readonly IList<IServiceDecorator> StandardServiceDecorators = (new List<IServiceDecorator>(){
+                    new StandardServiceFieldServiceDecorator(),
+                    new StandardConstructServiceDecorator (), 
+                    new EasyConstructServiceDecorator (), 
+                    new VersionInformationServiceDecorator (), 
+                    new StandardExecuteMethodServiceDecorator ()}).
+                    AsReadOnly();
+        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){
+                    new StandardResourcePropertyServiceDecorator()}).
+                    AsReadOnly();
 
-        private CodeNamespace client;
-
+        
         public GoogleServiceGenerator (IService service, string clientNamespace, 
                     IEnumerable<IResourceDecorator> resourceDecorators, 
                     IEnumerable<IServiceDecorator> serviceDecorators,
-                    IEnumerable<IResourceContainerDecorator> resourceContainerDecorators)
+                    IEnumerable<IResourceContainerDecorator> resourceContainerDecorators,
+                    GoogleSchemaGenerator schemaGenerator)
         {
-            compileUnit = new CodeCompileUnit ();
+            service.ThrowIfNull("service");
+            clientNamespace.ThrowIfNull("cleintNamespace");
+            resourceDecorators.ThrowIfNull("resourceDecorators");
+            serviceDecorators.ThrowIfNull("serviceDecorators");
+            resourceContainerDecorators.ThrowIfNull("resourceContainerDecorators");
+            
             this.codeClientNamespace = clientNamespace;
             this.service = service;
             
@@ -67,35 +93,20 @@ namespace Google.Apis.Tools.CodeGen
                 (serviceDecorators).AsReadOnly ();
             this.resourceContainerDecorators = new List<IResourceContainerDecorator> 
                 (resourceContainerDecorators).AsReadOnly ();
+            this.schemaGenerator = schemaGenerator;
         }
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
-                new IResourceDecorator[] {
-                    new StandardServiceFieldResourceDecorator(),
-                    new StandardResourceNameResourceDecorator(),
-                    new StandardConstructorResourceDecorator (), 
-                    new StandardMethodResourceDecorator (), 
-                    new Log4NetResourceDecorator (), 
-                    new DictonaryOptionalParameterResourceDecorator () }, 
-                new IServiceDecorator[] { 
-                    new StandardServiceFieldServiceDecorator(),
-                    
-                    new StandardConstructServiceDecorator (), 
-                    new EasyConstructServiceDecorator (), 
-                    new VersionInformationServiceDecorator (), 
-                    new StandardExecuteMethodServiceDecorator () },
-                new IResourceContainerDecorator[]{
-                    new StandardResourcePropertyServiceDecorator(),
-            })
+                StandardResourceDecorators, 
+                StandardServiceDecorators,
+                StandardResourceContainerDecorator,
+                new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
+                )
         {   
         }
   
-        /// <summary>
-        /// Generates the given service saving to the outputFile in the language passed in.
-        /// </summary>
-        public static void GenerateService (string serviceName, string version, string clientNamespace, 
-                                            string language, string outputFile)
+        internal static IDiscoveryService CreateDefaultCachingDiscovery(string serviceName)
         {
             // Set up how discovery works.
             string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
@@ -105,11 +116,21 @@ namespace Google.Apis.Tools.CodeGen
             var webfetcher = new CachedWebDiscoveryDevice (
                                 new Uri ("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), 
                                 new DirectoryInfo (cacheDirectory));
-            var discovery = new DiscoveryService (webfetcher);
+            return new DiscoveryService (webfetcher);
+        }
+        
+        /// <summary>
+        /// Generates the given service saving to the outputFile in the language passed in.
+        /// </summary>
+        public static void GenerateService (string serviceName, string version, string clientNamespace, 
+                                            string language, string outputFile)
+        {
+            var discovery = CreateDefaultCachingDiscovery(serviceName);
             // Build the service based on discovery information.
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_1, null);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
+            var generatedCode = generator.GenerateCode ();
             
             var provider = CodeDomProvider.CreateProvider (language);
             
@@ -117,22 +138,28 @@ namespace Google.Apis.Tools.CodeGen
                 IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");
                 
                 // Generate source code using the code provider.
-                
-                provider.GenerateCodeFromCompileUnit (generator.GenerateCode (), tw, new CodeGeneratorOptions ());
+                provider.GenerateCodeFromCompileUnit (generatedCode, tw, new CodeGeneratorOptions ());
                 
                 // Close the output file.
                 tw.Close ();
             }
         }
         
-        public CodeCompileUnit GenerateCode ()
+        [VisibleForTestOnly]
+        internal CodeNamespace GenerateSchemaCode()
         {
-            logger.Debug ("Starting Code Generation...");
-            LogDecorators ();
-            
-            
-            CreateClient (codeClientNamespace);
-            AddUsings (false);
+            if(this.schemaGenerator != null)
+            {
+                return schemaGenerator.GenerateSchemaClasses(this.service);
+            }
+            return null;
+        }
+        
+        [VisibleForTestOnly]
+        internal CodeNamespace GenerateClientCode()
+        {
+            var clientNamespace = CreateNamespace (codeClientNamespace);
+            AddClientUsings (clientNamespace);
             
             ResourceContainerGenerator resourceContainerGenerator = 
                 new ResourceContainerGenerator(resourceContainerDecorators);
@@ -141,28 +168,46 @@ namespace Google.Apis.Tools.CodeGen
                 .CreateServiceClass ();
             string serviceClassName = serviceClass.Name;
             
-            client.Types.Add (serviceClass);
-            CreateResources (serviceClassName,service, resourceContainerGenerator, 1);
+            clientNamespace.Types.Add (serviceClass);
+            CreateResources (clientNamespace, serviceClassName,service, resourceContainerGenerator, 1);
+            
+            return clientNamespace;
+        }
+
+        public CodeCompileUnit GenerateCode ()
+        {
+            logger.Debug ("Starting Code Generation...");
+            LogDecorators ();
+            
+            var compileUnit = new CodeCompileUnit ();
+            
+            var schemaCode = GenerateSchemaCode();
+            if ( schemaCode != null )
+            {
+                compileUnit.Namespaces.Add(schemaCode);
+            }
+            
+            compileUnit.Namespaces.Add(GenerateClientCode());
             
             logger.Debug ("Generation Complete.");
             return compileUnit;
         }
         
-        private int CreateResources (string serviceClassName, 
+        private int CreateResources ( CodeNamespace clientNamespace,
+                                      string serviceClassName, 
                                       IResourceContainer resourceContainer,
                                       ResourceContainerGenerator resourceContainerGenerator,
                                       int resourceNumber)
         {
-            
             foreach (var res in resourceContainer.Resources.Values) {
                 // Create a class for the resource
                 logger.DebugFormat ("Adding Resource {0}", res.Name);
                 var resourceGenerator = new ResourceClassGenerator (
                     res, serviceClassName, 
                     resourceNumber, resourceDecorators, resourceContainerGenerator);
-                client.Types.Add (resourceGenerator.CreateClass ());
+                clientNamespace.Types.Add (resourceGenerator.CreateClass ());
                 resourceNumber++;
-                resourceNumber = CreateResources(serviceClassName, res, 
+                resourceNumber = CreateResources(clientNamespace, serviceClassName, res, 
                                                  resourceContainerGenerator, resourceNumber);
             }
             return resourceNumber;
@@ -179,29 +224,25 @@ namespace Google.Apis.Tools.CodeGen
                 foreach (IResourceDecorator dec in resourceDecorators) {
                     logger.Debug (">>>>" + dec.ToString ());
                 }
+                logger.Debug ("With Resource Container Decorators:");
+                foreach (IResourceContainerDecorator dec in resourceContainerDecorators) {
+                    logger.Debug (">>>>" + dec.ToString ());
+                }
             }
         }
 
-
-        private void CreateClient (string nameSpace)
+        private CodeNamespace CreateNamespace (string nameSpace)
         {
-            client = new CodeNamespace (nameSpace);
-            compileUnit.Namespaces.Add (client);
+            return new CodeNamespace (nameSpace);
         }
 
-        private void AddUsings (bool forTest)
+        private void AddClientUsings (CodeNamespace codeNamespace)
         {
-            client.Imports.Add (new CodeNamespaceImport ("System"));
-            client.Imports.Add (new CodeNamespaceImport ("System.IO"));
-            client.Imports.Add (new CodeNamespaceImport ("System.Collections.Generic"));
-            client.Imports.Add (new CodeNamespaceImport ("Google.Apis"));
-            client.Imports.Add (new CodeNamespaceImport ("Google.Apis.Discovery"));
-            
-            if (forTest) {
-                client.Imports.Add (new CodeNamespaceImport ("NUnit.Framework"));
-                client.Imports.Add (new CodeNamespaceImport (codeClientNamespace));
-            }
+            codeNamespace.Imports.Add (new CodeNamespaceImport ("System"));
+            codeNamespace.Imports.Add (new CodeNamespaceImport ("System.IO"));
+            codeNamespace.Imports.Add (new CodeNamespaceImport ("System.Collections.Generic"));
+            codeNamespace.Imports.Add (new CodeNamespaceImport ("Google.Apis"));
+            codeNamespace.Imports.Add (new CodeNamespaceImport ("Google.Apis.Discovery"));            
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Google.Apis.Samples.CommandLineGeneratedService</RootNamespace>
     <AssemblyName>CommandLineGeneratedService</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
   </PropertyGroup>
@@ -47,15 +47,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.4001.19528, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Google.Apis.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="LumenWorks.Framework.IO, Version=3.7.1.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdSense\" />
+    <Compile Include="V03\Buzz\BuzzService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -83,5 +84,9 @@
     <ApplicationDefinition Include="CommandLineGeneratedService.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="V03\" />
+    <Folder Include="V03\Buzz\" />
   </ItemGroup>
 </Project>

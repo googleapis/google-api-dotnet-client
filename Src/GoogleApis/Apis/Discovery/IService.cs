@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 
 using Google.Apis.Requests;
+using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Discovery 
 {
@@ -25,11 +26,16 @@ namespace Google.Apis.Discovery
 
 	public interface IService : IResourceContainer
 	{
-		
+		/// <summary> The version of this serivce </summary>
 		string Version {get;}
 		Uri BaseUri {get;}
 		Uri RpcUri {get;}
+        
+        /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
+        
+        /// <summary>A dictionary containing all the schemas defined in this Service </summary>
+        IDictionary<string, ISchema> Schemas{get;} 
 
 		/// <summary>
 		/// Creates a Request Object based on the HTTP Method Type.

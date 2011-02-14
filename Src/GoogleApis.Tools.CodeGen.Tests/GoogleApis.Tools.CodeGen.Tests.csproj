@@ -40,14 +40,16 @@
       <HintPath>..\..\Third Party\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
-    <Compile Include="BaseCodeGeneratorTest.cs" />
-    <Compile Include="CodeGenTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecoratorTest.cs" />
@@ -61,6 +63,15 @@
     <Compile Include="GeneratorUtilsTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
+    <Compile Include="Generator\SchemaGeneratorTest.cs" />
+    <Compile Include="Generator\MockSchema.cs" />
+    <Compile Include="GoogleServiceGeneratorTest.cs" />
+    <Compile Include="BaseCodeGeneratorTest.cs" />
+    <Compile Include="GoogleSchemaGeneratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -71,11 +82,17 @@
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tests\GoogleApis.Tests.csproj">
+      <Project>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</Project>
+      <Name>GoogleApis.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Decorator\" />
     <Folder Include="Decorator\ResourceDecorator\" />
     <Folder Include="Decorator\ServiceDecorator\" />
+    <Folder Include="Generator\" />
+    <Folder Include="Decorator\SchemaDecorator\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

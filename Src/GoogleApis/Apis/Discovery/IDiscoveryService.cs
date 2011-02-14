@@ -20,6 +20,6 @@ namespace Google.Apis.Discovery
 	
 	public interface IDiscoveryService 
 	{
-		IService GetService(string version, DiscoveryVersion discoveryVersion, ServiceFactory.IFactoryParameter param);
-	}
+		IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
+    }
 }

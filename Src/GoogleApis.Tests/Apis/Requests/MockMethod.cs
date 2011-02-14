@@ -31,7 +31,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public string HttpMethod {get;set;}
 
-        public Dictionary<string, Parameter> Parameters {get;set;}
+        public Dictionary<string, IParameter> Parameters {get;set;}
 
         public MockMethod ()
         {

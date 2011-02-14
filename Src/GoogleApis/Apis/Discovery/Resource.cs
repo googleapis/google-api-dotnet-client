@@ -18,30 +18,29 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
     public interface IResource : IResourceContainer
     {
-        string Name {get;set;}
         Dictionary<string, IMethod> Methods{get;}
-        IDictionary<string, IResource> Resources {get;}
     }
-    
-    
-    
+    #region Base Resource
 	internal abstract class BaseResource : IResource
 	{
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(IResource));
         private Dictionary<string, IMethod> methods;
         private Dictionary<string, IResource> resources;
-		private JsonDictionary information;
+		private readonly JsonDictionary information;
         
         public string Name {get;set;}
 		
 		internal BaseResource (KeyValuePair<string, object> kvp)
 		{
+            logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
 			if (this.information == null)
@@ -76,13 +75,13 @@ namespace Google.Apis.Discovery
         {
             if(this.information.ContainsKey(ServiceFactory.Methods) == false)
             {
-                return new Dictionary<string, IMethod>(0);
+                return new Dictionary<string, IMethod>(0); // return empty, not null.
             }
             
             JsonDictionary js = this.information[ServiceFactory.Methods] as JsonDictionary;
             if (js == null)
             {
-                return new Dictionary<string, IMethod>(0);
+                return new Dictionary<string, IMethod>(0); // return empty, not null.
             }
             
             var methods = new Dictionary<string, IMethod> ();
@@ -99,13 +98,13 @@ namespace Google.Apis.Discovery
         {
             if(this.information.ContainsKey(ServiceFactory.Resources) == false)
             {
-                return new Dictionary<string, IResource>(0);
+                return new Dictionary<string, IResource>(0); // return empty, not null.
             }
             
             JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
             if (js == null)
             {
-                return new Dictionary<string, IResource>(0);
+                return new Dictionary<string, IResource>(0); // return empty, not null.
             }
                 
             var resources = new Dictionary<string, IResource> ();
@@ -120,40 +119,51 @@ namespace Google.Apis.Discovery
         protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
 	}
+    #endregion
     
-    internal class ResourceV_0_1: BaseResource
+    #region ResourceV0_1
+    /// <summary>
+    /// Represents a Resource as defined by Discovery V0.1
+    /// </summary>
+    internal class ResourceV0_1: BaseResource
     {
-        internal ResourceV_0_1 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV_0_1(kvp);
+            return new MethodV0_1(kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV_0_1(kvp);
+            return new ResourceV0_1(kvp);
         }
     }
+    #endregion
     
-    internal class ResourceV_0_2: BaseResource
+    #region ResourceV0_2
+    /// <summary>
+    /// Represents a Resource as defined by Discovery V0.2
+    /// </summary>
+    internal class ResourceV0_2: BaseResource
     {
-        internal ResourceV_0_2 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_2 (KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV_0_2(kvp);
+            return new MethodV0_2(kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV_0_2(kvp);
+            return new ResourceV0_2(kvp);
         }
         
     }
+    #endregion
     
 }
