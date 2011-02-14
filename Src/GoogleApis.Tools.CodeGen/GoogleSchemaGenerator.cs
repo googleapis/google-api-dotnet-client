@@ -69,7 +69,7 @@ namespace Google.Apis.Tools.CodeGen
                 
             foreach(var decorator in decorators)
             {
-                logger.DebugFormat(">>>{0} [{1}]", decorator.ToString(), decorator.GetType().FullName);
+                logger.DebugFormat(">>>{0}", decorator.ToString());
             }
         }
     }

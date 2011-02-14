@@ -26,7 +26,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
-    public class StandardPropertyDecorator: ISchemaDecorator
+    public class StandardPropertyDecorator: ISchemaDecorator, INestedClassSchemaDecorator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyDecorator));
         
@@ -34,41 +34,48 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider)
+        public void DecoratInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(schema, internalClassProvider).ToArray());
+            internalClassProvider.ThrowIfNull("internalClassProvider");
+            typeDeclaration.Members.AddRange(GenerateAllProperties(name, schema, internalClassProvider).ToArray());
+        }
+        
+        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        {
+            typeDeclaration.ThrowIfNull("typeDeclatation");
+            schema.ThrowIfNull("schema");
+            typeDeclaration.Members.AddRange(GenerateAllProperties(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberProperty> GenerateAllProperties (ISchema schema, IInternalClassProvider internalClassProvider)
+        internal IList<CodeMemberProperty> GenerateAllProperties (string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
-            schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
-            logger.DebugFormat("Adding properties for {0}", schema.Name);
+            name.ThrowIfNullOrEmpty("name");
+            logger.DebugFormat("Adding properties for {0}", name);
             
             
             var fields = new List<CodeMemberProperty>();
             
-            if ( schema.SchemaDetails.Properties.IsNullOrEmpty() )
+            if ( schema.Properties.IsNullOrEmpty() )
             {
-                logger.Debug("No proeprties found for schema " + schema.Name);
+                logger.Debug("No proeprties found for schema " + name);
                 return fields;
             }
             
             int index = 0;
-            foreach (var propertyPair in schema.SchemaDetails.Properties)
+            foreach (var propertyPair in schema.Properties)
             {
-                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index, internalClassProvider));
-                index++;
+                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index++, internalClassProvider));            
             }
             return fields;
         }
         
         [VisibleForTestOnly]
         internal CodeMemberProperty GenerateProperty(string name, JsonSchema propertySchema, int index, 
-                                                     IInternalClassProvider internalClassProvider)
+                                                     INestedClassProvider internalClassProvider)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");

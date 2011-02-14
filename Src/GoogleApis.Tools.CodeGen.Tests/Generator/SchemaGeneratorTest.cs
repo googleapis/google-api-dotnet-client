@@ -95,7 +95,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             public int Count{get;set;}
             
-            public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider)
+            public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
             {
                 typeDeclaration.ThrowIfNull("typeDeclaration");
                 schema.ThrowIfNull("schema");

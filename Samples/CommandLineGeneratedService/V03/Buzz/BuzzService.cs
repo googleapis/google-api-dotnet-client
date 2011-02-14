@@ -24,7 +24,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string updated;
         
-        private object links;
+        private NestedClass1 links;
         
         private string kind;
         
@@ -64,7 +64,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -81,15 +81,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        public class NestedClass1 {
+        }
     }
     
     public class ChiliActivitiesCountJson {
         
-        private object counts;
+        private NestedClass1 counts;
         
         private string kind;
         
-        public virtual object Counts {
+        public virtual NestedClass1 Counts {
             get {
                 return this.counts;
             }
@@ -105,6 +108,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             set {
                 this.kind = value;
             }
+        }
+        
+        public class NestedClass1 {
         }
     }
     
@@ -171,7 +177,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliActivitiesResourceJson {
         
-        private object visibility;
+        private NestedClass1 visibility;
         
         private object placeholder;
         
@@ -179,13 +185,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object placeName;
         
-        private object links;
+        private NestedClass2 links;
         
         private object crosspostSource;
         
-        private object actor;
+        private NestedClass3 actor;
         
-        private object objectField7;
+        private NestedClass4 objectField7;
         
         private object detectedlLang;
         
@@ -199,7 +205,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object title;
         
-        private object source;
+        private NestedClass5 source;
         
         private object placeId;
         
@@ -211,13 +217,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object radius;
         
-        private IList<System.Object> categories;
+        private IList<NestedClass6> categories;
         
         private object untranslatedTitle;
         
         private string published;
         
-        public virtual object Visibility {
+        public virtual NestedClass1 Visibility {
             get {
                 return this.visibility;
             }
@@ -253,7 +259,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass2 Links {
             get {
                 return this.links;
             }
@@ -271,7 +277,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Actor {
+        public virtual NestedClass3 Actor {
             get {
                 return this.actor;
             }
@@ -280,7 +286,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ObjectProperty7 {
+        public virtual NestedClass4 ObjectProperty7 {
             get {
                 return this.objectField7;
             }
@@ -343,7 +349,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Source {
+        public virtual NestedClass5 Source {
             get {
                 return this.source;
             }
@@ -397,7 +403,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Categories {
+        public virtual IList<NestedClass6> Categories {
             get {
                 return this.categories;
             }
@@ -423,6 +429,449 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.published = value;
             }
         }
+        
+        public class NestedClass1 {
+            
+            private IList<NestedClass1_1> entries;
+            
+            public virtual IList<NestedClass1_1> Entries {
+                get {
+                    return this.entries;
+                }
+                set {
+                    this.entries = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private object id;
+                
+                private object title;
+                
+                public virtual object Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                public virtual object Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private IList<NestedClass2_1> liked;
+            
+            public virtual IList<NestedClass2_1> Liked {
+                get {
+                    return this.liked;
+                }
+                set {
+                    this.liked = value;
+                }
+            }
+            
+            public class NestedClass2_1 {
+                
+                private long count;
+                
+                private object type;
+                
+                private object href;
+                
+                public virtual long Count {
+                    get {
+                        return this.count;
+                    }
+                    set {
+                        this.count = value;
+                    }
+                }
+                
+                public virtual object Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+                
+                public virtual object Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private object id;
+            
+            private object profileUrl;
+            
+            private object thumbnailUrl;
+            
+            private object name;
+            
+            public virtual object Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual object ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            public virtual object ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+            
+            public virtual object Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+        }
+        
+        public class NestedClass4 {
+            
+            private object untranslatedContent;
+            
+            private object targetLang;
+            
+            private IList<ChiliPeopleResourceJson> liked;
+            
+            private NestedClass4_1 links;
+            
+            private NestedClass4_2 actor;
+            
+            private string type;
+            
+            private object detectedlLang;
+            
+            private ChiliActivitiesResourceJson shareOriginal;
+            
+            private object originalContent;
+            
+            private object id;
+            
+            private object content;
+            
+            private IList<NestedClass4_3> attachments;
+            
+            private IList<ChiliCommentsResourceJson> comments;
+            
+            public virtual object UntranslatedContent {
+                get {
+                    return this.untranslatedContent;
+                }
+                set {
+                    this.untranslatedContent = value;
+                }
+            }
+            
+            public virtual object TargetLang {
+                get {
+                    return this.targetLang;
+                }
+                set {
+                    this.targetLang = value;
+                }
+            }
+            
+            public virtual IList<ChiliPeopleResourceJson> Liked {
+                get {
+                    return this.liked;
+                }
+                set {
+                    this.liked = value;
+                }
+            }
+            
+            public virtual NestedClass4_1 Links {
+                get {
+                    return this.links;
+                }
+                set {
+                    this.links = value;
+                }
+            }
+            
+            public virtual NestedClass4_2 Actor {
+                get {
+                    return this.actor;
+                }
+                set {
+                    this.actor = value;
+                }
+            }
+            
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            public virtual object DetectedlLang {
+                get {
+                    return this.detectedlLang;
+                }
+                set {
+                    this.detectedlLang = value;
+                }
+            }
+            
+            public virtual ChiliActivitiesResourceJson ShareOriginal {
+                get {
+                    return this.shareOriginal;
+                }
+                set {
+                    this.shareOriginal = value;
+                }
+            }
+            
+            public virtual object OriginalContent {
+                get {
+                    return this.originalContent;
+                }
+                set {
+                    this.originalContent = value;
+                }
+            }
+            
+            public virtual object Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual object Content {
+                get {
+                    return this.content;
+                }
+                set {
+                    this.content = value;
+                }
+            }
+            
+            public virtual IList<NestedClass4_3> Attachments {
+                get {
+                    return this.attachments;
+                }
+                set {
+                    this.attachments = value;
+                }
+            }
+            
+            public virtual IList<ChiliCommentsResourceJson> Comments {
+                get {
+                    return this.comments;
+                }
+                set {
+                    this.comments = value;
+                }
+            }
+            
+            public class NestedClass4_1 {
+            }
+            
+            public class NestedClass4_2 {
+                
+                private object id;
+                
+                private object profileUrl;
+                
+                private object thumbnailUrl;
+                
+                private object name;
+                
+                public virtual object Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                public virtual object ProfileUrl {
+                    get {
+                        return this.profileUrl;
+                    }
+                    set {
+                        this.profileUrl = value;
+                    }
+                }
+                
+                public virtual object ThumbnailUrl {
+                    get {
+                        return this.thumbnailUrl;
+                    }
+                    set {
+                        this.thumbnailUrl = value;
+                    }
+                }
+                
+                public virtual object Name {
+                    get {
+                        return this.name;
+                    }
+                    set {
+                        this.name = value;
+                    }
+                }
+            }
+            
+            public class NestedClass4_3 {
+                
+                private object content;
+                
+                private object id;
+                
+                private object title;
+                
+                private NestedClass4_3_1 links;
+                
+                private string type;
+                
+                public virtual object Content {
+                    get {
+                        return this.content;
+                    }
+                    set {
+                        this.content = value;
+                    }
+                }
+                
+                public virtual object Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                public virtual object Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
+                }
+                
+                public virtual NestedClass4_3_1 Links {
+                    get {
+                        return this.links;
+                    }
+                    set {
+                        this.links = value;
+                    }
+                }
+                
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+                
+                public class NestedClass4_3_1 {
+                }
+            }
+        }
+        
+        public class NestedClass5 {
+            
+            private object title;
+            
+            public virtual object Title {
+                get {
+                    return this.title;
+                }
+                set {
+                    this.title = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private object schema;
+            
+            private object term;
+            
+            private object label;
+            
+            public virtual object Schema {
+                get {
+                    return this.schema;
+                }
+                set {
+                    this.schema = value;
+                }
+            }
+            
+            public virtual object Term {
+                get {
+                    return this.term;
+                }
+                set {
+                    this.term = value;
+                }
+            }
+            
+            public virtual object Label {
+                get {
+                    return this.label;
+                }
+                set {
+                    this.label = value;
+                }
+            }
+        }
     }
     
     public class ChiliActivitiesSearchJson {
@@ -441,7 +890,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string updated;
         
-        private object links;
+        private NestedClass1 links;
         
         private string kind;
         
@@ -481,7 +930,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -497,6 +946,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             set {
                 this.kind = value;
             }
+        }
+        
+        public class NestedClass1 {
         }
     }
     
@@ -516,9 +968,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object placeholder;
         
-        private object links;
+        private NestedClass1 links;
         
-        private object actor;
+        private NestedClass2 actor;
         
         private string published;
         
@@ -589,7 +1041,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -598,7 +1050,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Actor {
+        public virtual NestedClass2 Actor {
             get {
                 return this.actor;
             }
@@ -631,6 +1083,103 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
             set {
                 this.originalContent = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private IList<NestedClass1_1> inReplyTo;
+            
+            public virtual IList<NestedClass1_1> InReplyTo {
+                get {
+                    return this.inReplyTo;
+                }
+                set {
+                    this.inReplyTo = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private object refField0;
+                
+                private object source;
+                
+                private object href;
+                
+                public virtual object RefProperty0 {
+                    get {
+                        return this.refField0;
+                    }
+                    set {
+                        this.refField0 = value;
+                    }
+                }
+                
+                public virtual object Source {
+                    get {
+                        return this.source;
+                    }
+                    set {
+                        this.source = value;
+                    }
+                }
+                
+                public virtual object Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private object id;
+            
+            private object profileUrl;
+            
+            private object thumbnailUrl;
+            
+            private object name;
+            
+            public virtual object Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual object ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            public virtual object ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+            
+            public virtual object Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
             }
         }
     }
@@ -727,7 +1276,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object id;
         
-        private IList<System.Object> viewerStarAcl;
+        private IList<NestedClass1> viewerStarAcl;
         
         private object title;
         
@@ -761,7 +1310,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> ViewerStarAcl {
+        public virtual IList<NestedClass1> ViewerStarAcl {
             get {
                 return this.viewerStarAcl;
             }
@@ -832,17 +1381,64 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        public class NestedClass1 {
+            
+            private object id;
+            
+            private IList<System.Object> tags;
+            
+            private object displayName;
+            
+            private object kind;
+            
+            public virtual object Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual IList<System.Object> Tags {
+                get {
+                    return this.tags;
+                }
+                set {
+                    this.tags = value;
+                }
+            }
+            
+            public virtual object DisplayName {
+                get {
+                    return this.displayName;
+                }
+                set {
+                    this.displayName = value;
+                }
+            }
+            
+            public virtual object Kind {
+                get {
+                    return this.kind;
+                }
+                set {
+                    this.kind = value;
+                }
+            }
+        }
     }
     
     public class ChiliEntitiesdefaultaclResourceJson {
         
-        private IList<System.Object> viewerStarAcl;
+        private IList<NestedClass1> viewerStarAcl;
         
         private string chipsUiAcl;
         
         private string kind;
         
-        public virtual IList<System.Object> ViewerStarAcl {
+        public virtual IList<NestedClass1> ViewerStarAcl {
             get {
                 return this.viewerStarAcl;
             }
@@ -868,13 +1464,60 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        public class NestedClass1 {
+            
+            private string id;
+            
+            private IList<System.String> tags;
+            
+            private string displayName;
+            
+            private string kind;
+            
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual IList<System.String> Tags {
+                get {
+                    return this.tags;
+                }
+                set {
+                    this.tags = value;
+                }
+            }
+            
+            public virtual string DisplayName {
+                get {
+                    return this.displayName;
+                }
+                set {
+                    this.displayName = value;
+                }
+            }
+            
+            public virtual string Kind {
+                get {
+                    return this.kind;
+                }
+                set {
+                    this.kind = value;
+                }
+            }
+        }
     }
     
     public class ChiliGroupsListJson {
         
         private IList<ChiliGroupsResourceJson> items;
         
-        private object links;
+        private NestedClass1 links;
         
         private string kind;
         
@@ -887,7 +1530,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -904,6 +1547,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        public class NestedClass1 {
+        }
     }
     
     public class ChiliGroupsResourceJson {
@@ -912,7 +1558,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object title;
         
-        private object links;
+        private NestedClass1 links;
         
         private object memberCount;
         
@@ -936,7 +1582,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -960,6 +1606,45 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
             set {
                 this.kind = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private IList<NestedClass1_1> self;
+            
+            public virtual IList<NestedClass1_1> Self {
+                get {
+                    return this.self;
+                }
+                set {
+                    this.self = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private string type;
+                
+                private object href;
+                
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+                
+                public virtual object Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
             }
         }
     }
@@ -1144,7 +1829,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private IList<System.Object> heroes;
         
-        private IList<System.Object> ims;
+        private IList<NestedClass1> ims;
         
         private object connected;
         
@@ -1184,7 +1869,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object status;
         
-        private IList<System.Object> emails;
+        private IList<NestedClass2> emails;
         
         private object profileUrl;
         
@@ -1196,7 +1881,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private object smoker;
         
-        private IList<System.Object> addresses;
+        private IList<NestedClass3> addresses;
         
         private object birthday;
         
@@ -1226,7 +1911,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private IList<System.Object> tvShows;
         
-        private object name;
+        private NestedClass4 name;
         
         private object thumbnailUrl;
         
@@ -1246,21 +1931,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private IList<System.Object> politicalViews;
         
-        private IList<System.Object> accounts;
+        private IList<NestedClass5> accounts;
         
-        private IList<System.Object> urls;
+        private IList<NestedClass6> urls;
         
-        private IList<System.Object> organizations;
+        private IList<NestedClass7> organizations;
         
         private object relationshipStatus;
         
-        private IList<System.Object> phoneNumbers;
+        private IList<NestedClass8> phoneNumbers;
         
         private object livingArrangement;
         
         private object currentLocation;
         
-        private IList<System.Object> photos;
+        private IList<NestedClass9> photos;
         
         private IList<System.Object> quotes;
         
@@ -1288,7 +1973,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Ims {
+        public virtual IList<NestedClass1> Ims {
             get {
                 return this.ims;
             }
@@ -1468,7 +2153,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Emails {
+        public virtual IList<NestedClass2> Emails {
             get {
                 return this.emails;
             }
@@ -1522,7 +2207,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Addresses {
+        public virtual IList<NestedClass3> Addresses {
             get {
                 return this.addresses;
             }
@@ -1657,7 +2342,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Name {
+        public virtual NestedClass4 Name {
             get {
                 return this.name;
             }
@@ -1747,7 +2432,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Accounts {
+        public virtual IList<NestedClass5> Accounts {
             get {
                 return this.accounts;
             }
@@ -1756,7 +2441,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Urls {
+        public virtual IList<NestedClass6> Urls {
             get {
                 return this.urls;
             }
@@ -1765,7 +2450,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Organizations {
+        public virtual IList<NestedClass7> Organizations {
             get {
                 return this.organizations;
             }
@@ -1783,7 +2468,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> PhoneNumbers {
+        public virtual IList<NestedClass8> PhoneNumbers {
             get {
                 return this.phoneNumbers;
             }
@@ -1810,7 +2495,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Photos {
+        public virtual IList<NestedClass9> Photos {
             get {
                 return this.photos;
             }
@@ -1852,6 +2537,506 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
             set {
                 this.ethnicity = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private object primary;
+            
+            private object value;
+            
+            private object type;
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private object primary;
+            
+            private object value;
+            
+            private object type;
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private object region;
+            
+            private object streetAddress;
+            
+            private object formatted;
+            
+            private object postalCode;
+            
+            private object primary;
+            
+            private object locality;
+            
+            private object type;
+            
+            private object country;
+            
+            public virtual object Region {
+                get {
+                    return this.region;
+                }
+                set {
+                    this.region = value;
+                }
+            }
+            
+            public virtual object StreetAddress {
+                get {
+                    return this.streetAddress;
+                }
+                set {
+                    this.streetAddress = value;
+                }
+            }
+            
+            public virtual object Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            public virtual object PostalCode {
+                get {
+                    return this.postalCode;
+                }
+                set {
+                    this.postalCode = value;
+                }
+            }
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Locality {
+                get {
+                    return this.locality;
+                }
+                set {
+                    this.locality = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            public virtual object Country {
+                get {
+                    return this.country;
+                }
+                set {
+                    this.country = value;
+                }
+            }
+        }
+        
+        public class NestedClass4 {
+            
+            private object middleName;
+            
+            private object formatted;
+            
+            private object honorificPrefix;
+            
+            private object familyName;
+            
+            private object givenName;
+            
+            private object honorificSuffix;
+            
+            public virtual object MiddleName {
+                get {
+                    return this.middleName;
+                }
+                set {
+                    this.middleName = value;
+                }
+            }
+            
+            public virtual object Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            public virtual object HonorificPrefix {
+                get {
+                    return this.honorificPrefix;
+                }
+                set {
+                    this.honorificPrefix = value;
+                }
+            }
+            
+            public virtual object FamilyName {
+                get {
+                    return this.familyName;
+                }
+                set {
+                    this.familyName = value;
+                }
+            }
+            
+            public virtual object GivenName {
+                get {
+                    return this.givenName;
+                }
+                set {
+                    this.givenName = value;
+                }
+            }
+            
+            public virtual object HonorificSuffix {
+                get {
+                    return this.honorificSuffix;
+                }
+                set {
+                    this.honorificSuffix = value;
+                }
+            }
+        }
+        
+        public class NestedClass5 {
+            
+            private object username;
+            
+            private object userid;
+            
+            private object domain;
+            
+            public virtual object Username {
+                get {
+                    return this.username;
+                }
+                set {
+                    this.username = value;
+                }
+            }
+            
+            public virtual object Userid {
+                get {
+                    return this.userid;
+                }
+                set {
+                    this.userid = value;
+                }
+            }
+            
+            public virtual object Domain {
+                get {
+                    return this.domain;
+                }
+                set {
+                    this.domain = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private object primary;
+            
+            private object value;
+            
+            private object type;
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass7 {
+            
+            private object startDate;
+            
+            private object title;
+            
+            private object location;
+            
+            private object description;
+            
+            private object department;
+            
+            private object primary;
+            
+            private object name;
+            
+            private object endDate;
+            
+            private object type;
+            
+            public virtual object StartDate {
+                get {
+                    return this.startDate;
+                }
+                set {
+                    this.startDate = value;
+                }
+            }
+            
+            public virtual object Title {
+                get {
+                    return this.title;
+                }
+                set {
+                    this.title = value;
+                }
+            }
+            
+            public virtual object Location {
+                get {
+                    return this.location;
+                }
+                set {
+                    this.location = value;
+                }
+            }
+            
+            public virtual object Description {
+                get {
+                    return this.description;
+                }
+                set {
+                    this.description = value;
+                }
+            }
+            
+            public virtual object Department {
+                get {
+                    return this.department;
+                }
+                set {
+                    this.department = value;
+                }
+            }
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            public virtual object EndDate {
+                get {
+                    return this.endDate;
+                }
+                set {
+                    this.endDate = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass8 {
+            
+            private object primary;
+            
+            private object value;
+            
+            private object type;
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass9 {
+            
+            private object height;
+            
+            private object width;
+            
+            private object primary;
+            
+            private object value;
+            
+            private object type;
+            
+            public virtual object Height {
+                get {
+                    return this.height;
+                }
+                set {
+                    this.height = value;
+                }
+            }
+            
+            public virtual object Width {
+                get {
+                    return this.width;
+                }
+                set {
+                    this.width = value;
+                }
+            }
+            
+            public virtual object Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            public virtual object Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            public virtual object Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
             }
         }
     }
@@ -1955,9 +3140,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string description;
         
-        private object owner;
+        private NestedClass1 owner;
         
-        private object links;
+        private NestedClass2 links;
         
         private string kind;
         
@@ -2026,7 +3211,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Owner {
+        public virtual NestedClass1 Owner {
             get {
                 return this.owner;
             }
@@ -2035,7 +3220,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass2 Links {
             get {
                 return this.links;
             }
@@ -2061,15 +3246,87 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.version = value;
             }
         }
+        
+        public class NestedClass1 {
+            
+            private string id;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            private string name;
+            
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+            
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private Link alternate;
+            
+            private Link enclosure;
+            
+            public virtual Link Alternate {
+                get {
+                    return this.alternate;
+                }
+                set {
+                    this.alternate = value;
+                }
+            }
+            
+            public virtual Link Enclosure {
+                get {
+                    return this.enclosure;
+                }
+                set {
+                    this.enclosure = value;
+                }
+            }
+        }
     }
     
     public class ChiliPhotosInsertJson {
         
-        private object collection;
+        private NestedClass1 collection;
         
         private string kind;
         
-        public virtual object Collection {
+        public virtual NestedClass1 Collection {
             get {
                 return this.collection;
             }
@@ -2084,6 +3341,56 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
             set {
                 this.kind = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private object albumId;
+            
+            private object album;
+            
+            private NestedClass1_1 photo;
+            
+            public virtual object AlbumId {
+                get {
+                    return this.albumId;
+                }
+                set {
+                    this.albumId = value;
+                }
+            }
+            
+            public virtual object Album {
+                get {
+                    return this.album;
+                }
+                set {
+                    this.album = value;
+                }
+            }
+            
+            public virtual NestedClass1_1 Photo {
+                get {
+                    return this.photo;
+                }
+                set {
+                    this.photo = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private object photoUrl;
+                
+                public virtual object PhotoUrl {
+                    get {
+                        return this.photoUrl;
+                    }
+                    set {
+                        this.photoUrl = value;
+                    }
+                }
             }
         }
     }
@@ -2117,9 +3424,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string lastModified;
         
-        private object album;
+        private NestedClass1 album;
         
-        private object links;
+        private NestedClass2 links;
         
         private string kind;
         
@@ -2137,7 +3444,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string description;
         
-        private object owner;
+        private NestedClass3 owner;
         
         private Video video;
         
@@ -2150,7 +3457,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Album {
+        public virtual NestedClass1 Album {
             get {
                 return this.album;
             }
@@ -2159,7 +3466,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass2 Links {
             get {
                 return this.links;
             }
@@ -2240,7 +3547,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Owner {
+        public virtual NestedClass3 Owner {
             get {
                 return this.owner;
             }
@@ -2257,6 +3564,92 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.video = value;
             }
         }
+        
+        public class NestedClass1 {
+            
+            private long id;
+            
+            private Link pagelinkField1;
+            
+            public virtual long Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual Link PagelinkProperty1 {
+                get {
+                    return this.pagelinkField1;
+                }
+                set {
+                    this.pagelinkField1 = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private IList<Link> alternate;
+            
+            public virtual IList<Link> Alternate {
+                get {
+                    return this.alternate;
+                }
+                set {
+                    this.alternate = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private string id;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            private string name;
+            
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+            
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+        }
     }
     
     public class ChiliRelatedListJson {
@@ -2269,7 +3662,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string updated;
         
-        private object links;
+        private NestedClass1 links;
         
         private string kind;
         
@@ -2309,7 +3702,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Links {
+        public virtual NestedClass1 Links {
             get {
                 return this.links;
             }
@@ -2325,6 +3718,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             set {
                 this.kind = value;
             }
+        }
+        
+        public class NestedClass1 {
         }
     }
     

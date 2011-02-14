@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen
             return GeneratorUtils.GetPropertyName(name, index);
         }
         
-        internal static CodeTypeReference GetCodeType(JsonSchema propertySchema, IInternalClassProvider internalClassProvider)
+        internal static CodeTypeReference GetCodeType(JsonSchema propertySchema, INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
             internalClassProvider.ThrowIfNull("internalClassProvider");
@@ -72,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen
             }
         }
         
-        internal static CodeTypeReference GetObjectTypeReference(JsonSchema propertySchema, IInternalClassProvider internalClassProvider)
+        internal static CodeTypeReference GetObjectTypeReference(JsonSchema propertySchema, INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
             if( propertySchema.Type != JsonSchemaType.Object)
@@ -81,16 +81,16 @@ namespace Google.Apis.Tools.CodeGen
             }
             if ( propertySchema.Id.IsNotNullOrEmpty())
             {
-                logger.DebugFormat("Found Object with id using type {0} for {1}", propertySchema.Id, propertySchema.ToString());
+                logger.DebugFormat("Found Object with id using type {0}", propertySchema.Id);
                 return new CodeTypeReference(propertySchema.Id);
             }
             
             
-            return internalClassProvider.GetInternalClassName(propertySchema);
+            return internalClassProvider.GetClassName(propertySchema);
         }
         
         [VisibleForTestOnly]
-        internal static CodeTypeReference GetArrayTypeRefereence(JsonSchema propertySchema, IInternalClassProvider internalClassProvider)
+        internal static CodeTypeReference GetArrayTypeRefereence(JsonSchema propertySchema, INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
             if( propertySchema.Type != JsonSchemaType.Array)
