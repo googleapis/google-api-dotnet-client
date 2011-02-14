@@ -52,16 +52,19 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var decorator = new StandardPropertyDecorator();
             var internalClassProvider = new ObjectInternalClassProvider();
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(null, internalClassProvider));
+            string name = "test";
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(name, null, internalClassProvider));
             
             var schema = new MockSchema();
             schema.Name = "test";
             schema.SchemaDetails = null;
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(schema, internalClassProvider));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider));
+            
             
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Properties = null;
-            var expectedEmpty = decorator.GenerateAllProperties(schema, internalClassProvider);
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(null, schema.SchemaDetails, internalClassProvider));
+            var expectedEmpty = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
             Assert.IsNotNull(expectedEmpty);
             Assert.AreEqual(0, expectedEmpty.Count);
         }
@@ -74,6 +77,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Object;
             schema.SchemaDetails.Properties = new Dictionary<string, JsonSchema>();
+            string name = "test";
+            
             foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
             {
                 JsonSchema property = new JsonSchema();
@@ -83,7 +88,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             }
             
             var decorator = new StandardPropertyDecorator();
-            IList<CodeMemberProperty> generatedFields = decorator.GenerateAllProperties(schema, internalClassProvider);
+            IList<CodeMemberProperty> generatedFields = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
             
             Assert.NotNull(generatedFields);
             Assert.AreEqual(StandardPropertyFieldDecoratorTest.NamesToType.Count, generatedFields.Count);

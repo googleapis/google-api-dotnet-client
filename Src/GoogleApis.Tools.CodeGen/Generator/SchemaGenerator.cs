@@ -22,12 +22,14 @@ using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
-
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     public class SchemaGenerator : BaseGenerator
     {
+        
+        
         private readonly IEnumerable<ISchemaDecorator> decorators;
         public SchemaGenerator (IEnumerable<ISchemaDecorator> decorators)
         {
@@ -40,36 +42,46 @@ namespace Google.Apis.Tools.CodeGen.Generator
             schema.ThrowIfNull("schema");
             string className = GeneratorUtils.GetClassName (schema);
             var typeDeclaration = new CodeTypeDeclaration(className);
-            var internalClassGenerator = new InternalClassGenerator(typeDeclaration, decorators);
+            var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach( ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecoratClass(typeDeclaration, schema, internalClassGenerator);
+                schemaDecorator.DecoratClass(typeDeclaration, schema, nestedClassGenerator);
             }
-            internalClassGenerator.GenerateInternalClasses();
+            nestedClassGenerator.GenerateNestedClasses();
             
             return typeDeclaration;
         }
         
-        private class InternalClassGenerator: IInternalClassProvider
+        [VisibleForTestOnly]
+        internal class NestedClassGenerator: INestedClassProvider
         {
+            private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(NestedClassGenerator));
+            
+            /// <summary>A string to make this nested class names unique</summary>
+            private readonly string uniquefier;
             private readonly CodeTypeDeclaration typeDeclaration;
             private readonly IEnumerable<ISchemaDecorator> decorators;
+            /// <summary>
+            /// Maps Schemas to the index they appared so schemas found multiple time will resolve to the same name.
+            /// This also allows us to generate the internal classes at the end instead of as we find them.
+            /// </summary>
             private readonly IDictionary<JsonSchema, int> schemaOrder;
             private int nextSchemaNumber; 
             
-            public InternalClassGenerator(CodeTypeDeclaration typeDeclaration, IEnumerable<ISchemaDecorator> decorators)
+            public NestedClassGenerator(CodeTypeDeclaration typeDeclaration, IEnumerable<ISchemaDecorator> decorators, string uniquefier)
             {
                 this.typeDeclaration = typeDeclaration;
                 this.decorators = decorators;
                 this.schemaOrder = new Dictionary<JsonSchema, int>();
                 nextSchemaNumber = 1;
+                this.uniquefier = uniquefier;
             }
             
-            public void GenerateInternalClasses()
-            {
-            }
-            
-            public CodeTypeReference GetInternalClassName (JsonSchema definition)
+            /// <summary>
+            /// Gets a class name as a CodeTypeReference for the given schema of the form "IntenalClassN" where 
+            /// N is an integer. Given the same JsonSchema this will return the same classname.
+            /// </summary>
+            public CodeTypeReference GetClassName (JsonSchema definition)
             {
                 if( schemaOrder.ContainsKey(definition) )
                 {
@@ -80,9 +92,39 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 return GetSchemaName(schemaNumber);
             }
             
-            private static CodeTypeReference GetSchemaName(int schemaNumber)
+            public void GenerateNestedClasses()
             {
-                return new CodeTypeReference(string.Format("InternalClass{0}", schemaNumber));
+                foreach(var pair in schemaOrder)
+                {
+                    typeDeclaration.Members.Add(GenerateNestedClass(pair.Key, pair.Value));
+                }
+            }
+            
+            [VisibleForTestOnly]
+            internal CodeTypeDeclaration GenerateNestedClass(JsonSchema schema, int orderOfNestedClass)
+            {
+                schema.ThrowIfNull("schema");
+                string className = GetClassName (schema).BaseType;
+                var typeDeclaration = new CodeTypeDeclaration(className);
+                typeDeclaration.Attributes = MemberAttributes.Public;
+                var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, uniquefier + orderOfNestedClass + "_");
+                foreach( ISchemaDecorator schemaDecorator in decorators)
+                {
+                    if(schemaDecorator is INestedClassSchemaDecorator)
+                    {
+                        logger.DebugFormat("Found IInternalClassSchemaDecorator {0} - decorating {1}", schemaDecorator.ToString(), className);
+                        ((INestedClassSchemaDecorator)schemaDecorator).
+                            DecoratInternalClass(typeDeclaration, className, schema, nestedClassGenerator);
+                    }
+                }
+                nestedClassGenerator.GenerateNestedClasses();
+                
+                return typeDeclaration;
+            }
+            
+            private CodeTypeReference GetSchemaName(int schemaNumber)
+            {
+                return new CodeTypeReference(string.Format("NestedClass{0}{1}", uniquefier, schemaNumber));
             }
             
         }

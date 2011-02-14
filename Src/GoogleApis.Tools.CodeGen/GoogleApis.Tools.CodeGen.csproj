@@ -71,7 +71,8 @@
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtil.cs" />
-    <Compile Include="Decorator\SchemaDecorator\IInternalClassProvider.cs" />
+    <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

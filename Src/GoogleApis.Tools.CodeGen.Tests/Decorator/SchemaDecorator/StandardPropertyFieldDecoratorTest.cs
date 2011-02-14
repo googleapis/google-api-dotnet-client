@@ -38,23 +38,24 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {"f", JsonSchemaType.Integer},
         };
         
-        private IInternalClassProvider internalClassProvider = new ObjectInternalClassProvider();
+        private INestedClassProvider internalClassProvider = new ObjectInternalClassProvider();
         
         [Test()]
         public void GenerateAllFieldsTestEdgeCases()
         {
             var decorator = new StandardPropertyFieldDecorator();
             var schema = new MockSchema();
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(null, internalClassProvider));
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema, null));
+            string name = "test";
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(name, null, internalClassProvider));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(name, schema.SchemaDetails, null));
             
             schema.Name = "test";
             schema.SchemaDetails = null;
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(schema, internalClassProvider));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllFields(name, schema.SchemaDetails, internalClassProvider));
             
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Properties = null;
-            var expectedEmpty = decorator.GenerateAllFields(schema, internalClassProvider);
+            var expectedEmpty = decorator.GenerateAllFields(name, schema.SchemaDetails, internalClassProvider);
             Assert.IsNotNull(expectedEmpty);
             Assert.AreEqual(0, expectedEmpty.Count);
         }
@@ -75,7 +76,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             }
             
             var decorator = new StandardPropertyFieldDecorator();
-            IList<CodeMemberField> generatedFields = decorator.GenerateAllFields(schema, internalClassProvider);
+            IList<CodeMemberField> generatedFields = decorator.GenerateAllFields("test", schema.SchemaDetails, internalClassProvider);
             
             Assert.NotNull(generatedFields);
             Assert.AreEqual(NamesToType.Count, generatedFields.Count);

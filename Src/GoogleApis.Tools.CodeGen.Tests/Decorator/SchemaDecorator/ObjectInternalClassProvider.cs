@@ -21,9 +21,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
     /// <summary>
     /// Simple implementation of IInteralClassProvider, always returns object. For use in tests only. 
     /// </summary>
-    public class ObjectInternalClassProvider : IInternalClassProvider
+    public class ObjectInternalClassProvider : INestedClassProvider
     {
-        public CodeTypeReference GetInternalClassName (Newtonsoft.Json.Schema.JsonSchema definition)
+        public CodeTypeReference GetClassName (Newtonsoft.Json.Schema.JsonSchema definition)
         {
             return new CodeTypeReference(typeof(object));
         }

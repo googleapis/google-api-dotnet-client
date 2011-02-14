@@ -25,7 +25,7 @@ using Google.Apis.Testing;
 using Google.Apis.Util;
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
-    public class StandardPropertyFieldDecorator:ISchemaDecorator
+    public class StandardPropertyFieldDecorator:ISchemaDecorator, INestedClassSchemaDecorator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyFieldDecorator));
         
@@ -33,28 +33,38 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, IInternalClassProvider internalClassProvider)
+        
+        public void DecoratInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            typeDeclaration.Members.AddRange(GenerateAllFields(schema, internalClassProvider).ToArray());            
+            internalClassProvider.ThrowIfNull("internalClassProvider");
+            typeDeclaration.Members.AddRange(GenerateAllFields(name, schema, internalClassProvider).ToArray());
+        }
+        
+        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        {
+            typeDeclaration.ThrowIfNull("typeDeclatation");
+            schema.ThrowIfNull("schema");
+            internalClassProvider.ThrowIfNull("internalClassProvider");
+            typeDeclaration.Members.AddRange(GenerateAllFields(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberField> GenerateAllFields (ISchema schema, IInternalClassProvider internalClassProvider)
+        internal IList<CodeMemberField> GenerateAllFields (string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
-            schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
+            name.ThrowIfNull("name");
             
             var fields = new List<CodeMemberField>();
-            if ( schema.SchemaDetails.Properties.IsNullOrEmpty() )
+            if ( schema.Properties.IsNullOrEmpty() )
             {
-                logger.Debug("No Properties found for " + schema.Name);
+                logger.Debug("No Properties found for " + name);
                 return fields;
             }
             
             int index = 0;
-            foreach (var propertyPair in schema.SchemaDetails.Properties)
+            foreach (var propertyPair in schema.Properties)
             {
                 fields.Add(GenerateField(propertyPair.Key, propertyPair.Value, index, internalClassProvider));
                 index++;
@@ -63,7 +73,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         }
         
         [VisibleForTestOnly]
-        internal CodeMemberField GenerateField(string name, JsonSchema propertySchema, int index, IInternalClassProvider internalClassProvider)
+        internal CodeMemberField GenerateField(string name, JsonSchema propertySchema, int index, INestedClassProvider internalClassProvider)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");

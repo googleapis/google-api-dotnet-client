@@ -144,7 +144,7 @@ namespace Google.Apis.Discovery.Schema
             public void Add (JsonSchema item)
             {
                 item.ThrowIfNull("item");
-                logger.DebugFormat("Adding [{0}] [{1}]",item.Id, item.ToString());
+                logger.DebugFormat("Adding [{0}]",item.Id);
                 
                 JsonSchema alreadyPresent = innerList.FirstOrDefault(js => js.Id == item.Id && item.Id != null && item.Id.Length > 0);
                 

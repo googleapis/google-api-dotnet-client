@@ -16,12 +16,17 @@ limitations under the License.
 using System;
 using System.CodeDom;
 
-using Google.Apis.Discovery.Schema;
+using Newtonsoft.Json.Schema;
 
-namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
+namespace Google.Apis.Tools.CodeGen
 {
-    public interface ISchemaDecorator
+    public interface INestedClassProvider
     {
-        void DecoratClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider);
+        /// <summary>
+        /// Given a definition for a class returns a name and garentiees that 
+        /// that class will be generated in the appropreate scope.
+        /// </summary>
+        CodeTypeReference GetClassName(JsonSchema definition);
     }
 }
+
