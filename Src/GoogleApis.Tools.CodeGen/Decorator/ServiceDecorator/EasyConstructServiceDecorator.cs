@@ -83,6 +83,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return getServiceCall;
         }
         
+        
+        /// <summary>
+        /// Returns a CodeExpression that creates a Discovery specific FactoryPatameter.
+        /// </summary>
         [VisibleForTestOnly]
         internal CodeExpression GetVersionSpecificParameter(IService service, CodeTypeDeclaration serviceClass)
         {
@@ -90,12 +94,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             {
             case DiscoveryVersion.Version_0_1:
                 return new CodePrimitiveExpression(null);
+            
             case DiscoveryVersion.Version_0_2:
-                return new CodeObjectCreateExpression(typeof(ServiceFactory.FactoryV_0_2Parameter),
+                return new CodeObjectCreateExpression(typeof(FactoryParameterV0_2),
                     new CodePrimitiveExpression(null),
                     new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
 
             case DiscoveryVersion.Version_0_3:
+                 return new CodeObjectCreateExpression(typeof(FactoryParameterV0_3),
+                    new CodePrimitiveExpression(null),
+                    new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
+
             default:
                 throw new NotSupportedException("The Discovery version "+service.DiscoveryVersion+" is not yet supported");
             }

@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 
 namespace Google.Apis.Tests.Apis.Requests
@@ -32,6 +33,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public Uri BaseUri {get; set;}
         public Uri RpcUri {get; set;}
         public DiscoveryVersion DiscoveryVersion{get; set;}
+        public IDictionary<string, ISchema> Schemas{get;set;}
         
         public IRequest CreateRequest (string resource, string methodName)
         {
@@ -46,6 +48,7 @@ namespace Google.Apis.Tests.Apis.Requests
             this.BaseUri = new Uri(DefaultBaseUrl );
             this.RpcUri = new Uri(DefaultRpcUri );
             this.DiscoveryVersion = DiscoveryVersion.Version_0_3;
+            this.Schemas = new Dictionary<string, ISchema>();
         }
     }
 }

@@ -19,148 +19,221 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 namespace Google.Apis.Json
 {
-  public class TokenStream {
-	public static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(TokenStream));	
-		
-    private const int BuilderBufferSize = 24;
-    private TextReader reader = null;
-    
-    public TokenStream(string inputText) {
-      reader = new StringReader(inputText);
-    }
+    public class TokenStream
+    {
+        public static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(TokenStream));
 
-    public TokenStream(Stream inputStream) {
-      reader = new StreamReader(inputStream);
-    }
+        private const int BuilderBufferSize = 24;
+        private TextReader reader = null;
 
-    /// <summary>
-    /// From the current position, extract the next token
-    /// </summary>
-    /// <returns></returns>
-    public JsonToken GetNextToken() {
-      JsonToken token = new JsonToken();
-      StringBuilder sb;
-      try {
-        // first skip over all whitespace.
-        while (Char.IsWhiteSpace((char)reader.Peek())) {
-          reader.Read();
+        public TokenStream (string inputText)
+        {
+            reader = new StringReader (inputText);
         }
 
-        if (reader.Peek() == -1)
-          return null;
+        public TokenStream (Stream inputStream)
+        {
+            reader = new StreamReader (inputStream);
+        }
 
-        char cur = (char)reader.Read();
-        switch (cur) {
-          case '{':
-            token.type = JsonToken.Type.ObjectStart;
-            break;
-          case '}':
-            token.type = JsonToken.Type.ObjectEnd;
-            break;
-          case '[':
-            token.type = JsonToken.Type.ArrayStart;
-            break;
-          case ']':
-            token.type = JsonToken.Type.ArrayEnd;
-            break;
-          case ':':
-            token.type = JsonToken.Type.NameSeperator;
-            break;
-          case ',':
-            token.type = JsonToken.Type.MemberSeperator;
-            break;
-          case '"':
+        /// <summary>
+        /// Parses a Json String as per http://www.json.org/ acknolwedging escaped chars
+        /// </summary>
+        private void ParseString (JsonToken token, char cur)
+        {
+            char seperator = cur;
             token.type = JsonToken.Type.String;
             // let's read in the string
-            sb = new StringBuilder(BuilderBufferSize);
+            var sb = new StringBuilder (BuilderBufferSize);
             char next;
-            while ((next = (char)reader.Read()) != '"') {
-              sb.Append(next);
+            while ((next = (char)reader.Read ()) != seperator)
+            {
+                if (next == '\\')
+                {
+                    next = (char)reader.Read ();
+                    switch (next)
+                    {
+                    case 'n':
+                        next = '\n';
+                        break;
+                    case 'r':
+                        next = '\r';
+                        break;
+                    case 't':
+                        next = '\t';
+                        break;
+                    case '\'':
+                        next = '\'';
+                        break;
+                    case '/':
+                        next = '/';
+                        break;
+                    case '"':
+                        next = '\"';
+                        break;
+                    case '\\':
+                        next = '\\';
+                        break;
+                    case 'b':
+                        // backspace
+                        next = '\b';
+                        break;
+                    case 'u':
+                        // 4 digit hexidicamal unicode escape
+                        char[] escapedCharAry = new char[4];
+                        for (int i = 0; i < 4; i++)
+                        {
+                            escapedCharAry[i] = (char)reader.Read ();
+                        }
+                  
+                        String escapedCharStr = new String (escapedCharAry);
+                        int escapedCharInt = int.Parse (escapedCharStr, NumberStyles.HexNumber, NumberFormatInfo.InvariantInfo);
+                        next = Convert.ToChar (escapedCharInt);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+                sb.Append (next);
             }
-            token.value = sb.ToString();
-            break;
-          case 'f':
-            GetFalseToken(token);
-            break;
-          case 't':
-            // this might be the true token
-            GetTrueToken(token);
-            break;
-          case 'n':
-            // this might be nul
-            GetNullToken(token);
-            break;
-          default:
-            token.type = JsonToken.Type.Undefined;
-            if (Char.IsNumber(cur)) {
-              sb = new StringBuilder(BuilderBufferSize);
-              sb.Append(cur);
-              while (IsTokenSeperator((char)reader.Peek()) == false) {
-                sb.Append((char)reader.Read());
-              }
-              token.value = sb.ToString();
-			  decimal decNumber;
-			  if(Decimal.TryParse(token.value, out decNumber)){
-				token.number = decNumber;
-				token.type = JsonToken.Type.Number;
-			  }
-            }
-            break;
-          
-
+            token.value = sb.ToString ();
         }
-      }
-      catch (IOException) {
-        return null;
-      }
-      return token;
-    }
 
-    // starts at the a of the false
-    private void GetFalseToken(JsonToken token) {
-      token.type = JsonToken.Type.Undefined;
-      // this might be the false token
-      if (LookupToken("alse") == true)
-         token.type = JsonToken.Type.False;
-      return;
-    }
-    // starts at the a of the false
-    private void GetTrueToken(JsonToken token) {
-      token.type = JsonToken.Type.Undefined;
-      // this might be the false token
-      if (LookupToken("rue") == true)
-        token.type = JsonToken.Type.True;
-      return;
-    }
-    // starts at the a of the false
-    private void GetNullToken(JsonToken token) {
-      token.type = JsonToken.Type.Undefined;
-      // this might be the false token
-      if (LookupToken("ull") == true)
-        token.type = JsonToken.Type.Null;
-      return;
-    }
-  
-    private bool LookupToken(string tokenString) {
-      char cur;
-      foreach (char c in tokenString) {
-        cur = (char) reader.Read();
-        if (c != cur)
-          return false;
-      }
-      cur = (char) reader.Peek();
-      if (IsTokenSeperator(cur))
-        return true;
+        /// <summary>
+        /// From the current position, extract the next token
+        /// </summary>
+        /// <returns></returns>
+        public JsonToken GetNextToken ()
+        {
+            JsonToken token = new JsonToken ();
+            try
+            {
+                // first skip over all whitespace.
+                while (Char.IsWhiteSpace ((char)reader.Peek ()))
+                {
+                    reader.Read ();
+                }
+                
+                if (reader.Peek () == -1)
+                {
+                    return null;
+                }
+                
+                char cur = (char)reader.Read ();
+                switch (cur)
+                {
+                case '{':
+                    token.type = JsonToken.Type.ObjectStart;
+                    break;
+                case '}':
+                    token.type = JsonToken.Type.ObjectEnd;
+                    break;
+                case '[':
+                    token.type = JsonToken.Type.ArrayStart;
+                    break;
+                case ']':
+                    token.type = JsonToken.Type.ArrayEnd;
+                    break;
+                case ':':
+                    token.type = JsonToken.Type.NameSeperator;
+                    break;
+                case ',':
+                    token.type = JsonToken.Type.MemberSeperator;
+                    break;
+                case '"':
+                case '\'':
+                    ParseString (token, cur);
+                    break;
+                case 'f':
+                    GetFalseToken (token);
+                    break;
+                case 't':
+                    // this might be the true token
+                    GetTrueToken (token);
+                    break;
+                case 'n':
+                    // this might be nul
+                    GetNullToken (token);
+                    break;
+                default:
+                    token.type = JsonToken.Type.Undefined;
+                    if (Char.IsNumber (cur))
+                    {
+                        var sb = new StringBuilder (BuilderBufferSize);
+                        sb.Append (cur);
+                        while (IsTokenSeperator ((char)reader.Peek ()) == false)
+                        {
+                            sb.Append ((char)reader.Read ());
+                        }
+                        token.value = sb.ToString ();
+                        decimal decNumber;
+                        if (Decimal.TryParse (token.value, out decNumber))
+                        {
+                            token.number = decNumber;
+                            token.type = JsonToken.Type.Number;
+                        }
+                    }
+                    break;
+                    
+                    
+                }
+            } catch (IOException)
+            {
+                return null;
+            }
+            return token;
+        }
 
-      return false;
-    }
+        // starts at the a of the false
+        private void GetFalseToken (JsonToken token)
+        {
+            token.type = JsonToken.Type.Undefined;
+            // this might be the false token
+            if (LookupToken ("alse") == true)
+                token.type = JsonToken.Type.False;
+            return;
+        }
+        // starts at the a of the false
+        private void GetTrueToken (JsonToken token)
+        {
+            token.type = JsonToken.Type.Undefined;
+            // this might be the false token
+            if (LookupToken ("rue") == true)
+                token.type = JsonToken.Type.True;
+            return;
+        }
+        // starts at the a of the false
+        private void GetNullToken (JsonToken token)
+        {
+            token.type = JsonToken.Type.Undefined;
+            // this might be the false token
+            if (LookupToken ("ull") == true)
+                token.type = JsonToken.Type.Null;
+            return;
+        }
 
-    private bool IsTokenSeperator(char c) {
-      if (Char.IsLetterOrDigit(c) == true)
-        return false;
-      return true;
+        private bool LookupToken (string tokenString)
+        {
+            char cur;
+            foreach (char c in tokenString)
+            {
+                cur = (char)reader.Read ();
+                if (c != cur)
+                {
+                    return false;
+                }
+            }
+            cur = (char)reader.Peek ();
+            
+            return IsTokenSeperator (cur);
+        }
+
+        private bool IsTokenSeperator (char c)
+        {
+            return Char.IsLetterOrDigit (c) == false;
+        }
     }
-  }
 }

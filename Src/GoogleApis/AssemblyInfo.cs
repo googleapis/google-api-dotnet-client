@@ -32,6 +32,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Google.Apis.Tests")]
 [assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]
+[assembly: InternalsVisibleTo("Google.Apis.Tests.Apis.Discovery.V0_3")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

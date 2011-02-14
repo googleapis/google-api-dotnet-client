@@ -68,7 +68,7 @@ namespace Google.Apis
 		/// <returns>
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
-		public bool ValidateParameter(Parameter param) {
+		public bool ValidateParameter(IParameter param) {
 			if (Parameters == null) {
 				return false;
 			}
@@ -108,7 +108,7 @@ namespace Google.Apis
 		/// <returns>
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
-		public bool ValidateRegex(Parameter param, string paramValue) {
+		public bool ValidateRegex(IParameter param, string paramValue) {
 			if(param.Pattern == null){
 				return true; // No Validation so anything is valid.
 			}

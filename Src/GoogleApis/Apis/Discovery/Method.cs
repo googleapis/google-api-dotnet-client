@@ -21,23 +21,15 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery
 {
-    public interface IMethod
-    {
-        string Name {get;set;}
-        string RestPath{get;} 
-        string RpcName {get;}
-        string HttpMethod {get;}
-        Dictionary<string, Parameter> Parameters{get;} 
-    }
-    
 	internal abstract class BaseMethod:IMethod
 	{
-		internal protected JsonDictionary information;
+		internal readonly protected JsonDictionary information;
 		
-		internal protected Dictionary<string, Parameter> parameters;
+		internal protected Dictionary<string, IParameter> parameters;
         
 		internal BaseMethod (KeyValuePair<string, object> kvp)
 		{
@@ -61,7 +53,7 @@ namespace Google.Apis.Discovery
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
 
-		public Dictionary<string, Parameter> Parameters 
+		public Dictionary<string, IParameter> Parameters 
 		{
 			get {
 				if (this.parameters == null) 
@@ -72,50 +64,61 @@ namespace Google.Apis.Discovery
 			}
 		}
         
-        private Dictionary<string, Parameter> FetchParameters ()
+        private Dictionary<string, IParameter> FetchParameters ()
         {
             if( this.information.ContainsKey(ServiceFactory.Parameters) == false)
             {
-                return new Dictionary<string, Parameter>(0);
+                return new Dictionary<string, IParameter>(0);
             }
             
             JsonDictionary js = this.information[ServiceFactory.Parameters] as JsonDictionary;
             if (js == null) 
             {
-                return new Dictionary<string, Parameter>(0);                
+                return new Dictionary<string, IParameter>(0);                
             }
             
-            var parameters = new Dictionary<string, Parameter> ();
+            var parameters = new Dictionary<string, IParameter> ();
             foreach (KeyValuePair<string, object> kvp in js) 
             {
-                Parameter p = new Parameter (kvp);
+                IParameter p = new Parameter (kvp);
                 parameters.Add (kvp.Key, p);
             }
             return parameters;
         }
 	}
     
-    internal class MethodV_0_1:BaseMethod
+    /// <summary>
+    /// Represents a Method from Discovery Version 0.1
+    /// </summary>
+    internal class MethodV0_1:BaseMethod
     {
-        public MethodV_0_1(KeyValuePair<string, object> kvp):base(kvp)
+        private const string PathUrl = "pathUrl";
+
+        public MethodV0_1(KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         public override string RestPath 
         {
-            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_1.PathUrl] as string; }
+            get { return this.information[PathUrl] as string; }
         }
         
     }
-    internal class MethodV_0_2:BaseMethod
+    
+    /// <summary>
+    /// Represents a Method from Discovery Version 0.2
+    /// </summary>
+    internal class MethodV0_2:BaseMethod
     {
-        public MethodV_0_2(KeyValuePair<string, object> kvp):base(kvp)
+        private const string PathUrl = "restPath";
+
+        public MethodV0_2(KeyValuePair<string, object> kvp):base(kvp)
         {
         }
         
         public override string RestPath 
         {
-            get { return this.information[ServiceFactory.ServiceFactoryDiscoveryV0_2.PathUrl] as string; }
+            get { return this.information[PathUrl] as string; }
         }
     }
 }

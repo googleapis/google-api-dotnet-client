@@ -79,9 +79,8 @@ namespace Google.Apis.Json
             case JsonToken.Type.ArrayStart:
                 return ParseArray (ts);
             case JsonToken.Type.Undefined:
+            default:
                 throw new ArgumentException ("parse error");
-			default:
-				throw new ArgumentException ("parse error");
             }
         }
 

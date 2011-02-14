@@ -69,7 +69,7 @@ namespace Google.Apis.Discovery
 		/// </summary>
 		public IService GetService(string version, 
                                    DiscoveryVersion discoveryVersion, 
-                                   ServiceFactory.IFactoryParameter param)
+                                   IFactoryParameter param)
 		{
 			IServiceFactory factory;
 			

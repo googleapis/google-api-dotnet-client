@@ -38,6 +38,14 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -55,6 +63,13 @@
     <Compile Include="Apis\Requests\MethodValidator.cs" />
     <Compile Include="Apis\Requests\MockMethod.cs" />
     <Compile Include="Apis\Requests\MockService.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
+    <Compile Include="Apis\Utils\UtilitiesTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\SchemaImplTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolverTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -64,11 +79,16 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Requests\" />
     <Folder Include="JSON\" />
     <Folder Include="Apis\" />
     <Folder Include="Apis\Discovery\" />
     <Folder Include="Apis\Authentication\" />
+    <Folder Include="Apis\Discovery\V0_3\" />
+    <Folder Include="Apis\Utils\" />
+    <Folder Include="Apis\Discovery\Schema\" />
     <Folder Include="Apis\Requests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GoogleApisTests.xml" />
   </ItemGroup>
 </Project>
