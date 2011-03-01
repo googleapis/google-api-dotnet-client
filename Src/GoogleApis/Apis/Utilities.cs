@@ -412,22 +412,5 @@ namespace Google.Apis
         {
             return "G-" + applicationName + "/" + serviceName + "-CS-" + GetAssemblyVersion();
         }
-
-        private static bool compareXmlNess(string l1, string l2, string ns1, string ns2) 
-        {
-            if (String.Compare(l1,l2)==0)
-            {
-                if (ns1 == null)
-                {
-                    return true;
-                } 
-                else if (String.Compare(ns1, ns2)==0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
 	}
 }
