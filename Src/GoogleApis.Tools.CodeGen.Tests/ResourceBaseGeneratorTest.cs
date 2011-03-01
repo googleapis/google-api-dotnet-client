@@ -58,12 +58,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		
 		#region ForTestOnly : ResourceBaseGenerator
 		/// <summary>
-		/// For testing of ResourceBaseGenerator, extend and make public all methods and fields
+		///     For testing of ResourceBaseGenerator, extend and make public all methods and fields
 		/// </summary>
 		private class ForTestOnly: ResourceBaseGenerator{
 			new public const string ResourceNameConst = ResourceBaseGenerator.ResourceNameConst;		
-			new public const string ParameterDictionaryName = ResourceBaseGenerator.ParameterDictionaryName;
-			new public const string ReturnVariableName = ResourceBaseGenerator.ReturnVariableName;
 			
 			new public void ResourceCallAddBodyDeclaration(IMethod method, CodeMemberMethod member) {
 				base.ResourceCallAddBodyDeclaration(method, member);
