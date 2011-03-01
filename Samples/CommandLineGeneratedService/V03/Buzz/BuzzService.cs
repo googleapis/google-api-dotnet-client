@@ -16,9 +16,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class Activitiylist {
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
         private IList<ChiliActivitiesResourceJson> items;
         
@@ -28,7 +28,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string kind;
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -37,7 +37,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -116,17 +116,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliActivitiesExtractpeoplefromsearchJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliPeopleResourceJson> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -135,7 +135,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -153,7 +153,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -179,47 +179,47 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private NestedClass1 visibility;
         
-        private object placeholder;
+        private string placeholder;
         
-        private object targetLang;
+        private string targetLang;
         
-        private object placeName;
+        private string placeName;
         
         private NestedClass2 links;
         
-        private object crosspostSource;
+        private string crosspostSource;
         
         private NestedClass3 actor;
         
         private NestedClass4 objectField7;
         
-        private object detectedlLang;
+        private string detectedlLang;
         
         private string kind;
         
-        private object geocode;
+        private string geocode;
         
-        private object annotation;
+        private string annotation;
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
         private NestedClass5 source;
         
-        private object placeId;
+        private string placeId;
         
-        private object address;
+        private string address;
         
         private string updated;
         
         private IList<System.String> verbs;
         
-        private object radius;
+        private string radius;
         
         private IList<NestedClass6> categories;
         
-        private object untranslatedTitle;
+        private string untranslatedTitle;
         
         private string published;
         
@@ -232,7 +232,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Placeholder {
+        public virtual string Placeholder {
             get {
                 return this.placeholder;
             }
@@ -241,7 +241,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TargetLang {
+        public virtual string TargetLang {
             get {
                 return this.targetLang;
             }
@@ -250,7 +250,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object PlaceName {
+        public virtual string PlaceName {
             get {
                 return this.placeName;
             }
@@ -268,7 +268,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object CrosspostSource {
+        public virtual string CrosspostSource {
             get {
                 return this.crosspostSource;
             }
@@ -295,7 +295,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object DetectedlLang {
+        public virtual string DetectedlLang {
             get {
                 return this.detectedlLang;
             }
@@ -313,7 +313,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Geocode {
+        public virtual string Geocode {
             get {
                 return this.geocode;
             }
@@ -322,7 +322,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Annotation {
+        public virtual string Annotation {
             get {
                 return this.annotation;
             }
@@ -331,7 +331,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -340,7 +340,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -358,7 +358,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object PlaceId {
+        public virtual string PlaceId {
             get {
                 return this.placeId;
             }
@@ -367,7 +367,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Address {
+        public virtual string Address {
             get {
                 return this.address;
             }
@@ -394,7 +394,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Radius {
+        public virtual string Radius {
             get {
                 return this.radius;
             }
@@ -412,7 +412,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object UntranslatedTitle {
+        public virtual string UntranslatedTitle {
             get {
                 return this.untranslatedTitle;
             }
@@ -445,11 +445,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             public class NestedClass1_1 {
                 
-                private object id;
+                private string id;
                 
-                private object title;
+                private string title;
                 
-                public virtual object Id {
+                public virtual string Id {
                     get {
                         return this.id;
                     }
@@ -458,7 +458,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Title {
+                public virtual string Title {
                     get {
                         return this.title;
                     }
@@ -486,9 +486,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 
                 private long count;
                 
-                private object type;
+                private string type;
                 
-                private object href;
+                private string href;
                 
                 public virtual long Count {
                     get {
@@ -499,7 +499,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Type {
+                public virtual string Type {
                     get {
                         return this.type;
                     }
@@ -508,7 +508,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Href {
+                public virtual string Href {
                     get {
                         return this.href;
                     }
@@ -521,15 +521,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass3 {
             
-            private object id;
+            private string id;
             
-            private object profileUrl;
+            private string profileUrl;
             
-            private object thumbnailUrl;
+            private string thumbnailUrl;
             
-            private object name;
+            private string name;
             
-            public virtual object Id {
+            public virtual string Id {
                 get {
                     return this.id;
                 }
@@ -538,7 +538,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object ProfileUrl {
+            public virtual string ProfileUrl {
                 get {
                     return this.profileUrl;
                 }
@@ -547,7 +547,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object ThumbnailUrl {
+            public virtual string ThumbnailUrl {
                 get {
                     return this.thumbnailUrl;
                 }
@@ -556,7 +556,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Name {
+            public virtual string Name {
                 get {
                     return this.name;
                 }
@@ -568,9 +568,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass4 {
             
-            private object untranslatedContent;
+            private string untranslatedContent;
             
-            private object targetLang;
+            private string targetLang;
             
             private IList<ChiliPeopleResourceJson> liked;
             
@@ -580,21 +580,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             private string type;
             
-            private object detectedlLang;
+            private string detectedlLang;
             
             private ChiliActivitiesResourceJson shareOriginal;
             
-            private object originalContent;
+            private string originalContent;
             
-            private object id;
+            private string id;
             
-            private object content;
+            private string content;
             
             private IList<NestedClass4_3> attachments;
             
             private IList<ChiliCommentsResourceJson> comments;
             
-            public virtual object UntranslatedContent {
+            public virtual string UntranslatedContent {
                 get {
                     return this.untranslatedContent;
                 }
@@ -603,7 +603,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object TargetLang {
+            public virtual string TargetLang {
                 get {
                     return this.targetLang;
                 }
@@ -648,7 +648,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object DetectedlLang {
+            public virtual string DetectedlLang {
                 get {
                     return this.detectedlLang;
                 }
@@ -666,7 +666,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object OriginalContent {
+            public virtual string OriginalContent {
                 get {
                     return this.originalContent;
                 }
@@ -675,7 +675,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Id {
+            public virtual string Id {
                 get {
                     return this.id;
                 }
@@ -684,7 +684,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Content {
+            public virtual string Content {
                 get {
                     return this.content;
                 }
@@ -716,15 +716,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             public class NestedClass4_2 {
                 
-                private object id;
+                private string id;
                 
-                private object profileUrl;
+                private string profileUrl;
                 
-                private object thumbnailUrl;
+                private string thumbnailUrl;
                 
-                private object name;
+                private string name;
                 
-                public virtual object Id {
+                public virtual string Id {
                     get {
                         return this.id;
                     }
@@ -733,7 +733,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object ProfileUrl {
+                public virtual string ProfileUrl {
                     get {
                         return this.profileUrl;
                     }
@@ -742,7 +742,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object ThumbnailUrl {
+                public virtual string ThumbnailUrl {
                     get {
                         return this.thumbnailUrl;
                     }
@@ -751,7 +751,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Name {
+                public virtual string Name {
                     get {
                         return this.name;
                     }
@@ -763,17 +763,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             public class NestedClass4_3 {
                 
-                private object content;
+                private string content;
                 
-                private object id;
+                private string id;
                 
-                private object title;
+                private string title;
                 
                 private NestedClass4_3_1 links;
                 
                 private string type;
                 
-                public virtual object Content {
+                public virtual string Content {
                     get {
                         return this.content;
                     }
@@ -782,7 +782,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Id {
+                public virtual string Id {
                     get {
                         return this.id;
                     }
@@ -791,7 +791,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Title {
+                public virtual string Title {
                     get {
                         return this.title;
                     }
@@ -825,9 +825,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass5 {
             
-            private object title;
+            private string title;
             
-            public virtual object Title {
+            public virtual string Title {
                 get {
                     return this.title;
                 }
@@ -839,13 +839,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass6 {
             
-            private object schema;
+            private string schema;
             
-            private object term;
+            private string term;
             
-            private object label;
+            private string label;
             
-            public virtual object Schema {
+            public virtual string Schema {
                 get {
                     return this.schema;
                 }
@@ -854,7 +854,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Term {
+            public virtual string Term {
                 get {
                     return this.term;
                 }
@@ -863,7 +863,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Label {
+            public virtual string Label {
                 get {
                     return this.label;
                 }
@@ -882,9 +882,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliCommentsListJson {
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
         private IList<ChiliCommentsResourceJson> items;
         
@@ -894,7 +894,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string kind;
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -903,7 +903,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -954,19 +954,19 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliCommentsResourceJson {
         
-        private object content;
+        private string content;
         
-        private object id;
+        private string id;
         
-        private object detectedLang;
+        private string detectedLang;
         
-        private object untranslatedContent;
+        private string untranslatedContent;
         
         private string updated;
         
-        private object targetLang;
+        private string targetLang;
         
-        private object placeholder;
+        private string placeholder;
         
         private NestedClass1 links;
         
@@ -976,9 +976,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string kind;
         
-        private object originalContent;
+        private string originalContent;
         
-        public virtual object Content {
+        public virtual string Content {
             get {
                 return this.content;
             }
@@ -987,7 +987,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -996,7 +996,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object DetectedLang {
+        public virtual string DetectedLang {
             get {
                 return this.detectedLang;
             }
@@ -1005,7 +1005,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object UntranslatedContent {
+        public virtual string UntranslatedContent {
             get {
                 return this.untranslatedContent;
             }
@@ -1023,7 +1023,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TargetLang {
+        public virtual string TargetLang {
             get {
                 return this.targetLang;
             }
@@ -1032,7 +1032,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Placeholder {
+        public virtual string Placeholder {
             get {
                 return this.placeholder;
             }
@@ -1077,7 +1077,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object OriginalContent {
+        public virtual string OriginalContent {
             get {
                 return this.originalContent;
             }
@@ -1101,13 +1101,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             public class NestedClass1_1 {
                 
-                private object refField0;
+                private string refField0;
                 
-                private object source;
+                private string source;
                 
-                private object href;
+                private string href;
                 
-                public virtual object RefProperty0 {
+                public virtual string RefProperty0 {
                     get {
                         return this.refField0;
                     }
@@ -1116,7 +1116,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Source {
+                public virtual string Source {
                     get {
                         return this.source;
                     }
@@ -1125,7 +1125,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Href {
+                public virtual string Href {
                     get {
                         return this.href;
                     }
@@ -1138,15 +1138,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass2 {
             
-            private object id;
+            private string id;
             
-            private object profileUrl;
+            private string profileUrl;
             
-            private object thumbnailUrl;
+            private string thumbnailUrl;
             
-            private object name;
+            private string name;
             
-            public virtual object Id {
+            public virtual string Id {
                 get {
                     return this.id;
                 }
@@ -1155,7 +1155,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object ProfileUrl {
+            public virtual string ProfileUrl {
                 get {
                     return this.profileUrl;
                 }
@@ -1164,7 +1164,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object ThumbnailUrl {
+            public virtual string ThumbnailUrl {
                 get {
                     return this.thumbnailUrl;
                 }
@@ -1173,7 +1173,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Name {
+            public virtual string Name {
                 get {
                     return this.name;
                 }
@@ -1214,17 +1214,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliEntitiesStarredListJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliEntitiesStarredResource> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -1233,7 +1233,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -1251,7 +1251,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -1272,27 +1272,27 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliEntitiesStarredResource {
         
-        private object summary;
+        private string summary;
         
-        private object id;
+        private string id;
         
         private IList<NestedClass1> viewerStarAcl;
         
-        private object title;
+        private string title;
         
-        private object chipsUiAcl;
+        private string chipsUiAcl;
         
-        private object totalNumStars;
+        private string totalNumStars;
         
         private IList<ChiliPeopleResourceJson> starredBy;
         
-        private object starredByViewer;
+        private string starredByViewer;
         
-        private object comment;
+        private string comment;
         
         private string kind;
         
-        public virtual object Summary {
+        public virtual string Summary {
             get {
                 return this.summary;
             }
@@ -1301,7 +1301,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -1319,7 +1319,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -1328,7 +1328,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ChipsUiAcl {
+        public virtual string ChipsUiAcl {
             get {
                 return this.chipsUiAcl;
             }
@@ -1337,7 +1337,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalNumStars {
+        public virtual string TotalNumStars {
             get {
                 return this.totalNumStars;
             }
@@ -1355,7 +1355,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object StarredByViewer {
+        public virtual string StarredByViewer {
             get {
                 return this.starredByViewer;
             }
@@ -1364,7 +1364,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Comment {
+        public virtual string Comment {
             get {
                 return this.comment;
             }
@@ -1384,15 +1384,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass1 {
             
-            private object id;
+            private string id;
             
-            private IList<System.Object> tags;
+            private IList<System.String> tags;
             
-            private object displayName;
+            private string displayName;
             
-            private object kind;
+            private string kind;
             
-            public virtual object Id {
+            public virtual string Id {
                 get {
                     return this.id;
                 }
@@ -1401,7 +1401,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual IList<System.Object> Tags {
+            public virtual IList<System.String> Tags {
                 get {
                     return this.tags;
                 }
@@ -1410,7 +1410,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object DisplayName {
+            public virtual string DisplayName {
                 get {
                     return this.displayName;
                 }
@@ -1419,7 +1419,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Kind {
+            public virtual string Kind {
                 get {
                     return this.kind;
                 }
@@ -1554,17 +1554,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliGroupsResourceJson {
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
         private NestedClass1 links;
         
-        private object memberCount;
+        private string memberCount;
         
         private string kind;
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -1573,7 +1573,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -1591,7 +1591,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object MemberCount {
+        public virtual string MemberCount {
             get {
                 return this.memberCount;
             }
@@ -1626,7 +1626,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 
                 private string type;
                 
-                private object href;
+                private string href;
                 
                 public virtual string Type {
                     get {
@@ -1637,7 +1637,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     }
                 }
                 
-                public virtual object Href {
+                public virtual string Href {
                     get {
                         return this.href;
                     }
@@ -1651,17 +1651,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleLikedJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliPeopleResourceJson> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -1670,7 +1670,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -1688,7 +1688,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -1709,17 +1709,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleListJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliPeopleResourceJson> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -1728,7 +1728,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -1746,7 +1746,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -1767,17 +1767,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleResharedJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliPeopleResourceJson> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -1786,7 +1786,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -1804,7 +1804,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -1825,111 +1825,111 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleResourceJson {
         
-        private IList<System.Object> turnOffs;
+        private IList<System.String> turnOffs;
         
-        private IList<System.Object> heroes;
+        private IList<System.String> heroes;
         
         private IList<NestedClass1> ims;
         
-        private object connected;
+        private string connected;
         
-        private IList<System.Object> sports;
+        private IList<System.String> sports;
         
-        private IList<System.Object> languagesSpoken;
+        private IList<System.String> languagesSpoken;
         
-        private object religion;
+        private string religion;
         
-        private IList<System.Object> turnOns;
+        private IList<System.String> turnOns;
         
-        private IList<System.Object> languages;
+        private IList<System.String> languages;
         
         private string updated;
         
-        private IList<System.Object> cars;
+        private IList<System.String> cars;
         
-        private IList<System.Object> pets;
+        private IList<System.String> pets;
         
-        private object gender;
+        private string gender;
         
-        private object humor;
+        private string humor;
         
-        private IList<System.Object> activities;
+        private IList<System.String> activities;
         
-        private object preferredUsername;
+        private string preferredUsername;
         
-        private object hasApp;
+        private string hasApp;
         
-        private IList<System.Object> books;
+        private IList<System.String> books;
         
-        private object happiestWhen;
+        private string happiestWhen;
         
-        private object scaredOf;
+        private string scaredOf;
         
-        private object nickname;
+        private string nickname;
         
-        private object status;
+        private string status;
         
         private IList<NestedClass2> emails;
         
-        private object profileUrl;
+        private string profileUrl;
         
-        private IList<System.Object> food;
+        private IList<System.String> food;
         
-        private object utcOffset;
+        private string utcOffset;
         
-        private object profileVideo;
+        private string profileVideo;
         
-        private object smoker;
+        private string smoker;
         
         private IList<NestedClass3> addresses;
         
-        private object birthday;
+        private string birthday;
         
-        private object fashion;
+        private string fashion;
         
-        private IList<System.Object> interests;
+        private IList<System.String> interests;
         
-        private object drinker;
+        private string drinker;
         
-        private IList<System.Object> movies;
+        private IList<System.String> movies;
         
-        private IList<System.Object> jobInterests;
+        private IList<System.String> jobInterests;
         
-        private IList<System.Object> children;
+        private IList<System.String> children;
         
-        private object lookingFor;
+        private string lookingFor;
         
-        private object romance;
+        private string romance;
         
-        private object aboutMe;
+        private string aboutMe;
         
         private string kind;
         
-        private object bodyType;
+        private string bodyType;
         
-        private object id;
+        private string id;
         
-        private IList<System.Object> tvShows;
+        private IList<System.String> tvShows;
         
         private NestedClass4 name;
         
-        private object thumbnailUrl;
+        private string thumbnailUrl;
         
         private string published;
         
-        private IList<System.Object> relationships;
+        private IList<System.String> relationships;
         
-        private object profileSong;
+        private string profileSong;
         
-        private object note;
+        private string note;
         
-        private IList<System.Object> music;
+        private IList<System.String> music;
         
-        private IList<System.Object> tags;
+        private IList<System.String> tags;
         
-        private object anniversary;
+        private string anniversary;
         
-        private IList<System.Object> politicalViews;
+        private IList<System.String> politicalViews;
         
         private IList<NestedClass5> accounts;
         
@@ -1937,25 +1937,25 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private IList<NestedClass7> organizations;
         
-        private object relationshipStatus;
+        private string relationshipStatus;
         
         private IList<NestedClass8> phoneNumbers;
         
-        private object livingArrangement;
+        private string livingArrangement;
         
-        private object currentLocation;
+        private string currentLocation;
         
         private IList<NestedClass9> photos;
         
-        private IList<System.Object> quotes;
+        private IList<System.String> quotes;
         
-        private object sexualOrientation;
+        private string sexualOrientation;
         
-        private object displayName;
+        private string displayName;
         
-        private object ethnicity;
+        private string ethnicity;
         
-        public virtual IList<System.Object> TurnOffs {
+        public virtual IList<System.String> TurnOffs {
             get {
                 return this.turnOffs;
             }
@@ -1964,7 +1964,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Heroes {
+        public virtual IList<System.String> Heroes {
             get {
                 return this.heroes;
             }
@@ -1982,7 +1982,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Connected {
+        public virtual string Connected {
             get {
                 return this.connected;
             }
@@ -1991,7 +1991,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Sports {
+        public virtual IList<System.String> Sports {
             get {
                 return this.sports;
             }
@@ -2000,7 +2000,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> LanguagesSpoken {
+        public virtual IList<System.String> LanguagesSpoken {
             get {
                 return this.languagesSpoken;
             }
@@ -2009,7 +2009,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Religion {
+        public virtual string Religion {
             get {
                 return this.religion;
             }
@@ -2018,7 +2018,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> TurnOns {
+        public virtual IList<System.String> TurnOns {
             get {
                 return this.turnOns;
             }
@@ -2027,7 +2027,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Languages {
+        public virtual IList<System.String> Languages {
             get {
                 return this.languages;
             }
@@ -2045,7 +2045,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Cars {
+        public virtual IList<System.String> Cars {
             get {
                 return this.cars;
             }
@@ -2054,7 +2054,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Pets {
+        public virtual IList<System.String> Pets {
             get {
                 return this.pets;
             }
@@ -2063,7 +2063,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Gender {
+        public virtual string Gender {
             get {
                 return this.gender;
             }
@@ -2072,7 +2072,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Humor {
+        public virtual string Humor {
             get {
                 return this.humor;
             }
@@ -2081,7 +2081,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Activities {
+        public virtual IList<System.String> Activities {
             get {
                 return this.activities;
             }
@@ -2090,7 +2090,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object PreferredUsername {
+        public virtual string PreferredUsername {
             get {
                 return this.preferredUsername;
             }
@@ -2099,7 +2099,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object HasApp {
+        public virtual string HasApp {
             get {
                 return this.hasApp;
             }
@@ -2108,7 +2108,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Books {
+        public virtual IList<System.String> Books {
             get {
                 return this.books;
             }
@@ -2117,7 +2117,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object HappiestWhen {
+        public virtual string HappiestWhen {
             get {
                 return this.happiestWhen;
             }
@@ -2126,7 +2126,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ScaredOf {
+        public virtual string ScaredOf {
             get {
                 return this.scaredOf;
             }
@@ -2135,7 +2135,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Nickname {
+        public virtual string Nickname {
             get {
                 return this.nickname;
             }
@@ -2144,7 +2144,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Status {
+        public virtual string Status {
             get {
                 return this.status;
             }
@@ -2162,7 +2162,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ProfileUrl {
+        public virtual string ProfileUrl {
             get {
                 return this.profileUrl;
             }
@@ -2171,7 +2171,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Food {
+        public virtual IList<System.String> Food {
             get {
                 return this.food;
             }
@@ -2180,7 +2180,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object UtcOffset {
+        public virtual string UtcOffset {
             get {
                 return this.utcOffset;
             }
@@ -2189,7 +2189,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ProfileVideo {
+        public virtual string ProfileVideo {
             get {
                 return this.profileVideo;
             }
@@ -2198,7 +2198,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Smoker {
+        public virtual string Smoker {
             get {
                 return this.smoker;
             }
@@ -2216,7 +2216,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Birthday {
+        public virtual string Birthday {
             get {
                 return this.birthday;
             }
@@ -2225,7 +2225,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Fashion {
+        public virtual string Fashion {
             get {
                 return this.fashion;
             }
@@ -2234,7 +2234,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Interests {
+        public virtual IList<System.String> Interests {
             get {
                 return this.interests;
             }
@@ -2243,7 +2243,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Drinker {
+        public virtual string Drinker {
             get {
                 return this.drinker;
             }
@@ -2252,7 +2252,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Movies {
+        public virtual IList<System.String> Movies {
             get {
                 return this.movies;
             }
@@ -2261,7 +2261,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> JobInterests {
+        public virtual IList<System.String> JobInterests {
             get {
                 return this.jobInterests;
             }
@@ -2270,7 +2270,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Children {
+        public virtual IList<System.String> Children {
             get {
                 return this.children;
             }
@@ -2279,7 +2279,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object LookingFor {
+        public virtual string LookingFor {
             get {
                 return this.lookingFor;
             }
@@ -2288,7 +2288,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Romance {
+        public virtual string Romance {
             get {
                 return this.romance;
             }
@@ -2297,7 +2297,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object AboutMe {
+        public virtual string AboutMe {
             get {
                 return this.aboutMe;
             }
@@ -2315,7 +2315,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object BodyType {
+        public virtual string BodyType {
             get {
                 return this.bodyType;
             }
@@ -2324,7 +2324,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -2333,7 +2333,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> TvShows {
+        public virtual IList<System.String> TvShows {
             get {
                 return this.tvShows;
             }
@@ -2351,7 +2351,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ThumbnailUrl {
+        public virtual string ThumbnailUrl {
             get {
                 return this.thumbnailUrl;
             }
@@ -2369,7 +2369,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Relationships {
+        public virtual IList<System.String> Relationships {
             get {
                 return this.relationships;
             }
@@ -2378,7 +2378,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ProfileSong {
+        public virtual string ProfileSong {
             get {
                 return this.profileSong;
             }
@@ -2387,7 +2387,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Note {
+        public virtual string Note {
             get {
                 return this.note;
             }
@@ -2396,7 +2396,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Music {
+        public virtual IList<System.String> Music {
             get {
                 return this.music;
             }
@@ -2405,7 +2405,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Tags {
+        public virtual IList<System.String> Tags {
             get {
                 return this.tags;
             }
@@ -2414,7 +2414,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Anniversary {
+        public virtual string Anniversary {
             get {
                 return this.anniversary;
             }
@@ -2423,7 +2423,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> PoliticalViews {
+        public virtual IList<System.String> PoliticalViews {
             get {
                 return this.politicalViews;
             }
@@ -2459,7 +2459,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object RelationshipStatus {
+        public virtual string RelationshipStatus {
             get {
                 return this.relationshipStatus;
             }
@@ -2477,7 +2477,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object LivingArrangement {
+        public virtual string LivingArrangement {
             get {
                 return this.livingArrangement;
             }
@@ -2486,7 +2486,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object CurrentLocation {
+        public virtual string CurrentLocation {
             get {
                 return this.currentLocation;
             }
@@ -2504,7 +2504,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.Object> Quotes {
+        public virtual IList<System.String> Quotes {
             get {
                 return this.quotes;
             }
@@ -2513,7 +2513,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object SexualOrientation {
+        public virtual string SexualOrientation {
             get {
                 return this.sexualOrientation;
             }
@@ -2522,7 +2522,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object DisplayName {
+        public virtual string DisplayName {
             get {
                 return this.displayName;
             }
@@ -2531,7 +2531,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Ethnicity {
+        public virtual string Ethnicity {
             get {
                 return this.ethnicity;
             }
@@ -2542,13 +2542,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass1 {
             
-            private object primary;
+            private string primary;
             
-            private object value;
+            private string value;
             
-            private object type;
+            private string type;
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2557,7 +2557,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Value {
+            public virtual string Value {
                 get {
                     return this.value;
                 }
@@ -2566,7 +2566,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2578,13 +2578,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass2 {
             
-            private object primary;
+            private string primary;
             
-            private object value;
+            private string value;
             
-            private object type;
+            private string type;
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2593,7 +2593,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Value {
+            public virtual string Value {
                 get {
                     return this.value;
                 }
@@ -2602,7 +2602,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2614,23 +2614,23 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass3 {
             
-            private object region;
+            private string region;
             
-            private object streetAddress;
+            private string streetAddress;
             
-            private object formatted;
+            private string formatted;
             
-            private object postalCode;
+            private string postalCode;
             
-            private object primary;
+            private string primary;
             
-            private object locality;
+            private string locality;
             
-            private object type;
+            private string type;
             
-            private object country;
+            private string country;
             
-            public virtual object Region {
+            public virtual string Region {
                 get {
                     return this.region;
                 }
@@ -2639,7 +2639,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object StreetAddress {
+            public virtual string StreetAddress {
                 get {
                     return this.streetAddress;
                 }
@@ -2648,7 +2648,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Formatted {
+            public virtual string Formatted {
                 get {
                     return this.formatted;
                 }
@@ -2657,7 +2657,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object PostalCode {
+            public virtual string PostalCode {
                 get {
                     return this.postalCode;
                 }
@@ -2666,7 +2666,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2675,7 +2675,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Locality {
+            public virtual string Locality {
                 get {
                     return this.locality;
                 }
@@ -2684,7 +2684,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2693,7 +2693,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Country {
+            public virtual string Country {
                 get {
                     return this.country;
                 }
@@ -2705,19 +2705,19 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass4 {
             
-            private object middleName;
+            private string middleName;
             
-            private object formatted;
+            private string formatted;
             
-            private object honorificPrefix;
+            private string honorificPrefix;
             
-            private object familyName;
+            private string familyName;
             
-            private object givenName;
+            private string givenName;
             
-            private object honorificSuffix;
+            private string honorificSuffix;
             
-            public virtual object MiddleName {
+            public virtual string MiddleName {
                 get {
                     return this.middleName;
                 }
@@ -2726,7 +2726,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Formatted {
+            public virtual string Formatted {
                 get {
                     return this.formatted;
                 }
@@ -2735,7 +2735,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object HonorificPrefix {
+            public virtual string HonorificPrefix {
                 get {
                     return this.honorificPrefix;
                 }
@@ -2744,7 +2744,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object FamilyName {
+            public virtual string FamilyName {
                 get {
                     return this.familyName;
                 }
@@ -2753,7 +2753,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object GivenName {
+            public virtual string GivenName {
                 get {
                     return this.givenName;
                 }
@@ -2762,7 +2762,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object HonorificSuffix {
+            public virtual string HonorificSuffix {
                 get {
                     return this.honorificSuffix;
                 }
@@ -2774,13 +2774,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass5 {
             
-            private object username;
+            private string username;
             
-            private object userid;
+            private string userid;
             
-            private object domain;
+            private string domain;
             
-            public virtual object Username {
+            public virtual string Username {
                 get {
                     return this.username;
                 }
@@ -2789,7 +2789,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Userid {
+            public virtual string Userid {
                 get {
                     return this.userid;
                 }
@@ -2798,7 +2798,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Domain {
+            public virtual string Domain {
                 get {
                     return this.domain;
                 }
@@ -2810,13 +2810,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass6 {
             
-            private object primary;
+            private string primary;
             
-            private object value;
+            private string value;
             
-            private object type;
+            private string type;
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2825,7 +2825,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Value {
+            public virtual string Value {
                 get {
                     return this.value;
                 }
@@ -2834,7 +2834,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2846,25 +2846,25 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass7 {
             
-            private object startDate;
+            private string startDate;
             
-            private object title;
+            private string title;
             
-            private object location;
+            private string location;
             
-            private object description;
+            private string description;
             
-            private object department;
+            private string department;
             
-            private object primary;
+            private string primary;
             
-            private object name;
+            private string name;
             
-            private object endDate;
+            private string endDate;
             
-            private object type;
+            private string type;
             
-            public virtual object StartDate {
+            public virtual string StartDate {
                 get {
                     return this.startDate;
                 }
@@ -2873,7 +2873,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Title {
+            public virtual string Title {
                 get {
                     return this.title;
                 }
@@ -2882,7 +2882,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Location {
+            public virtual string Location {
                 get {
                     return this.location;
                 }
@@ -2891,7 +2891,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Description {
+            public virtual string Description {
                 get {
                     return this.description;
                 }
@@ -2900,7 +2900,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Department {
+            public virtual string Department {
                 get {
                     return this.department;
                 }
@@ -2909,7 +2909,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2918,7 +2918,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Name {
+            public virtual string Name {
                 get {
                     return this.name;
                 }
@@ -2927,7 +2927,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object EndDate {
+            public virtual string EndDate {
                 get {
                     return this.endDate;
                 }
@@ -2936,7 +2936,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2948,13 +2948,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass8 {
             
-            private object primary;
+            private string primary;
             
-            private object value;
+            private string value;
             
-            private object type;
+            private string type;
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -2963,7 +2963,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Value {
+            public virtual string Value {
                 get {
                     return this.value;
                 }
@@ -2972,7 +2972,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -2984,17 +2984,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass9 {
             
-            private object height;
+            private string height;
             
-            private object width;
+            private string width;
             
-            private object primary;
+            private string primary;
             
-            private object value;
+            private string value;
             
-            private object type;
+            private string type;
             
-            public virtual object Height {
+            public virtual string Height {
                 get {
                     return this.height;
                 }
@@ -3003,7 +3003,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Width {
+            public virtual string Width {
                 get {
                     return this.width;
                 }
@@ -3012,7 +3012,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Primary {
+            public virtual string Primary {
                 get {
                     return this.primary;
                 }
@@ -3021,7 +3021,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Value {
+            public virtual string Value {
                 get {
                     return this.value;
                 }
@@ -3030,7 +3030,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Type {
+            public virtual string Type {
                 get {
                     return this.type;
                 }
@@ -3043,17 +3043,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPeopleSearchJson {
         
-        private object startIndex;
+        private string startIndex;
         
-        private object totalResults;
+        private string totalResults;
         
         private IList<ChiliPeopleResourceJson> entry;
         
-        private object itemsPerPage;
+        private string itemsPerPage;
         
         private string kind;
         
-        public virtual object StartIndex {
+        public virtual string StartIndex {
             get {
                 return this.startIndex;
             }
@@ -3062,7 +3062,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object TotalResults {
+        public virtual string TotalResults {
             get {
                 return this.totalResults;
             }
@@ -3080,7 +3080,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object ItemsPerPage {
+        public virtual string ItemsPerPage {
             get {
                 return this.itemsPerPage;
             }
@@ -3346,13 +3346,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass1 {
             
-            private object albumId;
+            private string albumId;
             
-            private object album;
+            private string album;
             
             private NestedClass1_1 photo;
             
-            public virtual object AlbumId {
+            public virtual string AlbumId {
                 get {
                     return this.albumId;
                 }
@@ -3361,7 +3361,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual object Album {
+            public virtual string Album {
                 get {
                     return this.album;
                 }
@@ -3381,9 +3381,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             public class NestedClass1_1 {
                 
-                private object photoUrl;
+                private string photoUrl;
                 
-                public virtual object PhotoUrl {
+                public virtual string PhotoUrl {
                     get {
                         return this.photoUrl;
                     }
@@ -3654,9 +3654,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliRelatedListJson {
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
         private IList<ChiliRelatedResourceJson> items;
         
@@ -3666,7 +3666,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         private string kind;
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -3675,7 +3675,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -3726,17 +3726,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliRelatedResourceJson {
         
-        private object summary;
+        private string summary;
         
-        private object id;
+        private string id;
         
-        private object title;
+        private string title;
         
-        private object href;
+        private string href;
         
         private string kind;
         
-        public virtual object Summary {
+        public virtual string Summary {
             get {
                 return this.summary;
             }
@@ -3745,7 +3745,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Id {
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -3754,7 +3754,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Title {
+        public virtual string Title {
             get {
                 return this.title;
             }
@@ -3763,7 +3763,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual object Href {
+        public virtual string Href {
             get {
                 return this.href;
             }

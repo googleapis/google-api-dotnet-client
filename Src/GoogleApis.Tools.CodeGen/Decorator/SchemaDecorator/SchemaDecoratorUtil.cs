@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.Object:
                     return GetObjectTypeReference(propertySchema, internalClassProvider);  
                 case JsonSchemaType.Any:
-                    return new CodeTypeReference(typeof(object));
+                    return new CodeTypeReference(typeof(string));
                 default:
                     logger.WarnFormat("Found currently unsupported type {0} as part of {1}", propertySchema.Type.Value, propertySchema.ToString());
                     return new CodeTypeReference(typeof(object));
