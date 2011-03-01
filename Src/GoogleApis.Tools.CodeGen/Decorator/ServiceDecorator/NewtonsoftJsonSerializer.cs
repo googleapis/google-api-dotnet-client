@@ -1,5 +1,6 @@
 using System;
 using System.CodeDom;
+using System.IO;
 
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// <summary>
     /// Supplies ObjectToJson method in generated services. Using Newtonsoft.Json.JsonSerilizer
     /// </summary>
-    public class NewtonsoftObjectToJson : IServiceDecorator
+    public class NewtonsoftJsonSerializer : IServiceDecorator
     {
         private const string FieldName = "newtonJsonSerilizer";
         private const string PropertyName = "NewtonJsonSerilizer";
@@ -59,6 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             //private JsonSerializer NewtonJsonSerilizer
             property.Name = PropertyName;
             property.Attributes = MemberAttributes.Private;
+            property.Type = new CodeTypeReference(typeof(JsonSerializer));
             property.HasSet = false;
             property.HasGet = true;
             
@@ -154,13 +156,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var textWriterDeclaration = new CodeVariableDeclarationStatement();
             textWriterDeclaration.Name = "tw";
             textWriterDeclaration.Type = new CodeTypeReference(typeof(System.IO.TextWriter));
-            textWriterDeclaration.InitExpression = new CodeObjectCreateExpression(typeof(System.IO.TextWriter));
+            textWriterDeclaration.InitExpression = new CodeObjectCreateExpression(typeof (System.IO.StringWriter));
             
-            // NewtonJsonSerilizer.Serialize(tw, obj);
+            // this.NewtonJsonSerilizer.Serialize(tw, obj);
             var serializeCall = new CodeMethodInvokeExpression();
             serializeCall.Parameters.Add(new CodeVariableReferenceExpression("tw"));
             serializeCall.Parameters.Add(new CodeVariableReferenceExpression("obj"));
-            serializeCall.Method = new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), "Serialize");
+            serializeCall.Method = new CodeMethodReferenceExpression(
+                                    new CodePropertyReferenceExpression(
+                                        new CodeThisReferenceExpression(),PropertyName)
+                                        , "Serialize");
             
             //return tw.ToString()
             var returnStatment = new CodeMethodReturnStatement();
@@ -175,11 +180,66 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return method;
         }
         
+        /// <summary>
+        ///     <code>
+        ///        public TOutput JsonToObject<TOutput>(Stream stream){
+        ///            StreamReader streamReader = new StreamReader(stream);
+        ///            string str = streamReader.ReadToEnd();
+        ///            return JsonConvert.DeserializeObject<TOutput>(str);
+        ///        } 
+        ///     </code> 
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeMemberMethod CreateJsonToObject() 
+        {
+            //public TOutput JsonToObject<TOutput>(Stream stream)
+            var method = new CodeMemberMethod();
+            var typeParameter = new CodeTypeParameter("TOutput");
+            method.Name = "JsonToObject";
+            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Stream), "stream"));
+            method.TypeParameters.Add(typeParameter);
+            method.ReturnType = new CodeTypeReference(typeParameter);
+            method.Attributes = MemberAttributes.Public;
+            
+            // StreamReader sr = new StreamReader(stream);
+            var streamReaderDeclaration = new CodeVariableDeclarationStatement(
+                typeof(StreamReader),
+                "streamReader",
+                new CodeObjectCreateExpression(typeof(StreamReader), 
+                    new CodeVariableReferenceExpression("stream")));
+            
+            // string str = sr.ReadToEnd();
+            var stringDeclaration = new CodeVariableDeclarationStatement(
+                typeof(string),
+                "str",
+                new CodeMethodInvokeExpression(
+                    new CodeVariableReferenceExpression("streamReader"),
+                    "ReadToEnd"));
+            
+            // return JsonConvert.DeserializeObject<TOutput>(str);
+            var methodCall = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(
+                    new CodeTypeReferenceExpression(typeof(JsonConvert)),
+                    "DeserializeObject",
+                    new CodeTypeReference[]{new CodeTypeReference("TOutput")}),
+                new CodeVariableReferenceExpression("str"));
+           
+            var returnStatment = new CodeMethodReturnStatement(methodCall);
+                
+            
+            method.Statements.Add(streamReaderDeclaration);
+            method.Statements.Add(stringDeclaration);
+            method.Statements.Add(returnStatment);
+
+            return method;
+        }
+        
         public void DecorateClass (Discovery.IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.Members.Add(CreateJsonSerializerField());
             serviceClass.Members.Add(CreateJsonSerializerGetter());
             serviceClass.Members.Add(CreateObjectToJson());
+            serviceClass.Members.Add(CreateJsonToObject());
         }        
     }
 }

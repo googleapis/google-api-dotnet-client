@@ -74,7 +74,7 @@
     <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
     <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\NewtonsoftObjectToJson.cs" />
+    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

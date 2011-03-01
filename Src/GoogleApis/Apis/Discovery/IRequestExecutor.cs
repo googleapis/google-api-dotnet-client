@@ -28,4 +28,10 @@ namespace Google.Apis.Discovery
 	{
 		Stream ExecuteRequest (string resource, string method, string body, IDictionary<string, string> parameters);
 	}
+    
+    public interface ISchemaAwareRequestExecutor : IRequestExecutor
+    {
+        TOutput JsonToObject<TOutput>(System.IO.Stream stream);
+        Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, string> parameters);
+    }
 }

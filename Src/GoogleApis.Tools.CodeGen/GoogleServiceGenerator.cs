@@ -66,6 +66,15 @@ namespace Google.Apis.Tools.CodeGen
                     new VersionInformationServiceDecorator (), 
                     new StandardExecuteMethodServiceDecorator ()}).
                     AsReadOnly();
+        public static readonly IList<IServiceDecorator> SchemaAwareServiceDecorators = (new List<IServiceDecorator>(){
+                    new StandardServiceFieldServiceDecorator(),
+                    new StandardConstructServiceDecorator (), 
+                    new EasyConstructServiceDecorator (), 
+                    new VersionInformationServiceDecorator (), 
+                    new StandardExecuteMethodServiceDecorator (),
+                    new SchemaAwearExecuteMethodDecorator(),
+                    new NewtonsoftJsonSerializer()}).
+                    AsReadOnly();
         public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){
                     new StandardResourcePropertyServiceDecorator()}).
                     AsReadOnly();
@@ -99,7 +108,7 @@ namespace Google.Apis.Tools.CodeGen
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
                 StandardResourceDecorators, 
-                StandardServiceDecorators,
+                SchemaAwareServiceDecorators,
                 StandardResourceContainerDecorator,
                 new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
                 )

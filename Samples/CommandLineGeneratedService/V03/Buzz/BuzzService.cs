@@ -3931,7 +3931,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
     using Google.Apis.Discovery;
     
     
-    public class BuzzService : Google.Apis.Discovery.IRequestExecutor {
+    public class BuzzService : Google.Apis.Discovery.IRequestExecutor, Google.Apis.Discovery.ISchemaAwareRequestExecutor {
         
         private Google.Apis.Discovery.IService genericService;
         
@@ -3945,6 +3945,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         
         private const Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_0_3;
         
+        private Newtonsoft.Json.JsonSerializer newtonJsonSerilizer = null;
+        
         private Activities activities;
         
         public BuzzService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
@@ -3957,6 +3959,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
                 this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + BuzzService.Name)))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, BuzzService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
+        private Newtonsoft.Json.JsonSerializer NewtonJsonSerilizer {
+            get {
+                if ((this.newtonJsonSerilizer == null)) {
+                    Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings();
+                    settings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                    this.newtonJsonSerilizer = Newtonsoft.Json.JsonSerializer.Create(settings);
+                }
+                return this.newtonJsonSerilizer;
+            }
+        }
+        
         public virtual Activities Activities {
             get {
                 return this.activities;
@@ -3966,6 +3979,23 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, string> parameters) {
             Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
             return request.WithParameters(parameters).WithAuthentication(authenticator).WithBody(body).ExecuteRequest();
+        }
+        
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, object body, System.Collections.Generic.IDictionary<string, string> parameters) {
+            return this.ExecuteRequest(resource, method, this.ObjectToJson(body), parameters);
+        }
+        
+        private string ObjectToJson(object obj) {
+            System.IO.TextWriter tw = new System.IO.StringWriter();
+            this.NewtonJsonSerilizer.Serialize(tw, obj);
+            return tw.ToString();
+        }
+        
+        public virtual TOutput JsonToObject<TOutput>(System.IO.Stream stream)
+         {
+            System.IO.StreamReader streamReader = new System.IO.StreamReader(stream);
+            string str = streamReader.ReadToEnd();
+            return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
         }
     }
     
