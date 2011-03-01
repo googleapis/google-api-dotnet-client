@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		public void TestDecorateClass ()
 		{
 			var decorator = new StandardMethodResourceDecorator();
-			var decoratedClass = CreateDecoratedResourceClass(new StandardServiceFieldResourceDecorator(),
+			var decoratedClass = CreateDecoratedResourceClass(new StandardServiceFieldResourceDecorator(false),
                                                               new StandardResourceNameResourceDecorator(), 
                                                               decorator);
 			

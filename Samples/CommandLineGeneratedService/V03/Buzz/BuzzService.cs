@@ -4001,7 +4001,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
     
     public class Activities {
         
-        private Google.Apis.Discovery.IRequestExecutor service;
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
         private const string Resource = "activities";
         
