@@ -52,13 +52,22 @@ namespace Google.Apis.Tools.CodeGen
         private readonly GoogleSchemaGenerator schemaGenerator;
         
         public static readonly IList<IResourceDecorator> StandardResourceDecorators = (new List<IResourceDecorator>(){
-                    new StandardServiceFieldResourceDecorator(),
+                    new StandardServiceFieldResourceDecorator(false),
                     new StandardResourceNameResourceDecorator(),
                     new StandardConstructorResourceDecorator (), 
                     new StandardMethodResourceDecorator (), 
                     new Log4NetResourceDecorator (), 
                     new DictonaryOptionalParameterResourceDecorator ()}).
                     AsReadOnly();
+        public static readonly IList<IResourceDecorator> SchemaAwareResourceDecorators = (new List<IResourceDecorator>(){
+                    new StandardServiceFieldResourceDecorator(true),
+                    new StandardResourceNameResourceDecorator(),
+                    new StandardConstructorResourceDecorator (), 
+                    new StandardMethodResourceDecorator (), 
+                    new Log4NetResourceDecorator (), 
+                    new DictonaryOptionalParameterResourceDecorator ()}).
+                    AsReadOnly();
+
         public static readonly IList<IServiceDecorator> StandardServiceDecorators = (new List<IServiceDecorator>(){
                     new StandardServiceFieldServiceDecorator(),
                     new StandardConstructServiceDecorator (), 
@@ -107,7 +116,7 @@ namespace Google.Apis.Tools.CodeGen
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
-                StandardResourceDecorators, 
+                SchemaAwareResourceDecorators, 
                 SchemaAwareServiceDecorators,
                 StandardResourceContainerDecorator,
                 new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
