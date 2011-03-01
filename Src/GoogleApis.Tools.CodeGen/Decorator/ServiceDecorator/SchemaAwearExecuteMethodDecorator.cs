@@ -31,8 +31,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "resource"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "method"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(object), "body"));
-            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, string>), "parameters"));
-            
+            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, string>), 
+                                                                           "parameters"));
             // ObjectToJson(body)
             var objectToJson = new CodeMethodInvokeExpression();
             objectToJson.Method = new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), 
@@ -57,6 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         
         public void DecorateClass (Discovery.IService service, CodeTypeDeclaration serviceClass)
         {
+            serviceClass.BaseTypes.Add(typeof(ISchemaAwareRequestExecutor));
             serviceClass.Members.Add(CreateExecuteMethod());
         }
     }

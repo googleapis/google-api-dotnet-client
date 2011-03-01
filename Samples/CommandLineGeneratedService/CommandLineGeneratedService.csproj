@@ -53,13 +53,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Google.Apis.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.0.4077.21215, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
