@@ -32,7 +32,7 @@ namespace Google.Apis.Discovery.Schema
         
         public FutureJsonSchemaResolver () : base()
         {
-            this.LoadedSchemas = new FutureAwearList(this.LoadedSchemas);
+            this.LoadedSchemas = new FutureAwareList(this.LoadedSchemas);
         }
         
         public override JsonSchema GetSchema (string id)
@@ -50,28 +50,28 @@ namespace Google.Apis.Discovery.Schema
         
         public void ResolveAndVerify()
         {
-            
-            var unresolved = from schmea in this.LoadedSchemas
-                where schmea is FutureJsonSchema && ((FutureJsonSchema)schmea).Resolved == false
-                    select schmea as FutureJsonSchema;
+
+			var unresolved = from schema in this.LoadedSchemas
+							 where schema is FutureJsonSchema && ((FutureJsonSchema)schema).Resolved == false
+							 select schema as FutureJsonSchema;
 
             foreach (var futureSchema in unresolved)
             {
-                var actual = (from schmea in this.LoadedSchemas
-                             where schmea.Id == futureSchema.Id &&
-                                    ( schmea is FutureJsonSchema == false ||
-                                      ((FutureJsonSchema)schmea).Resolved)
-                             select schmea).FirstOrDefault();
+				var actual = (from schema in this.LoadedSchemas
+							  where schema.Id == futureSchema.Id &&
+									(schema is FutureJsonSchema == false ||
+									  ((FutureJsonSchema)schema).Resolved)
+							  select schema).FirstOrDefault();
                 if (actual != null)
                 {
                     futureSchema.Resolve(actual);
-                    logger.Debug("Last minite resolving of " + futureSchema.Id);
+                    logger.Debug("Last minute resolving of " + futureSchema.Id);
                 }
             }
 
-            unresolved = from schmea in this.LoadedSchemas
-                             where schmea is FutureJsonSchema && ((FutureJsonSchema)schmea).Resolved == false
-                             select schmea as FutureJsonSchema;
+			unresolved = from schema in this.LoadedSchemas
+						 where schema is FutureJsonSchema && ((FutureJsonSchema)schema).Resolved == false
+						 select schema as FutureJsonSchema;
 
 
             string errors = unresolved.Aggregate("", (s, x) => s += ", " + x.Id);
@@ -85,11 +85,11 @@ namespace Google.Apis.Discovery.Schema
         }
         
         [VisibleForTestOnly]
-        internal class FutureAwearList : IList<JsonSchema>
+        internal class FutureAwareList : IList<JsonSchema>
         {
             private readonly IList<JsonSchema> innerList;
             
-            public FutureAwearList(IList<JsonSchema> innerList)
+            public FutureAwareList(IList<JsonSchema> innerList)
             {
                 this.innerList = innerList;
             }

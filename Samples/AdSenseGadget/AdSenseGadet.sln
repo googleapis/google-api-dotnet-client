@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gadget.Ui", "AdSenseGadet\Gadget.Ui.csproj", "{57BD3EC2-103D-45D8-B6B9-788FEB73BDD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gadget.Ui", "AdSenseGadget\Gadget.Ui.csproj", "{57BD3EC2-103D-45D8-B6B9-788FEB73BDD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{52158421-B9A1-4375-BDA3-87AEFB224014}"
 EndProject

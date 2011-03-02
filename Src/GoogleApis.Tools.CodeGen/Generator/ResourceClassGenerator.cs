@@ -25,7 +25,7 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Generates a class for one Resource. This uses the passed in decroators to do the work.
+    /// Generates a class for one Resource. This uses the passed in decorators to do the work.
     /// </summary>
     /// <seealso cref="IResourceDecorator"/>
     public class ResourceClassGenerator : BaseGenerator

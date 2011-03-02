@@ -25,7 +25,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
     /// <summary>
     /// Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
-    /// To the ServiceClass.
+    /// to the ServiceClass.
     /// </summary>
     public class VersionInformationServiceDecorator : IServiceDecorator
     {

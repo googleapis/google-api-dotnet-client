@@ -40,7 +40,7 @@ namespace Google.Apis.Json
         }
 
         /// <summary>
-        /// Parses a Json String as per http://www.json.org/ acknolwedging escaped chars
+        /// Parses a Json String as per http://www.json.org/ acknowledging escaped chars
         /// </summary>
         private void ParseString (JsonToken token, char cur)
         {
@@ -82,7 +82,7 @@ namespace Google.Apis.Json
                         next = '\b';
                         break;
                     case 'u':
-                        // 4 digit hexidicamal unicode escape
+                        // 4 digit hexadecimal unicode escape
                         char[] escapedCharAry = new char[4];
                         for (int i = 0; i < 4; i++)
                         {

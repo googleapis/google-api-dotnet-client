@@ -29,29 +29,29 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyFieldDecorator));
         
-        public StandardPropertyFieldDecorator ()
+        public StandardPropertyFieldDecorator()
         {
         }
         
         
-        public void DecoratInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
-            typeDeclaration.ThrowIfNull("typeDeclatation");
+            typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
             internalClassProvider.ThrowIfNull("internalClassProvider");
             typeDeclaration.Members.AddRange(GenerateAllFields(name, schema, internalClassProvider).ToArray());
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
         {
-            typeDeclaration.ThrowIfNull("typeDeclatation");
+            typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
             internalClassProvider.ThrowIfNull("internalClassProvider");
             typeDeclaration.Members.AddRange(GenerateAllFields(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberField> GenerateAllFields (string name, JsonSchema schema, INestedClassProvider internalClassProvider)
+        internal IList<CodeMemberField> GenerateAllFields(string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNull("name");

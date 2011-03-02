@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ABE4D1B8-DB81-4025-AA5D-CC6741935A20}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Google.Apis.Samples.CommandLineGeneratedService</RootNamespace>
     <AssemblyName>CommandLineGeneratedService</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
   </PropertyGroup>
@@ -68,6 +68,9 @@
   <ItemGroup>
     <Compile Include="V03\Buzz\BuzzService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CommandLine\CommandLine.csproj">
@@ -83,9 +86,5 @@
     <ApplicationDefinition Include="CommandLineGeneratedService.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ApplicationDefinition>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="V03\" />
-    <Folder Include="V03\Buzz\" />
   </ItemGroup>
 </Project>

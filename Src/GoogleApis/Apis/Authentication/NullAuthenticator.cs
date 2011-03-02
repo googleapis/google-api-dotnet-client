@@ -19,7 +19,7 @@ using System.Net;
 namespace Google.Apis.Authentication
 {
     /// <summary>
-    /// A place holder Authenticator which adds no authentication to the request. 
+    /// A placeholder Authenticator which adds no authentication to the request. 
     /// </summary>
     public class NullAuthenticator : IAuthenticator
     {
@@ -37,8 +37,8 @@ namespace Google.Apis.Authentication
         
         
         /// <summary>
-        /// We use this to hide the fact that NullAuthenticator uses Authenticator behind the scences
-        /// This particulay useful as we are setting the application name to null. 
+        /// We use this to hide the fact that NullAuthenticator uses Authenticator behind the scenes
+        /// This is particularly useful as we are setting the application name to null. 
         /// </summary>
         private class NullAuthenticatorImpl : Authenticator
         {

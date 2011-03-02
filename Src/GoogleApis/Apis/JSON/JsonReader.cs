@@ -24,7 +24,7 @@ using System.Diagnostics;
 namespace Google.Apis.Json
 {
     /// <summary>
-    /// basic JsonReader that can parse eitehr strings or streams into some
+    /// basic JsonReader that can parse either strings or streams into some
     /// dictionary form.
     /// </summary>
     public class JsonReader

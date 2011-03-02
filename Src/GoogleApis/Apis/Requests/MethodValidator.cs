@@ -44,7 +44,7 @@ namespace Google.Apis
 		/// </returns>
 		public bool ValidateAllParameters() {
 			var parameters = CurrentMethod.Parameters;
-			// Itterate accross all the parameters in the discovery document, and check them against supplied arguments.
+			// Itterate across all the parameters in the discovery document, and check them against supplied arguments.
 			foreach(var parameter in parameters) {
 				var parameterInfo = parameter.Value;
 				
@@ -76,7 +76,7 @@ namespace Google.Apis
 			string currentParam;
 			bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 				
-			// If a required parameter is not present. bail
+			// If a required parameter is not present, fail
 			if(param.Required && String.IsNullOrEmpty(currentParam)) {
 				return false;
 			}
@@ -86,7 +86,7 @@ namespace Google.Apis
 				return true;	
 			}
 			else {
-				// The parameter is present, validte the regex.
+				// The parameter is present, validate the regex.
 				bool isValidData = ValidateRegex(param, currentParam.ToString());
 				if(isValidData == false) {
 					return false;
@@ -97,7 +97,7 @@ namespace Google.Apis
 		}
 		
 		/// <summary>
-		/// Validates a parameters value against the methods regex.
+		/// Validates a parameter value against the methods regex.
 		/// </summary>
 		/// <param name="pattern">
 		/// A <see cref="System.String"/>
