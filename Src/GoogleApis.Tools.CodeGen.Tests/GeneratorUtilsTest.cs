@@ -33,22 +33,22 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void LowwerFirstTest()
         {
             string upper = "ABC";
-            string lowwer = "aBC";
+            string lower = "aBC";
             
-            Assert.AreEqual(lowwer, GeneratorUtils.LowwerFirstLetter(lowwer));
-            Assert.AreEqual(lowwer, GeneratorUtils.LowwerFirstLetter(upper));
+            Assert.AreEqual(lower, GeneratorUtils.LowerFirstLetter(lower));
+            Assert.AreEqual(lower, GeneratorUtils.LowerFirstLetter(upper));
             
-            Assert.AreEqual("", GeneratorUtils.LowwerFirstLetter(""));
-            Assert.AreEqual(null, GeneratorUtils.LowwerFirstLetter(null));
+            Assert.AreEqual("", GeneratorUtils.LowerFirstLetter(""));
+            Assert.AreEqual(null, GeneratorUtils.LowerFirstLetter(null));
         }
         
         [Test()]
         public void UpperFirstTest()
         {
             string upper = "ABC";
-            string lowwer = "aBC";
+            string lower = "aBC";
             
-            Assert.AreEqual(upper, GeneratorUtils.UpperFirstLetter(lowwer));
+            Assert.AreEqual(upper, GeneratorUtils.UpperFirstLetter(lower));
             Assert.AreEqual(upper, GeneratorUtils.UpperFirstLetter(upper));
             
             Assert.AreEqual("", GeneratorUtils.UpperFirstLetter(""));

@@ -31,7 +31,7 @@ namespace Google.Apis.Authentication
         private string tokenSecret;
 
         /// <summary>
-        ///  a constructor for OpenAuthentication login use cases using 3 legged oAuth
+        ///  a constructor for OpenAuthentication login use cases using 3 legged OAuth
         /// </summary>
         /// <param name="applicationName">The name of the application</param>
         /// <param name="consumerKey">the consumerKey to use</param>
@@ -46,7 +46,7 @@ namespace Google.Apis.Authentication
         }
 
         /// <summary>
-        /// returns the Token for oAuth
+        /// returns the Token for OAuth
         /// </summary>
         /// <returns></returns>
         public string Token {
@@ -54,7 +54,7 @@ namespace Google.Apis.Authentication
         }
 
         /// <summary>
-        /// returns the TokenSecret for oAuth
+        /// returns the TokenSecret for OAuth
         /// </summary>
         /// <returns></returns>
         public string TokenSecret {
@@ -62,7 +62,7 @@ namespace Google.Apis.Authentication
         }
 
         /// <summary>
-        /// Takes an existing httpwebrequest and modifies it's headers according to
+        /// Takes an existing httpwebrequest and modifies its headers according to
         /// the authentication system used.
         /// </summary>
         /// <param name="request"></param>

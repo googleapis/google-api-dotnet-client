@@ -18,9 +18,9 @@ namespace Google.Apis.Authentication
 {
     /// <summary>
     /// A simple factory class for producing <code>IAuthenticator</code>
-    /// This can be used as with a signlton pattern with GetInstance.
+    /// This can be used as with a singleton pattern with GetInstance.
     /// Or can be constructed and passed around. Either way you must
-    /// RegisterAuthenticator before you can GetRegisterdAuthenticator
+    /// RegisterAuthenticator before you can GetRegisteredAuthenticator
     /// </summary>
     /// <seealso cref="IAuthenticator"/> 
     public class AuthenticatorFactory
@@ -38,7 +38,7 @@ namespace Google.Apis.Authentication
 
         /// <summary>
         /// The delegate passed in will be used to construct IAuthenticators in multiple contexts. If
-        /// you do not consturct a new IAuthenticator on each call please ensure you are fetching old ones from 
+        /// you do not construct a new IAuthenticator on each call please ensure you are fetching old ones from 
         /// the correct location.
         /// </summary>
         /// <example>

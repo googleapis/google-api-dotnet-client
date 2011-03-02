@@ -89,7 +89,7 @@ namespace Google.Apis.Authentication
         }
 
         /// <summary>
-        /// Takes an existing httpwebrequest and modifies it's headers according to 
+        /// Takes an existing httpwebrequest and modifies its headers according to 
         /// the authentication system used.
         /// </summary>
         /// <param name="request"></param>
@@ -100,7 +100,7 @@ namespace Google.Apis.Authentication
         }
 
         /// <summary>
-        /// Takes an existing httpwebrequest and modifies it's uri according to 
+        /// Takes an existing httpwebrequest and modifies its uri according to 
         /// the authentication system used. Only overridden in 2leggedoauth case
         /// </summary>
         /// <param name="source">the original uri</param>

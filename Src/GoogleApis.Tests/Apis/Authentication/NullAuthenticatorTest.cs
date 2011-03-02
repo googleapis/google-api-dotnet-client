@@ -1,11 +1,7 @@
-
 using System;
-
 using NUnit.Framework;
-
 using Google.Apis.Authentication;
- 
-    
+
 namespace Google.Apis.Tests.Authentication
 {
     [TestFixture()]

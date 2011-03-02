@@ -25,7 +25,7 @@ namespace Google.Apis.Discovery
 	public interface IDiscoveryDevice: IDisposable 
 	{
 		/// <summary>
-		/// Fetchs a discovery document.
+		/// Fetches a discovery document.
 		/// </summary>
 		/// <returns>
 		/// A <see cref="System.String"/>

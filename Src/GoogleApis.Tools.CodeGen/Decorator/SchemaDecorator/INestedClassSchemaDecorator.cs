@@ -22,6 +22,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
     public interface INestedClassSchemaDecorator
     {
-        void DecoratInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider);
+        void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider);
     }
 }

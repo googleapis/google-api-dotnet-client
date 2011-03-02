@@ -22,7 +22,7 @@ using System.Text.RegularExpressions;
 namespace Google.Apis.Discovery {
 	/// <summary>
 	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
-	/// TODO(davidwaters): Add expirey time based on modified time in the filesystem
+	/// TODO(davidwaters): Add expiry time based on modified time in the filesystem
 	/// </summary>
 	public class CachedWebDiscoveryDevice : IDiscoveryDevice 
 	{
@@ -73,7 +73,7 @@ namespace Google.Apis.Discovery {
 		{
 			// Start with uri
 			string fileName = DiscoveryUri.ToString();
-			// add hash code for unqiueness, in case removing invalid chars cause collision
+			// add hash code for uniqueness, in case removing invalid chars cause collision
 			fileName = fileName + "-" + fileName.GetHashCode().ToString();
 			// replace all but known safe chars
 			fileName = InvalidFileChars.Replace(fileName, "_");			

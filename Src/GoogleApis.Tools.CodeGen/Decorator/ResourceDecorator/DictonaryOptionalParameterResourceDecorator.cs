@@ -25,7 +25,7 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
     /// <summary>
-    /// An optional Decorator that add a Method to the resource class for each Method.
+    /// An optional Decorator that adds a Method to the resource class for each Method.
     /// The method added will have a parameter for each of the required parameters, all the optional parameters will be 
     /// passed in a IDictionary&lt;string,string&gt;
     /// e.g.

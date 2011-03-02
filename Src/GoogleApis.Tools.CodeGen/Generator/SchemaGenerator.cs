@@ -45,7 +45,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach( ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecoratClass(typeDeclaration, schema, nestedClassGenerator);
+                schemaDecorator.DecorateClass(typeDeclaration, schema, nestedClassGenerator);
             }
             nestedClassGenerator.GenerateNestedClasses();
             
@@ -114,7 +114,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     {
                         logger.DebugFormat("Found IInternalClassSchemaDecorator {0} - decorating {1}", schemaDecorator.ToString(), className);
                         ((INestedClassSchemaDecorator)schemaDecorator).
-                            DecoratInternalClass(typeDeclaration, className, schema, nestedClassGenerator);
+                            DecorateInternalClass(typeDeclaration, className, schema, nestedClassGenerator);
                     }
                 }
                 nestedClassGenerator.GenerateNestedClasses();

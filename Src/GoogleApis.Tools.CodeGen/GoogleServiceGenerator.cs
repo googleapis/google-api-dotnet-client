@@ -78,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen
                     GoogleSchemaGenerator schemaGenerator)
         {
             service.ThrowIfNull("service");
-            clientNamespace.ThrowIfNull("cleintNamespace");
+            clientNamespace.ThrowIfNull("clientNamespace");
             resourceDecorators.ThrowIfNull("resourceDecorators");
             serviceDecorators.ThrowIfNull("serviceDecorators");
             resourceContainerDecorators.ThrowIfNull("resourceContainerDecorators");

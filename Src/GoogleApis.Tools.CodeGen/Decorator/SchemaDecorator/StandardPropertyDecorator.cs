@@ -34,7 +34,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
         }
         
-        public void DecoratInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             typeDeclaration.Members.AddRange(GenerateAllProperties(name, schema, internalClassProvider).ToArray());
         }
         
-        public void DecoratClass (CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
@@ -50,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         }
         
         [VisibleForTestOnly]
-        internal IList<CodeMemberProperty> GenerateAllProperties (string name, JsonSchema schema, INestedClassProvider internalClassProvider)
+        internal IList<CodeMemberProperty> GenerateAllProperties(string name, JsonSchema schema, INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNullOrEmpty("name");

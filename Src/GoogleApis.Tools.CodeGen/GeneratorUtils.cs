@@ -52,8 +52,8 @@ namespace Google.Apis.Tools.CodeGen
         }
         #endregion
 
-        #region Lowwer/UpperFirst
-        public static string LowwerFirstLetter (string str)
+        #region Lower/UpperFirst
+        public static string LowerFirstLetter (string str)
         {
             if (str == null || str.Length == 0)
             {
@@ -150,7 +150,7 @@ namespace Google.Apis.Tools.CodeGen
         }
         
         /// <summary>
-        /// From the Parameter and its placment constructs a safe name.
+        /// From the Parameter and its placement constructs a safe name.
         /// </summary>
         /// <param name="parameter">
         ///     The Parameter
@@ -158,7 +158,7 @@ namespace Google.Apis.Tools.CodeGen
         /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
         public static string GetParameterName (IParameter parameter, int paramNumber)
         {
-            return LowwerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
+            return LowerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
         }
         
         public static string GetMethodName (IMethod method, int methodNumber)
@@ -173,12 +173,12 @@ namespace Google.Apis.Tools.CodeGen
         
         public static string GetFieldName (IResource resource, int resourceNumber)
         {
-            return LowwerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
+            return LowerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
         }
         
         public static string GetFieldName (string name, int resourceNumber)
         {
-            return LowwerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber));
+            return LowerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber));
         }
         
         public static string GetPropertyName(string name, int resourceNumber)
