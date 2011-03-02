@@ -55,7 +55,14 @@ namespace Google.Apis.Discovery
 
 		public bool Required 
 		{
-			get { return (bool)this.information.GetValueAsNull (ServiceFactory.Required); }
+			get 
+			{
+				var value = this.information.GetValueAsNull(ServiceFactory.Required);
+				if (value != null) {
+					return (bool)value; //TODO: add safety check
+				}
+				return false;
+			}
 		}
 
 		public string DefaultValue 
