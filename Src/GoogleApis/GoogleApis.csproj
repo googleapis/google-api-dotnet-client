@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Google.Apis</RootNamespace>
+    <RootNamespace>Google</RootNamespace>
     <AssemblyName>Google.Apis</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
