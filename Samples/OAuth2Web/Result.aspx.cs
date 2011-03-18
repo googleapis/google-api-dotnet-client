@@ -9,6 +9,9 @@ using DotNetOpenAuth.OAuth.Messages;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth.ChannelElements;
 using Google.Apis.Discovery;
+using Google.Apis.Authentication;
+using System.IO;
+using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.OAuth2Web
 {
@@ -24,25 +27,73 @@ namespace Google.Apis.Samples.OAuth2Web
         /// </summary>
         private void ExecuteMethod()
         {
+            string serviceName = null;
+            string resourceName = null;
+            string methodName = null;
+            Dictionary<string, string> paramDictionary = new Dictionary<string,string>();
+            foreach (string k in Request.QueryString.Keys)
+            {
+                if (k == "service")
+                {
+                    serviceName = Request.QueryString[k];
+                }
+                else if (k == "resource")
+                {
+                    resourceName = Request.QueryString[k];
+                }
+                else if (k == "method")
+                {
+                    methodName = Request.QueryString[k];
+                }
+                else if (k.StartsWith("param_"))
+                {
+                    string paramName = k.Substring(6);
+                    string paramValue = Request.QueryString[k];
+                    paramDictionary.Add(paramName, paramValue);
+                }
+            }
+
             ServiceProviderDescription serviceDescription = this.GetServiceProviderDescription();
             TokenManager tokenManager = this.GetTokenManager();
             WebConsumer consumer = new WebConsumer(serviceDescription, tokenManager);
             AuthorizedTokenResponse accessTokenResponse = consumer.ProcessUserAuthorization();
             if (accessTokenResponse != null)
             {
-                this.AccessToken = accessTokenResponse.AccessToken;
+                Dictionary<string, string> tokens = this.AccessTokens;
+                if (!tokens.ContainsKey(serviceName))
+                {
+                    tokens.Add(serviceName, accessTokenResponse.AccessToken);
+                }
+                else
+                {
+                    tokens[serviceName] = accessTokenResponse.AccessToken;
+                }
+                this.AccessTokens = tokens;
             }
-            else if (this.AccessToken == null)
+            else if (!this.AccessTokens.ContainsKey(serviceName))
             {
-                this.RequestAuthorization(consumer);
+                this.RequestAuthorization(consumer, serviceName);
             }
 
-            Response.Write("Authorized");
+            string tokenSecret = consumer.TokenManager.GetTokenSecret(this.AccessTokens[serviceName]);
+			IAuthenticator authenticator = new OAuth3LeggedAuthenticator("", "anonymous", "anonymous", this.AccessTokens[serviceName], tokenSecret);
+
+            IService service = ApiUtility.GetService(serviceName);
+            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName);
+            GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
+                .WithAuthentication(authenticator)
+                .WithParameters(paramDictionary);
+
+			using(Stream stream = request.ExecuteRequest()) {
+				using(StreamReader reader = new StreamReader(stream)) {
+                    Response.Write(reader.ReadToEnd());
+				}
+			}
         }
 
-        private void RequestAuthorization(WebConsumer consumer)
+        private void RequestAuthorization(WebConsumer consumer, string serviceName)
         {
-            Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", "https://www.googleapis.com/auth/buzz" } };
+            Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", Scopes.scopes[serviceName].Name } };
             Uri callback = MessagingUtilities.GetRequestUrlFromContext().StripQueryArgumentsWithPrefix("oauth_");
             UserAuthorizationRequest request = consumer.PrepareRequestUserAuthorization(callback, extraParameters, null);
             consumer.Channel.Send(request);
@@ -75,11 +126,19 @@ namespace Google.Apis.Samples.OAuth2Web
             return serviceDescription;
         }
 
-        private string AccessToken
+        /// <summary>
+        /// Map between service name and access tokens
+        /// </summary>
+        private Dictionary<string, string> AccessTokens
         {
             get
             {
-                return Session["AccessToken"] as string;
+                Dictionary<string, string> tokens = Session["AccessToken"] as Dictionary<string, string>;
+                if (tokens == null)
+                {
+                    tokens = new Dictionary<string, string>();
+                }
+                return tokens;
             }
             set
             {
