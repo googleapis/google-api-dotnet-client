@@ -36,54 +36,6 @@ namespace Google.Apis.Samples.OAuth2Web
             }
         }
 
-        private IDictionary<string, IResource> GetResources(string serviceName)
-        {
-            WebDiscoveryDevice discoveryDevice = new WebDiscoveryDevice
-            {
-                DiscoveryUri = new Uri("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
-            };
-
-            DiscoveryService discovery = new DiscoveryService(discoveryDevice);
-            IService service = discovery.GetService("v1", DiscoveryVersion.Version_0_1, null);
-            IDictionary<string, IResource> resources = service.Resources;
-            return resources;
-        }
-
-        private Dictionary<string, IMethod> GetMethods(string serviceName, string resourceName)
-        {
-            IDictionary<string, IResource> resources = this.GetResources(serviceName);
-            return resources[resourceName].Methods;
-        }
-
-        private IMethod GetMethod(string serviceName, string resourceName, string methodName)
-        {
-            return this.GetMethods(serviceName, resourceName)[methodName];
-        }
-
-        private Dictionary<string, IMethod> CurrentMethods
-        {
-            get
-            {
-                return Session["CurrentMethods"] as Dictionary<string, IMethod>;
-            }
-            set
-            {
-                Session["CurrentMethods"] = value;
-            }
-        }
-
-        private IDictionary<string, IResource> CurrentResources
-        {
-            get
-            {
-                return Session["CurrentResources"] as IDictionary<string, IResource>;
-            }
-            set
-            {
-                Session["CurrentResources"] = value;
-            }
-        }
-
         protected void apiTreeView_SelectedNodeChanged(object sender, EventArgs e)
         {
             TreeNode node = this.apiTreeView.SelectedNode;
@@ -91,7 +43,7 @@ namespace Google.Apis.Samples.OAuth2Web
             if (node.Depth == 0) // service
             {
                 string serviceName = node.Value;
-                IDictionary<string, IResource> resources = GetResources(serviceName);
+                IDictionary<string, IResource> resources = ApiUtility.GetResources(serviceName);
                 node.ChildNodes.Clear();
                 foreach (KeyValuePair<string, IResource> pair in resources)
                 {
@@ -104,7 +56,7 @@ namespace Google.Apis.Samples.OAuth2Web
             {
                 string resourceName = node.Value;
                 string serviceName = node.Parent.Value;
-                Dictionary<string, IMethod> methods = this.GetMethods(serviceName, resourceName);
+                IDictionary<string, IMethod> methods = ApiUtility.GetMethods(serviceName, resourceName);
                 node.ChildNodes.Clear();
                 foreach (KeyValuePair<string, IMethod> pair in methods)
                 {
@@ -118,7 +70,7 @@ namespace Google.Apis.Samples.OAuth2Web
                 string methodName = node.Value;
                 string resourceName = node.Parent.Value;
                 string serviceName = node.Parent.Parent.Value;
-                IMethod method = this.GetMethod(serviceName, resourceName, methodName);
+                IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName);
                 Dictionary<string, IParameter> parameters = method.Parameters;
                 this.methodParametersRepeater.DataSource = parameters.Keys;
                 this.methodParametersRepeater.DataBind();
@@ -128,8 +80,23 @@ namespace Google.Apis.Samples.OAuth2Web
 
         protected void executeMethodButton_Click(object sender, EventArgs e)
         {
-            string url = string.Format("{0}://{1}:{2}{3}", Request.IsSecureConnection ? "https" : "http", 
-                Request.Url.Host, Request.Url.Port, Page.ResolveUrl("~/Result.aspx"));
+            TreeNode node = this.apiTreeView.SelectedNode;
+            string methodName = node.Value;
+            string resourceName = node.Parent.Value;
+            string serviceName = node.Parent.Parent.Value;
+            string queryString = string.Format("service={0}&resource={1}&method={2}", serviceName, resourceName, methodName);
+
+            Dictionary<string, string> paramDictionary = new Dictionary<string, string>();
+            foreach (RepeaterItem item in this.methodParametersRepeater.Items)
+            {
+                string paramName = (item.FindControl("parameterNameLabel") as Label).Text;
+                string paramValue = (item.FindControl("parameterValueTextBox") as TextBox).Text;
+                paramDictionary.Add(paramName, paramValue);
+                queryString += string.Format("&param_{0}={1}", paramName, paramValue);
+            }
+
+            string url = string.Format("{0}://{1}:{2}{3}?{4}", Request.IsSecureConnection ? "https" : "http", 
+                Request.Url.Host, Request.Url.Port, Page.ResolveUrl("~/Result.aspx"), queryString);
             string script = string.Format("<script type=\"text/javascript\">window.open('{0}', '_result', 'width=400;height=600;', true);</script>", url);
             this.ClientScript.RegisterStartupScript(this.GetType(), "Popup", script);
         }

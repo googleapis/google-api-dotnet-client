@@ -23,7 +23,7 @@
                 <HeaderTemplate><dl></HeaderTemplate>
                 <FooterTemplate></dl></FooterTemplate>
                 <ItemTemplate>
-                    <dt><%# Container.DataItem %></dt>
+                    <dt><asp:Label runat="server" ID="parameterNameLabel" Text="<%# Container.DataItem %>"></asp:Label></dt>
                     <dd>
                         <asp:TextBox runat="server" ID="parameterValueTextBox"></asp:TextBox>
                     </dd>
