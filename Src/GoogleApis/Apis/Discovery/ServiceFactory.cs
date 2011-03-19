@@ -27,6 +27,8 @@ namespace Google.Apis.Discovery
     public interface IServiceFactory
     {
         IService GetService(string version);
+
+        string[] GetVersions();
     }
     
     public interface IFactoryParameter

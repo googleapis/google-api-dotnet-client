@@ -30,10 +30,15 @@ namespace Google.Apis.Samples.OAuth2Web
             string serviceName = null;
             string resourceName = null;
             string methodName = null;
+            string version = null;
             Dictionary<string, string> paramDictionary = new Dictionary<string,string>();
             foreach (string k in Request.QueryString.Keys)
             {
-                if (k == "service")
+                if (k == null)
+                {
+                    continue;
+                }
+                else if (k == "service")
                 {
                     serviceName = Request.QueryString[k];
                 }
@@ -44,6 +49,10 @@ namespace Google.Apis.Samples.OAuth2Web
                 else if (k == "method")
                 {
                     methodName = Request.QueryString[k];
+                }
+                else if (k == "version")
+                {
+                    version = Request.QueryString[k];
                 }
                 else if (k.StartsWith("param_"))
                 {
@@ -78,8 +87,8 @@ namespace Google.Apis.Samples.OAuth2Web
             string tokenSecret = consumer.TokenManager.GetTokenSecret(this.AccessTokens[serviceName]);
 			IAuthenticator authenticator = new OAuth3LeggedAuthenticator("", "anonymous", "anonymous", this.AccessTokens[serviceName], tokenSecret);
 
-            IService service = ApiUtility.GetService(serviceName);
-            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName);
+            IService service = ApiUtility.GetService(serviceName, version);
+            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName, version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
                 .WithParameters(paramDictionary);

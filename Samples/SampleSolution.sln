@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Samples.AdSense
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2Web", "OAuth2Web\OAuth2Web.csproj", "{431931EF-66A2-4C13-B447-A33A83C76A16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "..\Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,16 @@ Global
 		{431931EF-66A2-4C13-B447-A33A83C76A16}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{431931EF-66A2-4C13-B447-A33A83C76A16}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{431931EF-66A2-4C13-B447-A33A83C76A16}.Release|x86.ActiveCfg = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

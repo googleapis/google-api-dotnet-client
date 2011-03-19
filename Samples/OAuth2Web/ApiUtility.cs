@@ -9,34 +9,44 @@ namespace Google.Apis.Samples.OAuth2Web
     /// </summary>
     public static class ApiUtility
     {
-        public static IService GetService(string serviceName)
+        public static string[] GetVersions(string serviceName)
+        {
+            DiscoveryService discovery = GetDiscoveryService(serviceName);
+            return discovery.GetVersions(DiscoveryVersion.Version_0_1, null);
+        }
+
+        public static IService GetService(string serviceName, string version)
+        {
+            DiscoveryService discovery = GetDiscoveryService(serviceName);
+            return discovery.GetService(version, DiscoveryVersion.Version_0_1, null);
+        }
+
+        public static IDictionary<string, IResource> GetResources(string serviceName, string version)
+        {
+            IService service = GetService(serviceName, version);
+            IDictionary<string, IResource> resources = service.Resources;
+            return resources;
+        }
+
+        public static IDictionary<string, IMethod> GetMethods(string serviceName, string resourceName, string version)
+        {
+            IDictionary<string, IResource> resources = GetResources(serviceName, version);
+            return resources[resourceName].Methods;
+        }
+
+        public static IMethod GetMethod(string serviceName, string resourceName, string methodName, string version)
+        {
+            return GetMethods(serviceName, resourceName, version)[methodName];
+        }
+
+        private static DiscoveryService GetDiscoveryService(string serviceName)
         {
             WebDiscoveryDevice discoveryDevice = new WebDiscoveryDevice
             {
                 DiscoveryUri = new Uri("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
             };
 
-            DiscoveryService discovery = new DiscoveryService(discoveryDevice);
-            IService service = discovery.GetService("v1", DiscoveryVersion.Version_0_1, null);
-            return service;
-        }
-
-        public static IDictionary<string, IResource> GetResources(string serviceName)
-        {
-            IService service = GetService(serviceName);
-            IDictionary<string, IResource> resources = service.Resources;
-            return resources;
-        }
-
-        public static IDictionary<string, IMethod> GetMethods(string serviceName, string resourceName)
-        {
-            IDictionary<string, IResource> resources = GetResources(serviceName);
-            return resources[resourceName].Methods;
-        }
-
-        public static IMethod GetMethod(string serviceName, string resourceName, string methodName)
-        {
-            return GetMethods(serviceName, resourceName)[methodName];
+            return new DiscoveryService(discoveryDevice);
         }
     }
 }
