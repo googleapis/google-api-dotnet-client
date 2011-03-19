@@ -23,15 +23,11 @@ namespace Google.Apis.Samples.OAuth2Web
         /// </summary>
         private void InitializeTreeView()
         {
-            Dictionary<string, string> services = new Dictionary<string,string>
-            {
-                { "buzz", "Buzz" },
-                { "chromewebstore", "Chrome Web Store" },
-            };
+            string[] services = new string[] { "buzz", "chromewebstore", "translate", "moderator" };
 
-            foreach (KeyValuePair<string, string> pair in services)
+            foreach (string service in services)
             {
-                TreeNode node = new TreeNode(pair.Value, pair.Key);
+                TreeNode node = new TreeNode(service);
                 this.apiTreeView.Nodes.Add(node);
             }
         }
@@ -40,42 +36,77 @@ namespace Google.Apis.Samples.OAuth2Web
         {
             TreeNode node = this.apiTreeView.SelectedNode;
             this.methodParametersPanel.Visible = false;
-            if (node.Depth == 0) // service
+            if (node.Depth == 0)
             {
-                string serviceName = node.Value;
-                IDictionary<string, IResource> resources = ApiUtility.GetResources(serviceName);
-                node.ChildNodes.Clear();
-                foreach (KeyValuePair<string, IResource> pair in resources)
-                {
-                    TreeNode childNode = new TreeNode(pair.Key, pair.Key);
-                    node.ChildNodes.Add(childNode);
-                }
-                node.Expand();
-            }
-            else if (node.Depth == 1) // resource
+                ExpandServiceNode(node);
+            } 
+            else if (node.Depth == 1)
             {
-                string resourceName = node.Value;
-                string serviceName = node.Parent.Value;
-                IDictionary<string, IMethod> methods = ApiUtility.GetMethods(serviceName, resourceName);
-                node.ChildNodes.Clear();
-                foreach (KeyValuePair<string, IMethod> pair in methods)
-                {
-                    TreeNode childNode = new TreeNode(pair.Key, pair.Key);
-                    node.ChildNodes.Add(childNode);
-                }
-                node.Expand();
+                ExpandVersionNode(node);
             }
-            else if (node.Depth == 2) // method
+            else if (node.Depth == 2)
             {
-                string methodName = node.Value;
-                string resourceName = node.Parent.Value;
-                string serviceName = node.Parent.Parent.Value;
-                IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName);
-                Dictionary<string, IParameter> parameters = method.Parameters;
-                this.methodParametersRepeater.DataSource = parameters.Keys;
-                this.methodParametersRepeater.DataBind();
-                this.methodParametersPanel.Visible = true;
+                ExpandResourceNode(node);
             }
+            else if (node.Depth == 3)
+            {
+                LoadMethodParameters(node);
+            }
+        }
+
+        private static void ExpandServiceNode(TreeNode node)
+        {
+            string serviceName = node.Value;
+            string[] versions = ApiUtility.GetVersions(serviceName);
+            node.ChildNodes.Clear();
+            foreach (string version in versions)
+            {
+                TreeNode childNode = new TreeNode(version);
+                node.ChildNodes.Add(childNode);
+            }
+            node.Expand();
+        }
+
+        private static void ExpandVersionNode(TreeNode node)
+        {
+            string serviceName = node.Parent.Value;
+            string version = node.Value;
+            IDictionary<string, IResource> resources = ApiUtility.GetResources(serviceName, version);
+            node.ChildNodes.Clear();
+            foreach (KeyValuePair<string, IResource> pair in resources)
+            {
+                TreeNode childNode = new TreeNode(pair.Key);
+                node.ChildNodes.Add(childNode);
+            }
+            node.Expand();
+        }
+
+        private static void ExpandResourceNode(TreeNode node)
+        {
+            string resourceName = node.Value;
+            string version = node.Parent.Value;
+            string serviceName = node.Parent.Parent.Value;
+            IDictionary<string, IMethod> methods = ApiUtility.GetMethods(serviceName, resourceName, version);
+            node.ChildNodes.Clear();
+            foreach (KeyValuePair<string, IMethod> pair in methods)
+            {
+                TreeNode childNode = new TreeNode(pair.Key);
+                node.ChildNodes.Add(childNode);
+            }
+            node.Expand();
+        }
+
+        private void LoadMethodParameters(TreeNode node)
+        {
+            string methodName = node.Value;
+            string resourceName = node.Parent.Value;
+            string version = node.Parent.Parent.Value;
+            string serviceName = node.Parent.Parent.Parent.Value;
+            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName, version);
+            Dictionary<string, IParameter> parameters = method.Parameters;
+            this.methodParametersRepeater.DataSource = parameters.Keys;
+            this.methodParametersRepeater.DataBind();
+            this.methodParametersPanel.Visible = true;
         }
 
         protected void executeMethodButton_Click(object sender, EventArgs e)
@@ -83,8 +114,10 @@ namespace Google.Apis.Samples.OAuth2Web
             TreeNode node = this.apiTreeView.SelectedNode;
             string methodName = node.Value;
             string resourceName = node.Parent.Value;
-            string serviceName = node.Parent.Parent.Value;
-            string queryString = string.Format("service={0}&resource={1}&method={2}", serviceName, resourceName, methodName);
+            string version = node.Parent.Parent.Value;
+            string serviceName = node.Parent.Parent.Parent.Value;
+            string queryString = string.Format("service={0}&resource={1}&method={2}&version={3}", 
+                serviceName, resourceName, methodName, version);
 
             Dictionary<string, string> paramDictionary = new Dictionary<string, string>();
             foreach (RepeaterItem item in this.methodParametersRepeater.Items)
@@ -97,7 +130,8 @@ namespace Google.Apis.Samples.OAuth2Web
 
             string url = string.Format("{0}://{1}:{2}{3}?{4}", Request.IsSecureConnection ? "https" : "http", 
                 Request.Url.Host, Request.Url.Port, Page.ResolveUrl("~/Result.aspx"), queryString);
-            string script = string.Format("<script type=\"text/javascript\">window.open('{0}', '_result', 'width=400;height=600;', true);</script>", url);
+            string script = string.Format("<script type=\"text/javascript\">"
+                + "window.open('{0}', '_result', 'width=400;height=600;', true);</script>", url);
             this.ClientScript.RegisterStartupScript(this.GetType(), "Popup", script);
         }
     }
