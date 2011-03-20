@@ -1,21 +1,25 @@
 ﻿body
 {
+	font-family: Verdana, Tahoma, Arial, Sans-Serif;
 }
 
 .col
 {
 	float: left;
+	margin: 1em;
+	padding: 1em;
+	border: solid 1px #cccccc;
 }
 
 .apiTree .selectedNode a
 {
 	color: black;
 	font-weight: bold;
+	background-color: #cccccc;
 }
 
 .apiTree a
 {
-	font-family: Verdana, Tahoma, Arial, Sans-Serif;
 	font-weight: bold;
 }
 
@@ -24,13 +28,31 @@
 	font-weight: normal;
 }
 
-.apiTree div div
+.apiTree div div div
 {
 	font-style: italic;
 }
 
 h1
 {
-	font-family: Verdana, Tahoma, Arial, Sans-Serif;
 	font-size: medium;
+}
+
+dl
+{
+	width: 20em;
+}
+
+dt
+{
+	float: left;
+	clear: left;
+	width: 10em;
+	margin-bottom: 0.5em;
+}
+
+dd
+{
+	clear: right;
+	margin-bottom: 0.5em;
 }

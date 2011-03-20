@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
         <div class="col">
-            <h1>Services:</h1>
+            <h1>Services</h1>
             <asp:TreeView runat="server" ID="apiTreeView" 
                 onselectednodechanged="apiTreeView_SelectedNodeChanged" ShowLines="True" CssClass="apiTree">
                 <SelectedNodeStyle CssClass="selectedNode" />

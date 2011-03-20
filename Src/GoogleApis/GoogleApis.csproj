@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\Authentication\OAuth2\ThreeLeggedAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />

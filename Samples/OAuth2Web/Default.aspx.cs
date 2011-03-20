@@ -116,8 +116,6 @@ namespace Google.Apis.Samples.OAuth2Web
             string resourceName = node.Parent.Value;
             string version = node.Parent.Parent.Value;
             string serviceName = node.Parent.Parent.Parent.Value;
-            string queryString = string.Format("service={0}&resource={1}&method={2}&version={3}", 
-                serviceName, resourceName, methodName, version);
 
             Dictionary<string, string> paramDictionary = new Dictionary<string, string>();
             foreach (RepeaterItem item in this.methodParametersRepeater.Items)
@@ -125,11 +123,21 @@ namespace Google.Apis.Samples.OAuth2Web
                 string paramName = (item.FindControl("parameterNameLabel") as Label).Text;
                 string paramValue = (item.FindControl("parameterValueTextBox") as TextBox).Text;
                 paramDictionary.Add(paramName, paramValue);
-                queryString += string.Format("&param_{0}={1}", paramName, paramValue);
             }
 
-            string url = string.Format("{0}://{1}:{2}{3}?{4}", Request.IsSecureConnection ? "https" : "http", 
-                Request.Url.Host, Request.Url.Port, Page.ResolveUrl("~/Result.aspx"), queryString);
+            MethodCallContext callContext = new MethodCallContext
+            {
+                Service = serviceName,
+                Version = version,
+                Resource = resourceName,
+                Method = methodName,
+                Parameters = paramDictionary
+            };
+
+            Session["callContext"] = callContext;
+
+            string url = string.Format("{0}://{1}:{2}{3}", Request.IsSecureConnection ? "https" : "http",
+                Request.Url.Host, Request.Url.Port, Page.ResolveUrl("~/Result.aspx"));
             string script = string.Format("<script type=\"text/javascript\">"
                 + "window.open('{0}', '_result', 'width=400;height=600;', true);</script>", url);
             this.ClientScript.RegisterStartupScript(this.GetType(), "Popup", script);
