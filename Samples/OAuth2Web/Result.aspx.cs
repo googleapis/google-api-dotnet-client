@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.IO;
+using System.Configuration;
 using System.Web.UI.WebControls;
-using DotNetOpenAuth.OAuth;
-using DotNetOpenAuth.OAuth.Messages;
+using DotNetOpenAuth.OAuth2;
+using DotNetOpenAuth.OAuth2.Messages;
 using DotNetOpenAuth.Messaging;
-using DotNetOpenAuth.OAuth.ChannelElements;
+using DotNetOpenAuth.OAuth2.ChannelElements;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
-using System.IO;
+using Google.Apis.Authentication.OAuth2;
 using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.OAuth2Web
@@ -27,71 +29,39 @@ namespace Google.Apis.Samples.OAuth2Web
         /// </summary>
         private void ExecuteMethod()
         {
-            string serviceName = null;
-            string resourceName = null;
-            string methodName = null;
-            string version = null;
-            Dictionary<string, string> paramDictionary = new Dictionary<string,string>();
-            foreach (string k in Request.QueryString.Keys)
-            {
-                if (k == null)
-                {
-                    continue;
-                }
-                else if (k == "service")
-                {
-                    serviceName = Request.QueryString[k];
-                }
-                else if (k == "resource")
-                {
-                    resourceName = Request.QueryString[k];
-                }
-                else if (k == "method")
-                {
-                    methodName = Request.QueryString[k];
-                }
-                else if (k == "version")
-                {
-                    version = Request.QueryString[k];
-                }
-                else if (k.StartsWith("param_"))
-                {
-                    string paramName = k.Substring(6);
-                    string paramValue = Request.QueryString[k];
-                    paramDictionary.Add(paramName, paramValue);
-                }
-            }
+            string clientId = ConfigurationManager.AppSettings["clientId"];
+            string clientSecret = ConfigurationManager.AppSettings["clientSecret"];
+            string apiKey = ConfigurationManager.AppSettings["apiKey"];
 
-            ServiceProviderDescription serviceDescription = this.GetServiceProviderDescription();
-            TokenManager tokenManager = this.GetTokenManager();
-            WebConsumer consumer = new WebConsumer(serviceDescription, tokenManager);
-            AuthorizedTokenResponse accessTokenResponse = consumer.ProcessUserAuthorization();
-            if (accessTokenResponse != null)
+            MethodCallContext callContext = Session["callContext"] as MethodCallContext;
+            AuthorizationServerDescription serviceDescription = this.GetAuthorizationServerDescription();
+            WebServerClient client = new WebServerClient(serviceDescription, clientId, clientSecret);
+            IAuthorizationState authState = client.ProcessUserAuthorization(new HttpRequestInfo(Request));
+            if (authState != null && authState.AccessToken != null)
             {
                 Dictionary<string, string> tokens = this.AccessTokens;
-                if (!tokens.ContainsKey(serviceName))
+                if (!tokens.ContainsKey(callContext.Service))
                 {
-                    tokens.Add(serviceName, accessTokenResponse.AccessToken);
+                    tokens.Add(callContext.Service, authState.AccessToken);
                 }
                 else
                 {
-                    tokens[serviceName] = accessTokenResponse.AccessToken;
+                    tokens[callContext.Service] = authState.AccessToken;
                 }
                 this.AccessTokens = tokens;
             }
-            else if (!this.AccessTokens.ContainsKey(serviceName))
+            else if (!this.AccessTokens.ContainsKey(callContext.Service))
             {
-                this.RequestAuthorization(consumer, serviceName);
+                this.RequestAuthorization(client, callContext.Service);
             }
 
-            string tokenSecret = consumer.TokenManager.GetTokenSecret(this.AccessTokens[serviceName]);
-			IAuthenticator authenticator = new OAuth3LeggedAuthenticator("", "anonymous", "anonymous", this.AccessTokens[serviceName], tokenSecret);
-
-            IService service = ApiUtility.GetService(serviceName, version);
-            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName, version);
+			IAuthenticator authenticator = new ThreeLeggedAuthenticator(apiKey, clientId, clientSecret, this.AccessTokens[callContext.Service]); 
+            IService service = ApiUtility.GetService(callContext.Service, callContext.Version);
+            IMethod method = ApiUtility.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
-                .WithParameters(paramDictionary);
+                .WithParameters(callContext.Parameters)
+                .WithDeveloperKey(apiKey);
 
 			using(Stream stream = request.ExecuteRequest()) {
 				using(StreamReader reader = new StreamReader(stream)) {
@@ -100,38 +70,24 @@ namespace Google.Apis.Samples.OAuth2Web
 			}
         }
 
-        private void RequestAuthorization(WebConsumer consumer, string serviceName)
+        private void RequestAuthorization(WebServerClient client, string serviceName)
         {
             Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", Scopes.scopes[serviceName].Name } };
+            string scope = Scopes.scopes[serviceName].Name;
             Uri callback = MessagingUtilities.GetRequestUrlFromContext().StripQueryArgumentsWithPrefix("oauth_");
-            UserAuthorizationRequest request = consumer.PrepareRequestUserAuthorization(callback, extraParameters, null);
-            consumer.Channel.Send(request);
+            OutgoingWebResponse response = client.PrepareRequestUserAuthorization(new string[] { scope }, null);
+            response.Send();
         }
 
-        private TokenManager GetTokenManager()
+        private AuthorizationServerDescription GetAuthorizationServerDescription()
         {
-            TokenManager tokenManager = Application["TokenManager"] as TokenManager;
-            if (tokenManager == null)
+            AuthorizationServerDescription serviceDescription = new AuthorizationServerDescription
             {
-                tokenManager = new TokenManager
-                {
-                    ConsumerKey = "anonymous",
-                    ConsumerSecret = "anonymous",
-                };
-                Application["TokenManager"] = tokenManager;
-            }
-            return tokenManager;
-        }
-
-        private ServiceProviderDescription GetServiceProviderDescription()
-        {
-            ServiceProviderDescription serviceDescription = new ServiceProviderDescription
-            {
-                RequestTokenEndpoint = new MessageReceivingEndpoint("https://www.google.com/accounts/OAuthGetRequestToken", HttpDeliveryMethods.AuthorizationHeaderRequest | HttpDeliveryMethods.GetRequest),
-                UserAuthorizationEndpoint = new MessageReceivingEndpoint("https://www.google.com/accounts/OAuthAuthorizeToken", HttpDeliveryMethods.AuthorizationHeaderRequest | HttpDeliveryMethods.GetRequest),
-                AccessTokenEndpoint = new MessageReceivingEndpoint("https://www.google.com/accounts/OAuthGetAccessToken", HttpDeliveryMethods.AuthorizationHeaderRequest | HttpDeliveryMethods.GetRequest),
-                TamperProtectionElements = new ITamperProtectionChannelBindingElement[] { new HmacSha1SigningBindingElement() },
+                AuthorizationEndpoint = new Uri(ConfigurationManager.AppSettings["authorizationEndPoint"]),
+                ProtocolVersion = ProtocolVersion.V20,
+                TokenEndpoint = new Uri(ConfigurationManager.AppSettings["tokenEndPoint"]),
             };
+
             return serviceDescription;
         }
 
