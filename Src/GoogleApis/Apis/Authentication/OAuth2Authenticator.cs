@@ -23,9 +23,9 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 
 
-namespace Google.Apis.Authentication.OAuth2
+namespace Google.Apis.Authentication
 {
-    public class ThreeLeggedAuthenticator : OAuthAuthenticator
+    public class OAuth2Authenticator : OAuthAuthenticator
     {
         private string token;
 
@@ -37,7 +37,7 @@ namespace Google.Apis.Authentication.OAuth2
         /// <param name="consumerSecret">the consumerSecret to use</param>
         /// <param name="token">The token to be used</param>
         /// <returns></returns>
-        public ThreeLeggedAuthenticator(string applicationName, string consumerKey, string consumerSecret, string token) : base(applicationName, consumerKey, consumerSecret)
+        public OAuth2Authenticator(string applicationName, string consumerKey, string consumerSecret, string token) : base(applicationName, consumerKey, consumerSecret)
         {
             this.token = token;
         }

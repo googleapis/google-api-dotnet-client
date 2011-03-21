@@ -23,7 +23,7 @@ namespace Google.Apis.Samples.OAuth2Web
         /// </summary>
         private void InitializeTreeView()
         {
-            string[] services = new string[] { "buzz", "chromewebstore", "translate", "moderator" };
+            string[] services = Scopes.scopes.Keys.ToArray();
 
             foreach (string service in services)
             {
