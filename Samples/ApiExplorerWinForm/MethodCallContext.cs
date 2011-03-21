@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Google.Apis.Samples.OAuth2Web
+namespace Google.Apis.Samples.ApiExplorerWinForm
 {
     /// <summary>
     /// Provides a set of properties to store and recreate a particular Api method call.

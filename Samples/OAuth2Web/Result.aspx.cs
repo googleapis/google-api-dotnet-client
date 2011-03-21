@@ -12,7 +12,6 @@ using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth2.ChannelElements;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
-using Google.Apis.Authentication.OAuth2;
 using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.OAuth2Web
@@ -55,7 +54,7 @@ namespace Google.Apis.Samples.OAuth2Web
                 this.RequestAuthorization(client, callContext.Service);
             }
 
-			IAuthenticator authenticator = new ThreeLeggedAuthenticator(apiKey, clientId, clientSecret, this.AccessTokens[callContext.Service]); 
+			IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, this.AccessTokens[callContext.Service]); 
             IService service = ApiUtility.GetService(callContext.Service, callContext.Version);
             IMethod method = ApiUtility.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
