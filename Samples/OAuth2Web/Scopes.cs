@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Google.Apis.Samples.OAuth2Web
+namespace Google.Apis.Samples.ApiExplorerWeb
 {
     public class Scopes
     {
