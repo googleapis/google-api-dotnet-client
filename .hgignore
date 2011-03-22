@@ -39,3 +39,4 @@ obj/**
 *.csproj.test-cache
 test-results/**
 glob:Samples/OAuth2Web/local.config
+glob:Samples/ApiExplorerWeb/local.config
