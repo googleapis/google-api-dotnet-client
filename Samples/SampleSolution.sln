@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineServiceGenerator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Samples.AdSenseApi", "AdSenseApi\Google.Apis.Samples.AdSenseApi.csproj", "{3883D960-3BE4-466E-81DE-6BE6930797AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiExplorerWeb", "OAuth2Web\ApiExplorerWeb.csproj", "{431931EF-66A2-4C13-B447-A33A83C76A16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiExplorerWeb", "ApiExplorerWeb\ApiExplorerWeb.csproj", "{431931EF-66A2-4C13-B447-A33A83C76A16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "..\Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
 EndProject
