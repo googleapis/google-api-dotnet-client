@@ -14,7 +14,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using GoogleRequests = Google.Apis.Requests;
 
-namespace Google.Apis.Samples.OAuth2Web
+namespace Google.Apis.Samples.ApiExplorerWeb
 {
     public partial class Result : System.Web.UI.Page
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Google.Apis.Samples.OAuth2Web {
+namespace Google.Apis.Samples.ApiExplorerWeb {
     
     
     public partial class _Default {

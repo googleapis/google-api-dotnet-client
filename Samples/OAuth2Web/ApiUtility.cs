@@ -2,7 +2,7 @@
 using Google.Apis.Discovery;
 using System.Collections.Generic;
 
-namespace Google.Apis.Samples.OAuth2Web
+namespace Google.Apis.Samples.ApiExplorerWeb
 {
     /// <summary>
     /// Utility methods to work with discovery API.

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Samples.OAuth2Web
+namespace Google.Apis.Samples.ApiExplorerWeb
 {
     public partial class _Default : System.Web.UI.Page
     {

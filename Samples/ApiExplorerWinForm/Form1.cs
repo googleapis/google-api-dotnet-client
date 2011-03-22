@@ -20,7 +20,7 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
 {
     public partial class Form1 : Form
     {
-        private MethodCallContext callContext = null;
+        private MethodCallContext currentCallContext = null;
 
         private IAuthorizationState authState;
 
@@ -132,10 +132,22 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             }
             this.parameterLayoutPanel.Controls.Add(this.executeButton);
             this.splitContainer1.Panel2.Visible = true;
+            this.clearBrowserDisplay();
+        }
+
+        private void clearBrowserDisplay()
+        {
+            this.locationTextBox.Text = string.Empty;
+            if (this.authWebBrowser.Document != null)
+            {
+                this.authWebBrowser.Document.OpenNew(false);
+            }
         }
 
         protected void executeButton_Click(object sender, EventArgs e)
         {
+            this.clearBrowserDisplay();
+
             TreeNode node = this.apiTreeView.SelectedNode;
             string methodName = node.Text;
             string resourceName = node.Parent.Text;
@@ -152,7 +164,7 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
                 paramDictionary.Add(paramName, paramValue);
             }
 
-            this.callContext = new MethodCallContext
+            this.currentCallContext = new MethodCallContext
             {
                 Service = serviceName,
                 Version = version,
@@ -165,7 +177,7 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
         }
 
         /// <summary>
-        /// Execute selected API method
+        /// Attempt to execute selected API method
         /// </summary>
         private void ExecuteMethod()
         {
@@ -173,52 +185,55 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             string clientSecret = Properties.Settings.Default.clientSecret;
             string apiKey = Properties.Settings.Default.apiKey;
 
-            if (!this.AccessTokens.ContainsKey(callContext.Service))
+            if (!this.AccessTokens.ContainsKey(currentCallContext.Service))
             {
                 AuthorizationServerDescription serviceDescription = this.GetAuthorizationServerDescription();
                 client = new UserAgentClient(serviceDescription, clientId, clientSecret);
-                authState = new AuthorizationState(new string[] { Scopes.scopes[callContext.Service].Name });
+                authState = new AuthorizationState(new string[] { Scopes.scopes[currentCallContext.Service].Name });
                 authState.Callback = new Uri(Properties.Settings.Default.redirectUrl);
                 Uri authorizationUrl = client.RequestUserAuthorization(authState);
-                this.authWebBrowser.Navigate(authorizationUrl.AbsoluteUri);
+                // hack: UserAgentClient is still using response_type=code. needs response_type=token
+                // for google apis.
+                string url = authorizationUrl.AbsoluteUri.Replace("response_type=code", "response_type=token");
+                this.authWebBrowser.Navigate(url);
+
+                this.Cursor = Cursors.WaitCursor;
             }
             else
             {
-                string token = this.AccessTokens[callContext.Service];
-                this.ExecuteMethodWithToken(token);
+                this.ExecuteRequest();
             }
         }
 
-        private void ExecuteMethodWithToken(string token)
+        /// <summary>
+        /// Construct and send method request assuming token is already obtained.
+        /// </summary>
+        private void ExecuteRequest()
         {
+            string token = this.AccessTokens[currentCallContext.Service];
+
             string clientId = Properties.Settings.Default.clientId;
             string clientSecret = Properties.Settings.Default.clientSecret;
             string apiKey = Properties.Settings.Default.apiKey;
 
             IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, token);
-            IService service = ApiUtility.GetService(callContext.Service, callContext.Version);
-            IMethod method = ApiUtility.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
+            IService service = ApiUtility.GetService(currentCallContext.Service, currentCallContext.Version);
+            IMethod method = ApiUtility.GetMethod(currentCallContext.Service, currentCallContext.Resource, currentCallContext.Method, currentCallContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
-                .WithParameters(callContext.Parameters)
+                .WithParameters(currentCallContext.Parameters)
                 .WithDeveloperKey(apiKey);
 
             using (Stream stream = request.ExecuteRequest())
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    this.resultTextBox.Text = reader.ReadToEnd();
+                    this.authWebBrowser.Document.OpenNew(false);
+                    this.authWebBrowser.Document.Write(reader.ReadToEnd());
                 }
             }
-        }
 
-        private void RequestAuthorization(WebServerClient client, string serviceName)
-        {
-            Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", Scopes.scopes[serviceName].Name } };
-            string scope = Scopes.scopes[serviceName].Name;
-            Uri callback = MessagingUtilities.GetRequestUrlFromContext().StripQueryArgumentsWithPrefix("oauth_");
-            OutgoingWebResponse response = client.PrepareRequestUserAuthorization(new string[] { scope }, null);
-            response.Send();
+            this.Cursor = Cursors.Default;
         }
 
         private AuthorizationServerDescription GetAuthorizationServerDescription()
@@ -240,21 +255,31 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
 
         private void authWebBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
-            this.client.ProcessUserAuthorization(e.Url, this.authState);
+            this.locationTextBox.Text = e.Url.AbsoluteUri;
 
-            if (!string.IsNullOrEmpty(this.authState.AccessToken))
+            if (e.Url.AbsoluteUri.StartsWith(Properties.Settings.Default.redirectUrl))
             {
-                if (!this.AccessTokens.ContainsKey(callContext.Service))
-                {
-                    this.AccessTokens.Add(callContext.Service, authState.AccessToken);
-                }
-                else
-                {
-                    this.AccessTokens[callContext.Service] = authState.AccessToken;
-                }
+                this.client.ProcessUserAuthorization(e.Url, this.authState);
 
-                this.ExecuteMethodWithToken(this.AccessTokens[callContext.Service]);
+                if (!string.IsNullOrEmpty(this.authState.AccessToken))
+                {
+                    if (!this.AccessTokens.ContainsKey(currentCallContext.Service))
+                    {
+                        this.AccessTokens.Add(currentCallContext.Service, authState.AccessToken);
+                    }
+                    else
+                    {
+                        this.AccessTokens[currentCallContext.Service] = authState.AccessToken;
+                    }
+
+                    this.ExecuteRequest();
+                }
             }
+        }
+
+        private void authWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
     }
 }
