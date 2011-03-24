@@ -115,6 +115,12 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.Throws(typeof(NotSupportedException), () => readOnly.Add(15, "House"));
             Assert.Throws(typeof(NotSupportedException), () => readOnly.Remove(5));
         }
+        
+        [Test()]
+        public void FindPropertyByNameTest()
+        {
+            Assert.Fail("No Test Written yet");
+        }
     }
 }
 
