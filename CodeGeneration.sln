@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Extensions", "Src\GoogleApis.Extensions\GoogleApis.Extensions.csproj", "{EEA6B346-836D-4A86-A061-22AF86A86B44}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
@@ -65,14 +63,6 @@ Global
 		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|x86.ActiveCfg = Release|Any CPU
 		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|x86.Build.0 = Release|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Debug|x86.Build.0 = Debug|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Default|x86.ActiveCfg = Debug|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|x86.ActiveCfg = Release|Any CPU
-		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Src\GoogleApis\GoogleApis.csproj
