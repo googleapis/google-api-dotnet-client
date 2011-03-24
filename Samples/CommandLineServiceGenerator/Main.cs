@@ -516,10 +516,13 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			var language = "CSharp";
 			var output = "../../../CommandLineGeneratedService/V03/Buzz/BuzzService.cs";
 			
-			var stringFetcher = new StringDiscoveryDevice();
-			stringFetcher.Document = BuzzV0_3_Json;
+			//var stringFetcher = new StringDiscoveryDevice();
+			//stringFetcher.Document = BuzzV0_3_Json;
 			
-			 var discovery = new DiscoveryService (stringFetcher);
+			var cachedFetcher = new CachedWebDiscoveryDevice(new Uri("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1"), 
+			                                                 GetCacheDirectory());
+			
+			 var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
 			var param = new FactoryParameterV0_3("http://example.url.com",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);
@@ -541,6 +544,15 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			
 		}
 		
+		private static DirectoryInfo GetCacheDirectory() 
+		{
+			string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+            if (Directory.Exists (cacheDirectory) == false) {
+                Directory.CreateDirectory (cacheDirectory);
+            }
+			return new DirectoryInfo(cacheDirectory);
+		}
+		
 		private static void GenerateAdSenseService()
 		{
 			//var serviceName = "adsenseapi";
@@ -550,13 +562,9 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			var outputFile = "../../../CommandLineGeneratedService/AdSense/AdSenseService.cs";
 			
 			// Set up how discovery works.
-            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
-            if (Directory.Exists (cacheDirectory) == false) {
-                Directory.CreateDirectory (cacheDirectory);
-            }
             var webfetcher = new CachedWebDiscoveryDevice (
                                 new Uri ("http://elephant.lon:9996/discovery/v0.2beta1/describe/adsense-mgmt/v1beta1"), 
-                                new DirectoryInfo (cacheDirectory));
+                                GetCacheDirectory());
             var discovery = new DiscoveryService (webfetcher);
             // Build the service based on discovery information.
 			var param = new FactoryParameterV0_2("http://elephant.lon:9996",null);
