@@ -29,7 +29,7 @@ using Newtonsoft.Json;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
-using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data;
+//using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data;
 using Google.Apis.Samples.AdSenseApi;
 using Google.Apis.Samples.AdSenseApi.Service;
 using Google.Apis.Samples.AdSenseApi.Auth;
@@ -62,7 +62,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			try{
 				//BuzzTest();
 				//AdSenseTest ();
-				JsonSerilizationTest();
+				//JsonSerilizationTest();
 				Console.WriteLine("All Done.");
 				Console.ReadLine();
 			}catch(Exception ex)
@@ -70,7 +70,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 				logger.Error("Failed",ex);
 			}
 		}
-		
+		/*
 		private static void JsonSerilizationTest() {
 			Activitiylist activity = new Activitiylist {
 				Id = "IdValue",
@@ -111,7 +111,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			serilizer.Serialize(tw, activity);
 			Console.WriteLine(tw.ToString());
 		}
-		
+		*/
 		private static void BuzzTest()
 		{			
 			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			

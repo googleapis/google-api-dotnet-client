@@ -14,270 +14,56 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     using System.Collections.Generic;
     
     
-    public class Activitiylist {
+    public class Activity {
         
-        private string id;
+        private NestedClass1 actor;
         
-        private string title;
-        
-        private IList<ChiliActivitiesResourceJson> items;
-        
-        private string updated;
-        
-        private NestedClass1 links;
-        
-        private string kind;
-        
-        public virtual string Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
-        public virtual IList<ChiliActivitiesResourceJson> Items {
-            get {
-                return this.items;
-            }
-            set {
-                this.items = value;
-            }
-        }
-        
-        public virtual string Updated {
-            get {
-                return this.updated;
-            }
-            set {
-                this.updated = value;
-            }
-        }
-        
-        public virtual NestedClass1 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-        }
-    }
-    
-    public class ChiliActivitiesCountJson {
-        
-        private NestedClass1 counts;
-        
-        private string kind;
-        
-        public virtual NestedClass1 Counts {
-            get {
-                return this.counts;
-            }
-            set {
-                this.counts = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-        }
-    }
-    
-    public class ChiliActivitiesExtractpeoplefromsearchJson {
-        
-        private string startIndex;
-        
-        private string totalResults;
-        
-        private IList<ChiliPeopleResourceJson> entry;
-        
-        private string itemsPerPage;
-        
-        private string kind;
-        
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliActivitiesListJson {
-    }
-    
-    public class ChiliActivitiesResourceJson {
-        
-        private NestedClass1 visibility;
-        
-        private string placeholder;
-        
-        private string targetLang;
-        
-        private string placeName;
-        
-        private NestedClass2 links;
-        
-        private string crosspostSource;
-        
-        private NestedClass3 actor;
-        
-        private NestedClass4 objectField7;
-        
-        private string detectedlLang;
-        
-        private string kind;
-        
-        private string geocode;
+        private string address;
         
         private string annotation;
         
+        private IList<NestedClass2> categories;
+        
+        private string crosspostSource;
+        
+        private string detectedlLang;
+        
+        private string geocode;
+        
         private string id;
         
-        private string title;
+        private string kind;
         
-        private NestedClass5 source;
+        private NestedClass3 links;
+        
+        private NestedClass4 objectField10;
         
         private string placeId;
         
-        private string address;
+        private string placeName;
+        
+        private string placeholder;
+        
+        private string published;
+        
+        private string radius;
+        
+        private NestedClass5 source;
+        
+        private string targetLang;
+        
+        private string title;
+        
+        private string untranslatedTitle;
         
         private string updated;
         
         private IList<System.String> verbs;
         
-        private string radius;
+        private NestedClass6 visibility;
         
-        private IList<NestedClass6> categories;
-        
-        private string untranslatedTitle;
-        
-        private string published;
-        
-        public virtual NestedClass1 Visibility {
-            get {
-                return this.visibility;
-            }
-            set {
-                this.visibility = value;
-            }
-        }
-        
-        public virtual string Placeholder {
-            get {
-                return this.placeholder;
-            }
-            set {
-                this.placeholder = value;
-            }
-        }
-        
-        public virtual string TargetLang {
-            get {
-                return this.targetLang;
-            }
-            set {
-                this.targetLang = value;
-            }
-        }
-        
-        public virtual string PlaceName {
-            get {
-                return this.placeName;
-            }
-            set {
-                this.placeName = value;
-            }
-        }
-        
-        public virtual NestedClass2 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual string CrosspostSource {
-            get {
-                return this.crosspostSource;
-            }
-            set {
-                this.crosspostSource = value;
-            }
-        }
-        
-        public virtual NestedClass3 Actor {
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual NestedClass1 Actor {
             get {
                 return this.actor;
             }
@@ -286,87 +72,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual NestedClass4 ObjectProperty7 {
-            get {
-                return this.objectField7;
-            }
-            set {
-                this.objectField7 = value;
-            }
-        }
-        
-        public virtual string DetectedlLang {
-            get {
-                return this.detectedlLang;
-            }
-            set {
-                this.detectedlLang = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public virtual string Geocode {
-            get {
-                return this.geocode;
-            }
-            set {
-                this.geocode = value;
-            }
-        }
-        
-        public virtual string Annotation {
-            get {
-                return this.annotation;
-            }
-            set {
-                this.annotation = value;
-            }
-        }
-        
-        public virtual string Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
-        public virtual NestedClass5 Source {
-            get {
-                return this.source;
-            }
-            set {
-                this.source = value;
-            }
-        }
-        
-        public virtual string PlaceId {
-            get {
-                return this.placeId;
-            }
-            set {
-                this.placeId = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address {
             get {
                 return this.address;
@@ -376,34 +82,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Updated {
+        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
+        public virtual string Annotation {
             get {
-                return this.updated;
+                return this.annotation;
             }
             set {
-                this.updated = value;
+                this.annotation = value;
             }
         }
         
-        public virtual IList<System.String> Verbs {
-            get {
-                return this.verbs;
-            }
-            set {
-                this.verbs = value;
-            }
-        }
-        
-        public virtual string Radius {
-            get {
-                return this.radius;
-            }
-            set {
-                this.radius = value;
-            }
-        }
-        
-        public virtual IList<NestedClass6> Categories {
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual IList<NestedClass2> Categories {
             get {
                 return this.categories;
             }
@@ -412,488 +102,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string UntranslatedTitle {
+        [Newtonsoft.Json.JsonPropertyAttribute("crosspostSource")]
+        public virtual string CrosspostSource {
             get {
-                return this.untranslatedTitle;
+                return this.crosspostSource;
             }
             set {
-                this.untranslatedTitle = value;
+                this.crosspostSource = value;
             }
         }
         
-        public virtual string Published {
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedlLang")]
+        public virtual string DetectedlLang {
             get {
-                return this.published;
+                return this.detectedlLang;
             }
             set {
-                this.published = value;
+                this.detectedlLang = value;
             }
         }
         
-        public class NestedClass1 {
-            
-            private IList<NestedClass1_1> entries;
-            
-            public virtual IList<NestedClass1_1> Entries {
-                get {
-                    return this.entries;
-                }
-                set {
-                    this.entries = value;
-                }
+        [Newtonsoft.Json.JsonPropertyAttribute("geocode")]
+        public virtual string Geocode {
+            get {
+                return this.geocode;
             }
-            
-            public class NestedClass1_1 {
-                
-                private string id;
-                
-                private string title;
-                
-                public virtual string Id {
-                    get {
-                        return this.id;
-                    }
-                    set {
-                        this.id = value;
-                    }
-                }
-                
-                public virtual string Title {
-                    get {
-                        return this.title;
-                    }
-                    set {
-                        this.title = value;
-                    }
-                }
+            set {
+                this.geocode = value;
             }
         }
         
-        public class NestedClass2 {
-            
-            private IList<NestedClass2_1> liked;
-            
-            public virtual IList<NestedClass2_1> Liked {
-                get {
-                    return this.liked;
-                }
-                set {
-                    this.liked = value;
-                }
-            }
-            
-            public class NestedClass2_1 {
-                
-                private long count;
-                
-                private string type;
-                
-                private string href;
-                
-                public virtual long Count {
-                    get {
-                        return this.count;
-                    }
-                    set {
-                        this.count = value;
-                    }
-                }
-                
-                public virtual string Type {
-                    get {
-                        return this.type;
-                    }
-                    set {
-                        this.type = value;
-                    }
-                }
-                
-                public virtual string Href {
-                    get {
-                        return this.href;
-                    }
-                    set {
-                        this.href = value;
-                    }
-                }
-            }
-        }
-        
-        public class NestedClass3 {
-            
-            private string id;
-            
-            private string profileUrl;
-            
-            private string thumbnailUrl;
-            
-            private string name;
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual string ProfileUrl {
-                get {
-                    return this.profileUrl;
-                }
-                set {
-                    this.profileUrl = value;
-                }
-            }
-            
-            public virtual string ThumbnailUrl {
-                get {
-                    return this.thumbnailUrl;
-                }
-                set {
-                    this.thumbnailUrl = value;
-                }
-            }
-            
-            public virtual string Name {
-                get {
-                    return this.name;
-                }
-                set {
-                    this.name = value;
-                }
-            }
-        }
-        
-        public class NestedClass4 {
-            
-            private string untranslatedContent;
-            
-            private string targetLang;
-            
-            private IList<ChiliPeopleResourceJson> liked;
-            
-            private NestedClass4_1 links;
-            
-            private NestedClass4_2 actor;
-            
-            private string type;
-            
-            private string detectedlLang;
-            
-            private ChiliActivitiesResourceJson shareOriginal;
-            
-            private string originalContent;
-            
-            private string id;
-            
-            private string content;
-            
-            private IList<NestedClass4_3> attachments;
-            
-            private IList<ChiliCommentsResourceJson> comments;
-            
-            public virtual string UntranslatedContent {
-                get {
-                    return this.untranslatedContent;
-                }
-                set {
-                    this.untranslatedContent = value;
-                }
-            }
-            
-            public virtual string TargetLang {
-                get {
-                    return this.targetLang;
-                }
-                set {
-                    this.targetLang = value;
-                }
-            }
-            
-            public virtual IList<ChiliPeopleResourceJson> Liked {
-                get {
-                    return this.liked;
-                }
-                set {
-                    this.liked = value;
-                }
-            }
-            
-            public virtual NestedClass4_1 Links {
-                get {
-                    return this.links;
-                }
-                set {
-                    this.links = value;
-                }
-            }
-            
-            public virtual NestedClass4_2 Actor {
-                get {
-                    return this.actor;
-                }
-                set {
-                    this.actor = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
-                }
-            }
-            
-            public virtual string DetectedlLang {
-                get {
-                    return this.detectedlLang;
-                }
-                set {
-                    this.detectedlLang = value;
-                }
-            }
-            
-            public virtual ChiliActivitiesResourceJson ShareOriginal {
-                get {
-                    return this.shareOriginal;
-                }
-                set {
-                    this.shareOriginal = value;
-                }
-            }
-            
-            public virtual string OriginalContent {
-                get {
-                    return this.originalContent;
-                }
-                set {
-                    this.originalContent = value;
-                }
-            }
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual string Content {
-                get {
-                    return this.content;
-                }
-                set {
-                    this.content = value;
-                }
-            }
-            
-            public virtual IList<NestedClass4_3> Attachments {
-                get {
-                    return this.attachments;
-                }
-                set {
-                    this.attachments = value;
-                }
-            }
-            
-            public virtual IList<ChiliCommentsResourceJson> Comments {
-                get {
-                    return this.comments;
-                }
-                set {
-                    this.comments = value;
-                }
-            }
-            
-            public class NestedClass4_1 {
-            }
-            
-            public class NestedClass4_2 {
-                
-                private string id;
-                
-                private string profileUrl;
-                
-                private string thumbnailUrl;
-                
-                private string name;
-                
-                public virtual string Id {
-                    get {
-                        return this.id;
-                    }
-                    set {
-                        this.id = value;
-                    }
-                }
-                
-                public virtual string ProfileUrl {
-                    get {
-                        return this.profileUrl;
-                    }
-                    set {
-                        this.profileUrl = value;
-                    }
-                }
-                
-                public virtual string ThumbnailUrl {
-                    get {
-                        return this.thumbnailUrl;
-                    }
-                    set {
-                        this.thumbnailUrl = value;
-                    }
-                }
-                
-                public virtual string Name {
-                    get {
-                        return this.name;
-                    }
-                    set {
-                        this.name = value;
-                    }
-                }
-            }
-            
-            public class NestedClass4_3 {
-                
-                private string content;
-                
-                private string id;
-                
-                private string title;
-                
-                private NestedClass4_3_1 links;
-                
-                private string type;
-                
-                public virtual string Content {
-                    get {
-                        return this.content;
-                    }
-                    set {
-                        this.content = value;
-                    }
-                }
-                
-                public virtual string Id {
-                    get {
-                        return this.id;
-                    }
-                    set {
-                        this.id = value;
-                    }
-                }
-                
-                public virtual string Title {
-                    get {
-                        return this.title;
-                    }
-                    set {
-                        this.title = value;
-                    }
-                }
-                
-                public virtual NestedClass4_3_1 Links {
-                    get {
-                        return this.links;
-                    }
-                    set {
-                        this.links = value;
-                    }
-                }
-                
-                public virtual string Type {
-                    get {
-                        return this.type;
-                    }
-                    set {
-                        this.type = value;
-                    }
-                }
-                
-                public class NestedClass4_3_1 {
-                }
-            }
-        }
-        
-        public class NestedClass5 {
-            
-            private string title;
-            
-            public virtual string Title {
-                get {
-                    return this.title;
-                }
-                set {
-                    this.title = value;
-                }
-            }
-        }
-        
-        public class NestedClass6 {
-            
-            private string schema;
-            
-            private string term;
-            
-            private string label;
-            
-            public virtual string Schema {
-                get {
-                    return this.schema;
-                }
-                set {
-                    this.schema = value;
-                }
-            }
-            
-            public virtual string Term {
-                get {
-                    return this.term;
-                }
-                set {
-                    this.term = value;
-                }
-            }
-            
-            public virtual string Label {
-                get {
-                    return this.label;
-                }
-                set {
-                    this.label = value;
-                }
-            }
-        }
-    }
-    
-    public class ChiliActivitiesSearchJson {
-    }
-    
-    public class ChiliActivitiesTrackJson {
-    }
-    
-    public class ChiliCommentsListJson {
-        
-        private string id;
-        
-        private string title;
-        
-        private IList<ChiliCommentsResourceJson> items;
-        
-        private string updated;
-        
-        private NestedClass1 links;
-        
-        private string kind;
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id {
             get {
                 return this.id;
@@ -903,42 +142,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
-        public virtual IList<ChiliCommentsResourceJson> Items {
-            get {
-                return this.items;
-            }
-            set {
-                this.items = value;
-            }
-        }
-        
-        public virtual string Updated {
-            get {
-                return this.updated;
-            }
-            set {
-                this.updated = value;
-            }
-        }
-        
-        public virtual NestedClass1 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -948,90 +152,47 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public class NestedClass1 {
-        }
-    }
-    
-    public class ChiliCommentsResourceJson {
-        
-        private string content;
-        
-        private string id;
-        
-        private string detectedLang;
-        
-        private string untranslatedContent;
-        
-        private string updated;
-        
-        private string targetLang;
-        
-        private string placeholder;
-        
-        private NestedClass1 links;
-        
-        private NestedClass2 actor;
-        
-        private string published;
-        
-        private string kind;
-        
-        private string originalContent;
-        
-        public virtual string Content {
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass3 Links {
             get {
-                return this.content;
+                return this.links;
             }
             set {
-                this.content = value;
+                this.links = value;
             }
         }
         
-        public virtual string Id {
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual NestedClass4 ObjectProperty10 {
             get {
-                return this.id;
+                return this.objectField10;
             }
             set {
-                this.id = value;
+                this.objectField10 = value;
             }
         }
         
-        public virtual string DetectedLang {
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId {
             get {
-                return this.detectedLang;
+                return this.placeId;
             }
             set {
-                this.detectedLang = value;
+                this.placeId = value;
             }
         }
         
-        public virtual string UntranslatedContent {
+        [Newtonsoft.Json.JsonPropertyAttribute("placeName")]
+        public virtual string PlaceName {
             get {
-                return this.untranslatedContent;
+                return this.placeName;
             }
             set {
-                this.untranslatedContent = value;
+                this.placeName = value;
             }
         }
         
-        public virtual string Updated {
-            get {
-                return this.updated;
-            }
-            set {
-                this.updated = value;
-            }
-        }
-        
-        public virtual string TargetLang {
-            get {
-                return this.targetLang;
-            }
-            set {
-                this.targetLang = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
         public virtual string Placeholder {
             get {
                 return this.placeholder;
@@ -1041,24 +202,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual NestedClass1 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual NestedClass2 Actor {
-            get {
-                return this.actor;
-            }
-            set {
-                this.actor = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual string Published {
             get {
                 return this.published;
@@ -1068,257 +212,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Kind {
+        [Newtonsoft.Json.JsonPropertyAttribute("radius")]
+        public virtual string Radius {
             get {
-                return this.kind;
+                return this.radius;
             }
             set {
-                this.kind = value;
+                this.radius = value;
             }
         }
         
-        public virtual string OriginalContent {
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual NestedClass5 Source {
             get {
-                return this.originalContent;
+                return this.source;
             }
             set {
-                this.originalContent = value;
+                this.source = value;
             }
         }
         
-        public class NestedClass1 {
-            
-            private IList<NestedClass1_1> inReplyTo;
-            
-            public virtual IList<NestedClass1_1> InReplyTo {
-                get {
-                    return this.inReplyTo;
-                }
-                set {
-                    this.inReplyTo = value;
-                }
-            }
-            
-            public class NestedClass1_1 {
-                
-                private string refField0;
-                
-                private string source;
-                
-                private string href;
-                
-                public virtual string RefProperty0 {
-                    get {
-                        return this.refField0;
-                    }
-                    set {
-                        this.refField0 = value;
-                    }
-                }
-                
-                public virtual string Source {
-                    get {
-                        return this.source;
-                    }
-                    set {
-                        this.source = value;
-                    }
-                }
-                
-                public virtual string Href {
-                    get {
-                        return this.href;
-                    }
-                    set {
-                        this.href = value;
-                    }
-                }
-            }
-        }
-        
-        public class NestedClass2 {
-            
-            private string id;
-            
-            private string profileUrl;
-            
-            private string thumbnailUrl;
-            
-            private string name;
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual string ProfileUrl {
-                get {
-                    return this.profileUrl;
-                }
-                set {
-                    this.profileUrl = value;
-                }
-            }
-            
-            public virtual string ThumbnailUrl {
-                get {
-                    return this.thumbnailUrl;
-                }
-                set {
-                    this.thumbnailUrl = value;
-                }
-            }
-            
-            public virtual string Name {
-                get {
-                    return this.name;
-                }
-                set {
-                    this.name = value;
-                }
-            }
-        }
-    }
-    
-    public class ChiliEntitiesListJson {
-        
-        private IList<ChiliEntitiesStarredResource> entry;
-        
-        private string kind;
-        
-        public virtual IList<ChiliEntitiesStarredResource> Entry {
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+        public virtual string TargetLang {
             get {
-                return this.entry;
+                return this.targetLang;
             }
             set {
-                this.entry = value;
+                this.targetLang = value;
             }
         }
         
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliEntitiesStarredAddJson {
-    }
-    
-    public class ChiliEntitiesStarredListJson {
-        
-        private string startIndex;
-        
-        private string totalResults;
-        
-        private IList<ChiliEntitiesStarredResource> entry;
-        
-        private string itemsPerPage;
-        
-        private string kind;
-        
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliEntitiesStarredResource> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliEntitiesStarredResource {
-        
-        private string summary;
-        
-        private string id;
-        
-        private IList<NestedClass1> viewerStarAcl;
-        
-        private string title;
-        
-        private string chipsUiAcl;
-        
-        private string totalNumStars;
-        
-        private IList<ChiliPeopleResourceJson> starredBy;
-        
-        private string starredByViewer;
-        
-        private string comment;
-        
-        private string kind;
-        
-        public virtual string Summary {
-            get {
-                return this.summary;
-            }
-            set {
-                this.summary = value;
-            }
-        }
-        
-        public virtual string Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual IList<NestedClass1> ViewerStarAcl {
-            get {
-                return this.viewerStarAcl;
-            }
-            set {
-                this.viewerStarAcl = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title {
             get {
                 return this.title;
@@ -1328,714 +252,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string ChipsUiAcl {
+        [Newtonsoft.Json.JsonPropertyAttribute("untranslatedTitle")]
+        public virtual string UntranslatedTitle {
             get {
-                return this.chipsUiAcl;
+                return this.untranslatedTitle;
             }
             set {
-                this.chipsUiAcl = value;
+                this.untranslatedTitle = value;
             }
         }
         
-        public virtual string TotalNumStars {
-            get {
-                return this.totalNumStars;
-            }
-            set {
-                this.totalNumStars = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> StarredBy {
-            get {
-                return this.starredBy;
-            }
-            set {
-                this.starredBy = value;
-            }
-        }
-        
-        public virtual string StarredByViewer {
-            get {
-                return this.starredByViewer;
-            }
-            set {
-                this.starredByViewer = value;
-            }
-        }
-        
-        public virtual string Comment {
-            get {
-                return this.comment;
-            }
-            set {
-                this.comment = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-            
-            private string id;
-            
-            private IList<System.String> tags;
-            
-            private string displayName;
-            
-            private string kind;
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual IList<System.String> Tags {
-                get {
-                    return this.tags;
-                }
-                set {
-                    this.tags = value;
-                }
-            }
-            
-            public virtual string DisplayName {
-                get {
-                    return this.displayName;
-                }
-                set {
-                    this.displayName = value;
-                }
-            }
-            
-            public virtual string Kind {
-                get {
-                    return this.kind;
-                }
-                set {
-                    this.kind = value;
-                }
-            }
-        }
-    }
-    
-    public class ChiliEntitiesdefaultaclResourceJson {
-        
-        private IList<NestedClass1> viewerStarAcl;
-        
-        private string chipsUiAcl;
-        
-        private string kind;
-        
-        public virtual IList<NestedClass1> ViewerStarAcl {
-            get {
-                return this.viewerStarAcl;
-            }
-            set {
-                this.viewerStarAcl = value;
-            }
-        }
-        
-        public virtual string ChipsUiAcl {
-            get {
-                return this.chipsUiAcl;
-            }
-            set {
-                this.chipsUiAcl = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-            
-            private string id;
-            
-            private IList<System.String> tags;
-            
-            private string displayName;
-            
-            private string kind;
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual IList<System.String> Tags {
-                get {
-                    return this.tags;
-                }
-                set {
-                    this.tags = value;
-                }
-            }
-            
-            public virtual string DisplayName {
-                get {
-                    return this.displayName;
-                }
-                set {
-                    this.displayName = value;
-                }
-            }
-            
-            public virtual string Kind {
-                get {
-                    return this.kind;
-                }
-                set {
-                    this.kind = value;
-                }
-            }
-        }
-    }
-    
-    public class ChiliGroupsListJson {
-        
-        private IList<ChiliGroupsResourceJson> items;
-        
-        private NestedClass1 links;
-        
-        private string kind;
-        
-        public virtual IList<ChiliGroupsResourceJson> Items {
-            get {
-                return this.items;
-            }
-            set {
-                this.items = value;
-            }
-        }
-        
-        public virtual NestedClass1 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-        }
-    }
-    
-    public class ChiliGroupsResourceJson {
-        
-        private string id;
-        
-        private string title;
-        
-        private NestedClass1 links;
-        
-        private string memberCount;
-        
-        private string kind;
-        
-        public virtual string Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
-        public virtual NestedClass1 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual string MemberCount {
-            get {
-                return this.memberCount;
-            }
-            set {
-                this.memberCount = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
-            
-            private IList<NestedClass1_1> self;
-            
-            public virtual IList<NestedClass1_1> Self {
-                get {
-                    return this.self;
-                }
-                set {
-                    this.self = value;
-                }
-            }
-            
-            public class NestedClass1_1 {
-                
-                private string type;
-                
-                private string href;
-                
-                public virtual string Type {
-                    get {
-                        return this.type;
-                    }
-                    set {
-                        this.type = value;
-                    }
-                }
-                
-                public virtual string Href {
-                    get {
-                        return this.href;
-                    }
-                    set {
-                        this.href = value;
-                    }
-                }
-            }
-        }
-    }
-    
-    public class ChiliPeopleLikedJson {
-        
-        private string startIndex;
-        
-        private string totalResults;
-        
-        private IList<ChiliPeopleResourceJson> entry;
-        
-        private string itemsPerPage;
-        
-        private string kind;
-        
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliPeopleListJson {
-        
-        private string startIndex;
-        
-        private string totalResults;
-        
-        private IList<ChiliPeopleResourceJson> entry;
-        
-        private string itemsPerPage;
-        
-        private string kind;
-        
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliPeopleResharedJson {
-        
-        private string startIndex;
-        
-        private string totalResults;
-        
-        private IList<ChiliPeopleResourceJson> entry;
-        
-        private string itemsPerPage;
-        
-        private string kind;
-        
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliPeopleResourceJson {
-        
-        private IList<System.String> turnOffs;
-        
-        private IList<System.String> heroes;
-        
-        private IList<NestedClass1> ims;
-        
-        private string connected;
-        
-        private IList<System.String> sports;
-        
-        private IList<System.String> languagesSpoken;
-        
-        private string religion;
-        
-        private IList<System.String> turnOns;
-        
-        private IList<System.String> languages;
-        
-        private string updated;
-        
-        private IList<System.String> cars;
-        
-        private IList<System.String> pets;
-        
-        private string gender;
-        
-        private string humor;
-        
-        private IList<System.String> activities;
-        
-        private string preferredUsername;
-        
-        private string hasApp;
-        
-        private IList<System.String> books;
-        
-        private string happiestWhen;
-        
-        private string scaredOf;
-        
-        private string nickname;
-        
-        private string status;
-        
-        private IList<NestedClass2> emails;
-        
-        private string profileUrl;
-        
-        private IList<System.String> food;
-        
-        private string utcOffset;
-        
-        private string profileVideo;
-        
-        private string smoker;
-        
-        private IList<NestedClass3> addresses;
-        
-        private string birthday;
-        
-        private string fashion;
-        
-        private IList<System.String> interests;
-        
-        private string drinker;
-        
-        private IList<System.String> movies;
-        
-        private IList<System.String> jobInterests;
-        
-        private IList<System.String> children;
-        
-        private string lookingFor;
-        
-        private string romance;
-        
-        private string aboutMe;
-        
-        private string kind;
-        
-        private string bodyType;
-        
-        private string id;
-        
-        private IList<System.String> tvShows;
-        
-        private NestedClass4 name;
-        
-        private string thumbnailUrl;
-        
-        private string published;
-        
-        private IList<System.String> relationships;
-        
-        private string profileSong;
-        
-        private string note;
-        
-        private IList<System.String> music;
-        
-        private IList<System.String> tags;
-        
-        private string anniversary;
-        
-        private IList<System.String> politicalViews;
-        
-        private IList<NestedClass5> accounts;
-        
-        private IList<NestedClass6> urls;
-        
-        private IList<NestedClass7> organizations;
-        
-        private string relationshipStatus;
-        
-        private IList<NestedClass8> phoneNumbers;
-        
-        private string livingArrangement;
-        
-        private string currentLocation;
-        
-        private IList<NestedClass9> photos;
-        
-        private IList<System.String> quotes;
-        
-        private string sexualOrientation;
-        
-        private string displayName;
-        
-        private string ethnicity;
-        
-        public virtual IList<System.String> TurnOffs {
-            get {
-                return this.turnOffs;
-            }
-            set {
-                this.turnOffs = value;
-            }
-        }
-        
-        public virtual IList<System.String> Heroes {
-            get {
-                return this.heroes;
-            }
-            set {
-                this.heroes = value;
-            }
-        }
-        
-        public virtual IList<NestedClass1> Ims {
-            get {
-                return this.ims;
-            }
-            set {
-                this.ims = value;
-            }
-        }
-        
-        public virtual string Connected {
-            get {
-                return this.connected;
-            }
-            set {
-                this.connected = value;
-            }
-        }
-        
-        public virtual IList<System.String> Sports {
-            get {
-                return this.sports;
-            }
-            set {
-                this.sports = value;
-            }
-        }
-        
-        public virtual IList<System.String> LanguagesSpoken {
-            get {
-                return this.languagesSpoken;
-            }
-            set {
-                this.languagesSpoken = value;
-            }
-        }
-        
-        public virtual string Religion {
-            get {
-                return this.religion;
-            }
-            set {
-                this.religion = value;
-            }
-        }
-        
-        public virtual IList<System.String> TurnOns {
-            get {
-                return this.turnOns;
-            }
-            set {
-                this.turnOns = value;
-            }
-        }
-        
-        public virtual IList<System.String> Languages {
-            get {
-                return this.languages;
-            }
-            set {
-                this.languages = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated {
             get {
                 return this.updated;
@@ -2045,879 +272,47 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<System.String> Cars {
+        [Newtonsoft.Json.JsonPropertyAttribute("verbs")]
+        public virtual IList<System.String> Verbs {
             get {
-                return this.cars;
+                return this.verbs;
             }
             set {
-                this.cars = value;
+                this.verbs = value;
             }
         }
         
-        public virtual IList<System.String> Pets {
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual NestedClass6 Visibility {
             get {
-                return this.pets;
+                return this.visibility;
             }
             set {
-                this.pets = value;
-            }
-        }
-        
-        public virtual string Gender {
-            get {
-                return this.gender;
-            }
-            set {
-                this.gender = value;
-            }
-        }
-        
-        public virtual string Humor {
-            get {
-                return this.humor;
-            }
-            set {
-                this.humor = value;
-            }
-        }
-        
-        public virtual IList<System.String> Activities {
-            get {
-                return this.activities;
-            }
-            set {
-                this.activities = value;
-            }
-        }
-        
-        public virtual string PreferredUsername {
-            get {
-                return this.preferredUsername;
-            }
-            set {
-                this.preferredUsername = value;
-            }
-        }
-        
-        public virtual string HasApp {
-            get {
-                return this.hasApp;
-            }
-            set {
-                this.hasApp = value;
-            }
-        }
-        
-        public virtual IList<System.String> Books {
-            get {
-                return this.books;
-            }
-            set {
-                this.books = value;
-            }
-        }
-        
-        public virtual string HappiestWhen {
-            get {
-                return this.happiestWhen;
-            }
-            set {
-                this.happiestWhen = value;
-            }
-        }
-        
-        public virtual string ScaredOf {
-            get {
-                return this.scaredOf;
-            }
-            set {
-                this.scaredOf = value;
-            }
-        }
-        
-        public virtual string Nickname {
-            get {
-                return this.nickname;
-            }
-            set {
-                this.nickname = value;
-            }
-        }
-        
-        public virtual string Status {
-            get {
-                return this.status;
-            }
-            set {
-                this.status = value;
-            }
-        }
-        
-        public virtual IList<NestedClass2> Emails {
-            get {
-                return this.emails;
-            }
-            set {
-                this.emails = value;
-            }
-        }
-        
-        public virtual string ProfileUrl {
-            get {
-                return this.profileUrl;
-            }
-            set {
-                this.profileUrl = value;
-            }
-        }
-        
-        public virtual IList<System.String> Food {
-            get {
-                return this.food;
-            }
-            set {
-                this.food = value;
-            }
-        }
-        
-        public virtual string UtcOffset {
-            get {
-                return this.utcOffset;
-            }
-            set {
-                this.utcOffset = value;
-            }
-        }
-        
-        public virtual string ProfileVideo {
-            get {
-                return this.profileVideo;
-            }
-            set {
-                this.profileVideo = value;
-            }
-        }
-        
-        public virtual string Smoker {
-            get {
-                return this.smoker;
-            }
-            set {
-                this.smoker = value;
-            }
-        }
-        
-        public virtual IList<NestedClass3> Addresses {
-            get {
-                return this.addresses;
-            }
-            set {
-                this.addresses = value;
-            }
-        }
-        
-        public virtual string Birthday {
-            get {
-                return this.birthday;
-            }
-            set {
-                this.birthday = value;
-            }
-        }
-        
-        public virtual string Fashion {
-            get {
-                return this.fashion;
-            }
-            set {
-                this.fashion = value;
-            }
-        }
-        
-        public virtual IList<System.String> Interests {
-            get {
-                return this.interests;
-            }
-            set {
-                this.interests = value;
-            }
-        }
-        
-        public virtual string Drinker {
-            get {
-                return this.drinker;
-            }
-            set {
-                this.drinker = value;
-            }
-        }
-        
-        public virtual IList<System.String> Movies {
-            get {
-                return this.movies;
-            }
-            set {
-                this.movies = value;
-            }
-        }
-        
-        public virtual IList<System.String> JobInterests {
-            get {
-                return this.jobInterests;
-            }
-            set {
-                this.jobInterests = value;
-            }
-        }
-        
-        public virtual IList<System.String> Children {
-            get {
-                return this.children;
-            }
-            set {
-                this.children = value;
-            }
-        }
-        
-        public virtual string LookingFor {
-            get {
-                return this.lookingFor;
-            }
-            set {
-                this.lookingFor = value;
-            }
-        }
-        
-        public virtual string Romance {
-            get {
-                return this.romance;
-            }
-            set {
-                this.romance = value;
-            }
-        }
-        
-        public virtual string AboutMe {
-            get {
-                return this.aboutMe;
-            }
-            set {
-                this.aboutMe = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public virtual string BodyType {
-            get {
-                return this.bodyType;
-            }
-            set {
-                this.bodyType = value;
-            }
-        }
-        
-        public virtual string Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual IList<System.String> TvShows {
-            get {
-                return this.tvShows;
-            }
-            set {
-                this.tvShows = value;
-            }
-        }
-        
-        public virtual NestedClass4 Name {
-            get {
-                return this.name;
-            }
-            set {
-                this.name = value;
-            }
-        }
-        
-        public virtual string ThumbnailUrl {
-            get {
-                return this.thumbnailUrl;
-            }
-            set {
-                this.thumbnailUrl = value;
-            }
-        }
-        
-        public virtual string Published {
-            get {
-                return this.published;
-            }
-            set {
-                this.published = value;
-            }
-        }
-        
-        public virtual IList<System.String> Relationships {
-            get {
-                return this.relationships;
-            }
-            set {
-                this.relationships = value;
-            }
-        }
-        
-        public virtual string ProfileSong {
-            get {
-                return this.profileSong;
-            }
-            set {
-                this.profileSong = value;
-            }
-        }
-        
-        public virtual string Note {
-            get {
-                return this.note;
-            }
-            set {
-                this.note = value;
-            }
-        }
-        
-        public virtual IList<System.String> Music {
-            get {
-                return this.music;
-            }
-            set {
-                this.music = value;
-            }
-        }
-        
-        public virtual IList<System.String> Tags {
-            get {
-                return this.tags;
-            }
-            set {
-                this.tags = value;
-            }
-        }
-        
-        public virtual string Anniversary {
-            get {
-                return this.anniversary;
-            }
-            set {
-                this.anniversary = value;
-            }
-        }
-        
-        public virtual IList<System.String> PoliticalViews {
-            get {
-                return this.politicalViews;
-            }
-            set {
-                this.politicalViews = value;
-            }
-        }
-        
-        public virtual IList<NestedClass5> Accounts {
-            get {
-                return this.accounts;
-            }
-            set {
-                this.accounts = value;
-            }
-        }
-        
-        public virtual IList<NestedClass6> Urls {
-            get {
-                return this.urls;
-            }
-            set {
-                this.urls = value;
-            }
-        }
-        
-        public virtual IList<NestedClass7> Organizations {
-            get {
-                return this.organizations;
-            }
-            set {
-                this.organizations = value;
-            }
-        }
-        
-        public virtual string RelationshipStatus {
-            get {
-                return this.relationshipStatus;
-            }
-            set {
-                this.relationshipStatus = value;
-            }
-        }
-        
-        public virtual IList<NestedClass8> PhoneNumbers {
-            get {
-                return this.phoneNumbers;
-            }
-            set {
-                this.phoneNumbers = value;
-            }
-        }
-        
-        public virtual string LivingArrangement {
-            get {
-                return this.livingArrangement;
-            }
-            set {
-                this.livingArrangement = value;
-            }
-        }
-        
-        public virtual string CurrentLocation {
-            get {
-                return this.currentLocation;
-            }
-            set {
-                this.currentLocation = value;
-            }
-        }
-        
-        public virtual IList<NestedClass9> Photos {
-            get {
-                return this.photos;
-            }
-            set {
-                this.photos = value;
-            }
-        }
-        
-        public virtual IList<System.String> Quotes {
-            get {
-                return this.quotes;
-            }
-            set {
-                this.quotes = value;
-            }
-        }
-        
-        public virtual string SexualOrientation {
-            get {
-                return this.sexualOrientation;
-            }
-            set {
-                this.sexualOrientation = value;
-            }
-        }
-        
-        public virtual string DisplayName {
-            get {
-                return this.displayName;
-            }
-            set {
-                this.displayName = value;
-            }
-        }
-        
-        public virtual string Ethnicity {
-            get {
-                return this.ethnicity;
-            }
-            set {
-                this.ethnicity = value;
+                this.visibility = value;
             }
         }
         
         public class NestedClass1 {
             
-            private string primary;
-            
-            private string value;
-            
-            private string type;
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
-            public virtual string Value {
-                get {
-                    return this.value;
-                }
-                set {
-                    this.value = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
-                }
-            }
-        }
-        
-        public class NestedClass2 {
-            
-            private string primary;
-            
-            private string value;
-            
-            private string type;
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
-            public virtual string Value {
-                get {
-                    return this.value;
-                }
-                set {
-                    this.value = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
-                }
-            }
-        }
-        
-        public class NestedClass3 {
-            
-            private string region;
-            
-            private string streetAddress;
-            
-            private string formatted;
-            
-            private string postalCode;
-            
-            private string primary;
-            
-            private string locality;
-            
-            private string type;
-            
-            private string country;
-            
-            public virtual string Region {
-                get {
-                    return this.region;
-                }
-                set {
-                    this.region = value;
-                }
-            }
-            
-            public virtual string StreetAddress {
-                get {
-                    return this.streetAddress;
-                }
-                set {
-                    this.streetAddress = value;
-                }
-            }
-            
-            public virtual string Formatted {
-                get {
-                    return this.formatted;
-                }
-                set {
-                    this.formatted = value;
-                }
-            }
-            
-            public virtual string PostalCode {
-                get {
-                    return this.postalCode;
-                }
-                set {
-                    this.postalCode = value;
-                }
-            }
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
-            public virtual string Locality {
-                get {
-                    return this.locality;
-                }
-                set {
-                    this.locality = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
-                }
-            }
-            
-            public virtual string Country {
-                get {
-                    return this.country;
-                }
-                set {
-                    this.country = value;
-                }
-            }
-        }
-        
-        public class NestedClass4 {
-            
-            private string middleName;
-            
-            private string formatted;
-            
-            private string honorificPrefix;
-            
-            private string familyName;
-            
-            private string givenName;
-            
-            private string honorificSuffix;
-            
-            public virtual string MiddleName {
-                get {
-                    return this.middleName;
-                }
-                set {
-                    this.middleName = value;
-                }
-            }
-            
-            public virtual string Formatted {
-                get {
-                    return this.formatted;
-                }
-                set {
-                    this.formatted = value;
-                }
-            }
-            
-            public virtual string HonorificPrefix {
-                get {
-                    return this.honorificPrefix;
-                }
-                set {
-                    this.honorificPrefix = value;
-                }
-            }
-            
-            public virtual string FamilyName {
-                get {
-                    return this.familyName;
-                }
-                set {
-                    this.familyName = value;
-                }
-            }
-            
-            public virtual string GivenName {
-                get {
-                    return this.givenName;
-                }
-                set {
-                    this.givenName = value;
-                }
-            }
-            
-            public virtual string HonorificSuffix {
-                get {
-                    return this.honorificSuffix;
-                }
-                set {
-                    this.honorificSuffix = value;
-                }
-            }
-        }
-        
-        public class NestedClass5 {
-            
-            private string username;
-            
-            private string userid;
-            
-            private string domain;
-            
-            public virtual string Username {
-                get {
-                    return this.username;
-                }
-                set {
-                    this.username = value;
-                }
-            }
-            
-            public virtual string Userid {
-                get {
-                    return this.userid;
-                }
-                set {
-                    this.userid = value;
-                }
-            }
-            
-            public virtual string Domain {
-                get {
-                    return this.domain;
-                }
-                set {
-                    this.domain = value;
-                }
-            }
-        }
-        
-        public class NestedClass6 {
-            
-            private string primary;
-            
-            private string value;
-            
-            private string type;
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
-            public virtual string Value {
-                get {
-                    return this.value;
-                }
-                set {
-                    this.value = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
-                }
-            }
-        }
-        
-        public class NestedClass7 {
-            
-            private string startDate;
-            
-            private string title;
-            
-            private string location;
-            
-            private string description;
-            
-            private string department;
-            
-            private string primary;
+            private string id;
             
             private string name;
             
-            private string endDate;
+            private string profileUrl;
             
-            private string type;
+            private string thumbnailUrl;
             
-            public virtual string StartDate {
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
                 get {
-                    return this.startDate;
+                    return this.id;
                 }
                 set {
-                    this.startDate = value;
+                    this.id = value;
                 }
             }
             
-            public virtual string Title {
-                get {
-                    return this.title;
-                }
-                set {
-                    this.title = value;
-                }
-            }
-            
-            public virtual string Location {
-                get {
-                    return this.location;
-                }
-                set {
-                    this.location = value;
-                }
-            }
-            
-            public virtual string Description {
-                get {
-                    return this.description;
-                }
-                set {
-                    this.description = value;
-                }
-            }
-            
-            public virtual string Department {
-                get {
-                    return this.department;
-                }
-                set {
-                    this.department = value;
-                }
-            }
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name {
                 get {
                     return this.name;
@@ -2927,51 +322,259 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
-            public virtual string EndDate {
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
                 get {
-                    return this.endDate;
+                    return this.profileUrl;
                 }
                 set {
-                    this.endDate = value;
+                    this.profileUrl = value;
                 }
             }
             
-            public virtual string Type {
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
                 get {
-                    return this.type;
+                    return this.thumbnailUrl;
                 }
                 set {
-                    this.type = value;
+                    this.thumbnailUrl = value;
                 }
             }
         }
         
-        public class NestedClass8 {
+        public class NestedClass2 {
             
-            private string primary;
+            private string label;
             
-            private string value;
+            private string schema;
+            
+            private string term;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("label")]
+            public virtual string Label {
+                get {
+                    return this.label;
+                }
+                set {
+                    this.label = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+            public virtual string Schema {
+                get {
+                    return this.schema;
+                }
+                set {
+                    this.schema = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("term")]
+            public virtual string Term {
+                get {
+                    return this.term;
+                }
+                set {
+                    this.term = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private IList<NestedClass3_1> liked;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("liked")]
+            public virtual IList<NestedClass3_1> Liked {
+                get {
+                    return this.liked;
+                }
+                set {
+                    this.liked = value;
+                }
+            }
+            
+            public class NestedClass3_1 {
+                
+                private long count;
+                
+                private string href;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("count")]
+                public virtual long Count {
+                    get {
+                        return this.count;
+                    }
+                    set {
+                        this.count = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+            }
+        }
+        
+        public class NestedClass4 {
+            
+            private NestedClass4_1 actor;
+            
+            private IList<NestedClass4_2> attachments;
+            
+            private IList<Comment> comments;
+            
+            private string content;
+            
+            private string detectedlLang;
+            
+            private string id;
+            
+            private IList<Person> liked;
+            
+            private NestedClass4_3 links;
+            
+            private string originalContent;
+            
+            private Activity shareOriginal;
+            
+            private string targetLang;
             
             private string type;
             
-            public virtual string Primary {
+            private string untranslatedContent;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+            public virtual NestedClass4_1 Actor {
                 get {
-                    return this.primary;
+                    return this.actor;
                 }
                 set {
-                    this.primary = value;
+                    this.actor = value;
                 }
             }
             
-            public virtual string Value {
+            [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+            public virtual IList<NestedClass4_2> Attachments {
                 get {
-                    return this.value;
+                    return this.attachments;
                 }
                 set {
-                    this.value = value;
+                    this.attachments = value;
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+            public virtual IList<Comment> Comments {
+                get {
+                    return this.comments;
+                }
+                set {
+                    this.comments = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("content")]
+            public virtual string Content {
+                get {
+                    return this.content;
+                }
+                set {
+                    this.content = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("detectedlLang")]
+            public virtual string DetectedlLang {
+                get {
+                    return this.detectedlLang;
+                }
+                set {
+                    this.detectedlLang = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("liked")]
+            public virtual IList<Person> Liked {
+                get {
+                    return this.liked;
+                }
+                set {
+                    this.liked = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("links")]
+            public virtual NestedClass4_3 Links {
+                get {
+                    return this.links;
+                }
+                set {
+                    this.links = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("originalContent")]
+            public virtual string OriginalContent {
+                get {
+                    return this.originalContent;
+                }
+                set {
+                    this.originalContent = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("shareOriginal")]
+            public virtual Activity ShareOriginal {
+                get {
+                    return this.shareOriginal;
+                }
+                set {
+                    this.shareOriginal = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+            public virtual string TargetLang {
+                get {
+                    return this.targetLang;
+                }
+                set {
+                    this.targetLang = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type {
                 get {
                     return this.type;
@@ -2980,184 +583,212 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     this.type = value;
                 }
             }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("untranslatedContent")]
+            public virtual string UntranslatedContent {
+                get {
+                    return this.untranslatedContent;
+                }
+                set {
+                    this.untranslatedContent = value;
+                }
+            }
+            
+            public class NestedClass4_1 {
+                
+                private string id;
+                
+                private string name;
+                
+                private string profileUrl;
+                
+                private string thumbnailUrl;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("name")]
+                public virtual string Name {
+                    get {
+                        return this.name;
+                    }
+                    set {
+                        this.name = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+                public virtual string ProfileUrl {
+                    get {
+                        return this.profileUrl;
+                    }
+                    set {
+                        this.profileUrl = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+                public virtual string ThumbnailUrl {
+                    get {
+                        return this.thumbnailUrl;
+                    }
+                    set {
+                        this.thumbnailUrl = value;
+                    }
+                }
+            }
+            
+            public class NestedClass4_2 {
+                
+                private string content;
+                
+                private string id;
+                
+                private NestedClass4_2_1 links;
+                
+                private string title;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("content")]
+                public virtual string Content {
+                    get {
+                        return this.content;
+                    }
+                    set {
+                        this.content = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("links")]
+                public virtual NestedClass4_2_1 Links {
+                    get {
+                        return this.links;
+                    }
+                    set {
+                        this.links = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+                
+                public class NestedClass4_2_1 {
+                }
+            }
+            
+            public class NestedClass4_3 {
+            }
         }
         
-        public class NestedClass9 {
+        public class NestedClass5 {
             
-            private string height;
+            private string title;
             
-            private string width;
-            
-            private string primary;
-            
-            private string value;
-            
-            private string type;
-            
-            public virtual string Height {
+            [Newtonsoft.Json.JsonPropertyAttribute("title")]
+            public virtual string Title {
                 get {
-                    return this.height;
+                    return this.title;
                 }
                 set {
-                    this.height = value;
+                    this.title = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private IList<NestedClass6_1> entries;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+            public virtual IList<NestedClass6_1> Entries {
+                get {
+                    return this.entries;
+                }
+                set {
+                    this.entries = value;
                 }
             }
             
-            public virtual string Width {
-                get {
-                    return this.width;
+            public class NestedClass6_1 {
+                
+                private string id;
+                
+                private string title;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
                 }
-                set {
-                    this.width = value;
-                }
-            }
-            
-            public virtual string Primary {
-                get {
-                    return this.primary;
-                }
-                set {
-                    this.primary = value;
-                }
-            }
-            
-            public virtual string Value {
-                get {
-                    return this.value;
-                }
-                set {
-                    this.value = value;
-                }
-            }
-            
-            public virtual string Type {
-                get {
-                    return this.type;
-                }
-                set {
-                    this.type = value;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
                 }
             }
         }
     }
     
-    public class ChiliPeopleSearchJson {
+    public class ActivityFeed {
         
-        private string startIndex;
+        private string id;
         
-        private string totalResults;
-        
-        private IList<ChiliPeopleResourceJson> entry;
-        
-        private string itemsPerPage;
+        private IList<Activity> items;
         
         private string kind;
         
-        public virtual string StartIndex {
-            get {
-                return this.startIndex;
-            }
-            set {
-                this.startIndex = value;
-            }
-        }
-        
-        public virtual string TotalResults {
-            get {
-                return this.totalResults;
-            }
-            set {
-                this.totalResults = value;
-            }
-        }
-        
-        public virtual IList<ChiliPeopleResourceJson> Entry {
-            get {
-                return this.entry;
-            }
-            set {
-                this.entry = value;
-            }
-        }
-        
-        public virtual string ItemsPerPage {
-            get {
-                return this.itemsPerPage;
-            }
-            set {
-                this.itemsPerPage = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliPhotoalbumsListJson {
-        
-        private IList<ChiliPhotoalbumsResourceJson> items;
-        
-        private string kind;
-        
-        public virtual IList<ChiliPhotoalbumsResourceJson> Items {
-            get {
-                return this.items;
-            }
-            set {
-                this.items = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-    }
-    
-    public class ChiliPhotoalbumsResourceJson {
-        
-        private IList<System.String> tags;
-        
-        private long id;
-        
-        private long firstPhotoId;
+        private NestedClass1 links;
         
         private string title;
         
-        private string lastModified;
+        private string updated;
         
-        private string created;
-        
-        private string description;
-        
-        private NestedClass1 owner;
-        
-        private NestedClass2 links;
-        
-        private string kind;
-        
-        private long version;
-        
-        public virtual IList<System.String> Tags {
-            get {
-                return this.tags;
-            }
-            set {
-                this.tags = value;
-            }
-        }
-        
-        public virtual long Id {
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
             get {
                 return this.id;
             }
@@ -3166,15 +797,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual long FirstPhotoId {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Activity> Items {
             get {
-                return this.firstPhotoId;
+                return this.items;
             }
             set {
-                this.firstPhotoId = value;
+                this.items = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title {
             get {
                 return this.title;
@@ -3184,15 +837,45 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string LastModified {
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
             get {
-                return this.lastModified;
+                return this.updated;
             }
             set {
-                this.lastModified = value;
+                this.updated = value;
             }
         }
         
+        public class NestedClass1 {
+        }
+    }
+    
+    public class Album {
+        
+        private string created;
+        
+        private string description;
+        
+        private long firstPhotoId;
+        
+        private long id;
+        
+        private string kind;
+        
+        private string lastModified;
+        
+        private NestedClass1 links;
+        
+        private NestedClass2 owner;
+        
+        private IList<System.String> tags;
+        
+        private string title;
+        
+        private long version;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("created")]
         public virtual string Created {
             get {
                 return this.created;
@@ -3202,6 +885,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description {
             get {
                 return this.description;
@@ -3211,24 +895,27 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual NestedClass1 Owner {
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPhotoId")]
+        public virtual long FirstPhotoId {
             get {
-                return this.owner;
+                return this.firstPhotoId;
             }
             set {
-                this.owner = value;
+                this.firstPhotoId = value;
             }
         }
         
-        public virtual NestedClass2 Links {
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual long Id {
             get {
-                return this.links;
+                return this.id;
             }
             set {
-                this.links = value;
+                this.id = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3238,6 +925,57 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual NestedClass2 Owner {
+            get {
+                return this.owner;
+            }
+            set {
+                this.owner = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual IList<System.String> Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual long Version {
             get {
                 return this.version;
@@ -3249,57 +987,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass1 {
             
-            private string id;
-            
-            private string profileUrl;
-            
-            private string thumbnailUrl;
-            
-            private string name;
-            
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            public virtual string ProfileUrl {
-                get {
-                    return this.profileUrl;
-                }
-                set {
-                    this.profileUrl = value;
-                }
-            }
-            
-            public virtual string ThumbnailUrl {
-                get {
-                    return this.thumbnailUrl;
-                }
-                set {
-                    this.thumbnailUrl = value;
-                }
-            }
-            
-            public virtual string Name {
-                get {
-                    return this.name;
-                }
-                set {
-                    this.name = value;
-                }
-            }
-        }
-        
-        public class NestedClass2 {
-            
             private Link alternate;
             
             private Link enclosure;
             
+            [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
             public virtual Link Alternate {
                 get {
                     return this.alternate;
@@ -3309,6 +1001,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("enclosure")]
             public virtual Link Enclosure {
                 get {
                     return this.enclosure;
@@ -3318,14 +1011,66 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
         }
+        
+        public class NestedClass2 {
+            
+            private string id;
+            
+            private string name;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+        }
     }
     
-    public class ChiliPhotosInsertJson {
+    public class AlbumLite {
         
         private NestedClass1 collection;
         
         private string kind;
         
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual NestedClass1 Collection {
             get {
                 return this.collection;
@@ -3335,6 +1080,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3346,21 +1092,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         
         public class NestedClass1 {
             
-            private string albumId;
-            
             private string album;
+            
+            private string albumId;
             
             private NestedClass1_1 photo;
             
-            public virtual string AlbumId {
-                get {
-                    return this.albumId;
-                }
-                set {
-                    this.albumId = value;
-                }
-            }
-            
+            [Newtonsoft.Json.JsonPropertyAttribute("album")]
             public virtual string Album {
                 get {
                     return this.album;
@@ -3370,6 +1108,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("albumId")]
+            public virtual string AlbumId {
+                get {
+                    return this.albumId;
+                }
+                set {
+                    this.albumId = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("photo")]
             public virtual NestedClass1_1 Photo {
                 get {
                     return this.photo;
@@ -3383,6 +1132,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 
                 private string photoUrl;
                 
+                [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
                 public virtual string PhotoUrl {
                     get {
                         return this.photoUrl;
@@ -3395,13 +1145,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         }
     }
     
-    public class ChiliPhotosListJson {
+    public class AlbumsFeed {
         
-        private IList<ChiliPhotosResourceJson> items;
+        private IList<Album> items;
         
         private string kind;
         
-        public virtual IList<ChiliPhotosResourceJson> Items {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Album> Items {
             get {
                 return this.items;
             }
@@ -3410,6 +1161,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3422,41 +1174,33 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
     
     public class ChiliPhotosResourceJson {
         
-        private string lastModified;
-        
         private NestedClass1 album;
-        
-        private NestedClass2 links;
-        
-        private string kind;
-        
-        private long version;
-        
-        private long id;
-        
-        private double timestamp;
-        
-        private long fileSize;
-        
-        private string title;
         
         private string created;
         
         private string description;
         
+        private long fileSize;
+        
+        private long id;
+        
+        private string kind;
+        
+        private string lastModified;
+        
+        private NestedClass2 links;
+        
         private NestedClass3 owner;
+        
+        private double timestamp;
+        
+        private string title;
+        
+        private long version;
         
         private Video video;
         
-        public virtual string LastModified {
-            get {
-                return this.lastModified;
-            }
-            set {
-                this.lastModified = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("album")]
         public virtual NestedClass1 Album {
             get {
                 return this.album;
@@ -3466,69 +1210,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual NestedClass2 Links {
-            get {
-                return this.links;
-            }
-            set {
-                this.links = value;
-            }
-        }
-        
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public virtual long Version {
-            get {
-                return this.version;
-            }
-            set {
-                this.version = value;
-            }
-        }
-        
-        public virtual long Id {
-            get {
-                return this.id;
-            }
-            set {
-                this.id = value;
-            }
-        }
-        
-        public virtual double Timestamp {
-            get {
-                return this.timestamp;
-            }
-            set {
-                this.timestamp = value;
-            }
-        }
-        
-        public virtual long FileSize {
-            get {
-                return this.fileSize;
-            }
-            set {
-                this.fileSize = value;
-            }
-        }
-        
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("created")]
         public virtual string Created {
             get {
                 return this.created;
@@ -3538,6 +1220,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description {
             get {
                 return this.description;
@@ -3547,6 +1230,57 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
+        public virtual long FileSize {
+            get {
+                return this.fileSize;
+            }
+            set {
+                this.fileSize = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual long Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass2 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual NestedClass3 Owner {
             get {
                 return this.owner;
@@ -3556,6 +1290,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual double Timestamp {
+            get {
+                return this.timestamp;
+            }
+            set {
+                this.timestamp = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual long Version {
+            get {
+                return this.version;
+            }
+            set {
+                this.version = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
         public virtual Video Video {
             get {
                 return this.video;
@@ -3571,6 +1336,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             private Link pagelinkField1;
             
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual long Id {
                 get {
                     return this.id;
@@ -3580,6 +1346,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("page_link")]
             public virtual Link PagelinkProperty1 {
                 get {
                     return this.pagelinkField1;
@@ -3594,6 +1361,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             private IList<Link> alternate;
             
+            [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
             public virtual IList<Link> Alternate {
                 get {
                     return this.alternate;
@@ -3608,12 +1376,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             
             private string id;
             
+            private string name;
+            
             private string profileUrl;
             
             private string thumbnailUrl;
             
-            private string name;
-            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id {
                 get {
                     return this.id;
@@ -3623,6 +1392,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
             public virtual string ProfileUrl {
                 get {
                     return this.profileUrl;
@@ -3632,6 +1412,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 }
             }
             
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
             public virtual string ThumbnailUrl {
                 get {
                     return this.thumbnailUrl;
@@ -3640,32 +1421,66 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                     this.thumbnailUrl = value;
                 }
             }
-            
-            public virtual string Name {
-                get {
-                    return this.name;
-                }
-                set {
-                    this.name = value;
-                }
-            }
         }
     }
     
-    public class ChiliRelatedListJson {
+    public class Comment {
+        
+        private NestedClass1 actor;
+        
+        private string content;
+        
+        private string detectedLang;
         
         private string id;
         
-        private string title;
+        private string kind;
         
-        private IList<ChiliRelatedResourceJson> items;
+        private NestedClass2 links;
+        
+        private string originalContent;
+        
+        private string placeholder;
+        
+        private string published;
+        
+        private string targetLang;
+        
+        private string untranslatedContent;
         
         private string updated;
         
-        private NestedClass1 links;
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual NestedClass1 Actor {
+            get {
+                return this.actor;
+            }
+            set {
+                this.actor = value;
+            }
+        }
         
-        private string kind;
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content {
+            get {
+                return this.content;
+            }
+            set {
+                this.content = value;
+            }
+        }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLang")]
+        public virtual string DetectedLang {
+            get {
+                return this.detectedLang;
+            }
+            set {
+                this.detectedLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id {
             get {
                 return this.id;
@@ -3675,24 +1490,77 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Title {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
             get {
-                return this.title;
+                return this.kind;
             }
             set {
-                this.title = value;
+                this.kind = value;
             }
         }
         
-        public virtual IList<ChiliRelatedResourceJson> Items {
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass2 Links {
             get {
-                return this.items;
+                return this.links;
             }
             set {
-                this.items = value;
+                this.links = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("originalContent")]
+        public virtual string OriginalContent {
+            get {
+                return this.originalContent;
+            }
+            set {
+                this.originalContent = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder {
+            get {
+                return this.placeholder;
+            }
+            set {
+                this.placeholder = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+        public virtual string TargetLang {
+            get {
+                return this.targetLang;
+            }
+            set {
+                this.targetLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("untranslatedContent")]
+        public virtual string UntranslatedContent {
+            get {
+                return this.untranslatedContent;
+            }
+            set {
+                this.untranslatedContent = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated {
             get {
                 return this.updated;
@@ -3702,6 +1570,157 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        public class NestedClass1 {
+            
+            private string id;
+            
+            private string name;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private IList<NestedClass2_1> inReplyTo;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("inReplyTo")]
+            public virtual IList<NestedClass2_1> InReplyTo {
+                get {
+                    return this.inReplyTo;
+                }
+                set {
+                    this.inReplyTo = value;
+                }
+            }
+            
+            public class NestedClass2_1 {
+                
+                private string href;
+                
+                private string refField1;
+                
+                private string source;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("ref")]
+                public virtual string RefProperty1 {
+                    get {
+                        return this.refField1;
+                    }
+                    set {
+                        this.refField1 = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("source")]
+                public virtual string Source {
+                    get {
+                        return this.source;
+                    }
+                    set {
+                        this.source = value;
+                    }
+                }
+            }
+        }
+    }
+    
+    public class CommentFeed {
+        
+        private string id;
+        
+        private IList<Comment> items;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string title;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Comment> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual NestedClass1 Links {
             get {
                 return this.links;
@@ -3711,6 +1730,47 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class CountFeed {
+        
+        private NestedClass1 counts;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("counts")]
+        public virtual NestedClass1 Counts {
+            get {
+                return this.counts;
+            }
+            set {
+                this.counts = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3724,27 +1784,49 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
         }
     }
     
-    public class ChiliRelatedResourceJson {
+    public class Entity {
         
-        private string summary;
+        private string chipsUiAcl;
+        
+        private string comment;
         
         private string id;
         
-        private string title;
-        
-        private string href;
-        
         private string kind;
         
-        public virtual string Summary {
+        private IList<Person> starredBy;
+        
+        private string starredByViewer;
+        
+        private string summary;
+        
+        private string title;
+        
+        private string totalNumStars;
+        
+        private IList<NestedClass1> viewerStarAcl;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("chipsUiAcl")]
+        public virtual string ChipsUiAcl {
             get {
-                return this.summary;
+                return this.chipsUiAcl;
             }
             set {
-                this.summary = value;
+                this.chipsUiAcl = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment {
+            get {
+                return this.comment;
+            }
+            set {
+                this.comment = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id {
             get {
                 return this.id;
@@ -3754,6 +1836,47 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("starredBy")]
+        public virtual IList<Person> StarredBy {
+            get {
+                return this.starredBy;
+            }
+            set {
+                this.starredBy = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("starredByViewer")]
+        public virtual string StarredByViewer {
+            get {
+                return this.starredByViewer;
+            }
+            set {
+                this.starredByViewer = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title {
             get {
                 return this.title;
@@ -3763,15 +1886,101 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Href {
+        [Newtonsoft.Json.JsonPropertyAttribute("totalNumStars")]
+        public virtual string TotalNumStars {
             get {
-                return this.href;
+                return this.totalNumStars;
             }
             set {
-                this.href = value;
+                this.totalNumStars = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("viewerStarAcl")]
+        public virtual IList<NestedClass1> ViewerStarAcl {
+            get {
+                return this.viewerStarAcl;
+            }
+            set {
+                this.viewerStarAcl = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string displayName;
+            
+            private string id;
+            
+            private string kind;
+            
+            private IList<System.String> tags;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+            public virtual string DisplayName {
+                get {
+                    return this.displayName;
+                }
+                set {
+                    this.displayName = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+            public virtual string Kind {
+                get {
+                    return this.kind;
+                }
+                set {
+                    this.kind = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+            public virtual IList<System.String> Tags {
+                get {
+                    return this.tags;
+                }
+                set {
+                    this.tags = value;
+                }
+            }
+        }
+    }
+    
+    public class Group {
+        
+        private string id;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string memberCount;
+        
+        private string title;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3780,15 +1989,90 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("memberCount")]
+        public virtual string MemberCount {
+            get {
+                return this.memberCount;
+            }
+            set {
+                this.memberCount = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private IList<NestedClass1_1> self;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("self")]
+            public virtual IList<NestedClass1_1> Self {
+                get {
+                    return this.self;
+                }
+                set {
+                    this.self = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private string href;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+            }
+        }
     }
     
-    public class ChiliVideosListJson {
+    public class GroupFeed {
         
-        private IList<ChiliPhotosResourceJson> items;
+        private IList<Group> items;
         
         private string kind;
         
-        public virtual IList<ChiliPhotosResourceJson> Items {
+        private NestedClass1 links;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Group> Items {
             get {
                 return this.items;
             }
@@ -3797,6 +2081,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind {
             get {
                 return this.kind;
@@ -3805,42 +2090,38 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.kind = value;
             }
         }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
     }
     
     public class Link {
         
-        private string title;
+        private long count;
         
         private long height;
         
-        private long count;
+        private string href;
+        
+        private string title;
+        
+        private string type;
         
         private string updated;
         
         private long width;
         
-        private string type;
-        
-        private string href;
-        
-        public virtual string Title {
-            get {
-                return this.title;
-            }
-            set {
-                this.title = value;
-            }
-        }
-        
-        public virtual long Height {
-            get {
-                return this.height;
-            }
-            set {
-                this.height = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual long Count {
             get {
                 return this.count;
@@ -3850,24 +2131,37 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual string Updated {
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual long Height {
             get {
-                return this.updated;
+                return this.height;
             }
             set {
-                this.updated = value;
+                this.height = value;
             }
         }
         
-        public virtual long Width {
+        [Newtonsoft.Json.JsonPropertyAttribute("href")]
+        public virtual string Href {
             get {
-                return this.width;
+                return this.href;
             }
             set {
-                this.width = value;
+                this.href = value;
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type {
             get {
                 return this.type;
@@ -3877,6 +2171,1456 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual long Width {
+            get {
+                return this.width;
+            }
+            set {
+                this.width = value;
+            }
+        }
+    }
+    
+    public class PeopleFeed {
+        
+        private IList<Person> entry;
+        
+        private string itemsPerPage;
+        
+        private string kind;
+        
+        private string startIndex;
+        
+        private string totalResults;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Person> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
+        public virtual string ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual string StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual string TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+    }
+    
+    public class Person {
+        
+        private string aboutMe;
+        
+        private IList<NestedClass1> accounts;
+        
+        private IList<System.String> activities;
+        
+        private IList<NestedClass2> addresses;
+        
+        private string anniversary;
+        
+        private string birthday;
+        
+        private string bodyType;
+        
+        private IList<System.String> books;
+        
+        private IList<System.String> cars;
+        
+        private IList<System.String> children;
+        
+        private string connected;
+        
+        private string currentLocation;
+        
+        private string displayName;
+        
+        private string drinker;
+        
+        private IList<NestedClass3> emails;
+        
+        private string ethnicity;
+        
+        private string fashion;
+        
+        private IList<System.String> food;
+        
+        private string gender;
+        
+        private string happiestWhen;
+        
+        private string hasApp;
+        
+        private IList<System.String> heroes;
+        
+        private string humor;
+        
+        private string id;
+        
+        private IList<NestedClass4> ims;
+        
+        private IList<System.String> interests;
+        
+        private IList<System.String> jobInterests;
+        
+        private string kind;
+        
+        private IList<System.String> languages;
+        
+        private IList<System.String> languagesSpoken;
+        
+        private string livingArrangement;
+        
+        private string lookingFor;
+        
+        private IList<System.String> movies;
+        
+        private IList<System.String> music;
+        
+        private NestedClass5 name;
+        
+        private string nickname;
+        
+        private string note;
+        
+        private IList<NestedClass6> organizations;
+        
+        private IList<System.String> pets;
+        
+        private IList<NestedClass7> phoneNumbers;
+        
+        private IList<NestedClass8> photos;
+        
+        private IList<System.String> politicalViews;
+        
+        private string preferredUsername;
+        
+        private string profileSong;
+        
+        private string profileUrl;
+        
+        private string profileVideo;
+        
+        private string published;
+        
+        private IList<System.String> quotes;
+        
+        private string relationshipStatus;
+        
+        private IList<System.String> relationships;
+        
+        private string religion;
+        
+        private string romance;
+        
+        private string scaredOf;
+        
+        private string sexualOrientation;
+        
+        private string smoker;
+        
+        private IList<System.String> sports;
+        
+        private string status;
+        
+        private IList<System.String> tags;
+        
+        private string thumbnailUrl;
+        
+        private IList<System.String> turnOffs;
+        
+        private IList<System.String> turnOns;
+        
+        private IList<System.String> tvShows;
+        
+        private string updated;
+        
+        private IList<NestedClass9> urls;
+        
+        private string utcOffset;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("aboutMe")]
+        public virtual string AboutMe {
+            get {
+                return this.aboutMe;
+            }
+            set {
+                this.aboutMe = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
+        public virtual IList<NestedClass1> Accounts {
+            get {
+                return this.accounts;
+            }
+            set {
+                this.accounts = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("activities")]
+        public virtual IList<System.String> Activities {
+            get {
+                return this.activities;
+            }
+            set {
+                this.activities = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
+        public virtual IList<NestedClass2> Addresses {
+            get {
+                return this.addresses;
+            }
+            set {
+                this.addresses = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("anniversary")]
+        public virtual string Anniversary {
+            get {
+                return this.anniversary;
+            }
+            set {
+                this.anniversary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("birthday")]
+        public virtual string Birthday {
+            get {
+                return this.birthday;
+            }
+            set {
+                this.birthday = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyType")]
+        public virtual string BodyType {
+            get {
+                return this.bodyType;
+            }
+            set {
+                this.bodyType = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("books")]
+        public virtual IList<System.String> Books {
+            get {
+                return this.books;
+            }
+            set {
+                this.books = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("cars")]
+        public virtual IList<System.String> Cars {
+            get {
+                return this.cars;
+            }
+            set {
+                this.cars = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("children")]
+        public virtual IList<System.String> Children {
+            get {
+                return this.children;
+            }
+            set {
+                this.children = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("connected")]
+        public virtual string Connected {
+            get {
+                return this.connected;
+            }
+            set {
+                this.connected = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("currentLocation")]
+        public virtual string CurrentLocation {
+            get {
+                return this.currentLocation;
+            }
+            set {
+                this.currentLocation = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName {
+            get {
+                return this.displayName;
+            }
+            set {
+                this.displayName = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("drinker")]
+        public virtual string Drinker {
+            get {
+                return this.drinker;
+            }
+            set {
+                this.drinker = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("emails")]
+        public virtual IList<NestedClass3> Emails {
+            get {
+                return this.emails;
+            }
+            set {
+                this.emails = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("ethnicity")]
+        public virtual string Ethnicity {
+            get {
+                return this.ethnicity;
+            }
+            set {
+                this.ethnicity = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("fashion")]
+        public virtual string Fashion {
+            get {
+                return this.fashion;
+            }
+            set {
+                this.fashion = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("food")]
+        public virtual IList<System.String> Food {
+            get {
+                return this.food;
+            }
+            set {
+                this.food = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
+        public virtual string Gender {
+            get {
+                return this.gender;
+            }
+            set {
+                this.gender = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("happiestWhen")]
+        public virtual string HappiestWhen {
+            get {
+                return this.happiestWhen;
+            }
+            set {
+                this.happiestWhen = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("hasApp")]
+        public virtual string HasApp {
+            get {
+                return this.hasApp;
+            }
+            set {
+                this.hasApp = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("heroes")]
+        public virtual IList<System.String> Heroes {
+            get {
+                return this.heroes;
+            }
+            set {
+                this.heroes = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("humor")]
+        public virtual string Humor {
+            get {
+                return this.humor;
+            }
+            set {
+                this.humor = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("ims")]
+        public virtual IList<NestedClass4> Ims {
+            get {
+                return this.ims;
+            }
+            set {
+                this.ims = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("interests")]
+        public virtual IList<System.String> Interests {
+            get {
+                return this.interests;
+            }
+            set {
+                this.interests = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("jobInterests")]
+        public virtual IList<System.String> JobInterests {
+            get {
+                return this.jobInterests;
+            }
+            set {
+                this.jobInterests = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("languages")]
+        public virtual IList<System.String> Languages {
+            get {
+                return this.languages;
+            }
+            set {
+                this.languages = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("languagesSpoken")]
+        public virtual IList<System.String> LanguagesSpoken {
+            get {
+                return this.languagesSpoken;
+            }
+            set {
+                this.languagesSpoken = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("livingArrangement")]
+        public virtual string LivingArrangement {
+            get {
+                return this.livingArrangement;
+            }
+            set {
+                this.livingArrangement = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("lookingFor")]
+        public virtual string LookingFor {
+            get {
+                return this.lookingFor;
+            }
+            set {
+                this.lookingFor = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("movies")]
+        public virtual IList<System.String> Movies {
+            get {
+                return this.movies;
+            }
+            set {
+                this.movies = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("music")]
+        public virtual IList<System.String> Music {
+            get {
+                return this.music;
+            }
+            set {
+                this.music = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual NestedClass5 Name {
+            get {
+                return this.name;
+            }
+            set {
+                this.name = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
+        public virtual string Nickname {
+            get {
+                return this.nickname;
+            }
+            set {
+                this.nickname = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note {
+            get {
+                return this.note;
+            }
+            set {
+                this.note = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
+        public virtual IList<NestedClass6> Organizations {
+            get {
+                return this.organizations;
+            }
+            set {
+                this.organizations = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("pets")]
+        public virtual IList<System.String> Pets {
+            get {
+                return this.pets;
+            }
+            set {
+                this.pets = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual IList<NestedClass7> PhoneNumbers {
+            get {
+                return this.phoneNumbers;
+            }
+            set {
+                this.phoneNumbers = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("photos")]
+        public virtual IList<NestedClass8> Photos {
+            get {
+                return this.photos;
+            }
+            set {
+                this.photos = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("politicalViews")]
+        public virtual IList<System.String> PoliticalViews {
+            get {
+                return this.politicalViews;
+            }
+            set {
+                this.politicalViews = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredUsername")]
+        public virtual string PreferredUsername {
+            get {
+                return this.preferredUsername;
+            }
+            set {
+                this.preferredUsername = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileSong")]
+        public virtual string ProfileSong {
+            get {
+                return this.profileSong;
+            }
+            set {
+                this.profileSong = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+        public virtual string ProfileUrl {
+            get {
+                return this.profileUrl;
+            }
+            set {
+                this.profileUrl = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileVideo")]
+        public virtual string ProfileVideo {
+            get {
+                return this.profileVideo;
+            }
+            set {
+                this.profileVideo = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("quotes")]
+        public virtual IList<System.String> Quotes {
+            get {
+                return this.quotes;
+            }
+            set {
+                this.quotes = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatus")]
+        public virtual string RelationshipStatus {
+            get {
+                return this.relationshipStatus;
+            }
+            set {
+                this.relationshipStatus = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
+        public virtual IList<System.String> Relationships {
+            get {
+                return this.relationships;
+            }
+            set {
+                this.relationships = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("religion")]
+        public virtual string Religion {
+            get {
+                return this.religion;
+            }
+            set {
+                this.religion = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("romance")]
+        public virtual string Romance {
+            get {
+                return this.romance;
+            }
+            set {
+                this.romance = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("scaredOf")]
+        public virtual string ScaredOf {
+            get {
+                return this.scaredOf;
+            }
+            set {
+                this.scaredOf = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("sexualOrientation")]
+        public virtual string SexualOrientation {
+            get {
+                return this.sexualOrientation;
+            }
+            set {
+                this.sexualOrientation = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("smoker")]
+        public virtual string Smoker {
+            get {
+                return this.smoker;
+            }
+            set {
+                this.smoker = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("sports")]
+        public virtual IList<System.String> Sports {
+            get {
+                return this.sports;
+            }
+            set {
+                this.sports = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status {
+            get {
+                return this.status;
+            }
+            set {
+                this.status = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual IList<System.String> Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl {
+            get {
+                return this.thumbnailUrl;
+            }
+            set {
+                this.thumbnailUrl = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("turnOffs")]
+        public virtual IList<System.String> TurnOffs {
+            get {
+                return this.turnOffs;
+            }
+            set {
+                this.turnOffs = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("turnOns")]
+        public virtual IList<System.String> TurnOns {
+            get {
+                return this.turnOns;
+            }
+            set {
+                this.turnOns = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tvShows")]
+        public virtual IList<System.String> TvShows {
+            get {
+                return this.tvShows;
+            }
+            set {
+                this.tvShows = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual IList<NestedClass9> Urls {
+            get {
+                return this.urls;
+            }
+            set {
+                this.urls = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual string UtcOffset {
+            get {
+                return this.utcOffset;
+            }
+            set {
+                this.utcOffset = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string domain;
+            
+            private string userid;
+            
+            private string username;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+            public virtual string Domain {
+                get {
+                    return this.domain;
+                }
+                set {
+                    this.domain = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("userid")]
+            public virtual string Userid {
+                get {
+                    return this.userid;
+                }
+                set {
+                    this.userid = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("username")]
+            public virtual string Username {
+                get {
+                    return this.username;
+                }
+                set {
+                    this.username = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private string country;
+            
+            private string formatted;
+            
+            private string locality;
+            
+            private string postalCode;
+            
+            private string primary;
+            
+            private string region;
+            
+            private string streetAddress;
+            
+            private string type;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("country")]
+            public virtual string Country {
+                get {
+                    return this.country;
+                }
+                set {
+                    this.country = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("formatted")]
+            public virtual string Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+            public virtual string Locality {
+                get {
+                    return this.locality;
+                }
+                set {
+                    this.locality = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+            public virtual string PostalCode {
+                get {
+                    return this.postalCode;
+                }
+                set {
+                    this.postalCode = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("region")]
+            public virtual string Region {
+                get {
+                    return this.region;
+                }
+                set {
+                    this.region = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+            public virtual string StreetAddress {
+                get {
+                    return this.streetAddress;
+                }
+                set {
+                    this.streetAddress = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass4 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass5 {
+            
+            private string familyName;
+            
+            private string formatted;
+            
+            private string givenName;
+            
+            private string honorificPrefix;
+            
+            private string honorificSuffix;
+            
+            private string middleName;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+            public virtual string FamilyName {
+                get {
+                    return this.familyName;
+                }
+                set {
+                    this.familyName = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("formatted")]
+            public virtual string Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+            public virtual string GivenName {
+                get {
+                    return this.givenName;
+                }
+                set {
+                    this.givenName = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("honorificPrefix")]
+            public virtual string HonorificPrefix {
+                get {
+                    return this.honorificPrefix;
+                }
+                set {
+                    this.honorificPrefix = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("honorificSuffix")]
+            public virtual string HonorificSuffix {
+                get {
+                    return this.honorificSuffix;
+                }
+                set {
+                    this.honorificSuffix = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("middleName")]
+            public virtual string MiddleName {
+                get {
+                    return this.middleName;
+                }
+                set {
+                    this.middleName = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private string department;
+            
+            private string description;
+            
+            private string endDate;
+            
+            private string location;
+            
+            private string name;
+            
+            private string primary;
+            
+            private string startDate;
+            
+            private string title;
+            
+            private string type;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("department")]
+            public virtual string Department {
+                get {
+                    return this.department;
+                }
+                set {
+                    this.department = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("description")]
+            public virtual string Description {
+                get {
+                    return this.description;
+                }
+                set {
+                    this.description = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+            public virtual string EndDate {
+                get {
+                    return this.endDate;
+                }
+                set {
+                    this.endDate = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("location")]
+            public virtual string Location {
+                get {
+                    return this.location;
+                }
+                set {
+                    this.location = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+            public virtual string StartDate {
+                get {
+                    return this.startDate;
+                }
+                set {
+                    this.startDate = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("title")]
+            public virtual string Title {
+                get {
+                    return this.title;
+                }
+                set {
+                    this.title = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass7 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass8 {
+            
+            private string height;
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            private string width;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("height")]
+            public virtual string Height {
+                get {
+                    return this.height;
+                }
+                set {
+                    this.height = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("width")]
+            public virtual string Width {
+                get {
+                    return this.width;
+                }
+                set {
+                    this.width = value;
+                }
+            }
+        }
+        
+        public class NestedClass9 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+    }
+    
+    public class PhotosFeed {
+        
+        private IList<ChiliPhotosResourceJson> items;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<ChiliPhotosResourceJson> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+    }
+    
+    public class Related {
+        
+        private string href;
+        
+        private string id;
+        
+        private string kind;
+        
+        private string summary;
+        
+        private string title;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("href")]
         public virtual string Href {
             get {
                 return this.href;
@@ -3885,16 +3629,225 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
                 this.href = value;
             }
         }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+    }
+    
+    public class RelatedFeed {
+        
+        private string id;
+        
+        private IList<Related> items;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string title;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Related> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class StarredEntityFeed {
+        
+        private IList<Entity> entry;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Entity> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+    }
+    
+    public class StarredEntityFeedForUser {
+        
+        private IList<Entity> entry;
+        
+        private string itemsPerPage;
+        
+        private string kind;
+        
+        private string startIndex;
+        
+        private string totalResults;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Entity> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
+        public virtual string ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual string StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual string TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
     }
     
     public class Video {
         
         private long duration;
         
-        private IList<Link> streams;
-        
         private long size;
         
+        private IList<Link> streams;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual long Duration {
             get {
                 return this.duration;
@@ -3904,21 +3857,23 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data {
             }
         }
         
-        public virtual IList<Link> Streams {
-            get {
-                return this.streams;
-            }
-            set {
-                this.streams = value;
-            }
-        }
-        
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual long Size {
             get {
                 return this.size;
             }
             set {
                 this.size = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("streams")]
+        public virtual IList<Link> Streams {
+            get {
+                return this.streams;
+            }
+            set {
+                this.streams = value;
             }
         }
     }
@@ -3949,10 +3904,28 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         
         private Activities activities;
         
+        private Comments comments;
+        
+        private Groups groups;
+        
+        private People people;
+        
+        private PhotoAlbums photoAlbums;
+        
+        private Photos photos;
+        
+        private Related related;
+        
         public BuzzService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
             this.genericService = genericService;
             this.authenticator = authenticator;
             this.activities = new Activities(this);
+            this.comments = new Comments(this);
+            this.groups = new Groups(this);
+            this.people = new People(this);
+            this.photoAlbums = new PhotoAlbums(this);
+            this.photos = new Photos(this);
+            this.related = new Related(this);
         }
         
         public BuzzService() : 
@@ -3973,6 +3946,42 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         public virtual Activities Activities {
             get {
                 return this.activities;
+            }
+        }
+        
+        public virtual Comments Comments {
+            get {
+                return this.comments;
+            }
+        }
+        
+        public virtual Groups Groups {
+            get {
+                return this.groups;
+            }
+        }
+        
+        public virtual People People {
+            get {
+                return this.people;
+            }
+        }
+        
+        public virtual PhotoAlbums PhotoAlbums {
+            get {
+                return this.photoAlbums;
+            }
+        }
+        
+        public virtual Photos Photos {
+            get {
+                return this.photos;
+            }
+        }
+        
+        public virtual Related Related {
+            get {
+                return this.related;
             }
         }
         
@@ -4011,10 +4020,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Count(string hl) {
+        public virtual System.IO.Stream Count(string hl, string url) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["hl"] = hl;
+            parameters["url"] = url;
             logger.Debug("Executing activities.count");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
             logger.Debug("Done Executing activities.count");
@@ -4054,13 +4064,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string alt, string hl, string postId, string targetLang, string truncateAtom, string userId) {
+        public virtual System.IO.Stream Get(string alt, string hl, string maxcommentsParam3, string maxlikedParam4, string postId, string truncateAtom, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
+            parameters["max-comments"] = maxcommentsParam3;
+            parameters["max-liked"] = maxlikedParam4;
             parameters["postId"] = postId;
-            parameters["targetLang"] = targetLang;
             parameters["truncateAtom"] = truncateAtom;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.get");
@@ -4081,7 +4092,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string targetLang, string truncateAtom, string userId) {
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string truncateAtom, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -4091,7 +4102,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             parameters["max-liked"] = maxlikedParam5;
             parameters["max-results"] = maxresultsParam6;
             parameters["scope"] = scope;
-            parameters["targetLang"] = targetLang;
             parameters["truncateAtom"] = truncateAtom;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.list");
@@ -4100,7 +4110,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string targetLang, string truncateAtom) {
+        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -4113,7 +4123,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
-            parameters["targetLang"] = targetLang;
             parameters["truncateAtom"] = truncateAtom;
             logger.Debug("Executing activities.search");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
@@ -4232,6 +4241,748 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             logger.Debug("Executing activities.update");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
             logger.Debug("Done Executing activities.update");
+            return ret;
+        }
+    }
+    
+    public class Comments {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "comments";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Comments));
+        
+        public Comments(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string alt, string commentId, string hl, string postId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing comments.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string alt, string commentId, string hl, string postId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
+            logger.Debug("Done Executing comments.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string postId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing comments.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
+            logger.Debug("Done Executing comments.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
+            logger.Debug("Done Executing comments.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing comments.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
+            logger.Debug("Done Executing comments.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing comments.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
+            logger.Debug("Done Executing comments.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
+            logger.Debug("Done Executing comments.update");
+            return ret;
+        }
+    }
+    
+    public class Groups {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "groups";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Groups));
+        
+        public Groups(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing groups.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string alt, string groupId, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
+            logger.Debug("Done Executing groups.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing groups.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
+            logger.Debug("Done Executing groups.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
+            logger.Debug("Done Executing groups.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing groups.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
+            logger.Debug("Done Executing groups.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing groups.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
+            logger.Debug("Done Executing groups.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
+            logger.Debug("Done Executing groups.update");
+            return ret;
+        }
+    }
+    
+    public class People {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "people";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(People));
+        
+        public People(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string personId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing people.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
+            logger.Debug("Done Executing people.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.liked");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
+            logger.Debug("Done Executing people.liked");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string groupId, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
+            logger.Debug("Done Executing people.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.reshared");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
+            logger.Debug("Done Executing people.reshared");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(string alt, string c, string hl, string maxresultsParam4, string q) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["q"] = q;
+            logger.Debug("Executing people.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
+            logger.Debug("Done Executing people.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string personId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
+            logger.Debug("Done Executing people.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing people.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
+            logger.Debug("Done Executing people.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.liked");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
+            logger.Debug("Done Executing people.liked");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
+            logger.Debug("Done Executing people.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.reshared");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
+            logger.Debug("Done Executing people.reshared");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing people.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
+            logger.Debug("Done Executing people.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["groupId"] = groupId;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
+            logger.Debug("Done Executing people.update");
+            return ret;
+        }
+    }
+    
+    public class PhotoAlbums {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "photoAlbums";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(PhotoAlbums));
+        
+        public PhotoAlbums(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photoAlbums.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photoAlbums.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photoAlbums.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters);
+            logger.Debug("Done Executing photoAlbums.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photoAlbums.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photoAlbums.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photoAlbums.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters);
+            logger.Debug("Done Executing photoAlbums.list");
+            return ret;
+        }
+    }
+    
+    public class Photos {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "photos";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Photos));
+        
+        public Photos(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photos.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photos.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photos.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert2(string body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert2");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters);
+            logger.Debug("Done Executing photos.insert2");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByAlbum(string albumId, string alt, string c, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByAlbum");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters);
+            logger.Debug("Done Executing photos.listByAlbum");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByScope(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByScope");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters);
+            logger.Debug("Done Executing photos.listByScope");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photos.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photos.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photos.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert2(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert2");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters);
+            logger.Debug("Done Executing photos.insert2");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByAlbum");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters);
+            logger.Debug("Done Executing photos.listByAlbum");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByScope(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByScope");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters);
+            logger.Debug("Done Executing photos.listByScope");
+            return ret;
+        }
+    }
+    
+    public class Related {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "related";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Related));
+        
+        public Related(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string hl, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing related.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
+            logger.Debug("Done Executing related.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing related.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
+            logger.Debug("Done Executing related.list");
             return ret;
         }
     }

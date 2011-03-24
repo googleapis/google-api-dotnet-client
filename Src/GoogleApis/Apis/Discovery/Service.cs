@@ -230,7 +230,11 @@ namespace Google.Apis.Discovery
             foreach (KeyValuePair<string, object> kvp in js) 
             {
                 logger.DebugFormat("Found schema {0}", kvp.Key);
-                ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
+                var serilizer = new Newtonsoft.Json.JsonSerializer();
+                var textWriter = new StringWriter();
+                serilizer.Serialize(textWriter, kvp.Value);
+                string result = textWriter.ToString();
+                ISchema schema = new SchemaImpl(kvp.Key, result, resolver);
                 working.Add (schema.Name, schema);
             }
             

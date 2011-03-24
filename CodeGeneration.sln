@@ -75,7 +75,7 @@ Global
 		{EEA6B346-836D-4A86-A061-22AF86A86B44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = PlayAround\PlayAround.csproj
+		StartupItem = Src\GoogleApis\GoogleApis.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.FileWidth = 120
