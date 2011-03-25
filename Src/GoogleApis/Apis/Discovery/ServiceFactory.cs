@@ -44,6 +44,7 @@ namespace Google.Apis.Discovery
         internal const string RpcName = "rpcName";
         internal const string HttpMethod = "httpMethod";
         internal const string Parameters = "parameters";
+        internal const string ResponseType = "response";
     
         internal const string ParameterType = "parameterType";
         internal const string Pattern = "pattern";

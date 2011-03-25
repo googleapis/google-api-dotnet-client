@@ -49,7 +49,7 @@ namespace Google.Apis.Discovery
 		public Stream Fetch() 
 		{
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
-			request.Timeout = TimeoutInSeconds;
+			request.Timeout = TimeoutInSeconds * 1000;
 			Stream responseData;
 			
 			response = (HttpWebResponse) request.GetResponse();

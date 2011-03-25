@@ -28,6 +28,7 @@ namespace Google.Apis.Discovery
         string RestPath{get;} 
         string RpcName {get;}
         string HttpMethod {get;}
+        string ResponseType {get;}
         Dictionary<string, IParameter> Parameters{get;} 
     }
 }
