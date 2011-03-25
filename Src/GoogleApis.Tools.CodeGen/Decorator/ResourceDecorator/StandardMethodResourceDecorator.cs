@@ -146,7 +146,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 AddAllDeclaredParameters (method, member, assignmentStatments);
                 
-                //System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+                //System.Collections.Generic.Dictionary<string, string> parameters = 
+                //      new System.Collections.Generic.Dictionary<string, string>();
                 member.Statements.Add (DeclareParamaterDictionary ());
                 
                 //parameters["<%=parameterName%>"] = <%=parameterName%>;
@@ -177,10 +178,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             /// </summary>
             protected override CodeStatement CreateExecuteRequest (IMethod method)
             {
-                if ( this.returnObjects == false ) 
+                method.ThrowIfNull("method");
+                if ( this.returnObjects == false || method.ResponseType.IsNullOrEmpty()) 
                 {
                     return base.CreateExecuteRequest (method);
                 }
+                this.objectTypeProvider.ThrowIfNull("objectTypeProvider");
                 
                 var returnType = objectTypeProvider.GetReturnType(method);
                 
@@ -190,7 +193,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 // this.service.JsonToObject<ReturnType>([stream])
                 var call = new CodeMethodInvokeExpression();
                 call.Method = new CodeMethodReferenceExpression();
-                call.Method.TargetObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName);
+                call.Method.TargetObject = new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(), ServiceFieldName);
                 call.Method.MethodName = "JsonToObject";
                 call.Method.TypeArguments.Add(returnType);
                 call.Parameters.Add(getStream);
@@ -237,6 +241,30 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         {
             CodeTypeReference GetReturnType(IMethod method);
             CodeTypeReference GetBodyType(IMethod method);
+        }
+        
+        public class DefaultObjectTypeProvider:IObjectTypeProvider
+        {
+            private readonly string schemaNamespace;
+            
+            public DefaultObjectTypeProvider (string schemaNamespace)
+            {
+                this.schemaNamespace = schemaNamespace;
+            }
+            
+            
+            public CodeTypeReference GetReturnType (IMethod method)
+            {
+                method.ThrowIfNull("method");
+                method.ResponseType.ThrowIfNullOrEmpty("method.ResponseType");
+                return new CodeTypeReference(schemaNamespace + '.' + method.ResponseType);
+            }
+            
+            
+            public CodeTypeReference GetBodyType (IMethod method)
+            {
+                throw new System.NotImplementedException();
+            }
         }
         
     }

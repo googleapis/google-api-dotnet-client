@@ -59,14 +59,19 @@ namespace Google.Apis.Tools.CodeGen
                     new Log4NetResourceDecorator (), 
                     new DictonaryOptionalParameterResourceDecorator ()}).
                     AsReadOnly();
-        public static readonly IList<IResourceDecorator> SchemaAwareResourceDecorators = (new List<IResourceDecorator>(){
+        public static IList<IResourceDecorator> GetSchemaAwareResourceDecorators(string schemaNamespace)
+        {
+            return (new List<IResourceDecorator>(){
                     new StandardServiceFieldResourceDecorator(true),
                     new StandardResourceNameResourceDecorator(),
                     new StandardConstructorResourceDecorator (), 
-                    new StandardMethodResourceDecorator (), 
+                    new StandardMethodResourceDecorator (),
+                    new StandardMethodResourceDecorator (
+                            true, false, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace)),
                     new Log4NetResourceDecorator (), 
                     new DictonaryOptionalParameterResourceDecorator ()}).
                     AsReadOnly();
+        }
 
         public static readonly IList<IServiceDecorator> StandardServiceDecorators = (new List<IServiceDecorator>(){
                     new StandardServiceFieldServiceDecorator(),
@@ -116,7 +121,7 @@ namespace Google.Apis.Tools.CodeGen
 
         public GoogleServiceGenerator (IService service, string clientNamespace) : 
             this(service, clientNamespace, 
-                SchemaAwareResourceDecorators, 
+                GetSchemaAwareResourceDecorators(clientNamespace + ".Data"), 
                 SchemaAwareServiceDecorators,
                 StandardResourceContainerDecorator,
                 new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
