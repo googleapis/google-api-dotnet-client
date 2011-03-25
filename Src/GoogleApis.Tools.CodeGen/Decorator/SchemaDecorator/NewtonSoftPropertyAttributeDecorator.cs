@@ -47,9 +47,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                var schmeaFieldName = propertyPair.Key;
-                var propertyDefinition = FindCodePropertyForName(typeDeclaration, schmeaFieldName, index++);
-                propertyDefinition.CustomAttributes.Add(CreateAttribute(schmeaFieldName));
+                var schemaFieldName = propertyPair.Key;
+                var propertyDefinition = FindCodePropertyForName(typeDeclaration, schemaFieldName, index++);
+                propertyDefinition.CustomAttributes.Add(CreateAttribute(schemaFieldName));
             }
         }
         
