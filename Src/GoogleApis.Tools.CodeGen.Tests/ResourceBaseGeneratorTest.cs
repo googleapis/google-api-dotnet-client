@@ -37,12 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			var tester = new ForTestOnly();
 			var member = new CodeMemberMethod();
 			
-			tester.ResourceCallAddBodyDeclaration(method, member);
+			tester.ResourceCallAddBodyDeclaration(method, member, new CodeTypeReference(typeof(string)));
 			Assert.AreEqual(0, member.Parameters.Count);
 			
 			method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.postTest);
 			member = new CodeMemberMethod();
-			tester.ResourceCallAddBodyDeclaration(method, member);
+			tester.ResourceCallAddBodyDeclaration(method, member, new CodeTypeReference(typeof(string)));
 			Assert.AreEqual(1, member.Parameters.Count);
 			
 		}
@@ -63,8 +63,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		private class ForTestOnly: ResourceBaseGenerator{
 			new public const string ResourceNameConst = ResourceBaseGenerator.ResourceNameConst;		
 			
-			new public void ResourceCallAddBodyDeclaration(IMethod method, CodeMemberMethod member) {
-				base.ResourceCallAddBodyDeclaration(method, member);
+			new public void ResourceCallAddBodyDeclaration(
+                    IMethod method, CodeMemberMethod member, CodeTypeReference codeType) {
+				base.ResourceCallAddBodyDeclaration(method, member, codeType);
 			}
 			
 			new public CodeParameterDeclarationExpression DeclareInputParameter(

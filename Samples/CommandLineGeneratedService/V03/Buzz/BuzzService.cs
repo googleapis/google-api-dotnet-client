@@ -3994,7 +3994,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return this.ExecuteRequest(resource, method, this.ObjectToJson(body), parameters);
         }
         
-        private string ObjectToJson(object obj) {
+        public virtual string ObjectToJson(object obj) {
             System.IO.TextWriter tw = new System.IO.StringWriter();
             this.NewtonJsonSerilizer.Serialize(tw, obj);
             return tw.ToString();
@@ -4223,14 +4223,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity InsertAsObject(string body, string alt, string hl, string preview, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity body, string alt, string hl, string preview, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["preview"] = preview;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing activities.insert");
             return ret;
         }
@@ -4292,7 +4292,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity UpdateAsObject(string body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["abuseType"] = abuseType;
             parameters["alt"] = alt;
@@ -4301,7 +4301,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing activities.update");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "update", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing activities.update");
             return ret;
         }
@@ -4499,14 +4499,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment InsertAsObject(string body, string alt, string hl, string postId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment body, string alt, string hl, string postId, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.insert");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing comments.insert");
             return ret;
         }
@@ -4527,7 +4527,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment UpdateAsObject(string body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["abuseType"] = abuseType;
             parameters["alt"] = alt;
@@ -4537,7 +4537,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.update");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "update", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing comments.update");
             return ret;
         }
@@ -4697,13 +4697,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group InsertAsObject(string body, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group body, string alt, string hl, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing groups.insert");
             return ret;
         }
@@ -4722,14 +4722,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group UpdateAsObject(string body, string alt, string groupId, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group body, string alt, string groupId, string hl, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["groupId"] = groupId;
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.update");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "update", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing groups.update");
             return ret;
         }
@@ -4984,7 +4984,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person UpdateAsObject(string body, string alt, string groupId, string hl, string personId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person body, string alt, string groupId, string hl, string personId, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["groupId"] = groupId;
@@ -4992,7 +4992,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             parameters["personId"] = personId;
             parameters["userId"] = userId;
             logger.Debug("Executing people.update");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person>(this.service.ExecuteRequest(People.Resource, "update", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Person>(this.service.ExecuteRequest(People.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing people.update");
             return ret;
         }
@@ -5160,13 +5160,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album InsertAsObject(string body, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album body, string alt, string hl, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.insert");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photoAlbums.insert");
             return ret;
         }
@@ -5347,26 +5347,26 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite InsertAsObject(string body, string albumId, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite body, string albumId, string alt, string hl, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite>(this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite>(this.service.ExecuteRequest(Photos.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photos.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson Insert2AsObject(string body, string albumId, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson Insert2AsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson body, string albumId, string alt, string hl, string userId) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert2");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters));
+            Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "insert2", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photos.insert2");
             return ret;
         }

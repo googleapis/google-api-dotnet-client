@@ -523,7 +523,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
                 	new Uri("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1"), 
                     GetCacheDirectory());
 			
-			 var discovery = new DiscoveryService (cachedFetcher);
+			var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
 			var param = new FactoryParameterV0_3("http://example.url.com",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);

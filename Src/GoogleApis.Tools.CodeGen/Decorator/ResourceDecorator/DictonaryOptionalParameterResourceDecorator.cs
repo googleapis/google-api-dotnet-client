@@ -78,6 +78,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.className = className;
             }
 
+            public CodeTypeReference GetBodyType(IMethod method) 
+            {
+                // TODO(davidwaters@google.com): extend to allow more body types as per standardMethodResourceDecorator
+                return new CodeTypeReference(typeof(string));
+            }
+            
             public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
                                                   IEnumerable<IResourceDecorator> allDecorators)
             {
@@ -96,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection ();
                 
-                ResourceCallAddBodyDeclaration (method, member);
+                ResourceCallAddBodyDeclaration (method, member, GetBodyType(method));
                 
                 int parameterCount = 1;
                 foreach (var param in paramList) {
@@ -113,7 +119,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 dictType.TypeArguments.Add(typeof(string));
                 dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 */
-var dictType = new CodeTypeReference (typeof(IDictionary<string, string>));
+                var dictType = new CodeTypeReference (typeof(IDictionary<string, string>));
                 var dictParameter = new CodeParameterDeclarationExpression (dictType, ParameterDictionaryName);
                 member.Parameters.Add (dictParameter);
                 

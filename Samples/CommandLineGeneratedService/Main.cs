@@ -28,7 +28,8 @@ using Newtonsoft.Json;
 
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
-using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
+using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz;
+using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data;
 using Google.Apis.Samples.AdSenseApi;
 using Google.Apis.Samples.AdSenseApi.Service;
 using Google.Apis.Samples.AdSenseApi.Auth;
@@ -59,7 +60,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 		public static void Main(string[] args) {
 			ServicePointManager.ServerCertificateValidationCallback += CheckValidationResult;
 			try{
-				//BuzzTest();
+				BuzzTest();
 				//AdSenseTest ();
 				Console.WriteLine("All Done.");
 				Console.ReadLine();
@@ -73,11 +74,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 		{			
 			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			
 			BuzzService buzzService = new BuzzService();
-			Stream result = buzzService.People.Search("b", "c", "d", "5", "David Waters");
-			 
+			PeopleFeed result = buzzService.People.SearchAsObject("b", "c", "d", "5", "David Waters");
+			
+			/*
 			StreamReader sr = new StreamReader(result);
 			String strResult = sr.ReadToEnd();
 			logger.Info(strResult);
+			*/
+			logger.Info("Total Results:" + result.TotalResults);
+			foreach(Person person in result.Entry)
+			{
+				logger.Info(person.Name + " " + person.Fashion);
+			}
 			
 			Console.ReadLine();
 			

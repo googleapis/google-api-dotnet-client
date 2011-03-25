@@ -149,6 +149,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             // public string ObjectToJson(object obj)
             var method = new CodeMemberMethod();
             method.Name = MethodName;
+            method.Attributes = MemberAttributes.Public;
             method.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(object)), "obj"));
             method.ReturnType = new CodeTypeReference(typeof(string));
             

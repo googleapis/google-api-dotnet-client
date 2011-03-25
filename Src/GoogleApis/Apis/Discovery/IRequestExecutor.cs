@@ -31,6 +31,7 @@ namespace Google.Apis.Discovery
     
     public interface ISchemaAwareRequestExecutor : IRequestExecutor
     {
+        string ObjectToJson(object obj);
         TOutput JsonToObject<TOutput>(System.IO.Stream stream);
         Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, string> parameters);
     }

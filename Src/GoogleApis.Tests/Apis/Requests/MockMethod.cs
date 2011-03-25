@@ -32,6 +32,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public string HttpMethod {get; set;}
         
         public string ResponseType {get; set;}
+        
+        public string RequestType {get; set;}
 
         public Dictionary<string, IParameter> Parameters {get; set;}
 
