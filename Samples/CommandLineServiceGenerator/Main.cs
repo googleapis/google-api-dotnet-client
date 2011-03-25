@@ -519,8 +519,9 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			//var stringFetcher = new StringDiscoveryDevice();
 			//stringFetcher.Document = BuzzV0_3_Json;
 			
-			var cachedFetcher = new CachedWebDiscoveryDevice(new Uri("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1"), 
-			                                                 GetCacheDirectory());
+			var cachedFetcher = new CachedWebDiscoveryDevice(
+                	new Uri("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1"), 
+                    GetCacheDirectory());
 			
 			 var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
@@ -536,7 +537,8 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
                 
                 // Generate source code using the code provider.
                 
-                provider.GenerateCodeFromCompileUnit (generator.GenerateCode (), tw, new CodeGeneratorOptions ());
+                provider.GenerateCodeFromCompileUnit (
+					generator.GenerateCode (), tw, new CodeGeneratorOptions ());
                 
                 // Close the output file.
                 tw.Close ();
@@ -546,7 +548,9 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 		
 		private static DirectoryInfo GetCacheDirectory() 
 		{
-			string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+			string cacheDirectory = Path.Combine (
+					Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), 
+			        "GoogleApis.Tools.CodeGenCache");
             if (Directory.Exists (cacheDirectory) == false) {
                 Directory.CreateDirectory (cacheDirectory);
             }
