@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -32,6 +33,35 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     public class StandardMethodResourceDecorator : IResourceDecorator
     {
         private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardMethodResourceDecorator));
+        private readonly bool returnObjects;
+        private readonly bool acceptObjectsAsBody;
+        private readonly IObjectTypeProvider objectTypeProvider;
+        private readonly string methodNameSufix;
+        
+        /// <summary>
+        /// Constructs a StandardMethodResourceDecorator which creates methods with body parameter as string 
+        /// and return type as System.io.Stream.
+        /// </summary>
+        public StandardMethodResourceDecorator()
+        {
+            returnObjects = false;
+            acceptObjectsAsBody = false;
+            objectTypeProvider = null;
+            methodNameSufix = "";
+        }
+        
+        public StandardMethodResourceDecorator(
+                bool returnObjects, bool acceptObjectsAsBody, IObjectTypeProvider objectTypeProvider)
+        {
+            if (returnObjects || acceptObjectsAsBody ) 
+            {
+                objectTypeProvider.ThrowIfNull("objectTypeProvider");
+            }
+            this.returnObjects = returnObjects;
+            this.acceptObjectsAsBody = acceptObjectsAsBody;
+            this.objectTypeProvider = objectTypeProvider;
+            this.methodNameSufix = "AsObject";
+        }
 
         public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
                                    ResourceClassGenerator generator, string serviceClassName, 
@@ -65,19 +95,46 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         internal class ResourceGenerator : ResourceBaseGenerator
         {
             private readonly string className;
+            private readonly bool returnObjects;
+            private readonly bool acceptObjectsAsBody;
+            private readonly IObjectTypeProvider objectTypeProvider;
+            private readonly string methodNameSuffix;
 
-            public ResourceGenerator (string className)
+            public ResourceGenerator (
+                    string className,bool returnObjects, bool acceptObjectsAsBody, 
+                    IObjectTypeProvider objectTypeProvider, string methodNameSuffix)
             {
+                if (returnObjects || acceptObjectsAsBody ) 
+                {
+                    objectTypeProvider.ThrowIfNull("objectTypeProvider");
+                }
+                this.returnObjects = returnObjects;
+                this.acceptObjectsAsBody = acceptObjectsAsBody;
+                this.objectTypeProvider = objectTypeProvider;
+                this.methodNameSuffix = methodNameSufix;
                 this.className = className;
             }
-
+   
+            [VisibleForTestOnly]
+            internal CodeTypeReference GetReturnType(IMethod method) 
+            {
+                if (returnObjects == false)
+                {
+                    new CodeTypeReference ("System.IO.Stream");
+                } 
+                else 
+                {
+                    return objectTypeProvider.GetReturnType(method);
+                }
+            }
+            
             public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
                                                   IEnumerable<IResourceDecorator> allDecorators)
             {
                 var member = new CodeMemberMethod ();
                 
-                member.Name = GeneratorUtils.GetMethodName (method, methodNumber);
-                member.ReturnType = new CodeTypeReference ("System.IO.Stream");
+                member.Name = GeneratorUtils.GetMethodName (method, methodNumber) + this.methodNameSuffix;
+                member.ReturnType = GetReturnType(method);
                 member.Attributes = MemberAttributes.Public;
                 
                 
@@ -113,6 +170,33 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 return member;
             }
+            
+            /// <summary>
+            /// [ReturnType] ret = this.service.JsonToObject&lt;ReturnType&gt;(this.service.Execute(...));
+            /// </summary>
+            protected override CodeStatement CreateExecuteRequest (IMethod method)
+            {
+                if ( this.returnObjects == false ) 
+                {
+                    return base.CreateExecuteRequest (method);
+                }
+                
+                var returnType = objectTypeProvider.GetReturnType(method);
+                
+                // this.service.Execute(...)
+                var getStream = CreateExecuteCall(method);
+                
+                // this.service.JsonToObject<ReturnType>([stream])
+                var call = new CodeMethodInvokeExpression();
+                call.Method = new CodeMethodReferenceExpression();
+                call.Method.TargetObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName);
+                call.Method.MethodName = "JsonToObject";
+                call.Method.TypeArguments.Add(returnType);
+                call.Parameters.Add(getStream);
+                
+                // [ReturnType] ret = [call]
+                return new CodeVariableDeclarationStatement (returnType, ReturnVariableName, call);
+            }
 
             protected void AddAllDeclaredParameters (IMethod method, CodeMemberMethod member, 
                                                      CodeStatementCollection assignmentStatments)
@@ -147,6 +231,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     new CodeObjectCreateExpression (typeof(Dictionary<string, string>)));
             }
         }
+        
+        public interface IObjectTypeProvider
+        {
+            CodeTypeReference GetReturnType(IMethod method);
+            CodeTypeReference GetBodyType(IMethod method);
+        }
+        
     }
 }
 

@@ -69,17 +69,33 @@ namespace Google.Apis.Tools.CodeGen.Generator
             assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount));
             return assign;
         }
-
-        protected CodeStatement CreateExecuteRequest (IMethod method)
+  
+        /// <summary>
+        /// this.service.ExecuteRequest(...);
+        /// </summary>
+        protected CodeMethodInvokeExpression CreateExecuteCall(IMethod method)
         {
             var call = new CodeMethodInvokeExpression ();
             
-            call.Method = new CodeMethodReferenceExpression (new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceFieldName), StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
+            
+            call.Method = new CodeMethodReferenceExpression (
+                               new CodeFieldReferenceExpression (
+                                   new CodeThisReferenceExpression (), ServiceFieldName), 
+                               StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
             
             call.Parameters.Add (new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (this.GetClassName ()), ResourceNameConst));
             call.Parameters.Add (new CodePrimitiveExpression (method.Name));
             call.Parameters.Add (new CodeVariableReferenceExpression ("body"));
             call.Parameters.Add (new CodeVariableReferenceExpression (ParameterDictionaryName));
+            return call;
+        }
+        
+        /// <summary>
+        /// ret = this.service.ExecuteRequest(...);
+        /// </summary>
+        protected virtual CodeStatement CreateExecuteRequest (IMethod method)
+        {
+            var call = CreateExecuteCall();
             
             var assign = new CodeVariableDeclarationStatement (typeof(System.IO.Stream), ReturnVariableName, call);
             
