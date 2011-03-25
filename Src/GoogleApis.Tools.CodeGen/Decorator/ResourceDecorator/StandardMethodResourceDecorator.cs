@@ -67,7 +67,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                    ResourceClassGenerator generator, string serviceClassName, 
                                    IEnumerable<IResourceDecorator> allDecorators)
         {
-            ResourceGenerator gen = new ResourceGenerator (className);
+            ResourceGenerator gen = new ResourceGenerator (
+                className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values) {
                 logger.DebugFormat ("Adding Standard Method {0}.{1}", resource.Name, method.Name);
@@ -111,16 +112,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.returnObjects = returnObjects;
                 this.acceptObjectsAsBody = acceptObjectsAsBody;
                 this.objectTypeProvider = objectTypeProvider;
-                this.methodNameSuffix = methodNameSufix;
+                this.methodNameSuffix = methodNameSuffix;
                 this.className = className;
             }
    
             [VisibleForTestOnly]
             internal CodeTypeReference GetReturnType(IMethod method) 
             {
-                if (returnObjects == false)
+                if (returnObjects == false || method.ResponseType.IsNullOrEmpty())
                 {
-                    new CodeTypeReference ("System.IO.Stream");
+                    return new CodeTypeReference ("System.IO.Stream");
                 } 
                 else 
                 {

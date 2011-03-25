@@ -52,6 +52,14 @@ namespace Google.Apis.Discovery
 		{
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
+        
+        public string ResponseType
+        {
+            get {
+                var responseDict = this.information.GetValueAsNull (ServiceFactory.ResponseType) as JsonDictionary;
+                return responseDict.GetValueAsNull("$ref") as string;
+            }
+        }
 
 		public Dictionary<string, IParameter> Parameters 
 		{

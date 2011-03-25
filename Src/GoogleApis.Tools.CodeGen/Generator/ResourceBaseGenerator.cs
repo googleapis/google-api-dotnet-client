@@ -95,7 +95,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         protected virtual CodeStatement CreateExecuteRequest (IMethod method)
         {
-            var call = CreateExecuteCall();
+            var call = CreateExecuteCall(method);
             
             var assign = new CodeVariableDeclarationStatement (typeof(System.IO.Stream), ReturnVariableName, call);
             
