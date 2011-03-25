@@ -31,14 +31,18 @@ namespace Google.Apis.Tests.Apis.Discovery
                   }
                  },
                  'response': {
-                  '$ref': 'CountFeed'
+                  '$ref': 'ResponseTypeTestString'
+                 }
+                 'request': {
+                  '$ref': 'RequestTypeTestString'
                  }";
 
         [Test()]
         public void TestSimpleProperties ()
         {
             var method = new BaseMethodTestImpl("count",SimpleCountMethod);
-            Assert.AreEqual("CountFeed", method.ResponseType);
+            Assert.AreEqual("ResponseTypeTestString", method.ResponseType);
+            Assert.AreEqual("RequestTypeTestString", method.RequestType);
             Assert.AreEqual("count", method.Name);
             Assert.AreEqual("GET", method.HttpMethod);
             Assert.AreEqual(2, method.Parameters.Count);

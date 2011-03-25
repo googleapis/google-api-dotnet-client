@@ -67,6 +67,19 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public string RequestType
+        {
+            get {
+                var requestDict = this.information.GetValueAsNull (ServiceFactory.RequestType) as JsonDictionary;
+                if( requestDict == null )
+                {
+                    logger.DebugFormat("No RequestType for method [{0}]", Name);
+                    return null;
+                }
+                return requestDict.GetValueAsNull("$ref") as string;
+            }
+        }
+
 		public Dictionary<string, IParameter> Parameters 
 		{
 			get {

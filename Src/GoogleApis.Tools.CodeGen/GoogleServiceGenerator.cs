@@ -67,7 +67,7 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardConstructorResourceDecorator (), 
                     new StandardMethodResourceDecorator (),
                     new StandardMethodResourceDecorator (
-                            true, false, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace)),
+                            true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace)),
                     new Log4NetResourceDecorator (), 
                     new DictonaryOptionalParameterResourceDecorator ()}).
                     AsReadOnly();

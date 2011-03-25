@@ -129,6 +129,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 }
             }
             
+            public CodeTypeReference GetBodyType(IMethod method) 
+            {
+                if ( acceptObjectsAsBody == false || method.RequestType.IsNullOrEmpty() )
+                {
+                    return new CodeTypeReference(typeof(string));
+                } else {
+                    return objectTypeProvider.GetBodyType(method);
+                }
+            }
+            
             public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
                                                   IEnumerable<IResourceDecorator> allDecorators)
             {
@@ -142,7 +152,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection ();
                 
-                ResourceCallAddBodyDeclaration (method, member);
+                ResourceCallAddBodyDeclaration (method, member, GetBodyType(method));
                 
                 AddAllDeclaredParameters (method, member, assignmentStatments);
                 
@@ -172,6 +182,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 return member;
             }
+            
+            protected override CodeExpression GetBodyAsString (IMethod method)
+            {
+                if (this.acceptObjectsAsBody == false || method.RequestType.IsNullOrEmpty())
+                {
+                    return base.GetBodyAsString(method);
+                }
+                
+                // this.service.ObjectToJson(body)
+                var service = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName);
+                var body = new CodeVariableReferenceExpression("body");
+                return new CodeMethodInvokeExpression(service, "ObjectToJson", body);
+            }
+
             
             /// <summary>
             /// [ReturnType] ret = this.service.JsonToObject&lt;ReturnType&gt;(this.service.Execute(...));
@@ -251,19 +275,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 this.schemaNamespace = schemaNamespace;
             }
-            
-            
+
             public CodeTypeReference GetReturnType (IMethod method)
             {
                 method.ThrowIfNull("method");
                 method.ResponseType.ThrowIfNullOrEmpty("method.ResponseType");
                 return new CodeTypeReference(schemaNamespace + '.' + method.ResponseType);
             }
-            
-            
+
             public CodeTypeReference GetBodyType (IMethod method)
             {
-                throw new System.NotImplementedException();
+                method.ThrowIfNull("method");
+                method.RequestType.ThrowIfNullOrEmpty("method.RequestType");
+                return new CodeTypeReference(schemaNamespace + '.' + method.RequestType);                
             }
         }
         
