@@ -98,7 +98,5 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			}
 			return dict;
 		}
-		
-		
 	}
 }
