@@ -29,7 +29,6 @@ using Newtonsoft.Json;
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz; 
-//using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data;
 using Google.Apis.Samples.AdSenseApi;
 using Google.Apis.Samples.AdSenseApi.Service;
 using Google.Apis.Samples.AdSenseApi.Auth;
@@ -62,7 +61,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			try{
 				//BuzzTest();
 				//AdSenseTest ();
-				//JsonSerilizationTest();
 				Console.WriteLine("All Done.");
 				Console.ReadLine();
 			}catch(Exception ex)
@@ -70,48 +68,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 				logger.Error("Failed",ex);
 			}
 		}
-		/*
-		private static void JsonSerilizationTest() {
-			Activitiylist activity = new Activitiylist {
-				Id = "IdValue",
-				Items = new List<ChiliActivitiesResourceJson>(){
-					new ChiliActivitiesResourceJson(){
-						Actor = new ChiliActivitiesResourceJson.NestedClass3(){
-							Id = "NestedClassActorId1",
-							Name = "NestedClassActorName1",
-							ProfileUrl = "www.example.com"
-						},
-						Id = "Fish"
-					},
-					new ChiliActivitiesResourceJson(){
-						Actor = new ChiliActivitiesResourceJson.NestedClass3(){
-							Id = "NestedClassActorId2",
-							Name = "NestedClassActorName2",
-							ProfileUrl = "www.example.com"
-						},
-						Id = "Cat"
-					},
-					new ChiliActivitiesResourceJson(){
-						Actor = new ChiliActivitiesResourceJson.NestedClass3(){
-							Id = "NestedClassActorId3",
-							Name = "NestedClassActorName3",
-							ProfileUrl = "www.example.com"
-						},
-						Id = "Mouse"
-					},
-				},
-				Kind = "KindValue",
-				Title = "TitleValue",
-				Updated = "UpdatedValue",				
-			};
-			JsonSerializerSettings settings = new JsonSerializerSettings();
-			settings.NullValueHandling = NullValueHandling.Ignore;
-			TextWriter tw = new StringWriter();
-			var serilizer = JsonSerializer.Create(settings);
-			serilizer.Serialize(tw, activity);
-			Console.WriteLine(tw.ToString());
-		}
-		*/
+		
 		private static void BuzzTest()
 		{			
 			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			
