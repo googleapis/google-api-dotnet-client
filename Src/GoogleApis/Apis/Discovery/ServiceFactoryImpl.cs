@@ -77,7 +77,8 @@ namespace Google.Apis.Discovery
 
         public string[] GetVersions()
         {
-            throw new NotImplementedException();
+            string[] arr = new string[] { this.information["version"].ToString() };
+            return arr;
         }
     }
     

@@ -10,6 +10,20 @@ namespace Google.Apis.Samples.ApiExplorerWeb
 {
     public partial class _Default : System.Web.UI.Page
     {
+        private ApiUtility Api
+        {
+            get
+            {
+                ApiUtility ret = Application["ApiUtility"] as ApiUtility;
+                if (ret == null)
+                {
+                    ret = new ApiUtility();
+                    Application["ApiUtility"] = ret;
+                }
+                return ret;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,7 +37,7 @@ namespace Google.Apis.Samples.ApiExplorerWeb
         /// </summary>
         private void InitializeTreeView()
         {
-            string[] services = Scopes.scopes.Keys.ToArray();
+            string[] services = Api.getServiceNames();
 
             foreach (string service in services)
             {
@@ -54,10 +68,10 @@ namespace Google.Apis.Samples.ApiExplorerWeb
             }
         }
 
-        private static void ExpandServiceNode(TreeNode node)
+        private void ExpandServiceNode(TreeNode node)
         {
             string serviceName = node.Value;
-            string[] versions = ApiUtility.GetVersions(serviceName);
+            string[] versions = Api.GetVersions(serviceName);
             node.ChildNodes.Clear();
             foreach (string version in versions)
             {
@@ -67,11 +81,11 @@ namespace Google.Apis.Samples.ApiExplorerWeb
             node.Expand();
         }
 
-        private static void ExpandVersionNode(TreeNode node)
+        private void ExpandVersionNode(TreeNode node)
         {
             string serviceName = node.Parent.Value;
             string version = node.Value;
-            IDictionary<string, IResource> resources = ApiUtility.GetResources(serviceName, version);
+            IDictionary<string, IResource> resources = Api.GetResources(serviceName, version);
             node.ChildNodes.Clear();
             foreach (KeyValuePair<string, IResource> pair in resources)
             {
@@ -81,12 +95,12 @@ namespace Google.Apis.Samples.ApiExplorerWeb
             node.Expand();
         }
 
-        private static void ExpandResourceNode(TreeNode node)
+        private void ExpandResourceNode(TreeNode node)
         {
             string resourceName = node.Value;
             string version = node.Parent.Value;
             string serviceName = node.Parent.Parent.Value;
-            IDictionary<string, IMethod> methods = ApiUtility.GetMethods(serviceName, resourceName, version);
+            IDictionary<string, IMethod> methods = Api.GetMethods(serviceName, resourceName, version);
             node.ChildNodes.Clear();
             foreach (KeyValuePair<string, IMethod> pair in methods)
             {
@@ -102,7 +116,7 @@ namespace Google.Apis.Samples.ApiExplorerWeb
             string resourceName = node.Parent.Value;
             string version = node.Parent.Parent.Value;
             string serviceName = node.Parent.Parent.Parent.Value;
-            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName, version);
+            IMethod method = Api.GetMethod(serviceName, resourceName, methodName, version);
             Dictionary<string, IParameter> parameters = method.Parameters;
             this.methodParametersRepeater.DataSource = parameters.Keys;
             this.methodParametersRepeater.DataBind();

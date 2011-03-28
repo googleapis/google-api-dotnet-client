@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Configuration;
-using Google.Apis.Discovery;
 using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.OAuth2.Messages;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth2.ChannelElements;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.ApiExplorerWinForm
