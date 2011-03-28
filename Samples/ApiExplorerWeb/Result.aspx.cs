@@ -1,23 +1,37 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.IO;
-using System.Configuration;
 using System.Web.UI.WebControls;
-using DotNetOpenAuth.OAuth2;
-using DotNetOpenAuth.OAuth2.Messages;
 using DotNetOpenAuth.Messaging;
+using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.OAuth2.ChannelElements;
-using Google.Apis.Discovery;
+using DotNetOpenAuth.OAuth2.Messages;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.ApiExplorerWeb
 {
     public partial class Result : System.Web.UI.Page
     {
+        private ApiUtility Api
+        {
+            get
+            {
+                ApiUtility ret = Application["ApiUtility"] as ApiUtility;
+                if (ret == null)
+                {
+                    ret = new ApiUtility();
+                    Application["ApiUtility"] = ret;
+                }
+                return ret;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.ExecuteMethod();
@@ -55,8 +69,8 @@ namespace Google.Apis.Samples.ApiExplorerWeb
             }
 
 			IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, this.AccessTokens[callContext.Service]); 
-            IService service = ApiUtility.GetService(callContext.Service, callContext.Version);
-            IMethod method = ApiUtility.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
+            IService service = Api.GetService(callContext.Service, callContext.Version);
+            IMethod method = Api.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
                 .WithParameters(callContext.Parameters)
