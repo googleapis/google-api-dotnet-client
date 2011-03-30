@@ -69,6 +69,8 @@
     <Compile Include="Buzz\ConsoleAuthenticator.cs" />
     <Compile Include="Target\TestBuzzService.cs" />
     <Compile Include="V03\Buzz\BuzzService.cs" />
+    <Compile Include="V03\AdSense\AdSenseApi.cs" />
+    <Compile Include="V03\AdSense\AdSenseApiV1A4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,5 +91,6 @@
   <ItemGroup>
     <Folder Include="V03\" />
     <Folder Include="V03\Buzz\" />
+    <Folder Include="V03\AdSense\" />
   </ItemGroup>
 </Project>
