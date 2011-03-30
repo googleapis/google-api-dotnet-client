@@ -5,6 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
@@ -237,6 +238,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         
         public void DecorateClass (Discovery.IService service, CodeTypeDeclaration serviceClass)
         {
+            serviceClass.ThrowIfNull("serviceClass");
             serviceClass.Members.Add(CreateJsonSerializerField());
             serviceClass.Members.Add(CreateJsonSerializerGetter());
             serviceClass.Members.Add(CreateObjectToJson());
