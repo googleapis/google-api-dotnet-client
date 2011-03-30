@@ -24,6 +24,12 @@ using Google.Apis.Requests;
 
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// IResource represents one resource as difined in a Google Api Discovery Document.
+    /// It can contain more resources and/or methods
+    /// </summary>
+    /// <seealso cref="IResourceContainer"/>
+    /// <seealso cref="IMethod"/>
     public interface IResource : IResourceContainer
     {
         Dictionary<string, IMethod> Methods{get;}

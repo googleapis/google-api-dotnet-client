@@ -261,6 +261,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             }
         }
         
+        /// <summary>
+        /// Implementors of this interface will know what the return type of a given method should be
+        /// and what the type of the body parameter should be.
+        /// For example the return type may be System.IO.String or a 
+        /// generated type based on the schema section of the discovery document,
+        /// </summary>
         public interface IObjectTypeProvider
         {
             CodeTypeReference GetReturnType(IMethod method);

@@ -20,8 +20,18 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
+    /// <summary>
+    /// Decorates ResourceContainers, a resourceContainer is any object
+    /// that can contain Resources, a service is a resourceContainer 
+    /// also a Resource is a resource container since it can 
+    /// contain Resources.
+    /// </summary>
+    /// <seealso cref="IResourceContainer"/>
     public interface IResourceContainerDecorator
     {
+        /// <summary>
+        /// Adds code to the containerClass based on the definitions contained in the resourceContainer.
+        /// </summary>
         void DecorateClass (IResourceContainer service, CodeTypeDeclaration containerClass);
     }
 }

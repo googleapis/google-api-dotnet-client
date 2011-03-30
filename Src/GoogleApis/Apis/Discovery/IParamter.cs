@@ -22,6 +22,11 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// A Parameter as defined by Google Api Discovery Document.
+    /// Ussaly found attached to a IMethod.
+    /// </summary>
+    /// <seealso cref="IMethod"/>
     public interface IParameter
     {
         string Name {get;}
