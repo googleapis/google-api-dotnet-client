@@ -18,7 +18,7 @@ using NUnit.Framework;
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
     [TestFixture()]
-    public class NewtonsoftObjectToJsonTest
+    public class NewtonsoftJsonSerializerTest
     {
         [Test()]
         public void TestCase ()
