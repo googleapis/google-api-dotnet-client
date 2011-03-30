@@ -24,6 +24,12 @@ namespace Google.Apis.Discovery
 {
 
 
+    /// <summary>
+    /// Represent a specific version of a service as defined in Google Api Discovery Document.
+    /// Has a collection of IResources and ISchemas
+    /// </summary>
+    /// <seealso cref="IResource"/>
+    /// <seealso cref="ISchema"/>
 	public interface IService : IResourceContainer
 	{
 		/// <summary> The version of this serivce </summary>
