@@ -24,7 +24,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.AreEqual(new CodeTypeReference(typeof(object)).BaseType, createdMethod.Parameters[2].Type.BaseType);
             Assert.AreEqual(new CodeTypeReference(typeof(IDictionary<string, string>)).BaseType, createdMethod.Parameters[3].Type.BaseType);
             
-            Assert.AreSame(new CodeTypeReference(typeof(Stream)).BaseType, createdMethod.ReturnType.BaseType);
+            Assert.AreEqual(new CodeTypeReference(typeof(Stream)).BaseType, createdMethod.ReturnType.BaseType);
         }
     }
 }
