@@ -33,4 +33,3 @@ namespace Google.Apis.Discovery.Schema
         JsonSchema SchemaDetails{get;}
     }
 }
-
