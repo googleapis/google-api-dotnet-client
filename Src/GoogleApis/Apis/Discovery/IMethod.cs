@@ -22,6 +22,12 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// Represents one method as defined by the Google Api Discovery Document.
+    /// This will usaly be found within a resource. There may well be differnt implementations
+    /// of this interface for different versions of discovery.
+    /// </summary>
+    /// <see cref="IResource"/>
     public interface IMethod
     {
         string Name {get;set;}
