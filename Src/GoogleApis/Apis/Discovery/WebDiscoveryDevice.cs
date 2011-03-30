@@ -28,9 +28,12 @@ namespace Google.Apis.Discovery
 		public Uri DiscoveryUri {get;set;}
 		private Stream responseStream {get;set;}
 		private HttpWebResponse response {get;set;}
+        public int TimeoutInSeconds {get; set;}
 		
 		public WebDiscoveryDevice() 
-		{}
+		{
+            TimeoutInSeconds = 30;
+        }
 		
 		public WebDiscoveryDevice(Uri discoveryUri):this()
 		{
@@ -46,7 +49,7 @@ namespace Google.Apis.Discovery
 		public Stream Fetch() 
 		{
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
-			
+			request.Timeout = TimeoutInSeconds * 1000;
 			Stream responseData;
 			
 			response = (HttpWebResponse) request.GetResponse();

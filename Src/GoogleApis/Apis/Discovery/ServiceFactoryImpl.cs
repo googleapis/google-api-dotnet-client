@@ -37,7 +37,7 @@ namespace Google.Apis.Discovery
     
     internal class ServiceFactoryDiscoveryV0_3 : IServiceFactory
     {
-         private readonly JsonDictionary information;
+        private readonly JsonDictionary information;
         private readonly FactoryParameterV0_3 param;
         private readonly string name;
         public ServiceFactoryDiscoveryV0_3 (JsonDictionary discovery, FactoryParameterV0_3 param)

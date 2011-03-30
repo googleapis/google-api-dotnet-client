@@ -29,12 +29,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public interface IResourceDecorator
     {
+        /// <summary>
+        /// Adds code to the resourceClass based on the resource.
+        /// </summary>
         void DecorateClass (IResource resource, string className, 
                             CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, 
                             string serviceClassName, IEnumerable<IResourceDecorator> allDecorators);
 
+        /// <summary>
+        /// Adds code to a method just before execution of the execute method.
+        /// This can be used for logging, instramenting or modifing the parameters before execution.
+        /// </summary>
         void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember);
 
+        /// <summary>
+        /// Adds code to a method just after execution of the execute method.
+        /// This can be used for logging, instramenting or modifing the return value after execution.
+        /// </summary>
         void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember);
     }
 }

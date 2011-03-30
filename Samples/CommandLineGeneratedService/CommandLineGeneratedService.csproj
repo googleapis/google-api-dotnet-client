@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Google.Apis.Samples.CommandLineGeneratedService</RootNamespace>
     <AssemblyName>CommandLineGeneratedService</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
   </PropertyGroup>
@@ -53,7 +53,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\LumenWorks.Framework.IO.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.0.4101.30461, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
@@ -64,12 +68,9 @@
     <Compile Include="Buzz\BuzzService.cs" />
     <Compile Include="Buzz\ConsoleAuthenticator.cs" />
     <Compile Include="Target\TestBuzzService.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="V03\Buzz\BuzzService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <Compile Include="V03\AdSense\AdSenseApi.cs" />
+    <Compile Include="V03\AdSense\AdSenseApiV1A4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -86,5 +87,10 @@
     <ApplicationDefinition Include="CommandLineGeneratedService.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="V03\" />
+    <Folder Include="V03\Buzz\" />
+    <Folder Include="V03\AdSense\" />
   </ItemGroup>
 </Project>
