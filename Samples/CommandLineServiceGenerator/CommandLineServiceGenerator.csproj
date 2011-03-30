@@ -39,11 +39,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Google.Apis, Version=1.0.4101.30461, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.4101.30462, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.Tools.CodeGen.dll</HintPath>
     </Reference>

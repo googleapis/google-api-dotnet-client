@@ -19,6 +19,12 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// Contains zero to many IResources, both servicess and resources may have
+    /// child resources so both implement this interface.
+    /// </summary>
+    /// <seealso cref="IResource"/>
+    /// <seealso cref="IService"/>
     public interface IResourceContainer
     {
         string Name {get;}

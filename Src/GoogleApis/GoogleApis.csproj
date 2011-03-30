@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -89,25 +89,33 @@
     <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
     <Compile Include="Apis\Discovery\IMethod.cs" />
     <Compile Include="Apis\Discovery\Parameter.cs" />
-    <Compile Include="Apis\Discovery\IParameter.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImpl.cs" />
     <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
     <Compile Include="Apis\Util\Utilities.cs" />
     <Compile Include="Apis\Discovery\Schema\ISchema.cs" />
-    <Compile Include="Apis\Discovery\Schema\ISchemaProperty.cs" />
     <Compile Include="Apis\Discovery\Schema\SchemaImpl.cs" />
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolver.cs" />
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
+    <Compile Include="Apis\Discovery\IParameter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\JSON\" />
+    <Folder Include="Apis\Discovery\" />
+    <Folder Include="Apis\Requests\" />
+    <Folder Include="Apis\Authentication\" />
+    <Folder Include="Apis\Testing\" />
+    <Folder Include="Apis\Util\" />
+    <Folder Include="Apis\Discovery\Schema\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
         <Policies>
-          <StandardHeader Text="/*&#xA;Copyright 2010 Google Inc&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;    http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;*/" inheritsSet="Apache2License" />
+          <StandardHeader Text="/*&#xA;Copyright 2010 Google Inc&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;    http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;*/" inheritsSet="MITX11License" />
         </Policies>
       </Properties>
     </MonoDevelop>
-    <VisualStudio />
   </ProjectExtensions>
 </Project>

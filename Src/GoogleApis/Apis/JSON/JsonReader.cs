@@ -90,7 +90,7 @@ namespace Google.Apis.Json
             JsonToken token = ts.GetNextToken ();
             
             if (token.type != JsonToken.Type.String)
-                throw new System.ArgumentException ("The tokenstream is not pointing at an object");
+                throw new ArgumentException ("The tokenstream is not pointing at an object");
             
             JsonDictionary dict = new JsonDictionary ();
             
@@ -100,7 +100,10 @@ namespace Google.Apis.Json
                     token = ts.GetNextToken ();
                 } else if (cur.type == JsonToken.Type.NameSeperator) {
                     object value = ParseExpression (null, ts);
-                    
+                    if (dict.ContainsKey(token.value))
+                    {
+                        throw new ArgumentException("JsonObject contains duplicate definition for ["+token.value+"]");
+                    }
                     dict.Add (token.value, value);
                 }
                 

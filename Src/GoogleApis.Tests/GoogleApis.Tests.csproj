@@ -70,6 +70,7 @@
     <Compile Include="Apis\Discovery\Schema\SchemaImplTest.cs" />
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolverTest.cs" />
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
+    <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

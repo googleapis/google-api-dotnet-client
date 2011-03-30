@@ -27,6 +27,7 @@ namespace Google.Apis.Discovery
 {
 	internal abstract class BaseMethod:IMethod
 	{
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseMethod));
 		internal readonly protected JsonDictionary information;
 		
 		internal protected Dictionary<string, IParameter> parameters;
@@ -52,6 +53,32 @@ namespace Google.Apis.Discovery
 		{
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
+        
+        public string ResponseType
+        {
+            get {
+                var responseDict = this.information.GetValueAsNull (ServiceFactory.ResponseType) as JsonDictionary;
+                if( responseDict == null )
+                {
+                    logger.DebugFormat("No ReponseType for method [{0}]", Name);
+                    return null;
+                }
+                return responseDict.GetValueAsNull("$ref") as string;
+            }
+        }
+
+        public string RequestType
+        {
+            get {
+                var requestDict = this.information.GetValueAsNull (ServiceFactory.RequestType) as JsonDictionary;
+                if( requestDict == null )
+                {
+                    logger.DebugFormat("No RequestType for method [{0}]", Name);
+                    return null;
+                }
+                return requestDict.GetValueAsNull("$ref") as string;
+            }
+        }
 
 		public Dictionary<string, IParameter> Parameters 
 		{

@@ -29,6 +29,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardServiceFieldResourceDecorator: IResourceDecorator
     {
+        private readonly bool schemaSupportEnabled;
+        public StandardServiceFieldResourceDecorator(bool schemaSupportEnabled)
+        {
+            this.schemaSupportEnabled = schemaSupportEnabled;
+        }
+        
         public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
                                    ResourceClassGenerator generator, string serviceClassName, 
                                    IEnumerable<IResourceDecorator> allDecorators)
@@ -52,9 +58,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         [VisibleForTestOnly]
         internal CodeMemberField CreateServiceField ()
         {
-            var serviceField = new CodeMemberField (typeof(IRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
+            CodeMemberField serviceField;
+            if(schemaSupportEnabled)
+            {
+                serviceField = new CodeMemberField (typeof(ISchemaAwareRequestExecutor), 
+                                                    ResourceBaseGenerator.ServiceFieldName);
+            }
+            else
+            {
+                serviceField = new CodeMemberField (typeof(IRequestExecutor), 
+                                                    ResourceBaseGenerator.ServiceFieldName);
+            }
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            
             return serviceField;
         }
     }

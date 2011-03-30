@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -72,6 +72,8 @@
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
+    <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
