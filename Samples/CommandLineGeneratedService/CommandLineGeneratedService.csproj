@@ -57,7 +57,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.0.4101.30461, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Google.Apis, Version=1.0.4107.28341, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Google.Apis.dll</HintPath>
     </Reference>
