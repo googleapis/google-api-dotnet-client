@@ -1,6 +1,10 @@
 using System;
 using System.IO;
 using System.CodeDom.Compiler;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 using Google.Apis;
 using Google.Apis.Tools.CodeGen;
@@ -1331,9 +1335,20 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 }";
         #endregion
 		
+		public static bool CheckValidationResult (object sender, X509Certificate cert, X509Chain X509Chain, SslPolicyErrors errors)
+		{
+			return true;
+		}
+		
+		private static void DisableSllChecking()
+		{
+			ServicePointManager.ServerCertificateValidationCallback += CheckValidationResult;			
+		}
+		
 		public static void Main (string[] args)
 		{
 			Logger.Debug("Logging Started");
+			DisableSllChecking();
 			//GenerateBuzzServiceV02 ();
 			//GenerateAdSenseService ();
 			GenerateBuzzServiceV03 ();
@@ -1393,13 +1408,14 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			var language = "CSharp";
 			var output = "../../../CommandLineGeneratedService/V03/AdSense/AdSenseApi.cs";
 			
-			var cachedFetcher = new StringDiscoveryDevice();
-			cachedFetcher.Document = AdSenseV0_3_Json;
+			//var fetcher = new StringDiscoveryDevice();
+			//fetcher.Document = AdSenseV0_3_Json;
+			var fetcher = new WebDiscoveryDevice(new Uri("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1"));
 				
 			
-			var discovery = new DiscoveryService (cachedFetcher);
+			var discovery = new DiscoveryService (fetcher);
             // Build the service based on discovery information.
-			var param = new FactoryParameterV0_3("http://example.url.com",null);
+			var param = new FactoryParameterV0_3("https://www.googleapis.com/",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
@@ -1435,7 +1451,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			
 			var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
-			var param = new FactoryParameterV0_3("http://example.url.com",null);
+			var param = new FactoryParameterV0_3("https://www.googleapis.com/buzz/v1/",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);

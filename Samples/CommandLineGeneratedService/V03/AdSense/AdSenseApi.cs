@@ -14,31 +14,131 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
     using System.Collections.Generic;
     
     
-    public class AdClients {
+    public class Activity {
         
-        private string etag;
+        private NestedClass1 actor;
         
-        private IList<NestedClass1> items;
+        private string address;
+        
+        private string annotation;
+        
+        private IList<NestedClass2> categories;
+        
+        private string crosspostSource;
+        
+        private string detectedlLang;
+        
+        private string geocode;
+        
+        private string id;
         
         private string kind;
         
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string Etag {
+        private NestedClass3 links;
+        
+        private NestedClass4 objectField10;
+        
+        private string placeId;
+        
+        private string placeName;
+        
+        private string placeholder;
+        
+        private string published;
+        
+        private string radius;
+        
+        private NestedClass5 source;
+        
+        private string targetLang;
+        
+        private string title;
+        
+        private string untranslatedTitle;
+        
+        private string updated;
+        
+        private IList<System.String> verbs;
+        
+        private NestedClass6 visibility;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual NestedClass1 Actor {
             get {
-                return this.etag;
+                return this.actor;
             }
             set {
-                this.etag = value;
+                this.actor = value;
             }
         }
         
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual IList<NestedClass1> Items {
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address {
             get {
-                return this.items;
+                return this.address;
             }
             set {
-                this.items = value;
+                this.address = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
+        public virtual string Annotation {
+            get {
+                return this.annotation;
+            }
+            set {
+                this.annotation = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual IList<NestedClass2> Categories {
+            get {
+                return this.categories;
+            }
+            set {
+                this.categories = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("crosspostSource")]
+        public virtual string CrosspostSource {
+            get {
+                return this.crosspostSource;
+            }
+            set {
+                this.crosspostSource = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedlLang")]
+        public virtual string DetectedlLang {
+            get {
+                return this.detectedlLang;
+            }
+            set {
+                this.detectedlLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("geocode")]
+        public virtual string Geocode {
+            get {
+                return this.geocode;
+            }
+            set {
+                this.geocode = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
             }
         }
         
@@ -52,15 +152,155 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass3 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual NestedClass4 ObjectProperty10 {
+            get {
+                return this.objectField10;
+            }
+            set {
+                this.objectField10 = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId {
+            get {
+                return this.placeId;
+            }
+            set {
+                this.placeId = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeName")]
+        public virtual string PlaceName {
+            get {
+                return this.placeName;
+            }
+            set {
+                this.placeName = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder {
+            get {
+                return this.placeholder;
+            }
+            set {
+                this.placeholder = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("radius")]
+        public virtual string Radius {
+            get {
+                return this.radius;
+            }
+            set {
+                this.radius = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual NestedClass5 Source {
+            get {
+                return this.source;
+            }
+            set {
+                this.source = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+        public virtual string TargetLang {
+            get {
+                return this.targetLang;
+            }
+            set {
+                this.targetLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("untranslatedTitle")]
+        public virtual string UntranslatedTitle {
+            get {
+                return this.untranslatedTitle;
+            }
+            set {
+                this.untranslatedTitle = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("verbs")]
+        public virtual IList<System.String> Verbs {
+            get {
+                return this.verbs;
+            }
+            set {
+                this.verbs = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual NestedClass6 Visibility {
+            get {
+                return this.visibility;
+            }
+            set {
+                this.visibility = value;
+            }
+        }
+        
         public class NestedClass1 {
             
             private string id;
             
-            private string kind;
-            
             private string name;
             
-            private bool supportsReporting;
+            private string profileUrl;
+            
+            private string thumbnailUrl;
             
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id {
@@ -69,16 +309,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
                 }
                 set {
                     this.id = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind {
-                get {
-                    return this.kind;
-                }
-                set {
-                    this.kind = value;
                 }
             }
             
@@ -92,386 +322,483 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
                 }
             }
             
-            [Newtonsoft.Json.JsonPropertyAttribute("supportsReporting")]
-            public virtual bool SupportsReporting {
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
                 get {
-                    return this.supportsReporting;
+                    return this.profileUrl;
                 }
                 set {
-                    this.supportsReporting = value;
+                    this.profileUrl = value;
                 }
             }
-        }
-    }
-    
-    public class AdUnits {
-        
-        private string etag;
-        
-        private IList<NestedClass1> items;
-        
-        private string kind;
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string Etag {
-            get {
-                return this.etag;
-            }
-            set {
-                this.etag = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual IList<NestedClass1> Items {
-            get {
-                return this.items;
-            }
-            set {
-                this.items = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind {
-            get {
-                return this.kind;
-            }
-            set {
-                this.kind = value;
-            }
-        }
-        
-        public class NestedClass1 {
             
-            private string code;
-            
-            private string id;
-            
-            private string kind;
-            
-            private string name;
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code {
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
                 get {
-                    return this.code;
+                    return this.thumbnailUrl;
                 }
                 set {
-                    this.code = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id {
-                get {
-                    return this.id;
-                }
-                set {
-                    this.id = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind {
-                get {
-                    return this.kind;
-                }
-                set {
-                    this.kind = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name {
-                get {
-                    return this.name;
-                }
-                set {
-                    this.name = value;
-                }
-            }
-        }
-    }
-    
-    public class AdsenseReportsGenerateRequest {
-        
-        private string currency;
-        
-        private NestedClass1 daterangeField1;
-        
-        private IList<System.String> dimensions;
-        
-        private string locale;
-        
-        private IList<System.String> metrics;
-        
-        private NestedClass2 pagination;
-        
-        private NestedClass3 scope;
-        
-        private IList<NestedClass4> sorts;
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency {
-            get {
-                return this.currency;
-            }
-            set {
-                this.currency = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("date_range")]
-        public virtual NestedClass1 DaterangeProperty1 {
-            get {
-                return this.daterangeField1;
-            }
-            set {
-                this.daterangeField1 = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual IList<System.String> Dimensions {
-            get {
-                return this.dimensions;
-            }
-            set {
-                this.dimensions = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale {
-            get {
-                return this.locale;
-            }
-            set {
-                this.locale = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual IList<System.String> Metrics {
-            get {
-                return this.metrics;
-            }
-            set {
-                this.metrics = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("pagination")]
-        public virtual NestedClass2 Pagination {
-            get {
-                return this.pagination;
-            }
-            set {
-                this.pagination = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual NestedClass3 Scope {
-            get {
-                return this.scope;
-            }
-            set {
-                this.scope = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("sorts")]
-        public virtual IList<NestedClass4> Sorts {
-            get {
-                return this.sorts;
-            }
-            set {
-                this.sorts = value;
-            }
-        }
-        
-        public class NestedClass1 {
-            
-            private string enddateField0;
-            
-            private string startdateField1;
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("end_date")]
-            public virtual string EnddateProperty0 {
-                get {
-                    return this.enddateField0;
-                }
-                set {
-                    this.enddateField0 = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("start_date")]
-            public virtual string StartdateProperty1 {
-                get {
-                    return this.startdateField1;
-                }
-                set {
-                    this.startdateField1 = value;
+                    this.thumbnailUrl = value;
                 }
             }
         }
         
         public class NestedClass2 {
             
-            private long rowcountField0;
+            private string label;
             
-            private long startrowField1;
+            private string schema;
             
-            [Newtonsoft.Json.JsonPropertyAttribute("row_count")]
-            public virtual long RowcountProperty0 {
+            private string term;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("label")]
+            public virtual string Label {
                 get {
-                    return this.rowcountField0;
+                    return this.label;
                 }
                 set {
-                    this.rowcountField0 = value;
+                    this.label = value;
                 }
             }
             
-            [Newtonsoft.Json.JsonPropertyAttribute("start_row")]
-            public virtual long StartrowProperty1 {
+            [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+            public virtual string Schema {
                 get {
-                    return this.startrowField1;
+                    return this.schema;
                 }
                 set {
-                    this.startrowField1 = value;
+                    this.schema = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("term")]
+            public virtual string Term {
+                get {
+                    return this.term;
+                }
+                set {
+                    this.term = value;
                 }
             }
         }
         
         public class NestedClass3 {
             
-            private IList<System.String> adclientidsField0;
+            private IList<NestedClass3_1> liked;
             
-            private IList<System.String> adunitidsField1;
-            
-            private IList<System.String> customchannelidsField2;
-            
-            private IList<System.String> urlchannelidsField3;
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("ad_client_ids")]
-            public virtual IList<System.String> AdclientidsProperty0 {
+            [Newtonsoft.Json.JsonPropertyAttribute("liked")]
+            public virtual IList<NestedClass3_1> Liked {
                 get {
-                    return this.adclientidsField0;
+                    return this.liked;
                 }
                 set {
-                    this.adclientidsField0 = value;
+                    this.liked = value;
                 }
             }
             
-            [Newtonsoft.Json.JsonPropertyAttribute("ad_unit_ids")]
-            public virtual IList<System.String> AdunitidsProperty1 {
-                get {
-                    return this.adunitidsField1;
+            public class NestedClass3_1 {
+                
+                private long count;
+                
+                private string href;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("count")]
+                public virtual long Count {
+                    get {
+                        return this.count;
+                    }
+                    set {
+                        this.count = value;
+                    }
                 }
-                set {
-                    this.adunitidsField1 = value;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
                 }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("custom_channel_ids")]
-            public virtual IList<System.String> CustomchannelidsProperty2 {
-                get {
-                    return this.customchannelidsField2;
-                }
-                set {
-                    this.customchannelidsField2 = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("url_channel_ids")]
-            public virtual IList<System.String> UrlchannelidsProperty3 {
-                get {
-                    return this.urlchannelidsField3;
-                }
-                set {
-                    this.urlchannelidsField3 = value;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
                 }
             }
         }
         
         public class NestedClass4 {
             
-            private string column;
+            private NestedClass4_1 actor;
             
-            private bool descending;
+            private IList<NestedClass4_2> attachments;
             
-            [Newtonsoft.Json.JsonPropertyAttribute("column")]
-            public virtual string Column {
+            private IList<Comment> comments;
+            
+            private string content;
+            
+            private string detectedlLang;
+            
+            private string id;
+            
+            private IList<Person> liked;
+            
+            private NestedClass4_3 links;
+            
+            private string originalContent;
+            
+            private Activity shareOriginal;
+            
+            private string targetLang;
+            
+            private string type;
+            
+            private string untranslatedContent;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+            public virtual NestedClass4_1 Actor {
                 get {
-                    return this.column;
+                    return this.actor;
                 }
                 set {
-                    this.column = value;
+                    this.actor = value;
                 }
             }
             
-            [Newtonsoft.Json.JsonPropertyAttribute("descending")]
-            public virtual bool Descending {
+            [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+            public virtual IList<NestedClass4_2> Attachments {
                 get {
-                    return this.descending;
+                    return this.attachments;
                 }
                 set {
-                    this.descending = value;
+                    this.attachments = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+            public virtual IList<Comment> Comments {
+                get {
+                    return this.comments;
+                }
+                set {
+                    this.comments = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("content")]
+            public virtual string Content {
+                get {
+                    return this.content;
+                }
+                set {
+                    this.content = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("detectedlLang")]
+            public virtual string DetectedlLang {
+                get {
+                    return this.detectedlLang;
+                }
+                set {
+                    this.detectedlLang = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("liked")]
+            public virtual IList<Person> Liked {
+                get {
+                    return this.liked;
+                }
+                set {
+                    this.liked = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("links")]
+            public virtual NestedClass4_3 Links {
+                get {
+                    return this.links;
+                }
+                set {
+                    this.links = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("originalContent")]
+            public virtual string OriginalContent {
+                get {
+                    return this.originalContent;
+                }
+                set {
+                    this.originalContent = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("shareOriginal")]
+            public virtual Activity ShareOriginal {
+                get {
+                    return this.shareOriginal;
+                }
+                set {
+                    this.shareOriginal = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+            public virtual string TargetLang {
+                get {
+                    return this.targetLang;
+                }
+                set {
+                    this.targetLang = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("untranslatedContent")]
+            public virtual string UntranslatedContent {
+                get {
+                    return this.untranslatedContent;
+                }
+                set {
+                    this.untranslatedContent = value;
+                }
+            }
+            
+            public class NestedClass4_1 {
+                
+                private string id;
+                
+                private string name;
+                
+                private string profileUrl;
+                
+                private string thumbnailUrl;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("name")]
+                public virtual string Name {
+                    get {
+                        return this.name;
+                    }
+                    set {
+                        this.name = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+                public virtual string ProfileUrl {
+                    get {
+                        return this.profileUrl;
+                    }
+                    set {
+                        this.profileUrl = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+                public virtual string ThumbnailUrl {
+                    get {
+                        return this.thumbnailUrl;
+                    }
+                    set {
+                        this.thumbnailUrl = value;
+                    }
+                }
+            }
+            
+            public class NestedClass4_2 {
+                
+                private string content;
+                
+                private string id;
+                
+                private NestedClass4_2_1 links;
+                
+                private string title;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("content")]
+                public virtual string Content {
+                    get {
+                        return this.content;
+                    }
+                    set {
+                        this.content = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("links")]
+                public virtual NestedClass4_2_1 Links {
+                    get {
+                        return this.links;
+                    }
+                    set {
+                        this.links = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+                
+                public class NestedClass4_2_1 {
+                }
+            }
+            
+            public class NestedClass4_3 {
+            }
+        }
+        
+        public class NestedClass5 {
+            
+            private string title;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("title")]
+            public virtual string Title {
+                get {
+                    return this.title;
+                }
+                set {
+                    this.title = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private IList<NestedClass6_1> entries;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+            public virtual IList<NestedClass6_1> Entries {
+                get {
+                    return this.entries;
+                }
+                set {
+                    this.entries = value;
+                }
+            }
+            
+            public class NestedClass6_1 {
+                
+                private string id;
+                
+                private string title;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("id")]
+                public virtual string Id {
+                    get {
+                        return this.id;
+                    }
+                    set {
+                        this.id = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("title")]
+                public virtual string Title {
+                    get {
+                        return this.title;
+                    }
+                    set {
+                        this.title = value;
+                    }
                 }
             }
         }
     }
     
-    public class AdsenseReportsGenerateResponse {
+    public class ActivityFeed {
         
-        private IList<System.String> headers;
+        private string id;
         
-        private IList<IList<System.String>> rows;
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual IList<System.String> Headers {
-            get {
-                return this.headers;
-            }
-            set {
-                this.headers = value;
-            }
-        }
-        
-        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual IList<IList<System.String>> Rows {
-            get {
-                return this.rows;
-            }
-            set {
-                this.rows = value;
-            }
-        }
-    }
-    
-    public class CustomChannels {
-        
-        private string etag;
-        
-        private IList<NestedClass1> items;
+        private IList<Activity> items;
         
         private string kind;
         
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string Etag {
+        private NestedClass1 links;
+        
+        private string title;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
             get {
-                return this.etag;
+                return this.id;
             }
             set {
-                this.etag = value;
+                this.id = value;
             }
         }
         
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual IList<NestedClass1> Items {
+        public virtual IList<Activity> Items {
             get {
                 return this.items;
             }
@@ -490,25 +817,210 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class Album {
+        
+        private string created;
+        
+        private string description;
+        
+        private long firstPhotoId;
+        
+        private long id;
+        
+        private string kind;
+        
+        private string lastModified;
+        
+        private NestedClass1 links;
+        
+        private NestedClass2 owner;
+        
+        private IList<System.String> tags;
+        
+        private string title;
+        
+        private long version;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("created")]
+        public virtual string Created {
+            get {
+                return this.created;
+            }
+            set {
+                this.created = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description {
+            get {
+                return this.description;
+            }
+            set {
+                this.description = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPhotoId")]
+        public virtual long FirstPhotoId {
+            get {
+                return this.firstPhotoId;
+            }
+            set {
+                this.firstPhotoId = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual long Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual NestedClass2 Owner {
+            get {
+                return this.owner;
+            }
+            set {
+                this.owner = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual IList<System.String> Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual long Version {
+            get {
+                return this.version;
+            }
+            set {
+                this.version = value;
+            }
+        }
+        
         public class NestedClass1 {
             
-            private string code;
+            private Link alternate;
+            
+            private Link enclosure;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
+            public virtual Link Alternate {
+                get {
+                    return this.alternate;
+                }
+                set {
+                    this.alternate = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("enclosure")]
+            public virtual Link Enclosure {
+                get {
+                    return this.enclosure;
+                }
+                set {
+                    this.enclosure = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
             
             private string id;
             
-            private string kind;
-            
             private string name;
             
-            [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code {
-                get {
-                    return this.code;
-                }
-                set {
-                    this.code = value;
-                }
-            }
+            private string profileUrl;
+            
+            private string thumbnailUrl;
             
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id {
@@ -517,16 +1029,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
                 }
                 set {
                     this.id = value;
-                }
-            }
-            
-            [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind {
-                get {
-                    return this.kind;
-                }
-                set {
-                    this.kind = value;
                 }
             }
             
@@ -539,29 +1041,667 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
                     this.name = value;
                 }
             }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
         }
     }
     
-    public class UrlChannels {
+    public class AlbumLite {
         
-        private string etag;
-        
-        private IList<NestedClass1> items;
+        private NestedClass1 collection;
         
         private string kind;
         
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string Etag {
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual NestedClass1 Collection {
             get {
-                return this.etag;
+                return this.collection;
             }
             set {
-                this.etag = value;
+                this.collection = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string album;
+            
+            private string albumId;
+            
+            private NestedClass1_1 photo;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("album")]
+            public virtual string Album {
+                get {
+                    return this.album;
+                }
+                set {
+                    this.album = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("albumId")]
+            public virtual string AlbumId {
+                get {
+                    return this.albumId;
+                }
+                set {
+                    this.albumId = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("photo")]
+            public virtual NestedClass1_1 Photo {
+                get {
+                    return this.photo;
+                }
+                set {
+                    this.photo = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private string photoUrl;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+                public virtual string PhotoUrl {
+                    get {
+                        return this.photoUrl;
+                    }
+                    set {
+                        this.photoUrl = value;
+                    }
+                }
+            }
+        }
+    }
+    
+    public class AlbumsFeed {
+        
+        private IList<Album> items;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Album> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+    }
+    
+    public class ChiliPhotosResourceJson {
+        
+        private NestedClass1 album;
+        
+        private string created;
+        
+        private string description;
+        
+        private long fileSize;
+        
+        private long id;
+        
+        private string kind;
+        
+        private string lastModified;
+        
+        private NestedClass2 links;
+        
+        private NestedClass3 owner;
+        
+        private double timestamp;
+        
+        private string title;
+        
+        private long version;
+        
+        private Video video;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("album")]
+        public virtual NestedClass1 Album {
+            get {
+                return this.album;
+            }
+            set {
+                this.album = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("created")]
+        public virtual string Created {
+            get {
+                return this.created;
+            }
+            set {
+                this.created = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description {
+            get {
+                return this.description;
+            }
+            set {
+                this.description = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
+        public virtual long FileSize {
+            get {
+                return this.fileSize;
+            }
+            set {
+                this.fileSize = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual long Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual string LastModified {
+            get {
+                return this.lastModified;
+            }
+            set {
+                this.lastModified = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass2 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual NestedClass3 Owner {
+            get {
+                return this.owner;
+            }
+            set {
+                this.owner = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual double Timestamp {
+            get {
+                return this.timestamp;
+            }
+            set {
+                this.timestamp = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual long Version {
+            get {
+                return this.version;
+            }
+            set {
+                this.version = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual Video Video {
+            get {
+                return this.video;
+            }
+            set {
+                this.video = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private long id;
+            
+            private Link pagelinkField1;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual long Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("page_link")]
+            public virtual Link PagelinkProperty1 {
+                get {
+                    return this.pagelinkField1;
+                }
+                set {
+                    this.pagelinkField1 = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private IList<Link> alternate;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
+            public virtual IList<Link> Alternate {
+                get {
+                    return this.alternate;
+                }
+                set {
+                    this.alternate = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private string id;
+            
+            private string name;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+        }
+    }
+    
+    public class Comment {
+        
+        private NestedClass1 actor;
+        
+        private string content;
+        
+        private string detectedLang;
+        
+        private string id;
+        
+        private string kind;
+        
+        private NestedClass2 links;
+        
+        private string originalContent;
+        
+        private string placeholder;
+        
+        private string published;
+        
+        private string targetLang;
+        
+        private string untranslatedContent;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual NestedClass1 Actor {
+            get {
+                return this.actor;
+            }
+            set {
+                this.actor = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content {
+            get {
+                return this.content;
+            }
+            set {
+                this.content = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLang")]
+        public virtual string DetectedLang {
+            get {
+                return this.detectedLang;
+            }
+            set {
+                this.detectedLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass2 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("originalContent")]
+        public virtual string OriginalContent {
+            get {
+                return this.originalContent;
+            }
+            set {
+                this.originalContent = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder {
+            get {
+                return this.placeholder;
+            }
+            set {
+                this.placeholder = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLang")]
+        public virtual string TargetLang {
+            get {
+                return this.targetLang;
+            }
+            set {
+                this.targetLang = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("untranslatedContent")]
+        public virtual string UntranslatedContent {
+            get {
+                return this.untranslatedContent;
+            }
+            set {
+                this.untranslatedContent = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string id;
+            
+            private string name;
+            
+            private string profileUrl;
+            
+            private string thumbnailUrl;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id {
+                get {
+                    return this.id;
+                }
+                set {
+                    this.id = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+            public virtual string ProfileUrl {
+                get {
+                    return this.profileUrl;
+                }
+                set {
+                    this.profileUrl = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+            public virtual string ThumbnailUrl {
+                get {
+                    return this.thumbnailUrl;
+                }
+                set {
+                    this.thumbnailUrl = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private IList<NestedClass2_1> inReplyTo;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("inReplyTo")]
+            public virtual IList<NestedClass2_1> InReplyTo {
+                get {
+                    return this.inReplyTo;
+                }
+                set {
+                    this.inReplyTo = value;
+                }
+            }
+            
+            public class NestedClass2_1 {
+                
+                private string href;
+                
+                private string refField1;
+                
+                private string source;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("ref")]
+                public virtual string RefProperty1 {
+                    get {
+                        return this.refField1;
+                    }
+                    set {
+                        this.refField1 = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("source")]
+                public virtual string Source {
+                    get {
+                        return this.source;
+                    }
+                    set {
+                        this.source = value;
+                    }
+                }
+            }
+        }
+    }
+    
+    public class CommentFeed {
+        
+        private string id;
+        
+        private IList<Comment> items;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string title;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
             }
         }
         
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual IList<NestedClass1> Items {
+        public virtual IList<Comment> Items {
             get {
                 return this.items;
             }
@@ -580,13 +1720,211 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
             }
         }
         
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
         public class NestedClass1 {
+        }
+    }
+    
+    public class CountFeed {
+        
+        private NestedClass1 counts;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("counts")]
+        public virtual NestedClass1 Counts {
+            get {
+                return this.counts;
+            }
+            set {
+                this.counts = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class Entity {
+        
+        private string chipsUiAcl;
+        
+        private string comment;
+        
+        private string id;
+        
+        private string kind;
+        
+        private IList<Person> starredBy;
+        
+        private string starredByViewer;
+        
+        private string summary;
+        
+        private string title;
+        
+        private string totalNumStars;
+        
+        private IList<NestedClass1> viewerStarAcl;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("chipsUiAcl")]
+        public virtual string ChipsUiAcl {
+            get {
+                return this.chipsUiAcl;
+            }
+            set {
+                this.chipsUiAcl = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment {
+            get {
+                return this.comment;
+            }
+            set {
+                this.comment = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("starredBy")]
+        public virtual IList<Person> StarredBy {
+            get {
+                return this.starredBy;
+            }
+            set {
+                this.starredBy = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("starredByViewer")]
+        public virtual string StarredByViewer {
+            get {
+                return this.starredByViewer;
+            }
+            set {
+                this.starredByViewer = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("totalNumStars")]
+        public virtual string TotalNumStars {
+            get {
+                return this.totalNumStars;
+            }
+            set {
+                this.totalNumStars = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("viewerStarAcl")]
+        public virtual IList<NestedClass1> ViewerStarAcl {
+            get {
+                return this.viewerStarAcl;
+            }
+            set {
+                this.viewerStarAcl = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string displayName;
             
             private string id;
             
             private string kind;
             
-            private string urlPattern;
+            private IList<System.String> tags;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+            public virtual string DisplayName {
+                get {
+                    return this.displayName;
+                }
+                set {
+                    this.displayName = value;
+                }
+            }
             
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id {
@@ -608,14 +1946,1934 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
                 }
             }
             
-            [Newtonsoft.Json.JsonPropertyAttribute("urlPattern")]
-            public virtual string UrlPattern {
+            [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+            public virtual IList<System.String> Tags {
                 get {
-                    return this.urlPattern;
+                    return this.tags;
                 }
                 set {
-                    this.urlPattern = value;
+                    this.tags = value;
                 }
+            }
+        }
+    }
+    
+    public class Group {
+        
+        private string id;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string memberCount;
+        
+        private string title;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("memberCount")]
+        public virtual string MemberCount {
+            get {
+                return this.memberCount;
+            }
+            set {
+                this.memberCount = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private IList<NestedClass1_1> self;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("self")]
+            public virtual IList<NestedClass1_1> Self {
+                get {
+                    return this.self;
+                }
+                set {
+                    this.self = value;
+                }
+            }
+            
+            public class NestedClass1_1 {
+                
+                private string href;
+                
+                private string type;
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("href")]
+                public virtual string Href {
+                    get {
+                        return this.href;
+                    }
+                    set {
+                        this.href = value;
+                    }
+                }
+                
+                [Newtonsoft.Json.JsonPropertyAttribute("type")]
+                public virtual string Type {
+                    get {
+                        return this.type;
+                    }
+                    set {
+                        this.type = value;
+                    }
+                }
+            }
+        }
+    }
+    
+    public class GroupFeed {
+        
+        private IList<Group> items;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Group> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class Link {
+        
+        private long count;
+        
+        private long height;
+        
+        private string href;
+        
+        private string title;
+        
+        private string type;
+        
+        private string updated;
+        
+        private long width;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual long Count {
+            get {
+                return this.count;
+            }
+            set {
+                this.count = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual long Height {
+            get {
+                return this.height;
+            }
+            set {
+                this.height = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("href")]
+        public virtual string Href {
+            get {
+                return this.href;
+            }
+            set {
+                this.href = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type {
+            get {
+                return this.type;
+            }
+            set {
+                this.type = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual long Width {
+            get {
+                return this.width;
+            }
+            set {
+                this.width = value;
+            }
+        }
+    }
+    
+    public class PeopleFeed {
+        
+        private IList<Person> entry;
+        
+        private string itemsPerPage;
+        
+        private string kind;
+        
+        private string startIndex;
+        
+        private string totalResults;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Person> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
+        public virtual string ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual string StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual string TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+    }
+    
+    public class Person {
+        
+        private string aboutMe;
+        
+        private IList<NestedClass1> accounts;
+        
+        private IList<System.String> activities;
+        
+        private IList<NestedClass2> addresses;
+        
+        private string anniversary;
+        
+        private string birthday;
+        
+        private string bodyType;
+        
+        private IList<System.String> books;
+        
+        private IList<System.String> cars;
+        
+        private IList<System.String> children;
+        
+        private string connected;
+        
+        private string currentLocation;
+        
+        private string displayName;
+        
+        private string drinker;
+        
+        private IList<NestedClass3> emails;
+        
+        private string ethnicity;
+        
+        private string fashion;
+        
+        private IList<System.String> food;
+        
+        private string gender;
+        
+        private string happiestWhen;
+        
+        private string hasApp;
+        
+        private IList<System.String> heroes;
+        
+        private string humor;
+        
+        private string id;
+        
+        private IList<NestedClass4> ims;
+        
+        private IList<System.String> interests;
+        
+        private IList<System.String> jobInterests;
+        
+        private string kind;
+        
+        private IList<System.String> languages;
+        
+        private IList<System.String> languagesSpoken;
+        
+        private string livingArrangement;
+        
+        private string lookingFor;
+        
+        private IList<System.String> movies;
+        
+        private IList<System.String> music;
+        
+        private NestedClass5 name;
+        
+        private string nickname;
+        
+        private string note;
+        
+        private IList<NestedClass6> organizations;
+        
+        private IList<System.String> pets;
+        
+        private IList<NestedClass7> phoneNumbers;
+        
+        private IList<NestedClass8> photos;
+        
+        private IList<System.String> politicalViews;
+        
+        private string preferredUsername;
+        
+        private string profileSong;
+        
+        private string profileUrl;
+        
+        private string profileVideo;
+        
+        private string published;
+        
+        private IList<System.String> quotes;
+        
+        private string relationshipStatus;
+        
+        private IList<System.String> relationships;
+        
+        private string religion;
+        
+        private string romance;
+        
+        private string scaredOf;
+        
+        private string sexualOrientation;
+        
+        private string smoker;
+        
+        private IList<System.String> sports;
+        
+        private string status;
+        
+        private IList<System.String> tags;
+        
+        private string thumbnailUrl;
+        
+        private IList<System.String> turnOffs;
+        
+        private IList<System.String> turnOns;
+        
+        private IList<System.String> tvShows;
+        
+        private string updated;
+        
+        private IList<NestedClass9> urls;
+        
+        private string utcOffset;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("aboutMe")]
+        public virtual string AboutMe {
+            get {
+                return this.aboutMe;
+            }
+            set {
+                this.aboutMe = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
+        public virtual IList<NestedClass1> Accounts {
+            get {
+                return this.accounts;
+            }
+            set {
+                this.accounts = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("activities")]
+        public virtual IList<System.String> Activities {
+            get {
+                return this.activities;
+            }
+            set {
+                this.activities = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
+        public virtual IList<NestedClass2> Addresses {
+            get {
+                return this.addresses;
+            }
+            set {
+                this.addresses = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("anniversary")]
+        public virtual string Anniversary {
+            get {
+                return this.anniversary;
+            }
+            set {
+                this.anniversary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("birthday")]
+        public virtual string Birthday {
+            get {
+                return this.birthday;
+            }
+            set {
+                this.birthday = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyType")]
+        public virtual string BodyType {
+            get {
+                return this.bodyType;
+            }
+            set {
+                this.bodyType = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("books")]
+        public virtual IList<System.String> Books {
+            get {
+                return this.books;
+            }
+            set {
+                this.books = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("cars")]
+        public virtual IList<System.String> Cars {
+            get {
+                return this.cars;
+            }
+            set {
+                this.cars = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("children")]
+        public virtual IList<System.String> Children {
+            get {
+                return this.children;
+            }
+            set {
+                this.children = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("connected")]
+        public virtual string Connected {
+            get {
+                return this.connected;
+            }
+            set {
+                this.connected = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("currentLocation")]
+        public virtual string CurrentLocation {
+            get {
+                return this.currentLocation;
+            }
+            set {
+                this.currentLocation = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName {
+            get {
+                return this.displayName;
+            }
+            set {
+                this.displayName = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("drinker")]
+        public virtual string Drinker {
+            get {
+                return this.drinker;
+            }
+            set {
+                this.drinker = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("emails")]
+        public virtual IList<NestedClass3> Emails {
+            get {
+                return this.emails;
+            }
+            set {
+                this.emails = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("ethnicity")]
+        public virtual string Ethnicity {
+            get {
+                return this.ethnicity;
+            }
+            set {
+                this.ethnicity = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("fashion")]
+        public virtual string Fashion {
+            get {
+                return this.fashion;
+            }
+            set {
+                this.fashion = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("food")]
+        public virtual IList<System.String> Food {
+            get {
+                return this.food;
+            }
+            set {
+                this.food = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
+        public virtual string Gender {
+            get {
+                return this.gender;
+            }
+            set {
+                this.gender = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("happiestWhen")]
+        public virtual string HappiestWhen {
+            get {
+                return this.happiestWhen;
+            }
+            set {
+                this.happiestWhen = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("hasApp")]
+        public virtual string HasApp {
+            get {
+                return this.hasApp;
+            }
+            set {
+                this.hasApp = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("heroes")]
+        public virtual IList<System.String> Heroes {
+            get {
+                return this.heroes;
+            }
+            set {
+                this.heroes = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("humor")]
+        public virtual string Humor {
+            get {
+                return this.humor;
+            }
+            set {
+                this.humor = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("ims")]
+        public virtual IList<NestedClass4> Ims {
+            get {
+                return this.ims;
+            }
+            set {
+                this.ims = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("interests")]
+        public virtual IList<System.String> Interests {
+            get {
+                return this.interests;
+            }
+            set {
+                this.interests = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("jobInterests")]
+        public virtual IList<System.String> JobInterests {
+            get {
+                return this.jobInterests;
+            }
+            set {
+                this.jobInterests = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("languages")]
+        public virtual IList<System.String> Languages {
+            get {
+                return this.languages;
+            }
+            set {
+                this.languages = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("languagesSpoken")]
+        public virtual IList<System.String> LanguagesSpoken {
+            get {
+                return this.languagesSpoken;
+            }
+            set {
+                this.languagesSpoken = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("livingArrangement")]
+        public virtual string LivingArrangement {
+            get {
+                return this.livingArrangement;
+            }
+            set {
+                this.livingArrangement = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("lookingFor")]
+        public virtual string LookingFor {
+            get {
+                return this.lookingFor;
+            }
+            set {
+                this.lookingFor = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("movies")]
+        public virtual IList<System.String> Movies {
+            get {
+                return this.movies;
+            }
+            set {
+                this.movies = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("music")]
+        public virtual IList<System.String> Music {
+            get {
+                return this.music;
+            }
+            set {
+                this.music = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual NestedClass5 Name {
+            get {
+                return this.name;
+            }
+            set {
+                this.name = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
+        public virtual string Nickname {
+            get {
+                return this.nickname;
+            }
+            set {
+                this.nickname = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note {
+            get {
+                return this.note;
+            }
+            set {
+                this.note = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
+        public virtual IList<NestedClass6> Organizations {
+            get {
+                return this.organizations;
+            }
+            set {
+                this.organizations = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("pets")]
+        public virtual IList<System.String> Pets {
+            get {
+                return this.pets;
+            }
+            set {
+                this.pets = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual IList<NestedClass7> PhoneNumbers {
+            get {
+                return this.phoneNumbers;
+            }
+            set {
+                this.phoneNumbers = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("photos")]
+        public virtual IList<NestedClass8> Photos {
+            get {
+                return this.photos;
+            }
+            set {
+                this.photos = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("politicalViews")]
+        public virtual IList<System.String> PoliticalViews {
+            get {
+                return this.politicalViews;
+            }
+            set {
+                this.politicalViews = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredUsername")]
+        public virtual string PreferredUsername {
+            get {
+                return this.preferredUsername;
+            }
+            set {
+                this.preferredUsername = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileSong")]
+        public virtual string ProfileSong {
+            get {
+                return this.profileSong;
+            }
+            set {
+                this.profileSong = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileUrl")]
+        public virtual string ProfileUrl {
+            get {
+                return this.profileUrl;
+            }
+            set {
+                this.profileUrl = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("profileVideo")]
+        public virtual string ProfileVideo {
+            get {
+                return this.profileVideo;
+            }
+            set {
+                this.profileVideo = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("published")]
+        public virtual string Published {
+            get {
+                return this.published;
+            }
+            set {
+                this.published = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("quotes")]
+        public virtual IList<System.String> Quotes {
+            get {
+                return this.quotes;
+            }
+            set {
+                this.quotes = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatus")]
+        public virtual string RelationshipStatus {
+            get {
+                return this.relationshipStatus;
+            }
+            set {
+                this.relationshipStatus = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
+        public virtual IList<System.String> Relationships {
+            get {
+                return this.relationships;
+            }
+            set {
+                this.relationships = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("religion")]
+        public virtual string Religion {
+            get {
+                return this.religion;
+            }
+            set {
+                this.religion = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("romance")]
+        public virtual string Romance {
+            get {
+                return this.romance;
+            }
+            set {
+                this.romance = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("scaredOf")]
+        public virtual string ScaredOf {
+            get {
+                return this.scaredOf;
+            }
+            set {
+                this.scaredOf = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("sexualOrientation")]
+        public virtual string SexualOrientation {
+            get {
+                return this.sexualOrientation;
+            }
+            set {
+                this.sexualOrientation = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("smoker")]
+        public virtual string Smoker {
+            get {
+                return this.smoker;
+            }
+            set {
+                this.smoker = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("sports")]
+        public virtual IList<System.String> Sports {
+            get {
+                return this.sports;
+            }
+            set {
+                this.sports = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status {
+            get {
+                return this.status;
+            }
+            set {
+                this.status = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual IList<System.String> Tags {
+            get {
+                return this.tags;
+            }
+            set {
+                this.tags = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl {
+            get {
+                return this.thumbnailUrl;
+            }
+            set {
+                this.thumbnailUrl = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("turnOffs")]
+        public virtual IList<System.String> TurnOffs {
+            get {
+                return this.turnOffs;
+            }
+            set {
+                this.turnOffs = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("turnOns")]
+        public virtual IList<System.String> TurnOns {
+            get {
+                return this.turnOns;
+            }
+            set {
+                this.turnOns = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("tvShows")]
+        public virtual IList<System.String> TvShows {
+            get {
+                return this.tvShows;
+            }
+            set {
+                this.tvShows = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual IList<NestedClass9> Urls {
+            get {
+                return this.urls;
+            }
+            set {
+                this.urls = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual string UtcOffset {
+            get {
+                return this.utcOffset;
+            }
+            set {
+                this.utcOffset = value;
+            }
+        }
+        
+        public class NestedClass1 {
+            
+            private string domain;
+            
+            private string userid;
+            
+            private string username;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+            public virtual string Domain {
+                get {
+                    return this.domain;
+                }
+                set {
+                    this.domain = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("userid")]
+            public virtual string Userid {
+                get {
+                    return this.userid;
+                }
+                set {
+                    this.userid = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("username")]
+            public virtual string Username {
+                get {
+                    return this.username;
+                }
+                set {
+                    this.username = value;
+                }
+            }
+        }
+        
+        public class NestedClass2 {
+            
+            private string country;
+            
+            private string formatted;
+            
+            private string locality;
+            
+            private string postalCode;
+            
+            private string primary;
+            
+            private string region;
+            
+            private string streetAddress;
+            
+            private string type;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("country")]
+            public virtual string Country {
+                get {
+                    return this.country;
+                }
+                set {
+                    this.country = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("formatted")]
+            public virtual string Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+            public virtual string Locality {
+                get {
+                    return this.locality;
+                }
+                set {
+                    this.locality = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+            public virtual string PostalCode {
+                get {
+                    return this.postalCode;
+                }
+                set {
+                    this.postalCode = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("region")]
+            public virtual string Region {
+                get {
+                    return this.region;
+                }
+                set {
+                    this.region = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+            public virtual string StreetAddress {
+                get {
+                    return this.streetAddress;
+                }
+                set {
+                    this.streetAddress = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass3 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass4 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass5 {
+            
+            private string familyName;
+            
+            private string formatted;
+            
+            private string givenName;
+            
+            private string honorificPrefix;
+            
+            private string honorificSuffix;
+            
+            private string middleName;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+            public virtual string FamilyName {
+                get {
+                    return this.familyName;
+                }
+                set {
+                    this.familyName = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("formatted")]
+            public virtual string Formatted {
+                get {
+                    return this.formatted;
+                }
+                set {
+                    this.formatted = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+            public virtual string GivenName {
+                get {
+                    return this.givenName;
+                }
+                set {
+                    this.givenName = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("honorificPrefix")]
+            public virtual string HonorificPrefix {
+                get {
+                    return this.honorificPrefix;
+                }
+                set {
+                    this.honorificPrefix = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("honorificSuffix")]
+            public virtual string HonorificSuffix {
+                get {
+                    return this.honorificSuffix;
+                }
+                set {
+                    this.honorificSuffix = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("middleName")]
+            public virtual string MiddleName {
+                get {
+                    return this.middleName;
+                }
+                set {
+                    this.middleName = value;
+                }
+            }
+        }
+        
+        public class NestedClass6 {
+            
+            private string department;
+            
+            private string description;
+            
+            private string endDate;
+            
+            private string location;
+            
+            private string name;
+            
+            private string primary;
+            
+            private string startDate;
+            
+            private string title;
+            
+            private string type;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("department")]
+            public virtual string Department {
+                get {
+                    return this.department;
+                }
+                set {
+                    this.department = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("description")]
+            public virtual string Description {
+                get {
+                    return this.description;
+                }
+                set {
+                    this.description = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+            public virtual string EndDate {
+                get {
+                    return this.endDate;
+                }
+                set {
+                    this.endDate = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("location")]
+            public virtual string Location {
+                get {
+                    return this.location;
+                }
+                set {
+                    this.location = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name {
+                get {
+                    return this.name;
+                }
+                set {
+                    this.name = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+            public virtual string StartDate {
+                get {
+                    return this.startDate;
+                }
+                set {
+                    this.startDate = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("title")]
+            public virtual string Title {
+                get {
+                    return this.title;
+                }
+                set {
+                    this.title = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+        }
+        
+        public class NestedClass7 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+        
+        public class NestedClass8 {
+            
+            private string height;
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            private string width;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("height")]
+            public virtual string Height {
+                get {
+                    return this.height;
+                }
+                set {
+                    this.height = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("width")]
+            public virtual string Width {
+                get {
+                    return this.width;
+                }
+                set {
+                    this.width = value;
+                }
+            }
+        }
+        
+        public class NestedClass9 {
+            
+            private string primary;
+            
+            private string type;
+            
+            private string value;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+            public virtual string Primary {
+                get {
+                    return this.primary;
+                }
+                set {
+                    this.primary = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type {
+                get {
+                    return this.type;
+                }
+                set {
+                    this.type = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value {
+                get {
+                    return this.value;
+                }
+                set {
+                    this.value = value;
+                }
+            }
+        }
+    }
+    
+    public class PhotosFeed {
+        
+        private IList<ChiliPhotosResourceJson> items;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<ChiliPhotosResourceJson> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+    }
+    
+    public class Related {
+        
+        private string href;
+        
+        private string id;
+        
+        private string kind;
+        
+        private string summary;
+        
+        private string title;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("href")]
+        public virtual string Href {
+            get {
+                return this.href;
+            }
+            set {
+                this.href = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary {
+            get {
+                return this.summary;
+            }
+            set {
+                this.summary = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+    }
+    
+    public class RelatedFeed {
+        
+        private string id;
+        
+        private IList<Related> items;
+        
+        private string kind;
+        
+        private NestedClass1 links;
+        
+        private string title;
+        
+        private string updated;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id {
+            get {
+                return this.id;
+            }
+            set {
+                this.id = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual IList<Related> Items {
+            get {
+                return this.items;
+            }
+            set {
+                this.items = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual NestedClass1 Links {
+            get {
+                return this.links;
+            }
+            set {
+                this.links = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title {
+            get {
+                return this.title;
+            }
+            set {
+                this.title = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string Updated {
+            get {
+                return this.updated;
+            }
+            set {
+                this.updated = value;
+            }
+        }
+        
+        public class NestedClass1 {
+        }
+    }
+    
+    public class StarredEntityFeed {
+        
+        private IList<Entity> entry;
+        
+        private string kind;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Entity> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+    }
+    
+    public class StarredEntityFeedForUser {
+        
+        private IList<Entity> entry;
+        
+        private string itemsPerPage;
+        
+        private string kind;
+        
+        private string startIndex;
+        
+        private string totalResults;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual IList<Entity> Entry {
+            get {
+                return this.entry;
+            }
+            set {
+                this.entry = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
+        public virtual string ItemsPerPage {
+            get {
+                return this.itemsPerPage;
+            }
+            set {
+                this.itemsPerPage = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind {
+            get {
+                return this.kind;
+            }
+            set {
+                this.kind = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual string StartIndex {
+            get {
+                return this.startIndex;
+            }
+            set {
+                this.startIndex = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual string TotalResults {
+            get {
+                return this.totalResults;
+            }
+            set {
+                this.totalResults = value;
+            }
+        }
+    }
+    
+    public class Video {
+        
+        private long duration;
+        
+        private long size;
+        
+        private IList<Link> streams;
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual long Duration {
+            get {
+                return this.duration;
+            }
+            set {
+                this.duration = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual long Size {
+            get {
+                return this.size;
+            }
+            set {
+                this.size = value;
+            }
+        }
+        
+        [Newtonsoft.Json.JsonPropertyAttribute("streams")]
+        public virtual IList<Link> Streams {
+            get {
+                return this.streams;
+            }
+            set {
+                this.streams = value;
             }
         }
     }
@@ -628,7 +3886,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
     using Google.Apis.Discovery;
     
     
-    public class AdsenseService : Google.Apis.Discovery.IRequestExecutor, Google.Apis.Discovery.ISchemaAwareRequestExecutor {
+    public class BuzzService : Google.Apis.Discovery.IRequestExecutor, Google.Apis.Discovery.ISchemaAwareRequestExecutor {
         
         private Google.Apis.Discovery.IService genericService;
         
@@ -636,36 +3894,42 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
         
         private const string Version = "v1";
         
-        private const string Name = "adsense";
+        private const string Name = "buzz";
         
-        private const string BaseUri = "http://example.url.com/adsense/v1beta3/";
+        private const string BaseUri = "https://www.googleapis.com/buzz/v1/";
         
         private const Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_0_3;
         
         private Newtonsoft.Json.JsonSerializer newtonJsonSerilizer = null;
         
-        private Adclients adclients;
+        private Activities activities;
         
-        private Adunits adunits;
+        private Comments comments;
         
-        private Customchannels customchannels;
+        private Groups groups;
         
-        private Reports reports;
+        private People people;
         
-        private Urlchannels urlchannels;
+        private PhotoAlbums photoAlbums;
         
-        public AdsenseService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
+        private Photos photos;
+        
+        private Related related;
+        
+        public BuzzService(Google.Apis.Discovery.IService genericService, Google.Apis.Authentication.IAuthenticator authenticator) {
             this.genericService = genericService;
             this.authenticator = authenticator;
-            this.adclients = new Adclients(this);
-            this.adunits = new Adunits(this);
-            this.customchannels = new Customchannels(this);
-            this.reports = new Reports(this);
-            this.urlchannels = new Urlchannels(this);
+            this.activities = new Activities(this);
+            this.comments = new Comments(this);
+            this.groups = new Groups(this);
+            this.people = new People(this);
+            this.photoAlbums = new PhotoAlbums(this);
+            this.photos = new Photos(this);
+            this.related = new Related(this);
         }
         
-        public AdsenseService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + AdsenseService.Name)))).GetService(AdsenseService.Version, AdsenseService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, AdsenseService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
+        public BuzzService() : 
+                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri((string.Format("https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}", BuzzService.Name, BuzzService.Version) + BuzzService.Name)))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, BuzzService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
         private Newtonsoft.Json.JsonSerializer NewtonJsonSerilizer {
@@ -679,33 +3943,45 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             }
         }
         
-        public virtual Adclients Adclients {
+        public virtual Activities Activities {
             get {
-                return this.adclients;
+                return this.activities;
             }
         }
         
-        public virtual Adunits Adunits {
+        public virtual Comments Comments {
             get {
-                return this.adunits;
+                return this.comments;
             }
         }
         
-        public virtual Customchannels Customchannels {
+        public virtual Groups Groups {
             get {
-                return this.customchannels;
+                return this.groups;
             }
         }
         
-        public virtual Reports Reports {
+        public virtual People People {
             get {
-                return this.reports;
+                return this.people;
             }
         }
         
-        public virtual Urlchannels Urlchannels {
+        public virtual PhotoAlbums PhotoAlbums {
             get {
-                return this.urlchannels;
+                return this.photoAlbums;
+            }
+        }
+        
+        public virtual Photos Photos {
+            get {
+                return this.photos;
+            }
+        }
+        
+        public virtual Related Related {
+            get {
+                return this.related;
             }
         }
         
@@ -728,165 +4004,1517 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
          {
             System.IO.StreamReader streamReader = new System.IO.StreamReader(stream);
             string str = streamReader.ReadToEnd();
-            return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            try {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            }
+            catch (System.Exception ex) {
+                throw new System.ApplicationException(string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str), ex);
+            }
         }
     }
     
-    public class Adclients {
+    public class Activities {
         
         private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
-        private const string Resource = "adclients";
+        private const string Resource = "activities";
         
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Adclients));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Activities));
         
-        public Adclients(AdsenseService service) {
+        public Activities(BuzzService service) {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List() {
+        public virtual System.IO.Stream Count(string hl, string url) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            logger.Debug("Executing adclients.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Adclients.Resource, "list", body, parameters);
-            logger.Debug("Done Executing adclients.list");
+            parameters["hl"] = hl;
+            parameters["url"] = url;
+            logger.Debug("Executing activities.count");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
+            logger.Debug("Done Executing activities.count");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdClients ListAsObject() {
+        public virtual System.IO.Stream Delete(string alt, string hl, string postId, string scope, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            logger.Debug("Executing adclients.list");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdClients ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdClients>(this.service.ExecuteRequest(Adclients.Resource, "list", body, parameters));
-            logger.Debug("Done Executing adclients.list");
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing activities.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ExtractPeopleFromSearch(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            logger.Debug("Executing activities.extractPeopleFromSearch");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
+            logger.Debug("Done Executing activities.extractPeopleFromSearch");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string alt, string hl, string maxcommentsParam3, string maxlikedParam4, string postId, string truncateAtom, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["max-comments"] = maxcommentsParam3;
+            parameters["max-liked"] = maxlikedParam4;
+            parameters["postId"] = postId;
+            parameters["truncateAtom"] = truncateAtom;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "get", body, parameters);
+            logger.Debug("Done Executing activities.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string preview, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["preview"] = preview;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing activities.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string truncateAtom, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-comments"] = maxcommentsParam4;
+            parameters["max-liked"] = maxlikedParam5;
+            parameters["max-results"] = maxresultsParam6;
+            parameters["scope"] = scope;
+            parameters["truncateAtom"] = truncateAtom;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "list", body, parameters);
+            logger.Debug("Done Executing activities.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string truncateAtom) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            parameters["truncateAtom"] = truncateAtom;
+            logger.Debug("Executing activities.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
+            logger.Debug("Done Executing activities.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Track(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            logger.Debug("Executing activities.track");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
+            logger.Debug("Done Executing activities.track");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
+            logger.Debug("Done Executing activities.update");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CountFeed CountAsObject(string hl, string url) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["hl"] = hl;
+            parameters["url"] = url;
+            logger.Debug("Executing activities.count");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CountFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CountFeed>(this.service.ExecuteRequest(Activities.Resource, "count", body, parameters));
+            logger.Debug("Done Executing activities.count");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string alt, string hl, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing activities.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ExtractPeopleFromSearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            logger.Debug("Executing activities.extractPeopleFromSearch");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters));
+            logger.Debug("Done Executing activities.extractPeopleFromSearch");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity GetAsObject(string alt, string hl, string maxcommentsParam3, string maxlikedParam4, string postId, string truncateAtom, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["max-comments"] = maxcommentsParam3;
+            parameters["max-liked"] = maxlikedParam4;
+            parameters["postId"] = postId;
+            parameters["truncateAtom"] = truncateAtom;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "get", body, parameters));
+            logger.Debug("Done Executing activities.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string alt, string hl, string preview, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["preview"] = preview;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.insert");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "insert", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing activities.insert");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ListAsObject(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string truncateAtom, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-comments"] = maxcommentsParam4;
+            parameters["max-liked"] = maxlikedParam5;
+            parameters["max-results"] = maxresultsParam6;
+            parameters["scope"] = scope;
+            parameters["truncateAtom"] = truncateAtom;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed>(this.service.ExecuteRequest(Activities.Resource, "list", body, parameters));
+            logger.Debug("Done Executing activities.list");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed SearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string truncateAtom) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            parameters["truncateAtom"] = truncateAtom;
+            logger.Debug("Executing activities.search");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed>(this.service.ExecuteRequest(Activities.Resource, "search", body, parameters));
+            logger.Debug("Done Executing activities.search");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed TrackAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["bbox"] = bbox;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["lat"] = lat;
+            parameters["lon"] = lon;
+            parameters["max-results"] = maxresultsParam7;
+            parameters["pid"] = pid;
+            parameters["q"] = q;
+            parameters["radius"] = radius;
+            logger.Debug("Executing activities.track");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed>(this.service.ExecuteRequest(Activities.Resource, "track", body, parameters));
+            logger.Debug("Done Executing activities.track");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.update");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "update", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing activities.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing activities.count");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
+            logger.Debug("Done Executing activities.count");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing activities.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing activities.extractPeopleFromSearch");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
+            logger.Debug("Done Executing activities.extractPeopleFromSearch");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "get", body, parameters);
+            logger.Debug("Done Executing activities.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing activities.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "list", body, parameters);
+            logger.Debug("Done Executing activities.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing activities.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
+            logger.Debug("Done Executing activities.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing activities.track");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
+            logger.Debug("Done Executing activities.track");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing activities.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
+            logger.Debug("Done Executing activities.update");
             return ret;
         }
     }
     
-    public class Adunits {
+    public class Comments {
         
         private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
-        private const string Resource = "adunits";
+        private const string Resource = "comments";
         
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Adunits));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Comments));
         
-        public Adunits(AdsenseService service) {
+        public Comments(BuzzService service) {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream Delete(string alt, string commentId, string hl, string postId, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing adunits.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters);
-            logger.Debug("Done Executing adunits.list");
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing comments.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdUnits ListAsObject(string adclientidParam1) {
+        public virtual System.IO.Stream Get(string alt, string commentId, string hl, string postId, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing adunits.list");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdUnits ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdUnits>(this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters));
-            logger.Debug("Done Executing adunits.list");
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
+            logger.Debug("Done Executing comments.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string postId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing comments.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
+            logger.Debug("Done Executing comments.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
+            logger.Debug("Done Executing comments.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string alt, string commentId, string hl, string postId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing comments.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment GetAsObject(string alt, string commentId, string hl, string postId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "get", body, parameters));
+            logger.Debug("Done Executing comments.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string alt, string hl, string postId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.insert");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "insert", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing comments.insert");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed>(this.service.ExecuteRequest(Comments.Resource, "list", body, parameters));
+            logger.Debug("Done Executing comments.list");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["commentId"] = commentId;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.update");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "update", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing comments.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing comments.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
+            logger.Debug("Done Executing comments.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing comments.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
+            logger.Debug("Done Executing comments.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["commentId"] = commentId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing comments.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
+            logger.Debug("Done Executing comments.update");
             return ret;
         }
     }
     
-    public class Customchannels {
+    public class Groups {
         
         private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
-        private const string Resource = "customchannels";
+        private const string Resource = "groups";
         
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Customchannels));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Groups));
         
-        public Customchannels(AdsenseService service) {
+        public Groups(BuzzService service) {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing customchannels.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters);
-            logger.Debug("Done Executing customchannels.list");
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing groups.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CustomChannels ListAsObject(string adclientidParam1) {
+        public virtual System.IO.Stream Get(string alt, string groupId, string hl, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing customchannels.list");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CustomChannels ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CustomChannels>(this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters));
-            logger.Debug("Done Executing customchannels.list");
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
+            logger.Debug("Done Executing groups.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing groups.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
+            logger.Debug("Done Executing groups.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
+            logger.Debug("Done Executing groups.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string alt, string groupId, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing groups.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group GetAsObject(string alt, string groupId, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "get", body, parameters));
+            logger.Debug("Done Executing groups.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.insert");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "insert", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing groups.insert");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed>(this.service.ExecuteRequest(Groups.Resource, "list", body, parameters));
+            logger.Debug("Done Executing groups.list");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string alt, string groupId, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.update");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "update", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing groups.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing groups.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
+            logger.Debug("Done Executing groups.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing groups.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
+            logger.Debug("Done Executing groups.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing groups.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
+            logger.Debug("Done Executing groups.update");
             return ret;
         }
     }
     
-    public class Reports {
+    public class People {
         
         private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
-        private const string Resource = "reports";
+        private const string Resource = "people";
         
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Reports));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(People));
         
-        public Reports(AdsenseService service) {
+        public People(BuzzService service) {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Generate(string body) {
+        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string personId, string userId) {
+            string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            logger.Debug("Executing reports.generate");
-            System.IO.Stream ret = this.service.ExecuteRequest(Reports.Resource, "generate", body, parameters);
-            logger.Debug("Done Executing reports.generate");
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing people.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdsenseReportsGenerateResponse GenerateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdsenseReportsGenerateRequest body) {
+        public virtual System.IO.Stream Get(string alt, string hl, string userId) {
+            string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            logger.Debug("Executing reports.generate");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdsenseReportsGenerateResponse ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AdsenseReportsGenerateResponse>(this.service.ExecuteRequest(Reports.Resource, "generate", this.service.ObjectToJson(body), parameters));
-            logger.Debug("Done Executing reports.generate");
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
+            logger.Debug("Done Executing people.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.liked");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
+            logger.Debug("Done Executing people.liked");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string groupId, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
+            logger.Debug("Done Executing people.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.reshared");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
+            logger.Debug("Done Executing people.reshared");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(string alt, string c, string hl, string maxresultsParam4, string q) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["q"] = q;
+            logger.Debug("Executing people.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
+            logger.Debug("Done Executing people.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string personId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
+            logger.Debug("Done Executing people.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string alt, string groupId, string hl, string personId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing people.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person GetAsObject(string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person>(this.service.ExecuteRequest(People.Resource, "get", body, parameters));
+            logger.Debug("Done Executing people.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed LikedAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.liked");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "liked", body, parameters));
+            logger.Debug("Done Executing people.liked");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ListAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "list", body, parameters));
+            logger.Debug("Done Executing people.list");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ResharedAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.reshared");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "reshared", body, parameters));
+            logger.Debug("Done Executing people.reshared");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed SearchAsObject(string alt, string c, string hl, string maxresultsParam4, string q) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["q"] = q;
+            logger.Debug("Executing people.search");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "search", body, parameters));
+            logger.Debug("Done Executing people.search");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person body, string alt, string groupId, string hl, string personId, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["groupId"] = groupId;
+            parameters["hl"] = hl;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.update");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person>(this.service.ExecuteRequest(People.Resource, "update", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing people.update");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing people.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
+            logger.Debug("Done Executing people.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.liked");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
+            logger.Debug("Done Executing people.liked");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
+            logger.Debug("Done Executing people.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["groupId"] = groupId;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.reshared");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
+            logger.Debug("Done Executing people.reshared");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            logger.Debug("Executing people.search");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
+            logger.Debug("Done Executing people.search");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["groupId"] = groupId;
+            parameters["personId"] = personId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing people.update");
+            System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
+            logger.Debug("Done Executing people.update");
             return ret;
         }
     }
     
-    public class Urlchannels {
+    public class PhotoAlbums {
         
         private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
         
-        private const string Resource = "urlchannels";
+        private const string Resource = "photoAlbums";
         
-        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Urlchannels));
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(PhotoAlbums));
         
-        public Urlchannels(AdsenseService service) {
+        public PhotoAlbums(BuzzService service) {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing urlchannels.list");
-            System.IO.Stream ret = this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters);
-            logger.Debug("Done Executing urlchannels.list");
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photoAlbums.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.UrlChannels ListAsObject(string adclientidParam1) {
+        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string userId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
-            logger.Debug("Executing urlchannels.list");
-            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.UrlChannels ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.UrlChannels>(this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters));
-            logger.Debug("Done Executing urlchannels.list");
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photoAlbums.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photoAlbums.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters);
+            logger.Debug("Done Executing photoAlbums.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string albumId, string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photoAlbums.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album GetAsObject(string albumId, string alt, string hl, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters));
+            logger.Debug("Done Executing photoAlbums.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album body, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.insert");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing photoAlbums.insert");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed>(this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters));
+            logger.Debug("Done Executing photoAlbums.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photoAlbums.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photoAlbums.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photoAlbums.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photoAlbums.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters);
+            logger.Debug("Done Executing photoAlbums.list");
+            return ret;
+        }
+    }
+    
+    public class Photos {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "photos";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Photos));
+        
+        public Photos(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photos.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photos.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photos.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert2(string body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert2");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters);
+            logger.Debug("Done Executing photos.insert2");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByAlbum(string albumId, string alt, string c, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByAlbum");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters);
+            logger.Debug("Done Executing photos.listByAlbum");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByScope(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByScope");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters);
+            logger.Debug("Done Executing photos.listByScope");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream DeleteAsObject(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photos.delete");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson GetAsObject(string albumId, string alt, string hl, string photoId, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.get");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "get", body, parameters));
+            logger.Debug("Done Executing photos.get");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite>(this.service.ExecuteRequest(Photos.Resource, "insert", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing photos.insert");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson Insert2AsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson body, string albumId, string alt, string hl, string userId) {
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert2");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "insert2", this.service.ObjectToJson(body), parameters));
+            logger.Debug("Done Executing photos.insert2");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByAlbumAsObject(string albumId, string alt, string c, string hl, string maxresultsParam5, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["albumId"] = albumId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam5;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByAlbum");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed>(this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters));
+            logger.Debug("Done Executing photos.listByAlbum");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByScopeAsObject(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxresultsParam4;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByScope");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed>(this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters));
+            logger.Debug("Done Executing photos.listByScope");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.delete");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
+            logger.Debug("Done Executing photos.delete");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Get(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["photoId"] = photoId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.get");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "get", body, parameters);
+            logger.Debug("Done Executing photos.get");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
+            logger.Debug("Done Executing photos.insert");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream Insert2(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.insert2");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters);
+            logger.Debug("Done Executing photos.insert2");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByAlbum");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters);
+            logger.Debug("Done Executing photos.listByAlbum");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream ListByScope(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing photos.listByScope");
+            System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters);
+            logger.Debug("Done Executing photos.listByScope");
+            return ret;
+        }
+    }
+    
+    public class Related {
+        
+        private Google.Apis.Discovery.ISchemaAwareRequestExecutor service;
+        
+        private const string Resource = "related";
+        
+        private log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Related));
+        
+        public Related(BuzzService service) {
+            this.service = service;
+        }
+        
+        public virtual System.IO.Stream List(string alt, string hl, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing related.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
+            logger.Debug("Done Executing related.list");
+            return ret;
+        }
+        
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ListAsObject(string alt, string hl, string postId, string scope, string userId) {
+            string body = null;
+            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing related.list");
+            Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed>(this.service.ExecuteRequest(Related.Resource, "list", body, parameters));
+            logger.Debug("Done Executing related.list");
+            return ret;
+        }
+        
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+            string body = null;
+            parameters["postId"] = postId;
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
+            logger.Debug("Executing related.list");
+            System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
+            logger.Debug("Done Executing related.list");
             return ret;
         }
     }

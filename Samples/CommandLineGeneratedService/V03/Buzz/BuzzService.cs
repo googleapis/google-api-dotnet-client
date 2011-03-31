@@ -3896,7 +3896,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         
         private const string Name = "buzz";
         
-        private const string BaseUri = "http://example.url.com/buzz/v1/";
+        private const string BaseUri = "https://www.googleapis.com/buzz/v1/buzz/v1/";
         
         private const Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_0_3;
         
@@ -3929,7 +3929,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         }
         
         public BuzzService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + BuzzService.Name)))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, BuzzService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
+                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri((string.Format("https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}", BuzzService.Name, BuzzService.Version) + BuzzService.Name)))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, BuzzService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
         private Newtonsoft.Json.JsonSerializer NewtonJsonSerilizer {
@@ -4004,7 +4004,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
          {
             System.IO.StreamReader streamReader = new System.IO.StreamReader(stream);
             string str = streamReader.ReadToEnd();
-            return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            try {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            }
+            catch (System.Exception ex) {
+                throw new System.ApplicationException(string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str), ex);
+            }
         }
     }
     

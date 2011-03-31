@@ -704,7 +704,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
         }
         
         public AdsenseService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + AdsenseService.Name)))).GetService(AdsenseService.Version, AdsenseService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, AdsenseService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
+                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri((string.Format("https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}", AdsenseService.Name, AdsenseService.Version) + AdsenseService.Name)))).GetService(AdsenseService.Version, AdsenseService.DiscoveryVersionUsed, new Google.Apis.Discovery.FactoryParameterV0_3(null, AdsenseService.BaseUri)), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
         }
         
         private Newtonsoft.Json.JsonSerializer NewtonJsonSerilizer {
@@ -767,7 +767,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
          {
             System.IO.StreamReader streamReader = new System.IO.StreamReader(stream);
             string str = streamReader.ReadToEnd();
-            return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            try {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject <TOutput>(str);
+            }
+            catch (System.Exception ex) {
+                throw new System.ApplicationException(string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str), ex);
+            }
         }
     }
     
