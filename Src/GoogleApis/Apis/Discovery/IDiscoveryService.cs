@@ -21,7 +21,5 @@ namespace Google.Apis.Discovery
 	public interface IDiscoveryService 
 	{
 		IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
-
-        string[] GetVersions(DiscoveryVersion discoveryVersion, IFactoryParameter param);
     }
 }

@@ -1,4 +1,20 @@
-﻿using System;
+﻿/*
+Copyright 2011 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -8,15 +24,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using DotNetOpenAuth.OAuth2;
 using DotNetOpenAuth.OAuth2.Messages;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OAuth2.ChannelElements;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using GoogleRequests = Google.Apis.Requests;
 
-namespace Google.Apis.Samples.ApiExplorerWinForm
+namespace Google.Apis.Samples.ApiExplorer.WinForm
 {
     public partial class Form1 : Form
     {
@@ -25,6 +43,8 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
         private IAuthorizationState authState;
 
         private UserAgentClient client;
+
+        private ApiUtility api = new ApiUtility();
 
         public Form1()
         {
@@ -38,7 +58,7 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
         /// </summary>
         private void InitializeTreeView()
         {
-            string[] services = Scopes.scopes.Keys.ToArray();
+            string[] services = api.getServiceNames();
 
             foreach (string service in services)
             {
@@ -69,10 +89,10 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             }
         }
 
-        private static void ExpandServiceNode(TreeNode node)
+        private void ExpandServiceNode(TreeNode node)
         {
             string serviceName = node.Text;
-            string[] versions = ApiUtility.GetVersions(serviceName);
+            string[] versions = api.GetVersions(serviceName);
             node.Nodes.Clear();
             foreach (string version in versions)
             {
@@ -82,11 +102,11 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             node.Expand();
         }
 
-        private static void ExpandVersionNode(TreeNode node)
+        private void ExpandVersionNode(TreeNode node)
         {
             string serviceName = node.Parent.Text;
             string version = node.Text;
-            IDictionary<string, IResource> resources = ApiUtility.GetResources(serviceName, version);
+            IDictionary<string, IResource> resources = api.GetResources(serviceName, version);
             node.Nodes.Clear();
             foreach (KeyValuePair<string, IResource> pair in resources)
             {
@@ -96,12 +116,12 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             node.Expand();
         }
 
-        private static void ExpandResourceNode(TreeNode node)
+        private void ExpandResourceNode(TreeNode node)
         {
             string resourceName = node.Text;
             string version = node.Parent.Text;
             string serviceName = node.Parent.Parent.Text;
-            IDictionary<string, IMethod> methods = ApiUtility.GetMethods(serviceName, resourceName, version);
+            IDictionary<string, IMethod> methods = api.GetMethods(serviceName, resourceName, version);
             node.Nodes.Clear();
             foreach (KeyValuePair<string, IMethod> pair in methods)
             {
@@ -117,7 +137,7 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             string resourceName = node.Parent.Text;
             string version = node.Parent.Parent.Text;
             string serviceName = node.Parent.Parent.Parent.Text;
-            IMethod method = ApiUtility.GetMethod(serviceName, resourceName, methodName, version);
+            IMethod method = api.GetMethod(serviceName, resourceName, methodName, version);
             Dictionary<string, IParameter> parameters = method.Parameters;
 
             this.parameterLayoutPanel.Controls.Clear();
@@ -217,8 +237,8 @@ namespace Google.Apis.Samples.ApiExplorerWinForm
             string apiKey = Properties.Settings.Default.apiKey;
 
             IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, token);
-            IService service = ApiUtility.GetService(currentCallContext.Service, currentCallContext.Version);
-            IMethod method = ApiUtility.GetMethod(currentCallContext.Service, currentCallContext.Resource, currentCallContext.Method, currentCallContext.Version);
+            IService service = api.GetService(currentCallContext.Service, currentCallContext.Version);
+            IMethod method = api.GetMethod(currentCallContext.Service, currentCallContext.Resource, currentCallContext.Method, currentCallContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
                 .WithParameters(currentCallContext.Parameters)

@@ -21,11 +21,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ApiExplorerWinForm")]
+[assembly: AssemblyTitle("ApiExplorerLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc.")]
-[assembly: AssemblyProduct("ApiExplorerWinForm")]
+[assembly: AssemblyProduct("ApiExplorerLib")]
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b18211a7-effb-4cc5-bfbe-751958dd1180")]
+[assembly: Guid("16ef3c63-f10f-460a-9147-46f1ecb6f971")]
 
 // Version information for an assembly consists of the following four values:
 //
