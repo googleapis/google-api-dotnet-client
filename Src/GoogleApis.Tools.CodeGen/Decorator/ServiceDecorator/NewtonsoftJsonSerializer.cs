@@ -187,7 +187,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         ///        public TOutput JsonToObject<TOutput>(Stream stream){
         ///            StreamReader streamReader = new StreamReader(stream);
         ///            string str = streamReader.ReadToEnd();
-        ///            return JsonConvert.DeserializeObject<TOutput>(str);
+        ///            try{
+        ///                 return JsonConvert.DeserializeObject<TOutput>(str);
+        ///            } catch(Exception ex) {
+        ///                 throw new ApplicationExcetpion(
+        ///                     string.Format("Failed to generate object of type [{0}] from Json[{1}]",
+        ///                         typeof(TOutput).Name, str));
+        ///            }
         ///        } 
         ///     </code> 
         /// </summary>
@@ -218,6 +224,47 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                     new CodeVariableReferenceExpression("streamReader"),
                     "ReadToEnd"));
             
+            var rethrow = CreateRethrowStatment();            
+            var returnStatment = CreateReturnStatment ();
+            
+            var tryCatchReturn = new CodeTryCatchFinallyStatement();
+            tryCatchReturn.TryStatements.Add(returnStatment);
+            tryCatchReturn.CatchClauses.Add(new CodeCatchClause("ex",new CodeTypeReference(typeof(Exception)),rethrow));
+            
+            method.Statements.Add(streamReaderDeclaration);
+            method.Statements.Add(stringDeclaration);
+            method.Statements.Add(tryCatchReturn);
+
+            return method;
+        }
+
+        
+        /// <summary>
+        /// <code>throw new ApplicationException(
+        ///    string.Format("Failed to generate object of type[{0}] from Json[{1}]",typeof(TOutput).Name,str),ex);
+        /// </code> 
+        /// </summary>
+        private CodeStatement CreateRethrowStatment()
+        {
+            var rethrow = new CodeThrowExceptionStatement();
+            
+            //string.Format
+            var errorMessage = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)),"Format");
+            // "Failed to generate object of type[{0}] from Json[{1}]"
+            errorMessage.Parameters.Add(
+                new CodePrimitiveExpression("Failed to generate object of type[{0}] from Json[{1}]"));
+            //,typeof(TOutput).Name
+            errorMessage.Parameters.Add(
+                new CodePropertyReferenceExpression(new CodeTypeOfExpression("TOutput"),"Name"));
+            //, str
+            errorMessage.Parameters.Add(new CodeVariableReferenceExpression("str"));
+            var localException = new CodeVariableReferenceExpression("ex");
+            rethrow.ToThrow = new CodeObjectCreateExpression(typeof(ApplicationException),errorMessage, localException);
+            return rethrow;
+        }
+        
+        private static CodeMethodReturnStatement CreateReturnStatment ()
+        {
             // return JsonConvert.DeserializeObject<TOutput>(str);
             var methodCall = new CodeMethodInvokeExpression(
                 new CodeMethodReferenceExpression(
@@ -226,14 +273,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                     new CodeTypeReference[]{new CodeTypeReference("TOutput")}),
                 new CodeVariableReferenceExpression("str"));
            
-            var returnStatment = new CodeMethodReturnStatement(methodCall);
-                
-            
-            method.Statements.Add(streamReaderDeclaration);
-            method.Statements.Add(stringDeclaration);
-            method.Statements.Add(returnStatment);
-
-            return method;
+            return new CodeMethodReturnStatement(methodCall);
         }
         
         public void DecorateClass (Discovery.IService service, CodeTypeDeclaration serviceClass)
