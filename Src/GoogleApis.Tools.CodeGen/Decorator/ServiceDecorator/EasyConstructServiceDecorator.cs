@@ -47,15 +47,28 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
 
         [VisibleForTestOnly]
+        internal CodeExpression GetDiscoveryUrl(IService service, CodeTypeDeclaration serviceClass)
+        {
+            var discoveryUrlFormat = new CodePrimitiveExpression (GetUrlFormat (service));
+            var serviceName = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.NameName);
+            var serviceVersion = new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.VersionName);
+            var stringFormat = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "Format", discoveryUrlFormat, serviceName, serviceVersion);
+            return stringFormat;
+        }
+        
+        [VisibleForTestOnly]
         internal CodeExpression GetService (IService service, CodeTypeDeclaration serviceClass)
         {
             /*
             new DiscoveryService(
                 new WebDiscoveryDevice(
-                    new Uri("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName)
+                    new Uri(string.Format(
+                        "https://www.googleapis.com/discovery/0.1/describe?api={0}&version={1}",
+                        serviceName, serviceVersion))
                     )).GetService(version, DiscoveryVersionUsed)
             */            
-            var discoveryUrl = new CodePrimitiveExpression ("https://www.googleapis.com/discovery/0.1/describe?api=");
+            CodeExpression discoveryUrl = GetDiscoveryUrl(service, serviceClass);
+            
             var serviceName = new CodeFieldReferenceExpression (
                 new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.NameName);
             
@@ -81,6 +94,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             getServiceCall.Parameters.Add (GetVersionSpecificParameter(service, serviceClass));
             
             return getServiceCall;
+        }
+        
+        private static string GetUrlFormat (IService service)
+        {
+            switch(service.DiscoveryVersion)
+            {
+            case DiscoveryVersion.Version_0_1:
+                return "https://www.googleapis.com/discovery/0.1/describe?api={0}";    
+            case DiscoveryVersion.Version_0_2:
+                return "https://www.googleapis.com/discovery/0.2/describe?api={0}";    
+            case DiscoveryVersion.Version_0_3:
+                return "https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}";    
+            default:
+                throw new NotSupportedException(string.Format("Discovery Version {0} is not supported", service.DiscoveryVersion));
+            }
+            
         }
         
         
