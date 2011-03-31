@@ -1,4 +1,4 @@
-﻿namespace Google.Apis.Samples.ApiExplorerWinForm
+﻿namespace Google.Apis.Samples.ApiExplorer.WinForm
 {
     partial class Form1
     {

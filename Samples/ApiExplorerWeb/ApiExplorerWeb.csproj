@@ -2,13 +2,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{431931EF-66A2-4C13-B447-A33A83C76A16}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Apis.Samples.ApiExplorerWeb</RootNamespace>
+    <RootNamespace>Google.Apis.Samples.ApiExplorer.Web</RootNamespace>
     <AssemblyName>Google.Apis.Samples.ApiExplorerWeb</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -63,7 +63,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiUtility.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -71,7 +70,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MethodCallContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.aspx.cs">
       <DependentUpon>Result.aspx</DependentUpon>
@@ -80,12 +78,15 @@
     <Compile Include="Result.aspx.designer.cs">
       <DependentUpon>Result.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Scopes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Src\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApiExplorerLib\ApiExplorerLib.csproj">
+      <Project>{DFAD1F98-F149-443F-A76F-3AAEBCEB4365}</Project>
+      <Name>ApiExplorerLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -114,9 +115,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

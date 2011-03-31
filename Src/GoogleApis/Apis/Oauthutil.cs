@@ -18,6 +18,8 @@ using System;
 using System.Text;
 using System.Globalization;
 
+using Google.Apis.Util;
+
 namespace Google.Apis
 {
     /// <summary>
@@ -91,15 +93,14 @@ namespace Google.Apis
 
         public static string GenerateOAuth2Header(String token)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Authorization: OAuth ");
-            if (!String.IsNullOrEmpty(token))
+            if (token.IsNotNullOrEmpty())
             {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Authorization: OAuth ");
                 sb.Append(token);
+                return sb.ToString();
             }
-
-            return sb.ToString();
+            return string.Empty;
         }
-
     }
 }

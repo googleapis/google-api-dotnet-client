@@ -74,12 +74,6 @@ namespace Google.Apis.Discovery
         internal FactoryParameterV0_3 Param{get{return param;}}
         [VisibleForTestOnly]
         internal JsonDictionary Information{get{return information;}}
-
-        public string[] GetVersions()
-        {
-            string[] arr = new string[] { this.information["version"].ToString() };
-            return arr;
-        }
     }
     
     public class FactoryParameterV0_2 : IFactoryParameter
@@ -138,11 +132,6 @@ namespace Google.Apis.Discovery
         internal FactoryParameterV0_2 Param{get{return param;}}
         [VisibleForTestOnly]
         internal JsonDictionary Information{get{return information;}}
-
-        public string[] GetVersions()
-        {
-            throw new NotImplementedException();
-        }
     }
  
     [VisibleForTestOnly]
@@ -182,13 +171,6 @@ namespace Google.Apis.Discovery
             }
             
             return new ServiceV0_1 (version, this.name, js);
-        }
-
-        public string[] GetVersions()
-        {
-            string[] arr = new string[this.information.Count];
-            this.information.Keys.CopyTo(arr, 0);
-            return arr;
         }
     }
 }

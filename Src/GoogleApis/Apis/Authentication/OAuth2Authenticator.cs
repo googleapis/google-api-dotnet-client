@@ -1,4 +1,4 @@
-/* Copyright (c) 2010 Google Inc.
+/* Copyright (c) 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,26 @@
 
 
 using System;
-using System.IO;
 using System.Collections;
-using System.Text;
-using System.Net;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Security.Cryptography;
+using System.Text;
 
+using Google.Apis.Util;
 
 namespace Google.Apis.Authentication
 {
+    /// <summary>
+    /// Authenticator class based on OAuth2, for both 2-legged and 3-legged use cases.
+    /// </summary>
     public class OAuth2Authenticator : OAuthAuthenticator
     {
         private string token;
 
         /// <summary>
-        ///  a constructor for OpenAuthentication login use cases using 3 legged OAuth
+        /// instantiated a new instance of OAuth2Authenticator.
         /// </summary>
         /// <param name="applicationName">The name of the application</param>
         /// <param name="consumerKey">the consumerKey to use</param>
@@ -39,13 +43,13 @@ namespace Google.Apis.Authentication
         /// <returns></returns>
         public OAuth2Authenticator(string applicationName, string consumerKey, string consumerSecret, string token) : base(applicationName, consumerKey, consumerSecret)
         {
+            token.ThrowIfNull("token");
             this.token = token;
         }
 
         /// <summary>
         /// returns the Token for OAuth
         /// </summary>
-        /// <returns></returns>
         public string Token {
             get { return this.token; }
         }
@@ -54,8 +58,6 @@ namespace Google.Apis.Authentication
         /// Takes an existing httpwebrequest and modifies its headers according to
         /// the authentication system used.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
         public override void ApplyAuthenticationToRequest (HttpWebRequest request)
         {
             base.ApplyAuthenticationToRequest (request);

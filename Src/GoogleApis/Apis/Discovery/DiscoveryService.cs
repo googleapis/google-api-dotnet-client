@@ -81,16 +81,5 @@ namespace Google.Apis.Discovery
 			
 			return factory.GetService(version);
 		}
-
-
-        public string[] GetVersions(DiscoveryVersion discoveryVersion, IFactoryParameter param)
-        {
-			using(var documentStream = DiscoveryDevice.Fetch()) 
-			{
-    			IServiceFactory factory = 
-                    ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
-                return factory.GetVersions();
-			}
-        }
     }
 }
