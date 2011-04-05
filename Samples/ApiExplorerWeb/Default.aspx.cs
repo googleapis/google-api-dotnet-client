@@ -156,14 +156,7 @@ namespace Google.Apis.Samples.ApiExplorer.Web
                 paramDictionary.Add(paramName, paramValue);
             }
 
-            MethodCallContext callContext = new MethodCallContext
-            {
-                Service = serviceName,
-                Version = version,
-                Resource = resourceName,
-                Method = methodName,
-                Parameters = paramDictionary
-            };
+            MethodCallContext callContext = new MethodCallContext(serviceName, version, resourceName, methodName, paramDictionary);
 
             Session["callContext"] = callContext;
 

@@ -45,7 +45,16 @@ namespace Google.Apis.Discovery
 
 		public string ParameterType 
 		{
-			get { return this.information.GetValueAsNull (ServiceFactory.ParameterType) as string; }
+			get 
+            { 
+                string ret = this.information.GetValueAsNull (ServiceFactory.ParameterType) as string;
+                if (ret == null)
+                {
+                    // a patch to handle v0.3 correctly without breaking v0.1
+                    ret = this.information.GetValueAsNull(ServiceFactory.RestParameterType) as string;
+                }
+                return ret;
+            }
 		}
 
 		public string Pattern 

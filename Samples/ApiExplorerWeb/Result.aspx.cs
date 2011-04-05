@@ -103,8 +103,8 @@ namespace Google.Apis.Samples.ApiExplorer.Web
 
         private void RequestAuthorization(WebServerClient client, string serviceName)
         {
-            Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", Scopes.scopes[serviceName].Name } };
-            string scope = Scopes.scopes[serviceName].Name;
+            string scope = Scopes.GetScope(serviceName);
+            Dictionary<string, string> extraParameters = new Dictionary<string, string> { { "scope", scope } };
             Uri callback = MessagingUtilities.GetRequestUrlFromContext().StripQueryArgumentsWithPrefix("oauth_");
             OutgoingWebResponse response = client.PrepareRequestUserAuthorization(new string[] { scope }, null);
             response.Send();

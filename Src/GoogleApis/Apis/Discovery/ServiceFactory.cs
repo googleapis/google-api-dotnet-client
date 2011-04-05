@@ -24,6 +24,9 @@ using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery 
 {
+    /// <summary>
+    /// Interface for building services from discovery parameters.
+    /// </summary>
     public interface IServiceFactory
     {
         IService GetService(string version);
@@ -46,6 +49,7 @@ namespace Google.Apis.Discovery
         internal const string Parameters = "parameters";
     
         internal const string ParameterType = "parameterType";
+        internal const string RestParameterType = "restParameterType";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
         internal const string DefaultValue = "defaultValue";

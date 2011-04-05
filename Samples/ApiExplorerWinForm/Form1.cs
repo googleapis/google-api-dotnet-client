@@ -184,14 +184,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
                 paramDictionary.Add(paramName, paramValue);
             }
 
-            this.currentCallContext = new MethodCallContext
-            {
-                Service = serviceName,
-                Version = version,
-                Resource = resourceName,
-                Method = methodName,
-                Parameters = paramDictionary
-            };
+            this.currentCallContext = new MethodCallContext(serviceName, version, resourceName, methodName, paramDictionary);
 
             this.ExecuteMethod();
         }
@@ -209,7 +202,8 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
             {
                 AuthorizationServerDescription serviceDescription = this.GetAuthorizationServerDescription();
                 client = new UserAgentClient(serviceDescription, clientId, clientSecret);
-                authState = new AuthorizationState(new string[] { Scopes.scopes[currentCallContext.Service].Name });
+                string scope = Scopes.GetScope(currentCallContext.Service);
+                authState = new AuthorizationState(new string[] { scope });
                 authState.Callback = new Uri(Properties.Settings.Default.redirectUrl);
                 Uri authorizationUrl = client.RequestUserAuthorization(authState);
                 // hack: UserAgentClient is still using response_type=code. needs response_type=token
