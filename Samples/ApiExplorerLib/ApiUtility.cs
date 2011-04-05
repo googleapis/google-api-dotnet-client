@@ -76,7 +76,7 @@ namespace Google.Apis.Samples.ApiExplorer
         public IService GetService(string serviceName, string version)
         {
             DiscoveryService discovery = GetDiscoveryService(serviceName, version);
-            string serverUrl = discoveryLinks[serviceName][version];
+            string serverUrl = "https://www.googleapis.com";
             return discovery.GetService(version, DiscoveryVersion.Version_0_3, new FactoryParameterV0_3(serverUrl, null));
         }
 

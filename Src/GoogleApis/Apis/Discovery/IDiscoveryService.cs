@@ -17,9 +17,14 @@ using System;
 
 namespace Google.Apis.Discovery
 {
-	
+    /// <summary>
+    /// Interface to interact with discovery service.
+    /// </summary>
 	public interface IDiscoveryService 
 	{
+		/// <summary>
+		/// Creates an API object that provides access to the methods defined in the discovery document.
+		/// </summary>
 		IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
     }
 }

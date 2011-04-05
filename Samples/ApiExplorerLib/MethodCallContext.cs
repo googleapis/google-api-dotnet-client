@@ -24,34 +24,43 @@ namespace Google.Apis.Samples.ApiExplorer
     /// </summary>
     public class MethodCallContext
     {
+        public MethodCallContext(string service, string version, string resource, string method, IDictionary<string, string> parameters)
+        {
+            this.Service = service;
+            this.Version = version;
+            this.Resource = resource;
+            this.Method = method;
+            this.Parameters = parameters;
+        }
+
         public string Service
         {
             get;
-            set;
+            private set;
         }
 
         public string Version
         {
             get;
-            set;
+            private set;
         }
 
         public string Resource
         {
             get;
-            set;
+            private set;
         }
 
         public string Method
         {
             get;
-            set;
+            private set;
         }
 
-        public Dictionary<string, string> Parameters
+        public IDictionary<string, string> Parameters
         {
             get;
-            set;
+            private set;
         }
     }
 }

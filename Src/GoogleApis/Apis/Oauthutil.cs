@@ -95,10 +95,7 @@ namespace Google.Apis
         {
             if (token.IsNotNullOrEmpty())
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Authorization: OAuth ");
-                sb.Append(token);
-                return sb.ToString();
+                return "Authorization: OAuth " + token;
             }
             return string.Empty;
         }
