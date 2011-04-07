@@ -69,10 +69,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             */            
             CodeExpression discoveryUrl = GetDiscoveryUrl(service, serviceClass);
             
-            var serviceName = new CodeFieldReferenceExpression (
-                new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.NameName);
-            
-            
             var uriConstructor = new CodeObjectCreateExpression ();
             uriConstructor.CreateType = new CodeTypeReference (typeof(Uri));
             uriConstructor.Parameters.Add (discoveryUrl);
