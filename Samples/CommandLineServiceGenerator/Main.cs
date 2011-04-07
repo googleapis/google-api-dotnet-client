@@ -1451,7 +1451,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			
 			var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
-			var param = new FactoryParameterV0_3("https://www.googleapis.com/buzz/v1/",null);
+			var param = new FactoryParameterV0_3("https://www.googleapis.com",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);

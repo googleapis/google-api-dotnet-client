@@ -48,7 +48,7 @@ namespace Google.Apis.Tests.Apis.Requests
 			var jsonObj = new KeyValuePair<string, object>("test", dict );
 			
 			
-			var p = new Parameter(jsonObj);
+			var p = new ParameterFactory.BaseParameter(jsonObj);
 			var inputData =  new Dictionary<string, string>();
 			var validator = new MethodValidator(m, inputData );
 			Assert.IsTrue(validator.ValidateRegex(p, "Test"));
@@ -66,7 +66,7 @@ namespace Google.Apis.Tests.Apis.Requests
 			var jsonObj = new KeyValuePair<string, object>("test", dict );
 			
 			
-			var p = new Parameter(jsonObj);
+			var p = new ParameterFactory.BaseParameter(jsonObj);
 			var inputData =  new Dictionary<string, string>();
 			var validator = new MethodValidator(m, inputData );
 			

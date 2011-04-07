@@ -83,7 +83,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			logger.Info("Total Results:" + result.TotalResults);
 			foreach(Person person in result.Entry)
 			{
-				logger.Info(person.Name + " " + person.Fashion);
+				logger.Info(person.DisplayName + " " + person.ProfileUrl);
 			}
 			
 			Console.ReadLine();
@@ -91,7 +91,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			IDictionary<string,string> parameters = new Dictionary<string, string>();
 			parameters.Add("q", "Fred");
 			//result = buzzService.People.SearchAsObject(parameters);
-			result = buzzService.People.SearchAsObject(null, null, null, null, "Fred");
+			result = buzzService.People.SearchAsObject(null, null, null, "10", "Fred");
 			 
 			/*
 			sr = new StreamReader(result);

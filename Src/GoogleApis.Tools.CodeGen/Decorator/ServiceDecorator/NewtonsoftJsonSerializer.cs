@@ -188,7 +188,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         ///            StreamReader streamReader = new StreamReader(stream);
         ///            string str = streamReader.ReadToEnd();
         ///            try{
-        ///                 return JsonConvert.DeserializeObject<TOutput>(str);
+        ///                 StandardResponse<TOutput> response = Newtonsoft.Json.JsonConvert.DeserializeObject<StandardResponse<TOutput>>(str);
+        ///                 if (response.Data == null)
+        ///                 {
+        ///                     throw new ApplicationException(string.Format("Failed to get response from stream, error was [{0}]",response.Error));
+        ///                 }
+        ///                 return response.Data;
         ///            } catch(Exception ex) {
         ///                 throw new ApplicationExcetpion(
         ///                     string.Format("Failed to generate object of type [{0}] from Json[{1}]",
@@ -228,7 +233,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var returnStatment = CreateReturnStatment ();
             
             var tryCatchReturn = new CodeTryCatchFinallyStatement();
-            tryCatchReturn.TryStatements.Add(returnStatment);
+            tryCatchReturn.TryStatements.AddRange(returnStatment);
             tryCatchReturn.CatchClauses.Add(new CodeCatchClause("ex",new CodeTypeReference(typeof(Exception)),rethrow));
             
             method.Statements.Add(streamReaderDeclaration);
@@ -262,20 +267,64 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             rethrow.ToThrow = new CodeObjectCreateExpression(typeof(ApplicationException),errorMessage, localException);
             return rethrow;
         }
-        
-        private static CodeMethodReturnStatement CreateReturnStatment ()
+
+        /// <summary>
+        ///  create the following code
+        ///  <code>
+        ///    StandardResponse&lt;TOutput&gt; response = 
+        ///        Newtonsoft.Json.JsonConvert.DeserializeObject&lt;StandardResponse&lt;TOutput&gt;&gt;(str);
+        ///    if (response.Data == null)
+        ///    {
+        ///          throw new ApplicationException(string.Format("Failed to get response from stream, error was [{0}]",response.Error));
+        ///    }
+        ///    return response.Data;
+        ///  </code>
+        /// </summary>
+        private static CodeStatementCollection CreateReturnStatment ()
         {
-            // return JsonConvert.DeserializeObject<TOutput>(str);
-            var methodCall = new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(
-                    new CodeTypeReferenceExpression(typeof(JsonConvert)),
-                    "DeserializeObject",
-                    new CodeTypeReference[]{new CodeTypeReference("TOutput")}),
+            //StandardResponse<TOutput> response = 
+            //        Newtonsoft.Json.JsonConvert.DeserializeObject<StandardResponse<TOutput>>;(str);
+            var declareAndAssign = new CodeVariableDeclarationStatement(
+                new CodeTypeReference("StandardResponse", new CodeTypeReference("TOutput")), 
+                "response");
+            var initResponse = new CodeMethodInvokeExpression(
+                new CodeTypeReferenceExpression(typeof(JsonConvert)), 
+                "DeserializeObject", 
                 new CodeVariableReferenceExpression("str"));
-           
-            return new CodeMethodReturnStatement(methodCall);
+            var typeArgument = new CodeTypeReference("StandardResponse", new CodeTypeReference("TOutput"));
+            initResponse.Method.TypeArguments.Add(typeArgument);
+            declareAndAssign.InitExpression = initResponse;
+
+            //if (response.Data == null)
+            //{
+            //  throw new ApplicationException(string.Format("Failed to get response from stream, error was [{0}]",response.Error));
+            //}
+            var dataIsNull = new CodeBinaryOperatorExpression(
+                new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("response"), "Data"), 
+                CodeBinaryOperatorType.ValueEquality, 
+                new CodePrimitiveExpression(null));
+            var createException = new CodeObjectCreateExpression(typeof(ApplicationException),
+                new CodeMethodInvokeExpression(
+                    new CodeTypeReferenceExpression(typeof(string)), 
+                    "Format", 
+                    new CodePrimitiveExpression("Failed to get response from stream, error was [{0}]"),
+                    new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("response"),"Error")
+                    ));
+            var throwBecauseNoData = new CodeThrowExceptionStatement(createException);
+            var throwIfDataNull = new CodeConditionStatement(dataIsNull, throwBecauseNoData);
+
+            var returnResponseData = new CodeMethodReturnStatement(
+                new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("response"), "Data"));
+
+            var statments = new CodeStatementCollection();
+            statments.Add(declareAndAssign);
+            statments.Add(throwIfDataNull);
+            statments.Add(returnResponseData);
+            return statments;
         }
-        
+
+
+
         public void DecorateClass (Discovery.IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.ThrowIfNull("serviceClass");

@@ -22,6 +22,7 @@ using System.Text;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Util;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery
 {
@@ -41,7 +42,8 @@ namespace Google.Apis.Discovery
             }
         }
 
-        private class ParameterV0_3 : BaseParameter
+        [VisibleForTestOnly]
+        internal class ParameterV0_3 : BaseParameter
         {
             public ParameterV0_3(KeyValuePair<string, object> kvp)
                 : base(kvp)
@@ -53,7 +55,8 @@ namespace Google.Apis.Discovery
             }
         }
 
-        private class BaseParameter : IParameter
+        [VisibleForTestOnly]
+        internal class BaseParameter : IParameter
         {
             protected readonly JsonDictionary information;
 

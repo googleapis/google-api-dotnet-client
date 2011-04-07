@@ -81,7 +81,7 @@ namespace Google.Apis
 				return false;
 			}
 			
-			if(parameterPresent == false) {
+			if(parameterPresent == false || String.IsNullOrEmpty(currentParam)) {
 				// The parameter is not present in the input and is not required, skip validation.
 				return true;	
 			}
