@@ -768,10 +768,42 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             System.IO.StreamReader streamReader = new System.IO.StreamReader(stream);
             string str = streamReader.ReadToEnd();
             try {
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<TOutput>(str);
+                StandardResponse<TOutput> response = Newtonsoft.Json.JsonConvert.DeserializeObject<StandardResponse<TOutput>>(str);
+                if ((response.Data == null)) {
+                    throw new System.ApplicationException(string.Format("Failed to get response from stream, error was [{0}]", response.Error));
+                }
+                return response.Data;
             }
             catch (System.Exception ex) {
                 throw new System.ApplicationException(string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str), ex);
+            }
+        }
+        
+        public class StandardResponse<InnerType>
+         {
+            
+            private InnerType data;
+            
+            private string error;
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual InnerType Data {
+                get {
+                    return this.data;
+                }
+                set {
+                    this.data = value;
+                }
+            }
+            
+            [Newtonsoft.Json.JsonPropertyAttribute("error")]
+            public virtual string Error {
+                get {
+                    return this.error;
+                }
+                set {
+                    this.error = value;
+                }
             }
         }
     }

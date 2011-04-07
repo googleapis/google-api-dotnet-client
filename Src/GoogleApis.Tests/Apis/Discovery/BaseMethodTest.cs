@@ -66,7 +66,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class BaseMethodTestImpl : BaseMethod
         {
             public BaseMethodTestImpl(string name, string json) : 
-                    base(new KeyValuePair<string, object>(name, JsonReader.Parse(json)))
+                    base(DiscoveryVersion.Version_0_2, new KeyValuePair<string, object>(name, JsonReader.Parse(json)))
             {
             }
             

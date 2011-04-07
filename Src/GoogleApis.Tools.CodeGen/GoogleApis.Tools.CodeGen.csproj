@@ -70,6 +70,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\NewtonsoftStandardResponse.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />

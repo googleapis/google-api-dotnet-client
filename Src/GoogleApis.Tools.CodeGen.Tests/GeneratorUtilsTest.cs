@@ -141,19 +141,19 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void GetParameterNameTest()
         {
             var paramArgs = new KeyValuePair<string,object>("safeName", new JsonDictionary());
-            IParameter param = new Parameter(paramArgs);
+            IParameter param = new ParameterFactory.BaseParameter(paramArgs);
             Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
             
             paramArgs = new KeyValuePair<string,object>("string", new JsonDictionary());
-            param = new Parameter(paramArgs);
+            param = new ParameterFactory.BaseParameter(paramArgs);
             Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
             
             paramArgs = new KeyValuePair<string,object>("String", new JsonDictionary());
-            param = new Parameter(paramArgs);
+            param = new ParameterFactory.BaseParameter(paramArgs);
             Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
             
             paramArgs = new KeyValuePair<string,object>("SafeName", new JsonDictionary());
-            param = new Parameter(paramArgs);
+            param = new ParameterFactory.BaseParameter(paramArgs);
             Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
         }
         
