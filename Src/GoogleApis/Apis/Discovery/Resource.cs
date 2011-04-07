@@ -43,9 +43,12 @@ namespace Google.Apis.Discovery
 		private readonly JsonDictionary information;
         
         public string Name {get;set;}
+
+        internal DiscoveryVersion DiscoveryVersion { get; private set;}
 		
-		internal BaseResource (KeyValuePair<string, object> kvp)
+		internal BaseResource (DiscoveryVersion version, KeyValuePair<string, object> kvp)
 		{
+            this.DiscoveryVersion = version;
             logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
@@ -133,7 +136,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ResourceV0_1: BaseResource
     {
-        internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(DiscoveryVersion.Version_0_1, kvp)
         {
         }
         
@@ -155,18 +158,18 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ResourceV0_2: BaseResource
     {
-        internal ResourceV0_2 (KeyValuePair<string, object> kvp):base(kvp)
+        internal ResourceV0_2 (DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV0_2(kvp);
+            return new MethodV0_2(this.DiscoveryVersion, kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_2(kvp);
+            return new ResourceV0_2(this.DiscoveryVersion, kvp);
         }
         
     }

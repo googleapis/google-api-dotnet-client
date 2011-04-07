@@ -32,9 +32,6 @@ using Google.Apis.Samples.CommandLineGeneratedService;
 using Google.Apis.Samples.CommandLineGeneratedService.Buzz;
 using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz;
 using Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data;
-using Google.Apis.Samples.AdSenseApi;
-using Google.Apis.Samples.AdSenseApi.Service;
-using Google.Apis.Samples.AdSenseApi.Auth;
 
 namespace Google.Apis.Samples.CommandLineGeneratedService {
 	class MainClass {

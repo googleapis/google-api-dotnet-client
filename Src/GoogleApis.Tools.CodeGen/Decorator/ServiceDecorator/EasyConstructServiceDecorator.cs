@@ -75,7 +75,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             
             var uriConstructor = new CodeObjectCreateExpression ();
             uriConstructor.CreateType = new CodeTypeReference (typeof(Uri));
-            uriConstructor.Parameters.Add (new CodeBinaryOperatorExpression (discoveryUrl, CodeBinaryOperatorType.Add, serviceName));
+            uriConstructor.Parameters.Add (discoveryUrl);
             
             var webConstructor = new CodeObjectCreateExpression ();
             webConstructor.CreateType = new CodeTypeReference (typeof(WebDiscoveryDevice));

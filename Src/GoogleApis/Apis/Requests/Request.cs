@@ -200,13 +200,17 @@ namespace Google.Apis.Requests
 			// Replace the substitution parameters
 			foreach(var parameter in this.Parameters) {
 				var parameterDefinition = Method.Parameters[parameter.Key];
-				if(parameterDefinition.ParameterType == "path") {
-					restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), parameter.Value.ToString());
-				}
-				
-				if(parameterDefinition.ParameterType == "query") {
-					queryParams.Add(parameterDefinition.Name + "=" + parameter.Value);
-				}
+                switch (parameterDefinition.ParameterType)
+                {
+                    case "path":
+                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), parameter.Value.ToString());
+                        break;
+                    case "query":
+                        queryParams.Add(parameterDefinition.Name + "=" + parameter.Value);
+                        break;
+                    default:
+                        throw new NotSupportedException("Found an unsupported Parametertype [" + parameterDefinition.ParameterType +"]" );
+                }
 			}
 			
 			var path = restPath;
