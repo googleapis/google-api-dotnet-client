@@ -25,47 +25,72 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Discovery
 {
-	internal class Parameter : IParameter
-	{
-		private readonly JsonDictionary information;
+    internal abstract class ParameterFactory
+    {
+        internal static IParameter GetParameter(DiscoveryVersion version, KeyValuePair<string, object> kvp)
+        {
+            switch (version)
+            {
+            case DiscoveryVersion.Version_0_1:
+            case DiscoveryVersion.Version_0_2:
+                return new BaseParameter(kvp);
+            case DiscoveryVersion.Version_0_3:
+                return new ParameterV0_3(kvp);
+            default:
+                throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
+            }
+        }
 
-		public Parameter ()
-		{
-		}
+        private class ParameterV0_3 : BaseParameter
+        {
+            public ParameterV0_3(KeyValuePair<string, object> kvp)
+                : base(kvp)
+            { }
 
-		public Parameter (KeyValuePair<string, object> kvp)
-		{
-			this.Name = kvp.Key;
-			this.information = kvp.Value as JsonDictionary;
-			if (this.information == null)
-				throw new ArgumentException ("got no valid dictionary");
-		}
+            public override string ParameterType
+            {
+                get { return this.information.GetValueAsNull("restParameterType") as string; }
+            }
+        }
 
-		public string Name { get; private set;}
+        private class BaseParameter : IParameter
+        {
+            protected readonly JsonDictionary information;
 
-		public string ParameterType 
-		{
-			get { return this.information.GetValueAsNull (ServiceFactory.ParameterType) as string; }
-		}
+            public BaseParameter(KeyValuePair<string, object> kvp)
+            {
+                this.Name = kvp.Key;
+                this.information = kvp.Value as JsonDictionary;
+                if (this.information == null)
+                    throw new ArgumentException("got no valid dictionary");
+            }
 
-		public string Pattern 
-		{
-			get { return this.information.GetValueAsNull (ServiceFactory.Pattern) as string; }
-		}
+            public string Name { get; private set; }
 
-		public bool Required 
-		{
-			get { return (bool) (this.information.GetValueAsNull (ServiceFactory.Required) ?? (object)false); }
-		}
+            public virtual string ParameterType
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.ParameterType) as string; }
+            }
 
-		public string DefaultValue 
-		{
-			get { return this.information.GetValueAsNull (ServiceFactory.DefaultValue) as string; }
-		}
+            public string Pattern
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.Pattern) as string; }
+            }
 
-		public string ValueType 
-		{
-			get { return this.information.GetValueAsNull (ServiceFactory.ValueType) as string; }
-		}
-	}
+            public bool Required
+            {
+                get { return (bool)(this.information.GetValueAsNull(ServiceFactory.Required) ?? (object)false); }
+            }
+
+            public string DefaultValue
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
+            }
+
+            public string ValueType
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.ValueType) as string; }
+            }
+        }
+    }
 }
