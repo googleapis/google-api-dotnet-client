@@ -169,8 +169,8 @@
             this.authWebBrowser.Name = "authWebBrowser";
             this.authWebBrowser.Size = new System.Drawing.Size(242, 236);
             this.authWebBrowser.TabIndex = 0;
-            this.authWebBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.authWebBrowser_Navigating);
             this.authWebBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.authWebBrowser_DocumentCompleted);
+            this.authWebBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.authWebBrowser_Navigated);
             // 
             // Form1
             // 
