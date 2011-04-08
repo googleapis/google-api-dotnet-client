@@ -38,13 +38,18 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
 {
     public partial class Form1 : Form
     {
-        private MethodCallContext currentCallContext = null;
+        private MethodCallContext _currentCallContext = null;
 
-        private IAuthorizationState authState;
+        private IAuthorizationState _authState;
 
-        private UserAgentClient client;
+        private UserAgentClient _client;
 
-        private ApiUtility api = new ApiUtility();
+        private ApiUtility _api = new ApiUtility();
+
+        /// <summary>
+        /// Map between service name and access tokens
+        /// </summary>
+        private Dictionary<string, string> _accessTokens = new Dictionary<string,string>();
 
         public Form1()
         {
@@ -58,7 +63,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         /// </summary>
         private void InitializeTreeView()
         {
-            string[] services = api.getServiceNames();
+            string[] services = _api.getServiceNames();
 
             foreach (string service in services)
             {
@@ -69,7 +74,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
 
         private void apiTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            TreeNode node = this.apiTreeView.SelectedNode;
+            TreeNode node = e.Node;
             this.splitContainer1.Panel2.Visible = false;
             if (node.Level == 0)
             {
@@ -92,7 +97,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         private void ExpandServiceNode(TreeNode node)
         {
             string serviceName = node.Text;
-            string[] versions = api.GetVersions(serviceName);
+            string[] versions = _api.GetVersions(serviceName);
             node.Nodes.Clear();
             foreach (string version in versions)
             {
@@ -106,7 +111,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         {
             string serviceName = node.Parent.Text;
             string version = node.Text;
-            IDictionary<string, IResource> resources = api.GetResources(serviceName, version);
+            IDictionary<string, IResource> resources = _api.GetResources(serviceName, version);
             node.Nodes.Clear();
             foreach (KeyValuePair<string, IResource> pair in resources)
             {
@@ -121,7 +126,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
             string resourceName = node.Text;
             string version = node.Parent.Text;
             string serviceName = node.Parent.Parent.Text;
-            IDictionary<string, IMethod> methods = api.GetMethods(serviceName, resourceName, version);
+            IDictionary<string, IMethod> methods = _api.GetMethods(serviceName, resourceName, version);
             node.Nodes.Clear();
             foreach (KeyValuePair<string, IMethod> pair in methods)
             {
@@ -137,7 +142,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
             string resourceName = node.Parent.Text;
             string version = node.Parent.Parent.Text;
             string serviceName = node.Parent.Parent.Parent.Text;
-            IMethod method = api.GetMethod(serviceName, resourceName, methodName, version);
+            IMethod method = _api.GetMethod(serviceName, resourceName, methodName, version);
             Dictionary<string, IParameter> parameters = method.Parameters;
 
             this.parameterLayoutPanel.Controls.Clear();
@@ -184,7 +189,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
                 paramDictionary.Add(paramName, paramValue);
             }
 
-            this.currentCallContext = new MethodCallContext(serviceName, version, resourceName, methodName, paramDictionary);
+            this._currentCallContext = new MethodCallContext(serviceName, version, resourceName, methodName, paramDictionary);
 
             this.ExecuteMethod();
         }
@@ -194,18 +199,18 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         /// </summary>
         private void ExecuteMethod()
         {
-            string clientId = Properties.Settings.Default.clientId;
-            string clientSecret = Properties.Settings.Default.clientSecret;
-            string apiKey = Properties.Settings.Default.apiKey;
-
-            if (!this.AccessTokens.ContainsKey(currentCallContext.Service))
+            if (!this._accessTokens.ContainsKey(_currentCallContext.Service))
             {
+                string clientId = Properties.Settings.Default.clientId;
+                string clientSecret = Properties.Settings.Default.clientSecret;
+                string apiKey = Properties.Settings.Default.apiKey;
+
                 AuthorizationServerDescription serviceDescription = this.GetAuthorizationServerDescription();
-                client = new UserAgentClient(serviceDescription, clientId, clientSecret);
-                string scope = Scopes.GetScope(currentCallContext.Service);
-                authState = new AuthorizationState(new string[] { scope });
-                authState.Callback = new Uri(Properties.Settings.Default.redirectUrl);
-                Uri authorizationUrl = client.RequestUserAuthorization(authState);
+                _client = new UserAgentClient(serviceDescription, clientId, clientSecret);
+                string scope = Scopes.GetScope(_currentCallContext.Service);
+                _authState = new AuthorizationState(new string[] { scope });
+                _authState.Callback = new Uri(Properties.Settings.Default.redirectUrl);
+                Uri authorizationUrl = _client.RequestUserAuthorization(_authState);
                 // hack: UserAgentClient is still using response_type=code. needs response_type=token
                 // for google apis.
                 string url = authorizationUrl.AbsoluteUri.Replace("response_type=code", "response_type=token");
@@ -215,27 +220,26 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
             }
             else
             {
-                this.ExecuteRequest();
+                string token = this._accessTokens[_currentCallContext.Service];
+                this.ExecuteRequest(token);
             }
         }
 
         /// <summary>
         /// Construct and send method request assuming token is already obtained.
         /// </summary>
-        private void ExecuteRequest()
+        private void ExecuteRequest(string token)
         {
-            string token = this.AccessTokens[currentCallContext.Service];
-
             string clientId = Properties.Settings.Default.clientId;
             string clientSecret = Properties.Settings.Default.clientSecret;
             string apiKey = Properties.Settings.Default.apiKey;
 
             IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, token);
-            IService service = api.GetService(currentCallContext.Service, currentCallContext.Version);
-            IMethod method = api.GetMethod(currentCallContext.Service, currentCallContext.Resource, currentCallContext.Method, currentCallContext.Version);
+            IService service = _api.GetService(_currentCallContext.Service, _currentCallContext.Version);
+            IMethod method = _api.GetMethod(_currentCallContext.Service, _currentCallContext.Resource, _currentCallContext.Method, _currentCallContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
                 .WithAuthentication(authenticator)
-                .WithParameters(currentCallContext.Parameters)
+                .WithParameters(_currentCallContext.Parameters)
                 .WithDeveloperKey(apiKey);
 
             using (Stream stream = request.ExecuteRequest())
@@ -262,38 +266,34 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
             return serviceDescription;
         }
 
-        /// <summary>
-        /// Map between service name and access tokens
-        /// </summary>
-        private Dictionary<string, string> AccessTokens = new Dictionary<string,string>();
+        private void authWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
 
-        private void authWebBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        private void authWebBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             this.locationTextBox.Text = e.Url.AbsoluteUri;
 
             if (e.Url.AbsoluteUri.StartsWith(Properties.Settings.Default.redirectUrl))
             {
-                this.client.ProcessUserAuthorization(e.Url, this.authState);
+                this._client.ProcessUserAuthorization(e.Url, this._authState);
 
-                if (!string.IsNullOrEmpty(this.authState.AccessToken))
+                if (!string.IsNullOrEmpty(this._authState.AccessToken))
                 {
-                    if (!this.AccessTokens.ContainsKey(currentCallContext.Service))
+                    if (!this._accessTokens.ContainsKey(_currentCallContext.Service))
                     {
-                        this.AccessTokens.Add(currentCallContext.Service, authState.AccessToken);
+                        this._accessTokens.Add(_currentCallContext.Service, _authState.AccessToken);
                     }
                     else
                     {
-                        this.AccessTokens[currentCallContext.Service] = authState.AccessToken;
+                        this._accessTokens[_currentCallContext.Service] = _authState.AccessToken;
                     }
 
-                    this.ExecuteRequest();
+                    this.ExecuteRequest(_authState.AccessToken);
                 }
             }
-        }
 
-        private void authWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            this.Cursor = Cursors.Default;
         }
     }
 }
