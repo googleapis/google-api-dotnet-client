@@ -54,10 +54,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
 					""httpMethod"":""GET"",
 					""methodType"":""rest"",
 					""parameters"":{
-						""req_a"":{""parameterType"":""query"",""required"":true},
 						""req_b"":{""parameterType"":""query"",""required"":true},
-						""opt_a"":{""parameterType"":""query"",""required"":false},
-						""opt_b"":{""parameterType"":""query"",""required"":false}
+                        ""req_a"":{""parameterType"":""query"",""required"":true},
+						""opt_b"":{""parameterType"":""query"",""required"":false},
+						""opt_a"":{""parameterType"":""query"",""required"":false}
 					}
 				},
 				""postTest"":{
@@ -66,11 +66,11 @@ namespace Google.Apis.Tools.CodeGen.Tests
 					""httpMethod"":""POST"",
 					""methodType"":""rest"",
 					""parameters"":{
-						""opt_a"":{""parameterType"":""query"",""required"":false},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
 						""req_a"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
+						""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true},
+						""opt_b"":{""parameterType"":""query"",""required"":false},
 						""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
-						""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true}
+						""opt_a"":{""parameterType"":""query"",""required"":false}
 					}
 				},
 				""noParameterTest"":{

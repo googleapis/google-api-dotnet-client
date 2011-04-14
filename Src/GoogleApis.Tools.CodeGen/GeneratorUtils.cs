@@ -192,40 +192,5 @@ namespace Google.Apis.Tools.CodeGen
         }
         
         #endregion
-        
-        #region Required and Optional Parameters
-        public static IEnumerable<IParameter> GetRequiredParameters (IMethod method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<IParameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required 
-                    select p.Value;
-        }
-
-
-        public static IEnumerable<IParameter> GetOptionalParameters (IMethod method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<IParameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required == false
-                    select p.Value;
-        }
-
-        public static bool HasRequiredParameters (IMethod method)
-        {
-            return GetRequiredParameters (method).Any ();
-        }
-
-        public static bool HasOptionalParameters (IMethod method)
-        {
-            return GetOptionalParameters (method).Any ();
-        }
-        #endregion
     }
 }

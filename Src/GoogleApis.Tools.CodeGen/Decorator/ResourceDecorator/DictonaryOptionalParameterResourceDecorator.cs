@@ -87,7 +87,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
                                                   IEnumerable<IResourceDecorator> allDecorators)
             {
-                if (GeneratorUtils.HasOptionalParameters (method) == false) {
+                if (method.HasOptionalParameters() == false) {
                     return null;
                 }
                 
@@ -98,7 +98,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 member.Attributes = MemberAttributes.Public;
                 
                 // Add Manditory parameters to the method.
-                var paramList = GeneratorUtils.GetRequiredParameters (method);
+                var paramList = method.GetRequiredParameters();
                 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection ();
                 

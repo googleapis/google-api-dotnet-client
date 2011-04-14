@@ -69,6 +69,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
+    <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
