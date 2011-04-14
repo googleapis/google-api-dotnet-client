@@ -227,14 +227,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 return new CodeVariableDeclarationStatement (returnType, ReturnVariableName, call);
             }
 
+            [VisibleForTestOnly()]
             protected void AddAllDeclaredParameters (IMethod method, CodeMemberMethod member, 
                                                      CodeStatementCollection assignmentStatments)
             {
                 // Add All parameters to the method.
                 if (method.Parameters != null && method.Parameters != null) {
-                    var paramList = method.Parameters.Values;
                     int parameterCount = 1;
-                    foreach (var param in paramList) {
+                    foreach (var param in method.GetAllParametersSorted()) {
                         member.Parameters.Add (DeclareInputParameter (param, parameterCount));
                         assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount));
                         parameterCount++;
