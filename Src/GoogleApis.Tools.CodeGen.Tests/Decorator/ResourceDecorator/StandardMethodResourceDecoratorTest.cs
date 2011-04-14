@@ -31,16 +31,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		public void TestDecorateClass ()
 		{
 			var decorator = new StandardMethodResourceDecorator();
-			var decoratedClass = CreateDecoratedResourceClass(new StandardServiceFieldResourceDecorator(),
+			var decoratedClass = CreateDecoratedResourceClass(new StandardServiceFieldResourceDecorator(false),
                                                               new StandardResourceNameResourceDecorator(), 
                                                               decorator);
 			
-			Assert.AreEqual(2 + Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)).Length, decoratedClass.Members.Count);
+			Assert.AreEqual(2 + Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)).Length, 
+                            decoratedClass.Members.Count);
 			
 			var dict = CreateMethodDictionary(decoratedClass);
 			
 			// check that a method is generated for each of the TestMethodNames 
-			foreach(BaseCodeGeneratorTest.TestMethodNames methodName in Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)))
+			foreach(BaseCodeGeneratorTest.TestMethodNames methodName in 
+                    Enum.GetValues(typeof(BaseCodeGeneratorTest.TestMethodNames)))
 			{
 				if(dict.ContainsKey(methodName) == false)
 				{
@@ -63,7 +65,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 		
 		public void TestResourceGenerator()
 		{
-			var generator = new StandardMethodResourceDecorator.ResourceGenerator("TestClassName");
+			var generator = new StandardMethodResourceDecorator.ResourceGenerator(
+                "TestClassName", false, false, null, "");
 			var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
 			var method = resource.Methods[TestMethodNames.getTest.ToString()];
 			var mockDecorator = new MockResourceDecorator();
@@ -95,8 +98,5 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 			}
 			return dict;
 		}
-		
-		
 	}
 }
-

@@ -20,6 +20,13 @@ using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
+    /// <summary>
+    /// Classes that implement this interface will add code to the 
+    /// typeDeclaration based on the ISchema passed in.
+    /// Example on class may add fields to the typeDeclaration to 
+    /// represent each of the fields described in the schema
+    /// </summary>
+    /// <seealso cref="ISchema"/>
     public interface ISchemaDecorator
     {
         void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider);

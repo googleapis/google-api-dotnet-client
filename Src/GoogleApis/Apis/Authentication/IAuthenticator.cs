@@ -19,6 +19,10 @@ using System.Net;
 
 namespace Google.Apis.Authentication
 {
+    /// <summary>
+    /// Classes that implement this interface will know how 
+    /// a WebRequest with the approreate authentication embed in the request.
+    /// </summary>
     public interface IAuthenticator
     {
         HttpWebRequest CreateHttpWebRequest (string httpMethod, Uri targetUri);

@@ -20,6 +20,9 @@ using System.Collections.Generic;
 using Google.Apis.Authentication;
 
 namespace Google.Apis.Requests {
+    /// <summary>
+    /// Implementors will be able to make a request to a service.
+    /// </summary>
 	public interface IRequest {
 		IRequest On(string rpcName);
 		IRequest Returning(ReturnType returnType);

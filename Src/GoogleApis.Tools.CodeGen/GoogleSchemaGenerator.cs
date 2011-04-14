@@ -23,6 +23,7 @@ namespace Google.Apis.Tools.CodeGen
             (new List<ISchemaDecorator>(){
                 new StandardPropertyFieldDecorator(),
                 new StandardPropertyDecorator(),
+                new NewtonSoftPropertyAttributeDecorator(),
             }).
             AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;

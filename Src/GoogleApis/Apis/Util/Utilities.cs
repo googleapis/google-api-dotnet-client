@@ -15,9 +15,12 @@ limitations under the License.
 */
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
+
 using Google.Apis.Json;
 using Google.Apis.Requests;
 namespace Google.Apis.Util
@@ -83,6 +86,32 @@ namespace Google.Apis.Util
         public static bool IsNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll == null || coll.Count == 0;
+        }
+        
+        /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a name that matches the passed in name.
+        /// Or Null if no match found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static System.CodeDom.CodeMemberProperty FindPropertyByName(this CodeTypeMemberCollection coll, string name) 
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+            
+            foreach(CodeTypeMember member in coll)
+            {
+                if ((member is CodeMemberProperty) == false)
+                {
+                    continue;
+                }
+                var property = (CodeMemberProperty)member;
+                if (property.Name == name) 
+                {
+                    return property;
+                }
+            }
+            return null;
         }
 	}
 }

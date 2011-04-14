@@ -320,6 +320,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			cp.ReferencedAssemblies.Add ("System.dll");
 			AddRefereenceToDelararingAssembly (typeof(DiscoveryService), cp);
 			AddRefereenceToDelararingAssembly (typeof(ILog), cp);
+            AddRefereenceToDelararingAssembly (typeof(Newtonsoft.Json.JsonSerializer), cp);
 			
 			cp.GenerateExecutable = false;
 			cp.GenerateInMemory = true;
