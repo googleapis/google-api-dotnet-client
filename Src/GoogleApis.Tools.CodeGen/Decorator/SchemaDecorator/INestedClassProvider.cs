@@ -20,6 +20,10 @@ using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
 {
+    /// <summary>
+    /// Given a definition for a class returns a name and garentiees that 
+    /// that class will be generated in the appropreate scope. 
+    /// </summary>
     public interface INestedClassProvider
     {
         /// <summary>

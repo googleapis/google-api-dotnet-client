@@ -37,12 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			var tester = new ForTestOnly();
 			var member = new CodeMemberMethod();
 			
-			tester.ResourceCallAddBodyDeclaration(method, member);
+			tester.ResourceCallAddBodyDeclaration(method, member, new CodeTypeReference(typeof(string)));
 			Assert.AreEqual(0, member.Parameters.Count);
 			
 			method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.postTest);
 			member = new CodeMemberMethod();
-			tester.ResourceCallAddBodyDeclaration(method, member);
+			tester.ResourceCallAddBodyDeclaration(method, member, new CodeTypeReference(typeof(string)));
 			Assert.AreEqual(1, member.Parameters.Count);
 			
 		}
@@ -58,15 +58,14 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		
 		#region ForTestOnly : ResourceBaseGenerator
 		/// <summary>
-		/// For testing of ResourceBaseGenerator, extend and make public all methods and fields
+		///     For testing of ResourceBaseGenerator, extend and make public all methods and fields
 		/// </summary>
 		private class ForTestOnly: ResourceBaseGenerator{
 			new public const string ResourceNameConst = ResourceBaseGenerator.ResourceNameConst;		
-			new public const string ParameterDictionaryName = ResourceBaseGenerator.ParameterDictionaryName;
-			new public const string ReturnVariableName = ResourceBaseGenerator.ReturnVariableName;
 			
-			new public void ResourceCallAddBodyDeclaration(IMethod method, CodeMemberMethod member) {
-				base.ResourceCallAddBodyDeclaration(method, member);
+			new public void ResourceCallAddBodyDeclaration(
+                    IMethod method, CodeMemberMethod member, CodeTypeReference codeType) {
+				base.ResourceCallAddBodyDeclaration(method, member, codeType);
 			}
 			
 			new public CodeParameterDeclarationExpression DeclareInputParameter(

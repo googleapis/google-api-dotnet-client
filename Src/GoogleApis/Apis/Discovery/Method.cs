@@ -27,12 +27,15 @@ namespace Google.Apis.Discovery
 {
 	internal abstract class BaseMethod:IMethod
 	{
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseMethod));
+        private readonly DiscoveryVersion discoveryVersion;
 		internal readonly protected JsonDictionary information;
 		
 		internal protected Dictionary<string, IParameter> parameters;
-        
-		internal BaseMethod (KeyValuePair<string, object> kvp)
+
+        internal BaseMethod(DiscoveryVersion version, KeyValuePair<string, object> kvp)
 		{
+            this.discoveryVersion = version;
 			this.Name = kvp.Key;
 			this.information = kvp.Value as JsonDictionary;
 			if (this.information == null)
@@ -52,6 +55,32 @@ namespace Google.Apis.Discovery
 		{
 			get { return this.information.GetValueAsNull (ServiceFactory.HttpMethod) as string; }
 		}
+        
+        public string ResponseType
+        {
+            get {
+                var responseDict = this.information.GetValueAsNull (ServiceFactory.ResponseType) as JsonDictionary;
+                if( responseDict == null )
+                {
+                    logger.DebugFormat("No ReponseType for method [{0}]", Name);
+                    return null;
+                }
+                return responseDict.GetValueAsNull("$ref") as string;
+            }
+        }
+
+        public string RequestType
+        {
+            get {
+                var requestDict = this.information.GetValueAsNull (ServiceFactory.RequestType) as JsonDictionary;
+                if( requestDict == null )
+                {
+                    logger.DebugFormat("No RequestType for method [{0}]", Name);
+                    return null;
+                }
+                return requestDict.GetValueAsNull("$ref") as string;
+            }
+        }
 
 		public Dictionary<string, IParameter> Parameters 
 		{
@@ -80,7 +109,7 @@ namespace Google.Apis.Discovery
             var parameters = new Dictionary<string, IParameter> ();
             foreach (KeyValuePair<string, object> kvp in js) 
             {
-                IParameter p = new Parameter (kvp);
+                IParameter p = ParameterFactory.GetParameter(this.discoveryVersion,kvp);
                 parameters.Add (kvp.Key, p);
             }
             return parameters;
@@ -94,7 +123,7 @@ namespace Google.Apis.Discovery
     {
         private const string PathUrl = "pathUrl";
 
-        public MethodV0_1(KeyValuePair<string, object> kvp):base(kvp)
+        public MethodV0_1(KeyValuePair<string, object> kvp):base(DiscoveryVersion.Version_0_1, kvp)
         {
         }
         
@@ -112,7 +141,7 @@ namespace Google.Apis.Discovery
     {
         private const string PathUrl = "restPath";
 
-        public MethodV0_2(KeyValuePair<string, object> kvp):base(kvp)
+        public MethodV0_2(DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
         

@@ -17,7 +17,9 @@ using System;
 
 namespace Google.Apis.Discovery
 {
-	
+	/// <summary>
+    /// Knows how to get the IService of a given version and discoveryVersion.
+    /// </summary>
 	public interface IDiscoveryService 
 	{
 		IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
