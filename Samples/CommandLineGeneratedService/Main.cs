@@ -61,12 +61,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			try{
 				BuzzTest();
 				//AdSenseTest ();
-				Console.WriteLine("All Done.");
-				Console.ReadLine();
 			}catch(Exception ex)
 			{
 				logger.Error("Failed",ex);
 			}
+            Console.WriteLine("All Done.");
+            Console.ReadLine();
 		}
 		
 		private static void BuzzTest()
@@ -75,11 +75,6 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			V03.Buzz.BuzzService buzzService = new V03.Buzz.BuzzService();
 			PeopleFeed result = buzzService.People.SearchAsObject("b", "c", "d", "5", "David Waters");
 			
-			/*
-			StreamReader sr = new StreamReader(result);
-			String strResult = sr.ReadToEnd();
-			logger.Info(strResult);
-			*/
 			logger.Info("Total Results:" + result.TotalResults);
 			foreach(Person person in result.Entry)
 			{
@@ -90,18 +85,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			
 			IDictionary<string,string> parameters = new Dictionary<string, string>();
 			parameters.Add("q", "Fred");
-			//result = buzzService.People.SearchAsObject(parameters);
-			result = buzzService.People.SearchAsObject(null, null, null, "10", "Fred");
+			result = buzzService.People.SearchAsObject(null, null, null, null, "Fred");
 			 
-			/*
-			sr = new StreamReader(result);
-			strResult = sr.ReadToEnd();
-			logger.Info(strResult);
-			*/
 			logger.Info("Total Results:" + result.TotalResults);
 			foreach(Person person in result.Entry)
 			{
-				logger.Info(person.Name + " " + person.Fashion);
+                logger.Info(person.DisplayName + " " + person.ProfileUrl);
 			}
 		}
 	}
