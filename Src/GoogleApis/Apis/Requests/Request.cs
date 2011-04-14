@@ -191,7 +191,7 @@ namespace Google.Apis.Requests
 				queryParams.Add("alt=atom");	
 			}
             
-            if(DeveloperKey != null && DeveloperKey.Length >0)
+            if(DeveloperKey.IsNotNullOrEmpty())
             {
                 queryParams.Add("key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need
                                 Replace("&","%26").                         // Also escaped & and ?
