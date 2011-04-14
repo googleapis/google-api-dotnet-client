@@ -198,7 +198,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Dat
         
         private string currency;
         
-        private NestedClass1 daterangeField1;
+        private NestedClass1 dateRange;
         
         private IList<System.String> dimensions;
         
@@ -223,12 +223,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Dat
         }
         
         [Newtonsoft.Json.JsonPropertyAttribute("date_range")]
-        public virtual NestedClass1 DaterangeProperty1 {
+        public virtual NestedClass1 DateRange {
             get {
-                return this.daterangeField1;
+                return this.dateRange;
             }
             set {
-                this.daterangeField1 = value;
+                this.dateRange = value;
             }
         }
         
@@ -294,105 +294,105 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Dat
         
         public class NestedClass1 {
             
-            private string enddateField0;
+            private string endDate;
             
-            private string startdateField1;
+            private string startDate;
             
             [Newtonsoft.Json.JsonPropertyAttribute("end_date")]
-            public virtual string EnddateProperty0 {
+            public virtual string EndDate {
                 get {
-                    return this.enddateField0;
+                    return this.endDate;
                 }
                 set {
-                    this.enddateField0 = value;
+                    this.endDate = value;
                 }
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("start_date")]
-            public virtual string StartdateProperty1 {
+            public virtual string StartDate {
                 get {
-                    return this.startdateField1;
+                    return this.startDate;
                 }
                 set {
-                    this.startdateField1 = value;
+                    this.startDate = value;
                 }
             }
         }
         
         public class NestedClass2 {
             
-            private long rowcountField0;
+            private long rowCount;
             
-            private long startrowField1;
+            private long startRow;
             
             [Newtonsoft.Json.JsonPropertyAttribute("row_count")]
-            public virtual long RowcountProperty0 {
+            public virtual long RowCount {
                 get {
-                    return this.rowcountField0;
+                    return this.rowCount;
                 }
                 set {
-                    this.rowcountField0 = value;
+                    this.rowCount = value;
                 }
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("start_row")]
-            public virtual long StartrowProperty1 {
+            public virtual long StartRow {
                 get {
-                    return this.startrowField1;
+                    return this.startRow;
                 }
                 set {
-                    this.startrowField1 = value;
+                    this.startRow = value;
                 }
             }
         }
         
         public class NestedClass3 {
             
-            private IList<System.String> adclientidsField0;
+            private IList<System.String> adClientIds;
             
-            private IList<System.String> adunitidsField1;
+            private IList<System.String> adUnitIds;
             
-            private IList<System.String> customchannelidsField2;
+            private IList<System.String> customChannelIds;
             
-            private IList<System.String> urlchannelidsField3;
+            private IList<System.String> urlChannelIds;
             
             [Newtonsoft.Json.JsonPropertyAttribute("ad_client_ids")]
-            public virtual IList<System.String> AdclientidsProperty0 {
+            public virtual IList<System.String> AdClientIds {
                 get {
-                    return this.adclientidsField0;
+                    return this.adClientIds;
                 }
                 set {
-                    this.adclientidsField0 = value;
+                    this.adClientIds = value;
                 }
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("ad_unit_ids")]
-            public virtual IList<System.String> AdunitidsProperty1 {
+            public virtual IList<System.String> AdUnitIds {
                 get {
-                    return this.adunitidsField1;
+                    return this.adUnitIds;
                 }
                 set {
-                    this.adunitidsField1 = value;
+                    this.adUnitIds = value;
                 }
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("custom_channel_ids")]
-            public virtual IList<System.String> CustomchannelidsProperty2 {
+            public virtual IList<System.String> CustomChannelIds {
                 get {
-                    return this.customchannelidsField2;
+                    return this.customChannelIds;
                 }
                 set {
-                    this.customchannelidsField2 = value;
+                    this.customChannelIds = value;
                 }
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("url_channel_ids")]
-            public virtual IList<System.String> UrlchannelidsProperty3 {
+            public virtual IList<System.String> UrlChannelIds {
                 get {
-                    return this.urlchannelidsField3;
+                    return this.urlChannelIds;
                 }
                 set {
-                    this.urlchannelidsField3 = value;
+                    this.urlChannelIds = value;
                 }
             }
         }
@@ -431,7 +431,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Dat
         
         private IList<IList<System.String>> rows;
         
-        private long totalmatchedrowsField2;
+        private long totalMatchedRows;
         
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual IList<NestedClass1> Headers {
@@ -454,12 +454,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Dat
         }
         
         [Newtonsoft.Json.JsonPropertyAttribute("total_matched_rows")]
-        public virtual long TotalmatchedrowsProperty2 {
+        public virtual long TotalMatchedRows {
             get {
-                return this.totalmatchedrowsField2;
+                return this.totalMatchedRows;
             }
             set {
-                this.totalmatchedrowsField2 = value;
+                this.totalMatchedRows = value;
             }
         }
         
@@ -823,20 +823,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream List(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing adunits.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters);
             logger.Debug("Done Executing adunits.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits ListAsObject(string adclientidParam1) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits ListAsObject(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing adunits.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits>(this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters));
             logger.Debug("Done Executing adunits.list");
@@ -856,20 +856,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream List(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing customchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters);
             logger.Debug("Done Executing customchannels.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels ListAsObject(string adclientidParam1) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels ListAsObject(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing customchannels.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels>(this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters));
             logger.Debug("Done Executing customchannels.list");
@@ -918,20 +918,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string adclientidParam1) {
+        public virtual System.IO.Stream List(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing urlchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters);
             logger.Debug("Done Executing urlchannels.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels ListAsObject(string adclientidParam1) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels ListAsObject(string adClientId) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["ad_client_id"] = adclientidParam1;
+            parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing urlchannels.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels>(this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters));
             logger.Debug("Done Executing urlchannels.list");

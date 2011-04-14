@@ -65,9 +65,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal void AddResourceAssignments (IService service, CodeMemberMethod baseConstructor)
         {
             int resourceNumber = 1;
-            foreach (var pair in service.Resources) {
-                IResource resource = pair.Value;
-                AddResourceAssignment (baseConstructor, resource, resourceNumber);
+            foreach (var resource in service.Resources.Values)
+            {
+                AddResourceAssignment (baseConstructor, resource, resourceNumber, service.Resources.Keys);
                 resourceNumber++;
             }
         }
@@ -114,13 +114,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return constructor;
         }
 
-        private void AddResourceAssignment (CodeMemberMethod constructor, IResource resource, int resourceNumber)
+        private void AddResourceAssignment (
+            CodeMemberMethod constructor, IResource resource, int resourceNumber, IEnumerable<string> otherResourceNames)
         {
             constructor.Statements.Add (
                 new CodeAssignStatement (
-                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber), 
+                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber, otherResourceNames), 
                     new CodeObjectCreateExpression (
-                        GeneratorUtils.GetClassName (resource, resourceNumber), 
+                        GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames), 
                         new CodeThisReferenceExpression ())));
         }
         

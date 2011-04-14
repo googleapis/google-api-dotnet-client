@@ -18,7 +18,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             if (method == null || method.Parameters.IsNullOrEmpty())
             {
-                return new List<IParameter>(0);
+                return Enumerable.Empty<IParameter>();
             }
             return from p in method.Parameters
                    where p.Value.Required
@@ -35,7 +35,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             if (method == null || method.Parameters.IsNullOrEmpty())
             {
-                return new List<IParameter>(0);
+                return Enumerable.Empty<IParameter>();
             }
             return from p in method.Parameters
                    where p.Value.Required == false

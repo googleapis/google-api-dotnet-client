@@ -39,13 +39,14 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         public ResourceClassGenerator (IResource resource, String serviceClassName, int resourceNumber, 
                                         IEnumerable<IResourceDecorator> decorators,
-                                       ResourceContainerGenerator resourceConainerGenerator)
+                                       ResourceContainerGenerator resourceConainerGenerator,
+                                       IEnumerable<string> otherResourceNames)
         {
             this.resource = resource;
             this.serviceClassName = serviceClassName;
             this.resourceNumber = resourceNumber;
             this.decorators = decorators;
-            this.className = GeneratorUtils.GetClassName (resource, this.resourceNumber);
+            this.className = GeneratorUtils.GetClassName (resource, this.resourceNumber, otherResourceNames);
             this.resourceConainerGenerator = resourceConainerGenerator;
         }
 

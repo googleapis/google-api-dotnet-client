@@ -93,7 +93,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 var member = new CodeMemberMethod ();
                 
-                member.Name = GeneratorUtils.GetMethodName (method, methodNumber);
+                member.Name = GeneratorUtils.GetMethodName (method, methodNumber, resource.Methods.Keys);
                 member.ReturnType = new CodeTypeReference ("System.IO.Stream");
                 member.Attributes = MemberAttributes.Public;
                 
@@ -106,8 +106,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 int parameterCount = 1;
                 foreach (var param in paramList) {
-                    member.Parameters.Add (DeclareInputParameter (param, parameterCount));
-                    assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount));
+                    member.Parameters.Add (DeclareInputParameter (param, parameterCount, method));
+                    assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount, method));
                     parameterCount++;
                 }
                 
