@@ -201,18 +201,23 @@ namespace Google.Apis.Requests
 			// Replace the substitution parameters
 			foreach(var parameter in this.Parameters) {
 				var parameterDefinition = Method.Parameters[parameter.Key];
+                string value = parameter.Value;
+                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default
+                {
+                    value = parameterDefinition.DefaultValue;
+                }
                 switch (parameterDefinition.ParameterType)
                 {
                     case "path":
-                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), parameter.Value.ToString());
+                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), value);
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.Required == false && parameter.Value.IsNullOrEmpty())
+                        if (parameterDefinition.Required == false && value.IsNullOrEmpty())
                         {
                             continue;
                         }
-                        queryParams.Add(parameterDefinition.Name + "=" + parameter.Value);
+                        queryParams.Add(parameterDefinition.Name + "=" + value);
                         break;
                     default:
                         throw new NotSupportedException("Found an unsupported Parametertype [" + parameterDefinition.ParameterType +"]" );
