@@ -21,6 +21,7 @@ using System.Linq;
 
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -57,17 +58,21 @@ namespace Google.Apis.Tools.CodeGen.Generator
             }
         }
 
-        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount)
+        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount, IMethod method)
         {
-            return new CodeParameterDeclarationExpression (typeof(string), GeneratorUtils.GetParameterName (param, parameterCount));
+            method.ThrowIfNull("method");
+            return new CodeParameterDeclarationExpression (typeof(string), 
+                GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
         }
 
-        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount)
+        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount, IMethod method)
         {
+            method.ThrowIfNull("method");
+
             var assign = new CodeAssignStatement ();
             assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));
             
-            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount));
+            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
             return assign;
         }
   

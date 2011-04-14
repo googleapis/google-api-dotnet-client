@@ -228,7 +228,7 @@ namespace Google.Apis.Tools.CodeGen
                 logger.DebugFormat ("Adding Resource {0}", res.Name);
                 var resourceGenerator = new ResourceClassGenerator (
                     res, serviceClassName, 
-                    resourceNumber, resourceDecorators, resourceContainerGenerator);
+                    resourceNumber, resourceDecorators, resourceContainerGenerator, resourceContainer.Resources.Keys);
                 clientNamespace.Types.Add (resourceGenerator.CreateClass ());
                 resourceNumber++;
                 resourceNumber = CreateResources(clientNamespace, serviceClassName, res, 

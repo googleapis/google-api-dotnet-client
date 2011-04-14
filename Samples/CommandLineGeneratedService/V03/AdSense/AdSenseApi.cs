@@ -1334,7 +1334,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
             
             private long id;
             
-            private Link pagelinkField1;
+            private Link pageLink;
             
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual long Id {
@@ -1347,12 +1347,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data {
             }
             
             [Newtonsoft.Json.JsonPropertyAttribute("page_link")]
-            public virtual Link PagelinkProperty1 {
+            public virtual Link PageLink {
                 get {
-                    return this.pagelinkField1;
+                    return this.pageLink;
                 }
                 set {
-                    this.pagelinkField1 = value;
+                    this.pageLink = value;
                 }
             }
         }
@@ -3788,21 +3788,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string alt, string hl, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Delete(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing activities.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
             logger.Debug("Done Executing activities.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream ExtractPeopleFromSearch(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+        public virtual System.IO.Stream ExtractPeopleFromSearch(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -3811,7 +3811,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -3821,53 +3821,53 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string alt, string hl, string maxcommentsParam3, string maxlikedParam4, string postId, string truncateAtom, string userId) {
+        public virtual System.IO.Stream Get(string postId, string userId, string alt, string hl, string maxComments, string maxLiked, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["max-comments"] = maxcommentsParam3;
-            parameters["max-liked"] = maxlikedParam4;
-            parameters["postId"] = postId;
+            parameters["max-comments"] = maxComments;
+            parameters["max-liked"] = maxLiked;
             parameters["truncateAtom"] = truncateAtom;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.get");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "get", body, parameters);
             logger.Debug("Done Executing activities.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string alt, string hl, string preview, string userId) {
+        public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl, string preview) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["preview"] = preview;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
             logger.Debug("Done Executing activities.insert");
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string truncateAtom, string userId) {
+        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, string maxComments, string maxLiked, string maxResults, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-comments"] = maxcommentsParam4;
-            parameters["max-liked"] = maxlikedParam5;
-            parameters["max-results"] = maxresultsParam6;
-            parameters["scope"] = scope;
+            parameters["max-comments"] = maxComments;
+            parameters["max-liked"] = maxLiked;
+            parameters["max-results"] = maxResults;
             parameters["truncateAtom"] = truncateAtom;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "list", body, parameters);
             logger.Debug("Done Executing activities.list");
             return ret;
         }
         
-        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string truncateAtom) {
+        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -3876,7 +3876,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -3887,7 +3887,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Track(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+        public virtual System.IO.Stream Track(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -3896,7 +3896,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -3906,14 +3906,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, string abuseType, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["abuseType"] = abuseType;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing activities.update");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "update", body, parameters);
             logger.Debug("Done Executing activities.update");
@@ -3931,21 +3931,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string alt, string hl, string postId, string scope, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing activities.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "delete", body, parameters);
             logger.Debug("Done Executing activities.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ExtractPeopleFromSearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ExtractPeopleFromSearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -3954,7 +3954,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -3964,53 +3964,53 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity GetAsObject(string alt, string hl, string maxcommentsParam3, string maxlikedParam4, string postId, string truncateAtom, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity GetAsObject(string postId, string userId, string alt, string hl, string maxComments, string maxLiked, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["postId"] = postId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["max-comments"] = maxcommentsParam3;
-            parameters["max-liked"] = maxlikedParam4;
-            parameters["postId"] = postId;
+            parameters["max-comments"] = maxComments;
+            parameters["max-liked"] = maxLiked;
             parameters["truncateAtom"] = truncateAtom;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "get", body, parameters));
             logger.Debug("Done Executing activities.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string alt, string hl, string preview, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string userId, string alt, string hl, string preview) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
             parameters["preview"] = preview;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing activities.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ListAsObject(string alt, string c, string hl, string maxcommentsParam4, string maxlikedParam5, string maxresultsParam6, string scope, string truncateAtom, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ListAsObject(string scope, string userId, string alt, string c, string hl, string maxComments, string maxLiked, string maxResults, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-comments"] = maxcommentsParam4;
-            parameters["max-liked"] = maxlikedParam5;
-            parameters["max-results"] = maxresultsParam6;
-            parameters["scope"] = scope;
+            parameters["max-comments"] = maxComments;
+            parameters["max-liked"] = maxLiked;
+            parameters["max-results"] = maxResults;
             parameters["truncateAtom"] = truncateAtom;
-            parameters["userId"] = userId;
             logger.Debug("Executing activities.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed>(this.service.ExecuteRequest(Activities.Resource, "list", body, parameters));
             logger.Debug("Done Executing activities.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed SearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius, string truncateAtom) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed SearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius, string truncateAtom) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -4019,7 +4019,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -4030,7 +4030,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed TrackAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxresultsParam7, string pid, string q, string radius) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed TrackAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
@@ -4039,7 +4039,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             parameters["hl"] = hl;
             parameters["lat"] = lat;
             parameters["lon"] = lon;
-            parameters["max-results"] = maxresultsParam7;
+            parameters["max-results"] = maxResults;
             parameters["pid"] = pid;
             parameters["q"] = q;
             parameters["radius"] = radius;
@@ -4049,14 +4049,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string abuseType, string alt, string hl, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string postId, string scope, string userId, string abuseType, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["abuseType"] = abuseType;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing activities.update");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity>(this.service.ExecuteRequest(Activities.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing activities.update");
@@ -4157,142 +4157,142 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Delete(string alt, string commentId, string hl, string postId, string userId) {
+        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
             logger.Debug("Done Executing comments.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string alt, string commentId, string hl, string postId, string userId) {
+        public virtual System.IO.Stream Get(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.get");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "get", body, parameters);
             logger.Debug("Done Executing comments.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string alt, string hl, string postId, string userId) {
+        public virtual System.IO.Stream Insert(string body, string postId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "insert", body, parameters);
             logger.Debug("Done Executing comments.insert");
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string postId, string scope, string userId) {
+        public virtual System.IO.Stream List(string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing comments.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "list", body, parameters);
             logger.Debug("Done Executing comments.list");
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, string abuseType, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["abuseType"] = abuseType;
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.update");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "update", body, parameters);
             logger.Debug("Done Executing comments.update");
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string alt, string commentId, string hl, string postId, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Comments.Resource, "delete", body, parameters);
             logger.Debug("Done Executing comments.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment GetAsObject(string alt, string commentId, string hl, string postId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment GetAsObject(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "get", body, parameters));
             logger.Debug("Done Executing comments.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string alt, string hl, string postId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string postId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.insert");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing comments.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ListAsObject(string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing comments.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed>(this.service.ExecuteRequest(Comments.Resource, "list", body, parameters));
             logger.Debug("Done Executing comments.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string abuseType, string alt, string commentId, string hl, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string commentId, string postId, string scope, string userId, string abuseType, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["abuseType"] = abuseType;
-            parameters["alt"] = alt;
             parameters["commentId"] = commentId;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["abuseType"] = abuseType;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing comments.update");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment>(this.service.ExecuteRequest(Comments.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing comments.update");
@@ -4365,126 +4365,126 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string userId) {
+        public virtual System.IO.Stream Delete(string groupId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
             logger.Debug("Done Executing groups.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string alt, string groupId, string hl, string userId) {
+        public virtual System.IO.Stream Get(string groupId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.get");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "get", body, parameters);
             logger.Debug("Done Executing groups.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
             logger.Debug("Done Executing groups.insert");
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string userId) {
+        public virtual System.IO.Stream List(string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing groups.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "list", body, parameters);
             logger.Debug("Done Executing groups.list");
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string userId) {
+        public virtual System.IO.Stream Update(string body, string groupId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.update");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "update", body, parameters);
             logger.Debug("Done Executing groups.update");
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string alt, string groupId, string hl, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string groupId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "delete", body, parameters);
             logger.Debug("Done Executing groups.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group GetAsObject(string alt, string groupId, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group GetAsObject(string groupId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "get", body, parameters));
             logger.Debug("Done Executing groups.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing groups.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ListAsObject(string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing groups.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed>(this.service.ExecuteRequest(Groups.Resource, "list", body, parameters));
             logger.Debug("Done Executing groups.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string alt, string groupId, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string groupId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing groups.update");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group>(this.service.ExecuteRequest(Groups.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing groups.update");
@@ -4550,88 +4550,88 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Delete(string alt, string groupId, string hl, string personId, string userId) {
+        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing people.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
             logger.Debug("Done Executing people.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string alt, string hl, string userId) {
+        public virtual System.IO.Stream Get(string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing people.get");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "get", body, parameters);
             logger.Debug("Done Executing people.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.liked");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "liked", body, parameters);
             logger.Debug("Done Executing people.liked");
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string groupId, string hl, string maxresultsParam5, string userId) {
+        public virtual System.IO.Stream List(string groupId, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
-            parameters["groupId"] = groupId;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.list");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "list", body, parameters);
             logger.Debug("Done Executing people.list");
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.reshared");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "reshared", body, parameters);
             logger.Debug("Done Executing people.reshared");
             return ret;
         }
         
-        public virtual System.IO.Stream Search(string alt, string c, string hl, string maxresultsParam4, string q) {
+        public virtual System.IO.Stream Search(string alt, string c, string hl, string maxResults, string q) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
+            parameters["max-results"] = maxResults;
             parameters["q"] = q;
             logger.Debug("Executing people.search");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
@@ -4639,101 +4639,101 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string alt, string groupId, string hl, string personId, string userId) {
+        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing people.update");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "update", body, parameters);
             logger.Debug("Done Executing people.update");
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string alt, string groupId, string hl, string personId, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string groupId, string personId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing people.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "delete", body, parameters);
             logger.Debug("Done Executing people.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person GetAsObject(string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person GetAsObject(string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing people.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person>(this.service.ExecuteRequest(People.Resource, "get", body, parameters));
             logger.Debug("Done Executing people.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed LikedAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed LikedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.liked");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "liked", body, parameters));
             logger.Debug("Done Executing people.liked");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ListAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ListAsObject(string groupId, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["groupId"] = groupId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
-            parameters["groupId"] = groupId;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "list", body, parameters));
             logger.Debug("Done Executing people.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ResharedAsObject(string alt, string c, string groupId, string hl, string maxresultsParam5, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ResharedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["c"] = c;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["c"] = c;
+            parameters["hl"] = hl;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing people.reshared");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "reshared", body, parameters));
             logger.Debug("Done Executing people.reshared");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed SearchAsObject(string alt, string c, string hl, string maxresultsParam4, string q) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed SearchAsObject(string alt, string c, string hl, string maxResults, string q) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
+            parameters["max-results"] = maxResults;
             parameters["q"] = q;
             logger.Debug("Executing people.search");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed>(this.service.ExecuteRequest(People.Resource, "search", body, parameters));
@@ -4741,13 +4741,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person body, string alt, string groupId, string hl, string personId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person body, string groupId, string personId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
             parameters["groupId"] = groupId;
-            parameters["hl"] = hl;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing people.update");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person>(this.service.ExecuteRequest(People.Resource, "update", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing people.update");
@@ -4839,104 +4839,104 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Delete(string albumId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
             logger.Debug("Done Executing photoAlbums.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Get(string albumId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.get");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters);
             logger.Debug("Done Executing photoAlbums.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
             logger.Debug("Done Executing photoAlbums.insert");
             return ret;
         }
         
-        public virtual System.IO.Stream List(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["scope"] = scope;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photoAlbums.list");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters);
             logger.Debug("Done Executing photoAlbums.list");
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string albumId, string alt, string hl, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string albumId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "delete", body, parameters);
             logger.Debug("Done Executing photoAlbums.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album GetAsObject(string albumId, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album GetAsObject(string albumId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "get", body, parameters));
             logger.Debug("Done Executing photoAlbums.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album body, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album body, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.insert");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album>(this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photoAlbums.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ListAsObject(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ListAsObject(string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["scope"] = scope;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photoAlbums.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed>(this.service.ExecuteRequest(PhotoAlbums.Resource, "list", body, parameters));
             logger.Debug("Done Executing photoAlbums.list");
@@ -4994,164 +4994,164 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream Delete(string albumId, string alt, string hl, string photoId, string userId) {
+        public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing photos.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
             logger.Debug("Done Executing photos.delete");
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string albumId, string alt, string hl, string photoId, string userId) {
+        public virtual System.IO.Stream Get(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing photos.get");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "get", body, parameters);
             logger.Debug("Done Executing photos.get");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string albumId, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Insert(string body, string albumId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert", body, parameters);
             logger.Debug("Done Executing photos.insert");
             return ret;
         }
         
-        public virtual System.IO.Stream Insert2(string body, string albumId, string alt, string hl, string userId) {
+        public virtual System.IO.Stream Insert2(string body, string albumId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photos.insert2");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "insert2", body, parameters);
             logger.Debug("Done Executing photos.insert2");
             return ret;
         }
         
-        public virtual System.IO.Stream ListByAlbum(string albumId, string alt, string c, string hl, string maxresultsParam5, string userId) {
+        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photos.listByAlbum");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters);
             logger.Debug("Done Executing photos.listByAlbum");
             return ret;
         }
         
-        public virtual System.IO.Stream ListByScope(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+        public virtual System.IO.Stream ListByScope(string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["scope"] = scope;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photos.listByScope");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters);
             logger.Debug("Done Executing photos.listByScope");
             return ret;
         }
         
-        public virtual System.IO.Stream DeleteAsObject(string albumId, string alt, string hl, string photoId, string userId) {
+        public virtual System.IO.Stream DeleteAsObject(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing photos.delete");
             System.IO.Stream ret = this.service.ExecuteRequest(Photos.Resource, "delete", body, parameters);
             logger.Debug("Done Executing photos.delete");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson GetAsObject(string albumId, string alt, string hl, string photoId, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson GetAsObject(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing photos.get");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "get", body, parameters));
             logger.Debug("Done Executing photos.get");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite body, string albumId, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite body, string albumId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite>(this.service.ExecuteRequest(Photos.Resource, "insert", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photos.insert");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson Insert2AsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson body, string albumId, string alt, string hl, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson Insert2AsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson body, string albumId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
-            parameters["userId"] = userId;
             logger.Debug("Executing photos.insert2");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson>(this.service.ExecuteRequest(Photos.Resource, "insert2", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing photos.insert2");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByAlbumAsObject(string albumId, string alt, string c, string hl, string maxresultsParam5, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByAlbumAsObject(string albumId, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
             parameters["albumId"] = albumId;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam5;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photos.listByAlbum");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed>(this.service.ExecuteRequest(Photos.Resource, "listByAlbum", body, parameters));
             logger.Debug("Done Executing photos.listByAlbum");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByScopeAsObject(string alt, string c, string hl, string maxresultsParam4, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByScopeAsObject(string scope, string userId, string alt, string c, string hl, string maxResults) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            parameters["scope"] = scope;
+            parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
-            parameters["max-results"] = maxresultsParam4;
-            parameters["scope"] = scope;
-            parameters["userId"] = userId;
+            parameters["max-results"] = maxResults;
             logger.Debug("Executing photos.listByScope");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed>(this.service.ExecuteRequest(Photos.Resource, "listByScope", body, parameters));
             logger.Debug("Done Executing photos.listByScope");
@@ -5231,28 +5231,28 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
-        public virtual System.IO.Stream List(string alt, string hl, string postId, string scope, string userId) {
+        public virtual System.IO.Stream List(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing related.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Related.Resource, "list", body, parameters);
             logger.Debug("Done Executing related.list");
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ListAsObject(string alt, string hl, string postId, string scope, string userId) {
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ListAsObject(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
             System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
-            parameters["alt"] = alt;
-            parameters["hl"] = hl;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
+            parameters["alt"] = alt;
+            parameters["hl"] = hl;
             logger.Debug("Executing related.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ret = this.service.JsonToObject<Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed>(this.service.ExecuteRequest(Related.Resource, "list", body, parameters));
             logger.Debug("Done Executing related.list");

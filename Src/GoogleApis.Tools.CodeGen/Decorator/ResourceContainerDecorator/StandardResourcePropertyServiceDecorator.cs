@@ -19,6 +19,7 @@ using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
+using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
@@ -40,35 +41,36 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
             foreach (var pair in service.Resources)
             {
                 IResource resource = pair.Value;
-                serviceClass.Members.Add(CreateResourceGetter (resource, resourceNumber));
-                serviceClass.Members.Add(CreateResourceField (resource, resourceNumber));
+                serviceClass.Members.Add(CreateResourceGetter (resource, resourceNumber, service.Resources.Keys));
+                serviceClass.Members.Add(CreateResourceField (resource, resourceNumber, service.Resources.Keys));
                 resourceNumber++;
             }
         }
         
         [VisibleForTestOnly]        
-        internal CodeMemberField CreateResourceField (IResource resource, int resourceNumber)
+        internal CodeMemberField CreateResourceField (IResource resource, int resourceNumber, IEnumerable<string> otherResourceNames)
         {
             // Add local private variables for each Resource
             var field = new CodeMemberField (
-                GeneratorUtils.GetClassName (resource, resourceNumber), 
-                GeneratorUtils.GetFieldName (resource, resourceNumber));
+                GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames), 
+                GeneratorUtils.GetFieldName (resource, resourceNumber, otherResourceNames));
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return field;
         }
   
         [VisibleForTestOnly]
-        internal CodeMemberProperty CreateResourceGetter (IResource resource, int resourceNumber)
+        internal CodeMemberProperty CreateResourceGetter (IResource resource, int resourceNumber, 
+            IEnumerable<string> otherResourceNames)
         {
             var getter = new CodeMemberProperty ();
-            getter.Name = GeneratorUtils.GetClassName (resource, resourceNumber);
+            getter.Name = GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames);
             getter.HasGet = true;
             getter.HasSet = false;
             getter.Attributes = MemberAttributes.Public;
-            getter.Type = new CodeTypeReference (GeneratorUtils.GetClassName (resource, resourceNumber));
+            getter.Type = new CodeTypeReference (GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames));
             getter.GetStatements.Add (
                 new CodeMethodReturnStatement (
-                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber)));
+                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber, otherResourceNames)));
             
             return getter;
         }

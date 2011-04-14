@@ -144,7 +144,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 var member = new CodeMemberMethod ();
                 
-                member.Name = GeneratorUtils.GetMethodName (method, methodNumber) + this.methodNameSuffix;
+                member.Name = GeneratorUtils.GetMethodName (method, methodNumber, resource.Methods.Keys) + this.methodNameSuffix;
                 member.ReturnType = GetReturnType(method);
                 member.Attributes = MemberAttributes.Public;
                 
@@ -235,8 +235,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 if (method.Parameters != null && method.Parameters != null) {
                     int parameterCount = 1;
                     foreach (var param in method.GetAllParametersSorted()) {
-                        member.Parameters.Add (DeclareInputParameter (param, parameterCount));
-                        assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount));
+                        member.Parameters.Add (DeclareInputParameter (param, parameterCount, method));
+                        assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount, method));
                         parameterCount++;
                     }
                 }

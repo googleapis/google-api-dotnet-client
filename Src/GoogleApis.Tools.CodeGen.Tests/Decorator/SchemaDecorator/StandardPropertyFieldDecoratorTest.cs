@@ -23,6 +23,7 @@ using NUnit.Framework;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Tests.Generator;
+using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 {
@@ -102,7 +103,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var decorator = new StandardPropertyFieldDecorator();
             
             schema.Type = JsonSchemaType.String;
-            CodeMemberField generatedField = decorator.GenerateField("normalName", schema, 1, internalClassProvider);
+            CodeMemberField generatedField = decorator.GenerateField("normalName", schema, 1, internalClassProvider, Enumerable.Empty<string>());
             
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(string).FullName, generatedField.Type.BaseType);
@@ -110,14 +111,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
             
             schema.Type = JsonSchemaType.Boolean;
-            generatedField = decorator.GenerateField("public", schema, 2, internalClassProvider);
+            generatedField = decorator.GenerateField("public", schema, 2, internalClassProvider, Enumerable.Empty<string>());
             
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
             Assert.AreEqual("publicField2", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
-            
-            generatedField = decorator.GenerateField("UPPERCASE", schema, 2, internalClassProvider);
+
+            generatedField = decorator.GenerateField("UPPERCASE", schema, 2, internalClassProvider, Enumerable.Empty<string>());
             
             Assert.NotNull(generatedField);
             Assert.AreEqual("uPPERCASE", generatedField.Name);

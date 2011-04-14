@@ -69,15 +69,13 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			}
 			
 			new public CodeParameterDeclarationExpression DeclareInputParameter(
-					IParameter param, 
-				    int parameterCount){
-				return  base.DeclareInputParameter(param, parameterCount);
+					IParameter param, int parameterCount, IMethod method){
+				return  base.DeclareInputParameter(param, parameterCount, method);
 			}
 			
 			new public CodeAssignStatement AssignParameterToDictionary(
-					IParameter param, 
-				    int parameterCount){
-				return base.AssignParameterToDictionary(param, parameterCount);
+					IParameter param, int parameterCount, IMethod method){
+				return base.AssignParameterToDictionary(param, parameterCount, method);
 			}
 			
 			new public CodeStatement CreateExecuteRequest(IMethod method){
