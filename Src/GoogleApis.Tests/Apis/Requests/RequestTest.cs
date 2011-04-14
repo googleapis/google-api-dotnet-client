@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 using Google.Apis.Requests;
+using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -75,6 +76,49 @@ namespace Google.Apis.Tests.Apis.Requests
             
             Assert.AreEqual("https://test.google.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
             
+        }
+
+        [Test()]
+        public void BuildRequestUrlWithNullOptionalParameters()
+        {
+            var parameterDefinitions = new Dictionary<string, IParameter>();
+            parameterDefinitions.Add("required", new MockParameter(){
+                  Name = "required",
+                  Required = true,
+                  ParameterType = "query"});
+            parameterDefinitions.Add("optionalWithValue", new MockParameter(){
+                  Name = "optionalWithValue",
+                  Required = false,
+                  ParameterType = "query"});
+            parameterDefinitions.Add("optionalWithNull", new MockParameter(){
+                  Name = "optionalWithNull",
+                  Required = false,
+                  ParameterType = "query"});
+            parameterDefinitions.Add("optionalWithEmpty", new MockParameter(){
+                  Name = "optionalWithEmpty",
+                  Required = false,
+                  ParameterType = "query"});
+            parameterDefinitions.Add("optionalNotPressent", new MockParameter(){
+                  Name = "optionalNotPressent",
+                  Required = false,
+                  ParameterType = "query"});
+            var parameterValues = new SortedDictionary<string, string>();
+            parameterValues.Add("required", "a");
+            parameterValues.Add("optionalWithValue", "b");
+            parameterValues.Add("optionalWithNull", null);
+            parameterValues.Add("optionalWithEmpty", "");
+
+            var service = new MockService();
+            var request = Request.CreateRequest(service, new MockMethod(){
+                HttpMethod = "GET",
+                Name = "TestMethod",
+                RestPath = "https://test.google.com",
+                Parameters = parameterDefinitions});
+
+            request.WithParameters(parameterValues);
+            var url = request.BuildRequestUrl();
+
+            Assert.AreEqual("https://test.google.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
     }
 }

@@ -21,10 +21,11 @@ using System.Net;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-using Google.Apis.Discovery;
 using Google.Apis;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Requests
 {
@@ -206,6 +207,11 @@ namespace Google.Apis.Requests
                         restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), parameter.Value.ToString());
                         break;
                     case "query":
+                        // If the parameter is optional and no value is given, don't add to url.
+                        if (parameterDefinition.Required == false && parameter.Value.IsNullOrEmpty())
+                        {
+                            continue;
+                        }
                         queryParams.Add(parameterDefinition.Name + "=" + parameter.Value);
                         break;
                     default:
