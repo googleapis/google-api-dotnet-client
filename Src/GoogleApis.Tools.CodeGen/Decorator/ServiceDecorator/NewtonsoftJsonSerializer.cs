@@ -285,13 +285,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             //StandardResponse<TOutput> response = 
             //        Newtonsoft.Json.JsonConvert.DeserializeObject<StandardResponse<TOutput>>;(str);
             var declareAndAssign = new CodeVariableDeclarationStatement(
-                new CodeTypeReference("StandardResponse", new CodeTypeReference("TOutput")), 
+                new CodeTypeReference("Google.Apis.Util.StandardResponse", new CodeTypeReference("TOutput")), 
                 "response");
             var initResponse = new CodeMethodInvokeExpression(
                 new CodeTypeReferenceExpression(typeof(JsonConvert)), 
                 "DeserializeObject", 
                 new CodeVariableReferenceExpression("str"));
-            var typeArgument = new CodeTypeReference("StandardResponse", new CodeTypeReference("TOutput"));
+            var typeArgument = new CodeTypeReference("Google.Apis.Util.StandardResponse", new CodeTypeReference("TOutput"));
             initResponse.Method.TypeArguments.Add(typeArgument);
             declareAndAssign.InitExpression = initResponse;
 

@@ -1355,6 +1355,8 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			GenerateAdSenseServiceV03 ();
 			GenerateAdSenseServiceV1A4 ();
 			Logger.Debug("All Done");
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
 		}
 		
 		private static void GenerateBuzzServiceV02 ()
