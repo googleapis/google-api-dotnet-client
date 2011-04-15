@@ -183,7 +183,7 @@ namespace Google.Apis.Discovery
         
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_2(kvp);
+            return new ResourceV0_2(this.DiscoveryVersion, kvp);
         }
     }
     #endregion
@@ -230,7 +230,11 @@ namespace Google.Apis.Discovery
             foreach (KeyValuePair<string, object> kvp in js) 
             {
                 logger.DebugFormat("Found schema {0}", kvp.Key);
-                ISchema schema = new SchemaImpl(kvp.Key, (string)kvp.Value, resolver);
+                var serilizer = new Newtonsoft.Json.JsonSerializer();
+                var textWriter = new StringWriter();
+                serilizer.Serialize(textWriter, kvp.Value);
+                string result = textWriter.ToString();
+                ISchema schema = new SchemaImpl(kvp.Key, result, resolver);
                 working.Add (schema.Name, schema);
             }
             
@@ -272,7 +276,7 @@ namespace Google.Apis.Discovery
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
             //TODO(davidwaters): We will return resource 0.2 until we need more functionality
-            return new ResourceV0_2(kvp);
+            return new ResourceV0_2(this.DiscoveryVersion, kvp);
         }
     }
     #endregion

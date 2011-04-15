@@ -37,10 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
             this.decorators = decorators;
         }
         
-        public CodeTypeDeclaration CreateClass(ISchema schema)
+        public CodeTypeDeclaration CreateClass(ISchema schema, IEnumerable<string> otherSchmeaNames)
         {
             schema.ThrowIfNull("schema");
-            string className = GeneratorUtils.GetClassName (schema);
+            otherSchmeaNames.ThrowIfNull("otherSchmeaNames");
+
+            string className = GeneratorUtils.GetClassName(schema, otherSchmeaNames);
             var typeDeclaration = new CodeTypeDeclaration(className);
             var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach( ISchemaDecorator schemaDecorator in decorators)

@@ -14,11 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
+using System.Linq;
 
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
+using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 {
@@ -28,15 +30,19 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test()]
         public void GetFieldName ()
         {
-            Assert.AreEqual("fISH", SchemaDecoratorUtil.GetFieldName("FISH",1));
-            Assert.AreEqual("intField1", SchemaDecoratorUtil.GetFieldName("int",1));
+            Assert.AreEqual("fISH", SchemaDecoratorUtil.GetFieldName("FISH",1, Enumerable.Empty<string>()));
+            Assert.AreEqual("intField1", SchemaDecoratorUtil.GetFieldName("int",1, Enumerable.Empty<string>()));
+            Assert.AreEqual("fishAndChips", SchemaDecoratorUtil.GetFieldName("fish-and-chips", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("fishAndChipsField1", SchemaDecoratorUtil.GetFieldName("fish-and-chips",1,new List<string>(){"fishANDchips"}));
         }
         
         [Test()]
         public void GetPropertyName ()
         {
-            Assert.AreEqual("Fish", SchemaDecoratorUtil.GetPropertyName("fish",1));
-            Assert.AreEqual("IntProperty1", SchemaDecoratorUtil.GetPropertyName("int",1));
+            Assert.AreEqual("Fish", SchemaDecoratorUtil.GetPropertyName("fish", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("IntProperty1", SchemaDecoratorUtil.GetPropertyName("int", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("FishAndChips", SchemaDecoratorUtil.GetPropertyName("fish-and-chips", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("FishAndChipsProperty1", SchemaDecoratorUtil.GetPropertyName("fish-and-chips", 1, new List<string>() { "fishANDchips" }));
         }
         
         [Test()]

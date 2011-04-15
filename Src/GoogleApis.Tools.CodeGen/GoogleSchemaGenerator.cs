@@ -23,6 +23,7 @@ namespace Google.Apis.Tools.CodeGen
             (new List<ISchemaDecorator>(){
                 new StandardPropertyFieldDecorator(),
                 new StandardPropertyDecorator(),
+                new NewtonSoftPropertyAttributeDecorator(),
             }).
             AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;
@@ -50,7 +51,7 @@ namespace Google.Apis.Tools.CodeGen
             foreach(var schemaPair in service.Schemas)
             {
                 logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
-                codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value));
+                codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value, service.Schemas.Keys));
             }
             return codeNamespace;
         }

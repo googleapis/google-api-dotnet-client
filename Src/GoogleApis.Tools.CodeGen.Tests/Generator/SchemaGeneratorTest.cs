@@ -23,6 +23,7 @@ using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
+using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
@@ -42,7 +43,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var empty = new List<ISchemaDecorator>(0);
             var schemaGen = new SchemaGenerator(empty);
-            Assert.Throws(typeof(ArgumentNullException), () => schemaGen.CreateClass(null));
+            Assert.Throws(typeof(ArgumentNullException), () => schemaGen.CreateClass(null, Enumerable.Empty<string>()));
         }
         
         [Test()]
@@ -54,7 +55,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                 Id = "mockSchemaObject", 
                 Name = "mockSchemaObject" , 
                 SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")};
-            var typeDeclaration = schemaGen.CreateClass(schema);
+            var typeDeclaration = schemaGen.CreateClass(schema, Enumerable.Empty<string>());
             Assert.IsNotNull(typeDeclaration);
             Assert.AreEqual("MockSchemaObject", typeDeclaration.Name);
             Assert.IsEmpty(typeDeclaration.Members);
@@ -69,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                 Id = "mockSchemaObject", 
                 Name = "mockSchemaObject" , 
                 SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")};
-            schemaGen.CreateClass(schema);
+            schemaGen.CreateClass(schema, Enumerable.Empty<string>());
             Assert.AreEqual(1, ((CountingDecorator)oneDecorator[0]).Count);
         }
         
@@ -84,7 +85,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                 Id = "mockSchemaObject", 
                 Name = "mockSchemaObject" , 
                 SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")};
-            schemaGen.CreateClass(schema);
+            schemaGen.CreateClass(schema, Enumerable.Empty<string>());
             Assert.AreEqual(1, ((CountingDecorator)decorators[0]).Count);
             Assert.AreEqual(3, ((CountingDecorator)decorators[1]).Count);
             Assert.AreEqual(3, ((CountingDecorator)decorators[2]).Count);

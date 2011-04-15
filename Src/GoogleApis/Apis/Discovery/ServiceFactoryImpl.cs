@@ -74,6 +74,7 @@ namespace Google.Apis.Discovery
         internal FactoryParameterV0_3 Param{get{return param;}}
         [VisibleForTestOnly]
         internal JsonDictionary Information{get{return information;}}
+        
     }
     
     public class FactoryParameterV0_2 : IFactoryParameter

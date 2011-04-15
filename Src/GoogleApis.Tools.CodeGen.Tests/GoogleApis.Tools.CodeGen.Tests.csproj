@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +9,27 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Google.Apis.Tools.CodeGen.Tests</RootNamespace>
     <AssemblyName>Google.Apis.Tools.CodeGen.Tests</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +48,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,6 +73,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
+    <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
@@ -72,6 +97,8 @@
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
+    <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -88,11 +115,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Decorator\" />
-    <Folder Include="Decorator\ResourceDecorator\" />
-    <Folder Include="Decorator\ServiceDecorator\" />
-    <Folder Include="Generator\" />
-    <Folder Include="Decorator\SchemaDecorator\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties InternalTargetFrameworkVersion="3.5" />
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

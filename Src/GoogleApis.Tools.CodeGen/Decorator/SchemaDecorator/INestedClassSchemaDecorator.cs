@@ -20,6 +20,12 @@ using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
+    /// <summary>
+    /// A given schema may contain nested classes, classes that implement this method may 
+    /// decorate those internal classes, often classes that implement this 
+    /// interface will also implement ISchemaDecorator
+    /// </summary>
+    /// <seealso cref="ISchemaDecorator"/> 
     public interface INestedClassSchemaDecorator
     {
         void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider);

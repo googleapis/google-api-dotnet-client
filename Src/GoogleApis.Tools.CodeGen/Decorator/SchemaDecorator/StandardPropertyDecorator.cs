@@ -68,27 +68,28 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                fields.Add(GenerateProperty(propertyPair.Key, propertyPair.Value, index++, internalClassProvider));            
+                fields.Add(GenerateProperty(
+                    propertyPair.Key, propertyPair.Value, index++, internalClassProvider, schema.Properties.Keys));            
             }
             return fields;
         }
         
         [VisibleForTestOnly]
         internal CodeMemberProperty GenerateProperty(string name, JsonSchema propertySchema, int index, 
-                                                     INestedClassProvider internalClassProvider)
+            INestedClassProvider internalClassProvider, IEnumerable<string> otherPropertyNames)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");
             
             var ret = new CodeMemberProperty();
-            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index);
+            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index, otherPropertyNames);
             ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
             
             ret.HasGet = true;
             var fieldReference = new CodeFieldReferenceExpression(
-                                     new CodeThisReferenceExpression(), 
-                                     SchemaDecoratorUtil.GetFieldName(name,index));
+                                     new CodeThisReferenceExpression(),
+                                     SchemaDecoratorUtil.GetFieldName(name, index, otherPropertyNames));
             ret.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
             
             ret.HasSet = true;

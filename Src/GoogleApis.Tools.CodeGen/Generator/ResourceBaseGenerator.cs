@@ -21,6 +21,7 @@ using System.Linq;
 
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -35,51 +36,77 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
         }
 
-        protected void ResourceCallAddBodyDeclaration (IMethod method, CodeMemberMethod member)
+        protected void ResourceCallAddBodyDeclaration (
+                IMethod method, CodeMemberMethod member, CodeTypeReference bodyType)
         {
             switch (method.HttpMethod)
             {
             case "GET":
             case "DELETE":
                 // string body = null;
-                var bodyVarDeclaration = new CodeVariableDeclarationStatement (typeof(string), "body");
+                var bodyVarDeclaration = new CodeVariableDeclarationStatement (bodyType, "body");
                 bodyVarDeclaration.InitExpression = new CodePrimitiveExpression (null);
                 member.Statements.Add (bodyVarDeclaration);
                 break;
             case "PUT":
             case "POST":
                 // add body Parameter
-                member.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "body"));
+                member.Parameters.Add (new CodeParameterDeclarationExpression (bodyType, "body"));
                 break;
             default:
                 throw new NotSupportedException ("Unsupported HttpMethod [" + method.HttpMethod + "]");
             }
         }
 
-        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount)
+        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount, IMethod method)
         {
-            return new CodeParameterDeclarationExpression (typeof(string), GeneratorUtils.GetParameterName (param, parameterCount));
+            method.ThrowIfNull("method");
+            return new CodeParameterDeclarationExpression (typeof(string), 
+                GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
         }
 
-        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount)
+        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount, IMethod method)
         {
+            method.ThrowIfNull("method");
+
             var assign = new CodeAssignStatement ();
             assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));
             
-            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount));
+            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
             return assign;
         }
-
-        protected CodeStatement CreateExecuteRequest (IMethod method)
+  
+        protected virtual CodeExpression GetBodyAsString(IMethod method)
+        {
+            return new CodeVariableReferenceExpression ("body");
+        }
+        
+        /// <summary>
+        /// this.service.ExecuteRequest(...);
+        /// </summary>
+        protected CodeMethodInvokeExpression CreateExecuteCall(IMethod method)
         {
             var call = new CodeMethodInvokeExpression ();
             
-            call.Method = new CodeMethodReferenceExpression (new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceFieldName), StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
+            
+            call.Method = new CodeMethodReferenceExpression (
+                               new CodeFieldReferenceExpression (
+                                   new CodeThisReferenceExpression (), ServiceFieldName), 
+                               StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
             
             call.Parameters.Add (new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (this.GetClassName ()), ResourceNameConst));
             call.Parameters.Add (new CodePrimitiveExpression (method.Name));
-            call.Parameters.Add (new CodeVariableReferenceExpression ("body"));
+            call.Parameters.Add (GetBodyAsString(method));
             call.Parameters.Add (new CodeVariableReferenceExpression (ParameterDictionaryName));
+            return call;
+        }
+        
+        /// <summary>
+        /// ret = this.service.ExecuteRequest(...);
+        /// </summary>
+        protected virtual CodeStatement CreateExecuteRequest (IMethod method)
+        {
+            var call = CreateExecuteCall(method);
             
             var assign = new CodeVariableDeclarationStatement (typeof(System.IO.Stream), ReturnVariableName, call);
             

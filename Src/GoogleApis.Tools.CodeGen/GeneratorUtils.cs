@@ -20,6 +20,7 @@ using System.Text;
 
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -98,22 +99,21 @@ namespace Google.Apis.Tools.CodeGen
   
         #region Safe  Names
         
-        public static string GetSafeMemberName (string baseName, string uniquieifier, IEnumerable<string> unsafeWords)
+        public static string GetSafeMemberName (string baseName, string uniquieifier, 
+                IEnumerable<string> unsafeWords, IEnumerable<string> wordsUsedInContext)
         {
+            unsafeWords.ThrowIfNull("unsafeWords");
+            baseName.ThrowIfNullOrEmpty("baseName");
+            wordsUsedInContext.ThrowIfNull("wordsUsedInContext");
+            uniquieifier.ThrowIfNullOrEmpty("uniquieifier");
+
             StringBuilder sb = new StringBuilder ();
             bool isFirst = true;
             bool requiresUniqueAddition = false;
-            
+            bool nextCharToUpper = false;
+            bool modifiedName = false;
+
             string lowerbaseName = baseName.ToLower ();
-            
-            // Would be faster with a hashtable.contains but this is fast enough for generating code.
-            foreach (string word in unsafeWords) 
-            {
-                if (lowerbaseName.Equals (word))
-                {
-                    requiresUniqueAddition = true;
-                }
-            }
             
             foreach (char c in baseName)
             {
@@ -121,7 +121,7 @@ namespace Google.Apis.Tools.CodeGen
                 {
                     if (GeneratorUtils.IsValidFirstChar (c) == false)
                     {
-                        requiresUniqueAddition = true;
+                        modifiedName = true;
                         continue;
                     }
                     sb.Append (c);
@@ -131,22 +131,63 @@ namespace Google.Apis.Tools.CodeGen
                 
                 if (GeneratorUtils.IsValidBodyChar (c) == false)
                 {
-                    requiresUniqueAddition = true;
+                    modifiedName = true;
+                    nextCharToUpper = true;
                     continue;
                 }
-                sb.Append (c);
+                if (nextCharToUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    nextCharToUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+                
             }
-            if (requiresUniqueAddition)
+
+            // Would be faster with a hashtable.contains but this is fast enough for generating code.
+            if (unsafeWords.Contains(sb.ToString(), CaseInsensitiveStringCompareer.Instance))
+            {
+                requiresUniqueAddition = true;
+            }
+            if (modifiedName && wordsUsedInContext.Contains(sb.ToString(), CaseInsensitiveStringCompareer.Instance))
+            {
+                requiresUniqueAddition = true;
+            }
+
+            if (requiresUniqueAddition || sb.Length == 0)
             {
                 sb.Append (uniquieifier);
             }
             
             return sb.ToString ();
         }
-        
-        public static string GetSafeMemberName (string baseName, string uniquieifier)
+
+
+        internal class CaseInsensitiveStringCompareer : IEqualityComparer<string>
         {
-            return GetSafeMemberName (baseName, uniquieifier, UnsafeWords);
+            private static CaseInsensitiveStringCompareer instance = new CaseInsensitiveStringCompareer();
+            public static IEqualityComparer<string> Instance
+            {
+                get { return instance; }
+            }
+
+            public bool Equals(string x, string y)
+            {
+                return string.Compare(x, y, true) == 0;
+            }
+
+            public int GetHashCode(string obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
+
+        public static string GetSafeMemberName(string baseName, string uniquieifier, IEnumerable<string> wordsUsedInContext)
+        {
+            return GetSafeMemberName (baseName, uniquieifier, UnsafeWords, wordsUsedInContext);
         }
         
         /// <summary>
@@ -156,76 +197,41 @@ namespace Google.Apis.Tools.CodeGen
         ///     The Parameter
         /// </param>
         /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
-        public static string GetParameterName (IParameter parameter, int paramNumber)
+        public static string GetParameterName (IParameter parameter, int paramNumber, IEnumerable<string> otherParameterNames)
         {
-            return LowerFirstLetter(GetSafeMemberName (parameter.Name, "Param" + paramNumber));
+            return LowerFirstLetter(GetSafeMemberName(parameter.Name, "Param" + paramNumber, otherParameterNames));
         }
         
-        public static string GetMethodName (IMethod method, int methodNumber)
+        public static string GetMethodName (IMethod method, int methodNumber, IEnumerable<string> wordsUsedInContext )
         {
-            return UpperFirstLetter( GetSafeMemberName( method.Name, "Method" + methodNumber));
+            return UpperFirstLetter( GetSafeMemberName( method.Name, "Method" + methodNumber, wordsUsedInContext));
         }
 
-        public static string GetClassName (IResourceContainer resource, int resourceNumber)
+        public static string GetClassName (IResourceContainer resource, int resourceNumber, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter( GetSafeMemberName( resource.Name, "Resource" + resourceNumber));
+            return UpperFirstLetter( GetSafeMemberName( resource.Name, "Resource" + resourceNumber, wordsUsedInContext));
         }
         
-        public static string GetFieldName (IResource resource, int resourceNumber)
+        public static string GetFieldName (IResource resource, int resourceNumber, IEnumerable<string> wordsUsedInContext)
         {
-            return LowerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber));
+            return LowerFirstLetter( GetSafeMemberName( resource.Name, "Field" + resourceNumber, wordsUsedInContext));
         }
         
-        public static string GetFieldName (string name, int resourceNumber)
+        public static string GetFieldName (string name, int resourceNumber, IEnumerable<string> wordsUsedInContext)
         {
-            return LowerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber));
+            return LowerFirstLetter( GetSafeMemberName( name, "Field" + resourceNumber, wordsUsedInContext));
         }
         
-        public static string GetPropertyName(string name, int resourceNumber)
+        public static string GetPropertyName(string name, int resourceNumber, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter( GetSafeMemberName( name, "Property" + resourceNumber));
+            return UpperFirstLetter( GetSafeMemberName( name, "Property" + resourceNumber, wordsUsedInContext));
         }
         
-        public static string GetClassName (ISchema schema)
+        public static string GetClassName (ISchema schema, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter( GetSafeMemberName(schema.Name, "") );
+            return UpperFirstLetter( GetSafeMemberName(schema.Name, "", wordsUsedInContext) );
         }
         
-        #endregion
-        
-        #region Required and Optional Parameters
-        public static IEnumerable<IParameter> GetRequiredParameters (IMethod method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<IParameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required 
-                    select p.Value;
-        }
-
-
-        public static IEnumerable<IParameter> GetOptionalParameters (IMethod method)
-        {
-            if(method == null || method.Parameters == null || method.Parameters.Count == 0)
-            {
-                return new List<IParameter>(0);
-            }
-            return from p in method.Parameters 
-                    where p.Value.Required == false
-                    select p.Value;
-        }
-
-        public static bool HasRequiredParameters (IMethod method)
-        {
-            return GetRequiredParameters (method).Any ();
-        }
-
-        public static bool HasOptionalParameters (IMethod method)
-        {
-            return GetOptionalParameters (method).Any ();
-        }
         #endregion
     }
 }

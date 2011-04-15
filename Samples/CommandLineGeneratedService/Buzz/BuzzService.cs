@@ -53,8 +53,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.Buzz {
             this.related = new Related(this);
         }
         
-        public BuzzService() : 
-                this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/0.1/describe?api=" + BuzzService.Name)))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, null), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator()) {
+        public BuzzService() :
+            this(new Google.Apis.Discovery.DiscoveryService(new Google.Apis.Discovery.WebDiscoveryDevice(new System.Uri(("https://www.googleapis.com/discovery/v0.3/describe/buzz/v1")))).GetService(BuzzService.Version, BuzzService.DiscoveryVersionUsed, null), Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator())
+        {
         }
         
         public virtual Activities Activities {

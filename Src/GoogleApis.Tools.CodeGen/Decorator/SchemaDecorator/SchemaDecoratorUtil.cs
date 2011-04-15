@@ -20,6 +20,7 @@ using Newtonsoft.Json.Schema;
 
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -32,14 +33,14 @@ namespace Google.Apis.Tools.CodeGen
             throw new NotSupportedException("Please Don't construct");
         }
         
-        internal static string GetFieldName(string name, int index)
+        internal static string GetFieldName(string name, int index, IEnumerable<string> wordsUsedInContext)
         {
-            return GeneratorUtils.GetFieldName(name, index);
+            return GeneratorUtils.GetFieldName(name, index, wordsUsedInContext);
         }
         
-        internal static string GetPropertyName(string name, int index)
+        internal static string GetPropertyName(string name, int index, IEnumerable<string> wordsUsedInContext)
         {
-            return GeneratorUtils.GetPropertyName(name, index);
+            return GeneratorUtils.GetPropertyName(name, index, wordsUsedInContext);
         }
         
         internal static CodeTypeReference GetCodeType(JsonSchema propertySchema, INestedClassProvider internalClassProvider)
@@ -65,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.Object:
                     return GetObjectTypeReference(propertySchema, internalClassProvider);  
                 case JsonSchemaType.Any:
-                    return new CodeTypeReference(typeof(object));
+                    return new CodeTypeReference(typeof(string));
                 default:
                     logger.WarnFormat("Found currently unsupported type {0} as part of {1}", propertySchema.Type.Value, propertySchema.ToString());
                     return new CodeTypeReference(typeof(object));
