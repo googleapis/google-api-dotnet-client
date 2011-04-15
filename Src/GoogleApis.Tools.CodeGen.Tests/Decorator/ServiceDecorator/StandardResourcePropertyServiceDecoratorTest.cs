@@ -19,6 +19,7 @@ using System.CodeDom;
 using NUnit.Framework;
 
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
+using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
@@ -35,8 +36,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         {
             var decorator = new StandardResourcePropertyServiceDecorator();
             var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
-            
-            CodeMemberField codeField = decorator.CreateResourceField(resource,1);
+
+            CodeMemberField codeField = decorator.CreateResourceField(resource, 1, Enumerable.Empty<string>());
             
             Assert.IsNotNull(codeField);
             Assert.AreEqual(ResourceName, codeField.Type.BaseType);
@@ -49,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var decorator = new StandardResourcePropertyServiceDecorator();
             var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
             
-            CodeMemberProperty codeProperty = decorator.CreateResourceGetter (resource, 1);
+            CodeMemberProperty codeProperty = decorator.CreateResourceGetter (resource, 1, Enumerable.Empty<string>());
             
             Assert.IsNotNull(codeProperty);
             Assert.IsFalse(codeProperty.HasSet);

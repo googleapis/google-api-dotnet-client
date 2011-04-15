@@ -25,13 +25,22 @@ using Google.Apis.Testing;
 namespace Google.Apis.Discovery 
 {
     /// <summary>
-    /// Interface for building services from discovery parameters.
+    /// A IServiceFactory will return the IService for the specified version.
+    /// you should use ServiceFactory.CreateServiceFactory to get an
+    /// implementation of this interface for the given version of discovery you use.
     /// </summary>
+    /// <seealso cref="ServiceFactory"/>
     public interface IServiceFactory
     {
         IService GetService(string version);
     }
     
+    /// <summary>
+    /// A marker interface, different versions of discovery use different 
+    /// IFactoryParameters, you will need to pass in one that matches the
+    /// version of discovery you use.
+    /// </summary>
+    /// <seealso cref="FactoryParmeterV0_3"/>
     public interface IFactoryParameter
     {
     }
@@ -47,9 +56,10 @@ namespace Google.Apis.Discovery
         internal const string RpcName = "rpcName";
         internal const string HttpMethod = "httpMethod";
         internal const string Parameters = "parameters";
+        internal const string ResponseType = "response";
+        internal const string RequestType = "request";
     
         internal const string ParameterType = "parameterType";
-        internal const string RestParameterType = "restParameterType";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
         internal const string DefaultValue = "defaultValue";

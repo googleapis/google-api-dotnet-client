@@ -23,15 +23,19 @@ namespace Google.Apis.Tests.Apis.Requests
 
     public class MockMethod : IMethod
     {
-        public string Name {get;set;}
+        public string Name {get; set;}
 
-        public string RestPath {get;set;}
+        public string RestPath {get; set;}
 
-        public string RpcName {get;set;}
+        public string RpcName {get; set;}
 
-        public string HttpMethod {get;set;}
+        public string HttpMethod {get; set;}
+        
+        public string ResponseType {get; set;}
+        
+        public string RequestType {get; set;}
 
-        public Dictionary<string, IParameter> Parameters {get;set;}
+        public Dictionary<string, IParameter> Parameters {get; set;}
 
         public MockMethod ()
         {

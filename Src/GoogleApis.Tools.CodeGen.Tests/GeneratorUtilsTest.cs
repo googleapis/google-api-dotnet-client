@@ -141,65 +141,20 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void GetParameterNameTest()
         {
             var paramArgs = new KeyValuePair<string,object>("safeName", new JsonDictionary());
-            IParameter param = new Parameter(paramArgs);
-            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
+            IParameter param = new ParameterFactory.BaseParameter(paramArgs);
+            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1, Enumerable.Empty<string>()));
             
             paramArgs = new KeyValuePair<string,object>("string", new JsonDictionary());
-            param = new Parameter(paramArgs);
-            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
+            param = new ParameterFactory.BaseParameter(paramArgs);
+            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1, Enumerable.Empty<string>()));
             
             paramArgs = new KeyValuePair<string,object>("String", new JsonDictionary());
-            param = new Parameter(paramArgs);
-            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1));
+            param = new ParameterFactory.BaseParameter(paramArgs);
+            Assert.AreEqual("stringParam1", GeneratorUtils.GetParameterName(param, 1, Enumerable.Empty<string>()));
             
             paramArgs = new KeyValuePair<string,object>("SafeName", new JsonDictionary());
-            param = new Parameter(paramArgs);
-            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1));
-        }
-        
-        [Test()]
-        public void TestGetRequiredParameters(){
-            var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<IParameter> parameters = GeneratorUtils.GetRequiredParameters(method).ToList();
-            Assert.AreEqual(2, parameters.Count);
-            Assert.AreEqual("req_a", parameters[0].Name);
-            Assert.AreEqual("req_b", parameters[1].Name);
-        }
-        
-        [Test()]
-        public void TestGetOptionalParameters(){
-            var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<IParameter> parameters = GeneratorUtils.GetOptionalParameters(method).ToList();
-            Assert.AreEqual(2, parameters.Count);
-            Assert.AreEqual("opt_a", parameters[0].Name);
-            Assert.AreEqual("opt_b", parameters[1].Name);
-            
-            method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest);
-            parameters = GeneratorUtils.GetOptionalParameters(method).ToList();
-            Assert.AreEqual(0, parameters.Count);
-        }
-        
-        [Test()]
-        public void TestHasOptionalParameters(){
-            var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            Assert.That(GeneratorUtils.HasOptionalParameters(method));
-            Assert.That(GeneratorUtils.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneOptionalParameterTest)));
-            Assert.IsFalse(GeneratorUtils.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneRequiredParameterTest)));
-            Assert.IsFalse(GeneratorUtils.HasOptionalParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest)));
-        }
-        
-        [Test()]
-        public void TestHasRequiredParameters(){
-            var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            Assert.That(GeneratorUtils.HasRequiredParameters(method));
-            Assert.IsFalse(GeneratorUtils.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneOptionalParameterTest)));
-            Assert.That(GeneratorUtils.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.oneRequiredParameterTest)));
-            Assert.IsFalse(GeneratorUtils.HasRequiredParameters(GetMethod(BaseCodeGeneratorTest.TestMethodNames.noParameterTest)));
-        }
-        
-        private IMethod GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-            var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_0_1 (BaseCodeGeneratorTest.ResourceName, BaseCodeGeneratorTest.ResourceAsJson);
-            return resource.Methods[testMethod.ToString()];
+            param = new ParameterFactory.BaseParameter(paramArgs);
+            Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, 1, Enumerable.Empty<string>()));
         }
     }
 }

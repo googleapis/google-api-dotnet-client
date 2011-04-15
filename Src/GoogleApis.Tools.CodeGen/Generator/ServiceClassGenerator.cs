@@ -22,6 +22,7 @@ using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -52,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         public CodeTypeDeclaration CreateServiceClass ()
         {
-            string serviceClassName = GeneratorUtils.UpperFirstLetter( GeneratorUtils.GetSafeMemberName( service.Name + "Service", ""));
+            string serviceClassName = GeneratorUtils.UpperFirstLetter(GeneratorUtils.GetSafeMemberName(service.Name + "Service", "", Enumerable.Empty<string>()));
             logger.DebugFormat ("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration (serviceClassName);
             serviceClass.BaseTypes.Add (typeof(IRequestExecutor));
@@ -67,10 +68,10 @@ namespace Google.Apis.Tools.CodeGen.Generator
             return serviceClass;
         }
 
-        public static CodeFieldReferenceExpression GetFieldReference (IResource resource, int resourceNumber)
+        public static CodeFieldReferenceExpression GetFieldReference (IResource resource, int resourceNumber, IEnumerable<string> otherResourceNames)
         {
-            return new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), 
-                          GeneratorUtils.GetFieldName (resource, resourceNumber));
+            return new CodeFieldReferenceExpression (new CodeThisReferenceExpression (),
+                          GeneratorUtils.GetFieldName(resource, resourceNumber, otherResourceNames));
         }
     }
 }

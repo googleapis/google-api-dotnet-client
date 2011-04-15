@@ -28,4 +28,16 @@ namespace Google.Apis.Discovery
 	{
 		Stream ExecuteRequest (string resource, string method, string body, IDictionary<string, string> parameters);
 	}
+    
+    /// <summary>
+    /// Implementors of this interface are able to execute arbitory requests against a service given the 
+    /// resource, method, body and parameters. Aswell as serilising and deserilising Json => objects
+    /// and visa versa.
+    /// </summary>
+    public interface ISchemaAwareRequestExecutor : IRequestExecutor
+    {
+        string ObjectToJson(object obj);
+        TOutput JsonToObject<TOutput>(System.IO.Stream stream);
+        Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, string> parameters);
+    }
 }

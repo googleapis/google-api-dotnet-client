@@ -21,10 +21,11 @@ using System.Net;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-using Google.Apis.Discovery;
 using Google.Apis;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Requests
 {
@@ -190,7 +191,7 @@ namespace Google.Apis.Requests
 				queryParams.Add("alt=atom");	
 			}
             
-            if(DeveloperKey != null && DeveloperKey.Length >0)
+            if(DeveloperKey.IsNotNullOrEmpty())
             {
                 queryParams.Add("key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need
                                 Replace("&","%26").                         // Also escaped & and ?
@@ -200,13 +201,27 @@ namespace Google.Apis.Requests
 			// Replace the substitution parameters
 			foreach(var parameter in this.Parameters) {
 				var parameterDefinition = Method.Parameters[parameter.Key];
-				if(parameterDefinition.ParameterType == "path") {
-					restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), parameter.Value.ToString());
-				}
-				
-				if(parameterDefinition.ParameterType == "query") {
-					queryParams.Add(parameterDefinition.Name + "=" + parameter.Value);
-				}
+                string value = parameter.Value;
+                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default
+                {
+                    value = parameterDefinition.DefaultValue;
+                }
+                switch (parameterDefinition.ParameterType)
+                {
+                    case "path":
+                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), value);
+                        break;
+                    case "query":
+                        // If the parameter is optional and no value is given, don't add to url.
+                        if (parameterDefinition.Required == false && value.IsNullOrEmpty())
+                        {
+                            continue;
+                        }
+                        queryParams.Add(parameterDefinition.Name + "=" + value);
+                        break;
+                    default:
+                        throw new NotSupportedException("Found an unsupported Parametertype [" + parameterDefinition.ParameterType +"]" );
+                }
 			}
 			
 			var path = restPath;

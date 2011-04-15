@@ -21,6 +21,11 @@ using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Discovery.Schema
 {
+    /// <summary>
+    /// Represents one child of the schema node in the discovery document.
+    /// This represents one top level DataTransferOjbect which will form 
+    /// part of the request or response to the service.
+    /// </summary>
     public interface ISchema
     {
         string Name{get;}
@@ -28,4 +33,3 @@ namespace Google.Apis.Discovery.Schema
         JsonSchema SchemaDetails{get;}
     }
 }
-
