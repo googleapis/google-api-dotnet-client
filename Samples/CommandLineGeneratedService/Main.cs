@@ -70,7 +70,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 		}
 		
 		private static void BuzzTest()
-		{			
+		{		
 			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			
 			V03.Buzz.BuzzService buzzService = new V03.Buzz.BuzzService();
 			PeopleFeed result = buzzService.People.SearchAsObject("b", "c", "d", "5", "David Waters");
