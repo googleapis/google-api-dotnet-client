@@ -94,6 +94,11 @@ namespace Google.Apis.Discovery
             {
                 get { return this.information.GetValueAsNull(ServiceFactory.ValueType) as string; }
             }
+            
+            public string Description
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.Description) as string;}
+            }
         }
     }
 }

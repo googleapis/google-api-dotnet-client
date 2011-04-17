@@ -63,7 +63,8 @@ namespace Google.Apis.Discovery
         internal const string Pattern = "pattern";
         internal const string Required = "required";
         internal const string DefaultValue = "defaultValue";
-        internal const string ValueType = "valueType";
+        internal const string ValueType = "type";
+        internal const string Description = "description";
 
         public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter param)
         {

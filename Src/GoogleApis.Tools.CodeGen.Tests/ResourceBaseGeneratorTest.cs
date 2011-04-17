@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Generator;
 
 using NUnit.Framework;
@@ -46,6 +47,39 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			Assert.AreEqual(1, member.Parameters.Count);
 			
 		}
+        
+        [Test()]
+        public void TestGetParameterType()
+        {
+            Assert.Throws(typeof(ArgumentNullException), () => ResourceBaseGenerator.GetParameterType(null));
+            
+            MockParameter param = new MockParameter();
+
+            // Null => string
+            param.ValueType = null;
+            Assert.AreEqual(typeof(string), ResourceBaseGenerator.GetParameterType(param));
+            
+            // "" => string
+            param.ValueType = "";
+            Assert.AreEqual(typeof(string), ResourceBaseGenerator.GetParameterType(param));
+            
+            // "string" => string
+            param.ValueType = "string";
+            Assert.AreEqual(typeof(string), ResourceBaseGenerator.GetParameterType(param));
+            
+            // "integer" => long
+            param.ValueType = "integer";
+            Assert.AreEqual(typeof(long), ResourceBaseGenerator.GetParameterType(param));
+                        
+            // "boolean" => bool
+            param.ValueType = "boolean";
+            Assert.AreEqual(typeof(bool), ResourceBaseGenerator.GetParameterType(param));
+            
+            // "AnyOldRubbish" => string
+            param.ValueType = "AGreatBigFish";
+            Assert.AreEqual(typeof(string), ResourceBaseGenerator.GetParameterType(param));
+            
+        }
 		
 		#region Helper methods
 		

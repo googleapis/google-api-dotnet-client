@@ -67,7 +67,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                    ResourceClassGenerator generator, string serviceClassName, 
                                    IEnumerable<IResourceDecorator> allDecorators)
         {
-            ResourceGenerator gen = new ResourceGenerator (
+            var gen = new ResourceGenerator (
                 className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values) {
