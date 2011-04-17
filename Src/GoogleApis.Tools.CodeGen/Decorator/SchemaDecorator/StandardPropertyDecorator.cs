@@ -26,6 +26,10 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
+    /// <summary>
+    /// Adds all the properties (getters and setters) for schema classes.
+    /// This depends on fields being added by StandardFieldDecorator, or similar.
+    /// </summary>
     public class StandardPropertyDecorator: ISchemaDecorator, INestedClassSchemaDecorator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardPropertyDecorator));
