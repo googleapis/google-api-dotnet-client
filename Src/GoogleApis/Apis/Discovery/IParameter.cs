@@ -30,5 +30,6 @@ namespace Google.Apis.Discovery
         bool Required {get;}
         string DefaultValue {get;}
         string ValueType {get;}
+        string Description {get;}
     }
 }

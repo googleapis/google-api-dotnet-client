@@ -6,7 +6,7 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    class MockParameter : IParameter
+    public class MockParameter : IParameter
     {
         public string Name { get; set;}
         public string ParameterType { get; set; }
@@ -14,5 +14,6 @@ namespace Google.Apis.Tests.Apis.Requests
         public bool Required { get; set; }
         public string DefaultValue { get; set; }
         public string ValueType { get; set; }
+        public string Description { get; set; }
     }
 }

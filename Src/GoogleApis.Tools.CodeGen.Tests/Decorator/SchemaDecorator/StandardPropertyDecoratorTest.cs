@@ -107,24 +107,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 Assert.AreEqual(SchemaDecoratorUtil.GetCodeType(new JsonSchema(){Type = pair.Value}, internalClassProvider).BaseType, 
                                 field.Type.BaseType);
             }
-            
-            item = 0;
-            foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
-            {
-                var field = generatedProperties[item++];
-                var comment = StandardPropertyFieldDecoratorTest.NamesToDescription[pair.Key];
-                if(comment == null || comment.Length == 0)
-                {
-                    Assert.AreEqual(0, field.Comments.Count);
-                } else
-                {
-                    Assert.AreEqual(1, field.Comments.Count);
-                    Assert.AreEqual(comment, field.Comments[0].Comment.Text);
-                }
-            }
         }
-        
-       
     }
 }
 

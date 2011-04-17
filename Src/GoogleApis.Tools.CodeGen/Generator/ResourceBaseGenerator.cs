@@ -27,6 +27,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
 {
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ResourceBaseGenerator));
+        
         public const string ResourceNameConst = "Resource";
         protected const string ParameterDictionaryName = "parameters";
         protected const string ReturnVariableName = "ret";
@@ -57,11 +59,32 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 throw new NotSupportedException ("Unsupported HttpMethod [" + method.HttpMethod + "]");
             }
         }
-
+  
+        public static Type GetParameterType(IParameter param)
+        {
+            param.ThrowIfNull("param");
+            
+            switch (param.ValueType) 
+            {
+            case null:
+            case "":
+            case "string":
+                return typeof(string);
+            case "boolean":
+                return typeof(bool);
+            case "integer":
+                return typeof(long);
+            default:
+                logger.Error("FAIL - found unkown parameter.type ["+param.ValueType+"] for parameter ["+param.Name+"]");
+                return typeof(string);
+            }
+        }
+        
         protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount, IMethod method)
         {
             method.ThrowIfNull("method");
-            return new CodeParameterDeclarationExpression (typeof(string), 
+            Type paramType = GetParameterType(param);
+            return new CodeParameterDeclarationExpression (paramType, 
                 GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
         }
 
