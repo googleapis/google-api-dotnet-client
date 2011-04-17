@@ -84,26 +84,43 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 JsonSchema property = new JsonSchema();
                 property.Type = pair.Value;
                 property.Id = pair.Key;
+                property.Description = StandardPropertyFieldDecoratorTest.NamesToDescription[pair.Key];
                 schema.SchemaDetails.Properties.Add(pair.Key, property);
             }
             
             var decorator = new StandardPropertyDecorator();
-            IList<CodeMemberProperty> generatedFields = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
+            IList<CodeMemberProperty> generatedProperties = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
             
-            Assert.NotNull(generatedFields);
-            Assert.AreEqual(StandardPropertyFieldDecoratorTest.NamesToType.Count, generatedFields.Count);
-            foreach(var field in generatedFields)
+            Assert.NotNull(generatedProperties);
+            Assert.AreEqual(StandardPropertyFieldDecoratorTest.NamesToType.Count, generatedProperties.Count);
+            foreach(var field in generatedProperties)
             {
-                Assert.That(StandardPropertyFieldDecoratorTest.NamesToType.ContainsKey(field.Name.ToLower()), "field name was not present in namesToType " + field.Name);                
+                Assert.That(StandardPropertyFieldDecoratorTest.NamesToType.ContainsKey(field.Name.ToLower()), 
+                            "field name was not present in namesToType " + field.Name);                
             }
             
             int item = 0;
             foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
             {
-                var field = generatedFields[item++];
+                var field = generatedProperties[item++];
                 Assert.AreEqual(pair.Key, field.Name.ToLower(), string.Format("Name different for expected at index {0}", item -1));
                 Assert.AreEqual(SchemaDecoratorUtil.GetCodeType(new JsonSchema(){Type = pair.Value}, internalClassProvider).BaseType, 
                                 field.Type.BaseType);
+            }
+            
+            item = 0;
+            foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
+            {
+                var field = generatedProperties[item++];
+                var comment = StandardPropertyFieldDecoratorTest.NamesToDescription[pair.Key];
+                if(comment == null || comment.Length == 0)
+                {
+                    Assert.AreEqual(0, field.Comments.Count);
+                } else
+                {
+                    Assert.AreEqual(1, field.Comments.Count);
+                    Assert.AreEqual(comment, field.Comments[0].Comment.Text);
+                }
             }
         }
         

@@ -39,6 +39,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {"f", JsonSchemaType.Integer},
         };
         
+        internal static readonly IDictionary<string, string> NamesToDescription = new SortedDictionary<string, string>() {
+            {"a", null},
+            {"b", ""},
+            {"c", "c"},
+            {"d", "d"},
+            {"e", "e"},     
+            {"f", "f"},
+        };
+            
         private INestedClassProvider internalClassProvider = new ObjectInternalClassProvider();
         
         [Test()]
