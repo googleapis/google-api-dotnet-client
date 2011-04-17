@@ -90,11 +90,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
             
-            if(propertySchema.Description.IsNotNullOrEmpty())
-            {
-                ret.Comments.Add(new CodeCommentStatement(propertySchema.Description));
-            }
-            
             ret.HasGet = true;
             var fieldReference = new CodeFieldReferenceExpression(
                                      new CodeThisReferenceExpression(),

@@ -112,8 +112,6 @@ namespace Google.Apis.Tools.CodeGen
             bool requiresUniqueAddition = false;
             bool nextCharToUpper = false;
             bool modifiedName = false;
-
-            string lowerbaseName = baseName.ToLower ();
             
             foreach (char c in baseName)
             {
@@ -229,7 +227,7 @@ namespace Google.Apis.Tools.CodeGen
         
         public static string GetClassName (ISchema schema, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter( GetSafeMemberName(schema.Name, "", wordsUsedInContext) );
+            return UpperFirstLetter( GetSafeMemberName(schema.Name, "Cls", wordsUsedInContext) );
         }
         
         #endregion

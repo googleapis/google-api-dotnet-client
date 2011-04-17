@@ -49,20 +49,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             foreach (var propertyPair in schema.Properties)
             {
                 var schemaFieldName = propertyPair.Key;
-                var propertyDefinition = FindCodePropertyForName(
+                var propertyDefinition = SchemaUtil.FindCodePropertyForName(
                     typeDeclaration, schemaFieldName, index++,schema.Properties.Keys);
                 propertyDefinition.CustomAttributes.Add(CreateAttribute(schemaFieldName));
             }
-        }
-        
-        
-        static internal CodeMemberProperty FindCodePropertyForName(CodeTypeDeclaration typeDeclaration, string name, int index, 
-            IEnumerable<string> otherNames)
-        {
-            string propertyName = SchemaDecoratorUtil.GetPropertyName(name, index, otherNames);
-            CodeMemberProperty property = typeDeclaration.Members.FindPropertyByName(propertyName);
-            property.ThrowIfNull(string.Format("Failed to find property by name[{0}] for propertySchemaName[{1}]", propertyName, name));
-            return property;
         }
         
         [VisibleForTestOnly]
@@ -72,7 +62,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             var attribute = new CodeAttributeDeclaration(jsonPropertyAttribute, new [] {argument});
             return attribute;
         }
-       
     }
 }
 
