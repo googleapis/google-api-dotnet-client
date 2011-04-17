@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,10 +49,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
@@ -99,6 +95,7 @@
     <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
     <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecoratorTest.cs" />
     <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecoratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
@@ -137,9 +134,4 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties InternalTargetFrameworkVersion="3.5" />
-    </MonoDevelop>
-  </ProjectExtensions>
 </Project>
