@@ -73,7 +73,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 		{		
 			AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new ConsoleAuthenticator("https://www.googleapis.com/auth/buzz", "buzz"));			
 			V03.Buzz.BuzzService buzzService = new V03.Buzz.BuzzService();
-			PeopleFeed result = buzzService.People.SearchAsObject("b", "c", "d", "5", "David Waters");
+			PeopleFeed result = buzzService.People.SearchAsObject("b", "c", "d", 5, "David Waters");
 			
 			logger.Info("Total Results:" + result.TotalResults);
 			foreach(Person person in result.Entry)
@@ -85,7 +85,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService {
 			
 			IDictionary<string,string> parameters = new Dictionary<string, string>();
 			parameters.Add("q", "Fred");
-			result = buzzService.People.SearchAsObject(null, null, null, null, "Fred");
+			result = buzzService.People.SearchAsObject(null, null, null, 5, "Fred");
 			 
 			logger.Info("Total Results:" + result.TotalResults);
 			foreach(Person person in result.Entry)

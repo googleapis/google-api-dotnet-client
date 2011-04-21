@@ -30,7 +30,7 @@ namespace Google.Apis.Tests.Apis.Requests
 		[Test()]
 		public void ConstructorTest ()
 		{
-			IMethod m = new MockMethod();
+			MockMethod m = new MockMethod();
 			m.Name = "Test";
 			
             Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new Dictionary<string, string>()));

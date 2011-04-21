@@ -15,10 +15,11 @@ limitations under the License.
 */
 
 using System;
-using System.Reflection;
-using System.IO;
-using System.Net;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 using Google.Apis;
@@ -42,12 +43,13 @@ namespace Google.Apis.Requests
 		private string PathUrl {get;set;}
 		private string RPCName {get;set;}
 		private string Body {get;set;}
-		private IDictionary<string, string> Parameters {get;set;}
-		private Uri RequestUrl;
+        private Uri RequestUrl;
 		private ReturnType ReturnType {get; set;}
 		internal String AppName {get; private set;}
         internal String DeveloperKey{get; private set;}
-		
+		[VisibleForTestOnly]
+        internal IDictionary<string, string> Parameters {get;set;}
+        
 		private const string userAgent = "%s google-api-dotnet-client/%s";
 		
 		public Request() {
@@ -109,6 +111,18 @@ namespace Google.Apis.Requests
 			return this;
 		}
 		
+        
+        
+        /// <summary>
+        /// Adds the parameters to the request.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Request"/>
+        /// </returns>
+        public IRequest WithParameters(IDictionary<string, object> parameters) {
+            return WithParameters(parameters.ToDictionary(k=>k.Key, v=>v.Value!=null?v.Value.ToString():null));
+        }
+        
 		
 		/// <summary>
 		/// Adds the parameters to the request.

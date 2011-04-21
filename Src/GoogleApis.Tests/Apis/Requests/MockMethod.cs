@@ -24,6 +24,8 @@ namespace Google.Apis.Tests.Apis.Requests
     public class MockMethod : IMethod
     {
         public string Name {get; set;}
+        
+        public string Description {get; set;}
 
         public string RestPath {get; set;}
 

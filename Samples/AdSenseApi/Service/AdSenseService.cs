@@ -84,7 +84,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
             }
         }
         
-        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, object> parameters) {
             Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
             return request.WithParameters(parameters).WithAuthentication(authenticator).WithBody(body).ExecuteRequest();
         }
@@ -104,7 +104,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         
         public virtual System.IO.Stream List(string propertycodeParam1) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["property_code"] = propertycodeParam1;
             logger.Debug("Executing adunits.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters);
@@ -127,7 +127,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         
         public virtual System.IO.Stream List(string propertycodeParam1) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["property_code"] = propertycodeParam1;
             logger.Debug("Executing customchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters);
@@ -149,7 +149,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         }
         
         public virtual System.IO.Stream Generate(string body) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing reports.generate");
             System.IO.Stream ret = this.service.ExecuteRequest(Reports.Resource, "generate", body, parameters);
             logger.Debug("Done Executing reports.generate");
@@ -171,7 +171,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         
         public virtual System.IO.Stream List(string propertycodeParam1) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["property_code"] = propertycodeParam1;
             logger.Debug("Executing urlchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters);
@@ -194,7 +194,7 @@ namespace Google.Apis.Samples.AdSenseApi.Service {
         
         public virtual System.IO.Stream List() {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing webproperties.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Webproperties.Resource, "list", body, parameters);
             logger.Debug("Done Executing webproperties.list");

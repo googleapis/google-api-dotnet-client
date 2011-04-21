@@ -57,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 			var service = CreateBuzzService();
 			decorator.AddResourceAssignments(service, method);
 			
-			Assert.AreEqual(6, method.Statements.Count);
+			Assert.AreEqual(7, method.Statements.Count);
 			foreach ( var statment in method.Statements )
 			{
 				Assert.IsInstanceOf(typeof(CodeAssignStatement), statment);
@@ -83,7 +83,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 			Assert.IsInstanceOf(typeof(CodeConstructor), codeType.Members[0]); 
 			var constructor = (CodeConstructor) codeType.Members[0];
 			// Test that both of the add statment methods where called.
-			Assert.GreaterOrEqual(8, constructor.Statements.Count);
+			Assert.GreaterOrEqual(constructor.Statements.Count, 9);
 			
 			//We have already tested the statment formation in the other tests.
 			

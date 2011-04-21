@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "resource"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "method"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(object), "body"));
-            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, string>), 
+            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, object>), 
                                                                            "parameters"));
             // ObjectToJson(body)
             var objectToJson = new CodeMethodInvokeExpression();

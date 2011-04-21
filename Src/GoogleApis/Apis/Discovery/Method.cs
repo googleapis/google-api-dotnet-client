@@ -44,6 +44,11 @@ namespace Google.Apis.Discovery
 
         public string Name {get;set;}
         
+        public string Description
+        {
+            get {return this.information.GetValueAsNull(ServiceFactory.Description) as string;}
+        }
+        
 		public abstract string RestPath {get;}
 
 		public string RpcName 

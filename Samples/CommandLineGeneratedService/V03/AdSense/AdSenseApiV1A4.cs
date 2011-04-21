@@ -728,7 +728,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
         
         private const string Name = "adsense";
         
-        private const string BaseUri = "http://example.url.com/adsense/v1alpha4/";
+        private const string BaseUri = "https://www.googleapis.com//adsense/v1alpha4/";
         
         private const Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_0_3;
         
@@ -799,12 +799,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             }
         }
         
-        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, object> parameters) {
             Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
             return request.WithParameters(parameters).WithAuthentication(authenticator).WithBody(body).ExecuteRequest();
         }
         
-        public virtual System.IO.Stream ExecuteRequest(string resource, string method, object body, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, object body, System.Collections.Generic.IDictionary<string, object> parameters) {
             return this.ExecuteRequest(resource, method, this.ObjectToJson(body), parameters);
         }
         
@@ -843,18 +843,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
+        /// <summary>List all ad clients in this AdSense account.</summary>
         public virtual System.IO.Stream List() {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing adclients.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Adclients.Resource, "list", body, parameters);
             logger.Debug("Done Executing adclients.list");
             return ret;
         }
         
+        /// <summary>List all ad clients in this AdSense account.</summary>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdClients ListAsObject() {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing adclients.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdClients ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdClients>(this.service.ExecuteRequest(Adclients.Resource, "list", body, parameters));
             logger.Debug("Done Executing adclients.list");
@@ -874,9 +876,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
+        /// <summary>List all ad units in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list ad units.</param>
         public virtual System.IO.Stream List(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing adunits.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters);
@@ -884,9 +888,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             return ret;
         }
         
+        /// <summary>List all ad units in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list ad units.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits ListAsObject(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing adunits.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdUnits>(this.service.ExecuteRequest(Adunits.Resource, "list", body, parameters));
@@ -907,9 +913,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
+        /// <summary>List all custom channels in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list custom channels.</param>
         public virtual System.IO.Stream List(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing customchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters);
@@ -917,9 +925,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             return ret;
         }
         
+        /// <summary>List all custom channels in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list custom channels.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels ListAsObject(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing customchannels.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.CustomChannels>(this.service.ExecuteRequest(Customchannels.Resource, "list", body, parameters));
@@ -940,16 +950,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
+        /// <summary>Generate an AdSense report based on the JSON-formatted report request sent in the HTML body. Returns the result as JSON; to retrieve output in CSV format specify &quot;alt=csv&quot; as a query parameter.</summary>
         public virtual System.IO.Stream Generate(string body) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing reports.generate");
             System.IO.Stream ret = this.service.ExecuteRequest(Reports.Resource, "generate", body, parameters);
             logger.Debug("Done Executing reports.generate");
             return ret;
         }
         
+        /// <summary>Generate an AdSense report based on the JSON-formatted report request sent in the HTML body. Returns the result as JSON; to retrieve output in CSV format specify &quot;alt=csv&quot; as a query parameter.</summary>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdsenseReportsGenerateResponse GenerateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdsenseReportsGenerateRequest body) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             logger.Debug("Executing reports.generate");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdsenseReportsGenerateResponse ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.AdsenseReportsGenerateResponse>(this.service.ExecuteRequest(Reports.Resource, "generate", this.service.ObjectToJson(body), parameters));
             logger.Debug("Done Executing reports.generate");
@@ -969,9 +981,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             this.service = service;
         }
         
+        /// <summary>List all URL channels in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list URL channels.</param>
         public virtual System.IO.Stream List(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing urlchannels.list");
             System.IO.Stream ret = this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters);
@@ -979,9 +993,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4 {
             return ret;
         }
         
+        /// <summary>List all URL channels in this AdSense account.</summary>
+        /// <param name="adClientId">ad_client_id - Required - Ad client for which to list URL channels.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels ListAsObject(string adClientId) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["ad_client_id"] = adClientId;
             logger.Debug("Executing urlchannels.list");
             Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels ret = this.service.JsonToObject <Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApiV1A4.Data.UrlChannels>(this.service.ExecuteRequest(Urlchannels.Resource, "list", body, parameters));

@@ -15,5 +15,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public string DefaultValue { get; set; }
         public string ValueType { get; set; }
         public string Description { get; set; }
+        public string Maximum { get; set; }
+        public string Minimum { get; set; }
+        public IEnumerable<string> Enum { get; set; }
     }
 }
