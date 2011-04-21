@@ -26,6 +26,7 @@ namespace Google.Apis.Requests {
 	public interface IRequest {
 		IRequest On(string rpcName);
 		IRequest Returning(ReturnType returnType);
+        IRequest WithParameters(IDictionary<string, object> parameters);
 		IRequest WithParameters(IDictionary<string, string> parameters);
 		IRequest WithParameters(string parameters);
 		IRequest WithBody(IDictionary<string, string> parameters);

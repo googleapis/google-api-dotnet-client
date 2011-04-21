@@ -23,7 +23,7 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
-    /// Adds the Method <code>ExecuteRequest(string resource, string method, string body, IDictionary<string,string> parameters)</code>
+    /// Adds the Method <code>ExecuteRequest(string resource, string method, string body, IDictionary<string,object> parameters)</code>
     /// This method is required. So either this decorator or another that creates this method is required.
     /// </summary>
     public class StandardExecuteMethodServiceDecorator : IServiceDecorator
@@ -48,7 +48,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "resource"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "method"));
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(string), "body"));
-            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, string>), "parameters"));
+            method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, object>), "parameters"));
             
             //Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
             method.Statements.Add (CreateRequestLocalVar ());

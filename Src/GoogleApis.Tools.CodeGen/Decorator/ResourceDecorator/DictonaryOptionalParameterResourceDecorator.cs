@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -35,12 +36,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator
     {
-
+        private readonly IMethodCommentCreator commentCreator;
+        public DictonaryOptionalParameterResourceDecorator (IMethodCommentCreator commentCreator)
+        {
+            this.commentCreator = commentCreator;
+        }
+        
         public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
                                    ResourceClassGenerator generator, string serviceClassName, 
                                    IEnumerable<IResourceDecorator> allDecorators)
         {
-            ResourceGenerator gen = new ResourceGenerator (className);
+            ResourceGenerator gen = new ResourceGenerator (className, commentCreator);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values) {
                 CodeTypeMember convenienceMethod = gen.CreateMethod (resource, method, methodNumber, allDecorators);
@@ -63,19 +69,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             ;
         }
 
-
-        public DictonaryOptionalParameterResourceDecorator ()
-        {
-        }
-
         [VisibleForTestOnly]
         internal class ResourceGenerator : ResourceBaseGenerator
         {
             private readonly string className;
+            private readonly IMethodCommentCreator commentCreator;
 
-            public ResourceGenerator (string className)
+            public ResourceGenerator (string className, IMethodCommentCreator commentCreator)
             {
+                className.ThrowIfNullOrEmpty("className");
+                
                 this.className = className;
+                this.commentCreator = commentCreator;
             }
 
             public CodeTypeReference GetBodyType(IMethod method) 
@@ -96,6 +101,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 member.Name = GeneratorUtils.GetMethodName (method, methodNumber, resource.Methods.Keys);
                 member.ReturnType = new CodeTypeReference ("System.IO.Stream");
                 member.Attributes = MemberAttributes.Public;
+                if(commentCreator != null)
+                {
+                    member.Comments.AddRange(commentCreator.CreateMethodComment(method));
+                }
                 
                 // Add Manditory parameters to the method.
                 var paramList = method.GetRequiredParameters();
@@ -106,7 +115,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 
                 int parameterCount = 1;
                 foreach (var param in paramList) {
+                    string parameterName = GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys);
                     member.Parameters.Add (DeclareInputParameter (param, parameterCount, method));
+                    AddParameterComment(this.commentCreator, member, param, parameterName);
                     assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount, method));
                     parameterCount++;
                 }
@@ -119,7 +130,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 dictType.TypeArguments.Add(typeof(string));
                 dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 */
-                var dictType = new CodeTypeReference (typeof(IDictionary<string, string>));
+                var dictType = new CodeTypeReference (typeof(IDictionary<string, object>));
                 var dictParameter = new CodeParameterDeclarationExpression (dictType, ParameterDictionaryName);
                 member.Parameters.Add (dictParameter);
                 

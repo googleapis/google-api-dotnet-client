@@ -83,6 +83,11 @@ namespace Google.Apis.Util
             return str != null && str.Length > 0;
         }
         
+        public static bool IsNotNullOrEmpty<T>(this ICollection<T> coll)
+        {
+            return coll != null && coll.Count > 0;
+        }
+        
         public static bool IsNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll == null || coll.Count == 0;

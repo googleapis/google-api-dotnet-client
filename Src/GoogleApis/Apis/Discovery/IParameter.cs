@@ -16,10 +16,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Google.Apis.Json;
-using Google.Apis.Requests;
+
 namespace Google.Apis.Discovery
 {
     public interface IParameter
@@ -31,5 +28,8 @@ namespace Google.Apis.Discovery
         string DefaultValue {get;}
         string ValueType {get;}
         string Description {get;}
+        string Maximum {get;}
+        string Minimum {get;}
+        IEnumerable<string> Enum {get;}
     }
 }

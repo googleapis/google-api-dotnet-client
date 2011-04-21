@@ -57,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardConstructorResourceDecorator (), 
                     new StandardMethodResourceDecorator (), 
                     new Log4NetResourceDecorator (), 
-                    new DictonaryOptionalParameterResourceDecorator ()}).
+                    new DictonaryOptionalParameterResourceDecorator (new DefaultEnglishCommentCreator())}).
                     AsReadOnly();
         public static IList<IResourceDecorator> GetSchemaAwareResourceDecorators(string schemaNamespace)
         {
@@ -67,9 +67,10 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardConstructorResourceDecorator (), 
                     new StandardMethodResourceDecorator (),
                     new StandardMethodResourceDecorator (
-                            true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace)),
+                            true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace), 
+                            new DefaultEnglishCommentCreator()),
                     new Log4NetResourceDecorator (), 
-                    new DictonaryOptionalParameterResourceDecorator ()}).
+                    new DictonaryOptionalParameterResourceDecorator (new DefaultEnglishCommentCreator())}).
                     AsReadOnly();
         }
 

@@ -99,6 +99,7 @@
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\SchemaUtil.cs" />
+    <Compile Include="Decorator\ResourceDecorator\MethodCommentCreator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

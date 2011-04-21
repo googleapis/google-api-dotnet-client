@@ -15,8 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
@@ -44,7 +45,11 @@ namespace Google.Apis.Testing {
 			this.ReturnType = returnType;
 			return this;
 		}
-
+  
+        public IRequest WithParameters (IDictionary<string, object> parameters)
+        {
+            return WithParameters(parameters.ToDictionary(k=>k.Key, v=>v.Value!=null?v.Value.ToString():null));
+        }
 
 		public IRequest WithParameters(IDictionary<string, string> parameters) {
 			this.Parameters = parameters;

@@ -3733,12 +3733,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             }
         }
         
-        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, string body, System.Collections.Generic.IDictionary<string, object> parameters) {
             Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
             return request.WithParameters(parameters).WithAuthentication(authenticator).WithBody(body).ExecuteRequest();
         }
         
-        public virtual System.IO.Stream ExecuteRequest(string resource, string method, object body, System.Collections.Generic.IDictionary<string, string> parameters) {
+        public virtual System.IO.Stream ExecuteRequest(string resource, string method, object body, System.Collections.Generic.IDictionary<string, object> parameters) {
             return this.ExecuteRequest(resource, method, this.ObjectToJson(body), parameters);
         }
         
@@ -3777,9 +3777,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Get a count of link shares</summary>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="url">Optional - URLs for which to get share counts.</param>
         public virtual System.IO.Stream Count(string hl, string url) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["hl"] = hl;
             parameters["url"] = url;
             logger.Debug("Executing activities.count");
@@ -3788,9 +3791,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete an activity</summary>
+        /// <param name="postId">Required - ID of the activity to delete.</param>
+        /// <param name="scope">Required - Must be one of the following values [@liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to delete.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -3802,9 +3811,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ExtractPeopleFromSearch(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
+        /// <summary>Search for people by topic</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        public virtual System.IO.Stream ExtractPeopleFromSearch(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -3821,9 +3841,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string postId, string userId, string alt, string hl, string maxComments, string maxLiked, string truncateAtom) {
+        /// <summary>Get an activity</summary>
+        /// <param name="postId">Required - ID of the post to get.</param>
+        /// <param name="userId">Required - ID of the user whose post to get.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxComments">max-comments - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of comments to include.</param>
+        /// <param name="maxLiked">max-liked - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of likes to include.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual System.IO.Stream Get(string postId, string userId, string alt, string hl, long maxComments, long maxLiked, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -3837,8 +3865,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl, string preview) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+        /// <summary>Create a new activity</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="preview">Optional - If true, only preview the action.</param>
+        public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl, bool preview) {
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -3849,9 +3882,19 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, string maxComments, string maxLiked, string maxResults, string truncateAtom) {
+        /// <summary>List activities</summary>
+        /// <param name="scope">Required - Must be one of the following values [@comments, @consumption, @liked, @public, @self] - The collection of activities to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxComments">max-comments - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of comments to include.</param>
+        /// <param name="maxLiked">max-liked - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of likes to include.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, long maxComments, long maxLiked, long maxResults, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -3867,9 +3910,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius, string truncateAtom) {
+        /// <summary>Search for activities</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual System.IO.Stream Search(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -3887,9 +3942,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Track(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
+        /// <summary>Get real-time activity tracking information</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        public virtual System.IO.Stream Track(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -3906,8 +3972,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update an activity</summary>
+        /// <param name="postId">Required - ID of the activity to update.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to update.</param>
+        /// <param name="abuseType">Optional</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, string abuseType, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -3920,9 +3993,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a count of link shares</summary>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="url">Optional - URLs for which to get share counts.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CountFeed CountAsObject(string hl, string url) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["hl"] = hl;
             parameters["url"] = url;
             logger.Debug("Executing activities.count");
@@ -3931,9 +4007,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete an activity</summary>
+        /// <param name="postId">Required - ID of the activity to delete.</param>
+        /// <param name="scope">Required - Must be one of the following values [@liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to delete.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -3945,9 +4027,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ExtractPeopleFromSearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
+        /// <summary>Search for people by topic</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ExtractPeopleFromSearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -3964,9 +4057,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity GetAsObject(string postId, string userId, string alt, string hl, string maxComments, string maxLiked, string truncateAtom) {
+        /// <summary>Get an activity</summary>
+        /// <param name="postId">Required - ID of the post to get.</param>
+        /// <param name="userId">Required - ID of the user whose post to get.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxComments">max-comments - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of comments to include.</param>
+        /// <param name="maxLiked">max-liked - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of likes to include.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity GetAsObject(string postId, string userId, string alt, string hl, long maxComments, long maxLiked, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -3980,8 +4081,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string userId, string alt, string hl, string preview) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+        /// <summary>Create a new activity</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="preview">Optional - If true, only preview the action.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string userId, string alt, string hl, bool preview) {
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -3992,9 +4098,19 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ListAsObject(string scope, string userId, string alt, string c, string hl, string maxComments, string maxLiked, string maxResults, string truncateAtom) {
+        /// <summary>List activities</summary>
+        /// <param name="scope">Required - Must be one of the following values [@comments, @consumption, @liked, @public, @self] - The collection of activities to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxComments">max-comments - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of comments to include.</param>
+        /// <param name="maxLiked">max-liked - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of likes to include.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed ListAsObject(string scope, string userId, string alt, string c, string hl, long maxComments, long maxLiked, long maxResults, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4010,9 +4126,21 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed SearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius, string truncateAtom) {
+        /// <summary>Search for activities</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        /// <param name="truncateAtom">Optional - Truncate the value of the atom:content element.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed SearchAsObject(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius, bool truncateAtom) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -4030,9 +4158,20 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed TrackAsObject(string alt, string bbox, string c, string hl, string lat, string lon, string maxResults, string pid, string q, string radius) {
+        /// <summary>Get real-time activity tracking information</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="bbox">Optional - Bounding box to use in a geographic location query.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="lat">Optional - Latitude to use in a geographic location query.</param>
+        /// <param name="lon">Optional - Longitude to use in a geographic location query.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="pid">Optional - ID of a place to use in a geographic location query.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        /// <param name="radius">Optional - Radius to use in a geographic location query.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ActivityFeed TrackAsObject(string alt, string bbox, string c, string hl, string lat, string lon, long maxResults, string pid, string q, string radius) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["bbox"] = bbox;
             parameters["c"] = c;
@@ -4049,8 +4188,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update an activity</summary>
+        /// <param name="postId">Required - ID of the activity to update.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to update.</param>
+        /// <param name="abuseType">Optional</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Activity body, string postId, string scope, string userId, string abuseType, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4063,7 +4209,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a count of link shares</summary>
+        public virtual System.IO.Stream Count(System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             logger.Debug("Executing activities.count");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "count", body, parameters);
@@ -4071,7 +4218,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Delete an activity</summary>
+        /// <param name="postId">Required - ID of the activity to delete.</param>
+        /// <param name="scope">Required - Must be one of the following values [@liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to delete.</param>
+        public virtual System.IO.Stream Delete(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4082,7 +4233,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Search for people by topic</summary>
+        public virtual System.IO.Stream ExtractPeopleFromSearch(System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             logger.Debug("Executing activities.extractPeopleFromSearch");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "extractPeopleFromSearch", body, parameters);
@@ -4090,7 +4242,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get an activity</summary>
+        /// <param name="postId">Required - ID of the post to get.</param>
+        /// <param name="userId">Required - ID of the user whose post to get.</param>
+        public virtual System.IO.Stream Get(string postId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -4100,7 +4255,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Create a new activity</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing activities.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "insert", body, parameters);
@@ -4108,7 +4265,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>List activities</summary>
+        /// <param name="scope">Required - Must be one of the following values [@comments, @consumption, @liked, @public, @self] - The collection of activities to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4118,7 +4278,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Search for activities</summary>
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             logger.Debug("Executing activities.search");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "search", body, parameters);
@@ -4126,7 +4287,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get real-time activity tracking information</summary>
+        public virtual System.IO.Stream Track(System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             logger.Debug("Executing activities.track");
             System.IO.Stream ret = this.service.ExecuteRequest(Activities.Resource, "track", body, parameters);
@@ -4134,7 +4296,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Update an activity</summary>
+        /// <param name="postId">Required - ID of the activity to update.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @liked, @muted, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user whose post to update.</param>
+        public virtual System.IO.Stream Update(string body, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4157,9 +4323,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Delete a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to delete the comment.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -4171,9 +4343,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Get(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -4185,8 +4363,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a comment</summary>
+        /// <param name="postId">Required - ID of the activity on which to comment.</param>
+        /// <param name="userId">Required - ID of the user on whose behalf to comment.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Insert(string body, string postId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4197,9 +4380,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List comments</summary>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user for whose post to get comments.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream List(string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4213,8 +4404,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to update the comment.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="abuseType">Optional</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, string abuseType, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4228,9 +4427,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to delete the comment.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -4242,9 +4447,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment GetAsObject(string commentId, string postId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["userId"] = userId;
@@ -4256,8 +4467,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a comment</summary>
+        /// <param name="postId">Required - ID of the activity on which to comment.</param>
+        /// <param name="userId">Required - ID of the user on whose behalf to comment.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string postId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4268,9 +4484,17 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ListAsObject(string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List comments</summary>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user for whose post to get comments.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.CommentFeed ListAsObject(string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4284,8 +4508,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to update the comment.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="abuseType">Optional</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Comment body, string commentId, string postId, string scope, string userId, string abuseType, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4299,7 +4531,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Delete a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to delete the comment.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Delete(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
@@ -4310,7 +4546,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Get(string commentId, string postId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
@@ -4321,7 +4561,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Create a comment</summary>
+        /// <param name="postId">Required - ID of the activity on which to comment.</param>
+        /// <param name="userId">Required - ID of the user on whose behalf to comment.</param>
+        public virtual System.IO.Stream Insert(string body, string postId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["postId"] = postId;
             parameters["userId"] = userId;
             logger.Debug("Executing comments.insert");
@@ -4330,7 +4573,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>List comments</summary>
+        /// <param name="postId">Required - ID of the activity for which to get comments.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user for whose post to get comments.</param>
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4341,7 +4588,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Update a comment</summary>
+        /// <param name="commentId">Required - ID of the comment being referenced.</param>
+        /// <param name="postId">Required - ID of the activity for which to update the comment.</param>
+        /// <param name="scope">Required - Must be one of the following values [@abuse, @self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Update(string body, string commentId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["commentId"] = commentId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4365,9 +4617,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Delete a group</summary>
+        /// <param name="groupId">Required - ID of the group to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string groupId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4378,9 +4635,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a group</summary>
+        /// <param name="groupId">Required - ID of the group to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Get(string groupId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4391,8 +4653,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a group</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4402,9 +4668,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get a user&apos;s groups</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream List(string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
@@ -4416,8 +4688,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update a group</summary>
+        /// <param name="groupId">Required - ID of the group to update.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Update(string body, string groupId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4428,9 +4705,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete a group</summary>
+        /// <param name="groupId">Required - ID of the group to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string groupId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4441,9 +4723,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a group</summary>
+        /// <param name="groupId">Required - ID of the group to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group GetAsObject(string groupId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4454,8 +4741,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a group</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4465,9 +4756,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ListAsObject(string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get a user&apos;s groups</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.GroupFeed ListAsObject(string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["c"] = c;
@@ -4479,8 +4776,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Update a group</summary>
+        /// <param name="groupId">Required - ID of the group to update.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Group body, string groupId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4491,7 +4793,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Delete a group</summary>
+        /// <param name="groupId">Required - ID of the group to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Delete(string groupId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -4501,7 +4806,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a group</summary>
+        /// <param name="groupId">Required - ID of the group to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Get(string groupId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -4511,7 +4819,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Create a group</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing groups.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(Groups.Resource, "insert", body, parameters);
@@ -4519,7 +4829,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a user&apos;s groups</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream List(string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.list");
@@ -4528,7 +4840,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Update a group</summary>
+        /// <param name="groupId">Required - ID of the group to update.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Update(string body, string groupId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             logger.Debug("Executing groups.update");
@@ -4550,9 +4865,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Remove a person from a group</summary>
+        /// <param name="groupId">Required - ID of the group from which to remove the person.</param>
+        /// <param name="personId">Required - ID of the person to remove from the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string groupId, string personId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -4564,9 +4885,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a user profile</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Get(string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4576,9 +4901,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people who liked an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@liked]</param>
+        /// <param name="postId">Required - ID of the activity that was liked.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4593,9 +4927,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string groupId, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people in a group</summary>
+        /// <param name="groupId">Required - ID of the group for which to list users.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream List(string groupId, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4608,9 +4949,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people who reshared an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@reshared]</param>
+        /// <param name="postId">Required - ID of the activity that was reshared.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4625,9 +4975,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(string alt, string c, string hl, string maxResults, string q) {
+        /// <summary>Search for people</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        public virtual System.IO.Stream Search(string alt, string c, string hl, long maxResults, string q) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
@@ -4639,8 +4995,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Add a person to a group</summary>
+        /// <param name="groupId">Required - ID of the group to which to add the person.</param>
+        /// <param name="personId">Required - ID of the person to add to the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -4652,9 +5014,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Remove a person from a group</summary>
+        /// <param name="groupId">Required - ID of the group from which to remove the person.</param>
+        /// <param name="personId">Required - ID of the person to remove from the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string groupId, string personId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -4666,9 +5034,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a user profile</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person GetAsObject(string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4678,9 +5050,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed LikedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people who liked an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@liked]</param>
+        /// <param name="postId">Required - ID of the activity that was liked.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed LikedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4695,9 +5076,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ListAsObject(string groupId, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people in a group</summary>
+        /// <param name="groupId">Required - ID of the group for which to list users.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ListAsObject(string groupId, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4710,9 +5098,18 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ResharedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get people who reshared an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@reshared]</param>
+        /// <param name="postId">Required - ID of the activity that was reshared.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed ResharedAsObject(string groupId, string postId, string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
             parameters["scope"] = scope;
@@ -4727,9 +5124,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed SearchAsObject(string alt, string c, string hl, string maxResults, string q) {
+        /// <summary>Search for people</summary>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        /// <param name="q">Optional - Full-text search query string.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PeopleFeed SearchAsObject(string alt, string c, string hl, long maxResults, string q) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["alt"] = alt;
             parameters["c"] = c;
             parameters["hl"] = hl;
@@ -4741,8 +5144,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Add a person to a group</summary>
+        /// <param name="groupId">Required - ID of the group to which to add the person.</param>
+        /// <param name="personId">Required - ID of the person to add to the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person UpdateAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Person body, string groupId, string personId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -4754,7 +5163,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Remove a person from a group</summary>
+        /// <param name="groupId">Required - ID of the group from which to remove the person.</param>
+        /// <param name="personId">Required - ID of the person to remove from the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        public virtual System.IO.Stream Delete(string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
@@ -4765,7 +5178,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a user profile</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Get(string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["userId"] = userId;
             logger.Debug("Executing people.get");
@@ -4774,7 +5189,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get people who liked an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@liked]</param>
+        /// <param name="postId">Required - ID of the activity that was liked.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Liked(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
@@ -4786,7 +5206,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get people in a group</summary>
+        /// <param name="groupId">Required - ID of the group for which to list users.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream List(string groupId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["userId"] = userId;
@@ -4796,7 +5219,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get people who reshared an activity</summary>
+        /// <param name="groupId">Required - Must be one of the following values [@reshared]</param>
+        /// <param name="postId">Required - ID of the activity that was reshared.</param>
+        /// <param name="scope">Required</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Reshared(string groupId, string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["groupId"] = groupId;
             parameters["postId"] = postId;
@@ -4808,7 +5236,8 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Search for people</summary>
+        public virtual System.IO.Stream Search(System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             logger.Debug("Executing people.search");
             System.IO.Stream ret = this.service.ExecuteRequest(People.Resource, "search", body, parameters);
@@ -4816,7 +5245,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Add a person to a group</summary>
+        /// <param name="groupId">Required - ID of the group to which to add the person.</param>
+        /// <param name="personId">Required - ID of the person to add to the group.</param>
+        /// <param name="userId">Required - ID of the owner of the group.</param>
+        public virtual System.IO.Stream Update(string body, string groupId, string personId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["groupId"] = groupId;
             parameters["personId"] = personId;
             parameters["userId"] = userId;
@@ -4839,9 +5272,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Delete a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string albumId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4852,9 +5290,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Get(string albumId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4865,8 +5308,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a photo album</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Insert(string body, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4876,9 +5323,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List a user&apos;s photo albums</summary>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection of albums to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream List(string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4891,9 +5345,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string albumId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4904,9 +5363,14 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album GetAsObject(string albumId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4917,8 +5381,12 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Create a photo album</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.Album body, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["userId"] = userId;
             parameters["alt"] = alt;
             parameters["hl"] = hl;
@@ -4928,9 +5396,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ListAsObject(string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List a user&apos;s photo albums</summary>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection of albums to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumsFeed ListAsObject(string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -4943,7 +5418,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Delete a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Delete(string albumId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
@@ -4953,7 +5431,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a photo album</summary>
+        /// <param name="albumId">Required - ID of the album to get.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Get(string albumId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
@@ -4963,7 +5444,9 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Create a photo album</summary>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Insert(string body, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["userId"] = userId;
             logger.Debug("Executing photoAlbums.insert");
             System.IO.Stream ret = this.service.ExecuteRequest(PhotoAlbums.Resource, "insert", body, parameters);
@@ -4971,7 +5454,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>List a user&apos;s photo albums</summary>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection of albums to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream List(string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -4994,9 +5480,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Delete a photo</summary>
+        /// <param name="albumId">Required - ID of the album to which to photo belongs.</param>
+        /// <param name="photoId">Required - ID of the photo to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
@@ -5008,9 +5500,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get photo metadata</summary>
+        /// <param name="albumId">Required - ID of the album containing the photo.</param>
+        /// <param name="photoId">Required - ID of the photo for which to get metadata.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Get(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
@@ -5022,8 +5520,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Insert(string body, string albumId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5034,8 +5537,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream Insert2(string body, string albumId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5046,9 +5554,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List photos in an album</summary>
+        /// <param name="albumId">Required - ID of the album for which to list photos.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5061,9 +5576,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ListByScope(string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get a user&apos;s photos</summary>
+        /// <param name="scope">Required - Must be one of the following values [@recent] - The collection of photos to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual System.IO.Stream ListByScope(string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5076,9 +5598,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Delete a photo</summary>
+        /// <param name="albumId">Required - ID of the album to which to photo belongs.</param>
+        /// <param name="photoId">Required - ID of the photo to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream DeleteAsObject(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
@@ -5090,9 +5618,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get photo metadata</summary>
+        /// <param name="albumId">Required - ID of the album containing the photo.</param>
+        /// <param name="photoId">Required - ID of the photo for which to get metadata.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson GetAsObject(string albumId, string photoId, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
             parameters["userId"] = userId;
@@ -5104,8 +5638,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.AlbumLite body, string albumId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5116,8 +5655,13 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson Insert2AsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.ChiliPhotosResourceJson body, string albumId, string userId, string alt, string hl) {
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5128,9 +5672,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByAlbumAsObject(string albumId, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>List photos in an album</summary>
+        /// <param name="albumId">Required - ID of the album for which to list photos.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByAlbumAsObject(string albumId, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5143,9 +5694,16 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByScopeAsObject(string scope, string userId, string alt, string c, string hl, string maxResults) {
+        /// <summary>Get a user&apos;s photos</summary>
+        /// <param name="scope">Required - Must be one of the following values [@recent] - The collection of photos to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="c">Optional - A continuation token that allows pagination.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
+        /// <param name="maxResults">max-results - Optional - Minimum value of 0 - Maximum value of 4294967295 - Maximum number of results to include.</param>
+        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.PhotosFeed ListByScopeAsObject(string scope, string userId, string alt, string c, string hl, long maxResults) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["scope"] = scope;
             parameters["userId"] = userId;
             parameters["alt"] = alt;
@@ -5158,7 +5716,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Delete a photo</summary>
+        /// <param name="albumId">Required - ID of the album to which to photo belongs.</param>
+        /// <param name="photoId">Required - ID of the photo to delete.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Delete(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
@@ -5169,7 +5731,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Get(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get photo metadata</summary>
+        /// <param name="albumId">Required - ID of the album containing the photo.</param>
+        /// <param name="photoId">Required - ID of the photo for which to get metadata.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Get(string albumId, string photoId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["albumId"] = albumId;
             parameters["photoId"] = photoId;
@@ -5180,7 +5746,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Insert(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert");
@@ -5189,7 +5758,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream Insert2(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Upload a photo to an album</summary>
+        /// <param name="albumId">Required - ID of the album to which to upload.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream Insert2(string body, string albumId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
             logger.Debug("Executing photos.insert2");
@@ -5198,7 +5770,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>List photos in an album</summary>
+        /// <param name="albumId">Required - ID of the album for which to list photos.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream ListByAlbum(string albumId, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;
@@ -5208,7 +5783,10 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream ListByScope(string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get a user&apos;s photos</summary>
+        /// <param name="scope">Required - Must be one of the following values [@recent] - The collection of photos to list.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream ListByScope(string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -5231,9 +5809,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             this.service = service;
         }
         
+        /// <summary>Get related links for an activity</summary>
+        /// <param name="postId">Required - ID of the activity to which to get related links.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual System.IO.Stream List(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -5245,9 +5829,15 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
+        /// <summary>Get related links for an activity</summary>
+        /// <param name="postId">Required - ID of the activity to which to get related links.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
+        /// <param name="hl">Optional - Language code to limit language results.</param>
         public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi.Data.RelatedFeed ListAsObject(string postId, string scope, string userId, string alt, string hl) {
             string body = null;
-            System.Collections.Generic.Dictionary<string, string> parameters = new System.Collections.Generic.Dictionary<string, string>();
+            System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["postId"] = postId;
             parameters["scope"] = scope;
             parameters["userId"] = userId;
@@ -5259,7 +5849,11 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.AdSenseApi {
             return ret;
         }
         
-        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, string> parameters) {
+        /// <summary>Get related links for an activity</summary>
+        /// <param name="postId">Required - ID of the activity to which to get related links.</param>
+        /// <param name="scope">Required - Must be one of the following values [@self] - The collection to which the activity belongs.</param>
+        /// <param name="userId">Required - ID of the user being referenced.</param>
+        public virtual System.IO.Stream List(string postId, string scope, string userId, System.Collections.Generic.IDictionary<string, object> parameters) {
             string body = null;
             parameters["postId"] = postId;
             parameters["scope"] = scope;

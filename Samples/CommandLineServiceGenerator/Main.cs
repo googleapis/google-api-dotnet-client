@@ -1349,25 +1349,12 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 		{
 			Logger.Debug("Logging Started");
 			DisableSllChecking();
-			//GenerateBuzzServiceV02 ();
-			//GenerateAdSenseService ();
 			GenerateBuzzServiceV03 ();
 			GenerateAdSenseServiceV03 ();
 			GenerateAdSenseServiceV1A4 ();
 			Logger.Debug("All Done");
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();
-		}
-		
-		private static void GenerateBuzzServiceV02 ()
-		{
-			var serviceName = "buzz";
-			var version = "v1";
-			var clientNamespace ="Google.Apis.Samples.CommandLineGeneratedService.Buzz";
-			var language = "CSharp";
-			var output = "../../../CommandLineGeneratedService/Buzz/BuzzService.cs";
-			
-			GoogleServiceGenerator.GenerateService(serviceName, version, clientNamespace, language, output); 
 		}
 		
 		private static void GenerateAdSenseServiceV1A4 ()
@@ -1383,7 +1370,7 @@ namespace Google.Apis.Samples.ComandLineServiceGenerator
 			
 			var discovery = new DiscoveryService (cachedFetcher);
             // Build the service based on discovery information.
-			var param = new FactoryParameterV0_3("http://example.url.com",null);
+			var param = new FactoryParameterV0_3("https://www.googleapis.com/",null);
             var service = discovery.GetService (version, DiscoveryVersion.Version_0_3, param);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);

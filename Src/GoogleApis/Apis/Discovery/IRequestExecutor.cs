@@ -26,7 +26,7 @@ namespace Google.Apis.Discovery
 	/// </summary>
 	public interface IRequestExecutor
 	{
-		Stream ExecuteRequest (string resource, string method, string body, IDictionary<string, string> parameters);
+        Stream ExecuteRequest (string resource, string method, string body, IDictionary<string, object> parameters);
 	}
     
     /// <summary>
@@ -38,6 +38,6 @@ namespace Google.Apis.Discovery
     {
         string ObjectToJson(object obj);
         TOutput JsonToObject<TOutput>(System.IO.Stream stream);
-        Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, string> parameters);
+        Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, object> parameters);
     }
 }

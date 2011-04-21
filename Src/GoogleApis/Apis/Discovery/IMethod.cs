@@ -30,12 +30,13 @@ namespace Google.Apis.Discovery
     /// <see cref="IResource"/>
     public interface IMethod
     {
-        string Name {get;set;}
-        string RestPath{get;} 
-        string RpcName {get;}
-        string HttpMethod {get;}
-        string ResponseType {get;}
-        string RequestType {get;}
-        Dictionary<string, IParameter> Parameters{get;} 
+        string Name { get; }
+        string Description { get; }
+        string RestPath{ get; } 
+        string RpcName { get; }
+        string HttpMethod { get; }
+        string ResponseType { get; }
+        string RequestType { get; }
+        Dictionary<string, IParameter> Parameters{ get; }
     }
 }

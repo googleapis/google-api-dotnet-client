@@ -37,6 +37,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         private readonly bool acceptObjectsAsBody;
         private readonly IObjectTypeProvider objectTypeProvider;
         private readonly string methodNameSufix;
+        private readonly IMethodCommentCreator commentCreator;
         
         /// <summary>
         /// Constructs a StandardMethodResourceDecorator which creates methods with body parameter as string 
@@ -47,11 +48,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             returnObjects = false;
             acceptObjectsAsBody = false;
             objectTypeProvider = null;
+            commentCreator = new DefaultEnglishCommentCreator();
+            
             methodNameSufix = "";
         }
         
         public StandardMethodResourceDecorator(
-                bool returnObjects, bool acceptObjectsAsBody, IObjectTypeProvider objectTypeProvider)
+                bool returnObjects, bool acceptObjectsAsBody, IObjectTypeProvider objectTypeProvider, IMethodCommentCreator commentCreator)
         {
             if (returnObjects || acceptObjectsAsBody ) 
             {
@@ -60,6 +63,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             this.returnObjects = returnObjects;
             this.acceptObjectsAsBody = acceptObjectsAsBody;
             this.objectTypeProvider = objectTypeProvider;
+            this.commentCreator = commentCreator;
             this.methodNameSufix = "AsObject";
         }
 
@@ -68,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                    IEnumerable<IResourceDecorator> allDecorators)
         {
             var gen = new ResourceGenerator (
-                className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix);
+                className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix, commentCreator);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values) {
                 logger.DebugFormat ("Adding Standard Method {0}.{1}", resource.Name, method.Name);
@@ -100,10 +104,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             private readonly bool acceptObjectsAsBody;
             private readonly IObjectTypeProvider objectTypeProvider;
             private readonly string methodNameSuffix;
+            private readonly IMethodCommentCreator commentCreator;
 
             public ResourceGenerator (
                     string className,bool returnObjects, bool acceptObjectsAsBody, 
-                    IObjectTypeProvider objectTypeProvider, string methodNameSuffix)
+                    IObjectTypeProvider objectTypeProvider, string methodNameSuffix,
+                    IMethodCommentCreator commentCreator)
             {
                 if (returnObjects || acceptObjectsAsBody ) 
                 {
@@ -114,6 +120,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.objectTypeProvider = objectTypeProvider;
                 this.methodNameSuffix = methodNameSuffix;
                 this.className = className;
+                this.commentCreator = commentCreator;
             }
    
             [VisibleForTestOnly]
@@ -147,7 +154,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 member.Name = GeneratorUtils.GetMethodName (method, methodNumber, resource.Methods.Keys) + this.methodNameSuffix;
                 member.ReturnType = GetReturnType(method);
                 member.Attributes = MemberAttributes.Public;
-                
+                if( commentCreator != null )
+                {
+                    member.Comments.AddRange(commentCreator.CreateMethodComment(method));
+                }
                 
                 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection ();
@@ -235,8 +245,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 if (method.Parameters != null && method.Parameters != null) {
                     int parameterCount = 1;
                     foreach (var param in method.GetAllParametersSorted()) {
+                        string parameterName = GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys);
                         member.Parameters.Add (DeclareInputParameter (param, parameterCount, method));
                         assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount, method));
+                        AddParameterComment(commentCreator, member, param, parameterName);
                         parameterCount++;
                     }
                 }
@@ -249,15 +261,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
             /// <summary>
             /// produces
-            /// Dictionary<string, string> parameters = new Dictionary<string, string>();
+            /// Dictionary<string, object> parameters = new Dictionary<string, object>();
             /// </summary>
             private CodeStatement DeclareParamaterDictionary ()
             {
                 // produces
-                //Dictionary<string, string> parameters = new Dictionary<string, string>();
-                return new CodeVariableDeclarationStatement (typeof(Dictionary<string, string>),
+                //Dictionary<string, object> parameters = new Dictionary<string, object>();
+                return new CodeVariableDeclarationStatement (typeof(Dictionary<string, object>),
                     ParameterDictionaryName, 
-                    new CodeObjectCreateExpression (typeof(Dictionary<string, string>)));
+                    new CodeObjectCreateExpression (typeof(Dictionary<string, object>)));
             }
         }
         

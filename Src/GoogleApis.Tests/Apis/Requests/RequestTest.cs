@@ -181,5 +181,26 @@ namespace Google.Apis.Tests.Apis.Requests
                 "optionalWithNull=c&optionalWithValue=b&required=a",
                 url.AbsoluteUri);
         }
+        
+        [Test]
+        public void WithParametersDictStringObject()
+        {
+            var dict = new Dictionary<string,object>();
+            dict.Add("a", "a");
+            dict.Add("null", null);
+            dict.Add("1",1);
+            dict.Add("100",100L);
+            dict.Add("True",true);
+            dict.Add("False",false);
+            var request = new Request();
+            request.WithParameters(dict);
+            Assert.AreEqual(dict.Count, request.Parameters.Count);
+            Assert.AreEqual("a", request.Parameters["a"]);
+            Assert.IsNull(request.Parameters["null"]); 
+            Assert.AreEqual("1", request.Parameters["1"]);
+            Assert.AreEqual("100", request.Parameters["100"]);
+            Assert.AreEqual("True", request.Parameters["True"]);
+            Assert.AreEqual("False", request.Parameters["False"]);
+        }
     }
 }

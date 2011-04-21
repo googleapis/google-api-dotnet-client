@@ -20,6 +20,7 @@ using System.CodeDom;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
 
@@ -87,7 +88,16 @@ namespace Google.Apis.Tools.CodeGen.Generator
             return new CodeParameterDeclarationExpression (paramType, 
                 GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
         }
-
+  
+        protected void AddParameterComment(IMethodCommentCreator commentCreator, CodeMemberMethod member, 
+                IParameter param, string parameterName)
+        {
+            if(commentCreator != null)
+            {
+                member.Comments.AddRange(commentCreator.CreateParameterComment(param, parameterName));
+            }
+        }
+        
         protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount, IMethod method)
         {
             method.ThrowIfNull("method");

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -99,6 +100,35 @@ namespace Google.Apis.Discovery
             {
                 get { return this.information.GetValueAsNull(ServiceFactory.Description) as string;}
             }
+            
+            public string Maximum 
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.Maximum) as string; }
+            }
+
+            public string Minimum 
+            {
+                get { return this.information.GetValueAsNull(ServiceFactory.Minimum) as string; }
+            }
+
+            public IEnumerable<string> Enum 
+            {
+                get 
+                {
+                    ArrayList list = this.information.GetValueAsNull("enum") as ArrayList;
+                    if (list == null)
+                    {
+                        yield break;
+                    }
+                    
+                    foreach(string s in list)
+                    {
+                        yield return s;
+                    }
+                    
+                }
+            }
+            
         }
     }
 }
