@@ -160,17 +160,21 @@ namespace Google.Apis.Json
                     break;
                 default:
                     token.type = JsonToken.Type.Undefined;
-                    if (Char.IsNumber (cur))
+                    if (Char.IsNumber (cur) || cur == '-')
                     {
                         var sb = new StringBuilder (BuilderBufferSize);
                         sb.Append (cur);
-                        while (IsTokenSeperator ((char)reader.Peek ()) == false)
+                        while (IsTokenSeperator ((char)reader.Peek ()) == false  || 
+                               ((char)reader.Peek() == '.') ||
+                               ((char)reader.Peek() == '+') ||
+                               ((char)reader.Peek() == '-'))
                         {
                             sb.Append ((char)reader.Read ());
                         }
                         token.value = sb.ToString ();
                         decimal decNumber;
-                        if (Decimal.TryParse (token.value, out decNumber))
+                        if (Decimal.TryParse (token.value, NumberStyles.Number | NumberStyles.AllowExponent,
+                                CultureInfo.InvariantCulture, out decNumber))
                         {
                             token.number = decNumber;
                             token.type = JsonToken.Type.Number;
