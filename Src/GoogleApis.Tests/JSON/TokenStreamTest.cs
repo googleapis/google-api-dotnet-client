@@ -210,5 +210,84 @@ namespace Google.Apis.Tests.Json
             actual = target.GetNextToken ();
             Assert.AreEqual (null, actual);
         }
+        
+        [Test()]
+        public void GetNextTokenStringsWithBackSlash()
+        {
+            TokenStream target = new TokenStream ("{ \"source\":\"\\u003Ca href=\\\"http:\\/\\/blackberry.com\\/twitter\\\" rel=\\\"nofollow\\\"\\u003ETwitter for BlackBerry\\u00ae\\u003C\\/a\\u003E\" }");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.ObjectStart, actual.type);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.String, actual.type);
+            Assert.AreEqual("source", actual.value);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.NameSeperator, actual.type);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.String, actual.type);
+            Assert.AreEqual("\u003Ca href=\"http://blackberry.com/twitter\" rel=\"nofollow\"\u003ETwitter for BlackBerry\u00ae\u003C/a\u003E", actual.value);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.ObjectEnd, actual.type);
+        }
+        
+        [Test()]
+        public void GetNextTokenNegitiveNumber()
+        {
+            TokenStream target = new TokenStream("\"utc_offset\":-18000");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.String, actual.type);
+            Assert.AreEqual("utc_offset", actual.value);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.NameSeperator, actual.type);
+            
+            actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.Number, actual.type);
+            Assert.AreEqual("-18000", actual.value);
+            Assert.AreEqual(-18000, actual.number);
+        }
+        
+        [Test()]
+        public void GetNextTokenNegitiveNumberWithDecimals()
+        {
+            TokenStream target = new TokenStream("-1234.5678");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.Number, actual.type);
+            Assert.AreEqual(-1234.5678, actual.number);
+            Assert.AreEqual("-1234.5678", actual.value);
+        }
+        
+        [Test()]
+        public void GetNextTokenExponent()
+        {
+            TokenStream target = new TokenStream("-1234.5678e1");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.Number, actual.type);
+            Assert.AreEqual(-12345.678, actual.number);
+            Assert.AreEqual("-1234.5678e1", actual.value);
+        }
+        
+        [Test()]
+        public void GetNextTokenExponentPositive()
+        {
+            TokenStream target = new TokenStream("-1234.5678e+1");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.Number, actual.type);
+            Assert.AreEqual(-12345.678, actual.number);
+            Assert.AreEqual("-1234.5678e+1", actual.value);
+        }
+        
+        [Test()]
+        public void GetNextTokenExponentNegitive()
+        {
+            TokenStream target = new TokenStream("-1234.5678e-1");
+            JsonToken actual = target.GetNextToken();
+            Assert.AreEqual(JsonToken.Type.Number, actual.type);
+            Assert.AreEqual(-123.45678, actual.number);
+            Assert.AreEqual("-1234.5678e-1", actual.value);
+        }
     }
 }
