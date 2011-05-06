@@ -149,8 +149,7 @@ namespace Google.Apis.Discovery
         
         public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            //TODO(davidwaters): We will return resource 0.2 until we need more functionality
-            return new ResourceV0_2(this.DiscoveryVersion, kvp);
+            return new ResourceV1_0(this.DiscoveryVersion, kvp);
         }
 
 	}
@@ -231,6 +230,11 @@ namespace Google.Apis.Discovery
         public override Uri BaseUri 
         { 
             get {return baseUri;}
+        }
+        
+        public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
+        {
+            return new ResourceV0_3(this.DiscoveryVersion, kvp);
         }
     }
     #endregion
