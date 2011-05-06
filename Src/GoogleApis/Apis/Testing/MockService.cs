@@ -57,7 +57,7 @@ namespace Google.Apis.Testing
 
         public DiscoveryVersion DiscoveryVersion
         {
-            get { return DiscoveryVersion.Version_0_1; }
+            get { return DiscoveryVersion.Version_1_0; }
         }
 
         public Uri RpcUri

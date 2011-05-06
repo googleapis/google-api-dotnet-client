@@ -28,6 +28,8 @@ namespace Google.Apis.Discovery
 	internal abstract class BaseMethod:IMethod
 	{
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseMethod));
+        private const string PathUrl = "path";
+
         private readonly DiscoveryVersion discoveryVersion;
 		internal readonly protected JsonDictionary information;
 		
@@ -49,7 +51,10 @@ namespace Google.Apis.Discovery
             get {return this.information.GetValueAsNull(ServiceFactory.Description) as string;}
         }
         
-		public abstract string RestPath {get;}
+	    public virtual string RestPath 
+        {
+            get { return this.information[PathUrl] as string; }
+        }
 
 		public string RpcName 
 		{
@@ -122,31 +127,23 @@ namespace Google.Apis.Discovery
 	}
     
     /// <summary>
-    /// Represents a Method from Discovery Version 0.1
+    /// Represents a Method from Discovery Version 1.0
     /// </summary>
-    internal class MethodV0_1:BaseMethod
+    internal class MethodV1_0:BaseMethod
     {
-        private const string PathUrl = "pathUrl";
-
-        public MethodV0_1(KeyValuePair<string, object> kvp):base(DiscoveryVersion.Version_0_1, kvp)
+        public MethodV1_0(DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
-        
-        public override string RestPath 
-        {
-            get { return this.information[PathUrl] as string; }
-        }
-        
     }
     
     /// <summary>
-    /// Represents a Method from Discovery Version 0.2
+    /// Represents a Method from Discovery Version 0.3
     /// </summary>
-    internal class MethodV0_2:BaseMethod
+    internal class MethodV0_3:BaseMethod
     {
         private const string PathUrl = "restPath";
 
-        public MethodV0_2(DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
+        public MethodV0_3(DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
         
