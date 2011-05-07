@@ -35,7 +35,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         public void CreateResourceFieldTest()
         {
             var decorator = new StandardResourcePropertyServiceDecorator();
-            var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
 
             CodeMemberField codeField = decorator.CreateResourceField(resource, 1, Enumerable.Empty<string>());
             
@@ -48,7 +48,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         public void CreateResourceGetterTest()
         {
             var decorator = new StandardResourcePropertyServiceDecorator();
-            var resource = CreateResourceDivcoveryV_0_1(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
             
             CodeMemberProperty codeProperty = decorator.CreateResourceGetter (resource, 1, Enumerable.Empty<string>());
             

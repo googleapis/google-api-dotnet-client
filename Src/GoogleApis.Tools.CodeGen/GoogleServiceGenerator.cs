@@ -152,7 +152,7 @@ namespace Google.Apis.Tools.CodeGen
         {
             var discovery = CreateDefaultCachingDiscovery(serviceName);
             // Build the service based on discovery information.
-            var service = discovery.GetService (version, DiscoveryVersion.Version_0_1, null);
+            var service = discovery.GetService (version, DiscoveryVersion.Version_1_0, null);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
             var generatedCode = generator.GenerateCode ();

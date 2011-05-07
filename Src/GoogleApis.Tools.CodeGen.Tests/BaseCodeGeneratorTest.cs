@@ -3956,9 +3956,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			return new KeyValuePair<string, object> (resourceName, json);
 		}
 
-		public static IResource CreateResourceDivcoveryV_0_1 (string resourceName, string json)
+		public static IResource CreateResourceDivcoveryV_1_0 (string resourceName, string json)
 		{
-			return new ResourceV0_1 (CreateJsonResourceDefinition (resourceName, json));
+			return new ResourceV1_0 (DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition (resourceName, json));
 		}
 
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
@@ -4026,16 +4026,15 @@ namespace Google.Apis.Tools.CodeGen.Tests
                 new FactoryParameterV0_3("http://test.sever.example.com", "http://test.sever.example.com/testService"));
 		}
         
-        protected IService CreateAdSenseV02Service()
+        protected IService CreateAdSenseV1_0Service()
         {
             var version = "v1beta1";
             var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseV02AsJson};
             var discovery = new DiscoveryService(buzzTestFetcher);
-            var param = new FactoryParameterV0_2();
-            param.ServerUrl = "http://elephant.lon:9996/";
-
+            var param = new FactoryParameterV1_0();
+            
             // Build the service based on discovery information.
-            return discovery.GetService(version, DiscoveryVersion.Version_0_2, param);
+            return discovery.GetService(version, DiscoveryVersion.Version_1_0, param);
         }
 	}
 }

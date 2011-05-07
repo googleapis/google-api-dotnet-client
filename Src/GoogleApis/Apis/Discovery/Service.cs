@@ -87,7 +87,7 @@ namespace Google.Apis.Discovery
 			}
 		}
         
-        internal virtual IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
+        internal static IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
         {
             js.ThrowIfNull("js");
             
