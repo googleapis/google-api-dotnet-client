@@ -107,14 +107,14 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         public void ParseSchemasEmptyTest()
         {
             JsonDictionary js = new JsonDictionary();
-            var dict = ServiceV0_3.ParseSchemas(js);
+            var dict = BaseService.ParseSchemas(js);
             Assert.AreEqual(0, dict.Count);
         }
         
         [Test()]
         public void ParseSchemasArgumentTest()
         {
-            Assert.Throws(typeof(ArgumentNullException), () => ServiceV0_3.ParseSchemas(null));
+            Assert.Throws(typeof(ArgumentNullException), () => BaseService.ParseSchemas(null));
         }
         
         private ServiceV0_3 CreateService()

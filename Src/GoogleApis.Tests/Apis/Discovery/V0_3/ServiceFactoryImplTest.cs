@@ -511,7 +511,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(null, param));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(json, null));
             
-            json = (JsonDictionary)JsonReader.Parse(Discovery.ServiceFactoryImplTest.BadDiscoveryv0_2_No_Name);
+            json = (JsonDictionary)JsonReader.Parse(Discovery.ServiceFactoryImplTest.BadDiscoveryv1_0_No_Name);
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV0_3(json, param));
         }
         

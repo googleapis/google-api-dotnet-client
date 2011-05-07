@@ -53,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         {
             var clientNamespace ="Google.Apis.Samples.CommandLineGeneratedService.AdSense";
             
-            var service = CreateAdSenseV02Service();
+            var service = CreateAdSenseV1_0Service();
             
             var generator = new GoogleServiceGenerator(service, clientNamespace);   
             var codeCompileUnit = generator.GenerateCode ();
