@@ -18,8 +18,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Testing;
+using Google.Apis.Util;
+
 namespace Google.Apis.Discovery
 {
     
@@ -75,18 +78,11 @@ namespace Google.Apis.Discovery
         private readonly string name;
         public ServiceFactoryDiscoveryV0_3 (JsonDictionary discovery, FactoryParameterV0_3 param)
         {
-            if ( discovery == null )
-            {
-                throw new ArgumentNullException("discovery");
-            }
-            if ( param == null )
-            {
-                throw new ArgumentNullException("param");
-            }
+            discovery.ThrowIfNullOrEmpty("discovery");
+            param.ThrowIfNull("param");
             
             if ( discovery.ContainsKey("name")  == false ||
-                 discovery["name"] as string == null || 
-                ((string)discovery["name"]).Length == 0)
+                 (discovery["name"] as string).IsNullOrEmpty())
             {
                 throw new ArgumentException("No Name present in discovery");
             }
