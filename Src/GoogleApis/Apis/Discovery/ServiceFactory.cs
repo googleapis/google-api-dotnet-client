@@ -63,7 +63,7 @@ namespace Google.Apis.Discovery
         internal const string ParameterType = "location";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
-        internal const string DefaultValue = "defaultValue";
+        internal const string DefaultValue = "default";
         internal const string ValueType = "type";
         internal const string Description = "description";
         internal const string Maximum = "maximum";

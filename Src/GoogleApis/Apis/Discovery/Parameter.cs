@@ -61,6 +61,10 @@ namespace Google.Apis.Discovery
             {
                 get { return this.information.GetValueAsNull("restParameterType") as string; }
             }
+            
+            public override string DefaultValue {
+                get { return this.information.GetValueAsNull("defaultValue") as string; }
+            }
         }
 
         [VisibleForTestOnly]
@@ -92,8 +96,13 @@ namespace Google.Apis.Discovery
             {
                 get { return (bool)(this.information.GetValueAsNull(ServiceFactory.Required) ?? (object)false); }
             }
-
-            public string DefaultValue
+   
+            public bool Repeated
+            {
+                get { return (bool)(this.information.GetValueAsNull("repeated") ?? (object)false); }
+            }
+            
+            public virtual string DefaultValue
             {
                 get { return this.information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
             }
@@ -122,7 +131,7 @@ namespace Google.Apis.Discovery
             {
                 get 
                 {
-                    ArrayList list = this.information.GetValueAsNull("enum") as ArrayList;
+                    IEnumerable list = this.information.GetValueAsNull("enum") as IEnumerable;
                     if (list == null)
                     {
                         yield break;
@@ -136,6 +145,23 @@ namespace Google.Apis.Discovery
                 }
             }
             
+            public IEnumerable<string> EnumDescription 
+            {
+                get 
+                {
+                    IEnumerable list = this.information.GetValueAsNull("enumDescriptions") as IEnumerable;
+                    if (list == null)
+                    {
+                        yield break;
+                    }
+                    
+                    foreach(string s in list)
+                    {
+                        yield return s;
+                    }
+                    
+                }
+            } 
         }
     }
 }
