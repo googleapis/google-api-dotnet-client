@@ -33,7 +33,76 @@ namespace Google.Apis.Tests.Apis.Discovery
     {
         private const string EmptyJson = "{'Fish' : 'chips'}";
         //TODO(davidwaters) Fill in exmaples
-        public const string DiscoveryV1_0Example = "{'Fish' : 'chips'}";
+        public const string DiscoveryV1_0Example = @"{""kind"": ""discovery#restDescription"",
+ ""id"": ""adsense:v1beta1"",
+ ""name"": ""adsense"",
+ ""version"": ""v1beta1"",
+ ""description"": ""AdSense Management API"",
+ ""icons"": {
+  ""x16"": ""http://www.google.com/images/icons/product/search-16.gif"",
+  ""x32"": ""http://www.google.com/images/icons/product/search-32.gif""
+ },
+ ""labels"": [
+  ""labs""
+ ],
+ ""protocol"": ""rest"",
+ ""basePath"": ""/adsense/v1beta1/"",
+ ""auth"": {
+  ""oauth2"": {
+   ""scopes"": {
+    ""https://www.googleapis.com/auth/adsense"": { 
+     ""description"": ""View your AdSense data"" 
+    }
+   }
+  },
+ ""schemas"": {},
+ ""resources"": {
+  ""adclients"": {
+   ""methods"": {
+    ""list"": {
+     ""id"": ""adsense.adclients.list"",
+     ""path"": ""ad_clients"",
+     ""httpMethod"": ""GET"",
+     ""description"": ""List all ad clients in this AdSense account."",
+     ""response"": {
+      ""$ref"": ""AdClients""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
+    }
+   }
+  },
+  ""adunits"": {
+   ""methods"": {
+    ""list"": {
+     ""id"": ""adsense.adunits.list"",
+     ""path"": ""ad_clients/{ad_client_id}/ad_units"",
+     ""httpMethod"": ""GET"",
+     ""description"": ""List all ad units in this AdSense account."",
+     ""parameters"": {
+      ""ad_client_id"": {
+       ""type"": ""string"",
+       ""description"": ""Ad client for which to list ad units."",
+       ""required"": true,
+       ""location"": ""path""
+      }
+     },
+     ""parameterOrder"": [
+      ""ad_client_id""
+     ],
+     ""response"": {
+      ""$ref"": ""AdUnits""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
+    }
+   }
+  }
+ }
+}
+";
         public const string DiscoveryV0_3Example = "{'Fish' : 'chips'}";
         
         [Test()]
@@ -44,9 +113,9 @@ namespace Google.Apis.Tests.Apis.Discovery
             IService service = factory.GetService ("v1beta1");
             
             Assert.NotNull(service);
-            Assert.AreEqual(1, service.Resources.Count);
-            Assert.AreEqual("mgmt", service.Resources.Keys.First());
-            Assert.AreEqual(5, service.Resources["mgmt"].Resources.Count);
+            Assert.AreEqual(2, service.Resources.Count);
+            Assert.AreEqual("adclients", service.Resources.Keys.First());
+            Assert.AreEqual(1, service.Resources["adclients"].Methods.Count);
         }
         
         [Test()]
@@ -65,8 +134,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test()]
         public void TestCreateServiceFactoryV1_0()
         {
-            Assert.Fail("No Test yet");
-            var stream = CreateStringStream(EmptyJson);
+            var stream = CreateStringStream(DiscoveryV1_0Example);
             var param = new FactoryParameterV1_0();
             IServiceFactory factory = ServiceFactory.CreateServiceFactory (stream, DiscoveryVersion.Version_1_0, param);
             Assert.IsNotNull(factory);
@@ -86,8 +154,9 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test()]
         public void TestCreateServiceFactoryInvalidVersion()
         {
-            var stream = CreateStringStream(EmptyJson);
-            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (stream, (DiscoveryVersion)56, null));
+            var stream = CreateStringStream(DiscoveryV1_0Example);
+            var param = new FactoryParameterV1_0();
+            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (stream, (DiscoveryVersion)56, param));
         }
         
         [Test()]

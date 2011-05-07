@@ -29,6 +29,7 @@ namespace Google.Apis.Json
     /// </summary>
     public class JsonReader
     {
+        public static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(JsonReader));
         private static JsonReader theInstance;
 
         private JsonReader ()
@@ -65,18 +66,25 @@ namespace Google.Apis.Json
             switch (token.type) 
             {
             case JsonToken.Type.String:
+                logger.Debug("Found String " + token.value);
                 return token.value;
             case JsonToken.Type.Number:
+                logger.Debug("Found Number " + token.number);
                 return token.number;
             case JsonToken.Type.False:
+                logger.Debug("Found False");
                 return false;
             case JsonToken.Type.True:
+                logger.Debug("Found True");
                 return true;
             case JsonToken.Type.Null:
+                logger.Debug("Found Null");
                 return null;
             case JsonToken.Type.ObjectStart:
+                logger.Debug("Found ObjectStart");
                 return ParseObject (ts);
             case JsonToken.Type.ArrayStart:
+                logger.Debug("Found ArrayStart");
                 return ParseArray (ts);
             case JsonToken.Type.Undefined:
             default:
@@ -89,24 +97,31 @@ namespace Google.Apis.Json
             // to parse an object, you get the object name, and then parse the value
             JsonToken token = ts.GetNextToken ();
             
-            if (token.type != JsonToken.Type.String)
-                throw new ArgumentException ("The tokenstream is not pointing at an object");
+            if (token.type != JsonToken.Type.String && token.type != JsonToken.Type.ObjectEnd)
+                throw new InvalidDataException ("The tokenstream is not pointing at an object, found object "+token.ToString()+" looking for a string or close object");
             
             JsonDictionary dict = new JsonDictionary ();
             
             for (JsonToken cur = ts.GetNextToken (); cur != null; cur = ts.GetNextToken ()) {
-                if (cur.type == JsonToken.Type.ObjectEnd)
-                    return dict; else if (cur.type == JsonToken.Type.MemberSeperator) {
-                    token = ts.GetNextToken ();
-                } else if (cur.type == JsonToken.Type.NameSeperator) {
-                    object value = ParseExpression (null, ts);
-                    if (dict.ContainsKey(token.value))
-                    {
-                        throw new ArgumentException("JsonObject contains duplicate definition for ["+token.value+"]");
-                    }
-                    dict.Add (token.value, value);
-                }
-                
+                switch(cur.type)
+                {
+                    case JsonToken.Type.ObjectEnd:
+                        logger.Debug("Found object end");
+                        return dict; 
+                    case JsonToken.Type.MemberSeperator:
+                        token = ts.GetNextToken ();
+                        break;
+                    case JsonToken.Type.NameSeperator:
+                        object value = ParseExpression (null, ts);
+                        if (dict.ContainsKey(token.value))
+                        {
+                            throw new ArgumentException("JsonObject contains duplicate definition for ["+token.value+"]");
+                        }
+                        dict.Add (token.value, value);
+                        break;
+                    default: 
+                        throw new InvalidDataException("Found invalid Json was expecting } or , or : found " + cur.ToString());
+                }                
             }
             return dict;
         }
