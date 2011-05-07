@@ -33,16 +33,23 @@ namespace Google.Apis.Discovery
         {
             switch (version)
             {
-            case DiscoveryVersion.Version_0_1:
-            case DiscoveryVersion.Version_0_2:
-                return new BaseParameter(kvp);
-            case DiscoveryVersion.Version_0_3:
-                return new ParameterV0_3(kvp);
-            default:
-                throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
+                case DiscoveryVersion.Version_0_3:
+                    return new ParameterV0_3(kvp);
+                case DiscoveryVersion.Version_1_0:
+                    return new ParameterV1_0(kvp);
+                default:
+                    throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
             }
         }
-
+  
+        [VisibleForTestOnly]
+        internal class ParameterV1_0 : BaseParameter
+        {
+            public ParameterV1_0(KeyValuePair<string, object> kvp)
+                : base(kvp)
+            { }
+        }
+        
         [VisibleForTestOnly]
         internal class ParameterV0_3 : BaseParameter
         {

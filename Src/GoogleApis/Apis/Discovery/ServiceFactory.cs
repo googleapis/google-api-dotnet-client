@@ -21,6 +21,7 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery 
 {
@@ -59,7 +60,7 @@ namespace Google.Apis.Discovery
         internal const string ResponseType = "response";
         internal const string RequestType = "request";
     
-        internal const string ParameterType = "parameterType";
+        internal const string ParameterType = "location";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
         internal const string DefaultValue = "defaultValue";
@@ -70,6 +71,10 @@ namespace Google.Apis.Discovery
 
         public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter param)
         {
+            discovery.ThrowIfNull("discovery");
+            version.ThrowIfNull("version");
+            param.ThrowIfNull("param");
+            
             JsonDictionary information = JsonReader.Parse(discovery) as JsonDictionary;
             
             switch(version){
