@@ -33,8 +33,8 @@ namespace Google.Apis.Tests.Apis.Discovery
     {
         private const string EmptyJson = "{'Fish' : 'chips'}";
         //TODO(davidwaters) Fill in exmaples
-        public const string DiscoveryV1_0Example = "";
-        public const string DiscoveryV0_3Example = "";
+        public const string DiscoveryV1_0Example = "{'Fish' : 'chips'}";
+        public const string DiscoveryV0_3Example = "{'Fish' : 'chips'}";
         
         [Test()]
         public void TestV1_0GetService()
