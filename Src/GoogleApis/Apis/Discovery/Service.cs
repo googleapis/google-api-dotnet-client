@@ -159,7 +159,6 @@ namespace Google.Apis.Discovery
     #region Service V1.0
     public class ServiceV1_0 : BaseService
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceV1_0));
         private const string BaseUrl = "basePath";
         
         private string ServerUrl{get;set;}
@@ -199,8 +198,6 @@ namespace Google.Apis.Discovery
     /// </summary>
     public class ServiceV0_3 : BaseService
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceV0_3));
-        
         private const string BaseUrl = "restBasePath";
         
         private string ServerUrl{get;set;}
@@ -232,7 +229,7 @@ namespace Google.Apis.Discovery
             get {return baseUri;}
         }
         
-        public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
+        public override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
             return new ResourceV0_3(this.DiscoveryVersion, kvp);
         }
