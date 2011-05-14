@@ -67,7 +67,7 @@ namespace Google.Apis.Discovery
         
         public override IService GetService (string version)
         {
-            return new ServiceV1_0(version, this.Name, this.Param, Information);
+            return new ServiceV1_0(version, this.Name, (FactoryParameterV1_0)this.Param, Information);
         }
     }
     

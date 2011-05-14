@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 using Google.Apis.Json;
@@ -170,7 +171,7 @@ namespace Google.Apis.Discovery
             get { return DiscoveryVersion.Version_1_0; }
         }
         
-        public ServiceV1_0 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
+        public ServiceV1_0 (string version, string name, FactoryParameterV1_0 param, JsonDictionary js):
             base(version, name, js)
         {
             param.ThrowIfNull("param");
@@ -182,6 +183,13 @@ namespace Google.Apis.Discovery
             } 
             else
             {
+                if(this.information.ContainsKey(BaseUrl) == false)
+                {
+                    throw new ArgumentException(
+                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]", 
+                            BaseUrl, 
+                            string.Join(", ", this.information.Keys.ToArray() )));
+                }
                 this.baseUri = new Uri (this.ServerUrl +
                     this.information[BaseUrl] as string);
             }
