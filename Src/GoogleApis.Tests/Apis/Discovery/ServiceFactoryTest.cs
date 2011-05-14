@@ -48,14 +48,15 @@ namespace Google.Apis.Tests.Apis.Discovery
  ""protocol"": ""rest"",
  ""basePath"": ""/adsense/v1beta1/"",
  ""auth"": {
-  ""oauth2"": {
-   ""scopes"": {
-    ""https://www.googleapis.com/auth/adsense"": { 
-     ""description"": ""View your AdSense data"" 
-    }
-   }
-  },
- ""schemas"": {},
+        ""oauth2"": {
+            ""scopes"": {
+                ""https://www.googleapis.com/auth/adsense"": {
+                    ""description"": ""View your AdSense data""
+                }
+            }
+        }
+ },
+ ""schemas"": {'sample' : {'id':'Sample'}},
  ""resources"": {
   ""adclients"": {
    ""methods"": {
@@ -103,13 +104,17 @@ namespace Google.Apis.Tests.Apis.Discovery
  }
 }
 ";
-        public const string DiscoveryV0_3Example = "{'Fish' : 'chips'}";
+        public const string DiscoveryV0_3SmallestExample = "{'name' : 'SmallExample'," +
+            "'restBasePath' : 'https://api.example.com/example'," +
+            "'resources' : {'mgmt' : {'name' : 'mgmt', " +
+            "'resources' : {'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
         
         [Test()]
         public void TestV1_0GetService()
         {
             var param = new FactoryParameterV1_0();
-            var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, param);
+            var factory = ServiceFactory.CreateServiceFactory(
+                    CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, param);
             IService service = factory.GetService ("v1beta1");
             
             Assert.NotNull(service);
@@ -122,13 +127,16 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestV0_3GetService()
         {
             var param = new FactoryParameterV0_3();
-            var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_0_3, param);
-            IService service = factory.GetService ("v1beta1");
+            var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV0_3SmallestExample),
+                    DiscoveryVersion.Version_0_3, param);
+            IService service = factory.GetService("v1beta1");
             
             Assert.NotNull(service);
             Assert.AreEqual(1, service.Resources.Count);
             Assert.AreEqual("mgmt", service.Resources.Keys.First());
-            Assert.AreEqual(5, service.Resources["mgmt"].Resources.Count);
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
+            Assert.AreEqual(3, service.Resources["mgmt"].Resources.Count);
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
         }
       
         [Test()]
@@ -144,7 +152,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test()]
         public void TestCreateServiceFactoryV0_3()
         {
-            var stream = CreateStringStream(EmptyJson);
+            var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
             var param = new FactoryParameterV0_3();
             IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, param);
             Assert.NotNull(factory);
