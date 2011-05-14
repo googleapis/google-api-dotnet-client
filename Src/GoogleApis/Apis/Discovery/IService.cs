@@ -30,12 +30,12 @@ namespace Google.Apis.Discovery
     /// </summary>
     /// <seealso cref="IResource"/>
     /// <seealso cref="ISchema"/>
-	public interface IService : IResourceContainer
-	{
-		/// <summary> The version of this service </summary>
-		string Version {get;}
-		Uri BaseUri {get;}
-		Uri RpcUri {get;}
+    public interface IService : IResourceContainer
+    {
+        /// <summary> The version of this service </summary>
+        string Version {get;}
+        Uri BaseUri {get;}
+        Uri RpcUri {get;}
         
         /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
@@ -43,9 +43,9 @@ namespace Google.Apis.Discovery
         /// <summary>A dictionary containing all the schemas defined in this Service </summary>
         IDictionary<string, ISchema> Schemas{get;} 
 
-		/// <summary>
-		/// Creates a Request Object based on the HTTP Method Type.
-		/// </summary>
-		IRequest CreateRequest (string resource, string methodName);		
-	}
+        /// <summary>
+        /// Creates a Request Object based on the HTTP Method Type.
+        /// </summary>
+        IRequest CreateRequest (string resource, string methodName);        
+    }
 }
