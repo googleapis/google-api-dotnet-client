@@ -15,12 +15,14 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.CodeDom;
 using System.Linq;
 
 using NUnit.Framework;
 
+using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Util
@@ -162,6 +164,47 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.AreEqual("Cat", collection.FindPropertyByName("Cat").Name);
             Assert.AreEqual("Tree", collection.FindPropertyByName("Tree").Name);
             Assert.AreEqual("House", collection.FindPropertyByName("House").Name);
+        }
+        
+        [Test]
+        public void GetValueAsStringListOrEmpty()
+        {
+            IDictionary<string, object> dict = null;
+            
+            dict = new Dictionary<string, object>();
+            var result = dict.GetValueAsStringListOrEmpty("Fish");
+            Assert.IsNotNull(result);
+            MoreAsserts.IsEmpty(result);
+            
+            dict.Add("Number", 1);
+            dict.Add("String", "abc");
+            dict.Add("Anon", new {A = "A", B = "B"});
+            
+            var list = new ArrayList();
+            list.Add("string");
+            list.Add(123);
+            list.Add(null);
+            list.Add(new System.Text.StringBuilder("StringBuilder"));
+            dict.Add("List", list);
+            
+            result = dict.GetValueAsStringListOrEmpty("Number");
+            Assert.IsNotNull(result);
+            MoreAsserts.IsEmpty(result);
+            
+            result = dict.GetValueAsStringListOrEmpty("String");
+            Assert.IsNotNull(result);
+            
+            result = dict.GetValueAsStringListOrEmpty("Number");
+            Assert.IsNotNull(result);
+            MoreAsserts.IsEmpty(result);
+            
+            result = dict.GetValueAsStringListOrEmpty("Anon");
+            Assert.IsNotNull(result);
+            MoreAsserts.IsEmpty(result);
+            
+            List<string> resultAsList = dict.GetValueAsStringListOrEmpty("List").ToList();
+            Assert.IsNotNull(resultAsList);
+            MoreAsserts.ContentsEqualAndInOrder(new List<string>{"string", "123", null, "StringBuilder"}, resultAsList);
         }
         
         private CodeMemberProperty CreateMemberProperty(string name)

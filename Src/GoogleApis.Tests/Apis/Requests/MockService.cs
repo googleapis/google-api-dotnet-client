@@ -34,6 +34,10 @@ namespace Google.Apis.Tests.Apis.Requests
         public Uri RpcUri {get; set;}
         public DiscoveryVersion DiscoveryVersion{get; set;}
         public IDictionary<string, ISchema> Schemas{get;set;}
+        public string Id {get; private set;}
+        public IList<string> Labels {get; private set;}
+        public string DocumentationLink {get; private set;}
+        public string Protocol {get; private set;}
         
         public IRequest CreateRequest (string resource, string methodName)
         {
@@ -49,6 +53,10 @@ namespace Google.Apis.Tests.Apis.Requests
             this.RpcUri = new Uri(DefaultRpcUri );
             this.DiscoveryVersion = DiscoveryVersion.Version_0_3;
             this.Schemas = new Dictionary<string, ISchema>();
+            this.Id = "TestId";
+            this.Labels = new List<string>(){"alpha","beta","release"};
+            this.DocumentationLink = "http://www.google.com";
+            this.Protocol = "rest";
         }
     }
 }

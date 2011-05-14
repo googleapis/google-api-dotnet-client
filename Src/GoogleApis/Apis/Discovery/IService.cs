@@ -37,6 +37,18 @@ namespace Google.Apis.Discovery
         Uri BaseUri {get;}
         Uri RpcUri {get;}
         
+        /// <summary>The id of this API.</summary>
+        string Id {get;}
+        
+        /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
+        IList<string> Labels {get;}
+        
+        /// <summary>A link to human readable documentation for the API.</summary>
+        string DocumentationLink {get;}
+        
+        /// <summary>The protocol described by this document.</summary>
+        string Protocol {get;}
+
         /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
         

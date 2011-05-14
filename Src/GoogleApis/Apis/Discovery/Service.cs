@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -43,6 +44,11 @@ namespace Google.Apis.Discovery
         public string Name {get; private set;}
         public string Version {get; private set;}
         
+        public string Id {get; private set;}
+        public IList<string> Labels {get; private set;}
+        public string DocumentationLink {get; private set;}
+        public string Protocol {get; private set;}
+        
 
         internal BaseService (string version, string name, JsonDictionary js)
         {
@@ -53,8 +59,12 @@ namespace Google.Apis.Discovery
             this.Version = version;
             this.Name = name;
             this.information = js;
+            this.Id = js.GetValueAsNull("id") as string;
+            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList();
+            this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
+            this.Protocol = js.GetValueAsNull("Protocol") as string;
         }
-
+  
         private BaseService ()
         {
         }
