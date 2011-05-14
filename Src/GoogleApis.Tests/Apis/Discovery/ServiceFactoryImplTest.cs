@@ -60,7 +60,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
             var fact = new ServiceFactoryDiscoveryV1_0(json, param);
             
-            Assert.AreEqual("adsense-mgmt", fact.Name);
+            Assert.AreEqual("adsense", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
             Assert.IsInstanceOf(typeof(ServiceV1_0), fact.GetService("v1"));
