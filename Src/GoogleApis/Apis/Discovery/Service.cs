@@ -29,63 +29,65 @@ namespace Google.Apis.Discovery
     
     #region BaseService
     
-	// represents a single version of a service
-	public abstract class BaseService:IService
-	{
+    // represents a single version of a service
+    public abstract class BaseService:IService
+    {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseService));
         
-		protected readonly internal JsonDictionary information;
-		private Dictionary<string, IResource> resources;
+        protected readonly internal JsonDictionary information;
+        private Dictionary<string, IResource> resources;
         private IDictionary<String, ISchema> schemas = null;
         private const string BasePath = "basePath";
 
-		public string Name {get; private set;}
-		public string Version {get; private set;}
-		
+        public string Name {get; private set;}
+        public string Version {get; private set;}
+        
 
-		internal BaseService (string version, string name, JsonDictionary js)
-		{
+        internal BaseService (string version, string name, JsonDictionary js)
+        {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
             js.ThrowIfNull("js");
             
-			this.Version = version;
-			this.Name = name;
-			this.information = js;
-		}
+            this.Version = version;
+            this.Name = name;
+            this.information = js;
+        }
 
-		private BaseService ()
-		{
-		}
+        private BaseService ()
+        {
+        }
 
         public abstract DiscoveryVersion DiscoveryVersion{get;}
-		public abstract Uri BaseUri {get;}
+        public abstract Uri BaseUri {get;}
         
-		public Uri RpcUri 
-		{
-			get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
-		}
+        public Uri RpcUri 
+        {
+            get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
+        }
         
-		public IDictionary<string, IResource> Resources 
-		{
-			get 
-			{
-				if (this.resources == null) 
-				{
-					JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
-					if (js != null) 
-					{
-						this.resources = new Dictionary<string, IResource> ();
-						foreach (KeyValuePair<string, object> kvp in js) 
-						{
-							IResource r = CreateResource(kvp);
-							this.resources.Add (kvp.Key, r);
-						}
-					}
-				}
-				return this.resources;
-			}
-		}
+        public IDictionary<string, IResource> Resources 
+        {
+            get 
+            {
+                if (this.resources == null) 
+                {
+                    JsonDictionary js = this.information.GetValueAsNull(ServiceFactory.Resources) as JsonDictionary;
+                    if (js != null) 
+                    {
+                        this.resources = new Dictionary<string, IResource> ();
+                        foreach (KeyValuePair<string, object> kvp in js) 
+                        {
+                            IResource r = CreateResource(kvp);
+                            this.resources.Add (kvp.Key, r);
+                        }
+                    } else {
+                        this.resources = new Dictionary<string, IResource> (); 
+                    }
+                }
+                return this.resources;
+            }
+        }
         
         internal static IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
         {
@@ -130,29 +132,29 @@ namespace Google.Apis.Discovery
             }
         }
 
-		/// <summary>
-		/// Creates a Request Object based on the HTTP Method Type.
-		/// </summary>
-		/// <param name="method">
-		/// A <see cref="Method"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
-		public IRequest CreateRequest (string resource, string methodName)
-		{
-			var method = this.Resources[resource].Methods[methodName];
-			var request = Request.CreateRequest(this, method);
-			
-			return request;
-		}
+        /// <summary>
+        /// Creates a Request Object based on the HTTP Method Type.
+        /// </summary>
+        /// <param name="method">
+        /// A <see cref="Method"/>
+        /// </param>
+        /// <returns>
+        /// A <see cref="Request"/>
+        /// </returns>
+        public IRequest CreateRequest (string resource, string methodName)
+        {
+            var method = this.Resources[resource].Methods[methodName];
+            var request = Request.CreateRequest(this, method);
+            
+            return request;
+        }
         
         public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
         {
             return new ResourceV1_0(this.DiscoveryVersion, kvp);
         }
 
-	}
+    }
     
     #endregion
 
@@ -214,6 +216,12 @@ namespace Google.Apis.Discovery
             } 
             else
             {
+                if(this.information.ContainsKey(BaseUrl) == false) 
+                {
+                    throw new ArgumentException("JsonDictionary does not contain restBasePath," +
+                        "  which is a requiredfield.");
+                }
+                
                 this.baseUri = new Uri (this.ServerUrl +
                     this.information[BaseUrl] as string);
             }
