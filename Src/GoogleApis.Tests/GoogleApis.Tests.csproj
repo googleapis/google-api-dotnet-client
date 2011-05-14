@@ -94,6 +94,7 @@
     <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
     <Compile Include="Apis\Discovery\BaseParameterTest.cs" />
     <Compile Include="Apis\Testing\MoreAssertsTests.cs" />
+    <Compile Include="Apis\Discovery\BaseServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

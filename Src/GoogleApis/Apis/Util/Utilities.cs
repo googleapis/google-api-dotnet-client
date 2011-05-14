@@ -16,8 +16,10 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 
@@ -39,6 +41,25 @@ namespace Google.Apis.Util
 			}
 			return result;
 		}
+        
+        /// <summary>
+        /// If key exists in data and is an IEnumerable will return each element converted to a string 
+        /// with ToString, or null. If key does not exist in data, is null or not an IEnumerable we will 
+        /// return the empty list.
+        /// </summary>
+        public static IEnumerable<string> GetValueAsStringListOrEmpty<TKey, TValue>(this IDictionary<TKey, TValue> data, TKey key)
+        {
+            data.ThrowIfNull("data");
+            IEnumerable value = GetValueAsNull(data, key) as IEnumerable;
+            if(value == null)
+            {
+                yield break;
+            }
+            foreach(object obj in value)
+            {
+                yield return obj != null ? obj.ToString() : (string)null;
+            }
+        }
         
         /// <summary>Extension method on object, which throws a ArgumentNullException if obj is null</summary>
         public static void ThrowIfNull(this object obj, string paramName)
