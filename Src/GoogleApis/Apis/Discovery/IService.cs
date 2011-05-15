@@ -43,11 +43,17 @@ namespace Google.Apis.Discovery
         /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
         IList<string> Labels {get;}
         
+        /// <summary>A list of supported features for this API.</summary>
+        IList<string> Features {get;} 
+        
         /// <summary>A link to human readable documentation for the API.</summary>
         string DocumentationLink {get;}
         
         /// <summary>The protocol described by this document.</summary>
         string Protocol {get;}
+        
+        /// <summary>The description of this API.</summary>
+        string Description {get;}
 
         /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
