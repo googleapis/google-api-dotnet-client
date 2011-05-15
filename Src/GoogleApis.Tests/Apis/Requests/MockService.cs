@@ -38,6 +38,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public IList<string> Labels {get; private set;}
         public string DocumentationLink {get; private set;}
         public string Protocol {get; private set;}
+        public string Description {get; private set;}
+        public IList<string> Features {get; private set;}
         
         public IRequest CreateRequest (string resource, string methodName)
         {
@@ -57,6 +59,8 @@ namespace Google.Apis.Tests.Apis.Requests
             this.Labels = new List<string>(){"alpha","beta","release"};
             this.DocumentationLink = "http://www.google.com";
             this.Protocol = "rest";
+            this.Description = "Test description";
+            this.Features = new List<string>(){"rest", "rpc", "json", "atom"};
         }
     }
 }

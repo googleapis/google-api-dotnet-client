@@ -55,10 +55,12 @@ namespace Google.Apis.Testing
             set;
         }
         
-        public string Id {get; private set;}
-        public IList<string> Labels {get; private set;}
-        public string DocumentationLink {get; private set;}
-        public string Protocol {get; private set;}
+        public string Id {get; set;}
+        public IList<string> Labels {get; set;}
+        public string DocumentationLink {get; set;}
+        public string Protocol {get; set;}
+        public string Description {get; set;}
+        public IList<string> Features {get; set;}
 
         public DiscoveryVersion DiscoveryVersion
         {

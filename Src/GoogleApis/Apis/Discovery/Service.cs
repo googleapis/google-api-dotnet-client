@@ -43,9 +43,11 @@ namespace Google.Apis.Discovery
 
         public string Name {get; private set;}
         public string Version {get; private set;}
+        public string Description {get; private set;}
         
         public string Id {get; private set;}
         public IList<string> Labels {get; private set;}
+        public IList<string> Features {get; private set;}
         public string DocumentationLink {get; private set;}
         public string Protocol {get; private set;}
         
@@ -60,9 +62,11 @@ namespace Google.Apis.Discovery
             this.Name = name;
             this.information = js;
             this.Id = js.GetValueAsNull("id") as string;
-            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList();
+            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
+            this.Features = js.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
             this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
-            this.Protocol = js.GetValueAsNull("Protocol") as string;
+            this.Protocol = js.GetValueAsNull("protocol") as string;
+            this.Description = js.GetValueAsNull("description") as string;
         }
   
         private BaseService ()
