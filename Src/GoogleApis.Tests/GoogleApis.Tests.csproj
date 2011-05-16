@@ -93,6 +93,7 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
     <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
     <Compile Include="Apis\Discovery\BaseParameterTest.cs" />
+    <Compile Include="Apis\OAuthUtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
