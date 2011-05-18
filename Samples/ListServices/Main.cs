@@ -67,11 +67,10 @@ namespace Google.Apis.Samples.ListServices
             // Output general API information
             Console.WriteLine ("API Information:");
             Console.WriteLine ("  Name:        {0}", service.Name);
-            // Console.WriteLine("  Title:       {0}", service.Name);
+            Console.WriteLine("  Title:       {0}", service.Name);
             Console.WriteLine ("  ID:          {0}", service.Id);
             Console.WriteLine ("  Description: {0}", service.Description);
             Console.WriteLine ("  BaseURI:     {0}", service.BaseUri);
-            // Console.WriteLine("  RPC URI:     {0}", service.RpcUri); // no longer supported?
             Console.WriteLine ("");
             
             // Output a small count-summary of this service
