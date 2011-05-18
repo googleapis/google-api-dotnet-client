@@ -39,6 +39,11 @@ namespace Google.Apis.Discovery
         
         /// <summary>The id of this API.</summary>
         string Id {get;}
+                
+        /// <summary>
+        /// Title of this API
+        /// </summary>
+        string Title { get; }
         
         /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
         IList<string> Labels {get;}

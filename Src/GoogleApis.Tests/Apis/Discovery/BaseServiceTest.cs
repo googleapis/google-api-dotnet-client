@@ -27,7 +27,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-    [TestFixture()]
+    [TestFixture]
     public class BaseServiceTest
     {
         private class ConcreateClass : BaseService
@@ -47,7 +47,11 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
         
         
-        [Test()]
+        /// <summary>
+        /// This test confirms that the BaseService will not crash on non-existent, optional fields
+        /// within the JSON document
+        /// </summary>
+        [Test]
         public void TestNoThrowOnFieldsMissing()
         {
             var dict = new JsonDictionary();
@@ -59,9 +63,14 @@ namespace Google.Apis.Tests.Apis.Discovery
             MoreAsserts.IsEmpty(impl.Labels);
             Assert.AreEqual("NameTest", impl.Name);
             Assert.IsNull(impl.Protocol);
+            Assert.IsNull(impl.Title);
         }
         
-        [Test()]
+        /// <summary>
+        /// The test targets the more basic properties of the BaseService.
+        /// It should ensure that all properties return the values assigned to them within the JSON document 
+        /// </summary>
+        [Test]
         public void TestSimpleGetters()
         {
             var dict = new JsonDictionary();
@@ -70,6 +79,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("features", new ArrayList(){"feature1", "feature2"});
             dict.Add("labels", new ArrayList(){"label1", "label2"});
             dict.Add("id", "TestId");
+            dict.Add("title", "Test API");
             
             IService impl = new ConcreateClass("V1", "NameTest", dict);
             Assert.AreEqual("Test Description", impl.Description);
@@ -77,6 +87,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"feature1", "feature2"}, impl.Features);
             MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"label1", "label2"}, impl.Labels);
             Assert.AreEqual("TestId", impl.Id);
+            Assert.AreEqual("Test API", impl.Title);
         }
     }
 }

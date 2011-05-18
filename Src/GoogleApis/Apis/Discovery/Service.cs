@@ -31,7 +31,9 @@ namespace Google.Apis.Discovery
     
     #region BaseService
     
-    // represents a single version of a service
+    /// <summary>
+    /// Represents the basic implementation of a service
+    /// </summary>
     public abstract class BaseService:IService
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseService));
@@ -44,6 +46,7 @@ namespace Google.Apis.Discovery
         public string Name {get; private set;}
         public string Version {get; private set;}
         public string Description {get; private set;}
+        public string Title { get; private set; }        
         
         public string Id {get; private set;}
         public IList<string> Labels {get; private set;}
@@ -58,15 +61,19 @@ namespace Google.Apis.Discovery
             name.ThrowIfNull("name");
             js.ThrowIfNull("js");
             
+            // Set required properties
             this.Version = version;
             this.Name = name;
             this.information = js;
+            
+            // Set optional properties
             this.Id = js.GetValueAsNull("id") as string;
             this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
             this.Features = js.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
             this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
             this.Protocol = js.GetValueAsNull("protocol") as string;
             this.Description = js.GetValueAsNull("description") as string;
+            this.Title = js.GetValueAsNull("title") as string;
         }
   
         private BaseService ()
