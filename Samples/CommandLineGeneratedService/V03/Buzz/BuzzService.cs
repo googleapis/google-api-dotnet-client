@@ -5895,7 +5895,7 @@ namespace Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz {
         /// <param name="userId">Required - ID of the user being referenced.</param>
         /// <param name="alt">Optional - Must be one of the following values [atom, json] - Specifies an alternative representation type.</param>
         /// <param name="hl">Optional - Language code to limit language results.</param>
-        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite body, string albumId, string userId, string alt, string hl) {
+	        public virtual Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite InsertAsObject(Google.Apis.Samples.CommandLineGeneratedService.V03.Buzz.Data.AlbumLite body, string albumId, string userId, string alt, string hl) {
             System.Collections.Generic.Dictionary<string, object> parameters = new System.Collections.Generic.Dictionary<string, object>();
             parameters["albumId"] = albumId;
             parameters["userId"] = userId;

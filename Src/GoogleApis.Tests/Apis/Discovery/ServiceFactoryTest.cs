@@ -31,156 +31,154 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture()]
     public class ServiceFactoryTest
     {
-        
-        internal const string V0_1SAMPLE_DISCOVERY = @"{
-            'data':{
-                'buzz':{
-                    'v1':{'baseUrl':'https://www.googleapis.com/buzz/v1/',
-                        'resources':{
-                            'activities':{'methods':{'count':{'pathUrl':'activities/count','rpcName':'chili.activities.count','httpMethod':'GET','methodType':'rest','parameters':{'hl':{'parameterType':'query','required':false},'url':{'parameterType':'query','required':false}}},'delete':{'pathUrl':'activities/{userId}/{scope}/{postId}','rpcName':'chili.activities.delete','httpMethod':'DELETE','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'scope':{'parameterType':'path','pattern':'@.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'extractPeopleFromSearch':{'pathUrl':'activities/search/@people','rpcName':'chili.activities.extractPeopleFromSearch','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'bbox':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'lat':{'parameterType':'query','required':false},'lon':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'pid':{'parameterType':'query','required':false},'q':{'parameterType':'query','required':false},'radius':{'parameterType':'query','required':false}}},'get':{'pathUrl':'activities/{userId}/@self/{postId}','rpcName':'chili.activities.get','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'targetLang':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'insert':{'pathUrl':'activities/{userId}/@self','rpcName':'chili.activities.insert','httpMethod':'POST','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'media':{'parameterType':'query','required':false},'preview':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'list':{'pathUrl':'activities/{userId}/{scope}','rpcName':'chili.activities.list','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'max-comments':{'parameterType':'query','required':false},'max-liked':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'scope':{'parameterType':'path','pattern':'@(self|public|consumption|liked|comments)*','required':true},'targetLang':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'search':{'pathUrl':'activities/search','rpcName':'chili.activities.search','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'bbox':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'lat':{'parameterType':'query','required':false},'lon':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'pid':{'parameterType':'query','required':false},'q':{'parameterType':'query','required':false},'radius':{'parameterType':'query','required':false},'targetLang':{'parameterType':'query','required':false}}},'track':{'pathUrl':'activities/track','rpcName':'chili.activities.track','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'bbox':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'lat':{'parameterType':'query','required':false},'lon':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'pid':{'parameterType':'query','required':false},'q':{'parameterType':'query','required':false},'radius':{'parameterType':'query','required':false}}},'update':{'pathUrl':'activities/{userId}/{scope}/{postId}','rpcName':'chili.activities.update','httpMethod':'PUT','methodType':'rest','parameters':{'abuseType':{'parameterType':'query','required':false},'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'scope':{'parameterType':'path','pattern':'@.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}},
-                            'comments':{'methods':{'delete':{'pathUrl':'activities/{userId}/@self/{postId}/@comments/{commentId}','rpcName':'chili.comments.delete','httpMethod':'DELETE','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'commentId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'get':{'pathUrl':'activities/{userId}/@self/{postId}/@comments/{commentId}','rpcName':'chili.comments.get','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'commentId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'targetLang':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'insert':{'pathUrl':'activities/{userId}/@self/{postId}/@comments','rpcName':'chili.comments.insert','httpMethod':'POST','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'list':{'pathUrl':'activities/{userId}/{scope}/{postId}/@comments','rpcName':'chili.comments.list','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'scope':{'parameterType':'path','pattern':'@.*','required':true},'targetLang':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'update':{'pathUrl':'activities/{userId}/{scope}/{postId}/@comments/{commentId}','rpcName':'chili.comments.update','httpMethod':'PUT','methodType':'rest','parameters':{'abuseType':{'parameterType':'query','required':false},'alt':{'parameterType':'query','required':false},'commentId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'scope':{'parameterType':'path','pattern':'@.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}},
-                            'groups':{'methods':{'delete':{'pathUrl':'people/{userId}/@groups/{groupId}','rpcName':'chili.groups.delete','httpMethod':'DELETE','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'get':{'pathUrl':'people/{userId}/@groups/{groupId}/@self','rpcName':'chili.groups.get','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'insert':{'pathUrl':'people/{userId}/@groups','rpcName':'chili.groups.insert','httpMethod':'POST','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'list':{'pathUrl':'people/{userId}/@groups','rpcName':'chili.groups.list','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'update':{'pathUrl':'people/{userId}/@groups/{groupId}/@self','rpcName':'chili.groups.update','httpMethod':'PUT','methodType':'rest','parameters':{'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}},
-                            'people':{'methods':{'delete':{'pathUrl':'people/{userId}/@groups/{groupId}/{personId}','rpcName':'chili.people.delete','httpMethod':'DELETE','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'personId':{'parameterType':'path','pattern':'(?!@self).*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'get':{'pathUrl':'people/{userId}/@self','rpcName':'chili.people.get','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'liked':{'pathUrl':'activities/{userId}/{scope}/{postId}/{groupId}','rpcName':'chili.people.liked','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'@liked','required':true},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'list':{'pathUrl':'people/{userId}/@groups/{groupId}','rpcName':'chili.people.list','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'relatedToUri':{'pathUrl':'people/{userId}/@related','rpcName':'chili.people.relatedToUri','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'uri':{'parameterType':'query','required':false}}},'reshared':{'pathUrl':'activities/{userId}/{scope}/{postId}/{groupId}','rpcName':'chili.people.reshared','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'@reshared','required':true},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}},'search':{'pathUrl':'people/search','rpcName':'chili.people.search','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'q':{'parameterType':'query','required':false}}},'update':{'pathUrl':'people/{userId}/@groups/{groupId}/{personId}','rpcName':'chili.people.update','httpMethod':'PUT','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'groupId':{'parameterType':'path','pattern':'[^/]+','required':true},'hl':{'parameterType':'query','required':false},'personId':{'parameterType':'path','pattern':'(?!@self).*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}},
-                            'photos':{'methods':{'insert':{'pathUrl':'photos/{userId}/{albumId}','rpcName':'chili.photos.insert','httpMethod':'POST','methodType':'rest','parameters':{'albumId':{'parameterType':'path','pattern':'(@new|[^@].*)','required':true},'hl':{'parameterType':'query','required':false},'media':{'parameterType':'query','required':false},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}},
-                            'related':{'methods':{'list':{'pathUrl':'activities/{userId}/{scope}/{postId}/@related','rpcName':'chili.related.list','httpMethod':'GET','methodType':'rest','parameters':{'alt':{'parameterType':'query','required':false},'c':{'parameterType':'query','required':false},'hl':{'parameterType':'query','required':false},'max-results':{'parameterType':'query','required':false},'postId':{'parameterType':'path','pattern':'.*','required':true},'scope':{'parameterType':'path','pattern':'@.*','required':true},'userId':{'parameterType':'path','pattern':'[^/]+','required':true}}}}}}},'v1partners':{'baseUrl':'https://www.googleapis.com/'}}}}";
-
-        internal const string V0_2SAMPLE_DISCOVERY = @"
-
-{
- 'name': 'adsense-mgmt',
- 'version': 'v1beta1',
- 'description': 'AdSense Management API',
- 'restBasePath': '/adsense-mgmt/v1beta1/',
- 'rpcPath': '/rpc',
- 'resources': {
-  'mgmt': {
-   'resources': {
-    'adunits': {
-     'methods': {
-      'list': {
-       'restPath': 'web_properties/{property_code}/ad_units',
-       'rpcMethod': 'adsense.mgmt.adunits.list',
-       'httpMethod': 'GET',
-       'parameters': {
-        'property_code': {
-         'restParameterType': 'path',
-         'pattern': '[^/]+',
-         'required': true
+        private const string EmptyJson = "{'Fish' : 'chips'}";
+        //TODO(davidwaters) Fill in exmaples
+        public const string DiscoveryV1_0Example = @"{""kind"": ""discovery#restDescription"",
+ ""id"": ""adsense:v1beta1"",
+ ""name"": ""adsense"",
+ ""version"": ""v1beta1"",
+ ""description"": ""AdSense Management API"",
+ ""icons"": {
+  ""x16"": ""http://www.google.com/images/icons/product/search-16.gif"",
+  ""x32"": ""http://www.google.com/images/icons/product/search-32.gif""
+ },
+ ""labels"": [
+  ""labs""
+ ],
+ ""protocol"": ""rest"",
+ ""basePath"": ""/adsense/v1beta1/"",
+ ""auth"": {
+        ""oauth2"": {
+            ""scopes"": {
+                ""https://www.googleapis.com/auth/adsense"": {
+                    ""description"": ""View your AdSense data""
+                }
+            }
         }
-       }
+ },
+ ""schemas"": {'sample' : {'id':'Sample'}},
+ ""resources"": {
+  ""adclients"": {
+   ""methods"": {
+    ""list"": {
+     ""id"": ""adsense.adclients.list"",
+     ""path"": ""ad_clients"",
+     ""httpMethod"": ""GET"",
+     ""description"": ""List all ad clients in this AdSense account."",
+     ""response"": {
+      ""$ref"": ""AdClients""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
+    }
+   }
+  },
+  ""adunits"": {
+   ""methods"": {
+    ""list"": {
+     ""id"": ""adsense.adunits.list"",
+     ""path"": ""ad_clients/{ad_client_id}/ad_units"",
+     ""httpMethod"": ""GET"",
+     ""description"": ""List all ad units in this AdSense account."",
+     ""parameters"": {
+      ""ad_client_id"": {
+       ""type"": ""string"",
+       ""description"": ""Ad client for which to list ad units."",
+       ""required"": true,
+       ""location"": ""path""
       }
-     }
-    },
-    'customchannels': {
-     'methods': {
-      'list': {
-       'restPath': 'web_properties/{property_code}/custom_channels',
-       'rpcMethod': 'adsense.mgmt.customchannels.list',
-       'httpMethod': 'GET',
-       'parameters': {
-        'property_code': {
-         'restParameterType': 'path',
-         'pattern': '[^/]+',
-         'required': true
-        }
-       }
-      }
-     }
-    },
-    'reports': {
-     'methods': {
-      'generate': {
-       'restPath': 'reports/generate',
-       'rpcMethod': 'adsense.mgmt.reports.generate',
-       'httpMethod': 'GET'
-      }
-     }
-    },
-    'urlchannels': {
-     'methods': {
-      'list': {
-       'restPath': 'web_properties/{property_code}/url_channels',
-       'rpcMethod': 'adsense.mgmt.urlchannels.list',
-       'httpMethod': 'GET',
-       'parameters': {
-        'property_code': {
-         'restParameterType': 'path',
-         'pattern': '[^/]+',
-         'required': true
-        }
-       }
-      }
-     }
-    },
-    'webproperties': {
-     'methods': {
-      'list': {
-       'restPath': 'web_properties',
-       'rpcMethod': 'adsense.mgmt.webproperties.list',
-       'httpMethod': 'GET'
-      }
-     }
+     },
+     ""parameterOrder"": [
+      ""ad_client_id""
+     ],
+     ""response"": {
+      ""$ref"": ""AdUnits""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
     }
    }
   }
  }
 }
 ";
+        public const string DiscoveryV0_3SmallestExample = "{'name' : 'SmallExample'," +
+            "'restBasePath' : 'https://api.example.com/example'," +
+            "'resources' : {'mgmt' : {'name' : 'mgmt', " +
+            "'resources' : {'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
+        
         [Test()]
-        public void TestV02GetService ()
+        public void TestV1_0GetService()
         {
-            UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY);
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY));
-            var param = new FactoryParameterV0_2();
-            param.ServerUrl = "http://elephant.lon:9996/";
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory (ms, DiscoveryVersion.Version_0_2, param);
+            var param = new FactoryParameterV1_0();
+            var factory = ServiceFactory.CreateServiceFactory(
+                    CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, param);
             IService service = factory.GetService ("v1beta1");
+            
+            Assert.NotNull(service);
+            Assert.AreEqual(2, service.Resources.Count);
+            Assert.AreEqual("adclients", service.Resources.Keys.First());
+            Assert.AreEqual(1, service.Resources["adclients"].Methods.Count);
+        }
+        
+        [Test()]
+        public void TestV0_3GetService()
+        {
+            var param = new FactoryParameterV0_3();
+            var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV0_3SmallestExample),
+                    DiscoveryVersion.Version_0_3, param);
+            IService service = factory.GetService("v1beta1");
             
             Assert.NotNull(service);
             Assert.AreEqual(1, service.Resources.Count);
             Assert.AreEqual("mgmt", service.Resources.Keys.First());
-            Assert.AreEqual(5, service.Resources["mgmt"].Resources.Count);
-            
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
+            Assert.AreEqual(3, service.Resources["mgmt"].Resources.Count);
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
         }
-        
-        
+      
         [Test()]
-        public void TestCreateServiceFactoryV0_1()
+        public void TestCreateServiceFactoryV1_0()
         {
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_1SAMPLE_DISCOVERY));
-           
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory (ms, DiscoveryVersion.Version_0_1, null);
+            var stream = CreateStringStream(DiscoveryV1_0Example);
+            var param = new FactoryParameterV1_0();
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory (stream, DiscoveryVersion.Version_1_0, param);
             Assert.IsNotNull(factory);
-            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_1), factory);
-        }
-        
-        [Test()]
-        public void TestCreateServiceFactoryV0_2()
-        {
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY));
-            var param = new FactoryParameterV0_2();
-            param.ServerUrl = "http://elephant.lon:9996/";
-            
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory (ms, DiscoveryVersion.Version_0_2, param);
-            Assert.IsNotNull(factory);
-            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_2), factory);
-        }
-        
-        [Test()]
-        public void TestCreateServiceFactoryInvalidVersion()
-        {
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_2SAMPLE_DISCOVERY));
-            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (ms, (DiscoveryVersion)56, null));
+            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
         }
         
         [Test()]
         public void TestCreateServiceFactoryV0_3()
         {
-            MemoryStream ms = new MemoryStream(UTF8Encoding.UTF8.GetBytes(V0_3.ServiceFactoryImplTest.BuzzV0_3_Json));
+            var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
             var param = new FactoryParameterV0_3();
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory(ms, DiscoveryVersion.Version_0_3, param);
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, param);
             Assert.NotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
+        }
+        
+        [Test()]
+        public void TestCreateServiceFactoryInvalidVersion()
+        {
+            var stream = CreateStringStream(DiscoveryV1_0Example);
+            var param = new FactoryParameterV1_0();
+            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (stream, (DiscoveryVersion)56, param));
+        }
+        
+        [Test()]
+        public void TestCreateServiceFactoryInvalidParameters()
+        {
+            var stream = CreateStringStream(EmptyJson);
+            var param = new FactoryParameterV1_0();
+            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory (null, DiscoveryVersion.Version_1_0, param));
+            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory (stream, DiscoveryVersion.Version_1_0, null));
+        }
+        
+        private Stream CreateStringStream(string source)
+        {
+            return new MemoryStream(UTF8Encoding.UTF8.GetBytes(source));
         }
     }
 }
