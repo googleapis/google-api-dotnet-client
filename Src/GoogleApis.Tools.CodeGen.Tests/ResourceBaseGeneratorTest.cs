@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Generator;
 

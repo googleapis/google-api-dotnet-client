@@ -17,10 +17,8 @@ using System;
 using System.Collections.Generic; 
 
 using Google.Apis.Discovery;
-namespace Google.Apis.Tests.Apis.Requests
+namespace Google.Apis.Testing
 {
-
-
     public class MockMethod : IMethod
     {
         public string Name {get; set;}
@@ -38,9 +36,5 @@ namespace Google.Apis.Tests.Apis.Requests
         public string RequestType {get; set;}
 
         public Dictionary<string, IParameter> Parameters {get; set;}
-
-        public MockMethod ()
-        {
-        }
     }
 }
