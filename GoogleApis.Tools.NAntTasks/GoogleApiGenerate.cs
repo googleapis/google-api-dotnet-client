@@ -23,10 +23,11 @@ using NAnt.Core.Attributes;
 
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen;
-
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.NAntTasks
 {
+   [TaskName("googleapigenerate")]
    public class GoogleApiGenerate : Task
     {
         [TaskAttribute("discoveryurl", Required = true)]
@@ -35,6 +36,10 @@ namespace Google.Apis.Tools.NAntTasks
         
         [TaskAttribute("outputfile", Required = true)]        
         public FileInfo OutputFile {get; set;} 
+        
+        [TaskAttribute("clientnamespace", Required = true)]
+        [StringValidator(AllowEmpty = false)]
+        public string ClientNamespace {get; set;}
         
         [TaskAttribute("apiversion", Required = true)]
         [StringValidator(AllowEmpty = false)]
@@ -46,14 +51,19 @@ namespace Google.Apis.Tools.NAntTasks
         
         protected override void ExecuteTask ()
         {
+            DiscoveryUrl.ThrowIfNullOrEmpty("DiscoveryUrl");
+            OutputFile.ThrowIfNull("OutputFile");
+            ClientNamespace.ThrowIfNullOrEmpty("ClientNamespace");
+            ApiVersion.ThrowIfNullOrEmpty("ApiVersion");
+            BaseUrl.ThrowIfNullOrEmpty("BaseUrl");
+            
             Project.Log(Level.Info, "Fetching Discovery " + DiscoveryUrl);
             var fetcher = new WebDiscoveryDevice(new Uri(DiscoveryUrl));
             var discovery = new DiscoveryService(fetcher);
-            var param = new FactoryParameterV0_3(BaseUrl, null);
-            var service = discovery.GetService("NoVersion", DiscoveryVersion.Version_0_3, param);
-            var generator = new GoogleServiceGenerator(service, ApiVersion);
+            var param = new FactoryParameterV1_0(BaseUrl, null);
+            var service = discovery.GetService(ApiVersion, DiscoveryVersion.Version_1_0, param);
+            var generator = new GoogleServiceGenerator(service, ClientNamespace);
             var provider = CodeDomProvider.CreateProvider("CSharp");
-
             Project.Log(Level.Info, "Generating To File " + OutputFile.FullName);
             using (StreamWriter sw = new StreamWriter (OutputFile.FullName, false)) {
                     IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");

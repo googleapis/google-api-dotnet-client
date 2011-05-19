@@ -56,4 +56,7 @@
       <Properties InternalTargetFrameworkVersion="3.5" />
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <None Include="sample.build" />
+  </ItemGroup>
 </Project>
