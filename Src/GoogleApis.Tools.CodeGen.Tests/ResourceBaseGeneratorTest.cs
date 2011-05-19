@@ -84,7 +84,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		#region Helper methods
 		
 		public IMethod GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod){
-			var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_0_1 (ResourceName, ResourceAsJson);
+			var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_1_0 (ResourceName, ResourceAsJson);
 			return resource.Methods[testMethod.ToString()];
 		}
 		

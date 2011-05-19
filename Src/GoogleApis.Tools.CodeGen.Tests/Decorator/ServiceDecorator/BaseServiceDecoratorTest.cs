@@ -18,6 +18,7 @@ using System;
 
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Tests.Apis.Requests;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {

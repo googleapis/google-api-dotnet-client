@@ -98,82 +98,484 @@ namespace Google.Apis.Tools.CodeGen.Tests
 		}
 		";
         
-        private const string AdSenseV02AsJson = @"
+        private const string AdSenseDiscoveryV1 = @"
 {
- ""name"": ""adsense-mgmt"",
+ ""kind"": ""discovery#restDescription"",
+ ""id"": ""adsense:v1beta1"",
+ ""name"": ""adsense"",
  ""version"": ""v1beta1"",
  ""description"": ""AdSense Management API"",
- ""restBasePath"": ""/adsense-mgmt/v1beta1/"",
- ""rpcPath"": ""/rpc"",
+ ""icons"": {
+  ""x16"": ""http://www.google.com/images/icons/product/search-16.gif"",
+  ""x32"": ""http://www.google.com/images/icons/product/search-32.gif""
+ },
+ ""labels"": [
+  ""labs""
+ ],
+ ""protocol"": ""rest"",
+ ""basePath"": ""/adsense/v1beta1/"",
+ ""auth"": {
+  ""oauth2"": {
+   ""scopes"": {
+    ""https://www.googleapis.com/auth/adsense"": {
+     ""description"": ""View your AdSense data""
+    }
+   }
+  }
+ },
+ ""schemas"": {
+  ""AdClient"": {
+   ""id"": ""AdClient"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""id"": {
+     ""type"": ""string"",
+     ""description"": ""Unique identifier of this ad client.""
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of resource this is, in this case adsense#adClient."",
+     ""default"": ""adsense#adClient""
+    },
+    ""supports_reporting"": {
+     ""type"": ""boolean"",
+     ""description"": ""Whether this ad client supports being reported on.""
+    }
+   }
+  },
+  ""AdClients"": {
+   ""id"": ""AdClients"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""etag"": {
+     ""type"": ""string"",
+     ""description"": ""ETag of this response for caching purposes.""
+    },
+    ""items"": {
+     ""type"": ""array"",
+     ""description"": ""The ad clients returned in this list response."",
+     ""items"": {
+      ""$ref"": ""AdClient""
+     }
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of list this is, in this case adsense#adClients."",
+     ""default"": ""adsense#adClients""
+    }
+   }
+  },
+  ""AdUnit"": {
+   ""id"": ""AdUnit"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""code"": {
+     ""type"": ""string"",
+     ""description"": ""Code of this ad unit, not necessarily unique across ad clients.""
+    },
+    ""id"": {
+     ""type"": ""string"",
+     ""description"": ""Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.""
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of resource this is, in this case adsense#adUnit."",
+     ""default"": ""adsense#adUnit""
+    },
+    ""name"": {
+     ""type"": ""string"",
+     ""description"": ""Name of this ad unit.""
+    }
+   }
+  },
+  ""AdUnits"": {
+   ""id"": ""AdUnits"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""etag"": {
+     ""type"": ""string"",
+     ""description"": ""ETag of this response for caching purposes.""
+    },
+    ""items"": {
+     ""type"": ""array"",
+     ""description"": ""The ad units returned in this list response."",
+     ""items"": {
+      ""$ref"": ""AdUnit""
+     }
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of list this is, in this case adsense#adUnits."",
+     ""default"": ""adsense#adUnits""
+    }
+   }
+  },
+  ""AdsenseReportsGenerateRequest"": {
+   ""id"": ""AdsenseReportsGenerateRequest"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""currency"": {
+     ""type"": ""string"",
+     ""description"": ""Optional currency to use when reporting on monetary metrics. Defaults to the account's currency if not set.""
+    },
+    ""date_range"": {
+     ""type"": ""object"",
+     ""description"": ""The date range to report on."",
+     ""properties"": {
+      ""end_date"": {
+       ""type"": ""string"",
+       ""description"": ""End of the date range to report on in \""YYYY-MM-DD\"" format, inclusive.""
+      },
+      ""start_date"": {
+       ""type"": ""string"",
+       ""description"": ""Start of the date range to report on in \""YYYY-MM-DD\"" format, inclusive.""
+      }
+     }
+    },
+    ""dimensions"": {
+     ""type"": ""array"",
+     ""description"": ""Dimensions to base the report on, specifying the groupings to query from the items in the scope.  \u003cp\u003eThe dimensions to include in the report. Each dimension is a column on the left of the report, used to group the rows. Dimensions are columns with textual data.\u003c/p\u003e  \u003cp\u003eNormally at least one dimension is specified, however it is possible to generate reports without dimensions, for example to find out the totals and averages of a particular query.\u003c/p\u003e  \u003cp\u003ePossible dimension names:\u003c/p\u003e  \u003cp\u003eDATE\u003cbr\u003e WEEK\u003cbr\u003e MONTH\u003cbr\u003e AD_CLIENT_ID\u003cbr\u003e PRODUCT_CODE\u003cbr\u003e PRODUCT_NAME\u003cbr\u003e CUSTOM_CHANNEL_ID\u003cbr\u003e CUSTOM_CHANNEL_CODE\u003cbr\u003e CUSTOM_CHANNEL_NAME\u003cbr\u003e URL_CHANNEL_ID\u003cbr\u003e URL_CHANNEL_NAME\u003cbr\u003e AD_FORMAT_CODE\u003cbr\u003e AD_FORMAT_NAME\u003cbr\u003e BUYER_NETWORK_ID\u003cbr\u003e BUYER_NETWORK_NAME\u003cbr\u003e BID_TYPE_CODE\u003cbr\u003e BID_TYPE_NAME\u003cbr\u003e COUNTRY_CODE\u003cbr\u003e COUNTRY_NAME\u003cbr\u003e TARGETING_TYPE_CODE\u003cbr\u003e TARGETING_TYPE_NAME\u003c/p\u003e"",
+     ""items"": {
+      ""type"": ""string""
+     }
+    },
+    ""locale"": {
+     ""type"": ""string"",
+     ""description"": ""Optional locale to use for translating report output to a local language. Defaults to \""en_US\"" if not specified.""
+    },
+    ""metrics"": {
+     ""type"": ""array"",
+     ""description"": ""Metrics are the numeric columns to retrieve from the items in the scope. The values for each selected metric are accumulated across the selected dimensions.  \u003cp\u003ePossible metric names:\u003c/p\u003e  \u003cp\u003ePAGE_VIEWS\u003cbr\u003e PAGE_VIEWS_CTR\u003cbr\u003e PAGE_VIEWS_RPM\u003cbr\u003e AD_REQUESTS\u003cbr\u003e AD_REQUESTS_COVERAGE\u003cbr\u003e AD_REQUESTS_CTR\u003cbr\u003e AD_REQUESTS_RPM\u003cbr\u003e MATCHED_AD_REQUESTS\u003cbr\u003e MATCHED_AD_REQUESTS_CTR\u003cbr\u003e MATCHED_AD_REQUESTS_RPM\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS_CTR\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS_RPM\u003cbr\u003e CLICKS\u003cbr\u003e EARNINGS\u003cbr\u003e TOTAL_EARNINGS\u003cbr\u003e COST_PER_CLICK\u003c/p\u003e"",
+     ""items"": {
+      ""type"": ""string""
+     }
+    },
+    ""pagination"": {
+     ""type"": ""object"",
+     ""description"": ""Optionally specifies how to paginate the rows of the report output. If not defined, all rows of the report will be retrieved up to the available limit of 10,000 rows. If more rows are present in the report, multiple calls must be made, setting start_row to 10000 in the second call and so on."",
+     ""properties"": {
+      ""row_count"": {
+       ""type"": ""integer"",
+       ""description"": ""Number of rows to return in the report, starting from start_row, or -1 to retrieve all rows from start_row on. No more than the limit of 10,000 rows will be returned, even if this value is set higher. Defaults to -1, i.e. retrieving all rows from start_row on.""
+      },
+      ""start_row"": {
+       ""type"": ""integer"",
+       ""description"": ""Row in the report to start retrieving output from, beginning at 0. Defaults to 0, i.e. starting at the first row in the report.""
+      }
+     }
+    },
+    ""scope"": {
+     ""type"": ""object"",
+     ""description"": ""The scope of the report is the items this report will scan to collect data to report on. It is either a list of ad client ids, ad unit ids, custom channel ids or URL channel ids identifying the objects to be part of the scope. Only one list may be specified. The specified list may contain any amount of items.  \u003cp\u003eThe type of the scope dictates what dimensions can be used in the report. If ad unit or channel dimensions are used, the corresponding type of scope must also be used. For example, if AD_UNIT_CODE is used as a dimension ad_unit_ids must be specified as the scope, with no other list given in the scope.\u003c/p\u003e"",
+     ""properties"": {
+      ""ad_client_ids"": {
+       ""type"": ""array"",
+       ""description"": ""Specifies a scope over a set of ad clients. Each item in this list is an ad client id, uniquely identifying an ad client.  \u003cp\u003eIf this list is specified, none of the other lists in the scope may be specified.\u003c/p\u003e"",
+       ""items"": {
+        ""type"": ""string""
+       }
+      },
+      ""ad_unit_ids"": {
+       ""type"": ""array"",
+       ""description"": ""Specifies a scope over a set of ad units. Each item in this list is an ad unit id, uniquely identifying an ad unit.  \u003cp\u003eIf this list is specified, none of the other lists in the scope may be specified.\u003c/p\u003e  \u003cp\u003eThis list must be specified if ad unit dimensions are used, for example AD_UNIT_CODE.\u003c/p\u003e"",
+       ""items"": {
+        ""type"": ""string""
+       }
+      },
+      ""custom_channel_ids"": {
+       ""type"": ""array"",
+       ""description"": ""Specifies a scope over a set of custom channels. Each item in this list is a custom channel id, uniquely identifying a custom channel.  \u003cp\u003eIf this list is specified, none of the other lists in the scope may be specified.\u003c/p\u003e  \u003cp\u003eThis list must be specified if custom channel dimensions are used, for example CUSTOM_CHANNEL_CODE.\u003c/p\u003e"",
+       ""items"": {
+        ""type"": ""string""
+       }
+      },
+      ""url_channel_ids"": {
+       ""type"": ""array"",
+       ""description"": ""Specifies a scope over a set of URL channels. Each item in this list is a URL channel id, uniquely identifying a URL channel.  \u003cp\u003eIf this list is specified, none of the other lists in the scope may be specified.\u003c/p\u003e  \u003cp\u003eThis list must be specified if URL channel dimensions are used, for example URL_CHANNEL_PATTERN.\u003c/p\u003e"",
+       ""items"": {
+        ""type"": ""string""
+       }
+      }
+     }
+    },
+    ""sort_columns"": {
+     ""type"": ""array"",
+     ""description"": ""Columns to sort the report result on. The report is sorted by the first specified column, then by the second (if any), and so on. Sort columns can be either dimensions or metrics. The rows of the table can be in any order if no sort columns are specified.  \u003cp\u003ePossible column names:\u003c/p\u003e  \u003cp\u003eDATE\u003cbr\u003e WEEK\u003cbr\u003e MONTH\u003cbr\u003e AD_CLIENT_ID\u003cbr\u003e PRODUCT_CODE\u003cbr\u003e PRODUCT_NAME\u003cbr\u003e CUSTOM_CHANNEL_ID\u003cbr\u003e CUSTOM_CHANNEL_CODE\u003cbr\u003e CUSTOM_CHANNEL_NAME\u003cbr\u003e URL_CHANNEL_ID\u003cbr\u003e URL_CHANNEL_NAME\u003cbr\u003e AD_FORMAT_CODE\u003cbr\u003e AD_FORMAT_NAME\u003cbr\u003e BUYER_NETWORK_ID\u003cbr\u003e BUYER_NETWORK_NAME\u003cbr\u003e BID_TYPE_CODE\u003cbr\u003e BID_TYPE_NAME\u003cbr\u003e COUNTRY_CODE\u003cbr\u003e COUNTRY_NAME\u003cbr\u003e TARGETING_TYPE_CODE\u003cbr\u003e TARGETING_TYPE_NAME\u003cbr\u003e PAGE_VIEWS\u003cbr\u003e PAGE_VIEWS_CTR\u003cbr\u003e PAGE_VIEWS_RPM\u003cbr\u003e AD_REQUESTS\u003cbr\u003e AD_REQUESTS_COVERAGE\u003cbr\u003e AD_REQUESTS_CTR\u003cbr\u003e AD_REQUESTS_RPM\u003cbr\u003e MATCHED_AD_REQUESTS\u003cbr\u003e MATCHED_AD_REQUESTS_CTR\u003cbr\u003e MATCHED_AD_REQUESTS_RPM\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS_CTR\u003cbr\u003e INDIVIDUAL_AD_IMPRESSIONS_RPM\u003cbr\u003e CLICKS\u003cbr\u003e EARNINGS\u003cbr\u003e TOTAL_EARNINGS\u003cbr\u003e COST_PER_CLICK\u003c/p\u003e"",
+     ""items"": {
+      ""type"": ""object"",
+      ""properties"": {
+       ""descending"": {
+        ""type"": ""boolean"",
+        ""description"": ""If true, sort this column in descending order. If not specified the column is sorted in ascending order.""
+       },
+       ""name"": {
+        ""type"": ""string"",
+        ""description"": ""The name of the dimension or metric to sort on.""
+       }
+      }
+     }
+    }
+   }
+  },
+  ""AdsenseReportsGenerateResponse"": {
+   ""id"": ""AdsenseReportsGenerateResponse"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""averages"": {
+     ""type"": ""array"",
+     ""description"": ""The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."",
+     ""items"": {
+      ""type"": ""string""
+     }
+    },
+    ""headers"": {
+     ""type"": ""array"",
+     ""description"": ""The header names of the columns requested in the report. This is a list of names; one for each dimension in the request, followed by one for each metric in the request."",
+     ""items"": {
+      ""type"": ""object"",
+      ""properties"": {
+       ""currency"": {
+        ""type"": ""string""
+       },
+       ""name"": {
+        ""type"": ""string""
+       },
+       ""type"": {
+        ""type"": ""string""
+       }
+      }
+     }
+    },
+    ""rows"": {
+     ""type"": ""array"",
+     ""description"": ""The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed by one for each metric in the request. The dimension cells contain strings, and the metric cells contain numbers."",
+     ""items"": {
+      ""type"": ""array"",
+      ""items"": {
+       ""type"": ""string""
+      }
+     }
+    },
+    ""total_matched_rows"": {
+     ""type"": ""string"",
+     ""description"": ""The total number of rows matched by the report request. Fewer rows may be returned in the response due to being limited by the row count requested or the report row limit.""
+    },
+    ""totals"": {
+     ""type"": ""array"",
+     ""description"": ""The totals of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."",
+     ""items"": {
+      ""type"": ""string""
+     }
+    }
+   }
+  },
+  ""CustomChannel"": {
+   ""id"": ""CustomChannel"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""code"": {
+     ""type"": ""string"",
+     ""description"": ""Code of this custom channel, not necessarily unique across ad clients.""
+    },
+    ""id"": {
+     ""type"": ""string"",
+     ""description"": ""Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.""
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of resource this is, in this case adsense#customChannel."",
+     ""default"": ""adsense#customChannel""
+    },
+    ""name"": {
+     ""type"": ""string"",
+     ""description"": ""Name of this custom channel.""
+    }
+   }
+  },
+  ""CustomChannels"": {
+   ""id"": ""CustomChannels"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""etag"": {
+     ""type"": ""string"",
+     ""description"": ""ETag of this response for caching purposes.""
+    },
+    ""items"": {
+     ""type"": ""array"",
+     ""description"": ""The custom channels returned in this list response."",
+     ""items"": {
+      ""$ref"": ""CustomChannel""
+     }
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of list this is, in this case adsense#customChannels."",
+     ""default"": ""adsense#customChannels""
+    }
+   }
+  },
+  ""UrlChannel"": {
+   ""id"": ""UrlChannel"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""id"": {
+     ""type"": ""string"",
+     ""description"": ""Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.""
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of resource this is, in this case adsense#urlChannel."",
+     ""default"": ""adsense#urlChannel""
+    },
+    ""url_pattern"": {
+     ""type"": ""string"",
+     ""description"": ""URL Pattern of this URL channel. Does not include \""http://\"" or \""https://\"". Example: www.example.com/home""
+    }
+   }
+  },
+  ""UrlChannels"": {
+   ""id"": ""UrlChannels"",
+   ""type"": ""object"",
+   ""properties"": {
+    ""etag"": {
+     ""type"": ""string"",
+     ""description"": ""ETag of this response for caching purposes.""
+    },
+    ""items"": {
+     ""type"": ""array"",
+     ""description"": ""The URL channels returned in this list response."",
+     ""items"": {
+      ""$ref"": ""UrlChannel""
+     }
+    },
+    ""kind"": {
+     ""type"": ""string"",
+     ""description"": ""Kind of list this is, in this case adsense#urlChannels."",
+     ""default"": ""adsense#urlChannels""
+    }
+   }
+  }
+ },
  ""resources"": {
+  ""adclients"": {
+   ""methods"": {
+    ""list"": {
+     ""id"": ""adsense.adclients.list"",
+     ""path"": ""ad_clients"",
+     ""httpMethod"": ""GET"",
+     ""description"": ""List all ad clients in this AdSense account."",
+     ""response"": {
+      ""$ref"": ""AdClients""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
+    }
+   }
+  },
   ""adunits"": {
    ""methods"": {
     ""list"": {
-     ""restPath"": ""web_properties/{property_code}/ad_units"",
-     ""rpcMethod"": ""adsensemgmt.adunits.list"",
+     ""id"": ""adsense.adunits.list"",
+     ""path"": ""ad_clients/{ad_client_id}/ad_units"",
      ""httpMethod"": ""GET"",
+     ""description"": ""List all ad units in this AdSense account."",
      ""parameters"": {
-      ""property_code"": {
-       ""restParameterType"": ""path"",
-       ""pattern"": ""[^/]+"",
-       ""required"": true
+      ""ad_client_id"": {
+       ""type"": ""string"",
+       ""description"": ""Ad client for which to list ad units."",
+       ""required"": true,
+       ""location"": ""path""
       }
-     }
+     },
+     ""parameterOrder"": [
+      ""ad_client_id""
+     ],
+     ""response"": {
+      ""$ref"": ""AdUnits""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
     }
    }
   },
   ""customchannels"": {
    ""methods"": {
     ""list"": {
-     ""restPath"": ""web_properties/{property_code}/custom_channels"",
-     ""rpcMethod"": ""adsensemgmt.customchannels.list"",
+     ""id"": ""adsense.customchannels.list"",
+     ""path"": ""ad_clients/{ad_client_id}/custom_channels"",
      ""httpMethod"": ""GET"",
+     ""description"": ""List all custom channels in this AdSense account."",
      ""parameters"": {
-      ""property_code"": {
-       ""restParameterType"": ""path"",
-       ""pattern"": ""[^/]+"",
-       ""required"": true
+      ""ad_client_id"": {
+       ""type"": ""string"",
+       ""description"": ""Ad client for which to list custom channels."",
+       ""required"": true,
+       ""location"": ""path""
       }
-     }
+     },
+     ""parameterOrder"": [
+      ""ad_client_id""
+     ],
+     ""response"": {
+      ""$ref"": ""CustomChannels""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
     }
    }
   },
   ""reports"": {
    ""methods"": {
     ""generate"": {
-     ""restPath"": ""reports/generate"",
-     ""rpcMethod"": ""adsensemgmt.reports.generate"",
-     ""httpMethod"": ""GET""
+     ""id"": ""adsense.reports.generate"",
+     ""path"": ""reports/generate"",
+     ""httpMethod"": ""POST"",
+     ""description"": ""Generate an AdSense report based on the JSON-formatted report request sent in the HTML body. Returns the result as JSON; to retrieve output in CSV format specify \""alt\u003dcsv\"" as a query parameter."",
+     ""request"": {
+      ""$ref"": ""AdsenseReportsGenerateRequest""
+     },
+     ""response"": {
+      ""$ref"": ""AdsenseReportsGenerateResponse""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
     }
    }
   },
   ""urlchannels"": {
    ""methods"": {
     ""list"": {
-     ""restPath"": ""web_properties/{property_code}/url_channels"",
-     ""rpcMethod"": ""adsensemgmt.urlchannels.list"",
+     ""id"": ""adsense.urlchannels.list"",
+     ""path"": ""ad_clients/{ad_client_id}/url_channels"",
      ""httpMethod"": ""GET"",
+     ""description"": ""List all URL channels in this AdSense account."",
      ""parameters"": {
-      ""property_code"": {
-       ""restParameterType"": ""path"",
-       ""pattern"": ""[^/]+"",
-       ""required"": true
+      ""ad_client_id"": {
+       ""type"": ""string"",
+       ""description"": ""Ad client for which to list URL channels."",
+       ""required"": true,
+       ""location"": ""path""
       }
-     }
-    }
-   }
-  },
-  ""webproperties"": {
-   ""methods"": {
-    ""list"": {
-     ""restPath"": ""web_properties"",
-     ""rpcMethod"": ""adsensemgmt.webproperties.list"",
-     ""httpMethod"": ""GET""
+     },
+     ""parameterOrder"": [
+      ""ad_client_id""
+     ],
+     ""response"": {
+      ""$ref"": ""UrlChannels""
+     },
+     ""scopes"": [
+      ""https://www.googleapis.com/auth/adsense""
+     ]
     }
    }
   }
  }
-}";
+}
+";
             
         
         private const string AdSenseV02WithMultiLevelAsJson = @"
@@ -3956,9 +4358,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			return new KeyValuePair<string, object> (resourceName, json);
 		}
 
-		public static IResource CreateResourceDivcoveryV_0_1 (string resourceName, string json)
+		public static IResource CreateResourceDivcoveryV_1_0 (string resourceName, string json)
 		{
-			return new ResourceV0_1 (CreateJsonResourceDefinition (resourceName, json));
+			return new ResourceV1_0 (DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition (resourceName, json));
 		}
 
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
@@ -4026,16 +4428,15 @@ namespace Google.Apis.Tools.CodeGen.Tests
                 new FactoryParameterV0_3("http://test.sever.example.com", "http://test.sever.example.com/testService"));
 		}
         
-        protected IService CreateAdSenseV02Service()
+        protected IService CreateAdSenseV1_0Service()
         {
             var version = "v1beta1";
-            var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseV02AsJson};
+            var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseDiscoveryV1};
             var discovery = new DiscoveryService(buzzTestFetcher);
-            var param = new FactoryParameterV0_2();
-            param.ServerUrl = "http://elephant.lon:9996/";
-
+            var param = new FactoryParameterV1_0();
+            
             // Build the service based on discovery information.
-            return discovery.GetService(version, DiscoveryVersion.Version_0_2, param);
+            return discovery.GetService(version, DiscoveryVersion.Version_1_0, param);
         }
 	}
 }

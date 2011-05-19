@@ -83,7 +83,6 @@
     <Compile Include="Apis\Requests\RequestTest.cs" />
     <Compile Include="Apis\Requests\MethodValidator.cs" />
     <Compile Include="Apis\Requests\MockMethod.cs" />
-    <Compile Include="Apis\Requests\MockService.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
@@ -93,7 +92,8 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
     <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
     <Compile Include="Apis\Discovery\BaseParameterTest.cs" />
-    <Compile Include="Apis\OAuthUtilTest.cs" />
+    <Compile Include="Apis\Testing\MoreAssertsTests.cs" />
+    <Compile Include="Apis\Discovery\BaseServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
@@ -126,5 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GoogleApisTests.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Apis\Testing\" />
   </ItemGroup>
 </Project>
