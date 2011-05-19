@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,6 +55,14 @@
     <StartupObject>Google.Apis.Samples.ComandLineServiceGenerator.MainClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.0.4124.32927, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.4124.32928, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\Google.Apis.Tools.CodeGen.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -63,12 +71,6 @@
       <HintPath>..\Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="Google.Apis, Version=1.0.4124.32927, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Lib\Google.Apis.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.4124.32928, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Lib\Google.Apis.Tools.CodeGen.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
