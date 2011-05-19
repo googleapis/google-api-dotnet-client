@@ -13,7 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 using System;
 using System.Collections.Generic;
 
@@ -21,70 +20,50 @@ using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 
-namespace Google.Apis.Testing
+namespace Google.Apis.Tests.Apis.Requests
 {
     public class MockService : IService
     {
-        public MockRequest Request
-        {
-            get;
-            set;
-        }
-
+        public const string DefaultBaseUrl = "https://testexample.google.com";
+        public const string DefaultRpcUri = "https://testexample.google.com/rpc";
+        
+        public string Name {get; set;}
+        public string Title { get; set; }
+        public IDictionary<string, IResource> Resources {get; set;}
+        public string Version {get; set;}
+        public Uri BaseUri {get; set;}
+        public Uri RpcUri {get; set;}
+        public DiscoveryVersion DiscoveryVersion{get; set;}
+        public IDictionary<string, ISchema> Schemas{get;set;}
+        public string Id {get; private set;}
+        public IList<string> Labels {get; private set;}
+        public string DocumentationLink {get; private set;}
+        public string Protocol {get; private set;}
+        public string Description {get; private set;}
+        public IList<string> Features {get; private set;}
+        
         public IRequest CreateRequest (string resource, string methodName)
         {
-            Request = new MockRequest ();
-            return Request;
-        }
-
-        public string Name
-        {
-            get;
-            set;
-        }
-
-        public string Version
-        {
-            get;
-            set;
-        }
-
-        public Uri BaseUri
-        {
-            get;
-            set;
-        }
-
-        public DiscoveryVersion DiscoveryVersion
-        {
-            get { return DiscoveryVersion.Version_0_1; }
-        }
-
-        public Uri RpcUri
-        {
-            get {
-                throw new System.NotImplementedException ();
-            }
-        }
-
-        public IDictionary<string, IResource> Resources
-        {
-            get {
-                throw new System.NotImplementedException ();
-            }
-        }
-
-        public MockService ()
-        {
-        }
-
-        public IDictionary<string, ISchema> Schemas
-        {
-            get {
-                throw new System.NotImplementedException ();
-            }
+            throw new NotImplementedException ();
         }
         
+        public MockService ()
+        {
+            this.Name = "TestService";
+            this.Title = "The Test Service";
+            this.Resources = new Dictionary<string, IResource>();
+            this.Version = "V1.0Test";
+            this.BaseUri = new Uri(DefaultBaseUrl );
+            this.RpcUri = new Uri(DefaultRpcUri );
+            this.DiscoveryVersion = DiscoveryVersion.Version_1_0;
+            this.Schemas = new Dictionary<string, ISchema>();
+            this.Id = "TestId";
+            this.Labels = new List<string>(){"alpha","beta","release"};
+            this.DocumentationLink = "http://www.google.com";
+            this.Protocol = "rest";
+            this.Description = "Test description";
+            this.Features = new List<string>(){"rest", "rpc", "json", "atom"};
+        }
     }
 }
 

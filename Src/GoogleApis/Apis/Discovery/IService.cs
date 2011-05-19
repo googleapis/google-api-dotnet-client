@@ -30,22 +30,45 @@ namespace Google.Apis.Discovery
     /// </summary>
     /// <seealso cref="IResource"/>
     /// <seealso cref="ISchema"/>
-	public interface IService : IResourceContainer
-	{
-		/// <summary> The version of this service </summary>
-		string Version {get;}
-		Uri BaseUri {get;}
-		Uri RpcUri {get;}
+    public interface IService : IResourceContainer
+    {
+        /// <summary> The version of this service </summary>
+        string Version {get;}
+        Uri BaseUri {get;}
+        Uri RpcUri {get;}
         
+        /// <summary>The id of this API.</summary>
+        string Id {get;}
+                
+        /// <summary>
+        /// Title of this API
+        /// </summary>
+        string Title { get; }
+        
+        /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
+        IList<string> Labels {get;}
+        
+        /// <summary>A list of supported features for this API.</summary>
+        IList<string> Features {get;} 
+        
+        /// <summary>A link to human readable documentation for the API.</summary>
+        string DocumentationLink {get;}
+        
+        /// <summary>The protocol described by this document.</summary>
+        string Protocol {get;}
+        
+        /// <summary>The description of this API.</summary>
+        string Description {get;}
+
         /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
         
         /// <summary>A dictionary containing all the schemas defined in this Service </summary>
         IDictionary<string, ISchema> Schemas{get;} 
 
-		/// <summary>
-		/// Creates a Request Object based on the HTTP Method Type.
-		/// </summary>
-		IRequest CreateRequest (string resource, string methodName);		
-	}
+        /// <summary>
+        /// Creates a Request Object based on the HTTP Method Type.
+        /// </summary>
+        IRequest CreateRequest (string resource, string methodName);        
+    }
 }

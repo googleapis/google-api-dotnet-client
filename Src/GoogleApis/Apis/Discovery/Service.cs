@@ -15,8 +15,10 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 using Google.Apis.Json;
@@ -29,194 +31,83 @@ namespace Google.Apis.Discovery
     
     #region BaseService
     
-	// represents a single version of a service
-	public abstract class BaseService:IService
-	{
-		protected readonly internal JsonDictionary information;
-		private Dictionary<string, IResource> resources;
+    /// <summary>
+    /// Represents the basic implementation of a service
+    /// </summary>
+    public abstract class BaseService:IService
+    {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseService));
+        
+        protected readonly internal JsonDictionary information;
+        private Dictionary<string, IResource> resources;
+        private IDictionary<String, ISchema> schemas = null;
+        private const string BasePath = "basePath";
 
-		public string Name {get; private set;}
-		public string Version {get; private set;}
-		
+        public string Name {get; private set;}
+        public string Version {get; private set;}
+        public string Description {get; private set;}
+        public string Title { get; private set; }        
+        
+        public string Id {get; private set;}
+        public IList<string> Labels {get; private set;}
+        public IList<string> Features {get; private set;}
+        public string DocumentationLink {get; private set;}
+        public string Protocol {get; private set;}
+        
 
-		internal BaseService (string version, string name, JsonDictionary js)
-		{
+        internal BaseService (string version, string name, JsonDictionary js)
+        {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
             js.ThrowIfNull("js");
             
-			this.Version = version;
-			this.Name = name;
-			this.information = js;
-		}
-
-		private BaseService ()
-		{
-		}
+            // Set required properties
+            this.Version = version;
+            this.Name = name;
+            this.information = js;
+            
+            // Set optional properties
+            this.Id = js.GetValueAsNull("id") as string;
+            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
+            this.Features = js.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
+            this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
+            this.Protocol = js.GetValueAsNull("protocol") as string;
+            this.Description = js.GetValueAsNull("description") as string;
+            this.Title = js.GetValueAsNull("title") as string;
+        }
+  
+        private BaseService ()
+        {
+        }
 
         public abstract DiscoveryVersion DiscoveryVersion{get;}
-		public abstract Uri BaseUri {get;}
-        public abstract IResource CreateResource(KeyValuePair<string, object> kvp);
-
-		public Uri RpcUri 
-		{
-			get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
-		}
+        public abstract Uri BaseUri {get;}
         
-        public virtual IDictionary<string, ISchema> Schemas
+        public Uri RpcUri 
         {
-            get
+            get { return new Uri (this.information[ServiceFactory.RpcUrl] as string); }
+        }
+        
+        public IDictionary<string, IResource> Resources 
+        {
+            get 
             {
-                return new Dictionary<string, ISchema>(0);
-            }
-        }
-
-		public IDictionary<string, IResource> Resources 
-		{
-			get 
-			{
-				if (this.resources == null) 
-				{
-					JsonDictionary js = this.information[ServiceFactory.Resources] as JsonDictionary;
-					if (js != null) 
-					{
-						this.resources = new Dictionary<string, IResource> ();
-						foreach (KeyValuePair<string, object> kvp in js) 
-						{
-							IResource r = CreateResource(kvp);
-							this.resources.Add (kvp.Key, r);
-						}
-					}
-				}
-				return this.resources;
-			}
-		}
-
-		/// <summary>
-		/// Creates a Request Object based on the HTTP Method Type.
-		/// </summary>
-		/// <param name="method">
-		/// A <see cref="Method"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="Request"/>
-		/// </returns>
-		public IRequest CreateRequest (string resource, string methodName)
-		{
-			var method = this.Resources[resource].Methods[methodName];
-			var request = Request.CreateRequest(this, method);
-			
-			return request;
-		}
-	}
-    
-    #endregion
-    
-    #region Service V0.1
-    /// <summary>
-    /// Represents a Service as defined in Discovery V0.1
-    /// </summary>
-    internal class ServiceV0_1 : BaseService
-    {
-        internal const string BaseUrl = "baseUrl";
-        
-        internal ServiceV0_1 (string version, string name, JsonDictionary js):
-            base(version, name, js)
-        {
-            
-        }
-        
-        public override DiscoveryVersion DiscoveryVersion {
-            get { return DiscoveryVersion.Version_0_1;}
-        }
- 
-        
-        public override Uri BaseUri 
-        {
-            get { return new Uri (this.information[BaseUrl] as string); }
-        }
-        
-        public override IResource CreateResource (KeyValuePair<string, object> kvp)
-        {
-            return new ResourceV0_1(kvp);
-        }
-
-    }
-    
-    #endregion
-    
-    #region Service V0.2
-    /// <summary>
-    /// Represents a Service as defined in Discovery V0.2
-    /// </summary>
-    internal class ServiceV0_2 : BaseService
-    {
-        private const string BaseUrl = "restBasePath";
-        private const string PathUrl = "restPath";
-
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        internal ServiceV0_2 (string version, string name, FactoryParameterV0_2 param, JsonDictionary js):
-            base(version, name, js)
-        {
-            this.ServerUrl = param.ServerUrl;
-            if(param.BaseUrl != null && param.BaseUrl.Length > 0)
-            {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
-            }
-        }
-        
-        public override DiscoveryVersion DiscoveryVersion 
-        {
-            get {return DiscoveryVersion.Version_0_2;}
-        }
-        
-        public override Uri BaseUri 
-        { 
-            get {return baseUri;}
-        }
-        
-        public override IResource CreateResource (KeyValuePair<string, object> kvp)
-        {
-            return new ResourceV0_2(this.DiscoveryVersion, kvp);
-        }
-    }
-    #endregion
-    
-    #region Service V0.3
-    /// <summary>
-    /// Represents a Service as defined in Discovery V0.2
-    /// </summary>
-    public class ServiceV0_3 : BaseService
-    {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ServiceV0_3));
-        
-        private const string BaseUrl = "restBasePath";
-        private const string PathUrl = "restPath";
-        
-        private IDictionary<String, ISchema> schemas = null;
-
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        public ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
-            base(version, name, js)
-        {
-            param.ThrowIfNull("param");
-            
-            this.ServerUrl = param.ServerUrl;
-            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
-            {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
+                if (this.resources == null) 
+                {
+                    JsonDictionary js = this.information.GetValueAsNull(ServiceFactory.Resources) as JsonDictionary;
+                    if (js != null) 
+                    {
+                        this.resources = new Dictionary<string, IResource> ();
+                        foreach (KeyValuePair<string, object> kvp in js) 
+                        {
+                            IResource r = CreateResource(kvp);
+                            this.resources.Add (kvp.Key, r);
+                        }
+                    } else {
+                        this.resources = new Dictionary<string, IResource> (); 
+                    }
+                }
+                return this.resources;
             }
         }
         
@@ -243,7 +134,7 @@ namespace Google.Apis.Discovery
             return working.AsReadOnly();
         }
         
-        public override IDictionary<string, ISchema> Schemas {
+        public virtual IDictionary<string, ISchema> Schemas {
             get {
                 if (schemas != null)
                 {
@@ -262,6 +153,108 @@ namespace Google.Apis.Discovery
                 return schemas;
             }
         }
+
+        /// <summary>
+        /// Creates a Request Object based on the HTTP Method Type.
+        /// </summary>
+        /// <param name="method">
+        /// A <see cref="Method"/>
+        /// </param>
+        /// <returns>
+        /// A <see cref="Request"/>
+        /// </returns>
+        public IRequest CreateRequest (string resource, string methodName)
+        {
+            var method = this.Resources[resource].Methods[methodName];
+            var request = Request.CreateRequest(this, method);
+            
+            return request;
+        }
+        
+        public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
+        {
+            return new ResourceV1_0(this.DiscoveryVersion, kvp);
+        }
+
+    }
+    
+    #endregion
+
+    #region Service V1.0
+    public class ServiceV1_0 : BaseService
+    {
+        private const string BaseUrl = "basePath";
+        
+        private string ServerUrl{get;set;}
+        private readonly Uri baseUri;
+        
+        public override DiscoveryVersion DiscoveryVersion {
+            get { return DiscoveryVersion.Version_1_0; }
+        }
+        
+        public ServiceV1_0 (string version, string name, FactoryParameterV1_0 param, JsonDictionary js):
+            base(version, name, js)
+        {
+            param.ThrowIfNull("param");
+            
+            this.ServerUrl = param.ServerUrl;
+            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            {
+                this.baseUri = new Uri(param.BaseUrl);
+            } 
+            else
+            {
+                if(this.information.ContainsKey(BaseUrl) == false)
+                {
+                    throw new ArgumentException(
+                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]", 
+                            BaseUrl, 
+                            string.Join(", ", this.information.Keys.ToArray() )));
+                }
+                this.baseUri = new Uri (this.ServerUrl +
+                    this.information[BaseUrl] as string);
+            }
+        }
+        
+        public override Uri BaseUri 
+        { 
+            get {return baseUri;}
+        }
+    }
+    #endregion
+    
+    #region Service V0.3
+    /// <summary>
+    /// Represents a Service as defined in Discovery V0.2
+    /// </summary>
+    public class ServiceV0_3 : BaseService
+    {
+        private const string BaseUrl = "restBasePath";
+        
+        private string ServerUrl{get;set;}
+        private readonly Uri baseUri;
+        public ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
+            base(version, name, js)
+        {
+            param.ThrowIfNull("param");
+            
+            this.ServerUrl = param.ServerUrl;
+            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            {
+                this.baseUri = new Uri(param.BaseUrl);
+            } 
+            else
+            {
+                if(this.information.ContainsKey(BaseUrl) == false) 
+                {
+                    throw new ArgumentException("JsonDictionary does not contain restBasePath," +
+                        "  which is a requiredfield.");
+                }
+                
+                this.baseUri = new Uri (this.ServerUrl +
+                    this.information[BaseUrl] as string);
+            }
+        }
         
         public override DiscoveryVersion DiscoveryVersion 
         {
@@ -275,8 +268,7 @@ namespace Google.Apis.Discovery
         
         public override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            //TODO(davidwaters): We will return resource 0.2 until we need more functionality
-            return new ResourceV0_2(this.DiscoveryVersion, kvp);
+            return new ResourceV0_3(this.DiscoveryVersion, kvp);
         }
     }
     #endregion

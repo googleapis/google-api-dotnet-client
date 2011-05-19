@@ -27,7 +27,10 @@ namespace Google.Apis.Discovery
     /// <seealso cref="IService"/>
     public interface IResourceContainer
     {
+        /// <summary>The name of this API.</summary>
         string Name {get;}
+        
+        /// <summary>The resources in this API.</summary>
         IDictionary<string, IResource> Resources {get;}
     }
 }

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
+    /// <summary>Represents a parameter for a method </summary>
     public interface IParameter
     {
         string Name {get;}

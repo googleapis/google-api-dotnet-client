@@ -20,11 +20,9 @@ namespace Google.Apis.Discovery
 {
     public enum DiscoveryVersion
     {
-         /// <summary>Version 0.1</summary>
-            Version_0_1,
-            /// <summary>Version 0.2</summary>
-            Version_0_2,
-            /// <summary>Version 0.3</summary>
-            Version_0_3
+        /// <summary>Version 0.3</summary>
+        Version_0_3,
+        /// <summary>Version 1.0</summary>
+        Version_1_0,        
     }
 }

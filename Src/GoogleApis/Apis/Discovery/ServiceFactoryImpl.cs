@@ -18,20 +18,56 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Google.Apis.Json;
 using Google.Apis.Testing;
+using Google.Apis.Util;
+
 namespace Google.Apis.Discovery
 {
-    public class FactoryParameterV0_3 : FactoryParameterV0_2, IFactoryParameter
+    
+    public class FactoryParameterV1_0 : FactoryParameterV0_3, IFactoryParameter
+    {
+        public FactoryParameterV1_0():this(null,null)
+        {
+            ;
+        }
+        
+        public FactoryParameterV1_0(string serverUrl, string baseUrl): base(serverUrl, baseUrl)
+        {
+            ;
+        }
+    }
+    
+    public class FactoryParameterV0_3 : IFactoryParameter
     {
         public FactoryParameterV0_3():this(null,null)
         {
             ;
         }
         
-        public FactoryParameterV0_3(string serverUrl, string baseUrl): base(serverUrl, baseUrl)
+        public FactoryParameterV0_3(string serverUrl, string baseUrl)
+        {
+            this.ServerUrl = serverUrl;
+            this.BaseUrl = baseUrl;
+        }
+        
+        public string ServerUrl{get;set;}
+        public string BaseUrl{get;set;}
+
+    }
+    
+    internal class ServiceFactoryDiscoveryV1_0 : ServiceFactoryDiscoveryV0_3
+    {
+        public ServiceFactoryDiscoveryV1_0 (JsonDictionary discovery, FactoryParameterV1_0 param) : 
+            base(discovery, param)
         {
             ;
+        }
+        
+        public override IService GetService (string version)
+        {
+            return new ServiceV1_0(version, this.Name, (FactoryParameterV1_0)this.Param, Information);
         }
     }
     
@@ -42,18 +78,11 @@ namespace Google.Apis.Discovery
         private readonly string name;
         public ServiceFactoryDiscoveryV0_3 (JsonDictionary discovery, FactoryParameterV0_3 param)
         {
-            if ( discovery == null )
-            {
-                throw new ArgumentNullException("discovery");
-            }
-            if ( param == null )
-            {
-                throw new ArgumentNullException("param");
-            }
+            discovery.ThrowIfNullOrEmpty("discovery");
+            param.ThrowIfNull("param");
             
             if ( discovery.ContainsKey("name")  == false ||
-                 discovery["name"] as string == null || 
-                ((string)discovery["name"]).Length == 0)
+                 (discovery["name"] as string).IsNullOrEmpty())
             {
                 throw new ArgumentException("No Name present in discovery");
             }
@@ -63,7 +92,7 @@ namespace Google.Apis.Discovery
             this.param = param;
         }
 
-        public IService GetService (string version)
+        public virtual IService GetService (string version)
         {
             return new ServiceV0_3 (version, this.name, param, information);
         }
@@ -75,103 +104,5 @@ namespace Google.Apis.Discovery
         [VisibleForTestOnly]
         internal JsonDictionary Information{get{return information;}}
         
-    }
-    
-    public class FactoryParameterV0_2 : IFactoryParameter
-    {
-        public FactoryParameterV0_2():this(null, null)
-        {
-            ;
-        }
-        public FactoryParameterV0_2(string serverUrl, string baseUrl)
-        {
-            this.ServerUrl = serverUrl;
-            this.BaseUrl = baseUrl;
-        }
-        
-        public string ServerUrl{get;set;}
-        public string BaseUrl{get;set;}
-    }
-    
-    [VisibleForTestOnly]
-    internal class ServiceFactoryDiscoveryV0_2 : IServiceFactory
-    {
-        private readonly JsonDictionary information;
-        private readonly FactoryParameterV0_2 param;
-        private readonly string name;
-        public ServiceFactoryDiscoveryV0_2 (JsonDictionary discovery, FactoryParameterV0_2 param)
-        {
-            if ( discovery == null )
-            {
-                throw new ArgumentNullException("discovery");
-            }
-            if ( param == null )
-            {
-                throw new ArgumentNullException("param");
-            }
-            
-            if ( discovery.ContainsKey("name")  == false ||
-                 discovery["name"] as string == null || 
-                ((string)discovery["name"]).Length == 0)
-            {
-                throw new ArgumentException("No Name present in discovery");
-            }
-                
-            this.information = discovery;
-            this.name = information["name"].ToString ();
-            this.param = param;
-        }
-
-        public IService GetService (string version)
-        {
-            return new ServiceV0_2 (version, this.name, param, information);
-        }
-        
-        [VisibleForTestOnly]
-        internal string Name{get{return name;}}
-        [VisibleForTestOnly]
-        internal FactoryParameterV0_2 Param{get{return param;}}
-        [VisibleForTestOnly]
-        internal JsonDictionary Information{get{return information;}}
-    }
- 
-    [VisibleForTestOnly]
-    internal class ServiceFactoryDiscoveryV0_1 : IServiceFactory
-    {
-  
-        private JsonDictionary information;
-        private string name;
-        public ServiceFactoryDiscoveryV0_1 (JsonDictionary discovery)
-        {
-            this.information = discovery;
-            if (this.information == null)
-                throw new ArgumentException ("Discovery document in invalid form");
-            
-            // if present discard the data element
-            this.information = this.information["data"] as JsonDictionary;
-            if (this.information == null)
-                throw new ArgumentException ("Discovery document has no data element");
-            if (this.information.Count != 1)
-                throw new ArgumentException ("More than one element found");
-            foreach (KeyValuePair<string, object> kvp in this.information)
-            {
-                this.name = kvp.Key;
-                this.information = kvp.Value as JsonDictionary;
-            }
-            if (this.information == null)
-                throw new ArgumentException ("Discovery document has no service dictionary");
-        }
-                
-        public IService GetService (string version)
-        {
-            // now find the right versioninfo set
-            JsonDictionary js = this.information[version] as JsonDictionary;
-            if (js == null)
-            {
-                throw new ArgumentException ("Did not find version: " + version + " in the discovery document");
-            }
-            
-            return new ServiceV0_1 (version, this.name, js);
-        }
-    }
+    }    
 }
