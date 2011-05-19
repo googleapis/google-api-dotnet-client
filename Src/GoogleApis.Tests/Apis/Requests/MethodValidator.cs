@@ -21,6 +21,7 @@ using NUnit.Framework;
 
 using Google.Apis.Discovery;
 using Google.Apis.Json;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Requests
 {

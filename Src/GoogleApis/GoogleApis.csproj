@@ -123,6 +123,8 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
     <Compile Include="Apis\Testing\MoreAsserts.cs" />
+    <Compile Include="Apis\Testing\MockParameter.cs" />
+    <Compile Include="Apis\Testing\MockMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

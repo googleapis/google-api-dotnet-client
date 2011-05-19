@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tests.Apis.Requests
+namespace Google.Apis.Testing
 {
     public class MockParameter : IParameter
     {
