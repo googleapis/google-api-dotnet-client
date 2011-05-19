@@ -130,46 +130,43 @@ namespace Google.Apis.Discovery
 	}
     #endregion
     
-    #region ResourceV0_1
-    /// <summary>
-    /// Represents a Resource as defined by Discovery V0.1
-    /// </summary>
-    internal class ResourceV0_1: BaseResource
+    #region ResourceV1_0
+    internal class ResourceV1_0: BaseResource
     {
-        internal ResourceV0_1 (KeyValuePair<string, object> kvp):base(DiscoveryVersion.Version_0_1, kvp)
+        internal ResourceV1_0 (DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV0_1(kvp);
+            return new MethodV1_0(this.DiscoveryVersion, kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_1(kvp);
+            return new ResourceV1_0(this.DiscoveryVersion, kvp);
         }
     }
     #endregion
     
-    #region ResourceV0_2
+    #region ResourceV0_3
     /// <summary>
-    /// Represents a Resource as defined by Discovery V0.2
+    /// Represents a Resource as defined by Discovery V0.3
     /// </summary>
-    internal class ResourceV0_2: BaseResource
+    internal class ResourceV0_3: BaseResource
     {
-        internal ResourceV0_2 (DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
+        internal ResourceV0_3 (DiscoveryVersion version, KeyValuePair<string, object> kvp):base(version, kvp)
         {
         }
         
         protected override IMethod CreateMethod (KeyValuePair<string, object> kvp)
         {
-            return new MethodV0_2(this.DiscoveryVersion, kvp);
+            return new MethodV0_3(this.DiscoveryVersion, kvp);
         }
         
         protected override IResource CreateResource (KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_2(this.DiscoveryVersion, kvp);
+            return new ResourceV0_3(this.DiscoveryVersion, kvp);
         }
         
     }

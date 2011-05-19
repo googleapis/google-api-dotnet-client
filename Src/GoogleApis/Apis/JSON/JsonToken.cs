@@ -41,5 +41,10 @@ namespace Google.Apis.Json
     public Type type;
     public string value;
     public decimal number;
+        
+    public override string ToString ()
+    {
+        return string.Format ("[JsonToken {0} {1} {2}]", type.ToString(), value, number);
+    }
   }
 }

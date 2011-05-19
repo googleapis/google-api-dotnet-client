@@ -22,45 +22,57 @@ using System.Collections;
 namespace Google.Apis.Tests.Json
 {
     
-    
-    /// <summary>
-    ///This is a test class for TokenStream_JSONReaderTest and is intended
-    ///to contain all TokenStream_JSONReaderTest Unit Tests
-    ///</summary>
+   /// <summary>
+   ///This is a test class for TokenStream_JSONReaderTest and is intended
+   ///to contain all TokenStream_JSONReaderTest Unit Tests
+   ///</summary>
   [TestFixture()]
   public class JsonReaderTest {
 
-
-
-
-    /// <summary>
-    ///A test for Parse
-    ///</summary>
-    [Test()]
-    public void ParseTest() {
-      string jsonAsText = "[ true, \"Value2\", false, null ]";
-      object o = JsonReader.Parse(jsonAsText);
-      Assert.IsTrue(o is ArrayList);
-      ArrayList a = o as ArrayList;
-      Assert.AreEqual(4, a.Count);
-      Assert.AreEqual(false, a[2]);
-
-      jsonAsText = "{ \"Name\" : true }";
-      o = JsonReader.Parse(jsonAsText);
-      Assert.IsTrue(o is JsonDictionary);
-
-      jsonAsText = "{ \"name\" : [ true, \"Value2\", false ], \"sub\" : { \"subname\" : 1234 } }";
-      o = JsonReader.Parse(jsonAsText);
-      Assert.IsTrue(o is JsonDictionary);
-      JsonDictionary j = o as JsonDictionary;
-      a = j["name"] as ArrayList;
-      Assert.IsNotNull(a);
-  
-
+        /// <summary>
+        ///A test for Parse
+        ///</summary>
+        [Test()]
+        public void ParseTest() 
+        {
+            string jsonAsText = "[ true, \"Value2\", false, null ]";
+            object o = JsonReader.Parse(jsonAsText);
+            Assert.IsInstanceOf(typeof(ArrayList), o);
+            ArrayList a = o as ArrayList;
+            Assert.AreEqual(4, a.Count);
+            Assert.AreEqual(false, a[2]);
+            
+            jsonAsText = "{ \"Name\" : true }";
+            o = JsonReader.Parse(jsonAsText);
+            Assert.IsTrue(o is JsonDictionary);
+            
+            jsonAsText = "{ \"name\" : [ true, \"Value2\", false ], \"sub\" : { \"subname\" : 1234 } }";
+            o = JsonReader.Parse(jsonAsText);
+            Assert.IsTrue(o is JsonDictionary);
+            JsonDictionary j = o as JsonDictionary;
+            a = j["name"] as ArrayList;
+            Assert.IsNotNull(a);
+        }
+        
+        [Test()]
+        public void ParseEmptyObjectTest() 
+        {
+            string jsonAsText = "{}";
+            object o = JsonReader.Parse(jsonAsText);
+            Assert.IsInstanceOf(typeof(JsonDictionary), o);
+            JsonDictionary dict = o as JsonDictionary;
+            Assert.AreEqual(0, dict.Count);
+            
+            jsonAsText = "{'simpleProp':1, 'emptyObject':{}}";
+            o = JsonReader.Parse(jsonAsText);
+            Assert.IsInstanceOf(typeof(JsonDictionary), o);
+            dict = o as JsonDictionary;
+            Assert.AreEqual(2, dict.Count);
+            Assert.AreEqual(1, dict["simpleProp"]);
+            Assert.That(dict.ContainsKey("emptyObject"),"Parsed object did not contian emptyObject");
+            JsonDictionary empty = dict["emptyObject"] as JsonDictionary;
+            Assert.IsNotNull(empty);
+            Assert.AreEqual(0, empty.Count);
+        }
     }
-
-   
-
-   
-  }
 }

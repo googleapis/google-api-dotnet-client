@@ -96,12 +96,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         {
             switch(service.DiscoveryVersion)
             {
-            case DiscoveryVersion.Version_0_1:
-                return "https://www.googleapis.com/discovery/0.1/describe?api={0}";    
-            case DiscoveryVersion.Version_0_2:
-                return "https://www.googleapis.com/discovery/0.2/describe?api={0}";    
             case DiscoveryVersion.Version_0_3:
-                return "https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}";    
+                return "https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}";
+            case DiscoveryVersion.Version_1_0:
+                return "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
             default:
                 throw new NotSupportedException(string.Format("Discovery Version {0} is not supported", service.DiscoveryVersion));
             }
@@ -117,21 +115,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         {
             switch(service.DiscoveryVersion)
             {
-            case DiscoveryVersion.Version_0_1:
-                return new CodePrimitiveExpression(null);
-            
-            case DiscoveryVersion.Version_0_2:
-                return new CodeObjectCreateExpression(typeof(FactoryParameterV0_2),
-                    new CodePrimitiveExpression(null),
-                    new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
-
-            case DiscoveryVersion.Version_0_3:
-                 return new CodeObjectCreateExpression(typeof(FactoryParameterV0_3),
-                    new CodePrimitiveExpression(null),
-                    new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
-
-            default:
-                throw new NotSupportedException("The Discovery version "+service.DiscoveryVersion+" is not yet supported");
+                case DiscoveryVersion.Version_0_3:
+                     return new CodeObjectCreateExpression(typeof(FactoryParameterV0_3),
+                        new CodePrimitiveExpression(null),
+                        new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
+    
+                case DiscoveryVersion.Version_1_0:
+                     return new CodeObjectCreateExpression(typeof(FactoryParameterV1_0),
+                        new CodePrimitiveExpression(null),
+                        new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (serviceClass.Name), VersionInformationServiceDecorator.BaseUriName));
+                default:
+                    throw new NotSupportedException("The Discovery version "+service.DiscoveryVersion+" is not yet supported");
             }
         }
 

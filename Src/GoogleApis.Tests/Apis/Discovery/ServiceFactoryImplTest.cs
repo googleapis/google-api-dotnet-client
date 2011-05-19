@@ -25,7 +25,7 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture()]
     public class ServiceFactoryImplTest
     {
-        internal const string BadDiscoveryv0_2_No_Name =  @"{
+        internal const string BadDiscoveryv1_0_No_Name =  @"{
  'NO_name': 'adsense-mgmt',
  'version': 'v1beta1',
  'description': 'AdSense Management API',
@@ -41,29 +41,29 @@ namespace Google.Apis.Tests.Apis.Discovery
     }";
 
         [Test()]
-        public void ServiceFactoryDiscoveryV0_2ConstructorSucsessFail ()
+        public void ServiceFactoryDiscoveryV1_0ConstructorFailTest ()
         {
-            var param = new FactoryParameterV0_2("server", "base");
-            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.V0_2SAMPLE_DISCOVERY);
+            var param = new FactoryParameterV1_0();
+            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
             
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_2(null, param));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_2(json, null));
+            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(null, param));
+            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(json, null));
             
-            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv0_2_No_Name);
-            Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV0_2(json, param));
+            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_Name);
+            Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV1_0(json, param));
         }
         
         [Test()]
-        public void ServiceFactoryDiscoveryV0_2ConstructorSucsessTest ()
+        public void ServiceFactoryDiscoveryV1_0ConstructorSucsessTest ()
         {
-            var param = new FactoryParameterV0_2("server", "http://base");
-            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.V0_2SAMPLE_DISCOVERY);
-            var fact = new ServiceFactoryDiscoveryV0_2(json, param);
+            var param = new FactoryParameterV1_0();
+            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
+            var fact = new ServiceFactoryDiscoveryV1_0(json, param);
             
-            Assert.AreEqual("adsense-mgmt", fact.Name);
+            Assert.AreEqual("adsense", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
-            Assert.IsInstanceOf(typeof(ServiceV0_2), fact.GetService("v1"));
+            Assert.IsInstanceOf(typeof(ServiceV1_0), fact.GetService("v1"));
         }
     }
 }

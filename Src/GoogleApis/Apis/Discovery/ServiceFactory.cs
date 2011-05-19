@@ -21,6 +21,7 @@ using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Discovery 
 {
@@ -59,10 +60,10 @@ namespace Google.Apis.Discovery
         internal const string ResponseType = "response";
         internal const string RequestType = "request";
     
-        internal const string ParameterType = "parameterType";
+        internal const string ParameterType = "location";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
-        internal const string DefaultValue = "defaultValue";
+        internal const string DefaultValue = "default";
         internal const string ValueType = "type";
         internal const string Description = "description";
         internal const string Maximum = "maximum";
@@ -70,15 +71,17 @@ namespace Google.Apis.Discovery
 
         public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter param)
         {
+            discovery.ThrowIfNull("discovery");
+            version.ThrowIfNull("version");
+            param.ThrowIfNull("param");
+            
             JsonDictionary information = JsonReader.Parse(discovery) as JsonDictionary;
             
             switch(version){
-                case DiscoveryVersion.Version_0_1:
-                    return new ServiceFactoryDiscoveryV0_1(information);
-                case DiscoveryVersion.Version_0_2:
-                    return new ServiceFactoryDiscoveryV0_2(information, (FactoryParameterV0_2)param);
                 case DiscoveryVersion.Version_0_3:
                     return new ServiceFactoryDiscoveryV0_3(information, (FactoryParameterV0_3)param);
+                case DiscoveryVersion.Version_1_0:
+                    return new ServiceFactoryDiscoveryV1_0(information, (FactoryParameterV1_0)param);
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
             }

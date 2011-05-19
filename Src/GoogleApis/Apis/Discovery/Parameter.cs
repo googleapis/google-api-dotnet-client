@@ -33,16 +33,23 @@ namespace Google.Apis.Discovery
         {
             switch (version)
             {
-            case DiscoveryVersion.Version_0_1:
-            case DiscoveryVersion.Version_0_2:
-                return new BaseParameter(kvp);
-            case DiscoveryVersion.Version_0_3:
-                return new ParameterV0_3(kvp);
-            default:
-                throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
+                case DiscoveryVersion.Version_0_3:
+                    return new ParameterV0_3(kvp);
+                case DiscoveryVersion.Version_1_0:
+                    return new ParameterV1_0(kvp);
+                default:
+                    throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
             }
         }
-
+  
+        [VisibleForTestOnly]
+        internal class ParameterV1_0 : BaseParameter
+        {
+            public ParameterV1_0(KeyValuePair<string, object> kvp)
+                : base(kvp)
+            { }
+        }
+        
         [VisibleForTestOnly]
         internal class ParameterV0_3 : BaseParameter
         {
@@ -53,6 +60,10 @@ namespace Google.Apis.Discovery
             public override string ParameterType
             {
                 get { return this.information.GetValueAsNull("restParameterType") as string; }
+            }
+            
+            public override string DefaultValue {
+                get { return this.information.GetValueAsNull("defaultValue") as string; }
             }
         }
 
@@ -85,8 +96,13 @@ namespace Google.Apis.Discovery
             {
                 get { return (bool)(this.information.GetValueAsNull(ServiceFactory.Required) ?? (object)false); }
             }
-
-            public string DefaultValue
+   
+            public bool Repeated
+            {
+                get { return (bool)(this.information.GetValueAsNull("repeated") ?? (object)false); }
+            }
+            
+            public virtual string DefaultValue
             {
                 get { return this.information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
             }
@@ -115,7 +131,7 @@ namespace Google.Apis.Discovery
             {
                 get 
                 {
-                    ArrayList list = this.information.GetValueAsNull("enum") as ArrayList;
+                    IEnumerable list = this.information.GetValueAsNull("enum") as IEnumerable;
                     if (list == null)
                     {
                         yield break;
@@ -129,6 +145,23 @@ namespace Google.Apis.Discovery
                 }
             }
             
+            public IEnumerable<string> EnumDescription 
+            {
+                get 
+                {
+                    IEnumerable list = this.information.GetValueAsNull("enumDescriptions") as IEnumerable;
+                    if (list == null)
+                    {
+                        yield break;
+                    }
+                    
+                    foreach(string s in list)
+                    {
+                        yield return s;
+                    }
+                    
+                }
+            } 
         }
     }
 }
