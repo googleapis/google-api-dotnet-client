@@ -26,7 +26,7 @@ namespace Google.Apis.Samples.ListServices
         /// <summary>
         /// Lists all the services for a given API.
         /// 
-        /// If no service is provided, then the "moderator" service will be used
+        /// If no service is provided, then the "urlshortener" service will be used
         /// </summary>
         /// <param name="args">
         /// Syntax: [<service name> [<service version>]]
@@ -45,25 +45,37 @@ namespace Google.Apis.Samples.ListServices
         /// </example>
         public static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += (sender, eventArgs)
+                                                          =>
+                                                              {
+                                                                  // Show the user a helpful error message3
+                                                                  Console.ForegroundColor = ConsoleColor.Red;
+                                                                  Console.WriteLine(eventArgs.ExceptionObject);
+                                                                  Console.WriteLine("Press any key to exit.");
+                                                                  Console.ReadKey();
+                                                                  Environment.Exit(-1);
+                                                              };
+            
             // Define our discovery source
             string serviceName = "urlshortener";
             string serviceVersion = "v1";
-            
+                
             if (args.Length >= 1) { // Override service name
                 serviceName = args[0];
             }
             if (args.Length >= 2) { // Override service version
                 serviceVersion = args[1];
             }
-
+    
             // Highlight output
             Console.ForegroundColor = ConsoleColor.Yellow;
-            
+                
             // Display the service info
             var serviceInfo = new ServiceInfo(serviceName, serviceVersion);
             serviceInfo.Display();
-
+    
             // Prevent instantaneous exit
+            Console.WriteLine("Press any key to close the application.");
             Console.ReadKey();
         }
     }

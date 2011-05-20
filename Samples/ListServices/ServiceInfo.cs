@@ -25,6 +25,8 @@ namespace Google.Apis.Samples.ListServices
     /// </summary>
     public class ServiceInfo
     {
+        private const string GOOGLE_DISCOVERY_URI = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
+
         /// <summary>
         /// The underlying service
         /// </summary>
@@ -42,8 +44,8 @@ namespace Google.Apis.Samples.ListServices
         public ServiceInfo(string serviceName, string serviceVersion)
         {
             // Create the discovery source
-            string uri = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
-            var webfetcher = new WebDiscoveryDevice { DiscoveryUri = new Uri(string.Format(uri, serviceName, serviceVersion)) };
+            var webfetcher = new WebDiscoveryDevice {
+                DiscoveryUri = new Uri(string.Format(GOOGLE_DISCOVERY_URI, serviceName, serviceVersion)) };
             var discovery = new DiscoveryService(webfetcher);
             
             // Build the service based on discovery information.
