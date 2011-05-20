@@ -48,7 +48,7 @@ namespace Google.Apis.Samples.ListServices
             AppDomain.CurrentDomain.UnhandledException += (sender, eventArgs)
                                                           =>
                                                               {
-                                                                  // Show the user a helpful error message3
+                                                                  // Show the user a helpful error message
                                                                   Console.ForegroundColor = ConsoleColor.Red;
                                                                   Console.WriteLine(eventArgs.ExceptionObject);
                                                                   Console.WriteLine("Press any key to exit.");
