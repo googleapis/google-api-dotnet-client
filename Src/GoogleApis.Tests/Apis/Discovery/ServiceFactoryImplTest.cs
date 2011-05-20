@@ -22,7 +22,10 @@ using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-    [TestFixture()]
+    /// <summary>
+    /// Test case for ServiceFactoryImpl.cs
+    /// </summary>
+    [TestFixture]
     public class ServiceFactoryImplTest
     {
         internal const string BadDiscoveryv1_0_No_Name =  @"{
@@ -40,7 +43,7 @@ namespace Google.Apis.Tests.Apis.Discovery
     }
     }";
 
-        [Test()]
+        [Test]
         public void ServiceFactoryDiscoveryV1_0ConstructorFailTest ()
         {
             var param = new FactoryParameterV1_0();
@@ -53,8 +56,8 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV1_0(json, param));
         }
         
-        [Test()]
-        public void ServiceFactoryDiscoveryV1_0ConstructorSucsessTest ()
+        [Test]
+        public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest ()
         {
             var param = new FactoryParameterV1_0();
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
