@@ -74,5 +74,62 @@ namespace Google.Apis.Tests.Json
             Assert.IsNotNull(empty);
             Assert.AreEqual(0, empty.Count);
         }
+
+        /// <summary>
+        /// Checks whether JSON documents containing urls as keys can be parsed
+        /// </summary>
+        [Test]
+        public void ParseUrlsTest()
+        {
+            // Create and parse the JSON
+            const string jsonAsText = "{ \"one\": true, \"https://www.googleapis.com/auth/moderator\": \"two\", \"three\": true }";
+            object obj = JsonReader.Parse(jsonAsText);
+
+            // Convert to JSON dictionary
+            Assert.IsInstanceOf<JsonDictionary>(obj);
+            var dict = (JsonDictionary)obj;
+
+            // Validate output
+            Assert.That(dict.Count, Is.EqualTo(3));
+            Assert.That(dict["one"], Is.True);
+            Assert.That(dict["https://www.googleapis.com/auth/moderator"], Is.EqualTo("two"));
+            Assert.That(dict["three"], Is.True);
+        }
+
+        /// <summary>
+        /// Checks if the JsonReader is able to parse nested expressions
+        /// </summary>
+        [Test]
+        public void ParseNestedTest()
+        {
+            // Create and parse the JSON
+            const string jsonAsText = @"{
+                                     ""basePath"": ""/moderator/v1/"",
+                                     ""auth"": {
+                                      ""oauth2"": {
+                                       ""scopes"": {
+                                        ""https://www.googleapis.com/auth/moderator"": {
+                                         ""description"": ""Manage your activity in Google Moderator""
+                                        }
+                                       }
+                                      }
+                                     },
+                                     ""features"": [
+                                      ""dataWrapper""
+                                     ] }";
+            object obj = JsonReader.Parse(jsonAsText);
+
+            // Convert to JSON dictionary
+            Assert.IsInstanceOf<JsonDictionary>(obj);
+            var dict = (JsonDictionary)obj;
+
+            // Validate output
+            Assert.That(dict.Count, Is.EqualTo(3));
+            Assert.That(dict["basePath"], Is.EqualTo("/moderator/v1/"));
+            Assert.That(dict["auth"], Is.InstanceOf<JsonDictionary>());
+            Assert.That(((JsonDictionary)dict["auth"])["oauth2"], Is.InstanceOf<JsonDictionary>());
+            Assert.That(dict["features"], Is.InstanceOf<ArrayList>());
+            Assert.That(((ArrayList)dict["features"])[0], Is.EqualTo("dataWrapper"));
+        }
     }
 }
