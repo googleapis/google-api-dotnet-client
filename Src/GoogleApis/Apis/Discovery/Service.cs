@@ -41,25 +41,27 @@ namespace Google.Apis.Discovery
         protected readonly internal JsonDictionary information;
         private Dictionary<string, IResource> resources;
         private IDictionary<String, ISchema> schemas = null;
-        private const string BasePath = "basePath";
 
         public string Name {get; private set;}
         public string Version {get; private set;}
         public string Description {get; private set;}
-        public string Title { get; private set; }        
+        public string Title { get; private set; }
         
         public string Id {get; private set;}
         public IList<string> Labels {get; private set;}
         public IList<string> Features {get; private set;}
         public string DocumentationLink {get; private set;}
         public string Protocol {get; private set;}
-        
 
-        internal BaseService (string version, string name, JsonDictionary js)
+        protected string ServerUrl { get; set; }
+        protected string BasePath { get; set; }
+        
+        internal BaseService (string version, string name, JsonDictionary js, BaseFactoryParameters param)
         {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
             js.ThrowIfNull("js");
+            param.ThrowIfNull("param");
             
             // Set required properties
             this.Version = version;
@@ -74,14 +76,26 @@ namespace Google.Apis.Discovery
             this.Protocol = js.GetValueAsNull("protocol") as string;
             this.Description = js.GetValueAsNull("description") as string;
             this.Title = js.GetValueAsNull("title") as string;
+
+            // Determine the Server URL and (optional) Base Path
+            param.ServerUrl.ThrowIfNull("param.ServerUrl");
+            ServerUrl = param.ServerUrl;
+            BasePath = param.BasePath;
         }
   
         private BaseService ()
         {
         }
 
-        public abstract DiscoveryVersion DiscoveryVersion{get;}
-        public abstract Uri BaseUri {get;}
+        public abstract DiscoveryVersion DiscoveryVersion { get;}
+
+        public Uri BaseUri
+        {
+            get
+            {
+                return new Uri(ServerUrl + BasePath);
+            }
+        }
         
         public Uri RpcUri 
         {
@@ -183,42 +197,29 @@ namespace Google.Apis.Discovery
     #region Service V1.0
     public class ServiceV1_0 : BaseService
     {
-        private const string BaseUrl = "basePath";
-        
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        
-        public override DiscoveryVersion DiscoveryVersion {
-            get { return DiscoveryVersion.Version_1_0; }
-        }
-        
-        public ServiceV1_0 (string version, string name, FactoryParameterV1_0 param, JsonDictionary js):
-            base(version, name, js)
+        private const string BasePathField = "basePath";
+
+        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary js) :
+            base(version, name, js, param)
         {
-            param.ThrowIfNull("param");
-            
-            this.ServerUrl = param.ServerUrl;
-            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            // If no BasePath has been set, then retrieve it from the json document
+            if (BasePath.IsNullOrEmpty())
             {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                if(this.information.ContainsKey(BaseUrl) == false)
+                if (information.ContainsKey(BasePathField) == false)
                 {
                     throw new ArgumentException(
-                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]", 
-                            BaseUrl, 
-                            string.Join(", ", this.information.Keys.ToArray() )));
+                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]",
+                            BasePathField,
+                            string.Join(", ", this.information.Keys.ToArray())));
                 }
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
+
+                BasePath = information[BasePathField].ToString();
             }
         }
-        
-        public override Uri BaseUri 
-        { 
-            get {return baseUri;}
+
+        public override DiscoveryVersion DiscoveryVersion
+        {
+            get { return DiscoveryVersion.Version_1_0; }
         }
     }
     #endregion
@@ -229,46 +230,34 @@ namespace Google.Apis.Discovery
     /// </summary>
     public class ServiceV0_3 : BaseService
     {
-        private const string BaseUrl = "restBasePath";
-        
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        public ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
-            base(version, name, js)
+        private const string RestBasePathField = "restBasePath";
+
+        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary js) :
+            base(version, name, js, param)
         {
-            param.ThrowIfNull("param");
-            
-            this.ServerUrl = param.ServerUrl;
-            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            // If no BasePath has been set, then retrieve it from the json document
+            if (BasePath.IsNullOrEmpty())
             {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                if(this.information.ContainsKey(BaseUrl) == false) 
+                if (information.ContainsKey(RestBasePathField) == false)
                 {
-                    throw new ArgumentException("JsonDictionary does not contain restBasePath," +
-                        "  which is a requiredfield.");
+                    throw new ArgumentException(
+                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]",
+                            RestBasePathField,
+                            string.Join(", ", this.information.Keys.ToArray())));
                 }
-                
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
+
+                BasePath = information[RestBasePathField].ToString();
             }
         }
-        
-        public override DiscoveryVersion DiscoveryVersion 
+
+        public override DiscoveryVersion DiscoveryVersion
         {
-            get {return DiscoveryVersion.Version_0_3;}
+            get { return DiscoveryVersion.Version_0_3; }
         }
-        
-        public override Uri BaseUri 
-        { 
-            get {return baseUri;}
-        }
-        
-        public override IResource CreateResource (KeyValuePair<string, object> kvp)
+
+        public override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_3(this.DiscoveryVersion, kvp);
+            return new ResourceV0_3(DiscoveryVersion, kvp);
         }
     }
     #endregion

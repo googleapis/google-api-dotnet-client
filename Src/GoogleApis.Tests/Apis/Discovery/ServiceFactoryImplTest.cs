@@ -22,7 +22,7 @@ using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-    [TestFixture()]
+    [TestFixture]
     public class ServiceFactoryImplTest
     {
         internal const string BadDiscoveryv1_0_No_Name =  @"{
@@ -40,12 +40,14 @@ namespace Google.Apis.Tests.Apis.Discovery
     }
     }";
 
-        [Test()]
+        [Test]
         public void ServiceFactoryDiscoveryV1_0ConstructorFailTest ()
         {
-            var param = new FactoryParameterV1_0();
+            Assert.Throws<ArgumentNullException>(() => new FactoryParameterV1_0(null));
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
-            
+
+            // Test if the constructor will fail if required arguments are missing
+            var param = new FactoryParameterV1_0();
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(null, param));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(json, null));
             
@@ -53,10 +55,10 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV1_0(json, param));
         }
         
-        [Test()]
-        public void ServiceFactoryDiscoveryV1_0ConstructorSucsessTest ()
+        [Test]
+        public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest ()
         {
-            var param = new FactoryParameterV1_0();
+            var param = new FactoryParameterV1_0("http://server/");
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
             var fact = new ServiceFactoryDiscoveryV1_0(json, param);
             

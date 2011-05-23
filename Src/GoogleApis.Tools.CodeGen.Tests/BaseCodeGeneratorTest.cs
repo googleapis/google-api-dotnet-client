@@ -4433,10 +4433,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var version = "v1beta1";
             var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseDiscoveryV1};
             var discovery = new DiscoveryService(buzzTestFetcher);
-            var param = new FactoryParameterV1_0();
             
             // Build the service based on discovery information.
-            return discovery.GetService(version, DiscoveryVersion.Version_1_0, param);
+            return discovery.GetService(version, DiscoveryVersion.Version_1_0, null);
         }
 	}
 }

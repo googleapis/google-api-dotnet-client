@@ -26,9 +26,7 @@ using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-
-
-    [TestFixture()]
+    [TestFixture]
     public class ServiceFactoryTest
     {
         private const string EmptyJson = "{'Fish' : 'chips'}";
@@ -109,12 +107,11 @@ namespace Google.Apis.Tests.Apis.Discovery
             "'resources' : {'mgmt' : {'name' : 'mgmt', " +
             "'resources' : {'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
         
-        [Test()]
+        [Test]
         public void TestV1_0GetService()
         {
-            var param = new FactoryParameterV1_0();
             var factory = ServiceFactory.CreateServiceFactory(
-                    CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, param);
+                    CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, null);
             IService service = factory.GetService ("v1beta1");
             
             Assert.NotNull(service);
@@ -123,12 +120,11 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(1, service.Resources["adclients"].Methods.Count);
         }
         
-        [Test()]
+        [Test]
         public void TestV0_3GetService()
         {
-            var param = new FactoryParameterV0_3();
             var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV0_3SmallestExample),
-                    DiscoveryVersion.Version_0_3, param);
+                    DiscoveryVersion.Version_0_3, null);
             IService service = factory.GetService("v1beta1");
             
             Assert.NotNull(service);
@@ -139,41 +135,43 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
         }
       
-        [Test()]
+        [Test]
         public void TestCreateServiceFactoryV1_0()
         {
+            // Test without factory parameter
             var stream = CreateStringStream(DiscoveryV1_0Example);
-            var param = new FactoryParameterV1_0();
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory (stream, DiscoveryVersion.Version_1_0, param);
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_1_0, null);
+            Assert.IsNotNull(factory);
+            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
+
+            // Test with FactoryParameter
+            stream = CreateStringStream(DiscoveryV1_0Example);
+            var param = new FactoryParameterV1_0("https://googlecode.com/");
+            factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_1_0, param);
             Assert.IsNotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
         }
         
-        [Test()]
+        [Test]
         public void TestCreateServiceFactoryV0_3()
         {
             var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
-            var param = new FactoryParameterV0_3();
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, param);
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, null);
             Assert.NotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
         }
         
-        [Test()]
+        [Test]
         public void TestCreateServiceFactoryInvalidVersion()
         {
             var stream = CreateStringStream(DiscoveryV1_0Example);
-            var param = new FactoryParameterV1_0();
-            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory (stream, (DiscoveryVersion)56, param));
+            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory(stream, (DiscoveryVersion)56, null));
         }
         
-        [Test()]
+        [Test]
         public void TestCreateServiceFactoryInvalidParameters()
         {
-            var stream = CreateStringStream(EmptyJson);
-            var param = new FactoryParameterV1_0();
-            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory (null, DiscoveryVersion.Version_1_0, param));
-            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory (stream, DiscoveryVersion.Version_1_0, null));
+            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory(null, DiscoveryVersion.Version_1_0, null));
         }
         
         private Stream CreateStringStream(string source)
