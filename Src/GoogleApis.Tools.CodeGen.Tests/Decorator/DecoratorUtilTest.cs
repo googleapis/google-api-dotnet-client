@@ -1,10 +1,9 @@
 ﻿using System;
 using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Google.Apis.Tools.CodeGen.Decorator;
+
 using NUnit.Framework;
+
+using Google.Apis.Tools.CodeGen.Decorator;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 {
@@ -21,10 +20,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             const string name = "TestProperty";
             const string comment = "Comment";
 
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.AddAutoProperty<object>(null, name, comment));
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, null, comment));
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, "", comment));
-            Assert.DoesNotThrow(() => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, name, null));
+            Assert.Throws<ArgumentNullException>(() 
+                => DecoratorUtil.AddAutoProperty<object>(null, name, comment));
+            Assert.Throws<ArgumentNullException>(() 
+                => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, null, comment));
+            Assert.Throws<ArgumentException>(() 
+                => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, "", comment));
+            Assert.DoesNotThrow(() 
+                => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, name, null));
         }
 
         [Test]
@@ -41,12 +44,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             
             Assert.That(typeDeclaration.Members.Count, Is.EqualTo(2));
             Assert.That(typeDeclaration.Members[1], Is.InstanceOf<CodeMemberProperty>());
+            Assert.That(typeDeclaration.Members[1].Attributes, Is.EqualTo(MemberAttributes.Public));
             Assert.That(typeDeclaration.Members[0], Is.InstanceOf<CodeMemberField>());
            
             // Backening field is tested in its own unit case
 
             // Test if an exception is thrown when the name is already used
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.AddAutoProperty<bool>(typeDeclaration, name, comment));
+            Assert.Throws<ArgumentException>(() 
+                => DecoratorUtil.AddAutoProperty<bool>(typeDeclaration, name, comment));
         }
 
         [Test]
@@ -55,9 +60,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
 
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackeningField<object>(null, name));
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackeningField<object>(typeDeclaration, null));
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateBackeningField<object>(typeDeclaration, ""));
+            Assert.Throws<ArgumentNullException>(() 
+                => DecoratorUtil.CreateBackeningField<object>(null, name));
+            Assert.Throws<ArgumentNullException>(() 
+                => DecoratorUtil.CreateBackeningField<object>(typeDeclaration, null));
+            Assert.Throws<ArgumentException>(() 
+                => DecoratorUtil.CreateBackeningField<object>(typeDeclaration, ""));
         }
 
         [Test]
@@ -70,6 +78,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.IsNotNull(field);
             Assert.That(field.Name, Is.EqualTo("testProperty"));
             Assert.That(field.Type.BaseType, Is.EqualTo(typeof(bool).FullName));
+            Assert.That(field.Attributes, Is.EqualTo(MemberAttributes.Private));
         }
     }
 }

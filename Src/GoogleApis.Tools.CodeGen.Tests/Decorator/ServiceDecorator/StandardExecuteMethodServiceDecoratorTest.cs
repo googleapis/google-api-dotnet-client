@@ -13,53 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
+
 using System.CodeDom;
-
-using NUnit.Framework;
-
+using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-	[TestFixture()]
-	public class StandardExecuteMethodServiceDecoratorTest: BaseServiceDecoratorTest
-	{
-		[Test()]
-		public void TestCreateExecuteRequestMethod()
-		{
-			var decorator = new StandardExecuteMethodServiceDecorator();
-			CodeMemberMethod method = decorator.CreateExecuteRequestMethod ();
-			
-			Assert.AreEqual(StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName, method.Name);
-			
-			Assert.AreEqual(4, method.Parameters.Count);
-			Assert.AreEqual("System.String", method.Parameters[0].Type.BaseType);
-			Assert.AreEqual("System.String", method.Parameters[1].Type.BaseType);
-			Assert.AreEqual("System.String", method.Parameters[2].Type.BaseType);
-			Assert.That(method.Parameters[3].Type.BaseType.Contains("IDictionary"), 
-				"Base Type was " + method.Parameters[3].Type.BaseType );
-			Assert.AreEqual("System.IO.Stream", method.ReturnType.BaseType);
-			
-		}
-		
-		[Test()]
-		public void TestDecorateClass ()
-		{
-            var service = CreateService();
-			var decorator = new StandardExecuteMethodServiceDecorator();
-			CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
-			
-            var requiredDecorator = new StandardServiceFieldServiceDecorator();
-            requiredDecorator.DecorateClass(service, codeType);
-		    var anotherRequiredDecorator = new DeveloperKeyServiceDecorator();
-            anotherRequiredDecorator.DecorateClass(service, codeType);
-
-			decorator.DecorateClass(service, codeType);
-			
-			CheckCompile(codeType, false, "Failed To Compile StandardExecuteMethodServiceDecorator");
-		}
-
+    [TestFixture]
+    public class StandardExecuteMethodServiceDecoratorTest : BaseServiceDecoratorTest
+    {
         [Test]
         public void CreateWithDeveloperKeyTest()
         {
@@ -72,6 +36,39 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.That(result.TrueStatements[0], Is.InstanceOf<CodeAssignStatement>());
             Assert.That(result.FalseStatements.Count, Is.EqualTo(0));
         }
-	}
-}
 
+        [Test]
+        public void TestCreateExecuteRequestMethod()
+        {
+            var decorator = new StandardExecuteMethodServiceDecorator();
+            CodeMemberMethod method = decorator.CreateExecuteRequestMethod();
+
+            Assert.AreEqual(StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName, method.Name);
+
+            Assert.AreEqual(4, method.Parameters.Count);
+            Assert.AreEqual("System.String", method.Parameters[0].Type.BaseType);
+            Assert.AreEqual("System.String", method.Parameters[1].Type.BaseType);
+            Assert.AreEqual("System.String", method.Parameters[2].Type.BaseType);
+            Assert.That(method.Parameters[3].Type.BaseType.Contains("IDictionary"),
+                        "Base Type was " + method.Parameters[3].Type.BaseType);
+            Assert.AreEqual("System.IO.Stream", method.ReturnType.BaseType);
+        }
+
+        [Test]
+        public void TestDecorateClass()
+        {
+            IService service = CreateService();
+            var decorator = new StandardExecuteMethodServiceDecorator();
+            var codeType = new CodeTypeDeclaration("TestClass");
+
+            var requiredDecorator = new StandardServiceFieldServiceDecorator();
+            requiredDecorator.DecorateClass(service, codeType);
+            var anotherRequiredDecorator = new DeveloperKeyServiceDecorator();
+            anotherRequiredDecorator.DecorateClass(service, codeType);
+
+            decorator.DecorateClass(service, codeType);
+
+            CheckCompile(codeType, false, "Failed To Compile StandardExecuteMethodServiceDecorator");
+        }
+    }
+}
