@@ -4365,7 +4365,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
 		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
 		{
-			cp.ReferencedAssemblies.Add (target.Assembly.CodeBase);
+            // The returned path contains "file:///...", which won't be understood by the compiler
+            // -> Trim the file prefix
+		    string assemblyPath = target.Assembly.CodeBase.Substring("file:///".Length);
+			cp.ReferencedAssemblies.Add (assemblyPath);
 		}
 
 		protected void CheckCompile (CodeTypeDeclaration codeType, bool warnAsError, string errorMessage)
