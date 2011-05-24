@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
@@ -20,32 +21,40 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using log4net;
+using Newtonsoft.Json;
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Json;
-
-using log4net;
-using NUnit.Framework;
+using JsonReader = Google.Apis.Json.JsonReader;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-	/// <summary>
-	/// Is a base class for testing of code generators
-	/// </summary>
-	public abstract class BaseCodeGeneratorTest
-	{
-		public enum TestMethodNames
-		{
-			getTest,
-			postTest,
-			noParameterTest,
-			oneOptionalParameterTest,
-			oneRequiredParameterTest
-		}
+    /// <summary>
+    /// Is a base class for testing of code generators
+    /// </summary>
+    public abstract class BaseCodeGeneratorTest
+    {
+        #region TestMethodNames enum
 
-		public const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
-		public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
-		public const string ResourceName = "TestResource";
-		public const string ResourceAsJson = @"
+        public enum TestMethodNames
+        {
+            getTest,
+            postTest,
+            noParameterTest,
+            oneOptionalParameterTest,
+            oneRequiredParameterTest
+        }
+
+        #endregion
+
+        public const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
+        public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
+        public const string ResourceName = "TestResource";
+
+        public const string ResourceAsJson =
+            @"
 		{
 			""methods"":{
 				""getTest"":{
@@ -97,8 +106,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			}
 		}
 		";
-        
-        private const string AdSenseDiscoveryV1 = @"
+
+        private const string AdSenseDiscoveryV1 =
+            @"
 {
  ""kind"": ""discovery#restDescription"",
  ""id"": ""adsense:v1beta1"",
@@ -576,9 +586,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
  }
 }
 ";
-            
-        
-        private const string AdSenseV02WithMultiLevelAsJson = @"
+
+
+        private const string AdSenseV02WithMultiLevelAsJson =
+            @"
 {
  ""name"": ""adsense-mgmt"",
  ""version"": ""v1beta1"",
@@ -660,7 +671,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
 }
 ";
 
-		public const string SimpleResource = @"
+        public const string SimpleResource =
+            @"
 		{
 			""methods"":{
 				""simpleMethod"":{
@@ -673,9 +685,11 @@ namespace Google.Apis.Tools.CodeGen.Tests
 			}
 		}
 		";
-        
+
         #region BuzzServiceAsJson
-		public const string BuzzServiceAsJson = @"
+
+        public const string BuzzServiceAsJson =
+            @"
 {
  ""kind"": ""discovery#describeItem"",
  ""name"": ""buzz"",
@@ -4349,97 +4363,110 @@ namespace Google.Apis.Tools.CodeGen.Tests
 }
 
 ";
+
         #endregion
 
-		public static KeyValuePair<string, object> CreateJsonResourceDefinition (string resourceName, string jsonString)
-		{
-			JsonDictionary json = (JsonDictionary)JsonReader.Parse (jsonString);
-			
-			return new KeyValuePair<string, object> (resourceName, json);
-		}
+        public static KeyValuePair<string, object> CreateJsonResourceDefinition(string resourceName, string jsonString)
+        {
+            var json = (JsonDictionary) JsonReader.Parse(jsonString);
 
-		public static IResource CreateResourceDivcoveryV_1_0 (string resourceName, string json)
-		{
-			return new ResourceV1_0 (DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition (resourceName, json));
-		}
+            return new KeyValuePair<string, object>(resourceName, json);
+        }
 
-		protected void AddRefereenceToDelararingAssembly (Type target, CompilerParameters cp)
-		{
+        public static IResource CreateResourceDivcoveryV_1_0(string resourceName, string json)
+        {
+            return new ResourceV1_0(DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition(resourceName, json));
+        }
+
+        protected void AddReferenceToDeclaringAssembly(Type target, CompilerParameters cp)
+        {
+            string assemblyPath = target.Assembly.CodeBase;
+
             // The returned path contains "file:///...", which won't be understood by the compiler
             // -> Trim the file prefix
-		    string assemblyPath = target.Assembly.CodeBase.Substring("file:///".Length);
-			cp.ReferencedAssemblies.Add (assemblyPath);
-		}
+            if (assemblyPath.StartsWith("file:///"))
+            {
+                assemblyPath = assemblyPath.Substring("file:///".Length);
+            }
 
-		protected void CheckCompile (CodeTypeDeclaration codeType, bool warnAsError, string errorMessage)
-		{
-			CodeCompileUnit compileUnit = new CodeCompileUnit ();
-			var client = new CodeNamespace ("Google.Apis.Tools.CodeGen.Tests");
-			compileUnit.Namespaces.Add (client);
-			client.Types.Add (codeType);
-			
-			CheckCompile (compileUnit, warnAsError, errorMessage);
-		}
+            cp.ReferencedAssemblies.Add(assemblyPath);
+        }
 
-		protected void CheckCompile (CodeCompileUnit codeCompileUnit, bool warnAsError, string errorMessage)
-		{
-			var language = "CSharp";
-			var provider = CodeDomProvider.CreateProvider (language);
-			CompilerParameters cp = new CompilerParameters ();
-			// Add an assembly reference.
-			cp.ReferencedAssemblies.Add ("System.dll");
-			AddRefereenceToDelararingAssembly (typeof(DiscoveryService), cp);
-			AddRefereenceToDelararingAssembly (typeof(ILog), cp);
-            AddRefereenceToDelararingAssembly (typeof(Newtonsoft.Json.JsonSerializer), cp);
-			
-			cp.GenerateExecutable = false;
-			cp.GenerateInMemory = true;
-			cp.TreatWarningsAsErrors = warnAsError;
-			// Warnings are errors.
-			CompilerResults compilerResults = provider.CompileAssemblyFromDom (cp, codeCompileUnit);
-			bool hasError = false;
-			if (compilerResults.Errors.Count > 0) {
-				var sb = new StringBuilder (errorMessage).AppendLine ();
-				foreach (CompilerError error in compilerResults.Errors) {
-					sb.AppendLine (error.ToString ());
-					if (error.IsWarning == false || warnAsError) {
-						hasError = true;
-					}
-				}
-				sb.AppendLine ();
-				sb.AppendLine ("Generated Code Follows");
-				
-				using (StringWriter sw = new StringWriter (sb)) {
-					IndentedTextWriter tw = new IndentedTextWriter (sw);
-					provider.GenerateCodeFromCompileUnit (codeCompileUnit, tw, new CodeGeneratorOptions ());
-				}
-				Console.Out.WriteLine (sb.ToString ());
-				
-				if (hasError) {
-					Assert.Fail (sb.ToString ());
-				}
-			}
-		}
-		
-		protected IService CreateBuzzService()
-		{
-			var version = "v1";
-			var buzzTestFetcher = new StringDiscoveryDevice(){Document = BuzzServiceAsJson};
-			var discovery = new DiscoveryService(buzzTestFetcher);
-			// Build the service based on discovery information.
-			return discovery.GetService(version, DiscoveryVersion.Version_0_3,
-                new FactoryParameterV0_3("http://test.sever.example.com", "http://test.sever.example.com/testService"));
-		}
-        
+        protected void CheckCompile(CodeTypeDeclaration codeType, bool warnAsError, string errorMessage)
+        {
+            var compileUnit = new CodeCompileUnit();
+            var client = new CodeNamespace("Google.Apis.Tools.CodeGen.Tests");
+            compileUnit.Namespaces.Add(client);
+            client.Types.Add(codeType);
+
+            CheckCompile(compileUnit, warnAsError, errorMessage);
+        }
+
+        protected void CheckCompile(CodeCompileUnit codeCompileUnit, bool warnAsError, string errorMessage)
+        {
+            string language = "CSharp";
+            CodeDomProvider provider = CodeDomProvider.CreateProvider(language);
+            var cp = new CompilerParameters();
+            // Add an assembly reference.
+            cp.ReferencedAssemblies.Add("System.dll");
+            AddReferenceToDeclaringAssembly(typeof (DiscoveryService), cp);
+            AddReferenceToDeclaringAssembly(typeof (ILog), cp);
+            AddReferenceToDeclaringAssembly(typeof (JsonSerializer), cp);
+
+            cp.GenerateExecutable = false;
+            cp.GenerateInMemory = true;
+            cp.TreatWarningsAsErrors = warnAsError;
+            // Warnings are errors.
+            CompilerResults compilerResults = provider.CompileAssemblyFromDom(cp, codeCompileUnit);
+            bool hasError = false;
+            if (compilerResults.Errors.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder(errorMessage).AppendLine();
+                foreach (CompilerError error in compilerResults.Errors)
+                {
+                    sb.AppendLine(error.ToString());
+                    if (error.IsWarning == false || warnAsError)
+                    {
+                        hasError = true;
+                    }
+                }
+                sb.AppendLine();
+                sb.AppendLine("Generated Code Follows");
+
+                using (var sw = new StringWriter(sb))
+                {
+                    var tw = new IndentedTextWriter(sw);
+                    provider.GenerateCodeFromCompileUnit(codeCompileUnit, tw, new CodeGeneratorOptions());
+                }
+                Console.Out.WriteLine(sb.ToString());
+
+                if (hasError)
+                {
+                    Assert.Fail(sb.ToString());
+                }
+            }
+        }
+
+        protected IService CreateBuzzService()
+        {
+            string version = "v1";
+            var buzzTestFetcher = new StringDiscoveryDevice {Document = BuzzServiceAsJson};
+            var discovery = new DiscoveryService(buzzTestFetcher);
+            // Build the service based on discovery information.
+            return discovery.GetService(version, DiscoveryVersion.Version_0_3,
+                                        new FactoryParameterV0_3("http://test.sever.example.com",
+                                                                 "http://test.sever.example.com/testService"));
+        }
+
         protected IService CreateAdSenseV1_0Service()
         {
-            var version = "v1beta1";
-            var buzzTestFetcher = new StringDiscoveryDevice(){Document = AdSenseDiscoveryV1};
+            string version = "v1beta1";
+            var buzzTestFetcher = new StringDiscoveryDevice {Document = AdSenseDiscoveryV1};
             var discovery = new DiscoveryService(buzzTestFetcher);
             var param = new FactoryParameterV1_0();
-            
+
             // Build the service based on discovery information.
             return discovery.GetService(version, DiscoveryVersion.Version_1_0, param);
         }
-	}
+    }
 }
