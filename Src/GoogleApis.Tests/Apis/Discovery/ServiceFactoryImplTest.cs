@@ -22,6 +22,9 @@ using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
+    /// <summary>
+    /// Test case for ServiceFactoryImpl.cs
+    /// </summary>
     [TestFixture]
     public class ServiceFactoryImplTest
     {
