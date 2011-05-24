@@ -27,29 +27,63 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tools.NAntTasks
 {
-   [TaskName("googleapigenerate")]
-   public class GoogleApiGenerate : Task
+    /// <summary>
+    /// This class provides a NAnt task that generates one service
+    /// based on the passed in parameters.
+    /// </summary>
+    [TaskName("googleapigenerate")]
+    public class GoogleApiGenerate : Task
     {
+        /// <summary>
+        /// The Url of the discovery document e.g. 
+        /// <example>
+        ///     https://www.googleapis.com/discovery/v1/apis/discovery/v1/rest
+        /// </example>
+        /// </summary>
         [TaskAttribute("discoveryurl", Required = true)]
         [StringValidator(AllowEmpty = false)]
         public string DiscoveryUrl {get; set;}
         
+        /// <summary>
+        /// The location of the File to write to
+        /// </summary>
         [TaskAttribute("outputfile", Required = true)]        
         public FileInfo OutputFile {get; set;} 
         
+        /// <summary>
+        /// The namespace that the generated code should use e.g.
+        /// <example>
+        ///     Google.Apis.Discovery
+        /// </example>
+        /// </summary>
         [TaskAttribute("clientnamespace", Required = true)]
         [StringValidator(AllowEmpty = false)]
         public string ClientNamespace {get; set;}
         
+        /// <summary>
+        /// The version of the Api e.g.
+        /// <example>
+        ///     v1
+        /// </example>
+        /// </summary>
         [TaskAttribute("apiversion", Required = true)]
         [StringValidator(AllowEmpty = false)]
         public string ApiVersion {get; set;}
         
+        /// <summary>
+        /// The BaseUrl the generated code will connect to at runtime by default e.g.
+        /// <example>
+        ///     https://www.googleapis.com
+        /// </example>
+        /// </summary>
         [TaskAttribute("baseurl", Required = true)]
         [StringValidator(AllowEmpty = false)]
         public string BaseUrl {get; set;}
         
-        protected override void ExecuteTask ()
+        /// <summary>
+        ///     Checks all the parameters and calls the GoogleServiceGenerator.
+        /// </summary>
+        protected override void ExecuteTask()
         {
             DiscoveryUrl.ThrowIfNullOrEmpty("DiscoveryUrl");
             OutputFile.ThrowIfNull("OutputFile");
