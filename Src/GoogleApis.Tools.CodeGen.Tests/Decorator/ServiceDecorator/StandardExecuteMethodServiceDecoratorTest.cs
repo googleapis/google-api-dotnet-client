@@ -49,12 +49,29 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var service = CreateService();
 			var decorator = new StandardExecuteMethodServiceDecorator();
 			CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
-			var requiredDecorator = new StandardServiceFieldServiceDecorator();
+			
+            var requiredDecorator = new StandardServiceFieldServiceDecorator();
             requiredDecorator.DecorateClass(service, codeType);
+		    var anotherRequiredDecorator = new DeveloperKeyServiceDecorator();
+            anotherRequiredDecorator.DecorateClass(service, codeType);
+
 			decorator.DecorateClass(service, codeType);
 			
 			CheckCompile(codeType, false, "Failed To Compile StandardExecuteMethodServiceDecorator");
 		}
+
+        [Test]
+        public void CreateWithDeveloperKeyTest()
+        {
+            var decorator = new StandardExecuteMethodServiceDecorator();
+
+            CodeConditionStatement result = decorator.CreateWithDeveloperKey();
+
+            Assert.IsNotNull(result);
+            Assert.That(result.TrueStatements.Count, Is.EqualTo(1));
+            Assert.That(result.TrueStatements[0], Is.InstanceOf<CodeAssignStatement>());
+            Assert.That(result.FalseStatements.Count, Is.EqualTo(0));
+        }
 	}
 }
 
