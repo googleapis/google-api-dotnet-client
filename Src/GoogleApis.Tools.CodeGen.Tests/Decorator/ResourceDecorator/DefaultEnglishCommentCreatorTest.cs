@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 using Google.Apis.Discovery;
-using Google.Apis.Testing;
 using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
