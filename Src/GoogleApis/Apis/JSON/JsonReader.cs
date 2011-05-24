@@ -62,12 +62,7 @@ namespace Google.Apis.Json
             {
                 token = ts.GetNextToken ();
             }
-
-            if (token == null)
-            {
-                throw new InvalidDataException("Found end of discovery document when expecting a expression.");
-            }
-
+            
             switch (token.type) 
             {
             case JsonToken.Type.String:
@@ -101,12 +96,9 @@ namespace Google.Apis.Json
         {
             // to parse an object, you get the object name, and then parse the value
             JsonToken token = ts.GetNextToken ();
-
-            if (token == null || token.type != JsonToken.Type.String && token.type != JsonToken.Type.ObjectEnd)
-            {
-                throw new InvalidDataException("The tokenstream is not pointing at an object, found object "
-                    + (token != null ? token.ToString() : "NULL" ) + " looking for a string or close object");
-            }
+            
+            if (token.type != JsonToken.Type.String && token.type != JsonToken.Type.ObjectEnd)
+                throw new InvalidDataException ("The tokenstream is not pointing at an object, found object "+token.ToString()+" looking for a string or close object");
             
             JsonDictionary dict = new JsonDictionary ();
             
