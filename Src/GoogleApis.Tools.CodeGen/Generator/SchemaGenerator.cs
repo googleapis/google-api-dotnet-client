@@ -126,10 +126,6 @@ namespace Google.Apis.Tools.CodeGen.Generator
             
             private CodeTypeReference GetSchemaName(int schemaNumber)
             {
-                // Make the first nested class name more readable, as it is often used by Lists/Arrays
-                if (schemaNumber == 1)
-                    return new CodeTypeReference("Entry");
-
                 return new CodeTypeReference(string.Format("NestedClass{0}{1}", uniquefier, schemaNumber));
             }
             

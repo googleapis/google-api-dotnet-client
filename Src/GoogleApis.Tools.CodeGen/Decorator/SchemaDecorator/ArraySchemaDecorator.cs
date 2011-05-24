@@ -16,7 +16,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ArraySchemaDecorator));
 
-        public void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, 
+                                  INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");

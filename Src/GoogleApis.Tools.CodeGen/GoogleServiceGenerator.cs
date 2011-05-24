@@ -98,7 +98,8 @@ namespace Google.Apis.Tools.CodeGen
                     new NewtonsoftJsonSerializer(),
                     }).
                     AsReadOnly();
-        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){
+        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = 
+            (new List<IResourceContainerDecorator>(){
                     new StandardResourcePropertyServiceDecorator()}).
                     AsReadOnly();
 
@@ -138,10 +139,11 @@ namespace Google.Apis.Tools.CodeGen
         {   
         }
   
-        internal static IDiscoveryService CreateDefaultCachingDiscovery(string serviceUrl)
+        internal static DiscoveryService CreateDefaultCachingDiscovery(string serviceUrl)
         {
             // Set up how discovery works.
-            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData),
+                                                  "GoogleApis.Tools.CodeGenCache");
             if (Directory.Exists (cacheDirectory) == false) {
                 Directory.CreateDirectory (cacheDirectory);
             }
@@ -162,7 +164,7 @@ namespace Google.Apis.Tools.CodeGen
 
             var discovery = CreateDefaultCachingDiscovery(url);
             // Build the service based on discovery information.
-            var service = discovery.GetService (version, DiscoveryVersion.Version_1_0, new FactoryParameterV1_0("https://www.googleapis.com", null));
+            var service = discovery.GetService (version, DiscoveryVersion.Version_1_0);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
             var generatedCode = generator.GenerateCode ();
