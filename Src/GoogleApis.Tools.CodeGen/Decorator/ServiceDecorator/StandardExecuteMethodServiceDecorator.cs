@@ -51,8 +51,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             method.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IDictionary<string, object>), "parameters"));
             
             //Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
-            method.Statements.Add (CreateRequestLocalVar ());
-            
+            method.Statements.Add (CreateRequestLocalVar());
+
+            // if (string.IsNullOrEmpty(DeveloperKey) == false)
+            //     request = request.WithDeveloperKey(DeveloperKey)
+            method.Statements.Add(CreateWithDeveloperKey());
             
             
             // return request
@@ -94,6 +97,32 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             createAndAssignRequest.InitExpression = createRequest;
             
             return createAndAssignRequest;
+        }
+
+        /// <summary>
+        /// if (string.IsNullOrEmpty(DeveloperKey) == false)
+        ///    request = request.WithDeveloperKey(DeveloperKey)
+        /// </summary>
+        /// <returns></returns>
+        internal CodeConditionStatement CreateWithDeveloperKey()
+        {
+            // string.IsNullOrEmpty(DeveloperKey) == false
+            var condition = new CodeSnippetExpression("string.IsNullOrEmpty(DeveloperKey) == false");
+            
+            // if (...) {
+            var block = new CodeConditionStatement(condition);
+
+            // request = request.WithDeveloperKey(DeveloperKey)
+            var getProperty = new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "DeveloperKey");
+            var request = new CodeMethodInvokeExpression(new CodeVariableReferenceExpression("request"),
+                                                         "WithDeveloperKey", getProperty);
+
+            var trueCase = new CodeAssignStatement(new CodeVariableReferenceExpression("request"), request);
+
+            // }
+            block.TrueStatements.Add(trueCase);
+
+            return block;
         }
         
         public override string ToString ()
