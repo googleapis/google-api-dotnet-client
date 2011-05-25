@@ -15,9 +15,12 @@ limitations under the License.
 */
 
 using System.CodeDom;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
-using NUnit.Framework;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
