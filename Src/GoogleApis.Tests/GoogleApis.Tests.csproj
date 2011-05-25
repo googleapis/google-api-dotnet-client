@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,11 +12,9 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <TargetFrameworkProfile />
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UpgradeBackupLocation />
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,6 +27,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -93,7 +92,7 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
     <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
     <Compile Include="Apis\Discovery\BaseParameterTest.cs" />
-    <Compile Include="Apis\Testing\MoreAssertsTests.cs" />	
+    <Compile Include="Apis\Testing\MoreAssertsTests.cs" />
     <Compile Include="Apis\Discovery\BaseServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +127,7 @@
   <ItemGroup>
     <None Include="GoogleApisTests.xml" />
   </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties InternalTargetFrameworkVersion="3.5" />
-    </MonoDevelop>
-  </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Apis\Testing\" />
+  </ItemGroup>
 </Project>
