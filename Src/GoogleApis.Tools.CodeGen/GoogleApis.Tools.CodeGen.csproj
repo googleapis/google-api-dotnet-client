@@ -12,8 +12,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
+    <UpgradeBackupLocation />
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -41,17 +40,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DocumentationFile>bin\Release\Google.Apis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DebugSymbols>true</DebugSymbols>
-    <DocumentationFile>bin\Release\Google.Apis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Decorator\DecoratorUtil.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
@@ -74,6 +71,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
@@ -134,9 +132,4 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties InternalTargetFrameworkVersion="3.5" />
-    </MonoDevelop>
-  </ProjectExtensions>
 </Project>
