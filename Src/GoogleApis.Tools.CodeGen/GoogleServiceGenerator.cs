@@ -139,7 +139,7 @@ namespace Google.Apis.Tools.CodeGen
         {   
         }
   
-        internal static DiscoveryService CreateDefaultCachingDiscovery(string serviceUrl)
+        internal static IDiscoveryService CreateDefaultCachingDiscovery(string serviceUrl)
         {
             // Set up how discovery works.
             string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData),
