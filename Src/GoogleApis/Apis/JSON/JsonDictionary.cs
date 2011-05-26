@@ -1,5 +1,5 @@
 /*
-Copyright 2010 Google Inc
+Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -37,6 +37,28 @@ namespace Google.Apis.Json
             }
 
             return this[key];
+        }
+
+        /// <summary>
+        /// Returns the value from the dictionary and
+        /// converts it to the specified [T]ype. 
+        /// Throws an ArgumentException if the key is not set within the dictionary, 
+        /// or if the value is not of the requested type
+        /// </summary>
+        public T GetMandatoryValue<T>(string key)
+        {
+            object val = GetMandatoryValue(key);
+
+            if (!(val is T))
+            {
+                throw new ArgumentException(
+                    string.Format("The type[{1}] of the value of '{0}' is not of the expected type[{2}]",
+                                  val.GetType(),
+                                  key,
+                                  typeof (T)));
+            }
+
+            return (T) val;
         }
     }
 }

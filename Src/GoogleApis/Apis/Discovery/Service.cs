@@ -54,26 +54,26 @@ namespace Google.Apis.Discovery
         protected string ServerUrl { get; set; }
         protected string BasePath { get; set; }
         
-        internal BaseService (string version, string name, JsonDictionary js, BaseFactoryParameters param)
+        internal BaseService (string version, string name, JsonDictionary values, BaseFactoryParameters param)
         {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
-            js.ThrowIfNull("js");
+            values.ThrowIfNull("values");
             param.ThrowIfNull("param");
             
             // Set required properties
             this.Version = version;
             this.Name = name;
-            this.information = js;
+            this.information = values;
             
             // Set optional properties
-            this.Id = js.GetValueAsNull("id") as string;
-            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
-            this.Features = js.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
-            this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
-            this.Protocol = js.GetValueAsNull("protocol") as string;
-            this.Description = js.GetValueAsNull("description") as string;
-            this.Title = js.GetValueAsNull("title") as string;
+            this.Id = values.GetValueAsNull("id") as string;
+            this.Labels = values.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
+            this.Features = values.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
+            this.DocumentationLink = values.GetValueAsNull("documentationLink") as string;
+            this.Protocol = values.GetValueAsNull("protocol") as string;
+            this.Description = values.GetValueAsNull("description") as string;
+            this.Title = values.GetValueAsNull("title") as string;
 
             // Determine the Server URL and (optional) Base Path
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
@@ -121,7 +121,7 @@ namespace Google.Apis.Discovery
         
         internal static IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
         {
-            js.ThrowIfNull("js");
+            js.ThrowIfNull("values");
             
             var working = new Dictionary<string, ISchema>();
             
@@ -150,7 +150,7 @@ namespace Google.Apis.Discovery
                 }
                 
                 logger.DebugFormat("Fetching Schemas for service {0}", this.Name);
-                JsonDictionary js = this.information[ServiceFactory.Schemas] as JsonDictionary;
+                var js = this.information[ServiceFactory.Schemas] as JsonDictionary;
                 if (js != null) 
                 {
                     schemas = ParseSchemas(js);
@@ -199,13 +199,13 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v1.0 service
         /// </summary>
-        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary js) :
-            base(version, name, js, param)
+        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary values) :
+            base(version, name, values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
             {
-                BasePath = information.GetMandatoryValue(BasePathField).ToString();
+                BasePath = information.GetMandatoryValue<string>(BasePathField);
             }
         }
 
@@ -227,13 +227,13 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v0.3 service
         /// </summary>
-        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary js) :
-            base(version, name, js, param)
+        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary values) :
+            base(version, name, values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
             {
-                BasePath = information.GetMandatoryValue(RestBasePathField).ToString();
+                BasePath = information.GetMandatoryValue<string>(RestBasePathField);
             }
         }
 
