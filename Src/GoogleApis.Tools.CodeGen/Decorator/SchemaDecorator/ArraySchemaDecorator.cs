@@ -9,8 +9,8 @@ using Google.Apis.Util;
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
     /// <summary>
-    /// Decorator for schemes which represent an array themself (type: array)
-    /// This Decorator constructs an IList implementation for the scheme
+    /// Decorator for schemas which represent an array themself (type: array)
+    /// This Decorator constructs an IList implementation for the schema
     /// </summary>
     public class ArraySchemaDecorator : ISchemaDecorator
     {
@@ -28,16 +28,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             // Check if this decorator can be applied to the schema);
             if (details.Type != JsonSchemaType.Array)
+            {
                 return;
+            }
 
             if (details.Items == null || details.Items.Count != 1)
             {
                 logger.WarnFormat("Found array scheme of unhandled type. {0}", details);
-                return; //not supported
+                return; // not supported
             }
 
             // Generate or find the nested type
-            var itemScheme = details.Items[0];
+            JsonSchema itemScheme = details.Items[0];
             CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, internalClassProvider);
 
             // Change the current type to a List
