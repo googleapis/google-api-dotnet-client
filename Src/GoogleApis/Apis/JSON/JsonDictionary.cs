@@ -13,14 +13,30 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
-using System.IO;
-using System.Text;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 namespace Google.Apis.Json
 {
-  public class JsonDictionary : Dictionary<string, object>
-  {}
+    /// <summary>
+    /// Dictionary used for Json parsing
+    /// </summary>
+    public class JsonDictionary : Dictionary<string, object>
+    {
+        /// <summary>
+        /// Returns the value from the dictionary, or
+        /// or, if not set, throws an ArgumentException
+        /// </summary>
+        public object GetMandatoryValue(string key)
+        {
+            if (!ContainsKey(key))
+            {
+                string message = String.Format("JsonDictionary did not contain mandatory key [{0}]", key);
+                throw new ArgumentException(key, message);
+            }
+
+            return this[key];
+        }
+    }
 }

@@ -15,11 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
@@ -40,7 +38,7 @@ namespace Google.Apis.Discovery
         
         protected readonly internal JsonDictionary information;
         private Dictionary<string, IResource> resources;
-        private IDictionary<String, ISchema> schemas = null;
+        private IDictionary<String, ISchema> schemas;
 
         public string Name {get; private set;}
         public string Version {get; private set;}
@@ -81,10 +79,6 @@ namespace Google.Apis.Discovery
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
             ServerUrl = param.ServerUrl;
             BasePath = param.BasePath;
-        }
-  
-        private BaseService ()
-        {
         }
 
         public abstract DiscoveryVersion DiscoveryVersion { get;}
@@ -171,12 +165,6 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
-        /// <param name="method">
-        /// A <see cref="Method"/>
-        /// </param>
-        /// <returns>
-        /// A <see cref="Request"/>
-        /// </returns>
         public IRequest CreateRequest (string resource, string methodName)
         {
             var method = this.Resources[resource].Methods[methodName];
@@ -185,6 +173,12 @@ namespace Google.Apis.Discovery
             return request;
         }
         
+        /// <summary>
+        /// Creates a version specific resource containing 
+        /// out of the specified KeyValuePair
+        /// </summary>
+        /// <param name="kvp"></param>
+        /// <returns></returns>
         public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
         {
             return new ResourceV1_0(this.DiscoveryVersion, kvp);
@@ -195,25 +189,23 @@ namespace Google.Apis.Discovery
     #endregion
 
     #region Service V1.0
+    /// <summary>
+    /// Represents a Service as defined in Discovery V1.0
+    /// </summary>
     public class ServiceV1_0 : BaseService
     {
         private const string BasePathField = "basePath";
 
+        /// <summary>
+        /// Creates a v1.0 service
+        /// </summary>
         public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary js) :
             base(version, name, js, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
             {
-                if (information.ContainsKey(BasePathField) == false)
-                {
-                    throw new ArgumentException(
-                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]",
-                            BasePathField,
-                            string.Join(", ", this.information.Keys.ToArray())));
-                }
-
-                BasePath = information[BasePathField].ToString();
+                BasePath = information.GetMandatoryValue(BasePathField).ToString();
             }
         }
 
@@ -226,27 +218,22 @@ namespace Google.Apis.Discovery
     
     #region Service V0.3
     /// <summary>
-    /// Represents a Service as defined in Discovery V0.2
+    /// Represents a Service as defined in Discovery V0.3
     /// </summary>
     public class ServiceV0_3 : BaseService
     {
         private const string RestBasePathField = "restBasePath";
 
+        /// <summary>
+        /// Creates a v0.3 service
+        /// </summary>
         public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary js) :
             base(version, name, js, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
             {
-                if (information.ContainsKey(RestBasePathField) == false)
-                {
-                    throw new ArgumentException(
-                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]",
-                            RestBasePathField,
-                            string.Join(", ", this.information.Keys.ToArray())));
-                }
-
-                BasePath = information[RestBasePathField].ToString();
+                BasePath = information.GetMandatoryValue(RestBasePathField).ToString();
             }
         }
 
