@@ -134,7 +134,7 @@ namespace Google.Apis.Tools.CodeGen
                 GetSchemaAwareResourceDecorators(clientNamespace + ".Data"), 
                 SchemaAwareServiceDecorators,
                 StandardResourceContainerDecorator,
-                new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
+                new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, clientNamespace + ".Data")
                 )
         {   
         }
