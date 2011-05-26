@@ -111,14 +111,33 @@ namespace Google.Apis.Discovery {
 		public Stream Fetch() 
 		{
 			FileInfo cachedFile = GetCacheFile();
-			if (cachedFile.Exists == false) {
-				logger.Debug("Document Not Found In Cache, fetching from web");
-				using(WebDiscoveryDevice device = new WebDiscoveryDevice(this.DiscoveryUri)){
-					WriteToCache(device);
-				}
-			} else {
+		    bool createFile = false;
+
+            // Check if we need to (re)download the document
+            if (cachedFile.Exists == false)
+            {
+                logger.Debug("Document Not Found In Cache, fetching from web");
+                createFile = true;
+            }
+            else if ((DateTime.UtcNow - cachedFile.LastWriteTimeUtc).Days >= 7)
+            {
+                logger.Debug("Document is outdated, refetching from web");
+                cachedFile.Delete();
+                createFile = true;
+            }
+            else {
 				logger.Debug("Found Document In Cache");
 			}
+
+            // Fetch the document
+            if (createFile)
+            {
+                using (var device = new WebDiscoveryDevice(this.DiscoveryUri))
+                {
+                    WriteToCache(device);
+                }
+            }
+
 			fileStream = cachedFile.OpenRead();
 			return fileStream;
 		}
