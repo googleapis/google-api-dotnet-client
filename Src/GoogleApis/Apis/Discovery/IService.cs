@@ -60,6 +60,11 @@ namespace Google.Apis.Discovery
         /// <summary>The description of this API.</summary>
         string Description {get;}
 
+        /// <summary>
+        /// True if GZip is supported by the remote server and should be enabled
+        /// </summary>
+        bool GZipEnabled { get; set; }
+
         /// <summary>The version of the discovery that defined this service. </summary>
         DiscoveryVersion DiscoveryVersion{get;}
         
