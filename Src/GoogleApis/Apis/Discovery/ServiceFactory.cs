@@ -15,12 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 using Google.Apis.Json;
-using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Discovery 
@@ -76,10 +73,14 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a service factory for the discovery version requested, with the given parameters
         /// </summary>
-        /// <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+        /// <param name="discovery">A stream which contains information about the service to construct</param>
         /// <param name="version">The discovery version to use</param>
-        /// <param name="parameters">A set of factory parameters used to construct the service</param>
-        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter parameters)
+        /// <param name="parameters">
+        /// A set of (optional) factory parameters used to construct the service. 
+        /// If this parameter is null, then a default set of FactoryParameters is created
+        /// </param>
+        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, 
+                                                           IFactoryParameter parameters)
         {
             discovery.ThrowIfNull("discovery");
             version.ThrowIfNull("version");
@@ -88,9 +89,13 @@ namespace Google.Apis.Discovery
             
             switch(version){
                 case DiscoveryVersion.Version_0_3:
-                    return new ServiceFactoryDiscoveryV0_3(information, (FactoryParameterV0_3)(parameters ?? new FactoryParameterV0_3()));
+                    return new ServiceFactoryDiscoveryV0_3(information,
+                                                           (FactoryParameterV0_3)
+                                                           (parameters ?? new FactoryParameterV0_3()));
                 case DiscoveryVersion.Version_1_0:
-                    return new ServiceFactoryDiscoveryV1_0(information, (FactoryParameterV1_0)(parameters ?? new FactoryParameterV1_0()));
+                    return new ServiceFactoryDiscoveryV1_0(information,
+                                                           (FactoryParameterV1_0)
+                                                           (parameters ?? new FactoryParameterV1_0()));
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
             }
@@ -99,7 +104,7 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a service factory for the discovery version requested
         /// </summary>
-        /// <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+        /// <param name="discovery">A stream which contains information about the service to construct</param>
         /// <param name="version">The discovery version to use</param>
         public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version)
         {
