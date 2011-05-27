@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Apis\Requests\MockParameter.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CachedWebDiscoveryDeviceTests.cs" />
     <Compile Include="DiscoveryTests.cs" />
     <Compile Include="WebDiscoveryDeviceTests.cs" />
     <Compile Include="FileDiscoveryDeviceTests.cs" />
@@ -127,7 +128,5 @@
   <ItemGroup>
     <None Include="GoogleApisTests.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Apis\Testing\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
