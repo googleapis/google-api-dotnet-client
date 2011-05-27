@@ -46,6 +46,10 @@ namespace Google.Apis.Discovery
     {
     }
     
+    /// <summary>
+    /// An abstract and static factory which can be used to generate
+    /// the individual service factory required for a specific discovery version
+    /// </summary>
     public abstract class ServiceFactory
     {
         internal const string VersionInfo = "versionInfo";
@@ -69,22 +73,37 @@ namespace Google.Apis.Discovery
         internal const string Maximum = "maximum";
         internal const string Minimum = "minimum";
 
-        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter param)
+        /// <summary>
+        /// Creates a service factory for the discovery version requested, with the given parameters
+        /// </summary>
+        /// <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+        /// <param name="version">The discovery version to use</param>
+        /// <param name="parameters">A set of factory parameters used to construct the service</param>
+        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, IFactoryParameter parameters)
         {
             discovery.ThrowIfNull("discovery");
             version.ThrowIfNull("version");
-            param.ThrowIfNull("param");
             
             JsonDictionary information = JsonReader.Parse(discovery) as JsonDictionary;
             
             switch(version){
                 case DiscoveryVersion.Version_0_3:
-                    return new ServiceFactoryDiscoveryV0_3(information, (FactoryParameterV0_3)param);
+                    return new ServiceFactoryDiscoveryV0_3(information, (FactoryParameterV0_3)(parameters ?? new FactoryParameterV0_3()));
                 case DiscoveryVersion.Version_1_0:
-                    return new ServiceFactoryDiscoveryV1_0(information, (FactoryParameterV1_0)param);
+                    return new ServiceFactoryDiscoveryV1_0(information, (FactoryParameterV1_0)(parameters ?? new FactoryParameterV1_0()));
                 default:
                     throw new NotSupportedException("The Version "+version +" is not supported");
             }
+        }
+
+        /// <summary>
+        /// Creates a service factory for the discovery version requested
+        /// </summary>
+        /// <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+        /// <param name="version">The discovery version to use</param>
+        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version)
+        {
+            return CreateServiceFactory(discovery, version, null);
         }
     }
 }

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Decorator\DecoratorUtil.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
