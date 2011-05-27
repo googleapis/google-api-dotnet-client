@@ -89,6 +89,7 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardExecuteMethodServiceDecorator (),
                     new SchemaAwearExecuteMethodDecorator(),
                     new NewtonsoftJsonSerializer(),
+                    new DeveloperKeyServiceDecorator(),
                     }).
                     AsReadOnly();
         public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){

@@ -113,10 +113,36 @@ namespace Google.Apis.Util
         {
             return coll == null || coll.Count == 0;
         }
+
+        /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
+        /// name that matches the passed in name - or null if no match is found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static System.CodeDom.CodeMemberField FindFieldByName(this CodeTypeMemberCollection coll, string name)
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+
+            foreach (CodeTypeMember member in coll)
+            {
+                if ((member is CodeMemberField) == false)
+                {
+                    continue;
+                }
+                var field = (CodeMemberField)member;
+                if (field.Name == name)
+                {
+                    return field;
+                }
+            }
+            return null;
+        }
         
         /// <summary>
-        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a name that matches the passed in name.
-        /// Or Null if no match found.
+        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
+        /// name that matches the passed in name - or Null if no match found.
         /// </summary>
         /// <param name="coll">May not be null</param>
         /// <param name="name">May not be null or empty</param>

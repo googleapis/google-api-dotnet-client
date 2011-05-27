@@ -36,12 +36,10 @@ namespace Google.Apis
         {
             // Default implementation of UNIX time of the current UTC time
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            string timeStamp = ts.TotalSeconds.ToString(CultureInfo.InvariantCulture); 
-            // remove any fractions of seconds
-            int pointIndex = timeStamp.IndexOf(".");
-            if (pointIndex != -1)
-                timeStamp = timeStamp.Substring(0, pointIndex);
-            return timeStamp;
+            
+            // Generate a UNIX Timestamp (whole seconds only)
+            long totalSecs = (long)ts.TotalSeconds;
+            return totalSecs.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>

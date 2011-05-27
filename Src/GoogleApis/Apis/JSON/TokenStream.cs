@@ -22,12 +22,15 @@ using System.Diagnostics;
 using System.Globalization;
 namespace Google.Apis.Json
 {
+    /// <summary>
+    /// The TokenStream class allows you to read through a Stream containing a json document token by token
+    /// </summary>
     public class TokenStream
     {
         public static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(TokenStream));
 
         private const int BuilderBufferSize = 24;
-        private TextReader reader = null;
+        private readonly TextReader reader;
 
         public TokenStream (string inputText)
         {
@@ -46,6 +49,7 @@ namespace Google.Apis.Json
         {
             char seperator = cur;
             token.type = JsonToken.Type.String;
+
             // let's read in the string
             var sb = new StringBuilder (BuilderBufferSize);
             char next;
@@ -105,84 +109,91 @@ namespace Google.Apis.Json
         /// <summary>
         /// From the current position, extract the next token
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next token, or null if the stream is at the EOF</returns>
         public JsonToken GetNextToken ()
         {
-            JsonToken token = new JsonToken ();
+            var token = new JsonToken ();
             try
             {
-                // first skip over all whitespace.
-                while (Char.IsWhiteSpace ((char)reader.Peek ()))
+                // Read char (and first skip over all whitespaces)
+                // We use .Read() instead of .Peek() here, as Read() is blocking.
+                // .Peek() would suggest an EOF even if there is none when used in combination a WebRequest
+                char cur;
+                do
                 {
-                    reader.Read ();
-                }
-                
-                if (reader.Peek () == -1)
-                {
-                    return null;
-                }
-                
-                char cur = (char)reader.Read ();
+                    int read = reader.Read();
+
+                    // Check for EOF
+                    if (read == -1)
+                        return null;
+
+                    cur = (char) read;
+                } while (Char.IsWhiteSpace(cur));
+               
+                // Check for Json tokens
                 switch (cur)
                 {
-                case '{':
-                    token.type = JsonToken.Type.ObjectStart;
-                    break;
-                case '}':
-                    token.type = JsonToken.Type.ObjectEnd;
-                    break;
-                case '[':
-                    token.type = JsonToken.Type.ArrayStart;
-                    break;
-                case ']':
-                    token.type = JsonToken.Type.ArrayEnd;
-                    break;
-                case ':':
-                    token.type = JsonToken.Type.NameSeperator;
-                    break;
-                case ',':
-                    token.type = JsonToken.Type.MemberSeperator;
-                    break;
-                case '"':
-                case '\'':
-                    ParseString (token, cur);
-                    break;
-                case 'f':
-                    GetFalseToken (token);
-                    break;
-                case 't':
-                    // this might be the true token
-                    GetTrueToken (token);
-                    break;
-                case 'n':
-                    // this might be nul
-                    GetNullToken (token);
-                    break;
-                default:
-                    token.type = JsonToken.Type.Undefined;
-                    if (Char.IsNumber (cur))
-                    {
-                        var sb = new StringBuilder (BuilderBufferSize);
-                        sb.Append (cur);
-                        while (IsTokenSeperator ((char)reader.Peek ()) == false)
+                    case '{':
+                        token.type = JsonToken.Type.ObjectStart;
+                        break;
+                    case '}':
+                        token.type = JsonToken.Type.ObjectEnd;
+                        break;
+                    case '[':
+                        token.type = JsonToken.Type.ArrayStart;
+                        break;
+                    case ']':
+                        token.type = JsonToken.Type.ArrayEnd;
+                        break;
+                    case ':':
+                        token.type = JsonToken.Type.NameSeperator;
+                        break;
+                    case ',':
+                        token.type = JsonToken.Type.MemberSeperator;
+                        break;
+                    case '"':
+                    case '\'':
+                        ParseString (token, cur);
+                        break;
+                    case 'f':
+                        GetFalseToken (token);
+                        break;
+                    case 't':
+                        // this might be the true token
+                        GetTrueToken (token);
+                        break;
+                    case 'n':
+                        // this might be nul
+                        GetNullToken (token);
+                        break;
+                    default:
+                        token.type = JsonToken.Type.Undefined;
+                        if (Char.IsNumber (cur) || cur == '-')
                         {
-                            sb.Append ((char)reader.Read ());
+                            var sb = new StringBuilder (BuilderBufferSize);
+                            sb.Append (cur);
+                            while (IsTokenSeperator ((char)reader.Peek ()) == false  || 
+                                   ((char)reader.Peek() == '.') ||
+                                   ((char)reader.Peek() == '+') ||
+                                   ((char)reader.Peek() == '-'))
+                            {
+                                sb.Append ((char)reader.Read ());
+                            }
+                            token.value = sb.ToString ();
+                            decimal decNumber;
+                            if (Decimal.TryParse (token.value, NumberStyles.Number | NumberStyles.AllowExponent,
+                                    CultureInfo.InvariantCulture, out decNumber))
+                            {
+                                token.number = decNumber;
+                                token.type = JsonToken.Type.Number;
+                            }
                         }
-                        token.value = sb.ToString ();
-                        decimal decNumber;
-                        if (Decimal.TryParse (token.value, out decNumber))
-                        {
-                            token.number = decNumber;
-                            token.type = JsonToken.Type.Number;
-                        }
-                    }
-                    break;
-                    
-                    
+                        break;
                 }
-            } catch (IOException)
+            } 
+            catch (IOException ex)
             {
-                return null;
+                throw new IOException("Unable to retrieve the next token", ex);
             }
             return token;
         }
