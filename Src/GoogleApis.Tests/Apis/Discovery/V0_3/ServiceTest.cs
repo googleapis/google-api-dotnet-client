@@ -43,8 +43,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test()]
         public void ConstuctorArugumentValidationTest()
         {
-            var param = new FactoryParameterV0_3(){
-                ServerUrl = "http://server/"};
+            var param = new FactoryParameterV0_3("http://server/");
             var js = new JsonDictionary();
             js["restBasePath"] = "test/path";
             
@@ -119,8 +118,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         
         private ServiceV0_3 CreateService()
         {
-            var param = new FactoryParameterV0_3(){
-                ServerUrl = "http://server/"};
+            var param = new FactoryParameterV0_3("http://server/");
             var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
             return new ServiceV0_3(TestVersion, TestName, param, json);
         }
