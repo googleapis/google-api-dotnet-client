@@ -502,7 +502,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
 }";
         #endregion
         
-        [Test()]
+        [Test]
         public void ServiceFactoryDiscovery_ConstructorFailTest ()
         {
             var param = new FactoryParameterV0_3("server", "base");
@@ -515,8 +515,8 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV0_3(json, param));
         }
         
-        [Test()]
-        public void ServiceFactoryDiscovery_ConstructorSucsessTest ()
+        [Test]
+        public void ServiceFactoryDiscovery_ConstructorSuccessTest ()
         {
             var param = new FactoryParameterV0_3("server", "http://base");
             var json = (JsonDictionary)JsonReader.Parse(BuzzV0_3_Json);
