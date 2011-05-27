@@ -15,11 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 using Google.Apis.Json;
 using Google.Apis.Requests;
@@ -40,49 +38,63 @@ namespace Google.Apis.Discovery
         
         protected readonly internal JsonDictionary information;
         private Dictionary<string, IResource> resources;
-        private IDictionary<String, ISchema> schemas = null;
-        private const string BasePath = "basePath";
+        private IDictionary<String, ISchema> schemas;
 
         public string Name {get; private set;}
         public string Version {get; private set;}
         public string Description {get; private set;}
-        public string Title { get; private set; }        
+        public string Title { get; private set; }
         
         public string Id {get; private set;}
         public IList<string> Labels {get; private set;}
         public IList<string> Features {get; private set;}
         public string DocumentationLink {get; private set;}
         public string Protocol {get; private set;}
-        
 
-        internal BaseService (string version, string name, JsonDictionary js) : this()
+        protected string ServerUrl { get; set; }
+        protected string BasePath { get; set; }
+        
+        internal BaseService (string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
         {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
-            js.ThrowIfNull("js");
+            values.ThrowIfNull("values");
+            param.ThrowIfNull("param");
             
             // Set required properties
             this.Version = version;
             this.Name = name;
-            this.information = js;
+            this.information = values;
             
             // Set optional properties
-            this.Id = js.GetValueAsNull("id") as string;
-            this.Labels = js.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
-            this.Features = js.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
-            this.DocumentationLink = js.GetValueAsNull("documentationLink") as string;
-            this.Protocol = js.GetValueAsNull("protocol") as string;
-            this.Description = js.GetValueAsNull("description") as string;
-            this.Title = js.GetValueAsNull("title") as string;
+            this.Id = values.GetValueAsNull("id") as string;
+            this.Labels = values.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
+            this.Features = values.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
+            this.DocumentationLink = values.GetValueAsNull("documentationLink") as string;
+            this.Protocol = values.GetValueAsNull("protocol") as string;
+            this.Description = values.GetValueAsNull("description") as string;
+            this.Title = values.GetValueAsNull("title") as string;
+
+            // Determine the Server URL and (optional) Base Path
+            param.ServerUrl.ThrowIfNull("param.ServerUrl");
+            ServerUrl = param.ServerUrl;
+            BasePath = param.BasePath;
         }
-  
-        private BaseService ()
+
+        private BaseService()
         {
             GZipEnabled = true;
         }
 
-        public abstract DiscoveryVersion DiscoveryVersion{get;}
-        public abstract Uri BaseUri {get;}
+        public abstract DiscoveryVersion DiscoveryVersion { get;}
+
+        public Uri BaseUri
+        {
+            get
+            {
+                return new Uri(ServerUrl + BasePath);
+            }
+        }
         
         public Uri RpcUri 
         {
@@ -114,7 +126,7 @@ namespace Google.Apis.Discovery
         
         internal static IDictionary<string, ISchema> ParseSchemas(JsonDictionary js)
         {
-            js.ThrowIfNull("js");
+            js.ThrowIfNull("values");
             
             var working = new Dictionary<string, ISchema>();
             
@@ -143,7 +155,7 @@ namespace Google.Apis.Discovery
                 }
                 
                 logger.DebugFormat("Fetching Schemas for service {0}", this.Name);
-                JsonDictionary js = this.information[ServiceFactory.Schemas] as JsonDictionary;
+                var js = this.information[ServiceFactory.Schemas] as JsonDictionary;
                 if (js != null) 
                 {
                     schemas = ParseSchemas(js);
@@ -158,12 +170,6 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
-        /// <param name="method">
-        /// A <see cref="Method"/>
-        /// </param>
-        /// <returns>
-        /// A <see cref="Request"/>
-        /// </returns>
         public IRequest CreateRequest (string resource, string methodName)
         {
             var method = this.Resources[resource].Methods[methodName];
@@ -172,6 +178,12 @@ namespace Google.Apis.Discovery
             return request;
         }
         
+        /// <summary>
+        /// Creates a version specific resource containing 
+        /// out of the specified KeyValuePair
+        /// </summary>
+        /// <param name="kvp"></param>
+        /// <returns></returns>
         public virtual IResource CreateResource (KeyValuePair<string, object> kvp)
         {
             return new ResourceV1_0(this.DiscoveryVersion, kvp);
@@ -183,94 +195,62 @@ namespace Google.Apis.Discovery
     #endregion
 
     #region Service V1.0
+    /// <summary>
+    /// Represents a Service as defined in Discovery V1.0
+    /// </summary>
     public class ServiceV1_0 : BaseService
     {
-        private const string BaseUrl = "basePath";
-        
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        
-        public override DiscoveryVersion DiscoveryVersion {
-            get { return DiscoveryVersion.Version_1_0; }
-        }
-        
-        public ServiceV1_0 (string version, string name, FactoryParameterV1_0 param, JsonDictionary js):
-            base(version, name, js)
+        private const string BasePathField = "basePath";
+
+        /// <summary>
+        /// Creates a v1.0 service
+        /// </summary>
+        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary values) :
+            base(version, name, values, param)
         {
-            param.ThrowIfNull("param");
-            
-            this.ServerUrl = param.ServerUrl;
-            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            // If no BasePath has been set, then retrieve it from the json document
+            if (BasePath.IsNullOrEmpty())
             {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                if(this.information.ContainsKey(BaseUrl) == false)
-                {
-                    throw new ArgumentException(
-                        string.Format("Serivce did not contain manditory key {0} keys where[{1}]", 
-                            BaseUrl, 
-                            string.Join(", ", this.information.Keys.ToArray() )));
-                }
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
+                BasePath = information.GetMandatoryValue<string>(BasePathField);
             }
         }
-        
-        public override Uri BaseUri 
-        { 
-            get {return baseUri;}
+
+        public override DiscoveryVersion DiscoveryVersion
+        {
+            get { return DiscoveryVersion.Version_1_0; }
         }
     }
     #endregion
     
     #region Service V0.3
     /// <summary>
-    /// Represents a Service as defined in Discovery V0.2
+    /// Represents a Service as defined in Discovery V0.3
     /// </summary>
     public class ServiceV0_3 : BaseService
     {
-        private const string BaseUrl = "restBasePath";
-        
-        private string ServerUrl{get;set;}
-        private readonly Uri baseUri;
-        public ServiceV0_3 (string version, string name, FactoryParameterV0_3 param, JsonDictionary js):
-            base(version, name, js)
+        private const string RestBasePathField = "restBasePath";
+
+        /// <summary>
+        /// Creates a v0.3 service
+        /// </summary>
+        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary values) :
+            base(version, name, values, param)
         {
-            param.ThrowIfNull("param");
-            
-            this.ServerUrl = param.ServerUrl;
-            if (param.BaseUrl != null && param.BaseUrl.Length > 0)
+            // If no BasePath has been set, then retrieve it from the json document
+            if (BasePath.IsNullOrEmpty())
             {
-                this.baseUri = new Uri(param.BaseUrl);
-            } 
-            else
-            {
-                if(this.information.ContainsKey(BaseUrl) == false) 
-                {
-                    throw new ArgumentException("JsonDictionary does not contain restBasePath," +
-                        "  which is a requiredfield.");
-                }
-                
-                this.baseUri = new Uri (this.ServerUrl +
-                    this.information[BaseUrl] as string);
+                BasePath = information.GetMandatoryValue<string>(RestBasePathField);
             }
         }
-        
-        public override DiscoveryVersion DiscoveryVersion 
+
+        public override DiscoveryVersion DiscoveryVersion
         {
-            get {return DiscoveryVersion.Version_0_3;}
+            get { return DiscoveryVersion.Version_0_3; }
         }
-        
-        public override Uri BaseUri 
-        { 
-            get {return baseUri;}
-        }
-        
-        public override IResource CreateResource (KeyValuePair<string, object> kvp)
+
+        public override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_3(this.DiscoveryVersion, kvp);
+            return new ResourceV0_3(DiscoveryVersion, kvp);
         }
     }
     #endregion

@@ -16,14 +16,11 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-
-using Google.Apis.Requests;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Requests;
 
-namespace Google.Apis.Discovery 
+namespace Google.Apis.Discovery
 {
-
-
     /// <summary>
     /// Represent a specific version of a service as defined in Google Api Discovery Document.
     /// Has a collection of IResources and ISchemas
@@ -33,32 +30,42 @@ namespace Google.Apis.Discovery
     public interface IService : IResourceContainer
     {
         /// <summary> The version of this service </summary>
-        string Version {get;}
-        Uri BaseUri {get;}
-        Uri RpcUri {get;}
-        
+        string Version { get; }
+
+        /// <summary>
+        /// Path where the service resides
+        /// </summary>
+        Uri BaseUri { get; }
+
+        /// <summary> 
+        /// The Rpc URI of this service. 
+        /// This field is no longer available with discovery version v1 
+        /// </summary>
+        [Obsolete]
+        Uri RpcUri { get; }
+
         /// <summary>The id of this API.</summary>
-        string Id {get;}
-                
+        string Id { get; }
+
         /// <summary>
         /// Title of this API
         /// </summary>
         string Title { get; }
-        
+
         /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
-        IList<string> Labels {get;}
-        
+        IList<string> Labels { get; }
+
         /// <summary>A list of supported features for this API.</summary>
-        IList<string> Features {get;} 
-        
+        IList<string> Features { get; }
+
         /// <summary>A link to human readable documentation for the API.</summary>
-        string DocumentationLink {get;}
-        
+        string DocumentationLink { get; }
+
         /// <summary>The protocol described by this document.</summary>
-        string Protocol {get;}
-        
+        string Protocol { get; }
+
         /// <summary>The description of this API.</summary>
-        string Description {get;}
+        string Description { get; }
 
         /// <summary>
         /// True if GZip is supported by the remote server and should be enabled
@@ -66,14 +73,14 @@ namespace Google.Apis.Discovery
         bool GZipEnabled { get; set; }
 
         /// <summary>The version of the discovery that defined this service. </summary>
-        DiscoveryVersion DiscoveryVersion{get;}
-        
+        DiscoveryVersion DiscoveryVersion { get; }
+
         /// <summary>A dictionary containing all the schemas defined in this Service </summary>
-        IDictionary<string, ISchema> Schemas{get;} 
+        IDictionary<string, ISchema> Schemas { get; }
 
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
-        IRequest CreateRequest (string resource, string methodName);        
+        IRequest CreateRequest(string resource, string methodName);
     }
 }
