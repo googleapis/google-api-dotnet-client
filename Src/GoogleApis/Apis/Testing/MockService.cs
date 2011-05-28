@@ -33,6 +33,9 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Version {get; set;}
         public Uri BaseUri {get; set;}
         public Uri RpcUri {get; set;}
+
+        public bool GZipEnabled { get { return false; } set { } }
+
         public DiscoveryVersion DiscoveryVersion{get; set;}
         public IDictionary<string, ISchema> Schemas{get;set;}
         public string Id {get; private set;}
