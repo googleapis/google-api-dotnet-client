@@ -74,11 +74,12 @@ namespace Google.Apis.Samples.Helper
         /// </summary>
         public static void DisplayGoogleSampleHeader(string applicationName)
         {
-            WriteLine(@"^3  ___  ^6     ^8     ^3      ^4 _  ^6    ");
-            WriteLine(@"^3 / __| ^6 ___ ^8 ___ ^3 __ _ ^4| | ^6 __  ");
-            WriteLine(@"^3| (_ \ ^6/ _ \^8/ _ \^3/ _` |^4| | ^6/-_) ");
-            WriteLine(@"^3 \___| ^6\___/^8\___/^3\__, |^4|_| ^6\___| ");
-            WriteLine(@"^3       ^6     ^8     ^3|___/ ^4    ^6    ");
+            WriteLine(@"^3   ___  ^6     ^8     ^3      ^4 _  ^6    ");
+            WriteLine(@"^3  / __| ^6 ___ ^8 ___ ^3 __ _ ^4| | ^6 __  ");
+            WriteLine(@"^3 | (_ \ ^6/ _ \^8/ _ \^3/ _` |^4| | ^6/-_) ");
+            WriteLine(@"^3  \___| ^6\___/^8\___/^3\__, |^4|_| ^6\___| ");
+            WriteLine(@"^3        ^6     ^8     ^3|___/ ^4    ^6    ");
+            WriteLine();
             WriteLine("^4 API Samples -- {0}", applicationName);
             WriteLine("^4 Copyright Google Inc 2011");
             WriteLine();
