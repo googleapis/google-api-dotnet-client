@@ -13,6 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Google.Apis.Requests;
@@ -21,7 +23,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tests.Apis.Requests
 {
     /// <summary>
-    /// Tests the "Request" class
+    /// Tests for the "Request" class
     /// </summary>
     [TestFixture]
     public class RequestTest
@@ -30,7 +32,7 @@ namespace Google.Apis.Tests.Apis.Requests
         private const string ComplexDeveloperKey = "?&^%  ABC123";
 
         /// <summary>
-        /// Tests that the BuildRequest with no additional parameters will work
+        /// Tests a request with default settings
         /// </summary>
         [Test]
         public void BuildRequestUrlWithDefaultedParameters()
@@ -71,15 +73,17 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithEmpty", "");
 
             var service = new MockService();
-            var request = Request.CreateRequest(
-                service,
-                new MockMethod
-                    {
-                        HttpMethod = "GET",
-                        Name = "TestMethod",
-                        RestPath = "https://test.google.com",
-                        Parameters = parameterDefinitions
-                    });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        {
+                            HttpMethod = "GET",
+                            Name = "TestMethod",
+                            RestPath = "https://test.google.com",
+                            Parameters = parameterDefinitions
+                        });
 
             request.WithParameters(parameterValues);
             var url = request.BuildRequestUrl();
@@ -90,15 +94,17 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests that the BuildRequest with a developer key will work
+        /// Tests if the WithDeveloperKey method works
         /// </summary>
         [Test]
         public void BuildRequestUrlWithDeveloperKeysTest()
         {
             var service = new MockService();
-            var request = Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
             request.WithDeveloperKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
@@ -106,15 +112,17 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests that the escape mechanism for the developer key will work
+        /// Tests if developer keys are escaped properly
         /// </summary>
         [Test]
         public void BuildRequestUrlWithDeveloperKeysTest_RequiresEscape()
         {
             var service = new MockService();
-            var request = Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
             request.WithDeveloperKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
@@ -122,7 +130,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests that optional null parameters are parsed correctly
+        /// Tests if null is handled correctly @ optional parameters
         /// </summary>
         [Test]
         public void BuildRequestUrlWithNullOptionalParameters()
@@ -149,15 +157,17 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithEmpty", "");
 
             var service = new MockService();
-            var request = Request.CreateRequest(
-                service,
-                new MockMethod
-                    {
-                        HttpMethod = "GET",
-                        Name = "TestMethod",
-                        RestPath = "https://test.google.com",
-                        Parameters = parameterDefinitions
-                    });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        {
+                            HttpMethod = "GET",
+                            Name = "TestMethod",
+                            RestPath = "https://test.google.com",
+                            Parameters = parameterDefinitions
+                        });
 
             request.WithParameters(parameterValues);
             var url = request.BuildRequestUrl();
@@ -166,7 +176,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests that the Request-constructor will work
+        /// Tests if the constructor will succeed
         /// </summary>
         [Test]
         public void ConstructorTest()
@@ -177,20 +187,61 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests that the developer key assignment will work
+        /// Tests if invalid data will throw an exception
+        /// </summary>
+        [Test]
+        public void CreateRequestFailureTest()
+        {
+            var service = new MockService();
+            Assert.Throws<NotSupportedException>(
+                () =>
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://test.google.com", }));
+        }
+
+        /// <summary>
+        /// Tests the creation of simple http requests
+        /// </summary>
+        [Test]
+        public void CreateRequestSimpleCreateTest()
+        {
+            var service = new MockService();
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://test.google.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://test.google.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://test.google.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://test.google.com", });
+        }
+
+        /// <summary>
+        /// Tests if the developer key is assigned correctly
         /// </summary>
         [Test]
         public void WithDeveloperKeyAssignTest()
         {
-            var request = Request.CreateRequest(
-                new MockService(),
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    new MockService(),
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
             request.WithDeveloperKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
 
         /// <summary>
-        /// Tests that the parameter dictionary is parsed correctly
+        /// Tests if the parameter dictionary is set correctly
         /// </summary>
         [Test]
         public void WithParametersDictStringObject()

@@ -79,10 +79,6 @@
     <Compile Include="Apis\Discovery\StringDiscoveryDevice.cs" />
     <Compile Include="Apis\Discovery\WebDiscoveryDevice.cs" />
     <Compile Include="Apis\Discovery\ServiceFactory.cs" />
-    <Compile Include="Apis\Requests\PUTRequest.cs" />
-    <Compile Include="Apis\Requests\DELETERequest.cs" />
-    <Compile Include="Apis\Requests\GETRequest.cs" />
-    <Compile Include="Apis\Requests\POSTRequest.cs" />
     <Compile Include="Apis\Requests\Request.cs" />
     <Compile Include="Apis\Discovery\Method.cs" />
     <Compile Include="Apis\Discovery\Resource.cs" />

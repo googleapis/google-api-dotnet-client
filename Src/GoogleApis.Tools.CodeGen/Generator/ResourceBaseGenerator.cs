@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.IO;
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
@@ -26,7 +27,7 @@ using log4net;
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Abstract class for resource generators
+    /// Abstract implementation of a resource generator
     /// </summary>
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
@@ -42,15 +43,16 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             switch (method.HttpMethod)
             {
-                case "GET":
-                case "DELETE":
+                case Request.GET:
+                case Request.DELETE:
                     // string body = null;
                     var bodyVarDeclaration = new CodeVariableDeclarationStatement(bodyType, "body");
                     bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
                     member.Statements.Add(bodyVarDeclaration);
                     break;
-                case "PUT":
-                case "POST":
+                case Request.PUT:
+                case Request.POST:
+                case Request.PATCH:
                     // add body Parameter
                     member.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, "body"));
                     break;
@@ -60,10 +62,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         /// <summary>
-        /// Returns a strong type for the given parameter
+        /// Returns the .NET equivalent of the type specified within the paramater
         /// </summary>
-        /// <param name="param"></param>
-        /// <returns></returns>
         public static Type GetParameterType(IParameter param)
         {
             param.ThrowIfNull("param");

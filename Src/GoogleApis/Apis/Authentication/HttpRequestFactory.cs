@@ -19,6 +19,9 @@ using System.Net;
 
 namespace Google.Apis.Authentication
 {
+    /// <summary>
+    /// Use the Create method to create HttpWebRequests given a Uri.
+    /// </summary>
     public class HttpRequestFactory : ICreateHttpRequest
     {
         #region ICreateHttpRequest Members
