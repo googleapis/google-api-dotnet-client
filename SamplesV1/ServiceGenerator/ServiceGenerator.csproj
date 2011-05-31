@@ -8,7 +8,7 @@
     <ProjectGuid>{539CFFAA-70D1-4620-B717-DFF5081819D4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceGenerator</RootNamespace>
+    <RootNamespace>Google.Apis.Samples.ServiceGenerator</RootNamespace>
     <AssemblyName>ServiceGenerator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

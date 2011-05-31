@@ -89,6 +89,11 @@
             <param name="source">the original uri</param>
             <returns></returns>
         </member>
+        <member name="T:Google.Apis.Authentication.HttpRequestFactory">
+            <summary>
+            Use the Create method to create HttpWebRequests given a Uri.
+            </summary>
+        </member>
         <member name="T:Google.Apis.Discovery.StringDiscoveryDevice">
             <summary>
             Hosts the DiscoveryDocument in a user defined stream.
@@ -422,12 +427,7 @@
         </member>
         <member name="M:Google.Apis.Requests.Request.WithParameters(System.String)">
             <summary>
-            Adds the parameters which are URL encoded to the request
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.Request.WithBody(System.Collections.Generic.IDictionary{System.String,System.String})">
-            <summary>
-            Adds the parameters provided to the body of the request
+            Adds a set of URL encoded parameters to the request
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.Request.WithBody(System.String)">
@@ -448,6 +448,11 @@
             Uses the provided authenticator to add authentication information to this request.
             </summary>
         </member>
+        <member name="M:Google.Apis.Requests.Request.WithDeveloperKey(System.String)">
+            <summary>
+            Adds the developer key to this request
+            </summary>
+        </member>
         <member name="M:Google.Apis.Requests.Request.BuildRequestUrl">
             <summary>
             Builds the resulting Url for the whole request
@@ -460,6 +465,26 @@
             <returns>
             A <see cref="T:System.IO.Stream"/>
             </returns>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.Authenticator">
+            <summary>
+            The authenticator used for this request
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.AppName">
+            <summary>
+            The name of the application making the request. Affects the User Agent of this client. 
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.DeveloperKey">
+            <summary>
+            The developer API Key sent along with the request
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.Parameters">
+            <summary>
+            Set of method parameters
+            </summary>
         </member>
         <member name="T:Google.Apis.Discovery.StreamDiscoveryDevice">
             <summary>
@@ -651,15 +676,18 @@
             <summary>
             Creates a service factory for the discovery version requested, with the given parameters
             </summary>
-            <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+            <param name="discovery">A stream which contains information about the service to construct</param>
             <param name="version">The discovery version to use</param>
-            <param name="parameters">A set of factory parameters used to construct the service</param>
+            <param name="parameters">
+            A set of (optional) factory parameters used to construct the service. 
+            If this parameter is null, then a default set of FactoryParameters is created
+            </param>
         </member>
         <member name="M:Google.Apis.Discovery.ServiceFactory.CreateServiceFactory(System.IO.Stream,Google.Apis.Discovery.DiscoveryVersion)">
             <summary>
             Creates a service factory for the discovery version requested
             </summary>
-            <param name="discovery">A stream which contains information about the service which the factory should construct</param>
+            <param name="discovery">A stream which contains information about the service to construct</param>
             <param name="version">The discovery version to use</param>
         </member>
         <member name="T:Google.Apis.Discovery.WebDiscoveryDevice">
@@ -682,8 +710,7 @@
         </member>
         <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue(System.String)">
             <summary>
-            Returns the value from the dictionary, or
-            or, if not set, throws an ArgumentException
+            Returns the value from the dictionary, or, if not set, throws an ArgumentException
             </summary>
         </member>
         <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue``1(System.String)">
