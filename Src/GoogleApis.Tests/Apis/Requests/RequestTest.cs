@@ -39,7 +39,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test()]
         public void WithDeveloperKeyAssignTest()
         {
-            var request = Request.CreateRequest(new MockService(),new MockMethod(){
+            var request = (Request)Request.CreateRequest(new MockService(),new MockMethod(){
                 HttpMethod = "GET", Name = "TestMethod", 
                 RestPath = "https://test.google.com"});
             request.WithDeveloperKey(SimpleDeveloperKey);
@@ -50,7 +50,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public void BuildRequestUrlWithDeveloperKeysTest()
         {
             var service = new MockService();
-            var request = Request.CreateRequest(service,new MockMethod(){
+            var request = (Request)Request.CreateRequest(service,new MockMethod(){
                 HttpMethod = "GET", Name = "TestMethod", 
                 RestPath = "https://test.google.com"});
             request.
@@ -66,7 +66,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public void BuildRequestUrlWithDeveloperKeysTest_RequiresEscape()
         {
             var service = new MockService();
-            var request = Request.CreateRequest(service,new MockMethod(){
+            var request = (Request)Request.CreateRequest(service,new MockMethod(){
                 HttpMethod = "GET", Name = "TestMethod", 
                 RestPath = "https://test.google.com"});
             request.
@@ -109,7 +109,7 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithEmpty", "");
 
             var service = new MockService();
-            var request = Request.CreateRequest(service, new MockMethod(){
+            var request = (Request)Request.CreateRequest(service, new MockMethod(){
                 HttpMethod = "GET",
                 Name = "TestMethod",
                 RestPath = "https://test.google.com",
@@ -119,6 +119,58 @@ namespace Google.Apis.Tests.Apis.Requests
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual("https://test.google.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
+        }
+
+
+        [Test]
+        public void CreateRequestSimpleCreateTest()
+        {
+            var service = new MockService();
+            Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                });
+            Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "POST",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                });
+            Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "PUT",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                });
+            Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "DELETE",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                });
+            Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "PATCH",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                });
+
+        }
+
+        [Test]
+        public void CreateRequestFailureTest()
+        {
+            var service = new MockService();
+            Assert.Throws<NotSupportedException>(() =>
+                Request.CreateRequest(service, new MockMethod()
+                {
+                    HttpMethod = "NOSUCHMETHOD",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                }));
+
         }
 
         [Test()]
@@ -166,7 +218,7 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithEmpty", "");
 
             var service = new MockService();
-            var request = Request.CreateRequest(service, new MockMethod()
+            var request = (Request)Request.CreateRequest(service, new MockMethod()
             {
                 HttpMethod = "GET",
                 Name = "TestMethod",
