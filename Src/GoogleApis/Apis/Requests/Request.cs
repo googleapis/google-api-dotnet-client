@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -34,7 +35,16 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
-        private static readonly String ApiVersion = typeof (Request).Assembly.GetName().Version.ToString();
+        private static readonly String ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
+
+        public const string DELETE = "DELETE";
+        public const string GET = "GET";
+        public const string PATCH = "PATCH";
+        public const string POST = "POST";
+        public const string PUT = "PUT";
+
+        public static readonly ReadOnlyCollection<string> SupportedHttpMethods = 
+            new List<string> { POST, PUT, DELETE, GET, PATCH }.AsReadOnly();
 
         internal IAuthenticator Authenticator { get; private set; }
         private IService Service { get; set; }
@@ -62,21 +72,21 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Given an API method, create the appropriate Request for it.
         /// </summary>
-        public static Request CreateRequest(IService service, IMethod method)
+        public static IRequest CreateRequest(IService service, IMethod method)
         {
             switch (method.HttpMethod)
             {
-                case "GET":
-                    return new GETRequest { Service = service, Method = method, BaseURI = service.BaseUri };
-                case "PUT":
-                    return new PUTRequest { Service = service, Method = method, BaseURI = service.BaseUri };
-                case "POST":
-                    return new POSTRequest { Service = service, Method = method, BaseURI = service.BaseUri };
-                case "DELETE":
-                    return new DELETERequest { Service = service, Method = method, BaseURI = service.BaseUri };
+                case GET:
+                case PUT:
+                case POST:
+                case DELETE:
+                case PATCH:
+                    return new Request { Service = service, Method = method, BaseURI = service.BaseUri };
+                default:
+                    throw new NotSupportedException(string.Format(
+                        "The HttpMethod[{0}] of Method[{1}] in Service[{2}] was not supported",
+                        method.HttpMethod, method.Name, service.Name));
             }
-
-            return null; // Should throw an exception.
         }
 
         /// <summary>
@@ -300,7 +310,7 @@ namespace Google.Apis.Requests
             }
 
             // Attach a body if a POST and there is something to attach.
-            if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
+            if (String.IsNullOrEmpty(Body) == false && HttpMethodHasBody(Method.HttpMethod))
             {
                 // The anonymous method used to post the Body to the stream
                 var writeToStream = new Action<Stream>(
@@ -339,6 +349,23 @@ namespace Google.Apis.Requests
                 }
                 // The exception is not something the client can handle via a stream.
                 throw;
+            }
+        }
+
+        public static bool HttpMethodHasBody(string httpMethod)
+        {
+            switch (httpMethod)
+            {
+                case DELETE:
+                case GET:
+                    return false;
+                case PATCH:
+                case POST:
+                case PUT:
+                    return true;
+                default:
+                    throw new NotSupportedException(
+                        string.Format("The HttpMethod[{0}] is not supported", httpMethod));
             }
         }
     }
