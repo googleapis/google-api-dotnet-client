@@ -14,43 +14,41 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.IO;
 
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// The discovery document will be passed in as a Stream.
-	/// </summary>
-	public class StreamDiscoveryDevice: IDiscoveryDevice
-	{
-		/// <summary>
-		/// The stream that will contain the discovery data.
-		/// </summary>
-		public Stream DiscoveryStream {get; set;}
-		
-		public StreamDiscoveryDevice ()
-		{
-		}
-		
-		/// <summary>
-		/// Fetches the discovery document from a user defined stream.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.String"/>
-		/// </returns>
-		public Stream Fetch() 
-		{
-			return DiscoveryStream;
-		}
-		
-		public void Dispose ()
-		{
-			if(DiscoveryStream != null) 
-			{
-				DiscoveryStream.Dispose();
-			}
-		}
-	}
-}
+    /// <summary>
+    /// The discovery document will be passed in as a Stream.
+    /// </summary>
+    public class StreamDiscoveryDevice : IDiscoveryDevice
+    {
+        /// <summary>
+        /// The stream that will contain the discovery data.
+        /// </summary>
+        public Stream DiscoveryStream { get; set; }
 
+        #region IDiscoveryDevice Members
+
+        /// <summary>
+        /// Fetches the discovery document from a user defined stream.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/>
+        /// </returns>
+        public Stream Fetch()
+        {
+            return DiscoveryStream;
+        }
+
+        public void Dispose()
+        {
+            if (DiscoveryStream != null)
+            {
+                DiscoveryStream.Dispose();
+            }
+        }
+
+        #endregion
+    }
+}

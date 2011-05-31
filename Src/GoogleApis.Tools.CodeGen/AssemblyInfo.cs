@@ -28,7 +28,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Google 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 [assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
@@ -42,4 +41,3 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-

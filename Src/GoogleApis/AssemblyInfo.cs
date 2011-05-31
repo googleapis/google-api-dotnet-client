@@ -28,7 +28,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Google Inc 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 [assembly: InternalsVisibleTo("Google.Apis.Tests")]
 [assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]
 [assembly: InternalsVisibleTo("Google.Apis.Tests.Apis.Discovery.V0_3")]
@@ -44,4 +43,3 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-

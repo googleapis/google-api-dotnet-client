@@ -14,10 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -37,37 +35,48 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator
     {
         private readonly IMethodCommentCreator commentCreator;
-        public DictonaryOptionalParameterResourceDecorator (IMethodCommentCreator commentCreator)
+
+        public DictonaryOptionalParameterResourceDecorator(IMethodCommentCreator commentCreator)
         {
             this.commentCreator = commentCreator;
         }
-        
-        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
-                                   ResourceClassGenerator generator, string serviceClassName, 
-                                   IEnumerable<IResourceDecorator> allDecorators)
+
+        #region IResourceDecorator Members
+
+        public void DecorateClass(IResource resource,
+                                  string className,
+                                  CodeTypeDeclaration resourceClass,
+                                  ResourceClassGenerator generator,
+                                  string serviceClassName,
+                                  IEnumerable<IResourceDecorator> allDecorators)
         {
-            ResourceGenerator gen = new ResourceGenerator (className, commentCreator);
+            ResourceGenerator gen = new ResourceGenerator(className, commentCreator);
             int methodNumber = 1;
-            foreach (var method in resource.Methods.Values) {
-                CodeTypeMember convenienceMethod = gen.CreateMethod (resource, method, methodNumber, allDecorators);
-                if (convenienceMethod != null) {
-                    resourceClass.Members.Add (convenienceMethod);
+            foreach (var method in resource.Methods.Values)
+            {
+                CodeTypeMember convenienceMethod = gen.CreateMethod(resource, method, methodNumber, allDecorators);
+                if (convenienceMethod != null)
+                {
+                    resourceClass.Members.Add(convenienceMethod);
                 }
                 methodNumber++;
             }
-            
         }
 
-        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
 
 
-        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
         }
+
+        #endregion
+
+        #region Nested type: ResourceGenerator
 
         [VisibleForTestOnly]
         internal class ResourceGenerator : ResourceBaseGenerator
@@ -75,54 +84,59 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             private readonly string className;
             private readonly IMethodCommentCreator commentCreator;
 
-            public ResourceGenerator (string className, IMethodCommentCreator commentCreator)
+            public ResourceGenerator(string className, IMethodCommentCreator commentCreator)
             {
                 className.ThrowIfNullOrEmpty("className");
-                
+
                 this.className = className;
                 this.commentCreator = commentCreator;
             }
 
-            public CodeTypeReference GetBodyType(IMethod method) 
+            public CodeTypeReference GetBodyType(IMethod method)
             {
                 // TODO(davidwaters@google.com): extend to allow more body types as per standardMethodResourceDecorator
                 return new CodeTypeReference(typeof(string));
             }
-            
-            public CodeMemberMethod CreateMethod (IResource resource, IMethod method, int methodNumber, 
-                                                  IEnumerable<IResourceDecorator> allDecorators)
+
+            public CodeMemberMethod CreateMethod(IResource resource,
+                                                 IMethod method,
+                                                 int methodNumber,
+                                                 IEnumerable<IResourceDecorator> allDecorators)
             {
-                if (method.HasOptionalParameters() == false) {
+                if (method.HasOptionalParameters() == false)
+                {
                     return null;
                 }
-                
-                var member = new CodeMemberMethod ();
-                
-                member.Name = GeneratorUtils.GetMethodName (method, methodNumber, resource.Methods.Keys);
-                member.ReturnType = new CodeTypeReference ("System.IO.Stream");
+
+                var member = new CodeMemberMethod();
+
+                member.Name = GeneratorUtils.GetMethodName(method, methodNumber, resource.Methods.Keys);
+                member.ReturnType = new CodeTypeReference("System.IO.Stream");
                 member.Attributes = MemberAttributes.Public;
-                if(commentCreator != null)
+                if (commentCreator != null)
                 {
                     member.Comments.AddRange(commentCreator.CreateMethodComment(method));
                 }
-                
+
                 // Add Manditory parameters to the method.
                 var paramList = method.GetRequiredParameters();
-                
-                CodeStatementCollection assignmentStatments = new CodeStatementCollection ();
-                
-                ResourceCallAddBodyDeclaration (method, member, GetBodyType(method));
-                
+
+                CodeStatementCollection assignmentStatments = new CodeStatementCollection();
+
+                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method));
+
                 int parameterCount = 1;
-                foreach (var param in paramList) {
-                    string parameterName = GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys);
-                    member.Parameters.Add (DeclareInputParameter (param, parameterCount, method));
-                    AddParameterComment(this.commentCreator, member, param, parameterName);
-                    assignmentStatments.Add (AssignParameterToDictionary (param, parameterCount, method));
+                foreach (var param in paramList)
+                {
+                    string parameterName = GeneratorUtils.GetParameterName(
+                        param, parameterCount, method.Parameters.Keys);
+                    member.Parameters.Add(DeclareInputParameter(param, parameterCount, method));
+                    AddParameterComment(commentCreator, member, param, parameterName);
+                    assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                     parameterCount++;
                 }
-                
-                                /*
+
+                /*
                  * TODO(davidwaters@google.com) I belive the commented out code is more correct and works in MS.net but 
                  * not mono see mono bugid 353744
                 var dictType = new CodeTypeReference("System.Collections.Generic.IDictionary");
@@ -130,37 +144,42 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 dictType.TypeArguments.Add(typeof(string));
                 dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 */
-                var dictType = new CodeTypeReference (typeof(IDictionary<string, object>));
-                var dictParameter = new CodeParameterDeclarationExpression (dictType, ParameterDictionaryName);
-                member.Parameters.Add (dictParameter);
-                
-                
+                var dictType = new CodeTypeReference(typeof(IDictionary<string, object>));
+                var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
+                member.Parameters.Add(dictParameter);
+
+
                 //parameters["<%=parameterName%>"] = <%=parameterName%>;
-                member.Statements.AddRange (assignmentStatments);
-                
-                foreach (IResourceDecorator decorator in allDecorators) {
-                    decorator.DecorateMethodBeforeExecute (resource, method, member);
+                member.Statements.AddRange(assignmentStatments);
+
+                foreach (IResourceDecorator decorator in allDecorators)
+                {
+                    decorator.DecorateMethodBeforeExecute(resource, method, member);
                 }
-                
+
                 // System.IO.Stream ret = this.service.ExecuteRequest(this.RESOURCE, "<%=methodName%>", parameters);
-                member.Statements.Add (CreateExecuteRequest (method));
-                
-                foreach (IResourceDecorator decorator in allDecorators) {
-                    decorator.DecorateMethodAfterExecute (resource, method, member);
+                member.Statements.Add(CreateExecuteRequest(method));
+
+                foreach (IResourceDecorator decorator in allDecorators)
+                {
+                    decorator.DecorateMethodAfterExecute(resource, method, member);
                 }
-                
+
                 // return ret;
-                var returnStatment = new CodeMethodReturnStatement (
-                    new CodeVariableReferenceExpression (ReturnVariableName));
-                
-                member.Statements.Add (returnStatment);
-                
+                var returnStatment =
+                    new CodeMethodReturnStatement(new CodeVariableReferenceExpression(ReturnVariableName));
+
+                member.Statements.Add(returnStatment);
+
                 return member;
             }
-            protected override string GetClassName ()
+
+            protected override string GetClassName()
             {
                 return className;
             }
         }
+
+        #endregion
     }
 }

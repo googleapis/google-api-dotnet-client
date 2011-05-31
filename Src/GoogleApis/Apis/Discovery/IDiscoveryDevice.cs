@@ -19,17 +19,17 @@ using System.IO;
 
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// An interface for the fetching of discovery documents.
-	/// </summary>
-	public interface IDiscoveryDevice: IDisposable 
-	{
-		/// <summary>
-		/// Fetches a discovery document.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.String"/>
-		/// </returns>
-		Stream Fetch();	
-	}
+    /// <summary>
+    /// An interface for the fetching of discovery documents.
+    /// </summary>
+    public interface IDiscoveryDevice : IDisposable
+    {
+        /// <summary>
+        /// Fetches a discovery document.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/>
+        /// </returns>
+        Stream Fetch();
+    }
 }

@@ -1,13 +1,27 @@
-using System;
+/*
+Copyright 2010 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-
 using Google.Apis.Discovery;
-using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
+using log4net;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -17,32 +31,38 @@ namespace Google.Apis.Tools.CodeGen
     /// </summary>
     public class GoogleSchemaGenerator
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleSchemaGenerator));
-        
-        public static readonly IEnumerable<ISchemaDecorator> DefaultSchemaDecorators = 
-            (new List<ISchemaDecorator>(){
-                new StandardPropertyFieldDecorator(),
-                new StandardPropertyDecorator(),
-                new StandardSchemaCommentDecorator(),
-                new NewtonSoftPropertyAttributeDecorator(),
-                new ArraySchemaDecorator(),
-            }).
-            AsReadOnly();
+        private static readonly ILog logger = LogManager.GetLogger(typeof(GoogleSchemaGenerator));
+
+        public static readonly IEnumerable<ISchemaDecorator> DefaultSchemaDecorators =
+            (new List<ISchemaDecorator>
+                 {
+                     new StandardPropertyFieldDecorator(),
+                     new StandardPropertyDecorator(),
+                     new StandardSchemaCommentDecorator(),
+                     new NewtonSoftPropertyAttributeDecorator(),
+                     new ArraySchemaDecorator(),
+                 }).AsReadOnly();
+
         private readonly IList<ISchemaDecorator> decorators;
         private readonly string schemaNamespace;
-        
-        public GoogleSchemaGenerator (IEnumerable<ISchemaDecorator> decorators, string schemaNamespace)
+
+        public GoogleSchemaGenerator(IEnumerable<ISchemaDecorator> decorators, string schemaNamespace)
         {
             decorators.ThrowIfNull("decorators");
             schemaNamespace.ThrowIfNull("schemaNamespace");
             this.decorators = new List<ISchemaDecorator>(decorators).AsReadOnly();
             this.schemaNamespace = schemaNamespace;
         }
-        
+
+        /// <summary>
+        /// Generates all schema classes for the specified service
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
         public CodeNamespace GenerateSchemaClasses(IService service)
         {
             service.ThrowIfNull("service");
-            
+
             logger.DebugFormat("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
             var codeNamespace = new CodeNamespace(schemaNamespace);
@@ -57,7 +77,7 @@ namespace Google.Apis.Tools.CodeGen
             }
             return codeNamespace;
         }
-        
+
         private void LogDecorators()
         {
             if (logger.IsDebugEnabled == false)
@@ -69,7 +89,7 @@ namespace Google.Apis.Tools.CodeGen
             {
                 logger.Debug(">>>NO DECORATORS");
             }
-                
+
             foreach (var decorator in decorators)
             {
                 logger.DebugFormat(">>>{0}", decorator);
@@ -77,4 +97,3 @@ namespace Google.Apis.Tools.CodeGen
         }
     }
 }
-

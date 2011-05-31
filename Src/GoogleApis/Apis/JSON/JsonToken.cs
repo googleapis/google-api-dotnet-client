@@ -13,38 +13,54 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.IO;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 namespace Google.Apis.Json
 {
-  public class JsonToken {
-	
-    public enum Type {
-      ObjectStart,
-      ArrayStart,
-      ObjectEnd,
-      ArrayEnd,
-      NameSeperator,
-      MemberSeperator,
-      String,
-      Number,
-      False,
-      True,
-      Null,
-      Undefined
-    }
-	
-    public Type type;
-    public string value;
-    public decimal number;
-        
-    public override string ToString ()
+    /// <summary>
+    /// Represents a token within the json document
+    /// </summary>
+    public class JsonToken
     {
-        return string.Format ("[JsonToken {0} {1} {2}]", type.ToString(), value, number);
+        #region TokenType enum
+
+        /// <summary>
+        /// The type this token describes
+        /// </summary>
+        public enum TokenType
+        {
+            ObjectStart,
+            ArrayStart,
+            ObjectEnd,
+            ArrayEnd,
+            NameSeperator,
+            MemberSeperator,
+            String,
+            Number,
+            False,
+            True,
+            Null,
+            Undefined
+        }
+
+        #endregion
+
+        /// <summary>
+        /// The numeric value of the token (if applicable)
+        /// </summary>
+        public decimal Number;
+
+        /// <summary>
+        /// The type this token represents
+        /// </summary>
+        public TokenType Type;
+
+        /// <summary>
+        /// The value of this token (if applicable)
+        /// </summary>
+        public string Value;
+
+        public override string ToString()
+        {
+            return string.Format("[JsonToken {0} {1} {2}]", Type, Value, Number);
+        }
     }
-  }
 }

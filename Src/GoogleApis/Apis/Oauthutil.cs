@@ -17,7 +17,6 @@ limitations under the License.
 using System;
 using System.Text;
 using System.Globalization;
-
 using Google.Apis.Util;
 
 namespace Google.Apis
@@ -36,9 +35,9 @@ namespace Google.Apis
         {
             // Default implementation of UNIX time of the current UTC time
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            
+
             // Generate a UNIX Timestamp (whole seconds only)
-            long totalSecs = (long)ts.TotalSeconds;
+            long totalSecs = (long) ts.TotalSeconds;
             return totalSecs.ToString(CultureInfo.InvariantCulture);
         }
 
@@ -65,15 +64,20 @@ namespace Google.Apis
             return GenerateHeader(uri, consumerKey, consumerSecret, string.Empty, string.Empty, httpMethod);
         }
 
-        public static string GenerateHeader(Uri uri, String consumerKey, String consumerSecret, String token, String tokenSecret, String httpMethod)
+        public static string GenerateHeader(Uri uri,
+                                            String consumerKey,
+                                            String consumerSecret,
+                                            String token,
+                                            String tokenSecret,
+                                            String httpMethod)
         {
             OAuthUtil oauthUtil = new OAuthUtil();
             string timeStamp = oauthUtil.GenerateTimeStamp();
             string nonce = oauthUtil.GenerateNonce();
 
-            string signature = oauthUtil.GenerateSignature(uri, consumerKey, consumerSecret, token, tokenSecret,
-                httpMethod.ToUpper(), timeStamp, nonce);
-            
+            string signature = oauthUtil.GenerateSignature(
+                uri, consumerKey, consumerSecret, token, tokenSecret, httpMethod.ToUpper(), timeStamp, nonce);
+
             StringBuilder sb = new StringBuilder();
             sb.Append("Authorization: OAuth oauth_version=\"1.0\",");
             sb.AppendFormat("oauth_nonce=\"{0}\",", EncodingPerRFC3986(nonce));

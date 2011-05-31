@@ -1,4 +1,3 @@
-
 /*
 Copyright 2010 Google Inc
 
@@ -15,17 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using NUnit.Framework;
+
 namespace Google.Apis.Tests
 {
-	[TestFixture]
-	public class FileDiscoveryDeviceTests
-	{
-		[Test]
-		public void TestCase ()
-		{
-		}
-	}
+    /// <summary>
+    /// Tests the FileDiscoveryDevice
+    /// Todo: implement Tests for the FileDiscoveryDevice
+    /// </summary>
+    [TestFixture]
+    public class FileDiscoveryDeviceTests
+    {
+        [Test]
+        public void TestCase() {}
+    }
 }
-

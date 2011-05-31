@@ -15,21 +15,23 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery.V0_3
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests several features of a service and related classes
+    /// </summary>
+    [TestFixture]
     public class ServiceTest
     {
         private const string TestVersion = "TestVersion";
         private const string TestName = "TestName";
-        
-        private const string SchemaJson = @"{
+
+        private const string SchemaJson =
+            @"{
               'ChiliPhotoalbumsListJson': {'id':'ChiliPhotoalbumsListJson','properties':{'items':{'items':{'$ref':'ChiliPhotoalbumsResourceJson'},'type':'array'},'kind':{'default':'buzz#albumsFeed','type':'string'}},'type':'object'},
               'ChiliPhotoalbumsResourceJson': {'id':'ChiliPhotoalbumsResourceJson','properties':{'tags':{'items':{'type':'string'},'type':'array'},'id':{'type':'integer'},'firstPhotoId':{'type':'integer'},'title':{'type':'string'},'lastModified':{'type':'string'},'created':{'type':'string'},'description':{'type':'string'},'owner':{'properties':{'id':{'type':'string'},'profileUrl':{'type':'string'},'thumbnailUrl':{'type':'string'},'name':{'type':'string'}},'type':'object'},'links':{'properties':{'alternate':{'$ref':'Link'},'enclosure':{'$ref':'Link'}},'type':'object'},'kind':{'default':'buzz#album','type':'string'},'version':{'type':'integer'}},'type':'object'},
               'ChiliPhotosInsertJson': {'id':'ChiliPhotosInsertJson','properties':{'collection':{'properties':{'albumId':{'type':'any'},'album':{'type':'any'},'photo':{'properties':{'photoUrl':{'type':'any'}},'type':'object'}},'type':'object'},'kind':{'default':'buzz#album','type':'string'}},'type':'object'},
@@ -39,40 +41,89 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
               'Link': {'id':'Link','properties':{'title':{'type':'string'},'height':{'type':'integer'},'count':{'type':'integer'},'updated':{'type':'string'},'width':{'type':'integer'},'type':{'type':'string'},'href':{'type':'string'}},'type':'object'},
               'Video': {'id':'Video','properties':{'duration':{'type':'integer'},'streams':{'items':{'$ref':'Link'},'type':'array'},'size':{'type':'integer'}},'type':'object'}
              }";
-  
-        [Test()]
-        public void ConstuctorArugumentValidationTest()
+
+        private ServiceV0_3 CreateService()
+        {
+            var param = new FactoryParameterV0_3("http://server/");
+            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
+            return new ServiceV0_3(TestVersion, TestName, param, json);
+        }
+
+        /// <summary>
+        /// Tests that the constructor validates arguments
+        /// </summary>
+        [Test]
+        public void ConstuctorArgumentValidationTest()
         {
             var param = new FactoryParameterV0_3("http://server/");
             var js = new JsonDictionary();
             js["restBasePath"] = "test/path";
-            
+
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(null, TestName, param, js));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, null, param, js));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, TestName, null, js));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, TestName, param, null));
-            
+
             new ServiceV0_3(TestVersion, TestName, param, js);
         }
-        
-        [Test()]
-        public void VersionTest ()
+
+        /// <summary>
+        /// Tests that the BaseService.ParseSchemas method validates arguments
+        /// </summary>
+        [Test]
+        public void ParseSchemasArgumentTest()
         {
-            var service = CreateService();
-            Assert.AreEqual(service.DiscoveryVersion, DiscoveryVersion.Version_0_3);
+            Assert.Throws(typeof(ArgumentNullException), () => BaseService.ParseSchemas(null));
         }
-        
-        
-        
-        [Test()]
+
+        /// <summary>
+        /// Tests the parsing of an empty dictionary
+        /// </summary>
+        [Test]
+        public void ParseSchemasEmptyTest()
+        {
+            JsonDictionary js = new JsonDictionary();
+            var dict = BaseService.ParseSchemas(js);
+            Assert.AreEqual(0, dict.Count);
+        }
+
+        /// <summary>
+        /// Tests if a basic schema is parsed correctly
+        /// </summary>
+        [Test]
+        public void ParseSchemasTest()
+        {
+            JsonDictionary js = (JsonDictionary) JsonReader.Parse(SchemaJson);
+            var dict = BaseService.ParseSchemas(js);
+            Assert.IsNotNull(dict);
+            Assert.AreEqual(8, dict.Count);
+            foreach (string key in
+                new[]
+                    {
+                        "ChiliPhotoalbumsListJson", "ChiliPhotoalbumsResourceJson", "ChiliPhotosInsertJson",
+                        "ChiliPhotosListJson", "ChiliPhotosResourceJson", "ChiliVideosListJson", "Link", "Video"
+                    })
+            {
+                Assert.True(dict.ContainsKey(key), string.Format("Key[{0}] was not found", key));
+                Assert.IsNotNull(dict[key], string.Format("Key[{0}] was null", key));
+            }
+        }
+
+        /// <summary>
+        /// Tests if the sample service contains the specified resources
+        /// </summary>
+        [Test]
         public void RessourceTest()
         {
             var service = CreateService();
             Assert.AreEqual(1, service.Resources.Count);
             Assert.IsNotNull(service.Resources["activities"]);
         }
-        
-        [Test()]
+
+        /// <summary>
+        /// Tests if the schema contains all specified values
+        /// </summary>
+        [Test]
         public void SchemaTest()
         {
             var service = CreateService();
@@ -86,41 +137,15 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
             Assert.IsNotNull(service.Schemas["ChiliPeopleListJson"].SchemaDetails);
             Assert.IsNotNull(service.Schemas["Video"].SchemaDetails);
         }
-        
-        [Test()]
-        public void ParseSchemasTest()
+
+        /// <summary>
+        /// Tests if the right version is returned
+        /// </summary>
+        [Test]
+        public void VersionTest()
         {
-            JsonDictionary js = (JsonDictionary) Google.Apis.Json.JsonReader.Parse(SchemaJson);
-            var dict = ServiceV0_3.ParseSchemas(js);
-            Assert.IsNotNull(dict);
-            Assert.AreEqual(8, dict.Count);
-            foreach(string key in new string[]{"ChiliPhotoalbumsListJson","ChiliPhotoalbumsResourceJson", "ChiliPhotosInsertJson", "ChiliPhotosListJson", 
-                "ChiliPhotosResourceJson", "ChiliVideosListJson", "Link", "Video"})
-            {
-                Assert.True(dict.ContainsKey(key),string.Format("Key[{0}] was not found", key)); 
-                Assert.IsNotNull(dict[key],string.Format("Key[{0}] was null", key));
-            }
-        }
-        
-        [Test()]
-        public void ParseSchemasEmptyTest()
-        {
-            JsonDictionary js = new JsonDictionary();
-            var dict = BaseService.ParseSchemas(js);
-            Assert.AreEqual(0, dict.Count);
-        }
-        
-        [Test()]
-        public void ParseSchemasArgumentTest()
-        {
-            Assert.Throws(typeof(ArgumentNullException), () => BaseService.ParseSchemas(null));
-        }
-        
-        private ServiceV0_3 CreateService()
-        {
-            var param = new FactoryParameterV0_3("http://server/");
-            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
-            return new ServiceV0_3(TestVersion, TestName, param, json);
+            var service = CreateService();
+            Assert.AreEqual(service.DiscoveryVersion, DiscoveryVersion.Version_0_3);
         }
     }
 }

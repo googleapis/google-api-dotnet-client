@@ -13,17 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-
 namespace Google.Apis.Discovery
 {
-	/// <summary>
+    /// <summary>
     /// Knows how to get the IService of a given version and discoveryVersion.
     /// </summary>
-	public interface IDiscoveryService 
-	{
-		IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
+    public interface IDiscoveryService
+    {
+        /// <summary>
+        /// Creates an instance of a service by using discovery with the specified parameters
+        /// </summary>
+        IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
 
+        /// <summary>
+        /// Creates an instance of a service by using discovery
+        /// </summary>
         IService GetService(string version, DiscoveryVersion discoveryVersion);
     }
 }

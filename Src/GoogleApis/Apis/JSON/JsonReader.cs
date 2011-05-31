@@ -16,10 +16,8 @@ limitations under the License.
 
 using System;
 using System.IO;
-using System.Text;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+using log4net;
 
 namespace Google.Apis.Json
 {
@@ -29,111 +27,130 @@ namespace Google.Apis.Json
     /// </summary>
     public class JsonReader
     {
-        public static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(JsonReader));
+        public static ILog logger = LogManager.GetLogger(typeof(JsonReader));
         private static JsonReader theInstance;
 
-        private JsonReader ()
-        {
-        }
+        private JsonReader() {}
 
-        public static JsonReader GetInstance ()
+        /// <summary>
+        /// Returns the default instance of this class
+        /// </summary>
+        public static JsonReader GetInstance()
         {
-            if (JsonReader.theInstance == null) {
-                JsonReader.theInstance = new JsonReader ();
+            if (theInstance == null)
+            {
+                theInstance = new JsonReader();
             }
-            return JsonReader.theInstance;
+            return theInstance;
         }
 
-        public static object Parse (string jsonAsText)
+        /// <summary>
+        /// Parses the json document into the appropriate expression/dictionary
+        /// </summary>
+        public static object Parse(string jsonAsText)
         {
-            TokenStream ts = new TokenStream (jsonAsText);
-            return ParseExpression (null, ts);
+            TokenStream ts = new TokenStream(jsonAsText);
+            return ParseExpression(null, ts);
         }
 
-        public static object Parse (Stream jsonAsStream)
+        /// <summary>
+        /// Parses the json document into the appropriate expression/dictionary
+        /// </summary>
+        public static object Parse(Stream jsonAsStream)
         {
-            TokenStream ts = new TokenStream (jsonAsStream);
-            return ParseExpression (null, ts);
+            TokenStream ts = new TokenStream(jsonAsStream);
+            return ParseExpression(null, ts);
         }
 
-        private static object ParseExpression (JsonToken token, TokenStream ts)
+        private static object ParseExpression(JsonToken token, TokenStream ts)
         {
             if (token == null)
             {
-                token = ts.GetNextToken ();
+                token = ts.GetNextToken();
             }
-            
-            switch (token.type) 
+
+            switch (token.Type)
             {
-            case JsonToken.Type.String:
-                logger.Debug("Found String " + token.value);
-                return token.value;
-            case JsonToken.Type.Number:
-                logger.Debug("Found Number " + token.number);
-                return token.number;
-            case JsonToken.Type.False:
-                logger.Debug("Found False");
-                return false;
-            case JsonToken.Type.True:
-                logger.Debug("Found True");
-                return true;
-            case JsonToken.Type.Null:
-                logger.Debug("Found Null");
-                return null;
-            case JsonToken.Type.ObjectStart:
-                logger.Debug("Found ObjectStart");
-                return ParseObject (ts);
-            case JsonToken.Type.ArrayStart:
-                logger.Debug("Found ArrayStart");
-                return ParseArray (ts);
-            case JsonToken.Type.Undefined:
-            default:
-                throw new ArgumentException ("parse error");
+                case JsonToken.TokenType.String:
+                    logger.Debug("Found String " + token.Value);
+                    return token.Value;
+                case JsonToken.TokenType.Number:
+                    logger.Debug("Found Number " + token.Number);
+                    return token.Number;
+                case JsonToken.TokenType.False:
+                    logger.Debug("Found False");
+                    return false;
+                case JsonToken.TokenType.True:
+                    logger.Debug("Found True");
+                    return true;
+                case JsonToken.TokenType.Null:
+                    logger.Debug("Found Null");
+                    return null;
+                case JsonToken.TokenType.ObjectStart:
+                    logger.Debug("Found ObjectStart");
+                    return ParseObject(ts);
+                case JsonToken.TokenType.ArrayStart:
+                    logger.Debug("Found ArrayStart");
+                    return ParseArray(ts);
+                case JsonToken.TokenType.Undefined:
+                default:
+                    throw new ArgumentException("parse error");
             }
         }
 
-        private static JsonDictionary ParseObject (TokenStream ts)
+        private static JsonDictionary ParseObject(TokenStream ts)
         {
             // to parse an object, you get the object name, and then parse the value
-            JsonToken token = ts.GetNextToken ();
-            
-            if (token.type != JsonToken.Type.String && token.type != JsonToken.Type.ObjectEnd)
-                throw new InvalidDataException ("The tokenstream is not pointing at an object, found object "+token.ToString()+" looking for a string or close object");
-            
-            JsonDictionary dict = new JsonDictionary ();
-            
-            for (JsonToken cur = ts.GetNextToken (); cur != null; cur = ts.GetNextToken ()) {
-                switch(cur.type)
+            JsonToken token = ts.GetNextToken();
+
+            if (token.Type != JsonToken.TokenType.String && token.Type != JsonToken.TokenType.ObjectEnd)
+            {
+                throw new InvalidDataException(
+                    "The tokenstream is not pointing at an object, found object " + token +
+                    " looking for a string or close object");
+            }
+
+            JsonDictionary dict = new JsonDictionary();
+
+            for (JsonToken cur = ts.GetNextToken(); cur != null; cur = ts.GetNextToken())
+            {
+                switch (cur.Type)
                 {
-                    case JsonToken.Type.ObjectEnd:
+                    case JsonToken.TokenType.ObjectEnd:
                         logger.Debug("Found object end");
-                        return dict; 
-                    case JsonToken.Type.MemberSeperator:
-                        token = ts.GetNextToken ();
+                        return dict;
+                    case JsonToken.TokenType.MemberSeperator:
+                        token = ts.GetNextToken();
                         break;
-                    case JsonToken.Type.NameSeperator:
-                        object value = ParseExpression (null, ts);
-                        if (dict.ContainsKey(token.value))
+                    case JsonToken.TokenType.NameSeperator:
+                        object value = ParseExpression(null, ts);
+                        if (dict.ContainsKey(token.Value))
                         {
-                            throw new ArgumentException("JsonObject contains duplicate definition for ["+token.value+"]");
+                            throw new ArgumentException(
+                                "JsonObject contains duplicate definition for [" + token.Value + "]");
                         }
-                        dict.Add (token.value, value);
+                        dict.Add(token.Value, value);
                         break;
-                    default: 
-                        throw new InvalidDataException("Found invalid Json was expecting } or , or : found " + cur.ToString());
-                }                
+                    default:
+                        throw new InvalidDataException("Found invalid Json was expecting } or , or : found " + cur);
+                }
             }
             return dict;
         }
 
-        private static ArrayList ParseArray (TokenStream ts)
+        private static ArrayList ParseArray(TokenStream ts)
         {
-            ArrayList list = new ArrayList ();
-            for (JsonToken cur = ts.GetNextToken (); cur != null; cur = ts.GetNextToken ()) {
-                if (cur.type == JsonToken.Type.ArrayEnd)
-                    return list; else if (cur.type != JsonToken.Type.MemberSeperator) {
-                    object value = ParseExpression (cur, ts);
-                    list.Add (value);
+            ArrayList list = new ArrayList();
+            for (JsonToken cur = ts.GetNextToken(); cur != null; cur = ts.GetNextToken())
+            {
+                if (cur.Type == JsonToken.TokenType.ArrayEnd)
+                {
+                    return list;
+                }
+                if (cur.Type != JsonToken.TokenType.MemberSeperator)
+                {
+                    object value = ParseExpression(cur, ts);
+                    list.Add(value);
                 }
             }
             return list;

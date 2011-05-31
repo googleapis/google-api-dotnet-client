@@ -15,12 +15,7 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
-using System.Collections;
-using System.Text;
 using System.Net;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
@@ -32,26 +27,40 @@ namespace Google.Apis.Authentication
     /// <returns></returns>
     public abstract class Authenticator : IAuthenticator
     {
-        private string applicationName;
+        private readonly string applicationName;
         private ICreateHttpRequest requestFactory;
 
         /// <summary>
-        /// an unauthenticated use case
+        /// Constructor for an unauthenticated use case
         /// </summary>
         /// <param name="applicationName"></param>
         /// <returns></returns>
-        public Authenticator (string applicationName)
+        public Authenticator(string applicationName)
         {
             this.applicationName = applicationName;
-            this.requestFactory = new HttpRequestFactory ();
+            requestFactory = new HttpRequestFactory();
+        }
+
+        /// <summary>
+        /// The factory which is used for creating the final request
+        /// </summary>
+        public ICreateHttpRequest RequestFactory
+        {
+            get { return requestFactory; }
+            set { requestFactory = value; }
         }
 
 
-        public ICreateHttpRequest RequestFactory {
-            get { return this.requestFactory; }
-            set { this.requestFactory = value; }
+        /// <summary>
+        /// Returns the application name
+        /// </summary>
+        /// <returns></returns>
+        public string Application
+        {
+            get { return applicationName; }
         }
 
+        #region IAuthenticator Members
 
         /// <summary>
         /// Creates a HttpWebRequest object that can be used against a given service. 
@@ -65,28 +74,23 @@ namespace Google.Apis.Authentication
         /// <param name="httpMethod"></param>
         /// <param name="targetUri"></param>
         /// <returns></returns>
-        public HttpWebRequest CreateHttpWebRequest (string httpMethod, Uri targetUri)
+        public HttpWebRequest CreateHttpWebRequest(string httpMethod, Uri targetUri)
         {
-            Uri uriResult = ApplyAuthenticationToUri (targetUri);
-            
-            if (this.requestFactory != null) {
-                HttpWebRequest request = this.requestFactory.Create (uriResult);
+            Uri uriResult = ApplyAuthenticationToUri(targetUri);
+
+            if (requestFactory != null)
+            {
+                HttpWebRequest request = requestFactory.Create(uriResult);
                 // turn off autoredirect
                 request.AllowAutoRedirect = false;
                 request.Method = httpMethod;
-                ApplyAuthenticationToRequest (request);
+                ApplyAuthenticationToRequest(request);
                 return request;
             }
             return null;
         }
 
-        /// <summary>
-        /// returns the application name
-        /// </summary>
-        /// <returns></returns>
-        public string Application {
-            get { return this.applicationName; }
-        }
+        #endregion
 
         /// <summary>
         /// Takes an existing httpwebrequest and modifies its headers according to 
@@ -94,10 +98,7 @@ namespace Google.Apis.Authentication
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public virtual void ApplyAuthenticationToRequest (HttpWebRequest request)
-        {
-            
-        }
+        public virtual void ApplyAuthenticationToRequest(HttpWebRequest request) {}
 
         /// <summary>
         /// Takes an existing httpwebrequest and modifies its uri according to 
@@ -105,10 +106,9 @@ namespace Google.Apis.Authentication
         /// </summary>
         /// <param name="source">the original uri</param>
         /// <returns></returns>
-        public virtual Uri ApplyAuthenticationToUri (Uri source)
+        public virtual Uri ApplyAuthenticationToUri(Uri source)
         {
             return source;
         }
-        
     }
 }

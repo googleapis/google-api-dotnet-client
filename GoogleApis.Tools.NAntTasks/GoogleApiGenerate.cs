@@ -14,13 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
-using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.IO;
-
 using NAnt.Core;
 using NAnt.Core.Attributes;
-
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen;
 using Google.Apis.Util;
@@ -42,14 +39,14 @@ namespace Google.Apis.Tools.NAntTasks
         /// </summary>
         [TaskAttribute("discoveryurl", Required = true)]
         [StringValidator(AllowEmpty = false)]
-        public string DiscoveryUrl {get; set;}
-        
+        public string DiscoveryUrl { get; set; }
+
         /// <summary>
         /// The location of the File to write to
         /// </summary>
-        [TaskAttribute("outputfile", Required = true)]        
-        public FileInfo OutputFile {get; set;} 
-        
+        [TaskAttribute("outputfile", Required = true)]
+        public FileInfo OutputFile { get; set; }
+
         /// <summary>
         /// The namespace that the generated code should use e.g.
         /// <example>
@@ -58,8 +55,8 @@ namespace Google.Apis.Tools.NAntTasks
         /// </summary>
         [TaskAttribute("clientnamespace", Required = true)]
         [StringValidator(AllowEmpty = false)]
-        public string ClientNamespace {get; set;}
-        
+        public string ClientNamespace { get; set; }
+
         /// <summary>
         /// The version of the Api e.g.
         /// <example>
@@ -68,8 +65,8 @@ namespace Google.Apis.Tools.NAntTasks
         /// </summary>
         [TaskAttribute("apiversion", Required = true)]
         [StringValidator(AllowEmpty = false)]
-        public string ApiVersion {get; set;}
-        
+        public string ApiVersion { get; set; }
+
         /// <summary>
         /// The BaseUrl the generated code will connect to at runtime by default e.g.
         /// <example>
@@ -78,8 +75,8 @@ namespace Google.Apis.Tools.NAntTasks
         /// </summary>
         [TaskAttribute("baseurl", Required = true)]
         [StringValidator(AllowEmpty = false)]
-        public string BaseUrl {get; set;}
-        
+        public string BaseUrl { get; set; }
+
         /// <summary>
         ///     Checks all the parameters and calls the GoogleServiceGenerator.
         /// </summary>
@@ -90,7 +87,7 @@ namespace Google.Apis.Tools.NAntTasks
             ClientNamespace.ThrowIfNullOrEmpty("ClientNamespace");
             ApiVersion.ThrowIfNullOrEmpty("ApiVersion");
             BaseUrl.ThrowIfNullOrEmpty("BaseUrl");
-            
+
             Project.Log(Level.Info, "Fetching Discovery " + DiscoveryUrl);
             var fetcher = new WebDiscoveryDevice(new Uri(DiscoveryUrl));
             var discovery = new DiscoveryService(fetcher);
@@ -99,11 +96,11 @@ namespace Google.Apis.Tools.NAntTasks
             var generator = new GoogleServiceGenerator(service, ClientNamespace);
             var provider = CodeDomProvider.CreateProvider("CSharp");
             Project.Log(Level.Info, "Generating To File " + OutputFile.FullName);
-            using (StreamWriter sw = new StreamWriter (OutputFile.FullName, false)) {
-                    IndentedTextWriter tw = new IndentedTextWriter (sw, "  ");
-                    provider.GenerateCodeFromCompileUnit (
-                        generator.GenerateCode (), tw, new CodeGeneratorOptions ());
-                    tw.Close ();
+            using (StreamWriter sw = new StreamWriter(OutputFile.FullName, false))
+            {
+                IndentedTextWriter tw = new IndentedTextWriter(sw, "  ");
+                provider.GenerateCodeFromCompileUnit(generator.GenerateCode(), tw, new CodeGeneratorOptions());
+                tw.Close();
             }
         }
     }

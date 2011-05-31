@@ -13,21 +13,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
 
+using System;
 using NUnit.Framework;
 using Newtonsoft.Json.Schema;
-
-
 using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Tests.Apis.Discovery.Schema
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests the "FutureJsonSchema" class
+    /// </summary>
+    [TestFixture]
     public class FutureJsonSchemaTest
     {
-        [Test()]
-        public void ConstructorTest ()
+        /// <summary>
+        /// Tests that the constructor will fill in correct default values
+        /// </summary>
+        [Test]
+        public void ConstructorTest()
         {
             var actual = new FutureJsonSchema("123ABC");
             Assert.False(actual.Resolved);
@@ -35,32 +39,38 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
             Assert.IsNull(actual.Maximum);
             Assert.IsNull(actual.Type);
         }
-        
-        [Test()]
+
+        /// <summary>
+        /// Tests that the Resolve feature will fail when provided with invalid arguments
+        /// </summary>
+        [Test]
         public void ResolveFailTest()
         {
             var actual = new FutureJsonSchema("123ABC");
-            var wrongId = new JsonSchema(){Id = "Go Fish"};
+            var wrongId = new JsonSchema { Id = "Go Fish" };
             var wrongType = new FutureJsonSchema("123ABC");
-            var sucess = new JsonSchema() {Id = "123ABC"};
-            
+            var sucess = new JsonSchema { Id = "123ABC" };
+
             Assert.Throws(typeof(ArgumentException), () => actual.Resolve(wrongId));
             Assert.Throws(typeof(ArgumentException), () => actual.Resolve(wrongType));
             Assert.Throws(typeof(ArgumentNullException), () => actual.Resolve(null));
-            
+
             actual.Resolve(sucess);
-            
+
             Assert.Throws(typeof(InvalidOperationException), () => actual.Resolve(sucess));
         }
-        
-        [Test()]
-        public void ResolveFailPass()
+
+        /// <summary>
+        /// Tests the "Resolve" feature
+        /// </summary>
+        [Test]
+        public void ResolvePassTest()
         {
             var actual = new FutureJsonSchema("123ABC");
-            var sucess = new JsonSchema() {Id = "123ABC", Maximum = 12.5, Minimum = 5.3, Required = true };
-            
+            var sucess = new JsonSchema { Id = "123ABC", Maximum = 12.5, Minimum = 5.3, Required = true };
+
             actual.Resolve(sucess);
-            
+
             Assert.True(actual.Resolved);
             Assert.AreEqual(12.5, actual.Maximum.Value);
             Assert.AreEqual(5.3, actual.Minimum.Value);
@@ -68,4 +78,3 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
         }
     }
 }
-

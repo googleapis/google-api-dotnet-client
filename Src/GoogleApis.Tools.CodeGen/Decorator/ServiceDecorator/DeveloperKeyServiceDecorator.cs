@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System.CodeDom;
-
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
@@ -34,15 +33,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// </summary>
         public const string DeveloperKeyPropertyName = "DeveloperKey";
 
+        #region IServiceDecorator Members
+
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
-            DecoratorUtil.AddAutoProperty<string>(serviceClass, DeveloperKeyPropertyName,
-                                                  "Sets the DeveloperKey which this service uses for all requests");
+            DecoratorUtil.AddAutoProperty<string>(
+                serviceClass, DeveloperKeyPropertyName, "Sets the DeveloperKey which this service uses for all requests");
         }
+
+        #endregion
 
         public override string ToString()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
     }
 }

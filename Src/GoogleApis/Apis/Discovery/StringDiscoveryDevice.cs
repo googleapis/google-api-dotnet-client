@@ -17,43 +17,50 @@ limitations under the License.
 using System;
 using System.IO;
 using System.Text;
-using System.Net;
 
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// Hosts the DiscoveryDocument in a user defined stream.
-	/// 
-	/// Handy for testing.
-	/// </summary>
-	public class StringDiscoveryDevice: IDiscoveryDevice 
-	{
-		/// <summary>
-		/// The discovery document.
-		/// </summary>
-		public String Document {get;set;}
-		private Stream outputStream {get;set;}
-		
-		/// <summary>
-		/// Fetches the Discovery Document from an user supplied string
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.String"/>
-		/// </returns>
-		public Stream Fetch() 
-		{
-			byte[] text = Encoding.UTF8.GetBytes( Document );
-			outputStream = new MemoryStream(text);
-			return outputStream;
-		}
-		
-		#region IDisposable implementation
-		public void Dispose ()
-		{
-			if(outputStream != null) {
-				outputStream.Dispose();
-			}
-		}
-		#endregion
-	}
+    /// <summary>
+    /// Hosts the DiscoveryDocument in a user defined stream.
+    /// 
+    /// Handy for testing.
+    /// </summary>
+    public class StringDiscoveryDevice : IDiscoveryDevice
+    {
+        /// <summary>
+        /// The discovery document.
+        /// </summary>
+        public String Document { get; set; }
+
+        private Stream outputStream { get; set; }
+
+        #region IDiscoveryDevice Members
+
+        /// <summary>
+        /// Fetches the Discovery Document from an user supplied string
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/>
+        /// </returns>
+        public Stream Fetch()
+        {
+            byte[] text = Encoding.UTF8.GetBytes(Document);
+            outputStream = new MemoryStream(text);
+            return outputStream;
+        }
+
+        #endregion
+
+        #region IDisposable implementation
+
+        public void Dispose()
+        {
+            if (outputStream != null)
+            {
+                outputStream.Dispose();
+            }
+        }
+
+        #endregion
+    }
 }

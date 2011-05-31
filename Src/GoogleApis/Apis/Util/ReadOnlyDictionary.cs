@@ -1,29 +1,24 @@
-// /*
-// Copyright 2010 Google Inc
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This code was sourced from http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=29
-// It has been provided under an MIT Licence http://en.wikipedia.org/wiki/MIT_License
-// The main condition of this licence is that a copy of this licence be availble, please see the link 
-// above for details
-// */
+/*
+Copyright 2010 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-    
+
 namespace Google.Apis.Util
 {
     /// <summary>
@@ -54,7 +49,7 @@ namespace Google.Apis.Util
     /// </remarks>
     [Serializable]
     [DebuggerDisplay("Count = {Count}")]
-    [DebuggerTypeProxy(typeof(ReadOnlyDictionaryDebugView<, >))]
+    [DebuggerTypeProxy(typeof(ReadOnlyDictionaryDebugView<,>))]
     public class ReadOnlyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary
     {
         private readonly IDictionary<TKey, TValue> source;
@@ -69,58 +64,17 @@ namespace Google.Apis.Util
         /// <exception cref="T:System.ArgumentNullException">
         /// Thrown when the dictionary is null.
         /// </exception>
-        public ReadOnlyDictionary (IDictionary<TKey, TValue> dictionaryToWrap)
+        public ReadOnlyDictionary(IDictionary<TKey, TValue> dictionaryToWrap)
         {
             if (dictionaryToWrap == null)
             {
-                throw new ArgumentNullException ("dictionaryToWrap");
+                throw new ArgumentNullException("dictionaryToWrap");
             }
-            
-            this.source = dictionaryToWrap;
+
+            source = dictionaryToWrap;
         }
 
-        /// <summary>
-        /// Gets the number of key/value pairs contained in the
-        /// <see cref="T:ReadOnlyDictionary`2"></see>.
-        /// </summary>
-        /// <value>The number of key/value pairs.</value>
-        /// <returns>The number of key/value pairs contained in the
-        /// <see cref="T:ReadOnlyDictionary`2"></see>.</returns>
-        public int Count
-        {
-            get { return this.source.Count; }
-        }
-
-        /// <summary>Gets a collection containing the keys in the
-        /// <see cref="T:ReadOnlyDictionary{TKey,TValue}"></see>.</summary>
-        /// <value>A <see cref="Dictionary{TKey,TValue}.KeyCollection"/> 
-        /// containing the keys.</value>
-        /// <returns>A
-        /// <see cref="Dictionary{TKey,TValue}.KeyCollection"/>
-        /// containing the keys in the
-        /// <see cref="Dictionary{TKey,TValue}"></see>.
-        /// </returns>
-        public ICollection<TKey> Keys
-        {
-            get { return this.source.Keys; }
-        }
-
-        /// <summary>
-        /// Gets a collection containing the values of the
-        /// <see cref="T:ReadOnlyDictionary`2"/>.
-        /// </summary>
-        /// <value>The collection of values.</value>
-        public ICollection<TValue> Values
-        {
-            get { return this.source.Values; }
-        }
-
-        /// <summary>Gets a value indicating whether the dictionary is read-only.
-        /// This value will always be true.</summary>
-        bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly
-        {
-            get { return true; }
-        }
+        #region IDictionary Members
 
         /// <summary>Gets a value indicating whether the 
         /// dictionary has a fixed size. This property will
@@ -142,7 +96,7 @@ namespace Google.Apis.Util
         /// containing the keys of the dictionary object.</summary>
         ICollection IDictionary.Keys
         {
-            get { return ((IDictionary)this.source).Keys; }
+            get { return ((IDictionary) source).Keys; }
         }
 
         /// <summary>
@@ -150,7 +104,7 @@ namespace Google.Apis.Util
         /// </summary>
         ICollection IDictionary.Values
         {
-            get { return ((IDictionary)this.source).Values; }
+            get { return ((IDictionary) source).Values; }
         }
 
         /// <summary>
@@ -159,7 +113,7 @@ namespace Google.Apis.Util
         /// </summary>
         bool ICollection.IsSynchronized
         {
-            get { return ((ICollection)this.source).IsSynchronized; }
+            get { return ((ICollection) source).IsSynchronized; }
         }
 
         /// <summary>
@@ -167,7 +121,148 @@ namespace Google.Apis.Util
         /// </summary>
         object ICollection.SyncRoot
         {
-            get { return ((ICollection)this.source).SyncRoot; }
+            get { return ((ICollection) source).SyncRoot; }
+        }
+
+        /// <summary>
+        /// Gets or sets the element with the specified key. 
+        /// </summary>
+        /// <param name="key">The key of the element to get or set.</param>
+        /// <returns>The element with the specified key. </returns>
+        /// <exception cref="NotSupportedException">
+        /// Thrown when a value is set.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when the key is a null reference (<b>Nothing</b> in Visual Basic).
+        /// </exception>
+        object IDictionary.this[object key]
+        {
+            get { return ((IDictionary) source)[key]; }
+            set { ThrowNotSupportedException(); }
+        }
+
+        /// <summary>
+        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
+        /// </summary>
+        /// <param name="key">
+        /// The System.Object to use as the key of the element to add.
+        /// </param>
+        /// <param name="value">
+        /// The System.Object to use as the value of the element to add.
+        /// </param>
+        void IDictionary.Add(object key, object value)
+        {
+            ThrowNotSupportedException();
+        }
+
+        /// <summary>
+        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
+        /// </summary>
+        void IDictionary.Clear()
+        {
+            ThrowNotSupportedException();
+        }
+
+        /// <summary>
+        /// Determines whether the IDictionary object contains an element
+        /// with the specified key.
+        /// </summary>
+        /// <param name="key">
+        /// The key to locate in the IDictionary object.
+        /// </param>
+        /// <returns>
+        /// <b>true</b> if the IDictionary contains an element with the key;
+        /// otherwise, <b>false</b>.
+        /// </returns>
+        bool IDictionary.Contains(object key)
+        {
+            return ((IDictionary) source).Contains(key);
+        }
+
+        /// <summary>
+        /// Returns an <see cref="IDictionaryEnumerator"/> for the
+        /// <see cref="IDictionary"/>. 
+        /// </summary>
+        /// <returns>
+        /// An IDictionaryEnumerator for the IDictionary.
+        /// </returns>
+        IDictionaryEnumerator IDictionary.GetEnumerator()
+        {
+            return ((IDictionary) source).GetEnumerator();
+        }
+
+        /// <summary>
+        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
+        /// </summary>
+        /// <param name="key">
+        /// Gets an <see cref="ICollection"/> object containing the keys of the 
+        /// <see cref="IDictionary"/> object.
+        /// </param>
+        void IDictionary.Remove(object key)
+        {
+            ThrowNotSupportedException();
+        }
+
+        /// <summary>
+        /// For a description of this member, see <see cref="ICollection.CopyTo"/>. 
+        /// </summary>
+        /// <param name="array">
+        /// The one-dimensional Array that is the destination of the elements copied from 
+        /// ICollection. The Array must have zero-based indexing.
+        /// </param>
+        /// <param name="index">
+        /// The zero-based index in Array at which copying begins.
+        /// </param>
+        void ICollection.CopyTo(Array array, int index)
+        {
+            ((ICollection) source).CopyTo(array, index);
+        }
+
+        #endregion
+
+        #region IDictionary<TKey,TValue> Members
+
+        /// <summary>
+        /// Gets the number of key/value pairs contained in the
+        /// <see cref="T:ReadOnlyDictionary`2"></see>.
+        /// </summary>
+        /// <value>The number of key/value pairs.</value>
+        /// <returns>The number of key/value pairs contained in the
+        /// <see cref="T:ReadOnlyDictionary`2"></see>.</returns>
+        public int Count
+        {
+            get { return source.Count; }
+        }
+
+        /// <summary>Gets a collection containing the keys in the
+        /// <see cref="T:ReadOnlyDictionary{TKey,TValue}"></see>.</summary>
+        /// <value>A <see cref="Dictionary{TKey,TValue}.KeyCollection"/> 
+        /// containing the keys.</value>
+        /// <returns>A
+        /// <see cref="Dictionary{TKey,TValue}.KeyCollection"/>
+        /// containing the keys in the
+        /// <see cref="Dictionary{TKey,TValue}"></see>.
+        /// </returns>
+        public ICollection<TKey> Keys
+        {
+            get { return source.Keys; }
+        }
+
+        /// <summary>
+        /// Gets a collection containing the values of the
+        /// <see cref="T:ReadOnlyDictionary`2"/>.
+        /// </summary>
+        /// <value>The collection of values.</value>
+        public ICollection<TValue> Values
+        {
+            get { return source.Values; }
+        }
+
+        /// <summary>Gets a value indicating whether the dictionary is read-only.
+        /// This value will always be true.</summary>
+        bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly
+        {
+            get { return true; }
         }
 
         /// <summary>
@@ -188,25 +283,8 @@ namespace Google.Apis.Util
         /// </exception>
         public TValue this[TKey key]
         {
-            get { return this.source[key]; }
-            set { ThrowNotSupportedException (); }
-        }
-
-        /// <summary>
-        /// Gets or sets the element with the specified key. 
-        /// </summary>
-        /// <param name="key">The key of the element to get or set.</param>
-        /// <returns>The element with the specified key. </returns>
-        /// <exception cref="NotSupportedException">
-        /// Thrown when a value is set.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the key is a null reference (<b>Nothing</b> in Visual Basic).
-        /// </exception>
-        object IDictionary.this[object key]
-        {
-            get { return ((IDictionary)this.source)[key]; }
-            set { ThrowNotSupportedException (); }
+            get { return source[key]; }
+            set { ThrowNotSupportedException(); }
         }
 
         /// <summary>This method is not supported by the 
@@ -215,9 +293,9 @@ namespace Google.Apis.Util
         /// The object to use as the key of the element to add.</param>
         /// <param name="value">
         /// The object to use as the value of the element to add.</param>
-        void IDictionary<TKey, TValue>.Add (TKey key, TValue value)
+        void IDictionary<TKey, TValue>.Add(TKey key, TValue value)
         {
-            ThrowNotSupportedException ();
+            ThrowNotSupportedException();
         }
 
         /// <summary>Determines whether the <see cref="T:ReadOnlyDictionary`2" />
@@ -231,9 +309,9 @@ namespace Google.Apis.Util
         /// <exception cref="T:System.ArgumentNullException">
         /// Thrown when the key is null.
         /// </exception>
-        public bool ContainsKey (TKey key)
+        public bool ContainsKey(TKey key)
         {
-            return this.source.ContainsKey (key);
+            return source.ContainsKey(key);
         }
 
         /// <summary>
@@ -243,9 +321,9 @@ namespace Google.Apis.Util
         /// <returns>
         /// True if the element is successfully removed; otherwise, false.
         /// </returns>
-        bool IDictionary<TKey, TValue>.Remove (TKey key)
+        bool IDictionary<TKey, TValue>.Remove(TKey key)
         {
-            ThrowNotSupportedException ();
+            ThrowNotSupportedException();
             return false;
         }
 
@@ -261,9 +339,9 @@ namespace Google.Apis.Util
         /// <b>true</b> if the <see cref="T:ReadOnlyDictionary`2" /> contains
         /// an element with the specified key; otherwise, <b>false</b>.
         /// </returns>
-        public bool TryGetValue (TKey key, out TValue value)
+        public bool TryGetValue(TKey key, out TValue value)
         {
-            return this.source.TryGetValue (key, out value);
+            return source.TryGetValue(key, out value);
         }
 
         /// <summary>This method is not supported by the
@@ -271,16 +349,16 @@ namespace Google.Apis.Util
         /// <param name="item">
         /// The object to add to the <see cref="T:ICollection`1"/>.
         /// </param>
-        void ICollection<KeyValuePair<TKey, TValue>>.Add (KeyValuePair<TKey, TValue> item)
+        void ICollection<KeyValuePair<TKey, TValue>>.Add(KeyValuePair<TKey, TValue> item)
         {
-            ThrowNotSupportedException ();
+            ThrowNotSupportedException();
         }
 
         /// <summary>This method is not supported by the 
         /// <see cref="T:ReadOnlyDictionary`2"/>.</summary>
-        void ICollection<KeyValuePair<TKey, TValue>>.Clear ()
+        void ICollection<KeyValuePair<TKey, TValue>>.Clear()
         {
-            ThrowNotSupportedException ();
+            ThrowNotSupportedException();
         }
 
         /// <summary>
@@ -294,9 +372,9 @@ namespace Google.Apis.Util
         /// <b>true</b> if item is found in the <b>ICollection</b>; 
         /// otherwise, <b>false</b>.
         /// </returns>
-        bool ICollection<KeyValuePair<TKey, TValue>>.Contains (KeyValuePair<TKey, TValue> item)
+        bool ICollection<KeyValuePair<TKey, TValue>>.Contains(KeyValuePair<TKey, TValue> item)
         {
-            return ((ICollection<KeyValuePair<TKey, TValue>>)this.source).Contains (item);
+            return (source).Contains(item);
         }
 
         /// <summary>
@@ -310,9 +388,9 @@ namespace Google.Apis.Util
         /// <param name="arrayIndex">
         /// The zero-based index in array at which copying begins.
         /// </param>
-        void ICollection<KeyValuePair<TKey, TValue>>.CopyTo (KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+        void ICollection<KeyValuePair<TKey, TValue>>.CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
-            ((ICollection<KeyValuePair<TKey, TValue>>)this.source).CopyTo (array, arrayIndex);
+            (source).CopyTo(array, arrayIndex);
         }
 
         /// <summary>This method is not supported by the
@@ -321,9 +399,9 @@ namespace Google.Apis.Util
         /// The object to remove from the ICollection.
         /// </param>
         /// <returns>Will never return a value.</returns>
-        bool ICollection<KeyValuePair<TKey, TValue>>.Remove (KeyValuePair<TKey, TValue> item)
+        bool ICollection<KeyValuePair<TKey, TValue>>.Remove(KeyValuePair<TKey, TValue> item)
         {
-            ThrowNotSupportedException ();
+            ThrowNotSupportedException();
             return false;
         }
 
@@ -333,9 +411,9 @@ namespace Google.Apis.Util
         /// <returns>
         /// A IEnumerator that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator<KeyValuePair<TKey, TValue>> IEnumerable<KeyValuePair<TKey, TValue>>.GetEnumerator ()
+        IEnumerator<KeyValuePair<TKey, TValue>> IEnumerable<KeyValuePair<TKey, TValue>>.GetEnumerator()
         {
-            return ((IEnumerable<KeyValuePair<TKey, TValue>>)this.source).GetEnumerator ();
+            return (source).GetEnumerator();
         }
 
         /// <summary>
@@ -344,117 +422,42 @@ namespace Google.Apis.Util
         /// <returns>
         /// An IEnumerator that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator ()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable)this.source).GetEnumerator ();
+            return ((IEnumerable) source).GetEnumerator();
         }
 
-        /// <summary>
-        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
-        /// </summary>
-        /// <param name="key">
-        /// The System.Object to use as the key of the element to add.
-        /// </param>
-        /// <param name="value">
-        /// The System.Object to use as the value of the element to add.
-        /// </param>
-        void IDictionary.Add (object key, object value)
-        {
-            ThrowNotSupportedException ();
-        }
+        #endregion
 
-        /// <summary>
-        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
-        /// </summary>
-        void IDictionary.Clear ()
+        private static void ThrowNotSupportedException()
         {
-            ThrowNotSupportedException ();
-        }
-
-        /// <summary>
-        /// Determines whether the IDictionary object contains an element
-        /// with the specified key.
-        /// </summary>
-        /// <param name="key">
-        /// The key to locate in the IDictionary object.
-        /// </param>
-        /// <returns>
-        /// <b>true</b> if the IDictionary contains an element with the key;
-        /// otherwise, <b>false</b>.
-        /// </returns>
-        bool IDictionary.Contains (object key)
-        {
-            return ((IDictionary)this.source).Contains (key);
-        }
-
-        /// <summary>
-        /// Returns an <see cref="IDictionaryEnumerator"/> for the
-        /// <see cref="IDictionary"/>. 
-        /// </summary>
-        /// <returns>
-        /// An IDictionaryEnumerator for the IDictionary.
-        /// </returns>
-        IDictionaryEnumerator IDictionary.GetEnumerator ()
-        {
-            return ((IDictionary)this.source).GetEnumerator ();
-        }
-
-        /// <summary>
-        /// This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
-        /// </summary>
-        /// <param name="key">
-        /// Gets an <see cref="ICollection"/> object containing the keys of the 
-        /// <see cref="IDictionary"/> object.
-        /// </param>
-        void IDictionary.Remove (object key)
-        {
-            ThrowNotSupportedException ();
-        }
-
-        /// <summary>
-        /// For a description of this member, see <see cref="ICollection.CopyTo"/>. 
-        /// </summary>
-        /// <param name="array">
-        /// The one-dimensional Array that is the destination of the elements copied from 
-        /// ICollection. The Array must have zero-based indexing.
-        /// </param>
-        /// <param name="index">
-        /// The zero-based index in Array at which copying begins.
-        /// </param>
-        void ICollection.CopyTo (Array array, int index)
-        {
-            ((ICollection)this.source).CopyTo (array, index);
-        }
-
-        private static void ThrowNotSupportedException ()
-        {
-            throw new NotSupportedException ("This Dictionary is read-only");
+            throw new NotSupportedException("This Dictionary is read-only");
         }
     }
 
     internal sealed class ReadOnlyDictionaryDebugView<TKey, TValue>
     {
-        private IDictionary<TKey, TValue> dict;
+        private readonly IDictionary<TKey, TValue> dict;
 
-        public ReadOnlyDictionaryDebugView (ReadOnlyDictionary<TKey, TValue> dictionary)
+        public ReadOnlyDictionaryDebugView(ReadOnlyDictionary<TKey, TValue> dictionary)
         {
             if (dictionary == null)
             {
-                throw new ArgumentNullException ("dictionary");
+                throw new ArgumentNullException("dictionary");
             }
-            
-            this.dict = dictionary;
+
+            dict = dictionary;
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
         public KeyValuePair<TKey, TValue>[] Items
         {
-            get {
-                KeyValuePair<TKey, TValue>[] array = new KeyValuePair<TKey, TValue>[this.dict.Count];
-                this.dict.CopyTo (array, 0);
+            get
+            {
+                KeyValuePair<TKey, TValue>[] array = new KeyValuePair<TKey, TValue>[dict.Count];
+                dict.CopyTo(array, 0);
                 return array;
             }
         }
     }
 }
-

@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-
 using Google.Apis.Json;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -119,8 +118,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ServiceFactoryDiscoveryV1_0 : BaseServiceFactory
     {
-        public ServiceFactoryDiscoveryV1_0(JsonDictionary discovery, FactoryParameterV1_0 param) :
-            base(discovery, param) {}
+        public ServiceFactoryDiscoveryV1_0(JsonDictionary discovery, FactoryParameterV1_0 param)
+            : base(discovery, param) {}
 
         public override IService GetService(string version)
         {

@@ -13,9 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.CodeDom;
 
+using System.CodeDom;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
@@ -33,4 +32,3 @@ namespace Google.Apis.Tools.CodeGen
         CodeTypeReference GetClassName(JsonSchema definition);
     }
 }
-

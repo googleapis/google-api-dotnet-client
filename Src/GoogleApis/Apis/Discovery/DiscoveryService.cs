@@ -14,76 +14,71 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// Discovery is the root of all access to the APIs.
-	/// 
-	/// At a high-level it is a factory to create an API object for a given discovery document.
-	/// 
-	///
-	/// </summary>
-	/// <example>
-	/// var webDiscovery = new WebDiscoveryDevice { DiscoveryURI = "http://test.com"};
-	/// var d = new Discover(webDiscovery);
-	/// var buzzApi = d.CreateAPI();
-	/// 
-	/// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
-	/// 
-	/// // If you want to host your own Apiary discovery document, you can use the FileDiscoveryDecive
-	/// var fileDiscovery = new FileDiscoveryDevice { DiscoveryFile = "c:/text.txt"};
-	/// var d = new Discover(fileDiscovery);
-	/// var buzzApi = d.CreateAPI();
-	/// 
-	/// var buzzFeed = buzzApi.CreateRequest().WithCredentials().On().Get(Dictionary());
-	/// 
-	/// // If you want to host your own Apiary discovery document, you can also use the StreamDiscoveryDevice
-	/// var streamDiscovery = new StreamDiscoveryDevice { DiscoveryStream = new FileStream("c:/test.txt") };
-	/// var d = new Discover(streamDiscovery);
-	/// var buzzApi = d.CreateAPI();
-	/// 
-	/// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
-	/// </example>
-	public class DiscoveryService : IDiscoveryService
-	{
-		/// <summary>
-		/// The discovery mechanism to use.
-		/// </summary>
-		public IDiscoveryDevice DiscoveryDevice
-		{
-			get; private set;
-		}
-		
-		/// <summary>
-		/// Insantiates the discovery class
-		/// </summary>
-		public DiscoveryService(IDiscoveryDevice discovery) 
-		{
-			DiscoveryDevice = discovery;
-		}
-		
+    /// <summary>
+    /// Discovery is the root of all access to the APIs.
+    /// 
+    /// At a high-level it is a factory to create an API object for a given discovery document.
+    /// 
+    ///
+    /// </summary>
+    /// <example>
+    /// var webDiscovery = new WebDiscoveryDevice { DiscoveryURI = "http://test.com"};
+    /// var d = new Discover(webDiscovery);
+    /// var buzzApi = d.CreateAPI();
+    /// 
+    /// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
+    /// 
+    /// // If you want to host your own Apiary discovery document, you can use the FileDiscoveryDecive
+    /// var fileDiscovery = new FileDiscoveryDevice { DiscoveryFile = "c:/text.txt"};
+    /// var d = new Discover(fileDiscovery);
+    /// var buzzApi = d.CreateAPI();
+    /// 
+    /// var buzzFeed = buzzApi.CreateRequest().WithCredentials().On().Get(Dictionary());
+    /// 
+    /// // If you want to host your own Apiary discovery document, you can also use the StreamDiscoveryDevice
+    /// var streamDiscovery = new StreamDiscoveryDevice { DiscoveryStream = new FileStream("c:/test.txt") };
+    /// var d = new Discover(streamDiscovery);
+    /// var buzzApi = d.CreateAPI();
+    /// 
+    /// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
+    /// </example>
+    public class DiscoveryService : IDiscoveryService
+    {
+        /// <summary>
+        /// Insantiates the discovery class
+        /// </summary>
+        public DiscoveryService(IDiscoveryDevice discovery)
+        {
+            DiscoveryDevice = discovery;
+        }
+
+        /// <summary>
+        /// The discovery mechanism to use.
+        /// </summary>
+        public IDiscoveryDevice DiscoveryDevice { get; private set; }
+
+        #region IDiscoveryService Members
+
         /// <summary>
         /// Creates an API object that provides access to the methods defined in the discovery document.
         /// </summary>
         /// <param name="version"></param>
         /// <param name="param"></param>
         /// <param name="discoveryVersion">The version of discovery used to create the service</param>
-		public IService GetService(string version, 
-                                   DiscoveryVersion discoveryVersion, 
-                                   IFactoryParameter param)
-		{
-			IServiceFactory factory;
-			
-			using(var documentStream = DiscoveryDevice.Fetch()) 
-			{
-				// Parse the document.
-				factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
-			}
-			
-			return factory.GetService(version);
-		}
+        public IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param)
+        {
+            IServiceFactory factory;
+
+            using (var documentStream = DiscoveryDevice.Fetch())
+            {
+                // Parse the document.
+                factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
+            }
+
+            return factory.GetService(version);
+        }
 
         /// <summary>
         /// Creates an API object that provides access to the methods defined in the discovery document.
@@ -93,5 +88,7 @@ namespace Google.Apis.Discovery
         {
             return GetService(version, discoveryVersion, null);
         }
+
+        #endregion
     }
 }

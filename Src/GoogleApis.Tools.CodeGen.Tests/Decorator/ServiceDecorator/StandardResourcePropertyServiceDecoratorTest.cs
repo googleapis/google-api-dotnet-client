@@ -13,51 +13,59 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
+
 using System.CodeDom;
-
 using NUnit.Framework;
-
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests for the StandardResourcePropertyServiceDecorator class
+    /// </summary>
+    [TestFixture]
     public class StandardResourcePropertyServiceDecoratorTest : BaseServiceDecoratorTest
     {
-        [Test()]
-        public void TestDecorateClass ()
-        {
-        }
-        
-        [Test()]
+        /// <summary>
+        /// Tests if the CreateResoruceField method generates a resource field
+        /// </summary>
+        [Test]
         public void CreateResourceFieldTest()
         {
             var decorator = new StandardResourcePropertyServiceDecorator();
             var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
 
             CodeMemberField codeField = decorator.CreateResourceField(resource, 1, Enumerable.Empty<string>());
-            
+
             Assert.IsNotNull(codeField);
             Assert.AreEqual(ResourceName, codeField.Type.BaseType);
             Assert.AreEqual("testResource", codeField.Name);
         }
-        
-        [Test()]
+
+        /// <summary>
+        /// Tests if the CreateResourceGetter generate a appropriate getter
+        /// </summary>
+        [Test]
         public void CreateResourceGetterTest()
         {
             var decorator = new StandardResourcePropertyServiceDecorator();
             var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
-            
-            CodeMemberProperty codeProperty = decorator.CreateResourceGetter (resource, 1, Enumerable.Empty<string>());
-            
+
+            CodeMemberProperty codeProperty = decorator.CreateResourceGetter(resource, 1, Enumerable.Empty<string>());
+
             Assert.IsNotNull(codeProperty);
             Assert.IsFalse(codeProperty.HasSet);
             Assert.IsTrue(codeProperty.HasGet);
             Assert.AreEqual(ResourceName, codeProperty.Name);
             Assert.AreEqual(ResourceName, codeProperty.Type.BaseType);
         }
+
+        /// <summary>
+        /// Tests if the decorate class method works
+        /// todo: Write a test for StandardResourcePropertyServiceDecorator.DecorateClass
+        /// </summary>
+        [Test]
+        public void TestDecorateClass() {}
     }
 }
-

@@ -14,15 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// An enumeration of all supported discovery versions
+    /// </summary>
     public enum DiscoveryVersion
     {
         /// <summary>Version 0.3</summary>
         Version_0_3,
         /// <summary>Version 1.0</summary>
-        Version_1_0,        
+        Version_1_0,
     }
 }

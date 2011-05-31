@@ -1,5 +1,3 @@
-
-
 /*
 Copyright 2011 Google Inc
 
@@ -24,48 +22,14 @@ using NUnit.Framework;
 namespace Google.Apis.Tests
 {
     /// <summary>
-    ///   Tests the cache functionallity of the discovery devices
-    ///   IntegrationTest 
-    ///   -- requires File IO access to the cache dir
-    ///   -- requires Internet access to http://google.com
+    /// Tests the cache functionallity of the discovery devices
+    /// IntegrationTest 
+    /// -- requires File IO access to the cache dir
+    /// -- requires Internet access to http://google.com
     /// </summary>
     [TestFixture]
     public class CachedWebDiscoveryDeviceTests
     {
-        /// <summary>
-        ///   Tests if the constructor works
-        /// </summary>
-        [Test]
-        public void ConstructTest()
-        {
-            Assert.DoesNotThrow(() => new CachedWebDiscoveryDevice());
-        }
-
-        /// <summary>
-        ///   Tests if an URI can be assigned to this device
-        /// </summary>
-        [Test]
-        public void SetURITest()
-        {
-            var device = new CachedWebDiscoveryDevice { DiscoveryUri = new Uri("http://google.com") };
-            Assert.IsNotNull(device.DiscoveryUri);
-            Assert.AreEqual("http://google.com/", device.DiscoveryUri.ToString());
-        }
-
-        /// <summary>
-        ///   Tests if an URI can be assigned to this device
-        /// </summary>
-        [Test]
-        public void SetCacheDurationTest()
-        {
-            // Check that the cache duration is set to 7 days per default
-            var device = new CachedWebDiscoveryDevice();
-            Assert.That(device.CacheDuration, Is.EqualTo(7 * 24 * 60 * 60));
-
-            device.CacheDuration = 100;
-            Assert.That(device.CacheDuration, Is.EqualTo(100));
-        }
-
         /// <summary>
         ///   Tests the cache procedure
         /// </summary>
@@ -104,15 +68,22 @@ namespace Google.Apis.Tests
         }
 
         /// <summary>
+        ///   Tests if the constructor works
+        /// </summary>
+        [Test]
+        public void ConstructTest()
+        {
+            Assert.DoesNotThrow(() => new CachedWebDiscoveryDevice());
+        }
+
+        /// <summary>
         ///   Tests if invalid file names are escaped
         /// </summary>
         [Test]
         public void InvalidFilenames()
         {
             var device = new CachedWebDiscoveryDevice
-                             {
-                                 DiscoveryUri = new Uri("http://google.com/$#@!%^&*()[]+=/\\<>:;")
-                             };
+                             { DiscoveryUri = new Uri("http://google.com/$#@!%^&*()[]+=/\\<>:;") };
 
             // Check if the file name was escaped at all
             FileInfo cacheFile = device.GetCacheFile();
@@ -121,6 +92,30 @@ namespace Google.Apis.Tests
             // Check the result
             Assert.IsTrue(cacheFile.Name.StartsWith("http___google.com_$#@!%25^&_()[]+=_____;-"));
         }
+
+        /// <summary>
+        ///   Tests if an URI can be assigned to this device
+        /// </summary>
+        [Test]
+        public void SetCacheDurationTest()
+        {
+            // Check that the cache duration is set to 7 days per default
+            var device = new CachedWebDiscoveryDevice();
+            Assert.That(device.CacheDuration, Is.EqualTo(7 * 24 * 60 * 60));
+
+            device.CacheDuration = 100;
+            Assert.That(device.CacheDuration, Is.EqualTo(100));
+        }
+
+        /// <summary>
+        ///   Tests if an URI can be assigned to this device
+        /// </summary>
+        [Test]
+        public void SetURITest()
+        {
+            var device = new CachedWebDiscoveryDevice { DiscoveryUri = new Uri("http://google.com") };
+            Assert.IsNotNull(device.DiscoveryUri);
+            Assert.AreEqual("http://google.com/", device.DiscoveryUri.ToString());
+        }
     }
 }
-

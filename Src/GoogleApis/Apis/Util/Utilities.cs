@@ -18,97 +18,118 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
-
-using Google.Apis.Json;
-using Google.Apis.Requests;
 namespace Google.Apis.Util
 {
-	public static class Utilities
-	{
+    /// <summary>
+    /// A class containing utility methods
+    /// </summary>
+    public static class Utilities
+    {
         /// <summary>
         /// Fetches an element from a dictionary in a safe way, returning null if there is no value present.
         /// </summary>
-        public static TValue GetValueAsNull<TKey, TValue> (this IDictionary<TKey, TValue> data, TKey key)
-		{
-			TValue result;
-			if (!data.TryGetValue (key, out result)) 
-			{
-				return default(TValue);
-			}
-			return result;
-		}
-        
+        public static TValue GetValueAsNull<TKey, TValue>(this IDictionary<TKey, TValue> data, TKey key)
+        {
+            TValue result;
+            if (!data.TryGetValue(key, out result))
+            {
+                return default(TValue);
+            }
+            return result;
+        }
+
         /// <summary>
         /// If key exists in data and is an IEnumerable will return each element converted to a string 
         /// with ToString, or null. If key does not exist in data, is null or not an IEnumerable we will 
         /// return the empty list.
         /// </summary>
-        public static IEnumerable<string> GetValueAsStringListOrEmpty<TKey, TValue>(this IDictionary<TKey, TValue> data, TKey key)
+        public static IEnumerable<string> GetValueAsStringListOrEmpty<TKey, TValue>(this IDictionary<TKey, TValue> data,
+                                                                                    TKey key)
         {
             data.ThrowIfNull("data");
             IEnumerable value = GetValueAsNull(data, key) as IEnumerable;
-            if(value == null)
+            if (value == null)
             {
                 yield break;
             }
-            foreach(object obj in value)
+            foreach (object obj in value)
             {
-                yield return obj != null ? obj.ToString() : (string)null;
+                yield return obj != null ? obj.ToString() : null;
             }
         }
-        
+
         /// <summary>Extension method on object, which throws a ArgumentNullException if obj is null</summary>
         public static void ThrowIfNull(this object obj, string paramName)
         {
-            if(obj == null)
+            if (obj == null)
             {
                 throw new ArgumentNullException(paramName);
             }
         }
-        
+
+        /// <summary>
+        /// Throws an exception if the string is null or empty
+        /// </summary>
         public static void ThrowIfNullOrEmpty(this string str, string paramName)
         {
             str.ThrowIfNull(paramName);
-            if ( str.Length == 0 )
+            if (str.Length == 0)
             {
                 throw new ArgumentException("Parameter was empty", paramName);
             }
         }
-        
+
+        /// <summary>
+        /// Throws the collection is null or empty
+        /// </summary>
         public static void ThrowIfNullOrEmpty<T>(this ICollection<T> coll, string paramName)
         {
             coll.ThrowIfNull(paramName);
-            if ( coll.Count == 0 )
+            if (coll.Count == 0)
             {
                 throw new ArgumentException("Parameter was empty", paramName);
             }
         }
-        
+
+        /// <summary>
+        /// Returns a readonly variant of the given dictionary
+        /// </summary>
         public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)
         {
             dict.ThrowIfNull("this");
             return new ReadOnlyDictionary<TKey, TValue>(dict);
         }
-        
+
+        /// <summary>
+        /// Returns true when the string is null or empty
+        /// </summary>
         public static bool IsNullOrEmpty(this string str)
         {
-            return str == null || str.Length == 0;
+            return string.IsNullOrEmpty(str);
         }
-        
+
+        /// <summary>
+        /// Returns true when the string is NOT null or empty
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static bool IsNotNullOrEmpty(this string str)
         {
-            return str != null && str.Length > 0;
+            return !string.IsNullOrEmpty(str);
         }
-        
+
+        /// <summary>
+        /// Returns true when the collection is NOT null or empty
+        /// </summary>
         public static bool IsNotNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll != null && coll.Count > 0;
         }
-        
+
+        /// <summary>
+        /// Returns true when the collection is null or empty
+        /// </summary>
         public static bool IsNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll == null || coll.Count == 0;
@@ -120,7 +141,7 @@ namespace Google.Apis.Util
         /// </summary>
         /// <param name="coll">May not be null</param>
         /// <param name="name">May not be null or empty</param>
-        public static System.CodeDom.CodeMemberField FindFieldByName(this CodeTypeMemberCollection coll, string name)
+        public static CodeMemberField FindFieldByName(this CodeTypeMemberCollection coll, string name)
         {
             coll.ThrowIfNull("coll");
             name.ThrowIfNullOrEmpty(name);
@@ -131,7 +152,7 @@ namespace Google.Apis.Util
                 {
                     continue;
                 }
-                var field = (CodeMemberField)member;
+                var field = (CodeMemberField) member;
                 if (field.Name == name)
                 {
                     return field;
@@ -139,31 +160,31 @@ namespace Google.Apis.Util
             }
             return null;
         }
-        
+
         /// <summary>
         /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
         /// name that matches the passed in name - or Null if no match found.
         /// </summary>
         /// <param name="coll">May not be null</param>
         /// <param name="name">May not be null or empty</param>
-        public static System.CodeDom.CodeMemberProperty FindPropertyByName(this CodeTypeMemberCollection coll, string name) 
+        public static CodeMemberProperty FindPropertyByName(this CodeTypeMemberCollection coll, string name)
         {
             coll.ThrowIfNull("coll");
             name.ThrowIfNullOrEmpty(name);
-            
-            foreach(CodeTypeMember member in coll)
+
+            foreach (CodeTypeMember member in coll)
             {
                 if ((member is CodeMemberProperty) == false)
                 {
                     continue;
                 }
-                var property = (CodeMemberProperty)member;
-                if (property.Name == name) 
+                var property = (CodeMemberProperty) member;
+                if (property.Name == name)
                 {
                     return property;
                 }
             }
             return null;
         }
-	}
+    }
 }

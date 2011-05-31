@@ -16,13 +16,11 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
-
     /// <summary>
     /// Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
     /// to the ServiceClass.
@@ -34,57 +32,61 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         public const string BaseUriName = "BaseUri";
         public const string DiscoveryVersionName = "DiscoveryVersionUsed";
 
-        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
+        #region IServiceDecorator Members
+
+        public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
-            serviceClass.Members.Add (CreateVersionField (service));
-            serviceClass.Members.Add (CreateNameField (service));
-            serviceClass.Members.Add (CreateUriField (service));
-            serviceClass.Members.Add (CreateDiscoveryVersionField (service));
+            serviceClass.Members.Add(CreateVersionField(service));
+            serviceClass.Members.Add(CreateNameField(service));
+            serviceClass.Members.Add(CreateUriField(service));
+            serviceClass.Members.Add(CreateDiscoveryVersionField(service));
         }
 
+        #endregion
+
         [VisibleForTestOnly]
-        internal CodeMemberField CreateVersionField (IService service)
+        internal CodeMemberField CreateVersionField(IService service)
         {
-            var version = new CodeMemberField (typeof(string), VersionName);
+            var version = new CodeMemberField(typeof(string), VersionName);
             version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            version.InitExpression = new CodePrimitiveExpression (service.Version);
+            version.InitExpression = new CodePrimitiveExpression(service.Version);
             return version;
         }
 
         [VisibleForTestOnly]
-        internal CodeMemberField CreateNameField (IService service)
+        internal CodeMemberField CreateNameField(IService service)
         {
-            var name = new CodeMemberField (typeof(string), NameName);
+            var name = new CodeMemberField(typeof(string), NameName);
             name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            name.InitExpression = new CodePrimitiveExpression (service.Name);
+            name.InitExpression = new CodePrimitiveExpression(service.Name);
             return name;
         }
 
         [VisibleForTestOnly]
-        internal CodeMemberField CreateUriField (IService service)
+        internal CodeMemberField CreateUriField(IService service)
         {
-            var uri = new CodeMemberField (typeof(string), BaseUriName);
+            var uri = new CodeMemberField(typeof(string), BaseUriName);
             uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            uri.InitExpression = new CodePrimitiveExpression (service.BaseUri.ToString ());
+            uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
             return uri;
         }
-        
+
         [VisibleForTestOnly]
-        internal CodeMemberField CreateDiscoveryVersionField (IService service)
+        internal CodeMemberField CreateDiscoveryVersionField(IService service)
         {
-            var uri = new CodeMemberField (typeof(DiscoveryVersion), DiscoveryVersionName);
+            var uri = new CodeMemberField(typeof(DiscoveryVersion), DiscoveryVersionName);
             uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            uri.InitExpression = new CodeFieldReferenceExpression(
-                new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
-                Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion));
+            uri.InitExpression =
+                new CodeFieldReferenceExpression(
+                    new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
+                    Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion));
 
             return uri;
         }
-        
-        public override string ToString ()
+
+        public override string ToString()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
     }
 }
-

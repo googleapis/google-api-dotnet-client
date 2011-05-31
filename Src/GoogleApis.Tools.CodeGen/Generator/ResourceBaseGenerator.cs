@@ -15,139 +15,150 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
 using System.CodeDom;
-using System.Linq;
-
+using System.IO;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
+using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
+    /// <summary>
+    /// Abstract implementation of a resource generator
+    /// </summary>
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ResourceBaseGenerator));
-        
         public const string ResourceNameConst = "Resource";
         protected const string ParameterDictionaryName = "parameters";
         protected const string ReturnVariableName = "ret";
         public const string ServiceFieldName = "service";
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ResourceBaseGenerator));
 
-        public ResourceBaseGenerator ()
-        {
-        }
-
-        protected void ResourceCallAddBodyDeclaration (
-                IMethod method, CodeMemberMethod member, CodeTypeReference bodyType)
+        protected void ResourceCallAddBodyDeclaration(IMethod method,
+                                                      CodeMemberMethod member,
+                                                      CodeTypeReference bodyType)
         {
             switch (method.HttpMethod)
             {
-            case Request.GET:
-            case Request.DELETE:
-                // string body = null;
-                var bodyVarDeclaration = new CodeVariableDeclarationStatement (bodyType, "body");
-                bodyVarDeclaration.InitExpression = new CodePrimitiveExpression (null);
-                member.Statements.Add (bodyVarDeclaration);
-                break;
-            case Request.PUT:
-            case Request.POST:
-            case Request.PATCH:
-                // add body Parameter
-                member.Parameters.Add (new CodeParameterDeclarationExpression (bodyType, "body"));
-                break;
-            default:
-                throw new NotSupportedException ("Unsupported HttpMethod [" + method.HttpMethod + "]");
+                case Request.GET:
+                case Request.DELETE:
+                    // string body = null;
+                    var bodyVarDeclaration = new CodeVariableDeclarationStatement(bodyType, "body");
+                    bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
+                    member.Statements.Add(bodyVarDeclaration);
+                    break;
+                case Request.PUT:
+                case Request.POST:
+                case Request.PATCH:
+                    // add body Parameter
+                    member.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, "body"));
+                    break;
+                default:
+                    throw new NotSupportedException("Unsupported HttpMethod [" + method.HttpMethod + "]");
             }
         }
-  
+
+        /// <summary>
+        /// Returns the .NET equivalent of the type specified within the paramater
+        /// </summary>
         public static Type GetParameterType(IParameter param)
         {
             param.ThrowIfNull("param");
-            
-            switch (param.ValueType) 
+
+            switch (param.ValueType)
             {
-            case null:
-            case "":
-            case "string":
-                return typeof(string);
-            case "boolean":
-                return typeof(bool);
-            case "integer":
-                return typeof(long);
-            default:
-                logger.Error("FAIL - found unkown parameter.type ["+param.ValueType+"] for parameter ["+param.Name+"]");
-                return typeof(string);
+                case null:
+                case "":
+                case "string":
+                    return typeof(string);
+                case "boolean":
+                    return typeof(bool);
+                case "integer":
+                    return typeof(long);
+                default:
+                    logger.Error(
+                        "FAIL - found unkown parameter.type [" + param.ValueType + "] for parameter [" + param.Name +
+                        "]");
+                    return typeof(string);
             }
         }
-        
-        protected CodeParameterDeclarationExpression DeclareInputParameter (IParameter param, int parameterCount, IMethod method)
+
+        protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
+                                                                           int parameterCount,
+                                                                           IMethod method)
         {
             method.ThrowIfNull("method");
             Type paramType = GetParameterType(param);
-            return new CodeParameterDeclarationExpression (paramType, 
-                GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
+            return new CodeParameterDeclarationExpression(
+                paramType, GeneratorUtils.GetParameterName(param, parameterCount, method.Parameters.Keys));
         }
-  
-        protected void AddParameterComment(IMethodCommentCreator commentCreator, CodeMemberMethod member, 
-                IParameter param, string parameterName)
+
+        protected void AddParameterComment(IMethodCommentCreator commentCreator,
+                                           CodeMemberMethod member,
+                                           IParameter param,
+                                           string parameterName)
         {
-            if(commentCreator != null)
+            if (commentCreator != null)
             {
                 member.Comments.AddRange(commentCreator.CreateParameterComment(param, parameterName));
             }
         }
-        
-        protected CodeAssignStatement AssignParameterToDictionary (IParameter param, int parameterCount, IMethod method)
+
+        protected CodeAssignStatement AssignParameterToDictionary(IParameter param, int parameterCount, IMethod method)
         {
             method.ThrowIfNull("method");
 
-            var assign = new CodeAssignStatement ();
-            assign.Left = new CodeArrayIndexerExpression (new CodeVariableReferenceExpression (ParameterDictionaryName), new CodePrimitiveExpression (param.Name));
-            
-            assign.Right = new CodeVariableReferenceExpression (GeneratorUtils.GetParameterName (param, parameterCount, method.Parameters.Keys));
+            var assign = new CodeAssignStatement();
+            assign.Left = new CodeArrayIndexerExpression(
+                new CodeVariableReferenceExpression(ParameterDictionaryName), new CodePrimitiveExpression(param.Name));
+
+            assign.Right =
+                new CodeVariableReferenceExpression(
+                    GeneratorUtils.GetParameterName(param, parameterCount, method.Parameters.Keys));
             return assign;
         }
-  
+
         protected virtual CodeExpression GetBodyAsString(IMethod method)
         {
-            return new CodeVariableReferenceExpression ("body");
+            return new CodeVariableReferenceExpression("body");
         }
-        
+
         /// <summary>
         /// this.service.ExecuteRequest(...);
         /// </summary>
         protected CodeMethodInvokeExpression CreateExecuteCall(IMethod method)
         {
-            var call = new CodeMethodInvokeExpression ();
-            
-            
-            call.Method = new CodeMethodReferenceExpression (
-                               new CodeFieldReferenceExpression (
-                                   new CodeThisReferenceExpression (), ServiceFieldName), 
-                               StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
-            
-            call.Parameters.Add (new CodeFieldReferenceExpression (new CodeTypeReferenceExpression (this.GetClassName ()), ResourceNameConst));
-            call.Parameters.Add (new CodePrimitiveExpression (method.Name));
-            call.Parameters.Add (GetBodyAsString(method));
-            call.Parameters.Add (new CodeVariableReferenceExpression (ParameterDictionaryName));
+            var call = new CodeMethodInvokeExpression();
+
+
+            call.Method =
+                new CodeMethodReferenceExpression(
+                    new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
+                    StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
+
+            call.Parameters.Add(
+                new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(GetClassName()), ResourceNameConst));
+            call.Parameters.Add(new CodePrimitiveExpression(method.Name));
+            call.Parameters.Add(GetBodyAsString(method));
+            call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
             return call;
         }
-        
+
         /// <summary>
         /// ret = this.service.ExecuteRequest(...);
         /// </summary>
-        protected virtual CodeStatement CreateExecuteRequest (IMethod method)
+        protected virtual CodeStatement CreateExecuteRequest(IMethod method)
         {
             var call = CreateExecuteCall(method);
-            
-            var assign = new CodeVariableDeclarationStatement (typeof(System.IO.Stream), ReturnVariableName, call);
-            
+
+            var assign = new CodeVariableDeclarationStatement(typeof(Stream), ReturnVariableName, call);
+
             return assign;
         }
 
-        protected abstract string GetClassName ();
+        protected abstract string GetClassName();
     }
 }

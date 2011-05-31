@@ -13,64 +13,54 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
-
-using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Tests.Generator;
-    
+
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests for the StandardPropertyDecorator
+    /// </summary>
+    [TestFixture]
     public class StandardPropertyDecoratorTest
     {
-        [Test()]
-        public void ConstructorTest ()
+        /// <summary>
+        /// Test if the constructor succeeds
+        /// </summary>
+        [Test]
+        public void ConstructorTest()
         {
             Assert.DoesNotThrow(() => new StandardPropertyDecorator());
         }
-        
-        [Test()]
-        public void DecoratClassTest ()
+
+        /// <summary>
+        /// Tests if the class decorator validates inputs
+        /// </summary>
+        [Test]
+        public void DecorateClassTest()
         {
             var decorator = new StandardPropertyDecorator();
             var declaration = new CodeTypeDeclaration();
             var schema = new MockSchema();
             var internalClassProvider = new ObjectInternalClassProvider();
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(null, schema, internalClassProvider));
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, null, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.DecorateClass(null, schema, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, null, internalClassProvider));
             Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, schema, null));
         }
-        
-        [Test()]
-        public void GenerateAllPropertiesTestEdgeCases()
-        {
-            var decorator = new StandardPropertyDecorator();
-            var internalClassProvider = new ObjectInternalClassProvider();
-            string name = "test";
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(name, null, internalClassProvider));
-            
-            var schema = new MockSchema();
-            schema.Name = "test";
-            schema.SchemaDetails = null;
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider));
-            
-            
-            schema.SchemaDetails = new JsonSchema();
-            schema.SchemaDetails.Properties = null;
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.GenerateAllProperties(null, schema.SchemaDetails, internalClassProvider));
-            var expectedEmpty = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
-            Assert.IsNotNull(expectedEmpty);
-            Assert.AreEqual(0, expectedEmpty.Count);
-        }
-        
-        [Test()]
-        public void GenerateAllPropertiesTest ()
+
+        /// <summary>
+        /// Tests the GenerateAllProperties method
+        /// </summary>
+        [Test]
+        public void GenerateAllPropertiesTest()
         {
             var schema = new MockSchema();
             var internalClassProvider = new ObjectInternalClassProvider();
@@ -78,8 +68,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails.Type = JsonSchemaType.Object;
             schema.SchemaDetails.Properties = new Dictionary<string, JsonSchema>();
             string name = "test";
-            
-            foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
+
+            foreach (var pair in StandardPropertyFieldDecoratorTest.NamesToType)
             {
                 JsonSchema property = new JsonSchema();
                 property.Type = pair.Value;
@@ -87,27 +77,60 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 property.Description = StandardPropertyFieldDecoratorTest.NamesToDescription[pair.Key];
                 schema.SchemaDetails.Properties.Add(pair.Key, property);
             }
-            
+
             var decorator = new StandardPropertyDecorator();
-            IList<CodeMemberProperty> generatedProperties = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
-            
+            IList<CodeMemberProperty> generatedProperties = decorator.GenerateAllProperties(
+                name, schema.SchemaDetails, internalClassProvider);
+
             Assert.NotNull(generatedProperties);
             Assert.AreEqual(StandardPropertyFieldDecoratorTest.NamesToType.Count, generatedProperties.Count);
-            foreach(var field in generatedProperties)
+            foreach (var field in generatedProperties)
             {
-                Assert.That(StandardPropertyFieldDecoratorTest.NamesToType.ContainsKey(field.Name.ToLower()), 
-                            "field name was not present in namesToType " + field.Name);                
+                Assert.That(
+                    StandardPropertyFieldDecoratorTest.NamesToType.ContainsKey(field.Name.ToLower()),
+                    "field name was not present in namesToType " + field.Name);
             }
-            
+
             int item = 0;
-            foreach(var pair in StandardPropertyFieldDecoratorTest.NamesToType)
+            foreach (var pair in StandardPropertyFieldDecoratorTest.NamesToType)
             {
                 var field = generatedProperties[item++];
-                Assert.AreEqual(pair.Key, field.Name.ToLower(), string.Format("Name different for expected at index {0}", item -1));
-                Assert.AreEqual(SchemaDecoratorUtil.GetCodeType(new JsonSchema(){Type = pair.Value}, internalClassProvider).BaseType, 
-                                field.Type.BaseType);
+                Assert.AreEqual(
+                    pair.Key, field.Name.ToLower(), string.Format("Name different for expected at index {0}", item - 1));
+                Assert.AreEqual(
+                    SchemaDecoratorUtil.GetCodeType(new JsonSchema { Type = pair.Value }, internalClassProvider).
+                        BaseType, field.Type.BaseType);
             }
+        }
+
+        /// <summary>
+        /// Tests edge cases for the generate all properties method
+        /// </summary>
+        [Test]
+        public void GenerateAllPropertiesTestEdgeCases()
+        {
+            var decorator = new StandardPropertyDecorator();
+            var internalClassProvider = new ObjectInternalClassProvider();
+            string name = "test";
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.GenerateAllProperties(name, null, internalClassProvider));
+
+            var schema = new MockSchema();
+            schema.Name = "test";
+            schema.SchemaDetails = null;
+            Assert.Throws(
+                typeof(ArgumentNullException),
+                () => decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider));
+
+
+            schema.SchemaDetails = new JsonSchema();
+            schema.SchemaDetails.Properties = null;
+            Assert.Throws(
+                typeof(ArgumentNullException),
+                () => decorator.GenerateAllProperties(null, schema.SchemaDetails, internalClassProvider));
+            var expectedEmpty = decorator.GenerateAllProperties(name, schema.SchemaDetails, internalClassProvider);
+            Assert.IsNotNull(expectedEmpty);
+            Assert.AreEqual(0, expectedEmpty.Count);
         }
     }
 }
-
