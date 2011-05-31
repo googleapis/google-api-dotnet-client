@@ -20,6 +20,7 @@ using System.CodeDom;
 using System.Linq;
 
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
@@ -44,15 +45,16 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             switch (method.HttpMethod)
             {
-            case "GET":
-            case "DELETE":
+            case Request.GET:
+            case Request.DELETE:
                 // string body = null;
                 var bodyVarDeclaration = new CodeVariableDeclarationStatement (bodyType, "body");
                 bodyVarDeclaration.InitExpression = new CodePrimitiveExpression (null);
                 member.Statements.Add (bodyVarDeclaration);
                 break;
-            case "PUT":
-            case "POST":
+            case Request.PUT:
+            case Request.POST:
+            case Request.PATCH:
                 // add body Parameter
                 member.Parameters.Add (new CodeParameterDeclarationExpression (bodyType, "body"));
                 break;
