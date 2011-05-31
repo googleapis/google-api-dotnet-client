@@ -28,7 +28,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     public class CachedWebDiscoveryDevice : IDiscoveryDevice
     {
-        private const int BufferSize = 32*1024; // 32kb
+        private const int BufferSize = 32 * 1024; // 32kb
         private static readonly ILog logger = LogManager.GetLogger(typeof (CachedWebDiscoveryDevice));
 
         private FileStream fileStream;
@@ -181,7 +181,7 @@ namespace Google.Apis.Discovery
                     // If we have a working cached file, we can still return it
                     if (cachedFile.Exists)
                     {
-                        logger.Warn(string.Format("Failed to refetch an outdated cache document [{0}]"+
+                        logger.Warn(string.Format("Failed to refetch an outdated cache document [{0}]" +
                                                   " - Using cached document. Exception: {1}",
                                                   DiscoveryUri, ex.Message), ex);
 
