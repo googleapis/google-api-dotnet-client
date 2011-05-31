@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "..\Src\Google
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "..\Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceGenerator", "ServiceGenerator\ServiceGenerator.csproj", "{539CFFAA-70D1-4620-B717-DFF5081819D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdServiceGenerator", "ServiceGenerator\CmdServiceGenerator.csproj", "{539CFFAA-70D1-4620-B717-DFF5081819D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleHelper", "SampleHelper\SampleHelper.csproj", "{08079AFF-9A91-4387-8792-C731D18D4373}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{AEC328B8-E2D4-4C8B-AB23-D1D360AD40EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdUrlShortener", "CmdUrlShortener\CmdUrlShortener.csproj", "{7FA90B5E-2146-49BF-8ED9-E35E05A52020}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,16 @@ Global
 		{AEC328B8-E2D4-4C8B-AB23-D1D360AD40EF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{AEC328B8-E2D4-4C8B-AB23-D1D360AD40EF}.Release|x86.ActiveCfg = Release|x86
 		{AEC328B8-E2D4-4C8B-AB23-D1D360AD40EF}.Release|x86.Build.0 = Release|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Debug|x86.ActiveCfg = Debug|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Debug|x86.Build.0 = Debug|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Release|Any CPU.ActiveCfg = Release|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Release|x86.ActiveCfg = Release|x86
+		{7FA90B5E-2146-49BF-8ED9-E35E05A52020}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

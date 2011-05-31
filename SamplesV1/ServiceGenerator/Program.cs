@@ -18,7 +18,7 @@ using System.ComponentModel;
 using Google.Apis.Samples.Helper;
 using Google.Apis.Tools.CodeGen;
 
-namespace Google.Apis.Samples.ServiceGenerator
+namespace Google.Apis.Samples.CmdServiceGenerator
 {
     /// <summary>
     /// This example is a command line service generator, which uses discovery and the CodeGen library
@@ -56,7 +56,7 @@ namespace Google.Apis.Samples.ServiceGenerator
                                   : CommandLine.CreateClassFromUserinput<ServiceDescription>();
 
 
-            //todo: work on the naming schema
+            // todo: work on the naming schema
             string fileName = string.Format("{0}.{1}.cs", description.ServiceName,
                                             description.ServiceVersion);
 

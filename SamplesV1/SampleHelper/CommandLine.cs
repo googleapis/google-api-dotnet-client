@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Reflection;
+using Google.Apis.Util;
 
 namespace Google.Apis.Samples.Helper
 {
@@ -41,28 +42,12 @@ namespace Google.Apis.Samples.Helper
             // Fill in parameters
             foreach (FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
             {
-                do
-                {
-                    Write("   ^1{0} [^2{1}^1]: ^9",
-                          Reflection.GetDescriptiveName(field),
-                          field.GetValue(settings));
+                object value = field.GetValue(settings);
 
-                    string input = Console.ReadLine();
+                // Let the user input a value
+                RequestUserInput(Reflection.GetDescriptiveName(field), ref value, field.FieldType);
 
-                    if (string.IsNullOrEmpty(input))
-                        break; // Stick with the default value
-
-                    try
-                    {
-                        object convertedInput = Convert.ChangeType(input, field.FieldType);
-                        field.SetValue(settings, convertedInput);
-                        break;
-                    }
-                    catch (InvalidCastException)
-                    {
-                        WriteLine("^6Please enter a valid value!");
-                    }
-                } while (true); // Re-run the action until the user enters a valid input
+                field.SetValue(settings, value);
             }
 
             WriteLine();
@@ -70,10 +55,55 @@ namespace Google.Apis.Samples.Helper
         }
     
         /// <summary>
+        /// Requests an user input for the specified value
+        /// </summary>
+        /// <param name="name">Name to display</param>
+        /// <param name="value">Default value, and target value</param>
+        public static void RequestUserInput<T>(string name, ref T value)
+        {
+            object val = value;
+            RequestUserInput(name, ref val, typeof(T));
+            value = (T) val;
+        }
+
+        /// <summary>
+        /// Requests an user input for the specified value
+        /// </summary>
+        /// <param name="name">Name to display</param>
+        /// <param name="value">Default value, and target value</param>
+        /// <param name="valueType">Type of the target value</param>
+        private static void RequestUserInput(string name, ref object value, Type valueType)
+        {
+            do
+            {
+                Write("   ^1{0} [^2{1}^1]: ^9", name, value);
+
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    return; // No change required
+                }
+
+                try
+                {
+                    value = Convert.ChangeType(input, valueType);
+                    return;
+                }
+                catch (InvalidCastException)
+                {
+                    WriteLine(" ^6Please enter a valid value!");
+                }
+            } while (true); // Run this loop until the user gives a valid input
+        }
+
+        /// <summary>
         /// Displays the Google Sample Header
         /// </summary>
         public static void DisplayGoogleSampleHeader(string applicationName)
         {
+            applicationName.ThrowIfNull("applicationName");
+
             WriteLine(@"^3   ___  ^6     ^8     ^3      ^4 _  ^6    ");
             WriteLine(@"^3  / __| ^6 ___ ^8 ___ ^3 __ _ ^4| | ^6 __  ");
             WriteLine(@"^3 | (_ \ ^6/ _ \^8/ _ \^3/ _` |^4| | ^6/-_) ");
@@ -93,6 +123,70 @@ namespace Google.Apis.Samples.Helper
             WriteLine();
             WriteLine("^8 Press any key to exit");
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Gives the user a choice of options to choose from
+        /// </summary>
+        /// <param name="question">The question which should be asked</param>
+        /// <param name="choices">All possible choices</param>
+        public static void RequestUserChoice(string question, params UserOption[] choices)
+        {
+            // Validate parameters
+            question.ThrowIfNullOrEmpty("question");
+            choices.ThrowIfNullOrEmpty("choices");
+
+            // Show the question
+            WriteLine(" ^9{0}", question);
+
+            // Display all choices
+            int i = 1;
+
+            foreach (UserOption option in choices)
+            {
+                WriteLine("   ^8{0}.)^9 {1}", i++, option.Name);
+            }
+
+            WriteLine();
+
+            // Request user input
+            UserOption choice = null;
+
+            do
+            {
+                Write(" ^1Please pick an option: ^9");
+                string input = Console.ReadLine();
+
+                // Check if this is a valid choice
+                uint num;
+
+                if (uint.TryParse(input, out num) && num > 0 && choices.Length >= num)
+                {
+                    // It is a number
+                    choice = choices[num - 1];
+                }
+                else
+                {
+                    // Check if the user typed in the keyword
+                    foreach (UserOption option in choices)
+                    {
+                        if (String.Equals(option.Name, input, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            choice = option;
+                            break; // Valid choice
+                        }
+                    }
+                }
+
+                if (choice == null)
+                {
+                    WriteLine(" ^6Please pick one of the options displayed above!");
+                }    
+             
+            } while (choice == null);
+
+            // Execute the option the user picked
+            choice.Target();
         }
 
         /// <summary>

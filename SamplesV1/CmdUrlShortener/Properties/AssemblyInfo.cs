@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ServiceGenerator")]
-[assembly: AssemblyDescription("Google API Service Generator")]
+[assembly: AssemblyTitle("CmdUrlShortener")]
+[assembly: AssemblyDescription("URL Shortener Sample")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
-[assembly: AssemblyProduct("ServiceGenerator")]
+[assembly: AssemblyProduct("CmdUrlShortener")]
 [assembly: AssemblyCopyright("© 2011 Google Inc")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0eace2e2-320b-4fe7-a447-a61ae46be849")]
+[assembly: Guid("b4e58c0f-6600-4d38-b92a-97149c9ec01a")]
 
 // Version information for an assembly consists of the following four values:
 //
