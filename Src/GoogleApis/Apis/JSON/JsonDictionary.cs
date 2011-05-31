@@ -25,8 +25,7 @@ namespace Google.Apis.Json
     public class JsonDictionary : Dictionary<string, object>
     {
         /// <summary>
-        /// Returns the value from the dictionary, or
-        /// or, if not set, throws an ArgumentException
+        /// Returns the value from the dictionary, or, if not set, throws an ArgumentException
         /// </summary>
         public object GetMandatoryValue(string key)
         {
@@ -52,7 +51,7 @@ namespace Google.Apis.Json
             if (!(val is T))
             {
                 throw new ArgumentException(
-                    string.Format("The type[{1}] of the value of '{0}' is not of the expected type[{2}]",
+                    string.Format("The type \"{1}\" of the value of \"{0}\" is not of the expected type \"{2}\"",
                                   val.GetType(),
                                   key,
                                   typeof (T)));
