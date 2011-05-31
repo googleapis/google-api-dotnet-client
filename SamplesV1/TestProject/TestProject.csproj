@@ -37,10 +37,10 @@
       <HintPath>..\..\..\default\Src\GoogleApis\bin\Release\Google.Apis.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\Lib\log4net.dll</HintPath>
+      <HintPath>..\..\Third Party\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
-      <HintPath>..\Lib\Newtonsoft.Json.Net35.dll</HintPath>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
