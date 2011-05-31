@@ -34,24 +34,41 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
+        private const string UserAgent = "{0} google-api-dotnet-client/{1}";
+        private const string GZipUserAgentSuffix = " (gzip)";
+        private const string GZipEncoding = "gzip";
+
         private static readonly String ApiVersion = typeof (Request).Assembly.GetName().Version.ToString();
 
+        /// <summary>
+        /// The authenticator used for this request
+        /// </summary>
         internal IAuthenticator Authenticator { get; private set; }
+
+        /// <summary>
+        /// The name of the application making the request. Affects the User Agent of this client. 
+        /// </summary>
+        internal String AppName { get; private set; }
+        
+        /// <summary>
+        /// The developer API Key sent along with the request
+        /// </summary>
+        internal String DeveloperKey { get; private set; }
+
+        /// <summary>
+        /// Set of method parameters
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IDictionary<string, string> Parameters { get; set; }
+
         private IService Service { get; set; }
         private IMethod Method { get; set; }
         private Uri BaseURI { get; set; }
         private string RPCName { get; set; } // note: this property is apparently never used
         private string Body { get; set; }
-        private Uri RequestUrl;
         private ReturnType ReturnType { get; set; }
-        internal String AppName { get; private set; }
-        internal String DeveloperKey { get; private set; }
-
-        [VisibleForTestOnly]
-        internal IDictionary<string, string> Parameters { get; set; }
-
-        private const string UserAgent = "{0} google-api-dotnet-client/{1}";
-        private const string GZipUserAgentSuffix = " (gzip)";
+        
+        private Uri requestUrl;
 
         public Request()
         {
@@ -76,7 +93,8 @@ namespace Google.Apis.Requests
                     return new DELETERequest { Service = service, Method = method, BaseURI = service.BaseUri };
             }
 
-            return null; // Should throw an exception.
+            throw new ArgumentOutOfRangeException("method",
+                                                  string.Format("Unknown HTTP method \"{0}\"", method.HttpMethod));
         }
 
         /// <summary>
@@ -118,7 +136,8 @@ namespace Google.Apis.Requests
         /// </returns>
         public IRequest WithParameters(IDictionary<string, object> parameters)
         {
-            return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
+            return WithParameters(parameters.ToDictionary(
+                k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
         }
 
 
@@ -130,29 +149,16 @@ namespace Google.Apis.Requests
         /// </returns>
         public IRequest WithParameters(IDictionary<string, string> parameters)
         {
-            // Convert the parameters
-
             Parameters = parameters;
             return this;
         }
 
         /// <summary>
-        /// Adds the parameters which are URL encoded to the request
+        /// Adds a set of URL encoded parameters to the request
         /// </summary>
         public IRequest WithParameters(string parameters)
         {
-            // Check to ensure that the 
             Parameters = Utilities.QueryStringToDictionary(parameters);
-            return this;
-        }
-
-        /// <summary>
-        /// Adds the parameters provided to the body of the request
-        /// </summary>
-        public IRequest WithBody(IDictionary<string, string> parameters)
-        {
-            // Check to ensure that the 
-            Body = parameters.ToString();
             return this;
         }
 
@@ -161,7 +167,6 @@ namespace Google.Apis.Requests
         /// </summary>
         public IRequest WithBody(string body)
         {
-            // Check to ensure that the 
             Body = body;
             return this;
         }
@@ -183,11 +188,14 @@ namespace Google.Apis.Requests
         /// </summary>
         public IRequest WithAuthentication(IAuthenticator authenticator)
         {
+            authenticator.ThrowIfNull("Authenticator");
             Authenticator = authenticator;
-            // Check to ensure that the 
             return this;
         }
 
+        /// <summary>
+        /// Adds the developer key to this request
+        /// </summary>
         public IRequest WithDeveloperKey(string key)
         {
             DeveloperKey = key;
@@ -203,14 +211,7 @@ namespace Google.Apis.Requests
             string restPath = Method.RestPath;
             var queryParams = new List<string>();
 
-            if (ReturnType == ReturnType.Json)
-            {
-                queryParams.Add("alt=json");
-            }
-            else
-            {
-                queryParams.Add("alt=atom");
-            }
+            queryParams.Add(ReturnType == ReturnType.Json ? "alt=json" : "alt=atom");
 
             if (DeveloperKey.IsNotNullOrEmpty())
             {
@@ -247,8 +248,8 @@ namespace Google.Apis.Requests
                 }
             }
 
+            // URL encode the parameters and append them to the URI
             string path = restPath;
-
             if (queryParams.Count > 0)
             {
                 path += "?" + String.Join("&", queryParams.ToArray());
@@ -256,6 +257,61 @@ namespace Google.Apis.Requests
 
 
             return new Uri(BaseURI, path);
+        }
+
+        private static string GetReturnMimeType(ReturnType returnType)
+        {
+            switch (returnType)
+            {
+                case ReturnType.Atom:
+                    return "application/atom+xml";
+                case ReturnType.Json:
+                    return "application/json";
+                default:
+                    throw new ArgumentOutOfRangeException("returnType", returnType, "Unknown return type"); 
+            }
+        }
+
+        private HttpWebRequest CreateRequest()
+        {
+            // Formulate the RequestUrl
+            requestUrl = BuildRequestUrl();
+
+            // Create the request
+            HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, requestUrl);
+
+            // Insert the content type and user agent
+            request.ContentType = GetReturnMimeType(ReturnType);
+            request.UserAgent = String.Format(UserAgent, AppName, ApiVersion);
+
+            // Check if compression is supported
+            if (Service.GZipEnabled)
+            {
+                request.UserAgent += GZipUserAgentSuffix;
+                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            }
+
+            return request;
+        }
+
+        private void AttachBody(HttpWebRequest request)
+        {
+            Stream bodyStream = request.GetRequestStream();
+
+            // If enabled: Encapsulate in GZipStream
+            if (Service.GZipEnabled) 
+            {
+                // Change the content encoding and apply a gzip filter
+                request.Headers.Add(HttpRequestHeader.ContentEncoding, GZipEncoding);
+                bodyStream = new GZipStream(bodyStream, CompressionMode.Compress);
+            }
+
+            // Write data into the stream
+            using (bodyStream)
+            {
+                byte[] postBody = Encoding.ASCII.GetBytes(Body);
+                bodyStream.Write(postBody, 0, postBody.Length);
+            }
         }
 
 
@@ -267,65 +323,23 @@ namespace Google.Apis.Requests
         /// </returns>
         public Stream ExecuteRequest()
         {
+            // Validate the input
             var validator = new MethodValidator(Method, Parameters);
-
-
             if (validator.ValidateAllParameters() == false)
             {
                 return Stream.Null;
             }
 
-            // Formulate the RequestUrl
-            RequestUrl = BuildRequestUrl();
-
-            HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, RequestUrl);
-
-            if (ReturnType == ReturnType.Json)
-            {
-                //All requests are JSON.
-                request.ContentType = "application/json";
-            }
-            else
-            {
-                request.ContentType = "application/atom+xml";
-            }
-
-            request.UserAgent = String.Format(UserAgent, AppName, ApiVersion);
-
-            // Check if compression is supported
-            if (Service.GZipEnabled)
-            {
-                request.UserAgent += GZipUserAgentSuffix;
-                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            }
+            // Create the request
+            HttpWebRequest request = CreateRequest();
 
             // Attach a body if a POST and there is something to attach.
             if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
             {
-                // The anonymous method used to post the Body to the stream
-                var writeToStream = new Action<Stream>(
-                    stream =>
-                        {
-                            byte[] postBody = Encoding.ASCII.GetBytes(Body);
-                            stream.Write(postBody, 0, postBody.Length);
-                        });
-
-                // Execute the anonymous method on the proper stream
-                using (Stream bodyStream = request.GetRequestStream())
-                {
-                    if (Service.GZipEnabled) // GZip stream
-                    {
-                        // Change the content encoding
-                        request.Headers.Add(HttpRequestHeader.ContentEncoding, "gzip");
-
-                        using (Stream zipStream = new GZipStream(bodyStream, CompressionMode.Compress))
-                            writeToStream(zipStream);
-                    }
-                    else // Normal stream
-                        writeToStream(bodyStream);
-                }
+                AttachBody(request);
             }
 
+            // Execute the request
             try
             {
                 var response = (HttpWebResponse) request.GetResponse();
@@ -337,6 +351,7 @@ namespace Google.Apis.Requests
                 {
                     return ex.Response.GetResponseStream();
                 }
+
                 // The exception is not something the client can handle via a stream.
                 throw;
             }

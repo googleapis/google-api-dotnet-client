@@ -189,7 +189,7 @@ namespace Google.Apis.Discovery
             return new ResourceV1_0(this.DiscoveryVersion, kvp);
         }
 
-        public virtual bool GZipEnabled { get; set; }
+        public bool GZipEnabled { get; set; }
     }
     
     #endregion
