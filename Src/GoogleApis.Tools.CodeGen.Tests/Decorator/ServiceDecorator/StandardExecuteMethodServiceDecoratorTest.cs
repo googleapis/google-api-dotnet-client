@@ -15,18 +15,22 @@ limitations under the License.
 */
 
 using System.CodeDom;
-
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
+    /// <summary>
+    /// Tests for the StandardExecuteMethodServiceDecorator class
+    /// </summary>
     [TestFixture]
     public class StandardExecuteMethodServiceDecoratorTest : BaseServiceDecoratorTest
     {
+        /// <summary>
+        /// Tests if the DeveloperKey
+        /// </summary>
         [Test]
         public void CreateWithDeveloperKeyTest()
         {
@@ -40,6 +44,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.That(result.FalseStatements.Count, Is.EqualTo(0));
         }
 
+        /// <summary>
+        /// Tests the CreateExecuteRequestMethod method for valid results
+        /// </summary>
         [Test]
         public void TestCreateExecuteRequestMethod()
         {
@@ -52,11 +59,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.AreEqual("System.String", method.Parameters[0].Type.BaseType);
             Assert.AreEqual("System.String", method.Parameters[1].Type.BaseType);
             Assert.AreEqual("System.String", method.Parameters[2].Type.BaseType);
-            Assert.That(method.Parameters[3].Type.BaseType.Contains("IDictionary"),
-                        "Base Type was " + method.Parameters[3].Type.BaseType);
+            Assert.That(
+                method.Parameters[3].Type.BaseType.Contains("IDictionary"),
+                "Base Type was " + method.Parameters[3].Type.BaseType);
             Assert.AreEqual("System.IO.Stream", method.ReturnType.BaseType);
         }
 
+        /// <summary>
+        /// Tests the class decorator
+        /// </summary>
         [Test]
         public void TestDecorateClass()
         {

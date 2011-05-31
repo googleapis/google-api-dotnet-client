@@ -14,17 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
-using System;
 using System.IO;
-using System.Collections.Generic;
+
 namespace Google.Apis.Requests
 {
-	public class POSTRequest : Request {
-		public Stream POST() {
-			// Perform the HTTP WebRequest.	
-			
-			return ExecuteRequest();
-		}
-	}
+    /// <summary>
+    /// A POST request
+    /// </summary>
+    public class POSTRequest : Request
+    {
+        /// <summary>
+        /// Executes the request
+        /// </summary>
+        /// <returns></returns>
+        public Stream POST()
+        {
+            // Perform the HTTP WebRequest.
+            return ExecuteRequest();
+        }
+    }
 }

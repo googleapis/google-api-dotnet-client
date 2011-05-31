@@ -14,10 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Testing;
@@ -45,15 +43,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// </summary>
     public class StandardConstructServiceDecorator : IServiceDecorator
     {
-        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
+        #region IServiceDecorator Members
+
+        public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
-            var baseConstructor = CreateConstructorWithArgs ();
-            
-            AddResourceAssignments (service, baseConstructor);
-            
-            serviceClass.Members.Add (baseConstructor);
+            var baseConstructor = CreateConstructorWithArgs();
+
+            AddResourceAssignments(service, baseConstructor);
+
+            serviceClass.Members.Add(baseConstructor);
         }
 
+        #endregion
 
         /// <summary>
         ///     Adds an assignment line for each Resource e.g.
@@ -62,12 +63,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         ///     </code>
         /// </summary>
         [VisibleForTestOnly]
-        internal void AddResourceAssignments (IService service, CodeMemberMethod baseConstructor)
+        internal void AddResourceAssignments(IService service, CodeMemberMethod baseConstructor)
         {
             int resourceNumber = 1;
             foreach (var resource in service.Resources.Values)
             {
-                AddResourceAssignment (baseConstructor, resource, resourceNumber, service.Resources.Keys);
+                AddResourceAssignment(baseConstructor, resource, resourceNumber, service.Resources.Keys);
                 resourceNumber++;
             }
         }
@@ -84,52 +85,56 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         ///     </code>
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructorWithArgs ()
+        internal CodeConstructor CreateConstructorWithArgs()
         {
-            var constructor = new CodeConstructor ();
+            var constructor = new CodeConstructor();
             constructor.Attributes = MemberAttributes.Public;
-            constructor.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IService), ServiceClassGenerator.GenericServiceName));
-            constructor.Parameters.Add (new CodeParameterDeclarationExpression (typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName));
-            
+            constructor.Parameters.Add(
+                new CodeParameterDeclarationExpression(typeof(IService), ServiceClassGenerator.GenericServiceName));
+            constructor.Parameters.Add(
+                new CodeParameterDeclarationExpression(typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName));
+
             {
-                var assignService = new CodeAssignStatement ();
+                var assignService = new CodeAssignStatement();
                 // this.genericService = 
-                assignService.Left = new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceClassGenerator.GenericServiceName);
+                assignService.Left = new CodeFieldReferenceExpression(
+                    new CodeThisReferenceExpression(), ServiceClassGenerator.GenericServiceName);
                 // generricService
-                assignService.Right = new CodeVariableReferenceExpression (ServiceClassGenerator.GenericServiceName);
-                
-                constructor.Statements.Add (assignService);
+                assignService.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.GenericServiceName);
+
+                constructor.Statements.Add(assignService);
             }
-            
+
             {
-                var assignAuthenticator = new CodeAssignStatement ();
+                var assignAuthenticator = new CodeAssignStatement();
                 // this.authenticator = 
-                assignAuthenticator.Left = new CodeFieldReferenceExpression (new CodeThisReferenceExpression (), ServiceClassGenerator.AuthenticatorName);
+                assignAuthenticator.Left = new CodeFieldReferenceExpression(
+                    new CodeThisReferenceExpression(), ServiceClassGenerator.AuthenticatorName);
                 // authenticator
-                assignAuthenticator.Right = new CodeVariableReferenceExpression (ServiceClassGenerator.AuthenticatorName);
-                
-                constructor.Statements.Add (assignAuthenticator);
+                assignAuthenticator.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName);
+
+                constructor.Statements.Add(assignAuthenticator);
             }
-            
+
             return constructor;
         }
 
-        private void AddResourceAssignment (
-            CodeMemberMethod constructor, IResource resource, int resourceNumber, IEnumerable<string> otherResourceNames)
+        private void AddResourceAssignment(CodeMemberMethod constructor,
+                                           IResource resource,
+                                           int resourceNumber,
+                                           IEnumerable<string> otherResourceNames)
         {
-            constructor.Statements.Add (
-                new CodeAssignStatement (
-                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber, otherResourceNames), 
-                    new CodeObjectCreateExpression (
-                        GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames), 
-                        new CodeThisReferenceExpression ())));
+            constructor.Statements.Add(
+                new CodeAssignStatement(
+                    ServiceClassGenerator.GetFieldReference(resource, resourceNumber, otherResourceNames),
+                    new CodeObjectCreateExpression(
+                        GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames),
+                        new CodeThisReferenceExpression())));
         }
-        
-        public override string ToString ()
+
+        public override string ToString()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
-        
     }
 }
-

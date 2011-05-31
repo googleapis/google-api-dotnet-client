@@ -14,10 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -31,37 +29,43 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardResourceNameResourceDecorator : IResourceDecorator
     {
-        public void DecorateClass (IResource resource, string className, 
-                                   CodeTypeDeclaration resourceClass, ResourceClassGenerator generator, 
-                                   string serviceClassName, IEnumerable<IResourceDecorator> allDecorators)
+        #region IResourceDecorator Members
+
+        public void DecorateClass(IResource resource,
+                                  string className,
+                                  CodeTypeDeclaration resourceClass,
+                                  ResourceClassGenerator generator,
+                                  string serviceClassName,
+                                  IEnumerable<IResourceDecorator> allDecorators)
         {
             resourceClass.Members.Add(CreateResourceNameConst(resource.Name));
         }
 
 
-        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             //NoOp
         }
 
 
-        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             //NoOp
         }
+
+        #endregion
 
         /// <summary>
         /// Adds <code>private const string Resource = "activities";</code> to the resource class
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeMemberField CreateResourceNameConst (string resourceName)
+        internal CodeMemberField CreateResourceNameConst(string resourceName)
         {
-            var serviceField = new CodeMemberField (typeof(string), ResourceBaseGenerator.ResourceNameConst);
+            var serviceField = new CodeMemberField(typeof(string), ResourceBaseGenerator.ResourceNameConst);
             serviceField.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            serviceField.InitExpression = new CodePrimitiveExpression (resourceName);
-            
+            serviceField.InitExpression = new CodePrimitiveExpression(resourceName);
+
             return serviceField;
         }
     }
 }
-

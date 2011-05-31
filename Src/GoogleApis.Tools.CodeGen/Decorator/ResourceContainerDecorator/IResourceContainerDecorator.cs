@@ -13,9 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.CodeDom;
 
+using System.CodeDom;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
@@ -32,6 +31,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
         /// <summary>
         /// Adds code to the containerClass based on the definitions contained in the resourceContainer.
         /// </summary>
-        void DecorateClass (IResourceContainer service, CodeTypeDeclaration containerClass);
+        void DecorateClass(IResourceContainer service, CodeTypeDeclaration containerClass);
     }
 }

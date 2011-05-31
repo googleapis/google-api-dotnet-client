@@ -15,55 +15,29 @@ limitations under the License.
 */
 
 using System;
-using System.CodeDom;
-
 using NUnit.Framework;
 using Newtonsoft.Json.Schema;
-
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
-using Google.Apis.Discovery.Schema;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests for the StandardSchemaCommentDecorator class
+    /// </summary>
+    [TestFixture]
     public class StandardSchemaCommentDecoratorTest
     {
-        [Test()]
-        public void TestCreateCommentArgumentChecking ()
-        {
-            var decorator = new StandardSchemaCommentDecorator();
-            
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.CreateComment(null));
-        }
-        
-        [Test()]
-        public void TestCreateComment_emptyComment()
-        {
-            var decorator = new StandardSchemaCommentDecorator();
-            
-            var schema = new JsonSchema();
-            schema.Description = null;
-            var result = decorator.CreateComment(schema);
-            // When called with a schmea that has no Description we should return an empty collection.
-            Assert.IsNotNull(result);
-            Assert.IsEmpty(result);
-            
-            schema.Description = "";
-            result = decorator.CreateComment(schema);
-            // When called with a schmea that has an empty Description we should return an empty collection.
-            Assert.IsNotNull(result);
-            Assert.IsEmpty(result);
-        }
-        
-        [Test()]
+        /// <summary>
+        /// Tests the creation of a simple comment
+        /// </summary>
+        [Test]
         public void TestCreateComment()
         {
             string aShortDescription = "A Short description for test";
             var decorator = new StandardSchemaCommentDecorator();
             var schema = new JsonSchema();
             schema.Description = aShortDescription;
-            
+
             var result = decorator.CreateComment(schema);
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count);
@@ -71,17 +45,54 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.AreEqual(true, result[0].Comment.DocComment);
             Assert.AreEqual("<summary>" + aShortDescription + "</summary>", result[0].Comment.Text);
         }
-        
-        [Test()]
+
+        /// <summary>
+        /// Tests if the CreateComment checks for valid inputs
+        /// </summary>
+        [Test]
+        public void TestCreateCommentArgumentChecking()
+        {
+            var decorator = new StandardSchemaCommentDecorator();
+
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.CreateComment(null));
+        }
+
+        /// <summary>
+        /// Checks if empty comments can be created
+        /// </summary>
+        [Test]
+        public void TestCreateComment_emptyComment()
+        {
+            var decorator = new StandardSchemaCommentDecorator();
+
+            var schema = new JsonSchema();
+            schema.Description = null;
+            var result = decorator.CreateComment(schema);
+            // When called with a schmea that has no Description we should return an empty collection.
+            Assert.IsNotNull(result);
+            Assert.IsEmpty(result);
+
+            schema.Description = "";
+            result = decorator.CreateComment(schema);
+            // When called with a schmea that has an empty Description we should return an empty collection.
+            Assert.IsNotNull(result);
+            Assert.IsEmpty(result);
+        }
+
+        /// <summary>
+        /// Checks if xml escapes are done on non-compilant xml strings
+        /// </summary>
+        [Test]
         public void TestCreateComment_xmlEscape()
         {
             string aShortDescription = "A 'Short\" <description> <for/> test & fun";
             var decorator = new StandardSchemaCommentDecorator();
             var schema = new JsonSchema();
             schema.Description = aShortDescription;
-            
+
             var result = decorator.CreateComment(schema);
-            string desiredComment = "<summary>A &apos;Short&quot; &lt;description&gt; &lt;for/&gt; test &amp; fun</summary>";
+            string desiredComment =
+                "<summary>A &apos;Short&quot; &lt;description&gt; &lt;for/&gt; test &amp; fun</summary>";
             Assert.AreEqual(desiredComment, result[0].Comment.Text);
         }
     }

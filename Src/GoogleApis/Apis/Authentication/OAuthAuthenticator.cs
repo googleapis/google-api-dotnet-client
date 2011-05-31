@@ -14,25 +14,28 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.IO;
-using System.Collections;
-using System.Text;
-using System.Net;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-
 namespace Google.Apis.Authentication
 {
+    /// <summary>
+    /// The abstract class used for all OAuth authenticators
+    /// </summary>
     public abstract class OAuthAuthenticator : Authenticator
     {
-        public string ConsumerKey { get; private set; }
-        public string ConsumerSecret { get; private set; }
-
-        public OAuthAuthenticator (string applicationName, string consumerKey, string consumerSecret) : base(applicationName)
+        protected OAuthAuthenticator(string applicationName, string consumerKey, string consumerSecret)
+            : base(applicationName)
         {
-            this.ConsumerKey = consumerKey;
-            this.ConsumerSecret = consumerSecret;
+            ConsumerKey = consumerKey;
+            ConsumerSecret = consumerSecret;
         }
+
+        /// <summary>
+        /// The Consumer Key of OAuth
+        /// </summary>
+        public string ConsumerKey { get; private set; }
+
+        /// <summary>
+        /// The Consumer Secret of OAuth
+        /// </summary>
+        public string ConsumerSecret { get; private set; }
     }
 }

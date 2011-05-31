@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
+
 namespace Google.Apis.Authentication
 {
     /// <summary>
@@ -25,13 +26,21 @@ namespace Google.Apis.Authentication
     /// <seealso cref="IAuthenticator"/> 
     public class AuthenticatorFactory
     {
-        private static readonly AuthenticatorFactory instance = new AuthenticatorFactory ();
+        #region Delegates
 
-        private CreateAuthenticator authenticatorCreator = null;
+        public delegate IAuthenticator CreateAuthenticator();
 
-        public delegate IAuthenticator CreateAuthenticator ();
+        #endregion
 
-        public static AuthenticatorFactory GetInstance ()
+        private static readonly AuthenticatorFactory instance = new AuthenticatorFactory();
+
+        private CreateAuthenticator authenticatorCreator;
+
+        /// <summary>
+        /// Returns the default instance of this factory
+        /// </summary>
+        /// <returns></returns>
+        public static AuthenticatorFactory GetInstance()
         {
             return instance;
         }
@@ -47,23 +56,27 @@ namespace Google.Apis.Authentication
         ///         AuthenticatorFactory.GetInstance().RegisterAuthenticator(delegate(){return new YourAuthenticator()});
         ///     </code>
         /// </example>
-        public void RegisterAuthenticator (CreateAuthenticator authenticatorCreator)
+        public void RegisterAuthenticator(CreateAuthenticator authenticatorCreator)
         {
             if (authenticatorCreator == null)
             {
-                throw new ArgumentNullException ("authenticatorCreator");
+                throw new ArgumentNullException("authenticatorCreator");
             }
             this.authenticatorCreator = authenticatorCreator;
         }
 
-        public IAuthenticator GetRegisteredAuthenticator ()
+        /// <summary>
+        /// Returns the currently registered authenticator
+        /// </summary>
+        /// <returns></returns>
+        public IAuthenticator GetRegisteredAuthenticator()
         {
-            if (instance.authenticatorCreator == null) 
+            if (instance.authenticatorCreator == null)
             {
-                throw new ApplicationException ("No Authenticator registered");
+                throw new ApplicationException("No Authenticator registered");
             }
-            
-            return authenticatorCreator ();
+
+            return authenticatorCreator();
         }
     }
 }

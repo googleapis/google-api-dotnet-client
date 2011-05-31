@@ -14,64 +14,66 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.IO;
 using System.Collections.Generic;
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-	[TestFixture()]
-	public class MethodValidatorTests
-	{
-		[Test()]
-		public void ConstructorTest ()
-		{
-			MockMethod m = new MockMethod();
-			m.Name = "Test";
-			
-            Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new Dictionary<string, string>()));
-		}
-		
-		[Test()]
-		public void ValidateRegexTest ()
-		{
-			IMethod m = new MockMethod();
-			var dict = new JsonDictionary { 
-				{ "name" , "test" },
-				{ "pattern", ".+" }
-			};
-			
-			var jsonObj = new KeyValuePair<string, object>("test", dict );
-			
-			
-			var p = new ParameterFactory.BaseParameter(jsonObj);
-			var inputData =  new Dictionary<string, string>();
-			var validator = new MethodValidator(m, inputData );
-			Assert.IsTrue(validator.ValidateRegex(p, "Test"));
-		}
-		
-		[Test()]
-		public void ValidateRegexEmptyNeedsDataTest ()
-		{
-			IMethod m = new MockMethod();
-			var dict = new JsonDictionary { 
-				{ "name" , "test" },
-				{ "pattern", ".+" }
-			};
-			
-			var jsonObj = new KeyValuePair<string, object>("test", dict );
-			
-			
-			var p = new ParameterFactory.BaseParameter(jsonObj);
-			var inputData =  new Dictionary<string, string>();
-			var validator = new MethodValidator(m, inputData );
-			
-			Assert.IsFalse(validator.ValidateRegex(p, ""));
-		}
-	}
-}
+    /// <summary>
+    /// Tests the "MethodValidator" class
+    /// </summary>
+    [TestFixture]
+    public class MethodValidatorTests
+    {
+        /// <summary>
+        /// Tests the constructor of the MethodValidator
+        /// </summary>
+        [Test]
+        public void ConstructorTest()
+        {
+            MockMethod m = new MockMethod();
+            m.Name = "Test";
 
+            Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new Dictionary<string, string>()));
+        }
+
+        /// <summary>
+        /// Tests that the validator will return false on empty parameter sets
+        /// </summary>
+        [Test]
+        public void ValidateRegexEmptyNeedsDataTest()
+        {
+            IMethod m = new MockMethod();
+            var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
+
+            var jsonObj = new KeyValuePair<string, object>("test", dict);
+
+
+            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var inputData = new Dictionary<string, string>();
+            var validator = new MethodValidator(m, inputData);
+
+            Assert.IsFalse(validator.ValidateRegex(p, ""));
+        }
+
+        /// <summary>
+        /// Tests that the validator regex works
+        /// </summary>
+        [Test]
+        public void ValidateRegexTest()
+        {
+            IMethod m = new MockMethod();
+            var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
+
+            var jsonObj = new KeyValuePair<string, object>("test", dict);
+
+
+            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var inputData = new Dictionary<string, string>();
+            var validator = new MethodValidator(m, inputData);
+            Assert.IsTrue(validator.ValidateRegex(p, "Test"));
+        }
+    }
+}

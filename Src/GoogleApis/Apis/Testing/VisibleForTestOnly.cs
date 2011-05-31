@@ -13,17 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
+
 namespace Google.Apis.Testing
 {
-	/// <summary>
-	/// Marker Attribute to indicate a Method/Class/Property has been made more visible for
-	/// purpose of testing. Mark as internal and makr the testing assembly as friend using
-	/// <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
-	public class VisibleForTestOnly:Attribute
-	{
-	}
+    /// <summary>
+    /// Marker Attribute to indicate a Method/Class/Property has been made more visible for
+    /// purpose of testing. Mark as internal and makr the testing assembly as friend using
+    /// <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
+    public class VisibleForTestOnly : Attribute {}
 }
-

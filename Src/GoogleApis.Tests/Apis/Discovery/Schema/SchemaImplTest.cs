@@ -14,47 +14,48 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
-
 using NUnit.Framework;
 using Newtonsoft.Json.Schema;
-
-using Google.Apis.Json;
 using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Tests.Apis.Discovery.Schema
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests for the "SchemaImpl" class
+    /// </summary>
+    [TestFixture]
     public class SchemaImplTest
     {
-        private const string JsonSchemaElement = 
-         "{'id':'Activitiylist'," +
-         "'properties':{" +
-            "'id':{'type':'any'}," +
-            "'title':{'type':'any'}," +
-            "'items':{'items':{'$ref':'ChiliActivitiesResourceJson'},'type':'array'}," +
-            "'updated':{'type':'string'}," +
-            "'links':{'additionalProperties':" +
-                    "{'items':" +
-                        "{'properties':" +
-                        "{'title':{'type':'any'}," +
-                        "'height':{'type':'any'}," +
-                        "'count':{'type':'any'}," +
-                        "'updated':{'type':'string'}," +
-                        "'width':{'type':'any'}," +
-                        "'type':{'type':'any'}," +
-                        "'href':{'type':'any'}}," +
-                        "'type':'object'}," +
-                        "'type':'array'}," +
-                    "'type':'object'}," +
-            "'kind':{'default':'buzz#activityFeed','type':'string'}" +
-        "}," +
-        "'type':'object'}";
+        private const string JsonSchemaElement =
+            "{'id':'Activitiylist'," + "'properties':{" + "'id':{'type':'any'}," + "'title':{'type':'any'}," +
+            "'items':{'items':{'$ref':'ChiliActivitiesResourceJson'},'type':'array'}," + "'updated':{'type':'string'}," +
+            "'links':{'additionalProperties':" + "{'items':" + "{'properties':" + "{'title':{'type':'any'}," +
+            "'height':{'type':'any'}," + "'count':{'type':'any'}," + "'updated':{'type':'string'}," +
+            "'width':{'type':'any'}," + "'type':{'type':'any'}," + "'href':{'type':'any'}}," + "'type':'object'}," +
+            "'type':'array'}," + "'type':'object'}," + "'kind':{'default':'buzz#activityFeed','type':'string'}" + "}," +
+            "'type':'object'}";
 
-        [Test()]
-        public void SimpleCreateTest ()
+        /// <summary>
+        /// Tests that the class throws exception when constructed with invalid arguments
+        /// </summary>
+        [Test]
+        public void ArgumentValidationTest()
         {
             FutureJsonSchemaResolver resolver = new FutureJsonSchemaResolver();
-            SchemaImpl impl = new SchemaImpl("Activitiylist",JsonSchemaElement,resolver);
+
+            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl(null, JsonSchemaElement, resolver));
+            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl("Activitiylist", null, resolver));
+            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl("Activitiylist", JsonSchemaElement, null));
+        }
+
+        /// <summary>
+        /// Tests that the class can be created, and that the appropriate values are saved
+        /// </summary>
+        [Test]
+        public void SimpleCreateTest()
+        {
+            FutureJsonSchemaResolver resolver = new FutureJsonSchemaResolver();
+            SchemaImpl impl = new SchemaImpl("Activitiylist", JsonSchemaElement, resolver);
             Assert.AreEqual("Activitiylist", impl.Id);
             Assert.AreEqual("Activitiylist", impl.Name);
             Assert.IsNotNull(impl.SchemaDetails);
@@ -67,17 +68,5 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
             Assert.IsNotNull(impl.SchemaDetails.Properties["links"]);
             Assert.IsNotNull(impl.SchemaDetails.Properties["kind"]);
         }
-        
-        [Test()]
-        public void ArgumentValidationTest ()
-        {
-            FutureJsonSchemaResolver resolver = new FutureJsonSchemaResolver();
-            
-            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl(null, JsonSchemaElement, resolver));
-            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl("Activitiylist", null, resolver));
-            Assert.Throws(typeof(ArgumentNullException), () => new SchemaImpl("Activitiylist", JsonSchemaElement, null));
-                          
-        }
     }
 }
-

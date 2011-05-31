@@ -16,11 +16,10 @@ limitations under the License.
 
 using System;
 using System.IO;
-
 using Google.Apis.Json;
 using Google.Apis.Util;
 
-namespace Google.Apis.Discovery 
+namespace Google.Apis.Discovery
 {
     /// <summary>
     /// A IServiceFactory will return the IService for the specified version.
@@ -32,17 +31,15 @@ namespace Google.Apis.Discovery
     {
         IService GetService(string version);
     }
-    
+
     /// <summary>
     /// A marker interface, different versions of discovery use different 
     /// IFactoryParameters, you will need to pass in one that matches the
     /// version of discovery you use.
     /// </summary>
     /// <seealso cref="FactoryParmeterV0_3"/>
-    public interface IFactoryParameter
-    {
-    }
-    
+    public interface IFactoryParameter {}
+
     /// <summary>
     /// An abstract and static factory which can be used to generate
     /// the individual service factory required for a specific discovery version
@@ -50,7 +47,7 @@ namespace Google.Apis.Discovery
     public abstract class ServiceFactory
     {
         internal const string VersionInfo = "versionInfo";
-        
+
         internal const string RpcUrl = "rpcUrl";
         internal const string Resources = "resources";
         internal const string Schemas = "schemas";
@@ -60,7 +57,7 @@ namespace Google.Apis.Discovery
         internal const string Parameters = "parameters";
         internal const string ResponseType = "response";
         internal const string RequestType = "request";
-    
+
         internal const string ParameterType = "location";
         internal const string Pattern = "pattern";
         internal const string Required = "required";
@@ -79,25 +76,25 @@ namespace Google.Apis.Discovery
         /// A set of (optional) factory parameters used to construct the service. 
         /// If this parameter is null, then a default set of FactoryParameters is created
         /// </param>
-        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version, 
+        public static IServiceFactory CreateServiceFactory(Stream discovery,
+                                                           DiscoveryVersion version,
                                                            IFactoryParameter parameters)
         {
             discovery.ThrowIfNull("discovery");
             version.ThrowIfNull("version");
-            
+
             JsonDictionary information = JsonReader.Parse(discovery) as JsonDictionary;
-            
-            switch(version){
+
+            switch (version)
+            {
                 case DiscoveryVersion.Version_0_3:
-                    return new ServiceFactoryDiscoveryV0_3(information,
-                                                           (FactoryParameterV0_3)
-                                                           (parameters ?? new FactoryParameterV0_3()));
+                    return new ServiceFactoryDiscoveryV0_3(
+                        information, (FactoryParameterV0_3) (parameters ?? new FactoryParameterV0_3()));
                 case DiscoveryVersion.Version_1_0:
-                    return new ServiceFactoryDiscoveryV1_0(information,
-                                                           (FactoryParameterV1_0)
-                                                           (parameters ?? new FactoryParameterV1_0()));
+                    return new ServiceFactoryDiscoveryV1_0(
+                        information, (FactoryParameterV1_0) (parameters ?? new FactoryParameterV1_0()));
                 default:
-                    throw new NotSupportedException("The Version "+version +" is not supported");
+                    throw new NotSupportedException("The Version " + version + " is not supported");
             }
         }
 

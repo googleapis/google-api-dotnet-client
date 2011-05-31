@@ -13,9 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.CodeDom;
 
+using System.CodeDom;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -28,6 +27,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// <seealso cref="ISchemaDecorator"/> 
     public interface INestedClassSchemaDecorator
     {
-        void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider);
+        void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
+                                   string name,
+                                   JsonSchema schema,
+                                   INestedClassProvider internalClassProvider);
     }
 }

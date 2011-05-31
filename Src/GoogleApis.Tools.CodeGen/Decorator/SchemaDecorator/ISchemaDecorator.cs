@@ -13,9 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.CodeDom;
 
+using System.CodeDom;
 using Google.Apis.Discovery.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -29,6 +28,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// <seealso cref="ISchema"/>
     public interface ISchemaDecorator
     {
-        void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider);
+        void DecorateClass(CodeTypeDeclaration typeDeclaration,
+                           ISchema schema,
+                           INestedClassProvider internalClassProvider);
     }
 }

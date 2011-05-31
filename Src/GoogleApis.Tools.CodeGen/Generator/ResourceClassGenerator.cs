@@ -17,9 +17,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
-using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen.Generator
@@ -30,23 +28,25 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// <seealso cref="IResourceDecorator"/>
     public class ResourceClassGenerator : BaseGenerator
     {
-        private readonly IResource resource;
-        private readonly String serviceClassName;
-        private readonly int resourceNumber;
-        private readonly IEnumerable<IResourceDecorator> decorators;
         private readonly String className;
+        private readonly IEnumerable<IResourceDecorator> decorators;
+        private readonly IResource resource;
         private readonly ResourceContainerGenerator resourceConainerGenerator;
+        private readonly int resourceNumber;
+        private readonly String serviceClassName;
 
-        public ResourceClassGenerator (IResource resource, String serviceClassName, int resourceNumber, 
-                                        IEnumerable<IResourceDecorator> decorators,
-                                       ResourceContainerGenerator resourceConainerGenerator,
-                                       IEnumerable<string> otherResourceNames)
+        public ResourceClassGenerator(IResource resource,
+                                      String serviceClassName,
+                                      int resourceNumber,
+                                      IEnumerable<IResourceDecorator> decorators,
+                                      ResourceContainerGenerator resourceConainerGenerator,
+                                      IEnumerable<string> otherResourceNames)
         {
             this.resource = resource;
             this.serviceClassName = serviceClassName;
             this.resourceNumber = resourceNumber;
             this.decorators = decorators;
-            this.className = GeneratorUtils.GetClassName (resource, this.resourceNumber, otherResourceNames);
+            className = GeneratorUtils.GetClassName(resource, this.resourceNumber, otherResourceNames);
             this.resourceConainerGenerator = resourceConainerGenerator;
         }
 
@@ -59,16 +59,17 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <returns>
         /// A <see cref="CodeTypeDeclaration"/>
         /// </returns>
-        public CodeTypeDeclaration CreateClass ()
+        public CodeTypeDeclaration CreateClass()
         {
-            var resourceClass = new CodeTypeDeclaration (this.className);
-            
-            foreach (IResourceDecorator decorator in this.decorators) {
-                decorator.DecorateClass (this.resource, className, resourceClass, this, this.serviceClassName, this.decorators);
+            var resourceClass = new CodeTypeDeclaration(className);
+
+            foreach (IResourceDecorator decorator in decorators)
+            {
+                decorator.DecorateClass(resource, className, resourceClass, this, serviceClassName, decorators);
             }
-            
+
             resourceConainerGenerator.AddResourceContainerDecorations(resource, resourceClass);
-            
+
             return resourceClass;
         }
     }

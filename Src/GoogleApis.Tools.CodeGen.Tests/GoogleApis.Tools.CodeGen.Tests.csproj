@@ -95,7 +95,7 @@
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
-    <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\SchemaAwareExecuteMethodDecoratorTest.cs" />
     <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DefaultEnglishCommentCreatorTest.cs" />

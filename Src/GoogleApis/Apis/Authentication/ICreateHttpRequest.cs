@@ -15,17 +15,12 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
-using System.Collections;
-using System.Text;
 using System.Net;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
     public interface ICreateHttpRequest
     {
-        HttpWebRequest Create (Uri target);
+        HttpWebRequest Create(Uri target);
     }
 }

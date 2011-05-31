@@ -15,20 +15,19 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
-using System.Collections;
-using System.Text;
 using System.Net;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
     public class HttpRequestFactory : ICreateHttpRequest
     {
-        public HttpWebRequest Create (Uri target)
+        #region ICreateHttpRequest Members
+
+        public HttpWebRequest Create(Uri target)
         {
-            return WebRequest.Create (target) as HttpWebRequest;
+            return WebRequest.Create(target) as HttpWebRequest;
         }
+
+        #endregion
     }
 }

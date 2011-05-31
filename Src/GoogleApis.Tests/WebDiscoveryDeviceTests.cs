@@ -1,4 +1,3 @@
-
 /*
 Copyright 2010 Google Inc
 
@@ -17,25 +16,34 @@ limitations under the License.
 
 using System;
 using NUnit.Framework;
-
-
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests
 {
-	[TestFixture]
-	public class WebDiscoveryDeviceTests {
-		[Test]
-		public void Construct () {
+    /// <summary>
+    /// Tests for the "WebDiscoveryDevice" class
+    /// </summary>
+    [TestFixture]
+    public class WebDiscoveryDeviceTests
+    {
+        /// <summary>
+        /// Tests that the constructor succeeds
+        /// </summary>
+        [Test]
+        public void Construct()
+        {
             Assert.IsInstanceOf<WebDiscoveryDevice>(new WebDiscoveryDevice());
-		}
-		
-		[Test]
-		public void SetURI() {
-			var device = new WebDiscoveryDevice { DiscoveryUri = new Uri("http://test.com") };
-			Assert.IsNotNull(device.DiscoveryUri);
-			Assert.AreEqual("http://test.com/", device.DiscoveryUri.ToString());
-		}
-	}
-}
+        }
 
+        /// <summary>
+        /// Tests that the URI is saved when set at construction time
+        /// </summary>
+        [Test]
+        public void SetURI()
+        {
+            var device = new WebDiscoveryDevice { DiscoveryUri = new Uri("http://test.com") };
+            Assert.IsNotNull(device.DiscoveryUri);
+            Assert.AreEqual("http://test.com/", device.DiscoveryUri.ToString());
+        }
+    }
+}

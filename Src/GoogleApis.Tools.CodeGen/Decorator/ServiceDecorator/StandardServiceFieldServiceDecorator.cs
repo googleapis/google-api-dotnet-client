@@ -13,12 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
 using System.CodeDom;
-
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
-using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
@@ -32,25 +29,29 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// </summary>
     public class StandardServiceFieldServiceDecorator : IServiceDecorator
     {
-        public void DecorateClass (IService service, CodeTypeDeclaration serviceClass)
+        #region IServiceDecorator Members
+
+        public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             AddServiceFields(serviceClass);
         }
 
-        private void AddServiceFields (CodeTypeDeclaration serviceClass)
+        #endregion
+
+        private void AddServiceFields(CodeTypeDeclaration serviceClass)
         {
-            var field = new CodeMemberField (typeof(IService), ServiceClassGenerator.GenericServiceName);
+            var field = new CodeMemberField(typeof(IService), ServiceClassGenerator.GenericServiceName);
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            serviceClass.Members.Add (field);
-            
-            field = new CodeMemberField (typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName);
+            serviceClass.Members.Add(field);
+
+            field = new CodeMemberField(typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName);
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            serviceClass.Members.Add (field);
+            serviceClass.Members.Add(field);
         }
-        
-        public override string ToString ()
+
+        public override string ToString()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
     }
 }

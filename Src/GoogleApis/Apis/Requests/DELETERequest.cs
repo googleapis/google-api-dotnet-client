@@ -14,15 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.IO;
-using System.Collections.Generic;
+
 namespace Google.Apis.Requests
 {
-	public class DELETERequest : Request {
-		public Stream DELETE() {
-			// Perform the HTTP WebRequest.	
-			return ExecuteRequest();
-		}
-	}
+    /// <summary>
+    /// A DELETE request
+    /// </summary>
+    public class DELETERequest : Request
+    {
+        /// <summary>
+        /// Executes the request
+        /// </summary>
+        public Stream DELETE()
+        {
+            // Perform the HTTP WebRequest.
+            return ExecuteRequest();
+        }
+    }
 }

@@ -51,10 +51,9 @@ namespace Google.Apis.Json
             if (!(val is T))
             {
                 throw new ArgumentException(
-                    string.Format("The type \"{1}\" of the value of \"{0}\" is not of the expected type \"{2}\"",
-                                  val.GetType(),
-                                  key,
-                                  typeof (T)));
+                    string.Format(
+                        "The type \"{1}\" of the value of \"{0}\" is not of the expected type \"{2}\"", val.GetType(),
+                        key, typeof(T)));
             }
 
             return (T) val;

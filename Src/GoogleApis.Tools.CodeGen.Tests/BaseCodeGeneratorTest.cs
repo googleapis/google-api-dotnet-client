@@ -20,11 +20,9 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
 using log4net;
 using Newtonsoft.Json;
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 using JsonReader = Google.Apis.Json.JsonReader;
@@ -4366,6 +4364,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         #endregion
 
+        /// <summary>
+        /// Creates a KeyValuePair out of the specified json string
+        /// </summary>
         public static KeyValuePair<string, object> CreateJsonResourceDefinition(string resourceName, string jsonString)
         {
             var json = (JsonDictionary) JsonReader.Parse(jsonString);
@@ -4373,6 +4374,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return new KeyValuePair<string, object>(resourceName, json);
         }
 
+        /// <summary>
+        /// Creates a resource for discovery v1
+        /// </summary>
         public static IResource CreateResourceDivcoveryV_1_0(string resourceName, string json)
         {
             return new ResourceV1_0(DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition(resourceName, json));
@@ -4409,9 +4413,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var cp = new CompilerParameters();
             // Add an assembly reference.
             cp.ReferencedAssemblies.Add("System.dll");
-            AddReferenceToDeclaringAssembly(typeof (DiscoveryService), cp);
-            AddReferenceToDeclaringAssembly(typeof (ILog), cp);
-            AddReferenceToDeclaringAssembly(typeof (JsonSerializer), cp);
+            AddReferenceToDeclaringAssembly(typeof(DiscoveryService), cp);
+            AddReferenceToDeclaringAssembly(typeof(ILog), cp);
+            AddReferenceToDeclaringAssembly(typeof(JsonSerializer), cp);
 
             cp.GenerateExecutable = false;
             cp.GenerateInMemory = true;
@@ -4450,18 +4454,18 @@ namespace Google.Apis.Tools.CodeGen.Tests
         protected IService CreateBuzzService()
         {
             string version = "v1";
-            var buzzTestFetcher = new StringDiscoveryDevice {Document = BuzzServiceAsJson};
+            var buzzTestFetcher = new StringDiscoveryDevice { Document = BuzzServiceAsJson };
             var discovery = new DiscoveryService(buzzTestFetcher);
             // Build the service based on discovery information.
-            return discovery.GetService(version, DiscoveryVersion.Version_0_3,
-                                        new FactoryParameterV0_3("http://test.sever.example.com",
-                                                                 "http://test.sever.example.com/testService"));
+            return discovery.GetService(
+                version, DiscoveryVersion.Version_0_3,
+                new FactoryParameterV0_3("http://test.sever.example.com", "http://test.sever.example.com/testService"));
         }
 
         protected IService CreateAdSenseV1_0Service()
         {
             string version = "v1beta1";
-            var buzzTestFetcher = new StringDiscoveryDevice {Document = AdSenseDiscoveryV1};
+            var buzzTestFetcher = new StringDiscoveryDevice { Document = AdSenseDiscoveryV1 };
             var discovery = new DiscoveryService(buzzTestFetcher);
 
             // Build the service based on discovery information.

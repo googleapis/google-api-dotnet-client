@@ -15,19 +15,20 @@ limitations under the License.
 */
 
 using System;
-
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery.V0_3
 {
-    [TestFixture()]
+    /// <summary>
+    /// Test for the Discover v0.3 ServiceFactories
+    /// </summary>
+    [TestFixture]
     public class ServiceFactoryImplTest
     {
-        #region buzz discovery 0.3
-        public const string BuzzV0_3_Json = @"{
+        public const string BuzzV0_3_Json =
+            @"{
  'name': 'buzz',
  'version': 'v1',
  'description': 'Buzz APIs for Buzz Posts, etc.',
@@ -500,28 +501,33 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
   }
  }
 }";
-        #endregion
-        
+
+        /// <summary>
+        /// Tests that the constructor of the service factory will fail when provided with invalid arguments
+        /// </summary>
         [Test]
-        public void ServiceFactoryDiscovery_ConstructorFailTest ()
+        public void ServiceFactoryDiscovery_ConstructorFailTest()
         {
             var param = new FactoryParameterV0_3("server", "base");
-            var json = (JsonDictionary)JsonReader.Parse(BuzzV0_3_Json);
-            
+            var json = (JsonDictionary) JsonReader.Parse(BuzzV0_3_Json);
+
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(null, param));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(json, null));
-            
-            json = (JsonDictionary)JsonReader.Parse(Discovery.ServiceFactoryImplTest.BadDiscoveryv1_0_No_Name);
+
+            json = (JsonDictionary) JsonReader.Parse(Discovery.ServiceFactoryImplTest.BadDiscoveryv1_0_No_Name);
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV0_3(json, param));
         }
-        
+
+        /// <summary>
+        /// Tests that the ServiceFactor can be create, and can return a service when provided with a valid argument
+        /// </summary>
         [Test]
-        public void ServiceFactoryDiscovery_ConstructorSuccessTest ()
+        public void ServiceFactoryDiscovery_ConstructorSuccessTest()
         {
             var param = new FactoryParameterV0_3("server", "http://base");
-            var json = (JsonDictionary)JsonReader.Parse(BuzzV0_3_Json);
+            var json = (JsonDictionary) JsonReader.Parse(BuzzV0_3_Json);
             var fact = new ServiceFactoryDiscoveryV0_3(json, param);
-            
+
             Assert.AreEqual("buzz", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);

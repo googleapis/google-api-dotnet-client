@@ -17,18 +17,20 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
 using Google.Apis.Json;
-using Google.Apis.Requests;
 using Google.Apis.Util;
 using Google.Apis.Testing;
 
 namespace Google.Apis.Discovery
 {
+    /// <summary>
+    /// Abstract parameter factory
+    /// </summary>
     internal abstract class ParameterFactory
     {
+        /// <summary>
+        /// Returns a parameter with the given values
+        /// </summary>
         internal static IParameter GetParameter(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
             switch (version)
@@ -38,130 +40,161 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_1_0:
                     return new ParameterV1_0(kvp);
                 default:
-                    throw new NotSupportedException("Unsuppored version of Discovery " + version.ToString());
-            }
-        }
-  
-        [VisibleForTestOnly]
-        internal class ParameterV1_0 : BaseParameter
-        {
-            public ParameterV1_0(KeyValuePair<string, object> kvp)
-                : base(kvp)
-            { }
-        }
-        
-        [VisibleForTestOnly]
-        internal class ParameterV0_3 : BaseParameter
-        {
-            public ParameterV0_3(KeyValuePair<string, object> kvp)
-                : base(kvp)
-            { }
-
-            public override string ParameterType
-            {
-                get { return this.information.GetValueAsNull("restParameterType") as string; }
-            }
-            
-            public override string DefaultValue {
-                get { return this.information.GetValueAsNull("defaultValue") as string; }
+                    throw new NotSupportedException("Unsuppored version of Discovery " + version);
             }
         }
 
+        #region Nested type: BaseParameter
+
+        /// <summary>
+        /// Abstract implementation of a parameter
+        /// </summary>
         [VisibleForTestOnly]
         internal class BaseParameter : IParameter
         {
             protected readonly JsonDictionary information;
 
+            /// <summary>
+            /// Creates a new parameter with the specified name and value
+            /// </summary>
             public BaseParameter(KeyValuePair<string, object> kvp)
             {
-                this.Name = kvp.Key;
-                this.information = kvp.Value as JsonDictionary;
-                if (this.information == null)
+                Name = kvp.Key;
+                information = kvp.Value as JsonDictionary;
+                if (information == null)
+                {
                     throw new ArgumentException("got no valid dictionary");
+                }
             }
+
+            /// <summary>
+            /// Defines whether the "Repeated" flag is defined within the value set
+            /// </summary>
+            public bool Repeated
+            {
+                get { return (bool) (information.GetValueAsNull("repeated") ?? false); }
+            }
+
+            /// <summary>
+            /// Returns a set of enum value descriptions
+            /// </summary>
+            public IEnumerable<string> EnumDescription
+            {
+                get
+                {
+                    IEnumerable list = information.GetValueAsNull("enumDescriptions") as IEnumerable;
+                    if (list == null)
+                    {
+                        yield break;
+                    }
+
+                    foreach (string s in list)
+                    {
+                        yield return s;
+                    }
+                }
+            }
+
+            #region IParameter Members
 
             public string Name { get; private set; }
 
             public virtual string ParameterType
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.ParameterType) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.ParameterType) as string; }
             }
 
             public string Pattern
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.Pattern) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.Pattern) as string; }
             }
 
             public bool Required
             {
-                get { return (bool)(this.information.GetValueAsNull(ServiceFactory.Required) ?? (object)false); }
+                get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
             }
-   
-            public bool Repeated
-            {
-                get { return (bool)(this.information.GetValueAsNull("repeated") ?? (object)false); }
-            }
-            
+
             public virtual string DefaultValue
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
             }
 
             public string ValueType
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.ValueType) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.ValueType) as string; }
             }
-            
+
             public string Description
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.Description) as string;}
-            }
-            
-            public string Maximum 
-            {
-                get { return this.information.GetValueAsNull(ServiceFactory.Maximum) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.Description) as string; }
             }
 
-            public string Minimum 
+            public string Maximum
             {
-                get { return this.information.GetValueAsNull(ServiceFactory.Minimum) as string; }
+                get { return information.GetValueAsNull(ServiceFactory.Maximum) as string; }
             }
 
-            public IEnumerable<string> Enum 
+            public string Minimum
             {
-                get 
+                get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
+            }
+
+            public IEnumerable<string> Enum
+            {
+                get
                 {
-                    IEnumerable list = this.information.GetValueAsNull("enum") as IEnumerable;
+                    IEnumerable list = information.GetValueAsNull("enum") as IEnumerable;
                     if (list == null)
                     {
                         yield break;
                     }
-                    
-                    foreach(string s in list)
+
+                    foreach (string s in list)
                     {
                         yield return s;
                     }
-                    
                 }
             }
-            
-            public IEnumerable<string> EnumDescription 
-            {
-                get 
-                {
-                    IEnumerable list = this.information.GetValueAsNull("enumDescriptions") as IEnumerable;
-                    if (list == null)
-                    {
-                        yield break;
-                    }
-                    
-                    foreach(string s in list)
-                    {
-                        yield return s;
-                    }
-                    
-                }
-            } 
+
+            #endregion
         }
+
+        #endregion
+
+        #region Nested type: ParameterV0_3
+
+        /// <summary>
+        /// A discovery v0.3 implementation of a parameter
+        /// </summary>
+        [VisibleForTestOnly]
+        internal class ParameterV0_3 : BaseParameter
+        {
+            public ParameterV0_3(KeyValuePair<string, object> kvp) : base(kvp) {}
+
+            public override string ParameterType
+            {
+                get { return information.GetValueAsNull("restParameterType") as string; }
+            }
+
+            public override string DefaultValue
+            {
+                get { return information.GetValueAsNull("defaultValue") as string; }
+            }
+        }
+
+        #endregion
+
+        #region Nested type: ParameterV1_0
+
+        /// <summary>
+        /// A discovery v1.0 implementation of a parameter
+        /// </summary>
+        [VisibleForTestOnly]
+        internal class ParameterV1_0 : BaseParameter
+        {
+            public ParameterV1_0(KeyValuePair<string, object> kvp) : base(kvp) {}
+        }
+
+        #endregion
     }
 }

@@ -13,34 +13,35 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.Collections.Generic; 
 
+using System.Collections.Generic;
 using Google.Apis.Discovery;
+
 namespace Google.Apis.Tests.Apis.Requests
 {
-
-
+    /// <summary>
+    /// A mock method for testing purposes
+    /// </summary>
     public class MockMethod : IMethod
     {
-        public string Name {get; set;}
-        
-        public string Description {get; set;}
+        #region IMethod Members
 
-        public string RestPath {get; set;}
+        public string Name { get; set; }
 
-        public string RpcName {get; set;}
+        public string Description { get; set; }
 
-        public string HttpMethod {get; set;}
-        
-        public string ResponseType {get; set;}
-        
-        public string RequestType {get; set;}
+        public string RestPath { get; set; }
 
-        public Dictionary<string, IParameter> Parameters {get; set;}
+        public string RpcName { get; set; }
 
-        public MockMethod ()
-        {
-        }
+        public string HttpMethod { get; set; }
+
+        public string ResponseType { get; set; }
+
+        public string RequestType { get; set; }
+
+        public Dictionary<string, IParameter> Parameters { get; set; }
+
+        #endregion
     }
 }

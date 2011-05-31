@@ -14,33 +14,32 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
 using System.CodeDom;
-
-using NUnit.Framework;
-
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
-	public abstract class BaseResourceDecoratorTest: BaseCodeGeneratorTest
-	{
-		/// <summary>
-		/// Creates a CodeTypeDeclaration decorated with the given IResourceDecorator.
-		/// </summary>
-		protected CodeTypeDeclaration CreateDecoratedResourceClass(params IResourceDecorator[] allDecorators)
-		{
-			var parts = ResourceClassName.Split('.');
-			var shortClassName = parts[parts.Length -1]; 
-			var resourceClass = new CodeTypeDeclaration(shortClassName);
-			var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
-			
-			foreach(var decorator in allDecorators)
-			{
-				decorator.DecorateClass(resource, ResourceClassName, resourceClass, null, ServiceClassName, allDecorators);
-			}
-			return resourceClass;
-		}	
-	}
+    /// <summary>
+    /// Test class for the "BaseResourceDecorator"
+    /// </summary>
+    public abstract class BaseResourceDecoratorTest : BaseCodeGeneratorTest
+    {
+        /// <summary>
+        /// Creates a CodeTypeDeclaration decorated with the given IResourceDecorator.
+        /// </summary>
+        protected CodeTypeDeclaration CreateDecoratedResourceClass(params IResourceDecorator[] allDecorators)
+        {
+            var parts = ResourceClassName.Split('.');
+            var shortClassName = parts[parts.Length - 1];
+            var resourceClass = new CodeTypeDeclaration(shortClassName);
+            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+
+            foreach (var decorator in allDecorators)
+            {
+                decorator.DecorateClass(
+                    resource, ResourceClassName, resourceClass, null, ServiceClassName, allDecorators);
+            }
+            return resourceClass;
+        }
+    }
 }

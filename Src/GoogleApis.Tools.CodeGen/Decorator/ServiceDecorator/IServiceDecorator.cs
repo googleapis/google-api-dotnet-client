@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 
@@ -25,6 +24,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// </summary>
     public interface IServiceDecorator
     {
-        void DecorateClass (IService service, CodeTypeDeclaration serviceClass);
+        void DecorateClass(IService service, CodeTypeDeclaration serviceClass);
     }
 }

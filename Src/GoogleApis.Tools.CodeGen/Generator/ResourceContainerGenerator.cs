@@ -13,36 +13,39 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
+
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
+using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
-
-
+    /// <summary>
+    /// Container class for resource container decorators
+    /// </summary>
     public class ResourceContainerGenerator
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(ResourceContainerGenerator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ResourceContainerGenerator));
 
         private readonly IEnumerable<IResourceContainerDecorator> decorators;
 
-        public ResourceContainerGenerator (IEnumerable<IResourceContainerDecorator> decorators)
+        public ResourceContainerGenerator(IEnumerable<IResourceContainerDecorator> decorators)
         {
             this.decorators = decorators;
         }
-        
-        public void AddResourceContainerDecorations(IResourceContainer container, 
-                                                    CodeTypeDeclaration codeClass)
+
+        /// <summary>
+        /// Calls each decorator for the specified resource container
+        /// </summary>
+        public void AddResourceContainerDecorations(IResourceContainer container, CodeTypeDeclaration codeClass)
         {
             logger.DebugFormat("AddResourceContainerDecorations called for {0}", container.Name);
-            foreach(IResourceContainerDecorator dec in decorators)
+            foreach (IResourceContainerDecorator dec in decorators)
             {
                 dec.DecorateClass(container, codeClass);
-            }        
+            }
         }
     }
 }

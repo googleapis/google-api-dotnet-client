@@ -13,10 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
-
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
@@ -28,7 +27,8 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture]
     public class ServiceFactoryImplTest
     {
-        internal const string BadDiscoveryv1_0_No_Name =  @"{
+        internal const string BadDiscoveryv1_0_No_Name =
+            @"{
  'NO_name': 'adsense-mgmt',
  'version': 'v1beta1',
  'description': 'AdSense Management API',
@@ -43,28 +43,34 @@ namespace Google.Apis.Tests.Apis.Discovery
     }
     }";
 
+        /// <summary>
+        /// Tests that the v1.0 constructor will fail when provided with invalid arguments
+        /// </summary>
         [Test]
-        public void ServiceFactoryDiscoveryV1_0ConstructorFailTest ()
+        public void ServiceFactoryDiscoveryV1_0ConstructorFailTest()
         {
             Assert.Throws<ArgumentNullException>(() => new FactoryParameterV1_0(null));
-            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
+            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
 
             // Test if the constructor will fail if required arguments are missing
             var param = new FactoryParameterV1_0();
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(null, param));
             Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(json, null));
-            
-            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_Name);
+
+            json = (JsonDictionary) JsonReader.Parse(BadDiscoveryv1_0_No_Name);
             Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV1_0(json, param));
         }
-        
+
+        /// <summary>
+        /// Tests that the v1.0 constructor will work when provided with valid arguments
+        /// </summary>
         [Test]
-        public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest ()
+        public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest()
         {
             var param = new FactoryParameterV1_0("http://server/");
-            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
+            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
             var fact = new ServiceFactoryDiscoveryV1_0(json, param);
-            
+
             Assert.AreEqual("adsense", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
@@ -72,4 +78,3 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
     }
 }
-

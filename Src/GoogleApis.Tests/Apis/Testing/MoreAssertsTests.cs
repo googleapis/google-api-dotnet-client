@@ -14,31 +14,39 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using NUnit.Framework;
-
 using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Testing
 {
-    [TestFixture()]
+    /// <summary>
+    /// Tests the "MoreAsserts"-class
+    /// </summary>
+    [TestFixture]
     public class MoreAssertsTests
     {
-        [Test()]
-        public void TestCase ()
+        /// <summary>
+        /// Tests that the Assert helper method works correctly (lets assert the asserts!)
+        /// </summary>
+        [Test]
+        public void TestCase()
         {
-            var actual = new List<string>(){"a", "b", "c", "d"};
+            var actual = new List<string> { "a", "b", "c", "d" };
             MoreAsserts.ContentsEqualAndInOrder(actual.Select(x => x.ToString()), actual);
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(actual.Select(x=>x).Reverse(), actual));
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"a", "b", "c"}, actual));
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"b", "c", "d"}, actual));
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"a", "b", "c", "d", "e"}, actual));
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"a", "b", "c", "e"}, actual));
-            Assert.Throws<AssertionException>(()=> MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"b", "b", "c", "d"}, actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(actual.Select(x => x).Reverse(), actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(new List<string> { "a", "b", "c" }, actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(new List<string> { "b", "c", "d" }, actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(new List<string> { "a", "b", "c", "d", "e" }, actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(new List<string> { "a", "b", "c", "e" }, actual));
+            Assert.Throws<AssertionException>(
+                () => MoreAsserts.ContentsEqualAndInOrder(new List<string> { "b", "b", "c", "d" }, actual));
         }
     }
 }
-

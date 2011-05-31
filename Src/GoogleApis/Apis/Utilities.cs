@@ -19,18 +19,16 @@ limitations under the License.
 * Combined IExtensionElement and IExtensionElementFactory interfaces
 * 
 */
+
 #region Using directives
 
 #define USE_TRACING
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
-using System.IO;
-using System.Net;
 using System.Text;
+using System.Web;
 using System.Xml;
 using System.Reflection;
 
@@ -38,52 +36,51 @@ using System.Reflection;
 
 namespace Google.Apis
 {
-    //////////////////////////////////////////////////////////////////////
     /// <summary>String utilities
     /// </summary> 
-    //////////////////////////////////////////////////////////////////////
-    public sealed class Utilities
+    public static class Utilities
     {
-
         /// <summary>
         /// xsd version of bool:true
         /// </summary>
         public const string XSDTrue = "true";
+
         /// <summary>
         /// xsd version of bool:false
         /// </summary>
         public const string XSDFalse = "false";
+
         /// <summary>
         /// default user string
         /// </summary>
         public const string DefaultUser = "default";
 
-
-        //////////////////////////////////////////////////////////////////////
-        /// <summary>private constructor to prevent the compiler from generating a default one</summary> 
-        //////////////////////////////////////////////////////////////////////
-        private Utilities()
+        /// <summary>returns a blank emptyDate. That's the default for an empty string date</summary> 
+        public static DateTime EmptyDate
         {
+            get
+            {
+                // that's the blank value you get when setting a DateTime to an empty string inthe property browswer
+                return new DateTime(1, 1, 1);
+            }
         }
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>helper to read in a string and Encode it</summary> 
         /// <param name="content">the xmlreader string</param>
         /// <returns>UTF8 encoded string</returns>
-        //////////////////////////////////////////////////////////////////////
         public static string EncodeString(string content)
         {
             // get the encoding
-            Encoding utf8Encoder = Encoding.UTF8; 
+            Encoding utf8Encoder = Encoding.UTF8;
 
             Byte[] utf8Bytes = EncodeStringToUtf8(content);
 
             char[] utf8Chars = new char[utf8Encoder.GetCharCount(utf8Bytes, 0, utf8Bytes.Length)];
             utf8Encoder.GetChars(utf8Bytes, 0, utf8Bytes.Length, utf8Chars, 0);
-      
-            String utf8String = new String(utf8Chars); 
 
-            return utf8String; 
+            String utf8String = new String(utf8Chars);
+
+            return utf8String;
         }
 
         /// <summary>
@@ -104,29 +101,29 @@ namespace Google.Apis
             return utf8Bytes;
         }
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>helper to read in a string and Encode it according to 
         /// RFC 5023 rules for slugheaders</summary> 
         /// <param name="slug">the Unicode string for the slug header</param>
         /// <returns>ASCII  encoded string</returns>
-        //////////////////////////////////////////////////////////////////////
         public static string EncodeSlugHeader(string slug)
         {
             if (slug == null)
+            {
                 return "";
+            }
 
-            Byte[] bytes =EncodeStringToUtf8(slug);
+            Byte[] bytes = EncodeStringToUtf8(slug);
 
             if (bytes == null)
+            {
                 return "";
+            }
 
             StringBuilder returnString = new StringBuilder(256);
 
             foreach (byte b in bytes)
             {
-                if ((b < 0x20) ||
-                    (b == 0x25) ||
-                    (b > 0x7E))
+                if ((b < 0x20) || (b == 0x25) || (b > 0x7E))
                 {
                     returnString.AppendFormat(CultureInfo.InvariantCulture, "%{0:X}", b);
                 }
@@ -136,19 +133,18 @@ namespace Google.Apis
                 }
             }
 
-            return returnString.ToString(); 
+            return returnString.ToString();
         }
 
-        
 
         /// <summary>
         /// used as a cover method to hide the actual decoding implementation
         /// decodes an html decoded string
         /// </summary>
         /// <param name="value">the string to decode</param>
-        public static string DecodedValue(string value) 
+        public static string DecodedValue(string value)
         {
-            return System.Web.HttpUtility.HtmlDecode(value);
+            return HttpUtility.HtmlDecode(value);
         }
 
         /// <summary>
@@ -158,47 +154,37 @@ namespace Google.Apis
         /// <param name="value">the string to decode</param>
         public static string UrlDecodedValue(string value)
         {
-            return System.Web.HttpUtility.UrlDecode(value);
+            return HttpUtility.UrlDecode(value);
         }
 
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>helper to read in a string and replace the reserved URI 
         /// characters with hex encoding</summary> 
         /// <param name="content">the parameter string</param>
         /// <returns>hex encoded string</returns>
-        //////////////////////////////////////////////////////////////////////
-        public static string UriEncodeReserved(string content) 
+        public static string UriEncodeReserved(string content)
         {
             if (content == null)
+            {
                 return null;
+            }
 
             StringBuilder returnString = new StringBuilder(256);
 
-            foreach (char ch in content) 
+            foreach (char ch in content)
             {
-                if (ch == ';' || 
-                    ch == '/' ||
-                    ch == '?' ||
-                    ch == ':' ||
-                    ch == '@' ||
-                    ch == '&' ||
-                    ch == '=' ||
-                    ch == '+' ||
-                    ch == '$' ||
-                    ch == ','  ||
-                    ch == '%' )
+                if (ch == ';' || ch == '/' || ch == '?' || ch == ':' || ch == '@' || ch == '&' || ch == '=' || ch == '+' ||
+                    ch == '$' || ch == ',' || ch == '%')
                 {
                     returnString.Append(Uri.HexEscape(ch));
                 }
-                else 
+                else
                 {
                     returnString.Append(ch);
                 }
             }
 
-            return returnString.ToString(); 
-            
+            return returnString.ToString();
         }
 
         /// <summary>
@@ -212,64 +198,46 @@ namespace Google.Apis
             {
                 return true;
             }
-            if (eTag.StartsWith("W/") == true)
+            if (eTag.StartsWith("W/"))
             {
                 return true;
             }
             return false;
         }
 
-
-         //////////////////////////////////////////////////////////////////////
         /// <summary>helper to read in a string and replace the reserved URI 
         /// characters with hex encoding</summary> 
         /// <param name="content">the parameter string</param>
         /// <returns>hex encoded string</returns>
-        //////////////////////////////////////////////////////////////////////
-        public static string UriEncodeUnsafe(string content) 
+        public static string UriEncodeUnsafe(string content)
         {
             if (content == null)
+            {
                 return null;
+            }
 
             StringBuilder returnString = new StringBuilder(256);
 
-            foreach (char ch in content) 
+            foreach (char ch in content)
             {
-                if (ch == ';' || 
-                    ch == '/' ||
-                    ch == '?' ||
-                    ch == ':' ||
-                    ch == '@' ||
-                    ch == '&' ||
-                    ch == '=' ||
-                    ch == '+' ||
-                    ch == '$' ||
-                    ch == ',' || 
-                    ch == ' ' || 
-                    ch == '\'' || 
-                    ch == '"' || 
-                    ch == '>' || 
-                    ch == '<' || 
-                    ch == '#' || 
-                    ch == '%' ) 
+                if (ch == ';' || ch == '/' || ch == '?' || ch == ':' || ch == '@' || ch == '&' || ch == '=' || ch == '+' ||
+                    ch == '$' || ch == ',' || ch == ' ' || ch == '\'' || ch == '"' || ch == '>' || ch == '<' ||
+                    ch == '#' || ch == '%')
                 {
                     returnString.Append(Uri.HexEscape(ch));
                 }
-                else 
+                else
                 {
                     returnString.Append(ch);
                 }
             }
-            return returnString.ToString(); 
+            return returnString.ToString();
         }
 
-       
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>Method to output just the date portion as string</summary>
         /// <param name="dateTime">the DateTime object to output as a string</param>
         /// <returns>an rfc-3339 string</returns>
-        //////////////////////////////////////////////////////////////////////
         public static string LocalDateInUTC(DateTime dateTime)
         {
             // Add "full-date T partial-time"
@@ -277,11 +245,9 @@ namespace Google.Apis
         }
 
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>Method to output DateTime as string</summary>
         /// <param name="dateTime">the DateTime object to output as a string</param>
         /// <returns>an rfc-3339 string</returns>
-        //////////////////////////////////////////////////////////////////////
         public static string LocalDateTimeInUTC(DateTime dateTime)
         {
             TimeSpan diffFromUtc = TimeZone.CurrentTimeZone.GetUtcOffset(dateTime);
@@ -294,19 +260,16 @@ namespace Google.Apis
         }
 
 
-
-   
-
-        //////////////////////////////////////////////////////////////////////
         /// <summary>Helper method to format a TimeSpan as a string compliant with the "time-offset" format defined in RFC-3339</summary>
         /// <param name="spanFromUtc">the TimeSpan to format</param>
         /// <returns></returns>
-        //////////////////////////////////////////////////////////////////////
         public static string FormatTimeOffset(TimeSpan spanFromUtc)
         {
             // Simply return "Z" if there is no offset
             if (spanFromUtc == TimeSpan.Zero)
+            {
                 return "Z";
+            }
 
             // Return the numeric offset
             TimeSpan absoluteSpan = spanFromUtc.Duration();
@@ -320,71 +283,54 @@ namespace Google.Apis
             }
         }
 
-        //////////////////////////////////////////////////////////////////////
         /// <summary>Helper method to format a TimeSpan to {HH}:{MM}</summary>
         /// <param name="timeSpan">the TimeSpan to format</param>
         /// <returns>a string in "hh:mm" format.</returns>
-        //////////////////////////////////////////////////////////////////////
         internal static string FormatNumOffset(TimeSpan timeSpan)
         {
             return String.Format(CultureInfo.InvariantCulture, "{0:00}:{1:00}", timeSpan.Hours, timeSpan.Minutes);
         }
 
-       
-        
-       	internal static Dictionary<string, string> QueryStringToDictionary(string qs) {
-			var results = new Dictionary<string, string>();
-			
-			var qsParam = qs.Split('&');
-			
-			foreach(var param in qsParam)
-			{
-				var info = param.Split('=');
-				
-				if(info.Length == 2) {
-					results.Add(info[0], info[1]);
-				}
-			}
-			
-			return results;
-		}
-       
-       
-       
-        //////////////////////////////////////////////////////////////////////
-        /// <summary>returns a blank emptyDate. That's the default for an empty string date</summary> 
-        //////////////////////////////////////////////////////////////////////
-        public static DateTime EmptyDate
+
+        internal static Dictionary<string, string> QueryStringToDictionary(string qs)
         {
-            get {
-                // that's the blank value you get when setting a DateTime to an empty string inthe property browswer
-                return new DateTime(1,1,1);
+            var results = new Dictionary<string, string>();
+
+            var qsParam = qs.Split('&');
+
+            foreach (var param in qsParam)
+            {
+                var info = param.Split('=');
+
+                if (info.Length == 2)
+                {
+                    results.Add(info[0], info[1]);
+                }
             }
 
+            return results;
         }
+
         /////////////////////////////////////////////////////////////////////////////
-        
-        
+
+
         /// <summary>
         /// save method to get an attribute value from an xmlnode
         /// </summary>
         /// <param name="attributeName"></param>
         /// <param name="xmlNode"></param>
         /// <returns></returns>
-        public static string GetAttributeValue(string attributeName, XmlNode xmlNode) 
+        public static string GetAttributeValue(string attributeName, XmlNode xmlNode)
         {
-            
-            if (xmlNode != null &&
-                attributeName != null && 
-                xmlNode.Attributes != null && 
+            if (xmlNode != null && attributeName != null && xmlNode.Attributes != null &&
                 xmlNode.Attributes[attributeName] != null)
             {
-                    return xmlNode.Attributes[attributeName].Value;
+                return xmlNode.Attributes[attributeName].Value;
             }
-            
+
             return null;
         }
-        
+
         /// <summary>
         /// returns the current assembly version using split() instead of the version 
         /// attribute to avoid security issues
@@ -393,17 +339,18 @@ namespace Google.Apis
         public static string GetAssemblyVersion()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
-            if (asm != null) 
+            if (asm != null)
             {
                 string[] parts = asm.FullName.Split(',');
                 if (parts != null && parts.Length > 1)
+                {
                     return parts[1].Trim();
-            }     
+                }
+            }
             return "1.0.0";
         }
-        
-        
-        
+
+
         /// <summary>
         /// returns the useragent string, including a version number
         /// </summary>
@@ -412,5 +359,5 @@ namespace Google.Apis
         {
             return "G-" + applicationName + "/" + serviceName + "-CS-" + GetAssemblyVersion();
         }
-	}
+    }
 }

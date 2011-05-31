@@ -14,21 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.IO;
 using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// Implementors of this interface are able to execute arbitory requests against a service given the 
-	/// resource, method, body and parameters
-	/// </summary>
-	public interface IRequestExecutor
-	{
-        Stream ExecuteRequest (string resource, string method, string body, IDictionary<string, object> parameters);
-	}
-    
+    /// <summary>
+    /// Implementors of this interface are able to execute arbitory requests against a service given the 
+    /// resource, method, body and parameters
+    /// </summary>
+    public interface IRequestExecutor
+    {
+        /// <summary>
+        /// Executes a request with the specified parameters
+        /// </summary>
+        Stream ExecuteRequest(string resource, string method, string body, IDictionary<string, object> parameters);
+    }
+
     /// <summary>
     /// Implementors of this interface are able to execute arbitory requests against a service given the 
     /// resource, method, body and parameters. Aswell as serilising and deserilising Json => objects
@@ -36,8 +38,14 @@ namespace Google.Apis.Discovery
     /// </summary>
     public interface ISchemaAwareRequestExecutor : IRequestExecutor
     {
+        /// <summary>
+        /// Serializes an object into a json representation
+        /// </summary>
         string ObjectToJson(object obj);
-        TOutput JsonToObject<TOutput>(System.IO.Stream stream);
-        Stream ExecuteRequest (string resource, string method, object body, IDictionary<string, object> parameters);
+
+        /// <summary>
+        /// Deserializes a json document into the specified class
+        /// </summary>
+        TOutput JsonToObject<TOutput>(Stream stream);
     }
 }

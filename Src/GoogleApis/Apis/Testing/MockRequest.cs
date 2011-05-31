@@ -18,80 +18,94 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
 
-namespace Google.Apis.Testing {
-
-
-	public class MockRequest : IRequest {
-		public string RpcName { get; set; }
-		public ReturnType ReturnType { get; set; }
-		public IDictionary<string, string> Parameters { get; set; }
-		public string Body { get; set; }
-		public IAuthenticator Authenticator { get; set; }
-		public bool HasExecuted { get; set; }
-		public Stream StreamToReturn { get; set; }
-        public string DeveloperKey {get; set;}
-
-		public IRequest On(string rpcName) {
-			this.RpcName = rpcName;
-			return this;
-		}
-
-
-		public IRequest Returning(ReturnType returnType) {
-			this.ReturnType = returnType;
-			return this;
-		}
-  
-        public IRequest WithParameters (IDictionary<string, object> parameters)
+namespace Google.Apis.Testing
+{
+    /// <summary>
+    /// Mock request for testing purposes
+    /// </summary>
+    public class MockRequest : IRequest
+    {
+        public MockRequest()
         {
-            return WithParameters(parameters.ToDictionary(k=>k.Key, v=>v.Value!=null?v.Value.ToString():null));
+            HasExecuted = false;
         }
 
-		public IRequest WithParameters(IDictionary<string, string> parameters) {
-			this.Parameters = parameters;
-			return this;
-		}
+        public string RpcName { get; set; }
+        public ReturnType ReturnType { get; set; }
+        public IDictionary<string, string> Parameters { get; set; }
+        public string Body { get; set; }
+        public IAuthenticator Authenticator { get; set; }
+        public bool HasExecuted { get; set; }
+        public Stream StreamToReturn { get; set; }
+        public string DeveloperKey { get; set; }
 
+        #region IRequest Members
 
-		public IRequest WithParameters(string parameters) {
-			throw new System.NotImplementedException();
-		}
-
-
-		public IRequest WithBody(IDictionary<string, string> parameters) {
-			throw new System.NotImplementedException();
-		}
-
-
-		public IRequest WithBody(string body) {
-			this.Body = body;
-			return this;
-		}
-
-
-		public IRequest WithAuthentication(IAuthenticator authenticator) {
-			this.Authenticator = authenticator;
-			return this;
-		}
-        
-        public IRequest WithDeveloperKey (string key)
+        public IRequest On(string rpcName)
         {
-            this.DeveloperKey = key;
+            RpcName = rpcName;
             return this;
         }
 
 
-		public System.IO.Stream ExecuteRequest() {
-			this.HasExecuted = true;
-			return StreamToReturn;
-		}
+        public IRequest Returning(ReturnType returnType)
+        {
+            ReturnType = returnType;
+            return this;
+        }
 
-		public MockRequest() {
-			this.HasExecuted = false;
-		}
-	}
+        public IRequest WithParameters(IDictionary<string, object> parameters)
+        {
+            return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
+        }
+
+        public IRequest WithParameters(IDictionary<string, string> parameters)
+        {
+            Parameters = parameters;
+            return this;
+        }
+
+
+        public IRequest WithParameters(string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IRequest WithBody(string body)
+        {
+            Body = body;
+            return this;
+        }
+
+
+        public IRequest WithAuthentication(IAuthenticator authenticator)
+        {
+            Authenticator = authenticator;
+            return this;
+        }
+
+        public IRequest WithDeveloperKey(string key)
+        {
+            DeveloperKey = key;
+            return this;
+        }
+
+
+        public Stream ExecuteRequest()
+        {
+            HasExecuted = true;
+            return StreamToReturn;
+        }
+
+        #endregion
+
+        public IRequest WithBody(IDictionary<string, string> parameters)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

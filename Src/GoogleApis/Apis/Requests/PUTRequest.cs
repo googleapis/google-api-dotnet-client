@@ -14,17 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.IO;
-using System.Collections.Generic;
+
 namespace Google.Apis.Requests
 {
-	public class PUTRequest : Request {
-		
-		public Stream PUT() {
-			// Perform the HTTP WebRequest.	
-			return ExecuteRequest();
-		}
-		
-	}
+    /// <summary>
+    /// A PUT request
+    /// </summary>
+    public class PUTRequest : Request
+    {
+        /// <summary>
+        /// Executes the request
+        /// </summary>
+        /// <returns></returns>
+        public Stream PUT()
+        {
+            // Perform the HTTP WebRequest.
+            return ExecuteRequest();
+        }
+    }
 }

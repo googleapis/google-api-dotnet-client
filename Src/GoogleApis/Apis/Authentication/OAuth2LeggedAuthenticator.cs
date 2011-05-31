@@ -15,20 +15,15 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
-using System.Collections;
-using System.Text;
 using System.Net;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace Google.Apis.Authentication
 {
+    /// <summary>
+    /// A two legged OAuth authenticator
+    /// </summary>
     public class OAuth2LeggedAuthenticator : OAuthAuthenticator
     {
-        public string OAuthUser{get; private set;}
-        public string OAuthDomain{get; private set;}
-
         public static string OAuthParameter = "xoauth_requestor_id";
 
         /// <summary>
@@ -40,11 +35,18 @@ namespace Google.Apis.Authentication
         /// <param name="user">the username to use</param>
         /// <param name="domain">the domain to use</param>
         /// <returns></returns>
-        public OAuth2LeggedAuthenticator (string applicationName, string consumerKey, string consumerSecret, string user, string domain) : base(applicationName, consumerKey, consumerSecret)
+        public OAuth2LeggedAuthenticator(string applicationName,
+                                         string consumerKey,
+                                         string consumerSecret,
+                                         string user,
+                                         string domain) : base(applicationName, consumerKey, consumerSecret)
         {
-            this.OAuthUser = user;
-            this.OAuthDomain = domain;
+            OAuthUser = user;
+            OAuthDomain = domain;
         }
+
+        public string OAuthUser { get; private set; }
+        public string OAuthDomain { get; private set; }
 
         /// <summary>
         /// Takes an existing httpwebrequest and modifies its headers according to
@@ -52,12 +54,13 @@ namespace Google.Apis.Authentication
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public override void ApplyAuthenticationToRequest (HttpWebRequest request)
+        public override void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            base.ApplyAuthenticationToRequest (request);
-            
-            string oauthHeader = OAuthUtil.GenerateHeader (request.RequestUri, this.ConsumerKey, this.ConsumerSecret, null, null, request.Method);
-            request.Headers.Add (oauthHeader);
+            base.ApplyAuthenticationToRequest(request);
+
+            string oauthHeader = OAuthUtil.GenerateHeader(
+                request.RequestUri, ConsumerKey, ConsumerSecret, null, null, request.Method);
+            request.Headers.Add(oauthHeader);
         }
 
         /// <summary>
@@ -67,15 +70,19 @@ namespace Google.Apis.Authentication
         /// </summary>
         /// <param name="source">the original uri</param>
         /// <returns></returns>
-        public override Uri ApplyAuthenticationToUri (Uri source)
+        public override Uri ApplyAuthenticationToUri(Uri source)
         {
-            UriBuilder builder = new UriBuilder (source);
-            string queryToAppend = OAuth2LeggedAuthenticator.OAuthParameter + "=" + this.OAuthUser + "%40" + this.OAuthDomain;
-            
-            if (builder.Query != null && builder.Query.Length > 1)
+            UriBuilder builder = new UriBuilder(source);
+            string queryToAppend = OAuthParameter + "=" + OAuthUser + "%40" + OAuthDomain;
+
+            if (builder.Query.Length > 1)
+            {
                 builder.Query = builder.Query + "&" + queryToAppend;
+            }
             else
+            {
                 builder.Query = queryToAppend;
+            }
             return builder.Uri;
         }
     }

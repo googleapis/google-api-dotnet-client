@@ -29,10 +29,33 @@ namespace Google.Apis.Discovery
     public class CachedWebDiscoveryDevice : IDiscoveryDevice
     {
         private const int BufferSize = 32 * 1024; // 32kb
-        private static readonly ILog logger = LogManager.GetLogger(typeof (CachedWebDiscoveryDevice));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
 
-        private FileStream fileStream;
         private DirectoryInfo cacheDirectory;
+        private FileStream fileStream;
+
+        public CachedWebDiscoveryDevice() : this(null) {}
+
+        /// <summary>
+        /// Creates a new cached web discovery device with the default cache folder
+        /// </summary>
+        /// <param name="discoveryUri"></param>
+        public CachedWebDiscoveryDevice(Uri discoveryUri) : this(discoveryUri, GetDefaultCacheDirectory())
+        {
+            // Set the default cache duration to 7 days
+            CacheDuration = (uint) (new TimeSpan(7, 0, 0, 0).TotalSeconds);
+        }
+
+        /// <summary>
+        /// Creates a new cached web discovery device
+        /// </summary>
+        /// <param name="discoveryUri"></param>
+        /// <param name="cacheDirectory"></param>
+        public CachedWebDiscoveryDevice(Uri discoveryUri, DirectoryInfo cacheDirectory)
+        {
+            DiscoveryUri = discoveryUri;
+            CacheDirectory = cacheDirectory;
+        }
 
         /// <summary>
         /// The URI from which the data is fetched
@@ -64,28 +87,77 @@ namespace Google.Apis.Discovery
             }
         }
 
-        public CachedWebDiscoveryDevice() : this(null) {}
+        #region IDiscoveryDevice Members
 
         /// <summary>
-        /// Creates a new cached web discovery device with the default cache folder
+        /// Fetches the discovery document from either a local cache if it exsits otherwise using
+        /// a WebDiscoveryDecivce 
         /// </summary>
-        /// <param name="discoveryUri"></param>
-        public CachedWebDiscoveryDevice(Uri discoveryUri) : this(discoveryUri, GetDefaultCacheDirectory())
+        /// <returns>
+        /// A <see cref="System.String"/>
+        /// </returns>
+        public Stream Fetch()
         {
-            // Set the default cache duration to 7 days
-            CacheDuration = (uint) (new TimeSpan(7, 0, 0, 0).TotalSeconds);
+            FileInfo cachedFile = GetCacheFile();
+            bool fetchFile = false;
+
+            // Check if we need to (re)download the document
+            if (cachedFile.Exists == false)
+            {
+                logger.Debug("Document Not Found In Cache, fetching from web");
+                fetchFile = true;
+            }
+            else if ((DateTime.UtcNow - cachedFile.LastWriteTimeUtc).TotalSeconds > CacheDuration)
+            {
+                logger.Debug("Document is outdated, refetching from web");
+                fetchFile = true;
+            }
+            else
+            {
+                logger.Debug("Found Document In Cache");
+            }
+
+            // (re-)Fetch the document
+            if (fetchFile)
+            {
+                try
+                {
+                    using (var device = new WebDiscoveryDevice(DiscoveryUri))
+                    {
+                        WriteToCache(device);
+                    }
+                }
+                catch (WebException ex)
+                {
+                    // If we have a working cached file, we can still return it
+                    if (cachedFile.Exists)
+                    {
+                        logger.Warn(
+                            string.Format(
+                                "Failed to refetch an outdated cache document [{0}]" +
+                                " - Using cached document. Exception: {1}", DiscoveryUri, ex.Message), ex);
+
+                        return cachedFile.OpenRead();
+                    }
+
+                    // Otherwise: Throw the exception
+                    throw;
+                }
+            }
+
+            fileStream = cachedFile.OpenRead();
+            return fileStream;
         }
 
-        /// <summary>
-        /// Creates a new cached web discovery device
-        /// </summary>
-        /// <param name="discoveryUri"></param>
-        /// <param name="cacheDirectory"></param>
-        public CachedWebDiscoveryDevice(Uri discoveryUri, DirectoryInfo cacheDirectory)
+        public void Dispose()
         {
-            DiscoveryUri = discoveryUri;
-            CacheDirectory = cacheDirectory;
+            if (fileStream != null)
+            {
+                fileStream.Dispose();
+            }
         }
+
+        #endregion
 
         private static DirectoryInfo GetDefaultCacheDirectory()
         {
@@ -137,73 +209,5 @@ namespace Google.Apis.Discovery
                 }
             }
         }
-
-        /// <summary>
-        /// Fetches the discovery document from either a local cache if it exsits otherwise using
-        /// a WebDiscoveryDecivce 
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/>
-        /// </returns>
-        public Stream Fetch()
-        {
-            FileInfo cachedFile = GetCacheFile();
-            bool fetchFile = false;
-
-            // Check if we need to (re)download the document
-            if (cachedFile.Exists == false)
-            {
-                logger.Debug("Document Not Found In Cache, fetching from web");
-                fetchFile = true;
-            }
-            else if ((DateTime.UtcNow - cachedFile.LastWriteTimeUtc).TotalSeconds > CacheDuration)
-            {
-                logger.Debug("Document is outdated, refetching from web");
-                fetchFile = true;
-            }
-            else
-            {
-                logger.Debug("Found Document In Cache");
-            }
-
-            // (re-)Fetch the document
-            if (fetchFile)
-            {
-                try
-                {
-                    using (var device = new WebDiscoveryDevice(DiscoveryUri))
-                    {
-                        WriteToCache(device);
-                    }
-                }
-                catch (WebException ex)
-                {
-                    // If we have a working cached file, we can still return it
-                    if (cachedFile.Exists)
-                    {
-                        logger.Warn(string.Format("Failed to refetch an outdated cache document [{0}]" +
-                                                  " - Using cached document. Exception: {1}",
-                                                  DiscoveryUri, ex.Message), ex);
-
-                        return cachedFile.OpenRead();
-                    }
-                    
-                    // Otherwise: Throw the exception
-                    throw;
-                }
-            }
-
-            fileStream = cachedFile.OpenRead();
-            return fileStream;
-        }
-
-        public void Dispose()
-        {
-            if (fileStream != null)
-            {
-                fileStream.Dispose();
-            }
-        }
     }
 }
-

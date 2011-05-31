@@ -20,52 +20,66 @@ using System.Net;
 
 namespace Google.Apis.Discovery
 {
-	/// <summary>
-	/// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
-	/// </summary>
-	public class WebDiscoveryDevice : IDiscoveryDevice 
-	{
-		public Uri DiscoveryUri {get;set;}
-		private Stream responseStream {get;set;}
-		private HttpWebResponse response {get;set;}
-        public int TimeoutInSeconds {get; set;}
-		
-		public WebDiscoveryDevice() 
-		{
+    /// <summary>
+    /// WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
+    /// </summary>
+    public class WebDiscoveryDevice : IDiscoveryDevice
+    {
+        public WebDiscoveryDevice()
+        {
             TimeoutInSeconds = 30;
         }
-		
-		public WebDiscoveryDevice(Uri discoveryUri):this()
-		{
-			this.DiscoveryUri = discoveryUri;
-		}
-		
-		/// <summary>
-		/// Fetches the discovery document from a Webserver using HttpWebRequest.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="System.String"/>
-		/// </returns>
-		public Stream Fetch() 
-		{
-			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
-			request.Timeout = TimeoutInSeconds * 1000;
-			Stream responseData;
-			
-			response = (HttpWebResponse) request.GetResponse();
-			responseData = response.GetResponseStream();
-			
-			return responseData;
-		}
-		
-		#region IDisposable implementation
-		public void Dispose ()
-		{	
-			if(responseStream != null) 
-			{
-				responseStream.Dispose();
-			}
-		}
-		#endregion	
-	}
+
+        public WebDiscoveryDevice(Uri discoveryUri) : this()
+        {
+            DiscoveryUri = discoveryUri;
+        }
+
+        /// <summary>
+        /// The URI of the discovery document
+        /// </summary>
+        public Uri DiscoveryUri { get; set; }
+
+        /// <summary>
+        /// The fetch timeout of this request (in seconds)
+        /// </summary>
+        public int TimeoutInSeconds { get; set; }
+
+        private Stream responseStream { get; set; }
+        private HttpWebResponse response { get; set; }
+
+        #region IDiscoveryDevice Members
+
+        /// <summary>
+        /// Fetches the discovery document from a Webserver using HttpWebRequest.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/>
+        /// </returns>
+        public Stream Fetch()
+        {
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
+            request.Timeout = TimeoutInSeconds * 1000;
+            Stream responseData;
+
+            response = (HttpWebResponse) request.GetResponse();
+            responseData = response.GetResponseStream();
+
+            return responseData;
+        }
+
+        #endregion
+
+        #region IDisposable implementation
+
+        public void Dispose()
+        {
+            if (responseStream != null)
+            {
+                responseStream.Dispose();
+            }
+        }
+
+        #endregion
+    }
 }

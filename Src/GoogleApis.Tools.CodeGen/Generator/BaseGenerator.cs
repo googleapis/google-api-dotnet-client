@@ -14,20 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-
-using Google.Apis.Discovery;
-
 namespace Google.Apis.Tools.CodeGen.Generator
 {
-
-    public abstract class BaseGenerator
-    {
-        public BaseGenerator ()
-        {
-        }        
-    }
+    /// <summary>
+    /// Abstract class for all generators
+    /// </summary>
+    public abstract class BaseGenerator {}
 }

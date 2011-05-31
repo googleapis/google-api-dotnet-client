@@ -17,10 +17,8 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
-
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Tests.Generator;
 
@@ -43,55 +41,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         }
 
         /// <summary>
-        /// Tests the parameters of the DecorateClass method using null-inputs
-        /// </summary>
-        [Test]
-        public void DecorateClassTest()
-        {
-            var decorator = new ArraySchemaDecorator();
-            var declaration = new CodeTypeDeclaration();
-            var schema = new MockSchema();
-            var internalClassProvider = new ObjectInternalClassProvider();
-            Assert.Throws(typeof(ArgumentNullException), () 
-                => decorator.DecorateClass(null, schema, internalClassProvider));
-            Assert.Throws(typeof(ArgumentNullException), () 
-                => decorator.DecorateClass(declaration, null, internalClassProvider));
-            Assert.Throws(typeof(ArgumentNullException), () 
-                => decorator.DecorateClass(declaration, schema, null));
-        }
-
-        /// <summary>
-        /// Tests the edge cases of the different classes handed to the DecorateClass method
-        /// </summary>
-        [Test]
-        public void DecorateClassTestEdgeCases()
-        {
-            var decorator = new ArraySchemaDecorator();
-            var internalClassProvider = new ObjectInternalClassProvider();
-            CodeTypeDeclaration declaration = null;
-
-            var schema = new MockSchema();
-            schema.Name = "test";
-            schema.SchemaDetails = null;
-            Assert.Throws(typeof(ArgumentNullException), () 
-                => decorator.DecorateClass(new CodeTypeDeclaration(), schema, internalClassProvider));
-
-            schema.SchemaDetails = new JsonSchema();
-            schema.SchemaDetails.Type = JsonSchemaType.Float;
-            Assert.DoesNotThrow(() 
-                => decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, internalClassProvider));
-            Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
-
-            schema.SchemaDetails.Type = JsonSchemaType.Array;
-            schema.SchemaDetails.Items = new List<JsonSchema>();
-            schema.SchemaDetails.Items.Add(new JsonSchema());
-            schema.SchemaDetails.Items.Add(new JsonSchema());
-            Assert.DoesNotThrow(() 
-                => decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, internalClassProvider));
-            Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
-        }
-
-        /// <summary>
         /// Confirms the result of the DecorateClass-method
         /// </summary>
         [Test]
@@ -108,14 +57,65 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails.Items = new List<JsonSchema>();
             schema.SchemaDetails.Items.Clear();
             schema.SchemaDetails.Items.Add(
-                new JsonSchema() { Description = "Test", Id = "TestSchema", Type = JsonSchemaType.Object});
+                new JsonSchema { Description = "Test", Id = "TestSchema", Type = JsonSchemaType.Object });
             Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, internalClassProvider));
 
             foreach (CodeTypeReference reference in decl.BaseTypes)
+            {
                 Assert.That(reference.BaseType, Is.StringStarting("List<"));
+            }
 
             // Subtype will only be created later on by the NestedClassGenerator,
             // and therefore cannot be tested here
+        }
+
+        /// <summary>
+        /// Tests the parameters of the DecorateClass method using null-inputs
+        /// </summary>
+        [Test]
+        public void DecorateClassTest()
+        {
+            var decorator = new ArraySchemaDecorator();
+            var declaration = new CodeTypeDeclaration();
+            var schema = new MockSchema();
+            var internalClassProvider = new ObjectInternalClassProvider();
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.DecorateClass(null, schema, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, null, internalClassProvider));
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, schema, null));
+        }
+
+        /// <summary>
+        /// Tests the edge cases of the different classes handed to the DecorateClass method
+        /// </summary>
+        [Test]
+        public void DecorateClassTestEdgeCases()
+        {
+            var decorator = new ArraySchemaDecorator();
+            var internalClassProvider = new ObjectInternalClassProvider();
+            CodeTypeDeclaration declaration = null;
+
+            var schema = new MockSchema();
+            schema.Name = "test";
+            schema.SchemaDetails = null;
+            Assert.Throws(
+                typeof(ArgumentNullException),
+                () => decorator.DecorateClass(new CodeTypeDeclaration(), schema, internalClassProvider));
+
+            schema.SchemaDetails = new JsonSchema();
+            schema.SchemaDetails.Type = JsonSchemaType.Float;
+            Assert.DoesNotThrow(
+                () => decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, internalClassProvider));
+            Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
+
+            schema.SchemaDetails.Type = JsonSchemaType.Array;
+            schema.SchemaDetails.Items = new List<JsonSchema>();
+            schema.SchemaDetails.Items.Add(new JsonSchema());
+            schema.SchemaDetails.Items.Add(new JsonSchema());
+            Assert.DoesNotThrow(
+                () => decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, internalClassProvider));
+            Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
         }
     }
 }

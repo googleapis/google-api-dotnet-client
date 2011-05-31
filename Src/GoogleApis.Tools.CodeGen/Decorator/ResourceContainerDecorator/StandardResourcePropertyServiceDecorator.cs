@@ -13,9 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
-using System.CodeDom;
 
+using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -35,49 +34,57 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
     /// </summary>
     public class StandardResourcePropertyServiceDecorator : BaseGenerator, IResourceContainerDecorator
     {
-        public void DecorateClass (IResourceContainer service, CodeTypeDeclaration serviceClass)
-        {           
+        #region IResourceContainerDecorator Members
+
+        public void DecorateClass(IResourceContainer service, CodeTypeDeclaration serviceClass)
+        {
             int resourceNumber = 1;
             foreach (var pair in service.Resources)
             {
                 IResource resource = pair.Value;
-                serviceClass.Members.Add(CreateResourceGetter (resource, resourceNumber, service.Resources.Keys));
-                serviceClass.Members.Add(CreateResourceField (resource, resourceNumber, service.Resources.Keys));
+                serviceClass.Members.Add(CreateResourceGetter(resource, resourceNumber, service.Resources.Keys));
+                serviceClass.Members.Add(CreateResourceField(resource, resourceNumber, service.Resources.Keys));
                 resourceNumber++;
             }
         }
-        
-        [VisibleForTestOnly]        
-        internal CodeMemberField CreateResourceField (IResource resource, int resourceNumber, IEnumerable<string> otherResourceNames)
+
+        #endregion
+
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateResourceField(IResource resource,
+                                                     int resourceNumber,
+                                                     IEnumerable<string> otherResourceNames)
         {
             // Add local private variables for each Resource
-            var field = new CodeMemberField (
-                GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames), 
-                GeneratorUtils.GetFieldName (resource, resourceNumber, otherResourceNames));
+            var field = new CodeMemberField(
+                GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames),
+                GeneratorUtils.GetFieldName(resource, resourceNumber, otherResourceNames));
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return field;
         }
-  
+
         [VisibleForTestOnly]
-        internal CodeMemberProperty CreateResourceGetter (IResource resource, int resourceNumber, 
-            IEnumerable<string> otherResourceNames)
+        internal CodeMemberProperty CreateResourceGetter(IResource resource,
+                                                         int resourceNumber,
+                                                         IEnumerable<string> otherResourceNames)
         {
-            var getter = new CodeMemberProperty ();
-            getter.Name = GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames);
+            var getter = new CodeMemberProperty();
+            getter.Name = GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames);
             getter.HasGet = true;
             getter.HasSet = false;
             getter.Attributes = MemberAttributes.Public;
-            getter.Type = new CodeTypeReference (GeneratorUtils.GetClassName (resource, resourceNumber, otherResourceNames));
-            getter.GetStatements.Add (
-                new CodeMethodReturnStatement (
-                    ServiceClassGenerator.GetFieldReference (resource, resourceNumber, otherResourceNames)));
-            
+            getter.Type =
+                new CodeTypeReference(GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames));
+            getter.GetStatements.Add(
+                new CodeMethodReturnStatement(
+                    ServiceClassGenerator.GetFieldReference(resource, resourceNumber, otherResourceNames)));
+
             return getter;
         }
-        
-        public override string ToString ()
+
+        public override string ToString()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
     }
 }

@@ -14,86 +14,40 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using Google.Apis.Json;
-
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Collections;
 
 namespace Google.Apis.Tests.Json
 {
-    
-   /// <summary>
-   ///This is a test class for TokenStream_JSONReaderTest and is intended
-   ///to contain all TokenStream_JSONReaderTest Unit Tests
-   ///</summary>
-  [TestFixture()]
-  public class JsonReaderTest {
-
+    /// <summary>
+    /// This is a test class for TokenStream_JSONReaderTest and is intended
+    /// to contain all TokenStream_JSONReaderTest Unit Tests
+    ///</summary>
+    [TestFixture]
+    public class JsonReaderTest
+    {
         /// <summary>
-        ///A test for Parse
-        ///</summary>
-        [Test()]
-        public void ParseTest() 
-        {
-            string jsonAsText = "[ true, \"Value2\", false, null ]";
-            object o = JsonReader.Parse(jsonAsText);
-            Assert.IsInstanceOf(typeof(ArrayList), o);
-            ArrayList a = o as ArrayList;
-            Assert.AreEqual(4, a.Count);
-            Assert.AreEqual(false, a[2]);
-            
-            jsonAsText = "{ \"Name\" : true }";
-            o = JsonReader.Parse(jsonAsText);
-            Assert.IsTrue(o is JsonDictionary);
-            
-            jsonAsText = "{ \"name\" : [ true, \"Value2\", false ], \"sub\" : { \"subname\" : 1234 } }";
-            o = JsonReader.Parse(jsonAsText);
-            Assert.IsTrue(o is JsonDictionary);
-            JsonDictionary j = o as JsonDictionary;
-            a = j["name"] as ArrayList;
-            Assert.IsNotNull(a);
-        }
-        
-        [Test()]
-        public void ParseEmptyObjectTest() 
+        /// Tests if JsonReader is able to parse a empty json document
+        /// </summary>
+        [Test]
+        public void ParseEmptyObjectTest()
         {
             string jsonAsText = "{}";
             object o = JsonReader.Parse(jsonAsText);
             Assert.IsInstanceOf(typeof(JsonDictionary), o);
             JsonDictionary dict = o as JsonDictionary;
             Assert.AreEqual(0, dict.Count);
-            
+
             jsonAsText = "{'simpleProp':1, 'emptyObject':{}}";
             o = JsonReader.Parse(jsonAsText);
             Assert.IsInstanceOf(typeof(JsonDictionary), o);
             dict = o as JsonDictionary;
             Assert.AreEqual(2, dict.Count);
             Assert.AreEqual(1, dict["simpleProp"]);
-            Assert.That(dict.ContainsKey("emptyObject"),"Parsed object did not contian emptyObject");
+            Assert.That(dict.ContainsKey("emptyObject"), "Parsed object did not contian emptyObject");
             JsonDictionary empty = dict["emptyObject"] as JsonDictionary;
             Assert.IsNotNull(empty);
             Assert.AreEqual(0, empty.Count);
-        }
-
-        /// <summary>
-        /// Checks whether JSON documents containing urls as keys can be parsed
-        /// </summary>
-        [Test]
-        public void ParseUrlsTest()
-        {
-            // Create and parse the JSON
-            const string jsonAsText = "{ \"one\": true, \"https://www.googleapis.com/auth/moderator\": \"two\", \"three\": true }";
-            object obj = JsonReader.Parse(jsonAsText);
-
-            // Convert to JSON dictionary
-            Assert.IsInstanceOf<JsonDictionary>(obj);
-            var dict = (JsonDictionary)obj;
-
-            // Validate output
-            Assert.That(dict.Count, Is.EqualTo(3));
-            Assert.That(dict["one"], Is.True);
-            Assert.That(dict["https://www.googleapis.com/auth/moderator"], Is.EqualTo("two"));
-            Assert.That(dict["three"], Is.True);
         }
 
         /// <summary>
@@ -103,7 +57,8 @@ namespace Google.Apis.Tests.Json
         public void ParseNestedTest()
         {
             // Create and parse the JSON
-            const string jsonAsText = @"{
+            const string jsonAsText =
+                @"{
                                      ""basePath"": ""/moderator/v1/"",
                                      ""auth"": {
                                       ""oauth2"": {
@@ -121,15 +76,62 @@ namespace Google.Apis.Tests.Json
 
             // Convert to JSON dictionary
             Assert.IsInstanceOf<JsonDictionary>(obj);
-            var dict = (JsonDictionary)obj;
+            var dict = (JsonDictionary) obj;
 
             // Validate output
             Assert.That(dict.Count, Is.EqualTo(3));
             Assert.That(dict["basePath"], Is.EqualTo("/moderator/v1/"));
             Assert.That(dict["auth"], Is.InstanceOf<JsonDictionary>());
-            Assert.That(((JsonDictionary)dict["auth"])["oauth2"], Is.InstanceOf<JsonDictionary>());
+            Assert.That(((JsonDictionary) dict["auth"])["oauth2"], Is.InstanceOf<JsonDictionary>());
             Assert.That(dict["features"], Is.InstanceOf<ArrayList>());
-            Assert.That(((ArrayList)dict["features"])[0], Is.EqualTo("dataWrapper"));
+            Assert.That(((ArrayList) dict["features"])[0], Is.EqualTo("dataWrapper"));
+        }
+
+        /// <summary>
+        /// A test for Parse
+        ///</summary>
+        [Test]
+        public void ParseTest()
+        {
+            string jsonAsText = "[ true, \"Value2\", false, null ]";
+            object o = JsonReader.Parse(jsonAsText);
+            Assert.IsInstanceOf(typeof(ArrayList), o);
+            ArrayList a = o as ArrayList;
+            Assert.AreEqual(4, a.Count);
+            Assert.AreEqual(false, a[2]);
+
+            jsonAsText = "{ \"Name\" : true }";
+            o = JsonReader.Parse(jsonAsText);
+            Assert.IsTrue(o is JsonDictionary);
+
+            jsonAsText = "{ \"name\" : [ true, \"Value2\", false ], \"sub\" : { \"subname\" : 1234 } }";
+            o = JsonReader.Parse(jsonAsText);
+            Assert.IsTrue(o is JsonDictionary);
+            JsonDictionary j = o as JsonDictionary;
+            a = j["name"] as ArrayList;
+            Assert.IsNotNull(a);
+        }
+
+        /// <summary>
+        /// Checks whether JSON documents containing urls as keys can be parsed
+        /// </summary>
+        [Test]
+        public void ParseUrlsTest()
+        {
+            // Create and parse the JSON
+            const string jsonAsText =
+                "{ \"one\": true, \"https://www.googleapis.com/auth/moderator\": \"two\", \"three\": true }";
+            object obj = JsonReader.Parse(jsonAsText);
+
+            // Convert to JSON dictionary
+            Assert.IsInstanceOf<JsonDictionary>(obj);
+            var dict = (JsonDictionary) obj;
+
+            // Validate output
+            Assert.That(dict.Count, Is.EqualTo(3));
+            Assert.That(dict["one"], Is.True);
+            Assert.That(dict["https://www.googleapis.com/auth/moderator"], Is.EqualTo("two"));
+            Assert.That(dict["three"], Is.True);
         }
     }
 }

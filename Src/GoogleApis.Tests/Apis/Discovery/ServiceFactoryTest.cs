@@ -18,20 +18,22 @@ using System;
 using System.IO;
 using System.Text;
 using System.Linq;
-
-
 using NUnit.Framework;
-
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
+    /// <summary>
+    /// Tests the "ServiceFactory" class
+    /// </summary>
     [TestFixture]
     public class ServiceFactoryTest
     {
-        private const string EmptyJson = "{'Fish' : 'chips'}";
+        private const string EmptyJson = "{'Fish' : 'chips'}"; // I guess David wrote this :-D
+
         //TODO(davidwaters) Fill in exmaples
-        public const string DiscoveryV1_0Example = @"{""kind"": ""discovery#restDescription"",
+        public const string DiscoveryV1_0Example =
+            @"{""kind"": ""discovery#restDescription"",
  ""id"": ""adsense:v1beta1"",
  ""name"": ""adsense"",
  ""version"": ""v1beta1"",
@@ -102,39 +104,53 @@ namespace Google.Apis.Tests.Apis.Discovery
  }
 }
 ";
-        public const string DiscoveryV0_3SmallestExample = "{'name' : 'SmallExample'," +
-            "'restBasePath' : 'https://api.example.com/example'," +
-            "'resources' : {'mgmt' : {'name' : 'mgmt', " +
-            "'resources' : {'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
-        
-        [Test]
-        public void TestV1_0GetService()
+
+        public const string DiscoveryV0_3SmallestExample =
+            "{'name' : 'SmallExample'," + "'restBasePath' : 'https://api.example.com/example'," +
+            "'resources' : {'mgmt' : {'name' : 'mgmt', " + "'resources' : {" +
+            "'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
+
+        private Stream CreateStringStream(string source)
         {
-            var factory = ServiceFactory.CreateServiceFactory(
-                    CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, null);
-            IService service = factory.GetService ("v1beta1");
-            
-            Assert.NotNull(service);
-            Assert.AreEqual(2, service.Resources.Count);
-            Assert.AreEqual("adclients", service.Resources.Keys.First());
-            Assert.AreEqual(1, service.Resources["adclients"].Methods.Count);
+            return new MemoryStream(Encoding.UTF8.GetBytes(source));
         }
-        
+
+        /// <summary>
+        /// Tests that the CreateServiceFactory-method validates parameters
+        /// </summary>
         [Test]
-        public void TestV0_3GetService()
+        public void TestCreateServiceFactoryInvalidParameters()
         {
-            var factory = ServiceFactory.CreateServiceFactory(CreateStringStream(DiscoveryV0_3SmallestExample),
-                    DiscoveryVersion.Version_0_3, null);
-            IService service = factory.GetService("v1beta1");
-            
-            Assert.NotNull(service);
-            Assert.AreEqual(1, service.Resources.Count);
-            Assert.AreEqual("mgmt", service.Resources.Keys.First());
-            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
-            Assert.AreEqual(3, service.Resources["mgmt"].Resources.Count);
-            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
+            Assert.Throws<ArgumentNullException>(
+                () => ServiceFactory.CreateServiceFactory(null, DiscoveryVersion.Version_1_0, null));
         }
-      
+
+        /// <summary>
+        /// Tests that the CreateServiceFactory-method validates the discovery version
+        /// </summary>
+        [Test]
+        public void TestCreateServiceFactoryInvalidVersion()
+        {
+            var stream = CreateStringStream(DiscoveryV1_0Example);
+            Assert.Throws<NotSupportedException>(
+                () => ServiceFactory.CreateServiceFactory(stream, (DiscoveryVersion) 56, null));
+        }
+
+        /// <summary>
+        /// Tests that the v0.3 discovery factory can be created
+        /// </summary>
+        [Test]
+        public void TestCreateServiceFactoryV0_3()
+        {
+            var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
+            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, null);
+            Assert.NotNull(factory);
+            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
+        }
+
+        /// <summary>
+        /// Tests that the v1.0 discovery factory can be created
+        /// </summary>
         [Test]
         public void TestCreateServiceFactoryV1_0()
         {
@@ -151,32 +167,39 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.IsNotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
         }
-        
+
+        /// <summary>
+        /// Tests that a v0.3 service can be created
+        /// </summary>
         [Test]
-        public void TestCreateServiceFactoryV0_3()
+        public void TestV0_3GetService()
         {
-            var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, null);
-            Assert.NotNull(factory);
-            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
+            var factory = ServiceFactory.CreateServiceFactory(
+                CreateStringStream(DiscoveryV0_3SmallestExample), DiscoveryVersion.Version_0_3, null);
+            IService service = factory.GetService("v1beta1");
+
+            Assert.NotNull(service);
+            Assert.AreEqual(1, service.Resources.Count);
+            Assert.AreEqual("mgmt", service.Resources.Keys.First());
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
+            Assert.AreEqual(3, service.Resources["mgmt"].Resources.Count);
+            Assert.AreEqual("a", service.Resources["mgmt"].Resources.Keys.First());
         }
-        
+
+        /// <summary>
+        /// Tests that a v1.0 service can be created
+        /// </summary>
         [Test]
-        public void TestCreateServiceFactoryInvalidVersion()
+        public void TestV1_0GetService()
         {
-            var stream = CreateStringStream(DiscoveryV1_0Example);
-            Assert.Throws<NotSupportedException>(() => ServiceFactory.CreateServiceFactory(stream, (DiscoveryVersion)56, null));
-        }
-        
-        [Test]
-        public void TestCreateServiceFactoryInvalidParameters()
-        {
-            Assert.Throws<ArgumentNullException>(() => ServiceFactory.CreateServiceFactory(null, DiscoveryVersion.Version_1_0, null));
-        }
-        
-        private Stream CreateStringStream(string source)
-        {
-            return new MemoryStream(UTF8Encoding.UTF8.GetBytes(source));
+            var factory = ServiceFactory.CreateServiceFactory(
+                CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, null);
+            IService service = factory.GetService("v1beta1");
+
+            Assert.NotNull(service);
+            Assert.AreEqual(2, service.Resources.Count);
+            Assert.AreEqual("adclients", service.Resources.Keys.First());
+            Assert.AreEqual(1, service.Resources["adclients"].Methods.Count);
         }
     }
 }

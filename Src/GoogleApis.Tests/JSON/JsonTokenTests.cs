@@ -14,28 +14,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using Google.Apis.Json;
-using Google.Apis.Tests;
 using NUnit.Framework;
 
 namespace Google.Apis.Tests.Json
 {
-    
-    
     /// <summary>
-    ///This is a test class for JSONTokenTest and is intended
-    ///to contain all JSONTokenTest Unit Tests
+    /// This is a test class for JSONTokenTest and is intended
+    /// to contain all JSONTokenTest Unit Tests
     ///</summary>
-  [TestFixture()]
-  public class JsonTokenTest {
-
-
-    /// <summary>
-    ///A test for JSONToken Constructor
-    ///</summary>
-    [Test()]
-    public void JSONTokenConstructorTest() {
-      JsonToken target = new JsonToken();
-      Assert.IsNotNull(target);
+    [TestFixture]
+    public class JsonTokenTest
+    {
+        /// <summary>
+        /// A test for JSONToken Constructor
+        ///</summary>
+        [Test]
+        public void JSONTokenConstructorTest()
+        {
+            JsonToken target = new JsonToken();
+            Assert.IsNotNull(target);
+        }
     }
-  }
 }

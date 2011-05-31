@@ -13,10 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -27,51 +25,57 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// Adds a reference to the IRequestExecutor, this is a standard decorator so must be present 
     /// or another Decorator that provides adds the same field.
     /// </summary>
-    public class StandardServiceFieldResourceDecorator: IResourceDecorator
+    public class StandardServiceFieldResourceDecorator : IResourceDecorator
     {
         private readonly bool schemaSupportEnabled;
+
         public StandardServiceFieldResourceDecorator(bool schemaSupportEnabled)
         {
             this.schemaSupportEnabled = schemaSupportEnabled;
         }
-        
-        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
-                                   ResourceClassGenerator generator, string serviceClassName, 
-                                   IEnumerable<IResourceDecorator> allDecorators)
+
+        #region IResourceDecorator Members
+
+        public void DecorateClass(IResource resource,
+                                  string className,
+                                  CodeTypeDeclaration resourceClass,
+                                  ResourceClassGenerator generator,
+                                  string serviceClassName,
+                                  IEnumerable<IResourceDecorator> allDecorators)
         {
-            resourceClass.Members.Add (CreateServiceField());
+            resourceClass.Members.Add(CreateServiceField());
         }
 
-        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             // NoOp
         }
 
-        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             // NoOp
         }
-        
-         /// <summary>
+
+        #endregion
+
+        /// <summary>
         /// Adds <code>private BuzzService service;</code> to the resource class.
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeMemberField CreateServiceField ()
+        internal CodeMemberField CreateServiceField()
         {
             CodeMemberField serviceField;
-            if(schemaSupportEnabled)
+            if (schemaSupportEnabled)
             {
-                serviceField = new CodeMemberField (typeof(ISchemaAwareRequestExecutor), 
-                                                    ResourceBaseGenerator.ServiceFieldName);
+                serviceField = new CodeMemberField(
+                    typeof(ISchemaAwareRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
             }
             else
             {
-                serviceField = new CodeMemberField (typeof(IRequestExecutor), 
-                                                    ResourceBaseGenerator.ServiceFieldName);
+                serviceField = new CodeMemberField(typeof(IRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
             }
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return serviceField;
         }
     }
 }
-

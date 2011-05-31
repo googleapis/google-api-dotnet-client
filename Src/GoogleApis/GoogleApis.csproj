@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Google.Apis</RootNamespace>
+    <RootNamespace>Google</RootNamespace>
     <AssemblyName>Google.Apis</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -108,8 +108,8 @@
     <Compile Include="Apis\JSON\TokenStream.cs" />
     <Compile Include="Apis\JSON\JsonDictionary.cs" />
     <Compile Include="Apis\JSON\JsonReader.cs" />
-    <Compile Include="Apis\Oauthbase.cs" />
-    <Compile Include="Apis\Oauthutil.cs" />
+    <Compile Include="Apis\OAuthBase.cs" />
+    <Compile Include="Apis\OAuthUtil.cs" />
     <Compile Include="Apis\Utilities.cs" />
     <Compile Include="Apis\Discovery\IResourceContainer.cs" />
     <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />

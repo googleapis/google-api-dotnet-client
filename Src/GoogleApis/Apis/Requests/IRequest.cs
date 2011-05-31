@@ -14,24 +14,62 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.IO;
 using System.Collections.Generic;
 using Google.Apis.Authentication;
 
-namespace Google.Apis.Requests {
+namespace Google.Apis.Requests
+{
     /// <summary>
     /// Implementors will be able to make a request to a service.
     /// </summary>
-	public interface IRequest {
-		IRequest On(string rpcName);
-		IRequest Returning(ReturnType returnType);
+    public interface IRequest
+    {
+        /// <summary>
+        /// Specifies the RPC name to use
+        /// </summary>
+        /// <param name="rpcName"></param>
+        /// <returns></returns>
+        IRequest On(string rpcName);
+
+        /// <summary>
+        /// Specifies the return type of this method
+        /// </summary>
+        IRequest Returning(ReturnType returnType);
+
+        /// <summary>
+        /// Specifies the parameter set of this method
+        /// </summary>
         IRequest WithParameters(IDictionary<string, object> parameters);
-		IRequest WithParameters(IDictionary<string, string> parameters);
-		IRequest WithParameters(string parameters);
-		IRequest WithBody(string body);
-		IRequest WithAuthentication(IAuthenticator authenticator); 
+
+        /// <summary>
+        /// Specifies the parameter set of this method
+        /// </summary>
+        IRequest WithParameters(IDictionary<string, string> parameters);
+
+        /// <summary>
+        /// Specifies the parameter query string of this method
+        /// </summary>
+        IRequest WithParameters(string parameters);
+
+        /// <summary>
+        /// Adds a body to this request (POST, PUT, ..)
+        /// </summary>
+        IRequest WithBody(string body);
+
+        /// <summary>
+        /// Changes the request to use the specified authenticator
+        /// </summary>
+        IRequest WithAuthentication(IAuthenticator authenticator);
+
+        /// <summary>
+        /// Adds the developer key to this request
+        /// </summary>
         IRequest WithDeveloperKey(string key);
-		Stream ExecuteRequest();
-	}
+
+        /// <summary>
+        /// Executes the request and returns the response stream
+        /// </summary>
+        Stream ExecuteRequest();
+    }
 }

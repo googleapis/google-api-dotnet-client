@@ -21,12 +21,14 @@ using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-
-
-    [TestFixture()]
+    /// <summary>
+    /// Tests the "BaseMethod"-class
+    /// </summary>
+    [TestFixture]
     public class BaseMethodTest
     {
-        private const string SimpleCountMethod =  @"{
+        private const string SimpleCountMethod =
+            @"{
                  'restPath': 'activities/count',
                  'rpcMethod': 'chili.activities.count',
                  'httpMethod': 'GET',
@@ -51,31 +53,30 @@ namespace Google.Apis.Tests.Apis.Discovery
                   '$ref': 'RequestTypeTestString'
                  }}";
 
-        [Test()]
-        public void TestSimpleProperties ()
+
+        private class BaseMethodTestImpl : BaseMethod
         {
-            var method = new BaseMethodTestImpl("count",SimpleCountMethod);
+            public BaseMethodTestImpl(string name, string json)
+                : base(DiscoveryVersion.Version_1_0, new KeyValuePair<string, object>(name, JsonReader.Parse(json))) {}
+
+            public override string RestPath
+            {
+                get { throw new NotImplementedException(); }
+            }
+        }
+
+        /// <summary>
+        /// Tests that the constructor fills in the proper default arguments
+        /// </summary>
+        [Test]
+        public void TestSimpleProperties()
+        {
+            var method = new BaseMethodTestImpl("count", SimpleCountMethod);
             Assert.AreEqual("ResponseTypeTestString", method.ResponseType);
             Assert.AreEqual("RequestTypeTestString", method.RequestType);
             Assert.AreEqual("count", method.Name);
             Assert.AreEqual("GET", method.HttpMethod);
             Assert.AreEqual(2, method.Parameters.Count);
-        }
-        
-        
-        private class BaseMethodTestImpl : BaseMethod
-        {
-            public BaseMethodTestImpl(string name, string json) : 
-                    base(DiscoveryVersion.Version_1_0, new KeyValuePair<string, object>(name, JsonReader.Parse(json)))
-            {
-            }
-            
-            public override string RestPath {
-                get {
-                    throw new System.NotImplementedException ();
-                }
-            }
-
         }
     }
 }

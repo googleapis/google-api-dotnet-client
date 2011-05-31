@@ -17,10 +17,10 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
+using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -30,45 +30,46 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardConstructorResourceDecorator : IResourceDecorator
     {
-        private static log4net.ILog logger = log4net.LogManager.GetLogger (typeof(StandardConstructorResourceDecorator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));
 
-        public void DecorateClass (IResource resource, string className, CodeTypeDeclaration resourceClass, 
-                                   ResourceClassGenerator generator, string serviceClassName, 
-                                   IEnumerable<IResourceDecorator> allDecorators)
+        #region IResourceDecorator Members
+
+        public void DecorateClass(IResource resource,
+                                  string className,
+                                  CodeTypeDeclaration resourceClass,
+                                  ResourceClassGenerator generator,
+                                  string serviceClassName,
+                                  IEnumerable<IResourceDecorator> allDecorators)
         {
-            logger.DebugFormat ("Adding standard constructor to Resource[{0}]", resource.Name);
-            resourceClass.Members.Add (CreateConstructor (serviceClassName));
+            logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
+            resourceClass.Members.Add(CreateConstructor(serviceClassName));
         }
 
 
-        public void DecorateMethodBeforeExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
-        {
-        }
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
 
 
-        public void DecorateMethodAfterExecute (IResource resource, IMethod method, CodeMemberMethod codeMember)
-        {
-        }
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+
+        #endregion
 
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructor (String serviceClassName)
+        internal CodeConstructor CreateConstructor(String serviceClassName)
         {
-            var constructor = new CodeConstructor ();
-            
+            var constructor = new CodeConstructor();
+
             // public [ResourceClass]([ServiceClass] service)
             constructor.Attributes = MemberAttributes.Public;
-            constructor.Parameters.Add (new CodeParameterDeclarationExpression (serviceClassName, 
-                                                ResourceBaseGenerator.ServiceFieldName));
-            
+            constructor.Parameters.Add(
+                new CodeParameterDeclarationExpression(serviceClassName, ResourceBaseGenerator.ServiceFieldName));
+
             // this.service = service
-            constructor.Statements.Add (
-                new CodeAssignStatement (
-                    new CodeFieldReferenceExpression (
-                        new CodeThisReferenceExpression (), 
-                        ResourceBaseGenerator.ServiceFieldName), 
-                    new CodeArgumentReferenceExpression (ResourceBaseGenerator.ServiceFieldName)));
+            constructor.Statements.Add(
+                new CodeAssignStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(), ResourceBaseGenerator.ServiceFieldName),
+                    new CodeArgumentReferenceExpression(ResourceBaseGenerator.ServiceFieldName)));
             return constructor;
         }
     }
 }
-
