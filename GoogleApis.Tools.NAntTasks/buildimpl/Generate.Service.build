@@ -8,9 +8,9 @@
   
   <property name="msbuild.executable" value="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe" />
   <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:3.5' />
-  <property name="google.api.proj" value="../Src/GoogleApis/GoogleApis.csproj" />
-  <property name="google.generate.proj" value="../Src/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
-  <property name="google.nant.proj" value="GoogleApis.Tools.NAntTasks.csproj" />
+  <property name="google.api.proj" value="../../Src/GoogleApis/GoogleApis.csproj" />
+  <property name="google.generate.proj" value="../../Src/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
+  <property name="google.nant.proj" value="../GoogleApis.Tools.NAntTasks.csproj" />
 
   <property name="generated.source" value="gensrc" />
   <property name="generated.binary" value="genbin" />
