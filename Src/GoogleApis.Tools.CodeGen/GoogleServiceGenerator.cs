@@ -41,6 +41,13 @@ namespace Google.Apis.Tools.CodeGen
     /// </summary>
     public class GoogleServiceGenerator : BaseGenerator
     {
+        /// <summary>
+        /// Defines the URL used to discover Google APIs
+        /// {0}: Service name
+        /// {1}: Version
+        /// </summary>
+        private const string GoogleDiscoveryURL = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
+
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleServiceGenerator));
 
         private readonly IService service;
@@ -89,9 +96,11 @@ namespace Google.Apis.Tools.CodeGen
                     new StandardExecuteMethodServiceDecorator (),
                     new SchemaAwearExecuteMethodDecorator(),
                     new NewtonsoftJsonSerializer(),
+                    new DeveloperKeyServiceDecorator(),
                     }).
                     AsReadOnly();
-        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = (new List<IResourceContainerDecorator>(){
+        public static readonly IList<IResourceContainerDecorator> StandardResourceContainerDecorator = 
+            (new List<IResourceContainerDecorator>(){
                     new StandardResourcePropertyServiceDecorator()}).
                     AsReadOnly();
 
@@ -126,20 +135,21 @@ namespace Google.Apis.Tools.CodeGen
                 GetSchemaAwareResourceDecorators(clientNamespace + ".Data"), 
                 SchemaAwareServiceDecorators,
                 StandardResourceContainerDecorator,
-                new GoogleSchemaGenerator(GoogleSchemaGenerator.DeafultSchemaDecorators, clientNamespace + ".Data")
+                new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, clientNamespace + ".Data")
                 )
         {   
         }
   
-        internal static IDiscoveryService CreateDefaultCachingDiscovery(string serviceName)
+        internal static IDiscoveryService CreateDefaultCachingDiscovery(string serviceUrl)
         {
             // Set up how discovery works.
-            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "GoogleApis.Tools.CodeGenCache");
+            string cacheDirectory = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData),
+                                                  "GoogleApis.Tools.CodeGenCache");
             if (Directory.Exists (cacheDirectory) == false) {
                 Directory.CreateDirectory (cacheDirectory);
             }
             var webfetcher = new CachedWebDiscoveryDevice (
-                                new Uri ("https://www.googleapis.com/discovery/0.1/describe?api=" + serviceName), 
+                                new Uri (serviceUrl), 
                                 new DirectoryInfo (cacheDirectory));
             return new DiscoveryService (webfetcher);
         }
@@ -150,9 +160,12 @@ namespace Google.Apis.Tools.CodeGen
         public static void GenerateService (string serviceName, string version, string clientNamespace, 
                                             string language, string outputFile)
         {
-            var discovery = CreateDefaultCachingDiscovery(serviceName);
+            // Generate the discovery URL for that service
+            string url = string.Format(GoogleDiscoveryURL, serviceName, version);
+
+            var discovery = CreateDefaultCachingDiscovery(url);
             // Build the service based on discovery information.
-            var service = discovery.GetService (version, DiscoveryVersion.Version_1_0, null);
+            var service = discovery.GetService (version, DiscoveryVersion.Version_1_0);
             
             var generator = new GoogleServiceGenerator (service, clientNamespace);
             var generatedCode = generator.GenerateCode ();

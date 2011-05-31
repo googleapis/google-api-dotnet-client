@@ -73,7 +73,7 @@ namespace Google.Apis.Discovery
         /// The default server URL used
         /// Points to the Google API repository
         /// </summary>
-        public const string DefaultServerUrl = "https://www.googleapis.com/";
+        public const string DefaultServerUrl = "https://www.googleapis.com";
 
         /// <summary>
         /// Creates a new factory parameter for a service

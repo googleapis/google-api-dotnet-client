@@ -32,7 +32,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents the basic implementation of a service
     /// </summary>
-    public abstract class BaseService:IService
+    public abstract class BaseService : IService
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(BaseService));
         
@@ -54,7 +54,7 @@ namespace Google.Apis.Discovery
         protected string ServerUrl { get; set; }
         protected string BasePath { get; set; }
         
-        internal BaseService (string version, string name, JsonDictionary values, BaseFactoryParameters param)
+        internal BaseService (string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
         {
             version.ThrowIfNull("version");
             name.ThrowIfNull("name");
@@ -79,6 +79,11 @@ namespace Google.Apis.Discovery
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
             ServerUrl = param.ServerUrl;
             BasePath = param.BasePath;
+        }
+
+        private BaseService()
+        {
+            GZipEnabled = true;
         }
 
         public abstract DiscoveryVersion DiscoveryVersion { get;}
@@ -184,6 +189,7 @@ namespace Google.Apis.Discovery
             return new ResourceV1_0(this.DiscoveryVersion, kvp);
         }
 
+        public virtual bool GZipEnabled { get; set; }
     }
     
     #endregion

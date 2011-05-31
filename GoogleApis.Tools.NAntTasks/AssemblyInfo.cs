@@ -20,18 +20,14 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("GoogleApis")]
+[assembly: AssemblyTitle("GoogleApis.Tools.NAntTasks")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Google Inc")]
+[assembly: AssemblyConfiguration("Google Inc")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Google Inc 2010")]
+[assembly: AssemblyCopyright("Google 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-[assembly: InternalsVisibleTo("Google.Apis.Tests")]
-[assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]
-[assembly: InternalsVisibleTo("Google.Apis.Tests.Apis.Discovery.V0_3")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
@@ -44,4 +40,3 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-
