@@ -29,7 +29,6 @@ namespace Google.Apis.Requests {
         IRequest WithParameters(IDictionary<string, object> parameters);
 		IRequest WithParameters(IDictionary<string, string> parameters);
 		IRequest WithParameters(string parameters);
-		IRequest WithBody(IDictionary<string, string> parameters);
 		IRequest WithBody(string body);
 		IRequest WithAuthentication(IAuthenticator authenticator); 
         IRequest WithDeveloperKey(string key);
