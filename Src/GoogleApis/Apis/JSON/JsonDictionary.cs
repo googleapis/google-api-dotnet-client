@@ -1,5 +1,5 @@
 /*
-Copyright 2010 Google Inc
+Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -13,14 +13,52 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
-using System.IO;
-using System.Text;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 namespace Google.Apis.Json
 {
-  public class JsonDictionary : Dictionary<string, object>
-  {}
+    /// <summary>
+    /// Dictionary used for Json parsing
+    /// </summary>
+    public class JsonDictionary : Dictionary<string, object>
+    {
+        /// <summary>
+        /// Returns the value from the dictionary, or
+        /// or, if not set, throws an ArgumentException
+        /// </summary>
+        public object GetMandatoryValue(string key)
+        {
+            if (!ContainsKey(key))
+            {
+                string message = String.Format("JsonDictionary did not contain mandatory key [{0}]", key);
+                throw new ArgumentException(key, message);
+            }
+
+            return this[key];
+        }
+
+        /// <summary>
+        /// Returns the value from the dictionary and
+        /// converts it to the specified [T]ype. 
+        /// Throws an ArgumentException if the key is not set within the dictionary, 
+        /// or if the value is not of the requested type
+        /// </summary>
+        public T GetMandatoryValue<T>(string key)
+        {
+            object val = GetMandatoryValue(key);
+
+            if (!(val is T))
+            {
+                throw new ArgumentException(
+                    string.Format("The type[{1}] of the value of '{0}' is not of the expected type[{2}]",
+                                  val.GetType(),
+                                  key,
+                                  typeof (T)));
+            }
+
+            return (T) val;
+        }
+    }
 }

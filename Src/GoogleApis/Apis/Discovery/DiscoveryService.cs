@@ -64,9 +64,12 @@ namespace Google.Apis.Discovery
 			DiscoveryDevice = discovery;
 		}
 		
-		/// <summary>
-		/// Creates an API object that provides access to the methods defined in the discovery document.
-		/// </summary>
+        /// <summary>
+        /// Creates an API object that provides access to the methods defined in the discovery document.
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="param"></param>
+        /// <param name="discoveryVersion">The version of discovery used to create the service</param>
 		public IService GetService(string version, 
                                    DiscoveryVersion discoveryVersion, 
                                    IFactoryParameter param)
@@ -81,5 +84,14 @@ namespace Google.Apis.Discovery
 			
 			return factory.GetService(version);
 		}
+
+        /// <summary>
+        /// Creates an API object that provides access to the methods defined in the discovery document.
+        /// Uses default factory parameters to construct the service
+        /// </summary>
+        public IService GetService(string version, DiscoveryVersion discoveryVersion)
+        {
+            return GetService(version, discoveryVersion, null);
+        }
     }
 }
