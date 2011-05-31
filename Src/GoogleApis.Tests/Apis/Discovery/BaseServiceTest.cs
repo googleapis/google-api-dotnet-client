@@ -30,15 +30,16 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture]
     public class BaseServiceTest
     {
-        private class ConcreateClass : BaseService
+        private class ConcreteClass : BaseService
         {
-            public ConcreateClass(string version, string name, JsonDictionary js): base(version, name, js)
+            private class ConcreteFactoryParameters : BaseFactoryParameters
+            {
+                public ConcreteFactoryParameters() : base("http://test/", "testService/") {}
+            }
+
+            public ConcreteClass(string version, string name, JsonDictionary js): base(version, name, js, new ConcreteFactoryParameters())
             {
                 ;
-            }
-            
-            public override Uri BaseUri {
-                get {throw new NotImplementedException ();}
             }
 
             public override DiscoveryVersion DiscoveryVersion {
@@ -55,7 +56,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestNoThrowOnFieldsMissing()
         {
             var dict = new JsonDictionary();
-            var impl = new ConcreateClass("V1","NameTest", dict);
+            var impl = new ConcreteClass("V1","NameTest", dict);
             
             Assert.AreEqual("V1", impl.Version);
             Assert.IsNull(impl.Id);
@@ -75,15 +76,15 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             var dict = new JsonDictionary();
             dict.Add("description", "Test Description");
-            dict.Add("documentationLink", "https://ww.google.com/");
+            dict.Add("documentationLink", "https://www.google.com/");
             dict.Add("features", new ArrayList(){"feature1", "feature2"});
             dict.Add("labels", new ArrayList(){"label1", "label2"});
             dict.Add("id", "TestId");
             dict.Add("title", "Test API");
             
-            IService impl = new ConcreateClass("V1", "NameTest", dict);
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
             Assert.AreEqual("Test Description", impl.Description);
-            Assert.AreEqual("https://ww.google.com/", impl.DocumentationLink);
+            Assert.AreEqual("https://www.google.com/", impl.DocumentationLink);
             MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"feature1", "feature2"}, impl.Features);
             MoreAsserts.ContentsEqualAndInOrder(new List<string>(){"label1", "label2"}, impl.Labels);
             Assert.AreEqual("TestId", impl.Id);

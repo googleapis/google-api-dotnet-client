@@ -69,6 +69,7 @@
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />

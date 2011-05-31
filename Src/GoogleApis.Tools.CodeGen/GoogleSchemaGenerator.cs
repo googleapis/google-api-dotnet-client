@@ -19,12 +19,13 @@ namespace Google.Apis.Tools.CodeGen
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger (typeof(GoogleSchemaGenerator));
         
-        public static readonly IEnumerable<ISchemaDecorator> DeafultSchemaDecorators = 
+        public static readonly IEnumerable<ISchemaDecorator> DefaultSchemaDecorators = 
             (new List<ISchemaDecorator>(){
                 new StandardPropertyFieldDecorator(),
                 new StandardPropertyDecorator(),
                 new StandardSchemaCommentDecorator(),
                 new NewtonSoftPropertyAttributeDecorator(),
+                new ArraySchemaDecorator(),
             }).
             AsReadOnly();
         private readonly IList<ISchemaDecorator> decorators;
@@ -49,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen
             codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections"));
             codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             SchemaGenerator generator = new SchemaGenerator(decorators);
-            foreach(var schemaPair in service.Schemas)
+            foreach (var schemaPair in service.Schemas)
             {
                 logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
                 codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value, service.Schemas.Keys));
@@ -59,19 +60,19 @@ namespace Google.Apis.Tools.CodeGen
         
         private void LogDecorators()
         {
-            if(logger.IsDebugEnabled == false)
+            if (logger.IsDebugEnabled == false)
             {
                 return;
             }
             logger.Debug("With Schema descorators:");
-            if(decorators.Any() == false)
+            if (decorators.Any() == false)
             {
                 logger.Debug(">>>NO DECORATORS");
             }
                 
-            foreach(var decorator in decorators)
+            foreach (var decorator in decorators)
             {
-                logger.DebugFormat(">>>{0}", decorator.ToString());
+                logger.DebugFormat(">>>{0}", decorator);
             }
         }
     }
