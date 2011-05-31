@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Google.Apis.Samples.Helper;
 using Google.Apis.Tools.CodeGen;
-using GoogleApis.Samples.SampleHelper;
 
 namespace ServiceGenerator
 {

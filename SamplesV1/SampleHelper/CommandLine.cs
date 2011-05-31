@@ -17,7 +17,7 @@ limitations under the License.
 using System;
 using System.Reflection;
 
-namespace GoogleApis.Samples.SampleHelper
+namespace Google.Apis.Samples.Helper
 {
     /// <summary>
     /// Contains helper methods for command line operation

@@ -17,7 +17,7 @@ limitations under the License.
 using System.ComponentModel;
 using System.Reflection;
 
-namespace GoogleApis.Samples.SampleHelper
+namespace Google.Apis.Samples.Helper
 {
     /// <summary>
     /// Reflection Helper
