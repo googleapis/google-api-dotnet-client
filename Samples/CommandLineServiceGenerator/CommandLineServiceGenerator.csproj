@@ -55,6 +55,14 @@
     <StartupObject>Google.Apis.Samples.ComandLineServiceGenerator.MainClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.0.4124.32927, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Google.Apis.Tools.CodeGen, Version=1.0.4124.32928, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\Google.Apis.Tools.CodeGen.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />

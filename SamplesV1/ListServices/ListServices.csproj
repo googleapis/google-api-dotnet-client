@@ -42,6 +42,10 @@
     <Compile Include="ServiceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
+      <Project>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</Project>
+      <Name>GoogleApis.Tools.CodeGen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Src\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>

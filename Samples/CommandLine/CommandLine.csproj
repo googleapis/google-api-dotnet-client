@@ -54,6 +54,10 @@
     <StartupObject>Google.Apis.Samples.CommandLine.MainClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.0.4124.32927, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\Google.Apis.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />

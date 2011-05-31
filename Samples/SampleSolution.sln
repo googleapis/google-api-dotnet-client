@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiExplorerWinForm", "ApiEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "..\Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "..\Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslateApiWin", "TranslateApiWin\TranslateApiWin.csproj", "{5849BEFC-0E0E-4DA2-B883-016E9C9623BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
