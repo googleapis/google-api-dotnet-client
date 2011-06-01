@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
@@ -73,6 +74,16 @@ namespace Google.Apis.Tests.Apis.Requests
         public IList<string> Features { get; private set; }
 
         public IRequest CreateRequest(string resource, string methodName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Serialize(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T Deserialize<T>(Stream input)
         {
             throw new NotImplementedException();
         }

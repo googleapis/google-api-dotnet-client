@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Google.Apis.Json;
+using Google.Apis.JSON;
 using Google.Apis.Requests;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
@@ -161,7 +162,78 @@ namespace Google.Apis.Discovery
             return request;
         }
 
+        public string Serialize(object obj)
+        {
+            return JsonSerialization.Serialize(obj);
+        }
+
+        public T Deserialize<T>(Stream input)
+        {
+            // Deserialize the stream based upon the format of the stream
+            if (this.HasFeature(Discovery.Features.LegacyDataResponse))
+            {
+                // Legacy path (deprecated!)
+                StandardResponse<T> response = JsonSerialization.Deserialize<StandardResponse<T>>(input);
+
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
+                if (response.Data == null)
+                {
+                    throw new GoogleApiException(this, "The response could not be deserialized.");
+                }
+
+                return response.Data;
+            }
+
+            // New path
+            string text;
+
+            using (var reader = new StreamReader(input))
+                text = reader.ReadToEnd();
+
+
+            T obj = JsonSerialization.Deserialize<T>(text);
+
+            // If no object was parsed, check if an error json was returned
+            if (obj == null)
+            {
+                StandardResponse<T> response = JsonSerialization.Deserialize<StandardResponse<T>>(text);
+
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
+                throw new GoogleApiException(this, "The response could not be deserialized.");
+            }
+
+            return obj;
+        }
+
         public bool GZipEnabled { get; set; }
+
+        public TOutput JsonToObject<TOutput>(Stream stream)
+        {
+            StreamReader streamReader = new StreamReader(stream);
+            string str = streamReader.ReadToEnd();
+            try
+            {
+                StandardResponse<TOutput> response = JsonConvert.DeserializeObject<StandardResponse<TOutput>>(str);
+                if (response.Data == null)
+                {
+                    throw new ApplicationException(
+                        string.Format("Failed to get response from stream, error was [{0}]", response.Error));
+                }
+                return response.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(
+                    string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str),
+                    ex);
+            }
+        }
 
         #endregion
 

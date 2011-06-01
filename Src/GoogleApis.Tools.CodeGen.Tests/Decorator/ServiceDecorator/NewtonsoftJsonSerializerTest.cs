@@ -39,38 +39,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         }
 
         /// <summary>
-        /// Tests the JsonSerializer @ Fields
-        /// </summary>
-        [Test]
-        public void CreateJsonSerializerFieldTest()
-        {
-            NewtonsoftJsonSerializer decorator = new NewtonsoftJsonSerializer();
-            CodeMemberField field = decorator.CreateJsonSerializerField();
-            Assert.IsNotNull(field);
-            Assert.AreEqual("newtonJsonSerilizer", field.Name);
-            Assert.AreEqual(new CodeTypeReference(typeof(JsonSerializer)).BaseType, field.Type.BaseType);
-        }
-
-        /// <summary>
-        /// Tests the JsonSerializer @ Getters
-        /// </summary>
-        [Test]
-        public void CreateJsonSerializerGetterTest()
-        {
-            NewtonsoftJsonSerializer decorator = new NewtonsoftJsonSerializer();
-            CodeMemberProperty property = decorator.CreateJsonSerializerGetter();
-            // private JsonSerializer NewtonJsonSerilizer{get{...}}
-            Assert.IsNotNull(property);
-            Assert.AreEqual("NewtonJsonSerilizer", property.Name);
-            Assert.AreEqual(new CodeTypeReference(typeof(JsonSerializer)).BaseType, property.Type.BaseType);
-            Assert.IsTrue(property.HasGet);
-            Assert.IsFalse(property.HasSet);
-            Assert.IsNotEmpty(property.GetStatements);
-            Assert.IsEmpty(property.SetStatements);
-            Assert.AreEqual(MemberAttributes.Private, property.Attributes);
-        }
-
-        /// <summary>
         /// Tests the JsonSerializer @ Objects
         /// </summary>
         [Test]
@@ -119,11 +87,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(null, null));
             CodeTypeDeclaration declaration = new CodeTypeDeclaration("TestClass");
             decorator.DecorateClass(null, declaration);
-            Assert.AreEqual(4, declaration.Members.Count);
+            Assert.AreEqual(2, declaration.Members.Count);
             AssertContainsName(declaration.Members, "JsonToObject");
             AssertContainsName(declaration.Members, "ObjectToJson");
-            AssertContainsName(declaration.Members, "NewtonJsonSerilizer");
-            AssertContainsName(declaration.Members, "newtonJsonSerilizer");
         }
     }
 }

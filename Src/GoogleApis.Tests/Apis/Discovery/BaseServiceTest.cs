@@ -92,5 +92,19 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("TestId", impl.Id);
             Assert.AreEqual("Test API", impl.Title);
         }
+
+        /// <summary>
+        /// This test is designed to test the "Features" extension of services
+        /// </summary>
+        [Test]
+        public void TestFeatures()
+        {
+            var dict = new JsonDictionary();
+            dict.Add("features", new ArrayList { Features.LegacyDataResponse });
+
+            IService impl = new ConcreteClass("V1", "TestService", dict);
+            Assert.IsTrue(impl.HasFeature(Features.LegacyDataResponse));
+            Assert.IsFalse(impl.HasFeature("nonExistentFeature"));
+        }
     }
 }

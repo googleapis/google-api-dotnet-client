@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 
@@ -82,5 +83,15 @@ namespace Google.Apis.Discovery
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
         IRequest CreateRequest(string resource, string methodName);
+
+        /// <summary>
+        /// Serializes the specified object into the format used by this service
+        /// </summary>
+        string Serialize(object obj);
+
+        /// <summary>
+        /// Deserializes the stream defined by the format used by this service into a .NET object
+        /// </summary>
+        T Deserialize<T>(Stream input);
     }
 }
