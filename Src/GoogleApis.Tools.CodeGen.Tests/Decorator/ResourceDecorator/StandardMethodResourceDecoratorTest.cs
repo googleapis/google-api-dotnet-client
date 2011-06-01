@@ -58,7 +58,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
                     continue;
                 }
                 var method = (CodeMemberMethod) member;
-                var methodName = (TestMethodNames) Enum.Parse(typeof(TestMethodNames), method.Name, true);
+                var methodName = (TestMethodNames) Enum.Parse(typeof(TestMethodNames), method.Name.Replace("AsStream", ""), true);
                 dict.Add(methodName, method);
             }
             return dict;
