@@ -119,26 +119,32 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
 
         /// <summary>
-        /// Returns a CodeExpression that creates a Discovery specific FactoryPatameter.
+        /// Returns a CodeExpression that creates a Discovery specific FactoryParameter.
+        /// Resulting Code:     new FactoryParameterV*(new Uri(DiscoveryService.BaseUri))
         /// </summary>
         [VisibleForTestOnly]
         internal CodeExpression GetVersionSpecificParameter(IService service, CodeTypeDeclaration serviceClass)
         {
+            // DiscoveryService.BaseUri
+            var baseUriRef = new CodeFieldReferenceExpression(
+                new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.BaseUriName);
+
+            // new Uri(..)
+            var uriConstructor = new CodeObjectCreateExpression();
+            uriConstructor.CreateType = new CodeTypeReference(typeof(Uri));
+            uriConstructor.Parameters.Add(baseUriRef);
+
+            // new ..FactoryParameters(..)
             switch (service.DiscoveryVersion)
             {
                 case DiscoveryVersion.Version_0_3:
                     return new CodeObjectCreateExpression(
-                        typeof(FactoryParameterV0_3), new CodePrimitiveExpression(null),
-                        new CodeFieldReferenceExpression(
-                            new CodeTypeReferenceExpression(serviceClass.Name),
-                            VersionInformationServiceDecorator.BaseUriName));
+                        typeof(FactoryParameterV0_3), uriConstructor);
 
                 case DiscoveryVersion.Version_1_0:
                     return new CodeObjectCreateExpression(
-                        typeof(FactoryParameterV1_0), new CodePrimitiveExpression(null),
-                        new CodeFieldReferenceExpression(
-                            new CodeTypeReferenceExpression(serviceClass.Name),
-                            VersionInformationServiceDecorator.BaseUriName));
+                        typeof(FactoryParameterV1_0), uriConstructor);
+
                 default:
                     throw new NotSupportedException(
                         "The Discovery version " + service.DiscoveryVersion + " is not yet supported");
@@ -146,7 +152,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
 
         /// <summary>
-        /// Generatrs the following code
+        /// Generates the following code
         /// <code>
         ///     Authentication.AuthenticatorFactory.
         ///         GetInstance().
