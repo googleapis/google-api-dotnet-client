@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             objectTypeProvider = null;
             commentCreator = new DefaultEnglishCommentCreator();
 
-            methodNameSufix = "";
+            methodNameSufix = "AsStream";
         }
 
         public StandardMethodResourceDecorator(bool returnObjects,
@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             this.acceptObjectsAsBody = acceptObjectsAsBody;
             this.objectTypeProvider = objectTypeProvider;
             this.commentCreator = commentCreator;
-            methodNameSufix = "AsObject";
+            methodNameSufix = "";
         }
 
         #region IResourceDecorator Members
