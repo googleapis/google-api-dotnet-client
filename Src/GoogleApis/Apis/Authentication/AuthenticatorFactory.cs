@@ -73,7 +73,8 @@ namespace Google.Apis.Authentication
         {
             if (instance.authenticatorCreator == null)
             {
-                throw new ApplicationException("No Authenticator registered");
+                // If no authenticator is registered, use the unauthentificated path
+                return new NullAuthenticator();
             }
 
             return authenticatorCreator();
