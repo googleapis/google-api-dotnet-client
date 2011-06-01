@@ -33,8 +33,8 @@
   <property name="service.urlshortener" value="urlshortener|v1|UrlShortener|V1" />
 
   <property name="nant.windows.bin.path" value="C:\Tools\nant\bin\" />
-  <property name="nant.task.path" value="extensions\common\2.0" />
-  <property name="nant.lib.path" value="lib\common\2.0" />
+  <property name="nant.task.path" value="extensions\common\neutral" />
+  <property name="nant.lib.path" value="lib\common\neutral" />
   <property name="nant.linux.bin.path" value="/usr/local/shar/NAnt/bin/" />
   
   <!-- excluded 
@@ -104,7 +104,10 @@
 
   <target name="nant-properties">
     <property name="nant.bin.path" value="error" />
-    <if test="${directory::exists(nant.windows.bin.path)}">
+    <if test="${directory::exists(nant::get-base-directory())}">
+      <property name="nant.bin.path" value="${nant::get-base-directory()}" />
+    </if>
+    <if test="${nant.bin.path == 'error' and directory::exists(nant.windows.bin.path)}">
       <property name="nant.bin.path" value="${nant.windows.bin.path}" />
     </if>
     <if test="${nant.bin.path == 'error' and directory::exists(nant.linux.bin.path)}">
@@ -113,6 +116,7 @@
     <if test="${nant.bin.path == 'error'}">
       <fail message="Failed to find nant, looked in ${nant.windows.bin.path} and ${nant.linux.bin.path}"/>
     </if>
+    <echo message="Using the Nant installation in: ${nant.bin.path}" />
   </target>
   
   <target name="update-nant-tasks" depends="nant-properties, build-google-api, build-google-nant-task">
