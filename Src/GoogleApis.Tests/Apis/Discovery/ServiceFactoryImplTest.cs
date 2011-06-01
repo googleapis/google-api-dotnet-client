@@ -49,7 +49,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void ServiceFactoryDiscoveryV1_0ConstructorFailTest()
         {
-            Assert.Throws<ArgumentNullException>(() => new FactoryParameterV1_0(null));
+            Assert.Throws<ArgumentNullException>(() => new FactoryParameterV1_0((string)null));
             var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
 
             // Test if the constructor will fail if required arguments are missing

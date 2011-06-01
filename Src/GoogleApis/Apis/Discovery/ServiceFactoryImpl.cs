@@ -29,6 +29,11 @@ namespace Google.Apis.Discovery
         public FactoryParameterV1_0() {}
 
         /// <summary>
+        /// Creates a new v1.0 factory parameter by splitting the specified service URI into ServerUrl and BasePath
+        /// </summary>
+        public FactoryParameterV1_0(Uri serviceUri) : base(serviceUri) {}
+
+        /// <summary>
         /// Creates a parameter set for a v1.0 service
         /// </summary>
         /// <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
@@ -48,6 +53,11 @@ namespace Google.Apis.Discovery
     public class FactoryParameterV0_3 : BaseFactoryParameters
     {
         public FactoryParameterV0_3() {}
+
+        /// <summary>
+        /// Creates a new v0.3 factory parameter by splitting the specified service URI into ServerUrl and BasePath
+        /// </summary>
+        public FactoryParameterV0_3(Uri serviceUri) : base(serviceUri) {}
 
         /// <summary>
         /// Creates a parameter set for a v0.3 service
@@ -81,6 +91,22 @@ namespace Google.Apis.Discovery
         protected BaseFactoryParameters()
         {
             ServerUrl = DefaultServerUrl;
+        }
+
+        /// <summary>
+        /// Creates a new factory parameter by splitting the specified service URI into ServerUrl and BasePath
+        /// </summary>
+        protected BaseFactoryParameters(Uri serviceUri)
+        {
+            serviceUri.ThrowIfNull("serviceUri");
+
+            // Retrieve Scheme and Host
+            ServerUrl = serviceUri.GetLeftPart(UriPartial.Authority);
+            ServerUrl.ThrowIfNullOrEmpty("ServerUrl");
+
+            // Retrieve the remaining right part
+            BasePath = serviceUri.GetComponents(UriComponents.PathAndQuery, UriFormat.UriEscaped);
+            ServerUrl.ThrowIfNullOrEmpty("BasePath");
         }
 
         /// <summary>
