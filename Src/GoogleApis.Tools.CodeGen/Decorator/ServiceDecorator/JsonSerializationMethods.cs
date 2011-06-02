@@ -24,7 +24,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
-    /// Supplies ObjectToJson method in generated services. Using Newtonsoft.Json.JsonSerilizer
+    /// Supplies ObjectToJson method in generated services. Uses Newtonsoft.Json.JsonSerializer
     /// </summary>
     public class JsonSerializationMethods : IServiceDecorator
     {

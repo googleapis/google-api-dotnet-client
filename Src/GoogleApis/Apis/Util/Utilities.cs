@@ -199,9 +199,11 @@ namespace Google.Apis.Util
 
             entry.ThrowIfNull("value");
 
-            // If set, return the value););
+            // If set, return the value
             foreach (StringValueAttribute attribute in entry.GetCustomAttributes(typeof(StringValueAttribute), false))
+            {
                 return attribute.Text;
+            }
 
             // Otherwise throw an exception
             throw new ArgumentException(
