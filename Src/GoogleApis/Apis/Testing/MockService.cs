@@ -66,6 +66,13 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public DiscoveryVersion DiscoveryVersion { get; set; }
         public IDictionary<string, ISchema> Schemas { get; set; }
+
+        public ISerializer Serializer
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
         public string DocumentationLink { get; private set; }
@@ -84,6 +91,11 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         public T Deserialize<T>(Stream input)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasFeature(Features feature)
         {
             throw new NotImplementedException();
         }

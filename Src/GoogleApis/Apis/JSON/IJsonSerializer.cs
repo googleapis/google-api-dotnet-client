@@ -14,19 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Util;
-
-namespace Google.Apis.Discovery
+namespace Google.Apis.JSON
 {
     /// <summary>
-    /// Specifies a list of features which can be defined within the discovery document of a service1
+    /// Represents a Json Serializer
     /// </summary>
-    public enum Features
+    public interface IJsonSerializer : ISerializer
     {
-        /// <summary>
-        /// If this feature is specified, then the data of a response is encapsulated within a "data" resource
-        /// </summary>
-        [StringValue("dataWrapper")]
-        LegacyDataResponse,
     }
 }

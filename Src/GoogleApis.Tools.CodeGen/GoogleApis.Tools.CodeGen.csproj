@@ -98,7 +98,7 @@
     <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
     <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethods.cs" />
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\SchemaUtil.cs" />

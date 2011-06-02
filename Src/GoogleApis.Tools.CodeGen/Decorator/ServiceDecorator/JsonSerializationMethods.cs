@@ -26,23 +26,58 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// <summary>
     /// Supplies ObjectToJson method in generated services. Using Newtonsoft.Json.JsonSerilizer
     /// </summary>
-    public class NewtonsoftJsonSerializer : IServiceDecorator
+    public class JsonSerializationMethods : IServiceDecorator
     {
+        private const string RegisterSerializerMethodName = "RegisterSerializer";
         private const string SerializationMethodName = "ObjectToJson";
         private const string DeserializationMethodName = "JsonToObject";
-        private const string InternalSerializationMethod = "Serialize";
-        private const string InternalDeserializationMethod = "Deserialize";
 
         #region IServiceDecorator Members
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.ThrowIfNull("serviceClass");
+            serviceClass.Members.Add(CreateRegisterSerializer());
             serviceClass.Members.Add(CreateObjectToJson());
             serviceClass.Members.Add(CreateJsonToObject());
         }
 
         #endregion
+
+
+        /// <summary>
+        ///  Creates the RegisterSerializer method
+        ///  <code>
+        ///     public void RegisterSerializer(ISerializer serializer)
+        ///     {
+        ///         genericService.Serializer = serializer;
+        ///     }
+        ///  </code>
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeMemberMethod CreateRegisterSerializer()
+        {
+            const string VAR_NAME = "serializer";
+            var genericService = new CodeTypeReferenceExpression(ServiceClassGenerator.GenericServiceName);
+
+            // public string ObjectToJson(object obj)
+            var method = new CodeMemberMethod();
+            method.Name = RegisterSerializerMethodName;
+            method.Attributes = MemberAttributes.Public;
+            method.Parameters.Add(
+                new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(ISerializer)), VAR_NAME));
+            method.ReturnType = new CodeTypeReference(typeof(void));
+
+            // genericService.Serializer = serializer;
+            var propertySet = new CodeAssignStatement();
+            propertySet.Left = new CodePropertyReferenceExpression(genericService, BaseService.SerializerPropertyName);
+            propertySet.Right = new CodeVariableReferenceExpression(VAR_NAME);
+
+            // Add the statement to the method
+            method.Statements.Add(propertySet);
+
+            return method;
+        }
 
         /// <summary>
         ///  Creates ObjectToJson method
@@ -69,7 +104,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             serializationCall.Method =
                 new CodeMethodReferenceExpression(
                     new CodeTypeReferenceExpression(ServiceClassGenerator.GenericServiceName),
-                    InternalSerializationMethod);
+                    BaseService.SerializationMethodName);
             serializationCall.Parameters.Add(new CodeVariableReferenceExpression("obj"));
 
             // Add the return
@@ -102,7 +137,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             deserializationCall.Method =
                 new CodeMethodReferenceExpression(
                     new CodeTypeReferenceExpression(ServiceClassGenerator.GenericServiceName),
-                    InternalDeserializationMethod, new CodeTypeReference("T"));
+                    BaseService.DeserializationMethodName, new CodeTypeReference("T"));
             deserializationCall.Parameters.Add(new CodeVariableReferenceExpression("stream"));
 
             // Add the return

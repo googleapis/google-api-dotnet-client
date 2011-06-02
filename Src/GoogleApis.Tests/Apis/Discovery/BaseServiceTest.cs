@@ -16,6 +16,11 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using Google.Apis.JSON;
+using Google.Apis.Util;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
@@ -99,12 +104,179 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void TestFeatures()
         {
-            var dict = new JsonDictionary();
-            dict.Add("features", new ArrayList { Features.LegacyDataResponse });
+            {
+                var dict = new JsonDictionary();
+                IService impl = new ConcreteClass("V1", "TestService", dict);
+                Assert.NotNull(impl.Features);
+                Assert.IsFalse(impl.HasFeature(Features.LegacyDataResponse));
+            }
+            {
+                var dict = new JsonDictionary();
+                dict.Add("features", new ArrayList { "dataWrapper" });
 
-            IService impl = new ConcreteClass("V1", "TestService", dict);
-            Assert.IsTrue(impl.HasFeature(Features.LegacyDataResponse));
-            Assert.IsFalse(impl.HasFeature("nonExistentFeature"));
+                IService impl = new ConcreteClass("V1", "TestService", dict);
+                Assert.NotNull(impl.Features);
+                Assert.IsTrue(impl.HasFeature(Features.LegacyDataResponse));
+            }
+        }
+
+        private class TestSchema
+        {
+            [JsonProperty("kind")]
+            public string Kind { get; set; }
+
+            [JsonProperty("longUrl")]
+            public string LongURL { get; set; }
+
+            [JsonProperty("status")]
+            public string Status { get; set; }
+        }
+
+        /// <summary>
+        /// This test is designed to test the v1 Deserialization of the BaseService
+        /// </summary>
+        [Test]
+        public void TestDeserializationV1()
+        {
+            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+
+            var dict = new JsonDictionary();
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+
+            // Check if the default serializer is set
+            Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
+             
+            // Check if a response is decoded correctly
+            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
+            TestSchema result = impl.Deserialize<TestSchema>(stream);
+            Assert.NotNull(result);
+            Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
+            Assert.That(result.LongURL, Is.EqualTo("http://google.com/"));
+            Assert.That(result.Status, Is.Null);
+        }
+
+        /// <summary>
+        /// Tests if serialization works
+        /// </summary>
+        [Test]
+        public void TestSerializationV1()
+        {
+            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+
+            TestSchema schema = new TestSchema();
+            schema.Kind = "urlshortener#url";
+            schema.LongURL = "http://google.com/";
+
+            var dict = new JsonDictionary();
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+
+            // Check if a response is serialized correctly
+            string result = impl.Serialize(schema);
+            Assert.AreEqual(ResponseV1, result);
+        }
+
+        /// <summary>
+        /// Tests if serialization works
+        /// </summary>
+        [Test]
+        public void TestSerializationV0_3()
+        {
+            const string ResponseV0_3 =
+                "{\"data\":{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}}";
+
+            TestSchema schema = new TestSchema();
+            schema.Kind = "urlshortener#url";
+            schema.LongURL = "http://google.com/";
+
+            var dict = new JsonDictionary();
+            dict.Add("features", new[] { Features.LegacyDataResponse.GetStringValue() });
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+
+            // Check if a response is serialized correctly
+            string result = impl.Serialize(schema);
+            Assert.AreEqual(ResponseV0_3, result);
+        }
+
+        /// <summary>
+        /// This test is designed to test the v0.3 Deserialization of the BaseService
+        /// </summary>
+        [Test]
+        public void TestDeserializationV0_3()
+        {
+            const string ResponseV0_3 =
+                @"{ ""data"" : {
+                    ""kind"": ""urlshortener#url"",
+                    ""longUrl"": ""http://google.com/"",
+                } }";
+
+            var dict = new JsonDictionary();
+            dict.Add("features", new[] { Features.LegacyDataResponse.GetStringValue() });
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+
+            // Check if the default serializer is set
+            Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
+
+            // Check if a response is decoded correctly
+            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
+            TestSchema result = impl.Deserialize<TestSchema>(stream);
+            Assert.NotNull(result);
+            Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
+            Assert.That(result.LongURL, Is.EqualTo("http://google.com/"));
+            Assert.That(result.Status, Is.Null);
+        }
+
+        /// <summary>
+        /// Tests the deserialization for server error responses
+        /// </summary>
+        [Test]
+        public void TestErrorDeserialization()
+        {
+            const string ErrorResponse =
+                @"{
+                    ""error"": {
+                        ""errors"": [
+                            {
+                                ""domain"": ""global"",
+                                ""reason"": ""required"",
+                                ""message"": ""Required"",
+                                ""locationType"": ""parameter"",
+                                ""location"": ""resource.longUrl""
+                            }
+                        ],
+                        ""code"": 400,
+                        ""message"": ""Required""
+                    }
+                }";
+
+            var dict = new JsonDictionary();
+
+            foreach (DiscoveryVersion v in new[]{DiscoveryVersion.Version_1_0, DiscoveryVersion.Version_0_3})
+            {
+                using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+                {
+                    dict.Clear();
+
+                    // Test the different parsing methods
+                    dict.Add(
+                        "features",
+                        (v == DiscoveryVersion.Version_0_3)
+                            ? new[] { Features.LegacyDataResponse.GetStringValue() }
+                            : new string[0]);
+
+                    IService impl = new ConcreteClass("V1", "NameTest", dict);
+
+                    // Check if a response is decoded correctly
+                    try
+                    {
+                        impl.Deserialize<TestSchema>(stream);
+                        Assert.Fail("GoogleApiException was not thrown for invalid Json");
+                    }
+                    catch (GoogleApiException ex)
+                    {
+                        Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
+                    }
+                }
+            }
         }
     }
 }

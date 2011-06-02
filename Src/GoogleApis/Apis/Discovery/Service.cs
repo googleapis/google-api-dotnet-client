@@ -36,6 +36,21 @@ namespace Google.Apis.Discovery
     /// </summary>
     public abstract class BaseService : IService
     {
+        /// <summary>
+        /// Name of the method used for serialization (object -> json)
+        /// </summary>
+        public const string SerializationMethodName = "Serialize";
+
+        /// <summary>
+        /// Name of the method used for deserialization (json -> object)
+        /// </summary>
+        public const string DeserializationMethodName = "Deserialize";
+
+        /// <summary>
+        /// Name of the property defining the ISerializer
+        /// </summary>
+        public const string SerializerPropertyName = "Serializer";
+
         private static readonly ILog logger = LogManager.GetLogger(typeof(BaseService));
 
         protected internal readonly JsonDictionary information;
@@ -72,6 +87,7 @@ namespace Google.Apis.Discovery
         private BaseService()
         {
             GZipEnabled = true;
+            Serializer = new NewtonsoftJsonSerializer();
         }
 
         protected string ServerUrl { get; set; }
@@ -151,6 +167,8 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public ISerializer Serializer { get; set; }
+
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
@@ -164,21 +182,37 @@ namespace Google.Apis.Discovery
 
         public string Serialize(object obj)
         {
-            return JsonSerialization.Serialize(obj);
+            if (HasFeature(Discovery.Features.LegacyDataResponse))
+            {
+                // Legacy path
+                var request = new StandardResponse<object> { Data = obj };
+                return Serializer.Serialize(request);
+            }
+
+            // New v1.0 path
+            return Serializer.Serialize(obj);
         }
 
         public T Deserialize<T>(Stream input)
         {
+            // Read in the entire content
+            string text;
+
+            using (var reader = new StreamReader(input))
+                text = reader.ReadToEnd();
+
+            // Check if there was an error returned
+            StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+
+            if (response.Error != null)
+            {
+                throw new GoogleApiException(this, "Server error - " + response.Error);
+            }
+
             // Deserialize the stream based upon the format of the stream
-            if (this.HasFeature(Discovery.Features.LegacyDataResponse))
+            if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
-                StandardResponse<T> response = JsonSerialization.Deserialize<StandardResponse<T>>(input);
-
-                if (response.Error != null)
-                {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
-                }
                 if (response.Data == null)
                 {
                     throw new GoogleApiException(this, "The response could not be deserialized.");
@@ -187,28 +221,13 @@ namespace Google.Apis.Discovery
                 return response.Data;
             }
 
-            // New path
-            string text;
+            // New path: Deserialize the object directly
+            return Serializer.Deserialize<T>(text);;
+        }
 
-            using (var reader = new StreamReader(input))
-                text = reader.ReadToEnd();
-
-
-            T obj = JsonSerialization.Deserialize<T>(text);
-
-            // If no object was parsed, check if an error json was returned
-            if (obj == null)
-            {
-                StandardResponse<T> response = JsonSerialization.Deserialize<StandardResponse<T>>(text);
-
-                if (response.Error != null)
-                {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
-                }
-                throw new GoogleApiException(this, "The response could not be deserialized.");
-            }
-
-            return obj;
+        public bool HasFeature(Features feature)
+        {
+            return Features.Contains(feature.GetStringValue());
         }
 
         public bool GZipEnabled { get; set; }

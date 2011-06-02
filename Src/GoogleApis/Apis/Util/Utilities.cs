@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Google.Apis.Util
 {
@@ -185,6 +186,26 @@ namespace Google.Apis.Util
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Returns the defined string value of an enum value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string GetStringValue(this Enum value)
+        {
+            FieldInfo entry = value.GetType().GetField(value.ToString());
+
+            entry.ThrowIfNull("value");
+
+            // If set, return the value););
+            foreach (StringValueAttribute attribute in entry.GetCustomAttributes(typeof(StringValueAttribute), false))
+                return attribute.Text;
+
+            // Otherwise throw an exception
+            throw new ArgumentException(
+                string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
         }
     }
 }

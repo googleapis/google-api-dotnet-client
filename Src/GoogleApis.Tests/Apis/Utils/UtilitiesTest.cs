@@ -241,5 +241,23 @@ namespace Google.Apis.Tests.Apis.Util
             str = "123";
             str.ThrowIfNull("Not throwen");
         }
+
+        private enum MockEnum
+        {
+            [StringValue("Test")]
+            EntryWithStringValue,
+            EntryWithoutStringValue
+        }
+
+        /// <summary>
+        /// Tests the "GetStringValue" extension method of enums
+        /// </summary>
+        [Test]
+        public void StringValueTest()
+        {
+            Assert.That(MockEnum.EntryWithStringValue.GetStringValue(), Is.EqualTo("Test"));
+            Assert.Throws<ArgumentException>(() => MockEnum.EntryWithoutStringValue.GetStringValue());
+            Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
+        }
     }
 }

@@ -20,13 +20,13 @@ using Newtonsoft.Json;
 namespace Google.Apis.JSON
 {
     /// <summary>
-    /// Class for serialization and deserialization of Json documents
+    /// Class for serialization and deserialization of Json documents using the Newtonsoft Library
     /// </summary>
-    public static class JsonSerialization
+    public class NewtonsoftJsonSerializer : ISerializer
     {
         private static readonly JsonSerializer newtonsoftSerializer;
 
-        static JsonSerialization()
+        static NewtonsoftJsonSerializer()
         {
             // Initialize the Newtonsoft serializer
             JsonSerializerSettings settings = new JsonSerializerSettings();
@@ -34,10 +34,15 @@ namespace Google.Apis.JSON
             newtonsoftSerializer = JsonSerializer.Create(settings);
         }
 
-        /// <summary>
-        /// Serializes an object into a json representation
-        /// </summary>
-        public static string Serialize(object obj)
+        public void Serialize(object obj, Stream target)
+        {
+            using (var writer = new StreamWriter(target))
+            {
+                newtonsoftSerializer.Serialize(writer, obj);
+            }
+        }
+
+        public string Serialize(object obj)
         {
             using (TextWriter tw = new StringWriter())
             {
@@ -46,23 +51,18 @@ namespace Google.Apis.JSON
             }
         }
 
-        /// <summary>
-        /// Deserializes the stream into a .NET object
-        /// </summary>
-        public static T Deserialize<T>(string input)
+        T ISerializer.Deserialize<T>(string input)
         {
-            // Convert the json document into an objct
             return JsonConvert.DeserializeObject<T>(input);
         }
 
-        /// <summary>
-        /// Deserializes the stream into a .NET object
-        /// </summary>
-        public static T Deserialize<T>(Stream input)
+        T ISerializer.Deserialize<T>(Stream input)
         {
             // Convert the json document into an objct
             using (StreamReader streamReader = new StreamReader(input))
-                return (T) newtonsoftSerializer.Deserialize(streamReader, typeof(T));
+            {
+                return (T)newtonsoftSerializer.Deserialize(streamReader, typeof(T));
+            }
         }
     }
 }

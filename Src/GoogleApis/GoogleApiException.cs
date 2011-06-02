@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using Google.Apis.Discovery;
+using Google.Apis.Util;
 
 namespace Google
 {
@@ -24,17 +25,20 @@ namespace Google
     /// </summary>
     public class GoogleApiException : ApplicationException
     {
+        private readonly IService service;
+
         /// <summary>
         /// The service that has thrown the exception
         /// </summary>
-        public IService Service { get; protected set; }
+        public IService Service { get { return service; } }
 
         /// <summary>
         /// Creates an API Service exception
         /// </summary>
         public GoogleApiException(IService service, string message, Exception inner) : base(message, inner)
         {
-            Service = service;
+            service.ThrowIfNull("service");
+            this.service = service;
         }
 
         /// <summary>
