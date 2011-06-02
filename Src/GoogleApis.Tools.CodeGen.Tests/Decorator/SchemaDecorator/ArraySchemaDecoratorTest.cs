@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
@@ -60,10 +61,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 new JsonSchema { Description = "Test", Id = "TestSchema", Type = JsonSchemaType.Object });
             Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, internalClassProvider));
 
-            foreach (CodeTypeReference reference in decl.BaseTypes)
-            {
-                Assert.That(reference.BaseType, Is.StringStarting("List<"));
-            }
+            Assert.That(decl.BaseTypes.Count, Is.EqualTo(2));
+            Assert.That(decl.BaseTypes[0].BaseType, Is.StringStarting("List<"));
+            Assert.That(decl.BaseTypes[1].BaseType, Is.EqualTo(typeof(IList).FullName));
 
             // Subtype will only be created later on by the NestedClassGenerator,
             // and therefore cannot be tested here

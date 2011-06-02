@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections;
+using System.Collections.Generic;
 using log4net;
 using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
@@ -55,12 +57,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                 return; // not supported
             }
 
+            // Implement the IList interface (required for the NestedNameTypeGenerator)
+            typeDeclaration.BaseTypes.Add(typeof(IList).FullName);
+            
             // Generate or find the nested type
             JsonSchema itemScheme = details.Items[0];
             CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, internalClassProvider);
 
-            // Change the current type to a List
-            typeDeclaration.BaseTypes.Add("List<" + typeDeclaration.Name + "." + item.BaseType + ">");
+            // Insert the base type before any interface declaration
+            var baseType = string.Format("List<{0}.{1}>", typeDeclaration.Name, item.BaseType);
+            typeDeclaration.BaseTypes.Insert(0, new CodeTypeReference(baseType));
         }
 
         #endregion

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -196,6 +197,13 @@ namespace Google.Apis.Tools.CodeGen
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Returns the list of used words based upon a member collection
+        /// </summary>
+        public static IEnumerable<string> GetUsedWordsFromMembers(CodeTypeMemberCollection collection)
+        {
+            return from CodeTypeMember member in collection select member.Name;
+        }
 
         /// <summary>
         /// Creates a safe member name which can be used within code environments
@@ -268,7 +276,15 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetClassName(ISchema schema, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter(GetSafeMemberName(schema.Name, "Cls", wordsUsedInContext));
+            return GetClassName(schema.Name, wordsUsedInContext);
+        }
+
+        /// <summary>
+        /// Returns a safe and appropriate class name for the given schema
+        /// </summary>
+        public static string GetClassName(string name, IEnumerable<string> wordsUsedInContext)
+        {
+            return UpperFirstLetter(GetSafeMemberName(name, "Cls", wordsUsedInContext));
         }
 
         /// <summary>
