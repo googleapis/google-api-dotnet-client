@@ -21,7 +21,7 @@ namespace Google.Apis.Util
     /// <summary>
     /// Defines an attribute containing a string representation of the member
     /// </summary>
-    [AttributeUsage(AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class StringValueAttribute : Attribute
     {
         private readonly string text;

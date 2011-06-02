@@ -199,7 +199,9 @@ namespace Google.Apis.Discovery
             string text;
 
             using (var reader = new StreamReader(input))
+            {
                 text = reader.ReadToEnd();
+            }
 
             // Check if there was an error returned
             StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);

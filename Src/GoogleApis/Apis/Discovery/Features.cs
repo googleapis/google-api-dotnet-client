@@ -19,7 +19,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// Specifies a list of features which can be defined within the discovery document of a service1
+    /// Specifies a list of features which can be defined within the discovery document of a service
     /// </summary>
     public enum Features
     {
