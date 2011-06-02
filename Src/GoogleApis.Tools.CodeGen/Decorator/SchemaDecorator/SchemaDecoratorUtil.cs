@@ -42,9 +42,24 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// Generates a property name
         /// </summary>
-        internal static string GetPropertyName(string name, int index, IEnumerable<string> wordsUsedInContext)
+        internal static string GetPropertyName(string name,
+                                               int index,
+                                               IEnumerable<string> wordsUsedInContext)
         {
             return GeneratorUtils.GetPropertyName(name, index, wordsUsedInContext);
+        }
+
+        /// <summary>
+        /// Generates a property name
+        /// </summary>
+        /// <param name="illegalWords">Words which will never be used</param>
+        /// <param name="wordsUsedInContext">Words which won't be used when renaming the property</param>
+        internal static string GetPropertyName(string name,
+                                               int index,
+                                               IEnumerable<string> wordsUsedInContext,
+                                               IEnumerable<string> illegalWords)
+        {
+            return GeneratorUtils.GetPropertyName(name, index, wordsUsedInContext, illegalWords);
         }
 
         /// <summary>

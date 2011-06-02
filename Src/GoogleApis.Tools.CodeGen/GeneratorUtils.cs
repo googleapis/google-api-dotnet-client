@@ -264,6 +264,23 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
+        /// Returns a safe and appropriate property name for the given input name without using the words
+        /// specified in the illegal words list
+        /// </summary>
+        /// <param name="illegalWords">Words which will never be used</param>
+        /// <param name="wordsUsedInContext">Words which won't be used when renaming the property</param>
+        public static string GetPropertyName(string name,
+                                             int resourceNumber,
+                                             IEnumerable<string> wordsUsedInContext,
+                                             IEnumerable<string> illegalWords)
+        {
+            return
+                UpperFirstLetter(
+                    GetSafeMemberName(
+                        name, "Property" + resourceNumber, UnsafeWordsArray.Concat(illegalWords), wordsUsedInContext));
+        }
+
+        /// <summary>
         /// Returns a safe and appropriate class name for the given schema
         /// </summary>
         public static string GetClassName(ISchema schema, IEnumerable<string> wordsUsedInContext)

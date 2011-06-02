@@ -33,7 +33,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                                                                    int index,
                                                                    IEnumerable<string> otherNames)
         {
-            string propertyName = SchemaDecoratorUtil.GetPropertyName(name, index, otherNames);
+            string propertyName = GeneratorUtils.GetPropertyName(
+                name, index, otherNames, new[] { typeDeclaration.Name });
             CodeMemberProperty property = typeDeclaration.Members.FindPropertyByName(propertyName);
             property.ThrowIfNull(
                 string.Format("Failed to find property by name[{0}] for propertySchemaName[{1}]", propertyName, name));
