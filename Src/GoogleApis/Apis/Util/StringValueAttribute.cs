@@ -14,19 +14,30 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Util;
+using System;
 
-namespace Google.Apis.Discovery
+namespace Google.Apis.Util
 {
     /// <summary>
-    /// Specifies a list of features which can be defined within the discovery document of a service1
+    /// Defines an attribute containing a string representation of the member
     /// </summary>
-    public enum Features
+    [AttributeUsage(AttributeTargets.Field)]
+    public class StringValueAttribute : Attribute
     {
+        private readonly string text;
+
         /// <summary>
-        /// If this feature is specified, then the data of a response is encapsulated within a "data" resource
+        /// The text which belongs to this member
         /// </summary>
-        [StringValue("dataWrapper")]
-        LegacyDataResponse,
+        public string Text { get { return text; } }
+
+        /// <summary>
+        /// Creates a new StringValue attribute with the specified text
+        /// </summary>
+        /// <param name="text"></param>
+        public StringValueAttribute(string text)
+        {
+            this.text = text;
+        }
     }
 }
