@@ -55,7 +55,10 @@ namespace Google.Apis.Tests.Apis.Discovery
             #endregion
         }
 
-        private class FakeSchema
+        /// <summary>
+        /// A Json schema for testing serialization/deserialization
+        /// </summary>
+        internal class MockJsonSchema
         {
             [JsonProperty("kind")]
             public string Kind { get; set; }
@@ -68,7 +71,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         #region Test Helper methods
-        private void CheckDeserializationResults(FakeSchema result)
+        private void CheckDeserializationResults(MockJsonSchema result)
         {
             Assert.NotNull(result);
             Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
@@ -109,7 +112,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check if a response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
-            CheckDeserializationResults(impl.Deserialize<FakeSchema>(stream));
+            CheckDeserializationResults(impl.Deserialize<MockJsonSchema>(stream));
         }
 
         /// <summary>
@@ -127,7 +130,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check if a response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            CheckDeserializationResults(impl.Deserialize<FakeSchema>(stream));
+            CheckDeserializationResults(impl.Deserialize<MockJsonSchema>(stream));
         }
 
         /// <summary>
@@ -162,7 +165,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                     // Check if a response is decoded correctly
                     try
                     {
-                        impl.Deserialize<FakeSchema>(stream);
+                        impl.Deserialize<MockJsonSchema>(stream);
                         Assert.Fail("GoogleApiException was not thrown for invalid Json");
                     }
                     catch (GoogleApiException ex)
@@ -224,7 +227,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             const string ResponseV0_3 =
                 "{\"data\":{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}}";
 
-            FakeSchema schema = new FakeSchema();
+            MockJsonSchema schema = new MockJsonSchema();
             schema.Kind = "urlshortener#url";
             schema.LongURL = "http://google.com/";
 
@@ -243,7 +246,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
 
-            FakeSchema schema = new FakeSchema();
+            MockJsonSchema schema = new MockJsonSchema();
             schema.Kind = "urlshortener#url";
             schema.LongURL = "http://google.com/";
 

@@ -189,6 +189,21 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
+        /// Returns the first matching custom attribute (or null) of the specified member
+        /// </summary>
+        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
+        {
+            object[] results = info.GetCustomAttributes(typeof(T), false);
+
+            if (results.Length == 0)
+            {
+                return null;
+            }
+
+            return (T) results[0];
+        }
+
+        /// <summary>
         /// Returns the defined string value of an enum value
         /// </summary>
         /// <param name="value"></param>
@@ -200,7 +215,8 @@ namespace Google.Apis.Util
             entry.ThrowIfNull("value");
 
             // If set, return the value
-            foreach (StringValueAttribute attribute in entry.GetCustomAttributes(typeof(StringValueAttribute), false))
+            var attribute = entry.GetCustomAttribute<StringValueAttribute>();
+            if (attribute != null)
             {
                 return attribute.Text;
             }

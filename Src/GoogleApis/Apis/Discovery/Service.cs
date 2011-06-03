@@ -56,6 +56,7 @@ namespace Google.Apis.Discovery
         protected internal readonly JsonDictionary information;
         private Dictionary<string, IResource> resources;
         private IDictionary<String, ISchema> schemas;
+        private ISerializer serializer;
 
         internal BaseService(string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
         {
@@ -167,7 +168,15 @@ namespace Google.Apis.Discovery
             }
         }
 
-        public ISerializer Serializer { get; set; }
+        public ISerializer Serializer
+        {
+            get { return serializer; }
+            set
+            {
+                value.ThrowIfNull("value");
+                serializer = value;
+            }
+        }
 
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
@@ -203,7 +212,7 @@ namespace Google.Apis.Discovery
                 text = reader.ReadToEnd();
             }
 
-            // Check if there was an error returned
+            // Check if there was an error returned. The error node is returned in both paths
             StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
 
             if (response.Error != null)
@@ -233,28 +242,6 @@ namespace Google.Apis.Discovery
         }
 
         public bool GZipEnabled { get; set; }
-
-        public TOutput JsonToObject<TOutput>(Stream stream)
-        {
-            StreamReader streamReader = new StreamReader(stream);
-            string str = streamReader.ReadToEnd();
-            try
-            {
-                StandardResponse<TOutput> response = JsonConvert.DeserializeObject<StandardResponse<TOutput>>(str);
-                if (response.Data == null)
-                {
-                    throw new ApplicationException(
-                        string.Format("Failed to get response from stream, error was [{0}]", response.Error));
-                }
-                return response.Data;
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(
-                    string.Format("Failed to generate object of type[{0}] from Json[{1}]", typeof(TOutput).Name, str),
-                    ex);
-            }
-        }
 
         #endregion
 
