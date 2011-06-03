@@ -4379,7 +4379,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// </summary>
         public static IResource CreateResourceDivcoveryV_1_0(string resourceName, string json)
         {
-            return new ResourceV1_0(DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition(resourceName, json));
+            return new ResourceV1_0(CreateJsonResourceDefinition(resourceName, json));
         }
 
         protected void AddReferenceToDeclaringAssembly(Type target, CompilerParameters cp)
