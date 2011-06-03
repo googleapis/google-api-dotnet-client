@@ -99,6 +99,7 @@
     <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DefaultEnglishCommentCreatorTest.cs" />
+    <Compile Include="SystemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
