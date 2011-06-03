@@ -246,6 +246,8 @@ namespace Google.Apis.Tests.Apis.Util
         {
             [StringValue("Test")]
             EntryWithStringValue,
+            [StringValue("AnotherTest")]
+            EntryWithSecondStringValue,
             EntryWithoutStringValue
         }
 
@@ -256,6 +258,7 @@ namespace Google.Apis.Tests.Apis.Util
         public void StringValueTest()
         {
             Assert.That(MockEnum.EntryWithStringValue.GetStringValue(), Is.EqualTo("Test"));
+            Assert.That(MockEnum.EntryWithSecondStringValue.GetStringValue(), Is.EqualTo("AnotherTest"));
             Assert.Throws<ArgumentException>(() => MockEnum.EntryWithoutStringValue.GetStringValue());
             Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
         }

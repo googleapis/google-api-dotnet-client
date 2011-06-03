@@ -46,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen
         /// {0}: Service name
         /// {1}: Version
         /// </summary>
-        private const string GoogleDiscoveryURL = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
+        public const string GoogleDiscoveryURL = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
 
         private static readonly ILog logger = LogManager.GetLogger(typeof(GoogleServiceGenerator));
 

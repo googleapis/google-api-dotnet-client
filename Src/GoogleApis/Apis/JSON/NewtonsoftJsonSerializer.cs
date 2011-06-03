@@ -22,7 +22,7 @@ namespace Google.Apis.JSON
     /// <summary>
     /// Class for serialization and deserialization of Json documents using the Newtonsoft Library
     /// </summary>
-    public class NewtonsoftJsonSerializer : ISerializer
+    public class NewtonsoftJsonSerializer : IJsonSerializer
     {
         private static readonly JsonSerializer newtonsoftSerializer;
 
@@ -51,12 +51,12 @@ namespace Google.Apis.JSON
             }
         }
 
-        T ISerializer.Deserialize<T>(string input)
+        public T Deserialize<T>(string input)
         {
             return JsonConvert.DeserializeObject<T>(input);
         }
 
-        T ISerializer.Deserialize<T>(Stream input)
+        public T Deserialize<T>(Stream input)
         {
             // Convert the json document into an objct
             using (StreamReader streamReader = new StreamReader(input))
