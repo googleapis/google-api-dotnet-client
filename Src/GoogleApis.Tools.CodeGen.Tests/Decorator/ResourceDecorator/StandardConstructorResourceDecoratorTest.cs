@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Discovery;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
@@ -26,6 +27,19 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
     [TestFixture]
     public class StandardConstructorResourceDecoratorTest : BaseResourceDecoratorTest
     {
+        private IResource CreateEmptyResource()
+        {
+            return CreateResourceDivcoveryV_1_0("MockResource", "{ }");
+        }
+
+        private IResource CreateNonEmptyResource()
+        {
+            var resource = CreateResourceDivcoveryV_1_0("MockResource", "{ }");
+            resource.Resources.Add("Subresource", CreateEmptyResource());
+            resource.Resources.Add("AnotherSubresource", CreateEmptyResource());
+            return resource;
+        }
+
         /// <summary>
         /// Tests the constructor
         /// </summary>
@@ -33,10 +47,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         public void TestCreateConstructor()
         {
             var decorator = new StandardConstructorResourceDecorator();
-            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName);
+            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateEmptyResource());
             Assert.AreEqual(1, constructor.Parameters.Count);
             var param = constructor.Parameters[0];
             Assert.AreEqual(ServiceClassName, param.Type.BaseType);
+            Assert.AreEqual(1, constructor.Statements.Count);
+        }
+
+
+        /// <summary>
+        /// Tests the constructor
+        /// </summary>
+        [Test]
+        public void TestCreateConstructorWithSubresources()
+        {
+            var decorator = new StandardConstructorResourceDecorator();
+            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateNonEmptyResource());
+            Assert.AreEqual(3, constructor.Statements.Count);
         }
 
         /// <summary>
