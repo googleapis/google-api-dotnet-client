@@ -1,0 +1,8 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="GoogleApis.Tests/bin/Debug/Google.Apis.Tests.dll" />
+    <assembly path="GoogleApis.Tools.CodeGen.Tests/bin/Debug/Google.Apis.Tools.CodeGen.Tests.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto" />
+</NUnitProject>
