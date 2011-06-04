@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using NUnit.Framework;
 using Google.Apis.Requests;
 using Google.Apis.Discovery;
@@ -223,6 +224,24 @@ namespace Google.Apis.Tests.Apis.Requests
             Request.CreateRequest(
                 service,
                 new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://test.google.com", });
+        }
+
+        /// <summary>
+        /// Tests the .CreateRequest method of a test
+        /// </summary>
+        [Test]
+        public void RequestCreateRequestTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com",
+                Parameters = new Dictionary<string, IParameter>() { {"TestParam", null} }});
+            
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = request.CreateRequest();
+            Assert.IsNotNull(webRequest);
         }
 
         /// <summary>

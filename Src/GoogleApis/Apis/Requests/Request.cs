@@ -34,7 +34,7 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1}";
+        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
@@ -52,7 +52,7 @@ namespace Google.Apis.Requests
 
         public Request()
         {
-            AppName = "Unknown Application";
+            AppName = Utilities.GetAssemblyTitle();
             Authenticator = new NullAuthenticator();
         }
 
@@ -326,7 +326,8 @@ namespace Google.Apis.Requests
             }
         }
 
-        private HttpWebRequest CreateRequest()
+        [VisibleForTestOnly]
+        internal HttpWebRequest CreateRequest()
         {
             // Formulate the RequestUrl
             requestUrl = BuildRequestUrl();
@@ -335,8 +336,14 @@ namespace Google.Apis.Requests
             HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, requestUrl);
 
             // Insert the content type and user agent
+            string appName = AppName.Replace(' ', '_');
+            if (string.IsNullOrEmpty(appName))
+            {
+                appName = "Unknown_Application";
+            }
+
             request.ContentType = GetReturnMimeType(ReturnType);
-            request.UserAgent = String.Format(UserAgent, AppName, ApiVersion);
+            request.UserAgent = String.Format(UserAgent, appName, ApiVersion, Environment.OSVersion.Platform);
 
             // Check if compression is supported
             if (Service.GZipEnabled)

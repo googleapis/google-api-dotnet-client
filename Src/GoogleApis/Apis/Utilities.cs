@@ -338,26 +338,17 @@ namespace Google.Apis
         /// <returns>the current assembly version as a string</returns>
         public static string GetAssemblyVersion()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            if (asm != null)
-            {
-                string[] parts = asm.FullName.Split(',');
-                if (parts != null && parts.Length > 1)
-                {
-                    return parts[1].Trim();
-                }
-            }
-            return "1.0.0";
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
-
         /// <summary>
-        /// returns the useragent string, including a version number
+        /// Returns the title of the calling assembly.
         /// </summary>
-        /// <returns>the constructed userAgend in a standard form</returns>
-        public static string ConstructUserAgent(string applicationName, string serviceName)
+        public static string GetAssemblyTitle()
         {
-            return "G-" + applicationName + "/" + serviceName + "-CS-" + GetAssemblyVersion();
+            object[] attributes =
+                Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+            return attributes.Length == 0 ? "" : ((AssemblyTitleAttribute)attributes[0]).Title;
         }
     }
 }
