@@ -85,7 +85,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             int resourceNumber = 1;
             foreach (IResource subresource in resource.Resources.Values)
             {
-                // Retrieve field name and type
+                // Retrieve backing field name and type of the (already created) subresource
                 var fieldRef = ServiceClassGenerator.GetFieldReference(subresource, resourceNumber, otherResourceNames);
                 var fieldType = GeneratorUtils.GetClassName(subresource, resourceNumber, otherResourceNames);
 
