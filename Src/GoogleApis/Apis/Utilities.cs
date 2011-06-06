@@ -25,6 +25,7 @@ limitations under the License.
 #define USE_TRACING
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -32,6 +33,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Reflection;
+using Google.Apis.Util;
 
 #endregion
 
@@ -339,26 +341,47 @@ namespace Google.Apis
         /// <returns>the current assembly version as a string</returns>
         public static string GetAssemblyVersion()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            if (asm != null)
-            {
-                string[] parts = asm.FullName.Split(',');
-                if (parts != null && parts.Length > 1)
-                {
-                    return parts[1].Trim();
-                }
-            }
-            return "1.0.0";
+            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
+        /// <summary>
+        /// Returns the title of the calling assembly, or null if not set/unavailable.
+        /// </summary>
+        public static string GetAssemblyTitle()
+        {
+            Assembly asm = Assembly.GetEntryAssembly();
+            if (asm == null)
+            {
+                return null;
+            }
+
+            object[] attributes = asm.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+            return attributes.Length == 0 ? null : ((AssemblyTitleAttribute)attributes[0]).Title;
+        }
 
         /// <summary>
-        /// returns the useragent string, including a version number
+        /// Replaces all the specified characters within the input string with the given replacement
         /// </summary>
-        /// <returns>the constructed userAgend in a standard form</returns>
-        public static string ConstructUserAgent(string applicationName, string serviceName)
+        public static string Replace(this string input, string replace, params char[] invalidCharacters)
         {
-            return "G-" + applicationName + "/" + serviceName + "-CS-" + GetAssemblyVersion();
+            invalidCharacters.ThrowIfNullOrEmpty("invalidCharacters");
+
+            // Create the resulting string
+            var result = new StringBuilder(input.Length);
+            
+            foreach (char c in input)
+            {
+                // Replace invalid characters with the replacement string
+                if (invalidCharacters.Contains(c))
+                {
+                    result.Append(replace);
+                    continue;
+                }
+
+                result.Append(c);
+            }
+
+            return result.ToString();
         }
 
         #region LINQ extensions
