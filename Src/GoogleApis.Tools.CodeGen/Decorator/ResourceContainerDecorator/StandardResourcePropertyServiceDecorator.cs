@@ -57,8 +57,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
         {
             // Add local private variables for each Resource
             var field = new CodeMemberField(
-                GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames),
-                GeneratorUtils.GetFieldName(resource, resourceNumber, otherResourceNames));
+                GeneratorUtils.GetClassName(resource, otherResourceNames),
+                GeneratorUtils.GetFieldName(resource, otherResourceNames));
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return field;
         }
@@ -69,15 +69,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
                                                          IEnumerable<string> otherResourceNames)
         {
             var getter = new CodeMemberProperty();
-            getter.Name = GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames);
+            getter.Name = GeneratorUtils.GetClassName(resource, otherResourceNames);
             getter.HasGet = true;
             getter.HasSet = false;
             getter.Attributes = MemberAttributes.Public;
-            getter.Type =
-                new CodeTypeReference(GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames));
+            getter.Type = new CodeTypeReference(GeneratorUtils.GetClassName(resource, otherResourceNames));
             getter.GetStatements.Add(
-                new CodeMethodReturnStatement(
-                    ServiceClassGenerator.GetFieldReference(resource, resourceNumber, otherResourceNames)));
+                new CodeMethodReturnStatement(ServiceClassGenerator.GetFieldReference(resource, otherResourceNames)));
 
             return getter;
         }

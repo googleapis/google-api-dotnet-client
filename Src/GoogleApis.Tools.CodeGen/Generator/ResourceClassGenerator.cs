@@ -46,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             this.serviceClassName = serviceClassName;
             this.resourceNumber = resourceNumber;
             this.decorators = decorators;
-            className = GeneratorUtils.GetClassName(resource, this.resourceNumber, otherResourceNames);
+            className = GeneratorUtils.GetClassName(resource, otherResourceNames);
             this.resourceConainerGenerator = resourceConainerGenerator;
         }
 

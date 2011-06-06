@@ -51,6 +51,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
         public const string ResourceName = "TestResource";
 
+        public static readonly string[] ResourceGetTestParameterNames = new[] { "req_a", "req_b", "opt_a", "opt_b" };
+
         public const string ResourceAsJson =
             @"
 		{
