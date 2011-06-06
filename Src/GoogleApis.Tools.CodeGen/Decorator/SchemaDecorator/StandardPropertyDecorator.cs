@@ -76,17 +76,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (schema.Properties.IsNullOrEmpty())
             {
-                logger.Debug("No proeprties found for schema " + name);
+                logger.Debug("No properties found for schema " + name);
                 return fields;
             }
+
+
+            IEnumerable<string> illegalWords = unsafeWords.Concat(schema.Properties.Keys);
 
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                fields.Add(
-                    GenerateProperty(
-                        propertyPair.Key, propertyPair.Value, index++, internalClassProvider, schema.Properties.Keys,
-                        unsafeWords));
+                IEnumerable<string> modifiedIllegalWords = illegalWords.Except(new[] { propertyPair.Key });
+                CodeMemberProperty property = GenerateProperty(
+                    propertyPair.Key, propertyPair.Value, index++, internalClassProvider, modifiedIllegalWords);
+                fields.Add(property);
             }
             return fields;
         }
@@ -96,20 +99,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                                                      JsonSchema propertySchema,
                                                      int index,
                                                      INestedClassProvider internalClassProvider,
-                                                     IEnumerable<string> otherPropertyNames,
-                                                     IEnumerable<string> unsafeWords)
+                                                     IEnumerable<string> disallowedNames)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");
 
             var ret = new CodeMemberProperty();
-            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index, otherPropertyNames, unsafeWords);
+            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, disallowedNames);
             ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
 
             ret.HasGet = true;
             var fieldReference = new CodeFieldReferenceExpression(
-                new CodeThisReferenceExpression(), SchemaDecoratorUtil.GetFieldName(name, index, otherPropertyNames));
+                new CodeThisReferenceExpression(), SchemaDecoratorUtil.GetFieldName(name, disallowedNames));
             ret.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
 
             ret.HasSet = true;

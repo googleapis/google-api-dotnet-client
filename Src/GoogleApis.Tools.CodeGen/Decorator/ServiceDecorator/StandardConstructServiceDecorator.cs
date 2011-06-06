@@ -126,10 +126,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         {
             constructor.Statements.Add(
                 new CodeAssignStatement(
-                    ServiceClassGenerator.GetFieldReference(resource, resourceNumber, otherResourceNames),
+                    ServiceClassGenerator.GetFieldReference(resource, otherResourceNames),
                     new CodeObjectCreateExpression(
-                        GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames),
-                        new CodeThisReferenceExpression())));
+                        GeneratorUtils.GetClassName(resource, otherResourceNames), new CodeThisReferenceExpression())));
         }
 
         public override string ToString()

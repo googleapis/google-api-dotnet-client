@@ -27,6 +27,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -129,7 +130,7 @@ namespace Google.Apis
                 }
                 else
                 {
-                    returnString.Append((char) b);
+                    returnString.Append((char)b);
                 }
             }
 
@@ -359,5 +360,17 @@ namespace Google.Apis
         {
             return "G-" + applicationName + "/" + serviceName + "-CS-" + GetAssemblyVersion();
         }
+
+        #region LINQ extensions
+
+        /// <summary>
+        /// Returns the enumerable with the specified element removed
+        /// </summary>
+        public static IEnumerable<T> Without<T>(this IEnumerable<T> enumerable, T toRemove)
+        {
+            return enumerable.Except(new[] { toRemove });
+        }
+
+        #endregion
     }
 }

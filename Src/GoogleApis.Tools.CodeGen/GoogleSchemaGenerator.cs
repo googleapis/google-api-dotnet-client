@@ -73,7 +73,8 @@ namespace Google.Apis.Tools.CodeGen
             foreach (var schemaPair in service.Schemas)
             {
                 logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
-                codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value, service.Schemas.Keys));
+                codeNamespace.Types.Add(
+                    generator.CreateClass(schemaPair.Value, service.Schemas.Keys.Without(schemaPair.Key)));
             }
             return codeNamespace;
         }

@@ -216,8 +216,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 var member = new CodeMemberMethod();
 
-                member.Name = GeneratorUtils.GetMethodName(method, methodNumber, resource.Methods.Keys) +
-                              methodNameSuffix;
+                member.Name = GeneratorUtils.GetMethodName(method, resource.Methods.Keys.Without(method.Name)) + methodNameSuffix;
                 member.ReturnType = GetReturnType(method);
                 member.Attributes = MemberAttributes.Public;
                 if (commentCreator != null)
@@ -317,8 +316,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     foreach (var param in method.GetAllParametersSorted())
                     {
                         string parameterName = GeneratorUtils.GetParameterName(
-                            param, parameterCount, method.Parameters.Keys);
-                        member.Parameters.Add(DeclareInputParameter(param, parameterCount, method));
+                            param, method.Parameters.Keys.Without(param.Name));
+                        member.Parameters.Add(DeclareInputParameter(param, method));
                         assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                         AddParameterComment(commentCreator, member, param, parameterName);
                         parameterCount++;
