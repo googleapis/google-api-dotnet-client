@@ -233,7 +233,7 @@ namespace Google.Apis.Discovery
             }
 
             // New path: Deserialize the object directly
-            return Serializer.Deserialize<T>(text);;
+            return Serializer.Deserialize<T>(text);
         }
 
         public bool HasFeature(Features feature)
