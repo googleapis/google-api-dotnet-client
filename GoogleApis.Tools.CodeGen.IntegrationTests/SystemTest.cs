@@ -22,11 +22,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen;
 using log4net;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace Google.Apis.Tools.CodeGen.Tests
+namespace GoogleApis.Tools.CodeGen.IntegrationTests
 {
     /// <summary>
     /// This test fixture will test the full procedure of:
@@ -47,24 +48,22 @@ namespace Google.Apis.Tools.CodeGen.Tests
             public string Version { get; set; }
         }
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(SystemTest));
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemTest));
 
-        private IService discovery;
-        private Assembly discoveryAssembly;
-        private API[] apis;
+        #region Test Helper methods
 
-        private IService DiscoverService(string serviceName, string serviceVersion)
+        private static IService DiscoverService(string serviceName, string serviceVersion)
         {
             // Create the discovery URL
-            var discoverURL = string.Format(GoogleServiceGenerator.GoogleDiscoveryURL, serviceName, serviceVersion);
-            var device = new CachedWebDiscoveryDevice(new Uri(discoverURL));
+            var discoveryURL = string.Format(GoogleServiceGenerator.GoogleDiscoveryURL, serviceName, serviceVersion);
+            var device = new CachedWebDiscoveryDevice(new Uri(discoveryURL));
 
             // Discover the servi2ce using the hand-coded discovery service
             var discovery = new DiscoveryService(device);
             return discovery.GetService(serviceVersion, DiscoveryVersion.Version_1_0);
         }
 
-        private Assembly CompileLibrary(Func<CompilerParameters, CodeDomProvider, CompilerResults> compile,
+        private static Assembly CompileLibrary(Func<CompilerParameters, CodeDomProvider, CompilerResults> compile,
                                         params string[] furtherReferences)
         {
             var provider = CodeDomProvider.CreateProvider("CSharp");
@@ -93,13 +92,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return results.CompiledAssembly;
         }
 
-        private T ExecuteDiscoveryCommands<T>(string returnValueType, params string[] commands)
+        private static T ExecuteCommands<T>(Assembly toInclude, string returnValueType, params string[] commands)
         {
-            if (discoveryAssembly == null)
-            {
-                CodegenDiscovery();
-            }
-
             // Build the environment
             var env = new StringBuilder();
             env.AppendLine("using System;");
@@ -127,7 +121,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             env.AppendLine("}");
 
             // Compile the code
-            string furtherReferences = discoveryAssembly.GetName().CodeBase.Replace("file:///", "");
+            string furtherReferences = toInclude.GetName().CodeBase.Replace("file:///", "");
             Assembly generatedAssembly =
                 CompileLibrary(
                     (cp, provider) => provider.CompileAssemblyFromSource(cp, env.ToString()), furtherReferences);
@@ -138,7 +132,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return (T)genMethod.Invoke(null, BindingFlags.Static, null, null, null);
         }
 
-        private CodeCompileUnit CodegenService(IService service)
+        private static CodeCompileUnit CodegenService(IService service)
         {
             // Generate the service
             var generator = new GoogleServiceGenerator(service, "Generated");
@@ -147,7 +141,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return generatedCode;
         }
 
-        private Assembly CompileService(CodeCompileUnit generatedCode)
+        private static Assembly CompileService(CodeCompileUnit generatedCode)
         {
             // Compile the code
             var assembly = CompileLibrary((cp, provider) => provider.CompileAssemblyFromDom(cp, generatedCode));
@@ -155,9 +149,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return assembly;
         }
 
-        private Assembly TestService(API api)
+        private static Assembly TestService(API api)
         {
-            logger.Debug("Testing service: " + api.Title);
+            Logger.Debug("Testing service: " + api.Title);
 
             // Discover the service
             IService service = DiscoverService(api.Name, api.Version);
@@ -172,39 +166,26 @@ namespace Google.Apis.Tools.CodeGen.Tests
             return asm;
         }
 
-        /// <summary>
-        /// Tries to discover discovery
-        /// </summary>
-        [Test]
-        public void DiscoverDiscovery()
+        #endregion
+
+        #region Test contents
+
+        private static IService DiscoverDiscovery()
         {
-            discovery = DiscoverService("discovery", "v1");
+            var discovery = DiscoverService("discovery", "v1");
             Assert.IsNotNull(discovery, "Discovery could not be discovered");
             Assert.That(discovery.Name, Is.EqualTo("discovery"));
+            return discovery;
         }
 
-        /// <summary>
-        /// Tries to code generate discovery
-        /// </summary>
-        [Test]
-        public void CodegenDiscovery()
+        private static Assembly CodegenDiscovery(IService discovery)
         {
-            // If only this single test is run, build the required fixture state
-            if (discovery == null)
-            {
-                DiscoverDiscovery();
-            }
-
             // Generate discovery
             CodeCompileUnit code = CodegenService(discovery);
-            discoveryAssembly = CompileService(code);
+            return CompileService(code);
         }
 
-        /// <summary>
-        /// Tries to list all services available on discovery
-        /// </summary>
-        [Test]
-        public void DiscoveryListServices()
+        private static API[] DiscoveryListServices(Assembly discovery)
         {
             // Build the command
             var code = new StringBuilder();
@@ -219,27 +200,73 @@ namespace Google.Apis.Tools.CodeGen.Tests
             code.AppendLine("}");
 
             // Execute the code
-            IEnumerable<string[]> apiList = ExecuteDiscoveryCommands<IEnumerable<string[]>>(
-                "IEnumerable<string[]>", code.ToString());
+            IEnumerable<string[]> apiList = ExecuteCommands<IEnumerable<string[]>>(
+                discovery, "IEnumerable<string[]>", code.ToString());
 
             Assert.IsNotNull(apiList);
 
             // Fetch API list
-            apis = apiList.Select(api => new API { Title = api[0], Name = api[1], Version = api[2] }).ToArray();
+            API[] apis = apiList.Select(api => new API { Title = api[0], Name = api[1], Version = api[2] }).ToArray();
             Assert.That(apis.Length, Is.GreaterThan(0));
+            return apis;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Tries to discover discovery
+        /// </summary>
+        [Test]
+        public void DiscoverDiscoveryTest()
+        {
+            DiscoverDiscovery();
+        }
+
+        /// <summary>
+        /// Tries to code generate discovery
+        /// </summary>
+        [Test]
+        public void CodegenDiscoveryTest()
+        {
+            // Discover discovery
+            IService discovery = DiscoverDiscovery();
+
+            // Generate discovery
+            CodegenDiscovery(discovery);
+        }
+
+        /// <summary>
+        /// Tries to list all services available on discovery
+        /// ToDo: Check if this tests passes after issue #55 is fixed
+        /// </summary>
+        [Test]
+        public void DiscoveryListServicesTest()
+        {
+            // Discover discovery
+            IService discovery = DiscoverDiscovery();
+
+            // Generate discovery
+            Assembly discoveryAssembly = CodegenDiscovery(discovery);
+
+            // Call the .List method
+            DiscoveryListServices(discoveryAssembly);
         }
 
         /// <summary>
         /// Runs the code generator on all discovered services
+        /// ToDo: Check if this tests passes after issues #55, #50 and #38 are fixed
         /// </summary>
         [Test]
-        public void CodegenAllServices()
+        public void CodegenAllServicesTest()
         {
-            // If only this single test is run, build the required fixture state
-            if (apis == null)
-            {
-                DiscoveryListServices();
-            }
+            // Discover discovery
+            IService discovery = DiscoverDiscovery();
+
+            // Generate discovery
+            Assembly discoveryAssembly = CodegenDiscovery(discovery);
+
+            // Call the .List method
+            API[] apis = DiscoveryListServices(discoveryAssembly);
 
             // Run the generator
             foreach (API api in apis)
