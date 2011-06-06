@@ -132,7 +132,7 @@ namespace Google.Apis
                 }
                 else
                 {
-                    returnString.Append((char) b);
+                    returnString.Append((char)b);
                 }
             }
 
@@ -383,5 +383,17 @@ namespace Google.Apis
 
             return result.ToString();
         }
+
+        #region LINQ extensions
+
+        /// <summary>
+        /// Returns the enumerable with the specified element removed
+        /// </summary>
+        public static IEnumerable<T> Without<T>(this IEnumerable<T> enumerable, T toRemove)
+        {
+            return enumerable.Except(new[] { toRemove });
+        }
+
+        #endregion
     }
 }

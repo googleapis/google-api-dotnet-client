@@ -92,6 +92,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var method = dict[TestMethodNames.getTest];
             Assert.AreEqual(4, method.Parameters.Count);
 
+            for (int i = 0; i < method.Parameters.Count; i++ )
+            {
+                Assert.That(method.Parameters[i].Name, Is.EqualTo(ResourceGetTestParameterNames[i]));
+            }
+
             method = dict[TestMethodNames.postTest];
             Assert.AreEqual(6, method.Parameters.Count);
 

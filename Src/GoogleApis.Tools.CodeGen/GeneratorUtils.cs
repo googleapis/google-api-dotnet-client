@@ -109,8 +109,8 @@ namespace Google.Apis.Tools.CodeGen
         /// <returns></returns>
         public static bool IsValidFirstChar(char c)
         {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-            // [A-Za-z]
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_'); ;
+            // [A-Za-z] or _
         }
 
         /// <summary>
@@ -120,40 +120,84 @@ namespace Google.Apis.Tools.CodeGen
         /// <returns></returns>
         public static bool IsValidBodyChar(char c)
         {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
-            // [A-Za-z0-9]
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || (c == '_');
+            // [A-Za-z0-9] or _
         }
 
         #endregion
 
         #region Safe  Names
+        /// <summary>
+        /// The maximum index used for method generation when the proposed name is already used
+        /// </summary>
+        internal const int SafeMemberMaximumIndex = 16;
 
         /// <summary>
-        /// Creates a safe member name which can be used within code environments
+        /// Creates a safe member name which can be used within code environments.
+        /// Also checks for disallowed C# keywords words
         /// </summary>
-        public static string GetSafeMemberName(string baseName,
-                                               string uniquieifier,
-                                               IEnumerable<string> unsafeWords,
-                                               IEnumerable<string> wordsUsedInContext)
+        public static string GetSafeMemberName(IEnumerable<string> unsafeWords, string baseName,
+                                               params string[] alternativeNames)
         {
             unsafeWords.ThrowIfNull("unsafeWords");
             baseName.ThrowIfNullOrEmpty("baseName");
-            wordsUsedInContext.ThrowIfNull("wordsUsedInContext");
-            uniquieifier.ThrowIfNullOrEmpty("uniquieifier");
+            alternativeNames.ThrowIfNull("alternativeNames");
 
+            IEnumerable<string> illegalWords = UnsafeWords.Concat(unsafeWords);
+
+            foreach (string proposedName in new[] { baseName }.Concat(alternativeNames))
+            {
+                string name = ValidateMemberName(illegalWords, proposedName);
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    return name;
+                }
+            }
+
+            // Generate a name in the form of baseName{0}
+            for (int i = 2; i <= SafeMemberMaximumIndex; i++)
+            {
+                string proposedName = baseName + i;
+                string name = ValidateMemberName(illegalWords, proposedName);
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    return name;
+                }              
+            }
+            // Generate a name in the form of baseNameMember{0}
+            for (int i = 1; i <= SafeMemberMaximumIndex; i++)
+            {
+                string proposedName = baseName + "Member" + (i == 1 ? "" : i.ToString());
+                string name = ValidateMemberName(illegalWords, proposedName);
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    return name;
+                }
+            }
+
+            throw new ArgumentException(string.Format("Unable to generate a safe member name for '{0}'", baseName));
+        }
+
+        public static string RemoveInvalidMemberCharacters(string memberName)
+        {
+            return memberName.Re
+        }
+
+        private static string ValidateMemberName(IEnumerable<string> illegalWords, string proposedName)
+        {
             StringBuilder sb = new StringBuilder();
             bool isFirst = true;
-            bool requiresUniqueAddition = false;
             bool nextCharToUpper = false;
-            bool modifiedName = false;
 
-            foreach (char c in baseName)
+            foreach (char c in proposedName)
             {
                 if (isFirst)
                 {
                     if (IsValidFirstChar(c) == false)
                     {
-                        modifiedName = true;
                         continue;
                     }
                     sb.Append(c);
@@ -163,7 +207,6 @@ namespace Google.Apis.Tools.CodeGen
 
                 if (IsValidBodyChar(c) == false)
                 {
-                    modifiedName = true;
                     nextCharToUpper = true;
                     continue;
                 }
@@ -178,33 +221,21 @@ namespace Google.Apis.Tools.CodeGen
                 }
             }
 
-            // Would be faster with a hashtable.contains but this is fast enough for generating code.
-            if (unsafeWords.Contains(sb.ToString(), CaseInsensitiveStringComparer.Instance))
+            // Check if the name can be used safely
+            if (illegalWords.Contains(sb.ToString()))
             {
-                requiresUniqueAddition = true;
-            }
-            if (modifiedName && wordsUsedInContext.Contains(sb.ToString(), CaseInsensitiveStringComparer.Instance))
-            {
-                requiresUniqueAddition = true;
+                // Already taken, return null
+                return null;
             }
 
-            if (requiresUniqueAddition || sb.Length == 0)
+            if (sb.Length == 0)
             {
-                sb.Append(uniquieifier);
+                // Empty string
+                return null;
             }
 
+            // This name seems safe - return it.
             return sb.ToString();
-        }
-
-
-        /// <summary>
-        /// Creates a safe member name which can be used within code environments
-        /// </summary>
-        public static string GetSafeMemberName(string baseName,
-                                               string uniquieifier,
-                                               IEnumerable<string> wordsUsedInContext)
-        {
-            return GetSafeMemberName(baseName, uniquieifier, UnsafeWords, wordsUsedInContext);
         }
 
         /// <summary>
@@ -213,54 +244,59 @@ namespace Google.Apis.Tools.CodeGen
         /// <param name="parameter">
         ///     The Parameter
         /// </param>
-        /// <param name="paramNumber">The order of this parameter used if the name is not usable</param>
+        /// <param name="otherParameterNames">Enumerable of all parameter names used within the same method</param>
         public static string GetParameterName(IParameter parameter,
-                                              int paramNumber,
                                               IEnumerable<string> otherParameterNames)
         {
-            return LowerFirstLetter(GetSafeMemberName(parameter.Name, "Param" + paramNumber, otherParameterNames));
+            string name = LowerFirstLetter(parameter.Name);
+            return GetSafeMemberName(otherParameterNames, name, name + "Value", name + "Param");
         }
 
         /// <summary>
         /// Returns a safe and appropriate method name for the specified method
         /// </summary>
-        public static string GetMethodName(IMethod method, int methodNumber, IEnumerable<string> wordsUsedInContext)
+        public static string GetMethodName(IMethod method, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter(GetSafeMemberName(method.Name, "Method" + methodNumber, wordsUsedInContext));
+            string name = UpperFirstLetter(method.Name);
+            return GetSafeMemberName(wordsUsedInContext, name, name + "Method", name + "Call");
         }
 
         /// <summary>
         /// Returns a safe and appropriate class name for the specified resource container
         /// </summary>
         public static string GetClassName(IResourceContainer resource,
-                                          int resourceNumber,
                                           IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter(GetSafeMemberName(resource.Name, "Resource" + resourceNumber, wordsUsedInContext));
+            string name = UpperFirstLetter(resource.Name);
+            return GetSafeMemberName(wordsUsedInContext, name, name + "Resource", name + "Object");
         }
 
         /// <summary>
         /// Returns a safe and appropriate field name for the specified resoure
         /// </summary>
-        public static string GetFieldName(IResource resource, int resourceNumber, IEnumerable<string> wordsUsedInContext)
+        public static string GetFieldName(IResource resource, IEnumerable<string> wordsUsedInContext)
         {
-            return LowerFirstLetter(GetSafeMemberName(resource.Name, "Field" + resourceNumber, wordsUsedInContext));
+            return GetFieldName(resource.Name, wordsUsedInContext);
         }
 
         /// <summary>
         /// Returns a safe and appropriate field name for the given input name
         /// </summary>
-        public static string GetFieldName(string name, int resourceNumber, IEnumerable<string> wordsUsedInContext)
+        public static string GetFieldName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            return LowerFirstLetter(GetSafeMemberName(name, "Field" + resourceNumber, wordsUsedInContext));
+            name = LowerFirstLetter(name);
+            return GetSafeMemberName(wordsUsedInContext, name, name + "Value", name + "Field");
         }
 
         /// <summary>
-        /// Returns a safe and appropriate property name for the given input name
+        /// Returns a safe and appropriate property name for the given input name without using the words
+        /// specified in the illegal words list
         /// </summary>
-        public static string GetPropertyName(string name, int resourceNumber, IEnumerable<string> wordsUsedInContext)
+        /// <param name="wordsUsedInContext">List of prohibited words</param>
+        public static string GetPropertyName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter(GetSafeMemberName(name, "Property" + resourceNumber, wordsUsedInContext));
+            name = UpperFirstLetter(name);
+            return GetSafeMemberName(wordsUsedInContext, name, name + "Value", name + "Property");
         }
 
         /// <summary>
@@ -268,7 +304,8 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetClassName(ISchema schema, IEnumerable<string> wordsUsedInContext)
         {
-            return UpperFirstLetter(GetSafeMemberName(schema.Name, "Cls", wordsUsedInContext));
+            string name = UpperFirstLetter(schema.Name);
+            return GetSafeMemberName(wordsUsedInContext, name, name + "Schema", name + "Class", name + "Data");
         }
 
         /// <summary>

@@ -92,12 +92,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.commentCreator = commentCreator;
             }
 
+            /// <summary>
+            /// Returns the type of the body of a method
+            /// </summary>
+            /// <param name="method"></param>
+            /// <returns></returns>
             public CodeTypeReference GetBodyType(IMethod method)
             {
                 // TODO(davidwaters@google.com): extend to allow more body types as per standardMethodResourceDecorator
                 return new CodeTypeReference(typeof(string));
             }
 
+            /// <summary>
+            /// Creates a new method declaration based upon the parameters
+            /// </summary>
             public CodeMemberMethod CreateMethod(IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
@@ -110,7 +118,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
                 var member = new CodeMemberMethod();
 
-                member.Name = GeneratorUtils.GetMethodName(method, methodNumber, resource.Methods.Keys);
+                member.Name = GeneratorUtils.GetMethodName(method, resource.Methods.Keys);
                 member.ReturnType = new CodeTypeReference("System.IO.Stream");
                 member.Attributes = MemberAttributes.Public;
                 if (commentCreator != null)
@@ -128,9 +136,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 int parameterCount = 1;
                 foreach (var param in paramList)
                 {
-                    string parameterName = GeneratorUtils.GetParameterName(
-                        param, parameterCount, method.Parameters.Keys);
-                    member.Parameters.Add(DeclareInputParameter(param, parameterCount, method));
+                    string parameterName = GeneratorUtils.GetParameterName(param, method.Parameters.Keys);
+                    member.Parameters.Add(DeclareInputParameter(param, method));
                     AddParameterComment(commentCreator, member, param, parameterName);
                     assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                     parameterCount++;

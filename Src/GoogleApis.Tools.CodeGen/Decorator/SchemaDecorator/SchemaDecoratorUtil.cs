@@ -34,17 +34,17 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// Generates a field name
         /// </summary>
-        internal static string GetFieldName(string name, int index, IEnumerable<string> wordsUsedInContext)
+        internal static string GetFieldName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            return GeneratorUtils.GetFieldName(name, index, wordsUsedInContext);
+            return GeneratorUtils.GetFieldName(name, wordsUsedInContext);
         }
 
         /// <summary>
         /// Generates a property name
         /// </summary>
-        internal static string GetPropertyName(string name, int index, IEnumerable<string> wordsUsedInContext)
+        internal static string GetPropertyName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            return GeneratorUtils.GetPropertyName(name, index, wordsUsedInContext);
+            return GeneratorUtils.GetPropertyName(name, wordsUsedInContext);
         }
 
         /// <summary>
