@@ -133,10 +133,31 @@ namespace Google.Apis.Tools.CodeGen
         internal const int SafeMemberMaximumIndex = 16;
 
         /// <summary>
+        /// Defines a change operation which should be applied to a letter
+        /// </summary>
+        public enum TargetCase
+        {
+            /// <summary>
+            /// Don't change the casing
+            /// </summary>
+            DontChange,
+
+            /// <summary>
+            /// Change the casing to upper
+            /// </summary>
+            ToUpper,
+            
+            /// <summary>
+            /// Change the casing to lower
+            /// </summary>
+            ToLower,
+        }
+
+        /// <summary>
         /// Creates a safe member name which can be used within code environments.
         /// Also checks for disallowed C# keywords words
         /// </summary>
-        public static string GetSafeMemberName(IEnumerable<string> unsafeWords, string baseName,
+        public static string GetSafeMemberName(IEnumerable<string> unsafeWords, TargetCase firstCharCase, string baseName,
                                                params string[] alternativeNames)
         {
             unsafeWords.ThrowIfNull("unsafeWords");
@@ -147,7 +168,7 @@ namespace Google.Apis.Tools.CodeGen
 
             foreach (string proposedName in new[] { baseName }.Concat(alternativeNames))
             {
-                string name = ValidateMemberName(illegalWords, proposedName);
+                string name = ValidateMemberName(illegalWords, proposedName, firstCharCase);
 
                 if (!string.IsNullOrEmpty(name))
                 {
@@ -159,7 +180,7 @@ namespace Google.Apis.Tools.CodeGen
             for (int i = 2; i <= SafeMemberMaximumIndex; i++)
             {
                 string proposedName = baseName + i;
-                string name = ValidateMemberName(illegalWords, proposedName);
+                string name = ValidateMemberName(illegalWords, proposedName, firstCharCase);
 
                 if (!string.IsNullOrEmpty(name))
                 {
@@ -170,7 +191,7 @@ namespace Google.Apis.Tools.CodeGen
             for (int i = 1; i <= SafeMemberMaximumIndex; i++)
             {
                 string proposedName = baseName + "Member" + (i == 1 ? "" : i.ToString());
-                string name = ValidateMemberName(illegalWords, proposedName);
+                string name = ValidateMemberName(illegalWords, proposedName, firstCharCase);
 
                 if (!string.IsNullOrEmpty(name))
                 {
@@ -181,12 +202,9 @@ namespace Google.Apis.Tools.CodeGen
             throw new ArgumentException(string.Format("Unable to generate a safe member name for '{0}'", baseName));
         }
 
-        public static string RemoveInvalidMemberCharacters(string memberName)
-        {
-            return memberName.Re
-        }
-
-        private static string ValidateMemberName(IEnumerable<string> illegalWords, string proposedName)
+        private static string ValidateMemberName(IEnumerable<string> illegalWords,
+                                                 string proposedName,
+                                                 TargetCase firstCharCase)
         {
             StringBuilder sb = new StringBuilder();
             bool isFirst = true;
@@ -200,7 +218,20 @@ namespace Google.Apis.Tools.CodeGen
                     {
                         continue;
                     }
-                    sb.Append(c);
+
+                    char newChar = c;
+
+                    // If the change to upper/lower flag is set, change the case
+                    if (firstCharCase == TargetCase.ToUpper)
+                    {
+                        newChar = Char.ToUpper(c);
+                    }
+                    else if (firstCharCase == TargetCase.ToLower)
+                    {
+                        newChar = Char.ToLower(c);
+                    }
+
+                    sb.Append(newChar);
                     isFirst = false;
                     continue;
                 }
@@ -248,8 +279,8 @@ namespace Google.Apis.Tools.CodeGen
         public static string GetParameterName(IParameter parameter,
                                               IEnumerable<string> otherParameterNames)
         {
-            string name = LowerFirstLetter(parameter.Name);
-            return GetSafeMemberName(otherParameterNames, name, name + "Value", name + "Param");
+            string name = parameter.Name;
+            return GetSafeMemberName(otherParameterNames, TargetCase.ToLower, name, name + "Value", name + "Param");
         }
 
         /// <summary>
@@ -257,8 +288,8 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetMethodName(IMethod method, IEnumerable<string> wordsUsedInContext)
         {
-            string name = UpperFirstLetter(method.Name);
-            return GetSafeMemberName(wordsUsedInContext, name, name + "Method", name + "Call");
+            string name = method.Name;
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Method", name + "Call");
         }
 
         /// <summary>
@@ -267,8 +298,8 @@ namespace Google.Apis.Tools.CodeGen
         public static string GetClassName(IResourceContainer resource,
                                           IEnumerable<string> wordsUsedInContext)
         {
-            string name = UpperFirstLetter(resource.Name);
-            return GetSafeMemberName(wordsUsedInContext, name, name + "Resource", name + "Object");
+            string name = resource.Name;
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Resource", name + "Object");
         }
 
         /// <summary>
@@ -284,19 +315,16 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetFieldName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            name = LowerFirstLetter(name);
-            return GetSafeMemberName(wordsUsedInContext, name, name + "Value", name + "Field");
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToLower, name, name + "Value", name + "Field");
         }
 
         /// <summary>
         /// Returns a safe and appropriate property name for the given input name without using the words
         /// specified in the illegal words list
         /// </summary>
-        /// <param name="wordsUsedInContext">List of prohibited words</param>
         public static string GetPropertyName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            name = UpperFirstLetter(name);
-            return GetSafeMemberName(wordsUsedInContext, name, name + "Value", name + "Property");
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Value", name + "Property");
         }
 
         /// <summary>
@@ -304,8 +332,8 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetClassName(ISchema schema, IEnumerable<string> wordsUsedInContext)
         {
-            string name = UpperFirstLetter(schema.Name);
-            return GetSafeMemberName(wordsUsedInContext, name, name + "Schema", name + "Class", name + "Data");
+            string name = schema.Name;
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Schema", name + "Class", name + "Data");
         }
 
         /// <summary>
