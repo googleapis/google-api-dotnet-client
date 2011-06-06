@@ -60,12 +60,17 @@ namespace Google.Apis.Tools.CodeGen.Tests
         {
             IList<string> simpleSafeWords = new List<string> { "unsafe", "words", "abound" };
 
-            Assert.AreEqual("fishBurger", GeneratorUtils.GetSafeMemberName(simpleSafeWords, "fishBurger"));
-            Assert.AreEqual("Member", GeneratorUtils.GetSafeMemberName(simpleSafeWords, "!@#$$%^&^&**((())+}{|\":\\\t\r"));
+            Assert.AreEqual(
+                "fishBurger",
+                GeneratorUtils.GetSafeMemberName(simpleSafeWords, 0, "fishBurger"));
+            Assert.AreEqual(
+                "member",
+                GeneratorUtils.GetSafeMemberName(
+                    simpleSafeWords, GeneratorUtils.TargetCase.ToLower, "!@#$$%^&^&**((())+}{|\":\\\t\r"));
             
             foreach (string word in GeneratorUtils.UnsafeWords)
             {
-                Assert.AreEqual(word + "2", GeneratorUtils.GetSafeMemberName(GeneratorUtils.UnsafeWords, word));
+                Assert.AreEqual(word + "2", GeneratorUtils.GetSafeMemberName(GeneratorUtils.UnsafeWords, 0, word));
             }
 
             // Test the "basenameMember"-pattern
@@ -73,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             for (int i = 0; i < unsafeWords.Length; i++)
                 unsafeWords[i] = "test" + (i == 0 ? "" : (i + 1).ToString());
 
-            Assert.AreEqual("testMember", GeneratorUtils.GetSafeMemberName(unsafeWords, "test"));
+            Assert.AreEqual("testMember", GeneratorUtils.GetSafeMemberName(unsafeWords, 0, "test"));
         }
 
         /// <summary>
