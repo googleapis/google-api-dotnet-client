@@ -25,12 +25,15 @@ limitations under the License.
 #define USE_TRACING
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Xml;
 using System.Reflection;
+using Google.Apis.Util;
 
 #endregion
 
@@ -342,13 +345,43 @@ namespace Google.Apis
         }
 
         /// <summary>
-        /// Returns the title of the calling assembly.
+        /// Returns the title of the calling assembly, or null if not set/unavailable.
         /// </summary>
         public static string GetAssemblyTitle()
         {
-            object[] attributes =
-                Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-            return attributes.Length == 0 ? "" : ((AssemblyTitleAttribute)attributes[0]).Title;
+            Assembly asm = Assembly.GetEntryAssembly();
+            if (asm == null)
+            {
+                return null;
+            }
+
+            object[] attributes = asm.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+            return attributes.Length == 0 ? null : ((AssemblyTitleAttribute)attributes[0]).Title;
+        }
+
+        /// <summary>
+        /// Replaces all the specified characters within the input string with the given replacement
+        /// </summary>
+        public static string Replace(this string input, string replace, params char[] invalidCharacters)
+        {
+            invalidCharacters.ThrowIfNullOrEmpty("invalidCharacters");
+
+            // Create the resulting string
+            var result = new StringBuilder(input.Length);
+            
+            foreach (char c in input)
+            {
+                // Replace invalid characters with the replacement string
+                if (invalidCharacters.Contains(c))
+                {
+                    result.Append(replace);
+                    continue;
+                }
+
+                result.Append(c);
+            }
+
+            return result.ToString();
         }
     }
 }

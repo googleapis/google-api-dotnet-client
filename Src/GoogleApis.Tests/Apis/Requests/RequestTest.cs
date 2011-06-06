@@ -184,7 +184,18 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = new Request();
             Assert.IsNotNull(request.Authenticator);
-            Assert.IsNotNullOrEmpty(request.AppName);
+        }
+
+        /// <summary>
+        /// Tests the application name property
+        /// </summary>
+        [Test]
+        public void FormatForUserAgentTest()
+        {
+            var request = new Request();
+
+            Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
+            Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
         }
 
         /// <summary>
@@ -227,10 +238,10 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests the .CreateRequest method of a test
+        /// Tests the .CreateRequest method of a request
         /// </summary>
         [Test]
-        public void RequestCreateRequestTest()
+        public void CreateRequestOnRequestTest()
         {
             var service = new MockService();
             var request = (Request)Request.CreateRequest(
@@ -240,8 +251,13 @@ namespace Google.Apis.Tests.Apis.Requests
             
             request.WithParameters("");
 
-            HttpWebRequest webRequest = request.CreateRequest();
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
             Assert.IsNotNull(webRequest);
+
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}", Utilities.GetAssemblyVersion(),
+                Environment.OSVersion.Platform);
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
         /// <summary>
