@@ -29,14 +29,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
     {
         private IResource CreateEmptyResource()
         {
-            return CreateResourceDivcoveryV_1_0("MockResource", "{ }");
+            return CreateResourceDiscoveryV_1_0("MockResource", "{ }");
         }
 
         private IResource CreateNonEmptyResource()
         {
-            var resource = CreateResourceDivcoveryV_1_0("MockResource", "{ }");
-            resource.Resources.Add("Subresource", CreateEmptyResource());
-            resource.Resources.Add("AnotherSubresource", CreateEmptyResource());
+            var resource = CreateResourceDiscoveryV_1_0("MockResource", "{ }");
+            resource.Resources.Add("Subresource", CreateResourceDiscoveryV_1_0("Subresource", "{ }"));
+            resource.Resources.Add("AnotherSubresource", CreateResourceDiscoveryV_1_0("AnotherSubresource", "{ }"));
             return resource;
         }
 
@@ -74,7 +74,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var decorator = new StandardConstructorResourceDecorator();
             var resourceClass = new CodeTypeDeclaration(ResourceClassName);
-            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             decorator.DecorateClass(resource, null, resourceClass, null, ServiceClassName, null);
 
             Assert.AreEqual(1, resourceClass.Members.Count);
@@ -82,6 +82,30 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             Assert.IsInstanceOf(typeof(CodeConstructor), member);
             // Constructor is tested in TestCreateConstructor
+        }
+
+        /// <summary>
+        /// Tests the constructor
+        /// </summary>
+        [Test]
+        public void TestCreateSubresourceStatement()
+        {
+            var decorator = new StandardConstructorResourceDecorator();
+            CodeStatementCollection statements = decorator.CreateSubresourceCreateStatements(CreateNonEmptyResource());
+            Assert.AreEqual(2, statements.Count);
+
+            Assert.That(statements[0], Is.InstanceOf<CodeAssignStatement>());
+            CodeAssignStatement firstStatement = (CodeAssignStatement) statements[0];
+
+            // Check the field name
+            Assert.That(firstStatement.Left, Is.InstanceOf<CodeFieldReferenceExpression>());
+            Assert.That(((CodeFieldReferenceExpression)firstStatement.Left).FieldName, Is.EqualTo("subresource"));
+
+            // Check the constructor
+            var right = firstStatement.Right as CodeObjectCreateExpression;
+            Assert.IsNotNull(right);
+
+            Assert.That(right.CreateType.BaseType, Is.EqualTo("Subresource"));
         }
     }
 }

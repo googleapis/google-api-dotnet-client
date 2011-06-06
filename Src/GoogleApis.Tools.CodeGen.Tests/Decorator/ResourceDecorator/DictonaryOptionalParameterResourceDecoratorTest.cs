@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         [Test]
         public void TestCreateMethodNoArgs()
         {
-            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             var methodGenerator =
                 new DictonaryOptionalParameterResourceDecorator.ResourceGenerator("TestResourceClassName", null);
 
