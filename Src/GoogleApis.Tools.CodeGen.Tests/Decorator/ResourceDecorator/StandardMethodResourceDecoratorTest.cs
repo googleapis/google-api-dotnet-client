@@ -34,7 +34,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var generator = new StandardMethodResourceDecorator.ResourceGenerator(
                 "TestClassName", false, false, null, "", null);
-            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             var method = resource.Methods[TestMethodNames.getTest.ToString()];
             var mockDecorator = new MockResourceDecorator();
 

@@ -242,6 +242,20 @@ namespace Google.Apis.Tests.Apis.Util
             str.ThrowIfNull("Not throwen");
         }
 
+        /// <summary>
+        /// Tests the "Replace" string extension method
+        /// </summary>
+        [Test]
+        public void ReplaceTest()
+        {
+            Assert.That("test".Replace("_", '"', '!', '$'), Is.EqualTo("test"));
+            Assert.That("/te/st/".Replace("", '/', '!', '$'), Is.EqualTo("test"));
+            Assert.That("/te/st/".Replace("_", '/', '!', '$'), Is.EqualTo("_te_st_"));
+            Assert.That("/te/st/".Replace("//", '/', '!', '$'), Is.EqualTo("//te//st//"));
+            Assert.That("123!@#".Replace("", '!', '@', '#'), Is.EqualTo("123"));
+            Assert.Throws<ArgumentException>(() => "test".Replace("_"));
+        }
+        
         private enum MockEnum
         {
             [StringValue("Test")]
