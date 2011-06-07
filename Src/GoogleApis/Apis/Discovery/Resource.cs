@@ -175,7 +175,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ResourceV0_3 : BaseResource
     {
-        internal ResourceV0_3(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_1_0, kvp) { }
+        internal ResourceV0_3(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_0_3, kvp) { }
 
         protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
         {
