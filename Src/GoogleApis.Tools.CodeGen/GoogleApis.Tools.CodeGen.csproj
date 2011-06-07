@@ -71,6 +71,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecorator.cs" />
+    <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
+    <Compile Include="Generator\ImplementationDetailsGenerator.cs" />
     <Compile Include="Generator\MethodGeneratorUtils.cs" />
     <Compile Include="GoogleServiceGenerator.cs" />
     <Compile Include="Generator\ResourceClassGenerator.cs" />

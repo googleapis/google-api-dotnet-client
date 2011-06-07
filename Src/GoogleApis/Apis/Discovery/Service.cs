@@ -189,7 +189,7 @@ namespace Google.Apis.Discovery
             return request;
         }
 
-        public string Serialize(object obj)
+        public string SerializeRequest(object obj)
         {
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
@@ -202,7 +202,7 @@ namespace Google.Apis.Discovery
             return Serializer.Serialize(obj);
         }
 
-        public T Deserialize<T>(Stream input)
+        public T DeserializeResponse<T>(Stream input) where T : IResponse
         {
             // Read in the entire content
             string text;
@@ -213,17 +213,17 @@ namespace Google.Apis.Discovery
             }
 
             // Check if there was an error returned. The error node is returned in both paths
-            StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
-
-            if (response.Error != null)
-            {
-                throw new GoogleApiException(this, "Server error - " + response.Error);
-            }
-
             // Deserialize the stream based upon the format of the stream
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
+                StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
+            
                 if (response.Data == null)
                 {
                     throw new GoogleApiException(this, "The response could not be deserialized.");
@@ -233,7 +233,14 @@ namespace Google.Apis.Discovery
             }
 
             // New path: Deserialize the object directly
-            return Serializer.Deserialize<T>(text);
+            T result = Serializer.Deserialize<T>(text);
+
+            if (result.Error != null)
+            {
+                throw new GoogleApiException(this, "Server error - " + result.Error);
+            }
+
+            return result;
         }
 
         public bool HasFeature(Features feature)

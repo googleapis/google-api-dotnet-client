@@ -22,6 +22,7 @@ using System.Text;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 using Google.Apis.JSON;
+using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 using Newtonsoft.Json;
@@ -58,7 +59,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         /// <summary>
         /// A Json schema for testing serialization/deserialization
         /// </summary>
-        internal class MockJsonSchema
+        internal class MockJsonSchema : IResponse
         {
             [JsonProperty("kind")]
             public string Kind { get; set; }
@@ -68,6 +69,8 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             [JsonProperty("status")]
             public string Status { get; set; }
+
+            public RequestError Error { get; set; }
         }
 
         #region Test Helper methods
@@ -112,7 +115,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check if a response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
-            CheckDeserializationResults(impl.Deserialize<MockJsonSchema>(stream));
+            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
         }
 
         /// <summary>
@@ -130,7 +133,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check if a response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            CheckDeserializationResults(impl.Deserialize<MockJsonSchema>(stream));
+            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
         }
 
         /// <summary>
@@ -165,7 +168,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                     // Check if a response is decoded correctly
                     try
                     {
-                        impl.Deserialize<MockJsonSchema>(stream);
+                        impl.DeserializeResponse<MockJsonSchema>(stream);
                         Assert.Fail("GoogleApiException was not thrown for invalid Json");
                     }
                     catch (GoogleApiException ex)
@@ -234,7 +237,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             IService impl = CreateLegacyV03Service();
 
             // Check if a response is serialized correctly
-            string result = impl.Serialize(schema);
+            string result = impl.SerializeRequest(schema);
             Assert.AreEqual(ResponseV0_3, result);
         }
 
@@ -253,7 +256,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             IService impl = CreateV1Service();
 
             // Check if a response is serialized correctly
-            string result = impl.Serialize(schema);
+            string result = impl.SerializeRequest(schema);
             Assert.AreEqual(ResponseV1, result);
         }
 
