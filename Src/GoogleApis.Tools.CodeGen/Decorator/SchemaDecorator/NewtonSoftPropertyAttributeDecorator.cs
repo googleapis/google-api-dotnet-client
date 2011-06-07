@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Tools.CodeGen.Generator;
 using log4net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
@@ -51,6 +52,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  SchemaImplementationDetails implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(schema.Name, schema.SchemaDetails, typeDeclaration);

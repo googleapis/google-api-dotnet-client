@@ -41,20 +41,19 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Creates a fully working class for the specified schema
         /// </summary>
-        /// <param name="schema"></param>
-        /// <param name="otherSchmeaNames"></param>
-        /// <returns></returns>
-        public CodeTypeDeclaration CreateClass(ISchema schema, IEnumerable<string> otherSchmeaNames)
+        public CodeTypeDeclaration CreateClass(ISchema schema,
+                                               SchemaImplementationDetails details,
+                                               IEnumerable<string> otherSchemaNames)
         {
             schema.ThrowIfNull("schema");
-            otherSchmeaNames.ThrowIfNull("otherSchmeaNames");
+            otherSchemaNames.ThrowIfNull("otherSchemaNames");
 
-            string className = GeneratorUtils.GetClassName(schema, otherSchmeaNames);
+            string className = GeneratorUtils.GetClassName(schema, otherSchemaNames);
             var typeDeclaration = new CodeTypeDeclaration(className);
             var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach (ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecorateClass(typeDeclaration, schema, nestedClassGenerator);
+                schemaDecorator.DecorateClass(typeDeclaration, schema, details, nestedClassGenerator);
             }
             nestedClassGenerator.GenerateNestedClasses();
 

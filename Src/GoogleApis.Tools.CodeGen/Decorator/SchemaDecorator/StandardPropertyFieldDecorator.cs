@@ -17,6 +17,7 @@ limitations under the License.
 using System.Collections.Generic;
 using System.CodeDom;
 using System.Linq;
+using Google.Apis.Tools.CodeGen.Generator;
 using log4net;
 using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
@@ -51,6 +52,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  SchemaImplementationDetails implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");

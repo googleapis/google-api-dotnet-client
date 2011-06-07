@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using Google.Apis.Json;
+using Google.Apis.Testing;
 using log4net;
 
 namespace Google.Apis.Discovery
@@ -182,6 +183,29 @@ namespace Google.Apis.Discovery
         protected override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
             return new ResourceV0_3(DiscoveryVersion, kvp);
+        }
+    }
+
+    #endregion
+
+    #region MockResource
+
+    /// <summary>
+    /// Mock resource for testing purposes
+    /// </summary>
+    [VisibleForTestOnly]
+    internal class MockResource : IResource
+    {
+        public string Name { get; set; }
+
+        public IDictionary<string, IResource> Resources { get; set; }
+
+        public Dictionary<string, IMethod> Methods { get; set; }
+
+        public MockResource()
+        {
+            Resources = new Dictionary<string, IResource>();
+            Methods = new Dictionary<string, IMethod>();
         }
     }
 

@@ -92,12 +92,12 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Serializes the specified object into the format used by this service
         /// </summary>
-        string Serialize(object obj);
+        string SerializeRequest(object obj);
 
         /// <summary>
         /// Deserializes the stream defined by the format used by this service into a .NET object
         /// </summary>
-        T Deserialize<T>(Stream input);
+        T DeserializeResponse<T>(Stream input) where T : IResponse;
 
         /// <summary>
         /// Returns true if this feature is defined for this service

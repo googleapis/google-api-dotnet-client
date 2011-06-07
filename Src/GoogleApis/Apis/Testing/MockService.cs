@@ -85,12 +85,12 @@ namespace Google.Apis.Tests.Apis.Requests
             throw new NotImplementedException();
         }
 
-        public string Serialize(object obj)
+        public string SerializeRequest(object obj)
         {
             throw new NotImplementedException();
         }
 
-        public T Deserialize<T>(Stream input)
+        public T DeserializeResponse<T>(Stream input) where T : IResponse
         {
             throw new NotImplementedException();
         }
