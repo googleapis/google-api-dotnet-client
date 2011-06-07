@@ -196,7 +196,7 @@ namespace Google.Apis.Discovery
         /// <returns></returns>
         public virtual IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV1_0(DiscoveryVersion, kvp);
+            return new ResourceV1_0(kvp);
         }
     }
 
@@ -261,7 +261,7 @@ namespace Google.Apis.Discovery
 
         public override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_3(DiscoveryVersion, kvp);
+            return new ResourceV0_3(kvp);
         }
     }
 
