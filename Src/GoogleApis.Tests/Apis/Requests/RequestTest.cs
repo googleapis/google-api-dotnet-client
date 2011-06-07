@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using NUnit.Framework;
 using Google.Apis.Requests;
 using Google.Apis.Discovery;
@@ -183,7 +184,18 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = new Request();
             Assert.IsNotNull(request.Authenticator);
-            Assert.IsNotNullOrEmpty(request.AppName);
+        }
+
+        /// <summary>
+        /// Tests the application name property
+        /// </summary>
+        [Test]
+        public void FormatForUserAgentTest()
+        {
+            var request = new Request();
+
+            Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
+            Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
         }
 
         /// <summary>
@@ -223,6 +235,29 @@ namespace Google.Apis.Tests.Apis.Requests
             Request.CreateRequest(
                 service,
                 new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://test.google.com", });
+        }
+
+        /// <summary>
+        /// Tests the .CreateRequest method of a request
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com",
+                Parameters = new Dictionary<string, IParameter>() { {"TestParam", null} }});
+            
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.IsNotNull(webRequest);
+
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}", Utilities.GetAssemblyVersion(),
+                Environment.OSVersion.Platform);
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
         /// <summary>
