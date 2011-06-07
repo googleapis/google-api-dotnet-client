@@ -82,7 +82,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
 
             IEnumerable<string> illegalWords = unsafeWords.Concat(schema.Properties.Keys);
-
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
