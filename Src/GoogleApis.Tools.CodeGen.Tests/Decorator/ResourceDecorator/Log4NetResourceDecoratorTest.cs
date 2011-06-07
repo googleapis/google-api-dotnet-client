@@ -62,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var codeMember = new CodeMemberMethod();
             codeMember.Name = "OneTestMethod";
             resourceClass.Members.Add(codeMember);
-            IResource resource = CreateResourceDivcoveryV_1_0("TestResource", SimpleResource);
+            IResource resource = CreateResourceDiscoveryV_1_0("TestResource", SimpleResource);
             decorator.DecorateMethodBeforeExecute(resource, resource.Methods["simpleMethod"], codeMember);
             decorator.DecorateMethodAfterExecute(resource, resource.Methods["simpleMethod"], codeMember);
 
@@ -92,7 +92,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var codeMember = new CodeMemberMethod();
             codeMember.Name = "OneTestMethod";
             resourceClass.Members.Add(codeMember);
-            IResource resource = CreateResourceDivcoveryV_1_0("TestResource", SimpleResource);
+            IResource resource = CreateResourceDiscoveryV_1_0("TestResource", SimpleResource);
             decorator.DecorateMethodBeforeExecute(resource, resource.Methods["simpleMethod"], codeMember);
 
             Assert.AreEqual(1, codeMember.Statements.Count);
