@@ -19,29 +19,30 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
 
 namespace Google.Apis
 {
     /// <summary>
-    /// Logic for validating that a method is correct
+    /// Logic for validating that a method is correct.
     /// </summary>
     public class MethodValidator
     {
-        public MethodValidator(IMethod method, IDictionary<string, string> parameters)
+        public MethodValidator(IMethod method, ParameterCollection parameters)
         {
             CurrentMethod = method;
             Parameters = parameters;
         }
 
         /// <summary>
-        /// The method which is currently being validated
+        /// The method which is currently being validated.
         /// </summary>
         public IMethod CurrentMethod { get; private set; }
 
         /// <summary>
-        /// The parameters of the method
+        /// The parameters of the method.
         /// </summary>
-        public IDictionary<string, string> Parameters { get; private set; }
+        public ParameterCollection Parameters { get; private set; }
 
         /// <summary>
         /// Validates all the parameters provided.
@@ -87,7 +88,7 @@ namespace Google.Apis
             string currentParam;
             bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 
-            // If a required parameter is not present, fail
+            // If a required parameter is not present, fail.
             if (param.Required && String.IsNullOrEmpty(currentParam))
             {
                 return false;
@@ -133,7 +134,6 @@ namespace Google.Apis
             Regex r = new Regex(pattern);
 
             return r.IsMatch(stringValue);
-            ;
         }
     }
 }

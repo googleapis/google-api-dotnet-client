@@ -291,12 +291,12 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new Request();
             request.WithParameters(dict);
             Assert.AreEqual(dict.Count, request.Parameters.Count);
-            Assert.AreEqual("a", request.Parameters["a"]);
-            Assert.IsNull(request.Parameters["null"]);
-            Assert.AreEqual("1", request.Parameters["1"]);
-            Assert.AreEqual("100", request.Parameters["100"]);
-            Assert.AreEqual("True", request.Parameters["True"]);
-            Assert.AreEqual("False", request.Parameters["False"]);
+            Assert.AreEqual("a", request.Parameters.GetFirstMatch("a"));
+            Assert.IsNull(request.Parameters.GetFirstMatch("null"));
+            Assert.AreEqual("1", request.Parameters.GetFirstMatch("1"));
+            Assert.AreEqual("100", request.Parameters.GetFirstMatch("100"));
+            Assert.AreEqual("True", request.Parameters.GetFirstMatch("True"));
+            Assert.AreEqual("False",request.Parameters.GetFirstMatch("False"));
         }
     }
 }

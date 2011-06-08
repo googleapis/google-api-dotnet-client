@@ -70,6 +70,8 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\OAuth2Authenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Requests\ParameterCollection.cs" />
+    <Compile Include="Apis\Util\Repeatable.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />

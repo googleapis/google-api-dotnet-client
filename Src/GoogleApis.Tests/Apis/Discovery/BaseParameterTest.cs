@@ -54,7 +54,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("A string description", impl.Description);
             Assert.AreEqual("string", impl.ValueType);
             Assert.AreEqual(true, impl.Required);
-            Assert.AreEqual(true, impl.Repeated);
+            Assert.AreEqual(true, impl.IsRepeatable);
             Assert.AreEqual("A default value", impl.DefaultValue);
             MoreAsserts.ContentsEqualAndInOrder(new List<string> { "atom", "json" }, impl.Enum);
             MoreAsserts.ContentsEqualAndInOrder(
