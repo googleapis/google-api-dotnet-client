@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Tools.CodeGen.Generator;
 using Newtonsoft.Json.Schema;
 
@@ -31,17 +32,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         /// <summary>
         /// Decorates the schema class with the information provided by this decorator. For example a 
         /// INestedClassSchemaDecorator could add a constructor, or properties to the nested schema class 
-        /// that we are generating
+        /// that we are generating.
         /// </summary>
-        /// <param name="typeDeclaration">Nested class to decorate</param>
-        /// <param name="name">Name of this class</param>
-        /// <param name="schema">Schema describing this class</param>
-        /// <param name="details">Details for the implementation. May be null</param>
-        /// <param name="internalClassProvider">Provider used for generating nested classes</param>
+        /// <param name="typeDeclaration">Nested class to decorate.</param>
+        /// <param name="name">Name of this class.</param>
+        /// <param name="schema">Schema describing this class.</param>
+        /// <param name="details">Details for the implementation.</param>
+        /// <param name="internalClassProvider">Provider used for generating nested classes.</param>
         void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                    string name,
                                    JsonSchema schema,
-                                   SchemaImplementationDetails details,
+                                   IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                    INestedClassProvider internalClassProvider);
     }
 }

@@ -25,5 +25,16 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// True if this schema is a direct result of a resource method call
         /// </summary>
         public bool IsMethodResult { get; set; }
+
+        /// <summary>
+        /// A proposed (alternative) name for this schema
+        /// </summary>
+        public string ProposedName { get; set; }
+
+        /// <summary>
+        /// True if this implementation has been traversed by the implementation generator.
+        /// Used to prevent endless recursion / stack overflow.
+        /// </summary>
+        internal bool TraversedByGenerator { get; set; }
     }
 }

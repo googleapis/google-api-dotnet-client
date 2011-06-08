@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
@@ -39,7 +40,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         /// <summary>
-        /// Creates a fully working class for the specified schema
+        /// Creates a fully working class for the specified schema.
         /// </summary>
         public CodeTypeDeclaration CreateClass(ISchema schema,
                                                IDictionary<JsonSchema, SchemaImplementationDetails> detailCollection,
@@ -49,19 +50,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
             detailCollection.ThrowIfNull("detailCollection");
             otherSchemaNames.ThrowIfNull("otherSchemaNames");
 
-            // Retrieve details
-            SchemaImplementationDetails details = null;
-            if (detailCollection.ContainsKey(schema.SchemaDetails))
-            {
-                details = detailCollection[schema.SchemaDetails];
-            }
-
             string className = GeneratorUtils.GetClassName(schema, otherSchemaNames);
             var typeDeclaration = new CodeTypeDeclaration(className);
             var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach (ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecorateClass(typeDeclaration, schema, details, nestedClassGenerator);
+                schemaDecorator.DecorateClass(typeDeclaration, schema, detailCollection, nestedClassGenerator);
             }
             nestedClassGenerator.GenerateNestedClasses(detailCollection);
 
@@ -88,8 +82,6 @@ namespace Google.Apis.Tools.CodeGen.Generator
             /// <summary>A string to make this nested class names unique</summary>
             private readonly string uniquefier;
 
-            private readonly NestedClassNameGenerator nameGenerator;
-
             public NestedClassGenerator(CodeTypeDeclaration typeDeclaration,
                                         IEnumerable<ISchemaDecorator> decorators,
                                         string uniquefier)
@@ -97,7 +89,6 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 this.typeDeclaration = typeDeclaration;
                 this.decorators = decorators;
                 knownSubschemas = new Dictionary<JsonSchema, string>();
-                nameGenerator = new NestedClassNameGenerator();
                 this.uniquefier = uniquefier;
             }
 
@@ -107,7 +98,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             /// Gets a class name as a CodeTypeReference for the given schema of the form "IntenalClassN" where 
             /// N is an integer. Given the same JsonSchema this will return the same classname.
             /// </summary>
-            public CodeTypeReference GetClassName(JsonSchema definition)
+            public CodeTypeReference GetClassName(JsonSchema definition, SchemaImplementationDetails details)
             {
                 if (knownSubschemas.ContainsKey(definition))
                 {
@@ -116,22 +107,22 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
                 string name = null;
                 
-                // First, try to generate a name based upon the environment
-                if (typeDeclaration != null)
+                // First, try to generate a name based upon the environment.
+                if (typeDeclaration != null && details != null && !string.IsNullOrEmpty(details.ProposedName))
                 {
-                    var generatedName = nameGenerator.GenerateName(typeDeclaration, definition);
+                    string proposedName = details.ProposedName;
+                    IEnumerable<string> forbiddenWords = GeneratorUtils.GetWordContextListFromClass(typeDeclaration);
+                    forbiddenWords = forbiddenWords.Concat(knownSubschemas.Values);
 
-                    if (generatedName.IsNotNullOrEmpty() &&
-                        knownSubschemas.Values.Contains(generatedName) == false &&
-                        typeDeclaration.Members.FindTypeMemberByName(generatedName) == null &&
-                        typeDeclaration.Name != generatedName)
+                    string generatedName = GeneratorUtils.GetClassName(proposedName, forbiddenWords);
+                    if (generatedName.IsNotNullOrEmpty())
                     {
-                        // The generated name is not taken, and differs from the parent type -> use it
+                        // The generated name is valid -> take it.
                         name = generatedName;
                     }
                 }
 
-                // If this name collides with an existing type, generate a unique name)
+                // If this name collides with an existing type, generate a unique name.
                 if (name == null)
                 {
                     name = GetSchemaName(knownSubschemas.Count+1);
@@ -160,14 +151,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 schema.ThrowIfNull("schema");
 
-                // Retrieve details
-                SchemaImplementationDetails details = null;
-                if (detailCollection.ContainsKey(schema))
-                {
-                    details = detailCollection[schema];
-                }
-                
-                string className = GetClassName(schema).BaseType;
+                string className = GetClassName(schema, detailCollection.GetValueAsNull(schema)).BaseType;
                 var typeDeclaration = new CodeTypeDeclaration(className);
                 typeDeclaration.Attributes = MemberAttributes.Public;
                 var nestedClassGenerator = new NestedClassGenerator(
@@ -180,7 +164,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                         logger.DebugFormat(
                             "Found IInternalClassSchemaDecorator {0} - decorating {1}", schemaDecorator, className);
                         ((INestedClassSchemaDecorator) schemaDecorator).DecorateInternalClass(
-                            typeDeclaration, className, schema, details, nestedClassGenerator);
+                            typeDeclaration, className, schema, detailCollection, nestedClassGenerator);
                     }
                 }
                 nestedClassGenerator.GenerateNestedClasses(detailCollection);

@@ -288,6 +288,21 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
+        /// Returns a list of used and therefore forbidden words from a type declaration.
+        /// </summary>
+        public static IEnumerable<string> GetWordContextListFromClass(CodeTypeDeclaration typeDeclaration)
+        {
+            typeDeclaration.ThrowIfNull("typeDeclaration");
+
+            yield return typeDeclaration.Name;
+
+            foreach (CodeTypeMember member in typeDeclaration.Members)
+            {
+                yield return member.Name;
+            }
+        }
+
+        /// <summary>
         /// Comparer which ignores the case of a string
         /// </summary>
         internal class CaseInsensitiveStringComparer : IEqualityComparer<string>

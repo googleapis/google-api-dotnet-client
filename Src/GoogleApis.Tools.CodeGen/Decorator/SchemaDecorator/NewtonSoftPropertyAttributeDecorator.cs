@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -41,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          SchemaImplementationDetails details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                           INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(name, schema, typeDeclaration);
@@ -53,7 +54,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
-                                  SchemaImplementationDetails implDetails,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(schema.Name, schema.SchemaDetails, typeDeclaration);

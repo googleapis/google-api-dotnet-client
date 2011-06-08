@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Tools.CodeGen.Tests.Generator;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
@@ -47,6 +48,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void DecorateClassGenerationTest()
         {
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var decorator = new ArraySchemaDecorator();
             var internalClassProvider = new ObjectInternalClassProvider();
             var decl = new CodeTypeDeclaration();
@@ -59,7 +61,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails.Items.Clear();
             schema.SchemaDetails.Items.Add(
                 new JsonSchema { Description = "Test", Id = "TestSchema", Type = JsonSchemaType.Object });
-            Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, null, internalClassProvider));
+            Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, implDetails, internalClassProvider));
 
             Assert.That(decl.BaseTypes.Count, Is.EqualTo(2));
             Assert.That(decl.BaseTypes[0].BaseType, Is.StringStarting("List<"));
@@ -75,19 +77,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void DecorateClassTest()
         {
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var decorator = new ArraySchemaDecorator();
             var declaration = new CodeTypeDeclaration();
             var schema = new MockSchema { SchemaDetails = new JsonSchema() };
             var internalClassProvider = new ObjectInternalClassProvider();
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.DecorateClass(null, schema, null, internalClassProvider));
+                () => decorator.DecorateClass(null, schema, implDetails, internalClassProvider));
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.DecorateClass(declaration, null, null, internalClassProvider));
+                () => decorator.DecorateClass(declaration, null, implDetails, internalClassProvider));
             Assert.Throws(
-                typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, schema, null, null));
-            decorator.DecorateClass(declaration, schema, null, internalClassProvider);
+                typeof(ArgumentNullException),
+                () => decorator.DecorateClass(declaration, schema, null, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, schema, implDetails, null));
+            decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
         }
 
         /// <summary>
@@ -96,6 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void DecorateClassTestEdgeCases()
         {
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var decorator = new ArraySchemaDecorator();
             var internalClassProvider = new ObjectInternalClassProvider();
             CodeTypeDeclaration declaration = null;
@@ -105,13 +112,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails = null;
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.DecorateClass(new CodeTypeDeclaration(), schema, null, internalClassProvider));
+                () => decorator.DecorateClass(new CodeTypeDeclaration(), schema, implDetails, internalClassProvider));
 
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Float;
             Assert.DoesNotThrow(
                 () =>
-                decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, null, internalClassProvider));
+                decorator.DecorateClass(
+                    declaration = new CodeTypeDeclaration(), schema, implDetails, internalClassProvider));
             Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
 
             schema.SchemaDetails.Type = JsonSchemaType.Array;
@@ -120,7 +128,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails.Items.Add(new JsonSchema());
             Assert.DoesNotThrow(
                 () =>
-                decorator.DecorateClass(declaration = new CodeTypeDeclaration(), schema, null, internalClassProvider));
+                decorator.DecorateClass(
+                    declaration = new CodeTypeDeclaration(), schema, implDetails, internalClassProvider));
             Assert.That(declaration.BaseTypes.Count, Is.EqualTo(0));
         }
     }

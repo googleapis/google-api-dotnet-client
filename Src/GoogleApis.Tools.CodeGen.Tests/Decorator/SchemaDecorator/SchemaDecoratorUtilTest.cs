@@ -36,12 +36,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var internalClassProvider = new ObjectInternalClassProvider();
             Assert.Throws(
-                typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(null, internalClassProvider));
+                typeof(ArgumentNullException),
+                () => SchemaDecoratorUtil.GetCodeType(null, null, internalClassProvider));
             var schema = new JsonSchema();
-            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(schema, null));
+            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(schema, null, null));
 
             Assert.Throws(
-                typeof(NotSupportedException), () => SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider));
+                typeof(NotSupportedException),
+                () => SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider));
         }
 
         /// <summary>
@@ -54,16 +56,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var internalClassProvider = new ObjectInternalClassProvider();
             schema.Type = JsonSchemaType.String;
             Assert.AreEqual(
-                typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Integer;
             Assert.AreEqual(
-                typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Float;
             Assert.AreEqual(
-                typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Boolean;
             Assert.AreEqual(
-                typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
         }
 
         /// <summary>

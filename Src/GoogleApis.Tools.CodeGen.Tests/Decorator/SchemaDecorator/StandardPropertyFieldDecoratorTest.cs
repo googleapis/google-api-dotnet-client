@@ -16,6 +16,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using Google.Apis.Tools.CodeGen.Generator;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
@@ -59,6 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void GenerateAllFieldsTest()
         {
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var schema = new MockSchema();
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Object;
@@ -73,7 +75,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             var decorator = new StandardPropertyFieldDecorator();
             IList<CodeMemberField> generatedFields = decorator.GenerateAllFields(
-                "test", schema.SchemaDetails, internalClassProvider);
+                "test", schema.SchemaDetails, implDetails, internalClassProvider);
 
             Assert.NotNull(generatedFields);
             Assert.AreEqual(NamesToType.Count, generatedFields.Count);
@@ -90,8 +92,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 Assert.AreEqual(
                     pair.Key, field.Name, string.Format("Name different for expected at index {0}", item - 1));
                 Assert.AreEqual(
-                    SchemaDecoratorUtil.GetCodeType(new JsonSchema { Type = pair.Value }, internalClassProvider).
-                        BaseType, field.Type.BaseType);
+                    SchemaDecoratorUtil.GetCodeType(new JsonSchema { Type = pair.Value }, null, internalClassProvider)
+                        .BaseType, field.Type.BaseType);
             }
         }
 
@@ -101,23 +103,30 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void GenerateAllFieldsTestEdgeCases()
         {
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var decorator = new StandardPropertyFieldDecorator();
             var schema = new MockSchema();
             string name = "test";
             Assert.Throws(
-                typeof(ArgumentNullException), () => decorator.GenerateAllFields(name, null, internalClassProvider));
+                typeof(ArgumentNullException),
+                () => decorator.GenerateAllFields(name, null, implDetails, internalClassProvider));
             Assert.Throws(
-                typeof(ArgumentNullException), () => decorator.GenerateAllFields(name, schema.SchemaDetails, null));
+                typeof(ArgumentNullException),
+                () => decorator.GenerateAllFields(name, schema.SchemaDetails, null, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException),
+                () => decorator.GenerateAllFields(name, schema.SchemaDetails, implDetails, null));
 
             schema.Name = "test";
             schema.SchemaDetails = null;
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.GenerateAllFields(name, schema.SchemaDetails, internalClassProvider));
+                () => decorator.GenerateAllFields(name, schema.SchemaDetails, implDetails, internalClassProvider));
 
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Properties = null;
-            var expectedEmpty = decorator.GenerateAllFields(name, schema.SchemaDetails, internalClassProvider);
+            var expectedEmpty = decorator.GenerateAllFields(
+                name, schema.SchemaDetails, implDetails, internalClassProvider);
             Assert.IsNotNull(expectedEmpty);
             Assert.AreEqual(0, expectedEmpty.Count);
         }
@@ -133,7 +142,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             schema.Type = JsonSchemaType.String;
             CodeMemberField generatedField = decorator.GenerateField(
-                "normalName", schema, 1, internalClassProvider, Enumerable.Empty<string>());
+                "normalName", schema, null, 1, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(string).FullName, generatedField.Type.BaseType);
@@ -142,7 +151,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             schema.Type = JsonSchemaType.Boolean;
             generatedField = decorator.GenerateField(
-                "public", schema, 2, internalClassProvider, Enumerable.Empty<string>());
+                "public", schema, null, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
@@ -150,7 +159,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 
             generatedField = decorator.GenerateField(
-                "UPPERCASE", schema, 2, internalClassProvider, Enumerable.Empty<string>());
+                "UPPERCASE", schema, null, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual("uPPERCASE", generatedField.Name);

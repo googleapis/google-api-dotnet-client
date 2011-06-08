@@ -32,7 +32,13 @@ namespace Google.Apis.Tools.CodeGen.Generator
     public class ImplementationDetailsGenerator
     {
         /// <summary>
-        /// Generates the implementation details for a whole service
+        /// Suffix which will be attached to all nested classes for properties which do not refer to a strongly
+        /// named type.
+        /// </summary>
+        public const string PropertyClassSuffix = "Data";
+
+        /// <summary>
+        /// Generates the implementation details for a whole service.
         /// </summary>
         public IDictionary<JsonSchema, SchemaImplementationDetails> GenerateDetails(IService service)
         {
@@ -41,10 +47,97 @@ namespace Google.Apis.Tools.CodeGen.Generator
             Dictionary<JsonSchema, SchemaImplementationDetails> dictionary =
                 new Dictionary<JsonSchema, SchemaImplementationDetails>();
 
-            // Create details for all schemas where they are necessary
+            // Traverse through all schemas and check if they require implementation details.
+            foreach (ISchema schema in service.Schemas.Values)
+            {
+                if (schema.SchemaDetails != null)
+                {
+                    AddDetails(dictionary, schema.SchemaDetails);
+                }
+            }
+
+            // Create additional details for all schemas where they are necessary.
             AddIsMethodResult(dictionary, service, service.Resources.Values);
 
             return dictionary;
+        }
+
+        /// <summary>
+        /// Adds implementation details for the specified schema and all its subschemas if they are required/useful.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static void AddDetails(IDictionary<JsonSchema, SchemaImplementationDetails> dictionary,
+                                                   JsonSchema schema)
+        {
+            // Add details for this schema
+            SchemaImplementationDetails details = GetOrCreateDetails(dictionary, schema);
+            if (details.TraversedByGenerator)
+            {
+                // This scheme has already been fully generated
+                return;
+            }
+            details.TraversedByGenerator = true;
+
+            // Check for properties:
+            if (schema.Properties != null)
+            {
+                foreach (KeyValuePair<string, JsonSchema> property in schema.Properties)
+                {
+                    ProposeNameIfNecessary(dictionary, property.Key + PropertyClassSuffix, property.Value);
+                    AddDetails(dictionary, property.Value);
+                }
+            }
+
+            // Check for items:
+            if (schema.Items != null)
+            {
+                // Generate a plausible name.
+                string proposedName;
+                if (!string.IsNullOrEmpty(schema.Id))
+                {
+                    proposedName = schema.Id;
+                }
+                else
+                {
+                    proposedName = details.ProposedName;
+                }
+
+                // Iterate through items and check if they require a name.
+                foreach (JsonSchema item in schema.Items)
+                {
+                    // Set the name if necessary and possible.
+                    if (!string.IsNullOrEmpty(proposedName))
+                    {
+                        ProposeNameIfNecessary(dictionary, proposedName, item);
+                    }
+                    AddDetails(dictionary, item);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Proposes a name for a schema if it has none yet.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static void ProposeNameIfNecessary(IDictionary<JsonSchema, SchemaImplementationDetails> dictionary,
+                                                   string name,
+                                                   JsonSchema schema)
+        {
+            schema.ThrowIfNull("schema");
+            name.ThrowIfNull("name");
+            dictionary.ThrowIfNull("name");
+
+            if (!string.IsNullOrEmpty(schema.Id))
+            {
+                // Already has a name -> return.
+                return;
+            }
+
+            SchemaImplementationDetails details = GetOrCreateDetails(dictionary, schema);
+            if (string.IsNullOrEmpty(details.ProposedName))
+            {
+                details.ProposedName = name;
+            }
         }
 
         [VisibleForTestOnly]
