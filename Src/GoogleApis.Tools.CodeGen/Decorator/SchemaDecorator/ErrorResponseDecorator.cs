@@ -18,6 +18,7 @@ limitations under the License.
 using System.CodeDom;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using log4net;
@@ -29,7 +30,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class ErrorResponseDecorator : ISchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ArraySchemaDecorator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ErrorResponseDecorator));
+        private const string ErrorPropertyName = "Error";
+        private const string ErrorJsonName = "error";
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
@@ -41,26 +44,42 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             
             if (implDetails == null)
             {
-                return; // Nothing to do for this schema
+                return; // If no details are provided, this decorator does not apply
             }
 
             // If this method is refered as a result directly, add an inheritance to IResponse and implement
             // the interface
             if (implDetails.IsMethodResult)
             {
+                logger.Debug("Applying decorator to schema "+schema.Name);
                 typeDeclaration.BaseTypes.Add(GetIResponseBaseType());
                 typeDeclaration.Members.AddRange(CreateErrorProperty(typeDeclaration));
             }
         }
 
-        private CodeTypeReference GetIResponseBaseType()
+        [VisibleForTestOnly]
+        internal static CodeTypeReference GetIResponseBaseType()
         {
             return new CodeTypeReference(typeof(IResponse));
         }
 
-        private CodeTypeMemberCollection CreateErrorProperty(CodeTypeDeclaration typeDeclaration)
+        [VisibleForTestOnly]
+        internal static CodeTypeMemberCollection CreateErrorProperty(CodeTypeDeclaration typeDeclaration)
         {
-            return DecoratorUtil.CreateAutoProperty<RequestError>(typeDeclaration, "Error", null);
+            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty<RequestError>(
+                typeDeclaration, ErrorPropertyName, null);
+
+            // Add the JsonProperty attribute to the property
+            foreach (CodeTypeMember member in col)
+            {
+                if (member is CodeMemberProperty)
+                {
+                    member.CustomAttributes.Add(NewtonSoftPropertyAttributeDecorator.CreateAttribute(ErrorJsonName));
+                    break;
+                }
+            }
+
+            return col;
         }
     }
 }

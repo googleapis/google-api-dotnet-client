@@ -16,8 +16,8 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator;
+using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 {
@@ -40,7 +40,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateAutoProperty<object>(null, name, comment));
             Assert.Throws<ArgumentNullException>(
                 () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, null, comment));
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, "", comment));
+            Assert.Throws<ArgumentException>(
+                () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, "", comment));
             Assert.DoesNotThrow(() => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, name, null));
         }
 
@@ -71,7 +72,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 
             // Test if an exception is thrown when the name is already used
             typeDeclaration.Members.AddRange(col);
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateAutoProperty<bool>(typeDeclaration, name, comment));
+            Assert.Throws<ArgumentException>(
+                () => DecoratorUtil.CreateAutoProperty<bool>(typeDeclaration, name, comment));
         }
 
         /// <summary>
@@ -84,7 +86,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             const string name = "TestProperty";
 
             Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField<object>(null, name));
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField<object>(typeDeclaration, null));
+            Assert.Throws<ArgumentNullException>(
+                () => DecoratorUtil.CreateBackingField<object>(typeDeclaration, null));
             Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateBackingField<object>(typeDeclaration, ""));
         }
 

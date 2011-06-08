@@ -20,6 +20,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Generator;
+using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
@@ -45,8 +46,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         [Test]
         public void GetOrCreateDetailsTest()
         {
-            var dic = new Dictionary<ISchema, SchemaImplementationDetails>();
-            var schema = new MockSchema() { Id = "Test" };
+            var dic = new Dictionary<JsonSchema, SchemaImplementationDetails>();
+            var schema = new JsonSchema();
 
             // Test parameter validation
             Assert.Throws<ArgumentNullException>(
@@ -61,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             Assert.AreEqual(details, ImplementationDetailsGenerator.GetOrCreateDetails(dic, schema));
 
             // Test second add
-            var schema2 = new MockSchema() { Id = "FooBar" };
+            var schema2 = new JsonSchema();
             Assert.IsNotNull(ImplementationDetailsGenerator.GetOrCreateDetails(dic, schema2));
             Assert.AreEqual(2, dic.Count);
         }
@@ -72,10 +73,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         [Test]
         public void AddIsMethodResultTest()
         {
-            var dic = new Dictionary<ISchema, SchemaImplementationDetails>();
-            var schema = new MockSchema();
+            var dic = new Dictionary<JsonSchema, SchemaImplementationDetails>();
+            var schema = new JsonSchema();
             var service = new MockService();
-            service.Schemas.Add("TestSchema", schema);
+            service.Schemas.Add("TestSchema", new MockSchema() { SchemaDetails = schema });
             var method = new MockMethod() { ResponseType = "TestSchema"};
 
             // Test parameter validation
@@ -100,8 +101,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         [Test]
         public void AddIsMethodResultRecursionTest()
         {
-            var dic = new Dictionary<ISchema, SchemaImplementationDetails>();
-            var schema = new MockSchema();
+            var dic = new Dictionary<JsonSchema, SchemaImplementationDetails>();
+            var schema = new JsonSchema();
 
             var method = new MockMethod() { ResponseType = "TestSchema" };
 
@@ -112,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             resource.Resources.Add("Subresource", subresource);
             
             var service = new MockService();
-            service.Schemas.Add("TestSchema", schema);
+            service.Schemas.Add("TestSchema", new MockSchema { SchemaDetails = schema });
             service.Resources.Add("TestResource", resource);
 
             // Test parameter validation
@@ -141,7 +142,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             Assert.Throws<ArgumentNullException>(() => gen.GenerateDetails(null));
             
             var service = new MockService();
-            IDictionary<ISchema, SchemaImplementationDetails> dic = gen.GenerateDetails(service);
+            IDictionary<JsonSchema, SchemaImplementationDetails> dic = gen.GenerateDetails(service);
             Assert.IsNotNull(dic);
             Assert.AreEqual(dic.Count, 0);
         }

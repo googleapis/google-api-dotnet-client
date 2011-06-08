@@ -17,8 +17,8 @@ limitations under the License.
 using System.CodeDom;
 using System.IO;
 using Google.Apis.Discovery;
-using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
@@ -44,7 +44,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
         #endregion
 
-
         /// <summary>
         ///  Creates the RegisterSerializer method
         ///  <code>
@@ -60,7 +59,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             const string VAR_NAME = "serializer";
             var genericService = new CodeTypeReferenceExpression(ServiceClassGenerator.GenericServiceName);
 
-            // public string ObjectToJson(object obj)
+            // public void RegisterSerializer(ISerializer serializer)
             var method = new CodeMemberMethod();
             method.Name = RegisterSerializerMethodName;
             method.Attributes = MemberAttributes.Public;
@@ -123,7 +122,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         [VisibleForTestOnly]
         internal CodeMemberMethod CreateJsonToObject()
         {
-            //public TOutput JsonToObject<TOutput>(Stream stream)
+            // public TOutput JsonToObject<TOutput>(Stream stream)
             var method = new CodeMemberMethod();
             var typeParameter = new CodeTypeParameter("T");
             method.Name = DeserializationMethodName;

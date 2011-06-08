@@ -194,13 +194,7 @@ namespace Google.Apis.Util
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
             object[] results = info.GetCustomAttributes(typeof(T), false);
-
-            if (results.Length == 0)
-            {
-                return null;
-            }
-
-            return (T) results[0];
+            return results.Length == 0 ? null : (T) results[0];
         }
 
         /// <summary>
@@ -211,7 +205,6 @@ namespace Google.Apis.Util
         public static string GetStringValue(this Enum value)
         {
             FieldInfo entry = value.GetType().GetField(value.ToString());
-
             entry.ThrowIfNull("value");
 
             // If set, return the value

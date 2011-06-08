@@ -90,7 +90,7 @@ namespace Google.Apis.Tests.Apis.Requests
             throw new NotImplementedException();
         }
 
-        public T DeserializeResponse<T>(Stream input) where T : IResponse
+        public T DeserializeResponse<T>(Stream input)
         {
             throw new NotImplementedException();
         }

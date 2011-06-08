@@ -18,11 +18,11 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery;
-using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -76,7 +76,7 @@ namespace Google.Apis.Tools.CodeGen
             SchemaGenerator generator = new SchemaGenerator(decorators);
 
             // Generate implementation details
-            IDictionary<ISchema, SchemaImplementationDetails> implementationDetails =
+            IDictionary<JsonSchema, SchemaImplementationDetails> implementationDetails =
                 implementationDetailsGenerator.GenerateDetails(service);
 
             // Generate schemas
@@ -84,15 +84,9 @@ namespace Google.Apis.Tools.CodeGen
             {
                 logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
                 
-                // Retrieve details
-                SchemaImplementationDetails details = null;
-                if (implementationDetails.ContainsKey(schemaPair.Value))
-                {
-                    details = implementationDetails[schemaPair.Value];
-                }
-
                 // Create schema
-                codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value, details, service.Schemas.Keys));
+                codeNamespace.Types.Add(
+                    generator.CreateClass(schemaPair.Value, implementationDetails, service.Schemas.Keys));
             }
             return codeNamespace;
         }

@@ -97,7 +97,7 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Deserializes the stream defined by the format used by this service into a .NET object
         /// </summary>
-        T DeserializeResponse<T>(Stream input) where T : IResponse;
+        T DeserializeResponse<T>(Stream input);
 
         /// <summary>
         /// Returns true if this feature is defined for this service

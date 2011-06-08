@@ -50,7 +50,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         [Test]
         public void CreateJsonToObjectTest()
         {
-            // 
             JsonSerializationMethods decorator = new JsonSerializationMethods();
             CodeMemberMethod method = decorator.CreateJsonToObject();
             Assert.IsNotNull(method);

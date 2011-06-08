@@ -74,6 +74,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         #region Test Helper methods
+
         private void CheckDeserializationResults(MockJsonSchema result)
         {
             Assert.NotNull(result);
@@ -94,6 +95,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("features", new[] { Features.LegacyDataResponse.GetStringValue() });
             return new ConcreteClass("V1", "NameTest", dict);
         }
+
         #endregion
 
         /// <summary>
@@ -103,17 +105,19 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestDeserializationV0_3()
         {
             const string ResponseV0_3 =
-                @"{ ""data"" : {
-                    ""kind"": ""urlshortener#url"",
-                    ""longUrl"": ""http://google.com/"",
-                } }";
+                @"{ ""data"" : 
+                     {
+                        ""kind"": ""urlshortener#url"",
+                        ""longUrl"": ""http://google.com/"",
+                     } 
+                  }";
 
             IService impl = CreateLegacyV03Service();
 
-            // Check if the default serializer is set
+            // Check that the default serializer is set
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
 
-            // Check if a response is decoded correctly
+            // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
             CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
         }
@@ -128,10 +132,10 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             IService impl = CreateV1Service();
 
-            // Check if the default serializer is set
+            // Check that the default serializer is set
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
 
-            // Check if a response is decoded correctly
+            // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
             CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
         }
@@ -165,7 +169,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                 {
                     IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
 
-                    // Check if a response is decoded correctly
+                    // Verify that the response is decoded correctly
                     try
                     {
                         impl.DeserializeResponse<MockJsonSchema>(stream);
@@ -173,8 +177,8 @@ namespace Google.Apis.Tests.Apis.Discovery
                     }
                     catch (GoogleApiException ex)
                     {
-                        // Just check that the content of the error json was translated into the exception object
-                        // Don't compare the entire exception as it depends on the implementation and might change
+                        // Check that the contents of the error json was translated into the exception object
+                        // We cannot compare the entire exception as it depends on the implementation and might change
                         Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
                     }
                 }
