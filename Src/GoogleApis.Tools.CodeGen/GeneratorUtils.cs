@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen
@@ -33,26 +34,27 @@ namespace Google.Apis.Tools.CodeGen
 
         //C# reserved words
         private static readonly string[] UnsafeWordsArray = new[]
-                                                                {
-                                                                    "abstract", "as", "base", "bool", "break", "byte",
-                                                                    "case", "catch", "char", "checked", "class", "const"
-                                                                    , "continue", "decimal", "default", "delegate", "do"
-                                                                    , "double", "else", "enum", "event", "explicit",
-                                                                    "extern", "false", "finally", "fixed", "float",
-                                                                    "for", "foreach", "goto", "if", "implicit", "in",
-                                                                    "int", "interface", "internal", "is", "lock", "long"
-                                                                    , "namespace", "new", "null", "object", "operator",
-                                                                    "out", "override", "params", "private", "protected",
-                                                                    "public", "readonly", "ref", "return", "sbyte",
-                                                                    "sealed", "short", "sizeof", "stackalloc", "static",
-                                                                    "string", "struct", "switch", "this", "throw",
-                                                                    "true", "try", "typeof", "uint", "ulong",
-                                                                    "unchecked", "unsafe", "ushort", "using", "virtual",
-                                                                    "void", "volatile", "while",
-                                                                    //C# proposed reserved words
-                                                                    "await", "async", //CodeGen Specific
-                                                                    "body"
-                                                                };
+                                                            {
+                                                                "abstract", "as", "base", "bool", "break", "byte",
+                                                                "case", "catch", "char", "checked", "class", "const", 
+                                                                "continue", "decimal", "default", "delegate", "do", 
+                                                                "double", "else", "enum", "event", "explicit",
+                                                                "extern", "false", "finally", "fixed", "float",
+                                                                "for", "foreach", "goto", "if", "implicit", "in",
+                                                                "int", "interface", "internal", "is", "lock", "long", 
+                                                                "namespace", "new", "null", "object", "operator",
+                                                                "out", "override", "params", "private", "protected",
+                                                                "public", "readonly", "ref", "return", "sbyte",
+                                                                "sealed", "short", "sizeof", "stackalloc", "static",
+                                                                "string", "struct", "switch", "this", "throw",
+                                                                "true", "try", "typeof", "uint", "ulong",
+                                                                "unchecked", "unsafe", "ushort", "using", "virtual",
+                                                                "void", "volatile", "while",
+                                                                //C# proposed reserved words
+                                                                "await", "async", 
+                                                                //CodeGen Specific
+                                                                "body"
+                                                            };
 
         /// <summary>
         /// List of all words which are unsafe in a code environment
@@ -132,7 +134,7 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// The maximum index used for method generation when the proposed name is already used.
         /// </summary>
-        internal const int SafeMemberMaximumIndex = 16;
+        internal const int SafeMemberMaximumIndex = 8;
 
         /// <summary>
         /// Defines a change operation which should be applied to a letter.
@@ -168,18 +170,20 @@ namespace Google.Apis.Tools.CodeGen
             baseName.ThrowIfNullOrEmpty("baseName");
             alternativeNames.ThrowIfNull("alternativeNames");
 
-            // Watch for both C# language keywords and member names used in this scope
+            // Watch for both C# language keywords and member names used in this scope.
             IEnumerable<string> illegalWords = UnsafeWords.Concat(unsafeWords);
 
             // Check whether the base name, or one of the proposed alternative names can be used.
             foreach (string proposedName in GenerateAlternativeNamesFor(baseName, alternativeNames))
             {
                 // Validate/try making valid name out of the name
-                string validatedName = ValidateMemberName(illegalWords, proposedName, firstCharCase);
-                if (!string.IsNullOrEmpty(validatedName))
+                string validName = MakeValidMembername(proposedName);
+                string casedValidName = AlterFirstCharCase(validName, firstCharCase);
+                
+                if (IsNameValidInContext(casedValidName, illegalWords))
                 {
-                    // We have a valid name - return the result
-                    return validatedName;
+                    // We have a valid name - return the result.
+                    return casedValidName;
                 }
             }
 
@@ -199,7 +203,8 @@ namespace Google.Apis.Tools.CodeGen
         ///     4. baseName + Index
         ///     5. baseName + "Member" + Index
         /// </summary>
-        private static IEnumerable<string> GenerateAlternativeNamesFor(string baseName,
+        [VisibleForTestOnly]
+        internal static IEnumerable<string> GenerateAlternativeNamesFor(string baseName,
                                                                        params string[] proposedAlternatives)
         {
             // First try the real name.
@@ -229,25 +234,49 @@ namespace Google.Apis.Tools.CodeGen
 
         /// <summary>
         /// Returns a set of strings which represents the baseName plus a number appended to it.
+        /// Will return an empty set if the provided base name is empty or null.
         /// </summary>
-        private static IEnumerable<string> AppendIndices(string baseName, int startIndex, int maximumIndex)
+        [VisibleForTestOnly]
+        internal static IEnumerable<string> AppendIndices(string baseName, int startIndex, int maximumIndex)
         {
-            for (int i = startIndex; i <= SafeMemberMaximumIndex; i++)
+            if (maximumIndex < startIndex)
             {
-                yield return baseName + maximumIndex;
+                throw new ArgumentException("startIndex must be smaller than maximumIndex");
+            }
+
+            // If no base name is provided, do not produce any altered names.
+            if (string.IsNullOrEmpty(baseName))
+            {
+                yield break;
+            }
+
+            for (int i = startIndex; i <= maximumIndex; i++)
+            {
+                yield return baseName + i;
             }
         }
 
-        private static string ValidateMemberName(IEnumerable<string> illegalWords,
-                                                 string proposedName,
-                                                 TargetCase firstCharCase)
+        /// <summary>
+        /// Removes invalid characters from the proposed member name, and makes the following char
+        /// upper case if the previous body char was an invalid char (e.g. foo-bar will result in fooBar).
+        /// May return null if the name consisted only out of invalid characters.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static string MakeValidMembername(string memberName)
         {
+            // We cannot generate a valid name out of an empty string.
+            if (string.IsNullOrEmpty(memberName))
+            {
+                return null;
+            }
+
             StringBuilder sb = new StringBuilder();
             bool isFirst = true;
             bool nextCharToUpper = false;
 
-            foreach (char c in proposedName)
+            foreach (char c in memberName)
             {
+                // Skip invalid first characters
                 if (isFirst)
                 {
                     if (IsValidFirstChar(c) == false)
@@ -255,62 +284,87 @@ namespace Google.Apis.Tools.CodeGen
                         continue;
                     }
 
-                    char newChar;
-
-                    // Change the case as specified in the "firstCharCase" parameter.
-                    switch (firstCharCase)
-                    {
-                        case TargetCase.ToUpper:
-                            newChar = Char.ToUpper(c);
-                            break;
-
-                        case TargetCase.ToLower:
-                            newChar = Char.ToLower(c);
-                            break;
-
-                        case TargetCase.DontChange:
-                            newChar = c;
-                            break;
-
-                        default:
-                            throw new ArgumentOutOfRangeException("firstCharCase");
-                    }
-
-                    sb.Append(newChar);
+                    sb.Append(c);
                     isFirst = false;
                     continue;
                 }
 
+                // If this char is invalid, the next one should be made upper case.
                 if (IsValidBodyChar(c) == false)
                 {
                     nextCharToUpper = true;
                     continue;
                 }
+
+                // Make the next char upper case.
                 if (nextCharToUpper)
                 {
                     sb.Append(Char.ToUpper(c));
                     nextCharToUpper = false;
+                    continue;
                 }
-                else
-                {
-                    sb.Append(c);
-                }
+
+                // This char is valid - Append this char without changing anything.
+                sb.Append(c);   
+            }
+
+            return sb.Length == 0 ? null : sb.ToString();
+        }
+
+        /// <summary>
+        /// Changes the case of the first character.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static string AlterFirstCharCase(string memberName, TargetCase firstCharCase)
+        {
+            if (string.IsNullOrEmpty(memberName))
+            {
+                return memberName;
+            }
+
+            char c = memberName[0];
+            char newChar;
+
+            switch (firstCharCase)
+            {
+                case TargetCase.ToUpper:
+                    newChar = Char.ToUpper(c);
+                    break;
+
+                case TargetCase.ToLower:
+                    newChar = Char.ToLower(c);
+                    break;
+
+                case TargetCase.DontChange:
+                    return memberName;
+
+                default:
+                    throw new ArgumentOutOfRangeException("firstCharCase");
+            }
+
+            return newChar + memberName.Substring(1);
+        }
+
+        /// <summary>
+        /// Checks if the proposed name has already been used in the provided context
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static bool IsNameValidInContext(string name, IEnumerable<string> context)
+        {
+            // An empty name is never valid.
+            if (string.IsNullOrEmpty(name))
+            {
+                return false;
             }
 
             // Check if the name can be used safely.
-            if (illegalWords.Contains(sb.ToString()))
+            if (context.Contains(name))
             {
-                // Already taken, return null.
-                return null;
+                // This name is already taken.
+                return false;
             }
 
-            if (sb.Length == 0)
-            {
-                return null;
-            }
-
-            // This name seems safe - return it.
-            return sb.ToString();
+            return true;
         }
 
         /// <summary>

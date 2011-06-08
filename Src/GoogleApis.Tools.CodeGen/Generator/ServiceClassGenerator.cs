@@ -52,11 +52,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         public CodeTypeDeclaration CreateServiceClass()
         {
-            string serviceClassName =
-                GeneratorUtils.UpperFirstLetter(
-                    GeneratorUtils.GetSafeMemberName(
-                        Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, service.Name + "Service",
-                        service.Name + "Cls"));
+            string serviceClassName = GeneratorUtils.GetSafeMemberName(
+                Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, service.Name + "Service",
+                service.Name + "Cls");
             logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
             serviceClass.BaseTypes.Add(typeof(IRequestExecutor));

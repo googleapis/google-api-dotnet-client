@@ -61,7 +61,7 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardConstructorResourceDecorator(),
                      new StandardMethodResourceDecorator(),
                      new Log4NetResourceDecorator(),
-                     new DictonaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
+                     new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                  }).AsReadOnly();
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Google.Apis.Tools.CodeGen
                              true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace),
                              new DefaultEnglishCommentCreator()),
                          new Log4NetResourceDecorator(),
-                         new DictonaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
+                         new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                      }).AsReadOnly
                     ();
         }

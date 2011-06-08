@@ -70,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             
             foreach (string word in GeneratorUtils.UnsafeWords)
             {
-                Assert.AreEqual(word + "2", GeneratorUtils.GetSafeMemberName(GeneratorUtils.UnsafeWords, 0, word));
+                Assert.AreEqual(word + "Member", GeneratorUtils.GetSafeMemberName(GeneratorUtils.UnsafeWords, 0, word));
             }
 
             // Test the "basenameMember"-pattern
@@ -197,6 +197,116 @@ namespace Google.Apis.Tools.CodeGen.Tests
             {
                 Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int) c + " should be invalid");
             }
+        }
+
+        /// <summary>
+        /// Checks that the MakeValidMembername method returns valid member names.
+        /// </summary>
+        [Test]
+        public void MakeValidMembername()
+        {
+            // Test empty strings.
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername(null));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername(""));
+
+            // Tests strings consisting only out of invalid characters
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("!@#"));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("   "));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("123456789"));
+
+            // Test valid names
+            Assert.AreEqual("SomeClassName2", GeneratorUtils.MakeValidMembername("SomeClassName2"));
+            Assert.AreEqual("_memberName", GeneratorUtils.MakeValidMembername("_memberName"));
+
+            // Test that invalid characters are removed
+            Assert.AreEqual("ref", GeneratorUtils.MakeValidMembername("$ref"));
+            Assert.AreEqual("unknown", GeneratorUtils.MakeValidMembername("(unknown)"));
+            Assert.AreEqual("FooBar", GeneratorUtils.MakeValidMembername("Foo@bar"));
+            Assert.AreEqual("fooBar", GeneratorUtils.MakeValidMembername("foo!@#$bar"));
+        }
+
+        /// <summary>
+        /// Confirms that the IsNameValidInContext method will recognize invalid names.
+        /// </summary>
+        [Test]
+        public void IsNameValidInContextTest()
+        {
+            string[] emptyList = new string[0];
+            string[] forbiddenContext = new[] { "evil", "foo", "bar", "INVALID" };
+
+            // Test with an empty name.
+            Assert.IsFalse(GeneratorUtils.IsNameValidInContext(null, emptyList));
+            Assert.IsFalse(GeneratorUtils.IsNameValidInContext("", emptyList));
+
+            // Test with a valid name.
+            Assert.IsTrue(GeneratorUtils.IsNameValidInContext("foobar", emptyList));
+            Assert.IsTrue(GeneratorUtils.IsNameValidInContext("foobar", forbiddenContext));
+            
+            // Test with some invalid names.
+            Assert.IsFalse(GeneratorUtils.IsNameValidInContext("foo", forbiddenContext));
+            Assert.IsFalse(GeneratorUtils.IsNameValidInContext("evil", forbiddenContext));
+
+            // Confirm that character casing is valued.
+            Assert.IsTrue(GeneratorUtils.IsNameValidInContext("Foo", forbiddenContext));
+            Assert.IsTrue(GeneratorUtils.IsNameValidInContext("Evil", forbiddenContext));
+            Assert.IsTrue(GeneratorUtils.IsNameValidInContext("invalid", forbiddenContext));
+            Assert.IsFalse(GeneratorUtils.IsNameValidInContext("INVALID", forbiddenContext));
+        }
+
+        /// <summary>
+        /// Tests the AlterCase method.
+        /// </summary>
+        [Test]
+        public void AlterFirstCharCaseTest()
+        {
+            // Test empty strings.
+            Assert.IsNull(GeneratorUtils.AlterFirstCharCase(null, GeneratorUtils.TargetCase.ToLower));
+            Assert.AreEqual("", GeneratorUtils.AlterFirstCharCase("", GeneratorUtils.TargetCase.ToLower));
+
+            // Test the ToLower variant.
+            Assert.AreEqual("a", GeneratorUtils.AlterFirstCharCase("A", GeneratorUtils.TargetCase.ToLower));
+            Assert.AreEqual("a", GeneratorUtils.AlterFirstCharCase("a", GeneratorUtils.TargetCase.ToLower));
+
+            // Test the ToUpper variant.
+            Assert.AreEqual("A", GeneratorUtils.AlterFirstCharCase("a", GeneratorUtils.TargetCase.ToUpper));
+            Assert.AreEqual("A", GeneratorUtils.AlterFirstCharCase("A", GeneratorUtils.TargetCase.ToUpper));
+
+            // Test the DontChange variant.
+            Assert.AreEqual("a", GeneratorUtils.AlterFirstCharCase("a", GeneratorUtils.TargetCase.DontChange));
+            Assert.AreEqual("A", GeneratorUtils.AlterFirstCharCase("A", GeneratorUtils.TargetCase.DontChange));
+
+            // Test a more complex string.
+            Assert.AreEqual("FooBar", GeneratorUtils.AlterFirstCharCase("fooBar", GeneratorUtils.TargetCase.ToUpper));
+            Assert.AreEqual("fooBar", GeneratorUtils.AlterFirstCharCase("FooBar", GeneratorUtils.TargetCase.ToLower));
+        }
+
+        /// <summary>
+        /// Confirm the returned enumeration of the AppendIndices method.
+        /// </summary>
+        [Test]
+        public void AppendIndicesTest()
+        {
+            Assert.Throws<ArgumentException>(() => GeneratorUtils.AppendIndices("test", 10, 1).First());
+            
+            CollectionAssert.AreEqual(new string[0], GeneratorUtils.AppendIndices(null, 1, 5));
+            CollectionAssert.AreEqual(new string[0], GeneratorUtils.AppendIndices("", 1, 5));
+            CollectionAssert.AreEqual(new[] { "abc1", "abc2", "abc3" }, GeneratorUtils.AppendIndices("abc", 1, 3));
+        }
+
+        /// <summary>
+        /// Test for GenerateAlternativeNamesFor method.
+        /// </summary>
+        [Test]
+        public void GenerateAlternativeNamesForTest()
+        {
+            // Generate the list of expected values.
+            IEnumerable<string> expect = new[] { "to", "toMember" };
+            expect = expect.Concat(GeneratorUtils.AppendIndices("to", 2, GeneratorUtils.SafeMemberMaximumIndex));
+            expect = expect.Concat(GeneratorUtils.AppendIndices("toMember", 2, GeneratorUtils.SafeMemberMaximumIndex));
+
+            // Compare with the implementation.
+            IEnumerable<string> alternatives = GeneratorUtils.GenerateAlternativeNamesFor("to");
+            CollectionAssert.AreEquivalent(expect, alternatives);
         }
     }
 }

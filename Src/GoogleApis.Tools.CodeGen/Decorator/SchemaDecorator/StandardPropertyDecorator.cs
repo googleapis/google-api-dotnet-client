@@ -42,7 +42,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
             internalClassProvider.ThrowIfNull("internalClassProvider");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(name, schema, internalClassProvider, typeDeclaration.Name).ToArray());
+            typeDeclaration.Members.AddRange(
+                GenerateAllProperties(name, schema, internalClassProvider, typeDeclaration.Name).ToArray());
         }
 
         #endregion
@@ -56,7 +57,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
             typeDeclaration.Members.AddRange(
-                GenerateAllProperties(schema.Name, schema.SchemaDetails, internalClassProvider, typeDeclaration.Name).ToArray());
+                GenerateAllProperties(schema.Name, schema.SchemaDetails, internalClassProvider, typeDeclaration.Name).
+                    ToArray());
         }
 
         #endregion
@@ -65,7 +67,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         internal IList<CodeMemberProperty> GenerateAllProperties(string name,
                                                                  JsonSchema schema,
                                                                  INestedClassProvider internalClassProvider,
-                                                                 params string[] unsafeWords)
+                                                                 params string[] usedWordsInContext)
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNullOrEmpty("name");
@@ -81,13 +83,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             }
 
 
-            IEnumerable<string> illegalWords = unsafeWords.Concat(schema.Properties.Keys);
+            IEnumerable<string> allUsedWordsInContext = usedWordsInContext.Concat(schema.Properties.Keys);
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                IEnumerable<string> modifiedIllegalWords = illegalWords.Except(new[] { propertyPair.Key });
                 CodeMemberProperty property = GenerateProperty(
-                    propertyPair.Key, propertyPair.Value, index++, internalClassProvider, modifiedIllegalWords);
+                    propertyPair.Key, propertyPair.Value, index++, internalClassProvider,
+                    allUsedWordsInContext.Except(new[] { propertyPair.Key }));
                 fields.Add(property);
             }
             return fields;
