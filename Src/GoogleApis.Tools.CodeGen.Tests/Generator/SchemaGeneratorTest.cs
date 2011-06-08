@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -40,6 +41,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                       ISchema schema,
+                                      SchemaImplementationDetails implDetails,
                                       INestedClassProvider internalClassProvider)
             {
                 typeDeclaration.ThrowIfNull("typeDeclaration");
@@ -70,7 +72,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var empty = new List<ISchemaDecorator>(0);
             var schemaGen = new SchemaGenerator(empty);
-            Assert.Throws(typeof(ArgumentNullException), () => schemaGen.CreateClass(null, Enumerable.Empty<string>()));
+            Assert.Throws(
+                typeof(ArgumentNullException), () => schemaGen.CreateClass(null, null, Enumerable.Empty<string>()));
         }
 
         /// <summary>
@@ -87,7 +90,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                                         Name = "mockSchemaObject",
                                         SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")
                                     };
-            var typeDeclaration = schemaGen.CreateClass(schema, Enumerable.Empty<string>());
+            var typeDeclaration = schemaGen.CreateClass(
+                schema, new Dictionary<JsonSchema, SchemaImplementationDetails>(), Enumerable.Empty<string>());
             Assert.IsNotNull(typeDeclaration);
             Assert.AreEqual("MockSchemaObject", typeDeclaration.Name);
             Assert.IsEmpty(typeDeclaration.Members);
@@ -109,7 +113,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                                         Name = "mockSchemaObject",
                                         SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")
                                     };
-            schemaGen.CreateClass(schema, Enumerable.Empty<string>());
+            schemaGen.CreateClass(
+                schema, new Dictionary<JsonSchema, SchemaImplementationDetails>(), Enumerable.Empty<string>());
             Assert.AreEqual(1, ((CountingDecorator) decorators[0]).Count);
             Assert.AreEqual(3, ((CountingDecorator) decorators[1]).Count);
             Assert.AreEqual(3, ((CountingDecorator) decorators[2]).Count);
@@ -130,7 +135,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                                         Name = "mockSchemaObject",
                                         SchemaDetails = MockSchema.CreateSimpleSchema("mockSchemaObject")
                                     };
-            schemaGen.CreateClass(schema, Enumerable.Empty<string>());
+            schemaGen.CreateClass(
+                schema, new Dictionary<JsonSchema, SchemaImplementationDetails>(), Enumerable.Empty<string>());
             Assert.AreEqual(1, ((CountingDecorator) oneDecorator[0]).Count);
         }
     }

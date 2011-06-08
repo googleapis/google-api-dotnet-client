@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <param name="serviceClass"></param>
         /// <param name="name"></param>
         /// <param name="summaryComment"></param>
-        public static CodeMemberProperty AddAutoProperty<TProperty>(CodeTypeDeclaration serviceClass,
+        public static CodeTypeMemberCollection CreateAutoProperty<TProperty>(CodeTypeDeclaration serviceClass,
                                                                     string name,
                                                                     string summaryComment)
         {
@@ -72,8 +72,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                 new CodeAssignStatement(fieldNameRef, new CodePropertySetValueReferenceExpression()));
 
             // Return the result
-            serviceClass.Members.Add(property);
-            return property;
+            var col = new CodeTypeMemberCollection();
+            col.Add(field);
+            col.Add(property);
+            return col;
         }
 
         /// <summary>
@@ -99,12 +101,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                     string.Format("The property name [{0}] was already used within this class", name), "name");
             }
 
-            // Add the field
+            // Create the field
             var field = new CodeMemberField(typeof(TProperty), fieldName);
             field.Attributes = MemberAttributes.Private;
-            serviceClass.Members.Add(field);
-
-            // Return the field name
             return field;
         }
     }

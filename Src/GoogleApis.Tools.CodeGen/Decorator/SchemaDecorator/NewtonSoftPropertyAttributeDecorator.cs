@@ -15,12 +15,13 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Discovery.Schema;
+using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 using log4net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
-using Google.Apis.Discovery.Schema;
-using Google.Apis.Testing;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -40,6 +41,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
+                                          SchemaImplementationDetails details,
                                           INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(name, schema, typeDeclaration);
@@ -51,6 +53,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  SchemaImplementationDetails implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(schema.Name, schema.SchemaDetails, typeDeclaration);
@@ -67,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (schema.Properties.IsNullOrEmpty())
             {
-                logger.Debug("No proeprties found for schema " + name);
+                logger.Debug("No properties found for schema " + name);
                 return;
             }
 

@@ -71,6 +71,8 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecoratorTest.cs" />
+    <Compile Include="Generator\ImplementationDetailsGeneratorTest.cs" />
     <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
@@ -96,7 +98,7 @@
     <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
     <Compile Include="Decorator\ServiceDecorator\SchemaAwareExecuteMethodDecoratorTest.cs" />
-    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializerTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethodsTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\DefaultEnglishCommentCreatorTest.cs" />
   </ItemGroup>

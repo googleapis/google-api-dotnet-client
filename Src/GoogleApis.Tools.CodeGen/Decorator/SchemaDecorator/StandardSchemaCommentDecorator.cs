@@ -16,11 +16,12 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Security;
-using log4net;
-using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
+using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -36,6 +37,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
+                                          SchemaImplementationDetails details,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
@@ -52,6 +54,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  SchemaImplementationDetails implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");

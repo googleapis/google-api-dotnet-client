@@ -37,8 +37,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
-            DecoratorUtil.AddAutoProperty<string>(
-                serviceClass, DeveloperKeyPropertyName, "Sets the DeveloperKey which this service uses for all requests");
+            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty<string>(
+                serviceClass, DeveloperKeyPropertyName,
+                "Sets the DeveloperKey which this service uses for all requests");
+
+            serviceClass.Members.AddRange(col);
         }
 
         #endregion
