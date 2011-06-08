@@ -34,7 +34,7 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1}";
+        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
@@ -49,10 +49,11 @@ namespace Google.Apis.Requests
             new List<string> { POST, PUT, DELETE, GET, PATCH }.AsReadOnly();
 
         private Uri requestUrl;
+        private string applicationName;
 
         public Request()
         {
-            AppName = "Unknown Application";
+            applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
         }
 
@@ -60,11 +61,6 @@ namespace Google.Apis.Requests
         /// The authenticator used for this request
         /// </summary>
         internal IAuthenticator Authenticator { get; private set; }
-
-        /// <summary>
-        /// The name of the application making the request. Affects the User Agent of this client. 
-        /// </summary>
-        internal String AppName { get; private set; }
 
         /// <summary>
         /// The developer API Key sent along with the request
@@ -76,6 +72,12 @@ namespace Google.Apis.Requests
         /// </summary>
         [VisibleForTestOnly]
         internal IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>
+        /// The application name used within the user agent string
+        /// </summary>
+        [VisibleForTestOnly]
+        internal string ApplicationName { get { return applicationName; } }
 
         private IService Service { get; set; }
         private IMethod Method { get; set; }
@@ -116,7 +118,6 @@ namespace Google.Apis.Requests
             return this;
         }
 
-
         /// <summary>
         /// Adds the parameters to the request.
         /// </summary>
@@ -127,7 +128,6 @@ namespace Google.Apis.Requests
         {
             return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
         }
-
 
         /// <summary>
         /// Adds the parameters to the request.
@@ -194,7 +194,7 @@ namespace Google.Apis.Requests
             }
 
             // Create the request
-            HttpWebRequest request = CreateRequest();
+            WebRequest request = CreateWebRequest();
 
             // Attach a body if a POST and there is something to attach.
             if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
@@ -205,7 +205,7 @@ namespace Google.Apis.Requests
             // Execute the request
             try
             {
-                var response = (HttpWebResponse) request.GetResponse();
+                var response = request.GetResponse();
                 return response.GetResponseStream();
             }
             catch (WebException ex)
@@ -251,7 +251,7 @@ namespace Google.Apis.Requests
         /// </param>
         public IRequest WithAppName(string name)
         {
-            AppName = name;
+            applicationName = name;
             return this;
         }
 
@@ -326,7 +326,8 @@ namespace Google.Apis.Requests
             }
         }
 
-        private HttpWebRequest CreateRequest()
+        [VisibleForTestOnly]
+        internal WebRequest CreateWebRequest()
         {
             // Formulate the RequestUrl
             requestUrl = BuildRequestUrl();
@@ -336,7 +337,10 @@ namespace Google.Apis.Requests
 
             // Insert the content type and user agent
             request.ContentType = GetReturnMimeType(ReturnType);
-            request.UserAgent = String.Format(UserAgent, AppName, ApiVersion);
+            string appName = FormatForUserAgent(ApplicationName);
+            string apiVersion = FormatForUserAgent(ApiVersion);
+            string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
+            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform);
 
             // Check if compression is supported
             if (Service.GZipEnabled)
@@ -348,7 +352,13 @@ namespace Google.Apis.Requests
             return request;
         }
 
-        private void AttachBody(HttpWebRequest request)
+        [VisibleForTestOnly]
+        internal string FormatForUserAgent(string fragment)
+        {
+            return fragment.Replace(' ', '_');
+        }
+
+        private void AttachBody(WebRequest request)
         {
             Stream bodyStream = request.GetRequestStream();
 
@@ -368,7 +378,9 @@ namespace Google.Apis.Requests
             }
         }
 
-
+        /// <summary>
+        /// Returns true if this http method can have a body
+        /// </summary>
         public static bool HttpMethodHasBody(string httpMethod)
         {
             switch (httpMethod)

@@ -4377,9 +4377,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// <summary>
         /// Creates a resource for discovery v1
         /// </summary>
-        public static IResource CreateResourceDivcoveryV_1_0(string resourceName, string json)
+        public static IResource CreateResourceDiscoveryV_1_0(string resourceName, string json)
         {
-            return new ResourceV1_0(DiscoveryVersion.Version_1_0, CreateJsonResourceDefinition(resourceName, json));
+            return new ResourceV1_0(CreateJsonResourceDefinition(resourceName, json));
         }
 
         protected void AddReferenceToDeclaringAssembly(Type target, CompilerParameters cp)

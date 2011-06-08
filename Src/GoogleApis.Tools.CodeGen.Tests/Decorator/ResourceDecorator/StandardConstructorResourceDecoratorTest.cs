@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Discovery;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 
@@ -26,6 +27,19 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
     [TestFixture]
     public class StandardConstructorResourceDecoratorTest : BaseResourceDecoratorTest
     {
+        private IResource CreateEmptyResource()
+        {
+            return CreateResourceDiscoveryV_1_0("MockResource", "{ }");
+        }
+
+        private IResource CreateNonEmptyResource()
+        {
+            var resource = CreateResourceDiscoveryV_1_0("MockResource", "{ }");
+            resource.Resources.Add("Subresource", CreateResourceDiscoveryV_1_0("Subresource", "{ }"));
+            resource.Resources.Add("AnotherSubresource", CreateResourceDiscoveryV_1_0("AnotherSubresource", "{ }"));
+            return resource;
+        }
+
         /// <summary>
         /// Tests the constructor
         /// </summary>
@@ -33,10 +47,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         public void TestCreateConstructor()
         {
             var decorator = new StandardConstructorResourceDecorator();
-            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName);
+            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateEmptyResource());
             Assert.AreEqual(1, constructor.Parameters.Count);
             var param = constructor.Parameters[0];
             Assert.AreEqual(ServiceClassName, param.Type.BaseType);
+            Assert.AreEqual(1, constructor.Statements.Count);
+        }
+
+
+        /// <summary>
+        /// Tests the constructor
+        /// </summary>
+        [Test]
+        public void TestCreateConstructorWithSubresources()
+        {
+            var decorator = new StandardConstructorResourceDecorator();
+            CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateNonEmptyResource());
+            Assert.AreEqual(3, constructor.Statements.Count);
         }
 
         /// <summary>
@@ -47,7 +74,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var decorator = new StandardConstructorResourceDecorator();
             var resourceClass = new CodeTypeDeclaration(ResourceClassName);
-            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             decorator.DecorateClass(resource, null, resourceClass, null, ServiceClassName, null);
 
             Assert.AreEqual(1, resourceClass.Members.Count);
@@ -55,6 +82,30 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             Assert.IsInstanceOf(typeof(CodeConstructor), member);
             // Constructor is tested in TestCreateConstructor
+        }
+
+        /// <summary>
+        /// Tests the constructor
+        /// </summary>
+        [Test]
+        public void TestCreateSubresourceStatement()
+        {
+            var decorator = new StandardConstructorResourceDecorator();
+            CodeStatementCollection statements = decorator.CreateSubresourceCreateStatements(CreateNonEmptyResource());
+            Assert.AreEqual(2, statements.Count);
+
+            Assert.That(statements[0], Is.InstanceOf<CodeAssignStatement>());
+            CodeAssignStatement firstStatement = (CodeAssignStatement) statements[0];
+
+            // Check the field name
+            Assert.That(firstStatement.Left, Is.InstanceOf<CodeFieldReferenceExpression>());
+            Assert.That(((CodeFieldReferenceExpression)firstStatement.Left).FieldName, Is.EqualTo("subresource"));
+
+            // Check the constructor
+            var right = firstStatement.Right as CodeObjectCreateExpression;
+            Assert.IsNotNull(right);
+
+            Assert.That(right.CreateType.BaseType, Is.EqualTo("Subresource"));
         }
     }
 }

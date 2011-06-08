@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var parts = ResourceClassName.Split('.');
             var shortClassName = parts[parts.Length - 1];
             var resourceClass = new CodeTypeDeclaration(shortClassName);
-            var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
+            var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
 
             foreach (var decorator in allDecorators)
             {

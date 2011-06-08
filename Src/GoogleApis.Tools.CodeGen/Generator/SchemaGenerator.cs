@@ -16,12 +16,12 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
-using log4net;
-using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
-using Google.Apis.Testing;
+using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -41,22 +41,29 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Creates a fully working class for the specified schema
         /// </summary>
-        /// <param name="schema"></param>
-        /// <param name="otherSchemaNames"></param>
-        /// <returns></returns>
-        public CodeTypeDeclaration CreateClass(ISchema schema, IEnumerable<string> otherSchemaNames)
+        public CodeTypeDeclaration CreateClass(ISchema schema,
+                                               IDictionary<JsonSchema, SchemaImplementationDetails> detailCollection,
+                                               IEnumerable<string> otherSchemaNames)
         {
             schema.ThrowIfNull("schema");
-            otherSchemaNames.ThrowIfNull("otherSchmeaNames");
+            detailCollection.ThrowIfNull("detailCollection");
+            otherSchemaNames.ThrowIfNull("otherSchemaNames");
+
+            // Retrieve details
+            SchemaImplementationDetails details = null;
+            if (detailCollection.ContainsKey(schema.SchemaDetails))
+            {
+                details = detailCollection[schema.SchemaDetails];
+            }
 
             string className = GeneratorUtils.GetClassName(schema, otherSchemaNames);
             var typeDeclaration = new CodeTypeDeclaration(className);
             var nestedClassGenerator = new NestedClassGenerator(typeDeclaration, decorators, "");
             foreach (ISchemaDecorator schemaDecorator in decorators)
             {
-                schemaDecorator.DecorateClass(typeDeclaration, schema, nestedClassGenerator);
+                schemaDecorator.DecorateClass(typeDeclaration, schema, details, nestedClassGenerator);
             }
-            nestedClassGenerator.GenerateNestedClasses();
+            nestedClassGenerator.GenerateNestedClasses(detailCollection);
 
             return typeDeclaration;
         }
@@ -136,24 +143,36 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
             #endregion
 
-            public void GenerateNestedClasses()
+            public void GenerateNestedClasses(IDictionary<JsonSchema, SchemaImplementationDetails> detailCollection)
             {
                 int i = 0;
                 foreach (var pair in knownSubschemas)
                 {
-                    typeDeclaration.Members.Add(GenerateNestedClass(pair.Key, i+1));
+                    typeDeclaration.Members.Add(GenerateNestedClass(pair.Key, detailCollection, i+1));
                 }
             }
 
             [VisibleForTestOnly]
-            internal CodeTypeDeclaration GenerateNestedClass(JsonSchema schema, int orderOfNestedClass)
+            internal CodeTypeDeclaration GenerateNestedClass(JsonSchema schema,
+                                                             IDictionary<JsonSchema, SchemaImplementationDetails>
+                                                                 detailCollection,
+                                                             int orderOfNestedClass)
             {
                 schema.ThrowIfNull("schema");
+
+                // Retrieve details
+                SchemaImplementationDetails details = null;
+                if (detailCollection.ContainsKey(schema))
+                {
+                    details = detailCollection[schema];
+                }
+                
                 string className = GetClassName(schema).BaseType;
                 var typeDeclaration = new CodeTypeDeclaration(className);
                 typeDeclaration.Attributes = MemberAttributes.Public;
                 var nestedClassGenerator = new NestedClassGenerator(
                     typeDeclaration, decorators, uniquefier + orderOfNestedClass + "_");
+
                 foreach (ISchemaDecorator schemaDecorator in decorators)
                 {
                     if (schemaDecorator is INestedClassSchemaDecorator)
@@ -161,10 +180,10 @@ namespace Google.Apis.Tools.CodeGen.Generator
                         logger.DebugFormat(
                             "Found IInternalClassSchemaDecorator {0} - decorating {1}", schemaDecorator, className);
                         ((INestedClassSchemaDecorator) schemaDecorator).DecorateInternalClass(
-                            typeDeclaration, className, schema, nestedClassGenerator);
+                            typeDeclaration, className, schema, details, nestedClassGenerator);
                     }
                 }
-                nestedClassGenerator.GenerateNestedClasses();
+                nestedClassGenerator.GenerateNestedClasses(detailCollection);
 
                 return typeDeclaration;
             }
