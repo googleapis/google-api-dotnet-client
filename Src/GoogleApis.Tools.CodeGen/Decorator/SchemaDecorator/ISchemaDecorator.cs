@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -28,8 +29,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// <seealso cref="ISchema"/>
     public interface ISchemaDecorator
     {
+        /// <summary>
+        /// Decorates the schema class with the information provided by this decorator. For example a 
+        /// ISchemaDecorator could add a constructor, or properties to the Schema class that we are generating
+        /// </summary>
+        /// <param name="typeDeclaration">Class to decorate</param>
+        /// <param name="schema">Source schema to use</param>
+        /// <param name="details">Further implementation details. May be null.</param>
+        /// <param name="internalClassProvider">Provider which is used for the generation of nested classes</param>
         void DecorateClass(CodeTypeDeclaration typeDeclaration,
                            ISchema schema,
+                           SchemaImplementationDetails details,
                            INestedClassProvider internalClassProvider);
     }
 }

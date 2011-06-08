@@ -16,9 +16,9 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
-using System.Linq;
 using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator

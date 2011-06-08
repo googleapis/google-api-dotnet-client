@@ -15,10 +15,10 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
-using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
@@ -40,9 +40,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
         {
             foreach (var pair in service.Resources)
             {
+                IEnumerable<string> otherNames = service.Resources.Keys.Without(pair.Key);
                 IResource resource = pair.Value;
-                serviceClass.Members.Add(CreateResourceGetter(resource, service.Resources.Keys));
-                serviceClass.Members.Add(CreateResourceField(resource, service.Resources.Keys));
+                serviceClass.Members.Add(CreateResourceGetter(resource, otherNames));
+                serviceClass.Members.Add(CreateResourceField(resource, otherNames));
             }
         }
 

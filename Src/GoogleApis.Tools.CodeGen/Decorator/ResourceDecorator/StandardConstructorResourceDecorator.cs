@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
             logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
-            resourceClass.Members.Add(CreateConstructor(serviceClassName));
+            resourceClass.Members.Add(CreateConstructor(serviceClassName, resource));
         }
 
 
@@ -54,7 +54,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         #endregion
 
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructor(String serviceClassName)
+        internal CodeConstructor CreateConstructor(String serviceClassName, IResource resource)
         {
             var constructor = new CodeConstructor();
 
@@ -69,7 +69,38 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     new CodeFieldReferenceExpression(
                         new CodeThisReferenceExpression(), ResourceBaseGenerator.ServiceFieldName),
                     new CodeArgumentReferenceExpression(ResourceBaseGenerator.ServiceFieldName)));
+
+            // Initialize subresources
+            constructor.Statements.AddRange(CreateSubresourceCreateStatements(resource));
+            
             return constructor;
+        }
+
+        [VisibleForTestOnly]
+        internal CodeStatementCollection CreateSubresourceCreateStatements(IResource resource)
+        {
+            var initializers = new CodeStatementCollection();
+            ICollection<string> otherResourceNames = resource.Resources.Keys;
+
+            foreach (IResource subresource in resource.Resources.Values)
+            {
+                IEnumerable<string> relevantResourceNames = otherResourceNames.Without(subresource.Name);
+
+                // Retrieve backing field name and type of the (already created) subresource
+                var fieldRef = ServiceClassGenerator.GetFieldReference(subresource, relevantResourceNames);
+                var fieldType = GeneratorUtils.GetClassName(subresource, relevantResourceNames);
+
+                // ... new SubResource(service);
+                var fieldConstructor = new CodeObjectCreateExpression(fieldType);
+                fieldConstructor.Parameters.Add(
+                    new CodeVariableReferenceExpression(ResourceBaseGenerator.ServiceFieldName));
+
+                // subResource = ...
+                var assign = new CodeAssignStatement(fieldRef, fieldConstructor);
+                initializers.Add(assign);
+            }
+
+            return initializers;
         }
     }
 }
