@@ -200,29 +200,29 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
 
         /// <summary>
-        /// Checks that the MakeValidMembername method returns valid member names.
+        /// Checks that the MakeValidMemberName method returns valid member names.
         /// </summary>
         [Test]
-        public void MakeValidMembername()
+        public void MakeValidMemberNameTest()
         {
             // Test empty strings.
-            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername(null));
-            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername(""));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMemberName(null));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMemberName(""));
 
             // Tests strings consisting only out of invalid characters
-            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("!@#"));
-            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("   "));
-            Assert.AreEqual(null, GeneratorUtils.MakeValidMembername("123456789"));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMemberName("!@#"));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMemberName("   "));
+            Assert.AreEqual(null, GeneratorUtils.MakeValidMemberName("123456789"));
 
             // Test valid names
-            Assert.AreEqual("SomeClassName2", GeneratorUtils.MakeValidMembername("SomeClassName2"));
-            Assert.AreEqual("_memberName", GeneratorUtils.MakeValidMembername("_memberName"));
+            Assert.AreEqual("SomeClassName2", GeneratorUtils.MakeValidMemberName("SomeClassName2"));
+            Assert.AreEqual("_memberName", GeneratorUtils.MakeValidMemberName("_memberName"));
 
             // Test that invalid characters are removed
-            Assert.AreEqual("ref", GeneratorUtils.MakeValidMembername("$ref"));
-            Assert.AreEqual("unknown", GeneratorUtils.MakeValidMembername("(unknown)"));
-            Assert.AreEqual("FooBar", GeneratorUtils.MakeValidMembername("Foo@bar"));
-            Assert.AreEqual("fooBar", GeneratorUtils.MakeValidMembername("foo!@#$bar"));
+            Assert.AreEqual("ref", GeneratorUtils.MakeValidMemberName("$ref"));
+            Assert.AreEqual("unknown", GeneratorUtils.MakeValidMemberName("(unknown)"));
+            Assert.AreEqual("FooBar", GeneratorUtils.MakeValidMemberName("Foo@bar"));
+            Assert.AreEqual("fooBar", GeneratorUtils.MakeValidMemberName("foo!@#$bar"));
         }
 
         /// <summary>

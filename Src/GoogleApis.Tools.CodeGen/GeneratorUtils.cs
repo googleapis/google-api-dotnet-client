@@ -177,7 +177,7 @@ namespace Google.Apis.Tools.CodeGen
             foreach (string proposedName in GenerateAlternativeNamesFor(baseName, alternativeNames))
             {
                 // Validate/try making valid name out of the name
-                string validName = MakeValidMembername(proposedName);
+                string validName = MakeValidMemberName(proposedName);
                 string casedValidName = AlterFirstCharCase(validName, firstCharCase);
                 
                 if (IsNameValidInContext(casedValidName, illegalWords))
@@ -262,7 +262,7 @@ namespace Google.Apis.Tools.CodeGen
         /// May return null if the name consisted only out of invalid characters.
         /// </summary>
         [VisibleForTestOnly]
-        internal static string MakeValidMembername(string memberName)
+        internal static string MakeValidMemberName(string memberName)
         {
             // We cannot generate a valid name out of an empty string.
             if (string.IsNullOrEmpty(memberName))
