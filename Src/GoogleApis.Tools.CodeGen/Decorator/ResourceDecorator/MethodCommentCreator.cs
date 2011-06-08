@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System.Linq;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security;
 using System.Text;
 using Google.Apis.Discovery;
-using Google.Apis.Util;
 using Google.Apis.Testing;
+using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {

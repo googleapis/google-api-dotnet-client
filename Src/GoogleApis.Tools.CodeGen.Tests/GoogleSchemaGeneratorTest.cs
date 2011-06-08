@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.CodeDom;
+using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tests.Apis.Requests;
@@ -66,11 +67,13 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var mockSchema = new MockSchema();
             mockSchema.Id = "Fish";
             mockSchema.Name = "Fish";
+            mockSchema.SchemaDetails = new JsonSchema();
             mockService.Schemas.Add("Fish", mockSchema);
 
             mockSchema = new MockSchema();
             mockSchema.Id = "Chips";
             mockSchema.Name = "Chips";
+            mockSchema.SchemaDetails = new JsonSchema();
             mockService.Schemas.Add("Chips", mockSchema);
 
             CodeNamespace result = generator.GenerateSchemaClasses(mockService);

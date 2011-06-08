@@ -74,6 +74,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CachedWebDiscoveryDeviceTests.cs" />
     <Compile Include="DiscoveryTests.cs" />
+    <Compile Include="GoogleApiExceptionTests.cs" />
     <Compile Include="WebDiscoveryDeviceTests.cs" />
     <Compile Include="FileDiscoveryDeviceTests.cs" />
     <Compile Include="StreamDiscoveryDeviceTests.cs" />

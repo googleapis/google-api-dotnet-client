@@ -17,6 +17,8 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using Google.Apis.Json;
+using Google.Apis.Testing;
+using Google.Apis.Util;
 using log4net;
 
 namespace Google.Apis.Discovery
@@ -49,6 +51,8 @@ namespace Google.Apis.Discovery
         /// </summary>
         internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
+            kvp.ThrowIfNull("kvp");
+
             DiscoveryVersion = version;
             logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
             Name = kvp.Key;
@@ -150,7 +154,7 @@ namespace Google.Apis.Discovery
 
     internal class ResourceV1_0 : BaseResource
     {
-        internal ResourceV1_0(DiscoveryVersion version, KeyValuePair<string, object> kvp) : base(version, kvp) {}
+        internal ResourceV1_0(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_1_0, kvp) {}
 
         protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
         {
@@ -159,7 +163,7 @@ namespace Google.Apis.Discovery
 
         protected override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV1_0(DiscoveryVersion, kvp);
+            return new ResourceV1_0(kvp);
         }
     }
 
@@ -172,7 +176,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class ResourceV0_3 : BaseResource
     {
-        internal ResourceV0_3(DiscoveryVersion version, KeyValuePair<string, object> kvp) : base(version, kvp) {}
+        internal ResourceV0_3(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_0_3, kvp) { }
 
         protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
         {
@@ -181,7 +185,30 @@ namespace Google.Apis.Discovery
 
         protected override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
-            return new ResourceV0_3(DiscoveryVersion, kvp);
+            return new ResourceV0_3(kvp);
+        }
+    }
+
+    #endregion
+
+    #region MockResource
+
+    /// <summary>
+    /// Mock resource for testing purposes
+    /// </summary>
+    [VisibleForTestOnly]
+    internal class MockResource : IResource
+    {
+        public string Name { get; set; }
+
+        public IDictionary<string, IResource> Resources { get; set; }
+
+        public Dictionary<string, IMethod> Methods { get; set; }
+
+        public MockResource()
+        {
+            Resources = new Dictionary<string, IResource>();
+            Methods = new Dictionary<string, IMethod>();
         }
     }
 

@@ -70,7 +70,15 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\OAuth2Authenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\Features.cs" />
+    <Compile Include="Apis\ISerializer.cs" />
+    <Compile Include="Apis\JSON\IJsonSerializer.cs" />
+    <Compile Include="Apis\JSON\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Apis\Requests\IResponse.cs" />
+    <Compile Include="Apis\Requests\RequestError.cs" />
+    <Compile Include="Apis\Requests\SingleError.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />
+    <Compile Include="Apis\Util\StringValueAttribute.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />
     <Compile Include="Apis\Discovery\DiscoveryService.cs" />
@@ -120,6 +128,7 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
     <Compile Include="Apis\Testing\MoreAsserts.cs" />
+    <Compile Include="GoogleApiException.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

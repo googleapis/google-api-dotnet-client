@@ -47,13 +47,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var decorator = new StandardPropertyDecorator();
             var declaration = new CodeTypeDeclaration();
-            var schema = new MockSchema();
+            var schema = new MockSchema() { Name = "TestSchema", SchemaDetails = new JsonSchema() };
             var internalClassProvider = new ObjectInternalClassProvider();
             Assert.Throws(
-                typeof(ArgumentNullException), () => decorator.DecorateClass(null, schema, internalClassProvider));
+                typeof(ArgumentNullException),
+                () => decorator.DecorateClass(null, schema, null, internalClassProvider));
             Assert.Throws(
-                typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, null, internalClassProvider));
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.DecorateClass(declaration, schema, null));
+                typeof(ArgumentNullException),
+                () => decorator.DecorateClass(declaration, null, null, internalClassProvider));
+
+            decorator.DecorateClass(declaration, schema, null, internalClassProvider);
         }
 
         /// <summary>
