@@ -46,8 +46,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             // Only the 'schema' parameter is relevant for this class
             var modificator = new StandardTitleModificator();
-            Assert.Throws<ArgumentNullException>(() => modificator.DecorateClass(null, null, null));
-            Assert.DoesNotThrow(() => modificator.DecorateClass(null, new MockSchema(), null));
+            Assert.Throws<ArgumentNullException>(() => modificator.DecorateClass(null, null, null, null));
+            Assert.DoesNotThrow(() => modificator.DecorateClass(null, new MockSchema(), null, null));
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             // Add a test property
             var property = new JsonSchema() { Title = "bar" };
             schema.Properties.Add("foo", property);
-            modificator.DecorateInternalClass(null, null, schema, null);
+            modificator.DecorateInternalClass(null, null, schema, null, null);
             Assert.That(schema.Title, Is.EqualTo("bar"));
         }
 
@@ -78,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             // Add a test property
             var property = new JsonSchema();
             schema.Properties.Add("foo", property);
-            modificator.DecorateInternalClass(null, null, schema, null);
+            modificator.DecorateInternalClass(null, null, schema, null, null);
             Assert.That(schema.Title, Is.EqualTo("foo"));
         }
 
@@ -93,8 +93,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             // Add a test property
             var item = new JsonSchema() { Title = "bar"};
+            schema.Items = new List<JsonSchema>();
             schema.Items.Add(item);
-            modificator.DecorateInternalClass(null, null, schema, null);
+            modificator.DecorateInternalClass(null, null, schema, null, null);
             Assert.That(schema.Title, Is.EqualTo("bar"));
         }
 
@@ -110,8 +111,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             // Add a test property
             var item = new JsonSchema();
+            schema.Items = new List<JsonSchema>();
             schema.Items.Add(item);
-            modificator.DecorateInternalClass(null, null, schema, null);
+            modificator.DecorateInternalClass(null, null, schema, null, null);
             Assert.That(schema.Title, Is.EqualTo("bar"));
         }
 
@@ -129,7 +131,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.Properties = new Dictionary<string, JsonSchema>();
             schema.Items.Add(schema);
             schema.Properties.Add("foo", schema);
-            modificator.DecorateInternalClass(null, null, schema, null);
+            modificator.DecorateInternalClass(null, null, schema, null, null);
 
             Assert.Pass();
         }

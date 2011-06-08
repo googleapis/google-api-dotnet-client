@@ -241,5 +241,40 @@ namespace Google.Apis.Tests.Apis.Util
             str = "123";
             str.ThrowIfNull("Not throwen");
         }
+
+        /// <summary>
+        /// Tests the "Replace" string extension method
+        /// </summary>
+        [Test]
+        public void ReplaceTest()
+        {
+            Assert.That("test".Replace("_", '"', '!', '$'), Is.EqualTo("test"));
+            Assert.That("/te/st/".Replace("", '/', '!', '$'), Is.EqualTo("test"));
+            Assert.That("/te/st/".Replace("_", '/', '!', '$'), Is.EqualTo("_te_st_"));
+            Assert.That("/te/st/".Replace("//", '/', '!', '$'), Is.EqualTo("//te//st//"));
+            Assert.That("123!@#".Replace("", '!', '@', '#'), Is.EqualTo("123"));
+            Assert.Throws<ArgumentException>(() => "test".Replace("_"));
+        }
+        
+        private enum MockEnum
+        {
+            [StringValue("Test")]
+            EntryWithStringValue,
+            [StringValue("AnotherTest")]
+            EntryWithSecondStringValue,
+            EntryWithoutStringValue
+        }
+
+        /// <summary>
+        /// Tests the "GetStringValue" extension method of enums
+        /// </summary>
+        [Test]
+        public void StringValueTest()
+        {
+            Assert.That(MockEnum.EntryWithStringValue.GetStringValue(), Is.EqualTo("Test"));
+            Assert.That(MockEnum.EntryWithSecondStringValue.GetStringValue(), Is.EqualTo("AnotherTest"));
+            Assert.Throws<ArgumentException>(() => MockEnum.EntryWithoutStringValue.GetStringValue());
+            Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
+        }
     }
 }

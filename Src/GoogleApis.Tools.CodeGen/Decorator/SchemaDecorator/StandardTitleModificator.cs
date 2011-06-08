@@ -17,6 +17,7 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using Newtonsoft.Json.Schema;
 
@@ -27,12 +28,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class StandardTitleModificator : ISchemaDecorator, INestedClassSchemaDecorator
     {
-        public void DecorateClass(CodeTypeDeclaration typeDeclaration, ISchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateClass(CodeTypeDeclaration typeDeclaration,
+                                  ISchema schema,
+                                  SchemaImplementationDetails details,
+                                  INestedClassProvider internalClassProvider)
         {
+            schema.ThrowIfNull("schema");
             GenerateTitles(schema.SchemaDetails);
         }
 
-        public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration, string name, JsonSchema schema, INestedClassProvider internalClassProvider)
+        public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
+                                          string name,
+                                          JsonSchema schema,
+                                          SchemaImplementationDetails details,
+                                          INestedClassProvider internalClassProvider)
         {
             GenerateTitles(schema);
         }

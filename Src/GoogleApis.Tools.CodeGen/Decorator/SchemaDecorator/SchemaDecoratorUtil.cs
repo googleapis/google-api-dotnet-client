@@ -16,11 +16,11 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-using log4net;
-using Newtonsoft.Json.Schema;
+using System.Collections.Generic;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using System.Collections.Generic;
+using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
 {

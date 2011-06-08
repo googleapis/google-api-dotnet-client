@@ -30,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
     {
         private IMethod GetMethod(BaseCodeGeneratorTest.TestMethodNames testMethod)
         {
-            var resource = BaseCodeGeneratorTest.CreateResourceDivcoveryV_1_0(
+            var resource = BaseCodeGeneratorTest.CreateResourceDiscoveryV_1_0(
                 BaseCodeGeneratorTest.ResourceName, BaseCodeGeneratorTest.ResourceAsJson);
             return resource.Methods[testMethod.ToString()];
         }

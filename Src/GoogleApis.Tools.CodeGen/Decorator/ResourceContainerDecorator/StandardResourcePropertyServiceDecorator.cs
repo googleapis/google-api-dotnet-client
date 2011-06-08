@@ -15,10 +15,10 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
-using System.Collections.Generic;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 {
