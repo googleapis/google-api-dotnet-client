@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2010 Google Inc
+Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,24 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Requests;
 using Newtonsoft.Json;
 
-namespace Google.Apis.Util
+namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Calls to Google Api return StandardResponses as Json with
-    /// two properties Data, being the return type of the method called
-    /// and Error, being any errors that occure.
+    /// Response to a request
     /// </summary>
-    public sealed class StandardResponse<InnerType>
+    public interface IResponse
     {
-        /// <summary>May be null if call failed.</summary>
-        [JsonProperty("data")]
-        public InnerType Data { get; set; }
-
-        /// <summary>May be null if call succedded.</summary>
+        /// <summary>
+        /// All errors the server returned along with the request. null when the request succeded.
+        /// </summary>
         [JsonProperty("error")]
-        public RequestError Error { get; set; }
+        RequestError Error { get; set; }
     }
 }

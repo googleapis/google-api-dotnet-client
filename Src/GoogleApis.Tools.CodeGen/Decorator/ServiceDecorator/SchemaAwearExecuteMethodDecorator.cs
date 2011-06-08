@@ -17,8 +17,8 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
-using Google.Apis.Testing;
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
@@ -40,7 +40,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// <summary>
         /// Adds an execute method to the service which accepts an object and Serilises it to Json.
         /// <code>
-        ///     public Stream Execute(string resource, string method, object body, IDictonary&lt;string, string&gt; parameters) {
+        ///     public Stream Execute(string resource, string method, object body, IDictonary&lt;string, 
+        ///                           string&gt; parameters) {
         ///         return execute(resource, method, ObjectToJson(body), parameters);
         ///     }
         /// </code> 

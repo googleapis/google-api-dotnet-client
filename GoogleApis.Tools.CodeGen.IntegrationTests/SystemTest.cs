@@ -38,7 +38,7 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
     /// - Generating each listed service
     /// - Compiling the generated file of each service
     /// </summary>
-    [TestFixture, Explicit("Large System Test"), Category("SystemTest")]
+    [TestFixture]
     public class SystemTest
     {
         private class API

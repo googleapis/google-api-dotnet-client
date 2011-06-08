@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 
@@ -55,7 +56,7 @@ namespace Google.Apis.Discovery
         /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
         IList<string> Labels { get; }
 
-        /// <summary>A list of supported features for this API.</summary>
+        /// <summary>A list of supported features for this API. Never null</summary>
         IList<string> Features { get; }
 
         /// <summary>A link to human readable documentation for the API.</summary>
@@ -79,8 +80,28 @@ namespace Google.Apis.Discovery
         IDictionary<string, ISchema> Schemas { get; }
 
         /// <summary>
+        /// Defines the serialisator to use for requests and responses
+        /// </summary>
+        ISerializer Serializer { get; set; }
+
+        /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
         IRequest CreateRequest(string resource, string methodName);
+
+        /// <summary>
+        /// Serializes the specified object into the format used by this service
+        /// </summary>
+        string SerializeRequest(object obj);
+
+        /// <summary>
+        /// Deserializes the stream defined by the format used by this service into a .NET object
+        /// </summary>
+        T DeserializeResponse<T>(Stream input);
+
+        /// <summary>
+        /// Returns true if this feature is defined for this service
+        /// </summary>
+        bool HasFeature(Features feature);
     }
 }

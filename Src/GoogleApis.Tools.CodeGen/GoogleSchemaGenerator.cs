@@ -22,6 +22,7 @@ using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -41,9 +42,11 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardSchemaCommentDecorator(),
                      new NewtonSoftPropertyAttributeDecorator(),
                      new ArraySchemaDecorator(),
+                     new ErrorResponseDecorator(),
                  }).AsReadOnly();
 
         private readonly IList<ISchemaDecorator> decorators;
+        private readonly ImplementationDetailsGenerator implementationDetailsGenerator;
         private readonly string schemaNamespace;
 
         public GoogleSchemaGenerator(IEnumerable<ISchemaDecorator> decorators, string schemaNamespace)
@@ -52,6 +55,7 @@ namespace Google.Apis.Tools.CodeGen
             schemaNamespace.ThrowIfNull("schemaNamespace");
             this.decorators = new List<ISchemaDecorator>(decorators).AsReadOnly();
             this.schemaNamespace = schemaNamespace;
+            this.implementationDetailsGenerator = new ImplementationDetailsGenerator();
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen
         public CodeNamespace GenerateSchemaClasses(IService service)
         {
             service.ThrowIfNull("service");
-
+            
             logger.DebugFormat("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
             var codeNamespace = new CodeNamespace(schemaNamespace);
@@ -70,10 +74,19 @@ namespace Google.Apis.Tools.CodeGen
             codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections"));
             codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             SchemaGenerator generator = new SchemaGenerator(decorators);
+
+            // Generate implementation details
+            IDictionary<JsonSchema, SchemaImplementationDetails> implementationDetails =
+                implementationDetailsGenerator.GenerateDetails(service);
+
+            // Generate schemas
             foreach (var schemaPair in service.Schemas)
             {
                 logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
-                codeNamespace.Types.Add(generator.CreateClass(schemaPair.Value, service.Schemas.Keys));
+                
+                // Create schema
+                codeNamespace.Types.Add(
+                    generator.CreateClass(schemaPair.Value, implementationDetails, service.Schemas.Keys));
             }
             return codeNamespace;
         }

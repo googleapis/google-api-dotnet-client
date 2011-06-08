@@ -89,7 +89,7 @@ namespace Google.Apis.Tools.CodeGen
                      new VersionInformationServiceDecorator(),
                      new StandardExecuteMethodServiceDecorator(),
                      new SchemaAwearExecuteMethodDecorator(),
-                     new NewtonsoftJsonSerializer(),
+                     new JsonSerializationMethods(),
                      new DeveloperKeyServiceDecorator(),
                  }).AsReadOnly();
 
