@@ -39,13 +39,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          SchemaImplementationDetails details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
+            details.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(name, schema, internalClassProvider).ToArray());
+            typeDeclaration.Members.AddRange(
+                GenerateAllProperties(name, schema, details, internalClassProvider).ToArray());
         }
 
         #endregion
@@ -54,13 +56,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
-                                  SchemaImplementationDetails implDetails,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("implDetails");
             typeDeclaration.Members.AddRange(
-                GenerateAllProperties(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
+                GenerateAllProperties(schema.Name, schema.SchemaDetails, implDetails, internalClassProvider).ToArray());
         }
 
         #endregion
@@ -68,6 +71,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal IList<CodeMemberProperty> GenerateAllProperties(string name,
                                                                  JsonSchema schema,
+                                                                 IDictionary<JsonSchema, SchemaImplementationDetails>
+                                                                     details,
                                                                  INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
@@ -79,16 +84,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (schema.Properties.IsNullOrEmpty())
             {
-                logger.Debug("No proeprties found for schema " + name);
+                logger.Debug("No properties found for schema " + name);
                 return fields;
             }
 
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
+                SchemaImplementationDetails detail = details.GetValueAsNull(propertyPair.Value);
                 fields.Add(
                     GenerateProperty(
-                        propertyPair.Key, propertyPair.Value, index++, internalClassProvider, schema.Properties.Keys));
+                        propertyPair.Key, propertyPair.Value, detail, index++, internalClassProvider,
+                        schema.Properties.Keys));
             }
             return fields;
         }
@@ -96,6 +103,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal CodeMemberProperty GenerateProperty(string name,
                                                      JsonSchema propertySchema,
+                                                     SchemaImplementationDetails details,
                                                      int index,
                                                      INestedClassProvider internalClassProvider,
                                                      IEnumerable<string> otherPropertyNames)
@@ -105,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             var ret = new CodeMemberProperty();
             ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index, otherPropertyNames);
-            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
+            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, details, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
 
             ret.HasGet = true;

@@ -37,7 +37,6 @@ namespace Google.Apis.Tools.CodeGen
         public static readonly IEnumerable<ISchemaDecorator> DefaultSchemaDecorators =
             (new List<ISchemaDecorator>
                  {
-                     new StandardTitleModificator(),
                      new StandardPropertyFieldDecorator(),
                      new StandardPropertyDecorator(),
                      new StandardSchemaCommentDecorator(),

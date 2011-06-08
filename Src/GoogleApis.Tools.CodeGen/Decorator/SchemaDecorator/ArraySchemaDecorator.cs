@@ -37,11 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
-                                  SchemaImplementationDetails implDetails,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("implDetails");
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             JsonSchema details = schema.SchemaDetails;
@@ -64,7 +65,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             
             // Generate or find the nested type
             JsonSchema itemScheme = details.Items[0];
-            CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, internalClassProvider);
+            SchemaImplementationDetails implDetail = implDetails.GetValueAsNull(itemScheme) ??
+                                                     new SchemaImplementationDetails();
+            implDetail.ProposedName = "Entry"; // Change the name to a custom one.
+            CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, implDetail, internalClassProvider);
 
             // Insert the base type before any interface declaration
             var baseType = string.Format("List<{0}.{1}>", typeDeclaration.Name, item.BaseType);

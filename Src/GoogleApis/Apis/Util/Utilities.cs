@@ -175,10 +175,9 @@ namespace Google.Apis.Util
 
             foreach (CodeTypeMember member in coll)
             {
-                var field = member;
-                if (field.Name == name)
+                if (member.Name == name)
                 {
-                    return field;
+                    return member;
                 }
             }
             return null;
@@ -197,11 +196,8 @@ namespace Google.Apis.Util
 
             foreach (CodeTypeMember member in coll)
             {
-                if ((member is CodeTypeDeclaration) == false)
-                    continue;
-
-                var field = (CodeTypeDeclaration)member;
-                if (field.Name == name)
+                var field = member as CodeTypeDeclaration;
+                if (field != null && field.Name == name)
                 {
                     return field;
                 }

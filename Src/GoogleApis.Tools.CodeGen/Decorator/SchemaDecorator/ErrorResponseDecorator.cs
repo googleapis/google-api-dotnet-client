@@ -16,12 +16,14 @@ limitations under the License.
 
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -36,20 +38,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
-                                  SchemaImplementationDetails implDetails,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
-            
-            if (implDetails == null)
+            implDetails.ThrowIfNull("implDetails");
+
+            SchemaImplementationDetails implDetail = implDetails.GetValueAsNull(schema.SchemaDetails);
+            if (implDetail == null)
             {
                 return; // If no details are provided, this decorator does not apply
             }
 
             // If this method is refered as a result directly, add an inheritance to IResponse and implement
             // the interface
-            if (implDetails.IsMethodResult)
+            if (implDetail.IsMethodResult)
             {
                 logger.Debug("Applying decorator to schema "+schema.Name);
                 typeDeclaration.BaseTypes.Add(GetIResponseBaseType());

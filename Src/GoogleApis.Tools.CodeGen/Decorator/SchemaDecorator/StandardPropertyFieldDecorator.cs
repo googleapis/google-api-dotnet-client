@@ -38,13 +38,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          SchemaImplementationDetails details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            details.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
-            typeDeclaration.Members.AddRange(GenerateAllFields(name, schema, internalClassProvider).ToArray());
+            typeDeclaration.Members.AddRange(
+                GenerateAllFields(name, schema, details, internalClassProvider).ToArray());
         }
 
         #endregion
@@ -53,14 +55,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
-                                  SchemaImplementationDetails implDetails,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            details.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
             typeDeclaration.Members.AddRange(
-                GenerateAllFields(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
+                GenerateAllFields(schema.Name, schema.SchemaDetails, details, internalClassProvider).ToArray());
         }
 
         #endregion
@@ -68,10 +71,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal IList<CodeMemberField> GenerateAllFields(string name,
                                                           JsonSchema schema,
+                                                          IDictionary<JsonSchema,SchemaImplementationDetails> details,  
                                                           INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNull("name");
+            details.ThrowIfNull("details");
+            internalClassProvider.ThrowIfNull("internalClassProvider");
 
             var fields = new List<CodeMemberField>();
             if (schema.Properties.IsNullOrEmpty())
@@ -83,9 +89,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
+                SchemaImplementationDetails implDetail = details.GetValueAsNull(propertyPair.Value);
                 fields.Add(
                     GenerateField(
-                        propertyPair.Key, propertyPair.Value, index, internalClassProvider, schema.Properties.Keys));
+                        propertyPair.Key, propertyPair.Value, implDetail, index, internalClassProvider,
+                        schema.Properties.Keys));
                 index++;
             }
             return fields;
@@ -94,6 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal CodeMemberField GenerateField(string name,
                                                JsonSchema propertySchema,
+                                               SchemaImplementationDetails details,
                                                int index,
                                                INestedClassProvider internalClassProvider,
                                                IEnumerable<string> otherFieldNames)
@@ -103,7 +112,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             var ret = new CodeMemberField(
-                SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider),
+                SchemaDecoratorUtil.GetCodeType(propertySchema, details, internalClassProvider),
                 SchemaDecoratorUtil.GetFieldName(name, index, otherFieldNames));
             ret.Attributes = MemberAttributes.Private;
 

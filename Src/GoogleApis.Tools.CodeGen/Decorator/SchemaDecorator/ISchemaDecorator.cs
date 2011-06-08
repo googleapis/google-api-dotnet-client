@@ -15,8 +15,10 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Generator;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -35,11 +37,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         /// </summary>
         /// <param name="typeDeclaration">Class to decorate</param>
         /// <param name="schema">Source schema to use</param>
-        /// <param name="details">Further implementation details. May be null.</param>
+        /// <param name="details">Further implementation details for all decorators</param>
         /// <param name="internalClassProvider">Provider which is used for the generation of nested classes</param>
         void DecorateClass(CodeTypeDeclaration typeDeclaration,
                            ISchema schema,
-                           SchemaImplementationDetails details,
+                           IDictionary<JsonSchema,SchemaImplementationDetails> details,
                            INestedClassProvider internalClassProvider);
     }
 }

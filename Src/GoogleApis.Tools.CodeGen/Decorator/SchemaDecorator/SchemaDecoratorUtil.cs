@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
 using log4net;
 using Newtonsoft.Json.Schema;
@@ -48,13 +49,11 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
-        /// Returns a code type references for the specified json schema
-        /// Generates the appropriate references
+        /// Returns a code type references for the specified json schema.
+        /// Generates the appropriate references.
         /// </summary>
-        /// <param name="propertySchema"></param>
-        /// <param name="internalClassProvider"></param>
-        /// <returns></returns>
         internal static CodeTypeReference GetCodeType(JsonSchema propertySchema,
+                                                      SchemaImplementationDetails details,
                                                       INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
@@ -75,9 +74,9 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.Float:
                     return new CodeTypeReference(typeof(double));
                 case JsonSchemaType.Array:
-                    return GetArrayTypeRefereence(propertySchema, internalClassProvider);
+                    return GetArrayTypeRefereence(propertySchema, details, internalClassProvider);
                 case JsonSchemaType.Object:
-                    return GetObjectTypeReference(propertySchema, internalClassProvider);
+                    return GetObjectTypeReference(propertySchema, details, internalClassProvider);
                 case JsonSchemaType.Any:
                     return new CodeTypeReference(typeof(string));
                 default:
@@ -88,9 +87,10 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
-        /// Resolves/generates an object type reference for a schema
+        /// Resolves/generates an object type reference for a schema.
         /// </summary>
         internal static CodeTypeReference GetObjectTypeReference(JsonSchema propertySchema,
+                                                                 SchemaImplementationDetails details,
                                                                  INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
@@ -104,15 +104,15 @@ namespace Google.Apis.Tools.CodeGen
                 return new CodeTypeReference(propertySchema.Id);
             }
 
-
-            return internalClassProvider.GetClassName(propertySchema);
+            return internalClassProvider.GetClassName(propertySchema, details);
         }
 
         /// <summary>
-        /// Resolves/generates an array type reference for a schema
+        /// Resolves/generates an array type reference for a schema.
         /// </summary>
         [VisibleForTestOnly]
         internal static CodeTypeReference GetArrayTypeRefereence(JsonSchema propertySchema,
+                                                                 SchemaImplementationDetails details,
                                                                  INestedClassProvider internalClassProvider)
         {
             propertySchema.ThrowIfNull("propertySchema");
@@ -128,7 +128,7 @@ namespace Google.Apis.Tools.CodeGen
                 {
                     return new CodeTypeReference("IList<" + arrayItems[0].Id + ">");
                 }
-                string arrayType = "IList<" + GetCodeType(arrayItems[0], internalClassProvider).BaseType + ">";
+                string arrayType = "IList<" + GetCodeType(arrayItems[0], details, internalClassProvider).BaseType + ">";
                 logger.DebugFormat("type for array {0}", arrayType);
                 return new CodeTypeReference(arrayType);
             }
