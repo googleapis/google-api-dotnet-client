@@ -71,6 +71,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecoratorTest.cs" />
     <Compile Include="Generator\ImplementationDetailsGeneratorTest.cs" />
     <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />

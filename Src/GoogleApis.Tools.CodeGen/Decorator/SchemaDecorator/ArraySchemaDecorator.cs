@@ -15,11 +15,11 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 using log4net;
 using Newtonsoft.Json.Schema;
-using Google.Apis.Discovery.Schema;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {

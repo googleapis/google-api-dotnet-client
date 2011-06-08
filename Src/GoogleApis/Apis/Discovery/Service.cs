@@ -39,12 +39,12 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Name of the method used for serialization (object -> json)
         /// </summary>
-        public const string SerializationMethodName = "Serialize";
+        public const string SerializationMethodName = "SerializeRequest";
 
         /// <summary>
         /// Name of the method used for deserialization (json -> object)
         /// </summary>
-        public const string DeserializationMethodName = "Deserialize";
+        public const string DeserializationMethodName = "DeserializeResponse";
 
         /// <summary>
         /// Name of the property defining the ISerializer
@@ -202,7 +202,7 @@ namespace Google.Apis.Discovery
             return Serializer.Serialize(obj);
         }
 
-        public T DeserializeResponse<T>(Stream input) where T : IResponse
+        public T DeserializeResponse<T>(Stream input)
         {
             // Read in the entire content
             string text;
@@ -235,9 +235,14 @@ namespace Google.Apis.Discovery
             // New path: Deserialize the object directly
             T result = Serializer.Deserialize<T>(text);
 
-            if (result.Error != null)
+            // If this schema/object provides an error container, check it
+            if (result is IResponse)
             {
-                throw new GoogleApiException(this, "Server error - " + result.Error);
+                var response = (IResponse) result;
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
             }
 
             return result;

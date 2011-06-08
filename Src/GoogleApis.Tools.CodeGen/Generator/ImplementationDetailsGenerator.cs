@@ -18,25 +18,28 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
-using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Generator for the SchemaImplementationDetails class
+    /// Generator for the SchemaImplementationDetails class. 
+    /// Scans the resources and other fields of a discovered services to provide additional information
+    /// for the schema decorators, which cannot be found within the json of a schema.
+    /// Amongst others used by the ErrorResponseDecorator to find out which schemas are referred by methods.
     /// </summary>
     public class ImplementationDetailsGenerator
     {
         /// <summary>
         /// Generates the implementation details for a whole service
         /// </summary>
-        public IDictionary<ISchema, SchemaImplementationDetails> GenerateDetails(IService service)
+        public IDictionary<JsonSchema, SchemaImplementationDetails> GenerateDetails(IService service)
         {
             service.ThrowIfNull("service");
 
-            Dictionary<ISchema, SchemaImplementationDetails> dictionary =
-                new Dictionary<ISchema, SchemaImplementationDetails>();
+            Dictionary<JsonSchema, SchemaImplementationDetails> dictionary =
+                new Dictionary<JsonSchema, SchemaImplementationDetails>();
 
             // Create details for all schemas where they are necessary
             AddIsMethodResult(dictionary, service, service.Resources.Values);
@@ -46,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         [VisibleForTestOnly]
         internal static SchemaImplementationDetails GetOrCreateDetails(
-            IDictionary<ISchema, SchemaImplementationDetails> details, ISchema schema)
+            IDictionary<JsonSchema, SchemaImplementationDetails> details, JsonSchema schema)
         {
             details.ThrowIfNull("details");
             schema.ThrowIfNull("schema");
@@ -61,7 +64,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
 
         [VisibleForTestOnly]
-        internal static void AddIsMethodResult(IDictionary<ISchema, SchemaImplementationDetails> details,
+        internal static void AddIsMethodResult(IDictionary<JsonSchema, SchemaImplementationDetails> details,
                                                IService service,
                                                IEnumerable<IResource> resources)
         {
@@ -69,26 +72,26 @@ namespace Google.Apis.Tools.CodeGen.Generator
             service.ThrowIfNull("service");
             resources.ThrowIfNull("method");
 
-            foreach (IResource r in resources)
+            foreach (IResource resource in resources)
             {
                 // Check methods
-                foreach (IMethod method in r.Methods.Values)
+                foreach (IMethod method in resource.Methods.Values)
                 {
                     AddIsMethodResult(details, service, method);
                 }
 
                 // Check subresources (if applicable)
-                if (r.Resources != null)
+                if (resource.Resources != null)
                 {
-                    AddIsMethodResult(details, service, r.Resources.Values);
+                    AddIsMethodResult(details, service, resource.Resources.Values);
                 }
             }
         }
 
         [VisibleForTestOnly]
-        internal static void AddIsMethodResult(IDictionary<ISchema, SchemaImplementationDetails> details,
-                                              IService service,
-                                              IMethod method)
+        internal static void AddIsMethodResult(IDictionary<JsonSchema, SchemaImplementationDetails> details,
+                                               IService service,
+                                               IMethod method)
         {
             details.ThrowIfNull("details");
             service.ThrowIfNull("service");
@@ -98,7 +101,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
             if (string.IsNullOrEmpty(id))
             {
-                return; // No return type
+                // Return if this method has no response type
+                return; 
             }
 
             // Check if this name is a valid schema
@@ -106,10 +110,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 return;
             }
+
             ISchema schema = service.Schemas[id];
 
             // If no implementation details have been added yet, create a new entry
-            SchemaImplementationDetails implementationDetails = GetOrCreateDetails(details, schema);
+            SchemaImplementationDetails implementationDetails = GetOrCreateDetails(details, schema.SchemaDetails);
 
             // Change the value
             implementationDetails.IsMethodResult = true;

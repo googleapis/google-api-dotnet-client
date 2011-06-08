@@ -30,7 +30,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     public interface ISchemaDecorator
     {
         /// <summary>
-        /// Decorates the schema class with the information provided by this decorator
+        /// Decorates the schema class with the information provided by this decorator. For example a 
+        /// ISchemaDecorator could add a constructor, or properties to the Schema class that we are generating
         /// </summary>
         /// <param name="typeDeclaration">Class to decorate</param>
         /// <param name="schema">Source schema to use</param>
