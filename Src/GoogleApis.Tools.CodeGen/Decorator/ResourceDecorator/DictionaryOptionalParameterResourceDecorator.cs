@@ -32,11 +32,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     ///     public virtual Stream Search(IDictionary&lt;string, string&gt; parameters)
     /// </code>
     /// </summary>
-    public class DictonaryOptionalParameterResourceDecorator : IResourceDecorator
+    public class DictionaryOptionalParameterResourceDecorator : IResourceDecorator
     {
         private readonly IMethodCommentCreator commentCreator;
 
-        public DictonaryOptionalParameterResourceDecorator(IMethodCommentCreator commentCreator)
+        public DictionaryOptionalParameterResourceDecorator(IMethodCommentCreator commentCreator)
         {
             this.commentCreator = commentCreator;
         }

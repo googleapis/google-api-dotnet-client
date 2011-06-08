@@ -34,7 +34,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var resource = CreateResourceDivcoveryV_1_0(ResourceName, ResourceAsJson);
             var methodGenerator =
-                new DictonaryOptionalParameterResourceDecorator.ResourceGenerator("TestResourceClassName", null);
+                new DictionaryOptionalParameterResourceDecorator.ResourceGenerator("TestResourceClassName", null);
 
             var method = resource.Methods[TestMethodNames.noParameterTest.ToString()];
 

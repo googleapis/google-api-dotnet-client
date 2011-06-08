@@ -38,13 +38,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 
         public void DecorateClass(IResourceContainer service, CodeTypeDeclaration serviceClass)
         {
-            int resourceNumber = 1;
             foreach (var pair in service.Resources)
             {
                 IResource resource = pair.Value;
-                serviceClass.Members.Add(CreateResourceGetter(resource, resourceNumber, service.Resources.Keys));
-                serviceClass.Members.Add(CreateResourceField(resource, resourceNumber, service.Resources.Keys));
-                resourceNumber++;
+                serviceClass.Members.Add(CreateResourceGetter(resource, service.Resources.Keys));
+                serviceClass.Members.Add(CreateResourceField(resource, service.Resources.Keys));
             }
         }
 
@@ -52,7 +50,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 
         [VisibleForTestOnly]
         internal CodeMemberField CreateResourceField(IResource resource,
-                                                     int resourceNumber,
                                                      IEnumerable<string> otherResourceNames)
         {
             // Add local private variables for each Resource
@@ -65,7 +62,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
 
         [VisibleForTestOnly]
         internal CodeMemberProperty CreateResourceGetter(IResource resource,
-                                                         int resourceNumber,
                                                          IEnumerable<string> otherResourceNames)
         {
             var getter = new CodeMemberProperty();
