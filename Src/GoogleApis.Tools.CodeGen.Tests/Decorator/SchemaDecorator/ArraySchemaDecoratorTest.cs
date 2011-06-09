@@ -61,11 +61,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails.Items.Clear();
             schema.SchemaDetails.Items.Add(
                 new JsonSchema { Description = "Test", Id = "TestSchema", Type = JsonSchemaType.Object });
+            implDetails.Add(schema.SchemaDetails, new SchemaImplementationDetails());
+            implDetails.Add(schema.SchemaDetails.Items[0], new SchemaImplementationDetails());
             Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, implDetails, internalClassProvider));
 
-            Assert.That(decl.BaseTypes.Count, Is.EqualTo(2));
+            Assert.That(decl.BaseTypes.Count, Is.EqualTo(1));
             Assert.That(decl.BaseTypes[0].BaseType, Is.StringStarting("List<"));
-            Assert.That(decl.BaseTypes[1].BaseType, Is.EqualTo(typeof(IList).FullName));
 
             // Subtype will only be created later on by the NestedClassGenerator,
             // and therefore cannot be tested here

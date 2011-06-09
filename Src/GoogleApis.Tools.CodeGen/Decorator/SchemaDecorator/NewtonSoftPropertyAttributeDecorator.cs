@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                           INestedClassProvider internalClassProvider)
         {
             AddAttributesToAllProperties(name, schema, typeDeclaration);

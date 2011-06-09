@@ -39,15 +39,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
-            details.ThrowIfNull("details");
+            implDetails.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
             typeDeclaration.Members.AddRange(
-                GenerateAllProperties(name, schema, details, internalClassProvider).ToArray());
+                GenerateAllProperties(name, schema, implDetails, internalClassProvider).ToArray());
         }
 
         #endregion
@@ -72,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         internal IList<CodeMemberProperty> GenerateAllProperties(string name,
                                                                  JsonSchema schema,
                                                                  IDictionary<JsonSchema, SchemaImplementationDetails>
-                                                                     details,
+                                                                     implDetails,
                                                                  INestedClassProvider internalClassProvider)
         {
             schema.ThrowIfNull("schema");
@@ -91,7 +91,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                SchemaImplementationDetails detail = details.GetValueAsNull(propertyPair.Value);
+                SchemaImplementationDetails detail = implDetails[propertyPair.Value];
                 fields.Add(
                     GenerateProperty(
                         propertyPair.Key, propertyPair.Value, detail, index++, internalClassProvider,

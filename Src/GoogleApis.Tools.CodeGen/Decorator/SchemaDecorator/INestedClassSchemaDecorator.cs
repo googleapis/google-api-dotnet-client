@@ -37,12 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         /// <param name="typeDeclaration">Nested class to decorate.</param>
         /// <param name="name">Name of this class.</param>
         /// <param name="schema">Schema describing this class.</param>
-        /// <param name="details">Details for the implementation.</param>
+        /// <param name="implDetails">Details for the implementation.</param>
         /// <param name="internalClassProvider">Provider used for generating nested classes.</param>
         void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                    string name,
                                    JsonSchema schema,
-                                   IDictionary<JsonSchema, SchemaImplementationDetails> details,
+                                   IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                    INestedClassProvider internalClassProvider);
     }
 }
