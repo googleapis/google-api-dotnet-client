@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -199,6 +200,27 @@ namespace Google.Apis.Tools.CodeGen.Tests
             }
         }
 
+        /// <summary>
+        /// Tests the GetWordContextListFromClass method
+        /// </summary>
+        [Test]
+        public void GetWordContextListFromClassTest()
+        {
+            // Test validation.
+            Assert.Throws<ArgumentNullException>(() => GeneratorUtils.GetWordContextListFromClass(null).First());
+
+            // Test normal operation
+            var decl = new CodeTypeDeclaration();
+            decl.Name = "MockClass";
+            decl.Members.Add(new CodeMemberField(typeof(int), "FieldA"));
+            decl.Members.Add(new CodeMemberProperty() { Name = "FieldB" });
+            decl.Members.Add(new CodeTypeDeclaration() { Name = "NestedClassC" });
+
+            CollectionAssert.AreEqual(
+                new[] { "MockClass", "FieldA", "FieldB", "NestedClassC" },
+                GeneratorUtils.GetWordContextListFromClass(decl));
+        }
+        
         /// <summary>
         /// Checks that the MakeValidMemberName method returns valid member names.
         /// </summary>

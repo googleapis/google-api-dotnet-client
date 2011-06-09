@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Tools.CodeGen.Generator;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
@@ -29,6 +30,6 @@ namespace Google.Apis.Tools.CodeGen
         /// Given a definition for a class returns a name and garentiees that 
         /// that class will be generated in the appropreate scope.
         /// </summary>
-        CodeTypeReference GetClassName(JsonSchema definition);
+        CodeTypeReference GetClassName(JsonSchema definition, SchemaImplementationDetails details);
     }
 }
