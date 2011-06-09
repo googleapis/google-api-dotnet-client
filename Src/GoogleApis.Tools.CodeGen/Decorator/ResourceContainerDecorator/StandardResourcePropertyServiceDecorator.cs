@@ -66,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
                                                          IEnumerable<string> otherResourceNames)
         {
             var getter = new CodeMemberProperty();
-            getter.Name = GeneratorUtils.GetClassName(resource, otherResourceNames);
+            getter.Name = GeneratorUtils.GetPropertyName(resource.Name, otherResourceNames);
             getter.HasGet = true;
             getter.HasSet = false;
             getter.Attributes = MemberAttributes.Public;

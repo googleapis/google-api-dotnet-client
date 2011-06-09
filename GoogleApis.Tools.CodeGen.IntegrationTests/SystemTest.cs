@@ -234,7 +234,6 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
 
         /// <summary>
         /// Tries to list all services available on discovery
-        /// ToDo: Check if this tests passes after issue #55 is fixed
         /// </summary>
         [Test]
         public void DiscoveryListServicesTest()
@@ -252,7 +251,6 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
 
         /// <summary>
         /// Runs the code generator on all discovered services
-        /// ToDo: Check if this tests passes after issues #55, #50 and #38 are fixed
         /// </summary>
         [Test]
         public void CodegenAllServicesTest()

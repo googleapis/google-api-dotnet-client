@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         public const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
         public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
-        public const string ResourceName = "TestResource";
+        public const string ResourceName = "Test";
 
         public static readonly string[] ResourceGetTestParameterNames = new[] { "req_a", "req_b", "opt_a", "opt_b" };
 
