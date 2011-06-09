@@ -92,15 +92,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             if (schema.Items != null)
             {
                 // Generate a plausible name.
-                string proposedName;
-                if (!string.IsNullOrEmpty(schema.Id))
-                {
-                    proposedName = schema.Id;
-                }
-                else
-                {
-                    proposedName = details.ProposedName;
-                }
+                string proposedName = schema.Id.IsNotNullOrEmpty() ? schema.Id : details.ProposedName;
 
                 // Iterate through items and check if they require a name.
                 foreach (JsonSchema item in schema.Items)
@@ -127,7 +119,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             name.ThrowIfNull("name");
             dictionary.ThrowIfNull("name");
 
-            if (!string.IsNullOrEmpty(schema.Id))
+            if (schema.Id.IsNotNullOrEmpty())
             {
                 // Already has a name -> return.
                 return;

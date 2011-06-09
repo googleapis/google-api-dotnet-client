@@ -77,6 +77,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Object;
             schema.SchemaDetails.Properties = new Dictionary<string, JsonSchema>();
+            implDetails.Add(schema.SchemaDetails, new SchemaImplementationDetails());
             string name = "test";
 
             foreach (var pair in StandardPropertyFieldDecoratorTest.NamesToType)
@@ -86,6 +87,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 property.Id = pair.Key;
                 property.Description = StandardPropertyFieldDecoratorTest.NamesToDescription[pair.Key];
                 schema.SchemaDetails.Properties.Add(pair.Key, property);
+                implDetails.Add(property, new SchemaImplementationDetails());
             }
 
             var decorator = new StandardPropertyDecorator();

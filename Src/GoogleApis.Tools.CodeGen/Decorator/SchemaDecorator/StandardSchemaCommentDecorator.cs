@@ -38,12 +38,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
-                                          IDictionary<JsonSchema, SchemaImplementationDetails> details,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
-            details.ThrowIfNull("details");
+            implDetails.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             typeDeclaration.Comments.AddRange(CreateComment(schema));

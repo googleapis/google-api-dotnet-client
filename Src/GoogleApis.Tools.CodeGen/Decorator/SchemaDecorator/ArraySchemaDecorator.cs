@@ -60,13 +60,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                 return; // not supported
             }
 
-            // Implement the IList interface (required for the NestedNameTypeGenerator)
-            typeDeclaration.BaseTypes.Add(typeof(IList).FullName);
-            
             // Generate or find the nested type
             JsonSchema itemScheme = details.Items[0];
-            SchemaImplementationDetails implDetail = implDetails.GetValueAsNull(itemScheme) ??
-                                                     new SchemaImplementationDetails();
+            SchemaImplementationDetails implDetail = implDetails[itemScheme];
             implDetail.ProposedName = "Entry"; // Change the name to a custom one.
             CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, implDetail, internalClassProvider);
 

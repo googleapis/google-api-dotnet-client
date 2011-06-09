@@ -13,15 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
+using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Tools.CodeGen.Tests.Generator;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
-using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
-using Google.Apis.Tools.CodeGen.Tests.Generator;
-using System.Linq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 {
@@ -42,15 +43,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                     { "f", JsonSchemaType.Integer },
                 };
 
-        internal static readonly IDictionary<string, string> NamesToDescription = new SortedDictionary<string, string>
-                                                                                      {
-                                                                                          { "a", null },
-                                                                                          { "b", "" },
-                                                                                          { "c", "c" },
-                                                                                          { "d", "d" },
-                                                                                          { "e", "e" },
-                                                                                          { "f", "f" },
-                                                                                      };
+        internal static readonly IDictionary<string, string> NamesToDescription =
+            new SortedDictionary<string, string>
+                { { "a", null }, { "b", "" }, { "c", "c" }, { "d", "d" }, { "e", "e" }, { "f", "f" }, };
 
         private readonly INestedClassProvider internalClassProvider = new ObjectInternalClassProvider();
 
@@ -65,12 +60,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             schema.SchemaDetails = new JsonSchema();
             schema.SchemaDetails.Type = JsonSchemaType.Object;
             schema.SchemaDetails.Properties = new Dictionary<string, JsonSchema>();
+            implDetails.Add(schema.SchemaDetails, new SchemaImplementationDetails());
+
             foreach (var pair in NamesToType)
             {
                 JsonSchema property = new JsonSchema();
                 property.Type = pair.Value;
                 property.Id = pair.Key;
                 schema.SchemaDetails.Properties.Add(pair.Key, property);
+                implDetails.Add(property, new SchemaImplementationDetails());
             }
 
             var decorator = new StandardPropertyFieldDecorator();
@@ -139,10 +137,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var schema = new JsonSchema();
             var decorator = new StandardPropertyFieldDecorator();
+            var implDetails = new SchemaImplementationDetails();
 
             schema.Type = JsonSchemaType.String;
             CodeMemberField generatedField = decorator.GenerateField(
-                "normalName", schema, null, 1, internalClassProvider, Enumerable.Empty<string>());
+                "normalName", schema, implDetails, 1, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(string).FullName, generatedField.Type.BaseType);
@@ -151,7 +150,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             schema.Type = JsonSchemaType.Boolean;
             generatedField = decorator.GenerateField(
-                "public", schema, null, 2, internalClassProvider, Enumerable.Empty<string>());
+                "public", schema, implDetails, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
@@ -159,7 +158,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 
             generatedField = decorator.GenerateField(
-                "UPPERCASE", schema, null, 2, internalClassProvider, Enumerable.Empty<string>());
+                "UPPERCASE", schema, implDetails, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
             Assert.AreEqual("uPPERCASE", generatedField.Name);

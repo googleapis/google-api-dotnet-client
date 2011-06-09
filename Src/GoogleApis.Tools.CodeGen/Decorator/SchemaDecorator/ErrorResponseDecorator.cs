@@ -45,15 +45,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             schema.ThrowIfNull("schema");
             implDetails.ThrowIfNull("implDetails");
 
-            SchemaImplementationDetails implDetail = implDetails.GetValueAsNull(schema.SchemaDetails);
-            if (implDetail == null)
-            {
-                return; // If no details are provided, this decorator does not apply
-            }
+            SchemaImplementationDetails details = implDetails[schema.SchemaDetails];
 
             // If this method is refered as a result directly, add an inheritance to IResponse and implement
             // the interface
-            if (implDetail.IsMethodResult)
+            if (details.IsMethodResult)
             {
                 logger.Debug("Applying decorator to schema "+schema.Name);
                 typeDeclaration.BaseTypes.Add(GetIResponseBaseType());

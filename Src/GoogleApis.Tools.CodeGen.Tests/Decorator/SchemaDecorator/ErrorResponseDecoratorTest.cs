@@ -80,6 +80,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var schema = new MockSchema { SchemaDetails = new JsonSchema() };
             var internalClassProvider = new ObjectInternalClassProvider();
             var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
+            implDetails.Add(schema.SchemaDetails, new SchemaImplementationDetails());
 
             // Test edge cases
             Assert.Throws(
