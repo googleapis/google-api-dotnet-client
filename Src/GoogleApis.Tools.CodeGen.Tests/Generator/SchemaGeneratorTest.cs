@@ -164,13 +164,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             public void GetClassNameWithoutDetailsTest()
             {
                 var empty = new List<ISchemaDecorator>(0);
-                var decl = new CodeTypeDeclaration();
+                var decl = new CodeTypeDeclaration() { Name = "Top" };
                 var gen = new SchemaGenerator.NestedClassGenerator(decl, empty, "1_");
 
                 var schema1 = new JsonSchema();
-                Assert.AreEqual("NestedClass1_1", gen.GetClassName(schema1, null).BaseType);
-                Assert.AreEqual("NestedClass1_1", gen.GetClassName(schema1, null).BaseType);
-                Assert.AreEqual("NestedClass1_2", gen.GetClassName(new JsonSchema(), null).BaseType);
+                Assert.AreEqual("Top.NestedClass1_1", gen.GetClassName(schema1, null).BaseType);
+                Assert.AreEqual("Top.NestedClass1_1", gen.GetClassName(schema1, null).BaseType);
+                Assert.AreEqual("Top.NestedClass1_2", gen.GetClassName(new JsonSchema(), null).BaseType);
             }
 
             /// <summary>
@@ -180,14 +180,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             public void GetClassNameWithDetailsTest()
             {
                 var empty = new List<ISchemaDecorator>(0);
-                var decl = new CodeTypeDeclaration();
+                var decl = new CodeTypeDeclaration() { Name = "Top" };
                 var gen = new SchemaGenerator.NestedClassGenerator(decl, empty, "1_");
 
                 var schema1 = new JsonSchema();
                 var details = new SchemaImplementationDetails() { ProposedName = "TestClass" };
-                Assert.AreEqual("TestClass", gen.GetClassName(schema1, details).BaseType);
-                Assert.AreEqual("TestClass", gen.GetClassName(schema1, null).BaseType);
-                Assert.AreEqual("NestedClass1_2", gen.GetClassName(new JsonSchema(), null).BaseType);
+                Assert.AreEqual("Top.TestClass", gen.GetClassName(schema1, details).BaseType);
+                Assert.AreEqual("Top.TestClass", gen.GetClassName(schema1, null).BaseType);
+                Assert.AreEqual("Top.NestedClass1_2", gen.GetClassName(new JsonSchema(), null).BaseType);
             }
 
             /// <summary>
@@ -197,14 +197,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             public void GetClassNameWithDetailsCollisionsTest()
             {
                 var empty = new List<ISchemaDecorator>(0);
-                var decl = new CodeTypeDeclaration();
+                var decl = new CodeTypeDeclaration() { Name = "Top" };
                 var gen = new SchemaGenerator.NestedClassGenerator(decl, empty, "1_");
 
                 var schema1 = new JsonSchema();
                 var schema2 = new JsonSchema();
                 var details = new SchemaImplementationDetails() { ProposedName = "TestClass" };
-                Assert.AreEqual("TestClass", gen.GetClassName(schema1, details).BaseType);
-                Assert.AreNotEqual("TestClass", gen.GetClassName(schema2, details).BaseType);
+                Assert.AreEqual("Top.TestClass", gen.GetClassName(schema1, details).BaseType);
+                Assert.AreNotEqual("Top.TestClass", gen.GetClassName(schema2, details).BaseType);
             }
         }
     }

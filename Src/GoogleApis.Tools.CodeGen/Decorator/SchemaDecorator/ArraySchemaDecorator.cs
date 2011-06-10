@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System.CodeDom;
-using System.Collections;
 using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -67,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, implDetail, internalClassProvider);
 
             // Insert the base type before any interface declaration
-            var baseType = string.Format("List<{0}.{1}>", typeDeclaration.Name, item.BaseType);
+            var baseType = string.Format("List<{0}>", item.BaseType);
             typeDeclaration.BaseTypes.Insert(0, new CodeTypeReference(baseType));
         }
 
