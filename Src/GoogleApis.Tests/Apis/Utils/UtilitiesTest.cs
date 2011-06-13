@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.CodeDom;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
@@ -27,7 +28,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Tests.Apis.Util
 {
     /// <summary>
-    /// Tests for the "Utilities"-class
+    /// Tests for the "Utilities"-class.
     /// </summary>
     [TestFixture]
     public class UtilitiesTest
@@ -40,7 +41,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the FindPropertyByName method
+        /// Tests the FindPropertyByName method.
         /// </summary>
         [Test]
         public void FindPropertyByNameTest()
@@ -90,7 +91,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the FindMemberByName method
+        /// Tests the FindMemberByName method.
         /// </summary>
         [Test]
         public void FindMemberByNameTest()
@@ -140,7 +141,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the FindMemberByName method
+        /// Tests the FindMemberByName method.
         /// </summary>
         [Test]
         public void FindTypeMemberByNameTest()
@@ -202,7 +203,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the GetvalueAsNull method with primitive types
+        /// Tests the GetvalueAsNull method with primitive types.
         /// </summary>
         [Test]
         public void GetValueAsNullPrimitiveTest()
@@ -220,7 +221,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the GetValueAsStringListOrEmpty method
+        /// Tests the GetValueAsStringListOrEmpty method.
         /// </summary>
         [Test]
         public void GetValueAsStringListOrEmpty()
@@ -265,7 +266,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests that the AsReadOnly method will fail when provided invalid arguments
+        /// Tests that the AsReadOnly method will fail when provided invalid arguments.
         /// </summary>
         [Test]
         public void IDictionaryAsReadOnlyNullTest()
@@ -275,7 +276,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests whether the AsReadonly method returns a readonly copy of the dictionary
+        /// Tests whether the AsReadonly method returns a readonly copy of the dictionary.
         /// </summary>
         [Test]
         public void IDictionaryAsReadOnlyReadTest()
@@ -300,7 +301,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests that a readonly dictionary is actually readonly
+        /// Tests that a readonly dictionary is actually readonly.
         /// </summary>
         [Test]
         public void IDictionaryAsReadOnlyWriteTest()
@@ -325,7 +326,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the "ThrowIfNull" method
+        /// Tests the "ThrowIfNull" method.
         /// </summary>
         [Test]
         public void ThrowIfNullTest()
@@ -337,7 +338,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the "Replace" string extension method
+        /// Tests the "Replace" string extension method.
         /// </summary>
         [Test]
         public void ReplaceTest()
@@ -350,6 +351,7 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.Throws<ArgumentException>(() => "test".Replace("_"));
         }
         
+    [TypeConverter(typeof(EnumStringValueTypeConverter ))]
         private enum MockEnum
         {
             [StringValue("Test")]
@@ -360,7 +362,7 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
-        /// Tests the "GetStringValue" extension method of enums
+        /// Tests the "GetStringValue" extension method of enums.
         /// </summary>
         [Test]
         public void StringValueTest()
@@ -369,6 +371,31 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.That(MockEnum.EntryWithSecondStringValue.GetStringValue(), Is.EqualTo("AnotherTest"));
             Assert.Throws<ArgumentException>(() => MockEnum.EntryWithoutStringValue.GetStringValue());
             Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
+        }
+
+        /// <summary>
+        /// Tests the "GetNonNullableType" method.
+        /// </summary>
+        [Test]
+        public void GetNonNullableTypeTest()
+        {
+            Assert.AreEqual(typeof(string), Google.Apis.Util.Utilities.GetNonNullableType(typeof(string)));
+            Assert.AreEqual(typeof(int), Google.Apis.Util.Utilities.GetNonNullableType(typeof(int)));
+
+            Assert.AreEqual(typeof(int), Google.Apis.Util.Utilities.GetNonNullableType(typeof(int?)));
+            Assert.AreEqual(typeof(MockEnum), Google.Apis.Util.Utilities.GetNonNullableType(typeof(MockEnum?)));
+        }
+
+        /// <summary>
+        /// Tests the "ConvertToString" method.
+        /// </summary>
+        [Test]
+        public void ConvertToStringTest()
+        {
+            Assert.AreEqual("FooBar", Google.Apis.Util.Utilities.ConvertToString("FooBar"));
+            Assert.AreEqual("123", Google.Apis.Util.Utilities.ConvertToString(123));
+            Assert.AreEqual("Test", Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithStringValue));
+            Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(null));
         }
     }
 }

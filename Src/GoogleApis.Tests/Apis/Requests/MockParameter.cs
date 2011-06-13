@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
@@ -36,6 +37,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Maximum { get; set; }
         public string Minimum { get; set; }
         public IEnumerable<string> Enum { get; set; }
+        public IEnumerable<string> EnumDescriptions { get; set; }
 
         #endregion
     }

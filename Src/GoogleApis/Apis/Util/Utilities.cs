@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 
 namespace Google.Apis.Util
@@ -260,6 +261,38 @@ namespace Google.Apis.Util
             // Otherwise throw an exception
             throw new ArgumentException(
                 string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
+        }
+
+        /// <summary>
+        /// Retrieves the underlying type if the specified is a Nullable, or the type itself otherwise.
+        /// </summary>
+        public static Type GetNonNullableType(Type type)
+        {
+            if (!type.IsGenericType || !typeof(Nullable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+            {
+                return type; // Not a Nullable.
+            }
+
+            // Type is a Nullable.
+            return type.GetGenericArguments()[0];
+        }
+
+        /// <summary>
+        /// Tries to convert the specified object to a string. Uses custom type converters if available.
+        /// Returns null for a null object.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static string ConvertToString(object o)
+        {
+            if (o == null)
+            {
+                return null;
+            }
+
+            // Get the type converter
+            TypeConverter converter = TypeDescriptor.GetConverter(o);
+            return converter.ConvertToString(o);
         }
     }
 }

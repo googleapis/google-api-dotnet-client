@@ -37,6 +37,7 @@ namespace Google.Apis.Util
         /// <param name="text"></param>
         public StringValueAttribute(string text)
         {
+            text.ThrowIfNull("text");
             this.text = text;
         }
     }

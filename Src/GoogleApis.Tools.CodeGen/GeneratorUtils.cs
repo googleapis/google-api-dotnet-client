@@ -404,7 +404,7 @@ namespace Google.Apis.Tools.CodeGen
         public static string GetEnumName(string enumName, IEnumerable<string> wordsUsedInContext)
         {
             return GetSafeMemberName(
-                wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum", "e" + enumName);
+                wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum");
         }
 
         /// <summary>

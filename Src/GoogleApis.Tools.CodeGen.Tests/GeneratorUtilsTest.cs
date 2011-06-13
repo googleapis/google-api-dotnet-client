@@ -330,5 +330,27 @@ namespace Google.Apis.Tools.CodeGen.Tests
             IEnumerable<string> alternatives = GeneratorUtils.GenerateAlternativeNamesFor("to");
             CollectionAssert.AreEquivalent(expect, alternatives);
         }
+
+        /// <summary>
+        /// Tests the GetEnumName method
+        /// </summary>
+        [Test]
+        public void GetEnumNameTest()
+        {
+            Assert.AreEqual("Test", GeneratorUtils.GetEnumName("test", new string[0]));
+            Assert.AreEqual("TestEnum", GeneratorUtils.GetEnumName("test", new[] { "Test" }));
+            Assert.AreEqual("TestMember", GeneratorUtils.GetEnumName("test", new[] { "Test", "TestEnum" }));
+        }
+
+        /// <summary>
+        /// Tests the GetEnumValueName method
+        /// </summary>
+        [Test]
+        public void GetEnumValueNameTest()
+        {
+            Assert.AreEqual("Test", GeneratorUtils.GetEnumValueName("test", new string[0]));
+            Assert.AreEqual("TestValue", GeneratorUtils.GetEnumValueName("test", new[] { "Test" }));
+            Assert.AreEqual("TestMember", GeneratorUtils.GetEnumValueName("test", new[] { "Test", "TestValue" }));
+        }
     }
 }
