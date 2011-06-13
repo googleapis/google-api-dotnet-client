@@ -16,6 +16,10 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator
@@ -105,6 +109,100 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             var field = new CodeMemberField(typeof(TProperty), fieldName);
             field.Attributes = MemberAttributes.Private;
             return field;
+        }
+
+        /// <summary>
+        /// Creates a summary comment containing the text specified.
+        /// Returns an empty collection if the summary string is null or empty
+        /// </summary>
+        public static CodeCommentStatementCollection CreateSummaryComment(string summary)
+        {
+            var comments = new CodeCommentStatementCollection();
+            if (summary.IsNotNullOrEmpty())
+            {
+                var text = "<summary>" + XmlEscapeComment(summary) + "</summary>";
+                comments.Add(new CodeCommentStatement(new CodeComment(text, true)));
+            }
+            return comments;
+        }
+
+        /// <summary>
+        /// Escapes a string for use in a XML comment
+        /// </summary>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static string XmlEscapeComment(string description)
+        {
+            return SecurityElement.Escape(description);
+        }
+
+        /// <summary>
+        /// Creates an enumeration from the provided data
+        /// </summary>
+        /// <param name="proposedName">The proposed name of the enumeration</param>
+        /// <param name="description">Description of the enum class</param>
+        /// <param name="entries">Enum entries in the form (name, comment/description)</param>
+        /// <returns>Generated enum type</returns>
+        public static CodeTypeDeclaration GenerateEnum(string proposedName, string description,
+                                                          IEnumerable<KeyValuePair<string, string>> entries)
+        {
+            // Create a safe enum name
+            string name = GeneratorUtils.GetEnumName(proposedName, new string[0]);
+
+            var decl = new CodeTypeDeclaration(name);
+            decl.IsEnum = true;
+            foreach (KeyValuePair<string, string> enumEntry in entries)
+            {
+                var usedNames = from CodeTypeMember m in decl.Members select m.Name;
+                string safeName = GeneratorUtils.GetEnumValueName(enumEntry.Key, usedNames);
+                var member = new CodeMemberField(typeof(int), safeName);
+
+                // Attribute
+                var valueAttribute = new CodeAttributeDeclaration();
+                valueAttribute.Name = typeof(StringValueAttribute).FullName;
+                valueAttribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(enumEntry.Key)));
+                member.CustomAttributes.Add(valueAttribute);
+
+                // Comments
+                member.Comments.AddRange(CreateSummaryComment(enumEntry.Value));
+
+                // Add member to enum
+                decl.Members.Add(member);
+            }
+
+            // Class comment
+            decl.Comments.AddRange(CreateSummaryComment(description));
+
+            return decl;
+        }
+
+        /// <summary>
+        /// Creates an enumeration from the provided data
+        /// </summary>
+        /// <param name="proposedName">The proposed name of the enumeration</param>
+        /// <param name="description">Description of the enum class</param>
+        /// <param name="enumsValues">All enumeration values</param>
+        /// <param name="enumDescriptions">All enumeration comments</param>
+        /// <returns>Generated enum type</returns>
+        public static CodeTypeDeclaration GenerateEnum(string proposedName,
+                                                       string description,
+                                                       IEnumerable<string> enumsValues,
+                                                       IEnumerable<string> enumDescriptions)
+        {
+            return GenerateEnum(proposedName, description, GetEnumerablePairs(enumsValues, enumDescriptions));
+        }
+
+        private static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
+                                                                                IEnumerable<V> values)
+        {
+            IEnumerator<K> keysEnumerator = keys.GetEnumerator();
+            IEnumerator<V> valuesEnumerator = values.GetEnumerator();
+
+            // Return both enumerables as KeyValuePairs
+            do
+            {
+                yield return new KeyValuePair<K, V>(keysEnumerator.Current, valuesEnumerator.Current);
+            } while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext());
         }
     }
 }

@@ -16,9 +16,12 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
@@ -67,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         public static Type GetParameterType(IParameter param)
         {
             param.ThrowIfNull("param");
-
+            
             switch (param.ValueType)
             {
                 case null:
@@ -87,12 +90,24 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
-                                                                           IMethod method)
+                                                                           IMethod method,
+                                                                           out CodeTypeDeclaration declaration)
         {
             method.ThrowIfNull("method");
-            Type paramType = GetParameterType(param);
+            Type underlyingType = GetParameterType(param);
+            CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
+
+            // Check if we need to declare a custom type for this parameter
+            declaration = null;
+            if (param.Enum.Count() > 0)
+            {
+                declaration = DecoratorUtil.GenerateEnum(
+                    param.Name, param.Description, param.Enum, param.EnumDescriptions);
+                paramTypeRef = new CodeTypeReference(declaration.Name);
+            }
+
             return new CodeParameterDeclarationExpression(
-                paramType, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
+                underlyingType, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
         }
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,

@@ -109,10 +109,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             public CodeMemberMethod CreateMethod(IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
-                                                 IEnumerable<IResourceDecorator> allDecorators)
+                                                 IEnumerable<IResourceDecorator> allDecorators,
+                                                 out IEnumerable<CodeTypeDeclaration> paramTypeDeclarations)
             {
                 if (method.HasOptionalParameters() == false)
                 {
+                    paramTypeDeclarations = null;
                     return null;
                 }
 
@@ -128,6 +130,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
                 // Add Manditory parameters to the method.
                 var paramList = method.GetRequiredParameters();
+                var paramTypeList = new List<CodeTypeDeclaration>();
 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 
@@ -137,11 +140,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 foreach (var param in paramList)
                 {
                     string parameterName = GeneratorUtils.GetParameterName(param, method.Parameters.Keys);
-                    member.Parameters.Add(DeclareInputParameter(param, method));
+                    CodeTypeDeclaration newDecl;
+                    member.Parameters.Add(DeclareInputParameter(param, method, out newDecl));
                     AddParameterComment(commentCreator, member, param, parameterName);
                     assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                     parameterCount++;
+
+                    // If a new type had to be declared for this parameter, add it to the list of types.
+                    if (newDecl != null)
+                    {
+                        paramTypeList.Add(newDecl);
+                    }
                 }
+
+                paramTypeDeclarations = paramTypeList;
 
                 /*
                  * TODO(davidwaters@google.com) I belive the commented out code is more correct and works in MS.net but 
@@ -151,10 +163,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 dictType.TypeArguments.Add(typeof(string));
                 dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 */
-                var dictType = new CodeTypeReference(typeof(IDictionary<string, object>));
+
+                var dictType = new CodeTypeReference(typeof(IDictionary<,>));
+                dictType.TypeArguments.Add(typeof(string));
+                dictType.TypeArguments.Add(typeof(string));
+                dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
+
+                //var dictType = new CodeTypeReference(typeof(IDictionary<string, object>));
                 var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
                 member.Parameters.Add(dictParameter);
-
 
                 //parameters["<%=parameterName%>"] = <%=parameterName%>;
                 member.Statements.AddRange(assignmentStatments);

@@ -106,5 +106,49 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.That(field.Type.BaseType, Is.EqualTo(typeof(bool).FullName));
             Assert.That(field.Attributes, Is.EqualTo(MemberAttributes.Private));
         }
+
+        /// <summary>
+        /// Tests the creation of a simple comment
+        /// </summary>
+        [Test]
+        public void CreateSummaryCommentTest()
+        {
+            string aShortDescription = "A Short description for test";
+            var result = DecoratorUtil.CreateSummaryComment(aShortDescription);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
+            Assert.IsNotNull(result[0].Comment);
+            Assert.AreEqual(true, result[0].Comment.DocComment);
+            Assert.AreEqual("<summary>" + aShortDescription + "</summary>", result[0].Comment.Text);
+        }
+        /// <summary>
+        /// Checks if empty comments can be created
+        /// </summary>
+        [Test]
+        public void CreateSummaryCommentEmptyCommentTest()
+        {
+            var result = DecoratorUtil.CreateSummaryComment("");
+            // Test an empty comment
+            Assert.IsNotNull(result);
+            Assert.IsEmpty(result);
+
+            result = DecoratorUtil.CreateSummaryComment(null);
+            // Test a null comment
+            Assert.IsNotNull(result);
+            Assert.IsEmpty(result);
+        }
+
+        /// <summary>
+        /// Checks if xml escapes are done on non-compilant xml strings
+        /// </summary>
+        [Test]
+        public void CreateSummaryCommentXmlEscapeTest()
+        {
+            string aShortDescription = "A 'Short\" <description> <for/> test & fun";
+            var result = DecoratorUtil.CreateSummaryComment(aShortDescription);
+            string desiredComment =
+                "<summary>A &apos;Short&quot; &lt;description&gt; &lt;for/&gt; test &amp; fun</summary>";
+            Assert.AreEqual(desiredComment, result[0].Comment.Text);
+        }
     }
 }

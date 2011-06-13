@@ -82,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (schema.Properties.IsNullOrEmpty())
             {
-                logger.Debug("No proeprties found for schema " + name);
+                logger.Debug("No properties found for schema " + name);
                 return;
             }
 
@@ -97,23 +97,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         }
 
         [VisibleForTestOnly]
-        internal CodeCommentStatementCollection CreateComment(JsonSchema schmea)
+        internal CodeCommentStatementCollection CreateComment(JsonSchema schema)
         {
-            schmea.ThrowIfNull("schema");
-
-            var comments = new CodeCommentStatementCollection();
-            var text = "<summary>" + XmlEscapeComment(schmea.Description) + "</summary>";
-
-            if (schmea.Description.IsNotNullOrEmpty())
-            {
-                comments.Add(new CodeCommentStatement(new CodeComment(text, true)));
-            }
-            return comments;
-        }
-
-        private string XmlEscapeComment(string description)
-        {
-            return SecurityElement.Escape(description);
+            return DecoratorUtil.CreateSummaryComment(schema.Description);
         }
     }
 }
