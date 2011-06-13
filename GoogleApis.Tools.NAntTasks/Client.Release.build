@@ -8,6 +8,10 @@
   <property name="hg.contrib.current" value="${hg.contrib.root}/current"/>
   <property name="fresh.google.nant.path" value="${hg.source.root}/GoogleApis.Tools.NAntTasks" />
   <property name="generate.build.file" value="Generate.Service.build" />
+
+  <target name="config">
+    <include buildfile="./NAnt.Config.xml" failonerror="true"/>
+  </target>
   
   <target name="clean">
     <delete dir="${source.dir}" />
@@ -49,8 +53,8 @@
   </target>
 
   <target name="release-to-contrib" depends="generate-clients-from-fresh, fetch-latest-contrib">
-    <tstamp />
-    <property name="generated.google.api.dll" value="${fresh.google.nant.path}/genlib/Google.Apis.dll" />
+    <tstamp pattern="yyyy-MM-dd"/>
+    <property name="generated.google.api.dll" value="${fresh.google.nant.path}/${generated.library}/Google.Apis.dll" />
     <property name="hg.contrib.version" 
               value="${hg.contrib.root}/${tstamp.date}-${assemblyname::get-version(assemblyname::get-assembly-name(generated.google.api.dll))}" 
               />
@@ -60,10 +64,10 @@
 
     <copy todir="${hg.contrib.version}" overwrite="false" flatten="false">
       <fileset basedir="${fresh.google.nant.path}">
-        <include name="genbin/**"/>
-        <include name="genlib/**"/>
-        <include name="gensrc/**"/>
-        <include name="genzip/**"/>
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
       </fileset>
     </copy>
     
@@ -72,10 +76,10 @@
     
     <copy todir="${hg.contrib.current}" overwrite="false" flatten="false">
       <fileset basedir="${fresh.google.nant.path}">
-        <include name="genbin/**"/>
-        <include name="genlib/**"/>
-        <include name="gensrc/**"/>
-        <include name="genzip/**"/>
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
       </fileset>
     </copy>
   </target>

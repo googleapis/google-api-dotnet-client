@@ -106,4 +106,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="NAnt.Config.xml" />
+  </ItemGroup>
 </Project>
