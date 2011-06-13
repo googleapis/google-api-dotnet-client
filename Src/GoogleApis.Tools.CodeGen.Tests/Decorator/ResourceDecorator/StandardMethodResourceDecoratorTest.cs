@@ -37,15 +37,17 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             var method = resource.Methods[TestMethodNames.getTest.ToString()];
             var mockDecorator = new MockResourceDecorator();
+            CodeTypeMemberCollection paramDecl;
 
             CodeMemberMethod generatedMember = generator.CreateMethod(
-                resource, method, 1, new List<IResourceDecorator> { mockDecorator });
+                resource, method, 1, new List<IResourceDecorator> { mockDecorator }, out paramDecl);
 
             Assert.AreEqual(0, mockDecorator.DecorateClassCalled);
             Assert.AreEqual(1, mockDecorator.DecorateMethodBeforeExecuteCalled);
             Assert.AreEqual(1, mockDecorator.DecorateMethodAfterExecuteCalled);
 
             Assert.AreEqual(4, generatedMember.Parameters.Count);
+            Assert.AreEqual(0, paramDecl.Count);
         }
 
         private IDictionary<TestMethodNames, CodeMemberMethod> CreateMethodDictionary(CodeTypeDeclaration decoratedClass)

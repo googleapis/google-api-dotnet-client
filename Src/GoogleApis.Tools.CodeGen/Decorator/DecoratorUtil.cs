@@ -16,47 +16,45 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator
 {
     /// <summary>
-    /// Helper class for all decorators
+    /// Helper class for all decorators.
     /// </summary>
     internal static class DecoratorUtil
     {
         /// <summary>
-        /// Creates and adds a public auto-property (property and backening field) to the class
+        /// Creates and adds a public auto-property (property and backening field) to the class.
         /// </summary>
-        /// <typeparam name="TProperty">Type used for the propery</typeparam>
-        /// <param name="serviceClass"></param>
-        /// <param name="name"></param>
-        /// <param name="summaryComment"></param>
+        /// <typeparam name="TProperty">Type used for the propery.</typeparam>
         public static CodeTypeMemberCollection CreateAutoProperty<TProperty>(CodeTypeDeclaration serviceClass,
                                                                     string name,
                                                                     string summaryComment)
         {
-            // Validate parameters
+            // Validate parameters.
             serviceClass.ThrowIfNull("serviceClass");
             name.ThrowIfNullOrEmpty("name");
 
-            // Check if the name has already been used
+            // Check if the name has already been used.
             if (serviceClass.Members.FindPropertyByName(name) != null)
             {
                 throw new ArgumentException(
                     string.Format("The property name [{0}] was already used within this class", name), "name");
             }
 
-            // Create backening field
+            // Create backening field.
             var field = CreateBackingField<TProperty>(serviceClass, name);
             string fieldName = field.Name;
             var fieldNameRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), fieldName);
 
-            // Add property
+            // Add property.
             var property = new CodeMemberProperty();
             property.Name = name;
             property.Attributes = MemberAttributes.Public;
@@ -69,13 +67,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             property.HasGet = true;
             property.HasSet = true;
 
-            // Add getter and setter
+            // Add getter and setter.
             property.GetStatements.Add(new CodeMethodReturnStatement(fieldNameRef));
 
             property.SetStatements.Add(
                 new CodeAssignStatement(fieldNameRef, new CodePropertySetValueReferenceExpression()));
 
-            // Return the result
+            // Return the result.
             var col = new CodeTypeMemberCollection();
             col.Add(field);
             col.Add(property);
@@ -83,29 +81,28 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Creates a backening field for the name provided
+        /// Creates a backening field for the name provided.
         /// </summary>
-        /// <typeparam name="TProperty">Type used for the propery</typeparam>
-        /// <param name="serviceClass"></param>
-        /// <param name="name">The name of the property</param>
+        /// <typeparam name="TProperty">Type used for the propery.</typeparam>
+        /// <param name="name">The name of the property.</param>
         /// <returns></returns>
         public static CodeMemberField CreateBackingField<TProperty>(CodeTypeDeclaration serviceClass, string name)
         {
-            // Validate parameters
+            // Validate parameters.
             serviceClass.ThrowIfNull("serviceClass");
             name.ThrowIfNullOrEmpty("name");
 
-            // Generate field name
+            // Generate field name.
             var fieldName = Char.IsLower(name[0]) ? "_" + name : GeneratorUtils.LowerFirstLetter(name);
 
-            // Check if it was already used
+            // Check if it was already used.
             if (serviceClass.Members.FindFieldByName(fieldName) != null)
             {
                 throw new ArgumentException(
                     string.Format("The property name [{0}] was already used within this class", name), "name");
             }
 
-            // Create the field
+            // Create the field.
             var field = new CodeMemberField(typeof(TProperty), fieldName);
             field.Attributes = MemberAttributes.Private;
             return field;
@@ -113,7 +110,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
 
         /// <summary>
         /// Creates a summary comment containing the text specified.
-        /// Returns an empty collection if the summary string is null or empty
+        /// Returns an empty collection if the summary string is null or empty.
         /// </summary>
         public static CodeCommentStatementCollection CreateSummaryComment(string summary)
         {
@@ -127,7 +124,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Escapes a string for use in a XML comment
+        /// Escapes a string for use in a XML comment.
         /// </summary>
         /// <param name="description"></param>
         /// <returns></returns>
@@ -137,72 +134,90 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Creates an enumeration from the provided data
+        /// Creates an enumeration from the provided data.
         /// </summary>
-        /// <param name="proposedName">The proposed name of the enumeration</param>
-        /// <param name="description">Description of the enum class</param>
-        /// <param name="entries">Enum entries in the form (name, comment/description)</param>
-        /// <returns>Generated enum type</returns>
+        /// <param name="proposedName">The proposed name of the enumeration.</param>
+        /// <param name="description">Description of the enum class.</param>
+        /// <param name="entries">Enum entries in the form (name, comment/description).</param>
+        /// <returns>Generated enum type.</returns>
         public static CodeTypeDeclaration GenerateEnum(string proposedName, string description,
                                                           IEnumerable<KeyValuePair<string, string>> entries)
         {
             // Create a safe enum name
             string name = GeneratorUtils.GetEnumName(proposedName, new string[0]);
 
+            // Create the enum type
             var decl = new CodeTypeDeclaration(name);
             decl.IsEnum = true;
+
+            // Add the [TypeConverter(typeof(EnumStringValueTypeConverter))] attribute.
+            Type converterType = typeof(EnumStringValueTypeConverter);
+            var typeConvAttribute = new CodeAttributeDeclaration(
+                new CodeTypeReference(typeof(TypeConverterAttribute)));
+            typeConvAttribute.Arguments.Add(new CodeAttributeArgument(new CodeTypeOfExpression(converterType)));
+            decl.CustomAttributes.Add(typeConvAttribute);
+
             foreach (KeyValuePair<string, string> enumEntry in entries)
             {
                 var usedNames = from CodeTypeMember m in decl.Members select m.Name;
                 string safeName = GeneratorUtils.GetEnumValueName(enumEntry.Key, usedNames);
                 var member = new CodeMemberField(typeof(int), safeName);
 
-                // Attribute
+                // Attribute:
                 var valueAttribute = new CodeAttributeDeclaration();
                 valueAttribute.Name = typeof(StringValueAttribute).FullName;
                 valueAttribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(enumEntry.Key)));
                 member.CustomAttributes.Add(valueAttribute);
 
-                // Comments
+                // Comments:
                 member.Comments.AddRange(CreateSummaryComment(enumEntry.Value));
 
-                // Add member to enum
+                // Add member to enum.
                 decl.Members.Add(member);
             }
 
-            // Class comment
+            // Class comment:
             decl.Comments.AddRange(CreateSummaryComment(description));
 
             return decl;
         }
 
         /// <summary>
-        /// Creates an enumeration from the provided data
+        /// Creates an enumeration from the provided data.
         /// </summary>
-        /// <param name="proposedName">The proposed name of the enumeration</param>
-        /// <param name="description">Description of the enum class</param>
-        /// <param name="enumsValues">All enumeration values</param>
-        /// <param name="enumDescriptions">All enumeration comments</param>
-        /// <returns>Generated enum type</returns>
+        /// <param name="proposedName">The proposed name of the enumeration.</param>
+        /// <param name="description">Description of the enum class.</param>
+        /// <param name="enumValues">All enumeration values.</param>
+        /// <param name="enumDescriptions">All enumeration comments.</param>
+        /// <returns>Generated enum type.</returns>
         public static CodeTypeDeclaration GenerateEnum(string proposedName,
                                                        string description,
-                                                       IEnumerable<string> enumsValues,
+                                                       IEnumerable<string> enumValues,
                                                        IEnumerable<string> enumDescriptions)
         {
-            return GenerateEnum(proposedName, description, GetEnumerablePairs(enumsValues, enumDescriptions));
+            return GenerateEnum(proposedName, description, GetEnumerablePairs(enumValues, enumDescriptions));
         }
-
-        private static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
+    
+        [VisibleForTestOnly]
+        internal static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
                                                                                 IEnumerable<V> values)
         {
+            keys.ThrowIfNull("keys");
+            values.ThrowIfNull("values");
+
+            if (keys.Count() != values.Count())
+            {
+                throw new ArgumentException("Both enumerables must be of the the same length.");
+            }
+
             IEnumerator<K> keysEnumerator = keys.GetEnumerator();
             IEnumerator<V> valuesEnumerator = values.GetEnumerator();
 
             // Return both enumerables as KeyValuePairs
-            do
+            while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext())
             {
                 yield return new KeyValuePair<K, V>(keysEnumerator.Current, valuesEnumerator.Current);
-            } while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext());
+            }
         }
     }
 }

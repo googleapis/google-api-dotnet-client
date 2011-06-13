@@ -99,6 +99,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal CodeCommentStatementCollection CreateComment(JsonSchema schema)
         {
+            schema.ThrowIfNull("schema");
             return DecoratorUtil.CreateSummaryComment(schema.Description);
         }
     }

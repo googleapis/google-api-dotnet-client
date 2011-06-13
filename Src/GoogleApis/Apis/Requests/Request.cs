@@ -126,7 +126,7 @@ namespace Google.Apis.Requests
         /// </returns>
         public IRequest WithParameters(IDictionary<string, object> parameters)
         {
-            return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
+            return WithParameters(parameters.ToDictionary(k => k.Key, v => Util.Utilities.ConvertToString(v.Value)));
         }
 
         /// <summary>

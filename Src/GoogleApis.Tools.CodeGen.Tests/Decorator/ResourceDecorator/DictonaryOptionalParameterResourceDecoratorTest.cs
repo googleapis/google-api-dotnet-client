@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System.CodeDom;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
@@ -21,13 +22,13 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
     /// <summary>
-    /// Test for the "CreateResourceDivcoveryV_1_0" class
+    /// Test for the "CreateResourceDivcoveryV_1_0" class.
     /// </summary>
     [TestFixture]
     public class DictonaryOptionalParameterResourceDecoratorTest : BaseResourceDecoratorTest
     {
         /// <summary>
-        /// Tests if the generator performs correctly in edge cases
+        /// Tests if the generator performs correctly in edge cases.
         /// </summary>
         [Test]
         public void TestCreateMethodNoArgs()
@@ -37,18 +38,23 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
                 new DictionaryOptionalParameterResourceDecorator.ResourceGenerator("TestResourceClassName", null);
 
             var method = resource.Methods[TestMethodNames.noParameterTest.ToString()];
+            CodeTypeMemberCollection paramDecl;
 
-            var member = methodGenerator.CreateMethod(resource, method, 1, new List<IResourceDecorator>());
+            var member = methodGenerator.CreateMethod(
+                resource, method, 1, new List<IResourceDecorator>(), out paramDecl);
             Assert.IsNull(member, "With no parameters we should have no method.");
+            Assert.AreEqual(0, paramDecl.Count);
 
             method = resource.Methods[TestMethodNames.oneRequiredParameterTest.ToString()];
-            member = methodGenerator.CreateMethod(resource, method, 1, new List<IResourceDecorator>());
+            member = methodGenerator.CreateMethod(resource, method, 1, new List<IResourceDecorator>(), out paramDecl);
             Assert.IsNull(member, "With no optional parameters we should have no method.");
+            Assert.AreEqual(0, paramDecl.Count);
 
             method = resource.Methods[TestMethodNames.oneOptionalParameterTest.ToString()];
-            member = methodGenerator.CreateMethod(resource, method, 1, new List<IResourceDecorator>());
+            member = methodGenerator.CreateMethod(resource, method, 1, new List<IResourceDecorator>(), out paramDecl);
             Assert.IsNotNull(member);
             Assert.AreEqual(1, member.Parameters.Count);
+            Assert.AreEqual(0, paramDecl.Count);
             //TODO(davidwaters@google.com) - due to a bug in mono bugId 353744 this assert does not pass
             //Assert.AreEqual("System.Collections.Generic.IDictionary", member.Parameters[0].Type.BaseType);
             Assert.That(member.Parameters[0].Type.BaseType.StartsWith("System.Collections.Generic.IDictionary"));

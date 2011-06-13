@@ -83,10 +83,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             foreach (var method in resource.Methods.Values)
             {
                 logger.DebugFormat("Adding Standard Method {0}.{1}", resource.Name, method.Name);
-                CodeTypeMember convenienceMethod = gen.CreateMethod(resource, method, methodNumber, allDecorators);
+                CodeTypeMemberCollection newlyDeclaredParameterTypes;
+                CodeTypeMember convenienceMethod = gen.CreateMethod(
+                    resource, method, methodNumber, allDecorators, out newlyDeclaredParameterTypes);
                 if (convenienceMethod != null)
                 {
                     resourceClass.Members.Add(convenienceMethod);
+
+                    foreach (CodeTypeMember member in newlyDeclaredParameterTypes)
+                    {
+                        if (resourceClass.Members.FindMemberByName(member.Name) == null)
+                        {
+                            // If this member has not yet been added, add the new type.
+                            // Due to method overloads (AsStream, AsObject) it might have been added already.
+                            resourceClass.Members.Add(member);
+                        }
+                    }
                 }
                 methodNumber++;
             }
@@ -212,7 +224,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             public CodeMemberMethod CreateMethod(IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
-                                                 IEnumerable<IResourceDecorator> allDecorators)
+                                                 IEnumerable<IResourceDecorator> allDecorators,
+                                                 out CodeTypeMemberCollection newlyDeclaredParameterTypes)
             {
                 var member = new CodeMemberMethod();
 
@@ -226,10 +239,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
-
+                newlyDeclaredParameterTypes = new CodeTypeMemberCollection();
                 ResourceCallAddBodyDeclaration(method, member, GetBodyType(method));
-
-                AddAllDeclaredParameters(method, member, assignmentStatments);
+                
+                AddAllDeclaredParameters(method, member, assignmentStatments, newlyDeclaredParameterTypes);
 
                 //System.Collections.Generic.Dictionary<string, string> parameters = 
                 //      new System.Collections.Generic.Dictionary<string, string>();
@@ -307,20 +320,31 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             [VisibleForTestOnly]
             protected void AddAllDeclaredParameters(IMethod method,
                                                     CodeMemberMethod member,
-                                                    CodeStatementCollection assignmentStatments)
+                                                    CodeStatementCollection assignmentStatments,
+                                                    CodeTypeMemberCollection paramTypeDeclarations)
             {
                 // Add All parameters to the method.
-                if (method.Parameters != null && method.Parameters != null)
+                if (method.Parameters != null)
                 {
                     int parameterCount = 1;
                     foreach (var param in method.GetAllParametersSorted())
                     {
+                        CodeTypeDeclaration newDecl;
                         string parameterName = GeneratorUtils.GetParameterName(
                             param, method.Parameters.Keys.Without(param.Name));
-                        member.Parameters.Add(DeclareInputParameter(param, method));
+                        member.Parameters.Add(DeclareInputParameter(param, method, out newDecl));
                         assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                         AddParameterComment(commentCreator, member, param, parameterName);
                         parameterCount++;
+
+                        // If a new type had to be declared for this parameter, add it to the list of types.
+                        // Only add the type if it has not been added it. It might be added multiple times due
+                        // to multiple method overloads (AsObject, AsStream, ..).
+                        if (newDecl != null && paramTypeDeclarations.FindMemberByName(newDecl.Name) == null)
+                        {
+                            // A new type has been declared for this parameter -> Save it.
+                            paramTypeDeclarations.Add(newDecl);
+                        }
                     }
                 }
             }

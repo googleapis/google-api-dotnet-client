@@ -21,6 +21,7 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
@@ -67,7 +68,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Returns the .NET equivalent of the type specified within the paramater
         /// </summary>
-        public static Type GetParameterType(IParameter param)
+        [VisibleForTestOnly]
+        internal static Type GetParameterType(IParameter param)
         {
             param.ThrowIfNull("param");
             
@@ -89,25 +91,47 @@ namespace Google.Apis.Tools.CodeGen.Generator
             }
         }
 
-        protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
-                                                                           IMethod method,
-                                                                           out CodeTypeDeclaration declaration)
+        /// <summary>
+        /// Returns the reference to the type which is described in the parameter. Creates types if necessary.
+        /// </summary>
+        /// <param name="declaration">Newly generated type if required, or null</param>
+        [VisibleForTestOnly]
+        internal static CodeTypeReference GetParameterTypeReference(IParameter param, IMethod method, out CodeTypeDeclaration declaration)
         {
             method.ThrowIfNull("method");
             Type underlyingType = GetParameterType(param);
             CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
+            bool isValueType = underlyingType.IsValueType;
 
             // Check if we need to declare a custom type for this parameter
             declaration = null;
-            if (param.Enum.Count() > 0)
+            if (param.Enum != null && param.Enum.Count() > 0)
             {
+                string proposedName = method.Name + GeneratorUtils.UpperFirstLetter(param.Name);
                 declaration = DecoratorUtil.GenerateEnum(
-                    param.Name, param.Description, param.Enum, param.EnumDescriptions);
+                    proposedName, param.Description, param.Enum, param.EnumDescriptions);
                 paramTypeRef = new CodeTypeReference(declaration.Name);
+                isValueType = true;
             }
 
+            // Check if this is an optional value parameter.
+            if (isValueType && !param.Required)
+            {
+                // An optional value parameter has to be nullable.
+                paramTypeRef.BaseType += "?";
+            }
+
+            return paramTypeRef;
+        }
+
+        protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
+                                                                           IMethod method,
+                                                                           out CodeTypeDeclaration declaration)
+        {
+            CodeTypeReference paramTypeRef = GetParameterTypeReference(param, method, out declaration);
+
             return new CodeParameterDeclarationExpression(
-                underlyingType, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
+                paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
         }
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,
