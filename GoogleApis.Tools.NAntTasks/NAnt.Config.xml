@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project>
+  <property name="nant.settings.currentframework" value="net-3.5" />
+  <property name="target.framework" value="net-3.5" />
+  <property name="assembly.dir" value="${framework::get-assembly-directory(target.framework)}" />
+  
+  <property name="generated.source" value="./Generated/Source" />
+  <property name="generated.binary" value="./Generated/Bin" />
+  <property name="generated.library" value="./Generated/Lib" />
+  <property name="generated.zip" value="./Generated/ZipFiles" />
+
+  <property name="service.buzz" value="buzz|v1|Buzz|V1"/>
+  <property name="service.customsearch" value="customsearch|v1|CustomSearch|V1" />
+  <property name="service.diacritize" value="diacritize|v1|Diacritize|V1" />
+  <property name="service.discovery" value="discovery|v1|Discovery|V1" />
+  <property name="service.latitude" value="latitude|v1|Latitude|V1" />
+  <property name="service.moderator" value="moderator|v1|Moderator|V1" />
+  <property name="service.pagespeedonline" value="pagespeedonline|v1|PageSpeedOnline|V1" />
+  <property name="service.prediction" value="prediction|v1.2|Prediction|V1_2" />
+  <property name="service.shopping" value="shopping|v1|Shopping|V1" />
+  <property name="service.siteverification" value="siteVerification|v1|SiteVerification|V1" />
+  <property name="service.taskqueue" value="taskqueue|v1beta1|TaskQueue|V1Beta1" />
+  <property name="service.tasks" value="tasks|v1|Tasks|V1" />
+  <property name="service.translate" value="translate|v2|Translate|V2" />
+  <property name="service.urlshortener" value="urlshortener|v1|UrlShortener|V1" />
+
+  <property name="google.project.base" value="../Src" />
+</project>

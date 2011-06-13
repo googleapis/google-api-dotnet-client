@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="UpdateNantLibraries" default="update-nant-libraries" basedir=".">
+  <description>Fetches the source of GoogleApi, compiles and copies to nant bin directory.</description>
+
+  <property name="source.dir" value="freshsource" />
+  <property name="hg.source.root" value="${source.dir}/google-api-dotnet-client"/>
+  <property name="hg.contrib.root" value="${source.dir}/google-api-dotnet-client-contrib"/>
+  <property name="hg.contrib.current" value="${hg.contrib.root}/current"/>
+  <property name="fresh.google.nant.path" value="${hg.source.root}/GoogleApis.Tools.NAntTasks" />
+  <property name="generate.build.file" value="Generate.Service.build" />
+
+  <target name="config">
+    <include buildfile="./NAnt.Config.xml" failonerror="true"/>
+  </target>
+  
+  <target name="clean">
+    <delete dir="${source.dir}" />
+  </target>
+  
+  <target name="ensure-source-repository" if="${directory::exists(hg.source.root) == false}">
+    <mkdir dir="${source.dir}" unless="${directory::exists(source.dir)}"/>
+    <exec program="hg" workingdir="${source.dir}" 
+          commandline="clone https://google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client" />
+  </target>
+
+  <target name="ensure-contrib-repository" if="${directory::exists(hg.contrib.root) == false}">
+    <mkdir dir="${source.dir}" unless="${directory::exists(source.dir)}"/>
+    <exec program="hg" workingdir="${source.dir}"
+          commandline="clone https://contrib.google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client-contrib" />
+  </target>
+  
+  <target name="fetch-latest-source" depends="ensure-source-repository">
+    <exec program="hg" workingdir="${hg.source.root}" commandline="checkout default" />
+    <exec program="hg" workingdir="${hg.source.root}" commandline="pull" />
+    <exec program="hg" workingdir="${hg.source.root}" commandline="update --clean --noninteractive" />
+  </target>
+
+  <target name="fetch-latest-contrib" depends="ensure-contrib-repository">
+    <exec program="hg" workingdir="${hg.contrib.root}" commandline="checkout default" />
+    <exec program="hg" workingdir="${hg.contrib.root}" commandline="pull" />
+    <exec program="hg" workingdir="${hg.contrib.root}" commandline="update --clean --noninteractive" />
+  </target>
+
+  <target name="update-nant-tasks-from-fresh" depends="fetch-latest-source">
+    <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}" 
+          target="update-nant-tasks"/>
+  </target>
+
+  <!-- depends="fetch-latest-source" -->
+  <target name="generate-clients-from-fresh" >
+    <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}"
+          target="produce-all-services"/>
+  </target>
+
+  <target name="release-to-contrib" depends="generate-clients-from-fresh, fetch-latest-contrib">
+    <tstamp pattern="yyyy-MM-dd"/>
+    <property name="generated.google.api.dll" value="${fresh.google.nant.path}/${generated.library}/Google.Apis.dll" />
+    <property name="hg.contrib.version" 
+              value="${hg.contrib.root}/${tstamp.date}-${assemblyname::get-version(assemblyname::get-assembly-name(generated.google.api.dll))}" 
+              />
+
+    <delete dir="${hg.contrib.version}" if="${directory::exists(hg.contrib.version)}" />
+    <mkdir dir="${hg.contrib.version}" />
+
+    <copy todir="${hg.contrib.version}" overwrite="false" flatten="false">
+      <fileset basedir="${fresh.google.nant.path}">
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
+      </fileset>
+    </copy>
+    
+    <delete dir="${hg.contrib.current}" if="${directory::exists(hg.contrib.current)}" />
+    <mkdir dir="${hg.contrib.current}" />
+    
+    <copy todir="${hg.contrib.current}" overwrite="false" flatten="false">
+      <fileset basedir="${fresh.google.nant.path}">
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
+      </fileset>
+    </copy>
+  </target>
+</project>
