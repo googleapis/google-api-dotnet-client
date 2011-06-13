@@ -25,21 +25,29 @@ namespace Google.Apis.Discovery
 {
     /// <summary>
     /// IResource represents one resource as difined in a Google Api Discovery Document.
-    /// It can contain more resources and/or methods
+    /// It can contain more resources and/or methods.
     /// </summary>
     /// <seealso cref="IResourceContainer"/>
     /// <seealso cref="IMethod"/>
     public interface IResource : IResourceContainer
     {
+        /// <summary>
+        /// All the methods which belong to this resource.
+        /// </summary>
         Dictionary<string, IMethod> Methods { get; }
+
+        /// <summary>
+        /// Will return the parent of this resource, or null if there is none.
+        /// </summary>
+        IResource Parent { get; }
     }
 
     #region Base Resource
 
     /// <summary>
-    /// Abstract implementation of a resource
+    /// Abstract implementation of a resource.
     /// </summary>
-    internal abstract class BaseResource : IResource
+    public abstract class BaseResource : IResource
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(IResource));
         private readonly JsonDictionary information;
@@ -47,7 +55,7 @@ namespace Google.Apis.Discovery
         private Dictionary<string, IResource> resources;
 
         /// <summary>
-        /// Creates a new resource for the specified discovery version with the specified name and json dictionary
+        /// Creates a new resource for the specified discovery version with the specified name and json dictionary.
         /// </summary>
         internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
@@ -61,10 +69,24 @@ namespace Google.Apis.Discovery
             {
                 throw new ArgumentException("got no valid dictionary");
             }
+
+            // Initialize subresources.
+            if (information.ContainsKey("resources"))
+            {
+                var resourceJson = (JsonDictionary)information["resources"];
+                resources = new Dictionary<string, IResource>();
+                foreach (KeyValuePair<string, object> pair in resourceJson)
+                {
+                    // Create the subresource.
+                    var subResource = (BaseResource)CreateResource(pair);
+                    subResource.Parent = this;
+                    resources.Add(pair.Key, subResource);
+                }
+            }
         }
 
         /// <summary>
-        /// The discovery version used for creating this resource
+        /// The discovery version used for creating this resource.
         /// </summary>
         internal DiscoveryVersion DiscoveryVersion { get; private set; }
 
@@ -84,6 +106,7 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public IResource Parent { get; internal set; }
 
         public IDictionary<string, IResource> Resources
         {
@@ -144,6 +167,23 @@ namespace Google.Apis.Discovery
             return resources;
         }
 
+        /// <summary>
+        /// Retrieves the full name of a resource,
+        /// e.g. TopResource.SubResource.
+        /// </summary>
+        public static string GetFullName(IResource resource)
+        {
+            var parentResource = resource.Parent as IResource;
+            if (parentResource == null)
+            {
+                // Only IResource counts for the resource name, don't include the service itself.
+                return resource.Name;
+            }
+            
+            // Generate the full name using recursion.
+            return GetFullName(parentResource) + "." + resource.Name;
+        }
+
         protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
     }
@@ -194,7 +234,7 @@ namespace Google.Apis.Discovery
     #region MockResource
 
     /// <summary>
-    /// Mock resource for testing purposes
+    /// Mock resource for testing purposes.
     /// </summary>
     [VisibleForTestOnly]
     internal class MockResource : IResource
@@ -204,6 +244,8 @@ namespace Google.Apis.Discovery
         public IDictionary<string, IResource> Resources { get; set; }
 
         public Dictionary<string, IMethod> Methods { get; set; }
+
+        public IResource Parent { get; set; }
 
         public MockResource()
         {

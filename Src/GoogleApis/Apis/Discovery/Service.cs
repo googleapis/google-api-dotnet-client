@@ -21,6 +21,7 @@ using System.Linq;
 using Google.Apis.Json;
 using Google.Apis.JSON;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
 using log4net;
@@ -183,10 +184,35 @@ namespace Google.Apis.Discovery
         /// </summary>
         public IRequest CreateRequest(string resource, string methodName)
         {
-            var method = Resources[resource].Methods[methodName];
+            var method = GetResource(this, resource).Methods[methodName];
             var request = Request.CreateRequest(this, method);
 
             return request;
+        }
+
+        /// <summary>
+        /// Retrieves a resource using the full resource name.
+        /// Example:
+        ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static IResource GetResource(IResourceContainer container, string fullResourceName)
+        {
+            fullResourceName.ThrowIfNull("fullResourceName");
+
+            string[] split = fullResourceName.Split(new[] { '.' }, 2);
+            string topResourceName = split[0];
+            IResource topResource = container.Resources[topResourceName];
+
+            if (split.Length <= 1)
+            {
+                // This is the resource we are looking for.
+                return topResource;
+            }
+            
+            // Retrieve the top resource, and re-run this method on it.
+            string fullSubresourceName = split[1];
+            return GetResource(topResource, fullSubresourceName);
         }
 
         public string SerializeRequest(object obj)
