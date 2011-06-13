@@ -89,7 +89,7 @@ namespace Google.Apis
             bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 
             // If a required parameter is not present, fail.
-            if (param.Required && String.IsNullOrEmpty(currentParam))
+            if (param.IsRequired && String.IsNullOrEmpty(currentParam))
             {
                 return false;
             }

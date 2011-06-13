@@ -39,7 +39,7 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Defines whether this parameter is optional or required.
         /// </summary>
-        bool Required { get; }
+        bool IsRequired { get; }
 
         /// <summary>
         /// Defines whether this parameter can be repeated multiple times.
