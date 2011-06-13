@@ -79,6 +79,9 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
+    <None Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
     <None Include="Client.Release.build" />
     <None Include="buildimpl\Generate.Service.build">
       <SubType>Designer</SubType>
