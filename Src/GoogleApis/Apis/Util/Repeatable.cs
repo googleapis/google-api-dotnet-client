@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// Class which allows you to both pass a single object, as well as an array to a parameter.
+    /// Class which allows you to both pass a single object, as well as an array, as a parameter value.
     /// </summary>
     public class Repeatable<T> : IEnumerable<T>
     {
@@ -45,7 +45,7 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Converts the single element into a repeatable
+        /// Converts the single element into a repeatable.
         /// </summary>
         public static implicit operator Repeatable<T>(T elem)
         {
@@ -60,8 +60,6 @@ namespace Google.Apis.Util
         /// <summary>
         /// Converts a number of elements into a repeatable.
         /// </summary>
-        /// <param name="elem"></param>
-        /// <returns></returns>
         public static implicit operator Repeatable<T>(T[] elem)
         {
             if (elem.Length == 0)
@@ -73,10 +71,8 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Converts a number of elements into a repeatable
+        /// Converts a number of elements into a repeatable.
         /// </summary>
-        /// <param name="elem"></param>
-        /// <returns></returns>
         public static implicit operator Repeatable<T>(List<T> elem)
         {
             return new Repeatable<T>(elem);

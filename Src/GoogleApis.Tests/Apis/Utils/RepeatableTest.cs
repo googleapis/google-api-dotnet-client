@@ -32,18 +32,18 @@ namespace Google.Apis.Tests.Apis.Utils
         [Test]
         public void CreateRepeatableTest()
         {
-            // Reference type test
+            // Reference type test.
             Assert.IsNotNull((Repeatable<string>) "Test");
             Assert.IsNotNull((Repeatable<string>) new[] { "Test1", "Test2" });
             Assert.IsNull((Repeatable<string>) new string[] { });
 
-            // Value type test
+            // Value type test.
             Assert.IsNotNull((Repeatable<int>)0);
             Assert.IsNotNull((Repeatable<int>)1);
             Assert.IsNotNull((Repeatable<int>) new[] { 1, 2, 3 });
             Assert.IsNull((Repeatable<int>) new int[] { });
 
-            // Iteration test
+            // Iteration test.
             Repeatable<int> repeatable = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             int i = 0;
             foreach (int value in repeatable)
@@ -54,7 +54,8 @@ namespace Google.Apis.Tests.Apis.Utils
         }
 
         /// <summary>
-        /// Tests the behaviour when calling a method with a repeatable parameter.
+        /// Tests the implicit/explicit type concversion behaviour of the example method 
+        /// when calling a method with a repeatable parameter.
         /// </summary>
         [Test]
         public void TestImplicitConversion()

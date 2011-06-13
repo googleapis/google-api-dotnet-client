@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
 using System.Text;
 using Google.Apis.Authentication;
@@ -291,11 +290,13 @@ namespace Google.Apis.Requests
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.Required == false && value.IsNullOrEmpty())
+                        if (!parameterDefinition.IsRequired  && value.IsNullOrEmpty())
                         {
                             continue;
                         }
-                        queryParams.Add(parameterDefinition.Name + "=" + value);
+
+                        queryParams.Add(
+                            Uri.EscapeDataString(parameterDefinition.Name) + "=" + Uri.EscapeDataString(value));
                         break;
                     default:
                         throw new NotSupportedException(
@@ -309,7 +310,6 @@ namespace Google.Apis.Requests
             {
                 path += "?" + String.Join("&", queryParams.ToArray());
             }
-
 
             return new Uri(BaseURI, path);
         }

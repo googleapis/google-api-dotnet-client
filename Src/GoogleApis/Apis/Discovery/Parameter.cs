@@ -101,7 +101,7 @@ namespace Google.Apis.Discovery
                 get { return information.GetValueAsNull(ServiceFactory.Pattern) as string; }
             }
 
-            public bool Required
+            public bool IsRequired
             {
                 get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
             }

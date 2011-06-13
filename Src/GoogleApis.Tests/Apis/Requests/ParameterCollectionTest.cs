@@ -44,16 +44,16 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var col = new ParameterCollection();
 
-            // 1. Empty case
+            // 1. Empty case.
             Assert.That(col.Count, Is.EqualTo(0));
             CollectionAssert.AreEqual(new string[0], col.GetAllMatches("test"));
 
-            // 2. One element
+            // 2. One element.
             col.Add("black", "hole");
             Assert.That(col.Count, Is.EqualTo(1));
             CollectionAssert.AreEqual(new[] { "hole" }, col.GetAllMatches("black"));
 
-            // 3. Another element
+            // 3. Another element.
             col.Add("white", "dwarf");
             Assert.That(col.Count, Is.EqualTo(2));
             CollectionAssert.AreEqual(new[] { "hole" }, col.GetAllMatches("black"));

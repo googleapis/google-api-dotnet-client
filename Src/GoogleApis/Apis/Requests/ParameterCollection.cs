@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Google.Apis.Util;
@@ -48,7 +49,7 @@ namespace Google.Apis.Requests
 
         /// <summary>
         /// Tries to find the a key within the specified key value collection. Returns true if the key was found.
-        /// Returns the first matching value.
+        /// If a pair was found the out parameter value will contain the value of that pair.
         /// </summary>
         public bool TryGetValue(string key, out string value)
         {
@@ -101,7 +102,18 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Creates a parameter collection from the specified query string.
+        /// Returns all matches for the specified key. May return an empty enumeration if the key is not present.
+        /// </summary>
+        public IEnumerable<string> this[string key]
+        {
+            get { return GetAllMatches(key); }
+        }
+
+        /// <summary>
+        /// Creates a parameter collection from the specified URL encoded query string.
+        /// Example: 
+        ///     The query string "foo=bar&chocolate=cookie" would result in two parameters (foo and bar)
+        ///     with the values "bar" and "cookie" set.
         /// </summary>
         public static ParameterCollection FromQueryString(string qs)
         {
@@ -113,7 +125,7 @@ namespace Google.Apis.Requests
                 var info = param.Split(new [] {'='}, 2);
                 if (info.Length >= 2)
                 {
-                    collection.Add(info[0], info[1]);
+                    collection.Add(Uri.UnescapeDataString(info[0]), Uri.UnescapeDataString(info[1]));
                 }
             }
 
@@ -121,8 +133,9 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Creates a parameter collectin from the specified dictionary,
-        /// and parses IEnumerable values as parameters with duplicate keys.
+        /// Creates a parameter collection from the specified dictionary.
+        /// If the value is an enumerable, a parameter pair will be added for each value.
+        /// Otherwise the value will be converted into a string using the .ToString() method.
         /// </summary>
         public static ParameterCollection FromDictionary(IDictionary<string, object> dictionary)
         {
@@ -131,7 +144,7 @@ namespace Google.Apis.Requests
             {
                 // Try parsing the value of the pair as an enumerable.
                 var valueAsEnumerable = pair.Value as IEnumerable;
-                if ((pair.Value is string) == false && valueAsEnumerable != null)
+                if (!(pair.Value is string) && valueAsEnumerable != null)
                 {
                     foreach (var value in valueAsEnumerable)
                     {

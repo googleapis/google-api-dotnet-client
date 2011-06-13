@@ -90,7 +90,13 @@ namespace Google.Apis.Tests
             Assert.That(cacheFile.Name.Contains("_"));
 
             // Check the result
-            Assert.IsTrue(cacheFile.Name.StartsWith("http___google.com_$#@!%25^&_()[]+=_____;-"));
+            Assert.IsFalse(cacheFile.Name.Contains("/"));
+            
+            if (Environment.OSVersion.Platform != PlatformID.Unix)
+            {
+                // Don't check this on mono, as mono automatically escapes the file name
+                Assert.IsTrue(cacheFile.Name.StartsWith("http___google.com_$#@!%25^&_()[]+=_____;-"));
+            }
         }
 
         /// <summary>

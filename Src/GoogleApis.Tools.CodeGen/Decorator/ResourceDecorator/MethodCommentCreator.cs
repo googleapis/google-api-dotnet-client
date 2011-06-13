@@ -78,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 strings.Add(param.Name);
             }
 
-            if (param.Required)
+            if (param.IsRequired)
             {
                 strings.Add("Required");
             }
