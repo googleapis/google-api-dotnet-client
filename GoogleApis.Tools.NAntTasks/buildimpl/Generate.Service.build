@@ -14,7 +14,9 @@
   <property name="nant.linux.bin.path" value="/usr/local/shar/NAnt/bin/" />
   <property name="nant.task.path" value="extensions\common\neutral" />
   <property name="nant.lib.path" value="lib\common\neutral" />
-  
+
+  <property name="zip.source.file" value="${generated.zip}/Source.Zip" />
+  <property name="zip.binary.file" value="${generated.zip}/Binary.Zip" />
 
   <!-- excluded 
       ${service.discovery}, // ???
@@ -115,13 +117,15 @@
     </copy>
   </target>
   
-  <target name="produce-all-services" depends="build-google-api" description="Generates, Compiles and Zips all services">
+  <target name="produce-all-services" depends="build-google-api,prep" description="Generates, Compiles and Zips all services">
     <foreach item="String" property="current.service" delim="," in="${service.all}" trim="Both">
       <echo message="foreach ${current.service}" />
       <regex pattern="${current.service.regex.pattern}" input="${current.service}" />
       <echo message="Producing Service ${name} ${version} as class ${namespace}.${classname}" />
       <call target="compile-service" />
     </foreach>
+    <call target="zip-source" cascade="false" />
+    <call target="zip-binary" cascade="false" />
   </target>
 
   <target name="generate-service"
@@ -152,31 +156,36 @@
     </csc>
   </target>
 
-  <target name="produce-binary-zip-service" depends="generate-service">
-    
+  <target name="zip-source">
+    <description>
+      Zips the source, both the checked in source and the generated source
+    </description>
+    <zip zipfile="${zip.source.file}">
+      <fileset basedir="${google.project.root}" prefix="google-api-dotnet-client">
+        <exclude name="**/bin" />
+        <exclude name="**/bin/**" />
+        <exclude name="**/obj" />
+        <exclude name="**/obj/**" />
+        <exclude name="**/${generated.dir}/**" />
+        <exclude name="**/${fresh.source.dir}/**" />
+        <exclude name="**/.hg/**" />
+        <include name="**" />
+      </fileset>
+      <fileset basedir="${generated.source}" prefix="google-api-dotnet-client/GeneratedSource">
+        <include name="**/*.cs" />
+      </fileset>
+    </zip>
   </target>
   
-  <target name="generate-buzz" description="Generates the Buzz Source" depends="build-google-api">
-    <googleapigenerate
-        discoveryurl="https://www.googleapis.com/discovery/v1/apis/buzz/v1/rest"
-        outputfile="${generated.source}/BuzzService.cs"
-        clientnamespace="Google.Apis.Buzz.V1"
-        apiversion="v1"
-        baseurl="https://www.googleapis.com/"
-        />
-  </target>
-  
-  <target name="compile-buzz" 
-          description="Generates then compiles the Buzz Service" 
-          depends="generate-buzz">
-    <mkdir dir="${generated.binary}/BuzzService"/>
-    <csc target="library"
-         output="${generated.binary}/BuzzService/Google.Apis.Buzz.V1.dll"
-         debug="false">
-      <sources>
-        <include name="${generated.source}/BuzzService.cs" />
-      </sources>
-      <references refid="generated.code.dependancies" />
-    </csc>
+  <target name="zip-binary" depends="generate-service">
+    <description>
+      Zips the source, both the checked in source and the generated source
+    </description>
+    <zip zipfile="${zip.binary.file}">
+      <fileset prefix="google-api-dotnet-client/binary">
+        <include name="${generated.library}/**" />
+        <include name="${generated.binary}/**" />
+      </fileset>
+    </zip>
   </target>
 </project>
