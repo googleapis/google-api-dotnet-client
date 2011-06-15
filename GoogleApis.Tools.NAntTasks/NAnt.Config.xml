@@ -3,11 +3,12 @@
   <property name="nant.settings.currentframework" value="net-3.5" />
   <property name="target.framework" value="net-3.5" />
   <property name="assembly.dir" value="${framework::get-assembly-directory(target.framework)}" />
-  
-  <property name="generated.source" value="./Generated/Source" />
-  <property name="generated.binary" value="./Generated/Bin" />
-  <property name="generated.library" value="./Generated/Lib" />
-  <property name="generated.zip" value="./Generated/ZipFiles" />
+
+  <property name="generated.dir" value="./Generated" />
+  <property name="generated.source" value="${generated.dir}/Source" />
+  <property name="generated.binary" value="${generated.dir}/Bin" />
+  <property name="generated.library" value="${generated.dir}/Lib" />
+  <property name="generated.zip" value="${generated.dir}/ZipFiles" />
 
   <property name="service.buzz" value="buzz|v1|Buzz|V1"/>
   <property name="service.customsearch" value="customsearch|v1|CustomSearch|V1" />
@@ -25,4 +26,7 @@
   <property name="service.urlshortener" value="urlshortener|v1|UrlShortener|V1" />
 
   <property name="google.project.base" value="../Src" />
+  <property name="google.project.root" value="../."/>
+
+  <property name="fresh.source.dir" value="freshsource" />
 </project>
