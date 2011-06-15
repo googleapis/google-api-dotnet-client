@@ -54,7 +54,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var decorator = new StandardSchemaCommentDecorator();
 
-            Assert.Throws(typeof(ArgumentNullException), () => decorator.CreateComment((JsonSchema) null));
+            // Confirm that the decorator validates parameters
+            Assert.Throws(typeof(ArgumentNullException), () => decorator.CreateComment(null));
         }
 
         /// <summary>

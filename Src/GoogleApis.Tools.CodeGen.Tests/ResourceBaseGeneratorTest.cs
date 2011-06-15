@@ -125,8 +125,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
             // Enumeration
             param.Required = true;
             param.ValueType = "string";
-            param.Enum = new[] { "TestA", "TestB" };
-            param.EnumDescriptions = new[] { "DescA", "DescB" };
+            param.EnumValues = new[] { "TestA", "TestB" };
+            param.EnumValueDescriptions = new[] { "DescA", "DescB" };
             refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
             Assert.IsNotNull(decl);
             Assert.AreEqual(decl.Name, refType.BaseType);
@@ -135,8 +135,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
             // Optional enumeration
             param.Required = false;
             param.ValueType = "string";
-            param.Enum = new[] { "TestA", "TestB" };
-            param.EnumDescriptions = new[] { "DescA", "DescB" };
+            param.EnumValues = new[] { "TestA", "TestB" };
+            param.EnumValueDescriptions = new[] { "DescA", "DescB" };
             refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
             Assert.IsNotNull(decl);
             Assert.AreEqual(decl.Name + "?", refType.BaseType);

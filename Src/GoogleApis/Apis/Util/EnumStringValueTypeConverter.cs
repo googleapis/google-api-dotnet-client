@@ -22,7 +22,7 @@ using System.Reflection;
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// This enum converter will take the StringValue attribute into account when converting a type into a string.
+    /// which will convert the type into the string specified in this attribute.
     /// </summary>
     public class EnumStringValueTypeConverter : TypeConverter
     {
@@ -42,7 +42,6 @@ namespace Google.Apis.Util
                                          Type destinationType)
         {
             Type enumType = value.GetType();
-
             if (!CanConvertTo(context, destinationType) || !CanConvertFrom(context, enumType))
             {
                 return base.ConvertTo(context, culture, value, destinationType);
@@ -54,7 +53,7 @@ namespace Google.Apis.Util
             // Check if this element has a StringValueAttribute.
             StringValueAttribute attribute = field.GetCustomAttribute<StringValueAttribute>();
 
-            // If it has an attribute, then return the specified text; otherwise use the default overload
+            // If it has an attribute, then return the specified text, otherwise use the default overload.
             return attribute != null ? attribute.Text : value.ToString();
         }
     }

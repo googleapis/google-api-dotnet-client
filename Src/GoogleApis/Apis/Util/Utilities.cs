@@ -264,7 +264,7 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Retrieves the underlying type if the specified is a Nullable, or the type itself otherwise.
+        /// Retrieves the underlying type if the specified type is a Nullable, or the type itself otherwise.
         /// </summary>
         public static Type GetNonNullableType(Type type)
         {
@@ -273,7 +273,18 @@ namespace Google.Apis.Util
                 return type; // Not a Nullable.
             }
 
-            // Type is a Nullable.
+            // First: Find the Nullable type.
+            while (!(type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>))))
+            {
+                type = type.BaseType;
+
+                if (type == null)
+                {
+                    return null;
+                }
+            }
+
+            // Return the type which is encapsulated by the Nullable.
             return type.GetGenericArguments()[0];
         }
 

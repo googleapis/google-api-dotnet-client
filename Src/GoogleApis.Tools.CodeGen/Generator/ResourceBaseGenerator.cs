@@ -96,20 +96,24 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         /// <param name="declaration">Newly generated type if required, or null</param>
         [VisibleForTestOnly]
-        internal static CodeTypeReference GetParameterTypeReference(IParameter param, IMethod method, out CodeTypeDeclaration declaration)
+        internal static CodeTypeReference GetParameterTypeReference(IParameter param,
+                                                                    IMethod method,
+                                                                    out CodeTypeDeclaration declaration)
         {
+            declaration = null;
             method.ThrowIfNull("method");
             Type underlyingType = GetParameterType(param);
             CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
             bool isValueType = underlyingType.IsValueType;
 
-            // Check if we need to declare a custom type for this parameter
-            declaration = null;
-            if (param.Enum != null && param.Enum.Count() > 0)
+            // Check if we need to declare a custom type for this parameter. 
+            // If the parameter is an enum, we will have to generate the enumeration first
+            if (param.EnumValues != null && param.EnumValues.Count() > 0)
             {
+                // Naming scheme: MethodnameParametername
                 string proposedName = method.Name + GeneratorUtils.UpperFirstLetter(param.Name);
                 declaration = DecoratorUtil.GenerateEnum(
-                    proposedName, param.Description, param.Enum, param.EnumDescriptions);
+                    proposedName, param.Description, param.EnumValues, param.EnumValueDescriptions);
                 paramTypeRef = new CodeTypeReference(declaration.Name);
                 isValueType = true;
             }
@@ -118,12 +122,15 @@ namespace Google.Apis.Tools.CodeGen.Generator
             if (isValueType && !param.Required)
             {
                 // An optional value parameter has to be nullable.
-                paramTypeRef.BaseType += "?";
+                paramTypeRef = new CodeTypeReference(paramTypeRef.BaseType + "?");
             }
 
             return paramTypeRef;
         }
 
+        /// <summary>
+        /// Creates a declaration for the specified parameter.
+        /// </summary>
         protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
                                                                            IMethod method,
                                                                            out CodeTypeDeclaration declaration)

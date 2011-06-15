@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -50,6 +51,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
+            // Create methods.
+            var newMembers = new CodeTypeMemberCollection();
             ResourceGenerator gen = new ResourceGenerator(className, commentCreator);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values)
@@ -59,20 +62,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     resource, method, methodNumber, allDecorators, out newDecls);
                 if (convenienceMethod != null)
                 {
-                    resourceClass.Members.Add(convenienceMethod);
-
-                    foreach (CodeTypeMember member in newDecls)
-                    {
-                        if (resourceClass.Members.FindMemberByName(member.Name) == null)
-                        {
-                            // If this member has not yet been added, add the new type.
-                            // Due to method overloads (AsStream, AsObject) it might have been added already.
-                            resourceClass.Members.Add(member);
-                        }
-                    }
+                    newMembers.Add(convenienceMethod);
+                    newMembers.AddRange(newDecls);
                 }
                 methodNumber++;
             }
+
+            // Add the new methods to the existing class.
+            DecoratorUtil.AddMembersToClass(resourceClass, newMembers);
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -126,7 +123,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             {
                 paramTypeDeclarations = new CodeTypeMemberCollection();
 
-                if (method.HasOptionalParameters() == false)
+                if (!method.HasOptionalParameters())
                 {
                     // Wrong decorator. This one is only for methods with optional parameters
                     return null;

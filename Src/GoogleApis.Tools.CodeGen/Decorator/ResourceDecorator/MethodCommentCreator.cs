@@ -102,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 strings.Add("Maximum value of " + param.Maximum);
             }
 
-            IList<string> enumValues = param.Enum != null ? param.Enum.ToList() : null;
+            IList<string> enumValues = param.EnumValues != null ? param.EnumValues.ToList() : null;
             if (enumValues.IsNotNullOrEmpty())
             {
                 StringBuilder sb = new StringBuilder();
