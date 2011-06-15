@@ -129,13 +129,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         [Test]
         public void CreateSummaryCommentEmptyCommentTest()
         {
-            var result = DecoratorUtil.CreateSummaryComment("");
             // Test an empty comment.
+            var result = DecoratorUtil.CreateSummaryComment("");
             Assert.IsNotNull(result);
             Assert.IsEmpty(result);
 
-            result = DecoratorUtil.CreateSummaryComment(null);
             // Test a null comment.
+            result = DecoratorUtil.CreateSummaryComment(null);
             Assert.IsNotNull(result);
             Assert.IsEmpty(result);
         }
@@ -187,7 +187,36 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         }
 
         /// <summary>
-        /// Tests the GetEnumerablePairs method
+        /// Tests the AddMembersToClass method.
+        /// </summary>
+        [Test]
+        public void AddMembersToClassTest()
+        {
+            var decl = new CodeTypeDeclaration();
+            var memberA = new CodeTypeMember() { Name = "MemberA" };
+            var memberB = new CodeTypeMember() { Name = "MemberB" };
+            var memberC = new CodeTypeMember() { Name = "MemberA" };
+
+            // Test parameter validation
+            Assert.Throws<ArgumentNullException>(
+                () => DecoratorUtil.AddMembersToClass(null, new CodeTypeMemberCollection()));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.AddMembersToClass(decl, null));
+
+            // Add a single element.
+            DecoratorUtil.AddMembersToClass(decl, new CodeTypeMemberCollection(new[] { memberA }));
+            Assert.AreEqual(1, decl.Members.Count);
+
+            // Confirm that this element is skipped when adding it twice.
+            DecoratorUtil.AddMembersToClass(decl, new CodeTypeMemberCollection(new[] { memberA }));
+            Assert.AreEqual(1, decl.Members.Count);
+
+            // Add the remaining elements
+            DecoratorUtil.AddMembersToClass(decl, new CodeTypeMemberCollection(new[] { memberA, memberB, memberC }));
+            Assert.AreEqual(2, decl.Members.Count);
+        }
+
+        /// <summary>
+        /// Tests the GetEnumerablePairs method.
         /// </summary>
         [Test]
         public void GetEnumerablePairsTest()

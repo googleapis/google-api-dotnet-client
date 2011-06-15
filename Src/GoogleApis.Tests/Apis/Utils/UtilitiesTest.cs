@@ -351,7 +351,7 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.Throws<ArgumentException>(() => "test".Replace("_"));
         }
         
-    [TypeConverter(typeof(EnumStringValueTypeConverter ))]
+    [TypeConverter(typeof(EnumStringValueTypeConverter))]
         private enum MockEnum
         {
             [StringValue("Test")]

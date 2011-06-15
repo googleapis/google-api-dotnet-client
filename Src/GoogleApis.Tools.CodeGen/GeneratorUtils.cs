@@ -399,7 +399,7 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
-        /// Returns a safe and appropriate enum name for the specified enumeration
+        /// Returns a safe and appropriate enumeration name for the specified enumeration.
         /// </summary>
         public static string GetEnumName(string enumName, IEnumerable<string> wordsUsedInContext)
         {
@@ -408,7 +408,15 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
-        /// Returns a safe and appropriate enum value for the specified enumeration
+        /// Returns a safe and appropriate enumeration name for the specified enumeration.
+        /// </summary>
+        public static string GetEnumName(string enumName)
+        {
+            return GetSafeMemberName(new string[0], TargetCase.ToUpper, enumName, enumName + "Enum");
+        }
+
+        /// <summary>
+        /// Returns a safe and appropriate name for an enumeration value.
         /// </summary>
         public static string GetEnumValueName(string enumValue, IEnumerable<string> wordsUsedInContext)
         {

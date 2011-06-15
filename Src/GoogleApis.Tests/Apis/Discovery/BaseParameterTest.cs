@@ -56,9 +56,9 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(true, impl.Required);
             Assert.AreEqual(true, impl.Repeated);
             Assert.AreEqual("A default value", impl.DefaultValue);
-            MoreAsserts.ContentsEqualAndInOrder(new List<string> { "atom", "json" }, impl.Enum);
+            MoreAsserts.ContentsEqualAndInOrder(new List<string> { "atom", "json" }, impl.EnumValues);
             MoreAsserts.ContentsEqualAndInOrder(
-                new List<string> { "atom are small particals", "json is my friend" }, impl.EnumDescriptions);
+                new List<string> { "atom are small particals", "json is my friend" }, impl.EnumValueDescriptions);
             Assert.AreEqual("53", impl.Maximum);
             Assert.AreEqual("43", impl.Minimum);
             Assert.AreEqual("[1-9][0-9]*", impl.Pattern);

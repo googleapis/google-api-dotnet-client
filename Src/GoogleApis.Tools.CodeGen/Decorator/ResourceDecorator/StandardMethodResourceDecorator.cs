@@ -77,6 +77,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
+            var newMembers = new CodeTypeMemberCollection();
             var gen = new ResourceGenerator(
                 className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix, commentCreator);
             int methodNumber = 1;
@@ -88,20 +89,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     resource, method, methodNumber, allDecorators, out newlyDeclaredParameterTypes);
                 if (convenienceMethod != null)
                 {
-                    resourceClass.Members.Add(convenienceMethod);
-
-                    foreach (CodeTypeMember member in newlyDeclaredParameterTypes)
-                    {
-                        if (resourceClass.Members.FindMemberByName(member.Name) == null)
-                        {
-                            // If this member has not yet been added, add the new type.
-                            // Due to method overloads (AsStream, AsObject) it might have been added already.
-                            resourceClass.Members.Add(member);
-                        }
-                    }
+                    newMembers.Add(convenienceMethod);
+                    newMembers.AddRange(newlyDeclaredParameterTypes);
                 }
                 methodNumber++;
             }
+
+            // Add all new members.
+            DecoratorUtil.AddMembersToClass(resourceClass, newMembers);
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -337,9 +332,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                         AddParameterComment(commentCreator, member, param, parameterName);
                         parameterCount++;
 
-                        // If a new type had to be declared for this parameter, add it to the list of types.
-                        // Only add the type if it has not been added it. It might be added multiple times due
-                        // to multiple method overloads (AsObject, AsStream, ..).
+                        // If a new type had to be declared for this parameter,
+                        // then add it to the list of newly declared types.
                         if (newDecl != null && paramTypeDeclarations.FindMemberByName(newDecl.Name) == null)
                         {
                             // A new type has been declared for this parameter -> Save it.

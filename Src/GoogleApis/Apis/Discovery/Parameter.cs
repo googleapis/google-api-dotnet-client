@@ -78,7 +78,7 @@ namespace Google.Apis.Discovery
             /// <summary>
             /// Returns a set of enum value descriptions
             /// </summary>
-            public IEnumerable<string> EnumDescriptions
+            public IEnumerable<string> EnumValueDescriptions
             {
                 get
                 {
@@ -139,7 +139,7 @@ namespace Google.Apis.Discovery
                 get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
             }
 
-            public IEnumerable<string> Enum
+            public IEnumerable<string> EnumValues
             {
                 get
                 {

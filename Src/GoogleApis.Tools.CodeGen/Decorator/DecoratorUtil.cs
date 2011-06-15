@@ -126,8 +126,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Escapes a string for use in a XML comment.
         /// </summary>
-        /// <param name="description"></param>
-        /// <returns></returns>
         public static string XmlEscapeComment(string description)
         {
             return SecurityElement.Escape(description);
@@ -139,27 +137,33 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <param name="proposedName">The proposed name of the enumeration.</param>
         /// <param name="description">Description of the enum class.</param>
         /// <param name="entries">Enum entries in the form (name, comment/description).</param>
-        /// <returns>Generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(string proposedName, string description,
-                                                          IEnumerable<KeyValuePair<string, string>> entries)
+        /// <returns>The generated enum type.</returns>
+        public static CodeTypeDeclaration GenerateEnum(string proposedName,
+                                                       string description,
+                                                       IEnumerable<KeyValuePair<string, string>> entries)
         {
-            // Create a safe enum name
-            string name = GeneratorUtils.GetEnumName(proposedName, new string[0]);
+            // Create a safe enum name.
+            string name = GeneratorUtils.GetEnumName(proposedName);
 
-            // Create the enum type
+            // Create the enum type.
             var decl = new CodeTypeDeclaration(name);
             decl.IsEnum = true;
 
-            // Add the [TypeConverter(typeof(EnumStringValueTypeConverter))] attribute.
+            // Get the EnumStringValueTypeConverter type.
             Type converterType = typeof(EnumStringValueTypeConverter);
+
+            // [TypeConverter(..)]
             var typeConvAttribute = new CodeAttributeDeclaration(
                 new CodeTypeReference(typeof(TypeConverterAttribute)));
+
+            // .. typeof(EnumStringValueTypeConverter) ..
             typeConvAttribute.Arguments.Add(new CodeAttributeArgument(new CodeTypeOfExpression(converterType)));
             decl.CustomAttributes.Add(typeConvAttribute);
 
             foreach (KeyValuePair<string, string> enumEntry in entries)
             {
-                var usedNames = from CodeTypeMember m in decl.Members select m.Name;
+                // Consider the names of all members in the current type as used words.
+                IEnumerable<string> usedNames = from CodeTypeMember m in decl.Members select m.Name;
                 string safeName = GeneratorUtils.GetEnumValueName(enumEntry.Key, usedNames);
                 var member = new CodeMemberField(typeof(int), safeName);
 
@@ -198,9 +202,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             return GenerateEnum(proposedName, description, GetEnumerablePairs(enumValues, enumDescriptions));
         }
     
+        /// <summary>
+        /// Returns a collection of joined keys and values as KeyValuePairs
+        /// </summary>
         [VisibleForTestOnly]
         internal static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
-                                                                                IEnumerable<V> values)
+                                                                                 IEnumerable<V> values)
         {
             keys.ThrowIfNull("keys");
             values.ThrowIfNull("values");
@@ -217,6 +224,33 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext())
             {
                 yield return new KeyValuePair<K, V>(keysEnumerator.Current, valuesEnumerator.Current);
+            }
+        }
+
+        /// <summary>
+        /// Adds the specified members to the given class.
+        /// Skips elements which already have been added.
+        /// </summary>
+        public static void AddMembersToClass(CodeTypeDeclaration classDeclaration,
+                                             CodeTypeMemberCollection membersToAdd)
+        {
+            classDeclaration.ThrowIfNull("classDecl");
+            membersToAdd.ThrowIfNull("membersToAdd");
+
+            // Create a list of all used names within the current scope.
+            IEnumerable<string> query = from CodeTypeMember m in classDeclaration.Members select m.Name;
+            List<string> usedNames = new List<string>(query);
+
+            // Create methods.
+            foreach (CodeTypeMember member in membersToAdd)
+            {
+                if (!usedNames.Contains(member.Name))
+                {
+                    // If this member has not yet been added, add the new type.
+                    // Due to method overloads (AsStream, AsObject) it might have been added already.
+                    usedNames.Add(member.Name);
+                    classDeclaration.Members.Add(member);
+                }
             }
         }
     }
