@@ -23,6 +23,7 @@ using System.Reflection;
 using System.Text;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen;
+using Google.Apis.Tools.CodeGen.Generator;
 using log4net;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -187,7 +188,10 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
             code.AppendLine("Generated.DiscoveryService service = new Generated.DiscoveryService();");
             code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List(null, null, true);");
 
-            code.AppendLine("foreach (Generated.Data.DirectoryList.NestedClass1 item in list.Items) {");
+            code.AppendLine(
+                string.Format(
+                    "foreach (Generated.Data.DirectoryList.Items{0} item in list.Items) {{",
+                    ImplementationDetailsGenerator.PropertyClassSuffix));
             {
                 code.AppendLine("yield return new string[]");
                 code.AppendLine("   { item.Title, item.Name, item.Version };");

@@ -25,6 +25,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
     /// </summary>
     public sealed class MockSchema : ISchema
     {
+        public MockSchema()
+        {
+            SchemaDetails = new JsonSchema();
+        }
+
         #region ISchema Members
 
         public string Name { get; set; }

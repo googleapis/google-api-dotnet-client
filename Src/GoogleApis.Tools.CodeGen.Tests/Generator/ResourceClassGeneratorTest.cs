@@ -89,8 +89,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Methods = new Dictionary<string, IMethod>
-                                   { { "TestMethod", new MockMethod { Name = "TestMethod", HttpMethod = "GET" } } };
+            resource.Methods.Add("TestMethod", new MockMethod { Name = "TestMethod", HttpMethod = "GET"});
 
             // Run the generator.
             var counter = new CountingDecorator();
@@ -114,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Resources = new Dictionary<string, IResource> { { "Sub", subresource } };
+            resource.Resources .Add(new KeyValuePair<string, IResource>("Sub", subresource));
 
             // Run the generator.
             var counter = new CountingDecorator();

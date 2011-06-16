@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactoryTest.cs" />
     <Compile Include="Apis\Requests\MockParameter.cs" />
@@ -129,6 +130,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
     <None Include="GoogleApisTests.xml" />
   </ItemGroup>
   <ItemGroup />

@@ -163,6 +163,49 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeTypeMember"/> with a 
+        /// name that matches the passed in name - or null if no match is found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static CodeTypeMember FindMemberByName(this CodeTypeMemberCollection coll, string name)
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+
+            foreach (CodeTypeMember member in coll)
+            {
+                if (member.Name == name)
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeTypeDeclaration"/> with a 
+        /// name that matches the passed in name - or null if no match is found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static CodeTypeDeclaration FindTypeMemberByName(this CodeTypeMemberCollection coll, string name)
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+
+            foreach (CodeTypeMember member in coll)
+            {
+                var field = member as CodeTypeDeclaration;
+                if (field != null && field.Name == name)
+                {
+                    return field;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
         /// name that matches the passed in name - or Null if no match found.
         /// </summary>
