@@ -24,19 +24,19 @@ namespace Google.Apis.Util
     /// </summary>
     public class Repeatable<T> : IEnumerable<T>
     {
-        private readonly IEnumerator<T> enumerator;
+        private readonly IList<T> values;
 
         /// <summary>
         /// Creates a repeatable value.
         /// </summary>
         public Repeatable(IEnumerable<T> enumeration)
         {
-            enumerator = enumeration.GetEnumerator();
+            values = new List<T>(enumeration).AsReadOnly();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return enumerator;
+            return values.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

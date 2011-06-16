@@ -288,13 +288,18 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
             {
                 var message = new StringBuilder();
                 message.AppendLine(
-                    string.Format("Failed to generate {0} out of {1} apis:", failedAPIs.Count, apis.Length));
+                    string.Format("Failed to generate {0} out of {1} APIs:", failedAPIs.Count, apis.Length));
                 message.AppendLine(String.Join(", ", failedAPIs.ToArray()));
                 message.AppendLine();
-                
-                foreach (Exception ex in exceptions)
+
+                int i = 0;
+                int j = 0;
+                var msgs = failedAPIs.Join(
+                    exceptions, str => i++, ex => j++, (str, ex) => new { API = str, Exception = ex });
+                foreach (var entries in msgs)
                 {
-                    message.AppendLine(ex.ToString());
+                    message.AppendLine(string.Format("API '{0}' failed with:", entries.API));
+                    message.AppendLine(string.Format("   {0}", entries.Exception));
                 }
 
                 Assert.Fail(message.ToString());
