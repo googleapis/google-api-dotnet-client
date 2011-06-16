@@ -17,9 +17,9 @@ using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
-using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
+using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
@@ -47,22 +47,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         }
 
         /// <summary>
-        /// Test the decorator
-        /// </summary>
-        [Test]
-        public void DecorateClassTest()
-        {
-            var decorator = new StandardResourceNameResourceDecorator();
-            var decoratedClass = CreateDecoratedResourceClass(decorator);
-
-            Assert.AreEqual(1, decoratedClass.Members.Count);
-            Assert.IsInstanceOf(typeof(CodeMemberField), decoratedClass.Members[0]);
-            Assert.AreEqual(ResourceBaseGenerator.ResourceNameConst, decoratedClass.Members[0].Name);
-
-            CheckCompile(decoratedClass, false, "Failed To Compile StandardResourceNameResourceDecorator");
-        }
-
-        /// <summary>
         /// Tests the abilitiy of this decorator to generate a correct named subresource.
         /// </summary>
         [Test]
@@ -76,14 +60,30 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             subResource.Parent = topResource;
 
             var decorator = new StandardResourceNameResourceDecorator();
-            var decoratedClass = new CodeTypeDeclaration() { Name = "Sub"};
+            var decoratedClass = new CodeTypeDeclaration { Name = "Sub" };
             decorator.DecorateClass(
                 subResource, "Sub", decoratedClass, null, ServiceClassName, new IResourceDecorator[0]);
 
             Assert.AreEqual(1, decoratedClass.Members.Count);
             Assert.IsInstanceOf(typeof(CodeMemberField), decoratedClass.Members[0]);
             var resourceField = (CodeMemberField) decoratedClass.Members[0];
-            Assert.AreEqual("Top.Sub", ((CodePrimitiveExpression)resourceField.InitExpression).Value);
+            Assert.AreEqual("Top.Sub", ((CodePrimitiveExpression) resourceField.InitExpression).Value);
+
+            CheckCompile(decoratedClass, false, "Failed To Compile StandardResourceNameResourceDecorator");
+        }
+
+        /// <summary>
+        /// Test the decorator
+        /// </summary>
+        [Test]
+        public void DecorateClassTest()
+        {
+            var decorator = new StandardResourceNameResourceDecorator();
+            var decoratedClass = CreateDecoratedResourceClass(decorator);
+
+            Assert.AreEqual(1, decoratedClass.Members.Count);
+            Assert.IsInstanceOf(typeof(CodeMemberField), decoratedClass.Members[0]);
+            Assert.AreEqual(ResourceBaseGenerator.ResourceNameConst, decoratedClass.Members[0].Name);
 
             CheckCompile(decoratedClass, false, "Failed To Compile StandardResourceNameResourceDecorator");
         }

@@ -298,17 +298,21 @@ namespace Google.Apis.Tests.Apis.Discovery
             container.Resources.Clear();
 
             // Create json.
+            var subJson = new JsonDictionary();
+            subJson.Add("resources", new JsonDictionary { { "Grandchild", new JsonDictionary() } });
             var topJson = new JsonDictionary();
-            topJson.Add("resources", new JsonDictionary() { { "Sub", new JsonDictionary() } });
+            topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
 
             // Create the resource hierachy.
             var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
             var subResource = topResource.Resources["Sub"];
+            var grandchildResource = subResource.Resources["Grandchild"];
             container.Resources.Add("Top", topResource); 
 
             // Check the generated full name.
             Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
             Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
+            Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));
         }
     }
 }
