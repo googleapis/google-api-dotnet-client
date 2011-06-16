@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -78,21 +79,29 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var declaration = new CodeTypeDeclaration();
             var schema = new MockSchema { SchemaDetails = new JsonSchema() };
             var internalClassProvider = new ObjectInternalClassProvider();
+            var implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>();
+            implDetails.Add(schema.SchemaDetails, new SchemaImplementationDetails());
 
             // Test edge cases
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.DecorateClass(null, schema, null, internalClassProvider));
+                () => decorator.DecorateClass(null, schema, implDetails, internalClassProvider));
             Assert.Throws(
                 typeof(ArgumentNullException),
-                () => decorator.DecorateClass(declaration, null, null, internalClassProvider));
+                () => decorator.DecorateClass(declaration, null, implDetails, internalClassProvider));
+            Assert.Throws(
+                typeof(ArgumentNullException),
+                () => decorator.DecorateClass(declaration, schema, null, internalClassProvider));
 
-            decorator.DecorateClass(declaration, schema, null, internalClassProvider);
+            decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
             Assert.AreEqual(declaration.BaseTypes.Count, 0);
             Assert.AreEqual(declaration.Members.Count, 0);
 
             // Test simple functionality
-            var implDetails = new SchemaImplementationDetails { IsMethodResult = true };
+            var details = new SchemaImplementationDetails { IsMethodResult = true };
+            implDetails = new Dictionary<JsonSchema, SchemaImplementationDetails>
+                                  { { schema.SchemaDetails, details } };
+
             decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
 
             Assert.AreEqual(declaration.BaseTypes.Count, 1);
