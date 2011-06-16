@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using NUnit.Framework;
 
@@ -30,16 +31,40 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
     [TestFixture]
     public class ResourceClassGeneratorTest
     {
-        private static ResourceContainerGenerator ConstructContainerGenerator()
+        private class CountingDecorator : IResourceDecorator
         {
-            return new ResourceContainerGenerator(GoogleServiceGenerator.StandardResourceContainerDecorator);   
+            public int Count { get; set; }
+
+            #region IResourceDecorator Members
+
+            public void DecorateClass(IResource resource,
+                                      string className,
+                                      CodeTypeDeclaration resourceClass,
+                                      ResourceClassGenerator generator,
+                                      string serviceClassName,
+                                      IEnumerable<IResourceDecorator> allDecorators)
+            {
+                Count++;
+            }
+
+            public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+
+            public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+
+            #endregion
         }
 
-        private ResourceClassGenerator ConstructGenerator(IResource resource)
+        private static ResourceContainerGenerator ConstructContainerGenerator()
+        {
+            return new ResourceContainerGenerator(GoogleServiceGenerator.StandardResourceContainerDecorator);
+        }
+
+        private ResourceClassGenerator ConstructGenerator(IResource resource,
+                                                          params IResourceDecorator[] additionalDecorators)
         {
             return new ResourceClassGenerator(
-                resource, "TestService", GoogleServiceGenerator.GetSchemaAwareResourceDecorators("Generated.Data"),
-                ConstructContainerGenerator(), new string[0]);
+                resource, "TestService", additionalDecorators, ConstructContainerGenerator(),
+                Enumerable.Empty<string>());
         }
 
         /// <summary>
@@ -48,8 +73,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         [Test]
         public void ConstructTest()
         {
-            Assert.IsNotNull(ConstructContainerGenerator());
-            Assert.IsNotNull(ConstructGenerator(new MockResource() { Name = "TestResource" }));
+            Assert.DoesNotThrow(() => ConstructContainerGenerator());
+            Assert.DoesNotThrow(
+                () =>
+                ConstructGenerator(
+                    new MockResource { Name = "TestResource" }, new CountingDecorator(),
+                    new SubresourceClassDecorator()));
         }
 
         /// <summary>
@@ -60,18 +89,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Methods = new Dictionary<string, IMethod>()
-                                   { { "TestMethod", new MockMethod() { Name = "TestMethod", HttpMethod = "GET" } } };
+            resource.Methods = new Dictionary<string, IMethod>
+                                   { { "TestMethod", new MockMethod { Name = "TestMethod", HttpMethod = "GET" } } };
 
             // Run the generator.
-            var generator = ConstructGenerator(resource);
+            var counter = new CountingDecorator();
+            var generator = ConstructGenerator(resource, counter, new SubresourceClassDecorator());
             CodeTypeDeclaration clss = generator.CreateClass();
             Assert.IsNotNull(clss);
             Assert.AreEqual("TestResource", clss.Name);
 
             // Confirm that decorators have run.
-            // The exact results are checked in separate tests of the decorators.
-            Assert.Greater(clss.Members.Count, 0);
+            Assert.AreEqual(1, counter.Count);
         }
 
         /// <summary>
@@ -85,12 +114,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Resources = new Dictionary<string, IResource>() { { "Sub", subresource } };
+            resource.Resources = new Dictionary<string, IResource> { { "Sub", subresource } };
 
             // Run the generator.
-            var generator = ConstructGenerator(resource);
+            var counter = new CountingDecorator();
+            var generator = ConstructGenerator(resource, counter, new SubresourceClassDecorator());
             CodeTypeDeclaration clss = generator.CreateClass();
             Assert.IsNotNull(clss);
+            Assert.AreEqual(2, counter.Count);
 
             // Confirm that a subclass has been added.
             var subtypes = from CodeTypeMember m in clss.Members where (m is CodeTypeDeclaration) select m;

@@ -25,7 +25,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
     /// <summary>
-    /// This Decorator adds subresources as nested classes to the current resource.
+    /// This decorator adds subresources as nested classes to the current resource.
     /// 
     /// Example:
     ///   public class TopResource {
