@@ -44,4 +44,5 @@ GoogleApis.Tools.NAntTasks/genlib/**
 GoogleApis.Tools.NAntTasks/genbin/**
 GoogleApis.Tools.NAntTasks/gensrc/**
 GoogleApis.Tools.NAntTasks/genzip/**
+GoogleApis.Tools.NAntTasks/Generated/**
 GoogleApis.Tools.NAntTasks/freshsource/**
