@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
@@ -33,6 +34,10 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void ConstructTest()
         {
+            Assert.Throws<ArgumentException>(
+                () => new ResourceV1_0(new KeyValuePair<string, object>("Test", null)));
+            Assert.Throws<ArgumentNullException>(
+                () => new ResourceV1_0(new KeyValuePair<string, object>(null, new JsonDictionary())));
             Assert.DoesNotThrow(
                 () => new ResourceV1_0(new KeyValuePair<string, object>("TestResource", new JsonDictionary())));
         }
@@ -60,16 +65,20 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void FullNameTest()
         {
+            var subJson = new JsonDictionary();
+            subJson.Add("resources", new JsonDictionary { { "Grandchild", new JsonDictionary() } });
             var topJson = new JsonDictionary();
-            topJson.Add("resources", new JsonDictionary() { { "Sub", new JsonDictionary() } });
+            topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
 
             // Create the resource hierachy.
             var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
             var subResource = topResource.Resources["Sub"];
+            var grandchildResource = subResource.Resources["Grandchild"];
          
             // Check the generated full name.
-            Assert.AreEqual("Top", BaseResource.GetFullName(topResource));
-            Assert.AreEqual("Top.Sub", BaseResource.GetFullName(subResource));
+            Assert.AreEqual("Top", topResource.FullName);
+            Assert.AreEqual("Top.Sub", subResource.FullName);
+            Assert.AreEqual("Top.Sub.Grandchild", grandchildResource.FullName);
         }
     }
 }

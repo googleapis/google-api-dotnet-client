@@ -40,6 +40,12 @@ namespace Google.Apis.Discovery
         /// Will return the parent of this resource, or null if there is none.
         /// </summary>
         IResource Parent { get; }
+
+        /// <summary>
+        /// Retrievs the full name of a resource,
+        /// e.g. TopResource.SubResource
+        /// </summary>
+        string FullName { get; }
     }
 
     #region Base Resource
@@ -47,7 +53,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Abstract implementation of a resource.
     /// </summary>
-    public abstract class BaseResource : IResource
+    internal abstract class BaseResource : IResource
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(IResource));
         private readonly JsonDictionary information;
@@ -60,6 +66,7 @@ namespace Google.Apis.Discovery
         internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
             kvp.ThrowIfNull("kvp");
+            kvp.Key.ThrowIfNullOrEmpty("kvp");
 
             DiscoveryVersion = version;
             logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
@@ -168,12 +175,21 @@ namespace Google.Apis.Discovery
         }
 
         /// <summary>
-        /// Retrieves the full name of a resource,
-        /// e.g. TopResource.SubResource.
+        /// Retrievs the full name of a resource,
+        /// e.g. TopResource.SubResource
         /// </summary>
-        public static string GetFullName(IResource resource)
+        public string FullName
         {
-            var parentResource = resource.Parent as IResource;
+            get { return GetFullName(this); }
+        }
+
+        /// <summary>
+        /// Retrieves the full name of a resource,
+        /// e.g. TopResource.SubResource
+        /// </summary>
+        private string GetFullName(IResource resource)
+        {
+            var parentResource = resource.Parent;
             if (parentResource == null)
             {
                 // Only IResource counts for the resource name, don't include the service itself.
@@ -237,20 +253,24 @@ namespace Google.Apis.Discovery
     /// Mock resource for testing purposes.
     /// </summary>
     [VisibleForTestOnly]
-    internal class MockResource : IResource
+    internal class MockResource : BaseResource
     {
-        public string Name { get; set; }
+        public MockResource() : this(new KeyValuePair<string, object>("MockMethod", new JsonDictionary())) {}
 
-        public IDictionary<string, IResource> Resources { get; set; }
-
-        public Dictionary<string, IMethod> Methods { get; set; }
-
-        public IResource Parent { get; set; }
-
-        public MockResource()
+        public MockResource(KeyValuePair<string, object> kvp)
+            : base(DiscoveryVersion.Version_1_0, kvp)
         {
-            Resources = new Dictionary<string, IResource>();
-            Methods = new Dictionary<string, IMethod>();
+
+        }
+
+        protected override IResource CreateResource(KeyValuePair<string, object> kvp)
+        {
+            return new MockResource(kvp);
+        }
+
+        protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
+        {
+            throw new NotImplementedException();
         }
     }
 
