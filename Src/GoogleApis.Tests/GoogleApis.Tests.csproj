@@ -130,6 +130,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
     <None Include="GoogleApisTests.xml" />
   </ItemGroup>
   <ItemGroup />
