@@ -19,7 +19,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Google.Apis.Json;
+using Google.Apis.JSON;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
 using log4net;
@@ -35,11 +37,27 @@ namespace Google.Apis.Discovery
     /// </summary>
     public abstract class BaseService : IService
     {
+        /// <summary>
+        /// Name of the method used for serialization (object -> json)
+        /// </summary>
+        public const string SerializationMethodName = "SerializeRequest";
+
+        /// <summary>
+        /// Name of the method used for deserialization (json -> object)
+        /// </summary>
+        public const string DeserializationMethodName = "DeserializeResponse";
+
+        /// <summary>
+        /// Name of the property defining the ISerializer
+        /// </summary>
+        public const string SerializerPropertyName = "Serializer";
+
         private static readonly ILog logger = LogManager.GetLogger(typeof(BaseService));
 
         protected internal readonly JsonDictionary information;
         private Dictionary<string, IResource> resources;
         private IDictionary<String, ISchema> schemas;
+        private ISerializer serializer;
 
         internal BaseService(string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
         {
@@ -71,6 +89,7 @@ namespace Google.Apis.Discovery
         private BaseService()
         {
             GZipEnabled = true;
+            Serializer = new NewtonsoftJsonSerializer();
         }
 
         protected string ServerUrl { get; set; }
@@ -150,15 +169,114 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public ISerializer Serializer
+        {
+            get { return serializer; }
+            set
+            {
+                value.ThrowIfNull("value");
+                serializer = value;
+            }
+        }
+
         /// <summary>
         /// Creates a Request Object based on the HTTP Method Type.
         /// </summary>
         public IRequest CreateRequest(string resource, string methodName)
         {
-            var method = Resources[resource].Methods[methodName];
+            var method = GetResource(this, resource).Methods[methodName];
             var request = Request.CreateRequest(this, method);
 
             return request;
+        }
+
+        /// <summary>
+        /// Retrieves a resource using the full resource name.
+        /// Example:
+        ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static IResource GetResource(IResourceContainer container, string fullResourceName)
+        {
+            fullResourceName.ThrowIfNull("fullResourceName");
+
+            string[] split = fullResourceName.Split(new[] { '.' }, 2);
+            string topResourceName = split[0];
+            IResource topResource = container.Resources[topResourceName];
+
+            if (split.Length <= 1)
+            {
+                // This is the resource we are looking for.
+                return topResource;
+            }
+            
+            // Retrieve the top resource, and re-run this method on it.
+            string fullSubresourceName = split[1];
+            return GetResource(topResource, fullSubresourceName);
+        }
+
+        public string SerializeRequest(object obj)
+        {
+            if (HasFeature(Discovery.Features.LegacyDataResponse))
+            {
+                // Legacy path
+                var request = new StandardResponse<object> { Data = obj };
+                return Serializer.Serialize(request);
+            }
+
+            // New v1.0 path
+            return Serializer.Serialize(obj);
+        }
+
+        public T DeserializeResponse<T>(Stream input)
+        {
+            // Read in the entire content
+            string text;
+
+            using (var reader = new StreamReader(input))
+            {
+                text = reader.ReadToEnd();
+            }
+
+            // Check if there was an error returned. The error node is returned in both paths
+            // Deserialize the stream based upon the format of the stream
+            if (HasFeature(Discovery.Features.LegacyDataResponse))
+            {
+                // Legacy path (deprecated!)
+                StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
+            
+                if (response.Data == null)
+                {
+                    throw new GoogleApiException(this, "The response could not be deserialized.");
+                }
+
+                return response.Data;
+            }
+
+            // New path: Deserialize the object directly
+            T result = Serializer.Deserialize<T>(text);
+
+            // If this schema/object provides an error container, check it
+            if (result is IResponse)
+            {
+                var response = (IResponse) result;
+                if (response.Error != null)
+                {
+                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                }
+            }
+
+            return result;
+        }
+
+        public bool HasFeature(Features feature)
+        {
+            return Features.Contains(feature.GetStringValue());
         }
 
         public bool GZipEnabled { get; set; }

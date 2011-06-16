@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,12 +66,15 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtil.cs" />
-    <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecorator.cs" />
+    <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
@@ -80,6 +85,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
+    <Compile Include="Generator\ImplementationDetailsGenerator.cs" />
     <Compile Include="Generator\MethodGeneratorUtils.cs" />
     <Compile Include="GoogleServiceGenerator.cs" />
     <Compile Include="Generator\ResourceClassGenerator.cs" />
@@ -98,7 +104,7 @@
     <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
     <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethods.cs" />
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\SchemaUtil.cs" />

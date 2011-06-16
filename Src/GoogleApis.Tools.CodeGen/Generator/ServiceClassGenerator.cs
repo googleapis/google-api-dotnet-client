@@ -16,9 +16,9 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
-using System.Linq;
 using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
@@ -52,9 +52,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         public CodeTypeDeclaration CreateServiceClass()
         {
-            string serviceClassName =
-                GeneratorUtils.UpperFirstLetter(
-                    GeneratorUtils.GetSafeMemberName(service.Name + "Service", "Cls", Enumerable.Empty<string>()));
+            string serviceClassName = GeneratorUtils.GetSafeMemberName(
+                Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, service.Name + "Service",
+                service.Name + "Cls");
             logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
             serviceClass.BaseTypes.Add(typeof(IRequestExecutor));
@@ -74,12 +74,10 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// Returns the field reference to the given resource
         /// </summary>
         public static CodeFieldReferenceExpression GetFieldReference(IResource resource,
-                                                                     int resourceNumber,
                                                                      IEnumerable<string> otherResourceNames)
         {
             return new CodeFieldReferenceExpression(
-                new CodeThisReferenceExpression(),
-                GeneratorUtils.GetFieldName(resource, resourceNumber, otherResourceNames));
+                new CodeThisReferenceExpression(), GeneratorUtils.GetFieldName(resource, otherResourceNames));
         }
     }
 }

@@ -36,12 +36,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var internalClassProvider = new ObjectInternalClassProvider();
             Assert.Throws(
-                typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(null, internalClassProvider));
+                typeof(ArgumentNullException),
+                () => SchemaDecoratorUtil.GetCodeType(null, null, internalClassProvider));
             var schema = new JsonSchema();
-            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(schema, null));
+            Assert.Throws(typeof(ArgumentNullException), () => SchemaDecoratorUtil.GetCodeType(schema, null, null));
 
             Assert.Throws(
-                typeof(NotSupportedException), () => SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider));
+                typeof(NotSupportedException),
+                () => SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider));
         }
 
         /// <summary>
@@ -54,16 +56,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             var internalClassProvider = new ObjectInternalClassProvider();
             schema.Type = JsonSchemaType.String;
             Assert.AreEqual(
-                typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Integer;
             Assert.AreEqual(
-                typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Float;
             Assert.AreEqual(
-                typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
             schema.Type = JsonSchemaType.Boolean;
             Assert.AreEqual(
-                typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, internalClassProvider).BaseType);
+                typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
         }
 
         /// <summary>
@@ -72,13 +74,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void GetFieldName()
         {
-            Assert.AreEqual("fISH", SchemaDecoratorUtil.GetFieldName("FISH", 1, Enumerable.Empty<string>()));
-            Assert.AreEqual("intField1", SchemaDecoratorUtil.GetFieldName("int", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("fISH", SchemaDecoratorUtil.GetFieldName("FISH", Enumerable.Empty<string>()));
+            Assert.AreEqual("intValue", SchemaDecoratorUtil.GetFieldName("int", Enumerable.Empty<string>()));
             Assert.AreEqual(
-                "fishAndChips", SchemaDecoratorUtil.GetFieldName("fish-and-chips", 1, Enumerable.Empty<string>()));
-            Assert.AreEqual(
-                "fishAndChipsField1",
-                SchemaDecoratorUtil.GetFieldName("fish-and-chips", 1, new List<string> { "fishANDchips" }));
+                "fishAndChips", SchemaDecoratorUtil.GetFieldName("fish-and-chips", Enumerable.Empty<string>()));
         }
 
         /// <summary>
@@ -87,13 +86,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void GetPropertyName()
         {
-            Assert.AreEqual("Fish", SchemaDecoratorUtil.GetPropertyName("fish", 1, Enumerable.Empty<string>()));
-            Assert.AreEqual("IntProperty1", SchemaDecoratorUtil.GetPropertyName("int", 1, Enumerable.Empty<string>()));
+            Assert.AreEqual("Fish", SchemaDecoratorUtil.GetPropertyName("fish", Enumerable.Empty<string>()));
+            Assert.AreEqual("Int", SchemaDecoratorUtil.GetPropertyName("int", Enumerable.Empty<string>()));
             Assert.AreEqual(
-                "FishAndChips", SchemaDecoratorUtil.GetPropertyName("fish-and-chips", 1, Enumerable.Empty<string>()));
-            Assert.AreEqual(
-                "FishAndChipsProperty1",
-                SchemaDecoratorUtil.GetPropertyName("fish-and-chips", 1, new List<string> { "fishANDchips" }));
+                "FishAndChips", SchemaDecoratorUtil.GetPropertyName("fish-and-chips", Enumerable.Empty<string>()));
         }
     }
 }

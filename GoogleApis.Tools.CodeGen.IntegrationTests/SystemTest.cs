@@ -23,6 +23,7 @@ using System.Reflection;
 using System.Text;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen;
+using Google.Apis.Tools.CodeGen.Generator;
 using log4net;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -38,7 +39,7 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
     /// - Generating each listed service.
     /// - Compiling the generated file of each service.
     /// </summary>
-    [TestFixture, Explicit("Large System Test"), Category("SystemTest")]
+    [TestFixture]
     public class SystemTest
     {
         private class API
@@ -187,7 +188,10 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
             code.AppendLine("Generated.DiscoveryService service = new Generated.DiscoveryService();");
             code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List(null, null, true);");
 
-            code.AppendLine("foreach (Generated.Data.DirectoryList.NestedClass1 item in list.Items) {");
+            code.AppendLine(
+                string.Format(
+                    "foreach (Generated.Data.DirectoryList.Items{0} item in list.Items) {{",
+                    ImplementationDetailsGenerator.PropertyClassSuffix));
             {
                 code.AppendLine("yield return new string[]");
                 code.AppendLine("   { item.Title, item.Name, item.Version };");
@@ -234,7 +238,6 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
 
         /// <summary>
         /// Tries to list all services available on discovery.
-        /// ToDo: Check if this tests passes after issue #55 is fixed.
         /// </summary>
         [Test]
         public void DiscoveryListServicesTest()
@@ -252,7 +255,6 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
 
         /// <summary>
         /// Runs the code generator on all discovered services.
-        /// ToDo: Check if this tests passes after issues #55, #50 and #38 are fixed.
         /// </summary>
         [Test]
         public void CodegenAllServicesTest()

@@ -82,12 +82,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             var initializers = new CodeStatementCollection();
             ICollection<string> otherResourceNames = resource.Resources.Keys;
 
-            int resourceNumber = 1;
             foreach (IResource subresource in resource.Resources.Values)
             {
+                IEnumerable<string> relevantResourceNames = otherResourceNames.Without(subresource.Name);
+
                 // Retrieve backing field name and type of the (already created) subresource
-                var fieldRef = ServiceClassGenerator.GetFieldReference(subresource, resourceNumber, otherResourceNames);
-                var fieldType = GeneratorUtils.GetClassName(subresource, resourceNumber, otherResourceNames);
+                var fieldRef = ServiceClassGenerator.GetFieldReference(subresource, relevantResourceNames);
+                var fieldType = GeneratorUtils.GetClassName(subresource, relevantResourceNames);
 
                 // ... new SubResource(service);
                 var fieldConstructor = new CodeObjectCreateExpression(fieldType);
@@ -97,7 +98,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 // subResource = ...
                 var assign = new CodeAssignStatement(fieldRef, fieldConstructor);
                 initializers.Add(assign);
-                resourceNumber++;
             }
 
             return initializers;

@@ -79,7 +79,12 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <None Include="Client.Release.build" />
+    <None Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+    <None Include="Client.Release.build">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="buildimpl\Generate.Service.build">
       <SubType>Designer</SubType>
     </None>
@@ -105,5 +110,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NAnt.Config.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
 </Project>

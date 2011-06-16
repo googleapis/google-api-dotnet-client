@@ -16,8 +16,8 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator;
+using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 {
@@ -31,43 +31,49 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         /// Tests edge cases for the AddAutoProperty method
         /// </summary>
         [Test]
-        public void AddAutoPropertyEdgeCaseTest()
+        public void CreateAutoPropertyEdgeCaseTest()
         {
             var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
             const string comment = "Comment";
 
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.AddAutoProperty<object>(null, name, comment));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateAutoProperty<object>(null, name, comment));
             Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, null, comment));
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, "", comment));
-            Assert.DoesNotThrow(() => DecoratorUtil.AddAutoProperty<object>(typeDeclaration, name, null));
+                () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, null, comment));
+            Assert.Throws<ArgumentException>(
+                () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, "", comment));
+            Assert.DoesNotThrow(() => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, name, null));
         }
 
         /// <summary>
         /// Tests the AddAutoProperty method
         /// </summary>
         [Test]
-        public void AddAutoPropertyTest()
+        public void CreateAutoPropertyTest()
         {
             var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
             const string comment = "Comment";
 
-            CodeMemberProperty property = DecoratorUtil.AddAutoProperty<int>(typeDeclaration, name, comment);
+            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty<int>(typeDeclaration, name, comment);
+            Assert.That(typeDeclaration.Members.Count, Is.EqualTo(0));
+
+            Assert.That(col.Count, Is.EqualTo(2));
+            Assert.That(col[1], Is.InstanceOf<CodeMemberProperty>());
+            Assert.That(col[1].Attributes, Is.EqualTo(MemberAttributes.Public));
+            Assert.That(col[0], Is.InstanceOf<CodeMemberField>());
+
+            var property = col[1] as CodeMemberProperty;
             Assert.IsNotNull(property);
             Assert.That(property.Name, Is.EqualTo(name));
             Assert.That(property.Type.BaseType, Is.EqualTo(typeof(int).FullName));
 
-            Assert.That(typeDeclaration.Members.Count, Is.EqualTo(2));
-            Assert.That(typeDeclaration.Members[1], Is.InstanceOf<CodeMemberProperty>());
-            Assert.That(typeDeclaration.Members[1].Attributes, Is.EqualTo(MemberAttributes.Public));
-            Assert.That(typeDeclaration.Members[0], Is.InstanceOf<CodeMemberField>());
-
             // Backening field is tested in its own unit case
 
             // Test if an exception is thrown when the name is already used
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.AddAutoProperty<bool>(typeDeclaration, name, comment));
+            typeDeclaration.Members.AddRange(col);
+            Assert.Throws<ArgumentException>(
+                () => DecoratorUtil.CreateAutoProperty<bool>(typeDeclaration, name, comment));
         }
 
         /// <summary>
@@ -80,7 +86,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             const string name = "TestProperty";
 
             Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField<object>(null, name));
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField<object>(typeDeclaration, null));
+            Assert.Throws<ArgumentNullException>(
+                () => DecoratorUtil.CreateBackingField<object>(typeDeclaration, null));
             Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateBackingField<object>(typeDeclaration, ""));
         }
 

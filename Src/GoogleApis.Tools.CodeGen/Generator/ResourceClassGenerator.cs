@@ -28,25 +28,30 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// <seealso cref="IResourceDecorator"/>
     public class ResourceClassGenerator : BaseGenerator
     {
-        private readonly String className;
+        private readonly string className;
         private readonly IEnumerable<IResourceDecorator> decorators;
         private readonly IResource resource;
         private readonly ResourceContainerGenerator resourceConainerGenerator;
-        private readonly int resourceNumber;
-        private readonly String serviceClassName;
+        private readonly string serviceClassName;
+
+        /// <summary>
+        /// Returns the generator used to generate the Resource Container
+        /// </summary>
+        public ResourceContainerGenerator ContainerGenerator
+        {
+            get { return resourceConainerGenerator; }
+        }
 
         public ResourceClassGenerator(IResource resource,
-                                      String serviceClassName,
-                                      int resourceNumber,
+                                      string serviceClassName,
                                       IEnumerable<IResourceDecorator> decorators,
                                       ResourceContainerGenerator resourceConainerGenerator,
                                       IEnumerable<string> otherResourceNames)
         {
             this.resource = resource;
             this.serviceClassName = serviceClassName;
-            this.resourceNumber = resourceNumber;
             this.decorators = decorators;
-            className = GeneratorUtils.GetClassName(resource, this.resourceNumber, otherResourceNames);
+            className = GeneratorUtils.GetClassName(resource, otherResourceNames);
             this.resourceConainerGenerator = resourceConainerGenerator;
         }
 

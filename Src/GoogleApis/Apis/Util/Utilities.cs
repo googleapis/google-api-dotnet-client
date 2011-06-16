@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Google.Apis.Util
 {
@@ -162,6 +163,49 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeTypeMember"/> with a 
+        /// name that matches the passed in name - or null if no match is found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static CodeTypeMember FindMemberByName(this CodeTypeMemberCollection coll, string name)
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+
+            foreach (CodeTypeMember member in coll)
+            {
+                if (member.Name == name)
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the first <see cref="System.CodeDom.CodeTypeDeclaration"/> with a 
+        /// name that matches the passed in name - or null if no match is found.
+        /// </summary>
+        /// <param name="coll">May not be null</param>
+        /// <param name="name">May not be null or empty</param>
+        public static CodeTypeDeclaration FindTypeMemberByName(this CodeTypeMemberCollection coll, string name)
+        {
+            coll.ThrowIfNull("coll");
+            name.ThrowIfNullOrEmpty(name);
+
+            foreach (CodeTypeMember member in coll)
+            {
+                var field = member as CodeTypeDeclaration;
+                if (field != null && field.Name == name)
+                {
+                    return field;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
         /// name that matches the passed in name - or Null if no match found.
         /// </summary>
@@ -185,6 +229,37 @@ namespace Google.Apis.Util
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Returns the first matching custom attribute (or null) of the specified member
+        /// </summary>
+        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
+        {
+            object[] results = info.GetCustomAttributes(typeof(T), false);
+            return results.Length == 0 ? null : (T) results[0];
+        }
+
+        /// <summary>
+        /// Returns the defined string value of an enum value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string GetStringValue(this Enum value)
+        {
+            FieldInfo entry = value.GetType().GetField(value.ToString());
+            entry.ThrowIfNull("value");
+
+            // If set, return the value
+            var attribute = entry.GetCustomAttribute<StringValueAttribute>();
+            if (attribute != null)
+            {
+                return attribute.Text;
+            }
+
+            // Otherwise throw an exception
+            throw new ArgumentException(
+                string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
         }
     }
 }
