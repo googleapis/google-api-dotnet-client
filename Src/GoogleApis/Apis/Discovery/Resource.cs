@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using Google.Apis.Json;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using log4net;
 
@@ -24,33 +25,48 @@ namespace Google.Apis.Discovery
 {
     /// <summary>
     /// IResource represents one resource as difined in a Google Api Discovery Document.
-    /// It can contain more resources and/or methods
+    /// It can contain more resources and/or methods.
     /// </summary>
     /// <seealso cref="IResourceContainer"/>
     /// <seealso cref="IMethod"/>
     public interface IResource : IResourceContainer
     {
+        /// <summary>
+        /// All the methods which belong to this resource.
+        /// </summary>
         Dictionary<string, IMethod> Methods { get; }
+
+        /// <summary>
+        /// Will return the parent of this resource, or null if there is none.
+        /// </summary>
+        IResource Parent { get; }
+
+        /// <summary>
+        /// Retrievs the full name of a resource,
+        /// e.g. TopResource.SubResource
+        /// </summary>
+        string FullName { get; }
     }
 
     #region Base Resource
 
     /// <summary>
-    /// Abstract implementation of a resource
+    /// Abstract implementation of a resource.
     /// </summary>
     internal abstract class BaseResource : IResource
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(IResource));
         private readonly JsonDictionary information;
-        private Dictionary<string, IMethod> methods;
-        private Dictionary<string, IResource> resources;
+        protected Dictionary<string, IMethod> methods;
+        protected Dictionary<string, IResource> resources;
 
         /// <summary>
-        /// Creates a new resource for the specified discovery version with the specified name and json dictionary
+        /// Creates a new resource for the specified discovery version with the specified name and json dictionary.
         /// </summary>
         internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
             kvp.ThrowIfNull("kvp");
+            kvp.Key.ThrowIfNullOrEmpty("kvp");
 
             DiscoveryVersion = version;
             logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
@@ -60,10 +76,24 @@ namespace Google.Apis.Discovery
             {
                 throw new ArgumentException("got no valid dictionary");
             }
+
+            // Initialize subresources.
+            if (information.ContainsKey("resources"))
+            {
+                var resourceJson = (JsonDictionary)information["resources"];
+                resources = new Dictionary<string, IResource>();
+                foreach (KeyValuePair<string, object> pair in resourceJson)
+                {
+                    // Create the subresource.
+                    var subResource = (BaseResource)CreateResource(pair);
+                    subResource.Parent = this;
+                    resources.Add(pair.Key, subResource);
+                }
+            }
         }
 
         /// <summary>
-        /// The discovery version used for creating this resource
+        /// The discovery version used for creating this resource.
         /// </summary>
         internal DiscoveryVersion DiscoveryVersion { get; private set; }
 
@@ -83,6 +113,7 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public IResource Parent { get; internal set; }
 
         public IDictionary<string, IResource> Resources
         {
@@ -143,6 +174,32 @@ namespace Google.Apis.Discovery
             return resources;
         }
 
+        /// <summary>
+        /// Retrievs the full name of a resource,
+        /// e.g. TopResource.SubResource
+        /// </summary>
+        public string FullName
+        {
+            get { return GetFullName(this); }
+        }
+
+        /// <summary>
+        /// Retrieves the full name of a resource,
+        /// e.g. TopResource.SubResource
+        /// </summary>
+        private string GetFullName(IResource resource)
+        {
+            var parentResource = resource.Parent;
+            if (parentResource == null)
+            {
+                // Only IResource counts for the resource name, don't include the service itself.
+                return resource.Name;
+            }
+            
+            // Generate the full name using recursion.
+            return GetFullName(parentResource) + "." + resource.Name;
+        }
+
         protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
         protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
     }
@@ -185,6 +242,35 @@ namespace Google.Apis.Discovery
         protected override IResource CreateResource(KeyValuePair<string, object> kvp)
         {
             return new ResourceV0_3(kvp);
+        }
+    }
+
+    #endregion
+
+    #region MockResource
+
+    /// <summary>
+    /// Mock resource for testing purposes.
+    /// </summary>
+    [VisibleForTestOnly]
+    internal class MockResource : BaseResource
+    {
+        public MockResource() : this(new KeyValuePair<string, object>("MockMethod", new JsonDictionary())) {}
+
+        public MockResource(KeyValuePair<string, object> kvp)
+            : base(DiscoveryVersion.Version_1_0, kvp)
+        {
+
+        }
+
+        protected override IResource CreateResource(KeyValuePair<string, object> kvp)
+        {
+            return new MockResource(kvp);
+        }
+
+        protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
+        {
+            throw new NotImplementedException();
         }
     }
 

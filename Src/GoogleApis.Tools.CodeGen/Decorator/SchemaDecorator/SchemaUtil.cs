@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -33,7 +34,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                                                                    int index,
                                                                    IEnumerable<string> otherNames)
         {
-            string propertyName = SchemaDecoratorUtil.GetPropertyName(name, index, otherNames);
+            IEnumerable<string> illegalWords = otherNames.Concat(new[] { typeDeclaration.Name });
+            string propertyName = GeneratorUtils.GetPropertyName(name, illegalWords);
+            
             CodeMemberProperty property = typeDeclaration.Members.FindPropertyByName(propertyName);
             property.ThrowIfNull(
                 string.Format("Failed to find property by name[{0}] for propertySchemaName[{1}]", propertyName, name));

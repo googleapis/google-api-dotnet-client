@@ -16,8 +16,8 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
-using Google.Apis.Discovery;
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 
@@ -124,12 +124,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                                            int resourceNumber,
                                            IEnumerable<string> otherResourceNames)
         {
+            IEnumerable<string> otherNames = otherResourceNames.Without(resource.Name);
+
             constructor.Statements.Add(
                 new CodeAssignStatement(
-                    ServiceClassGenerator.GetFieldReference(resource, resourceNumber, otherResourceNames),
+                    ServiceClassGenerator.GetFieldReference(resource, otherNames),
                     new CodeObjectCreateExpression(
-                        GeneratorUtils.GetClassName(resource, resourceNumber, otherResourceNames),
-                        new CodeThisReferenceExpression())));
+                        GeneratorUtils.GetClassName(resource, otherNames), new CodeThisReferenceExpression())));
         }
 
         public override string ToString()

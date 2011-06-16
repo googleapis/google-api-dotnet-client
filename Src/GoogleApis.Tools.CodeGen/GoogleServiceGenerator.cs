@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
@@ -53,15 +54,17 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// List of all resource decorators
         /// </summary>
+        [Obsolete("This list is outdated. Use .GetSchemaAwareResourceDecorators(..) instead.")]
         public static readonly IList<IResourceDecorator> StandardResourceDecorators =
             (new List<IResourceDecorator>
                  {
+                     new SubresourceClassDecorator(),
                      new StandardServiceFieldResourceDecorator(false),
                      new StandardResourceNameResourceDecorator(),
                      new StandardConstructorResourceDecorator(),
                      new StandardMethodResourceDecorator(),
                      new Log4NetResourceDecorator(),
-                     new DictonaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
+                     new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                  }).AsReadOnly();
 
         /// <summary>
@@ -89,7 +92,7 @@ namespace Google.Apis.Tools.CodeGen
                      new VersionInformationServiceDecorator(),
                      new StandardExecuteMethodServiceDecorator(),
                      new SchemaAwearExecuteMethodDecorator(),
-                     new NewtonsoftJsonSerializer(),
+                     new JsonSerializationMethods(),
                      new DeveloperKeyServiceDecorator(),
                  }).AsReadOnly();
 
@@ -150,6 +153,7 @@ namespace Google.Apis.Tools.CodeGen
             return
                 (new List<IResourceDecorator>
                      {
+                         new SubresourceClassDecorator(),
                          new StandardServiceFieldResourceDecorator(true),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
@@ -158,7 +162,7 @@ namespace Google.Apis.Tools.CodeGen
                              true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace),
                              new DefaultEnglishCommentCreator()),
                          new Log4NetResourceDecorator(),
-                         new DictonaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
+                         new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                      }).AsReadOnly
                     ();
         }
@@ -236,7 +240,7 @@ namespace Google.Apis.Tools.CodeGen
             string serviceClassName = serviceClass.Name;
 
             clientNamespace.Types.Add(serviceClass);
-            CreateResources(clientNamespace, serviceClassName, service, resourceContainerGenerator, 1);
+            CreateResources(clientNamespace, serviceClassName, service, resourceContainerGenerator);
 
             return clientNamespace;
         }
@@ -263,25 +267,23 @@ namespace Google.Apis.Tools.CodeGen
             return compileUnit;
         }
 
-        private int CreateResources(CodeNamespace clientNamespace,
-                                    string serviceClassName,
-                                    IResourceContainer resourceContainer,
-                                    ResourceContainerGenerator resourceContainerGenerator,
-                                    int resourceNumber)
+        private void CreateResources(CodeNamespace clientNamespace,
+                                     string serviceClassName,
+                                     IResourceContainer resourceContainer,
+                                     ResourceContainerGenerator resourceContainerGenerator)
         {
             foreach (var res in resourceContainer.Resources.Values)
             {
-                // Create a class for the resource
+                // Create the current list of used names.
+                IEnumerable<string> usedNames = resourceContainer.Resources.Keys;
+
+                // Create a class for the resource.
                 logger.DebugFormat("Adding Resource {0}", res.Name);
                 var resourceGenerator = new ResourceClassGenerator(
-                    res, serviceClassName, resourceNumber, resourceDecorators, resourceContainerGenerator,
-                    resourceContainer.Resources.Keys);
-                clientNamespace.Types.Add(resourceGenerator.CreateClass());
-                resourceNumber++;
-                resourceNumber = CreateResources(
-                    clientNamespace, serviceClassName, res, resourceContainerGenerator, resourceNumber);
+                    res, serviceClassName, resourceDecorators, resourceContainerGenerator, usedNames);
+                var generatedClass = resourceGenerator.CreateClass();
+                clientNamespace.Types.Add(generatedClass);
             }
-            return resourceNumber;
         }
 
         private void LogDecorators()

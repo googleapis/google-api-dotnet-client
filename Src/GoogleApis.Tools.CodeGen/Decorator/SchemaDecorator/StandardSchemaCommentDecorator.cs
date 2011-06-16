@@ -15,12 +15,14 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
 using System.Security;
-using log4net;
-using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
+using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -36,10 +38,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             typeDeclaration.Comments.AddRange(CreateComment(schema));
@@ -52,10 +56,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("implDetails");
             internalClassProvider.ThrowIfNull("internalClassProvider");
             schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
 

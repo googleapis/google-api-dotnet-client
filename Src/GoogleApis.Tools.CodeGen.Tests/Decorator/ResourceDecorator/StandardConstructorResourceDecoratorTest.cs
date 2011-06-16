@@ -104,8 +104,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             // Check the constructor
             var right = firstStatement.Right as CodeObjectCreateExpression;
             Assert.IsNotNull(right);
-
-            Assert.That(right.CreateType.BaseType, Is.EqualTo("Subresource"));
+            Assert.That(right.CreateType.BaseType, Is.EqualTo("SubresourceResource"));
         }
     }
 }

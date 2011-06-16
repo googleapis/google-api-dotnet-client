@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+using Google.Apis.Discovery;
 using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests
@@ -53,6 +55,32 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
             var service = CreateBuzzService();
 
+            var generator = new GoogleServiceGenerator(service, clientNamespace);
+            var codeCompileUnit = generator.GenerateCode();
+
+            // Full Compile we should not have any warnings.
+            CheckCompile(codeCompileUnit, true, "Failed To compile resultant code with default decorators.");
+        }
+
+        /// <summary>
+        /// System test -- Size: Medium
+        /// Tests the full CodeGen build procedure for the discovery v1 service
+        /// </summary>
+        [Test]
+        public void SystemTestCompilationWithDefaultDecorators_Discovery()
+        {
+            const string serviceName = "discovery";
+            const string serviceVersion = "v1";
+            var clientNamespace = "Google.Apis.Samples.CommandLineGeneratedService.Discovery";
+
+            // Generate the discovery URL for that service
+            string url = string.Format(GoogleServiceGenerator.GoogleDiscoveryURL, serviceName, serviceVersion);
+            var discovery = new DiscoveryService(new WebDiscoveryDevice(new Uri(url)));
+
+            // Build the service based on discovery information.
+            var service = discovery.GetService(serviceVersion, DiscoveryVersion.Version_1_0);
+
+            // Generate code
             var generator = new GoogleServiceGenerator(service, clientNamespace);
             var codeCompileUnit = generator.GenerateCode();
 

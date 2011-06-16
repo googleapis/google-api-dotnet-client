@@ -15,10 +15,13 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections;
+using System.Collections.Generic;
+using Google.Apis.Discovery.Schema;
+using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Util;
 using log4net;
 using Newtonsoft.Json.Schema;
-using Google.Apis.Discovery.Schema;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -34,10 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclaration");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("implDetails");
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             JsonSchema details = schema.SchemaDetails;
@@ -57,10 +62,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             // Generate or find the nested type
             JsonSchema itemScheme = details.Items[0];
-            CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, internalClassProvider);
+            SchemaImplementationDetails implDetail = implDetails[itemScheme];
+            implDetail.ProposedName = "Entry"; // Change the name to a custom one.
+            CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, implDetail, internalClassProvider);
 
-            // Change the current type to a List
-            typeDeclaration.BaseTypes.Add("List<" + typeDeclaration.Name + "." + item.BaseType + ">");
+            // Insert the base type before any interface declaration
+            var baseType = string.Format("List<{0}.{1}>", typeDeclaration.Name, item.BaseType);
+            typeDeclaration.BaseTypes.Insert(0, new CodeTypeReference(baseType));
         }
 
         #endregion

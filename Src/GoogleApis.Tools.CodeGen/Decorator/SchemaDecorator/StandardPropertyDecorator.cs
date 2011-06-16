@@ -13,14 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-using System.Collections.Generic;
+
 using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
-using log4net;
-using Newtonsoft.Json.Schema;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
+using log4net;
+using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
@@ -37,12 +39,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
                                           string name,
                                           JsonSchema schema,
+                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                           INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
-            typeDeclaration.Members.AddRange(GenerateAllProperties(name, schema, internalClassProvider).ToArray());
+            typeDeclaration.Members.AddRange(
+                GenerateAllProperties(name, schema, implDetails, internalClassProvider, typeDeclaration.Name).ToArray(
+                    ));
         }
 
         #endregion
@@ -51,12 +57,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
+                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
                                   INestedClassProvider internalClassProvider)
         {
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
+            implDetails.ThrowIfNull("implDetails");
             typeDeclaration.Members.AddRange(
-                GenerateAllProperties(schema.Name, schema.SchemaDetails, internalClassProvider).ToArray());
+                GenerateAllProperties(
+                    schema.Name, schema.SchemaDetails, implDetails, internalClassProvider, typeDeclaration.Name).
+                    ToArray());
         }
 
         #endregion
@@ -64,7 +74,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal IList<CodeMemberProperty> GenerateAllProperties(string name,
                                                                  JsonSchema schema,
-                                                                 INestedClassProvider internalClassProvider)
+                                                                 IDictionary<JsonSchema, SchemaImplementationDetails>
+                                                                     implDetails,
+                                                                 INestedClassProvider internalClassProvider,
+                                                                 params string[] usedWordsInContext)
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNullOrEmpty("name");
@@ -75,16 +88,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (schema.Properties.IsNullOrEmpty())
             {
-                logger.Debug("No proeprties found for schema " + name);
+                logger.Debug("No properties found for schema " + name);
                 return fields;
             }
 
+
+            IEnumerable<string> allUsedWordsInContext = usedWordsInContext.Concat(schema.Properties.Keys);
             int index = 0;
             foreach (var propertyPair in schema.Properties)
             {
-                fields.Add(
-                    GenerateProperty(
-                        propertyPair.Key, propertyPair.Value, index++, internalClassProvider, schema.Properties.Keys));
+                SchemaImplementationDetails details = implDetails[propertyPair.Value];
+                CodeMemberProperty property = GenerateProperty(
+                    propertyPair.Key, propertyPair.Value, details, index++, internalClassProvider,
+                    allUsedWordsInContext.Except(new[] { propertyPair.Key }));
+                fields.Add(property);
             }
             return fields;
         }
@@ -92,21 +109,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal CodeMemberProperty GenerateProperty(string name,
                                                      JsonSchema propertySchema,
+                                                     SchemaImplementationDetails details,
                                                      int index,
                                                      INestedClassProvider internalClassProvider,
-                                                     IEnumerable<string> otherPropertyNames)
+                                                     IEnumerable<string> disallowedNames)
         {
             name.ThrowIfNullOrEmpty("name");
             propertySchema.ThrowIfNull("propertySchema");
 
             var ret = new CodeMemberProperty();
-            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, index, otherPropertyNames);
-            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, internalClassProvider);
+            ret.Name = SchemaDecoratorUtil.GetPropertyName(name, disallowedNames);
+            ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, details, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
 
             ret.HasGet = true;
             var fieldReference = new CodeFieldReferenceExpression(
-                new CodeThisReferenceExpression(), SchemaDecoratorUtil.GetFieldName(name, index, otherPropertyNames));
+                new CodeThisReferenceExpression(), SchemaDecoratorUtil.GetFieldName(name, disallowedNames));
             ret.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
 
             ret.HasSet = true;

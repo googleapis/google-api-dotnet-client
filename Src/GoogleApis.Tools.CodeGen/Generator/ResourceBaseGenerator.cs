@@ -104,13 +104,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
-                                                                           int parameterCount,
                                                                            IMethod method)
         {
             method.ThrowIfNull("method");
             Type paramType = GetParameterType(param);
             return new CodeParameterDeclarationExpression(
-                paramType, GeneratorUtils.GetParameterName(param, parameterCount, method.Parameters.Keys));
+                paramType, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
         }
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,
@@ -134,7 +133,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
             assign.Right =
                 new CodeVariableReferenceExpression(
-                    GeneratorUtils.GetParameterName(param, parameterCount, method.Parameters.Keys));
+                    GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
             return assign;
         }
 

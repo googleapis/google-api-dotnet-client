@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -70,9 +72,17 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\OAuth2Authenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\Features.cs" />
+    <Compile Include="Apis\ISerializer.cs" />
     <Compile Include="Apis\Requests\ParameterCollection.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />
+    <Compile Include="Apis\JSON\IJsonSerializer.cs" />
+    <Compile Include="Apis\JSON\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Apis\Requests\IResponse.cs" />
+    <Compile Include="Apis\Requests\RequestError.cs" />
+    <Compile Include="Apis\Requests\SingleError.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />
+    <Compile Include="Apis\Util\StringValueAttribute.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />
     <Compile Include="Apis\Discovery\DiscoveryService.cs" />
@@ -122,6 +132,7 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
     <Compile Include="Apis\Testing\MoreAsserts.cs" />
+    <Compile Include="GoogleApiException.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -144,6 +155,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
