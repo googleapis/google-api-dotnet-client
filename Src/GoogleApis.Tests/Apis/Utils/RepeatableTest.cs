@@ -17,6 +17,7 @@ limitations under the License.
 using System.Linq;
 using Google.Apis.Util;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Google.Apis.Tests.Apis.Utils
 {
@@ -63,6 +64,40 @@ namespace Google.Apis.Tests.Apis.Utils
             Assert.AreEqual("Foo", ConcatStrings("Foo", null));
             Assert.AreEqual("Foobar", ConcatStrings("Foo", "bar"));
             Assert.AreEqual("FoobarTest", ConcatStrings("Foo", new[] { "bar", "Test" }));
+        }
+
+        /// <summary>
+        /// Confirms that repeatables can be accessed multiple times, and not only once.
+        /// </summary>
+        [Test]
+        public void TestRepeatedGet()
+        {
+            int[] testInput = new[] { 1, 2, 3 };
+            Repeatable<int> repeatable = testInput;
+            
+            // 1. Try
+            CollectionAssert.AreEqual(testInput, repeatable);
+
+            // 2. Try
+            CollectionAssert.AreEqual(testInput, repeatable);
+        }
+
+        /// <summary>
+        /// Confirms that repeatables return the same result, even if the source is modified.
+        /// </summary>
+        [Test]
+        public void TestModifiedSource()
+        {
+            int[] testInput = new[] { 1, 2, 3 };
+            var testList = new List<int>(testInput);
+            Repeatable<int> repeatable = testList;
+
+            // Normal access.
+            CollectionAssert.AreEqual(testInput, repeatable);
+
+            // Modified list.
+            testList.RemoveAt(0);
+            CollectionAssert.AreEqual(testInput, repeatable);
         }
 
         private static string ConcatStrings(string normalParameter, Repeatable<string> repeatable)
