@@ -15,17 +15,17 @@
   <property name="nant.task.path" value="extensions\common\neutral" />
   <property name="nant.lib.path" value="lib\common\neutral" />
 
-  <property name="zip.source.file" value="${generated.zip}/Source.Zip" />
-  <property name="zip.binary.file" value="${generated.zip}/Binary.Zip" />
+  <property name="zip.source.file" value="${generated.zip}/Source.zip" />
+  <property name="zip.binary.file" value="${generated.zip}/Binary.zip" />
 
   <!-- excluded 
-      ${service.discovery}, // ???
-      ${service.prediction},${service.shopping}, // Can not have type have the same name as its parent
-      
-      ${service.moderator}, ${service.urlshortener} // JsonParse error
+      ${service.moderator} // Namespace collision
     -->
   <property name="service.all" value="${service.buzz},${service.customsearch},${service.diacritize},
             ${service.latitude},${service.pagespeedonline},
+            ${service.discovery},
+            ${service.prediction},${service.shopping},        
+            ${service.urlshortener},
             ${service.siteverification},${service.taskqueue},${service.tasks},${service.translate}" />
 
   <property name="current.service" value="N/A"/>
