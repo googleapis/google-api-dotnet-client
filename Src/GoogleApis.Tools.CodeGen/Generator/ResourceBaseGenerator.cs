@@ -94,28 +94,29 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Returns the reference to the type which is described in the parameter. Creates types if necessary.
         /// </summary>
-        /// <param name="declaration">Newly generated type if required, or null</param>
         [VisibleForTestOnly]
-        internal static CodeTypeReference GetParameterTypeReference(IParameter param,
-                                                                    IMethod method,
-                                                                    out CodeTypeDeclaration declaration)
+        internal static CodeTypeReference GetParameterTypeReference(CodeTypeDeclaration classDeclaration,
+                                                                    IParameter param,
+                                                                    IMethod method)
         {
-            declaration = null;
             method.ThrowIfNull("method");
             Type underlyingType = GetParameterType(param);
             CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
             bool isValueType = underlyingType.IsValueType;
 
             // Check if we need to declare a custom type for this parameter. 
-            // If the parameter is an enum, we will have to generate the enumeration first
-            if (param.EnumValues != null && param.EnumValues.Count() > 0)
+            // If the parameter is an enum, try finding the matching enumeration in the current class
+            if (!param.EnumValues.IsNullOrEmpty())
             {
                 // Naming scheme: MethodnameParametername
-                string proposedName = method.Name + GeneratorUtils.UpperFirstLetter(param.Name);
-                declaration = DecoratorUtil.GenerateEnum(
-                    proposedName, param.Description, param.EnumValues, param.EnumValueDescriptions);
-                paramTypeRef = new CodeTypeReference(declaration.Name);
-                isValueType = true;
+                CodeTypeReference enumReference = DecoratorUtil.FindFittingEnumeration(
+                    classDeclaration, param.EnumValues);
+
+                if (enumReference != null)
+                {
+                    paramTypeRef = enumReference;
+                    isValueType = true;
+                }
             }
 
             // Check if this is an optional value parameter.
@@ -131,11 +132,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Creates a declaration for the specified parameter.
         /// </summary>
-        protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
-                                                                           IMethod method,
-                                                                           out CodeTypeDeclaration declaration)
+        protected CodeParameterDeclarationExpression DeclareInputParameter(CodeTypeDeclaration classDeclaration,
+                                                                            IParameter param,
+                                                                           IMethod method)
         {
-            CodeTypeReference paramTypeRef = GetParameterTypeReference(param, method, out declaration);
+            CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param, method);
 
             return new CodeParameterDeclarationExpression(
                 paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));

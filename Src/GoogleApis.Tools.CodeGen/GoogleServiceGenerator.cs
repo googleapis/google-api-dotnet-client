@@ -151,6 +151,7 @@ namespace Google.Apis.Tools.CodeGen
             return
                 (new List<IResourceDecorator>
                      {
+                         new EnumResourceDecorator(),
                          new StandardServiceFieldResourceDecorator(true),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),

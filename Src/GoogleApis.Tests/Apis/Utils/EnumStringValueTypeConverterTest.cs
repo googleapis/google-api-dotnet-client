@@ -78,6 +78,10 @@ namespace Google.Apis.Tests.Apis.Utils
 
             MockEnum? nullable = MockEnum.TestA;
             Assert.IsInstanceOf<EnumStringValueTypeConverter>(TypeDescriptor.GetConverter(nullable));
+
+            Assert.IsNotInstanceOf<EnumStringValueTypeConverter>(TypeDescriptor.GetConverter(ConsoleColor.Blue));
+            Assert.IsNotInstanceOf<EnumStringValueTypeConverter>(TypeDescriptor.GetConverter(42));
+            Assert.IsNotInstanceOf<EnumStringValueTypeConverter>(TypeDescriptor.GetConverter("test"));
         }
     }
 }

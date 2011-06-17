@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 
 namespace Google.Apis.Util
@@ -127,6 +128,14 @@ namespace Google.Apis.Util
         public static bool IsNotNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll != null && coll.Count > 0;
+        }
+
+        /// <summary>
+        /// Returns true when the enumerable is null or empty.
+        /// </summary>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
+        {
+            return coll == null || coll.Count() == 0;
         }
 
         /// <summary>

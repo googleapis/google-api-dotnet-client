@@ -22,7 +22,8 @@ using System.Reflection;
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// which will convert the type into the string specified in this attribute.
+    /// A specialized type converter which will convert any enum type into the string 
+    /// specified in the StringValue attribute.
     /// </summary>
     public class EnumStringValueTypeConverter : TypeConverter
     {
@@ -41,6 +42,11 @@ namespace Google.Apis.Util
                                          object value,
                                          Type destinationType)
         {
+            if (value == null)
+            {
+                return null;
+            }
+
             Type enumType = value.GetType();
             if (!CanConvertTo(context, destinationType) || !CanConvertFrom(context, enumType))
             {
