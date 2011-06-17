@@ -101,7 +101,19 @@ namespace Google.Apis.Tools.CodeGen.Tests
 					""rpcName"":""chili.activities.count"",
 					""httpMethod"":""GET"",
 					""methodType"":""rest"",
-					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":true}}
+					""parameters"":{
+                        ""opt_a"":{
+                            ""parameterType"":""query"",
+                            ""required"":true,
+                            ""enum"": [
+                                ""deprecated"",""graduated"",""labs""
+                            ],
+                            ""enumDescriptions"": [
+                                ""APIs that have been deprecated."",""Supported APIs that have graduated from labs."",
+                                ""APIs that are experimental""
+                            ],
+                        }
+                    }
 				}
 			}
 		}

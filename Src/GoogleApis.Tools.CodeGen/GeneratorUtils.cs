@@ -403,16 +403,7 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetEnumName(string enumName, IEnumerable<string> wordsUsedInContext)
         {
-            return GetSafeMemberName(
-                wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum");
-        }
-
-        /// <summary>
-        /// Returns a safe and appropriate enumeration name for the specified enumeration.
-        /// </summary>
-        public static string GetEnumName(string enumName)
-        {
-            return GetSafeMemberName(new string[0], TargetCase.ToUpper, enumName, enumName + "Enum");
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum");
         }
 
         /// <summary>

@@ -134,16 +134,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Creates an enumeration from the provided data.
         /// </summary>
-        /// <param name="proposedName">The proposed name of the enumeration.</param>
+        /// <param name="typeDeclaration">The type which should contain this enumeration.</param>
+        /// <param name="proposedName">The proposed name for this enumeration.</param>
         /// <param name="description">Description of the enum class.</param>
         /// <param name="entries">Enum entries in the form (name, comment/description).</param>
         /// <returns>The generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(string proposedName,
+        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
+                                                       string proposedName,
                                                        string description,
                                                        IEnumerable<KeyValuePair<string, string>> entries)
         {
-            // Create a safe enum name.
-            string name = GeneratorUtils.GetEnumName(proposedName);
+            typeDeclaration.ThrowIfNull("typeDeclaration");
+            proposedName.ThrowIfNullOrEmpty("proposedName");
+            entries.ThrowIfNull("entries");
+
+            // Create a safe enum name by avoiding the names of all members which are already in this type.
+            IEnumerable<string> memberNames = from CodeTypeMember m in typeDeclaration.Members select m.Name;
+            string name = GeneratorUtils.GetEnumName(proposedName, memberNames);
 
             // Create the enum type.
             var decl = new CodeTypeDeclaration(name);
@@ -189,17 +196,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Creates an enumeration from the provided data.
         /// </summary>
+        /// <param name="typeDeclaration">The type which should contain this enumeration.</param>
         /// <param name="proposedName">The proposed name of the enumeration.</param>
         /// <param name="description">Description of the enum class.</param>
         /// <param name="enumValues">All enumeration values.</param>
         /// <param name="enumDescriptions">All enumeration comments.</param>
         /// <returns>Generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(string proposedName,
+        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
+                                                       string proposedName,
                                                        string description,
                                                        IEnumerable<string> enumValues,
                                                        IEnumerable<string> enumDescriptions)
         {
-            return GenerateEnum(proposedName, description, GetEnumerablePairs(enumValues, enumDescriptions));
+            // Add the comments to the values if possible, or create empty ones.
+            IEnumerable<KeyValuePair<string, string>> enumEntries = enumDescriptions.IsNullOrEmpty()
+                              ? enumValues.Select((str) => new KeyValuePair<string, string>(str, null))
+                              : GetEnumerablePairs(enumValues, enumDescriptions);
+            return GenerateEnum(typeDeclaration, proposedName, description, enumEntries);
         }
     
         /// <summary>
@@ -252,6 +265,72 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                     classDeclaration.Members.Add(member);
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the enumeration which has the same keys declared, or null if no match was found.
+        /// </summary>
+        public static CodeTypeReference FindFittingEnumeration(CodeTypeDeclaration declaration,
+                                                               IEnumerable<string> keys)
+        {
+            declaration.ThrowIfNull("declaration");
+            keys.ThrowIfNull("keys");
+
+            // Iterate through all members and look for an enum definition.
+            foreach (CodeTypeMember typeMember in declaration.Members)
+            {
+                CodeTypeDeclaration decl = typeMember as CodeTypeDeclaration;
+                if (decl == null || !IsFittingEnum(decl, keys))
+                {
+                    continue;
+                }
+
+                // Every check has passed. This enum is compatible with the type we are looking for.
+                return new CodeTypeReference(typeMember.Name);
+            }
+
+            // No matching enumeration was found. Return null.
+            return null;
+        }
+
+        /// <summary>
+        /// Determines whether the given enum has the same keys as specified.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static bool IsFittingEnum(CodeTypeDeclaration enumType, IEnumerable<string> keys)
+        {
+            if (enumType == null || !enumType.IsEnum)
+            {
+                return false;
+            }
+
+            // Check that this enumeration defines all keys.
+            int count = 0;
+            foreach (CodeTypeMember field in enumType.Members)
+            {
+                // Retrieve the StringValue attribute.
+                CodeAttributeDeclaration decl = (from CodeAttributeDeclaration d in field.CustomAttributes
+                                                 where d.Name == typeof(StringValueAttribute).FullName
+                                                 select d).Single();
+
+
+                string enumFieldValue = ((CodePrimitiveExpression)decl.Arguments[0].Value).Value.ToString();
+                if (!keys.Contains(enumFieldValue))
+                {
+                    // Field is not present in the list of declared keys
+                    return false;
+                }
+
+                count++;
+            }
+
+            if (count != keys.Count())
+            {
+                return false; // The amount of declared field differs -> not the same enum.
+            }
+
+            // Every check has passed. This enum is compatible with what we are looking for.
+            return true;
         }
     }
 }

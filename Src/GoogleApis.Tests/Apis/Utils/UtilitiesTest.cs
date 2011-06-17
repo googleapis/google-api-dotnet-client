@@ -350,8 +350,8 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.That("123!@#".Replace("", '!', '@', '#'), Is.EqualTo("123"));
             Assert.Throws<ArgumentException>(() => "test".Replace("_"));
         }
-        
-    [TypeConverter(typeof(EnumStringValueTypeConverter))]
+
+        [TypeConverter(typeof(EnumStringValueTypeConverter))]
         private enum MockEnum
         {
             [StringValue("Test")]
@@ -396,6 +396,30 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.AreEqual("123", Google.Apis.Util.Utilities.ConvertToString(123));
             Assert.AreEqual("Test", Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithStringValue));
             Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(null));
+
+            // Test nullable types.
+            int? nullable = 123;
+            Assert.AreEqual("123", Google.Apis.Util.Utilities.ConvertToString(nullable));
+            nullable = null;
+            Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(nullable));
+            MockEnum? nullEnum = null;
+            Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(nullEnum));
+        }
+
+        /// <summary>
+        /// Tests the ICollection implementation of IsNullOrEmpty
+        /// </summary>
+        [Test]
+        public void IsNullOrEmptyCollectionTest()
+        {
+            ICollection<int> col = null;
+            Assert.IsTrue(col.IsNullOrEmpty());
+
+            col = new List<int>();
+            Assert.IsTrue(col.IsNullOrEmpty());
+
+            col = new List<int>() { 42 };
+            Assert.IsFalse(col.IsNullOrEmpty());
         }
     }
 }

@@ -17,6 +17,7 @@ using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using NUnit.Framework;
 
@@ -85,9 +86,6 @@ namespace Google.Apis.Tools.CodeGen.Tests
             // "AnyOldRubbish" => string
             param.ValueType = "AGreatBigFish";
             Assert.AreEqual(typeof(string), ResourceBaseGenerator.GetParameterType(param));
-
-            // Test nullable types
-
         }
 
         /// <summary>
@@ -98,49 +96,44 @@ namespace Google.Apis.Tools.CodeGen.Tests
         {
             MockParameter param = new MockParameter() { Name = "Parameter" };
             MockMethod method = new MockMethod() { Name = "Method" };
-            CodeTypeDeclaration decl;
+            CodeTypeDeclaration decl = new CodeTypeDeclaration();
             CodeTypeReference refType;
 
             param.Required = true;
 
             // Normal string.
             param.ValueType = "string";
-            refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
+            refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
             Assert.AreEqual(typeof(string).FullName, refType.BaseType);
-            Assert.IsNull(decl);
 
             // Normal int
             param.ValueType = "integer";
-            refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
+            refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
             Assert.AreEqual(typeof(long).FullName, refType.BaseType);
-            Assert.IsNull(decl);
 
             // optional int
             param.Required = false;
             param.ValueType = "integer";
-            refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
+            refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
             Assert.AreEqual("System.Int64?", refType.BaseType);
-            Assert.IsNull(decl);
 
             // Enumeration
             param.Required = true;
             param.ValueType = "string";
             param.EnumValues = new[] { "TestA", "TestB" };
             param.EnumValueDescriptions = new[] { "DescA", "DescB" };
-            refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
-            Assert.IsNotNull(decl);
-            Assert.AreEqual(decl.Name, refType.BaseType);
-            Assert.IsTrue(decl.IsEnum);
+            decl.Members.Add(
+                DecoratorUtil.GenerateEnum(decl, "TestEnum", null, param.EnumValues, param.EnumValueDescriptions));
+            refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
+            Assert.AreEqual("TestEnum", refType.BaseType);
 
             // Optional enumeration
             param.Required = false;
             param.ValueType = "string";
             param.EnumValues = new[] { "TestA", "TestB" };
             param.EnumValueDescriptions = new[] { "DescA", "DescB" };
-            refType = ResourceBaseGenerator.GetParameterTypeReference(param, method, out decl);
-            Assert.IsNotNull(decl);
-            Assert.AreEqual(decl.Name + "?", refType.BaseType);
-            Assert.IsTrue(decl.IsEnum);
+            refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
+            Assert.AreEqual("TestEnum" + "?", refType.BaseType);
         }
 
         /// <summary>

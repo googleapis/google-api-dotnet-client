@@ -16,7 +16,6 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -57,13 +56,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values)
             {
-                CodeTypeMemberCollection newDecls;
                 CodeTypeMember convenienceMethod = gen.CreateMethod(
-                    resource, method, methodNumber, allDecorators, out newDecls);
+                    resourceClass, resource, method, methodNumber, allDecorators);
                 if (convenienceMethod != null)
                 {
                     newMembers.Add(convenienceMethod);
-                    newMembers.AddRange(newDecls);
                 }
                 methodNumber++;
             }
@@ -115,14 +112,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             /// <summary>
             /// Creates a new method declaration based upon the parameters
             /// </summary>
-            public CodeMemberMethod CreateMethod(IResource resource,
+            public CodeMemberMethod CreateMethod(CodeTypeDeclaration classDeclaration,
+                                                 IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
-                                                 IEnumerable<IResourceDecorator> allDecorators,
-                                                 out CodeTypeMemberCollection paramTypeDeclarations)
+                                                 IEnumerable<IResourceDecorator> allDecorators)
             {
-                paramTypeDeclarations = new CodeTypeMemberCollection();
-
                 if (!method.HasOptionalParameters())
                 {
                     // Wrong decorator. This one is only for methods with optional parameters
@@ -150,17 +145,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 foreach (var param in paramList)
                 {
                     string parameterName = GeneratorUtils.GetParameterName(param, method.Parameters.Keys);
-                    CodeTypeDeclaration newDecl;
-                    member.Parameters.Add(DeclareInputParameter(param, method, out newDecl));
+                    member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));
                     AddParameterComment(commentCreator, member, param, parameterName);
                     assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                     parameterCount++;
-
-                    // If a new type had to be declared for this parameter, add it to the list of types.
-                    if (newDecl != null)
-                    {
-                        paramTypeDeclarations.Add(newDecl);
-                    }
                 }
 
 
