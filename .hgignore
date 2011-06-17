@@ -46,3 +46,5 @@ GoogleApis.Tools.NAntTasks/gensrc/**
 GoogleApis.Tools.NAntTasks/genzip/**
 GoogleApis.Tools.NAntTasks/Generated/**
 GoogleApis.Tools.NAntTasks/freshsource/**
+Src/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.xml
+Src/GoogleApis/GoogleApis.xml
