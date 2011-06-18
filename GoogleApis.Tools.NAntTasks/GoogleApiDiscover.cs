@@ -51,7 +51,7 @@ namespace Google.Apis.Tools.NAntTasks
     ///     <item> google.api.suggested.regex -
     ///         a regular expression to use to parse each api
     ///     </item>
-    ///     <item> google.apis.all - 
+    ///     <item> google.api.all - 
     ///         the string which is all the apis e.g.
     ///         buzz|v1|Buzz|...^discovery|v1|Discovery|...^customserach|V3.4|CustomSearch|...
     ///     </item>
@@ -89,7 +89,7 @@ namespace Google.Apis.Tools.NAntTasks
         private static readonly string ApiFormatString = string.Join(FieldSeperator.ToString(),
             new[] { "{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}"});
 
-        private string property = "google.apis.all";
+        private string property = "google.api.all";
 
         [TaskAttribute("property", Required = false)]
         [StringValidator(AllowEmpty = false)]
@@ -98,14 +98,21 @@ namespace Google.Apis.Tools.NAntTasks
             get { return property; }
             set { property = value; }
         }
-         
+
         protected override void ExecuteTask()
         {
             Properties["google.api.field.seperator"] = FieldSeperator.ToString();
             Properties["google.api.api.seperator"] = ApiSeperator.ToString();
             Properties["google.api.suggested.regex"] = SuggestedRegex;
 
-            var discovery = new DiscoveryService();
+            //var discovery = new DiscoveryService();
+            var discoveryService = new Google.Apis.Discovery.DiscoveryService(
+                    new Google.Apis.Discovery.WebDiscoveryDevice(
+                        new System.Uri(string.Format("https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest", "discovery","v1"))));
+            var factParam = new Google.Apis.Discovery.FactoryParameterV1_0(new System.Uri("https://www.googleapis.com/discovery/v1/"));
+            IService service = discoveryService.GetService("v1", DiscoveryVersion.Version_1_0, factParam);
+            var auth = Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator();
+            var discovery = new DiscoveryService(service, auth);
             DirectoryList apis = discovery.Apis.List(null, null, true);
             string[] apiStrings = new string[apis.Items.Count];
             int apiNumber = 0;
@@ -149,9 +156,8 @@ namespace Google.Apis.Tools.NAntTasks
 
         private string GetDescription(DirectoryList.ItemsData item)
         {
-            return item.Description.IsNotNullOrEmpty() ? 
-                MakeSafe(item.Description): 
-                item.Id;
+            return string.Format("Googles {0} service client api. {1}", 
+                GetName(item), MakeSafe(item.Description));
         }
 
         private string GetDocumentationLink(DirectoryList.ItemsData item)
@@ -172,7 +178,7 @@ namespace Google.Apis.Tools.NAntTasks
         {
             if (str.IsNullOrEmpty())
             {
-                return str;
+                return "";
             }
             return str.Replace("_", InvalidChars);
         }

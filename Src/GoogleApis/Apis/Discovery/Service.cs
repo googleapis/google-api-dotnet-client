@@ -243,7 +243,15 @@ namespace Google.Apis.Discovery
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
-                StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+                StandardResponse<T> response = null;
+                try
+                {
+                    response = Serializer.Deserialize<StandardResponse<T>>(text);
+                }
+                catch(JsonReaderException ex)
+                {
+                    throw new GoogleApiException(this, "Failed to parse response from server as json ["+text+"]", ex);
+                }
 
                 if (response.Error != null)
                 {
@@ -259,7 +267,15 @@ namespace Google.Apis.Discovery
             }
 
             // New path: Deserialize the object directly
-            T result = Serializer.Deserialize<T>(text);
+            T result = default(T);
+            try
+            {
+                result = Serializer.Deserialize<T>(text);
+            }
+            catch (JsonReaderException ex)
+            {
+                throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
+            }
 
             // If this schema/object provides an error container, check it
             if (result is IResponse)
