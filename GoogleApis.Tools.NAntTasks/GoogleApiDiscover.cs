@@ -105,14 +105,8 @@ namespace Google.Apis.Tools.NAntTasks
             Properties["google.api.api.seperator"] = ApiSeperator.ToString();
             Properties["google.api.suggested.regex"] = SuggestedRegex;
 
-            //var discovery = new DiscoveryService();
-            var discoveryService = new Google.Apis.Discovery.DiscoveryService(
-                    new Google.Apis.Discovery.WebDiscoveryDevice(
-                        new System.Uri(string.Format("https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest", "discovery","v1"))));
-            var factParam = new Google.Apis.Discovery.FactoryParameterV1_0(new System.Uri("https://www.googleapis.com/discovery/v1/"));
-            IService service = discoveryService.GetService("v1", DiscoveryVersion.Version_1_0, factParam);
-            var auth = Google.Apis.Authentication.AuthenticatorFactory.GetInstance().GetRegisteredAuthenticator();
-            var discovery = new DiscoveryService(service, auth);
+            var discovery = new DiscoveryService();
+           
             DirectoryList apis = discovery.Apis.List(null, null, true);
             string[] apiStrings = new string[apis.Items.Count];
             int apiNumber = 0;
