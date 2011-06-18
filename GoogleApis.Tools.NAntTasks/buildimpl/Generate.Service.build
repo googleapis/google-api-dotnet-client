@@ -18,12 +18,6 @@
   <property name="zip.source.file" value="${generated.zip}/Source.zip" />
   <property name="zip.binary.file" value="${generated.zip}/Binary.zip" />
 
-  <property name="service.all" value="${service.buzz},${service.customsearch},
-            ${service.diacritize},${service.latitude},${service.pagespeedonline},
-            ${service.discovery},${service.prediction},${service.shopping},        
-            ${service.urlshortener},${service.moderator},${service.siteverification},
-            ${service.taskqueue},${service.tasks},${service.translate}" />
-
   <property name="current.service" value="N/A"/>
   <!--
   <property name="current.service.regex.pattern" 
