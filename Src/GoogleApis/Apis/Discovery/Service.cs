@@ -112,7 +112,21 @@ namespace Google.Apis.Discovery
 
         public Uri BaseUri
         {
-            get { return new Uri(ServerUrl + BasePath); }
+            get
+            {
+                if (ServerUrl.EndsWith("/") && BasePath.StartsWith("/"))
+                {
+                    return new Uri(ServerUrl.Substring(0, ServerUrl.Length - 1) + BasePath);
+                }
+                else if (ServerUrl.EndsWith("/") == false && BasePath.StartsWith("/") == false)
+                {
+                    return new Uri(ServerUrl + "/" + BasePath);
+                }
+                else
+                {
+                    return new Uri(ServerUrl + BasePath);
+                }
+            }
         }
 
         public Uri RpcUri
@@ -341,7 +355,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V1.0
     /// </summary>
-    public class ServiceV1_0 : BaseService
+    internal class ServiceV1_0 : BaseService
     {
         private const string BasePathField = "basePath";
 
@@ -371,7 +385,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V0.3
     /// </summary>
-    public class ServiceV0_3 : BaseService
+    internal class ServiceV0_3 : BaseService
     {
         private const string RestBasePathField = "restBasePath";
 

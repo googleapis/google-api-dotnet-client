@@ -46,6 +46,17 @@ namespace Google.Apis.Tests.Apis.Discovery
                 get { throw new NotImplementedException(); }
             }
 
+            public new string ServerUrl 
+            {
+                get { return base.ServerUrl; }
+                set { base.ServerUrl = value; }
+            }
+            public new string BasePath
+            {
+                get { return base.BasePath; }
+                set { base.BasePath = value; }
+            } 
+
             #region Nested type: ConcreteFactoryParameters
 
             private class ConcreteFactoryParameters : BaseFactoryParameters
@@ -313,6 +324,29 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
             Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
             Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));
+        }
+
+        [Test]
+        public void TestBaseUri()
+        {
+            ConcreteClass instance = (ConcreteClass)CreateV1Service();
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+
         }
     }
 }
