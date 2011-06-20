@@ -69,7 +69,7 @@ namespace Google.Apis.Tools.NAntTasks
     ///     <item>apiicon32url</item>
     ///  </list>
     /// </summary>
-    [TaskName("googleapidiscover")]
+    [TaskName("google-api-discover")]
     public class GoogleApiDiscover : Task
     {
         private const char FieldSeparator = '|';
