@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2010 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -13,18 +13,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
-using NAnt.Core;
-using NAnt.Core.Attributes;
 using Google.Apis.Discovery;
+using Google.Apis.Discovery.V1.Data;
 using Google.Apis.Tools.CodeGen;
 using Google.Apis.Util;
-using Google.Apis.Discovery.V1.Data;
-using DiscoveryService = Google.Apis.Discovery.V1.DiscoveryService;
+using NAnt.Core;
+using NAnt.Core.Attributes;
 
+using DiscoveryService = Google.Apis.Discovery.V1.DiscoveryService;
 
 namespace Google.Apis.Tools.NAntTasks
 {
@@ -42,11 +43,11 @@ namespace Google.Apis.Tools.NAntTasks
     /// </para>
     /// Variables set by this task
     /// <list type="bullet">
-    ///     <item>google.api.field.seperator - 
-    ///         the charector seperating fields - currently '|'
+    ///     <item>google.api.field.separator - 
+    ///         the character seperating fields - currently '|'
     ///     </item>
-    ///     <item>google.api.api.seperator - 
-    ///         the charector seperating apis - currently '^'
+    ///     <item>google.api.api.separator - 
+    ///         the character seperating apis - currently '^'
     ///     </item>
     ///     <item> google.api.suggested.regex -
     ///         a regular expression to use to parse each api
@@ -71,12 +72,12 @@ namespace Google.Apis.Tools.NAntTasks
     [TaskName("googleapidiscover")]
     public class GoogleApiDiscover : Task
     {
-        private const char FieldSeperator = '|';
-        private const char ApiSeperator = '^';
-        private readonly static char[] InvalidChars = new char[] { FieldSeperator, ApiSeperator };
+        private const char FieldSeparator = '|';
+        private const char ApiSeparator = '^';
+        private readonly static char[] InvalidChars = new char[] { FieldSeparator, ApiSeparator };
 
-        // Any char which is not FieldSeperator, zero or more times
-        private readonly static string FieldMatcher = "[^" + FieldSeperator + "]*";
+        // Any char which is not FieldSeparator, zero or more times
+        private readonly static string FieldMatcher = "[^" + FieldSeparator + "]*";
         private readonly static string SuggestedRegex =
             "(?'apiname'" + FieldMatcher + ")\\|" +
             "(?'apiversion'" + FieldMatcher + ")\\|" +
@@ -86,13 +87,16 @@ namespace Google.Apis.Tools.NAntTasks
             "(?'apidescription'" + FieldMatcher + ")\\|" +
             "(?'apidocumentationlink'" + FieldMatcher + ")\\|" +
             "(?'apiicon32url'" + FieldMatcher + ")";
-        private static readonly string ApiFormatString = string.Join(FieldSeperator.ToString(),
+        private static readonly string ApiFormatString = string.Join(FieldSeparator.ToString(),
             new[] { "{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}"});
 
         private string property = "google.api.all";
 
         [TaskAttribute("property", Required = false)]
         [StringValidator(AllowEmpty = false)]
+        /// <summary> 
+        ///   The name of the NAnt property we will write the list of GoogleApis to. 
+        /// </summary>
         public string Property
         {
             get { return property; }
@@ -101,8 +105,8 @@ namespace Google.Apis.Tools.NAntTasks
 
         protected override void ExecuteTask()
         {
-            Properties["google.api.field.seperator"] = FieldSeperator.ToString();
-            Properties["google.api.api.seperator"] = ApiSeperator.ToString();
+            Properties["google.api.field.separator"] = FieldSeparator.ToString();
+            Properties["google.api.api.separator"] = ApiSeparator.ToString();
             Properties["google.api.suggested.regex"] = SuggestedRegex;
 
             var discovery = new DiscoveryService();
@@ -112,7 +116,7 @@ namespace Google.Apis.Tools.NAntTasks
             int apiNumber = 0;
             foreach (DirectoryList.ItemsData item in apis.Items)
             {
-                apiStrings[apiNumber] =string.Format(ApiFormatString, 
+                apiStrings[apiNumber] = string.Format(ApiFormatString, 
                     GetName(item), GetVersion(item), 
                     GetClassName(item), GetNamespace(item),
                     GetTitle(item), GetDescription(item), GetDocumentationLink(item),
@@ -120,7 +124,7 @@ namespace Google.Apis.Tools.NAntTasks
                 Project.Log(Level.Info, "Adding Service " + apiStrings[apiNumber]);
                 apiNumber++;
             }
-            Properties[Property] = string.Join(ApiSeperator.ToString(), apiStrings);
+            Properties[Property] = string.Join(ApiSeparator.ToString(), apiStrings);
         }
 
         private string GetNamespace(DirectoryList.ItemsData item)

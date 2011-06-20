@@ -125,18 +125,9 @@
   
   <target name="produce-all-services" depends="discover-all-services,build-google-api,prep" 
           description="Generates, Compiles and Zips all services">
-    <!-- 
-    <foreach item="String" property="current.service" delim="," in="${service.all}" trim="Both">
-      <echo message="foreach ${current.service}" />
-      <regex pattern="${current.service.regex.pattern}" input="${current.service}" />
-      <echo message="Producing Service ${name} ${version} as class ${namespace}.${classname}" />
-      <call target="compile-service" />
-    </foreach>
-    -->
     <foreach item="String" property="current.service" delim="^" in="${google.api.all}" trim="Both">
-      <echo message="foreach ${current.service}" />
       <regex pattern="${google.api.suggested.regex}" input="${current.service}" />
-      <echo message="Producing Service ${apiname} ${apiversion} as class ${apinamespace}.${apiclassname}" />
+      <echo message="Producing service ${apiname} ${apiversion} as class ${apinamespace}.${apiclassname}" />
       <call target="compile-service" />
     </foreach>
     
@@ -158,7 +149,7 @@
   </target>
 
   <target name="compile-service"
-          description="Generates then compiles the current Service"
+          description="Generates then compiles the current service"
           depends="generate-service">
     <echo message="Compiling ${apiname}" />
     <mkdir dir="${generated.binary}/${apiclassname}Service"/>
