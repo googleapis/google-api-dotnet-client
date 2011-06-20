@@ -261,5 +261,14 @@ namespace Google.Apis.Util
             throw new ArgumentException(
                 string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
         }
+        
+        /// <summary>
+        /// Please don't use this unless absolutely nessasery.
+        /// Returns if the current runtime is Mono, this is used to work around different behavior in the runtime.
+        /// </summary>
+        public static bool IsMonoRuntime()
+        {
+            return Type.GetType("Mono.Runtime") != null;
+        }
     }
 }

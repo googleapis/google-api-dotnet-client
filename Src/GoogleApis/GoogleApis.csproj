@@ -74,6 +74,8 @@
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\ISerializer.cs" />
+    <Compile Include="Apis\Requests\ParameterCollection.cs" />
+    <Compile Include="Apis\Util\Repeatable.cs" />
     <Compile Include="Apis\JSON\IJsonSerializer.cs" />
     <Compile Include="Apis\JSON\NewtonsoftJsonSerializer.cs" />
     <Compile Include="Apis\Requests\IResponse.cs" />

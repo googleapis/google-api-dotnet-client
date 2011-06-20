@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtil.cs" />
+    <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />

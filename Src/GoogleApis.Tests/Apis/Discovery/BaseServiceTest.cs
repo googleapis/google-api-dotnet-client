@@ -31,7 +31,7 @@ using NUnit.Framework;
 namespace Google.Apis.Tests.Apis.Discovery
 {
     /// <summary>
-    /// Test for the "BaseService" class
+    /// Test for the "BaseService" class.
     /// </summary>
     [TestFixture]
     public class BaseServiceTest
@@ -46,6 +46,17 @@ namespace Google.Apis.Tests.Apis.Discovery
                 get { throw new NotImplementedException(); }
             }
 
+            public new string ServerUrl 
+            {
+                get { return base.ServerUrl; }
+                set { base.ServerUrl = value; }
+            }
+            public new string BasePath
+            {
+                get { return base.BasePath; }
+                set { base.BasePath = value; }
+            } 
+
             #region Nested type: ConcreteFactoryParameters
 
             private class ConcreteFactoryParameters : BaseFactoryParameters
@@ -57,7 +68,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// A Json schema for testing serialization/deserialization
+        /// A Json schema for testing serialization/deserialization.
         /// </summary>
         internal class MockJsonSchema : IResponse
         {
@@ -99,7 +110,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         #endregion
 
         /// <summary>
-        /// This tests the v0.3 Deserialization of the BaseService
+        /// This tests the v0.3 Deserialization of the BaseService.
         /// </summary>
         [Test]
         public void TestDeserializationV0_3()
@@ -114,16 +125,16 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             IService impl = CreateLegacyV03Service();
 
-            // Check that the default serializer is set
+            // Check that the default serializer is set.
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
 
-            // Check that the response is decoded correctly
+            // Check that the response is decoded correctly.
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
             CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
         }
 
         /// <summary>
-        /// This tests the v1 Deserialization of the BaseService
+        /// This tests the v1 Deserialization of the BaseService.
         /// </summary>
         [Test]
         public void TestDeserializationV1()
@@ -141,7 +152,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Tests the deserialization for server error responses
+        /// Tests the deserialization for server error responses.
         /// </summary>
         [Test]
         public void TestErrorDeserialization()
@@ -169,7 +180,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                 {
                     IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
 
-                    // Verify that the response is decoded correctly
+                    // Verify that the response is decoded correctly.
                     try
                     {
                         impl.DeserializeResponse<MockJsonSchema>(stream);
@@ -177,8 +188,8 @@ namespace Google.Apis.Tests.Apis.Discovery
                     }
                     catch (GoogleApiException ex)
                     {
-                        // Check that the contents of the error json was translated into the exception object
-                        // We cannot compare the entire exception as it depends on the implementation and might change
+                        // Check that the contents of the error json was translated into the exception object.
+                        // We cannot compare the entire exception as it depends on the implementation and might change.
                         Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
                     }
                 }
@@ -186,7 +197,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// This tests the "Features" extension of services
+        /// This tests the "Features" extension of services.
         /// </summary>
         [Test]
         public void TestFeaturesV1()
@@ -197,7 +208,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// This test is designed to test the "Features" extension of services
+        /// This test is designed to test the "Features" extension of services.
         /// </summary>
         [Test]
         public void TestFeaturesV03()
@@ -209,7 +220,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
         /// <summary>
         /// This test confirms that the BaseService will not crash on non-existent, optional fields
-        /// within the JSON document
+        /// within the JSON document.
         /// </summary>
         [Test]
         public void TestNoThrowOnFieldsMissing()
@@ -226,7 +237,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Tests if serialization works
+        /// Tests if serialization works.
         /// </summary>
         [Test]
         public void TestSerializationV0_3()
@@ -246,7 +257,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Tests if serialization works
+        /// Tests if serialization works.
         /// </summary>
         [Test]
         public void TestSerializationV1()
@@ -266,7 +277,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
         /// <summary>
         /// The test targets the more basic properties of the BaseService.
-        /// It should ensure that all properties return the values assigned to them within the JSON document 
+        /// It should ensure that all properties return the values assigned to them within the JSON document.
         /// </summary>
         [Test]
         public void TestSimpleGetters()
@@ -286,6 +297,75 @@ namespace Google.Apis.Tests.Apis.Discovery
             MoreAsserts.ContentsEqualAndInOrder(new List<string> { "label1", "label2" }, impl.Labels);
             Assert.AreEqual("TestId", impl.Id);
             Assert.AreEqual("Test API", impl.Title);
+        }
+
+        /// <summary>
+        /// Tests the BaseResource.GetResource method.
+        /// </summary>
+        [Test]
+        public void TestGetResource()
+        {
+            var container = CreateV1Service();
+            container.Resources.Clear();
+
+            // Create json.
+            var subJson = new JsonDictionary();
+            subJson.Add("resources", new JsonDictionary { { "Grandchild", new JsonDictionary() } });
+            var topJson = new JsonDictionary();
+            topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
+
+            // Create the resource hierachy.
+            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
+            var subResource = topResource.Resources["Sub"];
+            var grandchildResource = subResource.Resources["Grandchild"];
+            container.Resources.Add("Top", topResource); 
+
+            // Check the generated full name.
+            Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
+            Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
+            Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));
+        }
+
+        [Test]
+        public void TestBaseUri()
+        {
+            ConcreteClass instance = (ConcreteClass)CreateV1Service();
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+            
+            // Mono's Uri class strips double forward slashes so this test will not work.
+            // Only run for MS.Net
+            if ( Google.Apis.Util.Utilities.IsMonoRuntime() == false)
+            {
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "test/";
+                instance.ServerUrl = "https://www.test.value//";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "/test//";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
+            }
         }
     }
 }

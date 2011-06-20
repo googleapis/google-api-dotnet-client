@@ -18,41 +18,46 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
-    /// <summary>Represents a parameter for a method </summary>
+    /// <summary>Represents a parameter for a method. </summary>
     public interface IParameter
     {
         /// <summary>
-        /// Name of the parameter
+        /// Name of the parameter.
         /// </summary>
         string Name { get; }
 
         /// <summary>
-        /// The type of the parameter
+        /// The type of the parameter.
         /// </summary>
         string ParameterType { get; }
 
         /// <summary>
-        /// The pattern in which this parameter has to be defined
+        /// The pattern in which this parameter has to be defined.
         /// </summary>
         string Pattern { get; }
 
         /// <summary>
-        /// Defines whether this parameter is optional or required
+        /// Defines whether this parameter is optional or required.
         /// </summary>
-        bool Required { get; }
+        bool IsRequired { get; }
 
         /// <summary>
-        /// The default value of this parameter
+        /// Defines whether this parameter can be repeated multiple times.
+        /// </summary>
+        bool IsRepeatable { get; }
+
+        /// <summary>
+        /// The default value of this parameter.
         /// </summary>
         string DefaultValue { get; }
 
         /// <summary>
-        /// The type of the value
+        /// The type of the value.
         /// </summary>
         string ValueType { get; }
 
         /// <summary>
-        /// Description of this parameter
+        /// Description of this parameter.
         /// </summary>
         string Description { get; }
 

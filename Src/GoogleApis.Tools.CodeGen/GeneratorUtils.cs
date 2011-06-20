@@ -138,6 +138,11 @@ namespace Google.Apis.Tools.CodeGen
         internal const int SafeMemberMaximumIndex = 8;
 
         /// <summary>
+        /// Suffix for all resource containers
+        /// </summary>
+        internal const string ResourceContainerSuffix = "Resource";
+
+        /// <summary>
         /// Defines a change operation which should be applied to a letter.
         /// </summary>
         public enum TargetCase
@@ -404,7 +409,15 @@ namespace Google.Apis.Tools.CodeGen
         public static string GetClassName(IResourceContainer resource, IEnumerable<string> wordsUsedInContext)
         {
             string name = resource.Name;
-            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Resource", name + "Object");
+
+            if ((resource is IService) == false)
+            {
+                // Add a suffix to all resource containers (except the main service)
+                name += ResourceContainerSuffix;
+            }
+
+            return GetSafeMemberName(
+                wordsUsedInContext, TargetCase.ToUpper, name, resource.Name + "Res", name + "Object");
         }
 
         /// <summary>
