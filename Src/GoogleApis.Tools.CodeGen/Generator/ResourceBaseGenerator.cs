@@ -110,7 +110,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 // Naming scheme: MethodnameParametername
                 CodeTypeReference enumReference = DecoratorUtil.FindFittingEnumeration(
-                    classDeclaration, param.EnumValues);
+                    classDeclaration, param.EnumValues, param.EnumValueDescriptions);
 
                 if (enumReference != null)
                 {

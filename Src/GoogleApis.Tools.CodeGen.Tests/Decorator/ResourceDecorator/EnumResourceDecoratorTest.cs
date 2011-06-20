@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.CodeDom;
 using System.Linq;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
@@ -53,5 +54,46 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             CodeTypeDeclaration enumType = query.Single();
             Assert.AreEqual(3, enumType.Members.Count);
         }
+
+        /// <summary>
+        /// Tests the GenerateEnum method.
+        /// </summary>
+        [Test]
+        public void GenerateEnumTest()
+        {
+            const string name = "TestEnum";
+            const string desc = "TestDescription";
+            string[] elems = new[] { "ElemA", "ElemB", "ElemC" };
+            string[] elemDescriptions = new[] { "DescA", "DescB", "DescC" };
+            var typeDecl = new CodeTypeDeclaration();
+
+            // Check that the method validates its inputs.
+            Assert.Throws<ArgumentNullException>(
+                () => EnumResourceDecorator.GenerateEnum(null, name, desc, elems, elemDescriptions));
+            Assert.Throws<ArgumentNullException>(
+                () => EnumResourceDecorator.GenerateEnum(typeDecl, null, desc, elems, elemDescriptions));
+            Assert.Throws<ArgumentNullException>(
+                () => EnumResourceDecorator.GenerateEnum(typeDecl, name, desc, null, elemDescriptions));
+
+            // Check that the generated enumeration contains all elements.
+            CodeTypeDeclaration decl = EnumResourceDecorator.GenerateEnum(typeDecl, name, desc, elems, elemDescriptions);
+            Assert.AreEqual(name, decl.Name);
+            Assert.IsTrue(decl.IsEnum);
+            Assert.AreEqual(1, decl.Comments.Count);
+
+            Assert.AreEqual(3, decl.Members.Count);
+            Assert.AreEqual("ElemA", decl.Members[0].Name);
+            Assert.AreEqual("ElemB", decl.Members[1].Name);
+            Assert.AreEqual("ElemC", decl.Members[2].Name);
+
+            Assert.AreEqual(1, decl.Members[0].Comments.Count);
+            Assert.AreEqual(1, decl.Members[1].Comments.Count);
+            Assert.AreEqual(1, decl.Members[2].Comments.Count);
+
+            // Check that the code does not fail when no comments are provided
+            decl = EnumResourceDecorator.GenerateEnum(typeDecl, name, desc, elems, null);
+            Assert.IsNotNull(decl);
+        }
+
     }
 }

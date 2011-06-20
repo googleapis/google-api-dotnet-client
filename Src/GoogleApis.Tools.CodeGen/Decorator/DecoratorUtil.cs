@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Security;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator
@@ -132,115 +133,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Creates an enumeration from the provided data.
-        /// </summary>
-        /// <param name="typeDeclaration">The type which should contain this enumeration.</param>
-        /// <param name="proposedName">The proposed name for this enumeration.</param>
-        /// <param name="description">Description of the enum class.</param>
-        /// <param name="entries">Enum entries in the form (name, comment/description).</param>
-        /// <returns>The generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
-                                                       string proposedName,
-                                                       string description,
-                                                       IEnumerable<KeyValuePair<string, string>> entries)
-        {
-            typeDeclaration.ThrowIfNull("typeDeclaration");
-            proposedName.ThrowIfNullOrEmpty("proposedName");
-            entries.ThrowIfNull("entries");
-
-            // Create a safe enum name by avoiding the names of all members which are already in this type.
-            IEnumerable<string> memberNames = from CodeTypeMember m in typeDeclaration.Members select m.Name;
-            string name = GeneratorUtils.GetEnumName(proposedName, memberNames);
-
-            // Create the enum type.
-            var decl = new CodeTypeDeclaration(name);
-            decl.IsEnum = true;
-
-            // Get the EnumStringValueTypeConverter type.
-            Type converterType = typeof(EnumStringValueTypeConverter);
-
-            // [TypeConverter(..)]
-            var typeConvAttribute = new CodeAttributeDeclaration(
-                new CodeTypeReference(typeof(TypeConverterAttribute)));
-
-            // .. typeof(EnumStringValueTypeConverter) ..
-            typeConvAttribute.Arguments.Add(new CodeAttributeArgument(new CodeTypeOfExpression(converterType)));
-            decl.CustomAttributes.Add(typeConvAttribute);
-
-            foreach (KeyValuePair<string, string> enumEntry in entries)
-            {
-                // Consider the names of all members in the current type as used words.
-                IEnumerable<string> usedNames = from CodeTypeMember m in decl.Members select m.Name;
-                string safeName = GeneratorUtils.GetEnumValueName(enumEntry.Key, usedNames);
-                var member = new CodeMemberField(typeof(int), safeName);
-
-                // Attribute:
-                var valueAttribute = new CodeAttributeDeclaration();
-                valueAttribute.Name = typeof(StringValueAttribute).FullName;
-                valueAttribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(enumEntry.Key)));
-                member.CustomAttributes.Add(valueAttribute);
-
-                // Comments:
-                member.Comments.AddRange(CreateSummaryComment(enumEntry.Value));
-
-                // Add member to enum.
-                decl.Members.Add(member);
-            }
-
-            // Class comment:
-            decl.Comments.AddRange(CreateSummaryComment(description));
-
-            return decl;
-        }
-
-        /// <summary>
-        /// Creates an enumeration from the provided data.
-        /// </summary>
-        /// <param name="typeDeclaration">The type which should contain this enumeration.</param>
-        /// <param name="proposedName">The proposed name of the enumeration.</param>
-        /// <param name="description">Description of the enum class.</param>
-        /// <param name="enumValues">All enumeration values.</param>
-        /// <param name="enumDescriptions">All enumeration comments.</param>
-        /// <returns>Generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
-                                                       string proposedName,
-                                                       string description,
-                                                       IEnumerable<string> enumValues,
-                                                       IEnumerable<string> enumDescriptions)
-        {
-            // Add the comments to the values if possible, or create empty ones.
-            IEnumerable<KeyValuePair<string, string>> enumEntries = enumDescriptions.IsNullOrEmpty()
-                              ? enumValues.Select((str) => new KeyValuePair<string, string>(str, null))
-                              : GetEnumerablePairs(enumValues, enumDescriptions);
-            return GenerateEnum(typeDeclaration, proposedName, description, enumEntries);
-        }
-    
-        /// <summary>
-        /// Returns a collection of joined keys and values as KeyValuePairs
-        /// </summary>
-        [VisibleForTestOnly]
-        internal static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
-                                                                                 IEnumerable<V> values)
-        {
-            keys.ThrowIfNull("keys");
-            values.ThrowIfNull("values");
-
-            if (keys.Count() != values.Count())
-            {
-                throw new ArgumentException("Both enumerables must be of the the same length.");
-            }
-
-            IEnumerator<K> keysEnumerator = keys.GetEnumerator();
-            IEnumerator<V> valuesEnumerator = values.GetEnumerator();
-
-            // Return both enumerables as KeyValuePairs
-            while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext())
-            {
-                yield return new KeyValuePair<K, V>(keysEnumerator.Current, valuesEnumerator.Current);
-            }
-        }
-
-        /// <summary>
         /// Adds the specified members to the given class.
         /// Skips elements which already have been added.
         /// </summary>
@@ -268,10 +160,36 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
+        /// Returns a collection of joined keys and values as KeyValuePairs
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
+                                                                                 IEnumerable<V> values)
+        {
+            keys.ThrowIfNull("keys");
+            values.ThrowIfNull("values");
+
+            if (keys.Count() != values.Count())
+            {
+                throw new ArgumentException("Both enumerables must be of the the same length.");
+            }
+
+            IEnumerator<K> keysEnumerator = keys.GetEnumerator();
+            IEnumerator<V> valuesEnumerator = values.GetEnumerator();
+
+            // Return both enumerables as KeyValuePairs
+            while (keysEnumerator.MoveNext() && valuesEnumerator.MoveNext())
+            {
+                yield return new KeyValuePair<K, V>(keysEnumerator.Current, valuesEnumerator.Current);
+            }
+        }
+
+        /// <summary>
         /// Returns the enumeration which has the same keys declared, or null if no match was found.
         /// </summary>
         public static CodeTypeReference FindFittingEnumeration(CodeTypeDeclaration declaration,
-                                                               IEnumerable<string> keys)
+                                                               IEnumerable<string> keys,
+                                                               IEnumerable<string> comments)
         {
             declaration.ThrowIfNull("declaration");
             keys.ThrowIfNull("keys");
@@ -280,7 +198,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             foreach (CodeTypeMember typeMember in declaration.Members)
             {
                 CodeTypeDeclaration decl = typeMember as CodeTypeDeclaration;
-                if (decl == null || !IsFittingEnum(decl, keys))
+                if (decl == null || !IsFittingEnum(decl, keys, comments))
                 {
                     continue;
                 }
@@ -294,10 +212,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Determines whether the given enum has the same keys as specified.
+        /// Determines whether the given enum has the same pairs as specified.
+        /// </summary>
+        /// <returns></returns>
+        [VisibleForTestOnly]
+        internal static bool IsFittingEnum(CodeTypeDeclaration enumType,
+                                           IEnumerable<string> values,
+                                           IEnumerable<string> comments)
+        {
+            return IsFittingEnum(enumType, GetEnumerablePairs(values, comments));
+        }
+
+        /// <summary>
+        /// Determines whether the given enum has the same pairs as specified.
         /// </summary>
         [VisibleForTestOnly]
-        internal static bool IsFittingEnum(CodeTypeDeclaration enumType, IEnumerable<string> keys)
+        internal static bool IsFittingEnum(CodeTypeDeclaration enumType,
+                                           IEnumerable<KeyValuePair<string, string>> enumPairs)
         {
             if (enumType == null || !enumType.IsEnum)
             {
@@ -315,16 +246,29 @@ namespace Google.Apis.Tools.CodeGen.Decorator
 
 
                 string enumFieldValue = ((CodePrimitiveExpression)decl.Arguments[0].Value).Value.ToString();
-                if (!keys.Contains(enumFieldValue))
+
+                // Get the key value pair representing this enum value.
+                KeyValuePair<string, string> enumPair =
+                    (from KeyValuePair<string, string> k in enumPairs where k.Key == enumFieldValue select k).
+                        SingleOrDefault();
+
+                if (enumPair.Equals(default(KeyValuePair<string, string>)))
                 {
-                    // Field is not present in the list of declared keys
+                    // Field is not present in the list of declared keys.
                     return false;
+                }
+
+                // Confirm that the comments are identical.
+                if (
+                    !field.Comments[0].Comment.Text.Equals(CreateSummaryComment(enumPair.Value)[0].Comment.Text))
+                {
+                    return false; // Comment is different.
                 }
 
                 count++;
             }
 
-            if (count != keys.Count())
+            if (count != enumPairs.Count())
             {
                 return false; // The amount of declared field differs -> not the same enum.
             }

@@ -55,53 +55,53 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         public const string ResourceAsJson =
             @"
-		{
-			""methods"":{
-				""getTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""req_b"":{""parameterType"":""query"",""required"":true},
+        {
+            ""methods"":{
+                ""getTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""req_b"":{""parameterType"":""query"",""required"":true},
                         ""req_a"":{""parameterType"":""query"",""required"":true},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
-						""opt_a"":{""parameterType"":""query"",""required"":false}
-					}
-				},
-				""postTest"":{
-					""pathUrl"":""activities/{userId}/{scope}/{postId}"",
-					""rpcName"":""chili.activities.delete"",
-					""httpMethod"":""POST"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""req_a"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
-						""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
-						""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
-						""opt_a"":{""parameterType"":""query"",""required"":false}
-					}
-				},
-				""noParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":null
-				},
-				""oneOptionalParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":false}}
-				},
-				""oneRequiredParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{
+                        ""opt_b"":{""parameterType"":""query"",""required"":false},
+                        ""opt_a"":{""parameterType"":""query"",""required"":false}
+                    }
+                },
+                ""postTest"":{
+                    ""pathUrl"":""activities/{userId}/{scope}/{postId}"",
+                    ""rpcName"":""chili.activities.delete"",
+                    ""httpMethod"":""POST"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""req_a"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
+                        ""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true},
+                        ""opt_b"":{""parameterType"":""query"",""required"":false},
+                        ""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
+                        ""opt_a"":{""parameterType"":""query"",""required"":false}
+                    }
+                },
+                ""noParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":null
+                },
+                ""oneOptionalParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":false}}
+                },
+                ""oneRequiredParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
                         ""opt_a"":{
                             ""parameterType"":""query"",
                             ""required"":true,
@@ -114,10 +114,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
                             ],
                         }
                     }
-				}
-			}
-		}
-		";
+                }
+            }
+        }
+        ";
 
         private const string AdSenseDiscoveryV1 =
             @"
@@ -685,18 +685,18 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         public const string SimpleResource =
             @"
-		{
-			""methods"":{
-				""simpleMethod"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":null
-				}
-			}
-		}
-		";
+        {
+            ""methods"":{
+                ""simpleMethod"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":null
+                }
+            }
+        }
+        ";
 
         #region BuzzServiceAsJson
 
