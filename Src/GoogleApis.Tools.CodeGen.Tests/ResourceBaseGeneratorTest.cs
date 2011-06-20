@@ -18,6 +18,7 @@ using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using NUnit.Framework;
 
@@ -122,8 +123,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
             param.ValueType = "string";
             param.EnumValues = new[] { "TestA", "TestB" };
             param.EnumValueDescriptions = new[] { "DescA", "DescB" };
-            decl.Members.Add(
-                DecoratorUtil.GenerateEnum(decl, "TestEnum", null, param.EnumValues, param.EnumValueDescriptions));
+            decl.Members.Add(EnumResourceDecorator.GenerateEnum(
+                decl, "TestEnum", null, param.EnumValues, param.EnumValueDescriptions));
             refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param, method);
             Assert.AreEqual("TestEnum", refType.BaseType);
 

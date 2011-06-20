@@ -22,7 +22,7 @@ using NUnit.Framework;
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
     /// <summary>
-    /// Test for the "CreateResourceDivcoveryV_1_0" class.
+    /// Test for the DictionaryOptionalParameterResource decorator
     /// </summary>
     [TestFixture]
     public class DictionaryOptionalParameterResourceDecoratorTest : BaseResourceDecoratorTest
@@ -39,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
                 new DictionaryOptionalParameterResourceDecorator.ResourceGenerator("TestResourceClassName", null);
 
             var method = resource.Methods[TestMethodNames.noParameterTest.ToString()];
-
+            
             var member = methodGenerator.CreateMethod(decl, resource, method, 1, new List<IResourceDecorator>());
             Assert.IsNull(member, "With no parameters we should have no method.");
 

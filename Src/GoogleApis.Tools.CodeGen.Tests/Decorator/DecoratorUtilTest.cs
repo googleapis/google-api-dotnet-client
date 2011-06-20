@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator
@@ -152,47 +153,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
                 "<summary>A &apos;Short&quot; &lt;description&gt; &lt;for/&gt; test &amp; fun</summary>";
             Assert.AreEqual(desiredComment, result[0].Comment.Text);
         }
-
-        /// <summary>
-        /// Tests the GenerateEnum method.
-        /// </summary>
-        [Test]
-        public void GenerateEnumTest()
-        {
-            const string name = "TestEnum";
-            const string desc = "TestDescription";
-            string[] elems = new[] { "ElemA", "ElemB", "ElemC" };
-            string[] elemDescriptions = new[] { "DescA", "DescB", "DescC" };
-            var typeDecl = new CodeTypeDeclaration();
-
-            // Check that the method validates its inputs.
-            Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GenerateEnum(null, name, desc, elems, elemDescriptions));
-            Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GenerateEnum(typeDecl, null, desc, elems, elemDescriptions));
-            Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GenerateEnum(typeDecl, name, desc, null, elemDescriptions));
-
-            // Check that the generated enumeration contains all elements.
-            CodeTypeDeclaration decl = DecoratorUtil.GenerateEnum(typeDecl, name, desc, elems, elemDescriptions);
-            Assert.AreEqual(name, decl.Name);
-            Assert.IsTrue(decl.IsEnum);
-            Assert.AreEqual(1, decl.Comments.Count);
-
-            Assert.AreEqual(3, decl.Members.Count);
-            Assert.AreEqual("ElemA", decl.Members[0].Name);
-            Assert.AreEqual("ElemB", decl.Members[1].Name);
-            Assert.AreEqual("ElemC", decl.Members[2].Name);
-
-            Assert.AreEqual(1, decl.Members[0].Comments.Count);
-            Assert.AreEqual(1, decl.Members[1].Comments.Count);
-            Assert.AreEqual(1, decl.Members[2].Comments.Count);
-
-            // Check that the code does not fail when no comments are provided
-            decl = DecoratorUtil.GenerateEnum(typeDecl, name, desc, elems, null);
-            Assert.IsNotNull(decl);
-        }
-
+        
         /// <summary>
         /// Tests the AddMembersToClass method.
         /// </summary>
@@ -236,7 +197,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.Throws<ArgumentNullException>(
                 () => DecoratorUtil.GetEnumerablePairs((string[]) null, values).First());
             Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GetEnumerablePairs(keys, (string[]) null).First());
+                () => DecoratorUtil.GetEnumerablePairs(keys, (string[])null).First());
 
             Assert.Throws<ArgumentException>(() => DecoratorUtil.GetEnumerablePairs(keys, invalidSized).First());
             Assert.Throws<ArgumentException>(() => DecoratorUtil.GetEnumerablePairs(invalidSized, values).First());
@@ -263,30 +224,30 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             IEnumerable<string> enumValues3 = new[] { "foo", "bar" };
 
             // Test parameter validation.
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.FindFittingEnumeration(decl, null));
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.FindFittingEnumeration(null, enumValues));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.FindFittingEnumeration(decl, null, null));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.FindFittingEnumeration(null, enumValues, null));
 
             // Test with empty class.
-            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues));
+            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues, null));
 
             // Add an enum, and check whether it can be found.
-            CodeTypeDeclaration testEnum = DecoratorUtil.GenerateEnum(
+            CodeTypeDeclaration testEnum = EnumResourceDecorator.GenerateEnum(
                 decl, "SomeName", "SomeDescription", enumValues, null);
             decl.Members.Add(testEnum);
-            Assert.AreEqual(testEnum.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues).BaseType);
+            Assert.AreEqual(testEnum.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues, null).BaseType);
 
             // Confirm that the other values are not found.
-            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues2));
-            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues3));
+            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues2, null));
+            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues3, null));
 
             // Check that the code also works with two enumerations
-            CodeTypeDeclaration testEnum3 = DecoratorUtil.GenerateEnum(
+            CodeTypeDeclaration testEnum3 = EnumResourceDecorator.GenerateEnum(
                 decl, "SomeOtherName", "SomeDescription", enumValues3, null);
             decl.Members.Add(testEnum3);
 
-            Assert.AreEqual(testEnum.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues).BaseType);
-            Assert.AreEqual(testEnum3.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues3).BaseType);
-            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues2));
+            Assert.AreEqual(testEnum.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues, null).BaseType);
+            Assert.AreEqual(testEnum3.Name, DecoratorUtil.FindFittingEnumeration(decl, enumValues3, null).BaseType);
+            Assert.IsNull(DecoratorUtil.FindFittingEnumeration(decl, enumValues2, null));
         }
 
         /// <summary>
@@ -301,13 +262,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             IEnumerable<string> enumValues3 = new[] { "foo", "bar" };
 
             // Add an enum, and check whether it can be found.
-            CodeTypeDeclaration testEnum = DecoratorUtil.GenerateEnum(
+            CodeTypeDeclaration testEnum = EnumResourceDecorator.GenerateEnum(
                 decl, "SomeName", "SomeDescription", enumValues, null);
             decl.Members.Add(testEnum);
-            Assert.IsTrue(DecoratorUtil.IsFittingEnum(testEnum, enumValues));
-            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues2));
-            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues3));
-            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, Enumerable.Empty<string>()));
+            Assert.IsTrue(DecoratorUtil.IsFittingEnum(testEnum, enumValues, null));
+            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues2, null));
+            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues3, null));
+            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, Enumerable.Empty<string>(), null));
         }
     }
 }
