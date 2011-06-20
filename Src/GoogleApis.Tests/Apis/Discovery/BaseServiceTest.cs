@@ -346,21 +346,26 @@ namespace Google.Apis.Tests.Apis.Discovery
             instance.ServerUrl = "https://www.test.value";
             Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
             
-            instance.BasePath = "//test/";
-            instance.ServerUrl = "https://www.test.value";
-            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-            
-            instance.BasePath = "//test/";
-            instance.ServerUrl = "https://www.test.value/";
-            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-            
-            instance.BasePath = "test/";
-            instance.ServerUrl = "https://www.test.value//";
-            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-            
-            instance.BasePath = "/test//";
-            instance.ServerUrl = "https://www.test.value/";
-            Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
+            // Mono's Uri class strips double forward slashes so this test will not work.
+            // Only run for MS.Net
+            if ( Google.Apis.Util.Utilities.IsMonoRuntime() == false)
+            {
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "test/";
+                instance.ServerUrl = "https://www.test.value//";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "/test//";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
+            }
         }
     }
 }
