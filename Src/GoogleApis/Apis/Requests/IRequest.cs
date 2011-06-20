@@ -26,49 +26,49 @@ namespace Google.Apis.Requests
     public interface IRequest
     {
         /// <summary>
-        /// Specifies the RPC name to use
+        /// Specifies the RPC name to use.
         /// </summary>
         /// <param name="rpcName"></param>
         /// <returns></returns>
         IRequest On(string rpcName);
 
         /// <summary>
-        /// Specifies the return type of this method
+        /// Specifies the return type of this method.
         /// </summary>
         IRequest Returning(ReturnType returnType);
 
         /// <summary>
-        /// Specifies the parameter set of this method
+        /// Specifies the parameter set of this method.
         /// </summary>
         IRequest WithParameters(IDictionary<string, object> parameters);
 
         /// <summary>
-        /// Specifies the parameter set of this method
+        /// Specifies the parameter set of this method.
         /// </summary>
-        IRequest WithParameters(IDictionary<string, string> parameters);
+        IRequest WithParameters(IEnumerable<KeyValuePair<string, string>> parameters);
 
         /// <summary>
-        /// Specifies the parameter query string of this method
+        /// Specifies the parameter query string of this method.
         /// </summary>
         IRequest WithParameters(string parameters);
 
         /// <summary>
-        /// Adds a body to this request (POST, PUT, ..)
+        /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
         IRequest WithBody(string body);
 
         /// <summary>
-        /// Changes the request to use the specified authenticator
+        /// Changes the request to use the specified authenticator.
         /// </summary>
         IRequest WithAuthentication(IAuthenticator authenticator);
 
         /// <summary>
-        /// Adds the developer key to this request
+        /// Adds the developer key to this request.
         /// </summary>
         IRequest WithDeveloperKey(string key);
 
         /// <summary>
-        /// Executes the request and returns the response stream
+        /// Executes the request and returns the response stream.
         /// </summary>
         Stream ExecuteRequest();
     }

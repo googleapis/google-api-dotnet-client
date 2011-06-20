@@ -40,30 +40,30 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var parameterDefinitions = new Dictionary<string, IParameter>();
             parameterDefinitions.Add(
-                "required", new MockParameter { Name = "required", Required = true, ParameterType = "query" });
+                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
             parameterDefinitions.Add(
                 "optionalWithValue",
                 new MockParameter
                     {
                         Name = "optionalWithValue",
-                        Required = false,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
             parameterDefinitions.Add(
                 "optionalWithNull",
                 new MockParameter
-                    { Name = "optionalWithNull", Required = false, ParameterType = "query", DefaultValue = "c" });
+                    { Name = "optionalWithNull", IsRequired = false, ParameterType = "query", DefaultValue = "c" });
             parameterDefinitions.Add(
                 "optionalWithEmpty",
                 new MockParameter
-                    { Name = "optionalWithEmpty", Required = false, ParameterType = "query", DefaultValue = "d" });
+                    { Name = "optionalWithEmpty", IsRequired = false, ParameterType = "query", DefaultValue = "d" });
             parameterDefinitions.Add(
                 "optionalNotPressent",
                 new MockParameter
                     {
                         Name = "optionalNotPressent",
-                        Required = false,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
@@ -92,6 +92,42 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual(
                 "https://test.google.com/?alt=json&optionalWithEmpty=d&" +
                 "optionalWithNull=c&optionalWithValue=b&required=a", url.AbsoluteUri);
+        }
+
+        /// <summary>
+        /// Builds a request from a query string, and checks if the resulting query string is the same.
+        /// </summary>
+        [Test]
+        public void BuildRequestWithQueryStringTest()
+        {
+            const string query = "required=yes&optionalWithValue=%26test";
+
+            var parameterDefinitions = new Dictionary<string, IParameter>();
+            parameterDefinitions.Add(
+                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
+            parameterDefinitions.Add(
+                "optionalWithValue",
+                new MockParameter { Name = "optionalWithValue", IsRequired = false, ParameterType = "query" });
+            var service = new MockService();
+
+            // Cast the IRequest to a Request to access internal construction methods.
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                    {
+                        HttpMethod = "GET",
+                        Name = "TestMethod",
+                        RestPath = "https://test.google.com",
+                        Parameters = parameterDefinitions
+                    });
+
+            request.WithParameters(query);
+            var url = request.BuildRequestUrl();
+
+            // Check that the resulting query string is identical with the input.
+            Assert.AreEqual("?alt=json&"+query, url.Query);
         }
 
         /// <summary>
@@ -138,19 +174,19 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var parameterDefinitions = new Dictionary<string, IParameter>();
             parameterDefinitions.Add(
-                "required", new MockParameter { Name = "required", Required = true, ParameterType = "query" });
+                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
             parameterDefinitions.Add(
                 "optionalWithValue",
-                new MockParameter { Name = "optionalWithValue", Required = false, ParameterType = "query" });
+                new MockParameter { Name = "optionalWithValue", IsRequired = false, ParameterType = "query" });
             parameterDefinitions.Add(
                 "optionalWithNull",
-                new MockParameter { Name = "optionalWithNull", Required = false, ParameterType = "query" });
+                new MockParameter { Name = "optionalWithNull", IsRequired = false, ParameterType = "query" });
             parameterDefinitions.Add(
                 "optionalWithEmpty",
-                new MockParameter { Name = "optionalWithEmpty", Required = false, ParameterType = "query" });
+                new MockParameter { Name = "optionalWithEmpty", IsRequired = false, ParameterType = "query" });
             parameterDefinitions.Add(
                 "optionalNotPressent",
-                new MockParameter { Name = "optionalNotPressent", Required = false, ParameterType = "query" });
+                new MockParameter { Name = "optionalNotPressent", IsRequired = false, ParameterType = "query" });
             var parameterValues = new SortedDictionary<string, string>();
             parameterValues.Add("required", "a");
             parameterValues.Add("optionalWithValue", "b");
@@ -291,12 +327,12 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new Request();
             request.WithParameters(dict);
             Assert.AreEqual(dict.Count, request.Parameters.Count);
-            Assert.AreEqual("a", request.Parameters["a"]);
-            Assert.IsNull(request.Parameters["null"]);
-            Assert.AreEqual("1", request.Parameters["1"]);
-            Assert.AreEqual("100", request.Parameters["100"]);
-            Assert.AreEqual("True", request.Parameters["True"]);
-            Assert.AreEqual("False", request.Parameters["False"]);
+            Assert.AreEqual("a", request.Parameters.GetFirstMatch("a"));
+            Assert.IsNull(request.Parameters.GetFirstMatch("null"));
+            Assert.AreEqual("1", request.Parameters.GetFirstMatch("1"));
+            Assert.AreEqual("100", request.Parameters.GetFirstMatch("100"));
+            Assert.AreEqual("True", request.Parameters.GetFirstMatch("True"));
+            Assert.AreEqual("False",request.Parameters.GetFirstMatch("False"));
         }
     }
 }

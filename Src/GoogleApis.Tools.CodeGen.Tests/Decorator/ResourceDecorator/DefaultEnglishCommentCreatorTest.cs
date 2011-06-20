@@ -93,12 +93,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var parameter = new MockParameter();
             var progamaticName = "testParameter";
             parameter.Name = progamaticName;
-            parameter.Required = false;
+            parameter.IsRequired = false;
 
             string result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Optional", result);
 
-            parameter.Required = true;
+            parameter.IsRequired = true;
             result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Required", result);
 

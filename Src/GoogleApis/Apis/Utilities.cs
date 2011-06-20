@@ -294,26 +294,6 @@ namespace Google.Apis
             return String.Format(CultureInfo.InvariantCulture, "{0:00}:{1:00}", timeSpan.Hours, timeSpan.Minutes);
         }
 
-
-        internal static Dictionary<string, string> QueryStringToDictionary(string qs)
-        {
-            var results = new Dictionary<string, string>();
-
-            var qsParam = qs.Split('&');
-
-            foreach (var param in qsParam)
-            {
-                var info = param.Split('=');
-
-                if (info.Length == 2)
-                {
-                    results.Add(info[0], info[1]);
-                }
-            }
-
-            return results;
-        }
-
         /////////////////////////////////////////////////////////////////////////////
 
 

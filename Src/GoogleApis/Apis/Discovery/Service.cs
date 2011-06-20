@@ -21,6 +21,7 @@ using System.Linq;
 using Google.Apis.Json;
 using Google.Apis.JSON;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
 using log4net;
@@ -111,7 +112,21 @@ namespace Google.Apis.Discovery
 
         public Uri BaseUri
         {
-            get { return new Uri(ServerUrl + BasePath); }
+            get
+            {
+                if (ServerUrl.EndsWith("/") && BasePath.StartsWith("/"))
+                {
+                    return new Uri(ServerUrl.Substring(0, ServerUrl.Length - 1) + BasePath);
+                }
+                else if (ServerUrl.EndsWith("/") == false && BasePath.StartsWith("/") == false)
+                {
+                    return new Uri(ServerUrl + "/" + BasePath);
+                }
+                else
+                {
+                    return new Uri(ServerUrl + BasePath);
+                }
+            }
         }
 
         public Uri RpcUri
@@ -183,10 +198,35 @@ namespace Google.Apis.Discovery
         /// </summary>
         public IRequest CreateRequest(string resource, string methodName)
         {
-            var method = Resources[resource].Methods[methodName];
+            var method = GetResource(this, resource).Methods[methodName];
             var request = Request.CreateRequest(this, method);
 
             return request;
+        }
+
+        /// <summary>
+        /// Retrieves a resource using the full resource name.
+        /// Example:
+        ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static IResource GetResource(IResourceContainer container, string fullResourceName)
+        {
+            fullResourceName.ThrowIfNull("fullResourceName");
+
+            string[] split = fullResourceName.Split(new[] { '.' }, 2);
+            string topResourceName = split[0];
+            IResource topResource = container.Resources[topResourceName];
+
+            if (split.Length <= 1)
+            {
+                // This is the resource we are looking for.
+                return topResource;
+            }
+            
+            // Retrieve the top resource, and re-run this method on it.
+            string fullSubresourceName = split[1];
+            return GetResource(topResource, fullSubresourceName);
         }
 
         public string SerializeRequest(object obj)
@@ -217,7 +257,15 @@ namespace Google.Apis.Discovery
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
-                StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+                StandardResponse<T> response = null;
+                try
+                {
+                    response = Serializer.Deserialize<StandardResponse<T>>(text);
+                }
+                catch(JsonReaderException ex)
+                {
+                    throw new GoogleApiException(this, "Failed to parse response from server as json ["+text+"]", ex);
+                }
 
                 if (response.Error != null)
                 {
@@ -233,7 +281,15 @@ namespace Google.Apis.Discovery
             }
 
             // New path: Deserialize the object directly
-            T result = Serializer.Deserialize<T>(text);
+            T result = default(T);
+            try
+            {
+                result = Serializer.Deserialize<T>(text);
+            }
+            catch (JsonReaderException ex)
+            {
+                throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
+            }
 
             // If this schema/object provides an error container, check it
             if (result is IResponse)
@@ -299,7 +355,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V1.0
     /// </summary>
-    public class ServiceV1_0 : BaseService
+    internal class ServiceV1_0 : BaseService
     {
         private const string BasePathField = "basePath";
 
@@ -329,7 +385,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V0.3
     /// </summary>
-    public class ServiceV0_3 : BaseService
+    internal class ServiceV0_3 : BaseService
     {
         private const string RestBasePathField = "restBasePath";
 

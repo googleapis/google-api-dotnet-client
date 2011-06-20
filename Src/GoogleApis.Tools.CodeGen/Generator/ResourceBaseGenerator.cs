@@ -27,7 +27,7 @@ using log4net;
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Abstract implementation of a resource generator
+    /// Abstract implementation of a resource generator.
     /// </summary>
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
@@ -53,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 case Request.PUT:
                 case Request.POST:
                 case Request.PATCH:
-                    // add body Parameter
+                    // add body Parameter.
                     member.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, "body"));
                     break;
                 default:
@@ -62,9 +62,26 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         /// <summary>
-        /// Returns the .NET equivalent of the type specified within the paramater
+        /// Returns the parameter type specified within the parameter.
         /// </summary>
         public static Type GetParameterType(IParameter param)
+        {
+            param.ThrowIfNull("param");
+            Type baseType = GetUnderlyingParameterType(param);
+
+            // If this is a repeatable parameter, wrap the underlying type into a Repeatable<T>.
+            if (param.IsRepeatable)
+            {
+                return typeof(Repeatable<>).MakeGenericType(baseType);
+            }
+
+            return baseType;
+        }
+
+        /// <summary>
+        /// Retrieves the underlying, unmodified type of a parameter.
+        /// </summary>
+        private static Type GetUnderlyingParameterType(IParameter param)
         {
             param.ThrowIfNull("param");
 
