@@ -345,8 +345,22 @@ namespace Google.Apis.Tests.Apis.Discovery
             instance.BasePath = "test/";
             instance.ServerUrl = "https://www.test.value";
             Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
-
-
+            
+            instance.BasePath = "//test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+            
+            instance.BasePath = "//test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+            
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value//";
+            Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+            
+            instance.BasePath = "/test//";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
         }
     }
 }
