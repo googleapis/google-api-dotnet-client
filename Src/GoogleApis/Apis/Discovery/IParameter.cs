@@ -74,6 +74,11 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// A list of valid enum values. (Only for enum values)
         /// </summary>
-        IEnumerable<string> Enum { get; }
+        IEnumerable<string> EnumValues { get; }
+
+        /// <summary>
+        /// A list of valid enum value descriptions. (Only for enum values)
+        /// </summary>
+        IEnumerable<string> EnumValueDescriptions { get; }
     }
 }

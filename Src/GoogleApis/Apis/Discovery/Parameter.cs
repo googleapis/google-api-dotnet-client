@@ -40,7 +40,7 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_1_0:
                     return new ParameterV1_0(kvp);
                 default:
-                    throw new NotSupportedException("Unsuppored version of Discovery " + version);
+                    throw new NotSupportedException("Unsupported version of Discovery " + version);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Google.Apis.Discovery
             /// <summary>
             /// Returns a set of enum value descriptions.
             /// </summary>
-            public IEnumerable<string> EnumDescription
+            public IEnumerable<string> EnumValueDescriptions
             {
                 get
                 {
@@ -136,7 +136,7 @@ namespace Google.Apis.Discovery
                 get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
             }
 
-            public IEnumerable<string> Enum
+            public IEnumerable<string> EnumValues
             {
                 get
                 {

@@ -404,6 +404,23 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
+        /// Returns a safe and appropriate enumeration name for the specified enumeration.
+        /// </summary>
+        public static string GetEnumName(string enumName, IEnumerable<string> wordsUsedInContext)
+        {
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum");
+        }
+
+        /// <summary>
+        /// Returns a safe and appropriate name for an enumeration value.
+        /// </summary>
+        public static string GetEnumValueName(string enumValue, IEnumerable<string> wordsUsedInContext)
+        {
+            return GetSafeMemberName(
+               wordsUsedInContext, TargetCase.ToUpper, enumValue, enumValue + "Value");
+        }
+
+        /// <summary>
         /// Returns a safe and appropriate class name for the specified resource container.
         /// </summary>
         public static string GetClassName(IResourceContainer resource, IEnumerable<string> wordsUsedInContext)
