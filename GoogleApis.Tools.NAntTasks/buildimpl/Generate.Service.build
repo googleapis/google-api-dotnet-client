@@ -120,7 +120,7 @@
         google.api.all, 
         google.api.suggested.regex
     </description>
-    <googleapidiscover />
+    <google-api-discover />
   </target>
   
   <target name="produce-all-services" depends="discover-all-services,build-google-api,prep" 
@@ -139,7 +139,7 @@
           depends="config"
           description="Generates the source of the current service">
     <echo message="Generating ${apiname}"/>
-    <googleapigenerate
+    <google-api-generate
         discoveryurl="https://www.googleapis.com/discovery/v1/apis/${apiname}/${apiversion}/rest"
         outputfile="${generated.source}/${apiclassname}Service.cs"
         clientnamespace="Google.Apis.${apiclassname}.${apinamespace}"
