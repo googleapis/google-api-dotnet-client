@@ -196,8 +196,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             // Test parameter validation.
             Assert.Throws<ArgumentNullException>(
                 () => DecoratorUtil.GetEnumerablePairs((string[]) null, values).First());
-            Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GetEnumerablePairs(keys, (string[])null).First());
+            Assert.DoesNotThrow(() => DecoratorUtil.GetEnumerablePairs(keys, (string[])null).First());
 
             Assert.Throws<ArgumentException>(() => DecoratorUtil.GetEnumerablePairs(keys, invalidSized).First());
             Assert.Throws<ArgumentException>(() => DecoratorUtil.GetEnumerablePairs(invalidSized, values).First());
@@ -269,6 +268,27 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues2, null));
             Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues3, null));
             Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, Enumerable.Empty<string>(), null));
+        }
+
+        /// <summary>
+        /// Test the IsFittingEnum method with enum comments
+        /// </summary>
+        [Test]
+        public void IsFittingEnumCommectTest()
+        {
+            var decl = new CodeTypeDeclaration();
+            IEnumerable<string> enumValues = new[] { "foo", "bar", "42" };
+            IEnumerable<string> enumCommentsA = new[] { "fish", "dolphins", "mice" };
+            IEnumerable<string> enumCommentsB = new[] { "fishy", "dolphiny", "micy" };
+            IEnumerable<string> enumCommentsC = null;
+
+            // Add an enum, and check whether it can be found.
+            CodeTypeDeclaration testEnum = EnumResourceDecorator.GenerateEnum(
+                decl, "SomeName", "SomeDescription", enumValues, enumCommentsA);
+            decl.Members.Add(testEnum);
+            Assert.IsTrue(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsA));
+            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsB));
+            Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsC));
         }
     }
 }

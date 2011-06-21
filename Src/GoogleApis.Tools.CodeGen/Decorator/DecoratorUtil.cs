@@ -160,14 +160,24 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         }
 
         /// <summary>
-        /// Returns a collection of joined keys and values as KeyValuePairs
+        /// Returns a collection of joined keys and values as KeyValuePairs.
+        /// Will return the default value of V for pair.Value if values is null.
         /// </summary>
+        /// <throws>Will throw an ArgumentException if the enumerables are of different length.</throws>
         [VisibleForTestOnly]
         internal static IEnumerable<KeyValuePair<K, V>> GetEnumerablePairs<K, V>(IEnumerable<K> keys,
                                                                                  IEnumerable<V> values)
         {
             keys.ThrowIfNull("keys");
-            values.ThrowIfNull("values");
+
+            if (values == null)
+            {
+                foreach (K key in keys)
+                {
+                    yield return new KeyValuePair<K, V>(key, default(V));
+                }
+                yield break;
+            }
 
             if (keys.Count() != values.Count())
             {
@@ -237,6 +247,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
 
             // Check that this enumeration defines all keys.
             int count = 0;
+            var enumPairDictionary = enumPairs.ToDictionary(pair => pair.Key, pair => pair.Value);
             foreach (CodeTypeMember field in enumType.Members)
             {
                 // Retrieve the StringValue attribute.
@@ -245,22 +256,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                                                  select d).Single();
 
 
-                string enumFieldValue = ((CodePrimitiveExpression)decl.Arguments[0].Value).Value.ToString();
+                string enumFieldValue = ((CodePrimitiveExpression) decl.Arguments[0].Value).Value.ToString();
 
-                // Get the key value pair representing this enum value.
-                KeyValuePair<string, string> enumPair =
-                    (from KeyValuePair<string, string> k in enumPairs where k.Key == enumFieldValue select k).
-                        SingleOrDefault();
-
-                if (enumPair.Equals(default(KeyValuePair<string, string>)))
+                if (!enumPairDictionary.ContainsKey(enumFieldValue))
                 {
                     // Field is not present in the list of declared keys.
                     return false;
                 }
 
+                // Get the key value pair representing this enum value.
+                string comment = enumPairDictionary[enumFieldValue];
+
                 // Confirm that the comments are identical.
-                if (
-                    !field.Comments[0].Comment.Text.Equals(CreateSummaryComment(enumPair.Value)[0].Comment.Text))
+                CodeCommentStatementCollection colA = field.Comments;
+                CodeCommentStatementCollection colB = CreateSummaryComment(comment);
+                if (colA.Count != colB.Count || (colA.Count > 0 && colA[0].Comment.Text != colB[0].Comment.Text))
                 {
                     return false; // Comment is different.
                 }
@@ -268,7 +278,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                 count++;
             }
 
-            if (count != enumPairs.Count())
+            if (count != enumPairDictionary.Count())
             {
                 return false; // The amount of declared field differs -> not the same enum.
             }

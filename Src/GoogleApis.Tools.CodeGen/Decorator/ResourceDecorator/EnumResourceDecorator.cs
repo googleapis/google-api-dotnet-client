@@ -51,8 +51,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     }
 
                     // Check whether the type already exists.
-                    if (
-                        DecoratorUtil.FindFittingEnumeration(
+                    if (DecoratorUtil.FindFittingEnumeration(
                             resourceClass, parameter.EnumValues, parameter.EnumValueDescriptions) != null)
                     {
                         continue;
@@ -80,7 +79,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         /// <param name="description">Description of the enum class.</param>
         /// <param name="entries">Enum entries in the form (name, comment/description).</param>
         /// <returns>The generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
+        [VisibleForTestOnly]
+        internal static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
                                                        string proposedName,
                                                        string description,
                                                        IEnumerable<KeyValuePair<string, string>> entries)
@@ -143,16 +143,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         /// <param name="enumValues">All enumeration values.</param>
         /// <param name="enumDescriptions">All enumeration comments.</param>
         /// <returns>Generated enum type.</returns>
-        public static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
+        [VisibleForTestOnly]
+        internal static CodeTypeDeclaration GenerateEnum(CodeTypeDeclaration typeDeclaration,
                                                        string proposedName,
                                                        string description,
                                                        IEnumerable<string> enumValues,
                                                        IEnumerable<string> enumDescriptions)
         {
             // Add the comments to the values if possible, or create empty ones.
-            IEnumerable<KeyValuePair<string, string>> enumEntries = enumDescriptions.IsNullOrEmpty()
-                              ? enumValues.Select((str) => new KeyValuePair<string, string>(str, null))
-                              : DecoratorUtil.GetEnumerablePairs(enumValues, enumDescriptions);
+            IEnumerable<KeyValuePair<string, string>> enumEntries = DecoratorUtil.GetEnumerablePairs(
+                enumValues, enumDescriptions);
             return GenerateEnum(typeDeclaration, proposedName, description, enumEntries);
         }
     }
