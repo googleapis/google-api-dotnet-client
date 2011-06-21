@@ -37,7 +37,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Description { get; set; }
         public string Maximum { get; set; }
         public string Minimum { get; set; }
-        public IEnumerable<string> Enum { get; set; }
+        public IEnumerable<string> EnumValues { get; set; }
+        public IEnumerable<string> EnumValueDescriptions { get; set; }
 
         #endregion
     }

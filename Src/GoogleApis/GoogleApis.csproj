@@ -81,6 +81,7 @@
     <Compile Include="Apis\Requests\IResponse.cs" />
     <Compile Include="Apis\Requests\RequestError.cs" />
     <Compile Include="Apis\Requests\SingleError.cs" />
+    <Compile Include="Apis\Util\EnumStringValueTypeConverter.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />
     <Compile Include="Apis\Util\StringValueAttribute.cs" />
     <Compile Include="AssemblyInfo.cs" />
