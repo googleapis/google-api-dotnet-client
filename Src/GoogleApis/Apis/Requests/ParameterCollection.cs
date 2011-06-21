@@ -148,13 +148,13 @@ namespace Google.Apis.Requests
                 {
                     foreach (var value in valueAsEnumerable)
                     {
-                        collection.Add(pair.Key, value.ToString());
+                        collection.Add(pair.Key, Util.Utilities.ConvertToString(value));
                     }
                 }
                 else
                 {
                     // Otherwise just convert it to a string.
-                    collection.Add(pair.Key, pair.Value == null ? null : pair.Value.ToString());
+                    collection.Add(pair.Key, pair.Value == null ? null : Util.Utilities.ConvertToString(pair.Value));
                 }
             }
 
