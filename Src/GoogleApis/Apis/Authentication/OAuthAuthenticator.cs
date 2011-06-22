@@ -21,8 +21,7 @@ namespace Google.Apis.Authentication
     /// </summary>
     public abstract class OAuthAuthenticator : Authenticator
     {
-        protected OAuthAuthenticator(string applicationName, string consumerKey, string consumerSecret)
-            : base(applicationName)
+        protected OAuthAuthenticator(string consumerKey, string consumerSecret) : base()
         {
             ConsumerKey = consumerKey;
             ConsumerSecret = consumerSecret;

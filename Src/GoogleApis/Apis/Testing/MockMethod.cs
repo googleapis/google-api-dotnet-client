@@ -20,7 +20,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tests.Apis.Requests
 {
     /// <summary>
-    /// A mock method for testing purposes
+    /// A mock method for testing purposes.
     /// </summary>
     public class MockMethod : IMethod
     {

@@ -92,14 +92,5 @@ namespace Google.Apis
 
             return sb.ToString();
         }
-
-        public static string GenerateOAuth2Header(String token)
-        {
-            if (token.IsNotNullOrEmpty())
-            {
-                return "Authorization: OAuth " + token;
-            }
-            return string.Empty;
-        }
     }
 }

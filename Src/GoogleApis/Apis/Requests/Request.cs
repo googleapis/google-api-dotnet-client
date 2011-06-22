@@ -22,10 +22,12 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using NUnit.Framework;
 
 namespace Google.Apis.Requests
 {
@@ -34,6 +36,17 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
+        /// <summary>
+        /// Defines the maximum number of retries which should be made if a request fails.
+        /// </summary>
+        public static int MaximumRetries = 3;
+
+        /// <summary>
+        /// Defines the percentage value by which the waiting time between retry attempts increases
+        /// after the first rety has failed.
+        /// </summary>
+        public static int RetryWaitTimeIncreasePercentage = 100;
+
         private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
@@ -193,34 +206,87 @@ namespace Google.Apis.Requests
                 return Stream.Null;
             }
 
-            // Create the request
             WebRequest request = CreateWebRequest();
 
-            // Attach a body if a POST and there is something to attach.
-            if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
+            // Try to execute the request.
+            int tries = 0;
+            int waitTime = 1000; // 1 sec
+            while (true)
             {
-                AttachBody(request);
-            }
-
-            // Execute the request
-            try
-            {
-                var response = request.GetResponse();
-                return response.GetResponseStream();
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response != null)
+                tries++;
+                try
                 {
-                    return ex.Response.GetResponseStream();
+                   // If we can get a valid response, return immediately.
+                    var response = request.GetResponse();
+                    return response.GetResponseStream();
                 }
+                catch (WebException ex)
+                {
+                    // Try to get an error response object.
+                    RequestError error = null;
+                    if (ex.Response != null)
+                    {
+                        error =
+                            Service.DeserializeResponse<StandardResponse<object>>(ex.Response.GetResponseStream()).
+                                Error;
+                    }
 
-                // The exception is not something the client can handle via a stream.
-                throw;
+                    // Try finding an error handler for this response
+                    bool isHandled = false;
+                    if (SupportsRetry)
+                    {
+                        foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
+                        {
+                            if (handler.CanHandleErrorResponse(ex, error))
+                            {
+                                // The provided handler was able to handle this error. Retry sending the request.
+                                handler.PrepareHandleErrorResponse(ex, error);
+                                handler.HandleErrorResponse(ex, error, request = CreateWebRequest());
+                                isHandled = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!isHandled || tries >= MaximumRetries)
+                    {
+                        // We were unable to handle the exception. Throw it.
+                        throw new GoogleApiException(
+                            this.Service, "An request failed: " + (error != null ? error.ToString() : "<null>"), ex);
+                    }
+                    else if (tries > 1) // The first retry occures immediately.
+                    {
+                        Thread.Sleep(waitTime);
+                        waitTime += waitTime * RetryWaitTimeIncreasePercentage / 100;
+                    }
+                }
             }
         }
 
         #endregion
+
+        /// <summary>
+        /// Defines whether this request can be sent multiple times.
+        /// </summary>
+        public bool SupportsRetry
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Returns all error response handlers associated with this request.
+        /// </summary>
+        /// <returns></returns>
+        [Test]
+        internal IEnumerable<IErrorResponseHandler> GetErrorResponseHandlers()
+        {
+            // Check if the current authenticator can handle error responses.
+            IErrorResponseHandler authenticator = Authenticator as IErrorResponseHandler;
+            if (authenticator != null)
+            {
+                yield return authenticator;
+            }
+        }
 
         /// <summary>
         /// Given an API method, create the appropriate Request for it.
@@ -347,6 +413,12 @@ namespace Google.Apis.Requests
             {
                 request.UserAgent += GZipUserAgentSuffix;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            }
+
+            // Attach a body if a POST and there is something to attach.
+            if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
+            {
+                AttachBody(request);
             }
 
             return request;

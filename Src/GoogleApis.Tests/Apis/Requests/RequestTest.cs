@@ -16,7 +16,9 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using Google.Apis.Authentication;
 using NUnit.Framework;
 using Google.Apis.Requests;
 using Google.Apis.Discovery;
@@ -184,6 +186,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = new Request();
             Assert.IsNotNull(request.Authenticator);
+            Assert.IsTrue(request.SupportsRetry);
         }
 
         /// <summary>
@@ -297,6 +300,45 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("100", request.Parameters["100"]);
             Assert.AreEqual("True", request.Parameters["True"]);
             Assert.AreEqual("False", request.Parameters["False"]);
+        }
+
+        private class MockAuthenticator : Authenticator {}
+
+        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
+        {
+            public bool CanHandleErrorResponse(WebException exception, RequestError error)
+            {
+                return false;
+            }
+
+            public void PrepareHandleErrorResponse(WebException exception, RequestError error) {}
+
+            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
+        }
+
+        /// <summary>
+        /// Tests the results of the GetErrorResponseHandlers method.
+        /// </summary>
+        [Test]
+        public void GetErrorResponseHandlersTest()
+        {
+            var request =
+              (Request)
+              Request.CreateRequest(
+                  new MockService(),
+                  new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+
+            // Confirm that there are no error response handlers by default.
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that a standard authenticator won't result in an error response handler.
+            request.WithAuthentication(new MockAuthenticator());
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that an error handling response handler will change the enumeration
+            var auth = new MockErrorHandlingAuthenticator();
+            request.WithAuthentication(auth);
+            CollectionAssert.AreEqual(new IErrorResponseHandler[] { auth }, request.GetErrorResponseHandlers());
         }
     }
 }
