@@ -155,7 +155,7 @@
     <mkdir dir="${generated.binary}/${apiclassname}Service"/>
     <csc target="library"
          output="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.dll"
-         doc="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${namespace}.xml"
+         doc="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.xml"
          debug="PdbOnly">
       <sources>
         <include name="${generated.source}/${apiclassname}Service.cs" />
