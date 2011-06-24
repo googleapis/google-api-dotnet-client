@@ -374,6 +374,14 @@ namespace Google.Apis
             return enumerable.Except(new[] { toRemove });
         }
 
+        /// <summary>
+        /// Returns the enumerable with the specified element added to the end of it.
+        /// </summary>
+        public static IEnumerable<T> Concat<T>(this IEnumerable<T> enumerable, T toAdd)
+        {
+            return enumerable.Concat(new[] { toAdd });
+        }
+
         #endregion
     }
 }

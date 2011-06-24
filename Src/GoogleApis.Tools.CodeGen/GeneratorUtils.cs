@@ -450,7 +450,8 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static string GetFieldName(string name, IEnumerable<string> wordsUsedInContext)
         {
-            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToLower, name, name + "Value", name + "Field");
+            return GetSafeMemberName(
+                wordsUsedInContext, TargetCase.ToLower, name, "_" + name, name + "Value", name + "Field");
         }
 
         /// <summary>
@@ -477,6 +478,16 @@ namespace Google.Apis.Tools.CodeGen
         {
             return GetSafeMemberName(
                 wordsUsedInContext, TargetCase.ToUpper, name, name + "Schema", name + "Class", name + "Data");
+        }
+
+        /// <summary>
+        /// Returns the reference to a specific schema.
+        /// </summary>
+        public static CodeTypeReference GetSchemaReference(string schemaNamespace, string responseType)
+        {
+            schemaNamespace.ThrowIfNullOrEmpty("schemaNamespace");
+            responseType.ThrowIfNullOrEmpty("responseType");
+            return new CodeTypeReference(schemaNamespace + "." + responseType);
         }
 
         /// <summary>

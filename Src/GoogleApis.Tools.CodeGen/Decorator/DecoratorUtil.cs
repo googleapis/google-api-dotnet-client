@@ -17,11 +17,9 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Security;
 using Google.Apis.Testing;
-using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Decorator
@@ -34,45 +32,45 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Creates and adds a public auto-property (property and backening field) to the class.
         /// </summary>
-        /// <typeparam name="TProperty">Type used for the propery.</typeparam>
-        public static CodeTypeMemberCollection CreateAutoProperty<TProperty>(CodeTypeDeclaration serviceClass,
-                                                                    string name,
-                                                                    string summaryComment)
+        public static CodeTypeMemberCollection CreateAutoProperty(string name,
+                                                                  string summaryComment,
+                                                                  CodeTypeReference propertyType,
+                                                                  IEnumerable<string> usedNames,
+                                                                  bool readOnly)
         {
             // Validate parameters.
-            serviceClass.ThrowIfNull("serviceClass");
             name.ThrowIfNullOrEmpty("name");
+            propertyType.ThrowIfNull("propertyType");
+            usedNames.ThrowIfNull("usedNames");
 
-            // Check if the name has already been used.
-            if (serviceClass.Members.FindPropertyByName(name) != null)
-            {
-                throw new ArgumentException(
-                    string.Format("The property name [{0}] was already used within this class", name), "name");
-            }
+            // Generate the property name.
+            string propertyName = GeneratorUtils.GetPropertyName(name, usedNames);
 
             // Create backening field.
-            var field = CreateBackingField<TProperty>(serviceClass, name);
+            var field = CreateBackingField(name, propertyType, usedNames.Concat(propertyName));
             string fieldName = field.Name;
             var fieldNameRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), fieldName);
 
             // Add property.
             var property = new CodeMemberProperty();
-            property.Name = name;
+            property.Name = propertyName;
             property.Attributes = MemberAttributes.Public;
 
             if (summaryComment.IsNotNullOrEmpty())
             {
                 property.Comments.Add(new CodeCommentStatement("<summary>" + summaryComment + "</summary>", true));
             }
-            property.Type = new CodeTypeReference(typeof(TProperty));
+            property.Type = propertyType;
             property.HasGet = true;
-            property.HasSet = true;
+            property.HasSet = !readOnly;
 
             // Add getter and setter.
             property.GetStatements.Add(new CodeMethodReturnStatement(fieldNameRef));
-
-            property.SetStatements.Add(
-                new CodeAssignStatement(fieldNameRef, new CodePropertySetValueReferenceExpression()));
+            if (property.HasSet)
+            {
+                property.SetStatements.Add(
+                    new CodeAssignStatement(fieldNameRef, new CodePropertySetValueReferenceExpression()));
+            }
 
             // Return the result.
             var col = new CodeTypeMemberCollection();
@@ -84,27 +82,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Creates a backening field for the name provided.
         /// </summary>
-        /// <typeparam name="TProperty">Type used for the propery.</typeparam>
         /// <param name="name">The name of the property.</param>
-        /// <returns></returns>
-        public static CodeMemberField CreateBackingField<TProperty>(CodeTypeDeclaration serviceClass, string name)
+        public static CodeMemberField CreateBackingField(string name,
+                                                         CodeTypeReference fieldType,
+                                                         IEnumerable<string> usedWords)
         {
             // Validate parameters.
-            serviceClass.ThrowIfNull("serviceClass");
             name.ThrowIfNullOrEmpty("name");
+            fieldType.ThrowIfNull("fieldType");
+            usedWords.ThrowIfNull("usedWords");
 
             // Generate field name.
-            var fieldName = Char.IsLower(name[0]) ? "_" + name : GeneratorUtils.LowerFirstLetter(name);
-
-            // Check if it was already used.
-            if (serviceClass.Members.FindFieldByName(fieldName) != null)
-            {
-                throw new ArgumentException(
-                    string.Format("The property name [{0}] was already used within this class", name), "name");
-            }
+            var fieldName = GeneratorUtils.GetFieldName(name, usedWords);
 
             // Create the field.
-            var field = new CodeMemberField(typeof(TProperty), fieldName);
+            var field = new CodeMemberField(fieldType, fieldName);
             field.Attributes = MemberAttributes.Private;
             return field;
         }

@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using NUnit.Framework;
 
@@ -55,7 +56,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             // Create generators.
             var resourceGen = new ResourceContainerGenerator(new IResourceContainerDecorator[0]);
-            var gen = new ResourceClassGenerator(resource, serviceName, decorators, resourceGen, new string[0]);
+            var requestGen = new RequestClassGenerator(new IRequestDecorator[0]);
+            var gen = new ResourceClassGenerator(
+                resource, serviceName, decorators, requestGen, resourceGen, new string[0]);
 
             // Add subresources.
             resource.Resources.Add("Sub1", new MockResource { Name = "Sub1" });
@@ -87,7 +90,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             // Create generators.
             var resourceGen = new ResourceContainerGenerator(new IResourceContainerDecorator[0]);
-            var gen = new ResourceClassGenerator(resource, serviceName, decorators, resourceGen, new string[0]);
+            var requestGen = new RequestClassGenerator(new IRequestDecorator[0]);
+            var gen = new ResourceClassGenerator(
+                resource, serviceName, decorators, requestGen, resourceGen, new string[0]);
 
             // Add subresources.
             resource.Resources.Add("Sub1", new MockResource { Name = "Sub1" });
@@ -117,7 +122,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             // Create generators.
             var resourceGen = new ResourceContainerGenerator(
                 GoogleServiceGenerator.StandardResourceContainerDecorator);
-            var gen = new ResourceClassGenerator(resource, serviceName, decorators, resourceGen, new string[0]);
+            var requestGen = new RequestClassGenerator(new IRequestDecorator[0]);
+            var gen = new ResourceClassGenerator(
+                resource, serviceName, decorators, requestGen, resourceGen, new string[0]);
 
             // Validate method:
             Assert.Throws<ArgumentNullException>(
@@ -149,11 +156,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             // Create generators.
             var resourceGen = new ResourceContainerGenerator(new IResourceContainerDecorator[0]);
+            var requestGen = new RequestClassGenerator(new IRequestDecorator[0]);
 
             // Test generation of the nested class
             var subresource = new MockResource { Name = "Sub" };
             CodeTypeDeclaration decl = dec.GenerateSubresource(
-                subresource, serviceName, decorators, resourceGen, new string[0]);
+                subresource, serviceName, decorators, requestGen, resourceGen, new string[0]);
 
             Assert.IsNotNull(decl);
             Assert.AreEqual(decl.Name, "SubResource");

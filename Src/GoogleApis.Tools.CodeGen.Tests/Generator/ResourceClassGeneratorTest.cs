@@ -59,12 +59,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             return new ResourceContainerGenerator(GoogleServiceGenerator.StandardResourceContainerDecorator);
         }
 
+        private static RequestClassGenerator ConstructRequestGenerator()
+        {
+            return new RequestClassGenerator(GoogleServiceGenerator.GetSchemaAwareRequestDecorators("Generated"));
+        }
+
+
         private ResourceClassGenerator ConstructGenerator(IResource resource,
                                                           params IResourceDecorator[] additionalDecorators)
         {
             return new ResourceClassGenerator(
-                resource, "TestService", additionalDecorators, ConstructContainerGenerator(),
-                Enumerable.Empty<string>());
+                resource, "TestService", additionalDecorators, ConstructRequestGenerator(),
+                ConstructContainerGenerator(), Enumerable.Empty<string>());
         }
 
         /// <summary>
@@ -89,7 +95,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Methods.Add("TestMethod", new MockMethod { Name = "TestMethod", HttpMethod = "GET"});
+            resource.Methods.Add(
+                "TestMethod", new MockMethod { Name = "TestMethod", HttpMethod = "GET", ResponseType = "int" });
 
             // Run the generator.
             var counter = new CountingDecorator();

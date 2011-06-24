@@ -61,7 +61,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
                 // Generate and add the subresource.
                 CodeTypeDeclaration decl = GenerateSubresource(
-                    subresource, serviceClassName, allDecorators, generator.ContainerGenerator, forbiddenWords);
+                    subresource, serviceClassName, allDecorators, generator.RequestGenerator,
+                    generator.ContainerGenerator, forbiddenWords);
                 resourceClass.Members.Add(decl);
             }
         }
@@ -70,12 +71,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         internal CodeTypeDeclaration GenerateSubresource(IResource subresource,
                                      string serviceClassName,
                                      IEnumerable<IResourceDecorator> allDecorators,
+                                     RequestClassGenerator requestClassGenerator,
                                      ResourceContainerGenerator containerGenerator,
                                      IEnumerable<string> forbiddenWords)
         {
             // Create a new generator for this subresource
             var subgenerator = new ResourceClassGenerator(
-                subresource, serviceClassName, allDecorators, containerGenerator, forbiddenWords);
+                subresource, serviceClassName, allDecorators, requestClassGenerator, containerGenerator,
+                forbiddenWords);
 
             // Generate and add the subresource.
             return subgenerator.CreateClass();

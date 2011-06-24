@@ -126,8 +126,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             public CodeTypeReference GetReturnType(IMethod method)
             {
                 method.ThrowIfNull("method");
-                method.ResponseType.ThrowIfNullOrEmpty("method.ResponseType");
-                return new CodeTypeReference(schemaNamespace + '.' + method.ResponseType);
+                return GeneratorUtils.GetSchemaReference(schemaNamespace, method.ResponseType);
             }
 
             public CodeTypeReference GetBodyType(IMethod method)

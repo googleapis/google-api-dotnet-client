@@ -36,16 +36,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         [Test]
         public void CreateAutoPropertyEdgeCaseTest()
         {
-            var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
             const string comment = "Comment";
+            CodeTypeReference type = new CodeTypeReference(typeof(object));
+            string[] usedWords = new string[] { };
 
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateAutoProperty<object>(null, name, comment));
             Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, null, comment));
-            Assert.Throws<ArgumentException>(
-                () => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, "", comment));
-            Assert.DoesNotThrow(() => DecoratorUtil.CreateAutoProperty<object>(typeDeclaration, name, null));
+                () => DecoratorUtil.CreateAutoProperty(null, comment, type, usedWords, false));
+            Assert.Throws<ArgumentNullException>(
+                () => DecoratorUtil.CreateAutoProperty(name, comment, null, usedWords, false));
+            Assert.Throws<ArgumentNullException>(
+                () => DecoratorUtil.CreateAutoProperty(name, comment, type, null, false));
+            Assert.DoesNotThrow(() => DecoratorUtil.CreateAutoProperty(name, null, type, usedWords, false));
         }
 
         /// <summary>
@@ -54,12 +56,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         [Test]
         public void CreateAutoPropertyTest()
         {
-            var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
             const string comment = "Comment";
+            CodeTypeReference type = new CodeTypeReference(typeof(int));
+            string[] usedWords = new string[] { };
 
-            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty<int>(typeDeclaration, name, comment);
-            Assert.That(typeDeclaration.Members.Count, Is.EqualTo(0));
+            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(name, comment, type, usedWords, false);
 
             Assert.That(col.Count, Is.EqualTo(2));
             Assert.That(col[1], Is.InstanceOf<CodeMemberProperty>());
@@ -72,11 +74,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.That(property.Type.BaseType, Is.EqualTo(typeof(int).FullName));
 
             // Backening field is tested in its own unit case.
-
-            // Test if an exception is thrown when the name is already used.
-            typeDeclaration.Members.AddRange(col);
-            Assert.Throws<ArgumentException>(
-                () => DecoratorUtil.CreateAutoProperty<bool>(typeDeclaration, name, comment));
         }
 
         /// <summary>
@@ -85,13 +82,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         [Test]
         public void CreateBackingFieldEdgeCaseTest()
         {
-            var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
+            CodeTypeReference type = new CodeTypeReference(typeof(object));
+            string[] usedWords = new string[] {};
 
-            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField<object>(null, name));
-            Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.CreateBackingField<object>(typeDeclaration, null));
-            Assert.Throws<ArgumentException>(() => DecoratorUtil.CreateBackingField<object>(typeDeclaration, ""));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField(null, type, usedWords));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField(name, null, usedWords));
+            Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField(name, type, null));
         }
 
         /// <summary>
@@ -100,10 +97,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         [Test]
         public void CreateBackingFieldTest()
         {
-            var typeDeclaration = new CodeTypeDeclaration();
             const string name = "TestProperty";
+            CodeTypeReference type = new CodeTypeReference(typeof(bool));
+            string[] usedWords = new string[] { };
 
-            CodeMemberField field = DecoratorUtil.CreateBackingField<bool>(typeDeclaration, name);
+            CodeMemberField field = DecoratorUtil.CreateBackingField(name, type, usedWords);
             Assert.IsNotNull(field);
             Assert.That(field.Name, Is.EqualTo("testProperty"));
             Assert.That(field.Type.BaseType, Is.EqualTo(typeof(bool).FullName));

@@ -332,7 +332,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
 
         /// <summary>
-        /// Tests the GetEnumName method
+        /// Tests the GetEnumName method.
         /// </summary>
         [Test]
         public void GetEnumNameTest()
@@ -343,7 +343,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
 
         /// <summary>
-        /// Tests the GetEnumValueName method
+        /// Tests the GetEnumValueName method.
         /// </summary>
         [Test]
         public void GetEnumValueNameTest()
@@ -351,6 +351,19 @@ namespace Google.Apis.Tools.CodeGen.Tests
             Assert.AreEqual("Test", GeneratorUtils.GetEnumValueName("test", new string[0]));
             Assert.AreEqual("TestValue", GeneratorUtils.GetEnumValueName("test", new[] { "Test" }));
             Assert.AreEqual("TestMember", GeneratorUtils.GetEnumValueName("test", new[] { "Test", "TestValue" }));
+        }
+
+        /// <summary>
+        /// Tests the GetSchemaReference method.
+        /// </summary>
+        [Test]
+        public void GetSchemaReferenceTest()
+        {
+            Assert.Throws<ArgumentNullException>(() => GeneratorUtils.GetSchemaReference("Namespace", null));
+            Assert.Throws<ArgumentException>(() => GeneratorUtils.GetSchemaReference("Namespace", ""));
+            Assert.Throws<ArgumentNullException>(() => GeneratorUtils.GetSchemaReference(null, "Type"));
+            Assert.Throws<ArgumentException>(() => GeneratorUtils.GetSchemaReference("", "Type"));
+            Assert.AreEqual("Namespace.Type", GeneratorUtils.GetSchemaReference("Namespace", "Type").BaseType);
         }
     }
 }

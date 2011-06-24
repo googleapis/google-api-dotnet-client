@@ -421,5 +421,17 @@ namespace Google.Apis.Tests.Apis.Util
             col = new List<int>() { 42 };
             Assert.IsFalse(col.IsNullOrEmpty());
         }
+
+        /// <summary>
+        /// Test the Concat extension method.
+        /// </summary>
+        [Test]
+        public void ConcatTest()
+        {
+            CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, new[] { 1, 2, 3 }.Concat(4));
+            CollectionAssert.AreEqual(new[] { 1, 4 }, new[] { 1 }.Concat(4));
+            CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, new[] { 1 }.Concat(2).Concat(3).Concat(4));
+            CollectionAssert.AreEqual(new[] { 1 }, new int[0].Concat(1));
+        }
     }
 }

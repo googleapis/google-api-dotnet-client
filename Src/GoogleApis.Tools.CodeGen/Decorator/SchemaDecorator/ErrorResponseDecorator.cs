@@ -66,8 +66,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal static CodeTypeMemberCollection CreateErrorProperty(CodeTypeDeclaration typeDeclaration)
         {
-            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty<RequestError>(
-                typeDeclaration, ErrorPropertyName, null);
+            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
+                ErrorPropertyName, null, new CodeTypeReference(typeof(RequestError)),
+                GeneratorUtils.GetUsedWordsFromMembers(typeDeclaration.Members), false);
 
             // Add the JsonProperty attribute to the property
             foreach (CodeTypeMember member in col)

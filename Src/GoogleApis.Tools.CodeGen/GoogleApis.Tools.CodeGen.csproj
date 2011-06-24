@@ -66,6 +66,11 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtil.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\RequestConstructorDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestFieldDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestInheritanceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\IRequestDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ParameterPropertyDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\EnumResourceDecorator.cs" />
@@ -75,6 +80,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecorator.cs" />
+    <Compile Include="Generator\RequestClassGenerator.cs" />
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
