@@ -49,7 +49,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         /// <summary>
         /// Map between service name and access tokens
         /// </summary>
-        private Dictionary<string, string> _accessTokens = new Dictionary<string,string>();
+        private Dictionary<string, IAuthorizationState> _authorizationStates = new Dictionary<string, IAuthorizationState>();
 
         public Form1()
         {
@@ -199,7 +199,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         /// </summary>
         private void ExecuteMethod()
         {
-            if (!this._accessTokens.ContainsKey(_currentCallContext.Service))
+            if (!this._authorizationStates.ContainsKey(_currentCallContext.Service))
             {
                 string clientId = Properties.Settings.Default.clientId;
                 string clientSecret = Properties.Settings.Default.clientSecret;
@@ -211,25 +211,28 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
                 _authState = new AuthorizationState(new string[] { scope });
                 _authState.Callback = new Uri(Properties.Settings.Default.redirectUrl);
                 Uri authorizationUrl = _client.RequestUserAuthorization(_authState);
-                // hack: UserAgentClient is still using response_type=code. needs response_type=token
-                // for google apis.
-                string url = authorizationUrl.AbsoluteUri.Replace("response_type=code", "response_type=token");
-                this.authWebBrowser.Navigate(url);
+                this.authWebBrowser.Navigate(authorizationUrl.AbsoluteUri);
 
                 this.Cursor = Cursors.WaitCursor;
             }
             else
             {
-                string token = this._accessTokens[_currentCallContext.Service];
-                this.ExecuteRequest(token);
+                this.ExecuteRequest(this._authorizationStates[_currentCallContext.Service]);
             }
         }
 
         /// <summary>
         /// Construct and send method request assuming token is already obtained.
         /// </summary>
-        private void ExecuteRequest(string token)
+        private void ExecuteRequest(IAuthorizationState authState)
         {
+            if (authState.AccessTokenExpirationUtc.HasValue &&
+                (authState.AccessTokenExpirationUtc.Value - DateTime.UtcNow).CompareTo(TimeSpan.FromSeconds(30)) <= 0)
+            {
+                _client.RefreshToken(authState);
+            }
+
+            string token = authState.AccessToken;
             string clientId = Properties.Settings.Default.clientId;
             string clientSecret = Properties.Settings.Default.clientSecret;
             string apiKey = Properties.Settings.Default.apiKey;
@@ -275,25 +278,26 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         {
             this.locationTextBox.Text = e.Url.AbsoluteUri;
 
-            if (e.Url.AbsoluteUri.StartsWith(Properties.Settings.Default.redirectUrl))
+            if (this.authWebBrowser.Document.Title.StartsWith("Success code="))
             {
-                this._client.ProcessUserAuthorization(e.Url, this._authState);
+                string code = this.authWebBrowser.Document.Title.Substring(13);
+                Uri uri = new Uri(e.Url.AbsoluteUri + "&code=" + code);
+                this._client.ProcessUserAuthorization(uri, this._authState);
 
                 if (!string.IsNullOrEmpty(this._authState.AccessToken))
                 {
-                    if (!this._accessTokens.ContainsKey(_currentCallContext.Service))
+                    if (!this._authorizationStates.ContainsKey(_currentCallContext.Service))
                     {
-                        this._accessTokens.Add(_currentCallContext.Service, _authState.AccessToken);
+                        this._authorizationStates.Add(_currentCallContext.Service, _authState);
                     }
                     else
                     {
-                        this._accessTokens[_currentCallContext.Service] = _authState.AccessToken;
+                        this._authorizationStates[_currentCallContext.Service] = _authState;
                     }
 
-                    this.ExecuteRequest(_authState.AccessToken);
+                    this.ExecuteRequest(_authState);
                 }
             }
-
         }
     }
 }

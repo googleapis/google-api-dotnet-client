@@ -89,7 +89,7 @@ namespace Google.Apis.Samples.ApiExplorer.Web
 
             IAuthorizationState storedState = this.AuthorizationStates[callContext.Service];
             if (storedState.AccessTokenExpirationUtc.HasValue &&
-                (storedState.AccessTokenExpirationUtc.Value - DateTime.Now).CompareTo(TimeSpan.FromSeconds(30)) <= 0)
+                (storedState.AccessTokenExpirationUtc.Value - DateTime.UtcNow).CompareTo(TimeSpan.FromSeconds(30)) <= 0)
             {
                 client.RefreshToken(storedState);
                 Dictionary<string, IAuthorizationState> states = this.AuthorizationStates;
@@ -145,7 +145,6 @@ namespace Google.Apis.Samples.ApiExplorer.Web
                 {
                     states = new Dictionary<string, IAuthorizationState>();
                 }
-                //states["buzz"] = "1/nNw6rftyeX_1ZYOSEwH_Z5jyp0AU9lsmeQasj7pJzug"; // test for expired accessToken
                 return states;
             }
             set
