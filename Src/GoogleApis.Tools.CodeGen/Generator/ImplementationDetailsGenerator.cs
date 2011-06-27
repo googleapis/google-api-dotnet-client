@@ -88,12 +88,12 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 }
             }
 
+            // Generate a template name for subclasses.
+            string proposedName = schema.Id.IsNotNullOrEmpty() ? schema.Id : details.ProposedName;
+
             // Check for items:
             if (schema.Items != null)
             {
-                // Generate a plausible name.
-                string proposedName = schema.Id.IsNotNullOrEmpty() ? schema.Id : details.ProposedName;
-
                 // Iterate through items and check if they require a name.
                 foreach (JsonSchema item in schema.Items)
                 {
@@ -104,6 +104,13 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     }
                     AddDetails(dictionary, item);
                 }
+            }
+
+            // Check additional properties:
+            if (schema.AdditionalProperties != null)
+            {
+                ProposeNameIfNecessary(dictionary, proposedName + "Properties", schema.AdditionalProperties);
+                AddDetails(dictionary, schema.AdditionalProperties);
             }
         }
 
