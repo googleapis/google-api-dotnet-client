@@ -17,7 +17,6 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
 
@@ -35,7 +34,7 @@ namespace Google.Apis.Testing
 
         public string RpcName { get; set; }
         public ReturnType ReturnType { get; set; }
-        public IDictionary<string, string> Parameters { get; set; }
+        public ParameterCollection Parameters { get; set; }
         public string Body { get; set; }
         public IAuthenticator Authenticator { get; set; }
         public bool HasExecuted { get; set; }
@@ -59,29 +58,28 @@ namespace Google.Apis.Testing
 
         public IRequest WithParameters(IDictionary<string, object> parameters)
         {
-            return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
-        }
-
-        public IRequest WithParameters(IDictionary<string, string> parameters)
-        {
-            Parameters = parameters;
+            Parameters = ParameterCollection.FromDictionary(parameters);
             return this;
         }
 
+        public IRequest WithParameters(IEnumerable<KeyValuePair<string, string>> parameters)
+        {
+            Parameters = new ParameterCollection(parameters);
+            return this;
+        }
 
         public IRequest WithParameters(string parameters)
         {
-            throw new NotImplementedException();
+            Parameters = ParameterCollection.FromQueryString(parameters);
+            return this;
         }
-
 
         public IRequest WithBody(string body)
         {
             Body = body;
             return this;
         }
-
-
+        
         public IRequest WithAuthentication(IAuthenticator authenticator)
         {
             Authenticator = authenticator;
@@ -93,8 +91,7 @@ namespace Google.Apis.Testing
             DeveloperKey = key;
             return this;
         }
-
-
+        
         public Stream ExecuteRequest()
         {
             HasExecuted = true;

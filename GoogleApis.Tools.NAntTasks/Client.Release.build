@@ -1,27 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<project name="UpdateNantLibraries" default="update-nant-libraries" basedir=".">
+<project name="UpdateNantLibraries" default="release-to-contrib" basedir=".">
   <description>Fetches the source of GoogleApi, compiles and copies to nant bin directory.</description>
-
-  <property name="source.dir" value="freshsource" />
-  <property name="hg.source.root" value="${source.dir}/google-api-dotnet-client"/>
-  <property name="hg.contrib.root" value="${source.dir}/google-api-dotnet-client-contrib"/>
+  
+  <include buildfile="./NAnt.Config.xml" failonerror="true"/>
+  
+  
+  <property name="hg.source.root" value="${fresh.source.dir}/google-api-dotnet-client"/>
+  <property name="hg.contrib.root" value="${fresh.source.dir}/google-api-dotnet-client-contrib"/>
   <property name="hg.contrib.current" value="${hg.contrib.root}/current"/>
   <property name="fresh.google.nant.path" value="${hg.source.root}/GoogleApis.Tools.NAntTasks" />
   <property name="generate.build.file" value="Generate.Service.build" />
   
   <target name="clean">
-    <delete dir="${source.dir}" />
+    <delete dir="${fresh.source.dir}" />
   </target>
   
   <target name="ensure-source-repository" if="${directory::exists(hg.source.root) == false}">
-    <mkdir dir="${source.dir}" unless="${directory::exists(source.dir)}"/>
-    <exec program="hg" workingdir="${source.dir}" 
+    <mkdir dir="${fresh.source.dir}" unless="${directory::exists(fresh.source.dir)}"/>
+    <exec program="hg" workingdir="${fresh.source.dir}" 
           commandline="clone https://google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client" />
   </target>
 
   <target name="ensure-contrib-repository" if="${directory::exists(hg.contrib.root) == false}">
-    <mkdir dir="${source.dir}" unless="${directory::exists(source.dir)}"/>
-    <exec program="hg" workingdir="${source.dir}"
+    <mkdir dir="${fresh.source.dir}" unless="${directory::exists(fresh.source.dir)}"/>
+    <exec program="hg" workingdir="${fresh.source.dir}"
           commandline="clone https://contrib.google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client-contrib" />
   </target>
   
@@ -38,45 +40,70 @@
   </target>
 
   <target name="update-nant-tasks-from-fresh" depends="fetch-latest-source">
+    <description>
+      Calls Generate.Service.build=>update-nant-tasks in the freshly checked out source.
+      This will build the main projects from fresh souce and update the nant task
+      so that newly generated code will be from the latest generator.
+    </description>
     <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}" 
           target="update-nant-tasks"/>
   </target>
 
   <!-- depends="fetch-latest-source" -->
-  <target name="generate-clients-from-fresh" >
+  <target name="generate-clients-from-fresh" depends="fetch-latest-source">
+    <description>
+      Calls Generate.Service.build=>produce-all-services in the freshly checked out source.
+      This will genreate source and DLLs for all the services, from freshly checkedout code.
+    </description>
     <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}"
           target="produce-all-services"/>
   </target>
 
-  <target name="release-to-contrib" depends="generate-clients-from-fresh, fetch-latest-contrib">
-    <tstamp />
-    <property name="generated.google.api.dll" value="${fresh.google.nant.path}/genlib/Google.Apis.dll" />
-    <property name="hg.contrib.version" 
-              value="${hg.contrib.root}/${tstamp.date}-${assemblyname::get-version(assemblyname::get-assembly-name(generated.google.api.dll))}" 
+  <target name="set-release-version" depends="generate-clients-from-fresh">
+    <tstamp pattern="yyyy-MM-dd"/>
+    <property name="generated.google.api.dll" value="${fresh.google.nant.path}/${generated.library}/Google.Apis.dll" />
+    <property name="hg.contrib.version"
+              value="${hg.contrib.root}/${tstamp.date}-${assemblyname::get-version(assemblyname::get-assembly-name(generated.google.api.dll))}"
               />
+  </target>
+  
+  <target name="clean-contrib" depends="set-release-version,fetch-latest-contrib">
+    <description>
+      Cleans the contrib directories Current and [RELEASENAME]
+    </description>
+
+    <delete dir="${hg.contrib.current}" if="${directory::exists(hg.contrib.current)}" />
+    <mkdir dir="${hg.contrib.current}" />
 
     <delete dir="${hg.contrib.version}" if="${directory::exists(hg.contrib.version)}" />
     <mkdir dir="${hg.contrib.version}" />
-
+  </target>
+  
+  <target name="copy-result-to-contrib" depends="clean-contrib, generate-clients-from-fresh">
     <copy todir="${hg.contrib.version}" overwrite="false" flatten="false">
       <fileset basedir="${fresh.google.nant.path}">
-        <include name="genbin/**"/>
-        <include name="genlib/**"/>
-        <include name="gensrc/**"/>
-        <include name="genzip/**"/>
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
       </fileset>
     </copy>
-    
-    <delete dir="${hg.contrib.current}" if="${directory::exists(hg.contrib.current)}" />
-    <mkdir dir="${hg.contrib.current}" />
-    
+
     <copy todir="${hg.contrib.current}" overwrite="false" flatten="false">
       <fileset basedir="${fresh.google.nant.path}">
-        <include name="genbin/**"/>
-        <include name="genlib/**"/>
-        <include name="gensrc/**"/>
-        <include name="genzip/**"/>
+        <include name="${generated.binary}/**"/>
+        <include name="${generated.library}/**"/>
+        <include name="${generated.source}/**"/>
+        <include name="${generated.zip}/**"/>
       </fileset>
     </copy>
+  </target>
+  
+  <target name="release-to-contrib" depends="generate-clients-from-fresh, fetch-latest-contrib, copy-result-to-contrib">
+    <description>
+      This task generates all the clients from freshly checkout source and packages
+      them up into the contrib repository for binary release.
+      All work done in tasks this depends on.
+    </description>
   </target>
 </project>

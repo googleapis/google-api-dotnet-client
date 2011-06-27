@@ -51,6 +51,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis.Discovery.V1">
+      <HintPath>lib\Google.Apis.Discovery.V1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="NAnt.Core, Version=0.91.3881.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
@@ -60,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="GoogleApiDiscover.cs" />
     <Compile Include="GoogleApiGenerate.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +83,12 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <None Include="Client.Release.build" />
+    <None Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+    <None Include="Client.Release.build">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="buildimpl\Generate.Service.build">
       <SubType>Designer</SubType>
     </None>
@@ -105,5 +114,13 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Google.Apis.Discovery.V1.dll" />
+    <Content Include="lib\Google.Apis.Discovery.V1.pdb" />
+    <Content Include="lib\Google.Apis.Discovery.V1.xml" />
+    <Content Include="NAnt.Config.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
 </Project>

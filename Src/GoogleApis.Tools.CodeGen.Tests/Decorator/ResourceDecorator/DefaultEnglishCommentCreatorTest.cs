@@ -93,12 +93,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var parameter = new MockParameter();
             var progamaticName = "testParameter";
             parameter.Name = progamaticName;
-            parameter.Required = false;
+            parameter.IsRequired = false;
 
             string result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Optional", result);
 
-            parameter.Required = true;
+            parameter.IsRequired = true;
             result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Required", result);
 
@@ -122,11 +122,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             Assert.AreEqual("Required - Must match pattern .*\\.java", result);
 
             parameter.Pattern = null;
-            parameter.Enum = new List<string> { "a", "b", "c", "d" };
+            parameter.EnumValues = new List<string> { "a", "b", "c", "d" };
             result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Required - Must be one of the following values [a, b, c, d]", result);
 
-            parameter.Enum = null;
+            parameter.EnumValues = null;
             parameter.Description = "A Test Description";
             result = instance.GetParameterMetaData(parameter, progamaticName);
             Assert.AreEqual("Required - A Test Description", result);

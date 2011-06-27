@@ -39,8 +39,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             CodeMemberField codeField = decorator.CreateResourceField(resource, Enumerable.Empty<string>());
 
             Assert.IsNotNull(codeField);
-            Assert.AreEqual(ResourceName, codeField.Type.BaseType);
-            Assert.AreEqual("testResource", codeField.Name);
+            Assert.AreEqual(ResourceName+"Resource", codeField.Type.BaseType);
+            Assert.AreEqual("test", codeField.Name);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.IsFalse(codeProperty.HasSet);
             Assert.IsTrue(codeProperty.HasGet);
             Assert.AreEqual(ResourceName, codeProperty.Name);
-            Assert.AreEqual(ResourceName, codeProperty.Type.BaseType);
+            Assert.AreEqual(ResourceName + "Resource", codeProperty.Type.BaseType);
         }
 
         /// <summary>

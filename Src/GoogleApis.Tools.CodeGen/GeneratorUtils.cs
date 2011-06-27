@@ -138,6 +138,11 @@ namespace Google.Apis.Tools.CodeGen
         internal const int SafeMemberMaximumIndex = 8;
 
         /// <summary>
+        /// Suffix for all resource containers
+        /// </summary>
+        internal const string ResourceContainerSuffix = "Resource";
+
+        /// <summary>
         /// Defines a change operation which should be applied to a letter.
         /// </summary>
         public enum TargetCase
@@ -399,12 +404,37 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
+        /// Returns a safe and appropriate enumeration name for the specified enumeration.
+        /// </summary>
+        public static string GetEnumName(string enumName, IEnumerable<string> wordsUsedInContext)
+        {
+            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, enumName, enumName + "Enum");
+        }
+
+        /// <summary>
+        /// Returns a safe and appropriate name for an enumeration value.
+        /// </summary>
+        public static string GetEnumValueName(string enumValue, IEnumerable<string> wordsUsedInContext)
+        {
+            return GetSafeMemberName(
+               wordsUsedInContext, TargetCase.ToUpper, enumValue, enumValue + "Value");
+        }
+
+        /// <summary>
         /// Returns a safe and appropriate class name for the specified resource container.
         /// </summary>
         public static string GetClassName(IResourceContainer resource, IEnumerable<string> wordsUsedInContext)
         {
             string name = resource.Name;
-            return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Resource", name + "Object");
+
+            if ((resource is IService) == false)
+            {
+                // Add a suffix to all resource containers (except the main service)
+                name += ResourceContainerSuffix;
+            }
+
+            return GetSafeMemberName(
+                wordsUsedInContext, TargetCase.ToUpper, name, resource.Name + "Res", name + "Object");
         }
 
         /// <summary>

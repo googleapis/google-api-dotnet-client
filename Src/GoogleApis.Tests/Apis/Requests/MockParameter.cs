@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
@@ -29,13 +30,15 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Name { get; set; }
         public string ParameterType { get; set; }
         public string Pattern { get; set; }
-        public bool Required { get; set; }
+        public bool IsRequired { get; set; }
+        public bool IsRepeatable { get; set; }
         public string DefaultValue { get; set; }
         public string ValueType { get; set; }
         public string Description { get; set; }
         public string Maximum { get; set; }
         public string Minimum { get; set; }
-        public IEnumerable<string> Enum { get; set; }
+        public IEnumerable<string> EnumValues { get; set; }
+        public IEnumerable<string> EnumValueDescriptions { get; set; }
 
         #endregion
     }

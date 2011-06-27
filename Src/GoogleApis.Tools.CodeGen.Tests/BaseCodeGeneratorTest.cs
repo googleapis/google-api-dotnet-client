@@ -49,63 +49,75 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         public const string ServiceClassName = "Google.Apis.Tools.CodeGen.Tests.TestServiceClass";
         public const string ResourceClassName = "Google.Apis.Tools.CodeGen.Tests.TestResourceClass";
-        public const string ResourceName = "TestResource";
+        public const string ResourceName = "Test";
 
         public static readonly string[] ResourceGetTestParameterNames = new[] { "req_a", "req_b", "opt_a", "opt_b" };
 
         public const string ResourceAsJson =
             @"
-		{
-			""methods"":{
-				""getTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""req_b"":{""parameterType"":""query"",""required"":true},
+        {
+            ""methods"":{
+                ""getTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""req_b"":{""parameterType"":""query"",""required"":true},
                         ""req_a"":{""parameterType"":""query"",""required"":true},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
-						""opt_a"":{""parameterType"":""query"",""required"":false}
-					}
-				},
-				""postTest"":{
-					""pathUrl"":""activities/{userId}/{scope}/{postId}"",
-					""rpcName"":""chili.activities.delete"",
-					""httpMethod"":""POST"",
-					""methodType"":""rest"",
-					""parameters"":{
-						""req_a"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
-						""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true},
-						""opt_b"":{""parameterType"":""query"",""required"":false},
-						""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
-						""opt_a"":{""parameterType"":""query"",""required"":false}
-					}
-				},
-				""noParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":null
-				},
-				""oneOptionalParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":false}}
-				},
-				""oneRequiredParameterTest"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":true}}
-				}
-			}
-		}
-		";
+                        ""opt_b"":{""parameterType"":""query"",""required"":false},
+                        ""opt_a"":{""parameterType"":""query"",""required"":false}
+                    }
+                },
+                ""postTest"":{
+                    ""pathUrl"":""activities/{userId}/{scope}/{postId}"",
+                    ""rpcName"":""chili.activities.delete"",
+                    ""httpMethod"":""POST"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""req_a"":{""parameterType"":""path"",""pattern"":"".*"",""required"":true},
+                        ""req_c"":{""parameterType"":""path"",""pattern"":""[^/]+"",""required"":true},
+                        ""opt_b"":{""parameterType"":""query"",""required"":false},
+                        ""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
+                        ""opt_a"":{""parameterType"":""query"",""required"":false}
+                    }
+                },
+                ""noParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":null
+                },
+                ""oneOptionalParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{""opt_a"":{""parameterType"":""query"",""required"":false}}
+                },
+                ""oneRequiredParameterTest"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""opt_a"":{
+                            ""parameterType"":""query"",
+                            ""required"":true,
+                            ""enum"": [
+                                ""deprecated"",""graduated"",""labs""
+                            ],
+                            ""enumDescriptions"": [
+                                ""APIs that have been deprecated."",""Supported APIs that have graduated from labs."",
+                                ""APIs that are experimental""
+                            ],
+                        }
+                    }
+                }
+            }
+        }
+        ";
 
         private const string AdSenseDiscoveryV1 =
             @"
@@ -673,18 +685,18 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         public const string SimpleResource =
             @"
-		{
-			""methods"":{
-				""simpleMethod"":{
-					""pathUrl"":""activities/count"",
-					""rpcName"":""chili.activities.count"",
-					""httpMethod"":""GET"",
-					""methodType"":""rest"",
-					""parameters"":null
-				}
-			}
-		}
-		";
+        {
+            ""methods"":{
+                ""simpleMethod"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":null
+                }
+            }
+        }
+        ";
 
         #region BuzzServiceAsJson
 
@@ -4388,9 +4400,10 @@ namespace Google.Apis.Tools.CodeGen.Tests
         {
             string assemblyPath = target.Assembly.CodeBase;
 
-            // The returned path contains "file:///...", which won't be understood by the compiler
-            // -> Trim the file prefix
-            if (assemblyPath.StartsWith("file:///"))
+            // The returned path contains "file:///...", which won't be understood by the windows compiler,
+            // but which is required by mono
+            // -> Trim the file prefix if we are not running on Mono
+            if (Environment.OSVersion.Platform != PlatformID.Unix && assemblyPath.StartsWith("file:///"))
             {
                 assemblyPath = assemblyPath.Substring("file:///".Length);
             }
@@ -4461,7 +4474,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             // Build the service based on discovery information.
             return discovery.GetService(
                 version, DiscoveryVersion.Version_0_3,
-                new FactoryParameterV0_3("http://test.sever.example.com", "http://test.sever.example.com/testService"));
+                new FactoryParameterV0_3("http://test.server.example.com", "/testService"));
         }
 
         protected IService CreateAdSenseV1_0Service()

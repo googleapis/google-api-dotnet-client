@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,7 +66,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtil.cs" />
+    <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\EnumResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />

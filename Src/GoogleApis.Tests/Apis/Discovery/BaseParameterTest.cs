@@ -53,12 +53,12 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("path", impl.ParameterType);
             Assert.AreEqual("A string description", impl.Description);
             Assert.AreEqual("string", impl.ValueType);
-            Assert.AreEqual(true, impl.Required);
-            Assert.AreEqual(true, impl.Repeated);
+            Assert.AreEqual(true, impl.IsRequired);
+            Assert.AreEqual(true, impl.IsRepeatable);
             Assert.AreEqual("A default value", impl.DefaultValue);
-            MoreAsserts.ContentsEqualAndInOrder(new List<string> { "atom", "json" }, impl.Enum);
+            MoreAsserts.ContentsEqualAndInOrder(new List<string> { "atom", "json" }, impl.EnumValues);
             MoreAsserts.ContentsEqualAndInOrder(
-                new List<string> { "atom are small particals", "json is my friend" }, impl.EnumDescription);
+                new List<string> { "atom are small particals", "json is my friend" }, impl.EnumValueDescriptions);
             Assert.AreEqual("53", impl.Maximum);
             Assert.AreEqual("43", impl.Minimum);
             Assert.AreEqual("[1-9][0-9]*", impl.Pattern);

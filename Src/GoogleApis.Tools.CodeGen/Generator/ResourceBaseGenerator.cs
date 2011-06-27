@@ -16,9 +16,13 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
@@ -27,7 +31,7 @@ using log4net;
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Abstract implementation of a resource generator
+    /// Abstract implementation of a resource generator.
     /// </summary>
     public abstract class ResourceBaseGenerator : BaseGenerator
     {
@@ -53,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 case Request.PUT:
                 case Request.POST:
                 case Request.PATCH:
-                    // add body Parameter
+                    // add body Parameter.
                     member.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, "body"));
                     break;
                 default:
@@ -62,12 +66,30 @@ namespace Google.Apis.Tools.CodeGen.Generator
         }
 
         /// <summary>
-        /// Returns the .NET equivalent of the type specified within the paramater
+        /// Returns the parameter type specified within the parameter.
         /// </summary>
-        public static Type GetParameterType(IParameter param)
+        [VisibleForTestOnly]
+        internal static Type GetParameterType(IParameter param)
         {
             param.ThrowIfNull("param");
+            Type baseType = GetUnderlyingParameterType(param);
 
+            // If this is a repeatable parameter, wrap the underlying type into a Repeatable<T>.
+            if (param.IsRepeatable)
+            {
+                return typeof(Repeatable<>).MakeGenericType(baseType);
+            }
+
+            return baseType;
+        }
+
+        /// <summary>
+        /// Retrieves the underlying, unmodified type of a parameter.
+        /// </summary>
+        private static Type GetUnderlyingParameterType(IParameter param)
+        {
+            param.ThrowIfNull("param");
+            
             switch (param.ValueType)
             {
                 case null:
@@ -86,13 +108,55 @@ namespace Google.Apis.Tools.CodeGen.Generator
             }
         }
 
-        protected CodeParameterDeclarationExpression DeclareInputParameter(IParameter param,
-                                                                           IMethod method)
+        /// <summary>
+        /// Returns the reference to the type which is described in the parameter. Creates types if necessary.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static CodeTypeReference GetParameterTypeReference(CodeTypeDeclaration classDeclaration,
+                                                                    IParameter param,
+                                                                    IMethod method)
         {
             method.ThrowIfNull("method");
-            Type paramType = GetParameterType(param);
+            Type underlyingType = GetParameterType(param);
+            CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
+            bool isValueType = underlyingType.IsValueType;
+
+            // Check if we need to declare a custom type for this parameter. 
+            // If the parameter is an enum, try finding the matching enumeration in the current class
+            if (!param.EnumValues.IsNullOrEmpty())
+            {
+                // Naming scheme: MethodnameParametername
+                CodeTypeReference enumReference = DecoratorUtil.FindFittingEnumeration(
+                    classDeclaration, param.EnumValues, param.EnumValueDescriptions);
+
+                if (enumReference != null)
+                {
+                    paramTypeRef = enumReference;
+                    isValueType = true;
+                }
+            }
+
+            // Check if this is an optional value parameter.
+            if (isValueType && !param.IsRequired)
+            {
+                // An optional value parameter has to be nullable.
+                paramTypeRef = new CodeTypeReference(paramTypeRef.BaseType + "?");
+            }
+
+            return paramTypeRef;
+        }
+
+        /// <summary>
+        /// Creates a declaration for the specified parameter.
+        /// </summary>
+        protected CodeParameterDeclarationExpression DeclareInputParameter(CodeTypeDeclaration classDeclaration,
+                                                                            IParameter param,
+                                                                           IMethod method)
+        {
+            CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param, method);
+
             return new CodeParameterDeclarationExpression(
-                paramType, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
+                paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
         }
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,

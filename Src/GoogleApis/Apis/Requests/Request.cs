@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
 using System.Text;
 using Google.Apis.Authentication;
@@ -71,7 +70,7 @@ namespace Google.Apis.Requests
         /// Set of method parameters
         /// </summary>
         [VisibleForTestOnly]
-        internal IDictionary<string, string> Parameters { get; set; }
+        internal ParameterCollection Parameters { get; set; }
 
         /// <summary>
         /// The application name used within the user agent string
@@ -126,7 +125,8 @@ namespace Google.Apis.Requests
         /// </returns>
         public IRequest WithParameters(IDictionary<string, object> parameters)
         {
-            return WithParameters(parameters.ToDictionary(k => k.Key, v => v.Value != null ? v.Value.ToString() : null));
+            Parameters = ParameterCollection.FromDictionary(parameters);
+            return this;
         }
 
         /// <summary>
@@ -135,18 +135,18 @@ namespace Google.Apis.Requests
         /// <returns>
         /// A <see cref="Request"/>
         /// </returns>
-        public IRequest WithParameters(IDictionary<string, string> parameters)
+        public IRequest WithParameters(IEnumerable<KeyValuePair<string, string>> parameters)
         {
-            Parameters = parameters;
+            Parameters = new ParameterCollection(parameters);
             return this;
         }
 
         /// <summary>
-        /// Adds a set of URL encoded parameters to the request
+        /// Parses the specified querystring and adds these parameters to the request
         /// </summary>
         public IRequest WithParameters(string parameters)
         {
-            Parameters = Utilities.QueryStringToDictionary(parameters);
+            Parameters = ParameterCollection.FromQueryString(parameters);
             return this;
         }
 
@@ -290,11 +290,13 @@ namespace Google.Apis.Requests
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.Required == false && value.IsNullOrEmpty())
+                        if (!parameterDefinition.IsRequired  && value.IsNullOrEmpty())
                         {
                             continue;
                         }
-                        queryParams.Add(parameterDefinition.Name + "=" + value);
+
+                        queryParams.Add(
+                            Uri.EscapeDataString(parameterDefinition.Name) + "=" + Uri.EscapeDataString(value));
                         break;
                     default:
                         throw new NotSupportedException(
@@ -308,7 +310,6 @@ namespace Google.Apis.Requests
             {
                 path += "?" + String.Join("&", queryParams.ToArray());
             }
-
 
             return new Uri(BaseURI, path);
         }
