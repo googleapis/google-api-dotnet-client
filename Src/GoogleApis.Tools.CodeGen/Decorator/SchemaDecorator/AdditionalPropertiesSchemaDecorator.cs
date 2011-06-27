@@ -75,9 +75,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             implDetails.ThrowIfNull("implDetails");
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
-            // Check if this decorator applies to the specified json schema.);
+            // Check if this decorator applies to the specified json schema.
             if (schema.AdditionalProperties == null)
             {
+                return;
+            }
+
+            // Note/ToDo: Currently we only support AdditionalProperties for schemas
+            //            specifiying no normal properties, as these won't be used
+            //            by the newtonsoft json library if a dictionary is specified.
+            if (schema.Properties != null && schema.Properties.Count > 0)
+            {
+                type.Comments.Add(new CodeCommentStatement("TODO: Add support for additionalProperties on schemas"));
+                type.Comments.Add(new CodeCommentStatement("      which have normal properties defined."));
                 return;
             }
 
