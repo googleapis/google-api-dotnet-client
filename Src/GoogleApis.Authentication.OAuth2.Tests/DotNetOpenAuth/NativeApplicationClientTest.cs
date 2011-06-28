@@ -36,7 +36,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests.DotNetOpenAuth
         }
 
         /// <summary>
-        /// Tests the RequestUserAuthorization method.
+        /// Tests that the RequestUserAuthorization method will return a valid Request URI.
         /// </summary>
         [Test]
         public void RequestUserAuthorizationTest()
@@ -45,7 +45,8 @@ namespace Google.Apis.Authentication.OAuth2.Tests.DotNetOpenAuth
             client.ClientIdentifier = "Test";
             client.ClientSecret = "123";
 
-            // Check that the callback URL is set correctly.
+            // Check that the callback URL is set correctly. We test this, as the Out of Band URI is required
+            // for most cases of the Native-Application flow.
             Assert.IsTrue(
                 client.RequestUserAuthorization().ToString().Contains(NativeApplicationClient.OutOfBandCallbackUrl));
         }

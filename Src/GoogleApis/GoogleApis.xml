@@ -100,12 +100,13 @@
         </member>
         <member name="T:Google.Apis.Requests.IErrorResponseHandler">
             <summary>
-            Represents a class able to handle error responses
+            Represents a class able to handle error responses.
+            Can be used by authenticators to fix/reauthenticate requests.
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.IErrorResponseHandler.CanHandleErrorResponse(System.Net.WebException,Google.Apis.Requests.RequestError)">
             <summary>
-            Should return true if this handler can handle the specified error
+            Returns true if this handler can handle the specified error.
             </summary>
             <param name="exception">The exception thrown while parsing the response.</param>
             <param name="error">Additional information about the error. Might be null.</param>
@@ -113,8 +114,8 @@
         </member>
         <member name="M:Google.Apis.Requests.IErrorResponseHandler.PrepareHandleErrorResponse(System.Net.WebException,Google.Apis.Requests.RequestError)">
             <summary>
-            A method which is called when this error response handler can handle this request.
-            It will be called before the new webrequest is created.
+            Called when this error response handler can handle this request.
+            It will be called before the new WebRequest is created.
             </summary>
             <param name="exception">The exception which was thrown by the service.</param>
             <param name="error">Additional information about the error which occured. Might be null.</param>
@@ -682,7 +683,7 @@
         </member>
         <member name="T:Google.Apis.Requests.Request">
             <summary>
-            Request to a service
+            Request to a service.
             </summary>
         </member>
         <member name="T:Google.Apis.Requests.IRequest">
@@ -742,10 +743,14 @@
             Defines the maximum number of retries which should be made if a request fails.
             </summary>
         </member>
-        <member name="F:Google.Apis.Requests.Request.RetryWaitTimeIncreasePercentage">
+        <member name="F:Google.Apis.Requests.Request.RetryWaitTimeIncreaseFactor">
             <summary>
-            Defines the percentage value by which the waiting time between retry attempts increases
-            after the first rety has failed.
+            Defines the factor by which the waiting time is multiplied between retry attempts.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Requests.Request.RetryInitialWaitTime">
+            <summary>
+            Defines the initial waiting time, which is used once the first retry has failed.
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.Request.On(System.String)">
@@ -760,7 +765,7 @@
             <summary>
             Sets the type of data that is expected to be returned from the request.
             
-            Defaults to Json
+            Defaults to Json.
             </summary>
             <param name="returnType">
             A <see cref="P:Google.Apis.Requests.Request.ReturnType"/>
@@ -787,7 +792,7 @@
         </member>
         <member name="M:Google.Apis.Requests.Request.WithParameters(System.String)">
             <summary>
-            Adds a set of URL encoded parameters to the request
+            Adds a set of URL encoded parameters to the request.
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.Request.WithBody(System.String)">
@@ -802,7 +807,7 @@
         </member>
         <member name="M:Google.Apis.Requests.Request.WithDeveloperKey(System.String)">
             <summary>
-            Adds the developer key to this request
+            Adds the developer key to this request.
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.Request.ExecuteRequest">
@@ -817,7 +822,6 @@
             <summary>
             Returns all error response handlers associated with this request.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:Google.Apis.Requests.Request.CreateRequest(Google.Apis.Discovery.IService,Google.Apis.Discovery.IMethod)">
             <summary>
@@ -826,7 +830,7 @@
         </member>
         <member name="M:Google.Apis.Requests.Request.WithAppName(System.String)">
             <summary>
-            Sets the Application name on the UserAgent String
+            Sets the Application name on the UserAgent String.
             </summary>
             <param name="name">
             A <see cref="T:System.String"/>
@@ -834,32 +838,37 @@
         </member>
         <member name="M:Google.Apis.Requests.Request.BuildRequestUrl">
             <summary>
-            Builds the resulting Url for the whole request
+            Builds the resulting Url for the whole request.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.Request.CreateWebRequest">
+            <summary>
+            Creates the ready-to-send WebRequest containing all the data specified in this request class.
             </summary>
         </member>
         <member name="M:Google.Apis.Requests.Request.HttpMethodHasBody(System.String)">
             <summary>
-            Returns true if this http method can have a body
+            Returns true if this http method can have a body.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.Authenticator">
             <summary>
-            The authenticator used for this request
+            The authenticator used for this request.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.DeveloperKey">
             <summary>
-            The developer API Key sent along with the request
+            The developer API Key sent along with the request.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.Parameters">
             <summary>
-            Set of method parameters
+            Set of method parameters.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.ApplicationName">
             <summary>
-            The application name used within the user agent string
+            The application name used within the user agent string.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.SupportsRetry">

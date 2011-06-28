@@ -17,8 +17,8 @@ limitations under the License.
 using System;
 using System.Net;
 using DotNetOpenAuth.OAuth2;
-using Google.Apis.Util;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis.Authentication.OAuth2
 {
@@ -27,73 +27,42 @@ namespace Google.Apis.Authentication.OAuth2
     /// </summary>
     public class OAuth2Authenticator<TClient> : Authenticator, IErrorResponseHandler where TClient : ClientBase
     {
+        /// <summary>
+        /// The header used for authorizing OAuth2 web requests.
+        /// </summary>
+        public const string OAuth2AuthorizationHeader = "Authorization: OAuth {0}";
+
         private readonly Func<TClient, IAuthorizationState> authProvider;
         private readonly TClient tokenProvider;
-
-        /// <summary>
-        /// The current state of this authenticator
-        /// </summary>
-        public IAuthorizationState State { get; private set; }
 
         /// <summary>
         /// Creates a new OAuth2 authenticator
         /// </summary>
         /// <param name="tokenProvider">The client which is used for requesting access and refresh tokens.</param>
         /// <param name="authProvider">The method which provides the initial authorization for the provider.</param>
-        public OAuth2Authenticator(TClient tokenProvider,
-                                   Func<TClient, IAuthorizationState> authProvider)
+        public OAuth2Authenticator(TClient tokenProvider, Func<TClient, IAuthorizationState> authProvider)
         {
             tokenProvider.ThrowIfNull("applicationName");
             authProvider.ThrowIfNull("authProvider");
-            
+
             this.tokenProvider = tokenProvider;
             this.authProvider = authProvider;
 
             // Request initial authorization.
-            CheckForValidAccessToken();
+            LoadAccessToken();
         }
 
         /// <summary>
-        /// Checks if the current access token is valid. Will request a new token if it is invalid.
+        /// The current state of this authenticator
         /// </summary>
-        public void CheckForValidAccessToken()
-        {
-            // Check if we have an access token, otherwise request one.
-            if (State == null || string.IsNullOrEmpty(State.AccessToken))
-            {
-                State = authProvider(tokenProvider);
-            }
-        }
-        
-        public override void ApplyAuthenticationToRequest(HttpWebRequest request)
-        {
-            base.ApplyAuthenticationToRequest(request);
+        public IAuthorizationState State { get; private set; }
 
-            // Get the access token.
-            CheckForValidAccessToken();
-
-            if (State != null && !string.IsNullOrEmpty(State.AccessToken))
-            {
-                string accessToken = State.AccessToken;
-
-                // Apply authorization to the current request
-                // Note: OAuth2 draft16 is not yet supported by the server.
-                //       tokenProvider.AuthorizeRequest(request, State); 
-                request.Headers.Add(GenerateOAuth2Header(accessToken));
-            }
-        }
-
-        private static string GenerateOAuth2Header(String token)
-        {
-            if (token.IsNotNullOrEmpty())
-            {
-                return "Authorization: OAuth " + token;
-            }
-            return string.Empty;
-        }
+        #region IErrorResponseHandler Members
 
         public bool CanHandleErrorResponse(WebException exception, RequestError error)
         {
+            exception.ThrowIfNull("exception");
+
             // If we have an access token, and the response was 401, then the access token
             // probably expired. We can try to handle this error.
             if (State == null)
@@ -102,7 +71,6 @@ namespace Google.Apis.Authentication.OAuth2
             }
 
             var response = exception.Response as HttpWebResponse;
-
             if (response == null)
             {
                 return false;
@@ -119,7 +87,51 @@ namespace Google.Apis.Authentication.OAuth2
 
         public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request)
         {
-            // Authentication is applied automatically when creating a new request.
+            // Authentication is applied automatically by the core library when creating a new request.
+            // We do not need to add it a second time, so do nothing here. As we have already refreshed
+            // the expired access token, our job here is done.
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Checks if an access token has been set. If this is not the case, this method will use the specified
+        /// State provider to generate a new AuthroizationState.
+        /// </summary>
+        public void LoadAccessToken()
+        {
+            // Check if we have an access token, otherwise request one.
+            if (State == null || string.IsNullOrEmpty(State.AccessToken))
+            {
+                State = authProvider(tokenProvider);
+            }
+        }
+
+        public override void ApplyAuthenticationToRequest(HttpWebRequest request)
+        {
+            base.ApplyAuthenticationToRequest(request);
+
+            // Populate the AuthorizationState with an access token.
+            LoadAccessToken();
+
+            if (State != null && !string.IsNullOrEmpty(State.AccessToken))
+            {
+                string accessToken = State.AccessToken;
+
+                // Apply authorization to the current request
+                // Note: OAuth2 draft16 is not yet supported by the server.
+                //       tokenProvider.AuthorizeRequest(request, State); 
+                request.Headers.Add(GenerateOAuth2Header(accessToken));
+            }
+        }
+
+        private static string GenerateOAuth2Header(String token)
+        {
+            if (token.IsNotNullOrEmpty())
+            {
+                return string.Format(OAuth2AuthorizationHeader, token);
+            }
+            return string.Empty;
         }
     }
 }

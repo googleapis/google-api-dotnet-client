@@ -84,7 +84,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         {
                             HttpMethod = "GET",
                             Name = "TestMethod",
-                            RestPath = "https://test.google.com",
+                            RestPath = "https://example.com",
                             Parameters = parameterDefinitions
                         });
 
@@ -92,7 +92,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual(
-                "https://test.google.com/?alt=json&optionalWithEmpty=d&" +
+                "https://example.com/?alt=json&optionalWithEmpty=d&" +
                 "optionalWithNull=c&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
@@ -107,11 +107,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
+            Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
         }
 
         /// <summary>
@@ -125,11 +125,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -168,14 +168,14 @@ namespace Google.Apis.Tests.Apis.Requests
                         {
                             HttpMethod = "GET",
                             Name = "TestMethod",
-                            RestPath = "https://test.google.com",
+                            RestPath = "https://example.com",
                             Parameters = parameterDefinitions
                         });
 
             request.WithParameters(parameterValues);
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod
-                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://test.google.com", }));
+                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://example.com", }));
         }
 
         /// <summary>
@@ -225,19 +225,19 @@ namespace Google.Apis.Tests.Apis.Requests
             var service = new MockService();
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://example.com", });
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var service = new MockService();
             var request = (Request)Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com",
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com",
                 Parameters = new Dictionary<string, IParameter>() { {"TestParam", null} }});
             
             request.WithParameters("");
@@ -273,7 +273,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     new MockService(),
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
@@ -326,7 +326,7 @@ namespace Google.Apis.Tests.Apis.Requests
               (Request)
               Request.CreateRequest(
                   new MockService(),
-                  new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                  new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
 
             // Confirm that there are no error response handlers by default.
             CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
