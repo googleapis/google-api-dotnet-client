@@ -19,12 +19,13 @@ using System.Net;
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Represents a class able to handle error responses
+    /// Represents a class able to handle error responses.
+    /// Can be used by authenticators to fix/reauthenticate requests.
     /// </summary>
     public interface IErrorResponseHandler
     {
         /// <summary>
-        /// Should return true if this handler can handle the specified error
+        /// Returns true if this handler can handle the specified error.
         /// </summary>
         /// <param name="exception">The exception thrown while parsing the response.</param>
         /// <param name="error">Additional information about the error. Might be null.</param>
@@ -32,8 +33,8 @@ namespace Google.Apis.Requests
         bool CanHandleErrorResponse(WebException exception, RequestError error);
 
         /// <summary>
-        /// A method which is called when this error response handler can handle this request.
-        /// It will be called before the new webrequest is created.
+        /// Called when this error response handler can handle this request.
+        /// It will be called before the new WebRequest is created.
         /// </summary>
         /// <param name="exception">The exception which was thrown by the service.</param>
         /// <param name="error">Additional information about the error which occured. Might be null.</param>

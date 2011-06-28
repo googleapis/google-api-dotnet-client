@@ -32,29 +32,41 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
     {
         private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
         {
+            private int CallOrder = 0;
             public bool Called { get; set; }
 
             public bool CanHandleErrorResponse(WebException exception, RequestError error)
             {
+                if (CallOrder != 0 && CallOrder != 3)
+                {
+                    Assert.Fail("IErrorResponseHandler methods called in wrong order.");
+                }
+
+                // This handler will only handle the first retry, and will fail every additional request.
+                CallOrder++;
                 return !Called;
             }
 
             public void PrepareHandleErrorResponse(WebException exception, RequestError error)
             {
-
+                Assert.AreEqual(1, CallOrder++, "IErrorResponseHandler methods called in wrong order.");
+                Assert.IsFalse(Called);
             }
 
             public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request)
             {
+                Assert.AreEqual(2, CallOrder++, "IErrorResponseHandler methods called in wrong order.");
+                Assert.IsFalse(Called);
                 Called = true;
             }
         }
         
         /// <summary>
-        /// Tests the results of the GetErrorResponseHandlers method.
+        /// Tests that the requests will retry execution if a WebException is received and 
+        /// that the request will fail after a retry.
         /// </summary>
         [Test]
-        public void TestErrorResponseHandler()
+        public void TestRetrySystem()
         {
             var request =
                 (Request)
@@ -64,16 +76,22 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
                     {
                         HttpMethod = "GET",
                         Name = "TestMethod",
+                        // Define an invalid URI which will cause a WebException to be thrown.
                         RestPath = "https://localhost:12345/",
                         Parameters = new Dictionary<string, IParameter>()
                     });
 
-            // Confirm that an error handling response handler will change the enumeration
             var auth = new MockErrorHandlingAuthenticator();
             Assert.IsFalse(auth.Called);
             request.WithAuthentication(auth);
             request.WithParameters(new Dictionary<string, string>());
+
+            // Execute the request. This will fail because we have defined an invalid rest URI.
+            // The IErrorResponseHandler should kick in and try to resend the request. As this 
+            // will also fail we will receive a GoogleApiException over here.
             Assert.Throws<GoogleApiException>(() => request.ExecuteRequest());
+
+            // Confirm that the IErrorResponseHandler has run and tried to resend/modify the request.
             Assert.IsTrue(auth.Called);
         }
     }

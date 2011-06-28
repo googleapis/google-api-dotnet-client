@@ -21,9 +21,8 @@ using DotNetOpenAuth.OAuth2;
 namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
 {
     /// <summary>
-    /// The OAuth client for the native-application flow, providing services for native applications.
-    /// This is fake implementation which should be used unless this feature has been implemented
-    /// in the real DotNetOpenAuth library.
+    /// The OAuth2 client for use by native applications. This is a partial implementation which 
+    /// should be used until the feature has been fully implemented in DotNetOpenAuth.
     /// </summary>
     public class NativeApplicationClient : UserAgentClient
     {
@@ -31,6 +30,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// Represents a callback URL which points to a special out of band page used for native OAuth2 authorization.
         /// This URL will cause the authorization code to appear in the title of the window.
         /// </summary>
+        /// <remarks>See http://code.google.com/apis/accounts/docs/OAuth2.html for more information.</remarks>
         public const string OutOfBandCallbackUrl = "urn:ietf:wg:oauth:2.0:oob";
 
         /// <summary>
@@ -79,8 +79,10 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
                 authorizationState.Callback = new Uri(OutOfBandCallbackUrl);
             }
 
-            // Build a fake URL
-            string url = "http://localhost/?code=" + authCode;
+            // Build a generic URL containing the auth code.
+            // This is done here as we cannot modify the DotNetOpenAuth library and the underlying method
+            // only allows parsing an URL as a method of retrieving the AuthorizationState.
+            string url = "http://example.com/?code=" + authCode;
             return ProcessUserAuthorization(new Uri(url), authorizationState);
         }
     }

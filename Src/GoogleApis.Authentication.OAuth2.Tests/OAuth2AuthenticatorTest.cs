@@ -34,7 +34,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests
         [Test]
         public void ConstructTest()
         {
-            var client = new NativeApplicationClient(new Uri("http://google.com"));
+            var client = new NativeApplicationClient(new Uri("http://example.com"));
             var auth = new OAuth2Authenticator<NativeApplicationClient>(client, (clt) => new AuthorizationState());
             Assert.IsNotNull(auth.State);
         }
@@ -46,7 +46,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests
         public void DelegateTest()
         {
             var state = new AuthorizationState() { AccessToken = "Test" };
-            var client = new NativeApplicationClient(new Uri("http://google.com"));
+            var client = new NativeApplicationClient(new Uri("http://example.com"));
             var auth = new OAuth2Authenticator<NativeApplicationClient>(client, (clt) => state);
 
             // Check that the state was set.
@@ -59,29 +59,29 @@ namespace Google.Apis.Authentication.OAuth2.Tests
         [Test]
         public void CheckForValidAccessTokenTest()
         {
-            int i = 0;
+            int accessTokenCounter = 1;
             var state = new AuthorizationState();
-            var client = new NativeApplicationClient(new Uri("http://google.com"));
+            var client = new NativeApplicationClient(new Uri("http://example.com"));
             var auth = new OAuth2Authenticator<NativeApplicationClient>(
                 client, (clt) =>
-                {
+                { 
                     // Load a "cached" access token.
-                    state.AccessToken = (i++).ToString();
+                    state.AccessToken = "token" + (accessTokenCounter++);
                     return state;
                 });
 
             // Check that the state was set.
             Assert.AreEqual(state, auth.State);
-            Assert.AreEqual("0", auth.State.AccessToken);
+            Assert.AreEqual("token1", auth.State.AccessToken);
 
             // Check that it wont be set again.
-            auth.CheckForValidAccessToken();
-            Assert.AreEqual("0", auth.State.AccessToken);
+            auth.LoadAccessToken();
+            Assert.AreEqual("token1", auth.State.AccessToken);
 
             // Check that it is set if our state gets invalid.
             state.AccessToken = null;
-            auth.CheckForValidAccessToken();
-            Assert.AreEqual("1", auth.State.AccessToken);
+            auth.LoadAccessToken();
+            Assert.AreEqual("token2", auth.State.AccessToken);
         }
 
         /// <summary>
@@ -90,15 +90,18 @@ namespace Google.Apis.Authentication.OAuth2.Tests
         [Test]
         public void ApplyAuthenticationToRequestTest()
         {
-            var request = (HttpWebRequest)WebRequest.Create("http://google.com");
+            var request = (HttpWebRequest)WebRequest.Create("http://example.com");
             var state = new AuthorizationState() { AccessToken = "Test" };
-            var client = new NativeApplicationClient(new Uri("http://google.com"));
+            var client = new NativeApplicationClient(new Uri("http://example.com"));
             var auth = new OAuth2Authenticator<NativeApplicationClient>(client, (clt) => state);
 
             // Confirm that the request header gets modified.
             auth.ApplyAuthenticationToRequest(request);
             Assert.AreEqual(1, request.Headers.Count);
-            Assert.AreEqual("OAuth Test", request.Headers["Authorization"]);
+
+            string expected = string.Format(
+                OAuth2Authenticator<NativeApplicationClient>.OAuth2AuthorizationHeader, state.AccessToken);
+            Assert.AreEqual(expected, "Authorization: "+request.Headers["Authorization"]);
         }
     }
 }

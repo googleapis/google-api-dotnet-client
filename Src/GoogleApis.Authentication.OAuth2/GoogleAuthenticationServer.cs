@@ -24,27 +24,21 @@ namespace Google.Apis.Authentication.OAuth2
     /// </summary>
     public static class GoogleAuthenticationServer
     {
-        private static AuthorizationServerDescription description;
+        static GoogleAuthenticationServer()
+        {
+            // Set the auth server description.
+            Description = new AuthorizationServerDescription
+                              {
+                                  AuthorizationEndpoint = new Uri("https://accounts.google.com/o/oauth2/auth"),
+                                  TokenEndpoint = new Uri("https://accounts.google.com/o/oauth2/token"),
+                                  ProtocolVersion = ProtocolVersion.V20,
+                              };
+        }
 
         /// <summary>
         /// Returns the description for the Google Authorization Server.
         /// </summary>
         /// <returns></returns>
-        public static AuthorizationServerDescription Description
-        {
-            get
-            {
-                if (description == null)
-                {
-                    description = new AuthorizationServerDescription
-                                      {
-                                          AuthorizationEndpoint = new Uri("https://accounts.google.com/o/oauth2/auth"),
-                                          TokenEndpoint = new Uri("https://accounts.google.com/o/oauth2/token"),
-                                          ProtocolVersion = ProtocolVersion.V20,
-                                      };
-                }
-                return description;
-            }
-        }
+        public static AuthorizationServerDescription Description { get; private set; }
     }
 }

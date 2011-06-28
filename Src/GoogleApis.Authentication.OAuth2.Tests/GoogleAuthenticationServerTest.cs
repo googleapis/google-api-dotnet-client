@@ -26,7 +26,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests
     public class GoogleAuthenticationServerTest
     {
         /// <summary>
-        /// Tests the Description property.
+        /// Confirms that the Description property is initialised and that it will return plausible values.
         /// </summary>
         [Test]
         public void DescriptionTest()
@@ -40,7 +40,9 @@ namespace Google.Apis.Authentication.OAuth2.Tests
             AuthorizationServerDescription description = GoogleAuthenticationServer.Description;
             Assert.IsNotNull(description.AuthorizationEndpoint);
             Assert.IsNotNull(description.TokenEndpoint);
-            Assert.AreEqual(ProtocolVersion.V20, description.ProtocolVersion);
+            Assert.AreEqual(
+                ProtocolVersion.V20, description.ProtocolVersion,
+                "A new or invalid protocol version has been specified. Did you forget to update an unit test?");
         }
     }
 }
