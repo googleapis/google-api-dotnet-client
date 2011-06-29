@@ -32,30 +32,30 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
     {
         private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
         {
-            private int CallOrder = 0;
+            private int callOrder = 0;
             public bool Called { get; set; }
 
             public bool CanHandleErrorResponse(WebException exception, RequestError error)
             {
-                if (CallOrder != 0 && CallOrder != 3)
+                if (callOrder != 0 && callOrder != 3)
                 {
                     Assert.Fail("IErrorResponseHandler methods called in wrong order.");
                 }
 
                 // This handler will only handle the first retry, and will fail every additional request.
-                CallOrder++;
+                callOrder++;
                 return !Called;
             }
 
             public void PrepareHandleErrorResponse(WebException exception, RequestError error)
             {
-                Assert.AreEqual(1, CallOrder++, "IErrorResponseHandler methods called in wrong order.");
+                Assert.AreEqual(1, callOrder++, "IErrorResponseHandler methods called in wrong order.");
                 Assert.IsFalse(Called);
             }
 
             public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request)
             {
-                Assert.AreEqual(2, CallOrder++, "IErrorResponseHandler methods called in wrong order.");
+                Assert.AreEqual(2, callOrder++, "IErrorResponseHandler methods called in wrong order.");
                 Assert.IsFalse(Called);
                 Called = true;
             }
