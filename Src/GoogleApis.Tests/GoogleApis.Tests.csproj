@@ -90,7 +90,7 @@
     <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
     <Compile Include="Apis\Authentication\NullAuthenticatorTest.cs" />
     <Compile Include="Apis\Requests\RequestTest.cs" />
-    <Compile Include="Apis\Requests\MethodValidator.cs" />
+    <Compile Include="Apis\Requests\MethodValidatorTests.cs" />
     <Compile Include="Apis\Requests\MockMethod.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
