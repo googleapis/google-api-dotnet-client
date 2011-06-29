@@ -16,9 +16,8 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Runtime.InteropServices;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -43,12 +42,17 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         protected void ResourceCallAddBodyDeclaration(IMethod method,
                                                       CodeMemberMethod member,
-                                                      CodeTypeReference bodyType)
+                                                      CodeTypeReference bodyType,
+                                                      bool addBodyIfUnused)
         {
             switch (method.HttpMethod)
             {
                 case Request.GET:
                 case Request.DELETE:
+                    if (!addBodyIfUnused)
+                    {
+                        break;
+                    }
                     // string body = null;
                     var bodyVarDeclaration = new CodeVariableDeclarationStatement(bodyType, "body");
                     bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
@@ -154,9 +158,17 @@ namespace Google.Apis.Tools.CodeGen.Generator
                                                                            IMethod method)
         {
             CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param, method);
-
-            return new CodeParameterDeclarationExpression(
+            var decl = new CodeParameterDeclarationExpression(
                 paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
+
+            // If this parameter is optional, mark it as as a .NET4.0 optional parameter:
+            if (!param.IsRequired)
+            {
+                // [Optional]
+                decl.CustomAttributes.Add(
+                    new CodeAttributeDeclaration(new CodeTypeReference(typeof(OptionalAttribute))));
+            }
+            return decl;
         }
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,

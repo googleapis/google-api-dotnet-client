@@ -31,6 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         /// <summary>
         /// Test the generator
         /// </summary>
+        [Test]
         public void TestResourceGenerator()
         {
             var generator = new StandardMethodResourceDecorator.ResourceGenerator(

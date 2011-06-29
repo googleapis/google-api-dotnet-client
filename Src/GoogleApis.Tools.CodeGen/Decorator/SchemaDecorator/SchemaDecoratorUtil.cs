@@ -74,7 +74,7 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.Float:
                     return new CodeTypeReference(typeof(double));
                 case JsonSchemaType.Array:
-                    return GetArrayTypeRefereence(propertySchema, details, internalClassProvider);
+                    return GetArrayTypeReference(propertySchema, details, internalClassProvider);
                 case JsonSchemaType.Object:
                     return GetObjectTypeReference(propertySchema, details, internalClassProvider);
                 case JsonSchemaType.Any:
@@ -111,7 +111,7 @@ namespace Google.Apis.Tools.CodeGen
         /// Resolves/generates an array type reference for a schema.
         /// </summary>
         [VisibleForTestOnly]
-        internal static CodeTypeReference GetArrayTypeRefereence(JsonSchema propertySchema,
+        internal static CodeTypeReference GetArrayTypeReference(JsonSchema propertySchema,
                                                                  SchemaImplementationDetails details,
                                                                  INestedClassProvider internalClassProvider)
         {

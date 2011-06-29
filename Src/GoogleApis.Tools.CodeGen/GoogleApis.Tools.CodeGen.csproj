@@ -66,6 +66,10 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtil.cs" />
+    <Compile Include="Decorator\DefaultObjectProvider.cs" />
+    <Compile Include="Decorator\IObjectProvider.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BodyPropertyDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestMethodResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\RequestConstructorDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestFieldDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestInheritanceDecorator.cs" />

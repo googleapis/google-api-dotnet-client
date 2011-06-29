@@ -17,6 +17,7 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -30,6 +31,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </summary>
     public class RequestConstructorDecorator : IRequestDecorator
     {
+        private readonly IObjectTypeProvider objectTypeProvider;
+
+        /// <summary>
+        /// Creates a new request constructor decorator.
+        /// </summary>
+        public RequestConstructorDecorator(IObjectTypeProvider objectTypeProvider)
+        {
+            this.objectTypeProvider = objectTypeProvider;
+        }
+
         #region IRequestDecorator Members
 
         public void DecorateClass(IResource resource,
@@ -37,18 +48,26 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration requestClass,
                                   CodeTypeDeclaration resourceClass)
         {
-            requestClass.Members.Add(CreateConstructor(resourceClass, request));
+            requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, false));
+
+            if (request.HasOptionalParameters())
+            {
+                requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, true));
+            }
         }
 
         #endregion
 
         /// <summary>
-        /// Creates the constructor for this request class.
+        /// Creates the constructor for this request class which only takes required arguments.
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructor(CodeTypeDeclaration resourceClass, IMethod request)
+        internal CodeConstructor CreateRequiredConstructor(CodeTypeDeclaration resourceClass,
+                                                           IMethod request,
+                                                           bool addOptionalParameters)
         {
             var constructor = new CodeConstructor();
+            constructor.Attributes = MemberAttributes.Public;
 
             // ISchemaAwareRequestExecutor service
             var serviceArg = new CodeParameterDeclarationExpression(typeof(ISchemaAwareRequestExecutor), "service");
@@ -58,27 +77,55 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("service"));
 
             // Add all required arguments to the constructor.
-            AddRequiredParameters(resourceClass, request, constructor);
+            AddBodyParameter(constructor, request);
+            AddParameters(resourceClass, request, constructor, addOptionalParameters);
 
             return constructor;
         }
 
         /// <summary>
-        /// Adds all required parameters of this request to the specified constructor.
+        /// Adds the body parameter and statement to the constructor if it is required.
         /// </summary>
         [VisibleForTestOnly]
-        internal void AddRequiredParameters(CodeTypeDeclaration resourceClass,
-                                            IMethod request,
-                                            CodeConstructor constructor)
+        internal void AddBodyParameter(CodeConstructor constructor, IMethod request)
+        {
+            const string varName = "body";
+
+            if (!request.HasBody)
+            {
+                return; // No body parameter required.
+            }
+
+            CodeTypeReference bodyType = objectTypeProvider.GetBodyType(request);
+            var thisRef = new CodeThisReferenceExpression();
+
+            // TBody body
+            constructor.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, varName));
+
+            // this.Body = body;
+            var assign = new CodeAssignStatement();
+            assign.Left = new CodePropertyReferenceExpression(thisRef, BodyPropertyDecorator.BodyPropertyName);
+            assign.Right = new CodeVariableReferenceExpression(varName);
+            constructor.Statements.Add(assign);
+        }
+
+        /// <summary>
+        /// Adds all required parameters and statements of this request to the specified constructor.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal void AddParameters(CodeTypeDeclaration resourceClass,
+                                    IMethod request,
+                                    CodeConstructor constructor,
+                                    bool addOptional)
         {
             if (request.Parameters == null)
             {
                 return; // Nothing to do here.
             }
 
-            foreach (IParameter parameter in request.Parameters.Values)
+            foreach (IParameter parameter in request.GetAllParametersSorted())
             {
-                if (!parameter.IsRequired)
+                if (!addOptional && !parameter.IsRequired)
                 {
                     continue;
                 }
@@ -94,6 +141,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                 // Add the constructor parameter. (e.g. JsonSchema schema)
                 var newParameter = new CodeParameterDeclarationExpression(type, parameterName);
                 constructor.Parameters.Add(newParameter);
+
+                // Make the parameter optional if required.
+                if (!parameter.IsRequired)
+                {
+                    var optionalTypeRef = new CodeTypeReference(typeof(OptionalAttribute));
+                    newParameter.CustomAttributes.Add(new CodeAttributeDeclaration(optionalTypeRef));
+                }
 
                 // Add the initialisation expression (e.g. this.schema = schema;)
                 var initStatement = new CodeAssignStatement();

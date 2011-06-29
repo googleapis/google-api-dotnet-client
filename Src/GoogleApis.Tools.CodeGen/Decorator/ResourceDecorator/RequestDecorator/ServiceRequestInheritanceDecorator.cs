@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
@@ -26,14 +25,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </summary>
     public class ServiceRequestInheritanceDecorator : IRequestDecorator
     {
-        private readonly string schemaNamespace;
+        private readonly IObjectTypeProvider objectTypeProvider;
 
         /// <summary>
-        /// Creates a new ServiceRequestInheritanceDecorator, which uses the specified namespace.
+        /// Creates a new ServiceRequestInheritanceDecorator, which uses the specified type provider.
         /// </summary>
-        public ServiceRequestInheritanceDecorator(string schemaNamespace)
+        public ServiceRequestInheritanceDecorator(IObjectTypeProvider objectTypeProvider)
         {
-            this.schemaNamespace = schemaNamespace;
+            this.objectTypeProvider = objectTypeProvider;
         }
 
         #region IRequestDecorator Members
@@ -46,7 +45,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             // Retrieve the response type.
             var responseType = string.IsNullOrEmpty(request.ResponseType)
                                    ? new CodeTypeReference(typeof(object))
-                                   : GeneratorUtils.GetSchemaReference(schemaNamespace, request.ResponseType);
+                                   : objectTypeProvider.GetReturnType(request);
 
             // Create the base reference
             var baseRef = new CodeTypeReference(typeof(ServiceRequest<>));
