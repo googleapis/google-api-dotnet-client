@@ -40,6 +40,8 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public string RequestType { get; set; }
 
+        public bool HasBody { get; set; }
+
         public Dictionary<string, IParameter> Parameters { get; set; }
 
         #endregion

@@ -33,6 +33,11 @@ namespace Google.Apis.Requests
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ServiceRequest<TResponse>
     {
+        /// <summary>
+        /// The name of the "GetBody" method
+        /// </summary>
+        public const string GetBodyMethodName = "GetBody";
+
         private readonly ILog logger = LogManager.GetLogger(typeof(ServiceRequest<TResponse>));
         private readonly ISchemaAwareRequestExecutor service;
 
@@ -55,11 +60,26 @@ namespace Google.Apis.Requests
         protected abstract string MethodName { get; }
         
         /// <summary>
-        /// Should return the body of the request in form of a string (if applicable), or null.
+        /// Should return the body of the request (if applicable), or null.
         /// </summary>
-        protected virtual string GetBody()
+        protected virtual object GetBody()
         {
             return null;
+        }
+
+        /// <summary>
+        /// Returns the serialized version of the body, or null if unavailable.
+        /// </summary>
+        private string GetSerializedBody()
+        {
+            object body = GetBody();
+            if (body == null)
+            {
+                return null;
+            }
+
+            // Serialize the body.
+            return service.ObjectToJson(body);
         }
 
         /// <summary>
@@ -77,7 +97,8 @@ namespace Google.Apis.Requests
         {
             string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
             logger.Debug("Start Executing " + requestName);
-            Stream response = service.ExecuteRequest(ResourceName, MethodName, GetBody(), CreateParameterDictionary());
+            Stream response = service.ExecuteRequest(
+                ResourceName, MethodName, GetSerializedBody(), CreateParameterDictionary());
             logger.Debug("Done Executing " + requestName);
             return response;
         }

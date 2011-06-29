@@ -69,9 +69,12 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtilTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\EnumResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BodyPropertyDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ParameterPropertyDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\RequestConstructorDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestFieldDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestInheritanceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestMethodResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecoratorTest.cs" />

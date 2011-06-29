@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             this.acceptObjectsAsBody = acceptObjectsAsBody;
             this.objectTypeProvider = objectTypeProvider;
             this.commentCreator = commentCreator;
-            methodNameSufix = "";
+            methodNameSufix = "AndExecute";
         }
 
         #region IResourceDecorator Members
@@ -106,53 +106,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
         {
             ;
-        }
-
-        #endregion
-
-        #region Nested type: DefaultObjectTypeProvider
-
-        public class DefaultObjectTypeProvider : IObjectTypeProvider
-        {
-            private readonly string schemaNamespace;
-
-            public DefaultObjectTypeProvider(string schemaNamespace)
-            {
-                this.schemaNamespace = schemaNamespace;
-            }
-
-            #region IObjectTypeProvider Members
-
-            public CodeTypeReference GetReturnType(IMethod method)
-            {
-                method.ThrowIfNull("method");
-                return GeneratorUtils.GetSchemaReference(schemaNamespace, method.ResponseType);
-            }
-
-            public CodeTypeReference GetBodyType(IMethod method)
-            {
-                method.ThrowIfNull("method");
-                method.RequestType.ThrowIfNullOrEmpty("method.RequestType");
-                return new CodeTypeReference(schemaNamespace + '.' + method.RequestType);
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Nested type: IObjectTypeProvider
-
-        /// <summary>
-        /// Implementors of this interface will know what the return type of a given method should be
-        /// and what the type of the body parameter should be.
-        /// For example the return type may be System.IO.String or a 
-        /// generated type based on the schema section of the discovery document,
-        /// </summary>
-        public interface IObjectTypeProvider
-        {
-            CodeTypeReference GetReturnType(IMethod method);
-            CodeTypeReference GetBodyType(IMethod method);
         }
 
         #endregion
@@ -232,7 +185,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
-                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method));
+                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method), true);
 
                 AddAllDeclaredParameters(classDeclaration, method, member, assignmentStatments);
 

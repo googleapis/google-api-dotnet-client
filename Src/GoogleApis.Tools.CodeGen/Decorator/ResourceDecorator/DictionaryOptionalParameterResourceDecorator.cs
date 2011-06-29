@@ -139,7 +139,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
 
-                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method));
+                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method), true);
 
                 int parameterCount = 1;
                 foreach (var param in paramList)

@@ -20,7 +20,7 @@ namespace Google.Apis.Discovery
 {
     /// <summary>
     /// Represents one method as defined by the Google Api Discovery Document.
-    /// This will usaly be found within a resource. There may well be differnt implementations
+    /// This will usally be found within a resource. There may well be differnt implementations
     /// of this interface for different versions of discovery.
     /// </summary>
     /// <see cref="IResource"/>
@@ -60,6 +60,11 @@ namespace Google.Apis.Discovery
         /// The type of the request required by this method
         /// </summary>
         string RequestType { get; }
+
+        /// <summary>
+        /// Defines whether this request has a body attached to it.
+        /// </summary>
+        bool HasBody { get; }
 
         /// <summary>
         /// A set of parameters passed with the request

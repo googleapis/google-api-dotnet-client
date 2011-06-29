@@ -98,5 +98,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             Assert.AreEqual(1, decorator.TimesCalled);
             Assert.AreEqual(0, newClass.Members.Count);
         }
+
+        /// <summary>
+        /// Confirms that the string returned from GetProposedName fits the intended standard.
+        /// </summary>
+        [Test]
+        public void GetProposedNameTest()
+        {
+            Assert.AreEqual("TestRequest", RequestClassGenerator.GetProposedName(new MockMethod() { Name = "Test"}));
+            Assert.AreEqual("AbcRequest", RequestClassGenerator.GetProposedName(new MockMethod() { Name = "abc" }));
+        }
     }
 }

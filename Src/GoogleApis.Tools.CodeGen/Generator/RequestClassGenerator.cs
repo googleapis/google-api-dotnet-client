@@ -72,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             // Generate a request class for this method
             CodeTypeDeclaration requestClass = new CodeTypeDeclaration();
-            string proposedName = string.Format(RequestClassNamingScheme, method.Name);
+            string proposedName = GetProposedName(method);
             requestClass.Name = GeneratorUtils.GetClassName(proposedName, usedNames);
 
             // Run the decorators for request classes.
@@ -81,6 +81,15 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 decorator.DecorateClass(resource, method, requestClass, resourceClass);
             }
             return requestClass;
+        }
+
+        /// <summary>
+        /// Returns the proposed name for a request class for the specified method.
+        /// Does not check for used names.
+        /// </summary>
+        public static string GetProposedName(IMethod method)
+        {
+            return GeneratorUtils.GetClassName(string.Format(RequestClassNamingScheme, method.Name), new string[0]);
         }
     }
 }

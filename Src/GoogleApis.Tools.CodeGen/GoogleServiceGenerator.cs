@@ -22,6 +22,7 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
@@ -86,12 +87,15 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static IList<IRequestDecorator> GetSchemaAwareRequestDecorators(string schemaNamespace)
         {
+            var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
+
             return (new List<IRequestDecorator>
                         {
                             new ParameterPropertyDecorator(),
-                            new ServiceRequestInheritanceDecorator(schemaNamespace),
+                            new ServiceRequestInheritanceDecorator(typeProvider),
+                            new BodyPropertyDecorator(typeProvider),
                             new ServiceRequestFieldDecorator(),
-                            new RequestConstructorDecorator(),
+                            new RequestConstructorDecorator(typeProvider),
                         }).AsReadOnly();
         }
 
@@ -165,6 +169,8 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public static IList<IResourceDecorator> GetSchemaAwareResourceDecorators(string schemaNamespace)
         {
+            var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
+
             return
                 (new List<IResourceDecorator>
                      {
@@ -175,8 +181,9 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardConstructorResourceDecorator(),
                          new StandardMethodResourceDecorator(),
                          new StandardMethodResourceDecorator(
-                             true, true, new StandardMethodResourceDecorator.DefaultObjectTypeProvider(schemaNamespace),
+                             true, true, typeProvider,
                              new DefaultEnglishCommentCreator()),
+                         new RequestMethodResourceDecorator(typeProvider),
                          new Log4NetResourceDecorator(),
                          new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                      }).AsReadOnly

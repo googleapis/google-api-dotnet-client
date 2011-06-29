@@ -18,6 +18,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using NUnit.Framework;
 
@@ -35,7 +36,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void ConstructTest()
         {
-            Assert.DoesNotThrow(() => new RequestConstructorDecorator());
+            var typeProvider = new DefaultObjectTypeProvider("Schema");
+            Assert.DoesNotThrow(() => new RequestConstructorDecorator(typeProvider));
         }
 
         /// <summary>
@@ -50,11 +52,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             resource.Methods.Add("Method", method);
             var resourceDecl = new CodeTypeDeclaration();
             var requestDecl = new CodeTypeDeclaration();
+            var typeProvider = new DefaultObjectTypeProvider("Schema");
 
             // Confirm that the decorator has run correctly.
-            var decorator = new RequestConstructorDecorator();
+            var decorator = new RequestConstructorDecorator(typeProvider);
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
-            Assert.AreEqual(1, requestDecl.Members.Count); // 1 Constructor.
+            Assert.AreEqual(2, requestDecl.Members.Count); // 2 Constructor.
             Assert.IsInstanceOf<CodeConstructor>(requestDecl.Members[0]);
             Assert.AreEqual(0, resourceDecl.Members.Count);
         }
@@ -71,13 +74,44 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
             var resourceDecl = new CodeTypeDeclaration();
+            var typeProvider = new DefaultObjectTypeProvider("Schema");
 
             // Confirm that the "service" parameter is added.
-            var decorator = new RequestConstructorDecorator();
-            CodeConstructor constructor = decorator.CreateConstructor(resourceDecl, method);
+            var decorator = new RequestConstructorDecorator(typeProvider);
+            CodeConstructor constructor = decorator.CreateRequiredConstructor(resourceDecl, method, false);
             Assert.AreEqual(2, constructor.Parameters.Count);
             Assert.AreEqual("service", constructor.Parameters[0].Name);
             Assert.AreEqual(1, constructor.BaseConstructorArgs.Count);
+        }
+
+        /// <summary>
+        /// Confirms that a body is added to the constructor if one is required.
+        /// </summary>
+        [Test]
+        public void AddBodyParameterTest()
+        {
+            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var typeProvider = new DefaultObjectTypeProvider("Schema");
+
+            // Confirm that no body parameter is added.
+            var decorator = new RequestConstructorDecorator(typeProvider);
+            CodeConstructor constructor = new CodeConstructor();
+            method.HasBody = false;
+            decorator.AddBodyParameter(constructor, method);
+           
+            Assert.AreEqual(0, constructor.Parameters.Count);
+            Assert.AreEqual(0, constructor.Statements.Count);
+
+            // Confirm that a required body parameter is added.
+            method.RequestType = "MySchema";
+            method.HasBody = true;
+            constructor = new CodeConstructor();
+            decorator.AddBodyParameter(constructor, method);
+
+            Assert.AreEqual(1, constructor.Parameters.Count);
+            Assert.AreEqual("body", constructor.Parameters[0].Name);
+            Assert.AreEqual("Schema.MySchema", constructor.Parameters[0].Type.BaseType);
+            Assert.AreEqual(1, constructor.Statements.Count);
         }
 
         /// <summary>
@@ -94,15 +128,25 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
             var resourceDecl = new CodeTypeDeclaration();
+            var typeProvider = new DefaultObjectTypeProvider("Schema");
 
             // Confirm that the "service" parameter is added.
-            var decorator = new RequestConstructorDecorator();
+            var decorator = new RequestConstructorDecorator(typeProvider);
             CodeConstructor constructor = new CodeConstructor();
-            decorator.AddRequiredParameters(resourceDecl, method, constructor);
+            decorator.AddParameters(resourceDecl, method, constructor, false);
 
             Assert.AreEqual(1, constructor.Parameters.Count);
             Assert.AreEqual("paramB", constructor.Parameters[0].Name);
             Assert.AreEqual(1, constructor.Statements.Count);
+
+            // Check that optional parameters are added when the appropriate flag is set.
+            constructor = new CodeConstructor();
+            decorator.AddParameters(resourceDecl, method, constructor, true);
+
+            Assert.AreEqual(2, constructor.Parameters.Count);
+            Assert.AreEqual("paramB", constructor.Parameters[0].Name);
+            Assert.AreEqual("paramA", constructor.Parameters[1].Name);
+            Assert.AreEqual(2, constructor.Statements.Count);
         }
     }
 }

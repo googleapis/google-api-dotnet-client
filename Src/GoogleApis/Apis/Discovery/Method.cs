@@ -98,6 +98,11 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public bool HasBody
+        {
+            get { return information.GetValueAsNull(ServiceFactory.RequestType) != null; }
+        }
+
         public Dictionary<string, IParameter> Parameters
         {
             get

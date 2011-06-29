@@ -186,7 +186,7 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
             // Build the command.
             var code = new StringBuilder();
             code.AppendLine("Generated.DiscoveryService service = new Generated.DiscoveryService();");
-            code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List(null, null, true);");
+            code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List(null, null, null).Execute();");
 
             code.AppendLine(
                 string.Format(
