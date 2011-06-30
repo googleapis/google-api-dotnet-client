@@ -36,7 +36,7 @@ using GoogleRequests = Google.Apis.Requests;
 
 namespace Google.Apis.Samples.ApiExplorer.WinForm
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private MethodCallContext _currentCallContext = null;
 
@@ -51,7 +51,7 @@ namespace Google.Apis.Samples.ApiExplorer.WinForm
         /// </summary>
         private Dictionary<string, IAuthorizationState> _authorizationStates = new Dictionary<string, IAuthorizationState>();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
