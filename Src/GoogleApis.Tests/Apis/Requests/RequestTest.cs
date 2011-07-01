@@ -274,6 +274,39 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Tests the user-agent string of the request created by the .CreateRequest method.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestUserAgentTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com/test",
+                });
+
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+
+            // Test the default user agent (without gzip):
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetAssemblyVersion(),
+                Environment.OSVersion.Platform, Environment.OSVersion.Version);
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+
+            // Confirm that the (gzip) tag is added if GZip is supported.
+            service.GZipEnabled = true;
+            expectedUserAgent += " (gzip)";
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+        }
+
+        /// <summary>
         /// Tests the .CreateRequest method of a request
         /// </summary>
         [Test]
@@ -289,11 +322,6 @@ namespace Google.Apis.Tests.Apis.Requests
 
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
             Assert.IsNotNull(webRequest);
-
-            string expectedUserAgent = string.Format(
-                "Unknown_Application google-api-dotnet-client/{0} {1}", Utilities.GetAssemblyVersion(),
-                Environment.OSVersion.Platform);
-            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
         /// <summary>
