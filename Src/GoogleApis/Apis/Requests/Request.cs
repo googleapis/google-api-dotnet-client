@@ -33,7 +33,7 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}";
+        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
@@ -341,7 +341,8 @@ namespace Google.Apis.Requests
             string appName = FormatForUserAgent(ApplicationName);
             string apiVersion = FormatForUserAgent(ApiVersion);
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
-            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform);
+            string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
+            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
 
             // Check if compression is supported
             if (Service.GZipEnabled)
