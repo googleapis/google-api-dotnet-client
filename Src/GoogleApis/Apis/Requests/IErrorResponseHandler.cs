@@ -33,14 +33,6 @@ namespace Google.Apis.Requests
         bool CanHandleErrorResponse(WebException exception, RequestError error);
 
         /// <summary>
-        /// Called when this error response handler can handle this request.
-        /// It will be called before the new WebRequest is created.
-        /// </summary>
-        /// <param name="exception">The exception which was thrown by the service.</param>
-        /// <param name="error">Additional information about the error which occured. Might be null.</param>
-        void PrepareHandleErrorResponse(WebException exception, RequestError error);
-
-        /// <summary>
         /// A method which should try to handle the error response by fixing the specified request.
         /// It will be called once the new webrequest is created.
         /// </summary>

@@ -53,7 +53,7 @@
   <target name="generate-clients-from-fresh" depends="fetch-latest-source">
     <description>
       Calls Generate.Service.build=>produce-all-services in the freshly checked out source.
-      This will genreate source and DLLs for all the services, from freshly checkedout code.
+      This will generate source and DLLs for all the services, from freshly checkedout code.
     </description>
     <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}"
           target="produce-all-services"/>

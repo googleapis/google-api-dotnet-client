@@ -79,24 +79,27 @@ namespace Google.Apis.Authentication.OAuth2
             return response.StatusCode == HttpStatusCode.Unauthorized;
         }
 
-        public void PrepareHandleErrorResponse(WebException exception, RequestError error)
-        {
-            // Refresh our access token
-            tokenProvider.RefreshToken(State, null);
-        }
-
         public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request)
         {
-            // Authentication is applied automatically by the core library when creating a new request.
-            // We do not need to add it a second time, so do nothing here. As we have already refreshed
-            // the expired access token, our job here is done.
+            request.ThrowIfNull("request");
+            if (!(request is HttpWebRequest))
+            {
+                throw new InvalidCastException(
+                    "Expected a HttpWebRequest, but got a " + request.GetType() + " instead.");
+            }
+
+            // Refresh our access token:
+            tokenProvider.RefreshToken(State, null);
+
+            // Overwrite the current auth header:
+            ApplyAuthenticationToRequest((HttpWebRequest)request);
         }
 
         #endregion
 
         /// <summary>
         /// Checks if an access token has been set. If this is not the case, this method will use the specified
-        /// State provider to generate a new AuthroizationState.
+        /// State provider to generate a new AuthorizationState.
         /// </summary>
         public void LoadAccessToken()
         {
