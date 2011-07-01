@@ -19,7 +19,6 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
@@ -70,6 +69,7 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// List of all service decorators
         /// </summary>
+        [Obsolete("This list is outdated. Use SchemaAwareServiceDecorators instead.")]
         public static readonly IList<IServiceDecorator> StandardServiceDecorators =
             (new List<IServiceDecorator>
                  {
@@ -77,7 +77,8 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardConstructServiceDecorator(),
                      new EasyConstructServiceDecorator(),
                      new VersionInformationServiceDecorator(),
-                     new StandardExecuteMethodServiceDecorator()
+                     new StandardExecuteMethodServiceDecorator(),
+                     
                  }).AsReadOnly();
 
         /// <summary>
@@ -94,6 +95,7 @@ namespace Google.Apis.Tools.CodeGen
                      new SchemaAwearExecuteMethodDecorator(),
                      new JsonSerializationMethods(),
                      new DeveloperKeyServiceDecorator(),
+                     new ScopeEnumDecorator(),
                  }).AsReadOnly();
 
         /// <summary>

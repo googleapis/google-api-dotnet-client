@@ -76,6 +76,7 @@
     <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecorator.cs" />
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
