@@ -83,17 +83,17 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Executes the request synchronously.
+        ///Executes the request synchronously and returns the result.
         /// </summary>
-        public TResponse Execute()
+        public TResponse Fetch()
         {
-            return service.JsonToObject<TResponse>(ExecuteToStream());
+            return service.JsonToObject<TResponse>(FetchAsStream());
         }
 
         /// <summary>
-        /// Executes the request synchronously without parsing the response.
+        /// Executes the request synchronously and returns the unparsed response stream.
         /// </summary>
-        public Stream ExecuteToStream()
+        public Stream FetchAsStream()
         {
             string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
             logger.Debug("Start Executing " + requestName);
@@ -104,23 +104,24 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Executes the request asynchronously.
+        /// Executes the request asynchronously and calls the specified method once finished.
         /// </summary>
-        public void ExecuteAsync(ExecuteRequestDelegate<TResponse> methodToCall)
+        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
         {
             // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
             //       Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(Execute()));
+            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
         }
 
         /// <summary>
-        /// Executes the request asynchronously without parsing the response.
+        /// Executes the request asynchronously without parsing the response, 
+        /// and calls the specified method once finished.
         /// </summary>
-        public void ExecuteAsyncToStream(ExecuteRequestDelegate<Stream> methodToCall)
+        public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
         {
             // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
             //       Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(ExecuteToStream()));
+            ThreadPool.QueueUserWorkItem(cb => methodToCall(FetchAsStream()));
         }
 
         /// <summary>
