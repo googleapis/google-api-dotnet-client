@@ -121,7 +121,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
-            Assert.IsNotNull(request.ExecuteToStream());
+            Assert.IsNotNull(request.FetchAsStream());
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
-            Assert.AreEqual("FooBar", request.Execute());
+            Assert.AreEqual("FooBar", request.Fetch());
         }
     }
 }
