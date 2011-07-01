@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.Collections.Generic;
+using Google.Apis.Requests;
 using NUnit.Framework;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
@@ -36,7 +37,7 @@ namespace Google.Apis.Tests.Apis.Requests
             MockMethod m = new MockMethod();
             m.Name = "Test";
 
-            Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new Dictionary<string, string>()));
+            Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new ParameterCollection()));
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
 
             var p = new ParameterFactory.BaseParameter(jsonObj);
-            var inputData = new Dictionary<string, string>();
+            var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
 
             Assert.IsFalse(validator.ValidateRegex(p, ""));
@@ -71,7 +72,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
 
             var p = new ParameterFactory.BaseParameter(jsonObj);
-            var inputData = new Dictionary<string, string>();
+            var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
             Assert.IsTrue(validator.ValidateRegex(p, "Test"));
         }

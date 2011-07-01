@@ -24,12 +24,12 @@ using Google.Apis.Testing;
 namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// Abstract parameter factory
+    /// Abstract parameter factory.
     /// </summary>
     internal abstract class ParameterFactory
     {
         /// <summary>
-        /// Returns a parameter with the given values
+        /// Returns a parameter with the given values.
         /// </summary>
         internal static IParameter GetParameter(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
@@ -40,14 +40,14 @@ namespace Google.Apis.Discovery
                 case DiscoveryVersion.Version_1_0:
                     return new ParameterV1_0(kvp);
                 default:
-                    throw new NotSupportedException("Unsuppored version of Discovery " + version);
+                    throw new NotSupportedException("Unsupported version of Discovery " + version);
             }
         }
 
         #region Nested type: BaseParameter
 
         /// <summary>
-        /// Abstract implementation of a parameter
+        /// Abstract implementation of a parameter.
         /// </summary>
         [VisibleForTestOnly]
         internal class BaseParameter : IParameter
@@ -55,7 +55,7 @@ namespace Google.Apis.Discovery
             protected readonly JsonDictionary information;
 
             /// <summary>
-            /// Creates a new parameter with the specified name and value
+            /// Creates a new parameter with the specified name and value.
             /// </summary>
             public BaseParameter(KeyValuePair<string, object> kvp)
             {
@@ -68,17 +68,9 @@ namespace Google.Apis.Discovery
             }
 
             /// <summary>
-            /// Defines whether the "Repeated" flag is defined within the value set
+            /// Returns a set of enum value descriptions.
             /// </summary>
-            public bool Repeated
-            {
-                get { return (bool) (information.GetValueAsNull("repeated") ?? false); }
-            }
-
-            /// <summary>
-            /// Returns a set of enum value descriptions
-            /// </summary>
-            public IEnumerable<string> EnumDescription
+            public IEnumerable<string> EnumValueDescriptions
             {
                 get
                 {
@@ -109,9 +101,14 @@ namespace Google.Apis.Discovery
                 get { return information.GetValueAsNull(ServiceFactory.Pattern) as string; }
             }
 
-            public bool Required
+            public bool IsRequired
             {
                 get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
+            }
+
+            public bool IsRepeatable
+            {
+                get { return (bool)(information.GetValueAsNull("repeated") ?? false); }
             }
 
             public virtual string DefaultValue
@@ -139,7 +136,7 @@ namespace Google.Apis.Discovery
                 get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
             }
 
-            public IEnumerable<string> Enum
+            public IEnumerable<string> EnumValues
             {
                 get
                 {
@@ -164,7 +161,7 @@ namespace Google.Apis.Discovery
         #region Nested type: ParameterV0_3
 
         /// <summary>
-        /// A discovery v0.3 implementation of a parameter
+        /// A discovery v0.3 implementation of a parameter.
         /// </summary>
         [VisibleForTestOnly]
         internal class ParameterV0_3 : BaseParameter
@@ -187,7 +184,7 @@ namespace Google.Apis.Discovery
         #region Nested type: ParameterV1_0
 
         /// <summary>
-        /// A discovery v1.0 implementation of a parameter
+        /// A discovery v1.0 implementation of a parameter.
         /// </summary>
         [VisibleForTestOnly]
         internal class ParameterV1_0 : BaseParameter

@@ -19,16 +19,6 @@
   <property name="zip.source.file" value="${generated.zip}/Source.zip" />
   <property name="zip.binary.file" value="${generated.zip}/Binary.zip" />
 
-  <!-- excluded 
-      ${service.moderator} // Namespace collision
-    -->
-  <property name="service.all" value="${service.buzz},${service.customsearch},${service.diacritize},
-            ${service.latitude},${service.pagespeedonline},
-            ${service.discovery},
-            ${service.prediction},${service.shopping},        
-            ${service.urlshortener},
-            ${service.siteverification},${service.taskqueue},${service.tasks},${service.translate}" />
-
   <property name="current.service" value="N/A"/>
   <!--
   <property name="current.service.regex.pattern" 
@@ -122,15 +112,32 @@
         <include name="*.pdb" />
       </fileset>
     </copy>
+    <copy todir="${nant.bin.path}${nant.lib.path}" overwrite="true" flatten="true">
+      <fileset basedir="lib">
+        <include name="*.dll" />
+        <include name="*.pdb" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="discover-all-services" >
+    <description>
+      Calls Discovery.list to fetches all the Api Names and versions
+      Sets 
+        google.api.all, 
+        google.api.suggested.regex
+    </description>
+    <google-api-discover />
   </target>
   
-  <target name="produce-all-services" depends="build-google-api,prep" description="Generates, Compiles and Zips all services">
-    <foreach item="String" property="current.service" delim="," in="${service.all}" trim="Both">
-      <echo message="foreach ${current.service}" />
-      <regex pattern="${current.service.regex.pattern}" input="${current.service}" />
-      <echo message="Producing Service ${name} ${version} as class ${namespace}.${classname}" />
+  <target name="produce-all-services" depends="discover-all-services,build-google-api,prep" 
+          description="Generates, Compiles and Zips all services">
+    <foreach item="String" property="current.service" delim="^" in="${google.api.all}" trim="Both">
+      <regex pattern="${google.api.suggested.regex}" input="${current.service}" />
+      <echo message="Producing service ${apiname} ${apiversion} as class ${apinamespace}.${apiclassname}" />
       <call target="compile-service" />
     </foreach>
+    
     <call target="zip-source" cascade="false" />
     <call target="zip-binary" cascade="false" />
   </target>
@@ -138,26 +145,27 @@
   <target name="generate-service"
           depends="config"
           description="Generates the source of the current service">
-    <echo message="Generating ${name}"/>
-    <googleapigenerate
-        discoveryurl="https://www.googleapis.com/discovery/v1/apis/${name}/${version}/rest"
-        outputfile="${generated.source}/${classname}Service.cs"
-        clientnamespace="Google.Apis.${classname}.${namespace}"
-        apiversion="${version}"
+    <echo message="Generating ${apiname}"/>
+    <google-api-generate
+        discoveryurl="https://www.googleapis.com/discovery/v1/apis/${apiname}/${apiversion}/rest"
+        outputfile="${generated.source}/${apiclassname}Service.cs"
+        clientnamespace="Google.Apis.${apiclassname}.${apinamespace}"
+        apiversion="${apiversion}"
         baseurl="https://www.googleapis.com/"
         />
   </target>
 
   <target name="compile-service"
-          description="Generates then compiles the current Service"
+          description="Generates then compiles the current service"
           depends="generate-service">
-    <echo message="Compiling ${name}" />
-    <mkdir dir="${generated.binary}/${classname}Service"/>
+    <echo message="Compiling ${apiname}" />
+    <mkdir dir="${generated.binary}/${apiclassname}Service"/>
     <csc target="library"
-         output="${generated.binary}/${classname}Service/Google.Apis.${classname}.${namespace}.dll"
+         output="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.dll"
+         doc="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.xml"
          debug="PdbOnly">
       <sources>
-        <include name="${generated.source}/${classname}Service.cs" />
+        <include name="${generated.source}/${apiclassname}Service.cs" />
       </sources>
       <references refid="generated.code.dependancies" />
     </csc>

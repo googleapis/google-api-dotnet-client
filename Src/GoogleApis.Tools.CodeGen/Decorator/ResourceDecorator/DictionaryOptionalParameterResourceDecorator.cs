@@ -50,17 +50,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
+            // Create methods.
+            var newMembers = new CodeTypeMemberCollection();
             ResourceGenerator gen = new ResourceGenerator(className, commentCreator);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values)
             {
-                CodeTypeMember convenienceMethod = gen.CreateMethod(resource, method, methodNumber, allDecorators);
+                CodeTypeMember convenienceMethod = gen.CreateMethod(
+                    resourceClass, resource, method, methodNumber, allDecorators);
                 if (convenienceMethod != null)
                 {
-                    resourceClass.Members.Add(convenienceMethod);
+                    newMembers.Add(convenienceMethod);
                 }
                 methodNumber++;
             }
+
+            // Add the new methods to the existing class.
+            DecoratorUtil.AddMembersToClass(resourceClass, newMembers);
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -106,13 +112,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             /// <summary>
             /// Creates a new method declaration based upon the parameters
             /// </summary>
-            public CodeMemberMethod CreateMethod(IResource resource,
+            public CodeMemberMethod CreateMethod(CodeTypeDeclaration classDeclaration,
+                                                 IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
                                                  IEnumerable<IResourceDecorator> allDecorators)
             {
-                if (method.HasOptionalParameters() == false)
+                if (!method.HasOptionalParameters())
                 {
+                    // Wrong decorator. This one is only for methods with optional parameters
                     return null;
                 }
 
@@ -137,11 +145,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 foreach (var param in paramList)
                 {
                     string parameterName = GeneratorUtils.GetParameterName(param, method.Parameters.Keys);
-                    member.Parameters.Add(DeclareInputParameter(param, method));
+                    member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));
                     AddParameterComment(commentCreator, member, param, parameterName);
                     assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                     parameterCount++;
                 }
+
 
                 /*
                  * TODO(davidwaters@google.com) I belive the commented out code is more correct and works in MS.net but 
@@ -151,10 +160,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 dictType.TypeArguments.Add(typeof(string));
                 dictType.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 */
+
                 var dictType = new CodeTypeReference(typeof(IDictionary<string, object>));
                 var dictParameter = new CodeParameterDeclarationExpression(dictType, ParameterDictionaryName);
                 member.Parameters.Add(dictParameter);
-
 
                 //parameters["<%=parameterName%>"] = <%=parameterName%>;
                 member.Statements.AddRange(assignmentStatments);

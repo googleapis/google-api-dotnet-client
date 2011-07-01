@@ -77,19 +77,24 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
+            var newMembers = new CodeTypeMemberCollection();
             var gen = new ResourceGenerator(
                 className, returnObjects, acceptObjectsAsBody, objectTypeProvider, methodNameSufix, commentCreator);
             int methodNumber = 1;
             foreach (var method in resource.Methods.Values)
             {
                 logger.DebugFormat("Adding Standard Method {0}.{1}", resource.Name, method.Name);
-                CodeTypeMember convenienceMethod = gen.CreateMethod(resource, method, methodNumber, allDecorators);
+                CodeTypeMember convenienceMethod = gen.CreateMethod(
+                    resourceClass, resource, method, methodNumber, allDecorators);
                 if (convenienceMethod != null)
                 {
-                    resourceClass.Members.Add(convenienceMethod);
+                    newMembers.Add(convenienceMethod);
                 }
                 methodNumber++;
             }
+
+            // Add all new members.
+            DecoratorUtil.AddMembersToClass(resourceClass, newMembers);
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -209,14 +214,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 }
             }
 
-            public CodeMemberMethod CreateMethod(IResource resource,
+            public CodeMemberMethod CreateMethod(CodeTypeDeclaration classDeclaration,
+                                                 IResource resource,
                                                  IMethod method,
                                                  int methodNumber,
                                                  IEnumerable<IResourceDecorator> allDecorators)
             {
                 var member = new CodeMemberMethod();
 
-                member.Name = GeneratorUtils.GetMethodName(method, resource.Methods.Keys.Without(method.Name)) + methodNameSuffix;
+                member.Name = GeneratorUtils.GetMethodName(method, resource.Methods.Keys.Without(method.Name)) +
+                              methodNameSuffix;
                 member.ReturnType = GetReturnType(method);
                 member.Attributes = MemberAttributes.Public;
                 if (commentCreator != null)
@@ -226,10 +233,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 
 
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
-
                 ResourceCallAddBodyDeclaration(method, member, GetBodyType(method));
 
-                AddAllDeclaredParameters(method, member, assignmentStatments);
+                AddAllDeclaredParameters(classDeclaration, method, member, assignmentStatments);
 
                 //System.Collections.Generic.Dictionary<string, string> parameters = 
                 //      new System.Collections.Generic.Dictionary<string, string>();
@@ -305,19 +311,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             }
 
             [VisibleForTestOnly]
-            protected void AddAllDeclaredParameters(IMethod method,
+            protected void AddAllDeclaredParameters(CodeTypeDeclaration classDeclaration,
+                                                    IMethod method,
                                                     CodeMemberMethod member,
                                                     CodeStatementCollection assignmentStatments)
             {
                 // Add All parameters to the method.
-                if (method.Parameters != null && method.Parameters != null)
+                if (method.Parameters != null)
                 {
                     int parameterCount = 1;
                     foreach (var param in method.GetAllParametersSorted())
                     {
                         string parameterName = GeneratorUtils.GetParameterName(
                             param, method.Parameters.Keys.Without(param.Name));
-                        member.Parameters.Add(DeclareInputParameter(param, method));
+                        member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));
                         assignmentStatments.Add(AssignParameterToDictionary(param, parameterCount, method));
                         AddParameterComment(commentCreator, member, param, parameterName);
                         parameterCount++;

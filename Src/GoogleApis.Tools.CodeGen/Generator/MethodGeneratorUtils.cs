@@ -36,7 +36,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 return Enumerable.Empty<IParameter>();
             }
-            return from p in method.Parameters where p.Value.Required orderby p.Value.Name select p.Value;
+            return from p in method.Parameters where p.Value.IsRequired orderby p.Value.Name select p.Value;
         }
 
 
@@ -50,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 return Enumerable.Empty<IParameter>();
             }
-            return from p in method.Parameters where p.Value.Required == false orderby p.Value.Name select p.Value;
+            return from p in method.Parameters where p.Value.IsRequired == false orderby p.Value.Name select p.Value;
         }
 
         /// <summary>

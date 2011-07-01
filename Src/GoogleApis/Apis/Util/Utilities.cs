@@ -18,6 +18,8 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 
 namespace Google.Apis.Util
@@ -126,6 +128,14 @@ namespace Google.Apis.Util
         public static bool IsNotNullOrEmpty<T>(this ICollection<T> coll)
         {
             return coll != null && coll.Count > 0;
+        }
+
+        /// <summary>
+        /// Returns true when the enumerable is null or empty.
+        /// </summary>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
+        {
+            return coll == null || coll.Count() == 0;
         }
 
         /// <summary>
@@ -260,6 +270,58 @@ namespace Google.Apis.Util
             // Otherwise throw an exception
             throw new ArgumentException(
                 string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
+        }
+
+        /// <summary>
+        /// Retrieves the underlying type if the specified type is a Nullable, or the type itself otherwise.
+        /// </summary>
+        public static Type GetNonNullableType(Type type)
+        {
+            if (!type.IsGenericType || !typeof(Nullable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+            {
+                return type; // Not a Nullable.
+            }
+
+            // First: Find the Nullable type.
+            while (!(type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>))))
+            {
+                type = type.BaseType;
+
+                if (type == null)
+                {
+                    return null;
+                }
+            }
+
+            // Return the type which is encapsulated by the Nullable.
+            return type.GetGenericArguments()[0];
+        }
+
+        /// <summary>
+        /// Tries to convert the specified object to a string. Uses custom type converters if available.
+        /// Returns null for a null object.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static string ConvertToString(object o)
+        {
+            if (o == null)
+            {
+                return null;
+            }
+
+            // Get the type converter
+            TypeConverter converter = TypeDescriptor.GetConverter(o);
+            return converter.ConvertToString(o);
+        }
+        
+        /// <summary>
+        /// Please don't use this unless absolutely nessasery.
+        /// Returns if the current runtime is Mono, this is used to work around different behavior in the runtime.
+        /// </summary>
+        public static bool IsMonoRuntime()
+        {
+            return Type.GetType("Mono.Runtime") != null;
         }
     }
 }

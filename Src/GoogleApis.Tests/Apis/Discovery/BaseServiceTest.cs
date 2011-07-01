@@ -46,6 +46,17 @@ namespace Google.Apis.Tests.Apis.Discovery
                 get { throw new NotImplementedException(); }
             }
 
+            public new string ServerUrl 
+            {
+                get { return base.ServerUrl; }
+                set { base.ServerUrl = value; }
+            }
+            public new string BasePath
+            {
+                get { return base.BasePath; }
+                set { base.BasePath = value; }
+            } 
+
             #region Nested type: ConcreteFactoryParameters
 
             private class ConcreteFactoryParameters : BaseFactoryParameters
@@ -289,6 +300,26 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
+        /// Confirms that OAuth2 scopes can be parsed correctly.
+        /// </summary>
+        [Test]
+        public void TestOAuth2Scopes()
+        {
+            var scopes = new JsonDictionary();
+            scopes.Add("https://www.example.com/auth/one", new Scope() { ID = "https://www.example.com/auth/one" });
+            scopes.Add("https://www.example.com/auth/two", new Scope() { ID = "https://www.example.com/auth/two" });
+            var oauth2 = new JsonDictionary() { { "scopes", scopes } };
+            var auth = new JsonDictionary() { { "oauth2", oauth2 } };
+            var dict = new JsonDictionary() { { "auth", auth } };
+
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+            Assert.IsNotNull(impl.Scopes);
+            Assert.AreEqual(2, impl.Scopes.Count);
+            Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));
+            Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/two"));
+        }
+
+        /// <summary>
         /// Tests the BaseResource.GetResource method.
         /// </summary>
         [Test]
@@ -313,6 +344,48 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
             Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
             Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));
+        }
+
+        [Test]
+        public void TestBaseUri()
+        {
+            ConcreteClass instance = (ConcreteClass)CreateV1Service();
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value/";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "/test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+
+            instance.BasePath = "test/";
+            instance.ServerUrl = "https://www.test.value";
+            Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
+            
+            // Mono's Uri class strips double forward slashes so this test will not work.
+            // Only run for MS.Net
+            if ( Google.Apis.Util.Utilities.IsMonoRuntime() == false)
+            {
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "//test/";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "test/";
+                instance.ServerUrl = "https://www.test.value//";
+                Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
+                
+                instance.BasePath = "/test//";
+                instance.ServerUrl = "https://www.test.value/";
+                Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
+            }
         }
     }
 }

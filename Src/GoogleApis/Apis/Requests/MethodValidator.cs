@@ -15,32 +15,34 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis
 {
     /// <summary>
-    /// Logic for validating that a method is correct
+    /// Logic for validating that a method is correct.
     /// </summary>
     public class MethodValidator
     {
-        public MethodValidator(IMethod method, IDictionary<string, string> parameters)
+        public MethodValidator(IMethod method, ParameterCollection parameters)
         {
             CurrentMethod = method;
             Parameters = parameters;
         }
 
         /// <summary>
-        /// The method which is currently being validated
+        /// The method which is currently being validated.
         /// </summary>
         public IMethod CurrentMethod { get; private set; }
 
         /// <summary>
-        /// The parameters of the method
+        /// The parameters of the method.
         /// </summary>
-        public IDictionary<string, string> Parameters { get; private set; }
+        public ParameterCollection Parameters { get; private set; }
 
         /// <summary>
         /// Validates all the parameters provided.
@@ -86,20 +88,14 @@ namespace Google.Apis
             string currentParam;
             bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 
-            // If a required parameter is not present, fail
-            if (param.Required && String.IsNullOrEmpty(currentParam))
+            // If a required parameter is not present, fail.
+            if (String.IsNullOrEmpty(currentParam) || !parameterPresent)
             {
-                return false;
+                return !param.IsRequired;
             }
-
-            if (parameterPresent == false || String.IsNullOrEmpty(currentParam))
-            {
-                // The parameter is not present in the input and is not required, skip validation.
-                return true;
-            }
-
+        
             // The parameter is present, validate the regex.
-            bool isValidData = ValidateRegex(param, currentParam);
+            bool isValidData = ValidateRegex(param, currentParam) && ValidateEnum(param, currentParam);
             if (isValidData == false)
             {
                 return false;
@@ -132,7 +128,20 @@ namespace Google.Apis
             Regex r = new Regex(pattern);
 
             return r.IsMatch(stringValue);
-            ;
+        }
+
+        /// <summary>
+        /// Validates a parameter value against those enumeration values allowed by the method.
+        /// </summary>
+        public bool ValidateEnum(IParameter param, string paramValue)
+        {
+            if (param.EnumValues.IsNullOrEmpty())
+            {
+                return true; // Enum check does not apply.
+            }
+
+            // Confirm that the parameter value is contained within the enumeration
+            return param.EnumValues.Contains(paramValue);
         }
     }
 }
