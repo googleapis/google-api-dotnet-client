@@ -68,36 +68,25 @@ namespace Google.Apis.Samples.ApiExplorer.Web
             AuthorizationServerDescription serviceDescription = this.GetAuthorizationServerDescription();
             WebServerClient client = new WebServerClient(serviceDescription, clientId, clientSecret);
             IAuthorizationState authState = client.ProcessUserAuthorization(new HttpRequestInfo(Request));
-
             if (authState != null && authState.AccessToken != null)
             {
-                Dictionary<string, IAuthorizationState> states = this.AuthorizationStates;
-                if (!states.ContainsKey(callContext.Service))
+                Dictionary<string, string> tokens = this.AccessTokens;
+                if (!tokens.ContainsKey(callContext.Service))
                 {
-                    states.Add(callContext.Service, authState);
+                    tokens.Add(callContext.Service, authState.AccessToken);
                 }
                 else
                 {
-                    states[callContext.Service] = authState;
+                    tokens[callContext.Service] = authState.AccessToken;
                 }
-                this.AuthorizationStates = states;
+                this.AccessTokens = tokens;
             }
-            else if (!this.AuthorizationStates.ContainsKey(callContext.Service))
+            else if (!this.AccessTokens.ContainsKey(callContext.Service))
             {
                 this.RequestAuthorization(client, callContext.Service);
             }
 
-            IAuthorizationState storedState = this.AuthorizationStates[callContext.Service];
-            if (storedState.AccessTokenExpirationUtc.HasValue &&
-                (storedState.AccessTokenExpirationUtc.Value - DateTime.UtcNow).CompareTo(TimeSpan.FromSeconds(30)) <= 0)
-            {
-                client.RefreshToken(storedState);
-                Dictionary<string, IAuthorizationState> states = this.AuthorizationStates;
-                states[callContext.Service] = storedState;
-                this.AuthorizationStates = states;
-            }
-
-            IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, this.AuthorizationStates[callContext.Service].AccessToken); 
+			IAuthenticator authenticator = new OAuth2Authenticator(apiKey, clientId, clientSecret, this.AccessTokens[callContext.Service]); 
             IService service = Api.GetService(callContext.Service, callContext.Version);
             IMethod method = Api.GetMethod(callContext.Service, callContext.Resource, callContext.Method, callContext.Version);
             GoogleRequests.IRequest request = GoogleRequests.Request.CreateRequest(service, method)
@@ -134,23 +123,24 @@ namespace Google.Apis.Samples.ApiExplorer.Web
         }
 
         /// <summary>
-        /// Map between service name and access states
+        /// Map between service name and access tokens
         /// </summary>
-        private Dictionary<string, IAuthorizationState> AuthorizationStates
+        private Dictionary<string, string> AccessTokens
         {
             get
             {
-                Dictionary<string, IAuthorizationState> states = Session["AuthorizationStates"] as Dictionary<string, IAuthorizationState>;
-                if (states == null)
+                Dictionary<string, string> tokens = Session["AccessToken"] as Dictionary<string, string>;
+                if (tokens == null)
                 {
-                    states = new Dictionary<string, IAuthorizationState>();
+                    tokens = new Dictionary<string, string>();
                 }
-                return states;
+                return tokens;
             }
             set
             {
-                Session["AuthorizationStates"] = value;
+                Session["AccessToken"] = value;
             }
         }
+
     }
 }
