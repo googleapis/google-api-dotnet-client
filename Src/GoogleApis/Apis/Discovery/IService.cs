@@ -59,6 +59,13 @@ namespace Google.Apis.Discovery
         /// <summary>A list of supported features for this API. Never null</summary>
         IList<string> Features { get; }
 
+        /// <summary>
+        /// A dictionary of OAuth2.0 scopes used within this service. 
+        /// The key represents the scope id/url, the value gives additional information about this scope. 
+        /// Never null.
+        /// </summary>
+        IDictionary<string, Scope> Scopes { get; }
+
         /// <summary>A link to human readable documentation for the API.</summary>
         string DocumentationLink { get; }
 

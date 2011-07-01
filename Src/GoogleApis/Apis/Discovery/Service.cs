@@ -79,6 +79,7 @@ namespace Google.Apis.Discovery
             Protocol = values.GetValueAsNull("protocol") as string;
             Description = values.GetValueAsNull("description") as string;
             Title = values.GetValueAsNull("title") as string;
+            Scopes = LoadScopes();
 
             // Determine the Server URL and (optional) Base Path
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
@@ -105,6 +106,8 @@ namespace Google.Apis.Discovery
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
         public IList<string> Features { get; private set; }
+        public IDictionary<string, Scope> Scopes { get; private set; }
+
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
 
@@ -112,7 +115,18 @@ namespace Google.Apis.Discovery
 
         public Uri BaseUri
         {
-            get { return new Uri(ServerUrl + BasePath); }
+            get
+            {
+                if (ServerUrl.EndsWith("/") && BasePath.StartsWith("/"))
+                {
+                    return new Uri(ServerUrl.Substring(0, ServerUrl.Length - 1) + BasePath);
+                }
+                if (!ServerUrl.EndsWith("/") && !BasePath.StartsWith("/"))
+                {
+                    return new Uri(ServerUrl + "/" + BasePath);
+                }
+                return new Uri(ServerUrl + BasePath);
+            }
         }
 
         public Uri RpcUri
@@ -189,6 +203,56 @@ namespace Google.Apis.Discovery
 
             return request;
         }
+        
+        /// <summary>
+        /// Loads the set of scopes from the json information dictionary and parses it into a dictionary.
+        /// Always returns a valid dictionary.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IDictionary<string, Scope> LoadScopes()
+        {
+            Dictionary<string, Scope> scopes = new Dictionary<string, Scope>();
+            
+            // Access the "auth" node.
+            var authObj = information.GetValueAsNull("auth") as JsonDictionary;
+            if (authObj == null)
+            {
+                return scopes;
+            }
+
+            // Access the "oauth2" subnode.
+            var oauth2Obj = authObj.GetValueAsNull("oauth2") as JsonDictionary;
+            if (oauth2Obj == null)
+            {
+                return scopes;
+            }
+
+            // Access the "scopes" subnode.
+            var scopesObj = oauth2Obj.GetValueAsNull("scopes") as JsonDictionary;
+            if (scopesObj == null)
+            {
+                return scopes;
+            }
+
+            // Iterate through all scopes.
+            foreach (KeyValuePair<string,object> pair in scopesObj)
+            {
+                // Create a new scope object.
+                var scope = new Scope();
+                scope.ID = pair.Key;
+
+                var data = pair.Value as JsonDictionary;
+                if (data != null)
+                {
+                    scope.Description = data.GetValueAsNull("description") as string;
+                }
+
+                // Add it to the scopes dictionary.
+                scopes.Add(scope.ID, scope);
+            }
+            
+            return scopes;
+        }
 
         /// <summary>
         /// Retrieves a resource using the full resource name.
@@ -243,7 +307,15 @@ namespace Google.Apis.Discovery
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
-                StandardResponse<T> response = Serializer.Deserialize<StandardResponse<T>>(text);
+                StandardResponse<T> response = null;
+                try
+                {
+                    response = Serializer.Deserialize<StandardResponse<T>>(text);
+                }
+                catch(JsonReaderException ex)
+                {
+                    throw new GoogleApiException(this, "Failed to parse response from server as json ["+text+"]", ex);
+                }
 
                 if (response.Error != null)
                 {
@@ -259,7 +331,15 @@ namespace Google.Apis.Discovery
             }
 
             // New path: Deserialize the object directly
-            T result = Serializer.Deserialize<T>(text);
+            T result = default(T);
+            try
+            {
+                result = Serializer.Deserialize<T>(text);
+            }
+            catch (JsonReaderException ex)
+            {
+                throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
+            }
 
             // If this schema/object provides an error container, check it
             if (result is IResponse)
@@ -325,7 +405,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V1.0
     /// </summary>
-    public class ServiceV1_0 : BaseService
+    internal class ServiceV1_0 : BaseService
     {
         private const string BasePathField = "basePath";
 
@@ -355,7 +435,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Represents a Service as defined in Discovery V0.3
     /// </summary>
-    public class ServiceV0_3 : BaseService
+    internal class ServiceV0_3 : BaseService
     {
         private const string RestBasePathField = "restBasePath";
 

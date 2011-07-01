@@ -68,16 +68,19 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Decorator\DecoratorUtilTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\EnumResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecoratorTest.cs" />
     <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecoratorTest.cs" />
     <Compile Include="Generator\ImplementationDetailsGeneratorTest.cs" />
     <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
     <Compile Include="Generator\ResourceClassGeneratorTest.cs" />
     <Compile Include="ResourceBaseGeneratorTest.cs" />
-    <Compile Include="Decorator\ResourceDecorator\DictonaryOptionalParameterResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecoratorTest.cs" />
     <Compile Include="Decorator\ResourceDecorator\MockResourceDecorator.cs" />

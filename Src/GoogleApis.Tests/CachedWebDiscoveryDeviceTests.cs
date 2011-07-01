@@ -90,7 +90,13 @@ namespace Google.Apis.Tests
             Assert.That(cacheFile.Name.Contains("_"));
 
             // Check the result
-            Assert.IsTrue(cacheFile.Name.StartsWith("http___google.com_$#@!%25^&_()[]+=_____;-"));
+            Assert.IsFalse(cacheFile.Name.Contains("/"));
+            
+            if (Environment.OSVersion.Platform != PlatformID.Unix)
+            {
+                // Don't check this on mono, as mono automatically escapes the file name
+                Assert.IsTrue(cacheFile.Name.StartsWith("http___google.com_$#@!%25^&_()[]+=_____;-"));
+            }
         }
 
         /// <summary>
@@ -99,9 +105,9 @@ namespace Google.Apis.Tests
         [Test]
         public void SetCacheDurationTest()
         {
-            // Check that the cache duration is set to 7 days per default
+            // Check that the cache duration is set to 3 days per default
             var device = new CachedWebDiscoveryDevice();
-            Assert.That(device.CacheDuration, Is.EqualTo(7 * 24 * 60 * 60));
+            Assert.That(device.CacheDuration, Is.EqualTo(3 * 24 * 60 * 60));
 
             device.CacheDuration = 100;
             Assert.That(device.CacheDuration, Is.EqualTo(100));

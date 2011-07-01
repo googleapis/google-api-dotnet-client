@@ -78,7 +78,20 @@ namespace Google.Apis.Tools.CodeGen.Generator
             /// Maps Schemas to the name they received so schemas found multiple time will resolve to the same name.
             /// This also allows us to generate the internal classes at the end instead of as we find them.
             /// </summary>
-            private readonly IDictionary<JsonSchema, string> knownSubschemas;
+            private readonly IDictionary<JsonSchema, KnownSubschema> knownSubschemas;
+
+            private class KnownSubschema
+            {
+                /// <summary>
+                /// The class name of this nested class
+                /// </summary>
+                public string ClassName { get; set; }
+
+                /// <summary>
+                /// The full reference by which this class can be addressed, e.g. TopClass.SubClass
+                /// </summary>
+                public CodeTypeReference Reference { get; set; }
+            }
 
             private readonly CodeTypeDeclaration typeDeclaration;
 
@@ -91,7 +104,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 this.typeDeclaration = typeDeclaration;
                 this.decorators = decorators;
-                knownSubschemas = new Dictionary<JsonSchema, string>();
+                knownSubschemas = new Dictionary<JsonSchema, KnownSubschema>();
                 this.uniquefier = uniquefier;
             }
 
@@ -105,7 +118,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 if (knownSubschemas.ContainsKey(definition))
                 {
-                    return new CodeTypeReference(knownSubschemas[definition]);
+                    return knownSubschemas[definition].Reference;
                 }
 
                 string name = null;
@@ -115,7 +128,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 {
                     string proposedName = details.ProposedName;
                     IEnumerable<string> forbiddenWords = GeneratorUtils.GetWordContextListFromClass(typeDeclaration);
-                    forbiddenWords = forbiddenWords.Concat(knownSubschemas.Values);
+                    forbiddenWords =
+                        forbiddenWords.Concat(from KnownSubschema k in knownSubschemas.Values select k.ClassName);
 
                     string generatedName = GeneratorUtils.GetClassName(proposedName, forbiddenWords);
                     if (generatedName.IsNotNullOrEmpty())
@@ -131,8 +145,19 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     name = GetSchemaName(knownSubschemas.Count+1);
                 }
 
-                knownSubschemas.Add(definition,name);
-                return new CodeTypeReference(name);
+                // If the current class is not null, set the prefix to the class name as it will be required for
+                // addressing this nested type.
+                string prefix = "";
+                if (typeDeclaration != null)
+                {
+                    prefix = typeDeclaration.Name + ".";
+                }
+
+                var newSubschema = new KnownSubschema();
+                newSubschema.Reference = new CodeTypeReference(prefix + name);
+                newSubschema.ClassName = name;
+                knownSubschemas.Add(definition, newSubschema);
+                return newSubschema.Reference;
             }
 
             #endregion
@@ -154,7 +179,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 schema.ThrowIfNull("schema");
 
-                string className = GetClassName(schema, detailCollection.GetValueAsNull(schema)).BaseType;
+                string className = knownSubschemas[schema].ClassName;
                 var typeDeclaration = new CodeTypeDeclaration(className);
                 typeDeclaration.Attributes = MemberAttributes.Public;
                 var nestedClassGenerator = new NestedClassGenerator(

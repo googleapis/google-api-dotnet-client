@@ -28,7 +28,7 @@ namespace Google.Apis.Tools.NAntTasks
     /// This class provides a NAnt task that generates one service
     /// based on the passed in parameters.
     /// </summary>
-    [TaskName("googleapigenerate")]
+    [TaskName("google-api-generate")]
     public class GoogleApiGenerate : Task
     {
         /// <summary>
