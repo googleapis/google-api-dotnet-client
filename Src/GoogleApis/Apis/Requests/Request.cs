@@ -48,17 +48,17 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Defines the maximum number of retries which should be made if a request fails.
         /// </summary>
-        public static int MaximumRetries = 3;
+        public int MaximumRetries { get; set; }
 
         /// <summary>
         /// Defines the factor by which the waiting time is multiplied between retry attempts.
         /// </summary>
-        public static double RetryWaitTimeIncreaseFactor = 2.0;
+        public double RetryWaitTimeIncreaseFactor { get; set; }
 
         /// <summary>
         /// Defines the initial waiting time, which is used once the first retry has failed.
         /// </summary>
-        public static int RetryInitialWaitTime = 1000;
+        public int RetryInitialWaitTime { get; set; }
 
         private static readonly String ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
 
@@ -72,6 +72,10 @@ namespace Google.Apis.Requests
         {
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
+            
+            MaximumRetries = 3;
+            RetryWaitTimeIncreaseFactor = 2.0;
+            RetryInitialWaitTime = 1000;
         }
 
         /// <summary>
@@ -255,7 +259,6 @@ namespace Google.Apis.Requests
                             if (handler.CanHandleErrorResponse(ex, error))
                             {
                                 // The provided handler was able to handle this error. Retry sending the request.
-                                handler.PrepareHandleErrorResponse(ex, error);
                                 handler.HandleErrorResponse(ex, error, request = CreateWebRequest());
                                 isHandled = true;
                                 break;

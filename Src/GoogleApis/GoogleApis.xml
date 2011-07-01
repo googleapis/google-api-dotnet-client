@@ -112,14 +112,6 @@
             <param name="error">Additional information about the error. Might be null.</param>
             <returns>True if this handler can handle the error.</returns>
         </member>
-        <member name="M:Google.Apis.Requests.IErrorResponseHandler.PrepareHandleErrorResponse(System.Net.WebException,Google.Apis.Requests.RequestError)">
-            <summary>
-            Called when this error response handler can handle this request.
-            It will be called before the new WebRequest is created.
-            </summary>
-            <param name="exception">The exception which was thrown by the service.</param>
-            <param name="error">Additional information about the error which occured. Might be null.</param>
-        </member>
         <member name="M:Google.Apis.Requests.IErrorResponseHandler.HandleErrorResponse(System.Net.WebException,Google.Apis.Requests.RequestError,System.Net.WebRequest)">
             <summary>
             A method which should try to handle the error response by fixing the specified request.
@@ -738,21 +730,6 @@
             Executes the request and returns the response stream
             </summary>
         </member>
-        <member name="F:Google.Apis.Requests.Request.MaximumRetries">
-            <summary>
-            Defines the maximum number of retries which should be made if a request fails.
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Requests.Request.RetryWaitTimeIncreaseFactor">
-            <summary>
-            Defines the factor by which the waiting time is multiplied between retry attempts.
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Requests.Request.RetryInitialWaitTime">
-            <summary>
-            Defines the initial waiting time, which is used once the first retry has failed.
-            </summary>
-        </member>
         <member name="M:Google.Apis.Requests.Request.On(System.String)">
             <summary>
             The method to call
@@ -849,6 +826,21 @@
         <member name="M:Google.Apis.Requests.Request.HttpMethodHasBody(System.String)">
             <summary>
             Returns true if this http method can have a body.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.MaximumRetries">
+            <summary>
+            Defines the maximum number of retries which should be made if a request fails.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.RetryWaitTimeIncreaseFactor">
+            <summary>
+            Defines the factor by which the waiting time is multiplied between retry attempts.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.Request.RetryInitialWaitTime">
+            <summary>
+            Defines the initial waiting time, which is used once the first retry has failed.
             </summary>
         </member>
         <member name="P:Google.Apis.Requests.Request.Authenticator">
