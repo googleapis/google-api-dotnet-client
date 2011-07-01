@@ -42,8 +42,8 @@ namespace Google.Apis.Discovery
         /// <param name="discoveryUri"></param>
         public CachedWebDiscoveryDevice(Uri discoveryUri) : this(discoveryUri, GetDefaultCacheDirectory())
         {
-            // Set the default cache duration to 7 days
-            CacheDuration = (uint) (new TimeSpan(7, 0, 0, 0).TotalSeconds);
+            // Set the default cache duration to 3 days
+            CacheDuration = (uint) (new TimeSpan(3, 0, 0, 0).TotalSeconds);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Google.Apis.Discovery
 
                 if (value.Exists == false)
                 {
-                    throw new ArgumentException("CachedDirectory", "Does not exsit [" + value + "]");
+                    throw new ArgumentException("CachedDirectory", "Does not exist [" + value + "]");
                 }
 
                 cacheDirectory = value;
