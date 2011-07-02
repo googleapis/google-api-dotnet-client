@@ -8,6 +8,7 @@
   <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:3.5' />
   <property name="google.api.proj" value="${google.project.base}/GoogleApis/GoogleApis.csproj" />
   <property name="google.generate.proj" value="${google.project.base}/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
+  <property name="google.oauth2.proj" value="${google.project.base}/GoogleApis.Authentication.OAuth2/GoogleApis.Authentication.OAuth2.csproj" />
   <property name="google.nant.proj" value="GoogleApis.Tools.NAntTasks.csproj" />
 
   <property name="nant.windows.bin.path" value="C:\Tools\nant\bin\" />
@@ -50,6 +51,9 @@
     <exec program="${msbuild.executable}"
           commandline='${google.generate.proj} /t:Clean ${msbuild.options}'
           workingdir="." />
+    <exec program="${msbuild.executable}"
+          commandline='${google.oauth2.proj} /t:Clean ${msbuild.options}'
+          workingdir="." />
   </target>
 
   <target name="clean" depends="clean-google-api, config" description="Delete Generated Files">
@@ -82,10 +86,13 @@
           commandline='${google.api.proj} /t:Build ${msbuild.options}' workingdir="." />
     <exec program="${msbuild.executable}" 
           commandline='${google.generate.proj} /t:Build ${msbuild.options}' workingdir="." />
+    <exec program="${msbuild.executable}"
+          commandline='${google.oauth2.proj} /t:Build ${msbuild.options}' workingdir="." />
     <copy todir="${generated.library}" overwrite="true" flatten="true">
       <fileset basedir="${google.project.base}">
         <include name="GoogleApis/bin/Release/*.*"/>
         <include name="GoogleApis.Tools.CodeGen/bin/Release/*.*"/>
+        <include name="GoogleApis.Authentication.OAuth2/bin/Release/*.*"/>
       </fileset>
     </copy>
   </target>

@@ -27,9 +27,8 @@ namespace Google.Apis.Tests.Apis.Authentication
     {
         private class MockAuthenticator : Authenticator
         {
-            public MockAuthenticator() : base("Mock Application") {}
         }
-
+        
         /// <summary>
         /// Checks if an instance of the AuthenticatorFactory can be retrieved
         /// </summary>

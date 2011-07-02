@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B13D7964-0E39-4055-9969-5451754A23E4}</ProjectGuid>
+    <ProjectGuid>{76106493-68EF-4E44-AF2E-971ABF29B300}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Apis.Tools.CodeGen.IntegrationTests</RootNamespace>
-    <AssemblyName>GoogleApis.Tools.CodeGen.IntegrationTests</AssemblyName>
+    <RootNamespace>Google.Apis.Authentication.OAuth2</RootNamespace>
+    <AssemblyName>Google.Apis.Authentication.OAuth2</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Google.Apis.Authentication.OAuth2.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,42 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\Third Party\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Net35">
-      <HintPath>..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Third Party\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\OAuth2\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.2.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\RequestTests.cs" />
+    <Compile Include="GoogleAuthenticationServer.cs" />
+    <Compile Include="DotNetOpenAuth\NativeApplicationClient.cs" />
+    <Compile Include="OAuth2Authenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
-      <Project>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</Project>
-      <Name>GoogleApis.Tools.CodeGen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Src\GoogleApis\GoogleApis.csproj">
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Link>LICENSE</Link>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,1034 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Apis.Tools.CodeGen</name>
+    </assembly>
+    <members>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.StandardPropertyFieldDecorator">
+            <summary>
+            Decorator for standard property fields
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.ISchemaDecorator">
+            <summary>
+            Classes that implement this interface will add code to the 
+            typeDeclaration based on the ISchema passed in.
+            Example on class may add fields to the typeDeclaration to 
+            represent each of the fields described in the schema
+            </summary>
+            <seealso cref="T:Google.Apis.Discovery.Schema.ISchema"/>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.ISchemaDecorator.DecorateClass(System.CodeDom.CodeTypeDeclaration,Google.Apis.Discovery.Schema.ISchema,System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Decorates the schema class with the information provided by this decorator. For example a 
+            ISchemaDecorator could add a constructor, or properties to the Schema class that we are generating
+            </summary>
+            <param name="typeDeclaration">Class to decorate</param>
+            <param name="schema">Source schema to use</param>
+            <param name="implDetails">Further implementation details for all decorators</param>
+            <param name="internalClassProvider">Provider which is used for the generation of nested classes</param>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.INestedClassSchemaDecorator">
+            <summary>
+            A given schema may contain nested classes, classes that implement this method may 
+            decorate those internal classes, often classes that implement this 
+            interface will also implement ISchemaDecorator
+            </summary>
+            <seealso cref="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.ISchemaDecorator"/> 
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.INestedClassSchemaDecorator.DecorateInternalClass(System.CodeDom.CodeTypeDeclaration,System.String,Newtonsoft.Json.Schema.JsonSchema,System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Decorates the schema class with the information provided by this decorator. For example a 
+            INestedClassSchemaDecorator could add a constructor, or properties to the nested schema class 
+            that we are generating.
+            </summary>
+            <param name="typeDeclaration">Nested class to decorate.</param>
+            <param name="name">Name of this class.</param>
+            <param name="schema">Schema describing this class.</param>
+            <param name="implDetails">Details for the implementation.</param>
+            <param name="internalClassProvider">Provider used for generating nested classes.</param>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardServiceFieldServiceDecorator">
+            <summary>
+            Declars the fields genericService and authenticator
+            <code>
+                private Google.Apis.Discovery.IService genericService;
+                private Google.Apis.Authentication.IAuthenticator authenticator;
+            </code>
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.IServiceDecorator">
+            <summary>
+            IServiceDecorators will decorate the generated Service class.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.DeveloperKeyServiceDecorator">
+            <summary>
+            Declares the DeveloperKey property and field
+            <code>
+                private string developerKey;
+                public virtual string DeveloperKey { ... }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.DeveloperKeyServiceDecorator.DeveloperKeyPropertyName">
+            <summary>
+            Defines the name of the "DeveloperKey" property
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.SubresourceClassDecorator">
+            <summary>
+            This decorator adds subresources as nested classes to the current resource.
+            
+            Example:
+              public class TopResource {
+                 ...
+                 public class SubResource {
+                    ...
+                 }
+              }
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator">
+            <summary>
+            Classes that implement this interface will be called when building a resource class.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator.DecorateClass(Google.Apis.Discovery.IResource,System.String,System.CodeDom.CodeTypeDeclaration,Google.Apis.Tools.CodeGen.Generator.ResourceClassGenerator,System.String,System.Collections.Generic.IEnumerable{Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator})">
+            <summary>
+            Adds code to the resourceClass based on the resource.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator.DecorateMethodBeforeExecute(Google.Apis.Discovery.IResource,Google.Apis.Discovery.IMethod,System.CodeDom.CodeMemberMethod)">
+            <summary>
+            Adds code to a method just before execution of the execute method.
+            This can be used for logging, instramenting or modifing the parameters before execution.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator.DecorateMethodAfterExecute(Google.Apis.Discovery.IResource,Google.Apis.Discovery.IMethod,System.CodeDom.CodeMemberMethod)">
+            <summary>
+            Adds code to a method just after execution of the execute method.
+            This can be used for logging, instramenting or modifing the return value after execution.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.JsonSerializationMethods">
+            <summary>
+            Supplies ObjectToJson method in generated services. Uses Newtonsoft.Json.JsonSerializer
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.JsonSerializationMethods.CreateRegisterSerializer">
+            <summary>
+             Creates the RegisterSerializer method
+             <code>
+                public void RegisterSerializer(ISerializer serializer)
+                {
+                    genericService.Serializer = serializer;
+                }
+             </code>
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.JsonSerializationMethods.CreateObjectToJson">
+            <summary>
+             Creates ObjectToJson method
+             <code>
+                public string ObjectToJson(object obj)
+                {
+                    return genericService.Serialize(obj);
+                }
+             </code>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.JsonSerializationMethods.CreateJsonToObject" -->
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.Log4NetResourceDecorator">
+            <summary>
+            An optional decorator that adds logging to the Resoruces as they are called.
+            This uses log4Net as the logging framework.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.DictionaryOptionalParameterResourceDecorator">
+            <summary>
+            An optional Decorator that adds a Method to the resource class for each Method.
+            The method added will have a parameter for each of the required parameters, all the optional parameters will be 
+            passed in a IDictionary&lt;string,string&gt;
+            e.g.
+            <code>
+                public virtual Stream Search(IDictionary&lt;string, string&gt; parameters)
+            </code>
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator">
+            <summary>
+            Abstract implementation of a resource generator.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.BaseGenerator">
+            <summary>
+            Abstract class for all generators
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.GetParameterType(Google.Apis.Discovery.IParameter)">
+            <summary>
+            Returns the parameter type specified within the parameter.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.GetUnderlyingParameterType(Google.Apis.Discovery.IParameter)">
+            <summary>
+            Retrieves the underlying, unmodified type of a parameter.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.GetParameterTypeReference(System.CodeDom.CodeTypeDeclaration,Google.Apis.Discovery.IParameter,Google.Apis.Discovery.IMethod)">
+            <summary>
+            Returns the reference to the type which is described in the parameter. Creates types if necessary.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.DeclareInputParameter(System.CodeDom.CodeTypeDeclaration,Google.Apis.Discovery.IParameter,Google.Apis.Discovery.IMethod)">
+            <summary>
+            Creates a declaration for the specified parameter.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.CreateExecuteCall(Google.Apis.Discovery.IMethod)">
+            <summary>
+            this.service.ExecuteRequest(...);
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceBaseGenerator.CreateExecuteRequest(Google.Apis.Discovery.IMethod)">
+            <summary>
+            ret = this.service.ExecuteRequest(...);
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.DictionaryOptionalParameterResourceDecorator.ResourceGenerator.GetBodyType(Google.Apis.Discovery.IMethod)">
+            <summary>
+            Returns the type of the body of a method
+            </summary>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.DictionaryOptionalParameterResourceDecorator.ResourceGenerator.CreateMethod(System.CodeDom.CodeTypeDeclaration,Google.Apis.Discovery.IResource,Google.Apis.Discovery.IMethod,System.Int32,System.Collections.Generic.IEnumerable{Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator})">
+            <summary>
+            Creates a new method declaration based upon the parameters
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.GoogleServiceGenerator">
+            <summary>
+            The main entry for generating code to access google services.
+            For a default generation try calling 
+            <example>
+                <code>
+                    GoogleServiceGenerator.GenerateService("buzz", "v1", "Com.Example.Namespace", "CSharp", "c:\example\");
+                </code>
+            </example>
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.GoogleDiscoveryURL">
+            <summary>
+            Defines the URL used to discover Google APIs
+            {0}: Service name
+            {1}: Version
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.StandardResourceDecorators">
+            <summary>
+            List of all resource decorators
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.StandardServiceDecorators">
+            <summary>
+            List of all service decorators
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.SchemaAwareServiceDecorators">
+            <summary>
+            List of all schema aware service decorators
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.StandardResourceContainerDecorator">
+            <summary>
+            List of all resource container decorators
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.#ctor(Google.Apis.Discovery.IService,System.String,System.Collections.Generic.IEnumerable{Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator},System.Collections.Generic.IEnumerable{Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.IServiceDecorator},System.Collections.Generic.IEnumerable{Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator.IResourceContainerDecorator},Google.Apis.Tools.CodeGen.GoogleSchemaGenerator)">
+            <summary>
+            Generates a new instance of the service generator for a specific service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.#ctor(Google.Apis.Discovery.IService,System.String)">
+            <summary>
+            Generates a new service generator for a specific service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.GetSchemaAwareResourceDecorators(System.String)">
+            <summary>
+            Returns a list of all schema aware resource decorators
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.CreateDefaultCachingDiscovery(System.String)">
+            <summary>
+            Creates a cached web discovery device
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.GenerateService(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates the given service saving to the outputFile in the language passed in.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleServiceGenerator.GenerateCode">
+            <summary>
+            Generates the code for this service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.ErrorResponseDecorator">
+            <summary>
+            Adds inheritance from IRequest and an Error property to schemas referenced by methods
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.AdditionalPropertiesSchemaDecorator" -->
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.AdditionalPropertiesSchemaDecorator.ImplementAdditionalProperties(System.CodeDom.CodeTypeDeclaration,Newtonsoft.Json.Schema.JsonSchema,System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Implements the additionalProperties tag on this schema if required.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.SchemaUtil">
+            <summary>
+            Utility class for schemas
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.SchemaUtil.FindCodePropertyForName(System.CodeDom.CodeTypeDeclaration,System.String,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Finds a property by the name specified within the schema
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardServiceFieldResourceDecorator">
+            <summary>
+            Adds a reference to the IRequestExecutor, this is a standard decorator so must be present 
+            or another Decorator that provides adds the same field.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardServiceFieldResourceDecorator.CreateServiceField">
+            <summary>
+            Adds <code>private BuzzService service;</code> to the resource class.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardExecuteMethodServiceDecorator" -->
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardExecuteMethodServiceDecorator.CreateRequestLocalVar">
+            <summary>
+            <code>Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);</code>
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardExecuteMethodServiceDecorator.CreateWithDeveloperKey">
+            <summary>
+            if (string.IsNullOrEmpty(DeveloperKey) == false)
+               request = request.WithDeveloperKey(DeveloperKey)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator">
+            <summary>
+            Schema Generator
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.CreateClass(Google.Apis.Discovery.Schema.ISchema,System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a fully working class for the specified schema.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.INestedClassProvider">
+            <summary>
+            Given a definition for a class returns a name and garentiees that 
+            that class will be generated in the appropreate scope. 
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.INestedClassProvider.GetClassName(Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails)">
+            <summary>
+            Given a definition for a class returns a name and garentiees that 
+            that class will be generated in the appropreate scope.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.NestedClassGenerator.knownSubschemas">
+            <summary>
+            Maps Schemas to the name they received so schemas found multiple time will resolve to the same name.
+            This also allows us to generate the internal classes at the end instead of as we find them.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.NestedClassGenerator.uniquefier">
+            <summary>A string to make this nested class names unique</summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.NestedClassGenerator.GetClassName(Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails)">
+            <summary>
+            Gets a class name as a CodeTypeReference for the given schema of the form "IntenalClassN" where 
+            N is an integer. Given the same JsonSchema this will return the same classname.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.NestedClassGenerator.KnownSubschema.ClassName">
+            <summary>
+            The class name of this nested class
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.SchemaGenerator.NestedClassGenerator.KnownSubschema.Reference">
+            <summary>
+            The full reference by which this class can be addressed, e.g. TopClass.SubClass
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardConstructorResourceDecorator">
+            <summary>
+            Creates a constructor for this resource, this is a standard decorator so this either needs to be 
+            present or another decorator that creates a constructor with the same signature put in.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.StandardPropertyDecorator">
+            <summary>
+            Adds all the properties (getters and setters) for schema classes.
+            This depends on fields being added by StandardFieldDecorator, or similar.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.ResourceContainerGenerator">
+            <summary>
+            Container class for resource container decorators
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceContainerGenerator.AddResourceContainerDecorations(Google.Apis.Discovery.IResourceContainer,System.CodeDom.CodeTypeDeclaration)">
+            <summary>
+            Calls each decorator for the specified resource container
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.ScopeEnumDecorator">
+            <summary>
+            This decorator adds an enumeration containing all of the service's scopes to the service class.
+            
+            Example:
+            <code>
+             public enum Scopes {
+                [Google.Apis.Util.StringValueAttribute("https://www.googleapis.com/auth/tasks")]
+                Tasks,
+                [Google.Apis.Util.StringValueAttribute("https://www.googleapis.com/auth/tasks.readonly")]
+                TasksReadonly,
+             }
+            </code>
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.ScopeEnumDecorator.EnumName">
+            <summary>
+            The name of the enumeration.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.ScopeEnumDecorator.EnumDescription">
+            <summary>
+            The description of the enumeration.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.ScopeEnumDecorator.GenerateScopeEnumeration(System.Collections.Generic.IEnumerable{Google.Apis.Discovery.Scope})">
+            <summary>
+            Generates an enumeration representing the scopes given.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.ScopeEnumDecorator.GetValueName(Google.Apis.Discovery.Scope)">
+            <summary>
+            Generates an enumeration value name for the specified scope.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardMethodResourceDecorator">
+            <summary>
+            Adds the standard methods to the given Resource class, 
+            one method for each one described in the discovery document.
+            There will be parameters added for each of the parameters described in the discovery document
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardMethodResourceDecorator.#ctor">
+            <summary>
+            Constructs a StandardMethodResourceDecorator which creates methods with body parameter as string 
+            and return type as System.io.Stream.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardMethodResourceDecorator.IObjectTypeProvider">
+            <summary>
+            Implementors of this interface will know what the return type of a given method should be
+            and what the type of the body parameter should be.
+            For example the return type may be System.IO.String or a 
+            generated type based on the schema section of the discovery document,
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardMethodResourceDecorator.ResourceGenerator.CreateExecuteRequest(Google.Apis.Discovery.IMethod)">
+            <summary>
+            [ReturnType] ret = this.service.JsonToObject&lt;ReturnType&gt;(this.service.Execute(...));
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardMethodResourceDecorator.ResourceGenerator.DeclareParamaterDictionary" -->
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.SchemaAwearExecuteMethodDecorator">
+            <summary>
+            Adds an execute method to the service which accepts an object and Serilises it to Json. 
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.SchemaAwearExecuteMethodDecorator.CreateExecuteMethod">
+            <summary>
+            Adds an execute method to the service which accepts an object and Serilises it to Json.
+            <code>
+                public Stream Execute(string resource, string method, object body, IDictonary&lt;string, 
+                                      string&gt; parameters) {
+                    return execute(resource, method, ObjectToJson(body), parameters);
+                }
+            </code> 
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator.IResourceContainerDecorator">
+            <summary>
+            Decorates ResourceContainers, a resourceContainer is any object
+            that can contain Resources, a service is a resourceContainer 
+            also a Resource is a resource container since it can 
+            contain Resources.
+            </summary>
+            <seealso cref="T:Google.Apis.Discovery.IResourceContainer"/>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator.IResourceContainerDecorator.DecorateClass(Google.Apis.Discovery.IResourceContainer,System.CodeDom.CodeTypeDeclaration)">
+            <summary>
+            Adds code to the containerClass based on the definitions contained in the resourceContainer.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails">
+            <summary>
+            Represents a class containing further implementation details for a schema
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails.IsMethodResult">
+            <summary>
+            True if this schema is a direct result of a resource method call
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails.ProposedName">
+            <summary>
+            A proposed (alternative) name for this schema
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails.TraversedByGenerator">
+            <summary>
+            True if this implementation has been traversed by the implementation generator.
+            Used to prevent endless recursion / stack overflow.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator.StandardResourcePropertyServiceDecorator">
+            <summary>
+            Foreach resource that is part of this service this decorator will add a field
+            and a property getter. e.g.
+                <code>
+                    private Activities activities;
+                    private Comments comments;
+                    public virtual Activities Activities {get {return this.activities;}}
+                    public virtual Comments Comments {get {return this.comments;}}
+                </code> 
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.StandardSchemaCommentDecorator">
+            <summary>
+            Decorator which adds comments to schemas
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil">
+            <summary>
+            Utility class for the SchemaDecorator
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil.GetFieldName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates a field name
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil.GetPropertyName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generates a property name
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil.GetCodeType(Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails,Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Returns a code type references for the specified json schema.
+            Generates the appropriate references.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil.GetObjectTypeReference(Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails,Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Resolves/generates an object type reference for a schema.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.SchemaDecoratorUtil.GetArrayTypeRefereence(Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails,Google.Apis.Tools.CodeGen.INestedClassProvider)">
+            <summary>
+            Resolves/generates an array type reference for a schema.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardResourceNameResourceDecorator">
+            <summary>
+            Adds the resource name as a private const field to the generated resource class.
+            This is a standard class so this need to be present or another decorator that add a field 
+            with the same name and type.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.StandardResourceNameResourceDecorator.CreateResourceNameConst(System.String)">
+            <summary>
+            Adds <code>private const string Resource = "activities";</code> to the resource class
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardConstructServiceDecorator">
+            <summary>
+            Adds the standard constuctor to the service class, 
+                assing genericService and authenticator to local vars
+                and create a Resouce for each resource mentioned in the discovery document.
+            e.g.
+                <code>
+                public BuzzService(IService genericService, IAuthenticator authenticator) {
+                   this.genericService = genericService;
+                   this.authenticator = authenticator;
+                   this.activities = new Activities(this);
+                   this.comments = new Comments(this);
+                   this.groups = new Groups(this);
+                   this.people = new People(this);
+                   this.photos = new Photos(this);
+                   this.related = new Related(this);
+               }
+                </code>
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardConstructServiceDecorator.AddResourceAssignments(Google.Apis.Discovery.IService,System.CodeDom.CodeMemberMethod)">
+            <summary>
+                Adds an assignment line for each Resource e.g.
+                <code>
+                    this.people = new People(this);
+                </code>
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.StandardConstructServiceDecorator.CreateConstructorWithArgs">
+            <summary>
+            Creates the constructor with two arguments, ISerivce and IAuthenticator.
+            Then assignes these to local variables.
+            e.g.
+                <code>
+                    public BuzzService(IService genericService, IAuthenticator authenticator) {
+                        this.genericService = genericService;
+                        this.authenticator = authenticator;
+                </code>
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.EnumResourceDecorator">
+            <summary>
+            A decorator which adds enumerations for enumerable method parameters to a resource.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.EnumResourceDecorator.GenerateEnum(System.CodeDom.CodeTypeDeclaration,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Creates an enumeration from the provided data.
+            </summary>
+            <param name="typeDeclaration">The type which should contain this enumeration.</param>
+            <param name="proposedName">The proposed name for this enumeration.</param>
+            <param name="description">Description of the enum class.</param>
+            <param name="entries">Enum entries in the form (name, comment/description).</param>
+            <returns>The generated enum type.</returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.EnumResourceDecorator.GenerateEnum(System.CodeDom.CodeTypeDeclaration,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates an enumeration from the provided data.
+            </summary>
+            <param name="typeDeclaration">The type which should contain this enumeration.</param>
+            <param name="proposedName">The proposed name of the enumeration.</param>
+            <param name="description">Description of the enum class.</param>
+            <param name="enumValues">All enumeration values.</param>
+            <param name="enumDescriptions">All enumeration comments.</param>
+            <returns>Generated enum type.</returns>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil">
+            <summary>
+            Helper class for all decorators.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.CreateAutoProperty``1(System.CodeDom.CodeTypeDeclaration,System.String,System.String)">
+            <summary>
+            Creates and adds a public auto-property (property and backening field) to the class.
+            </summary>
+            <typeparam name="TProperty">Type used for the propery.</typeparam>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.CreateBackingField``1(System.CodeDom.CodeTypeDeclaration,System.String)">
+            <summary>
+            Creates a backening field for the name provided.
+            </summary>
+            <typeparam name="TProperty">Type used for the propery.</typeparam>
+            <param name="name">The name of the property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.CreateSummaryComment(System.String)">
+            <summary>
+            Creates a summary comment containing the text specified.
+            Returns an empty collection if the summary string is null or empty.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.XmlEscapeComment(System.String)">
+            <summary>
+            Escapes a string for use in a XML comment.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.AddMembersToClass(System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeTypeMemberCollection)">
+            <summary>
+            Adds the specified members to the given class.
+            Skips elements which already have been added.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.GetEnumerablePairs``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Returns a collection of joined keys and values as KeyValuePairs.
+            Will return the default value of V for pair.Value if values is null.
+            </summary>
+            <throws>Will throw an ArgumentException if the enumerables are of different length.</throws>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.FindFittingEnumeration(System.CodeDom.CodeTypeDeclaration,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the enumeration which has the same keys declared, or null if no match was found.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.IsFittingEnum(System.CodeDom.CodeTypeDeclaration,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Determines whether the given enum has the same pairs as specified.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.DecoratorUtil.IsFittingEnum(System.CodeDom.CodeTypeDeclaration,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Determines whether the given enum has the same pairs as specified.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IMethodCommentCreator">
+            <summary> 
+              Abstract out the process for creating comments on methods.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.DefaultEnglishCommentCreator">
+            <summary>
+            The default implementation for IMethodCommentCreator. Creates comments based on meta data and description 
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.ServiceClassGenerator">
+            <summary>
+            Responsible for generating the Service class, this is handled primarly by calling
+            a secsesion of IServiceDecorator's 
+            </summary>
+            <seealso cref="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.IServiceDecorator"/>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ServiceClassGenerator.CreateServiceClass">
+            <summary>
+            Creates a fully functional service class for the specified service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ServiceClassGenerator.GetFieldReference(Google.Apis.Discovery.IResource,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the field reference to the given resource
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.ResourceClassGenerator">
+            <summary>
+            Generates a class for one Resource. This uses the passed in decorators to do the work.
+            </summary>
+            <seealso cref="T:Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.IResourceDecorator"/>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ResourceClassGenerator.CreateClass">
+            <summary>
+            Create the class for a given resource and add all the methods.
+            </summary>
+            <param name="res">
+            A <see cref="!:Resource"/>
+            </param>
+            <returns>
+            A <see cref="T:System.CodeDom.CodeTypeDeclaration"/>
+            </returns>
+        </member>
+        <member name="P:Google.Apis.Tools.CodeGen.Generator.ResourceClassGenerator.ContainerGenerator">
+            <summary>
+            Returns the generator used to generate the Resource Container
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils">
+            <summary>
+            Utility class for Method-generators
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils.GetRequiredParameters(Google.Apis.Discovery.IMethod)">
+            <summary>
+            Return all required IParemters from the given method.
+            Sorted alphabeticly by name 
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils.GetOptionalParameters(Google.Apis.Discovery.IMethod)">
+            <summary>
+            Return all optional IParemters from the given method.
+            Sorted alphabeticly by name 
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils.GetAllParametersSorted(Google.Apis.Discovery.IMethod)">
+            <summary>
+            Return all IParemters from the given method.
+            sorted by required then optional, alphabeticly within those groupings 
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils.HasRequiredParameters(Google.Apis.Discovery.IMethod)">
+            <summary>
+            True if any of the parameters are required
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.MethodGeneratorUtils.HasOptionalParameters(Google.Apis.Discovery.IMethod)">
+            <summary>
+            True if any of the parameters are optional
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.NewtonSoftPropertyAttributeDecorator">
+            <summary>
+            Adds Newtonsoft.Json.JsonPropertyAttribute to each property.
+            Requires StandardPropertyDecorator or similar to have run before this. 
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator.ArraySchemaDecorator">
+            <summary>
+            Decorator for schemas which represent an array themself (type: array)
+            This Decorator constructs an IList implementation for the schema
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Generator.ImplementationDetailsGenerator">
+            <summary>
+            Generator for the SchemaImplementationDetails class. 
+            Scans the resources and other fields of a discovered services to provide additional information
+            for the schema decorators, which cannot be found within the json of a schema.
+            Amongst others used by the ErrorResponseDecorator to find out which schemas are referred by methods.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.Generator.ImplementationDetailsGenerator.PropertyClassSuffix">
+            <summary>
+            Suffix which will be attached to all nested classes for properties which do not refer to a strongly
+            named type.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ImplementationDetailsGenerator.GenerateDetails(Google.Apis.Discovery.IService)">
+            <summary>
+            Generates the implementation details for a whole service.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ImplementationDetailsGenerator.AddDetails(System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},Newtonsoft.Json.Schema.JsonSchema)">
+            <summary>
+            Adds implementation details for the specified schema and all its subschemas if they are required/useful.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Generator.ImplementationDetailsGenerator.ProposeNameIfNecessary(System.Collections.Generic.IDictionary{Newtonsoft.Json.Schema.JsonSchema,Google.Apis.Tools.CodeGen.Generator.SchemaImplementationDetails},System.String,Newtonsoft.Json.Schema.JsonSchema)">
+            <summary>
+            Proposes a name for a schema if it has none yet.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.GeneratorUtils">
+            <summary>
+            A collection of static utility methods for generators and decorators to use. 
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.SafeMemberMaximumIndex">
+            <summary>
+            The maximum index used for method generation when the proposed name is already used.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.ResourceContainerSuffix">
+            <summary>
+            Suffix for all resource containers
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.UnsafeWords">
+            <summary>
+            List of all words which are unsafe in a code environment
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.LowerFirstLetter(System.String)">
+            <summary>
+            Returns the given input string with a lower first letter
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.UpperFirstLetter(System.String)">
+            <summary>
+            Returns the specified input string with a upper first letter
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.IsValidFirstChar(System.Char)">
+            <summary>
+            Checks if the char is a valid first char for a field/variable name.
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.IsValidBodyChar(System.Char)">
+            <summary>
+            Checks if this char is allowed within field/variable names.
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetSafeMemberName(System.Collections.Generic.IEnumerable{System.String},Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase,System.String,System.String[])">
+            <summary>
+            Creates a safe member name which can be used within code environments.
+            Also checks for disallowed C# keywords words.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GenerateAlternativeNamesFor(System.String,System.String[])">
+            <summary>
+            Generates a set of alternative names (including the baseName itself) for the specified base name.
+            
+            Naming schemes used:
+                1. baseName
+                2. proposed alternatives
+                3. baseName + "Member"
+                4. baseName + Index
+                5. baseName + "Member" + Index
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.AppendIndices(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns a set of strings which represents the baseName plus a number appended to it.
+            Will return an empty set if the provided base name is empty or null.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.MakeValidMemberName(System.String)">
+            <summary>
+            Removes invalid characters from the proposed member name, and makes the following char
+            upper case if the previous body char was an invalid char (e.g. foo-bar will result in fooBar).
+            May return null if the name consisted only out of invalid characters.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.AlterFirstCharCase(System.String,Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase)">
+            <summary>
+            Changes the case of the first character.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetUsedWordsFromMembers(System.CodeDom.CodeTypeMemberCollection)">
+            <summary>
+            Returns the list of used words based upon a member collection
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.IsNameValidInContext(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Checks if the proposed name has already been used in the provided context
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetParameterName(Google.Apis.Discovery.IParameter,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            From the Parameter and its placement constructs a safe name.
+            </summary>
+            <param name="parameter">
+                The Parameter.
+            </param>
+            <param name="otherParameterNames">Enumerable of all parameter names used within the same method.</param>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetMethodName(Google.Apis.Discovery.IMethod,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate method name for the specified method.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetEnumName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate enumeration name for the specified enumeration.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetEnumValueName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate name for an enumeration value.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetClassName(Google.Apis.Discovery.IResourceContainer,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate class name for the specified resource container.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetFieldName(Google.Apis.Discovery.IResource,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate field name for the specified resoure.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetFieldName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate field name for the given input name.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetPropertyName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate property name for the given input name without using the words
+            specified in the illegal words list.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetClassName(Google.Apis.Discovery.Schema.ISchema,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate class name for the given schema.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetClassName(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a safe and appropriate class name for the given schema
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GeneratorUtils.GetWordContextListFromClass(System.CodeDom.CodeTypeDeclaration)">
+            <summary>
+            Returns a list of used and therefore forbidden words from a type declaration.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase">
+            <summary>
+            Defines a change operation which should be applied to a letter.
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase.DontChange">
+            <summary>
+            Don't change the casing
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase.ToUpper">
+            <summary>
+            Change the casing to upper
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Tools.CodeGen.GeneratorUtils.TargetCase.ToLower">
+            <summary>
+            Change the casing to lower
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.GeneratorUtils.CaseInsensitiveStringComparer">
+            <summary>
+            Comparer which ignores the case of a string.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.VersionInformationServiceDecorator">
+            <summary>
+            Adds private constants Version (VersionName), Name (NameName) and BaseUri (BaseUriName) 
+            to the ServiceClass.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.GoogleSchemaGenerator">
+            <summary>
+            For a given service, creates a namespace and generates a class for each schema defined in that service.
+            Using the ISchemaDecorators provided.  
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.GoogleSchemaGenerator.GenerateSchemaClasses(Google.Apis.Discovery.IService)">
+            <summary>
+            Generates all schema classes for the specified service
+            </summary>
+            <param name="service"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.EasyConstructServiceDecorator">
+            <summary>
+            Adds a convenience zero argument constructor to the service.
+            Using the AuthenticatorFactory to get the IAuthenticator and using a DiscoverService based on a WebDiscoveryDevice
+            This is an optional decorator.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.EasyConstructServiceDecorator.GetVersionSpecificParameter(Google.Apis.Discovery.IService,System.CodeDom.CodeTypeDeclaration)">
+            <summary>
+            Returns a CodeExpression that creates a Discovery specific FactoryParameter.
+            Resulting Code:     new FactoryParameterV*(new Uri(DiscoveryService.BaseUri))
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator.EasyConstructServiceDecorator.GetAuthenticator">
+            <summary>
+            Generates the following code
+            <code>
+                Authentication.AuthenticatorFactory.
+                    GetInstance().
+                    GetRegisteredAuthenticator();   
+            </code>
+            </summary>
+        </member>
+    </members>
+</doc>

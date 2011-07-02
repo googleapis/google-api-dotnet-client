@@ -42,6 +42,7 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardSchemaCommentDecorator(),
                      new NewtonSoftPropertyAttributeDecorator(),
                      new ArraySchemaDecorator(),
+                     new AdditionalPropertiesSchemaDecorator(),
                      new ErrorResponseDecorator(),
                  }).AsReadOnly();
 

@@ -300,6 +300,26 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
+        /// Confirms that OAuth2 scopes can be parsed correctly.
+        /// </summary>
+        [Test]
+        public void TestOAuth2Scopes()
+        {
+            var scopes = new JsonDictionary();
+            scopes.Add("https://www.example.com/auth/one", new Scope() { ID = "https://www.example.com/auth/one" });
+            scopes.Add("https://www.example.com/auth/two", new Scope() { ID = "https://www.example.com/auth/two" });
+            var oauth2 = new JsonDictionary() { { "scopes", scopes } };
+            var auth = new JsonDictionary() { { "oauth2", oauth2 } };
+            var dict = new JsonDictionary() { { "auth", auth } };
+
+            IService impl = new ConcreteClass("V1", "NameTest", dict);
+            Assert.IsNotNull(impl.Scopes);
+            Assert.AreEqual(2, impl.Scopes.Count);
+            Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));
+            Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/two"));
+        }
+
+        /// <summary>
         /// Tests the BaseResource.GetResource method.
         /// </summary>
         [Test]

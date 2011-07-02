@@ -202,21 +202,24 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var dic = new Dictionary<JsonSchema, SchemaImplementationDetails>();
             var schema = new JsonSchema() { Id = "NamedSchema" };
-            var propertyschema = new JsonSchema();
-            var itemschema = new JsonSchema();
+            var propertySchema = new JsonSchema();
+            var itemSchema = new JsonSchema();
+            var additionalPropertiesSchema = new JsonSchema();
 
             schema.Items = new List<JsonSchema>();
             schema.Properties = new Dictionary<string, JsonSchema>();
+            schema.AdditionalProperties = additionalPropertiesSchema;
 
             // Check properties and items.
-            schema.Items.Add(itemschema);
-            schema.Properties.Add("TestProperty", propertyschema);
+            schema.Items.Add(itemSchema);
+            schema.Properties.Add("TestProperty", propertySchema);
             ImplementationDetailsGenerator.AddDetails(dic, schema);
-            Assert.AreEqual(3, dic.Count);
 
             // Confirm results.
-            Assert.AreEqual("NamedSchema", dic[itemschema].ProposedName);
-            Assert.AreEqual("TestPropertyData", dic[propertyschema].ProposedName);
+            Assert.AreEqual(4, dic.Count);
+            Assert.AreEqual("NamedSchema", dic[itemSchema].ProposedName);
+            Assert.AreEqual("TestPropertyData", dic[propertySchema].ProposedName);
+            Assert.AreEqual("NamedSchemaProperties", dic[additionalPropertiesSchema].ProposedName);
         }
 
         /// <summary>

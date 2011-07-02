@@ -67,6 +67,10 @@
     <Compile Include="GoogleApiGenerate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj">
+      <Project>{76106493-68EF-4E44-AF2E-971ABF29B300}</Project>
+      <Name>GoogleApis.Authentication.OAuth2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Src\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>

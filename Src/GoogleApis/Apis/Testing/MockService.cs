@@ -47,6 +47,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Protocol = "rest";
             Description = "Test description";
             Features = new List<string> { "rest", "rpc", "json", "atom" };
+            Scopes = new Dictionary<string, Scope>();
         }
 
         #region IService Members
@@ -57,13 +58,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Version { get; set; }
         public Uri BaseUri { get; set; }
         public Uri RpcUri { get; set; }
-
-        public bool GZipEnabled
-        {
-            get { return false; }
-            set { }
-        }
-
+        public bool GZipEnabled { get; set; }
         public DiscoveryVersion DiscoveryVersion { get; set; }
         public IDictionary<string, ISchema> Schemas { get; set; }
 
@@ -75,6 +70,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
+        public IDictionary<string, Scope> Scopes { get; private set; }
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
         public string Description { get; private set; }

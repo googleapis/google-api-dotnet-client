@@ -16,7 +16,9 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using Google.Apis.Authentication;
 using NUnit.Framework;
 using Google.Apis.Requests;
 using Google.Apis.Discovery;
@@ -82,7 +84,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         {
                             HttpMethod = "GET",
                             Name = "TestMethod",
-                            RestPath = "https://test.google.com",
+                            RestPath = "https://example.com",
                             Parameters = parameterDefinitions
                         });
 
@@ -90,7 +92,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual(
-                "https://test.google.com/?alt=json&optionalWithEmpty=d&" +
+                "https://example.com/?alt=json&optionalWithEmpty=d&" +
                 "optionalWithNull=c&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
@@ -141,11 +143,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
+            Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
         }
 
         /// <summary>
@@ -159,11 +161,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -202,14 +204,14 @@ namespace Google.Apis.Tests.Apis.Requests
                         {
                             HttpMethod = "GET",
                             Name = "TestMethod",
-                            RestPath = "https://test.google.com",
+                            RestPath = "https://example.com",
                             Parameters = parameterDefinitions
                         });
 
             request.WithParameters(parameterValues);
             var url = request.BuildRequestUrl();
 
-            Assert.AreEqual("https://test.google.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -220,6 +222,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = new Request();
             Assert.IsNotNull(request.Authenticator);
+            Assert.IsTrue(request.SupportsRetry);
         }
 
         /// <summary>
@@ -246,7 +249,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod
-                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://test.google.com", }));
+                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://example.com", }));
         }
 
         /// <summary>
@@ -258,19 +261,52 @@ namespace Google.Apis.Tests.Apis.Requests
             var service = new MockService();
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://example.com", });
             Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://test.google.com", });
+                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://example.com", });
+        }
+
+        /// <summary>
+        /// Tests the user-agent string of the request created by the .CreateRequest method.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestUserAgentTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com/test",
+                });
+
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+
+            // Test the default user agent (without gzip):
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetAssemblyVersion(),
+                Environment.OSVersion.Platform, Environment.OSVersion.Version);
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+
+            // Confirm that the (gzip) tag is added if GZip is supported.
+            service.GZipEnabled = true;
+            expectedUserAgent += " (gzip)";
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
         /// <summary>
@@ -282,18 +318,13 @@ namespace Google.Apis.Tests.Apis.Requests
             var service = new MockService();
             var request = (Request)Request.CreateRequest(
                 service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com",
+                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com",
                 Parameters = new Dictionary<string, IParameter>() { {"TestParam", null} }});
             
             request.WithParameters("");
 
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
             Assert.IsNotNull(webRequest);
-
-            string expectedUserAgent = string.Format(
-                "Unknown_Application google-api-dotnet-client/{0} {1}", Utilities.GetAssemblyVersion(),
-                Environment.OSVersion.Platform);
-            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
         /// <summary>
@@ -306,7 +337,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 (Request)
                 Request.CreateRequest(
                     new MockService(),
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://test.google.com" });
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithDeveloperKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
@@ -333,6 +364,45 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("100", request.Parameters.GetFirstMatch("100"));
             Assert.AreEqual("True", request.Parameters.GetFirstMatch("True"));
             Assert.AreEqual("False",request.Parameters.GetFirstMatch("False"));
+        }
+
+        private class MockAuthenticator : Authenticator {}
+
+        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
+        {
+            public bool CanHandleErrorResponse(WebException exception, RequestError error)
+            {
+                return false;
+            }
+
+            public void PrepareHandleErrorResponse(WebException exception, RequestError error) {}
+
+            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
+        }
+
+        /// <summary>
+        /// Tests the results of the GetErrorResponseHandlers method.
+        /// </summary>
+        [Test]
+        public void GetErrorResponseHandlersTest()
+        {
+            var request =
+              (Request)
+              Request.CreateRequest(
+                  new MockService(),
+                  new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+
+            // Confirm that there are no error response handlers by default.
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that a standard authenticator won't result in an error response handler.
+            request.WithAuthentication(new MockAuthenticator());
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that an error handling response handler will change the enumeration
+            var auth = new MockErrorHandlingAuthenticator();
+            request.WithAuthentication(auth);
+            CollectionAssert.AreEqual(new IErrorResponseHandler[] { auth }, request.GetErrorResponseHandlers());
         }
     }
 }

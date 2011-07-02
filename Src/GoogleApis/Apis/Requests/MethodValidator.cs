@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 
 namespace Google.Apis
 {
@@ -89,19 +89,13 @@ namespace Google.Apis
             bool parameterPresent = Parameters.TryGetValue(param.Name, out currentParam);
 
             // If a required parameter is not present, fail.
-            if (param.IsRequired && String.IsNullOrEmpty(currentParam))
+            if (String.IsNullOrEmpty(currentParam) || !parameterPresent)
             {
-                return false;
+                return !param.IsRequired;
             }
-
-            if (parameterPresent == false || String.IsNullOrEmpty(currentParam))
-            {
-                // The parameter is not present in the input and is not required, skip validation.
-                return true;
-            }
-
+        
             // The parameter is present, validate the regex.
-            bool isValidData = ValidateRegex(param, currentParam);
+            bool isValidData = ValidateRegex(param, currentParam) && ValidateEnum(param, currentParam);
             if (isValidData == false)
             {
                 return false;
@@ -134,6 +128,20 @@ namespace Google.Apis
             Regex r = new Regex(pattern);
 
             return r.IsMatch(stringValue);
+        }
+
+        /// <summary>
+        /// Validates a parameter value against those enumeration values allowed by the method.
+        /// </summary>
+        public bool ValidateEnum(IParameter param, string paramValue)
+        {
+            if (param.EnumValues.IsNullOrEmpty())
+            {
+                return true; // Enum check does not apply.
+            }
+
+            // Confirm that the parameter value is contained within the enumeration
+            return param.EnumValues.Contains(paramValue);
         }
     }
 }

@@ -1,5 +1,5 @@
-/*
-Copyright 2010 Google Inc
+﻿/*
+Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,27 +14,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-namespace Google.Apis.Authentication
+namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// The abstract class used for all OAuth authenticators
+    /// Represents an authentication scope used in a discovery document.
     /// </summary>
-    public abstract class OAuthAuthenticator : Authenticator
+    public class Scope
     {
-        protected OAuthAuthenticator(string consumerKey, string consumerSecret) : base()
+        /// <summary>
+        /// The ID/Url of this scope.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// The description of this scope.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Returns the ID of this scope (if available, otherwise the class name).
+        /// </summary>
+        public override string ToString()
         {
-            ConsumerKey = consumerKey;
-            ConsumerSecret = consumerSecret;
+            return ID ?? base.ToString();
         }
-
-        /// <summary>
-        /// The Consumer Key of OAuth
-        /// </summary>
-        public string ConsumerKey { get; private set; }
-
-        /// <summary>
-        /// The Consumer Secret of OAuth
-        /// </summary>
-        public string ConsumerSecret { get; private set; }
     }
 }
