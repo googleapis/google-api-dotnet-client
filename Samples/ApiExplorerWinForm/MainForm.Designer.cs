@@ -1,6 +1,6 @@
 ﻿namespace Google.Apis.Samples.ApiExplorer.WinForm
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

@@ -4,302 +4,6 @@
         <name>Google.Apis</name>
     </assembly>
     <members>
-        <member name="T:Google.Apis.Testing.MoreAsserts">
-            <summary>
-            Assertion helper methods
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Testing.MoreAsserts.ContentsEqualAndInOrder(System.Collections.IEnumerable,System.Collections.IEnumerable)">
-            <summary>
-            Asserts whether both enumerables have the equal content, and whether it is in the same order
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Testing.MoreAsserts.IsEmpty``1(System.Collections.Generic.IList{``0})">
-            <summary>
-            Asserts that the list is empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Testing.MoreAsserts.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Asserts that the enumerable is empty
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IMethod">
-            <summary>
-            Represents one method as defined by the Google Api Discovery Document.
-            This will usaly be found within a resource. There may well be differnt implementations
-            of this interface for different versions of discovery.
-            </summary>
-            <see cref="T:Google.Apis.Discovery.IResource"/>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.Name">
-            <summary>
-            Name of this method
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.Description">
-            <summary>
-            A description of this method
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.RestPath">
-            <summary>
-            The rest path to this method
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.RpcName">
-            <summary>
-            The name of the RPC
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.HttpMethod">
-            <summary>
-            The http method required by this method
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.ResponseType">
-            <summary>
-            The response type of the request
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.RequestType">
-            <summary>
-            The type of the request required by this method
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IMethod.Parameters">
-            <summary>
-            A set of parameters passed with the request
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Requests.IRequest">
-            <summary>
-            Implementors will be able to make a request to a service.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.On(System.String)">
-            <summary>
-            Specifies the RPC name to use.
-            </summary>
-            <param name="rpcName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.Returning(Google.Apis.Requests.ReturnType)">
-            <summary>
-            Specifies the return type of this method.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.Collections.Generic.IDictionary{System.String,System.Object})">
-            <summary>
-            Specifies the parameter set of this method.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
-            <summary>
-            Specifies the parameter set of this method.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.String)">
-            <summary>
-            Specifies the parameter query string of this method.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithBody(System.String)">
-            <summary>
-            Adds a body to this request (POST, PUT, ..).
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithAuthentication(Google.Apis.Authentication.IAuthenticator)">
-            <summary>
-            Changes the request to use the specified authenticator.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.WithDeveloperKey(System.String)">
-            <summary>
-            Adds the developer key to this request.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.IRequest.ExecuteRequest">
-            <summary>
-            Executes the request and returns the response stream.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.WebDiscoveryDevice">
-            <summary>
-            WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IDiscoveryDevice">
-            <summary>
-            An interface for the fetching of discovery documents.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IDiscoveryDevice.Fetch">
-            <summary>
-            Fetches a discovery document.
-            </summary>
-            <returns>
-            A <see cref="T:System.String"/>
-            </returns>
-        </member>
-        <member name="M:Google.Apis.Discovery.WebDiscoveryDevice.Fetch">
-            <summary>
-            Fetches the discovery document from a Webserver using HttpWebRequest.
-            </summary>
-            <returns>
-            A <see cref="T:System.String"/>
-            </returns>
-        </member>
-        <member name="P:Google.Apis.Discovery.WebDiscoveryDevice.DiscoveryUri">
-            <summary>
-            The URI of the discovery document
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.WebDiscoveryDevice.TimeoutInSeconds">
-            <summary>
-            The fetch timeout of this request (in seconds)
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Util.Utilities">
-            <summary>
-            A class containing utility methods
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.GetValueAsNull``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
-            <summary>
-            Fetches an element from a dictionary in a safe way, returning null if there is no value present.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.GetValueAsStringListOrEmpty``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
-            <summary>
-            If key exists in data and is an IEnumerable will return each element converted to a string 
-            with ToString, or null. If key does not exist in data, is null or not an IEnumerable we will 
-            return the empty list.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.ThrowIfNull(System.Object,System.String)">
-            <summary>Extension method on object, which throws a ArgumentNullException if obj is null</summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.ThrowIfNullOrEmpty(System.String,System.String)">
-            <summary>
-            Throws an exception if the string is null or empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.ThrowIfNullOrEmpty``1(System.Collections.Generic.ICollection{``0},System.String)">
-            <summary>
-            Throws the collection is null or empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.AsReadOnly``2(System.Collections.Generic.IDictionary{``0,``1})">
-            <summary>
-            Returns a readonly variant of the given dictionary
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty(System.String)">
-            <summary>
-            Returns true when the string is null or empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsNotNullOrEmpty(System.String)">
-            <summary>
-            Returns true when the string is NOT null or empty
-            </summary>
-            <param name="str"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsNotNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
-            <summary>
-            Returns true when the collection is NOT null or empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Returns true when the enumerable is null or empty.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
-            <summary>
-            Returns true when the collection is null or empty
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.FindFieldByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
-            <summary>
-            Returns the first <see cref="T:System.CodeDom.CodeMemberProperty"/> with a 
-            name that matches the passed in name - or null if no match is found.
-            </summary>
-            <param name="coll">May not be null</param>
-            <param name="name">May not be null or empty</param>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.FindMemberByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
-            <summary>
-            Returns the first <see cref="T:System.CodeDom.CodeTypeMember"/> with a 
-            name that matches the passed in name - or null if no match is found.
-            </summary>
-            <param name="coll">May not be null</param>
-            <param name="name">May not be null or empty</param>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.FindTypeMemberByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
-            <summary>
-            Returns the first <see cref="T:System.CodeDom.CodeTypeDeclaration"/> with a 
-            name that matches the passed in name - or null if no match is found.
-            </summary>
-            <param name="coll">May not be null</param>
-            <param name="name">May not be null or empty</param>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.FindPropertyByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
-            <summary>
-            Returns the first <see cref="T:System.CodeDom.CodeMemberProperty"/> with a 
-            name that matches the passed in name - or Null if no match found.
-            </summary>
-            <param name="coll">May not be null</param>
-            <param name="name">May not be null or empty</param>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.GetCustomAttribute``1(System.Reflection.MemberInfo)">
-            <summary>
-            Returns the first matching custom attribute (or null) of the specified member
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.GetStringValue(System.Enum)">
-            <summary>
-            Returns the defined string value of an enum value
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.GetNonNullableType(System.Type)">
-            <summary>
-            Retrieves the underlying type if the specified type is a Nullable, or the type itself otherwise.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.ConvertToString(System.Object)">
-            <summary>
-            Tries to convert the specified object to a string. Uses custom type converters if available.
-            Returns null for a null object.
-            </summary>
-            <param name="o"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Apis.Util.Utilities.IsMonoRuntime">
-            <summary>
-            Please don't use this unless absolutely nessasery.
-            Returns if the current runtime is Mono, this is used to work around different behavior in the runtime.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.ParameterFactory">
-            <summary>
-            Abstract parameter factory.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ParameterFactory.GetParameter(Google.Apis.Discovery.DiscoveryVersion,System.Collections.Generic.KeyValuePair{System.String,System.Object})">
-            <summary>
-            Returns a parameter with the given values.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.ParameterFactory.BaseParameter">
-            <summary>
-            Abstract implementation of a parameter.
-            </summary>
-        </member>
         <member name="T:Google.Apis.Discovery.IParameter">
             <summary>Represents a parameter for a method. </summary>
         </member>
@@ -363,6 +67,153 @@
             A list of valid enum value descriptions. (Only for enum values)
             </summary>
         </member>
+        <member name="T:Google.Apis.Discovery.CachedWebDiscoveryDevice">
+            <summary>
+            WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
+            Caches discovery files locally to prevent unnecessary requests to the discovery server
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IDiscoveryDevice">
+            <summary>
+            An interface for the fetching of discovery documents.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IDiscoveryDevice.Fetch">
+            <summary>
+            Fetches a discovery document.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.#ctor(System.Uri)">
+            <summary>
+            Creates a new cached web discovery device with the default cache folder
+            </summary>
+            <param name="discoveryUri"></param>
+        </member>
+        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.#ctor(System.Uri,System.IO.DirectoryInfo)">
+            <summary>
+            Creates a new cached web discovery device
+            </summary>
+            <param name="discoveryUri"></param>
+            <param name="cacheDirectory"></param>
+        </member>
+        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.Fetch">
+            <summary>
+            Fetches the discovery document from either a local cache if it exsits otherwise using
+            a WebDiscoveryDecivce 
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.GetCacheFile">
+            <summary>
+            Retrieves a file info of the cache file used for this device
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.DiscoveryUri">
+            <summary>
+            The URI from which the data is fetched
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.CacheDuration">
+            <summary>
+            Defines the cache duration in seconds
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.CacheDirectory">
+            <summary>
+            DirectoryInfo of the cache directory
+            Must be a valid directory
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Testing.MoreAsserts">
+            <summary>
+            Assertion helper methods
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Testing.MoreAsserts.ContentsEqualAndInOrder(System.Collections.IEnumerable,System.Collections.IEnumerable)">
+            <summary>
+            Asserts whether both enumerables have the equal content, and whether it is in the same order
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Testing.MoreAsserts.IsEmpty``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Asserts that the list is empty
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Testing.MoreAsserts.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Asserts that the enumerable is empty
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IRequestExecutor">
+            <summary>
+            Implementors of this interface are able to execute arbitory requests against a service given the 
+            resource, method, body and parameters
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IRequestExecutor.ExecuteRequest(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a request with the specified parameters
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.ISchemaAwareRequestExecutor">
+            <summary>
+            Implementors of this interface are able to execute arbitory requests against a service given the 
+            resource, method, body and parameters. Aswell as serilising and deserilising Json => objects
+            and visa versa.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ISchemaAwareRequestExecutor.ObjectToJson(System.Object)">
+            <summary>
+            Serializes an object into a json representation
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ISchemaAwareRequestExecutor.JsonToObject``1(System.IO.Stream)">
+            <summary>
+            Deserializes a json document into the specified class
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Authentication.IAuthenticator">
+            <summary>
+            Classes that implement this interface will know how 
+            a WebRequest with the approreate authentication embed in the request.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Authentication.IAuthenticator.CreateHttpWebRequest(System.String,System.Uri)">
+            <summary>
+            Creates the final Web Request which uses the current authentification
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Features">
+            <summary>
+            Specifies a list of features which can be defined within the discovery document of a service
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Discovery.Features.LegacyDataResponse">
+            <summary>
+            If this feature is specified, then the data of a response is encapsulated within a "data" resource
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.ParameterFactory">
+            <summary>
+            Abstract parameter factory.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ParameterFactory.GetParameter(Google.Apis.Discovery.DiscoveryVersion,System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Returns a parameter with the given values.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.ParameterFactory.BaseParameter">
+            <summary>
+            Abstract implementation of a parameter.
+            </summary>
+        </member>
         <member name="M:Google.Apis.Discovery.ParameterFactory.BaseParameter.#ctor(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
             <summary>
             Creates a new parameter with the specified name and value.
@@ -383,6 +234,55 @@
             A discovery v1.0 implementation of a parameter.
             </summary>
         </member>
+        <member name="T:Google.Apis.Discovery.WebDiscoveryDevice">
+            <summary>
+            WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.WebDiscoveryDevice.Fetch">
+            <summary>
+            Fetches the discovery document from a Webserver using HttpWebRequest.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="P:Google.Apis.Discovery.WebDiscoveryDevice.DiscoveryUri">
+            <summary>
+            The URI of the discovery document
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.WebDiscoveryDevice.TimeoutInSeconds">
+            <summary>
+            The fetch timeout of this request (in seconds)
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchema">
+            <summary>
+            A future (to be resolved) JsonSchema
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchema.#ctor(System.String)">
+            <summary>
+            Creates a new Future Json Schema with the specified ID
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchema.Resolve(Newtonsoft.Json.Schema.JsonSchema)">
+            <summary>
+            Resolves the current schema by using the specified schema
+            </summary>
+            <param name="schema"></param>
+        </member>
+        <member name="P:Google.Apis.Discovery.Schema.FutureJsonSchema.Resolved">
+            <summary>
+            Determines whether this schema has been resolved
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Authentication.OAuth2LeggedAuthenticator">
+            <summary>
+            A two legged OAuth authenticator
+            </summary>
+        </member>
         <member name="T:Google.Apis.Authentication.OAuthAuthenticator">
             <summary>
             The abstract class used for all OAuth authenticators
@@ -395,17 +295,6 @@
             authentication
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:Google.Apis.Authentication.IAuthenticator">
-            <summary>
-            Classes that implement this interface will know how 
-            a WebRequest with the approreate authentication embed in the request.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Authentication.IAuthenticator.CreateHttpWebRequest(System.String,System.Uri)">
-            <summary>
-            Creates the final Web Request which uses the current authentification
-            </summary>
         </member>
         <member name="M:Google.Apis.Authentication.Authenticator.CreateHttpWebRequest(System.String,System.Uri)">
             <summary>
@@ -452,45 +341,32 @@
             The Consumer Secret of OAuth
             </summary>
         </member>
-        <member name="T:Google.Apis.Tests.Apis.Requests.MockParameter">
+        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            Mock class for testing purposes
+             a constructor for OpenAuthentication login use cases
             </summary>
+            <param name="consumerKey">the consumerKey to use</param>
+            <param name="consumerSecret">the consumerSecret to use</param>
+            <param name="user">the username to use</param>
+            <param name="domain">the domain to use</param>
+            <returns></returns>
         </member>
-        <member name="T:Google.Apis.Requests.IResponse">
+        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.ApplyAuthenticationToRequest(System.Net.HttpWebRequest)">
             <summary>
-            Response to a request
+            Takes an existing httpwebrequest and modifies its headers according to
+            the authentication system used.
             </summary>
+            <param name="request"></param>
+            <returns></returns>
         </member>
-        <member name="P:Google.Apis.Requests.IResponse.Error">
+        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.ApplyAuthenticationToUri(System.Uri)">
             <summary>
-            All errors the server returned along with the request. null when the request succeded.
+            Takes an existing httpwebrequest and modifies its uri according to 
+            the authentication system used. Only overridden in 2leggedoauth case
+            Here we need to add the xoauthrequestor parameter
             </summary>
-        </member>
-        <member name="T:Google.Apis.Util.Repeatable`1">
-            <summary>
-            Class which allows you to both pass a single object, as well as an array, as a parameter value.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Repeatable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Creates a repeatable value.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(`0)~Google.Apis.Util.Repeatable{`0}">
-            <summary>
-            Converts the single element into a repeatable.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(`0[])~Google.Apis.Util.Repeatable{`0}">
-            <summary>
-            Converts a number of elements into a repeatable.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(System.Collections.Generic.List{`0})~Google.Apis.Util.Repeatable{`0}">
-            <summary>
-            Converts a number of elements into a repeatable.
-            </summary>
+            <param name="source">the original uri</param>
+            <returns></returns>
         </member>
         <member name="T:Google.Apis.Utilities">
             <summary>String utilities
@@ -615,237 +491,6 @@
         </member>
         <member name="P:Google.Apis.Utilities.EmptyDate">
             <summary>returns a blank emptyDate. That's the default for an empty string date</summary> 
-        </member>
-        <member name="T:Google.Apis.Authentication.AuthenticatorFactory">
-            <summary>
-            A simple factory class for producing <code>IAuthenticator</code>
-            This can be used as with a singleton pattern with GetInstance.
-            Or can be constructed and passed around. Either way you must
-            RegisterAuthenticator before you can GetRegisteredAuthenticator
-            </summary>
-            <seealso cref="T:Google.Apis.Authentication.IAuthenticator"/> 
-        </member>
-        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.GetInstance">
-            <summary>
-            Returns the default instance of this factory
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.RegisterAuthenticator(Google.Apis.Authentication.AuthenticatorFactory.CreateAuthenticator)">
-            <summary>
-            The delegate passed in will be used to construct IAuthenticators in multiple contexts. If
-            you do not construct a new IAuthenticator on each call please ensure you are fetching old ones from 
-            the correct location.
-            </summary>
-            <example>
-                <code>
-                    AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new YourAuthenticator());
-                    AuthenticatorFactory.GetInstance().RegisterAuthenticator(delegate(){return new YourAuthenticator()});
-                </code>
-            </example>
-        </member>
-        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.GetRegisteredAuthenticator">
-            <summary>
-            Returns the currently registered authenticator
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Google.Apis.Requests.ReturnType">
-            <summary>
-            The content return type of a request
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Util.StringValueAttribute">
-            <summary>
-            Defines an attribute containing a string representation of the member
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Util.StringValueAttribute.#ctor(System.String)">
-            <summary>
-            Creates a new StringValue attribute with the specified text
-            </summary>
-            <param name="text"></param>
-        </member>
-        <member name="P:Google.Apis.Util.StringValueAttribute.Text">
-            <summary>
-            The text which belongs to this member
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Tests.Apis.Requests.MockMethod">
-            <summary>
-            A mock method for testing purposes.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.JSON.IJsonSerializer">
-            <summary>
-            Represents a Json Serializer
-            </summary>
-        </member>
-        <member name="T:Google.Apis.ISerializer">
-            <summary>
-            Interface for serialization and deserialization
-            </summary>
-        </member>
-        <member name="M:Google.Apis.ISerializer.Serialize(System.Object,System.IO.Stream)">
-            <summary>
-            Serializes the specified object into a Stream
-            </summary>
-        </member>
-        <member name="M:Google.Apis.ISerializer.Serialize(System.Object)">
-            <summary>
-            Serializes the specified object into a string
-            </summary>
-        </member>
-        <member name="M:Google.Apis.ISerializer.Deserialize``1(System.String)">
-            <summary>
-            Deserializes the string into an object
-            </summary>
-        </member>
-        <member name="M:Google.Apis.ISerializer.Deserialize``1(System.IO.Stream)">
-            <summary>
-            Deserializes the stream into an object
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Scope">
-            <summary>
-            Represents an authentication scope used in a discovery document.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.Scope.ToString">
-            <summary>
-            Returns the ID of this scope (if available, otherwise the class name).
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.Scope.ID">
-            <summary>
-            The ID/Url of this scope.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.Scope.Description">
-            <summary>
-            The description of this scope.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.FactoryParameterV1_0">
-            <summary>
-            Defines the factory parameters which are used to create a v1.0 Service
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.BaseFactoryParameters">
-            <summary>
-            Defines the base factory parameters which are used to create a service
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IFactoryParameter">
-            <summary>
-            A marker interface, different versions of discovery use different 
-            IFactoryParameters, you will need to pass in one that matches the
-            version of discovery you use.
-            </summary>
-            <seealso cref="!:FactoryParmeterV0_3"/>
-        </member>
-        <member name="F:Google.Apis.Discovery.BaseFactoryParameters.DefaultServerUrl">
-            <summary>
-            The default server URL used
-            Points to the Google API repository
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor">
-            <summary>
-            Creates a new factory parameter for a service
-            Sets the server url to the default google url
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.Uri)">
-            <summary>
-            Creates a new factory parameter by splitting the specified service URI into ServerUrl and BasePath
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.String)">
-            <summary>
-            Creates a new factory parameter for a service
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.String,System.String)">
-            <summary>
-            Creates a new factory parameter for a service
-            </summary>
-            <param name="serverUrl">URL of this service</param>
-            <param name="basePath">Base path to the service</param>
-        </member>
-        <member name="P:Google.Apis.Discovery.BaseFactoryParameters.ServerUrl">
-            <summary>
-            The absolute server URL
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.BaseFactoryParameters.BasePath">
-            <summary>
-            The relative base path
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.Uri)">
-            <summary>
-            Creates a new v1.0 factory parameter by splitting the specified service URI into ServerUrl and BasePath
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.String)">
-            <summary>
-            Creates a parameter set for a v1.0 service
-            </summary>
-            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.String,System.String)">
-            <summary>
-            Creates a parameter set for a v1.0 service
-            </summary>
-            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-            <param name="basePath">The relative path to the service on the server</param>
-        </member>
-        <member name="T:Google.Apis.Discovery.FactoryParameterV0_3">
-            <summary>
-              Defines the factory parameters which are used to create a v0.3 Service
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.Uri)">
-            <summary>
-            Creates a new v0.3 factory parameter by splitting the specified service URI into ServerUrl and BasePath
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.String)">
-            <summary>
-            Creates a parameter set for a v0.3 service
-            </summary>
-            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        </member>
-        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.String,System.String)">
-            <summary>
-            Creates a parameter set for a v0.3 service
-            </summary>
-            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-            <param name="basePath">The relative path to the service on the server</param>
-        </member>
-        <member name="T:Google.Apis.Discovery.ServiceFactoryDiscoveryV1_0">
-            <summary>
-            A Factory used by discovery to create v1.0 Services
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.BaseServiceFactory">
-            <summary>
-              An abstract version independent implementation of a service factory
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IServiceFactory">
-            <summary>
-            A IServiceFactory will return the IService for the specified version.
-            you should use ServiceFactory.CreateServiceFactory to get an
-            implementation of this interface for the given version of discovery you use.
-            </summary>
-            <seealso cref="T:Google.Apis.Discovery.ServiceFactory"/>
-        </member>
-        <member name="T:Google.Apis.Discovery.ServiceFactoryDiscoveryV0_3">
-            <summary>
-              A Factory used by discovery to create v0.3 Services
-            </summary>
         </member>
         <member name="T:Google.Apis.OAuthUtil">
             <summary>
@@ -989,581 +634,20 @@
             <param name="httpMethod">The http method</param>
             <returns>The OAuth authorization header</returns>
         </member>
-        <member name="T:Google.Apis.Discovery.IService">
+        <member name="T:Google.Apis.Requests.ReturnType">
             <summary>
-            Represent a specific version of a service as defined in Google Api Discovery Document.
-            Has a collection of IResources and ISchemas
+            The content return type of a request
             </summary>
-            <seealso cref="T:Google.Apis.Discovery.IResource"/>
-            <seealso cref="T:Google.Apis.Discovery.Schema.ISchema"/>
         </member>
-        <member name="T:Google.Apis.Discovery.IResourceContainer">
+        <member name="T:Google.Apis.Authentication.NullAuthenticator">
             <summary>
-            Contains zero to many IResources, both servicess and resources may have
-            child resources so both implement this interface.
+            A placeholder Authenticator which adds no authentication to the request. 
             </summary>
-            <seealso cref="T:Google.Apis.Discovery.IResource"/>
-            <seealso cref="T:Google.Apis.Discovery.IService"/>
         </member>
-        <member name="P:Google.Apis.Discovery.IResourceContainer.Name">
-            <summary>The name of this API.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IResourceContainer.Resources">
-            <summary>The resources in this API.</summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IService.CreateRequest(System.String,System.String)">
-            <summary>
-            Creates a Request Object based on the HTTP Method Type.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IService.SerializeRequest(System.Object)">
-            <summary>
-            Serializes the specified object into the format used by this service
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IService.DeserializeResponse``1(System.IO.Stream)">
-            <summary>
-            Deserializes the stream defined by the format used by this service into a .NET object
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IService.HasFeature(Google.Apis.Discovery.Features)">
-            <summary>
-            Returns true if this feature is defined for this service
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Version">
-            <summary> The version of this service </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.BaseUri">
-            <summary>
-            Path where the service resides
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.RpcUri">
-            <summary> 
-            The Rpc URI of this service. 
-            This field is no longer available with discovery version v1 
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Id">
-            <summary>The id of this API.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Title">
-            <summary>
-            Title of this API
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Labels">
-            <summary>Labels for the status of this API, such as labs or deprecated.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Features">
-            <summary>A list of supported features for this API. Never null</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Scopes">
-            <summary>
-            A dictionary of OAuth2.0 scopes used within this service. 
-            The key represents the scope id/url, the value gives additional information about this scope. 
-            Never null.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.DocumentationLink">
-            <summary>A link to human readable documentation for the API.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Protocol">
-            <summary>The protocol described by this document.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Description">
-            <summary>The description of this API.</summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.GZipEnabled">
-            <summary>
-            True if GZip is supported by the remote server and should be enabled
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.DiscoveryVersion">
-            <summary>The version of the discovery that defined this service. </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Schemas">
-            <summary>A dictionary containing all the schemas defined in this Service </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.IService.Serializer">
-            <summary>
-            Defines the serialisator to use for requests and responses
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.StringDiscoveryDevice">
-            <summary>
-            Hosts the DiscoveryDocument in a user defined stream.
-            
-            Handy for testing.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.StringDiscoveryDevice.Fetch">
-            <summary>
-            Fetches the Discovery Document from an user supplied string
-            </summary>
-            <returns>
-            A <see cref="T:System.String"/>
-            </returns>
-        </member>
-        <member name="P:Google.Apis.Discovery.StringDiscoveryDevice.Document">
-            <summary>
-            The discovery document.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Util.StandardResponse`1">
-            <summary>
-            Calls to Google Api return StandardResponses as Json with
-            two properties Data, being the return type of the method called
-            and Error, being any errors that occure.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Util.StandardResponse`1.Data">
-            <summary>May be null if call failed.</summary>
-        </member>
-        <member name="P:Google.Apis.Util.StandardResponse`1.Error">
-            <summary>May be null if call succedded.</summary>
-        </member>
-        <member name="T:Google.Apis.Requests.RequestError">
-            <summary>
-            Collection of server errors
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.RequestError.Errors">
-            <summary>
-            Contains a list of all errors
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.RequestError.Code">
-            <summary>
-            The error code returned
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.RequestError.Message">
-            <summary>
-            The error message returned
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Requests.ParameterCollection">
-            <summary>
-            A collection of parameters (key value pairs). May contain duplicate keys.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.ParameterCollection.Add(System.String,System.String)">
-            <summary>
-            Adds a single parameter to this collection.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.ParameterCollection.ContainsKey(System.String)">
-            <summary>
-            Returns true if this parameter is set within the collection.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.ParameterCollection.TryGetValue(System.String,System.String@)">
-            <summary>
-            Tries to find the a key within the specified key value collection. Returns true if the key was found.
-            If a pair was found the out parameter value will contain the value of that pair.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.ParameterCollection.GetFirstMatch(System.String)">
-            <summary>
-            Returns the value of the first matching key, or throws a KeyNotFoundException if the parameter is not
-            present within the collection.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Requests.ParameterCollection.GetAllMatches(System.String)">
-            <summary>
-            Returns all matches for the specified key. May return an empty enumeration if the key is not present.
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Google.Apis.Requests.ParameterCollection.FromQueryString(System.String)" -->
-        <member name="M:Google.Apis.Requests.ParameterCollection.FromDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
-            <summary>
-            Creates a parameter collection from the specified dictionary.
-            If the value is an enumerable, a parameter pair will be added for each value.
-            Otherwise the value will be converted into a string using the .ToString() method.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.ParameterCollection.Item(System.String)">
-            <summary>
-            Returns all matches for the specified key. May return an empty enumeration if the key is not present.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Schema.ISchema">
-            <summary>
-            Represents one child of the schema node in the discovery document.
-            This represents one top level DataTransferOjbect which will form 
-            part of the request or response to the service.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.Schema.ISchema.Name">
-            <summary>
-            The name of this schema
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.Schema.ISchema.Id">
-            <summary>
-            The ID of this schema
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.Schema.ISchema.SchemaDetails">
-            <summary>
-            The inner details of this schema
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Testing.MockRequest">
-            <summary>
-            Mock request for testing purposes
-            </summary>
-        </member>
-        <member name="T:Google.Apis.MethodValidator">
-            <summary>
-            Logic for validating that a method is correct.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.MethodValidator.ValidateAllParameters">
-            <summary>
-            Validates all the parameters provided.
-            </summary>
-            <returns>
-            A <see cref="T:System.Boolean"/>
-            </returns>
-        </member>
-        <member name="M:Google.Apis.MethodValidator.ValidateParameter(Google.Apis.Discovery.IParameter)">
-            <summary>
-            Validates a parameter.
-            
-            Checks to see if it is required, or if it needs regex validation.
-            </summary>
-            <param name="param">
-            A <see cref="T:Google.Apis.Discovery.IParameter"/>
-            </param>
-            <returns>
-            A <see cref="T:System.Boolean"/>
-            </returns>
-        </member>
-        <member name="M:Google.Apis.MethodValidator.ValidateRegex(Google.Apis.Discovery.IParameter,System.String)">
-            <summary>
-            Validates a parameter value against the methods regex.
-            </summary>
-            <param name="param">
-            A <see cref="T:Google.Apis.Discovery.IParameter"/>
-            </param>
-            <param name="paramValue">
-            A <see cref="T:System.String"/>
-            </param>
-            <returns>
-            A <see cref="T:System.Boolean"/>
-            </returns>
-        </member>
-        <member name="M:Google.Apis.MethodValidator.ValidateEnum(Google.Apis.Discovery.IParameter,System.String)">
-            <summary>
-            Validates a parameter value against those enumeration values allowed by the method.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.MethodValidator.CurrentMethod">
-            <summary>
-            The method which is currently being validated.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.MethodValidator.Parameters">
-            <summary>
-            The parameters of the method.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.ServiceFactory">
-            <summary>
-            An abstract and static factory which can be used to generate
-            the individual service factory required for a specific discovery version
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ServiceFactory.CreateServiceFactory(System.IO.Stream,Google.Apis.Discovery.DiscoveryVersion,Google.Apis.Discovery.IFactoryParameter)">
-            <summary>
-            Creates a service factory for the discovery version requested, with the given parameters
-            </summary>
-            <param name="discovery">A stream which contains information about the service to construct</param>
-            <param name="version">The discovery version to use</param>
-            <param name="parameters">
-            A set of (optional) factory parameters used to construct the service. 
-            If this parameter is null, then a default set of FactoryParameters is created
-            </param>
-        </member>
-        <member name="M:Google.Apis.Discovery.ServiceFactory.CreateServiceFactory(System.IO.Stream,Google.Apis.Discovery.DiscoveryVersion)">
-            <summary>
-            Creates a service factory for the discovery version requested
-            </summary>
-            <param name="discovery">A stream which contains information about the service to construct</param>
-            <param name="version">The discovery version to use</param>
-        </member>
-        <member name="T:Google.Apis.Requests.SingleError">
-            <summary>
-            A single server error
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.SingleError.Domain">
-            <summary>
-            The domain in which the error occured
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.SingleError.Reason">
-            <summary>
-            The reason the error was thrown
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.SingleError.Message">
-            <summary>
-            The error message
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.SingleError.LocationType">
-            <summary>
-            Type of the location
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Requests.SingleError.Location">
-            <summary>
-            Location where the error was thrown
-            </summary>
-        </member>
-        <member name="T:Google.Apis.JSON.NewtonsoftJsonSerializer">
-            <summary>
-            Class for serialization and deserialization of Json documents using the Newtonsoft Library
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchema">
-            <summary>
-            A future (to be resolved) JsonSchema
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchema.#ctor(System.String)">
-            <summary>
-            Creates a new Future Json Schema with the specified ID
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchema.Resolve(Newtonsoft.Json.Schema.JsonSchema)">
-            <summary>
-            Resolves the current schema by using the specified schema
-            </summary>
-            <param name="schema"></param>
-        </member>
-        <member name="P:Google.Apis.Discovery.Schema.FutureJsonSchema.Resolved">
-            <summary>
-            Determines whether this schema has been resolved
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver">
-            <summary>
-            Resolves FutureJsonSchemas
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver.ResolveAndVerify">
-            <summary>
-            Resolves the loaded schemas and throws an exception on unresolved schemas
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver.FutureAwareList">
-            <summary>
-            A list of (future) json schemas
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IRequestExecutor">
-            <summary>
-            Implementors of this interface are able to execute arbitory requests against a service given the 
-            resource, method, body and parameters
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IRequestExecutor.ExecuteRequest(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
-            <summary>
-            Executes a request with the specified parameters
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.ISchemaAwareRequestExecutor">
-            <summary>
-            Implementors of this interface are able to execute arbitory requests against a service given the 
-            resource, method, body and parameters. Aswell as serilising and deserilising Json => objects
-            and visa versa.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ISchemaAwareRequestExecutor.ObjectToJson(System.Object)">
-            <summary>
-            Serializes an object into a json representation
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ISchemaAwareRequestExecutor.JsonToObject``1(System.IO.Stream)">
-            <summary>
-            Deserializes a json document into the specified class
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.Features">
-            <summary>
-            Specifies a list of features which can be defined within the discovery document of a service
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Discovery.Features.LegacyDataResponse">
-            <summary>
-            If this feature is specified, then the data of a response is encapsulated within a "data" resource
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.StreamDiscoveryDevice">
-            <summary>
-            The discovery document will be passed in as a Stream.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.StreamDiscoveryDevice.Fetch">
-            <summary>
-            Fetches the discovery document from a user defined stream.
-            </summary>
-            <returns>
-            A <see cref="T:System.String"/>
-            </returns>
-        </member>
-        <member name="P:Google.Apis.Discovery.StreamDiscoveryDevice.DiscoveryStream">
-            <summary>
-            The stream that will contain the discovery data.
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Authentication.OAuth3LeggedAuthenticator">
-            <summary>
-            A three legged OAuth authenticator
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Authentication.OAuth3LeggedAuthenticator.#ctor(System.String,System.String,System.String,System.String)">
-            <summary>
-             a constructor for OpenAuthentication login use cases using 3 legged OAuth
-            </summary>
-            <param name="consumerKey">the consumerKey to use</param>
-            <param name="consumerSecret">the consumerSecret to use</param>
-            <param name="token">The token to be used</param>
-            <param name="tokenSecret">The tokenSecret to be used</param>
-        </member>
-        <member name="M:Google.Apis.Authentication.OAuth3LeggedAuthenticator.ApplyAuthenticationToRequest(System.Net.HttpWebRequest)">
-            <summary>
-            Takes an existing httpwebrequest and modifies its headers according to
-            the authentication system used.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Authentication.OAuth3LeggedAuthenticator.Token">
-            <summary>
-            returns the Token for OAuth
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Google.Apis.Authentication.OAuth3LeggedAuthenticator.TokenSecret">
-            <summary>
-            returns the TokenSecret for OAuth
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Google.Apis.Discovery.Schema.SchemaImpl">
-            <summary>
-            An implementation of a schema
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.Schema.SchemaImpl.#ctor(System.String,System.String,Google.Apis.Discovery.Schema.FutureJsonSchemaResolver)">
-            <summary>
-            Creates a new instance of this schema implementation
-            </summary>
-            <param name="name"></param>
-            <param name="jsonSchemaDefinition"></param>
-            <param name="resolver"></param>
-        </member>
-        <member name="T:Google.Apis.Json.JsonDictionary">
-            <summary>
-            Dictionary used for Json parsing
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue(System.String)">
-            <summary>
-            Returns the value from the dictionary, or, if not set, throws an ArgumentException
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue``1(System.String)">
-            <summary>
-            Returns the value from the dictionary and
-            converts it to the specified [T]ype. 
-            Throws an ArgumentException if the key is not set within the dictionary, 
-            or if the value is not of the requested type
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.IDiscoveryService">
-            <summary>
-            Knows how to get the IService of a given version and discoveryVersion.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IDiscoveryService.GetService(System.String,Google.Apis.Discovery.DiscoveryVersion,Google.Apis.Discovery.IFactoryParameter)">
-            <summary>
-            Creates an instance of a service by using discovery with the specified parameters
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.IDiscoveryService.GetService(System.String,Google.Apis.Discovery.DiscoveryVersion)">
-            <summary>
-            Creates an instance of a service by using discovery
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.BaseService">
-            <summary>
-            Represents the basic implementation of a service
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Discovery.BaseService.SerializationMethodName">
-            <summary>
-            Name of the method used for serialization (object -> json)
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Discovery.BaseService.DeserializationMethodName">
-            <summary>
-            Name of the method used for deserialization (json -> object)
-            </summary>
-        </member>
-        <member name="F:Google.Apis.Discovery.BaseService.SerializerPropertyName">
-            <summary>
-            Name of the property defining the ISerializer
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseService.CreateRequest(System.String,System.String)">
-            <summary>
-            Creates a Request Object based on the HTTP Method Type.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseService.LoadScopes">
-            <summary>
-            Loads the set of scopes from the json information dictionary and parses it into a dictionary.
-            Always returns a valid dictionary.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseService.GetResource(Google.Apis.Discovery.IResourceContainer,System.String)">
-            <summary>
-            Retrieves a resource using the full resource name.
-            Example:
-                TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.BaseService.CreateResource(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
-            <summary>
-            Creates a version specific resource containing 
-            out of the specified KeyValuePair
-            </summary>
-            <param name="kvp"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Google.Apis.Discovery.ServiceV1_0">
-            <summary>
-            Represents a Service as defined in Discovery V1.0
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ServiceV1_0.#ctor(System.String,System.String,Google.Apis.Discovery.FactoryParameterV1_0,Google.Apis.Json.JsonDictionary)">
-            <summary>
-            Creates a v1.0 service
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.ServiceV0_3">
-            <summary>
-            Represents a Service as defined in Discovery V0.3
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.ServiceV0_3.#ctor(System.String,System.String,Google.Apis.Discovery.FactoryParameterV0_3,Google.Apis.Json.JsonDictionary)">
+        <member name="T:Google.Apis.Authentication.NullAuthenticator.NullAuthenticatorImpl">
             <summary>
-            Creates a v0.3 service
+            We use this to hide the fact that NullAuthenticator uses Authenticator behind the scenes
+            This is particularly useful as we are setting the application name to null. 
             </summary>
         </member>
         <member name="T:Google.Apis.Util.ReadOnlyDictionary`2">
@@ -1862,6 +946,514 @@
             The property is retrieved and key does not exist in the collection.
             </exception>
         </member>
+        <member name="T:Google.Apis.Testing.MockRequest">
+            <summary>
+            Mock request for testing purposes
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Requests.IRequest">
+            <summary>
+            Implementors will be able to make a request to a service.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.On(System.String)">
+            <summary>
+            Specifies the RPC name to use.
+            </summary>
+            <param name="rpcName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.Returning(Google.Apis.Requests.ReturnType)">
+            <summary>
+            Specifies the return type of this method.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Specifies the parameter set of this method.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Specifies the parameter set of this method.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithParameters(System.String)">
+            <summary>
+            Specifies the parameter query string of this method.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithBody(System.String)">
+            <summary>
+            Adds a body to this request (POST, PUT, ..).
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithAuthentication(Google.Apis.Authentication.IAuthenticator)">
+            <summary>
+            Changes the request to use the specified authenticator.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.WithDeveloperKey(System.String)">
+            <summary>
+            Adds the developer key to this request.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.IRequest.ExecuteRequest">
+            <summary>
+            Executes the request and returns the response stream.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.FactoryParameterV1_0">
+            <summary>
+            Defines the factory parameters which are used to create a v1.0 Service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.BaseFactoryParameters">
+            <summary>
+            Defines the base factory parameters which are used to create a service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IFactoryParameter">
+            <summary>
+            A marker interface, different versions of discovery use different 
+            IFactoryParameters, you will need to pass in one that matches the
+            version of discovery you use.
+            </summary>
+            <seealso cref="!:FactoryParmeterV0_3"/>
+        </member>
+        <member name="F:Google.Apis.Discovery.BaseFactoryParameters.DefaultServerUrl">
+            <summary>
+            The default server URL used
+            Points to the Google API repository
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor">
+            <summary>
+            Creates a new factory parameter for a service
+            Sets the server url to the default google url
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.Uri)">
+            <summary>
+            Creates a new factory parameter by splitting the specified service URI into ServerUrl and BasePath
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.String)">
+            <summary>
+            Creates a new factory parameter for a service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseFactoryParameters.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new factory parameter for a service
+            </summary>
+            <param name="serverUrl">URL of this service</param>
+            <param name="basePath">Base path to the service</param>
+        </member>
+        <member name="P:Google.Apis.Discovery.BaseFactoryParameters.ServerUrl">
+            <summary>
+            The absolute server URL
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.BaseFactoryParameters.BasePath">
+            <summary>
+            The relative base path
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.Uri)">
+            <summary>
+            Creates a new v1.0 factory parameter by splitting the specified service URI into ServerUrl and BasePath
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.String)">
+            <summary>
+            Creates a parameter set for a v1.0 service
+            </summary>
+            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV1_0.#ctor(System.String,System.String)">
+            <summary>
+            Creates a parameter set for a v1.0 service
+            </summary>
+            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
+            <param name="basePath">The relative path to the service on the server</param>
+        </member>
+        <member name="T:Google.Apis.Discovery.FactoryParameterV0_3">
+            <summary>
+              Defines the factory parameters which are used to create a v0.3 Service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.Uri)">
+            <summary>
+            Creates a new v0.3 factory parameter by splitting the specified service URI into ServerUrl and BasePath
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.String)">
+            <summary>
+            Creates a parameter set for a v0.3 service
+            </summary>
+            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
+        </member>
+        <member name="M:Google.Apis.Discovery.FactoryParameterV0_3.#ctor(System.String,System.String)">
+            <summary>
+            Creates a parameter set for a v0.3 service
+            </summary>
+            <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
+            <param name="basePath">The relative path to the service on the server</param>
+        </member>
+        <member name="T:Google.Apis.Discovery.ServiceFactoryDiscoveryV1_0">
+            <summary>
+            A Factory used by discovery to create v1.0 Services
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.BaseServiceFactory">
+            <summary>
+              An abstract version independent implementation of a service factory
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IServiceFactory">
+            <summary>
+            A IServiceFactory will return the IService for the specified version.
+            you should use ServiceFactory.CreateServiceFactory to get an
+            implementation of this interface for the given version of discovery you use.
+            </summary>
+            <seealso cref="T:Google.Apis.Discovery.ServiceFactory"/>
+        </member>
+        <member name="T:Google.Apis.Discovery.ServiceFactoryDiscoveryV0_3">
+            <summary>
+              A Factory used by discovery to create v0.3 Services
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.BaseService">
+            <summary>
+            Represents the basic implementation of a service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IService">
+            <summary>
+            Represent a specific version of a service as defined in Google Api Discovery Document.
+            Has a collection of IResources and ISchemas
+            </summary>
+            <seealso cref="T:Google.Apis.Discovery.IResource"/>
+            <seealso cref="T:Google.Apis.Discovery.Schema.ISchema"/>
+        </member>
+        <member name="T:Google.Apis.Discovery.IResourceContainer">
+            <summary>
+            Contains zero to many IResources, both servicess and resources may have
+            child resources so both implement this interface.
+            </summary>
+            <seealso cref="T:Google.Apis.Discovery.IResource"/>
+            <seealso cref="T:Google.Apis.Discovery.IService"/>
+        </member>
+        <member name="P:Google.Apis.Discovery.IResourceContainer.Name">
+            <summary>The name of this API.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IResourceContainer.Resources">
+            <summary>The resources in this API.</summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IService.CreateRequest(System.String,System.String)">
+            <summary>
+            Creates a Request Object based on the HTTP Method Type.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IService.SerializeRequest(System.Object)">
+            <summary>
+            Serializes the specified object into the format used by this service
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IService.DeserializeResponse``1(System.IO.Stream)">
+            <summary>
+            Deserializes the stream defined by the format used by this service into a .NET object
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IService.HasFeature(Google.Apis.Discovery.Features)">
+            <summary>
+            Returns true if this feature is defined for this service
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Version">
+            <summary> The version of this service </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.BaseUri">
+            <summary>
+            Path where the service resides
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.RpcUri">
+            <summary> 
+            The Rpc URI of this service. 
+            This field is no longer available with discovery version v1 
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Id">
+            <summary>The id of this API.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Title">
+            <summary>
+            Title of this API
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Labels">
+            <summary>Labels for the status of this API, such as labs or deprecated.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Features">
+            <summary>A list of supported features for this API. Never null</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Scopes">
+            <summary>
+            A dictionary of OAuth2.0 scopes used within this service. 
+            The key represents the scope id/url, the value gives additional information about this scope. 
+            Never null.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.DocumentationLink">
+            <summary>A link to human readable documentation for the API.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Protocol">
+            <summary>The protocol described by this document.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Description">
+            <summary>The description of this API.</summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.GZipEnabled">
+            <summary>
+            True if GZip is supported by the remote server and should be enabled
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.DiscoveryVersion">
+            <summary>The version of the discovery that defined this service. </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Schemas">
+            <summary>A dictionary containing all the schemas defined in this Service </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IService.Serializer">
+            <summary>
+            Defines the serialisator to use for requests and responses
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Discovery.BaseService.SerializationMethodName">
+            <summary>
+            Name of the method used for serialization (object -> json)
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Discovery.BaseService.DeserializationMethodName">
+            <summary>
+            Name of the method used for deserialization (json -> object)
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Discovery.BaseService.SerializerPropertyName">
+            <summary>
+            Name of the property defining the ISerializer
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseService.CreateRequest(System.String,System.String)">
+            <summary>
+            Creates a Request Object based on the HTTP Method Type.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseService.LoadScopes">
+            <summary>
+            Loads the set of scopes from the json information dictionary and parses it into a dictionary.
+            Always returns a valid dictionary.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseService.GetResource(Google.Apis.Discovery.IResourceContainer,System.String)">
+            <summary>
+            Retrieves a resource using the full resource name.
+            Example:
+                TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.BaseService.CreateResource(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Creates a version specific resource containing 
+            out of the specified KeyValuePair
+            </summary>
+            <param name="kvp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Google.Apis.Discovery.ServiceV1_0">
+            <summary>
+            Represents a Service as defined in Discovery V1.0
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ServiceV1_0.#ctor(System.String,System.String,Google.Apis.Discovery.FactoryParameterV1_0,Google.Apis.Json.JsonDictionary)">
+            <summary>
+            Creates a v1.0 service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.ServiceV0_3">
+            <summary>
+            Represents a Service as defined in Discovery V0.3
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ServiceV0_3.#ctor(System.String,System.String,Google.Apis.Discovery.FactoryParameterV0_3,Google.Apis.Json.JsonDictionary)">
+            <summary>
+            Creates a v0.3 service
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Requests.ParameterCollection">
+            <summary>
+            A collection of parameters (key value pairs). May contain duplicate keys.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.ParameterCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a single parameter to this collection.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.ParameterCollection.ContainsKey(System.String)">
+            <summary>
+            Returns true if this parameter is set within the collection.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.ParameterCollection.TryGetValue(System.String,System.String@)">
+            <summary>
+            Tries to find the a key within the specified key value collection. Returns true if the key was found.
+            If a pair was found the out parameter value will contain the value of that pair.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.ParameterCollection.GetFirstMatch(System.String)">
+            <summary>
+            Returns the value of the first matching key, or throws a KeyNotFoundException if the parameter is not
+            present within the collection.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Requests.ParameterCollection.GetAllMatches(System.String)">
+            <summary>
+            Returns all matches for the specified key. May return an empty enumeration if the key is not present.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Google.Apis.Requests.ParameterCollection.FromQueryString(System.String)" -->
+        <member name="M:Google.Apis.Requests.ParameterCollection.FromDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a parameter collection from the specified dictionary.
+            If the value is an enumerable, a parameter pair will be added for each value.
+            Otherwise the value will be converted into a string using the .ToString() method.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.ParameterCollection.Item(System.String)">
+            <summary>
+            Returns all matches for the specified key. May return an empty enumeration if the key is not present.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver">
+            <summary>
+            Resolves FutureJsonSchemas
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver.ResolveAndVerify">
+            <summary>
+            Resolves the loaded schemas and throws an exception on unresolved schemas
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Schema.FutureJsonSchemaResolver.FutureAwareList">
+            <summary>
+            A list of (future) json schemas
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Schema.ISchema">
+            <summary>
+            Represents one child of the schema node in the discovery document.
+            This represents one top level DataTransferOjbect which will form 
+            part of the request or response to the service.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.Schema.ISchema.Name">
+            <summary>
+            The name of this schema
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.Schema.ISchema.Id">
+            <summary>
+            The ID of this schema
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.Schema.ISchema.SchemaDetails">
+            <summary>
+            The inner details of this schema
+            </summary>
+        </member>
+        <member name="T:Google.Apis.MethodValidator">
+            <summary>
+            Logic for validating that a method is correct.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.MethodValidator.ValidateAllParameters">
+            <summary>
+            Validates all the parameters provided.
+            </summary>
+            <returns>
+            A <see cref="T:System.Boolean"/>
+            </returns>
+        </member>
+        <member name="M:Google.Apis.MethodValidator.ValidateParameter(Google.Apis.Discovery.IParameter)">
+            <summary>
+            Validates a parameter.
+            
+            Checks to see if it is required, or if it needs regex validation.
+            </summary>
+            <param name="param">
+            A <see cref="T:Google.Apis.Discovery.IParameter"/>
+            </param>
+            <returns>
+            A <see cref="T:System.Boolean"/>
+            </returns>
+        </member>
+        <member name="M:Google.Apis.MethodValidator.ValidateRegex(Google.Apis.Discovery.IParameter,System.String)">
+            <summary>
+            Validates a parameter value against the methods regex.
+            </summary>
+            <param name="param">
+            A <see cref="T:Google.Apis.Discovery.IParameter"/>
+            </param>
+            <param name="paramValue">
+            A <see cref="T:System.String"/>
+            </param>
+            <returns>
+            A <see cref="T:System.Boolean"/>
+            </returns>
+        </member>
+        <member name="M:Google.Apis.MethodValidator.ValidateEnum(Google.Apis.Discovery.IParameter,System.String)">
+            <summary>
+            Validates a parameter value against those enumeration values allowed by the method.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.MethodValidator.CurrentMethod">
+            <summary>
+            The method which is currently being validated.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.MethodValidator.Parameters">
+            <summary>
+            The parameters of the method.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.ISerializer">
+            <summary>
+            Interface for serialization and deserialization
+            </summary>
+        </member>
+        <member name="M:Google.Apis.ISerializer.Serialize(System.Object,System.IO.Stream)">
+            <summary>
+            Serializes the specified object into a Stream
+            </summary>
+        </member>
+        <member name="M:Google.Apis.ISerializer.Serialize(System.Object)">
+            <summary>
+            Serializes the specified object into a string
+            </summary>
+        </member>
+        <member name="M:Google.Apis.ISerializer.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the string into an object
+            </summary>
+        </member>
+        <member name="M:Google.Apis.ISerializer.Deserialize``1(System.IO.Stream)">
+            <summary>
+            Deserializes the stream into an object
+            </summary>
+        </member>
         <member name="T:Google.Apis.Discovery.DiscoveryVersion">
             <summary>
             An enumeration of all supported discovery versions
@@ -1872,98 +1464,6 @@
         </member>
         <member name="F:Google.Apis.Discovery.DiscoveryVersion.Version_1_0">
             <summary>Version 1.0</summary>
-        </member>
-        <member name="T:Google.Apis.Json.TokenStream">
-            <summary>
-            The TokenStream class allows you to read through a Stream containing a json document token by token
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Json.TokenStream.ParseString(Google.Apis.Json.JsonToken,System.Char)">
-            <summary>
-            Parses a Json String as per http://www.json.org/ acknowledging escaped chars
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Json.TokenStream.GetNextToken">
-            <summary>
-            From the current position, extract the next token
-            </summary>
-            <returns>The next token, or null if the stream is at the EOF</returns>
-        </member>
-        <member name="T:Google.Apis.Tests.Apis.Requests.MockService">
-            <summary>
-            Mock service for testing purposes
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.CachedWebDiscoveryDevice">
-            <summary>
-            WebDiscoveryDevice allows clients to fetch discovery documents from a web based service.
-            Caches discovery files locally to prevent unnecessary requests to the discovery server
-            </summary>
-        </member>
-        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.#ctor(System.Uri)">
-            <summary>
-            Creates a new cached web discovery device with the default cache folder
-            </summary>
-            <param name="discoveryUri"></param>
-        </member>
-        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.#ctor(System.Uri,System.IO.DirectoryInfo)">
-            <summary>
-            Creates a new cached web discovery device
-            </summary>
-            <param name="discoveryUri"></param>
-            <param name="cacheDirectory"></param>
-        </member>
-        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.Fetch">
-            <summary>
-            Fetches the discovery document from either a local cache if it exsits otherwise using
-            a WebDiscoveryDecivce 
-            </summary>
-            <returns>
-            A <see cref="T:System.String"/>
-            </returns>
-        </member>
-        <member name="M:Google.Apis.Discovery.CachedWebDiscoveryDevice.GetCacheFile">
-            <summary>
-            Retrieves a file info of the cache file used for this device
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.DiscoveryUri">
-            <summary>
-            The URI from which the data is fetched
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.CacheDuration">
-            <summary>
-            Defines the cache duration in seconds
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Discovery.CachedWebDiscoveryDevice.CacheDirectory">
-            <summary>
-            DirectoryInfo of the cache directory
-            Must be a valid directory
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.BaseMethod">
-            <summary>
-            Abstract implementation of a method
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.MethodV1_0">
-            <summary>
-            Represents a Method from Discovery Version 1.0
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Discovery.MethodV0_3">
-            <summary>
-            Represents a Method from Discovery Version 0.3
-            </summary>
-        </member>
-        <member name="T:Google.Apis.Util.EnumStringValueTypeConverter">
-            <summary>
-            A specialized type converter which will convert any enum type into the string 
-            specified in the StringValue attribute.
-            </summary>
         </member>
         <member name="T:Google.Apis.Discovery.IResource">
             <summary>
@@ -2026,6 +1526,58 @@
             Mock resource for testing purposes.
             </summary>
         </member>
+        <member name="T:Google.Apis.Discovery.ServiceFactory">
+            <summary>
+            An abstract and static factory which can be used to generate
+            the individual service factory required for a specific discovery version
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.ServiceFactory.CreateServiceFactory(System.IO.Stream,Google.Apis.Discovery.DiscoveryVersion,Google.Apis.Discovery.IFactoryParameter)">
+            <summary>
+            Creates a service factory for the discovery version requested, with the given parameters
+            </summary>
+            <param name="discovery">A stream which contains information about the service to construct</param>
+            <param name="version">The discovery version to use</param>
+            <param name="parameters">
+            A set of (optional) factory parameters used to construct the service. 
+            If this parameter is null, then a default set of FactoryParameters is created
+            </param>
+        </member>
+        <member name="M:Google.Apis.Discovery.ServiceFactory.CreateServiceFactory(System.IO.Stream,Google.Apis.Discovery.DiscoveryVersion)">
+            <summary>
+            Creates a service factory for the discovery version requested
+            </summary>
+            <param name="discovery">A stream which contains information about the service to construct</param>
+            <param name="version">The discovery version to use</param>
+        </member>
+        <member name="T:Google.Apis.Json.JsonReader">
+            <summary>
+            basic JsonReader that can parse either strings or streams into some
+            dictionary form.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonReader.GetInstance">
+            <summary>
+            Returns the default instance of this class
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonReader.Parse(System.String)">
+            <summary>
+            Parses the json document into the appropriate expression/dictionary
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonReader.Parse(System.IO.Stream)">
+            <summary>
+            Parses the json document into the appropriate expression/dictionary
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Testing.VisibleForTestOnly">
+            <summary>
+            Marker Attribute to indicate a Method/Class/Property has been made more visible for
+            purpose of testing. Mark as internal and makr the testing assembly as friend using
+            <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
+            </summary>
+        </member>
         <member name="T:Google.Apis.Discovery.DiscoveryService">
              <summary>
              Discovery is the root of all access to the APIs.
@@ -2056,6 +1608,21 @@
              var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
              </example>
         </member>
+        <member name="T:Google.Apis.Discovery.IDiscoveryService">
+            <summary>
+            Knows how to get the IService of a given version and discoveryVersion.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IDiscoveryService.GetService(System.String,Google.Apis.Discovery.DiscoveryVersion,Google.Apis.Discovery.IFactoryParameter)">
+            <summary>
+            Creates an instance of a service by using discovery with the specified parameters
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.IDiscoveryService.GetService(System.String,Google.Apis.Discovery.DiscoveryVersion)">
+            <summary>
+            Creates an instance of a service by using discovery
+            </summary>
+        </member>
         <member name="M:Google.Apis.Discovery.DiscoveryService.#ctor(Google.Apis.Discovery.IDiscoveryDevice)">
             <summary>
             Insantiates the discovery class
@@ -2078,6 +1645,88 @@
         <member name="P:Google.Apis.Discovery.DiscoveryService.DiscoveryDevice">
             <summary>
             The discovery mechanism to use.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Util.EnumStringValueTypeConverter">
+            <summary>
+            A specialized type converter which will convert any enum type into the string 
+            specified in the StringValue attribute.
+            </summary>
+        </member>
+        <member name="T:Google.GoogleApiException">
+            <summary>
+            Represents an exception thrown by an API Service
+            </summary>
+        </member>
+        <member name="M:Google.GoogleApiException.#ctor(Google.Apis.Discovery.IService,System.String,System.Exception)">
+            <summary>
+            Creates an API Service exception
+            </summary>
+        </member>
+        <member name="M:Google.GoogleApiException.#ctor(Google.Apis.Discovery.IService,System.String)">
+            <summary>
+            Creates an API Service exception
+            </summary>
+        </member>
+        <member name="P:Google.GoogleApiException.Service">
+            <summary>
+            The service that has thrown the exception
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Json.JsonDictionary">
+            <summary>
+            Dictionary used for Json parsing
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue(System.String)">
+            <summary>
+            Returns the value from the dictionary, or, if not set, throws an ArgumentException
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.JsonDictionary.GetMandatoryValue``1(System.String)">
+            <summary>
+            Returns the value from the dictionary and
+            converts it to the specified [T]ype. 
+            Throws an ArgumentException if the key is not set within the dictionary, 
+            or if the value is not of the requested type
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.StringDiscoveryDevice">
+            <summary>
+            Hosts the DiscoveryDocument in a user defined stream.
+            
+            Handy for testing.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.StringDiscoveryDevice.Fetch">
+            <summary>
+            Fetches the Discovery Document from an user supplied string
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="P:Google.Apis.Discovery.StringDiscoveryDevice.Document">
+            <summary>
+            The discovery document.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Schema.SchemaImpl">
+            <summary>
+            An implementation of a schema
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.Schema.SchemaImpl.#ctor(System.String,System.String,Google.Apis.Discovery.Schema.FutureJsonSchemaResolver)">
+            <summary>
+            Creates a new instance of this schema implementation
+            </summary>
+            <param name="name"></param>
+            <param name="jsonSchemaDefinition"></param>
+            <param name="resolver"></param>
+        </member>
+        <member name="T:Google.Apis.Authentication.HttpRequestFactory">
+            <summary>
+            Use the Create method to create HttpWebRequests given a Uri.
             </summary>
         </member>
         <member name="T:Google.Apis.Requests.IErrorResponseHandler">
@@ -2103,17 +1752,243 @@
             <param name="error">Additional information about the error which occured. Might be null.</param>
             <param name="request">The new WebRequest, which will be executed after the handler has run.</param>
         </member>
-        <member name="T:Google.Apis.Testing.VisibleForTestOnly">
+        <member name="T:Google.Apis.Util.Repeatable`1">
             <summary>
-            Marker Attribute to indicate a Method/Class/Property has been made more visible for
-            purpose of testing. Mark as internal and makr the testing assembly as friend using
-            <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
+            Class which allows you to both pass a single object, as well as an array, as a parameter value.
             </summary>
         </member>
-        <member name="T:Google.Apis.Authentication.HttpRequestFactory">
+        <member name="M:Google.Apis.Util.Repeatable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
             <summary>
-            Use the Create method to create HttpWebRequests given a Uri.
+            Creates a repeatable value.
             </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(`0)~Google.Apis.Util.Repeatable{`0}">
+            <summary>
+            Converts the single element into a repeatable.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(`0[])~Google.Apis.Util.Repeatable{`0}">
+            <summary>
+            Converts a number of elements into a repeatable.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Repeatable`1.op_Implicit(System.Collections.Generic.List{`0})~Google.Apis.Util.Repeatable{`0}">
+            <summary>
+            Converts a number of elements into a repeatable.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tests.Apis.Requests.MockService">
+            <summary>
+            Mock service for testing purposes
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.BaseMethod">
+            <summary>
+            Abstract implementation of a method
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.IMethod">
+            <summary>
+            Represents one method as defined by the Google Api Discovery Document.
+            This will usaly be found within a resource. There may well be differnt implementations
+            of this interface for different versions of discovery.
+            </summary>
+            <see cref="T:Google.Apis.Discovery.IResource"/>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.Name">
+            <summary>
+            Name of this method
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.Description">
+            <summary>
+            A description of this method
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.RestPath">
+            <summary>
+            The rest path to this method
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.RpcName">
+            <summary>
+            The name of the RPC
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.HttpMethod">
+            <summary>
+            The http method required by this method
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.ResponseType">
+            <summary>
+            The response type of the request
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.RequestType">
+            <summary>
+            The type of the request required by this method
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.IMethod.Parameters">
+            <summary>
+            A set of parameters passed with the request
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.MethodV1_0">
+            <summary>
+            Represents a Method from Discovery Version 1.0
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.MethodV0_3">
+            <summary>
+            Represents a Method from Discovery Version 0.3
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Tests.Apis.Requests.MockParameter">
+            <summary>
+            Mock class for testing purposes
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.Scope">
+            <summary>
+            Represents an authentication scope used in a discovery document.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.Scope.ToString">
+            <summary>
+            Returns the ID of this scope (if available, otherwise the class name).
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.Scope.ID">
+            <summary>
+            The ID/Url of this scope.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Discovery.Scope.Description">
+            <summary>
+            The description of this scope.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Authentication.OAuth3LeggedAuthenticator">
+            <summary>
+            A three legged OAuth authenticator
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Authentication.OAuth3LeggedAuthenticator.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+             a constructor for OpenAuthentication login use cases using 3 legged OAuth
+            </summary>
+            <param name="consumerKey">the consumerKey to use</param>
+            <param name="consumerSecret">the consumerSecret to use</param>
+            <param name="token">The token to be used</param>
+            <param name="tokenSecret">The tokenSecret to be used</param>
+        </member>
+        <member name="M:Google.Apis.Authentication.OAuth3LeggedAuthenticator.ApplyAuthenticationToRequest(System.Net.HttpWebRequest)">
+            <summary>
+            Takes an existing httpwebrequest and modifies its headers according to
+            the authentication system used.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Authentication.OAuth3LeggedAuthenticator.Token">
+            <summary>
+            returns the Token for OAuth
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Google.Apis.Authentication.OAuth3LeggedAuthenticator.TokenSecret">
+            <summary>
+            returns the TokenSecret for OAuth
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Google.Apis.Json.TokenStream">
+            <summary>
+            The TokenStream class allows you to read through a Stream containing a json document token by token
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.TokenStream.ParseString(Google.Apis.Json.JsonToken,System.Char)">
+            <summary>
+            Parses a Json String as per http://www.json.org/ acknowledging escaped chars
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Json.TokenStream.GetNextToken">
+            <summary>
+            From the current position, extract the next token
+            </summary>
+            <returns>The next token, or null if the stream is at the EOF</returns>
+        </member>
+        <member name="T:Google.Apis.Json.JsonToken">
+            <summary>
+            Represents a token within the json document
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Json.JsonToken.Number">
+            <summary>
+            The numeric value of the token (if applicable)
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Json.JsonToken.Type">
+            <summary>
+            The type this token represents
+            </summary>
+        </member>
+        <member name="F:Google.Apis.Json.JsonToken.Value">
+            <summary>
+            The value of this token (if applicable)
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Json.JsonToken.TokenType">
+            <summary>
+            The type this token describes
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Discovery.StreamDiscoveryDevice">
+            <summary>
+            The discovery document will be passed in as a Stream.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Discovery.StreamDiscoveryDevice.Fetch">
+            <summary>
+            Fetches the discovery document from a user defined stream.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="P:Google.Apis.Discovery.StreamDiscoveryDevice.DiscoveryStream">
+            <summary>
+            The stream that will contain the discovery data.
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Util.StringValueAttribute">
+            <summary>
+            Defines an attribute containing a string representation of the member
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.StringValueAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new StringValue attribute with the specified text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="P:Google.Apis.Util.StringValueAttribute.Text">
+            <summary>
+            The text which belongs to this member
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Util.StandardResponse`1">
+            <summary>
+            Calls to Google Api return StandardResponses as Json with
+            two properties Data, being the return type of the method called
+            and Error, being any errors that occure.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Util.StandardResponse`1.Data">
+            <summary>May be null if call failed.</summary>
+        </member>
+        <member name="P:Google.Apis.Util.StandardResponse`1.Error">
+            <summary>May be null if call succedded.</summary>
         </member>
         <member name="T:Google.Apis.Requests.Request">
             <summary>
@@ -2258,114 +2133,239 @@
             Defines whether this request can be sent multiple times.
             </summary>
         </member>
-        <member name="T:Google.GoogleApiException">
+        <member name="T:Google.Apis.Requests.RequestError">
             <summary>
-            Represents an exception thrown by an API Service
+            Collection of server errors
             </summary>
         </member>
-        <member name="M:Google.GoogleApiException.#ctor(Google.Apis.Discovery.IService,System.String,System.Exception)">
+        <member name="P:Google.Apis.Requests.RequestError.Errors">
             <summary>
-            Creates an API Service exception
+            Contains a list of all errors
             </summary>
         </member>
-        <member name="M:Google.GoogleApiException.#ctor(Google.Apis.Discovery.IService,System.String)">
+        <member name="P:Google.Apis.Requests.RequestError.Code">
             <summary>
-            Creates an API Service exception
+            The error code returned
             </summary>
         </member>
-        <member name="P:Google.GoogleApiException.Service">
+        <member name="P:Google.Apis.Requests.RequestError.Message">
             <summary>
-            The service that has thrown the exception
+            The error message returned
             </summary>
         </member>
-        <member name="T:Google.Apis.Json.JsonReader">
+        <member name="T:Google.Apis.Requests.IResponse">
             <summary>
-            basic JsonReader that can parse either strings or streams into some
-            dictionary form.
+            Response to a request
             </summary>
         </member>
-        <member name="M:Google.Apis.Json.JsonReader.GetInstance">
+        <member name="P:Google.Apis.Requests.IResponse.Error">
             <summary>
-            Returns the default instance of this class
+            All errors the server returned along with the request. null when the request succeded.
             </summary>
         </member>
-        <member name="M:Google.Apis.Json.JsonReader.Parse(System.String)">
+        <member name="T:Google.Apis.JSON.IJsonSerializer">
             <summary>
-            Parses the json document into the appropriate expression/dictionary
+            Represents a Json Serializer
             </summary>
         </member>
-        <member name="M:Google.Apis.Json.JsonReader.Parse(System.IO.Stream)">
+        <member name="T:Google.Apis.Util.Utilities">
             <summary>
-            Parses the json document into the appropriate expression/dictionary
+            A class containing utility methods
             </summary>
         </member>
-        <member name="T:Google.Apis.Authentication.OAuth2LeggedAuthenticator">
+        <member name="M:Google.Apis.Util.Utilities.GetValueAsNull``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
             <summary>
-            A two legged OAuth authenticator
+            Fetches an element from a dictionary in a safe way, returning null if there is no value present.
             </summary>
         </member>
-        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:Google.Apis.Util.Utilities.GetValueAsStringListOrEmpty``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
             <summary>
-             a constructor for OpenAuthentication login use cases
+            If key exists in data and is an IEnumerable will return each element converted to a string 
+            with ToString, or null. If key does not exist in data, is null or not an IEnumerable we will 
+            return the empty list.
             </summary>
-            <param name="consumerKey">the consumerKey to use</param>
-            <param name="consumerSecret">the consumerSecret to use</param>
-            <param name="user">the username to use</param>
-            <param name="domain">the domain to use</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.ThrowIfNull(System.Object,System.String)">
+            <summary>Extension method on object, which throws a ArgumentNullException if obj is null</summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            Throws an exception if the string is null or empty
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.ThrowIfNullOrEmpty``1(System.Collections.Generic.ICollection{``0},System.String)">
+            <summary>
+            Throws the collection is null or empty
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.AsReadOnly``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Returns a readonly variant of the given dictionary
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty(System.String)">
+            <summary>
+            Returns true when the string is null or empty
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.IsNotNullOrEmpty(System.String)">
+            <summary>
+            Returns true when the string is NOT null or empty
+            </summary>
+            <param name="str"></param>
             <returns></returns>
         </member>
-        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.ApplyAuthenticationToRequest(System.Net.HttpWebRequest)">
+        <member name="M:Google.Apis.Util.Utilities.IsNotNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
             <summary>
-            Takes an existing httpwebrequest and modifies its headers according to
-            the authentication system used.
+            Returns true when the collection is NOT null or empty
             </summary>
-            <param name="request"></param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns true when the enumerable is null or empty.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.IsNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Returns true when the collection is null or empty
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.FindFieldByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
+            <summary>
+            Returns the first <see cref="T:System.CodeDom.CodeMemberProperty"/> with a 
+            name that matches the passed in name - or null if no match is found.
+            </summary>
+            <param name="coll">May not be null</param>
+            <param name="name">May not be null or empty</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.FindMemberByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
+            <summary>
+            Returns the first <see cref="T:System.CodeDom.CodeTypeMember"/> with a 
+            name that matches the passed in name - or null if no match is found.
+            </summary>
+            <param name="coll">May not be null</param>
+            <param name="name">May not be null or empty</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.FindTypeMemberByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
+            <summary>
+            Returns the first <see cref="T:System.CodeDom.CodeTypeDeclaration"/> with a 
+            name that matches the passed in name - or null if no match is found.
+            </summary>
+            <param name="coll">May not be null</param>
+            <param name="name">May not be null or empty</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.FindPropertyByName(System.CodeDom.CodeTypeMemberCollection,System.String)">
+            <summary>
+            Returns the first <see cref="T:System.CodeDom.CodeMemberProperty"/> with a 
+            name that matches the passed in name - or Null if no match found.
+            </summary>
+            <param name="coll">May not be null</param>
+            <param name="name">May not be null or empty</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.GetCustomAttribute``1(System.Reflection.MemberInfo)">
+            <summary>
+            Returns the first matching custom attribute (or null) of the specified member
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.GetStringValue(System.Enum)">
+            <summary>
+            Returns the defined string value of an enum value
+            </summary>
+            <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Google.Apis.Authentication.OAuth2LeggedAuthenticator.ApplyAuthenticationToUri(System.Uri)">
+        <member name="M:Google.Apis.Util.Utilities.GetNonNullableType(System.Type)">
             <summary>
-            Takes an existing httpwebrequest and modifies its uri according to 
-            the authentication system used. Only overridden in 2leggedoauth case
-            Here we need to add the xoauthrequestor parameter
+            Retrieves the underlying type if the specified type is a Nullable, or the type itself otherwise.
             </summary>
-            <param name="source">the original uri</param>
+        </member>
+        <member name="M:Google.Apis.Util.Utilities.ConvertToString(System.Object)">
+            <summary>
+            Tries to convert the specified object to a string. Uses custom type converters if available.
+            Returns null for a null object.
+            </summary>
+            <param name="o"></param>
             <returns></returns>
         </member>
-        <member name="T:Google.Apis.Json.JsonToken">
+        <member name="M:Google.Apis.Util.Utilities.IsMonoRuntime">
             <summary>
-            Represents a token within the json document
+            Please don't use this unless absolutely nessasery.
+            Returns if the current runtime is Mono, this is used to work around different behavior in the runtime.
             </summary>
         </member>
-        <member name="F:Google.Apis.Json.JsonToken.Number">
+        <member name="T:Google.Apis.Tests.Apis.Requests.MockMethod">
             <summary>
-            The numeric value of the token (if applicable)
+            A mock method for testing purposes.
             </summary>
         </member>
-        <member name="F:Google.Apis.Json.JsonToken.Type">
+        <member name="T:Google.Apis.Requests.SingleError">
             <summary>
-            The type this token represents
+            A single server error
             </summary>
         </member>
-        <member name="F:Google.Apis.Json.JsonToken.Value">
+        <member name="P:Google.Apis.Requests.SingleError.Domain">
             <summary>
-            The value of this token (if applicable)
+            The domain in which the error occured
             </summary>
         </member>
-        <member name="T:Google.Apis.Json.JsonToken.TokenType">
+        <member name="P:Google.Apis.Requests.SingleError.Reason">
             <summary>
-            The type this token describes
+            The reason the error was thrown
             </summary>
         </member>
-        <member name="T:Google.Apis.Authentication.NullAuthenticator">
+        <member name="P:Google.Apis.Requests.SingleError.Message">
             <summary>
-            A placeholder Authenticator which adds no authentication to the request. 
+            The error message
             </summary>
         </member>
-        <member name="T:Google.Apis.Authentication.NullAuthenticator.NullAuthenticatorImpl">
+        <member name="P:Google.Apis.Requests.SingleError.LocationType">
             <summary>
-            We use this to hide the fact that NullAuthenticator uses Authenticator behind the scenes
-            This is particularly useful as we are setting the application name to null. 
+            Type of the location
             </summary>
+        </member>
+        <member name="P:Google.Apis.Requests.SingleError.Location">
+            <summary>
+            Location where the error was thrown
+            </summary>
+        </member>
+        <member name="T:Google.Apis.JSON.NewtonsoftJsonSerializer">
+            <summary>
+            Class for serialization and deserialization of Json documents using the Newtonsoft Library
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Authentication.AuthenticatorFactory">
+            <summary>
+            A simple factory class for producing <code>IAuthenticator</code>
+            This can be used as with a singleton pattern with GetInstance.
+            Or can be constructed and passed around. Either way you must
+            RegisterAuthenticator before you can GetRegisteredAuthenticator
+            </summary>
+            <seealso cref="T:Google.Apis.Authentication.IAuthenticator"/> 
+        </member>
+        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.GetInstance">
+            <summary>
+            Returns the default instance of this factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.RegisterAuthenticator(Google.Apis.Authentication.AuthenticatorFactory.CreateAuthenticator)">
+            <summary>
+            The delegate passed in will be used to construct IAuthenticators in multiple contexts. If
+            you do not construct a new IAuthenticator on each call please ensure you are fetching old ones from 
+            the correct location.
+            </summary>
+            <example>
+                <code>
+                    AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new YourAuthenticator());
+                    AuthenticatorFactory.GetInstance().RegisterAuthenticator(delegate(){return new YourAuthenticator()});
+                </code>
+            </example>
+        </member>
+        <member name="M:Google.Apis.Authentication.AuthenticatorFactory.GetRegisteredAuthenticator">
+            <summary>
+            Returns the currently registered authenticator
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

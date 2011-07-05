@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Google.Apis.Samples.ApiExplorerWinForm.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Google.Apis.Samples.ApiExplorer.WinForm.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="authorizationEndPoint" Type="System.String" Scope="User">
@@ -8,17 +8,17 @@
     <Setting Name="tokenEndPoint" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://accounts.google.com/o/oauth2/token</Value>
     </Setting>
-    <Setting Name="clientId" Type="System.String" Scope="User">
-      <Value Profile="(Default)">123456789023.apps.googleusercontent.com</Value>
-    </Setting>
-    <Setting Name="apiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">XyzAbcdefghijklmnopqrstuvWXyz</Value>
-    </Setting>
-    <Setting Name="clientSecret" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/abcdcefGHRJKLM123456NOp</Value>
-    </Setting>
     <Setting Name="redirectUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://localhost:49615/Result.aspx</Value>
+      <Value Profile="(Default)">urn:ietf:wg:oauth:2.0:oob</Value>
+    </Setting>
+    <Setting Name="clientId" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
+      <Value Profile="(Default)">123456789.apps.googleusercontent.com</Value>
+    </Setting>
+    <Setting Name="apiKey" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Abcdedfghij_WpXfrNSOAYgd-3iT3fNM-NmydY</Value>
+    </Setting>
+    <Setting Name="clientSecret" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
+      <Value Profile="(Default)">aBcdefghijklmnoP</Value>
     </Setting>
   </Settings>
 </SettingsFile>
