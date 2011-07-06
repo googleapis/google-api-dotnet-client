@@ -4,7 +4,7 @@
 
   <include buildfile="./NAnt.Config.xml" failonerror="true"/>
   
-  <property name="msbuild.executable" value="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe" />
+  <property name="msbuild.executable" value="${framework::get-framework-directory(build.framework)}\msbuild.exe" />
   <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:4.0' />
   <property name="google.api.proj" value="${google.project.base}/GoogleApis/GoogleApis.csproj" />
   <property name="google.generate.proj" value="${google.project.base}/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
@@ -68,8 +68,10 @@
     <mkdir dir="${generated.library}" />
     <mkdir dir="${generated.binary}" />
     <mkdir dir="${generated.zip}" />
+	<echo message="Using the assemblies found in: ${assembly.dir}" />
     <assemblyfileset id="generated.code.dependancies" basedir="${generated.library}">
-      <include name="System.dll" />
+	  <include name="${assembly.dir}/mscorlib.dll" />
+      <include name="${assembly.dir}/System.dll" />
       <include name="Google.Apis.dll" />
       <include name="log4net.dll" />
       <include name="Newtonsoft.Json.Net35.dll" />      
@@ -163,6 +165,7 @@
     <csc target="library"
          output="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.dll"
          doc="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.xml"
+		 noconfig="true" nostdlib="true"
          debug="PdbOnly">
       <sources>
         <include name="${generated.source}/${apiclassname}Service.cs" />
