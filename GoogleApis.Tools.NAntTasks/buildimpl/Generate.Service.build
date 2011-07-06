@@ -5,7 +5,7 @@
   <include buildfile="./NAnt.Config.xml" failonerror="true"/>
   
   <property name="msbuild.executable" value="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe" />
-  <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:3.5' />
+  <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:4.0' />
   <property name="google.api.proj" value="${google.project.base}/GoogleApis/GoogleApis.csproj" />
   <property name="google.generate.proj" value="${google.project.base}/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
   <property name="google.oauth2.proj" value="${google.project.base}/GoogleApis.Authentication.OAuth2/GoogleApis.Authentication.OAuth2.csproj" />
