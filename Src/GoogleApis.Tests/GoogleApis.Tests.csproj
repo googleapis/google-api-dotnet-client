@@ -71,6 +71,7 @@
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactoryTest.cs" />
+    <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
     <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />
