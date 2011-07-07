@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Google.Apis.Authentication.OAuth2</RootNamespace>
-    <AssemblyName>GoogleApis.Authentication.OAuth2</AssemblyName>
+    <AssemblyName>Google.Apis.Authentication.OAuth2</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
