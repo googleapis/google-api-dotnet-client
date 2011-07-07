@@ -21,7 +21,11 @@ using Google.Apis.Testing;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
-    /// A decorator which implements abstract fields of the ServiceRequest class
+    /// A decorator which implements abstract properties of the ServiceRequest class
+    /// 
+    /// Example:
+    /// <c>protected override string ResourceName { get { return ...; } } </c>
+    /// <c>protected override string MethodName { get { return ...; } } </c>
     /// </summary>
     public class ServiceRequestFieldDecorator : IRequestDecorator
     {
@@ -57,7 +61,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             property.Name = propertyName;
             property.Type = new CodeTypeReference(typeof(string));
             property.Attributes = MemberAttributes.Family | MemberAttributes.Override; // "protected".
-
             property.HasGet = true;
 
             // get { return "..."; }

@@ -23,19 +23,19 @@ using Google.Apis.Testing;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
-    /// A decorator that adds support for a request body to the request class.
+    /// A decorator that adds support for a request body to the request class by implementing the "Body"-autoproperty.
     /// </summary>
     public class BodyPropertyDecorator : IRequestDecorator
     {
         /// <summary>
         /// Name of the "Body" property.
         /// </summary>
-        internal const string BodyPropertyName = "Body";
+        public const string BodyPropertyName = "Body";
 
         /// <summary>
         /// Comment of the "Body" property.
         /// </summary>
-        internal const string BodyPropertyComment = "Gets/Sets the Body of this Request.";
+        public const string BodyPropertyComment = "Gets/Sets the Body of this Request.";
 
         private readonly IObjectTypeProvider objectTypeProvider;
 
@@ -71,7 +71,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
         /// <summary>
         /// Generates the Body propery with the method's response type.
-        /// Does not perform name-checking.
+        /// Does not perform name-checking as it is implementing an abstract property.
         /// </summary>
         [VisibleForTestOnly]
         internal CodeTypeMemberCollection GenerateBodyProperty(IMethod request, CodeTypeReference bodyType)
@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         }
 
         /// <summary>
-        /// Will generate the GetBody override, which will return a reference to the Body property.
+        /// Generates the GetBody override, which will return a reference to the Body property.
         /// </summary>
         [VisibleForTestOnly]
         internal CodeMemberMethod GenerateGetBodyOverride(IMethod request)
@@ -98,7 +98,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             returnStatement.Expression = new CodePropertyReferenceExpression(thisRef, BodyPropertyName);
             method.Statements.Add(returnStatement);
 
-            // }
             return method;
         }
     }

@@ -46,9 +46,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             foreach (IParameter parameter in request.Parameters.Values)
             {
                 // Generate and add the parameter properties.
-                foreach (
-                    CodeTypeMember newMember in
-                        GenerateParameterProperty(parameter, request, resourceClass, usedWords))
+                foreach (CodeTypeMember newMember in
+                         GenerateParameterProperty(parameter, request, resourceClass, usedWords))
                 {
                     requestClass.Members.Add(newMember);
                     usedWords.Add(newMember.Name);
@@ -63,12 +62,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                                                     CodeTypeDeclaration resourceClass,
                                                                     IEnumerable<string> usedNames)
         {
-            // Gather some data about this parameter.
+            // Get the name and return type of this parameter.
             string name = parameter.Name;
             CodeTypeReference returnType = ResourceBaseGenerator.GetParameterTypeReference(
                 resourceClass, parameter, method);
 
-            // Generate property and field.
+            // Generate the property and field.
             CodeTypeMemberCollection newMembers = DecoratorUtil.CreateAutoProperty(
                 name, parameter.Description, returnType, usedNames, parameter.IsRequired);
 
@@ -76,14 +75,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             foreach (CodeTypeMember member in newMembers)
             {
                 CodeMemberProperty property = member as CodeMemberProperty;
-
                 if (property == null)
                 {
                     continue;
                 }
 
-                // Declare the Key attribute.
-                CodeTypeReference attributeType = new CodeTypeReference(typeof(KeyAttribute));
+                // Declare the RequestParameter attribute.
+                CodeTypeReference attributeType = new CodeTypeReference(typeof(RequestParameterAttribute));
                 CodeAttributeDeclaration attribute = new CodeAttributeDeclaration(attributeType);
                 attribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(parameter.Name)));
                 property.CustomAttributes.Add(attribute);

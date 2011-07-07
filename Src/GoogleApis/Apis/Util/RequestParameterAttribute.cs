@@ -19,25 +19,25 @@ using System;
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// A attribute which is used to specially mark a property for reflective purposes, and (optionally) to assign
-    /// an formal name to the property.
+    /// An attribute which is used to specially mark a property for reflective purposes, and (optionally) to assign
+    /// a formal name to the property.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class KeyAttribute : Attribute
+    public class RequestParameterAttribute : Attribute
     {
         private readonly string name;
 
         /// <summary>
-        /// Name/Key of this attribute
+        /// Name/key of this attribute
         /// </summary>
         public string Name { get { return name; }}
 
-        public KeyAttribute()
+        public RequestParameterAttribute()
         {
             name = null;
         }
 
-        public KeyAttribute(string name)
+        public RequestParameterAttribute(string name)
         {
             this.name = name;
         }

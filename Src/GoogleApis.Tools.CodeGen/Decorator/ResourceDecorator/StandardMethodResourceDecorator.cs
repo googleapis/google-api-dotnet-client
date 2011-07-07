@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             this.acceptObjectsAsBody = acceptObjectsAsBody;
             this.objectTypeProvider = objectTypeProvider;
             this.commentCreator = commentCreator;
-            methodNameSufix = "AndExecute";
+            this.methodNameSufix = "AndExecute";
         }
 
         #region IResourceDecorator Members
@@ -183,9 +183,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     member.Comments.AddRange(commentCreator.CreateMethodComment(method));
                 }
 
-
                 CodeStatementCollection assignmentStatments = new CodeStatementCollection();
-                ResourceCallAddBodyDeclaration(method, member, GetBodyType(method), true);
+                ResourceCallAddBodyDeclaration(
+                    method, member, GetBodyType(method), /* add body even if unused */ true);
 
                 AddAllDeclaredParameters(classDeclaration, method, member, assignmentStatments);
 

@@ -136,16 +136,17 @@ namespace Google.Apis.Requests
             foreach (PropertyInfo property in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 // Retrieve the attribute.
-                KeyAttribute keyAttribute =
-                    property.GetCustomAttributes(typeof(KeyAttribute), false).FirstOrDefault() as KeyAttribute;
-                if (keyAttribute == null)
+                RequestParameterAttribute requestParameterAttribute =
+                    property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as
+                    RequestParameterAttribute;
+                if (requestParameterAttribute == null)
                 {
                     continue;
                 }
 
                 // Get the discovery name of this parameter by looking at the attribute, or taking a lower-case
                 // variant of the property name if no special name was set.
-                string name = keyAttribute.Name ?? property.Name.ToLower();
+                string name = requestParameterAttribute.Name ?? property.Name.ToLower();
 
                 // Set the value in the dictionary.
                 var propertyType = property.PropertyType;

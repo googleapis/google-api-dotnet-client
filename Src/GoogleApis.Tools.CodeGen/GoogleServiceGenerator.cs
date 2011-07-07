@@ -95,7 +95,7 @@ namespace Google.Apis.Tools.CodeGen
                             new ServiceRequestInheritanceDecorator(typeProvider),
                             new BodyPropertyDecorator(typeProvider),
                             new ServiceRequestFieldDecorator(),
-                            new RequestConstructorDecorator(typeProvider),
+                            new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = true },
                         }).AsReadOnly();
         }
 
@@ -183,7 +183,7 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardMethodResourceDecorator(
                              true, true, typeProvider,
                              new DefaultEnglishCommentCreator()),
-                         new RequestMethodResourceDecorator(typeProvider),
+                         new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
                          new Log4NetResourceDecorator(),
                          new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                      }).AsReadOnly

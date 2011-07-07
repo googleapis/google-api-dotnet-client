@@ -152,6 +152,22 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
+        /// Confirms that the serializer won't do anything if a string is the requested response type.
+        /// </summary>
+        [Test]
+        public void TestDeserializationString()
+        {
+            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+
+            IService impl = CreateV1Service();
+
+            // Check that the response is decoded correctly
+            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
+            string result = impl.DeserializeResponse<string>(stream);
+            Assert.AreEqual(ResponseV1, result);
+        }
+
+        /// <summary>
         /// Tests the deserialization for server error responses.
         /// </summary>
         [Test]

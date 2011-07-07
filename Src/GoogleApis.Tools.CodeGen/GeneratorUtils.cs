@@ -451,7 +451,7 @@ namespace Google.Apis.Tools.CodeGen
         public static string GetFieldName(string name, IEnumerable<string> wordsUsedInContext)
         {
             return GetSafeMemberName(
-                wordsUsedInContext, TargetCase.ToLower, name, "_" + name, name + "Value", name + "Field");
+                wordsUsedInContext, TargetCase.ToLower, name, name + "Value", name + "Field", "_" + name);
         }
 
         /// <summary>

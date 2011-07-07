@@ -72,7 +72,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             Assert.AreEqual(3, decl.Members.Count);
             Assert.IsInstanceOf<CodeMemberField>(decl.Members[0]);
             Assert.IsInstanceOf<CodeMemberProperty>(decl.Members[1]);
+            Assert.AreEqual("Body", decl.Members[1].Name);
             Assert.IsInstanceOf<CodeMemberMethod>(decl.Members[2]);
+            Assert.AreEqual("GetBody", decl.Members[2].Name);
         }
 
         /// <summary>

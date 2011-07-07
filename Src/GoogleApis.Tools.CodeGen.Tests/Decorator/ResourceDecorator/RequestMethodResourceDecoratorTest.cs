@@ -49,10 +49,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             var resource = CreateResourceDiscoveryV_1_0(ResourceName, ResourceAsJson);
             var decl = new CodeTypeDeclaration("TestClass");
 
+            // Test the DecorateClass method with optional parameters.
+            decorator.AddOptionalParameters = true;
             decorator.DecorateClass(resource, decl.Name, decl, null, null, null);
-            Assert.AreEqual(8, decl.Members.Count); // 4 methods with 2 overloads each.
+            Assert.AreEqual(8, decl.Members.Count); // 4 methods with one overload each.
             Assert.AreEqual("GetTest", decl.Members[0].Name);
             Assert.AreEqual("GetTest", decl.Members[1].Name);
+
+            // Test the DecorateClass method without optional parameters.
+            decl = new CodeTypeDeclaration("TestClass");
+            decorator.AddOptionalParameters = false;
+            decorator.DecorateClass(resource, decl.Name, decl, null, null, null);
+            Assert.AreEqual(5, decl.Members.Count); // 5 methods defined in the resource json.
         }
 
         /// <summary>
@@ -78,8 +86,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true);
 
             Assert.AreEqual("Test", generatedMethod.Name);
-            Assert.AreEqual(2, generatedMethod.Parameters.Count);
-            Assert.AreEqual(1, generatedMethod.Statements.Count);
+            Assert.AreEqual(3, generatedMethod.Parameters.Count); // two parameters defined.
+            Assert.AreEqual(1, generatedMethod.Statements.Count); // one "new ...Request()" statement.
             Assert.AreEqual("TestRequest", generatedMethod.ReturnType.BaseType);
         }
     }

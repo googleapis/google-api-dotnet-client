@@ -53,11 +53,13 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     {
                         break;
                     }
+
                     // string body = null;
                     var bodyVarDeclaration = new CodeVariableDeclarationStatement(bodyType, "body");
                     bodyVarDeclaration.InitExpression = new CodePrimitiveExpression(null);
                     member.Statements.Add(bodyVarDeclaration);
                     break;
+
                 case Request.PUT:
                 case Request.POST:
                 case Request.PATCH:
@@ -161,7 +163,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             var decl = new CodeParameterDeclarationExpression(
                 paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
 
-            // If this parameter is optional, mark it as as a .NET4.0 optional parameter:
+            // If this parameter is optional, mark it as as a C# 4.0 optional parameter:
             if (!param.IsRequired)
             {
                 // [Optional]
