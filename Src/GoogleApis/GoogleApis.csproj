@@ -76,7 +76,7 @@
     <Compile Include="Apis\ISerializer.cs" />
     <Compile Include="Apis\Requests\ParameterCollection.cs" />
     <Compile Include="Apis\Requests\ServiceRequest.cs" />
-    <Compile Include="Apis\Util\KeyAttribute.cs" />
+    <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />
     <Compile Include="Apis\JSON\IJsonSerializer.cs" />
     <Compile Include="Apis\JSON\NewtonsoftJsonSerializer.cs" />

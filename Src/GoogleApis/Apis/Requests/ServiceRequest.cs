@@ -27,7 +27,7 @@ using log4net;
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Represents an abstract, strongly typed request made to a service.
+    /// Represents an abstract, strongly typed request base class to make requests made to a service.
     /// </summary>
     /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
@@ -115,16 +115,16 @@ namespace Google.Apis.Requests
             foreach (PropertyInfo property in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 // Retrieve the attribute.
-                KeyAttribute keyAttribute =
-                    property.GetCustomAttributes(typeof(KeyAttribute), false).FirstOrDefault() as KeyAttribute;
-                if (keyAttribute == null)
+                RequestParameterAttribute requestParameterAttribute =
+                    property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as RequestParameterAttribute;
+                if (requestParameterAttribute == null)
                 {
                     continue;
                 }
 
                 // Get the discovery name of this parameter by looking at the attribute, or taking a lower-case
                 // variant of the property name if no special name was set.
-                string name = keyAttribute.Name ?? property.Name.ToLower();
+                string name = requestParameterAttribute.Name ?? property.Name.ToLower();
 
                 // Set the value in the dictionary.
                 var propertyType = property.PropertyType;
