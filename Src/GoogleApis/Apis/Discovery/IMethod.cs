@@ -62,7 +62,7 @@ namespace Google.Apis.Discovery
         string RequestType { get; }
 
         /// <summary>
-        /// Defines whether this request has a body attached to it.
+        /// Whether this request has a body attached to it.
         /// </summary>
         bool HasBody { get; }
 

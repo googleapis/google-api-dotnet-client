@@ -25,16 +25,25 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
-    /// Generates the standard constructor for requests.
+    /// Generates the two standard constructors of a request.
+    ///  1. A constructor taking the service and mandatory parameters.
+    ///  2. A constructor taking the service and all mandatory + optional parameters.
     /// Example:
     /// <c>public ListRequest(ISchemaAwareRequestExecutor service, int requiredParameter, ..) : base(service) {..}</c>
+    /// <c>public ListRequest(ISchemaAwareRequestExecutor s, int required, string optional..) : base(service) {..}</c>
     /// </summary>
     public class RequestConstructorDecorator : IRequestDecorator
     {
+        /// <summary>
+        /// Defines whether this decorator should also add a constructor containing optional and mandatory parameters.
+        /// </summary>
+        public bool CreateOptionalConstructor { get; set; }
+
         private readonly IObjectTypeProvider objectTypeProvider;
 
         /// <summary>
         /// Creates a new request constructor decorator.
+        /// Will only create the mandatory-only constructor.
         /// </summary>
         public RequestConstructorDecorator(IObjectTypeProvider objectTypeProvider)
         {
@@ -50,7 +59,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         {
             requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, false));
 
-            if (request.HasOptionalParameters())
+            if (CreateOptionalConstructor && request.HasOptionalParameters())
             {
                 requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, true));
             }
@@ -78,7 +87,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
-            AddParameters(resourceClass, request, constructor, addOptionalParameters);
+            AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
 
             return constructor;
         }
@@ -90,7 +99,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         internal void AddBodyParameter(CodeConstructor constructor, IMethod request)
         {
             const string varName = "body";
-
             if (!request.HasBody)
             {
                 return; // No body parameter required.
@@ -110,13 +118,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         }
 
         /// <summary>
-        /// Adds all required parameters and statements of this request to the specified constructor.
+        /// Adds all required parameters and assign statements of this request to the specified constructor.
         /// </summary>
         [VisibleForTestOnly]
-        internal void AddParameters(CodeTypeDeclaration resourceClass,
-                                    IMethod request,
-                                    CodeConstructor constructor,
-                                    bool addOptional)
+        internal void AddRequestParameters(CodeTypeDeclaration resourceClass,
+                                           IMethod request,
+                                           CodeConstructor constructor,
+                                           bool addOptional)
         {
             if (request.Parameters == null)
             {
@@ -130,10 +138,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                     continue;
                 }
 
-                // Retrieve parameter data.
+                // Retrieve parameter name and type.
                 string name = parameter.Name;
                 CodeTypeReference type = ResourceBaseGenerator.GetParameterTypeReference(
                     resourceClass, parameter, request);
+
+                // Generate valid names for the parameter and the field.
                 IEnumerable<string> usedWords = from IParameter p in request.Parameters.Values select p.Name;
                 string parameterName = GeneratorUtils.GetParameterName(parameter, usedWords.Without(parameter.Name));
                 string fieldName = GeneratorUtils.GetFieldName(name, Enumerable.Empty<string>());
@@ -149,7 +159,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                     newParameter.CustomAttributes.Add(new CodeAttributeDeclaration(optionalTypeRef));
                 }
 
-                // Add the initialisation expression (e.g. this.schema = schema;)
+                // Add the initialization expression (e.g. this.schema = schema;)
                 var initStatement = new CodeAssignStatement();
                 initStatement.Left = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), fieldName);
                 initStatement.Right = new CodeVariableReferenceExpression(parameterName);

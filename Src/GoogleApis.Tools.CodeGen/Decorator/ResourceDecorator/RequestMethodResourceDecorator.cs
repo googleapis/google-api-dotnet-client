@@ -34,6 +34,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class RequestMethodResourceDecorator : IResourceDecorator
     {
+        /// <summary>
+        /// Defines whether optional parameters are added to the request methods or not.
+        /// </summary>
+        public bool AddOptionalParameters { get; set; }
+
         private static readonly ILog logger = LogManager.GetLogger(typeof(StandardMethodResourceDecorator));
         private readonly IMethodCommentCreator commentCreator;
         private readonly IObjectTypeProvider objectTypeProvider;
@@ -56,7 +61,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             var gen = new ResourceGenerator(className, objectTypeProvider, commentCreator);
             foreach (var method in resource.Methods.Values)
             {
-                logger.DebugFormat("Adding Standard Method {0}.{1}", resource.Name, method.Name);
+                logger.DebugFormat("Adding RequestObject Method {0}.{1}", resource.Name, method.Name);
                 
                 // Add the default request method to the class:
                 CodeTypeMember convenienceMethod = gen.CreateMethod(resourceClass, resource, method, false);
@@ -66,7 +71,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 }
 
                 // Add the request method specifiying all parameters (also optional ones) to the class:
-                if (method.HasOptionalParameters())
+                if (AddOptionalParameters && method.HasOptionalParameters())
                 {
                     convenienceMethod = gen.CreateMethod(resourceClass, resource, method, true);
                     if (convenienceMethod != null)
@@ -111,17 +116,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 this.commentCreator = commentCreator;
             }
 
-            [VisibleForTestOnly]
-            internal CodeTypeReference GetReturnType(IMethod method)
-            {
-                if (method.ResponseType.IsNullOrEmpty())
-                {
-                    return new CodeTypeReference("System.IO.Stream");
-                }
-
-                return objectTypeProvider.GetReturnType(method);
-            }
-
             public CodeTypeReference GetBodyType(IMethod method)
             {
                 if (method.RequestType.IsNullOrEmpty())
@@ -137,7 +131,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                                  IMethod method,
                                                  bool addOptionalParameters)
             {
-                // Create a new method and set the outer attributes.
+                // Create a new method and make it public.
                 var member = new CodeMemberMethod();
                 member.Name = GeneratorUtils.GetMethodName(method, resource.Methods.Keys.Without(method.Name));
                 member.Attributes = MemberAttributes.Public;
@@ -151,6 +145,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 constructorParameters.Add(new CodeVariableReferenceExpression(ServiceFieldName));
                 if (method.HasBody)
                 {
+                    // If so, add a body parameter.
                     ResourceCallAddBodyDeclaration(method, member, GetBodyType(method), false);
                 }
 
@@ -161,10 +156,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 }
 
                 // Add all request parameters to this method.
-                AddAllDeclaredParameters(
+                AddDeclaredParameters(
                     classDeclaration, method, member, constructorParameters, addOptionalParameters);
 
                 // new ...Request(paramOne, paramTwo, paramThree)
+                // TODO(mlinder): add method signature collision checking here.
                 CodeTypeReference requestType = new CodeTypeReference(RequestClassGenerator.GetProposedName(method));
                 member.ReturnType = requestType;
                 var newRequest = new CodeObjectCreateExpression(requestType);
@@ -178,28 +174,33 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             }
 
             [VisibleForTestOnly]
-            internal void AddAllDeclaredParameters(CodeTypeDeclaration classDeclaration,
+            internal void AddDeclaredParameters(CodeTypeDeclaration classDeclaration,
                                                    IMethod method,
                                                    CodeMemberMethod member,
                                                    CodeExpressionCollection constructorParameters,
                                                    bool addOptionalParameters)
             {
-                // Add all parameters to the method.
-                if (method.Parameters != null)
+                if (method.Parameters == null)
                 {
-                    foreach (var param in method.GetAllParametersSorted())
-                    {
-                        if (!addOptionalParameters && !param.IsRequired)
-                        {
-                            continue;
-                        }
+                    return;
+                }
 
-                        string parameterName = GeneratorUtils.GetParameterName(
-                            param, method.Parameters.Keys.Without(param.Name));
-                        member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));
-                        constructorParameters.Add(new CodeVariableReferenceExpression(parameterName));
-                        AddParameterComment(commentCreator, member, param, parameterName);
+                // Add all parameters to the method.
+                foreach (var param in method.GetAllParametersSorted())
+                {
+                    if (!addOptionalParameters && !param.IsRequired)
+                    {
+                        continue;
                     }
+
+                    // Generate a safe parameter name which was not used yet.
+                    string parameterName = GeneratorUtils.GetParameterName(
+                        param, method.Parameters.Keys.Without(param.Name));
+
+                    // Declare the parameter, and add it to the list of constructor parameters of the request class.
+                    member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));
+                    constructorParameters.Add(new CodeVariableReferenceExpression(parameterName));
+                    AddParameterComment(commentCreator, member, param, parameterName);
                 }
             }
 

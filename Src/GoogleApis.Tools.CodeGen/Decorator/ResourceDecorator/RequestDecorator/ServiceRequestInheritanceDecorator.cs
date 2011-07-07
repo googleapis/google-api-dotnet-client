@@ -44,7 +44,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         {
             // Retrieve the response type.
             var responseType = string.IsNullOrEmpty(request.ResponseType)
-                                   ? new CodeTypeReference(typeof(object))
+                                   ? new CodeTypeReference(typeof(string))
                                    : objectTypeProvider.GetReturnType(request);
 
             // Create the base reference

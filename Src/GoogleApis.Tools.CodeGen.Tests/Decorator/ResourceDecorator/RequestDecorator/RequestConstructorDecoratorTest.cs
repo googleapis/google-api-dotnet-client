@@ -55,9 +55,17 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var typeProvider = new DefaultObjectTypeProvider("Schema");
 
             // Confirm that the decorator has run correctly.
-            var decorator = new RequestConstructorDecorator(typeProvider);
+            var decorator = new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = true };
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
-            Assert.AreEqual(2, requestDecl.Members.Count); // 2 Constructor.
+            Assert.AreEqual(2, requestDecl.Members.Count); // 2 Constructors.
+            Assert.IsInstanceOf<CodeConstructor>(requestDecl.Members[0]);
+            Assert.AreEqual(0, resourceDecl.Members.Count);
+
+            // Test the decorator without optional parameters.
+            requestDecl = new CodeTypeDeclaration();
+            decorator.CreateOptionalConstructor = false;
+            decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
+            Assert.AreEqual(1, requestDecl.Members.Count); // 1 Constructor.
             Assert.IsInstanceOf<CodeConstructor>(requestDecl.Members[0]);
             Assert.AreEqual(0, resourceDecl.Members.Count);
         }
@@ -133,7 +141,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             // Confirm that the "service" parameter is added.
             var decorator = new RequestConstructorDecorator(typeProvider);
             CodeConstructor constructor = new CodeConstructor();
-            decorator.AddParameters(resourceDecl, method, constructor, false);
+            decorator.AddRequestParameters(resourceDecl, method, constructor, false);
 
             Assert.AreEqual(1, constructor.Parameters.Count);
             Assert.AreEqual("paramB", constructor.Parameters[0].Name);
@@ -141,7 +149,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
 
             // Check that optional parameters are added when the appropriate flag is set.
             constructor = new CodeConstructor();
-            decorator.AddParameters(resourceDecl, method, constructor, true);
+            decorator.AddRequestParameters(resourceDecl, method, constructor, true);
 
             Assert.AreEqual(2, constructor.Parameters.Count);
             Assert.AreEqual("paramB", constructor.Parameters[0].Name);

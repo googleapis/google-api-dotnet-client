@@ -20,10 +20,8 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen.Decorator
 {
     /// <summary>
-    /// Implementors of this interface will know what the return type of a given method should be
-    /// and what the type of the body parameter should be.
-    /// For example the return type may be System.IO.String or a 
-    /// generated type based on the schema section of the discovery document,
+    /// Defines a ObjectTypeProvider to be used by method and class decorators.
+    /// Used to get/generate a code type reference to the ReturnType and BodyType of a method.
     /// </summary>
     public interface IObjectTypeProvider
     {
@@ -35,8 +33,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator
         /// <summary>
         /// Returns  a reference to the body type of this method.
         /// </summary>
-        /// <param name="method"></param>
-        /// <returns></returns>
         CodeTypeReference GetBodyType(IMethod method);
     }
 }

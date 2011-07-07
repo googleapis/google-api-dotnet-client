@@ -154,7 +154,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
-            Assert.AreEqual("_public", generatedField.Name);
+            Assert.AreEqual("publicValue", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 
             generatedField = decorator.GenerateField(

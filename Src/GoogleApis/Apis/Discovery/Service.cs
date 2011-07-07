@@ -244,12 +244,17 @@ namespace Google.Apis.Discovery
 
         public T DeserializeResponse<T>(Stream input)
         {
-            // Read in the entire content
+            // Read in the entire content:
             string text;
-
             using (var reader = new StreamReader(input))
             {
                 text = reader.ReadToEnd();
+            }
+
+            // If a string is request, don't parse the response.
+            if (typeof(T).Equals(typeof(string)))
+            {
+                return (T) (object) text;
             }
 
             // Check if there was an error returned. The error node is returned in both paths

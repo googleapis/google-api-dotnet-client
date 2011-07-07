@@ -23,20 +23,21 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 namespace Google.Apis.Tools.CodeGen.Generator
 {
     /// <summary>
-    /// Represents a generator for request classes.
+    /// Represents a generator for request classes. The generated class represents a request made to an service, 
+    /// containing all the request parameters and defining the response type.
     /// </summary>
     public class RequestClassGenerator : BaseGenerator
     {
         /// <summary>
-        /// Defines the naming scheme for request classes
-        /// {0} represents the name of the method for which this request is intended.
+        /// Defines the naming scheme for request classes.
         /// </summary>
+        /// <remarks>{0} represents the name of the method for which this request is intended.</remarks>
         public const string RequestClassNamingScheme = "{0}Request";
 
         private readonly IEnumerable<IRequestDecorator> requestDecorators;
 
         /// <summary>
-        /// Constructs a new instance of the request class generator, and uses the specified decorator set
+        /// Constructs a new instance of the request class generator, and uses the specified decorator list
         /// to decorate the generated request classes.
         /// </summary>
         public RequestClassGenerator(IEnumerable<IRequestDecorator> requestDecorators)
@@ -58,6 +59,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 newMembers.Add(requestClass);
                 usedNames.Add(requestClass.Name);
             }
+
             return newMembers;
         }
 
@@ -80,6 +82,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             {
                 decorator.DecorateClass(resource, method, requestClass, resourceClass);
             }
+
             return requestClass;
         }
 

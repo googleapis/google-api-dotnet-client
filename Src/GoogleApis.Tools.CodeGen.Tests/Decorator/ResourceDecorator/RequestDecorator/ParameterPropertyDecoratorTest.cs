@@ -54,10 +54,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var resourceDecl = new CodeTypeDeclaration();
             var requestDecl = new CodeTypeDeclaration();
             
-            // Confirm that the decorator has run correctly.
+            // Confirm that the decorator adds the two parameters as properties with a backing field each.
             var decorator = new ParameterPropertyDecorator();
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
-            Assert.AreEqual(4, requestDecl.Members.Count); // 2 Property + 2 field.
+            Assert.AreEqual(4, requestDecl.Members.Count); // 2 properties + 2 field.
             Assert.AreEqual(0, resourceDecl.Members.Count);
         }
 
@@ -83,12 +83,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
 
             // Check the generated property.
             Assert.IsInstanceOf<CodeMemberField>(newMembers[0]);
+
             CodeMemberProperty property = (CodeMemberProperty)newMembers[1];
             Assert.AreEqual("Param", property.Name);
 
             // Check that the property has a Key attribute.
             Assert.AreEqual(1, property.CustomAttributes.Count);
-            Assert.AreEqual(typeof(KeyAttribute).FullName, property.CustomAttributes[0].AttributeType.BaseType);
+            Assert.AreEqual(
+                typeof(RequestParameterAttribute).FullName, property.CustomAttributes[0].AttributeType.BaseType);
             Assert.AreEqual(
                 "Param", ((CodePrimitiveExpression) property.CustomAttributes[0].Arguments[0].Value).Value);
         }

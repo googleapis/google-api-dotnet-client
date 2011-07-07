@@ -47,7 +47,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
                                                            CodeMemberMethod member,
                                                            CodeTypeReference codeType)
             {
-                base.ResourceCallAddBodyDeclaration(method, member, codeType, true);
+                ResourceCallAddBodyDeclaration(method, member, codeType, /* add body even if unused */ true);
             }
 
             protected override string GetClassName()

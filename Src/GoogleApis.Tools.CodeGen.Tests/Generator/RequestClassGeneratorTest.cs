@@ -35,7 +35,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             public int TimesCalled { get; private set; }
 
-            public void DecorateClass(IResource resource, IMethod request, CodeTypeDeclaration requestClass, CodeTypeDeclaration resourceClass)
+            public void DecorateClass(IResource resource,
+                                      IMethod request,
+                                      CodeTypeDeclaration requestClass,
+                                      CodeTypeDeclaration resourceClass)
             {
                 TimesCalled++;
             }
@@ -71,10 +74,56 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             Assert.AreEqual(2, collection.Count);
             Assert.IsInstanceOf<CodeTypeDeclaration>(collection[0]);
             Assert.IsInstanceOf<CodeTypeDeclaration>(collection[1]);
-            Assert.AreEqual(
-                string.Format(RequestClassGenerator.RequestClassNamingScheme, "MethodA"), collection[0].Name);
-            Assert.AreEqual(
-                string.Format(RequestClassGenerator.RequestClassNamingScheme, "MethodB"), collection[1].Name);
+            CollectionAssert.AreEqual(
+                new[]
+                    {
+                        string.Format(RequestClassGenerator.RequestClassNamingScheme, "MethodA"),
+                        string.Format(RequestClassGenerator.RequestClassNamingScheme, "MethodB"),
+                    },
+                from CodeTypeMember m in collection select m.Name);
+        } 
+
+        private class MockRequestDecorator : IRequestDecorator
+        {
+            private string memberName;
+
+            public MockRequestDecorator(string memberName)
+            {
+                this.memberName = memberName;
+            }
+
+            public void DecorateClass(IResource resource,
+                                      IMethod request,
+                                      CodeTypeDeclaration requestClass,
+                                      CodeTypeDeclaration resourceClass)
+            {
+                requestClass.Members.Add(new CodeTypeMember { Name = memberName });
+            }
+        }
+
+        /// <summary>
+        /// Confirms that the decorators of the RequestClassGenerator are executed in order.
+        /// </summary>
+        [Test]
+        public void GenerateRequestClassDecoratorOrderTest()
+        {
+            var generator =
+                new RequestClassGenerator(
+                    new IRequestDecorator[]
+                        {
+                            new MockRequestDecorator("One"), new MockRequestDecorator("Two"),
+                            new MockRequestDecorator("Three")
+                        });
+            var decl = new CodeTypeDeclaration();
+            var resource = new MockResource();
+            var method = new MockMethod();
+
+            // Check the order of the generated members.
+            var genClass = generator.GenerateRequestClass(resource, method, decl, Enumerable.Empty<string>());
+            Assert.AreEqual(3, genClass.Members.Count);
+            Assert.AreEqual("One", genClass.Members[0].Name);
+            Assert.AreEqual("Two", genClass.Members[1].Name);
+            Assert.AreEqual("Three", genClass.Members[2].Name);
         }
 
         /// <summary>
