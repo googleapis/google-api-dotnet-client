@@ -430,9 +430,18 @@ namespace Google.Apis.Requests
             }
 
             // Attach a body if a POST and there is something to attach.
-            if (!string.IsNullOrEmpty(Body) && HttpMethodHasBody(request.Method))
+            if (HttpMethodHasBody(request.Method))
             {
-                AttachBody(request);
+                if (!string.IsNullOrEmpty(Body))
+                {
+                    AttachBody(request);
+                }
+                else
+                {
+                    // Set the "Content-Length" header, which is required for every http method declaring a body. This 
+                    // is required as e.g. the google servers will throw a "411 - Length required" error otherwise.
+                    request.ContentLength = 0;
+                }
             }
 
             return request;
