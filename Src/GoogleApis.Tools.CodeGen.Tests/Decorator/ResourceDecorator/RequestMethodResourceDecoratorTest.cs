@@ -86,7 +86,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true);
 
             Assert.AreEqual("Test", generatedMethod.Name);
-            Assert.AreEqual(3, generatedMethod.Parameters.Count); // two parameters defined.
+            Assert.AreEqual(2, generatedMethod.Parameters.Count); // two parameters defined.
             Assert.AreEqual(1, generatedMethod.Statements.Count); // one "new ...Request()" statement.
             Assert.AreEqual("TestRequest", generatedMethod.ReturnType.BaseType);
         }
