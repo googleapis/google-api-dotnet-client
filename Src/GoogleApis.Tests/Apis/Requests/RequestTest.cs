@@ -310,6 +310,33 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Confirms that the .CreateRequest method sets the Content-Length of requests declaring a body.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestContentLengthTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod
+                {
+                    HttpMethod = "POST",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com/test",
+                });
+
+            request.WithParameters("");
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+
+            // Test that the header is set, even if no body is specified.
+            Assert.AreEqual(0, webRequest.ContentLength);
+
+            // The content-length field will be automatically set as soon as content is written into the
+            // request stream. We cannot test it here as writing to the request stream requires us to have
+            // a valid connection to the server.
+        }
+
+        /// <summary>
         /// Tests the .CreateRequest method of a request
         /// </summary>
         [Test]
