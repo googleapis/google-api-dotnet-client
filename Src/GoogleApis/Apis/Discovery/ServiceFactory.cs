@@ -55,6 +55,7 @@ namespace Google.Apis.Discovery
         internal const string RpcName = "rpcName";
         internal const string HttpMethod = "httpMethod";
         internal const string Parameters = "parameters";
+        internal const string ParameterOrder = "parameterOrder";
         internal const string ResponseType = "response";
         internal const string RequestType = "request";
 
