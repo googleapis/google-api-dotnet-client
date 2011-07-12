@@ -4,7 +4,6 @@
   
   <include buildfile="./NAnt.Config.xml" failonerror="true"/>
   
-  
   <property name="hg.source.root" value="${fresh.source.dir}/google-api-dotnet-client"/>
   <property name="hg.contrib.root" value="${fresh.source.dir}/google-api-dotnet-client-contrib"/>
   <property name="hg.contrib.current" value="${hg.contrib.root}/current"/>
@@ -24,18 +23,18 @@
   <target name="ensure-contrib-repository" if="${directory::exists(hg.contrib.root) == false}">
     <mkdir dir="${fresh.source.dir}" unless="${directory::exists(fresh.source.dir)}"/>
     <exec program="hg" workingdir="${fresh.source.dir}"
-          commandline="clone https://contrib.google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client-contrib" />
+          commandline="clone --insecure https://contrib.google-api-dotnet-client.googlecode.com/hg/ google-api-dotnet-client-contrib" />
   </target>
   
   <target name="fetch-latest-source" depends="ensure-source-repository">
     <exec program="hg" workingdir="${hg.source.root}" commandline="checkout default" />
-    <exec program="hg" workingdir="${hg.source.root}" commandline="pull" />
+    <exec program="hg" workingdir="${hg.source.root}" commandline="pull --insecure" />
     <exec program="hg" workingdir="${hg.source.root}" commandline="update --clean --noninteractive" />
   </target>
 
   <target name="fetch-latest-contrib" depends="ensure-contrib-repository">
     <exec program="hg" workingdir="${hg.contrib.root}" commandline="checkout default" />
-    <exec program="hg" workingdir="${hg.contrib.root}" commandline="pull" />
+    <exec program="hg" workingdir="${hg.contrib.root}" commandline="pull --insecure" />
     <exec program="hg" workingdir="${hg.contrib.root}" commandline="update --clean --noninteractive" />
   </target>
 
@@ -53,7 +52,7 @@
   <target name="generate-clients-from-fresh" depends="fetch-latest-source">
     <description>
       Calls Generate.Service.build=>produce-all-services in the freshly checked out source.
-      This will genreate source and DLLs for all the services, from freshly checkedout code.
+      This will generate source and DLLs for all the services, from freshly checkedout code.
     </description>
     <nant buildfile="${fresh.google.nant.path}/buildimpl/${generate.build.file}"
           target="produce-all-services"/>

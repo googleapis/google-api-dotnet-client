@@ -28,38 +28,62 @@ namespace Google.Apis.Tools.CodeGen.Generator
     {
         /// <summary>
         /// Return all required IParemters from the given method.
-        /// Sorted alphabeticly by name 
+        /// Sorted by proposed order, and alphabeticly for the remaining parameters.
         /// </summary>
         public static IEnumerable<IParameter> GetRequiredParameters(this IMethod method)
         {
-            if (method == null || method.Parameters.IsNullOrEmpty())
-            {
-                return Enumerable.Empty<IParameter>();
-            }
-            return from p in method.Parameters where p.Value.IsRequired orderby p.Value.Name select p.Value;
+            return (from p in method.GetAllParametersSorted() where p.IsRequired select p);
         }
 
 
         /// <summary>
-        /// Return all optional IParemters from the given method.
-        /// Sorted alphabeticly by name 
+        /// Return all optional IParameters from the given method.
+        /// Sorted by proposed order, and alphabeticly for the remaining parameters.
         /// </summary>
         public static IEnumerable<IParameter> GetOptionalParameters(this IMethod method)
         {
-            if (method == null || method.Parameters.IsNullOrEmpty())
-            {
-                return Enumerable.Empty<IParameter>();
-            }
-            return from p in method.Parameters where p.Value.IsRequired == false orderby p.Value.Name select p.Value;
+            return (from p in method.GetAllParametersSorted() where !p.IsRequired select p);
         }
 
         /// <summary>
-        /// Return all IParemters from the given method.
-        /// sorted by required then optional, alphabeticly within those groupings 
+        /// Return all IParameters from the given method.
+        /// Sorted by proposed order, then required, then optional, alphabeticly within those groupings.
         /// </summary>
         public static IEnumerable<IParameter> GetAllParametersSorted(this IMethod method)
         {
-            return method.GetRequiredParameters().Concat(method.GetOptionalParameters());
+            if (method.Parameters == null)
+            {
+                yield break;
+            }
+
+            var remainingParameters = new List<IParameter>(method.Parameters.Values);
+
+            // First add all parameters in the suggested order.
+            if (method.ParameterOrder != null)
+            {
+                foreach (string parameterName in method.ParameterOrder)
+                {
+                    if (method.Parameters.ContainsKey(parameterName))
+                    {
+                        // Return the parameter, and remove it from the lit of remaining parameters.
+                        IParameter parameter = method.Parameters[parameterName];
+                        remainingParameters.Remove(parameter);
+                        yield return parameter;
+                    }
+                }
+            }
+
+            // Get a ordered list of all the parameters of this method. 
+            // First required, then optional ones. In each category the set is then sorted alphabetically.
+            var sortedParameters =
+                (from parameter in remainingParameters
+                 orderby parameter.IsRequired descending, parameter.Name
+                 select parameter);
+
+            foreach (IParameter parameter in sortedParameters)
+            {
+                yield return parameter;
+            }
         }
 
         /// <summary>

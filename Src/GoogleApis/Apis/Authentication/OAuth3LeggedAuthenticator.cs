@@ -29,16 +29,14 @@ namespace Google.Apis.Authentication
         /// <summary>
         ///  a constructor for OpenAuthentication login use cases using 3 legged OAuth
         /// </summary>
-        /// <param name="applicationName">The name of the application</param>
         /// <param name="consumerKey">the consumerKey to use</param>
         /// <param name="consumerSecret">the consumerSecret to use</param>
         /// <param name="token">The token to be used</param>
         /// <param name="tokenSecret">The tokenSecret to be used</param>
-        public OAuth3LeggedAuthenticator(string applicationName,
-                                         string consumerKey,
+        public OAuth3LeggedAuthenticator(string consumerKey,
                                          string consumerSecret,
                                          string token,
-                                         string tokenSecret) : base(applicationName, consumerKey, consumerSecret)
+                                         string tokenSecret) : base(consumerKey, consumerSecret)
         {
             this.token = token;
             this.tokenSecret = tokenSecret;

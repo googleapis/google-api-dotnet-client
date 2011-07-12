@@ -82,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             uriConstructor.Parameters.Add(discoveryUrl);
 
             var webConstructor = new CodeObjectCreateExpression();
-            webConstructor.CreateType = new CodeTypeReference(typeof(WebDiscoveryDevice));
+            webConstructor.CreateType = new CodeTypeReference(typeof(CachedWebDiscoveryDevice));
             webConstructor.Parameters.Add(uriConstructor);
 
             var discoveryConstructor = new CodeObjectCreateExpression();

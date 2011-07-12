@@ -27,19 +27,7 @@ namespace Google.Apis.Authentication
     /// <returns></returns>
     public abstract class Authenticator : IAuthenticator
     {
-        private readonly string applicationName;
-        private ICreateHttpRequest requestFactory;
-
-        /// <summary>
-        /// Constructor for an unauthenticated use case
-        /// </summary>
-        /// <param name="applicationName"></param>
-        /// <returns></returns>
-        public Authenticator(string applicationName)
-        {
-            this.applicationName = applicationName;
-            requestFactory = new HttpRequestFactory();
-        }
+        private ICreateHttpRequest requestFactory = new HttpRequestFactory();
 
         /// <summary>
         /// The factory which is used for creating the final request
@@ -48,16 +36,6 @@ namespace Google.Apis.Authentication
         {
             get { return requestFactory; }
             set { requestFactory = value; }
-        }
-
-
-        /// <summary>
-        /// Returns the application name
-        /// </summary>
-        /// <returns></returns>
-        public string Application
-        {
-            get { return applicationName; }
         }
 
         #region IAuthenticator Members

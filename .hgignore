@@ -48,3 +48,4 @@ GoogleApis.Tools.NAntTasks/Generated/**
 GoogleApis.Tools.NAntTasks/freshsource/**
 Src/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.xml
 Src/GoogleApis/GoogleApis.xml
+Src/GoogleApis.Authentication.OAuth2/GoogleApis.Authentication.OAuth2.XML

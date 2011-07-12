@@ -71,7 +71,6 @@
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactoryTest.cs" />
-    <Compile Include="Apis\Requests\MockParameter.cs" />
     <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
     <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
@@ -91,8 +90,7 @@
     <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
     <Compile Include="Apis\Authentication\NullAuthenticatorTest.cs" />
     <Compile Include="Apis\Requests\RequestTest.cs" />
-    <Compile Include="Apis\Requests\MethodValidator.cs" />
-    <Compile Include="Apis\Requests\MockMethod.cs" />
+    <Compile Include="Apis\Requests\MethodValidatorTests.cs" />
     <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
     <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />

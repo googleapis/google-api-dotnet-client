@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ using log4net;
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Represents an abstract, strongly typed request made to a service.
+    /// Represents an abstract, strongly typed request base class to make requests made to a service.
     /// </summary>
     /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
@@ -165,5 +165,5 @@ namespace Google.Apis.Requests
     /// <summary>
     /// Delegate for executing an asynchronous request.
     /// </summary>
-    public delegate void ExecuteRequestDelegate<in T>(T response);
+    public delegate void ExecuteRequestDelegate<T>(T response);
 }
