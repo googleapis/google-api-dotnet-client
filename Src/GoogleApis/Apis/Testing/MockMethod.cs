@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
@@ -41,6 +42,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public string RequestType { get; set; }
 
         public Dictionary<string, IParameter> Parameters { get; set; }
+
+        public IEnumerable<string> ParameterOrder { get; set; }
 
         #endregion
     }

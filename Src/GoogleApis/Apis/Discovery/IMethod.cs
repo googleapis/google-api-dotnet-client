@@ -65,5 +65,10 @@ namespace Google.Apis.Discovery
         /// A set of parameters passed with the request
         /// </summary>
         Dictionary<string, IParameter> Parameters { get; }
+
+        /// <summary>
+        /// The order in which parameters should be passed in a request.
+        /// </summary>
+        IEnumerable<string> ParameterOrder { get; }
     }
 }

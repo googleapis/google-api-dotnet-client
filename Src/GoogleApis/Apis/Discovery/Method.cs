@@ -31,9 +31,12 @@ namespace Google.Apis.Discovery
         private static readonly ILog logger = LogManager.GetLogger(typeof(BaseMethod));
 
         private readonly DiscoveryVersion discoveryVersion;
-        protected internal readonly JsonDictionary information;
+        private readonly JsonDictionary information;
 
-        protected internal Dictionary<string, IParameter> parameters;
+        private Dictionary<string, IParameter> parameters;
+        private IEnumerable<string> parameterOrder;
+
+        protected JsonDictionary Information { get { return information; }}
 
         internal BaseMethod(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
@@ -100,13 +103,14 @@ namespace Google.Apis.Discovery
 
         public Dictionary<string, IParameter> Parameters
         {
-            get
-            {
-                if (parameters == null)
-                {
-                    parameters = FetchParameters();
-                }
-                return parameters;
+            get { return parameters ?? (parameters = FetchParameters()); }
+        }
+
+        public IEnumerable<string> ParameterOrder
+        {
+            get {
+                return parameterOrder ??
+                       (parameterOrder = information.GetValueAsStringListOrEmpty(ServiceFactory.ParameterOrder));
             }
         }
 
@@ -154,7 +158,7 @@ namespace Google.Apis.Discovery
 
         public override string RestPath
         {
-            get { return information[PathUrl] as string; }
+            get { return Information[PathUrl] as string; }
         }
     }
 }
