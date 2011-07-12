@@ -15,6 +15,7 @@ limitations under the License.
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
@@ -51,18 +52,17 @@ namespace Google.Apis.Tests.Apis.Discovery
                  },
                  'request': {
                   '$ref': 'RequestTypeTestString'
-                 }}";
+                 },
+                 'parameterOrder': [
+                      'url', 'hl'
+                 ],
+                }";
 
 
         private class BaseMethodTestImpl : BaseMethod
         {
             public BaseMethodTestImpl(string name, string json)
                 : base(DiscoveryVersion.Version_1_0, new KeyValuePair<string, object>(name, JsonReader.Parse(json))) {}
-
-            public override string RestPath
-            {
-                get { throw new NotImplementedException(); }
-            }
         }
 
         /// <summary>
@@ -77,6 +77,19 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("count", method.Name);
             Assert.AreEqual("GET", method.HttpMethod);
             Assert.AreEqual(2, method.Parameters.Count);
+        }
+
+        /// <summary>
+        /// Confirms that the "ParameterOrder" field is parsed correctly.
+        /// </summary>
+        [Test]
+        public void TestParameterOrder()
+        {
+            var method = new BaseMethodTestImpl("count", SimpleCountMethod);
+            Assert.IsNotNull(method.ParameterOrder);
+            Assert.AreEqual(2, method.ParameterOrder.Count());
+            Assert.AreEqual("url", method.ParameterOrder.First());
+            Assert.AreEqual("hl", method.ParameterOrder.Last());
         }
     }
 }

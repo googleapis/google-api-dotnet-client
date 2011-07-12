@@ -29,17 +29,15 @@ namespace Google.Apis.Authentication
         /// <summary>
         ///  a constructor for OpenAuthentication login use cases
         /// </summary>
-        /// <param name="applicationName">The name of the application</param>
         /// <param name="consumerKey">the consumerKey to use</param>
         /// <param name="consumerSecret">the consumerSecret to use</param>
         /// <param name="user">the username to use</param>
         /// <param name="domain">the domain to use</param>
         /// <returns></returns>
-        public OAuth2LeggedAuthenticator(string applicationName,
-                                         string consumerKey,
+        public OAuth2LeggedAuthenticator(string consumerKey,
                                          string consumerSecret,
                                          string user,
-                                         string domain) : base(applicationName, consumerKey, consumerSecret)
+                                         string domain) : base(consumerKey, consumerSecret)
         {
             OAuthUser = user;
             OAuthDomain = domain;

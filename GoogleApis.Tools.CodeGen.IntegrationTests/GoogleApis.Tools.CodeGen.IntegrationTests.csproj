@@ -8,7 +8,7 @@
     <ProjectGuid>{B13D7964-0E39-4055-9969-5451754A23E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GoogleApis.Tools.CodeGen.IntegrationTests</RootNamespace>
+    <RootNamespace>Google.Apis.Tools.CodeGen.IntegrationTests</RootNamespace>
     <AssemblyName>GoogleApis.Tools.CodeGen.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\RequestTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemTest.cs" />
   </ItemGroup>

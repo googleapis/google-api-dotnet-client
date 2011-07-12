@@ -187,7 +187,7 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
             var code = new StringBuilder();
             code.AppendLine("Generated.DiscoveryService service = new Generated.DiscoveryService();");
             code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List(null, null, null).Fetch();");
-
+            code.AppendLine("if (list == null) throw new Exception(\"Response is null\");");
             code.AppendLine(
                 string.Format(
                     "foreach (Generated.Data.DirectoryList.Items{0} item in list.Items) {{",

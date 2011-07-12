@@ -20,7 +20,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tests.Apis.Requests
 {
     /// <summary>
-    /// A mock method for testing purposes
+    /// A mock method for testing purposes.
     /// </summary>
     public class MockMethod : IMethod
     {
@@ -43,6 +43,8 @@ namespace Google.Apis.Tests.Apis.Requests
         public bool HasBody { get; set; }
 
         public Dictionary<string, IParameter> Parameters { get; set; }
+
+        public IEnumerable<string> ParameterOrder { get; set; }
 
         #endregion
     }

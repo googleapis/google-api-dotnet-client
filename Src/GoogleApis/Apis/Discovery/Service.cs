@@ -79,6 +79,7 @@ namespace Google.Apis.Discovery
             Protocol = values.GetValueAsNull("protocol") as string;
             Description = values.GetValueAsNull("description") as string;
             Title = values.GetValueAsNull("title") as string;
+            Scopes = LoadScopes();
 
             // Determine the Server URL and (optional) Base Path
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
@@ -105,6 +106,8 @@ namespace Google.Apis.Discovery
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
         public IList<string> Features { get; private set; }
+        public IDictionary<string, Scope> Scopes { get; private set; }
+
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
 
@@ -118,14 +121,11 @@ namespace Google.Apis.Discovery
                 {
                     return new Uri(ServerUrl.Substring(0, ServerUrl.Length - 1) + BasePath);
                 }
-                else if (ServerUrl.EndsWith("/") == false && BasePath.StartsWith("/") == false)
+                if (!ServerUrl.EndsWith("/") && !BasePath.StartsWith("/"))
                 {
                     return new Uri(ServerUrl + "/" + BasePath);
                 }
-                else
-                {
-                    return new Uri(ServerUrl + BasePath);
-                }
+                return new Uri(ServerUrl + BasePath);
             }
         }
 
@@ -202,6 +202,56 @@ namespace Google.Apis.Discovery
             var request = Request.CreateRequest(this, method);
 
             return request;
+        }
+        
+        /// <summary>
+        /// Loads the set of scopes from the json information dictionary and parses it into a dictionary.
+        /// Always returns a valid dictionary.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IDictionary<string, Scope> LoadScopes()
+        {
+            Dictionary<string, Scope> scopes = new Dictionary<string, Scope>();
+            
+            // Access the "auth" node.
+            var authObj = information.GetValueAsNull("auth") as JsonDictionary;
+            if (authObj == null)
+            {
+                return scopes;
+            }
+
+            // Access the "oauth2" subnode.
+            var oauth2Obj = authObj.GetValueAsNull("oauth2") as JsonDictionary;
+            if (oauth2Obj == null)
+            {
+                return scopes;
+            }
+
+            // Access the "scopes" subnode.
+            var scopesObj = oauth2Obj.GetValueAsNull("scopes") as JsonDictionary;
+            if (scopesObj == null)
+            {
+                return scopes;
+            }
+
+            // Iterate through all scopes.
+            foreach (KeyValuePair<string,object> pair in scopesObj)
+            {
+                // Create a new scope object.
+                var scope = new Scope();
+                scope.ID = pair.Key;
+
+                var data = pair.Value as JsonDictionary;
+                if (data != null)
+                {
+                    scope.Description = data.GetValueAsNull("description") as string;
+                }
+
+                // Add it to the scopes dictionary.
+                scopes.Add(scope.ID, scope);
+            }
+            
+            return scopes;
         }
 
         /// <summary>

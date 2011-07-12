@@ -21,6 +21,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Text;
+using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
@@ -29,11 +30,11 @@ using Google.Apis.Util;
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Request to a service
+    /// Request to a service.
     /// </summary>
     public class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}";
+        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
@@ -42,41 +43,64 @@ namespace Google.Apis.Requests
         public const string PATCH = "PATCH";
         public const string POST = "POST";
         public const string PUT = "PUT";
+
+        /// <summary>
+        /// Defines the maximum number of retries which should be made if a request fails.
+        /// </summary>
+        public int MaximumRetries { get; set; }
+
+        /// <summary>
+        /// Defines the factor by which the waiting time is multiplied between retry attempts.
+        /// </summary>
+        public double RetryWaitTimeIncreaseFactor { get; set; }
+
+        /// <summary>
+        /// Defines the initial waiting time, which is used once the first retry has failed.
+        /// </summary>
+        public int RetryInitialWaitTime { get; set; }
+
         private static readonly String ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
 
         public static readonly ReadOnlyCollection<string> SupportedHttpMethods =
             new List<string> { POST, PUT, DELETE, GET, PATCH }.AsReadOnly();
 
-        private Uri requestUrl;
         private string applicationName;
+        private Uri requestUrl;
 
         public Request()
         {
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
+            
+            MaximumRetries = 3;
+            RetryWaitTimeIncreaseFactor = 2.0;
+            RetryInitialWaitTime = 1000;
         }
 
         /// <summary>
-        /// The authenticator used for this request
+        /// The authenticator used for this request.
         /// </summary>
         internal IAuthenticator Authenticator { get; private set; }
 
         /// <summary>
-        /// The developer API Key sent along with the request
+        /// The developer API Key sent along with the request.
         /// </summary>
         internal String DeveloperKey { get; private set; }
 
         /// <summary>
-        /// Set of method parameters
+        /// Set of method parameters.
         /// </summary>
         [VisibleForTestOnly]
         internal ParameterCollection Parameters { get; set; }
 
         /// <summary>
-        /// The application name used within the user agent string
+        /// The application name used within the user agent string.
         /// </summary>
         [VisibleForTestOnly]
-        internal string ApplicationName { get { return applicationName; } }
+        internal string ApplicationName
+        {
+            get { return applicationName; }
+        }
 
         private IService Service { get; set; }
         private IMethod Method { get; set; }
@@ -84,6 +108,14 @@ namespace Google.Apis.Requests
         private string RPCName { get; set; } // note: this property is apparently never used
         private string Body { get; set; }
         private ReturnType ReturnType { get; set; }
+
+        /// <summary>
+        /// Defines whether this request can be sent multiple times.
+        /// </summary>
+        public bool SupportsRetry
+        {
+            get { return true; }
+        }
 
         #region IRequest Members
 
@@ -103,7 +135,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Sets the type of data that is expected to be returned from the request.
         /// 
-        /// Defaults to Json
+        /// Defaults to Json.
         /// </summary>
         /// <param name="returnType">
         /// A <see cref="ReturnType"/>
@@ -170,7 +202,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Adds the developer key to this request
+        /// Adds the developer key to this request.
         /// </summary>
         public IRequest WithDeveloperKey(string key)
         {
@@ -193,34 +225,77 @@ namespace Google.Apis.Requests
                 return Stream.Null;
             }
 
-            // Create the request
             WebRequest request = CreateWebRequest();
 
-            // Attach a body if a POST and there is something to attach.
-            if (String.IsNullOrEmpty(Body) == false && (Method.HttpMethod == "POST" || Method.HttpMethod == "PUT"))
+            // Try to execute the request.
+            int tries = 0;
+            double waitTime = RetryInitialWaitTime;
+            while (true)
             {
-                AttachBody(request);
-            }
-
-            // Execute the request
-            try
-            {
-                var response = request.GetResponse();
-                return response.GetResponseStream();
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response != null)
+                tries++;
+                try
                 {
-                    return ex.Response.GetResponseStream();
+                    // If we can get a valid response, return immediately.
+                    WebResponse response = request.GetResponse();
+                    return response.GetResponseStream();
                 }
+                catch (WebException ex)
+                {
+                    // Try to get an error response object.
+                    RequestError error = null;
+                    if (ex.Response != null)
+                    {
+                        Stream errorStream = ex.Response.GetResponseStream();
+                        error = Service.DeserializeResponse<StandardResponse<object>>(errorStream).Error;
+                    }
 
-                // The exception is not something the client can handle via a stream.
-                throw;
+                    // Try finding an error handler for this response.
+                    bool isHandled = false;
+                    if (SupportsRetry)
+                    {
+                        foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
+                        {
+                            if (handler.CanHandleErrorResponse(ex, error))
+                            {
+                                // The provided handler was able to handle this error. Retry sending the request.
+                                handler.HandleErrorResponse(ex, error, request = CreateWebRequest());
+                                isHandled = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!isHandled || tries >= MaximumRetries)
+                    {
+                        // We were unable to handle the exception. Throw it.
+                        throw new GoogleApiException(
+                            Service, "An request failed: " + (error != null ? error.ToString() : "<null>"), ex);
+                    }
+
+                    if (tries > 1) // The first retry occurs immediately.
+                    {
+                        Thread.Sleep((int)waitTime);
+                        waitTime = waitTime * RetryWaitTimeIncreaseFactor;
+                    }
+                }
             }
         }
 
         #endregion
+
+        /// <summary>
+        /// Returns all error response handlers associated with this request.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IEnumerable<IErrorResponseHandler> GetErrorResponseHandlers()
+        {
+            // Check if the current authenticator can handle error responses.
+            IErrorResponseHandler authenticator = Authenticator as IErrorResponseHandler;
+            if (authenticator != null)
+            {
+                yield return authenticator;
+            }
+        }
 
         /// <summary>
         /// Given an API method, create the appropriate Request for it.
@@ -244,7 +319,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Sets the Application name on the UserAgent String
+        /// Sets the Application name on the UserAgent String.
         /// </summary>
         /// <param name="name">
         /// A <see cref="System.String"/>
@@ -256,7 +331,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Builds the resulting Url for the whole request
+        /// Builds the resulting Url for the whole request.
         /// </summary>
         [VisibleForTestOnly]
         internal Uri BuildRequestUrl()
@@ -269,17 +344,17 @@ namespace Google.Apis.Requests
             if (DeveloperKey.IsNotNullOrEmpty())
             {
                 queryParams.Add(
-                    "key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need
-                                 Replace("&", "%26"). // Also escaped & and ?
+                    "key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need.
+                                 Replace("&", "%26"). // Also escape & and ?.
                                  Replace("?", "%3F"));
             }
 
-            // Replace the substitution parameters
+            // Replace the substitution parameters.
             foreach (var parameter in Parameters)
             {
                 IParameter parameterDefinition = Method.Parameters[parameter.Key];
                 string value = parameter.Value;
-                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default
+                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default.
                 {
                     value = parameterDefinition.DefaultValue;
                 }
@@ -304,7 +379,7 @@ namespace Google.Apis.Requests
                 }
             }
 
-            // URL encode the parameters and append them to the URI
+            // URL encode the parameters and append them to the URI.
             string path = restPath;
             if (queryParams.Count > 0)
             {
@@ -327,27 +402,46 @@ namespace Google.Apis.Requests
             }
         }
 
+        /// <summary>
+        /// Creates the ready-to-send WebRequest containing all the data specified in this request class.
+        /// </summary>
         [VisibleForTestOnly]
         internal WebRequest CreateWebRequest()
         {
-            // Formulate the RequestUrl
+            // Formulate the RequestUrl.
             requestUrl = BuildRequestUrl();
 
-            // Create the request
+            // Create the request.
             HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, requestUrl);
 
-            // Insert the content type and user agent
+            // Insert the content type and user agent.
             request.ContentType = GetReturnMimeType(ReturnType);
             string appName = FormatForUserAgent(ApplicationName);
             string apiVersion = FormatForUserAgent(ApiVersion);
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
-            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform);
+            string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
+            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
 
-            // Check if compression is supported
+            // Check if compression is supported.
             if (Service.GZipEnabled)
             {
                 request.UserAgent += GZipUserAgentSuffix;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            }
+
+            // Attach a body if a POST and there is something to attach.
+            if (HttpMethodHasBody(request.Method))
+            {
+                if (!string.IsNullOrEmpty(Body))
+                {
+                    AttachBody(request);
+                }
+                else
+                {
+                    // Set the "Content-Length" header, which is required for every http method declaring a body. This 
+                    // is required as e.g. the google servers will throw a "411 - Length required" error otherwise.
+                    request.ContentLength = 0;
+                }
             }
 
             return request;
@@ -363,15 +457,15 @@ namespace Google.Apis.Requests
         {
             Stream bodyStream = request.GetRequestStream();
 
-            // If enabled: Encapsulate in GZipStream
+            // If enabled: Encapsulate in GZipStream.
             if (Service.GZipEnabled)
             {
-                // Change the content encoding and apply a gzip filter
+                // Change the content encoding and apply a gzip filter.
                 request.Headers.Add(HttpRequestHeader.ContentEncoding, GZipEncoding);
                 bodyStream = new GZipStream(bodyStream, CompressionMode.Compress);
             }
 
-            // Write data into the stream
+            // Write data into the stream.
             using (bodyStream)
             {
                 byte[] postBody = Encoding.ASCII.GetBytes(Body);
@@ -380,7 +474,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Returns true if this http method can have a body
+        /// Returns true if this http method can have a body.
         /// </summary>
         public static bool HttpMethodHasBody(string httpMethod)
         {

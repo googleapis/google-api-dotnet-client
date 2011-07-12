@@ -105,9 +105,9 @@ namespace Google.Apis.Tests
         [Test]
         public void SetCacheDurationTest()
         {
-            // Check that the cache duration is set to 7 days per default
+            // Check that the cache duration is set to 3 days per default
             var device = new CachedWebDiscoveryDevice();
-            Assert.That(device.CacheDuration, Is.EqualTo(7 * 24 * 60 * 60));
+            Assert.That(device.CacheDuration, Is.EqualTo(3 * 24 * 60 * 60));
 
             device.CacheDuration = 100;
             Assert.That(device.CacheDuration, Is.EqualTo(100));

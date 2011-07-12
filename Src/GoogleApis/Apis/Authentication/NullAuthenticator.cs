@@ -48,7 +48,6 @@ namespace Google.Apis.Authentication
         /// </summary>
         private class NullAuthenticatorImpl : Authenticator
         {
-            internal NullAuthenticatorImpl() : base(null) {}
         }
 
         #endregion

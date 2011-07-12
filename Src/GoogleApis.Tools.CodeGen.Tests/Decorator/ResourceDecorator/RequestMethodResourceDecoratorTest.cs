@@ -52,7 +52,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             // Test the DecorateClass method with optional parameters.
             decorator.AddOptionalParameters = true;
             decorator.DecorateClass(resource, decl.Name, decl, null, null, null);
-            Assert.AreEqual(8, decl.Members.Count); // 4 methods with one overload each.
+            Assert.AreEqual(10, decl.Members.Count); // 5 methods with one overload each.
             Assert.AreEqual("GetTest", decl.Members[0].Name);
             Assert.AreEqual("GetTest", decl.Members[1].Name);
 
@@ -60,7 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             decl = new CodeTypeDeclaration("TestClass");
             decorator.AddOptionalParameters = false;
             decorator.DecorateClass(resource, decl.Name, decl, null, null, null);
-            Assert.AreEqual(5, decl.Members.Count); // 5 methods defined in the resource json.
+            Assert.AreEqual(6, decl.Members.Count); // 6 methods defined in the resource json.
         }
 
         /// <summary>
