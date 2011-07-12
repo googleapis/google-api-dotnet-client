@@ -23,7 +23,7 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
     /// <summary>
-    /// Tests for the MethodGeneratorUtil class
+    /// Tests for the MethodGeneratorUtil class.
     /// </summary>
     [TestFixture]
     public class MethodGeneratorUtilsTest
@@ -36,7 +36,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if the parameters are sorted correctly
+        /// Tests if the parameters are sorted correctly.
         /// </summary>
         [Test]
         public void TestAllParameterSorting()
@@ -60,7 +60,37 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if optional parameters are added correctly
+        /// Tests if the parameters are sorted correctly when a sorting order is proposed.
+        /// </summary>
+        [Test]
+        public void TestProposedSorting()
+        {
+            var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest2);
+
+            // Test with all parameters:
+            IParameter[] parameters = method.GetAllParametersSorted().ToArray();
+            Assert.AreEqual(4, parameters.Length);
+            Assert.AreEqual("req_b", parameters[0].Name);
+            Assert.AreEqual("opt_a", parameters[1].Name);
+            Assert.AreEqual("req_a", parameters[2].Name);
+            Assert.AreEqual("opt_b", parameters[3].Name);
+
+            // Test with optional ones only:
+            parameters = method.GetOptionalParameters().ToArray();
+            Assert.AreEqual(2, parameters.Length);
+            Assert.AreEqual("opt_a", parameters[0].Name);
+            Assert.AreEqual("opt_b", parameters[1].Name);
+
+            // Test with required ones only:
+            parameters = method.GetRequiredParameters().ToArray();
+            Assert.AreEqual(2, parameters.Length);
+            Assert.AreEqual("req_b", parameters[0].Name);
+            Assert.AreEqual("req_a", parameters[1].Name);
+        }
+
+
+        /// <summary>
+        /// Tests if optional parameters are added correctly.
         /// </summary>
         [Test]
         public void TestGetOptionalParameters()
@@ -77,7 +107,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if required parameters are added correctly
+        /// Tests if required parameters are added correctly.
         /// </summary>
         [Test]
         public void TestGetRequiredParameters()
@@ -90,7 +120,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if optional parameters are recognized
+        /// Tests if optional parameters are recognized.
         /// </summary>
         [Test]
         public void TestHasOptionalParameters()
@@ -105,7 +135,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if required parameters are recognized
+        /// Tests if required parameters are recognized.
         /// </summary>
         [Test]
         public void TestHasRequiredParameters()
@@ -120,7 +150,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if optional parameters are sorted correctly
+        /// Tests if optional parameters are sorted correctly.
         /// </summary>
         [Test]
         public void TestOptionalParameterSorting()
@@ -139,7 +169,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         }
 
         /// <summary>
-        /// Tests if required parameters are sorted correctly
+        /// Tests if required parameters are sorted correctly.
         /// </summary>
         [Test]
         public void TestRequiredParameterSorting()

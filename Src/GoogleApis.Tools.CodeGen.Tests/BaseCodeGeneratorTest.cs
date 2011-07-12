@@ -39,6 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public enum TestMethodNames
         {
             getTest,
+            getTest2,
             postTest,
             noParameterTest,
             oneOptionalParameterTest,
@@ -69,6 +70,21 @@ namespace Google.Apis.Tools.CodeGen.Tests
                         ""opt_a"":{""parameterType"":""query"",""required"":false}
                     }
                 },
+                ""getTest2"":{
+                    ""pathUrl"":""activities/count"",
+                    ""rpcName"":""chili.activities.count"",
+                    ""httpMethod"":""GET"",
+                    ""methodType"":""rest"",
+                    ""parameters"":{
+                        ""req_b"":{""parameterType"":""query"",""required"":true},
+                        ""req_a"":{""parameterType"":""query"",""required"":true},
+                        ""opt_b"":{""parameterType"":""query"",""required"":false},
+                        ""opt_a"":{""parameterType"":""query"",""required"":false}
+                    },
+                    ""parameterOrder"":[
+                        ""req_b"", ""opt_a""
+                    ]
+                },
                 ""postTest"":{
                     ""pathUrl"":""activities/{userId}/{scope}/{postId}"",
                     ""rpcName"":""chili.activities.delete"",
@@ -80,7 +96,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
                         ""opt_b"":{""parameterType"":""query"",""required"":false},
                         ""req_b"":{""parameterType"":""path"",""pattern"":""@.*"",""required"":true},
                         ""opt_a"":{""parameterType"":""query"",""required"":false}
-                    }
+                    }                    
                 },
                 ""noParameterTest"":{
                     ""pathUrl"":""activities/count"",
