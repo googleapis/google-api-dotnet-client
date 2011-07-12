@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -143,5 +143,5 @@ namespace Google.Apis.Requests
     /// <summary>
     /// Delegate for executing an asynchronous request.
     /// </summary>
-    public delegate void ExecuteRequestDelegate<in T>(T response);
+    public delegate void ExecuteRequestDelegate<T>(T response);
 }
