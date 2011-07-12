@@ -43,8 +43,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
         /// <summary>
         /// Creates a new request constructor decorator.
-        /// Will only create the mandatory-only constructor.
         /// </summary>
+        /// <remarks>Will create only the mandatory-only constructor</remarks>
         public RequestConstructorDecorator(IObjectTypeProvider objectTypeProvider)
         {
             this.objectTypeProvider = objectTypeProvider;

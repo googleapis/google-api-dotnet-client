@@ -193,7 +193,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                         continue;
                     }
 
-                    // Generate a safe parameter name which was not used yet.
+                    // Generate a safe parameter name which was not yet used.
                     string parameterName = GeneratorUtils.GetParameterName(
                         param, method.Parameters.Keys.Without(param.Name));
 

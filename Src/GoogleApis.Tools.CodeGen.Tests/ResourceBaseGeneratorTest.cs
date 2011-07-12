@@ -43,7 +43,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// </summary>
         private class ForTestOnly : ResourceBaseGenerator
         {
-            public new void ResourceCallAddBodyDeclaration(IMethod method,
+            public void ResourceCallAddBodyDeclaration(IMethod method,
                                                            CodeMemberMethod member,
                                                            CodeTypeReference codeType)
             {
