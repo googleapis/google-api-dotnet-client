@@ -181,10 +181,10 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardServiceFieldResourceDecorator(true),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
-                         new StandardMethodResourceDecorator(),
+                         /*new StandardMethodResourceDecorator(),
                          new StandardMethodResourceDecorator(
                              true, true, typeProvider,
-                             new DefaultEnglishCommentCreator()),
+                             new DefaultEnglishCommentCreator()),*/
                          new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
                          new Log4NetResourceDecorator(),
                          new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
