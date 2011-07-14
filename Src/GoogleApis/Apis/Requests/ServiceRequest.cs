@@ -28,10 +28,11 @@ namespace Google.Apis.Requests
 {
     /// <summary>
     /// Represents an abstract, strongly typed request base class to make requests made to a service.
+    /// Supports a strongly typed response.
     /// </summary>
     /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
-    public abstract class ServiceRequest<TResponse>
+    public abstract class ServiceRequest<TResponse> : IServiceRequest<TResponse>
     {
         /// <summary>
         /// The name of the "GetBody" method
@@ -58,6 +59,14 @@ namespace Google.Apis.Requests
         /// The name of the method to which this request belongs.
         /// </summary>
         protected abstract string MethodName { get; }
+
+        /// <summary>
+        /// The service on which the request will be executed.
+        /// </summary>
+        protected ISchemaAwareRequestExecutor Service
+        {
+            get { return service; }
+        }
         
         /// <summary>
         /// Should return the body of the request (if applicable), or null.
@@ -83,14 +92,6 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        ///Executes the request synchronously and returns the result.
-        /// </summary>
-        public TResponse Fetch()
-        {
-            return service.JsonToObject<TResponse>(FetchAsStream());
-        }
-
-        /// <summary>
         /// Executes the request synchronously and returns the unparsed response stream.
         /// </summary>
         public Stream FetchAsStream()
@@ -104,23 +105,13 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Executes the request asynchronously and calls the specified method once finished.
-        /// </summary>
-        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
-        {
-            // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
-            //       Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
-        }
-
-        /// <summary>
         /// Executes the request asynchronously without parsing the response, 
         /// and calls the specified method once finished.
         /// </summary>
         public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
         {
-            // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
-            //       Will probably require us to add an async implementation to the dynamic Request class.
+            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
+            //                Will probably require us to add an async implementation to the dynamic Request class.
             ThreadPool.QueueUserWorkItem(cb => methodToCall(FetchAsStream()));
         }
 
@@ -160,10 +151,23 @@ namespace Google.Apis.Requests
 
             return dict;
         }
-    }
 
-    /// <summary>
-    /// Delegate for executing an asynchronous request.
-    /// </summary>
-    public delegate void ExecuteRequestDelegate<T>(T response);
+        /// <summary>
+        /// Executes the request synchronously and returns the result.
+        /// </summary>
+        public TResponse Fetch()
+        {
+            return Service.JsonToObject<TResponse>(FetchAsStream());
+        }
+
+        /// <summary>
+        /// Executes the request asynchronously and calls the specified method once finished.
+        /// </summary>
+        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
+        {
+            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
+            //                Will probably require us to add an async implementation to the dynamic Request class.
+            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
+        }
+    }
 }

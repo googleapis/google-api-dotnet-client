@@ -74,6 +74,7 @@
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />
     <Compile Include="Apis\ISerializer.cs" />
+    <Compile Include="Apis\Requests\IServiceRequest.cs" />
     <Compile Include="Apis\Requests\ParameterCollection.cs" />
     <Compile Include="Apis\Requests\ServiceRequest.cs" />
     <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
