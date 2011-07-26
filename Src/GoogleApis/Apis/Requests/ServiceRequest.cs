@@ -28,10 +28,11 @@ namespace Google.Apis.Requests
 {
     /// <summary>
     /// Represents an abstract, strongly typed request base class to make requests made to a service.
+    /// Supports a strongly typed response.
     /// </summary>
     /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
-    public abstract class ServiceRequest<TResponse>
+    public abstract class ServiceRequest<TResponse> : IServiceRequest<TResponse>
     {
         protected ServiceRequest()
         {
@@ -73,6 +74,14 @@ namespace Google.Apis.Requests
         /// The name of the method to which this request belongs.
         /// </summary>
         protected abstract string MethodName { get; }
+
+        /// <summary>
+        /// The service on which the request will be executed.
+        /// </summary>
+        protected IRequestProvider Service
+        {
+            get { return service; }
+        }
         
         /// <summary>
         /// Should return the body of the request (if applicable), or null.
@@ -168,8 +177,8 @@ namespace Google.Apis.Requests
         /// </summary>
         public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
         {
-            // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
-            //       Will probably require us to add an async implementation to the dynamic Request class.
+            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
+            //                Will probably require us to add an async implementation to the dynamic Request class.
             ThreadPool.QueueUserWorkItem(cb => methodToCall(FetchAsStream()));
         }
 
@@ -210,9 +219,4 @@ namespace Google.Apis.Requests
             return dict;
         }
     }
-
-    /// <summary>
-    /// Delegate for executing an asynchronous request.
-    /// </summary>
-    public delegate void ExecuteRequestDelegate<T>(T response);
 }
