@@ -1,0 +1,9 @@
+﻿<Window x:Class="TestProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <toolkit:Chart></toolkit:Chart>
+    </Grid>
+</Window>
