@@ -70,7 +70,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         /// <summary>
         /// A Json schema for testing serialization/deserialization.
         /// </summary>
-        internal class MockJsonSchema : IResponse
+        internal class MockJsonSchema : IDirectResponseSchema
         {
             [JsonProperty("kind")]
             public string Kind { get; set; }
@@ -82,6 +82,8 @@ namespace Google.Apis.Tests.Apis.Discovery
             public string Status { get; set; }
 
             public RequestError Error { get; set; }
+
+            public string ETag { get; set; }
         }
 
         #region Test Helper methods
@@ -130,7 +132,8 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check that the response is decoded correctly.
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
-            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
+            var response = new MockResponse() { Stream = stream };
+            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(response));
         }
 
         /// <summary>
@@ -148,7 +151,8 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(stream));
+            CheckDeserializationResults(
+                impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream }));
         }
 
         /// <summary>
@@ -163,7 +167,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            string result = impl.DeserializeResponse<string>(stream);
+            string result = impl.DeserializeResponse<string>(new MockResponse() { Stream = stream });
             Assert.AreEqual(ResponseV1, result);
         }
 
@@ -199,7 +203,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                     // Verify that the response is decoded correctly.
                     try
                     {
-                        impl.DeserializeResponse<MockJsonSchema>(stream);
+                        impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
                         Assert.Fail("GoogleApiException was not thrown for invalid Json");
                     }
                     catch (GoogleApiException ex)

@@ -108,6 +108,8 @@ namespace Google.Apis.Requests
         private string RPCName { get; set; } // note: this property is apparently never used
         private string Body { get; set; }
         private ReturnType ReturnType { get; set; }
+        private ETagAction ETagAction { get; set; }
+        private string ETag { get; set; }
 
         /// <summary>
         /// Defines whether this request can be sent multiple times.
@@ -211,18 +213,36 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Sets the ETag-behavior of this request.
+        /// </summary>
+        public IRequest WithETagAction(ETagAction action)
+        {
+            ETagAction = action;
+            return this;
+        }
+
+        /// <summary>
+        /// Adds an ETag to this request.
+        /// </summary>
+        public IRequest WithETag(string etag)
+        {
+            ETag = etag;
+            return this;
+        }
+
+        /// <summary>
         /// Executes a request given the configuration options supplied.
         /// </summary>
         /// <returns>
         /// A <see cref="Stream"/>
         /// </returns>
-        public Stream ExecuteRequest()
+        public IResponse ExecuteRequest()
         {
             // Validate the input
             var validator = new MethodValidator(Method, Parameters);
             if (validator.ValidateAllParameters() == false)
             {
-                return Stream.Null;
+                return null;
             }
 
             WebRequest request = CreateWebRequest();
@@ -237,7 +257,7 @@ namespace Google.Apis.Requests
                 {
                     // If we can get a valid response, return immediately.
                     WebResponse response = request.GetResponse();
-                    return response.GetResponseStream();
+                    return new Response(response);
                 }
                 catch (WebException ex)
                 {
@@ -245,8 +265,8 @@ namespace Google.Apis.Requests
                     RequestError error = null;
                     if (ex.Response != null)
                     {
-                        Stream errorStream = ex.Response.GetResponseStream();
-                        error = Service.DeserializeResponse<StandardResponse<object>>(errorStream).Error;
+                        IResponse errorResponse = new Response(ex.Response);
+                        error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
                     }
 
                     // Try finding an error handler for this response.
@@ -267,9 +287,16 @@ namespace Google.Apis.Requests
 
                     if (!isHandled || tries >= MaximumRetries)
                     {
+                        // Retrieve additional information about the http response (if applicable).
+                        HttpStatusCode status = 0;
+                        HttpWebResponse httpResponse = ex.Response as HttpWebResponse;
+                        if (httpResponse != null)
+                        {
+                            status = httpResponse.StatusCode;
+                        }
+
                         // We were unable to handle the exception. Throw it.
-                        throw new GoogleApiException(
-                            Service, "An request failed: " + (error != null ? error.ToString() : "<null>"), ex);
+                        throw new GoogleApiRequestException(Service, this, error, ex) { HttpStatusCode = status };
                     }
 
                     if (tries > 1) // The first retry occurs immediately.
@@ -403,6 +430,28 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Returns the default ETagAction for a specific http verb.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal static ETagAction GetDefaultETagAction(string httpVerb)
+        {
+            switch (httpVerb)
+            {
+                default:
+                    return ETagAction.Ignore;
+
+                case GET: // Incoming data should only be updated if it has been changed on the server.
+                    return ETagAction.IfNoneMatch;
+
+                case PUT: // Outgoing data should only be commited if it hasn't been changed on the server.
+                case POST:
+                case PATCH:
+                case DELETE:
+                    return ETagAction.IfMatch;
+            }
+        }
+
+        /// <summary>
         /// Creates the ready-to-send WebRequest containing all the data specified in this request class.
         /// </summary>
         [VisibleForTestOnly]
@@ -421,6 +470,27 @@ namespace Google.Apis.Requests
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
             string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
             request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
+            
+            // Add the E-tag header:
+            if (!string.IsNullOrEmpty(ETag))
+            {
+                ETagAction action = this.ETagAction;
+                if (action == ETagAction.Default)
+                {
+                    action = GetDefaultETagAction(request.Method);
+                }
+
+                switch (action)
+                {
+                    case ETagAction.IfMatch:
+                        request.Headers[HttpRequestHeader.IfMatch] = ETag;
+                        break;
+
+                    case ETagAction.IfNoneMatch:
+                        request.Headers[HttpRequestHeader.IfNoneMatch] = ETag;
+                        break;
+                }
+            }
 
             // Check if compression is supported.
             if (Service.GZipEnabled)
@@ -490,6 +560,11 @@ namespace Google.Apis.Requests
                 default:
                     throw new NotSupportedException(string.Format("The HttpMethod[{0}] is not supported", httpMethod));
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}({1} @ {2})", GetType(), Method.Name, BuildRequestUrl());
         }
     }
 }

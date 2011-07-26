@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using NUnit.Framework;
 
@@ -31,41 +32,31 @@ namespace Google.Apis.Tests.Apis.Requests
     public class ServiceRequestTest
     {
         /// <summary>
-        /// Mock implementation of a ISchemaAwareRequestExecutor.
+        /// Mock implementation of a IRequestProvider.
         /// </summary>
-        private class MockSchemaAwareRequestExecutor : ISchemaAwareRequestExecutor
+        private class MockRequestProvider : IRequestProvider
         {
-            #region ISchemaAwareRequestExecutor Members
-
-            public Stream ExecuteRequest(string resource,
-                                         string method,
-                                         string body,
-                                         IDictionary<string, object> parameters)
+            public IRequest CreateRequest(string resource, string method)
             {
                 Assert.AreEqual("Resource", resource);
                 Assert.AreEqual("Method", method);
-                Assert.IsNull(body);
-                Assert.AreEqual(2, parameters.Count);
-
-                return new MemoryStream();
+                return new MockRequest() { StreamToReturn = new MemoryStream() };
             }
 
-            public string ObjectToJson(object obj)
+            public string SerializeObject(object data)
             {
                 throw new NotImplementedException();
             }
 
-            public TOutput JsonToObject<TOutput>(Stream stream)
+            public T DeserializeResponse<T>(IResponse response)
             {
-                return (TOutput) Convert.ChangeType("FooBar", typeof(TOutput));
+                return (T)Convert.ChangeType("FooBar", typeof(T));
             }
-
-            #endregion
         }
 
         private class MockServiceRequest : ServiceRequest<string>
         {
-            public MockServiceRequest(ISchemaAwareRequestExecutor service) : base(service) {}
+            public MockServiceRequest(IRequestProvider service) : base(service) {}
 
             protected override string ResourceName
             {
@@ -92,7 +83,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ConstructTest()
         {
-            Assert.DoesNotThrow(() => new MockServiceRequest(new MockSchemaAwareRequestExecutor()));
+            Assert.DoesNotThrow(() => new MockServiceRequest(new MockRequestProvider()));
         }
 
         /// <summary>
@@ -101,7 +92,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void CreateParameterDictionaryTest()
         {
-            var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
+            var request = new MockServiceRequest(new MockRequestProvider());
             request.TestParameterA = 42;
             request.TestParameterB = 43;
             request.TestParameterC = 44;
@@ -118,7 +109,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ExecuteToStreamTest()
         {
-            var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
+            var request = new MockServiceRequest(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.IsNotNull(request.FetchAsStream());
@@ -130,10 +121,28 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ExecuteTest()
         {
-            var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
+            var request = new MockServiceRequest(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.AreEqual("FooBar", request.Fetch());
+        }
+
+        /// <summary>
+        /// Tests the Execute method of a ServiceRequest.
+        /// </summary>
+        [Test]
+        public void ETagTest()
+        {
+            var request = new MockServiceRequest(new MockRequestProvider());
+            request.ETag = "FooBar";
+            request.ETagAction = ETagAction.IfMatch;
+            
+            // Confirm that the E-tag and the behavior is passed along.
+            MockRequest result = (MockRequest)request.BuildRequest();
+            Assert.AreEqual("FooBar", result.ETag);
+            Assert.AreEqual(ETagAction.IfMatch, result.ETagAction);
+
+            // TODO(mlinder): Use Moq to verify that this also works for IDirectResponseSchema bodies.
         }
     }
 }

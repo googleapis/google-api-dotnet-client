@@ -33,18 +33,33 @@ namespace Google.Apis.Requests
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ServiceRequest<TResponse>
     {
+        protected ServiceRequest()
+        {
+            ETagAction = ETagAction.Default;
+        }
+
         /// <summary>
         /// The name of the "GetBody" method
         /// </summary>
         public const string GetBodyMethodName = "GetBody";
 
         private readonly ILog logger = LogManager.GetLogger(typeof(ServiceRequest<TResponse>));
-        private readonly ISchemaAwareRequestExecutor service;
+        private readonly IRequestProvider service;
+
+        /// <summary>
+        /// Defines whether the E-Tag will be used in a specified way or ignored.
+        /// </summary>
+        public ETagAction ETagAction { get; set; }
+
+        /// <summary>
+        /// The E-Tag to use with this request. If this is null, the e-tag of the body will be used (if possible).
+        /// </summary>
+        public string ETag { get; set; }
 
         /// <summary>
         /// Creates a new service request.
         /// </summary>
-        protected ServiceRequest(ISchemaAwareRequestExecutor service)
+        protected ServiceRequest(IRequestProvider service)
         {
             this.service = service;
         }
@@ -79,7 +94,46 @@ namespace Google.Apis.Requests
             }
 
             // Serialize the body.
-            return service.ObjectToJson(body);
+            return service.SerializeObject(body);
+        }
+
+        /// <summary>
+        /// Builds an executeable base request containing the data of this request class.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IRequest BuildRequest()
+        {
+            IRequest request = service.CreateRequest(ResourceName, MethodName);
+            request.WithBody(GetSerializedBody());
+            request.WithParameters(CreateParameterDictionary());
+            request.WithETagAction(ETagAction);
+
+            // Check if there is an ETag to attach.
+            if (!string.IsNullOrEmpty(ETag))
+            {
+                request.WithETag(ETag);
+            }
+            else
+            {
+                // If no custom ETag has been set, try to use the one which might come with the body.
+                // If this is a ISchemaResponse, the etag has been added to the object as it was created.
+                IDirectResponseSchema body = GetBody() as IDirectResponseSchema;
+                if (body != null)
+                {
+                    request.WithETag(body.ETag);
+                }
+            }
+
+            return request;
+        }
+
+        private IResponse GetResponse()
+        {
+            string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
+            logger.Debug("Start Executing " + requestName);
+            IResponse response = BuildRequest().ExecuteRequest();
+            logger.Debug("Done Executing " + requestName);
+            return response;
         }
 
         /// <summary>
@@ -87,7 +141,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public TResponse Fetch()
         {
-            return service.JsonToObject<TResponse>(FetchAsStream());
+            return service.DeserializeResponse<TResponse>(GetResponse());
         }
 
         /// <summary>
@@ -95,12 +149,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public Stream FetchAsStream()
         {
-            string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
-            logger.Debug("Start Executing " + requestName);
-            Stream response = service.ExecuteRequest(
-                ResourceName, MethodName, GetSerializedBody(), CreateParameterDictionary());
-            logger.Debug("Done Executing " + requestName);
-            return response;
+            return GetResponse().Stream;
         }
 
         /// <summary>

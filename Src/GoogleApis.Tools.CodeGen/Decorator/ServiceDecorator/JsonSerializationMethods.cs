@@ -17,6 +17,7 @@ limitations under the License.
 using System.CodeDom;
 using System.IO;
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
@@ -28,9 +29,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     /// </summary>
     public class JsonSerializationMethods : IServiceDecorator
     {
-        private const string RegisterSerializerMethodName = "RegisterSerializer";
-        private const string SerializationMethodName = "ObjectToJson";
-        private const string DeserializationMethodName = "JsonToObject";
+        /// <summary>
+        /// Method name of the "RegisterSerializer" method.
+        /// </summary>
+        public const string RegisterSerializerMethodName = "RegisterSerializer";
+
+        /// <summary>
+        /// Method name of the serialization method.
+        /// </summary>
+        public const string SerializationMethodName = "SerializeObject";
+
+        /// <summary>
+        /// Method name of the deserialization method.
+        /// </summary>
+        public const string DeserializationMethodName = "DeserializeResponse";
 
         #region IServiceDecorator Members
 
@@ -39,7 +51,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             serviceClass.ThrowIfNull("serviceClass");
             serviceClass.Members.Add(CreateRegisterSerializer());
             serviceClass.Members.Add(CreateObjectToJson());
-            serviceClass.Members.Add(CreateJsonToObject());
+            serviceClass.Members.Add(CreateResponseToObject());
         }
 
         #endregion
@@ -114,19 +126,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
         /// <summary>
         ///     <code>
-        ///        public TOutput JsonToObject<TOutput>(Stream stream){
-        ///            return genericService.Deserialize<TOutput>(stream);
+        ///        public TOutput ResponseToObject<TOutput>(IResponse response){
+        ///            return genericService.Deserialize<TOutput>(response);
         ///        } 
         ///     </code> 
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeMemberMethod CreateJsonToObject()
+        internal CodeMemberMethod CreateResponseToObject()
         {
             // public TOutput JsonToObject<TOutput>(Stream stream)
             var method = new CodeMemberMethod();
             var typeParameter = new CodeTypeParameter("T");
             method.Name = DeserializationMethodName;
-            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Stream), "stream"));
+            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IResponse), "response"));
             method.TypeParameters.Add(typeParameter);
             method.ReturnType = new CodeTypeReference(typeParameter);
             method.Attributes = MemberAttributes.Public;
@@ -137,7 +149,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                 new CodeMethodReferenceExpression(
                     new CodeTypeReferenceExpression(ServiceClassGenerator.GenericServiceName),
                     BaseService.DeserializationMethodName, new CodeTypeReference("T"));
-            deserializationCall.Parameters.Add(new CodeVariableReferenceExpression("stream"));
+            deserializationCall.Parameters.Add(new CodeVariableReferenceExpression("response"));
 
             // Add the return
             method.Statements.Add(new CodeMethodReturnStatement(deserializationCall));

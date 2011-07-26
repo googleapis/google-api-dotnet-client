@@ -355,6 +355,70 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Tests the .CreateRequest method of a request with ETags.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestETagTest()
+        {
+            var service = new MockService();
+            var request = (Request)Request.CreateRequest(
+                service,
+                new MockMethod
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://test.google.com",
+                    Parameters = new Dictionary<string, IParameter>() { { "TestParam", null } }
+                });
+
+            request.WithParameters("");
+            
+            // No etag:
+            request.WithETagAction(ETagAction.Ignore).WithETag("test123");
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
+
+            // No etag (2):
+            request.WithETagAction(ETagAction.IfMatch).WithETag(null);
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
+
+            // If-Match:
+            request.WithETagAction(ETagAction.IfMatch).WithETag("test123");
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfMatch]);
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
+
+            // If-None-Match:
+            request.WithETagAction(ETagAction.IfNoneMatch).WithETag("test123");
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
+            Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
+
+            // Default:
+            request.WithETagAction(ETagAction.Default).WithETag("test123");
+            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
+            Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
+        }
+
+        /// <summary>
+        /// Tests the .GetDefaultETagAction method of a request with different http verbs.
+        /// </summary>
+        [Test]
+        public void GetDefaultETagActionTest()
+        {
+            Assert.AreEqual(ETagAction.IfNoneMatch, Request.GetDefaultETagAction("GET"));
+            Assert.AreEqual(ETagAction.IfMatch, Request.GetDefaultETagAction("POST"));
+            Assert.AreEqual(ETagAction.IfMatch, Request.GetDefaultETagAction("PATCH"));
+            Assert.AreEqual(ETagAction.IfMatch, Request.GetDefaultETagAction("PUT"));
+            Assert.AreEqual(ETagAction.IfMatch, Request.GetDefaultETagAction("DELETE"));
+            Assert.AreEqual(ETagAction.Ignore, Request.GetDefaultETagAction("invalid"));
+        }
+
+        /// <summary>
         /// Tests if the developer key is assigned correctly
         /// </summary>
         [Test]

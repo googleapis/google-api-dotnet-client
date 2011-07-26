@@ -57,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 service.Name + "Cls");
             logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
-            serviceClass.BaseTypes.Add(typeof(IRequestExecutor));
+            serviceClass.BaseTypes.Add(typeof(IRequestProvider));
 
             foreach (IServiceDecorator serviceDecorator in decorators)
             {

@@ -68,8 +68,18 @@ namespace Google.Apis.Requests
         IRequest WithDeveloperKey(string key);
 
         /// <summary>
-        /// Executes the request and returns the response stream.
+        /// Adds an ETag to this request.
         /// </summary>
-        Stream ExecuteRequest();
+        IRequest WithETag(string etag);
+
+        /// <summary>
+        /// Sets the ETag-behavior of this request.
+        /// </summary>
+        IRequest WithETagAction(ETagAction action);
+
+        /// <summary>
+        /// Executes the request and returns the response.
+        /// </summary>
+        IResponse ExecuteRequest();
     }
 }

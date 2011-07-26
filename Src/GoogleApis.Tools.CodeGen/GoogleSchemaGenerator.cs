@@ -43,7 +43,7 @@ namespace Google.Apis.Tools.CodeGen
                      new NewtonSoftPropertyAttributeDecorator(),
                      new ArraySchemaDecorator(),
                      new AdditionalPropertiesSchemaDecorator(),
-                     new ErrorResponseDecorator(),
+                     new ResponseInterfaceDecorator(),
                  }).AsReadOnly();
 
         private readonly IList<ISchemaDecorator> decorators;

@@ -14,23 +14,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.IO;
+using Newtonsoft.Json;
 
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Interface defining the response of a request.
+    /// Interface containing additional response-properties which will be added to every schema type which is 
+    /// a direct response to a request.
     /// </summary>
-    public interface IResponse
+    public interface IDirectResponseSchema
     {
         /// <summary>
-        /// The response stream.
+        /// All errors the server returned along with the request. 'null' when the request succeeded.
         /// </summary>
-        Stream Stream { get; }
+        [JsonProperty("error")]
+        RequestError Error { get; set; }
 
         /// <summary>
-        /// The ETag which came with this response (if available), or null otherwise.
+        /// The e-tag of this response.
         /// </summary>
-        string ETag { get; }
+        /// <remarks>
+        /// Will be set by the service deserialization method, 
+        /// or the by json response parser if implemented on service.
+        /// </remarks>
+        string ETag { get; set; }
     }
 }

@@ -214,7 +214,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             call.Method =
                 new CodeMethodReferenceExpression(
                     new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
-                    StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName);
+                    CreateRequestMethodServiceDecorator.CreateRequestMethodName);
 
             call.Parameters.Add(
                 new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(GetClassName()), ResourceNameConst));
@@ -230,8 +230,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         protected virtual CodeStatement CreateExecuteRequest(IMethod method)
         {
             var call = CreateExecuteCall(method);
-
-            var assign = new CodeVariableDeclarationStatement(typeof(Stream), ReturnVariableName, call);
+            var dotStream = new CodePropertyReferenceExpression(call, "Stream");
+            var assign = new CodeVariableDeclarationStatement(typeof(Stream), ReturnVariableName, dotStream);
 
             return assign;
         }
