@@ -93,6 +93,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Executes the request synchronously and returns the unparsed response stream.
         /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public Stream FetchAsStream()
         {
             string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
@@ -117,6 +118,7 @@ namespace Google.Apis.Requests
         /// Executes the request asynchronously without parsing the response, 
         /// and calls the specified method once finished.
         /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
         {
             // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
