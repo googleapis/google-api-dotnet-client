@@ -38,6 +38,11 @@ namespace Google.Apis.Requests
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
+        /// <summary>
+        /// The charset used for content encoding.
+        /// </summary>
+        public static readonly Encoding ContentCharset = Encoding.UTF8;
+
         public const string DELETE = "DELETE";
         public const string GET = "GET";
         public const string PATCH = "PATCH";
@@ -464,7 +469,8 @@ namespace Google.Apis.Requests
             HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, requestUrl);
 
             // Insert the content type and user agent.
-            request.ContentType = GetReturnMimeType(ReturnType);
+            request.ContentType = string.Format(
+                "{0}; charset={1}", GetReturnMimeType(ReturnType), ContentCharset.HeaderName);
             string appName = FormatForUserAgent(ApplicationName);
             string apiVersion = FormatForUserAgent(ApiVersion);
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
@@ -522,8 +528,13 @@ namespace Google.Apis.Requests
         {
             return fragment.Replace(' ', '_');
         }
-
-        private void AttachBody(WebRequest request)
+        
+        /// <summary>
+        /// Adds the body of this request to the specified WebRequest.
+        /// </summary>
+        /// <remarks>Automatically applies GZip-compression if globally enabled.</remarks>
+        [VisibleForTestOnly]
+        internal void AttachBody(WebRequest request)
         {
             Stream bodyStream = request.GetRequestStream();
 
@@ -538,7 +549,7 @@ namespace Google.Apis.Requests
             // Write data into the stream.
             using (bodyStream)
             {
-                byte[] postBody = Encoding.ASCII.GetBytes(Body);
+                byte[] postBody = ContentCharset.GetBytes(Body);
                 bodyStream.Write(postBody, 0, postBody.Length);
             }
         }
