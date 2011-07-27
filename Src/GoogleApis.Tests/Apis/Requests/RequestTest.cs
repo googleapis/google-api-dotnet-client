@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2010 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,14 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
 using System.Net;
+using System.Text;
 using Google.Apis.Authentication;
-using NUnit.Framework;
-using Google.Apis.Requests;
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
+using Moq;
+using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -33,6 +35,85 @@ namespace Google.Apis.Tests.Apis.Requests
     {
         private const string SimpleDeveloperKey = "ABC123";
         private const string ComplexDeveloperKey = "?&^%  ABC123";
+
+        private class MockAuthenticator : Authenticator {}
+
+        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
+        {
+            #region IErrorResponseHandler Members
+
+            public bool CanHandleErrorResponse(WebException exception, RequestError error)
+            {
+                return false;
+            }
+
+            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
+
+            #endregion
+        }
+
+        private void AssertBody(bool gzipEnabled, string body,
+                                Action<Request, WebHeaderCollection, byte[]> additionalAsserts)
+        {
+            // Create the request.
+            var mockservice = new MockService { GZipEnabled = gzipEnabled };
+            var mockmethod = new MockMethod { HttpMethod = "GET", Name = "Test", RestPath = "https://example.com" };
+            var request = (Request)Request.CreateRequest(mockservice, mockmethod);
+            var headers = new WebHeaderCollection();
+            
+            // Create a mock webrequest.
+            var requestStream = new MemoryStream();
+            var mockWebrequest = new Mock<WebRequest>();
+            mockWebrequest.Setup(r => r.GetRequestStream()).Returns(requestStream);
+            mockWebrequest.Setup(r => r.Headers).Returns(headers);
+
+            // Call the method we are testing
+            request.WithBody(body);
+            request.AttachBody(mockWebrequest.Object);
+
+            // Confirm the results.
+            mockWebrequest.Verify((r) => r.GetRequestStream(), Times.Once());
+            if (additionalAsserts != null)
+            {
+                additionalAsserts(request, headers, requestStream.ToArray());
+            }
+        }
+
+        /// <summary>
+        /// Tests the AttachBody() method with enabled GZipSupport.
+        /// </summary>
+        [Test]
+        public void AttachBodyGZipTest()
+        {
+            const string Body = "FooBar";
+            AssertBody(true, Body, (request, headers, attachement) =>
+                                { Assert.AreEqual("gzip", headers[HttpRequestHeader.ContentEncoding]); });
+        }
+
+        /// <summary>
+        /// Tests the AttachBody() method.
+        /// </summary>
+        [Test]
+        public void AttachBodyTest()
+        {
+            const string Body = "FooBar";
+            AssertBody(false, Body, (request, headers, attachement) =>
+                                {
+                                    Assert.AreEqual(Body, Encoding.UTF8.GetString(attachement));
+                                    Assert.AreNotEqual("gzip", headers[HttpRequestHeader.ContentEncoding]);
+                                });
+        }
+
+        /// <summary>
+        /// Tests the AttachBody() method with unicode characters.
+        /// </summary>
+        [Test]
+        public void AttachBodyUnicodeTest()
+        {
+            const string Body = "مرحبا العالم! 您好，世界！";
+            AssertBody(false, Body, (request, headers, attachement) =>
+                                 { Assert.AreEqual(Body, Request.ContentCharset.GetString(attachement)); });
+        }
 
         /// <summary>
         /// Tests a request with default settings
@@ -94,42 +175,6 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual(
                 "https://example.com/?alt=json&optionalWithEmpty=d&" +
                 "optionalWithNull=c&optionalWithValue=b&required=a", url.AbsoluteUri);
-        }
-
-        /// <summary>
-        /// Builds a request from a query string, and checks if the resulting query string is the same.
-        /// </summary>
-        [Test]
-        public void BuildRequestWithQueryStringTest()
-        {
-            const string query = "required=yes&optionalWithValue=%26test";
-
-            var parameterDefinitions = new Dictionary<string, IParameter>();
-            parameterDefinitions.Add(
-                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
-            parameterDefinitions.Add(
-                "optionalWithValue",
-                new MockParameter { Name = "optionalWithValue", IsRequired = false, ParameterType = "query" });
-            var service = new MockService();
-
-            // Cast the IRequest to a Request to access internal construction methods.
-            var request =
-                (Request)
-                Request.CreateRequest(
-                    service,
-                    new MockMethod
-                    {
-                        HttpMethod = "GET",
-                        Name = "TestMethod",
-                        RestPath = "https://test.google.com",
-                        Parameters = parameterDefinitions
-                    });
-
-            request.WithParameters(query);
-            var url = request.BuildRequestUrl();
-
-            // Check that the resulting query string is identical with the input.
-            Assert.AreEqual("?alt=json&"+query, url.Query);
         }
 
         /// <summary>
@@ -215,6 +260,42 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Builds a request from a query string, and checks if the resulting query string is the same.
+        /// </summary>
+        [Test]
+        public void BuildRequestWithQueryStringTest()
+        {
+            const string query = "required=yes&optionalWithValue=%26test";
+
+            var parameterDefinitions = new Dictionary<string, IParameter>();
+            parameterDefinitions.Add(
+                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
+            parameterDefinitions.Add(
+                "optionalWithValue",
+                new MockParameter { Name = "optionalWithValue", IsRequired = false, ParameterType = "query" });
+            var service = new MockService();
+
+            // Cast the IRequest to a Request to access internal construction methods.
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        {
+                            HttpMethod = "GET",
+                            Name = "TestMethod",
+                            RestPath = "https://test.google.com",
+                            Parameters = parameterDefinitions
+                        });
+
+            request.WithParameters(query);
+            var url = request.BuildRequestUrl();
+
+            // Check that the resulting query string is identical with the input.
+            Assert.AreEqual("?alt=json&" + query, url.Query);
+        }
+
+        /// <summary>
         /// Tests if the constructor will succeed
         /// </summary>
         [Test]
@@ -223,18 +304,6 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new Request();
             Assert.IsNotNull(request.Authenticator);
             Assert.IsTrue(request.SupportsRetry);
-        }
-
-        /// <summary>
-        /// Tests the application name property
-        /// </summary>
-        [Test]
-        public void FormatForUserAgentTest()
-        {
-            var request = new Request();
-
-            Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
-            Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
         }
 
         /// <summary>
@@ -253,80 +322,21 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests the creation of simple http requests
-        /// </summary>
-        [Test]
-        public void CreateRequestSimpleCreateTest()
-        {
-            var service = new MockService();
-            Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com", });
-            Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com", });
-            Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://example.com", });
-            Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://example.com", });
-            Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://example.com", });
-        }
-
-        /// <summary>
-        /// Tests the user-agent string of the request created by the .CreateRequest method.
-        /// </summary>
-        [Test]
-        public void CreateRequestOnRequestUserAgentTest()
-        {
-            var service = new MockService();
-            var request = (Request)Request.CreateRequest(
-                service,
-                new MockMethod
-                {
-                    HttpMethod = "GET",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com/test",
-                });
-
-            request.WithParameters("");
-
-            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
-
-            // Test the default user agent (without gzip):
-            string expectedUserAgent = string.Format(
-                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetAssemblyVersion(),
-                Environment.OSVersion.Platform, Environment.OSVersion.Version);
-            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
-
-            // Confirm that the (gzip) tag is added if GZip is supported.
-            service.GZipEnabled = true;
-            expectedUserAgent += " (gzip)";
-            webRequest = (HttpWebRequest)request.CreateWebRequest();
-            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
-        }
-
-        /// <summary>
         /// Confirms that the .CreateRequest method sets the Content-Length of requests declaring a body.
         /// </summary>
         [Test]
         public void CreateRequestOnRequestContentLengthTest()
         {
             var service = new MockService();
-            var request = (Request)Request.CreateRequest(
-                service,
-                new MockMethod
-                {
-                    HttpMethod = "POST",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com/test",
-                });
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com/test", });
 
             request.WithParameters("");
-            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
 
             // Test that the header is set, even if no body is specified.
             Assert.AreEqual(0, webRequest.ContentLength);
@@ -343,15 +353,112 @@ namespace Google.Apis.Tests.Apis.Requests
         public void CreateRequestOnRequestTest()
         {
             var service = new MockService();
-            var request = (Request)Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com",
-                Parameters = new Dictionary<string, IParameter>() { {"TestParam", null} }});
-            
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod
+                        {
+                            HttpMethod = "GET",
+                            Name = "TestMethod",
+                            RestPath = "https://example.com",
+                            Parameters = new Dictionary<string, IParameter> { { "TestParam", null } }
+                        });
+
             request.WithParameters("");
 
-            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
+            Assert.IsTrue(webRequest.Headers[HttpRequestHeader.ContentType].Contains("charset=utf-8"));
             Assert.IsNotNull(webRequest);
+        }
+
+        /// <summary>
+        /// Tests the user-agent string of the request created by the .CreateRequest method.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestUserAgentTest()
+        {
+            var service = new MockService();
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com/test", });
+
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
+
+            // Test the default user agent (without gzip):
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetAssemblyVersion(),
+                Environment.OSVersion.Platform, Environment.OSVersion.Version);
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+
+            // Confirm that the (gzip) tag is added if GZip is supported.
+            service.GZipEnabled = true;
+            expectedUserAgent += " (gzip)";
+            webRequest = (HttpWebRequest) request.CreateWebRequest();
+            Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+        }
+
+        /// <summary>
+        /// Tests the creation of simple http requests
+        /// </summary>
+        [Test]
+        public void CreateRequestSimpleCreateTest()
+        {
+            var service = new MockService();
+            Request.CreateRequest(
+                service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com", });
+            Request.CreateRequest(
+                service, new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://example.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://example.com", });
+            Request.CreateRequest(
+                service,
+                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://example.com", });
+        }
+
+        /// <summary>
+        /// Tests the application name property
+        /// </summary>
+        [Test]
+        public void FormatForUserAgentTest()
+        {
+            var request = new Request();
+
+            Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
+            Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
+        }
+
+        /// <summary>
+        /// Tests the results of the GetErrorResponseHandlers method.
+        /// </summary>
+        [Test]
+        public void GetErrorResponseHandlersTest()
+        {
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    new MockService(),
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+
+            // Confirm that there are no error response handlers by default.
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that a standard authenticator won't result in an error response handler.
+            request.WithAuthentication(new MockAuthenticator());
+            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
+
+            // Confirm that an error handling response handler will change the enumeration
+            var auth = new MockErrorHandlingAuthenticator();
+            request.WithAuthentication(auth);
+            CollectionAssert.AreEqual(new IErrorResponseHandler[] { auth }, request.GetErrorResponseHandlers());
         }
 
         /// <summary>
@@ -390,46 +497,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("1", request.Parameters.GetFirstMatch("1"));
             Assert.AreEqual("100", request.Parameters.GetFirstMatch("100"));
             Assert.AreEqual("True", request.Parameters.GetFirstMatch("True"));
-            Assert.AreEqual("False",request.Parameters.GetFirstMatch("False"));
-        }
-
-        private class MockAuthenticator : Authenticator {}
-
-        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
-        {
-            public bool CanHandleErrorResponse(WebException exception, RequestError error)
-            {
-                return false;
-            }
-
-            public void PrepareHandleErrorResponse(WebException exception, RequestError error) {}
-
-            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
-        }
-
-        /// <summary>
-        /// Tests the results of the GetErrorResponseHandlers method.
-        /// </summary>
-        [Test]
-        public void GetErrorResponseHandlersTest()
-        {
-            var request =
-              (Request)
-              Request.CreateRequest(
-                  new MockService(),
-                  new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-
-            // Confirm that there are no error response handlers by default.
-            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
-
-            // Confirm that a standard authenticator won't result in an error response handler.
-            request.WithAuthentication(new MockAuthenticator());
-            CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
-
-            // Confirm that an error handling response handler will change the enumeration
-            var auth = new MockErrorHandlingAuthenticator();
-            request.WithAuthentication(auth);
-            CollectionAssert.AreEqual(new IErrorResponseHandler[] { auth }, request.GetErrorResponseHandlers());
+            Assert.AreEqual("False", request.Parameters.GetFirstMatch("False"));
         }
     }
 }

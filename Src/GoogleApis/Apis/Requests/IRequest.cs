@@ -55,6 +55,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
+        /// <remarks>The body will be encoded in UTF-8.</remarks>
         IRequest WithBody(string body);
 
         /// <summary>
@@ -70,6 +71,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Executes the request and returns the response stream.
         /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         Stream ExecuteRequest();
     }
 }
