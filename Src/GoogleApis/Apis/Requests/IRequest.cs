@@ -55,6 +55,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
+        /// <remarks>The body will be encoded in UTF-8.</remarks>
         IRequest WithBody(string body);
 
         /// <summary>
