@@ -77,7 +77,8 @@ namespace Google.Apis.Discovery
                 factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
             }
 
-            return factory.GetService(version);
+            // TODO(mlinder): Remove the deprecated version parameter and use the value of the discovery doc instead.
+            return factory.GetService(version ?? "deprecated");
         }
 
         /// <summary>

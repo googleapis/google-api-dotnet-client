@@ -169,13 +169,14 @@ namespace Google.Apis.Discovery
                 }
 
                 logger.DebugFormat("Fetching Schemas for service {0}", Name);
-                var js = information[ServiceFactory.Schemas] as JsonDictionary;
-                if (js != null)
+                if (information.ContainsKey(ServiceFactory.Schemas))
                 {
+                    var js = (JsonDictionary)information[ServiceFactory.Schemas];
                     schemas = ParseSchemas(js);
                 }
                 else
                 {
+                    // Return an empty dictionary instead of null.
                     schemas = new Dictionary<string, ISchema>(0).AsReadOnly();
                 }
 

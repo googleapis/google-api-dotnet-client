@@ -29,6 +29,13 @@ namespace Google.Apis.Discovery
     /// <seealso cref="ServiceFactory"/>
     public interface IServiceFactory
     {
+        /// <summary>
+        /// Creates and returns the service this factory can create.
+        /// </summary>
+        /// <param name="version">Currently required, but deprecated.</param>
+        // TODO(mlinder): Remove the need to specify version and name of a service.
+        //                Both information can be found in the discovery document (v0.3, v1),
+        //                and we shouldn't be required to specify duplicate information.
         IService GetService(string version);
     }
 
