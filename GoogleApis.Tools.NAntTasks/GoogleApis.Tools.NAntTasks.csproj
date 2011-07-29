@@ -51,7 +51,8 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Apis.Discovery.V1">
+    <Reference Include="Google.Apis.Discovery.V1, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Google.Apis.Discovery.V1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
