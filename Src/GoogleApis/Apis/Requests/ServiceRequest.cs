@@ -20,9 +20,9 @@ using System.Reflection;
 using System.Threading;
 using System.Linq;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Requests
 {
@@ -44,7 +44,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public const string GetBodyMethodName = "GetBody";
 
-        private readonly ILog logger = LogManager.GetLogger(typeof(ServiceRequest<TResponse>));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceRequest<TResponse>>();
         private readonly IRequestProvider service;
 
         /// <summary>

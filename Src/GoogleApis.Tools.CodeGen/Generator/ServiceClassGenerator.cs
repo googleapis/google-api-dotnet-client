@@ -18,8 +18,8 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
     {
         public const string GenericServiceName = "genericService";
         public const string AuthenticatorName = "authenticator";
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ServiceClassGenerator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceClassGenerator>();
 
         private readonly IEnumerable<IServiceDecorator> decorators;
         private readonly ResourceContainerGenerator resourceConainerGenerator;
@@ -55,13 +55,13 @@ namespace Google.Apis.Tools.CodeGen.Generator
             string serviceClassName = GeneratorUtils.GetSafeMemberName(
                 Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, service.Name + "Service",
                 service.Name + "Cls");
-            logger.DebugFormat("Starting Generation of Class {0}", serviceClassName);
+            logger.Debug("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
             serviceClass.BaseTypes.Add(typeof(IRequestProvider));
 
             foreach (IServiceDecorator serviceDecorator in decorators)
             {
-                logger.DebugFormat("Decorating Class {0} with {1}", serviceClassName, serviceDecorator);
+                logger.Debug("Decorating Class {0} with {1}", serviceClassName, serviceDecorator);
                 serviceDecorator.DecorateClass(service, serviceClass);
             }
 

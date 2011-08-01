@@ -17,9 +17,9 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -30,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class ArraySchemaDecorator : ISchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ArraySchemaDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ArraySchemaDecorator>();
 
         #region ISchemaDecorator Members
 
@@ -55,7 +55,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 
             if (details.Items == null || details.Items.Count != 1)
             {
-                logger.WarnFormat("Found array scheme of unhandled type. {0}", details);
+                logger.Warning("Found array scheme of unhandled type. {0}", details);
                 return; // not supported
             }
 

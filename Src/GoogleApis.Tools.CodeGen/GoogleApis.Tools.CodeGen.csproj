@@ -53,10 +53,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Third Party\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <SpecificVersion>False</SpecificVersion>

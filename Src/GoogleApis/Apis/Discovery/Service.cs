@@ -20,11 +20,11 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Json;
 using Google.Apis.JSON;
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
-using log4net;
 using Newtonsoft.Json;
 
 namespace Google.Apis.Discovery
@@ -52,7 +52,7 @@ namespace Google.Apis.Discovery
         /// </summary>
         public const string SerializerPropertyName = "Serializer";
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(BaseService));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseService>();
 
         protected internal readonly JsonDictionary information;
         private Dictionary<string, IResource> resources;
@@ -166,7 +166,7 @@ namespace Google.Apis.Discovery
                     return schemas;
                 }
 
-                logger.DebugFormat("Fetching Schemas for service {0}", Name);
+                logger.Debug("Fetching Schemas for service {0}", Name);
                 if (information.ContainsKey(ServiceFactory.Schemas))
                 {
                     var js = (JsonDictionary)information[ServiceFactory.Schemas];
@@ -381,7 +381,7 @@ namespace Google.Apis.Discovery
             var resolver = new FutureJsonSchemaResolver();
             foreach (KeyValuePair<string, object> kvp in js)
             {
-                logger.DebugFormat("Found schema {0}", kvp.Key);
+                logger.Debug("Found schema {0}", kvp.Key);
                 var serilizer = new JsonSerializer();
                 var textWriter = new StringWriter();
                 serilizer.Serialize(textWriter, kvp.Value);

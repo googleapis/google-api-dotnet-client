@@ -18,9 +18,9 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Generator;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
@@ -38,7 +38,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// </summary>
         public const string CreateRequestMethodName = "CreateRequest";
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(CreateRequestMethodServiceDecorator));
+        private static readonly ILogger logger =
+            ApplicationContext.Logger.ForType<CreateRequestMethodServiceDecorator>();
 
         #region IServiceDecorator Members
 

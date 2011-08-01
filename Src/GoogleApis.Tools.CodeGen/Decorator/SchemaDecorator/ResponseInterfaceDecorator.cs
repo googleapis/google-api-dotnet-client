@@ -18,11 +18,11 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class ResponseInterfaceDecorator : ISchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ResponseInterfaceDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResponseInterfaceDecorator>();
         private const string ErrorPropertyName = "Error";
         private const string ETagPropertyName = "ETag";
         private const string ErrorJsonName = "error";

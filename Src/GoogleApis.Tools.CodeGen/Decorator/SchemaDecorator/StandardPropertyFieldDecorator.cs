@@ -18,10 +18,10 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -31,7 +31,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class StandardPropertyFieldDecorator : ISchemaDecorator, INestedClassSchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardPropertyFieldDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<StandardPropertyFieldDecorator>();
 
         #region INestedClassSchemaDecorator Members
 

@@ -20,6 +20,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
@@ -28,7 +29,6 @@ using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen
 {
@@ -50,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public const string GoogleDiscoveryURL = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(GoogleServiceGenerator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<GoogleServiceGenerator>();
 
         /// <summary>
         /// List of all request class decorators
@@ -152,7 +152,6 @@ namespace Google.Apis.Tools.CodeGen
   
 
                          new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
-                         new Log4NetResourceDecorator(),
                      }).AsReadOnly
                     ();
         }
@@ -272,7 +271,7 @@ namespace Google.Apis.Tools.CodeGen
                 IEnumerable<string> usedNames = resourceContainer.Resources.Keys;
 
                 // Create a class for the resource.
-                logger.DebugFormat("Adding Resource {0}", res.Name);
+                logger.Debug("Adding Resource {0}", res.Name);
                 var resourceGenerator = new ResourceClassGenerator(
                     res, serviceClassName, resourceDecorators, requestClassGenerator, resourceContainerGenerator,
                     usedNames);
