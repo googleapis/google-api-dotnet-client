@@ -458,8 +458,15 @@ namespace Google.Apis.Tools.CodeGen
         /// Returns a safe and appropriate property name for the given input name without using the words
         /// specified in the illegal words list.
         /// </summary>
+        /// <remarks>Will rename "etag" to "ETag".</remarks>
         public static string GetPropertyName(string name, IEnumerable<string> wordsUsedInContext)
         {
+            // Rename some properties to look nicer/to be properly capitalized.
+            if (name == "etag")
+            {
+                name = "ETag";
+            }
+
             return GetSafeMemberName(wordsUsedInContext, TargetCase.ToUpper, name, name + "Value", name + "Property");
         }
 

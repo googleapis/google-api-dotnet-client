@@ -98,6 +98,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             foreach (var propertyPair in schema.Properties)
             {
                 SchemaImplementationDetails details = implDetails[propertyPair.Value];
+
                 CodeMemberProperty property = GenerateProperty(
                     propertyPair.Key, propertyPair.Value, details, index++, internalClassProvider,
                     allUsedWordsInContext.Except(new[] { propertyPair.Key }));

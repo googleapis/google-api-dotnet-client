@@ -167,13 +167,14 @@ namespace Google.Apis.Discovery
                 }
 
                 logger.DebugFormat("Fetching Schemas for service {0}", Name);
-                var js = information[ServiceFactory.Schemas] as JsonDictionary;
-                if (js != null)
+                if (information.ContainsKey(ServiceFactory.Schemas))
                 {
+                    var js = (JsonDictionary)information[ServiceFactory.Schemas];
                     schemas = ParseSchemas(js);
                 }
                 else
                 {
+                    // Return an empty dictionary instead of null.
                     schemas = new Dictionary<string, ISchema>(0).AsReadOnly();
                 }
 
@@ -290,11 +291,11 @@ namespace Google.Apis.Discovery
             return Serializer.Serialize(obj);
         }
 
-        public T DeserializeResponse<T>(Stream input)
+        public T DeserializeResponse<T>(IResponse input)
         {
-            // Read in the entire content:
+            // Read in the entire content.
             string text;
-            using (var reader = new StreamReader(input))
+            using (var reader = new StreamReader(input.Stream))
             {
                 text = reader.ReadToEnd();
             }
@@ -306,11 +307,11 @@ namespace Google.Apis.Discovery
             }
 
             // Check if there was an error returned. The error node is returned in both paths
-            // Deserialize the stream based upon the format of the stream
+            // Deserialize the stream based upon the format of the stream.
             if (HasFeature(Discovery.Features.LegacyDataResponse))
             {
                 // Legacy path (deprecated!)
-                StandardResponse<T> response = null;
+                StandardResponse<T> response;
                 try
                 {
                     response = Serializer.Deserialize<StandardResponse<T>>(text);
@@ -333,7 +334,7 @@ namespace Google.Apis.Discovery
                 return response.Data;
             }
 
-            // New path: Deserialize the object directly
+            // New path: Deserialize the object directly.
             T result = default(T);
             try
             {
@@ -344,10 +345,15 @@ namespace Google.Apis.Discovery
                 throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
             }
 
-            // If this schema/object provides an error container, check it
-            if (result is IResponse)
+            // If this schema/object provides an error container, check it.
+            if (result is IDirectResponseSchema)
             {
-                var response = (IResponse) result;
+                var response = (IDirectResponseSchema) result;
+
+                // Set the e-tag.
+                response.ETag = input.ETag;
+
+                // Check for errors.
                 if (response.Error != null)
                 {
                     throw new GoogleApiException(this, "Server error - " + response.Error);

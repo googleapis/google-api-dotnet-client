@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.IO;
+using Google.Apis.Requests;
 using NUnit.Framework;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
@@ -51,15 +52,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         public void CreateJsonToObjectTest()
         {
             JsonSerializationMethods decorator = new JsonSerializationMethods();
-            CodeMemberMethod method = decorator.CreateJsonToObject();
+            CodeMemberMethod method = decorator.CreateResponseToObject();
             Assert.IsNotNull(method);
             Assert.AreEqual(MemberAttributes.Public, method.Attributes);
-            Assert.AreEqual("JsonToObject", method.Name);
+            Assert.AreEqual("DeserializeResponse", method.Name);
             Assert.IsNotEmpty(method.TypeParameters);
             Assert.AreEqual(1, method.TypeParameters.Count);
             Assert.IsNotEmpty(method.Parameters);
             Assert.AreEqual(1, method.Parameters.Count);
-            Assert.AreEqual(new CodeTypeReference(typeof(Stream)).BaseType, method.Parameters[0].Type.BaseType);
+            Assert.AreEqual(new CodeTypeReference(typeof(IResponse)).BaseType, method.Parameters[0].Type.BaseType);
             Assert.IsNotEmpty(method.Statements);
         }
 
@@ -76,7 +77,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.IsNotNull(method);
             Assert.AreEqual(MemberAttributes.Public, method.Attributes);
             Assert.AreEqual(new CodeTypeReference(typeof(String)).BaseType, method.ReturnType.BaseType);
-            Assert.AreEqual("ObjectToJson", method.Name);
+            Assert.AreEqual("SerializeObject", method.Name);
             Assert.IsNotNull(method.Parameters);
             Assert.AreEqual(1, method.Parameters.Count);
             Assert.AreEqual(new CodeTypeReference(typeof(object)).BaseType, method.Parameters[0].Type.BaseType);
@@ -116,8 +117,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             decorator.DecorateClass(null, declaration);
 
             Assert.AreEqual(3, declaration.Members.Count);
-            AssertContainsName(declaration.Members, "JsonToObject");
-            AssertContainsName(declaration.Members, "ObjectToJson");
+            AssertContainsName(declaration.Members, "SerializeObject");
+            AssertContainsName(declaration.Members, "DeserializeResponse");
             AssertContainsName(declaration.Members, "RegisterSerializer");
         }
     }

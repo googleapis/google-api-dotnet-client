@@ -55,7 +55,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             Assert.IsNotNull(codeField);
             Assert.AreEqual(ResourceBaseGenerator.ServiceFieldName, codeField.Name);
-            Assert.AreEqual(typeof(IRequestExecutor).FullName, codeField.Type.BaseType);
+            Assert.AreEqual(typeof(IRequestProvider).FullName, codeField.Type.BaseType);
             Assert.IsNull(codeField.InitExpression);
         }
     }

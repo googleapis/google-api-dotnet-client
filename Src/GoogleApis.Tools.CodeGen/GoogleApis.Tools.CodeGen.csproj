@@ -76,15 +76,13 @@
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\IRequestDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ParameterPropertyDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecorator.cs" />
-    <Compile Include="Decorator\ResourceDecorator\DictionaryOptionalParameterResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\EnumResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\IResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecorator.cs" />
-    <Compile Include="Decorator\ResourceDecorator\StandardMethodResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
-    <Compile Include="Decorator\SchemaDecorator\ErrorResponseDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ResponseInterfaceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecorator.cs" />
     <Compile Include="Generator\RequestClassGenerator.cs" />
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
@@ -92,7 +90,7 @@
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\StandardExecuteMethodServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\CreateRequestMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
     <Compile Include="GeneratorUtils.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
@@ -116,7 +114,6 @@
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtil.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
-    <Compile Include="Decorator\ServiceDecorator\SchemaAwearExecuteMethodDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethods.cs" />
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
