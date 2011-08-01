@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -28,12 +28,13 @@ using Newtonsoft.Json.Schema;
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
 {
     /// <summary>
-    /// Adds inheritance from IRequest and an Error property to schemas referenced by methods
+    /// Implements the IResponse interface on a schema. Adds an "Error"- and an "ETag"-property.
     /// </summary>
-    public class ErrorResponseDecorator : ISchemaDecorator
+    public class ResponseInterfaceDecorator : ISchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ErrorResponseDecorator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ResponseInterfaceDecorator));
         private const string ErrorPropertyName = "Error";
+        private const string ETagPropertyName = "ETag";
         private const string ErrorJsonName = "error";
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
@@ -54,23 +55,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                 logger.Debug("Applying decorator to schema "+schema.Name);
                 typeDeclaration.BaseTypes.Add(GetIResponseBaseType());
                 typeDeclaration.Members.AddRange(CreateErrorProperty(typeDeclaration));
+                typeDeclaration.Members.AddRange(CreateETagProperty(typeDeclaration));
             }
         }
 
-        [VisibleForTestOnly]
-        internal static CodeTypeReference GetIResponseBaseType()
+        private static CodeTypeReference GetIResponseBaseType()
         {
-            return new CodeTypeReference(typeof(IResponse));
+            return new CodeTypeReference(typeof(IDirectResponseSchema));
         }
 
         [VisibleForTestOnly]
         internal static CodeTypeMemberCollection CreateErrorProperty(CodeTypeDeclaration typeDeclaration)
         {
+            CodeTypeReference type = new CodeTypeReference(typeof(RequestError));
             CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
-                ErrorPropertyName, null, new CodeTypeReference(typeof(RequestError)),
-                GeneratorUtils.GetUsedWordsFromMembers(typeDeclaration.Members), false);
+                ErrorPropertyName, null, type, Enumerable.Empty<string>(), false);
 
-            // Add the JsonProperty attribute to the property
+            // Find the created property and add the JsonProperty to it.
             foreach (CodeTypeMember member in col)
             {
                 if (member is CodeMemberProperty)
@@ -81,6 +82,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             }
 
             return col;
+        }
+
+        [VisibleForTestOnly]
+        internal static CodeTypeMemberCollection CreateETagProperty(CodeTypeDeclaration typeDeclaration)
+        {
+            if (typeDeclaration.Members.FindPropertyByName(ETagPropertyName) != null)
+            {
+                return new CodeTypeMemberCollection(); // Don't add a new property; it's already there.
+            }
+
+            CodeTypeReference type = new CodeTypeReference(typeof(string));
+            return DecoratorUtil.CreateAutoProperty(ETagPropertyName, null, type, Enumerable.Empty<string>(), false);
         }
     }
 }

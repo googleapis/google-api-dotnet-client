@@ -83,7 +83,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
             // Execute the request. This will fail because we have defined an invalid rest URI.
             // The IErrorResponseHandler should kick in and try to resend the request. As this 
             // will also fail we will receive a GoogleApiException over here.
-            Assert.Throws<GoogleApiException>(() => request.ExecuteRequest());
+            Assert.Throws<GoogleApiRequestException>(() => request.ExecuteRequest());
 
             // Confirm that the IErrorResponseHandler has run and tried to resend/modify the request.
             Assert.IsTrue(auth.Called);

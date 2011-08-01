@@ -26,6 +26,19 @@ namespace Google.Apis.Requests
     public class RequestError
     {
         /// <summary>
+        /// Enumeration of known error codes which may occur during a request.
+        /// </summary>
+        public enum ErrorCodes
+        {
+            /// <summary>
+            /// The ETag condition specified caused the ETag verification to fail. 
+            /// Depending on the ETagAction of the request this either means that a change to the object has been
+            /// made on the server, or that the object in question is still the same and has not been changed.
+            /// </summary>
+            ETagConditionFailed = 412
+        }
+
+        /// <summary>
         /// Contains a list of all errors
         /// </summary>
         public IList<SingleError> Errors { get; set; }

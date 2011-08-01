@@ -39,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         /// </summary>
         public bool AddOptionalParameters { get; set; }
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardMethodResourceDecorator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(RequestMethodResourceDecorator));
         private readonly IMethodCommentCreator commentCreator;
         private readonly IObjectTypeProvider objectTypeProvider;
 

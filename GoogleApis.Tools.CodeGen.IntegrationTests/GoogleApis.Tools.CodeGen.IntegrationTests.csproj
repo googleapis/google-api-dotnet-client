@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseIntegrationTest.cs" />
+    <Compile Include="CodegenTest.cs" />
     <Compile Include="Core\RequestTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemTest.cs" />

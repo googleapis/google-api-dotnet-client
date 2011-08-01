@@ -79,7 +79,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.Attributes = MemberAttributes.Public;
 
             // ISchemaAwareRequestExecutor service
-            var serviceArg = new CodeParameterDeclarationExpression(typeof(ISchemaAwareRequestExecutor), "service");
+            var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), "service");
             constructor.Parameters.Add(serviceArg);
 
             // : base(service)

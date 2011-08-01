@@ -34,18 +34,33 @@ namespace Google.Apis.Requests
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ServiceRequest<TResponse> : IServiceRequest<TResponse>
     {
+        protected ServiceRequest()
+        {
+            ETagAction = ETagAction.Default;
+        }
+
         /// <summary>
         /// The name of the "GetBody" method
         /// </summary>
         public const string GetBodyMethodName = "GetBody";
 
         private readonly ILog logger = LogManager.GetLogger(typeof(ServiceRequest<TResponse>));
-        private readonly ISchemaAwareRequestExecutor service;
+        private readonly IRequestProvider service;
+
+        /// <summary>
+        /// Defines whether the E-Tag will be used in a specified way or ignored.
+        /// </summary>
+        public ETagAction ETagAction { get; set; }
+
+        /// <summary>
+        /// The E-Tag to use with this request. If this is null, the e-tag of the body will be used (if possible).
+        /// </summary>
+        public string ETag { get; set; }
 
         /// <summary>
         /// Creates a new service request.
         /// </summary>
-        protected ServiceRequest(ISchemaAwareRequestExecutor service)
+        protected ServiceRequest(IRequestProvider service)
         {
             this.service = service;
         }
@@ -63,7 +78,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// The service on which the request will be executed.
         /// </summary>
-        protected ISchemaAwareRequestExecutor Service
+        protected IRequestProvider Service
         {
             get { return service; }
         }
@@ -88,26 +103,80 @@ namespace Google.Apis.Requests
             }
 
             // Serialize the body.
-            return service.ObjectToJson(body);
+            return service.SerializeObject(body);
+        }
+
+        /// <summary>
+        /// Builds an executeable base request containing the data of this request class.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IRequest BuildRequest()
+        {
+            IRequest request = service.CreateRequest(ResourceName, MethodName);
+            request.WithBody(GetSerializedBody());
+            request.WithParameters(CreateParameterDictionary());
+            request.WithETagAction(ETagAction);
+
+            // Check if there is an ETag to attach.
+            if (!string.IsNullOrEmpty(ETag))
+            {
+                request.WithETag(ETag);
+            }
+            else
+            {
+                // If no custom ETag has been set, try to use the one which might come with the body.
+                // If this is a ISchemaResponse, the etag has been added to the object as it was created.
+                IDirectResponseSchema body = GetBody() as IDirectResponseSchema;
+                if (body != null)
+                {
+                    request.WithETag(body.ETag);
+                }
+            }
+
+            return request;
+        }
+
+        private IResponse GetResponse()
+        {
+            string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
+            logger.Debug("Start Executing " + requestName);
+            IResponse response = BuildRequest().ExecuteRequest();
+            logger.Debug("Done Executing " + requestName);
+            return response;
+        }
+
+        /// <summary>
+        ///Executes the request synchronously and returns the result.
+        /// </summary>
+        public TResponse Fetch()
+        {
+            return service.DeserializeResponse<TResponse>(GetResponse());
         }
 
         /// <summary>
         /// Executes the request synchronously and returns the unparsed response stream.
         /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public Stream FetchAsStream()
         {
-            string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
-            logger.Debug("Start Executing " + requestName);
-            Stream response = service.ExecuteRequest(
-                ResourceName, MethodName, GetSerializedBody(), CreateParameterDictionary());
-            logger.Debug("Done Executing " + requestName);
-            return response;
+            return GetResponse().Stream;
+        }
+
+        /// <summary>
+        /// Executes the request asynchronously and calls the specified method once finished.
+        /// </summary>
+        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
+        {
+            // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
+            //       Will probably require us to add an async implementation to the dynamic Request class.
+            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
         }
 
         /// <summary>
         /// Executes the request asynchronously without parsing the response, 
         /// and calls the specified method once finished.
         /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
         {
             // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
@@ -150,24 +219,6 @@ namespace Google.Apis.Requests
             }
 
             return dict;
-        }
-
-        /// <summary>
-        /// Executes the request synchronously and returns the result.
-        /// </summary>
-        public TResponse Fetch()
-        {
-            return Service.JsonToObject<TResponse>(FetchAsStream());
-        }
-
-        /// <summary>
-        /// Executes the request asynchronously and calls the specified method once finished.
-        /// </summary>
-        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
-        {
-            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
-            //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
         }
     }
 }

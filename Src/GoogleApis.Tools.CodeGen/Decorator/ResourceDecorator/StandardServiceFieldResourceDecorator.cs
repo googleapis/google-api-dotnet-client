@@ -67,12 +67,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             CodeMemberField serviceField;
             if (schemaSupportEnabled)
             {
-                serviceField = new CodeMemberField(
-                    typeof(ISchemaAwareRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
+                serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
             }
             else
             {
-                serviceField = new CodeMemberField(typeof(IRequestExecutor), ResourceBaseGenerator.ServiceFieldName);
+                serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
             }
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return serviceField;

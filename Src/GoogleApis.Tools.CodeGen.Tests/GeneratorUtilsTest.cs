@@ -332,6 +332,17 @@ namespace Google.Apis.Tools.CodeGen.Tests
         }
 
         /// <summary>
+        /// Tests the GetPropertyName method.
+        /// </summary>
+        [Test]
+        public void GetPropertyNameTest()
+        {
+            Assert.AreEqual("Test", GeneratorUtils.GetPropertyName("test", new string[0]));
+            Assert.AreEqual("ETag", GeneratorUtils.GetPropertyName("etag", new string[0]));
+            Assert.AreEqual("ETagValue", GeneratorUtils.GetPropertyName("etag", new[] { "ETag" }));
+        }
+
+        /// <summary>
         /// Tests the GetEnumName method.
         /// </summary>
         [Test]

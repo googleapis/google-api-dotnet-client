@@ -15,22 +15,17 @@ limitations under the License.
 */
 
 using System.IO;
+using Google.Apis.Requests;
 
-namespace Google.Apis.Requests
+namespace Google.Apis.Testing
 {
     /// <summary>
-    /// Interface defining the response of a request.
+    /// Mock-Response for testing purposes.
     /// </summary>
-    public interface IResponse
+    [VisibleForTestOnly]
+    internal class MockResponse : IResponse
     {
-        /// <summary>
-        /// The response stream.
-        /// </summary>
-        Stream Stream { get; }
-
-        /// <summary>
-        /// The ETag which came with this response (if available), or null otherwise.
-        /// </summary>
-        string ETag { get; }
+        public Stream Stream { get; set; }
+        public string ETag { get; set; }
     }
 }

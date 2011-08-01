@@ -53,37 +53,6 @@ namespace Google.Apis.Tools.CodeGen
         private static readonly ILog logger = LogManager.GetLogger(typeof(GoogleServiceGenerator));
 
         /// <summary>
-        /// List of all resource decorators
-        /// </summary>
-        [Obsolete("This list is outdated. Use .GetSchemaAwareResourceDecorators(..) instead.")]
-        public static readonly IList<IResourceDecorator> StandardResourceDecorators =
-            (new List<IResourceDecorator>
-                 {
-                     new SubresourceClassDecorator(),
-                     new StandardServiceFieldResourceDecorator(false),
-                     new StandardResourceNameResourceDecorator(),
-                     new StandardConstructorResourceDecorator(),
-                     new StandardMethodResourceDecorator(),
-                     new Log4NetResourceDecorator(),
-                     new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
-                 }).AsReadOnly();
-
-        /// <summary>
-        /// List of all service decorators
-        /// </summary>
-        [Obsolete("This list is outdated. Use SchemaAwareServiceDecorators instead.")]
-        public static readonly IList<IServiceDecorator> StandardServiceDecorators =
-            (new List<IServiceDecorator>
-                 {
-                     new StandardServiceFieldServiceDecorator(),
-                     new StandardConstructServiceDecorator(),
-                     new EasyConstructServiceDecorator(),
-                     new VersionInformationServiceDecorator(),
-                     new StandardExecuteMethodServiceDecorator(),
-                     
-                 }).AsReadOnly();
-
-        /// <summary>
         /// List of all request class decorators
         /// </summary>
         public static IList<IRequestDecorator> GetSchemaAwareRequestDecorators(string schemaNamespace)
@@ -110,8 +79,7 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardConstructServiceDecorator(),
                      new EasyConstructServiceDecorator(),
                      new VersionInformationServiceDecorator(),
-                     new StandardExecuteMethodServiceDecorator(),
-                     new SchemaAwearExecuteMethodDecorator(),
+                     new CreateRequestMethodServiceDecorator(),
                      new JsonSerializationMethods(),
                      new DeveloperKeyServiceDecorator(),
                      new ScopeEnumDecorator(),
@@ -181,13 +149,10 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardServiceFieldResourceDecorator(true),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
-                         /*new StandardMethodResourceDecorator(),
-                         new StandardMethodResourceDecorator(
-                             true, true, typeProvider,
-                             new DefaultEnglishCommentCreator()),*/
+  
+
                          new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
                          new Log4NetResourceDecorator(),
-                         new DictionaryOptionalParameterResourceDecorator(new DefaultEnglishCommentCreator())
                      }).AsReadOnly
                     ();
         }

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using Google.Apis.Requests;
 using NUnit.Framework;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
@@ -26,7 +27,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
     /// Tests for the StandardExecuteMethodServiceDecorator class
     /// </summary>
     [TestFixture]
-    public class StandardExecuteMethodServiceDecoratorTest : BaseServiceDecoratorTest
+    public class CreateRequestMethodServiceDecoratorTest : BaseServiceDecoratorTest
     {
         /// <summary>
         /// Tests if the DeveloperKey
@@ -34,7 +35,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         [Test]
         public void CreateWithDeveloperKeyTest()
         {
-            var decorator = new StandardExecuteMethodServiceDecorator();
+            var decorator = new CreateRequestMethodServiceDecorator();
 
             CodeConditionStatement result = decorator.CreateWithDeveloperKey();
 
@@ -48,21 +49,17 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         /// Tests the CreateExecuteRequestMethod method for valid results
         /// </summary>
         [Test]
-        public void TestCreateExecuteRequestMethod()
+        public void TestGenerateCreateRequestMethod()
         {
-            var decorator = new StandardExecuteMethodServiceDecorator();
-            CodeMemberMethod method = decorator.CreateExecuteRequestMethod();
+            var decorator = new CreateRequestMethodServiceDecorator();
+            CodeMemberMethod method = decorator.GenerateCreateRequestMethod();
 
-            Assert.AreEqual(StandardExecuteMethodServiceDecorator.ExecuteRequestMethodName, method.Name);
+            Assert.AreEqual(CreateRequestMethodServiceDecorator.CreateRequestMethodName, method.Name);
 
-            Assert.AreEqual(4, method.Parameters.Count);
+            Assert.AreEqual(2, method.Parameters.Count);
             Assert.AreEqual("System.String", method.Parameters[0].Type.BaseType);
             Assert.AreEqual("System.String", method.Parameters[1].Type.BaseType);
-            Assert.AreEqual("System.String", method.Parameters[2].Type.BaseType);
-            Assert.That(
-                method.Parameters[3].Type.BaseType.Contains("IDictionary"),
-                "Base Type was " + method.Parameters[3].Type.BaseType);
-            Assert.AreEqual("System.IO.Stream", method.ReturnType.BaseType);
+            Assert.AreEqual(typeof(IRequest).FullName, method.ReturnType.BaseType);
         }
 
         /// <summary>
@@ -72,7 +69,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         public void TestDecorateClass()
         {
             IService service = CreateService();
-            var decorator = new StandardExecuteMethodServiceDecorator();
+            var decorator = new CreateRequestMethodServiceDecorator();
             var codeType = new CodeTypeDeclaration("TestClass");
 
             var requiredDecorator = new StandardServiceFieldServiceDecorator();

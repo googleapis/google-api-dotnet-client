@@ -25,37 +25,44 @@ using log4net;
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
-    /// Adds the Method <code>ExecuteRequest(string resource, string method, string body, IDictionary<string,object> parameters)</code>
-    /// This method is required. So either this decorator or another that creates this method is required.
+    /// Adds the Method <code>CreateRequest(string resource, string method)</code>
     /// </summary>
-    public class StandardExecuteMethodServiceDecorator : IServiceDecorator
+    /// <remarks>
+    /// This method is required for the generated code to function. So either this decorator or another 
+    /// that creates this method should be included in the code-generation process.
+    /// </remarks>
+    public class CreateRequestMethodServiceDecorator : IServiceDecorator
     {
-        public const string ExecuteRequestMethodName = "ExecuteRequest";
+        /// <summary>
+        /// The name of the CreateRequest-method
+        /// </summary>
+        public const string CreateRequestMethodName = "CreateRequest";
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardExecuteMethodServiceDecorator));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(CreateRequestMethodServiceDecorator));
 
         #region IServiceDecorator Members
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             logger.Debug("Entering DecorateClass");
-            serviceClass.Members.Add(CreateExecuteRequestMethod());
+            serviceClass.Members.Add(GenerateCreateRequestMethod());
         }
 
         #endregion
 
-        internal CodeMemberMethod CreateExecuteRequestMethod()
+        /// <summary>
+        /// Generates the <c>IRequest.CreateRequest()</c> method.
+        /// </summary>
+        /// <returns><c>CodeMemberMethod</c> describing the method.</returns>
+        internal CodeMemberMethod GenerateCreateRequestMethod()
         {
             var method = new CodeMemberMethod();
 
-            method.Name = ExecuteRequestMethodName;
-            method.ReturnType = new CodeTypeReference(typeof(Stream));
+            method.Name = CreateRequestMethodName;
+            method.ReturnType = new CodeTypeReference(typeof(IRequest));
             method.Attributes = MemberAttributes.Public;
             method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "resource"));
             method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "method"));
-            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "body"));
-            method.Parameters.Add(
-                new CodeParameterDeclarationExpression(typeof(IDictionary<string, object>), "parameters"));
 
             //Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
             method.Statements.Add(CreateRequestLocalVar());
@@ -64,36 +71,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             //     request = request.WithDeveloperKey(DeveloperKey)
             method.Statements.Add(CreateWithDeveloperKey());
 
-
-            // return request
-            //      .WithAuthentication(authentication)
-            //      .WithParameters(parameterDictionary)
-            //      .WithBody(bodyString)
-            //      .ExecuteRequest()
-
-            //request.WithParameters(parameters)
-            var methodInvoke =
+            // return request.WithAuthentication(authenticator);
+            var statement =
                 new CodeMethodInvokeExpression(
-                    new CodeMethodReferenceExpression(new CodeVariableReferenceExpression("request"), "WithParameters"),
-                    new CodeVariableReferenceExpression("parameters"));
-
-            methodInvoke =
-                new CodeMethodInvokeExpression(
-                    new CodeMethodReferenceExpression(methodInvoke, "WithAuthentication"),
+                    new CodeMethodReferenceExpression(
+                        new CodeVariableReferenceExpression("request"), "WithAuthentication"),
                     new CodeVariableReferenceExpression("authenticator"));
-
-            //.WithBody(body)
-            methodInvoke = new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(methodInvoke, "WithBody"), new CodeVariableReferenceExpression("body"));
-            //.ExecuteRequest() 
-            methodInvoke =
-                new CodeMethodInvokeExpression(
-                    new CodeMethodReferenceExpression(methodInvoke, ExecuteRequestMethodName));
-            var returnStatment = new CodeMethodReturnStatement(methodInvoke);
+            var returnStatment = new CodeMethodReturnStatement(statement);
 
             method.Statements.Add(returnStatment);
-
-
             return method;
         }
 
@@ -125,8 +111,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// <returns></returns>
         internal CodeConditionStatement CreateWithDeveloperKey()
         {
-            // string.IsNullOrEmpty(DeveloperKey) == false
-            var condition = new CodeSnippetExpression("string.IsNullOrEmpty(DeveloperKey) == false");
+            // !string.IsNullOrEmpty(DeveloperKey)
+            var condition = new CodeSnippetExpression("!string.IsNullOrEmpty(DeveloperKey)");
 
             // if (...) {
             var block = new CodeConditionStatement(condition);

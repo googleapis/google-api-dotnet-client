@@ -23,7 +23,7 @@ using Google.Apis.Authentication;
 namespace Google.Apis.Testing
 {
     /// <summary>
-    /// Mock request for testing purposes
+    /// Mock request for testing purposes.
     /// </summary>
     public class MockRequest : IRequest
     {
@@ -40,6 +40,8 @@ namespace Google.Apis.Testing
         public bool HasExecuted { get; set; }
         public Stream StreamToReturn { get; set; }
         public string DeveloperKey { get; set; }
+        public string ETag { get; set; }
+        public ETagAction ETagAction { get; set; }
 
         #region IRequest Members
 
@@ -91,11 +93,23 @@ namespace Google.Apis.Testing
             DeveloperKey = key;
             return this;
         }
-        
-        public Stream ExecuteRequest()
+
+        public IRequest WithETag(string etag)
+        {
+            ETag = etag;
+            return this;
+        }
+
+        public IRequest WithETagAction(ETagAction action)
+        {
+            ETagAction = action;
+            return this;
+        }
+
+        public IResponse ExecuteRequest()
         {
             HasExecuted = true;
-            return StreamToReturn;
+            return new MockResponse() { Stream = StreamToReturn, ETag = this.ETag };
         }
 
         #endregion
