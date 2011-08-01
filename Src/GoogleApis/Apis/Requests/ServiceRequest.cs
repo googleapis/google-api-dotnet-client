@@ -17,6 +17,7 @@ limitations under the License.
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Linq;
 using Google.Apis.Discovery;
@@ -108,11 +109,19 @@ namespace Google.Apis.Requests
         /// Executes the request asynchronously without parsing the response, 
         /// and calls the specified method once finished.
         /// </summary>
-        public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
+        public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
         {
             // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
             //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(FetchAsStream()));
+            ThreadPool.QueueUserWorkItem(cb =>
+                                            {
+                                                // If we have a method to call, invoke it.
+                                                Stream response = FetchAsStream();
+                                                if (methodToCall != null)
+                                                {
+                                                    methodToCall(response);
+                                                }
+                                            });
         }
 
         /// <summary>
@@ -163,11 +172,19 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Executes the request asynchronously and calls the specified method once finished.
         /// </summary>
-        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
+        public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
         {
             // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
             //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
+            ThreadPool.QueueUserWorkItem(cb =>
+                                            {
+                                                // If we have a method to call, invoke it.
+                                                TResponse response = Fetch();
+                                                if (methodToCall != null)
+                                                {
+                                                    methodToCall(response);
+                                                }
+                                            });
         }
     }
 }
