@@ -113,10 +113,10 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests the Execute method of a ServiceRequest.
+        /// Tests the FetchAsStream() method of a ServiceRequest.
         /// </summary>
         [Test]
-        public void ExecuteToStreamTest()
+        public void FetchAsStreamTest()
         {
             var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
 
@@ -125,10 +125,36 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
-        /// Tests the Execute method of a ServiceRequest.
+        /// Tests the FetchAsyncAsStream() method of a ServiceRequest.
         /// </summary>
         [Test]
-        public void ExecuteTest()
+        public void FetchAsyncAsStreamTest()
+        {
+            var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
+
+            // Request validation is done in the MockSchemaAwareRequestExecutor.
+            request.FetchAsyncAsStream();
+            request.FetchAsyncAsStream(Assert.IsNotNull);
+        }
+
+        /// <summary>
+        /// Tests the FetchAsync() method of a ServiceRequest.
+        /// </summary>
+        [Test]
+        public void FetchAsyncTest()
+        {
+            var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
+
+            // Request validation is done in the MockSchemaAwareRequestExecutor.
+            request.FetchAsync();
+            request.FetchAsync((response) => Assert.AreEqual("FooBar", response));
+        }
+
+        /// <summary>
+        /// Tests the Fetch() method of a ServiceRequest.
+        /// </summary>
+        [Test]
+        public void FetchTest()
         {
             var request = new MockServiceRequest(new MockSchemaAwareRequestExecutor());
 
