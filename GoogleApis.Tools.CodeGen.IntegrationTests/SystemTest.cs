@@ -61,7 +61,7 @@ namespace GoogleApis.Tools.CodeGen.IntegrationTests
 
             // Discover the servi2ce using the hand-coded discovery service
             var discovery = new DiscoveryService(device);
-            return discovery.GetService(serviceVersion, DiscoveryVersion.Version_1_0);
+            return discovery.GetService(DiscoveryVersion.Version_1_0);
         }
 
         private static Assembly CompileLibrary(Func<CompilerParameters, CodeDomProvider, CompilerResults> compile,

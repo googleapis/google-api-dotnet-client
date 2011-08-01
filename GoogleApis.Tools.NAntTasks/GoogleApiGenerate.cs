@@ -92,7 +92,7 @@ namespace Google.Apis.Tools.NAntTasks
             var fetcher = new WebDiscoveryDevice(new Uri(DiscoveryUrl));
             var discovery = new DiscoveryService(fetcher);
             var param = new FactoryParameterV1_0(BaseUrl, null);
-            var service = discovery.GetService(ApiVersion, DiscoveryVersion.Version_1_0, param);
+            var service = discovery.GetService(DiscoveryVersion.Version_1_0, param);
             var generator = new GoogleServiceGenerator(service, ClientNamespace);
             var provider = CodeDomProvider.CreateProvider("CSharp");
             Project.Log(Level.Info, "Generating To File " + OutputFile.FullName);

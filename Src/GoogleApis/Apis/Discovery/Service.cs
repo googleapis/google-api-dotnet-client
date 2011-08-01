@@ -59,16 +59,14 @@ namespace Google.Apis.Discovery
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
 
-        internal BaseService(string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
+        internal BaseService(JsonDictionary values, BaseFactoryParameters param) : this()
         {
-            version.ThrowIfNull("version");
-            name.ThrowIfNull("name");
             values.ThrowIfNull("values");
             param.ThrowIfNull("param");
 
             // Set required properties
-            Version = version;
-            Name = name;
+            Version = values.GetMandatoryValue<string>("version");
+            Name = values.GetMandatoryValue<string>("name");
             information = values;
 
             // Set optional properties
@@ -417,8 +415,8 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v1.0 service
         /// </summary>
-        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary values)
-            : base(version, name, values, param)
+        public ServiceV1_0(FactoryParameterV1_0 param, JsonDictionary values)
+            : base(values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
@@ -447,8 +445,8 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v0.3 service
         /// </summary>
-        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary values)
-            : base(version, name, values, param)
+        public ServiceV0_3(FactoryParameterV0_3 param, JsonDictionary values)
+            : base(values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())

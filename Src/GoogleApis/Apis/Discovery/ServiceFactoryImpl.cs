@@ -147,9 +147,9 @@ namespace Google.Apis.Discovery
         public ServiceFactoryDiscoveryV1_0(JsonDictionary discovery, FactoryParameterV1_0 param)
             : base(discovery, param) {}
 
-        public override IService GetService(string version)
+        public override IService GetService()
         {
-            return new ServiceV1_0(version, Name, (FactoryParameterV1_0) Param, Information);
+            return new ServiceV1_0((FactoryParameterV1_0) Param, Information);
         }
     }
 
@@ -161,9 +161,9 @@ namespace Google.Apis.Discovery
         public ServiceFactoryDiscoveryV0_3(JsonDictionary discovery, FactoryParameterV0_3 param)
             : base(discovery, param) {}
 
-        public override IService GetService(string version)
+        public override IService GetService()
         {
-            return new ServiceV0_3(version, Name, (FactoryParameterV0_3) Param, Information);
+            return new ServiceV0_3((FactoryParameterV0_3) Param, Information);
         }
     }
 
@@ -198,7 +198,7 @@ namespace Google.Apis.Discovery
 
         #region IServiceFactory Members
 
-        public abstract IService GetService(string version);
+        public abstract IService GetService();
 
         #endregion
     }
