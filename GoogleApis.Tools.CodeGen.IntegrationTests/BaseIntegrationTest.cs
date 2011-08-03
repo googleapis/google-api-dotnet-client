@@ -23,7 +23,6 @@ using System.Text;
 using Google.Apis.Discovery;
 using NUnit.Framework;
 using Newtonsoft.Json;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.IntegrationTests
 {
@@ -42,7 +41,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             var compilerParameters = new CompilerParameters();
 
             // Add all referenced assemblies of the CodeGen to this lib.
-            foreach (Type type in new[] { typeof(IService), typeof(LogManager), typeof(JsonConverter) })
+            foreach (Type type in new[] { typeof(IService), typeof(JsonConverter) })
             {
                 compilerParameters.ReferencedAssemblies.Add(GetReferencePathToAssembly(type.Assembly));
             }
@@ -86,7 +85,6 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             env.AppendLine("using System.Collections.Generic;");
             env.AppendLine("using System.Text;");
             env.AppendLine("using Google.Apis.Discovery;");
-            env.AppendLine("using log4net;");
             env.AppendLine("using Newtonsoft.Json;");
             env.AppendLine("");
             env.AppendLine("public class GeneratedClass {");
