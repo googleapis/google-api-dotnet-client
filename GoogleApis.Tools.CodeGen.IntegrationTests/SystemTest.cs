@@ -21,8 +21,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Generator;
-using log4net;
 using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.IntegrationTests
@@ -46,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             public string Version { get; set; }
         }
 
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemTest));
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<SystemTest>();
 
         #region Test Helper methods
 
