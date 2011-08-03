@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Google.Apis.Requests
 {
@@ -28,14 +29,14 @@ namespace Google.Apis.Requests
     {
         /// <summary>
         /// Executes the request synchronously and returns the unparsed response stream.
-        /// </summary>34333
+        /// </summary>
         Stream FetchAsStream();
 
         /// <summary>
         /// Executes the request asynchronously without parsing the response, 
-        /// and calls the specified method once finished.
+        /// and optionally calls the specified method once finished.
         /// </summary>
-        void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall);
+        void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall);
     }
 
     /// <summary>
@@ -53,9 +54,9 @@ namespace Google.Apis.Requests
         TResponse Fetch();
 
         /// <summary>
-        /// Executes the request asynchronously and calls the specified method once finished.
+        /// Executes the request asynchronously and optionally calls the specified method once finished.
         /// </summary>
-        void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall);
+        void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall);
     }
 
     /// <summary>
