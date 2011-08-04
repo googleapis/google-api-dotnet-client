@@ -1179,7 +1179,7 @@ namespace Google.Apis.Discovery.v1 {
         
         private const Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
         
-        private string developerKey;
+        private string key;
         
         private ApisResource apis;
         
@@ -1194,12 +1194,12 @@ namespace Google.Apis.Discovery.v1 {
         }
         
         /// <summary>Sets the DeveloperKey which this service uses for all requests</summary>
-        public virtual string DeveloperKey {
+        public virtual string Key {
             get {
-                return this.developerKey;
+                return this.key;
             }
             set {
-                this.developerKey = value;
+                this.key = value;
             }
         }
         
@@ -1211,8 +1211,8 @@ namespace Google.Apis.Discovery.v1 {
         
         public virtual Google.Apis.Requests.IRequest CreateRequest(string resource, string method) {
             Google.Apis.Requests.IRequest request = this.genericService.CreateRequest(resource, method);
-            if (!string.IsNullOrEmpty(DeveloperKey)) {
-                request = request.WithDeveloperKey(this.DeveloperKey);
+            if (!string.IsNullOrEmpty(Key)) {
+                request = request.WithKey(this.Key);
             }
             return request.WithAuthentication(authenticator);
         }

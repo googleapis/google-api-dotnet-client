@@ -64,9 +64,9 @@ namespace Google.Apis.Requests
         IRequest WithAuthentication(IAuthenticator authenticator);
 
         /// <summary>
-        /// Adds the developer key to this request.
+        /// Adds the API/developer key to this request.
         /// </summary>
-        IRequest WithDeveloperKey(string key);
+        IRequest WithKey(string key);
 
         /// <summary>
         /// Adds an ETag to this request.

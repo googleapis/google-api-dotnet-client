@@ -20,25 +20,25 @@ using Google.Apis.Discovery;
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
-    /// Declares the DeveloperKey property and field
+    /// Declares the API-Key property and field.
     /// <code>
-    ///     private string developerKey;
-    ///     public virtual string DeveloperKey { ... }
+    ///     private string key;
+    ///     public virtual string Key { ... }
     /// </code>
     /// </summary>
-    public class DeveloperKeyServiceDecorator : IServiceDecorator
+    public class ApiKeyServiceDecorator : IServiceDecorator
     {
         /// <summary>
-        /// Defines the name of the "DeveloperKey" property
+        /// Defines the name of the "ApiKey" property
         /// </summary>
-        public const string DeveloperKeyPropertyName = "DeveloperKey";
+        public const string PropertyName = "Key";
 
         #region IServiceDecorator Members
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
-                DeveloperKeyPropertyName, "Sets the DeveloperKey which this service uses for all requests",
+                PropertyName, "Sets the API-Key (or DeveloperKey) which this service uses for all requests",
                 new CodeTypeReference(typeof(string)), GeneratorUtils.GetUsedWordsFromMembers(serviceClass.Members),
                 false);
 
