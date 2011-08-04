@@ -67,9 +67,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             //Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
             method.Statements.Add(CreateRequestLocalVar());
 
-            // if (string.IsNullOrEmpty(DeveloperKey) == false)
-            //     request = request.WithDeveloperKey(DeveloperKey)
-            method.Statements.Add(CreateWithDeveloperKey());
+            // if (string.IsNullOrEmpty(APIKey) == false)
+            //     request = request.WithAPIKey(APIKey)
+            method.Statements.Add(CreateWithApiKey());
 
             // return request.WithAuthentication(authenticator);
             var statement =
@@ -105,22 +105,24 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
 
         /// <summary>
-        /// if (string.IsNullOrEmpty(DeveloperKey) == false)
-        ///    request = request.WithDeveloperKey(DeveloperKey)
+        /// if (string.IsNullOrEmpty(APIKey) == false)
+        ///    request = request.WithAPIKey(APIKey)
         /// </summary>
         /// <returns></returns>
-        internal CodeConditionStatement CreateWithDeveloperKey()
+        internal CodeConditionStatement CreateWithApiKey()
         {
-            // !string.IsNullOrEmpty(DeveloperKey)
-            var condition = new CodeSnippetExpression("!string.IsNullOrEmpty(DeveloperKey)");
+            // !string.IsNullOrEmpty(Key)
+            var condition =
+                new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
 
             // if (...) {
             var block = new CodeConditionStatement(condition);
 
-            // request = request.WithDeveloperKey(DeveloperKey)
-            var getProperty = new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "DeveloperKey");
+            // request = request.WithKey(APIKey)
+            var getProperty = new CodePropertyReferenceExpression(
+                new CodeThisReferenceExpression(), ApiKeyServiceDecorator.PropertyName);
             var request = new CodeMethodInvokeExpression(
-                new CodeVariableReferenceExpression("request"), "WithDeveloperKey", getProperty);
+                new CodeVariableReferenceExpression("request"), "WithKey", getProperty);
 
             var trueCase = new CodeAssignStatement(new CodeVariableReferenceExpression("request"), request);
 

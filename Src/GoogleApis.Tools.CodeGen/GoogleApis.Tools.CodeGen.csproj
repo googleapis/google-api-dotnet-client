@@ -88,7 +88,7 @@
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\ApiKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\CreateRequestMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />

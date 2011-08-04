@@ -211,7 +211,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Adds the developer key to this request.
         /// </summary>
-        public IRequest WithDeveloperKey(string key)
+        public IRequest WithKey(string key)
         {
             DeveloperKey = key;
             return this;
