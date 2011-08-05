@@ -196,6 +196,44 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Creates a simple GET request for a "TestMethod".
+        /// </summary>
+        private Request GetSimpleRequest()
+        {
+            var service = new MockService() { BaseUri = new Uri("http://example.com")};
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "" });
+            request.WithParameters("");
+            return request;
+        }
+
+        /// <summary>
+        /// Tests if the WithUserIp method works
+        /// </summary>
+        [Test]
+        public void BuildRequestUrlWithUserIpTest()
+        {
+            var request = GetSimpleRequest();
+            request.WithUserIp("FooBar");
+            var url = request.BuildRequestUrl();
+            Assert.IsTrue(url.ToString().EndsWith("&userIp=FooBar"));
+        }
+
+        /// <summary>
+        /// Tests if the WithFieldsMask method works
+        /// </summary>
+        [Test]
+        public void BuildRequestUrlWithFieldsMaskTest()
+        {
+            var request = GetSimpleRequest();
+            request.WithFields("FooBar");
+            var url = request.BuildRequestUrl();
+            Assert.IsTrue(url.ToString().EndsWith("&fields=FooBar"));
+        }
+
+        /// <summary>
         /// Tests if developer keys are escaped properly
         /// </summary>
         [Test]

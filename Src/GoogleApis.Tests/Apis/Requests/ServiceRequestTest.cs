@@ -21,6 +21,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using Moq;
 using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Requests
@@ -45,7 +46,9 @@ namespace Google.Apis.Tests.Apis.Requests
 
             public string SerializeObject(object data)
             {
-                throw new NotImplementedException();
+                // Return a random string. The result won't matter/won't be checked, but we don't want the
+                // code to throw an exception here.
+                return "Not implemented";
             }
 
             public T DeserializeResponse<T>(IResponse response)
@@ -54,7 +57,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        private class MockServiceRequest : ServiceRequest<string>
+        private class MockServiceRequest<T> : ServiceRequest<T>
         {
             public MockServiceRequest(IRequestProvider service) : base(service) {}
 
@@ -75,6 +78,16 @@ namespace Google.Apis.Tests.Apis.Requests
             public int TestParameterB { get; set; }
 
             public int TestParameterC { get; set; }
+
+            /// <summary>
+            /// The body of this Mock request.
+            /// </summary>
+            public object Body { get; set; }
+
+            protected override object GetBody()
+            {
+                return Body;
+            }
         }
 
         /// <summary>
@@ -83,7 +96,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ConstructTest()
         {
-            Assert.DoesNotThrow(() => new MockServiceRequest(new MockRequestProvider()));
+            Assert.DoesNotThrow(() => new MockServiceRequest<string>(new MockRequestProvider()));
         }
 
         /// <summary>
@@ -92,7 +105,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void CreateParameterDictionaryTest()
         {
-            var request = new MockServiceRequest(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
             request.TestParameterA = 42;
             request.TestParameterB = 43;
             request.TestParameterC = 44;
@@ -109,7 +122,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ExecuteToStreamTest()
         {
-            var request = new MockServiceRequest(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.IsNotNull(request.FetchAsStream());
@@ -121,19 +134,19 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ExecuteTest()
         {
-            var request = new MockServiceRequest(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.AreEqual("FooBar", request.Fetch());
         }
 
         /// <summary>
-        /// Tests the Execute method of a ServiceRequest.
+        /// Tests the ETag behavior of the BuildRequest method of a ServiceRequest.
         /// </summary>
         [Test]
         public void ETagTest()
         {
-            var request = new MockServiceRequest(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
             request.ETag = "FooBar";
             request.ETagAction = ETagAction.IfMatch;
             
@@ -141,8 +154,54 @@ namespace Google.Apis.Tests.Apis.Requests
             MockRequest result = (MockRequest)request.BuildRequest();
             Assert.AreEqual("FooBar", result.ETag);
             Assert.AreEqual(ETagAction.IfMatch, result.ETagAction);
+        }
 
-            // TODO(mlinder): Use Moq to verify that this also works for IDirectResponseSchema bodies.
+        /// <summary>
+        /// Tests the ETag behavior of the BuildRequest method of a ServiceRequest when using a typed body.
+        /// </summary>
+        [Test]
+        public void ETagTypedBodyTest()
+        {
+            var mockBody = new Mock<IDirectResponseSchema>();
+            mockBody.Setup(b => b.ETag).Returns("FooBar");
+
+            var request = new MockServiceRequest<IDirectResponseSchema>(new MockRequestProvider());
+            request.ETagAction = ETagAction.IfMatch;
+            request.Body = mockBody.Object;
+
+            // Confirm that the E-tag and the behavior is passed along.
+            MockRequest result = (MockRequest)request.BuildRequest();
+            Assert.AreEqual("FooBar", result.ETag);
+            Assert.AreEqual(ETagAction.IfMatch, result.ETagAction);
+            mockBody.Verify();
+        }
+
+        /// <summary>
+        /// Tests the that the FieldsMask will be set on the resulting request.
+        /// </summary>
+        [Test]
+        public void FieldsMaskTest()
+        {
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            request.FieldsMask = "FooBar";
+
+            // Confirm that the E-tag and the behavior is passed along.
+            MockRequest result = (MockRequest)request.BuildRequest();
+            Assert.AreEqual("FooBar", result.Fields);
+        }
+
+        /// <summary>
+        /// Tests the that the UserIp will be set on the resulting request.
+        /// </summary>
+        [Test]
+        public void UserIpTest()
+        {
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            request.UserIp = "FooBar";
+
+            // Confirm that the E-tag and the behavior is passed along.
+            MockRequest result = (MockRequest)request.BuildRequest();
+            Assert.AreEqual("FooBar", result.UserIp);
         }
     }
 }

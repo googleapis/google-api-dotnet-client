@@ -58,6 +58,16 @@ namespace Google.Apis.Requests
         public string ETag { get; set; }
 
         /// <summary>
+        /// Selector specifying which fields to include in a partial response.
+        /// </summary>
+        public string FieldsMask { get; set; }
+
+        /// <summary>
+        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+        /// </summary>
+        public string UserIp { get; set; }
+
+        /// <summary>
         /// Creates a new service request.
         /// </summary>
         protected ServiceRequest(IRequestProvider service)
@@ -116,6 +126,8 @@ namespace Google.Apis.Requests
             request.WithBody(GetSerializedBody());
             request.WithParameters(CreateParameterDictionary());
             request.WithETagAction(ETagAction);
+            request.WithFields(FieldsMask);
+            request.WithUserIp(UserIp);
 
             // Check if there is an ETag to attach.
             if (!string.IsNullOrEmpty(ETag))

@@ -53,6 +53,18 @@ namespace Google.Apis.Requests
         IRequest WithParameters(string parameters);
 
         /// <summary>
+        /// Specifies the partial field mask of this method. 
+        /// The response of this request will only contain the fields specified in this mask.
+        /// </summary>
+        /// <param name="mask">Selector specifying which fields to include in a partial response.</param>
+        IRequest WithFields(string mask);
+
+        /// <summary>
+        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+        /// </summary>
+        IRequest WithUserIp(string userIp);
+
+        /// <summary>
         /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
         /// <remarks>The body will be encoded in UTF-8.</remarks>

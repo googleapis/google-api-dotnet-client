@@ -115,6 +115,8 @@ namespace Google.Apis.Requests
         private ReturnType ReturnType { get; set; }
         private ETagAction ETagAction { get; set; }
         private string ETag { get; set; }
+        private string FieldsMask { get; set; }
+        private string UserIp { get; set; }
 
         /// <summary>
         /// Defines whether this request can be sent multiple times.
@@ -363,6 +365,26 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Specifies the partial field mask of this method. 
+        /// The response of this request will only contain the fields specified in this mask.
+        /// </summary>
+        /// <param name="mask">Selector specifying which fields to include in a partial response.</param>
+        public IRequest WithFields(string mask)
+        {
+            FieldsMask = mask;
+            return this;
+        }
+
+        /// <summary>
+        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+        /// </summary>
+        public IRequest WithUserIp(string userIp)
+        {
+            UserIp = userIp;
+            return this;
+        }
+
+        /// <summary>
         /// Builds the resulting Url for the whole request.
         /// </summary>
         [VisibleForTestOnly]
@@ -375,10 +397,17 @@ namespace Google.Apis.Requests
 
             if (DeveloperKey.IsNotNullOrEmpty())
             {
-                queryParams.Add(
-                    "key=" + Uri.EscapeUriString(DeveloperKey). // Escapses most of what we need.
-                                 Replace("&", "%26"). // Also escape & and ?.
-                                 Replace("?", "%3F"));
+                queryParams.Add("key=" + Uri.EscapeDataString(DeveloperKey));
+            }
+
+            if (FieldsMask.IsNotNullOrEmpty())
+            {
+                queryParams.Add("fields=" + Uri.EscapeDataString(FieldsMask));
+            }
+
+            if (UserIp.IsNotNullOrEmpty())
+            {
+                queryParams.Add("userIp=" + Uri.EscapeDataString(UserIp));
             }
 
             // Replace the substitution parameters.
