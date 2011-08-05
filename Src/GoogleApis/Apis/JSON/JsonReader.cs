@@ -17,7 +17,7 @@ limitations under the License.
 using System;
 using System.IO;
 using System.Collections;
-using log4net;
+using Google.Apis.Logging;
 
 namespace Google.Apis.Json
 {
@@ -27,7 +27,7 @@ namespace Google.Apis.Json
     /// </summary>
     public class JsonReader
     {
-        public static ILog logger = LogManager.GetLogger(typeof(JsonReader));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<JsonReader>();
         private static JsonReader theInstance;
 
         private JsonReader() {}

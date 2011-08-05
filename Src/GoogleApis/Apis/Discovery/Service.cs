@@ -20,11 +20,11 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Json;
 using Google.Apis.JSON;
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
-using log4net;
 using Newtonsoft.Json;
 
 namespace Google.Apis.Discovery
@@ -52,23 +52,21 @@ namespace Google.Apis.Discovery
         /// </summary>
         public const string SerializerPropertyName = "Serializer";
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(BaseService));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseService>();
 
         protected internal readonly JsonDictionary information;
         private Dictionary<string, IResource> resources;
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
 
-        internal BaseService(string version, string name, JsonDictionary values, BaseFactoryParameters param) : this()
+        internal BaseService(JsonDictionary values, BaseFactoryParameters param) : this()
         {
-            version.ThrowIfNull("version");
-            name.ThrowIfNull("name");
             values.ThrowIfNull("values");
             param.ThrowIfNull("param");
 
             // Set required properties
-            Version = version;
-            Name = name;
+            Version = values.GetMandatoryValue<string>("version");
+            Name = values.GetMandatoryValue<string>("name");
             information = values;
 
             // Set optional properties
@@ -168,14 +166,15 @@ namespace Google.Apis.Discovery
                     return schemas;
                 }
 
-                logger.DebugFormat("Fetching Schemas for service {0}", Name);
-                var js = information[ServiceFactory.Schemas] as JsonDictionary;
-                if (js != null)
+                logger.Debug("Fetching Schemas for service {0}", Name);
+                if (information.ContainsKey(ServiceFactory.Schemas))
                 {
+                    var js = (JsonDictionary)information[ServiceFactory.Schemas];
                     schemas = ParseSchemas(js);
                 }
                 else
                 {
+                    // Return an empty dictionary instead of null.
                     schemas = new Dictionary<string, ISchema>(0).AsReadOnly();
                 }
 
@@ -382,7 +381,7 @@ namespace Google.Apis.Discovery
             var resolver = new FutureJsonSchemaResolver();
             foreach (KeyValuePair<string, object> kvp in js)
             {
-                logger.DebugFormat("Found schema {0}", kvp.Key);
+                logger.Debug("Found schema {0}", kvp.Key);
                 var serilizer = new JsonSerializer();
                 var textWriter = new StringWriter();
                 serilizer.Serialize(textWriter, kvp.Value);
@@ -422,8 +421,8 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v1.0 service
         /// </summary>
-        public ServiceV1_0(string version, string name, FactoryParameterV1_0 param, JsonDictionary values)
-            : base(version, name, values, param)
+        public ServiceV1_0(FactoryParameterV1_0 param, JsonDictionary values)
+            : base(values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())
@@ -452,8 +451,8 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a v0.3 service
         /// </summary>
-        public ServiceV0_3(string version, string name, FactoryParameterV0_3 param, JsonDictionary values)
-            : base(version, name, values, param)
+        public ServiceV0_3(FactoryParameterV0_3 param, JsonDictionary values)
+            : base(values, param)
         {
             // If no BasePath has been set, then retrieve it from the json document
             if (BasePath.IsNullOrEmpty())

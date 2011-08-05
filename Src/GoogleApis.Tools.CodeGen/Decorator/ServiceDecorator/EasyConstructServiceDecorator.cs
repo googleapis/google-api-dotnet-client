@@ -73,7 +73,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                     new Uri(string.Format(
                         "https://www.googleapis.com/discovery/0.1/describe?api={0}&version={1}",
                         serviceName, serviceVersion))
-                    )).GetService(version, DiscoveryVersionUsed)
+                    )).GetService(DiscoveryVersionUsed)
             */
             CodeExpression discoveryUrl = GetDiscoveryUrl(service, serviceClass);
 
@@ -91,9 +91,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
             var getServiceCall = new CodeMethodInvokeExpression();
             getServiceCall.Method = new CodeMethodReferenceExpression(discoveryConstructor, "GetService");
-            getServiceCall.Parameters.Add(
-                new CodeFieldReferenceExpression(
-                    new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.VersionName));
             getServiceCall.Parameters.Add(
                 new CodeFieldReferenceExpression(
                     new CodeTypeReferenceExpression(serviceClass.Name),

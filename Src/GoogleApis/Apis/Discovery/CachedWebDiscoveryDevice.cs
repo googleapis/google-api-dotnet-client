@@ -17,8 +17,8 @@ limitations under the License.
 using System;
 using System.IO;
 using System.Net;
+using Google.Apis.Logging;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Discovery
 {
@@ -29,7 +29,7 @@ namespace Google.Apis.Discovery
     public class CachedWebDiscoveryDevice : IDiscoveryDevice
     {
         private const int BufferSize = 32 * 1024; // 32kb
-        private static readonly ILog logger = LogManager.GetLogger(typeof(CachedWebDiscoveryDevice));
+       private static readonly ILogger logger = ApplicationContext.Logger.ForType<CachedWebDiscoveryDevice>();
 
         private DirectoryInfo cacheDirectory;
         private FileStream fileStream;
@@ -132,7 +132,7 @@ namespace Google.Apis.Discovery
                     // If we have a working cached file, we can still return it
                     if (cachedFile.Exists)
                     {
-                        logger.Warn(
+                        logger.Warning(
                             string.Format(
                                 "Failed to refetch an outdated cache document [{0}]" +
                                 " - Using cached document. Exception: {1}", DiscoveryUri, ex.Message), ex);

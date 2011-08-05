@@ -18,10 +18,10 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class StandardPropertyDecorator : ISchemaDecorator, INestedClassSchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardPropertyDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<StandardPropertyDecorator>();
 
         #region INestedClassSchemaDecorator Members
 
@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNullOrEmpty("name");
-            logger.DebugFormat("Adding properties for {0}", name);
+            logger.Debug("Adding properties for {0}", name);
 
 
             var fields = new List<CodeMemberProperty>();

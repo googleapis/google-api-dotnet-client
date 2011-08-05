@@ -27,35 +27,50 @@ namespace Google.Apis.Authentication.OAuth2
     /// </summary>
     public class OAuth2Authenticator<TClient> : Authenticator, IErrorResponseHandler where TClient : ClientBase
     {
-        /// <summary>
-        /// The header used for authorizing OAuth2 web requests.
-        /// </summary>
-        public const string OAuth2AuthorizationHeader = "Authorization: OAuth {0}";
-
         private readonly Func<TClient, IAuthorizationState> authProvider;
         private readonly TClient tokenProvider;
+        private bool noCaching;
 
         /// <summary>
-        /// Creates a new OAuth2 authenticator
+        /// Creates a new OAuth2 authenticator.
         /// </summary>
         /// <param name="tokenProvider">The client which is used for requesting access and refresh tokens.</param>
         /// <param name="authProvider">The method which provides the initial authorization for the provider.</param>
-        public OAuth2Authenticator(TClient tokenProvider, Func<TClient, IAuthorizationState> authProvider)
+        public OAuth2Authenticator(TClient tokenProvider,
+                                   Func<TClient, IAuthorizationState> authProvider)
         {
             tokenProvider.ThrowIfNull("applicationName");
             authProvider.ThrowIfNull("authProvider");
 
             this.tokenProvider = tokenProvider;
             this.authProvider = authProvider;
-
-            // Request initial authorization.
-            LoadAccessToken();
         }
 
         /// <summary>
         /// The current state of this authenticator
         /// </summary>
         public IAuthorizationState State { get; private set; }
+
+        /// <summary>
+        /// If this option is set to true, the authorization state will only last for a single request, and
+        /// authorization will be re-requested for every additional request.
+        /// </summary>
+        /// <remarks>
+        /// Will clear the current state if set to true. Can be used by Webserver-Applications
+        /// to allow multiple AuthorizationStates/users.
+        /// </remarks>
+        public bool NoCaching
+        {
+            get { return noCaching; }
+            set
+            {
+                noCaching = value;
+                if (noCaching)
+                {
+                    State = null;
+                }
+            }
+        }
 
         #region IErrorResponseHandler Members
 
@@ -116,25 +131,21 @@ namespace Google.Apis.Authentication.OAuth2
 
             // Populate the AuthorizationState with an access token.
             LoadAccessToken();
-
-            if (State != null && !string.IsNullOrEmpty(State.AccessToken))
+            try
             {
-                string accessToken = State.AccessToken;
-
-                // Apply authorization to the current request
-                // Note: OAuth2 draft16 is not yet supported by the server.
-                //       tokenProvider.AuthorizeRequest(request, State); 
-                request.Headers.Add(GenerateOAuth2Header(accessToken));
+                if (State != null && !string.IsNullOrEmpty(State.AccessToken))
+                {
+                    // Apply authorization to the current request
+                    tokenProvider.AuthorizeRequest(request, State); 
+                }
             }
-        }
-
-        private static string GenerateOAuth2Header(String token)
-        {
-            if (token.IsNotNullOrEmpty())
+            finally
             {
-                return string.Format(OAuth2AuthorizationHeader, token);
+                if (NoCaching)
+                {
+                    State = null;
+                }
             }
-            return string.Empty;
         }
     }
 }

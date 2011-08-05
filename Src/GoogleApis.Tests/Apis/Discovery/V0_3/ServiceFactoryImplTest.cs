@@ -531,7 +531,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
             Assert.AreEqual("buzz", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
-            Assert.IsInstanceOf(typeof(ServiceV0_3), fact.GetService("v1"));
+            Assert.IsInstanceOf(typeof(ServiceV0_3), fact.GetService());
         }
     }
 }

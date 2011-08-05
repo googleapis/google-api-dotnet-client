@@ -16,12 +16,11 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
-using System.Security;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
@@ -31,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class StandardSchemaCommentDecorator : ISchemaDecorator, INestedClassSchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardSchemaCommentDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<StandardSchemaCommentDecorator>();
 
         #region INestedClassSchemaDecorator Members
 
@@ -78,7 +77,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             name.ThrowIfNullOrEmpty("name");
             typeDeclaration.ThrowIfNull("typeDeclaration");
 
-            logger.DebugFormat("Adding attributes to properties for {0}", name);
+            logger.Debug("Adding attributes to properties for {0}", name);
 
             if (schema.Properties.IsNullOrEmpty())
             {

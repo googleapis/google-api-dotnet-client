@@ -36,7 +36,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests
         {
             var client = new NativeApplicationClient(new Uri("http://example.com"));
             var auth = new OAuth2Authenticator<NativeApplicationClient>(client, (clt) => new AuthorizationState());
-            Assert.IsNotNull(auth.State);
+            Assert.IsNull(auth.State);
         }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests
             var auth = new OAuth2Authenticator<NativeApplicationClient>(client, (clt) => state);
 
             // Check that the state was set.
+            auth.LoadAccessToken();
             Assert.AreEqual(state, auth.State);
         }
 
@@ -70,7 +71,11 @@ namespace Google.Apis.Authentication.OAuth2.Tests
                     return state;
                 });
 
-            // Check that the state was set.
+            // Check that the initial state is null.
+            Assert.IsNull(auth.State);
+
+            // Check that the state was set when .LoadAccessToken() is called.
+            auth.LoadAccessToken();
             Assert.AreEqual(state, auth.State);
             Assert.AreEqual("token1", auth.State.AccessToken);
 
@@ -98,10 +103,6 @@ namespace Google.Apis.Authentication.OAuth2.Tests
             // Confirm that the request header gets modified.
             auth.ApplyAuthenticationToRequest(request);
             Assert.AreEqual(1, request.Headers.Count);
-
-            string expected = string.Format(
-                OAuth2Authenticator<NativeApplicationClient>.OAuth2AuthorizationHeader, state.AccessToken);
-            Assert.AreEqual(expected, "Authorization: "+request.Headers["Authorization"]);
         }
     }
 }

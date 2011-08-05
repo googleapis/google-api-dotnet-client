@@ -4484,23 +4484,21 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         protected IService CreateBuzzService()
         {
-            string version = "v1";
             var buzzTestFetcher = new StringDiscoveryDevice { Document = BuzzServiceAsJson };
             var discovery = new DiscoveryService(buzzTestFetcher);
             // Build the service based on discovery information.
             return discovery.GetService(
-                version, DiscoveryVersion.Version_0_3,
+                DiscoveryVersion.Version_0_3,
                 new FactoryParameterV0_3("http://test.server.example.com", "/testService"));
         }
 
         protected IService CreateAdSenseV1_0Service()
         {
-            string version = "v1beta1";
             var buzzTestFetcher = new StringDiscoveryDevice { Document = AdSenseDiscoveryV1 };
             var discovery = new DiscoveryService(buzzTestFetcher);
 
             // Build the service based on discovery information.
-            return discovery.GetService(version, DiscoveryVersion.Version_1_0, null);
+            return discovery.GetService(DiscoveryVersion.Version_1_0, null);
         }
     }
 }

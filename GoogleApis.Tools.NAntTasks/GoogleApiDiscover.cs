@@ -19,13 +19,13 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Discovery;
-using Google.Apis.Discovery.V1.Data;
+using Google.Apis.Discovery.v1.Data;
 using Google.Apis.Tools.CodeGen;
 using Google.Apis.Util;
 using NAnt.Core;
 using NAnt.Core.Attributes;
 
-using DiscoveryService = Google.Apis.Discovery.V1.DiscoveryService;
+using DiscoveryService = Google.Apis.Discovery.v1.DiscoveryService;
 
 namespace Google.Apis.Tools.NAntTasks
 {
@@ -92,11 +92,11 @@ namespace Google.Apis.Tools.NAntTasks
 
         private string property = "google.api.all";
 
-        [TaskAttribute("property", Required = false)]
-        [StringValidator(AllowEmpty = false)]
         /// <summary> 
         ///   The name of the NAnt property we will write the list of GoogleApis to. 
         /// </summary>
+        [TaskAttribute("property", Required = false)]
+        [StringValidator(AllowEmpty = false)]
         public string Property
         {
             get { return property; }
@@ -111,7 +111,7 @@ namespace Google.Apis.Tools.NAntTasks
 
             var discovery = new DiscoveryService();
            
-            DirectoryList apis = discovery.Apis.List(null, null, true);
+            DirectoryList apis = discovery.Apis.List().Fetch();
             string[] apiStrings = new string[apis.Items.Count];
             int apiNumber = 0;
             foreach (DirectoryList.ItemsData item in apis.Items)

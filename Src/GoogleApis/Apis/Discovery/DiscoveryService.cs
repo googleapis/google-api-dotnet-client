@@ -67,7 +67,7 @@ namespace Google.Apis.Discovery
         /// <param name="version"></param>
         /// <param name="param"></param>
         /// <param name="discoveryVersion">The version of discovery used to create the service</param>
-        public IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param)
+        public IService GetService(DiscoveryVersion discoveryVersion, IFactoryParameter param)
         {
             IServiceFactory factory;
 
@@ -77,16 +77,16 @@ namespace Google.Apis.Discovery
                 factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
             }
 
-            return factory.GetService(version);
+            return factory.GetService();
         }
 
         /// <summary>
         /// Creates an API object that provides access to the methods defined in the discovery document.
         /// Uses default factory parameters to construct the service
         /// </summary>
-        public IService GetService(string version, DiscoveryVersion discoveryVersion)
+        public IService GetService(DiscoveryVersion discoveryVersion)
         {
-            return GetService(version, discoveryVersion, null);
+            return GetService(discoveryVersion, null);
         }
 
         #endregion

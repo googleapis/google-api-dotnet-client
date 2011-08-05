@@ -17,8 +17,8 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -27,7 +27,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// </summary>
     public class ResourceContainerGenerator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ResourceContainerGenerator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResourceContainerGenerator>();
 
         private readonly IEnumerable<IResourceContainerDecorator> decorators;
 
@@ -41,7 +41,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         public void AddResourceContainerDecorations(IResourceContainer container, CodeTypeDeclaration codeClass)
         {
-            logger.DebugFormat("AddResourceContainerDecorations called for {0}", container.Name);
+            logger.Debug("AddResourceContainerDecorations called for {0}", container.Name);
             foreach (IResourceContainerDecorator dec in decorators)
             {
                 dec.DecorateClass(container, codeClass);
