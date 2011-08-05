@@ -17,10 +17,10 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
 
@@ -32,7 +32,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// </summary>
     public class NewtonSoftPropertyAttributeDecorator : ISchemaDecorator, INestedClassSchemaDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(NewtonSoftPropertyAttributeDecorator));
+        private static readonly ILogger logger =
+            ApplicationContext.Logger.ForType<NewtonSoftPropertyAttributeDecorator>();
 
         private static readonly CodeTypeReference jsonPropertyAttribute =
             new CodeTypeReference(typeof(JsonPropertyAttribute));
@@ -67,7 +68,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
             schema.ThrowIfNull("schema");
             name.ThrowIfNullOrEmpty("name");
-            logger.DebugFormat("Adding attributes to properties for {0}", name);
+            logger.Debug("Adding attributes to properties for {0}", name);
 
             if (schema.Properties.IsNullOrEmpty())
             {

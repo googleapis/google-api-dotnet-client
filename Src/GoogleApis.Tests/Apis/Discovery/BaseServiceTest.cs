@@ -38,8 +38,8 @@ namespace Google.Apis.Tests.Apis.Discovery
     {
         private class ConcreteClass : BaseService
         {
-            public ConcreteClass(string version, string name, JsonDictionary js)
-                : base(version, name, js, new ConcreteFactoryParameters()) {}
+            public ConcreteClass(JsonDictionary js)
+                : base(js, new ConcreteFactoryParameters()) {}
 
             public override DiscoveryVersion DiscoveryVersion
             {
@@ -99,14 +99,18 @@ namespace Google.Apis.Tests.Apis.Discovery
         private IService CreateV1Service()
         {
             var dict = new JsonDictionary();
-            return new ConcreteClass("V1", "NameTest", dict);
+            dict.Add("name", "TestName");
+            dict.Add("version", "v1");
+            return new ConcreteClass(dict);
         }
 
         private IService CreateLegacyV03Service()
         {
             var dict = new JsonDictionary();
+            dict.Add("name", "TestName");
+            dict.Add("version", "v1");
             dict.Add("features", new[] { Features.LegacyDataResponse.GetStringValue() });
-            return new ConcreteClass("V1", "NameTest", dict);
+            return new ConcreteClass(dict);
         }
 
         #endregion
@@ -247,11 +251,11 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             IService impl = CreateV1Service();
 
-            Assert.AreEqual("V1", impl.Version);
+            Assert.AreEqual("v1", impl.Version);
             Assert.IsNull(impl.Id);
             Assert.IsNotNull(impl.Labels);
             MoreAsserts.IsEmpty(impl.Labels);
-            Assert.AreEqual("NameTest", impl.Name);
+            Assert.AreEqual("TestName", impl.Name);
             Assert.IsNull(impl.Protocol);
             Assert.IsNull(impl.Title);
         }
@@ -303,6 +307,8 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestSimpleGetters()
         {
             var dict = new JsonDictionary();
+            dict.Add("name", "TestName");
+            dict.Add("version", "v1");
             dict.Add("description", "Test Description");
             dict.Add("documentationLink", "https://www.google.com/");
             dict.Add("features", new ArrayList { "feature1", "feature2" });
@@ -310,7 +316,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("id", "TestId");
             dict.Add("title", "Test API");
 
-            IService impl = new ConcreteClass("V1", "NameTest", dict);
+            IService impl = new ConcreteClass(dict);
             Assert.AreEqual("Test Description", impl.Description);
             Assert.AreEqual("https://www.google.com/", impl.DocumentationLink);
             MoreAsserts.ContentsEqualAndInOrder(new List<string> { "feature1", "feature2" }, impl.Features);
@@ -330,9 +336,9 @@ namespace Google.Apis.Tests.Apis.Discovery
             scopes.Add("https://www.example.com/auth/two", new Scope() { ID = "https://www.example.com/auth/two" });
             var oauth2 = new JsonDictionary() { { "scopes", scopes } };
             var auth = new JsonDictionary() { { "oauth2", oauth2 } };
-            var dict = new JsonDictionary() { { "auth", auth } };
+            var dict = new JsonDictionary() { { "auth", auth }, { "name", "TestName" }, { "version", "v1" } };
 
-            IService impl = new ConcreteClass("V1", "NameTest", dict);
+            IService impl = new ConcreteClass(dict);
             Assert.IsNotNull(impl.Scopes);
             Assert.AreEqual(2, impl.Scopes.Count);
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));

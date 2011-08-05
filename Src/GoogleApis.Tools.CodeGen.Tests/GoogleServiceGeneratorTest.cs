@@ -78,7 +78,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var discovery = new DiscoveryService(new WebDiscoveryDevice(new Uri(url)));
 
             // Build the service based on discovery information.
-            var service = discovery.GetService(serviceVersion, DiscoveryVersion.Version_1_0);
+            var service = discovery.GetService(DiscoveryVersion.Version_1_0);
+            Assert.AreEqual(serviceName, service.Name);
+            Assert.AreEqual(serviceVersion, service.Version);
 
             // Generate code
             var generator = new GoogleServiceGenerator(service, clientNamespace);

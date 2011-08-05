@@ -96,6 +96,18 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
+        /// Formats the specified string if format arguments are specified, or returns the unmodified string otherwise.
+        /// </summary>
+        public static string FormatString(this string message, params object[] formatArgs)
+        {
+            if (message == null)
+            {
+                return null;
+            }
+            return formatArgs.Length > 0 ? string.Format(message, formatArgs) : message;
+        }   
+
+        /// <summary>
         /// Returns a readonly variant of the given dictionary
         /// </summary>
         public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)

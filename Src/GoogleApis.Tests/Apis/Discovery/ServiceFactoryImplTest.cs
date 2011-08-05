@@ -74,7 +74,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("adsense", fact.Name);
             Assert.AreEqual(param, fact.Param);
             Assert.AreEqual(json, fact.Information);
-            Assert.IsInstanceOf(typeof(ServiceV1_0), fact.GetService("v1"));
+            Assert.IsInstanceOf(typeof(ServiceV1_0), fact.GetService());
         }
     }
 }

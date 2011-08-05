@@ -18,9 +18,9 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -30,7 +30,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardConstructorResourceDecorator : IResourceDecorator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));
+        private static readonly ILogger logger =
+            ApplicationContext.Logger.ForType<StandardConstructorResourceDecorator>();
 
         #region IResourceDecorator Members
 
@@ -41,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
-            logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
+            logger.Debug("Adding standard constructor to Resource[{0}]", resource.Name);
             resourceClass.Members.Add(CreateConstructor(serviceClassName, resource));
         }
 

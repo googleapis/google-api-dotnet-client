@@ -338,6 +338,23 @@ namespace Google.Apis.Tests.Apis.Util
         }
 
         /// <summary>
+        /// Tests the "FormatString" method.
+        /// </summary>
+        [Test]
+        public void FormatStringTest()
+        {
+            // Test that a null string won't throw an exception.
+            Assert.IsNull(((string)null).FormatString());
+            Assert.IsNull(((string)null).FormatString("123"));
+
+            // Test that a normal (non-argument) call to the Format method will not format the string.
+            Assert.AreEqual("{0}", "{0}".FormatString());
+
+            // Test that the string is formatted when arguments are passed.
+            Assert.AreEqual("123", "{0}".FormatString("123"));
+        }
+
+        /// <summary>
         /// Tests the "Replace" string extension method.
         /// </summary>
         [Test]

@@ -17,10 +17,10 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -39,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         /// </summary>
         public bool AddOptionalParameters { get; set; }
 
-        private static readonly ILog logger = LogManager.GetLogger(typeof(RequestMethodResourceDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<RequestMethodResourceDecorator>();
         private readonly IMethodCommentCreator commentCreator;
         private readonly IObjectTypeProvider objectTypeProvider;
 
@@ -61,7 +61,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             var gen = new ResourceGenerator(className, objectTypeProvider, commentCreator);
             foreach (var method in resource.Methods.Values)
             {
-                logger.DebugFormat("Adding RequestObject Method {0}.{1}", resource.Name, method.Name);
+                logger.Debug("Adding RequestObject Method {0}.{1}", resource.Name, method.Name);
                 
                 // Add the default request method to the class:
                 CodeTypeMember convenienceMethod = gen.CreateMethod(resourceClass, resource, method, false);

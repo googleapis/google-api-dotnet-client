@@ -18,7 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using log4net;
+using Google.Apis.Logging;
 using Newtonsoft.Json.Schema;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -30,7 +30,7 @@ namespace Google.Apis.Discovery.Schema
     /// </summary>
     public class FutureJsonSchemaResolver : JsonSchemaResolver
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(FutureJsonSchemaResolver));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<FutureJsonSchemaResolver>();
 
         public FutureJsonSchemaResolver()
         {
@@ -154,7 +154,7 @@ namespace Google.Apis.Discovery.Schema
             public void Add(JsonSchema item)
             {
                 item.ThrowIfNull("item");
-                logger.DebugFormat("Adding [{0}]", item.Id);
+                logger.Debug("Adding [{0}]", item.Id);
 
                 JsonSchema alreadyPresent =
                     innerList.FirstOrDefault(js => js.Id == item.Id && string.IsNullOrEmpty(item.Id) == false);
