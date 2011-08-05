@@ -18,10 +18,10 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery.Schema;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen.Generator
@@ -70,7 +70,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         [VisibleForTestOnly]
         internal class NestedClassGenerator : INestedClassProvider
         {
-            private static readonly ILog logger = LogManager.GetLogger(typeof(NestedClassGenerator));
+            private static readonly ILogger logger = ApplicationContext.Logger.ForType<NestedClassGenerator>();
 
             private readonly IEnumerable<ISchemaDecorator> decorators;
 
@@ -189,7 +189,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 {
                     if (schemaDecorator is INestedClassSchemaDecorator)
                     {
-                        logger.DebugFormat(
+                        logger.Debug(
                             "Found IInternalClassSchemaDecorator {0} - decorating {1}", schemaDecorator, className);
                         ((INestedClassSchemaDecorator) schemaDecorator).DecorateInternalClass(
                             typeDeclaration, className, schema, detailCollection, nestedClassGenerator);

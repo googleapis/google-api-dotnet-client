@@ -106,7 +106,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 ";
 
         public const string DiscoveryV0_3SmallestExample =
-            "{'name' : 'SmallExample'," + "'restBasePath' : 'https://api.example.com/example'," +
+            "{'name' : 'SmallExample'," + "'restBasePath' : 'https://api.example.com/example'," + "'version' : 'v1'," +
             "'resources' : {'mgmt' : {'name' : 'mgmt', " + "'resources' : {" +
             "'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
 
@@ -176,7 +176,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             var factory = ServiceFactory.CreateServiceFactory(
                 CreateStringStream(DiscoveryV0_3SmallestExample), DiscoveryVersion.Version_0_3, null);
-            IService service = factory.GetService("v1beta1");
+            IService service = factory.GetService();
 
             Assert.NotNull(service);
             Assert.AreEqual(1, service.Resources.Count);
@@ -194,7 +194,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             var factory = ServiceFactory.CreateServiceFactory(
                 CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, null);
-            IService service = factory.GetService("v1beta1");
+            IService service = factory.GetService();
 
             Assert.NotNull(service);
             Assert.AreEqual(2, service.Resources.Count);

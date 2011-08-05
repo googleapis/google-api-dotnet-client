@@ -50,33 +50,38 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="nunit.framework, Version=2.5.8.10295, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Third Party\nunit.framework.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdParty\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\ThirdParty\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\ThirdParty\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
-    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Third Party\log4net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
     <Compile Include="Apis\Authentication\AuthenticatorFactoryTest.cs" />
+    <Compile Include="Apis\Logging\ConsoleLoggerTests.cs" />
+    <Compile Include="Apis\Logging\NullLoggerTests.cs" />
     <Compile Include="Apis\Requests\ResponseTest.cs" />
+    <Compile Include="Apis\Logging\Log4NetLoggerTests.cs" />
     <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
     <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
+    <Compile Include="Apis\Utils\LazyBindingTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
+    <Compile Include="ApplicationContextTests.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CachedWebDiscoveryDeviceTests.cs" />
     <Compile Include="DiscoveryTests.cs" />

@@ -17,8 +17,8 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using Google.Apis.Json;
+using Google.Apis.Logging;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Discovery
 {
@@ -28,7 +28,7 @@ namespace Google.Apis.Discovery
     internal abstract class BaseMethod : IMethod
     {
         private const string PathUrl = "path";
-        private static readonly ILog logger = LogManager.GetLogger(typeof(BaseMethod));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseMethod>();
 
         private readonly DiscoveryVersion discoveryVersion;
         private readonly JsonDictionary information;
@@ -80,7 +80,7 @@ namespace Google.Apis.Discovery
                 var responseDict = information.GetValueAsNull(ServiceFactory.ResponseType) as JsonDictionary;
                 if (responseDict == null)
                 {
-                    logger.DebugFormat("No ReponseType for method [{0}]", Name);
+                    logger.Debug("No ReponseType for method [{0}]", Name);
                     return null;
                 }
                 return responseDict.GetValueAsNull("$ref") as string;
@@ -94,7 +94,7 @@ namespace Google.Apis.Discovery
                 var requestDict = information.GetValueAsNull(ServiceFactory.RequestType) as JsonDictionary;
                 if (requestDict == null)
                 {
-                    logger.DebugFormat("No RequestType for method [{0}]", Name);
+                    logger.Debug("No RequestType for method [{0}]", Name);
                     return null;
                 }
                 return requestDict.GetValueAsNull("$ref") as string;

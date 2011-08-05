@@ -29,7 +29,10 @@ namespace Google.Apis.Discovery
     /// <seealso cref="ServiceFactory"/>
     public interface IServiceFactory
     {
-        IService GetService(string version);
+        /// <summary>
+        /// Creates and returns the service this factory can create.
+        /// </summary>
+        IService GetService();
     }
 
     /// <summary>

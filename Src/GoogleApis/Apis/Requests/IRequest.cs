@@ -55,6 +55,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
+        /// <remarks>The body will be encoded in UTF-8.</remarks>
         IRequest WithBody(string body);
 
         /// <summary>
@@ -63,9 +64,9 @@ namespace Google.Apis.Requests
         IRequest WithAuthentication(IAuthenticator authenticator);
 
         /// <summary>
-        /// Adds the developer key to this request.
+        /// Adds the API/developer key to this request.
         /// </summary>
-        IRequest WithDeveloperKey(string key);
+        IRequest WithKey(string key);
 
         /// <summary>
         /// Adds an ETag to this request.

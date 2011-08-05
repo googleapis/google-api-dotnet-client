@@ -17,7 +17,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Globalization;
-using log4net;
+using Google.Apis.Logging;
 
 namespace Google.Apis.Json
 {
@@ -27,7 +27,7 @@ namespace Google.Apis.Json
     public class TokenStream
     {
         private const int BuilderBufferSize = 24;
-        public static ILog logger = LogManager.GetLogger(typeof(TokenStream));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<TokenStream>();
         private readonly TextReader reader;
 
         public TokenStream(string inputText)

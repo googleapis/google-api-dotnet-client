@@ -23,11 +23,11 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates an instance of a service by using discovery with the specified parameters
         /// </summary>
-        IService GetService(string version, DiscoveryVersion discoveryVersion, IFactoryParameter param);
+        IService GetService(DiscoveryVersion discoveryVersion, IFactoryParameter param);
 
         /// <summary>
         /// Creates an instance of a service by using discovery
         /// </summary>
-        IService GetService(string version, DiscoveryVersion discoveryVersion);
+        IService GetService(DiscoveryVersion discoveryVersion);
     }
 }
