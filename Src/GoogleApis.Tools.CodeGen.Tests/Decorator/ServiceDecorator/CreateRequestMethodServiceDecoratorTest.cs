@@ -30,14 +30,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
     public class CreateRequestMethodServiceDecoratorTest : BaseServiceDecoratorTest
     {
         /// <summary>
-        /// Tests if the DeveloperKey
+        /// Tests if the ApiKey will be added as a property with backing field.
         /// </summary>
         [Test]
-        public void CreateWithDeveloperKeyTest()
+        public void CreateWithApiKeyTest()
         {
             var decorator = new CreateRequestMethodServiceDecorator();
 
-            CodeConditionStatement result = decorator.CreateWithDeveloperKey();
+            CodeConditionStatement result = decorator.CreateWithApiKey();
 
             Assert.IsNotNull(result);
             Assert.That(result.TrueStatements.Count, Is.EqualTo(1));
@@ -74,7 +74,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             var requiredDecorator = new StandardServiceFieldServiceDecorator();
             requiredDecorator.DecorateClass(service, codeType);
-            var anotherRequiredDecorator = new DeveloperKeyServiceDecorator();
+            var anotherRequiredDecorator = new ApiKeyServiceDecorator();
             anotherRequiredDecorator.DecorateClass(service, codeType);
 
             decorator.DecorateClass(service, codeType);

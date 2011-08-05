@@ -189,7 +189,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
+            request.WithKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
@@ -245,7 +245,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
+            request.WithKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
@@ -574,7 +574,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     new MockService(),
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(SimpleDeveloperKey);
+            request.WithKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
 

@@ -102,7 +102,7 @@ namespace Google.Apis.Testing
             return this;
         }
 
-        public IRequest WithDeveloperKey(string key)
+        public IRequest WithKey(string key)
         {
             DeveloperKey = key;
             return this;

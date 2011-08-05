@@ -17,9 +17,9 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using Google.Apis.Json;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Discovery
 {
@@ -55,7 +55,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal abstract class BaseResource : IResource
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(IResource));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<IResource>();
         private readonly JsonDictionary information;
         protected Dictionary<string, IMethod> methods;
         protected Dictionary<string, IResource> resources;
@@ -69,7 +69,7 @@ namespace Google.Apis.Discovery
             kvp.Key.ThrowIfNullOrEmpty("kvp");
 
             DiscoveryVersion = version;
-            logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
+            logger.Debug("Constructing Resource [{0}]", kvp.Key);
             Name = kvp.Key;
             information = kvp.Value as JsonDictionary;
             if (information == null)

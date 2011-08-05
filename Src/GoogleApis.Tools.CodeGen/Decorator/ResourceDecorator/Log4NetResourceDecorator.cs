@@ -18,8 +18,8 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Generator;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -27,10 +27,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// An optional decorator that adds logging to the Resoruces as they are called.
     /// This uses log4Net as the logging framework.
     /// </summary>
+    [Obsolete("Logging is now done within the core library.")]
     public class Log4NetResourceDecorator : IResourceDecorator
     {
         public const string LoggerName = "logger";
-        private static readonly ILog logger = LogManager.GetLogger(typeof(Log4NetResourceDecorator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<Log4NetResourceDecorator>();
 
         #region IResourceDecorator Members
 

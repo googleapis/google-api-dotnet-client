@@ -17,12 +17,13 @@ limitations under the License.
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Linq;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Requests
 {
@@ -44,7 +45,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public const string GetBodyMethodName = "GetBody";
 
-        private readonly ILog logger = LogManager.GetLogger(typeof(ServiceRequest<TResponse>));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceRequest<TResponse>>();
         private readonly IRequestProvider service;
 
         /// <summary>
@@ -173,27 +174,25 @@ namespace Google.Apis.Requests
         {
             return GetResponse().Stream;
         }
-
-        /// <summary>
-        /// Executes the request asynchronously and calls the specified method once finished.
-        /// </summary>
-        public void FetchAsync(ExecuteRequestDelegate<TResponse> methodToCall)
-        {
-            // ToDo: Make this implementation compatible with the .NET 3.5 Client Profile.
-            //       Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(Fetch()));
-        }
-
+        
         /// <summary>
         /// Executes the request asynchronously without parsing the response, 
         /// and calls the specified method once finished.
         /// </summary>
         /// <remarks>The returned stream is encoded in UTF-8.</remarks>
-        public void FetchAsyncAsStream(ExecuteRequestDelegate<Stream> methodToCall)
+        public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
         {
             // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
             //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb => methodToCall(FetchAsStream()));
+            ThreadPool.QueueUserWorkItem(cb =>
+                                            {
+                                                // If we have a method to call, invoke it.
+                                                Stream response = FetchAsStream();
+                                                if (methodToCall != null)
+                                                {
+                                                    methodToCall(response);
+                                                }
+                                            });
         }
 
         /// <summary>
@@ -231,6 +230,23 @@ namespace Google.Apis.Requests
             }
 
             return dict;
+        }
+        /// <summary>
+        /// Executes the request asynchronously and optionally calls the specified method once finished.
+        /// </summary>
+        public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
+        {
+            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
+            //                Will probably require us to add an async implementation to the dynamic Request class.
+            ThreadPool.QueueUserWorkItem(cb =>
+                                            {
+                                                // If we have a method to call, invoke it.
+                                                TResponse response = Fetch();
+                                                if (methodToCall != null)
+                                                {
+                                                    methodToCall(response);
+                                                }
+                                            });
         }
     }
 }

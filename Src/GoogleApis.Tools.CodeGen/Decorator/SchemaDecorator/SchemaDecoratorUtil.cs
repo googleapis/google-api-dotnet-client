@@ -17,10 +17,10 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
@@ -30,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen
     /// </summary>
     public static class SchemaDecoratorUtil
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(SchemaDecoratorUtil));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType(typeof(SchemaDecoratorUtil));
 
         /// <summary>
         /// Generates a field name
@@ -80,8 +80,9 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.Any:
                     return new CodeTypeReference(typeof(string));
                 default:
-                    logger.WarnFormat(
-                        "Found currently unsupported type {0} as part of {1}", propertySchema.Type.Value, propertySchema);
+                    logger.Warning(
+                        "Found currently unsupported type {0} as part of {1}", propertySchema.Type.Value,
+                        propertySchema);
                     return new CodeTypeReference(typeof(object));
             }
         }
@@ -100,7 +101,7 @@ namespace Google.Apis.Tools.CodeGen
             }
             if (propertySchema.Id.IsNotNullOrEmpty())
             {
-                logger.DebugFormat("Found Object with id using type {0}", propertySchema.Id);
+                logger.Debug("Found Object with id using type {0}", propertySchema.Id);
                 return new CodeTypeReference(propertySchema.Id);
             }
 
@@ -129,11 +130,11 @@ namespace Google.Apis.Tools.CodeGen
                     return new CodeTypeReference("IList<" + arrayItems[0].Id + ">");
                 }
                 string arrayType = "IList<" + GetCodeType(arrayItems[0], details, internalClassProvider).BaseType + ">";
-                logger.DebugFormat("type for array {0}", arrayType);
+                logger.Debug("type for array {0}", arrayType);
                 return new CodeTypeReference(arrayType);
             }
 
-            logger.WarnFormat("Found Array of unhandled type. {0}", propertySchema);
+            logger.Warning("Found Array of unhandled type. {0}", propertySchema);
             return new CodeTypeReference("IList");
         }
     }

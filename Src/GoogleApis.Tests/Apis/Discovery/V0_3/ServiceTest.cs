@@ -46,7 +46,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         {
             var param = new FactoryParameterV0_3("http://server/");
             var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
-            return new ServiceV0_3(TestVersion, TestName, param, json);
+            return new ServiceV0_3(param, json);
         }
 
         /// <summary>
@@ -57,14 +57,14 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         {
             var param = new FactoryParameterV0_3("http://server/");
             var js = new JsonDictionary();
+            js["name"] = "TestName";
+            js["version"] = "v1";
             js["restBasePath"] = "test/path";
 
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(null, TestName, param, js));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, null, param, js));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, TestName, null, js));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(TestVersion, TestName, param, null));
+            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(null, js));
+            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(param, null));
 
-            new ServiceV0_3(TestVersion, TestName, param, js);
+            new ServiceV0_3(param, js);
         }
 
         /// <summary>

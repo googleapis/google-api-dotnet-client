@@ -18,10 +18,10 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using log4net;
 using Newtonsoft.Json.Schema;
 
 namespace Google.Apis.Tools.CodeGen
@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen
     /// </summary>
     public class GoogleSchemaGenerator
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(GoogleSchemaGenerator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<GoogleSchemaGenerator>();
 
         public static readonly IEnumerable<ISchemaDecorator> DefaultSchemaDecorators =
             (new List<ISchemaDecorator>
@@ -68,7 +68,7 @@ namespace Google.Apis.Tools.CodeGen
         {
             service.ThrowIfNull("service");
             
-            logger.DebugFormat("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
+            logger.Debug("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
             var codeNamespace = new CodeNamespace(schemaNamespace);
             codeNamespace.Imports.Add(new CodeNamespaceImport("System"));
@@ -83,7 +83,7 @@ namespace Google.Apis.Tools.CodeGen
             // Generate schemas
             foreach (var schemaPair in service.Schemas)
             {
-                logger.DebugFormat("Generating Schema {0}", schemaPair.Key);
+                logger.Debug("Generating Schema {0}", schemaPair.Key);
                 
                 // Create schema
                 codeNamespace.Types.Add(
@@ -106,7 +106,7 @@ namespace Google.Apis.Tools.CodeGen
 
             foreach (var decorator in decorators)
             {
-                logger.DebugFormat(">>>{0}", decorator);
+                logger.Debug(">>>{0}", decorator);
             }
         }
     }

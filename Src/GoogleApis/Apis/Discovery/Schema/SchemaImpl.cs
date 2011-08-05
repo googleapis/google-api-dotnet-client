@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 using System;
-using log4net;
+using Google.Apis.Logging;
 using Newtonsoft.Json.Schema;
 using Google.Apis.Util;
 
@@ -26,8 +26,7 @@ namespace Google.Apis.Discovery.Schema
     /// </summary>
     internal class SchemaImpl : ISchema
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(SchemaImpl));
-
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<SchemaImpl>();
         private readonly string name;
         private readonly JsonSchema schema;
 

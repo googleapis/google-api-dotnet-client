@@ -19,13 +19,13 @@ using System.CodeDom;
 using System.IO;
 using System.Runtime.InteropServices;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Util;
-using log4net;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -38,7 +38,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         protected const string ParameterDictionaryName = "parameters";
         protected const string ReturnVariableName = "ret";
         public const string ServiceFieldName = "service";
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ResourceBaseGenerator));
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResourceBaseGenerator>();
 
         protected void ResourceCallAddBodyDeclaration(IMethod method,
                                                       CodeMemberMethod member,
