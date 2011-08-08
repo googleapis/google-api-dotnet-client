@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen
                      new VersionInformationServiceDecorator(),
                      new CreateRequestMethodServiceDecorator(),
                      new JsonSerializationMethods(),
-                     new DeveloperKeyServiceDecorator(),
+                     new ApiKeyServiceDecorator(),
                      new ScopeEnumDecorator(),
                  }).AsReadOnly();
 
@@ -149,8 +149,6 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardServiceFieldResourceDecorator(true),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
-  
-
                          new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
                      }).AsReadOnly
                     ();

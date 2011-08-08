@@ -52,12 +52,11 @@
     <DocumentationFile>GoogleApis.Tools.CodeGen.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Third Party\Newtonsoft.Json.Net35.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -84,7 +83,7 @@
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\DeveloperKeyServiceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\ApiKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\CreateRequestMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />

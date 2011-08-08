@@ -189,10 +189,48 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
+            request.WithKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
+        }
+
+        /// <summary>
+        /// Creates a simple GET request for a "TestMethod".
+        /// </summary>
+        private Request GetSimpleRequest()
+        {
+            var service = new MockService() { BaseUri = new Uri("http://example.com")};
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "" });
+            request.WithParameters("");
+            return request;
+        }
+
+        /// <summary>
+        /// Tests if the WithUserIp method works
+        /// </summary>
+        [Test]
+        public void BuildRequestUrlWithUserIpTest()
+        {
+            var request = GetSimpleRequest();
+            request.WithUserIp("FooBar");
+            var url = request.BuildRequestUrl();
+            Assert.IsTrue(url.ToString().EndsWith("&userIp=FooBar"));
+        }
+
+        /// <summary>
+        /// Tests if the WithFieldsMask method works
+        /// </summary>
+        [Test]
+        public void BuildRequestUrlWithFieldsMaskTest()
+        {
+            var request = GetSimpleRequest();
+            request.WithFields("FooBar");
+            var url = request.BuildRequestUrl();
+            Assert.IsTrue(url.ToString().EndsWith("&fields=FooBar"));
         }
 
         /// <summary>
@@ -207,7 +245,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
+            request.WithKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequestUrl();
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
@@ -536,7 +574,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     new MockService(),
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
-            request.WithDeveloperKey(SimpleDeveloperKey);
+            request.WithKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
 
