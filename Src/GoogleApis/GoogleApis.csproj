@@ -13,8 +13,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
@@ -73,6 +72,8 @@
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />
+    <Compile Include="ThirdParty\HttpEncoder.cs" />
+    <Compile Include="ThirdParty\HttpUtility.cs" />
     <Compile Include="Apis\ISerializer.cs" />
     <Compile Include="Apis\Logging\ConsoleLogger.cs" />
     <Compile Include="Apis\Logging\ILogger.cs" />
