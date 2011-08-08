@@ -42,6 +42,8 @@ namespace Google.Apis.Testing
         public string DeveloperKey { get; set; }
         public string ETag { get; set; }
         public ETagAction ETagAction { get; set; }
+        public string UserIp { get; set; }
+        public string Fields { get; set; }
 
         #region IRequest Members
 
@@ -76,6 +78,18 @@ namespace Google.Apis.Testing
             return this;
         }
 
+        public IRequest WithFields(string mask)
+        {
+            Fields = mask;
+            return this;
+        }
+
+        public IRequest WithUserIp(string userIp)
+        {
+            UserIp = userIp;
+            return this;
+        }
+
         public IRequest WithBody(string body)
         {
             Body = body;
@@ -88,7 +102,7 @@ namespace Google.Apis.Testing
             return this;
         }
 
-        public IRequest WithDeveloperKey(string key)
+        public IRequest WithKey(string key)
         {
             DeveloperKey = key;
             return this;
