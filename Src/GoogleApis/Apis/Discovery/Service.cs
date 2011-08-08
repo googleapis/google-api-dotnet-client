@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Google.Apis.Json;
 using Google.Apis.JSON;
 using Google.Apis.Logging;
@@ -404,6 +405,15 @@ namespace Google.Apis.Discovery
         public virtual IResource CreateResource(KeyValuePair<string, object> kvp)
         {
             return new ResourceV1_0(kvp);
+        }
+
+        /// <summary>
+        /// Returns the discovery document describing this service.
+        /// </summary>
+        /// <returns>Json formatted discovery document.</returns>
+        public string GetDiscoveryDocument()
+        {
+            return serializer.Serialize(information);
         }
     }
 

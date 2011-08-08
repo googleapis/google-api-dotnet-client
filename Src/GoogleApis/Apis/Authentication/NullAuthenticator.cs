@@ -24,6 +24,11 @@ namespace Google.Apis.Authentication
     /// </summary>
     public class NullAuthenticator : IAuthenticator
     {
+        /// <summary>
+        /// Returns the default instance of the NullAuthenticator.
+        /// </summary>
+        public static readonly NullAuthenticator Instance = new NullAuthenticator();
+
         private readonly NullAuthenticatorImpl impl;
 
         public NullAuthenticator()

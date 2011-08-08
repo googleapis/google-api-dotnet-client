@@ -125,7 +125,6 @@
     <Compile Include="Apis\Requests\ReturnType.cs" />
     <Compile Include="Apis\Testing\MockRequest.cs" />
     <Compile Include="Apis\Testing\MockService.cs" />
-    <Compile Include="Apis\Authentication\AuthenticatorFactory.cs" />
     <Compile Include="Apis\Discovery\IRequestProvider.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\JSON\JsonToken.cs" />

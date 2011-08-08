@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
-    <Compile Include="Apis\Authentication\AuthenticatorFactoryTest.cs" />
     <Compile Include="Apis\Logging\ConsoleLoggerTests.cs" />
     <Compile Include="Apis\Logging\NullLoggerTests.cs" />
     <Compile Include="Apis\Requests\ResponseTest.cs" />
