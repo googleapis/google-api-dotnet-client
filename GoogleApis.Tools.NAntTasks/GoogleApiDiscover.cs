@@ -110,7 +110,8 @@ namespace Google.Apis.Tools.NAntTasks
             Properties["google.api.api.separator"] = ApiSeparator.ToString();
             Properties["google.api.suggested.regex"] = SuggestedRegex;
 
-            var discovery = new DiscoveryService(NullAuthenticator.Instance);
+            var auth = new DelegateAuthenticator(request => request.Headers["X-User-IP"] = "0.0.0.0");
+            var discovery = new DiscoveryService(auth);
            
             DirectoryList apis = discovery.Apis.List().Fetch();
             string[] apiStrings = new string[apis.Items.Count];

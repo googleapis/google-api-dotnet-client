@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen
                      new VersionInformationServiceDecorator(),
                      new CreateRequestMethodServiceDecorator(),
                      new JsonSerializationMethods(),
-                     new DeveloperKeyServiceDecorator(),
+                     new ApiKeyServiceDecorator(),
                      new ScopeEnumDecorator(),
                  }).AsReadOnly();
 
