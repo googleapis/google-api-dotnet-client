@@ -27,13 +27,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public class StandardServiceFieldResourceDecorator : IResourceDecorator
     {
-        private readonly bool schemaSupportEnabled;
-
-        public StandardServiceFieldResourceDecorator(bool schemaSupportEnabled)
-        {
-            this.schemaSupportEnabled = schemaSupportEnabled;
-        }
-
         #region IResourceDecorator Members
 
         public void DecorateClass(IResource resource,
@@ -43,7 +36,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
-            resourceClass.Members.Add(CreateServiceField());
+            resourceClass.Members.Add(
+                resource.IsServiceResource ? (CodeTypeMember) CreateFakeServiceField() : CreateServiceField());
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -65,16 +59,27 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         internal CodeMemberField CreateServiceField()
         {
             CodeMemberField serviceField;
-            if (schemaSupportEnabled)
-            {
-                serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
-            }
-            else
-            {
-                serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
-            }
+            serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return serviceField;
+        }
+
+        /// <summary>
+        /// Adds <code>private BuzzService service { get { return this; } }</code> to the resource class.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeMemberProperty CreateFakeServiceField()
+        {
+            // private BuzzService service { .. }
+            CodeMemberProperty serviceProperty = new CodeMemberProperty();
+            serviceProperty.Type = new CodeTypeReference(typeof(IRequestProvider));
+            serviceProperty.Name = ResourceBaseGenerator.ServiceFieldName;
+            serviceProperty.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+            
+            // get { return this; }
+            serviceProperty.HasGet = true;
+            serviceProperty.GetStatements.Add(new CodeMethodReturnStatement(new CodeThisReferenceExpression()));
+            return serviceProperty;
         }
     }
 }

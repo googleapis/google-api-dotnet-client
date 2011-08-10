@@ -53,17 +53,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             serviceClassName.ThrowIfNull("serviceClassName");
             allDecorators.ThrowIfNull("allDecorators");
 
-            // Add all subresources.
-            foreach (IResource subresource in resource.Resources.Values)
+            if (!resource.IsServiceResource) // Only add subresources of normal resources, not the root resource.
             {
-                // Consider all members in the current class as invalid names.
-                var forbiddenWords = from CodeTypeMember m in resourceClass.Members select m.Name;
+                // Add all subresources.
+                foreach (IResource subresource in resource.Resources.Values)
+                {
+                    // Consider all members in the current class as invalid names.
+                    var forbiddenWords = from CodeTypeMember m in resourceClass.Members select m.Name;
 
-                // Generate and add the subresource.
-                CodeTypeDeclaration decl = GenerateSubresource(
-                    subresource, serviceClassName, allDecorators, generator.RequestGenerator,
-                    generator.ContainerGenerator, forbiddenWords);
-                resourceClass.Members.Add(decl);
+                    // Generate and add the subresource.
+                    CodeTypeDeclaration decl = GenerateSubresource(
+                        subresource, serviceClassName, allDecorators, generator.RequestGenerator,
+                        generator.ContainerGenerator, forbiddenWords);
+                    resourceClass.Members.Add(decl);
+                }
             }
         }
         
