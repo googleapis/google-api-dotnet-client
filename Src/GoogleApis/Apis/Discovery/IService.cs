@@ -28,7 +28,7 @@ namespace Google.Apis.Discovery
     /// </summary>
     /// <seealso cref="IResource"/>
     /// <seealso cref="ISchema"/>
-    public interface IService : IResourceContainer
+    public interface IService : IResource
     {
         /// <summary> The version of this service </summary>
         string Version { get; }

@@ -39,13 +39,20 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Will return the parent of this resource, or null if there is none.
         /// </summary>
+        /// <remarks>Will be null if this is the service resource.</remarks>
         IResource Parent { get; }
 
         /// <summary>
         /// Retrievs the full name of a resource,
         /// e.g. TopResource.SubResource
         /// </summary>
-        string FullName { get; }
+        /// <remarks>Will return an empty string for the root resource or service.</remarks>
+        string Path { get; }
+
+        /// <summary>
+        /// True only if this resource is the root resource node defined by the service.
+        /// </summary>
+        bool IsServiceResource { get; }
     }
 
     #region Base Resource
@@ -66,7 +73,7 @@ namespace Google.Apis.Discovery
         internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
         {
             kvp.ThrowIfNull("kvp");
-            kvp.Key.ThrowIfNullOrEmpty("kvp");
+            kvp.Key.ThrowIfNull("kvp");
 
             DiscoveryVersion = version;
             logger.DebugFormat("Constructing Resource [{0}]", kvp.Key);
@@ -174,13 +181,14 @@ namespace Google.Apis.Discovery
             return resources;
         }
 
-        /// <summary>
-        /// Retrievs the full name of a resource,
-        /// e.g. TopResource.SubResource
-        /// </summary>
-        public string FullName
+        public string Path
         {
             get { return GetFullName(this); }
+        }
+
+        public bool IsServiceResource
+        {
+            get { return Parent == null && Path == String.Empty; }
         }
 
         /// <summary>
@@ -190,7 +198,7 @@ namespace Google.Apis.Discovery
         private string GetFullName(IResource resource)
         {
             var parentResource = resource.Parent;
-            if (parentResource == null)
+            if (parentResource == null || parentResource.IsServiceResource)
             {
                 // Only IResource counts for the resource name, don't include the service itself.
                 return resource.Name;

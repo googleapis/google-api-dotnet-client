@@ -60,7 +60,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
             this.resource = resource;
             this.serviceClassName = serviceClassName;
             this.decorators = decorators;
-            className = GeneratorUtils.GetClassName(resource, otherResourceNames);
+            className = resource.IsServiceResource
+                            ? serviceClassName
+                            : GeneratorUtils.GetClassName(resource, otherResourceNames);
             this.resourceContainerGenerator = resourceContainerGenerator;
             this.requestClassGenerator = requestClassGenerator;
         }
@@ -77,6 +79,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
         public CodeTypeDeclaration CreateClass()
         {
             var resourceClass = new CodeTypeDeclaration(className);
+
+            if (resource.IsServiceResource) // If this is a root resource/the service itself, a class already exists.
+            {
+                resourceClass.IsPartial = true;
+            }
 
             foreach (IResourceDecorator decorator in decorators)
             {

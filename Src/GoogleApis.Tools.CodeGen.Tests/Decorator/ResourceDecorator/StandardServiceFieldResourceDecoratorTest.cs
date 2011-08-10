@@ -33,7 +33,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         [Test]
         public void DecorateClassTest()
         {
-            var decorator = new StandardServiceFieldResourceDecorator(false);
+            var decorator = new StandardServiceFieldResourceDecorator();
             CodeTypeDeclaration codeType = CreateDecoratedResourceClass(decorator);
 
             Assert.AreEqual(1, codeType.Members.Count);
@@ -50,7 +50,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         [Test]
         public void TestCreateServiceField()
         {
-            var decorator = new StandardServiceFieldResourceDecorator(false);
+            var decorator = new StandardServiceFieldResourceDecorator();
             CodeMemberField codeField = decorator.CreateServiceField();
 
             Assert.IsNotNull(codeField);

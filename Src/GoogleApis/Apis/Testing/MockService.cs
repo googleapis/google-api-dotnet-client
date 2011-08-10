@@ -97,5 +97,13 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         #endregion
+
+        public Dictionary<string, IMethod> Methods { get; set; }
+
+        public IResource Parent { get; set; }
+
+        public string Path { get; set; }
+
+        public bool IsServiceResource { get; set; }
     }
 }

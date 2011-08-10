@@ -28,6 +28,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// Creates a constructor for this resource, this is a standard decorator so this either needs to be 
     /// present or another decorator that creates a constructor with the same signature put in.
     /// </summary>
+    /// <remarks>This decorator will not be applied to the service-resource.</remarks>
     public class StandardConstructorResourceDecorator : IResourceDecorator
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(StandardConstructorResourceDecorator));
@@ -41,8 +42,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
-            logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
-            resourceClass.Members.Add(CreateConstructor(serviceClassName, resource));
+            if (!resource.IsServiceResource) // Only add this constructor to non-service resources.
+            {
+                logger.DebugFormat("Adding standard constructor to Resource[{0}]", resource.Name);
+                resourceClass.Members.Add(CreateConstructor(serviceClassName, resource));
+            }
         }
 
 

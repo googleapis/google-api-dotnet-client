@@ -38,7 +38,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
-            string fullName = resource.FullName;
+            string fullName = resource.Path;
             resourceClass.Members.Add(CreateResourceNameConst(fullName));
         }
 

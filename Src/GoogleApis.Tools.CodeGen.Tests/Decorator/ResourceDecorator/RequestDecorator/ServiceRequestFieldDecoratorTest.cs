@@ -57,7 +57,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             Assert.AreEqual(2, requestDecl.Members.Count); // 2 properties
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[0]);
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[1]);
-            Assert.AreEqual("ResourceName", requestDecl.Members[0].Name);
+            Assert.AreEqual("ResourcePath", requestDecl.Members[0].Name);
             Assert.AreEqual("MethodName", requestDecl.Members[1].Name);
         }
 
@@ -68,7 +68,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         public void GenerateImplementedStringConstantPropertyTest()
         {
             CodeMemberProperty property =
-                ServiceRequestFieldDecorator.GenerateImplementedStringConstantProperty("Name", "Value");
+                ServiceRequestFieldDecorator.GenerateStringConstantPropertyOverride("Name", "Value");
 
             Assert.IsNotNull(property);
             Assert.AreEqual("Name", property.Name);
