@@ -76,9 +76,31 @@ namespace Google.Apis.Tests.Apis.Discovery
             var grandchildResource = subResource.Resources["Grandchild"];
          
             // Check the generated full name.
-            Assert.AreEqual("Top", topResource.FullName);
-            Assert.AreEqual("Top.Sub", subResource.FullName);
-            Assert.AreEqual("Top.Sub.Grandchild", grandchildResource.FullName);
+            Assert.AreEqual("Top", topResource.Path);
+            Assert.AreEqual("Top.Sub", subResource.Path);
+            Assert.AreEqual("Top.Sub.Grandchild", grandchildResource.Path);
+        }
+
+        /// <summary>
+        /// Tests the BaseResource.GetFullName method when dealing with a root resource.
+        /// </summary>
+        [Test]
+        public void RootResourceTest()
+        {
+            var subJson = new JsonDictionary();
+            subJson.Add("resources", new JsonDictionary { { "Grandchild", new JsonDictionary() } });
+            var topJson = new JsonDictionary();
+            topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
+
+            // Create the resource hierachy.
+            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("", topJson));
+            var subResource = topResource.Resources["Sub"];
+            var grandchildResource = subResource.Resources["Grandchild"];
+
+            // Check the generated full name.
+            Assert.AreEqual("", topResource.Path);
+            Assert.AreEqual("Sub", subResource.Path);
+            Assert.AreEqual("Sub.Grandchild", grandchildResource.Path);
         }
     }
 }

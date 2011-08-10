@@ -346,6 +346,25 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
+        /// Confirms that methods, which are directly on the service, are supported
+        /// </summary>
+        [Test]
+        public void TestMethodsOnService()
+        {
+            var testMethod = new JsonDictionary();
+            testMethod.Add("id", "service.testMethod");
+            testMethod.Add("path", "service/testMethod");
+            testMethod.Add("httpMethod", "GET");
+            var methods = new JsonDictionary() { { "testMethod", testMethod } };
+            var dict = new JsonDictionary() { { "methods", methods }, { "name", "TestName" }, { "version", "v1" } };
+
+            IService impl = new ConcreteClass(dict);
+            Assert.IsNotNull(impl.Methods);
+            Assert.AreEqual(1, impl.Methods.Count);
+            Assert.AreEqual("testMethod", impl.Methods["testMethod"].Name);
+        }
+
+        /// <summary>
         /// Tests the BaseResource.GetResource method.
         /// </summary>
         [Test]
@@ -367,6 +386,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             container.Resources.Add("Top", topResource); 
 
             // Check the generated full name.
+            Assert.AreEqual(container.Methods, BaseService.GetResource(container, "").Methods);
             Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
             Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
             Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));

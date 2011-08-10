@@ -37,11 +37,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration resourceClass)
         {
             // protected override string ResourceName { get { ... } }
-            CodeMemberProperty property = GenerateImplementedStringConstantProperty("ResourceName", resource.FullName);
+            CodeMemberProperty property = GenerateStringConstantPropertyOverride(
+                "ResourcePath", resource.Path);
             requestClass.Members.Add(property);
 
             // protected override string MethodName { get { ... } }
-            property = GenerateImplementedStringConstantProperty("MethodName", request.Name);
+            property = GenerateStringConstantPropertyOverride("MethodName", request.Name);
             requestClass.Members.Add(property);
         }
 
@@ -54,8 +55,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         /// <c>protected override string PropertyName { get { ... } }</c>
         /// </summary>
         [VisibleForTestOnly]
-        internal static CodeMemberProperty GenerateImplementedStringConstantProperty(string propertyName,
-                                                                                     string returnValue)
+        internal static CodeMemberProperty GenerateStringConstantPropertyOverride(string propertyName,
+                                                                                  string returnValue)
         {
             var property = new CodeMemberProperty();
             property.Name = propertyName;
