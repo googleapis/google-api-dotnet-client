@@ -19,23 +19,14 @@ using Google.Apis.Authentication;
 using Google.Apis.Discovery.v1;
 using Google.Apis.Discovery.v1.Data;
 
-namespace UpdateWikiLists.Util
+namespace Google.Build.Utils.Apis
 {
     /// <summary>
     /// Gives access to the discovery service.
     /// </summary>
-    internal static class Discovery
+    public static class Discovery
     {
         private static DiscoveryService service;
-
-        private class CustomAuthenticator : Authenticator
-        {
-            public override void ApplyAuthenticationToRequest(System.Net.HttpWebRequest request)
-            {
-                base.ApplyAuthenticationToRequest(request);
-                request.Headers["X-User-IP"] = "0.0.0.0";
-            }
-        }
 
         /// <summary>
         /// Returns an instance of the discovery service.
@@ -46,8 +37,8 @@ namespace UpdateWikiLists.Util
             {
                 if (service == null)
                 {
-                    AuthenticatorFactory.GetInstance().RegisterAuthenticator(() => new CustomAuthenticator());
-                    service = new DiscoveryService();
+                    var auth = new DelegateAuthenticator(request => request.Headers["X-User-IP"] = "0.0.0.0");
+                    service = new DiscoveryService(auth);
                 }
                 return service;
             }
