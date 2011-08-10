@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -37,7 +38,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// </summary>
         private class MockRequestProvider : IRequestProvider
         {
-            public IRequest CreateRequest(string resource, string method)
+            public virtual IRequest CreateRequest(string resource, string method)
             {
                 Assert.AreEqual("Resource", resource);
                 Assert.AreEqual("Method", method);
@@ -229,5 +230,150 @@ namespace Google.Apis.Tests.Apis.Requests
             MockRequest result = (MockRequest)request.BuildRequest();
             Assert.AreEqual("FooBar", result.UserIp);
         }
+
+        #region Asynchronous Operation Tests
+
+        private class BlockingRequestProvider : MockRequestProvider
+        {
+            /// <summary>
+            /// Determines whether this request provider should continue serving the request or wait instead.
+            /// </summary>
+            private int shouldContinue = 0;
+
+            public override IRequest CreateRequest(string resource, string method)
+            {
+                while (shouldContinue == 0)
+                {
+                    Thread.Sleep(10);
+                }
+                Thread.Sleep(50);
+                return base.CreateRequest(resource, method);
+            }
+
+            /// <summary>
+            /// Continues serving the request.
+            /// </summary>
+            public void Continue()
+            {
+                Interlocked.Exchange(ref shouldContinue, 1);
+            }
+
+            /// <summary>
+            /// Blocks serving new requests.
+            /// </summary>
+            public void Block()
+            {
+                Interlocked.Exchange(ref shouldContinue, 0);
+            }
+        }
+
+        /// <summary>
+        /// Tests the BeginFetchInternal() and EndFetchInternal() methods of a ServiceRequest.
+        /// </summary>
+        [Test]
+        public void BeginEndFetchInternalTest()
+        {
+            var requestProvider = new BlockingRequestProvider();
+            var request = new MockServiceRequest<string>(requestProvider);
+            requestProvider.Block();
+
+            // Request validation is done in the MockSchemaAwareRequestExecutor.
+            string result = null;
+            IAsyncResult async = request.BeginFetchInternal(cb => result = request.EndFetch(cb), null, request.Fetch);
+
+            // Test that the operation is not yet completed.
+            Assert.IsFalse(async.IsCompleted);
+            Assert.IsFalse(async.CompletedSynchronously);
+            Assert.IsNotNull(async.AsyncWaitHandle);
+            Assert.IsNull(async.AsyncState);
+
+            // Let the async operation continue.
+            requestProvider.Continue();
+            if (!async.AsyncWaitHandle.WaitOne(5000))
+            {
+                Assert.Fail("Async Operation seems to be stuck.");
+            }
+
+            // Check the result.
+            Assert.IsTrue(async.IsCompleted);
+            Assert.AreEqual("FooBar", result);
+            Assert.IsFalse(async.CompletedSynchronously);
+        }
+
+        /// <summary>
+        /// Tests the BeginFetchInternal() and EndFetchInternal() methods of a ServiceRequest when trying to
+        /// synchronously complete the operation.
+        /// </summary>
+        [Test]
+        public void BeginEndFetchInternalSynchronousTest()
+        {
+            var requestProvider = new BlockingRequestProvider();
+            var request = new MockServiceRequest<string>(requestProvider);
+
+            // Request validation is done in the MockSchemaAwareRequestExecutor.
+            IAsyncResult async = request.BeginFetchInternal(null, null, request.Fetch);
+
+            // Test that the operation is not yet completed.
+            Assert.IsFalse(async.IsCompleted);
+            Assert.IsFalse(async.CompletedSynchronously);
+            Assert.IsNotNull(async.AsyncWaitHandle);
+            Assert.IsNull(async.AsyncState);
+
+            // Let the async operation continue.
+            requestProvider.Continue();
+            Assert.AreEqual("FooBar", request.EndFetchInternal(async));
+
+            // Check the result.
+            Assert.IsTrue(async.IsCompleted);
+            Assert.IsTrue(async.CompletedSynchronously);
+        }
+
+        /// <summary>
+        /// Tests the BeginFetch() and EndFetch() methods.
+        /// </summary>
+        [Test]
+        public void BeginEndFetchTest()
+        {
+            var requestProvider = new BlockingRequestProvider();
+            var request = new MockServiceRequest<string>(requestProvider);
+
+            string result = null;
+            IAsyncResult async = request.BeginFetch(cb => result = request.EndFetch(cb), null);
+
+            // Check the result.
+            Assert.IsFalse(async.AsyncWaitHandle.WaitOne(30));
+            Assert.IsFalse(async.IsCompleted);
+            requestProvider.Continue();
+            if (!async.AsyncWaitHandle.WaitOne(5000))
+            {
+                Assert.Fail("Asynchronous Fetch operation seems to be stuck.");
+            }
+            Assert.AreEqual("FooBar", result);
+        }
+
+        /// <summary>
+        /// Tests the BeginFetchAsStream() and EndFetchAsStream() methods.
+        /// </summary>
+        [Test]
+        public void BeginEndFetchAsStreamTest()
+        {
+            var requestProvider = new BlockingRequestProvider();
+            var request = new MockServiceRequest<string>(requestProvider);
+
+            Stream result = null;
+            IAsyncResult async = request.BeginFetchAsStream(cb => result = request.EndFetchAsStream(cb), null);
+
+            // Check the result.
+            Assert.IsFalse(async.AsyncWaitHandle.WaitOne(30));
+            Assert.IsFalse(async.IsCompleted);
+            requestProvider.Continue();
+            if (!async.AsyncWaitHandle.WaitOne(5000))
+            {
+                Assert.Fail("Asynchronous Fetch operation seems to be stuck.");
+            }
+            Assert.IsInstanceOf<MemoryStream>(result);
+        }
+
+        #endregion
     }
 }

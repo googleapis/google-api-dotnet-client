@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -176,26 +177,6 @@ namespace Google.Apis.Requests
         }
         
         /// <summary>
-        /// Executes the request asynchronously without parsing the response, 
-        /// and calls the specified method once finished.
-        /// </summary>
-        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
-        public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
-        {
-            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
-            //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb =>
-                                            {
-                                                // If we have a method to call, invoke it.
-                                                Stream response = FetchAsStream();
-                                                if (methodToCall != null)
-                                                {
-                                                    methodToCall(response);
-                                                }
-                                            });
-        }
-
-        /// <summary>
         /// Creates a parameter dictionary by using reflection to look at all properties marked with a KeyAttribute.
         /// </summary>
         [VisibleForTestOnly]
@@ -231,22 +212,158 @@ namespace Google.Apis.Requests
 
             return dict;
         }
+
+        #region Async Support
+
         /// <summary>
         /// Executes the request asynchronously and optionally calls the specified method once finished.
         /// </summary>
         public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
         {
-            // TODO(mlinder): Make this implementation compatible with the .NET 3.5 Client Profile.
-            //                Will probably require us to add an async implementation to the dynamic Request class.
-            ThreadPool.QueueUserWorkItem(cb =>
-                                            {
-                                                // If we have a method to call, invoke it.
-                                                TResponse response = Fetch();
-                                                if (methodToCall != null)
-                                                {
-                                                    methodToCall(response);
-                                                }
-                                            });
+            BeginFetch(
+                state =>
+                {
+                    TResponse result = EndFetch(state);
+
+                    // Only invoke the method if it was set.
+                    if (methodToCall != null)
+                    {
+                        methodToCall(result);
+                    }
+                }, null);
         }
+
+        /// <summary>
+        /// Executes the request asynchronously without parsing the response, 
+        /// and calls the specified method once finished.
+        /// </summary>
+        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
+        public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
+        {
+            BeginFetchAsStream(
+                state =>
+                    {
+                        Stream result = EndFetchAsStream(state);
+
+                        // Only invoke the method if it was set.
+                        if (methodToCall != null)
+                        {
+                            methodToCall(result);
+                        }
+                    }, null);
+        }
+
+        /// <summary>
+        /// Describes the state of an asynchronous fetch operation.
+        /// </summary>
+        private class RequestAsyncResult : IAsyncResult
+        {
+            public bool IsCompleted { get; set; }
+
+            public WaitHandle AsyncWaitHandle { get; set; }
+
+            public object AsyncState { get; set; }
+
+            public bool CompletedSynchronously { get; set; }
+
+            /// <summary>
+            /// The result returned by this asynchronous operation.
+            /// </summary>
+            public object Result { get; set; }
+        }
+
+        /// <summary>
+        /// Begins an asynchronous Fetch request.
+        /// </summary>
+        /// <param name="callback">The method to call once the request has been completed. Optional.</param>
+        /// <param name="state">
+        ///   A user-defined object used to pass application-specific state information to the
+        ///   <paramref name="callback"/> method invoked when the asynchronous operation completes. Optional.
+        /// </param>
+        /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
+        public IAsyncResult BeginFetch(AsyncCallback callback, object state)
+        {
+            return BeginFetchInternal(callback, state, () => Fetch());
+        }
+
+        /// <summary>
+        /// Begins an asynchronous FetchAsStream request.
+        /// </summary>
+        /// <param name="callback">The method to call once the request has been completed. Optional.</param>
+        /// <param name="state">
+        ///   A user-defined object used to pass application-specific state information to the
+        ///   <paramref name="callback"/> method invoked when the asynchronous operation completes. Optional.
+        /// </param>
+        /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
+        public IAsyncResult BeginFetchAsStream(AsyncCallback callback, object state)
+        {
+            return BeginFetchInternal(callback, state, FetchAsStream);
+        }
+
+        [VisibleForTestOnly]
+        internal IAsyncResult BeginFetchInternal(AsyncCallback callback, object state, Func<object> fetchFunction)
+        {
+            RequestAsyncResult asyncState = new RequestAsyncResult();
+            asyncState.AsyncState = state;
+            asyncState.IsCompleted = false;
+
+            // Create a WaitHandle representing our current task, and run it.
+            asyncState.AsyncWaitHandle = new AutoResetEvent(false);
+            ThreadPool.QueueUserWorkItem(
+                o =>
+                    {
+                        // Fetch the result.
+                        asyncState.Result = fetchFunction();
+
+                        // Signal that the operation has completed.
+                        asyncState.IsCompleted = true;
+                        if (callback != null)
+                        {
+                            callback(asyncState);
+                        }
+                        ((AutoResetEvent)asyncState.AsyncWaitHandle).Set();
+                    });
+            return asyncState;
+        }
+
+        [VisibleForTestOnly]
+        internal object EndFetchInternal(IAsyncResult asyncResult)
+        {
+            RequestAsyncResult asyncState = (RequestAsyncResult) asyncResult;
+            asyncState.ThrowIfNull("asyncResult");
+
+            // If this request was not finished, wait for it to finish.
+            if (!asyncState.IsCompleted)
+            {
+                asyncState.AsyncWaitHandle.WaitOne();
+                asyncState.CompletedSynchronously = true;
+            }
+
+            return asyncState.Result;
+        }
+
+        /// <summary>
+        /// Completes an asynchronous Fetch request.
+        /// </summary>
+        /// <param name="asyncResult">The IAsyncResult passed from BeginFetch.</param>
+        /// <returns>The response object.</returns>
+        /// <remarks>Will complete the request synchronously if called manually.</remarks>
+        public TResponse EndFetch(IAsyncResult asyncResult)
+        {
+            return (TResponse) EndFetchInternal(asyncResult);
+        }
+
+        /// <summary>
+        /// Completes an asynchronous FetchAsStream request.
+        /// </summary>
+        /// <param name="asyncResult">The IAsyncResult passed from BeginFetch.</param>
+        /// <returns>The response stream.</returns>
+        /// <remarks>Will complete the request synchronously if called manually.</remarks>
+        public Stream EndFetchAsStream(IAsyncResult asyncResult)
+        {
+            return (Stream) EndFetchInternal(asyncResult);
+        }
+
+        #endregion
     }
 }
