@@ -18,6 +18,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.v1.Data;
 using Google.Apis.Tools.CodeGen;
@@ -109,7 +110,8 @@ namespace Google.Apis.Tools.NAntTasks
             Properties["google.api.api.separator"] = ApiSeparator.ToString();
             Properties["google.api.suggested.regex"] = SuggestedRegex;
 
-            var discovery = new DiscoveryService();
+            var auth = new DelegateAuthenticator(request => request.Headers["X-User-IP"] = "0.0.0.0");
+            var discovery = new DiscoveryService(auth);
            
             DirectoryList apis = discovery.Apis.List().Fetch();
             string[] apiStrings = new string[apis.Items.Count];

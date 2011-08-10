@@ -146,7 +146,7 @@ namespace Google.Apis.Tools.CodeGen
                      {
                          new SubresourceClassDecorator(),
                          new EnumResourceDecorator(),
-                         new StandardServiceFieldResourceDecorator(true),
+                         new StandardServiceFieldResourceDecorator(),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
                          new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
@@ -259,14 +259,14 @@ namespace Google.Apis.Tools.CodeGen
 
         private void CreateResources(CodeNamespace clientNamespace,
                                      string serviceClassName,
-                                     IResourceContainer resourceContainer,
+                                     IResource resource,
                                      RequestClassGenerator requestClassGenerator,
                                      ResourceContainerGenerator resourceContainerGenerator)
         {
-            foreach (var res in resourceContainer.Resources.Values)
+            foreach (var res in resource.Resources.Values.Concat(resource))
             {
                 // Create the current list of used names.
-                IEnumerable<string> usedNames = resourceContainer.Resources.Keys;
+                IEnumerable<string> usedNames = resource.Resources.Keys;
 
                 // Create a class for the resource.
                 logger.Debug("Adding Resource {0}", res.Name);

@@ -17,12 +17,12 @@ limitations under the License.
 using System;
 using System.IO;
 
-namespace UpdateWikiLists.Util
+namespace Google.Build.Utils.Text
 {
     /// <summary>
     /// Text helper utility.
     /// </summary>
-    internal static class TextUtils
+    public static class TextUtils
     {
         /// <summary>
         /// Inserts the specified content in the place between the start and end tag, which can be found in the
@@ -81,6 +81,22 @@ namespace UpdateWikiLists.Util
                 return str;
             }
             return Char.ToUpper(str[0]) + str.Substring(1);
+        }
+
+        /// <summary>
+        /// Finishes the specified string with the specified character.
+        /// </summary>
+        /// <param name="str">The sentence to end.</param>
+        /// <param name="endChar">The character with which this sentence should end.</param>
+        public static string MakeSentence(this string str, char endChar)
+        {
+            string trimmed = str.TrimEnd(' ', '\r', '\n');
+
+            if (trimmed.EndsWith(endChar.ToString()))
+            {
+                return str;
+            }
+            return trimmed + endChar + str.Substring(trimmed.Length);
         }
 
         /// <summary>
