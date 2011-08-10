@@ -106,33 +106,36 @@ namespace Google.Apis.Json
             if (token.Type != JsonToken.TokenType.String && token.Type != JsonToken.TokenType.ObjectEnd)
             {
                 throw new InvalidDataException(
-                    "The tokenstream is not pointing at an object, found object " + token +
-                    " looking for a string or close object");
+                    "Unable to parse object. Found object " + token +
+                    " while looking for property name or object end.");
             }
 
             JsonDictionary dict = new JsonDictionary();
-
-            for (JsonToken cur = ts.GetNextToken(); cur != null; cur = ts.GetNextToken())
+            if (token.Type != JsonToken.TokenType.ObjectEnd)
             {
-                switch (cur.Type)
+                for (JsonToken cur = ts.GetNextToken(); cur != null; cur = ts.GetNextToken())
                 {
-                    case JsonToken.TokenType.ObjectEnd:
-                        logger.Debug("Found object end");
-                        return dict;
-                    case JsonToken.TokenType.MemberSeperator:
-                        token = ts.GetNextToken();
-                        break;
-                    case JsonToken.TokenType.NameSeperator:
-                        object value = ParseExpression(null, ts);
-                        if (dict.ContainsKey(token.Value))
-                        {
-                            throw new ArgumentException(
-                                "JsonObject contains duplicate definition for [" + token.Value + "]");
-                        }
-                        dict.Add(token.Value, value);
-                        break;
-                    default:
-                        throw new InvalidDataException("Found invalid Json was expecting } or , or : found " + cur);
+                    switch (cur.Type)
+                    {
+                        case JsonToken.TokenType.ObjectEnd:
+                            logger.Debug("Found object end");
+                            return dict;
+                        case JsonToken.TokenType.MemberSeperator:
+                            token = ts.GetNextToken();
+                            break;
+                        case JsonToken.TokenType.NameSeperator:
+                            object value = ParseExpression(null, ts);
+                            if (dict.ContainsKey(token.Value))
+                            {
+                                throw new ArgumentException(
+                                    "JsonObject contains duplicate definition for [" + token.Value + "]");
+                            }
+                            dict.Add(token.Value, value);
+                            break;
+                        default:
+                            throw new InvalidDataException(
+                                "Found invalid Json was expecting } or , or : found " + cur);
+                    }
                 }
             }
             return dict;

@@ -88,6 +88,34 @@ namespace Google.Apis.Tests.Json
         }
 
         /// <summary>
+        /// Checks if the JsonReader is able to correctly parse sequential expressions.
+        /// </summary>
+        [Test]
+        public void ParseSequential()
+        {
+            const string JSON = @"{
+                                        ""testField"": 1,
+                                        ""emptyClass"": { },
+                                        ""anotherField"": 2,
+                                        ""andAgain"": 3
+                                  }";
+
+            object obj = JsonReader.Parse(JSON);
+
+            // Convert to JSON dictionary.
+            Assert.IsInstanceOf<JsonDictionary>(obj);
+            var dict = (JsonDictionary)obj;
+
+            // Validate the output.
+            Assert.AreEqual(1, dict["testField"]);
+            Assert.IsInstanceOf<JsonDictionary>(dict["emptyClass"]);
+            CollectionAssert.IsEmpty(((JsonDictionary)dict["emptyClass"]).Keys);
+            Assert.AreEqual(2, dict["anotherField"]);
+            Assert.AreEqual(3, dict["andAgain"]);
+            Assert.AreEqual(4, dict.Count);
+        }
+
+        /// <summary>
         /// A test for Parse
         ///</summary>
         [Test]

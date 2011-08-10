@@ -34,16 +34,6 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
     [TestFixture]
     public class CodegenTest : BaseIntegrationTest
     {
-        private static IService GetService(string discoveryJson)
-        {
-            // Create the discovery document fetcher.
-            var device = new StringDiscoveryDevice { Document = discoveryJson };
-
-            // Discover the service using the hand-coded discovery service.
-            var discovery = new DiscoveryService(device);
-            return discovery.GetService(DiscoveryVersion.Version_1_0);
-        }
-
         /// <summary>
         /// Generates and compiles a service from its json discovery document.
         /// </summary>
@@ -146,6 +136,64 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             // Generate this service.
             Assembly generatedAssembly = GenerateService(JSON);
             Assert.IsNotNull(generatedAssembly);
+        }
+
+        /// <summary>
+        /// Tests the CodeGenerator with a service which has methods declared on the service itsef.
+        /// </summary>
+        [Test]
+        public void MethodOnServiceTest()
+        {
+            const string JSON =
+                @"{
+                    ""kind"": ""discovery#restDescription"",
+                    ""id"": ""test:v1"",
+                    ""name"": ""test"",
+                    ""version"": ""v1"",
+                    ""description"": ""A test service"",
+                    ""protocol"": ""rest"",
+                    ""basePath"": ""https://example.com/basePath/"",
+                    ""schemas"": { },
+                    ""methods"": {
+                        ""doTest"": {
+                            ""id"": ""doTest"",
+                            ""path"": ""get/{id}"",
+                            ""httpMethod"": ""GET"",
+                            ""parameters"": {
+                                ""id"": {
+                                    ""type"": ""string"",
+                                    ""required"": true,
+                                    ""location"": ""path""
+                                }
+                            }
+                        }
+                    },
+                    ""resources"": {
+                        ""myclass"": {
+                            ""methods"": {
+                                ""get"": {
+                                    ""id"": ""myclass.get"",
+                                    ""path"": ""get/{id}"",
+                                    ""httpMethod"": ""GET"",
+                                    ""parameters"": {
+                                        ""id"": {
+                                            ""type"": ""string"",
+                                            ""required"": true,
+                                            ""location"": ""path""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }";
+
+            // Generate this service.
+            Assembly result = GenerateService(JSON);
+            Type serviceClass = result.GetType("Generated.TestService");
+            Assert.IsNotNull(serviceClass, "TestService class not found.");
+            Assert.IsNotNull(serviceClass.GetMethod("DoTest"), "DoTest(..) method not found on service.");
+            Assert.IsNotNull(serviceClass.GetMember("DoTestRequest"), "DoTestRequest class not found on service.");
         }
     }
 }

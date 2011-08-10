@@ -1454,7 +1454,7 @@ namespace Google.Apis.Discovery.v1 {
                 }
             }
             
-            protected override string ResourceName {
+            protected override string ResourcePath {
                 get {
                     return "apis";
                 }
@@ -1519,7 +1519,7 @@ namespace Google.Apis.Discovery.v1 {
                 }
             }
             
-            protected override string ResourceName {
+            protected override string ResourcePath {
                 get {
                     return "apis";
                 }

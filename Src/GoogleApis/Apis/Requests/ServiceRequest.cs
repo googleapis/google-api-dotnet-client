@@ -79,7 +79,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Name of the Resource to which the method belongs.
         /// </summary>
-        protected abstract string ResourceName { get; }
+        protected abstract string ResourcePath { get; }
 
         /// <summary>
         /// The name of the method to which this request belongs.
@@ -123,7 +123,7 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal IRequest BuildRequest()
         {
-            IRequest request = service.CreateRequest(ResourceName, MethodName);
+            IRequest request = service.CreateRequest(ResourcePath, MethodName);
             request.WithBody(GetSerializedBody());
             request.WithParameters(CreateParameterDictionary());
             request.WithETagAction(ETagAction);
@@ -151,7 +151,7 @@ namespace Google.Apis.Requests
 
         private IResponse GetResponse()
         {
-            string requestName = string.Format("{0}.{1}", ResourceName, MethodName);
+            string requestName = string.Format("{0}.{1}", ResourcePath, MethodName);
             logger.Debug("Start Executing " + requestName);
             IResponse response = BuildRequest().ExecuteRequest();
             logger.Debug("Done Executing " + requestName);

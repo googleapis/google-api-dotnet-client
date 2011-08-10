@@ -56,7 +56,7 @@ namespace Google.Apis.Discovery
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseService>();
 
         protected internal readonly JsonDictionary information;
-        private Dictionary<string, IResource> resources;
+        private IResource rootResource;
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
 
@@ -79,6 +79,9 @@ namespace Google.Apis.Discovery
             Description = values.GetValueAsNull("description") as string;
             Title = values.GetValueAsNull("title") as string;
             Scopes = LoadScopes();
+
+            // Load resources
+            rootResource = CreateResource(new KeyValuePair<string, object>("", information));
 
             // Determine the Server URL and (optional) Base Path
             param.ServerUrl.ThrowIfNull("param.ServerUrl");
@@ -135,27 +138,7 @@ namespace Google.Apis.Discovery
 
         public IDictionary<string, IResource> Resources
         {
-            get
-            {
-                if (resources == null)
-                {
-                    JsonDictionary js = information.GetValueAsNull(ServiceFactory.Resources) as JsonDictionary;
-                    if (js != null)
-                    {
-                        resources = new Dictionary<string, IResource>();
-                        foreach (KeyValuePair<string, object> kvp in js)
-                        {
-                            IResource r = CreateResource(kvp);
-                            resources.Add(kvp.Key, r);
-                        }
-                    }
-                    else
-                    {
-                        resources = new Dictionary<string, IResource>();
-                    }
-                }
-                return resources;
-            }
+            get { return rootResource.Resources; }
         }
 
         public virtual IDictionary<string, ISchema> Schemas
@@ -260,13 +243,17 @@ namespace Google.Apis.Discovery
         ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
         /// </summary>
         [VisibleForTestOnly]
-        internal static IResource GetResource(IResourceContainer container, string fullResourceName)
+        internal static IResource GetResource(IResource root, string fullResourceName)
         {
             fullResourceName.ThrowIfNull("fullResourceName");
+            if (string.IsNullOrEmpty(fullResourceName))
+            {
+                return root;
+            }
 
             string[] split = fullResourceName.Split(new[] { '.' }, 2);
             string topResourceName = split[0];
-            IResource topResource = container.Resources[topResourceName];
+            IResource topResource = root.Resources[topResourceName];
 
             if (split.Length <= 1)
             {
@@ -414,6 +401,25 @@ namespace Google.Apis.Discovery
         public string GetDiscoveryDocument()
         {
             return serializer.Serialize(information);
+        }
+        public Dictionary<string, IMethod> Methods
+        {
+            get { return rootResource.Methods; }
+        }
+
+        public IResource Parent
+        {
+            get { return rootResource.Parent; }
+        }
+
+        public string Path
+        {
+            get { return rootResource.Path; }
+        }
+
+        public bool IsServiceResource
+        {
+            get { return rootResource.IsServiceResource; }
         }
     }
 

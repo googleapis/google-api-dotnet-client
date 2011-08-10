@@ -17,10 +17,12 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using Google.Apis.Discovery;
+using Microsoft.CSharp;
 using NUnit.Framework;
 using Newtonsoft.Json;
 
@@ -128,9 +130,38 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         /// </summary>
         protected static Assembly CompileCodeUnit(CodeCompileUnit generatedCode)
         {
-            // Compile the code.
-            var assembly = CompileLibrary((cp, provider) => provider.CompileAssemblyFromDom(cp, generatedCode));
-            return assembly;
+            // Compile the code
+            try
+            {
+                var assembly = CompileLibrary((cp, provider) => provider.CompileAssemblyFromDom(cp, generatedCode));
+                return assembly;
+            }
+            catch (ArgumentException ex)
+            {
+                // Get a dump of the C# source code to help with debugging.
+                var stringBuilder = new StringBuilder();
+                using (StringWriter writer = new StringWriter(stringBuilder))
+                {
+                    var options = new CodeGeneratorOptions();
+                    options.IndentString = "  ";
+                    new CSharpCodeProvider().GenerateCodeFromCompileUnit(generatedCode, writer, options);
+                }
+                string code = stringBuilder.ToString();
+                throw new ArgumentException(ex.Message + Environment.NewLine.PadRight(20, '=') + code);
+            }
+        }
+
+        /// <summary>
+        /// Discovers the service described by the specified json
+        /// </summary>
+        protected static IService GetService(string discoveryJson)
+        {
+            // Create the discovery document fetcher.
+            var device = new StringDiscoveryDevice { Document = discoveryJson };
+
+            // Discover the service using the hand-coded discovery service.
+            var discovery = new DiscoveryService(device);
+            return discovery.GetService(DiscoveryVersion.Version_1_0);
         }
     }
 }

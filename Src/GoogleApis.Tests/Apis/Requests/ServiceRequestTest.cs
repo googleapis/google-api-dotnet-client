@@ -61,7 +61,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             public MockServiceRequest(IRequestProvider service) : base(service) {}
 
-            protected override string ResourceName
+            protected override string ResourcePath
             {
                 get { return "Resource"; }
             }
