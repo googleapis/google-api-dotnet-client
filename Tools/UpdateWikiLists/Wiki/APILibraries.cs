@@ -19,61 +19,75 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Google.Apis.Discovery.v1.Data;
-using UpdateWikiLists.Util;
+using Google.Build.Utils.Apis;
+using Google.Build.Utils.Repositories;
+using Google.Build.Utils.Text;
 
 namespace UpdateWikiLists.Wiki
 {
     /// <summary>
     /// Updater for the APILibraries wiki page.
     /// </summary>
-    public static class APILibraries
+    public class APILibraries
     {
         private const string StartTag = "<wiki:comment>BEGIN_GENERATED</wiki:comment>";
         private const string EndTag = "<wiki:comment>END_GENERATED</wiki:comment>";
 
         /// <summary>
+        /// The Samples repository used for generating the list of samples.
+        /// </summary>
+        public Hg Samples { get; private set; }
+        
+        public APILibraries(Hg samples)
+        {
+            Samples = samples;
+        }
+
+        /// <summary>
         /// Generates the API listing
         /// </summary>
-        public static string GenerateList()
+        public string GenerateList()
         {
             var tmpl = new Template();
             tmpl.Add("");
             tmpl.Add("----");
             tmpl.Add("");
             tmpl.Add("== {TITLE} ==");
-            tmpl.Add("{DESCRIPTION}.");
+            tmpl.Add("{DESCRIPTION}");
             tmpl.Add("{CONTENT}");
             tmpl.Add("");
             tmpl.Add("=== Samples ===");
             tmpl.Add("{SAMPLES}");
 
             var apiGroups = from a in Discovery.ListApis()
+                            orderby a.Title ascending 
                             group a by a.Name
-                            into grp select new { Info = grp.First(), APIs = grp };
+                            into grp 
+                            select new { Info = grp.First(), APIs = grp };
             var apis = apiGroups.Select(qry => tmpl.ToString(new Entries
-                                                           {
-                                                               { "TITLE", qry.Info.Title }, 
-                                                               { "DESCRIPTION", qry.Info.Description },
-                                                               { "CONTENT", GenerateApiVersions(qry.APIs) },
-                                                               { "SAMPLES", GenerateSamples(qry.Info.Name) }
-                                                           }));
+                                    {
+                                        { "TITLE", qry.Info.Title.WithoutWikiLinks() }, 
+                                        { "DESCRIPTION", qry.Info.Description.WithoutWikiLinks().MakeSentence('.') },
+                                        { "CONTENT", GenerateApiVersions(qry.APIs) },
+                                        { "SAMPLES", GenerateSamples(qry.Info.Name) }
+                                    }));
             return apis.Aggregate(TextUtils.JoinLines);
         }
 
         /// <summary>
         /// Modifies the existing APILibraries wiki file by replacing the "generated" section.
         /// </summary>
-        public static void InsertIntoFile(string file)
+        public void InsertIntoFile(string file)
         {
             TextUtils.InsertIntoFile(file, StartTag, EndTag, GenerateList());
         }
 
-        private static string GenerateApiVersions(IEnumerable<DirectoryList.ItemsData> apis)
+        private string GenerateApiVersions(IEnumerable<DirectoryList.ItemsData> apis)
         {
             return apis.Select(GenerateApi).Aggregate((a,b) => a + Environment.NewLine + Environment.NewLine + b);
         }
 
-        private static string GenerateApi(DirectoryList.ItemsData api)
+        private string GenerateApi(DirectoryList.ItemsData api)
         {
             var tmpl = new Template();
             tmpl.Add("|| *{VERSION}* | [{URL_BINARY} {FILE_BINARY}]  ([{URL_SOURCE} Source]) | [{URL_XML} XmlDoc] ||");
@@ -97,9 +111,9 @@ namespace UpdateWikiLists.Wiki
             return tmpl.ToString(data);
         }
 
-        private static string GenerateSamples(string apiName)
+        private string GenerateSamples(string apiName)
         {
-            string path = Program.Samples.WorkingDirectory;
+            string path = Samples.WorkingDirectory;
             apiName = apiName.ToUpperFirstChar();
 
             // List all samples in the sample directory matching the specified api name.

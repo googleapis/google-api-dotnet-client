@@ -19,75 +19,88 @@ using System.CodeDom;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
     /// Adds a convenience zero argument constructor to the service.
-    /// Using the AuthenticatorFactory to get the IAuthenticator and using a DiscoverService based on a WebDiscoveryDevice
-    /// This is an optional decorator.
+    /// Using the AuthenticatorFactory to get the IAuthenticator and using a DiscoverService based 
+    /// on a WebDiscoveryDevice. This is an optional decorator.
+    /// <code>
+    ///   public [..]Service(IAuthenticator auth) { .. }
+    /// </code>
     /// </summary>
     public class EasyConstructServiceDecorator : IServiceDecorator
     {
+        /// <summary>
+        /// Name of the constant string field which contains the discovery document.
+        /// </summary>
+        public const string DiscoveryConstantName = "DiscoveryDocument";
+
         #region IServiceDecorator Members
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
-            var constructor = CreateConstructor(service, serviceClass);
-            serviceClass.Members.Add(constructor);
+            serviceClass.Members.Add(CreateEmptyConstructor());
+            serviceClass.Members.Add(CreateAuthenticatorConstructor(service, serviceClass));
+            serviceClass.Members.Add(CreateDiscoveryConstant(service));
         }
 
         #endregion
 
         [VisibleForTestOnly]
-        internal CodeConstructor CreateConstructor(IService service, CodeTypeDeclaration serviceClass)
+        internal CodeConstructor CreateEmptyConstructor()
         {
+            // Example:  new TestService() : this(NullAuthenticator.Instance)
             var constructor = new CodeConstructor();
 
             constructor.Attributes = MemberAttributes.Public;
-            constructor.ChainedConstructorArgs.Add(GetService(service, serviceClass));
-            constructor.ChainedConstructorArgs.Add(GetAuthenticator());
+            var nullAuthenticator = new CodeTypeReferenceExpression(typeof(NullAuthenticator));
+            constructor.ChainedConstructorArgs.Add(new CodeFieldReferenceExpression(nullAuthenticator, "Instance"));
             return constructor;
         }
 
         [VisibleForTestOnly]
-        internal CodeExpression GetDiscoveryUrl(IService service, CodeTypeDeclaration serviceClass)
+        internal CodeConstructor CreateAuthenticatorConstructor(IService service, CodeTypeDeclaration serviceClass)
         {
-            var discoveryUrlFormat = new CodePrimitiveExpression(GetUrlFormat(service));
-            var serviceName = new CodeFieldReferenceExpression(
-                new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.NameName);
-            var serviceVersion = new CodeFieldReferenceExpression(
-                new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.VersionName);
-            var stringFormat = new CodeMethodInvokeExpression(
-                new CodeTypeReferenceExpression(typeof(string)), "Format", discoveryUrlFormat, serviceName,
-                serviceVersion);
-            return stringFormat;
+            // Example:  new TestService(IAuthenticator authenticator) : this(..., authenticator)
+            var constructor = new CodeConstructor();
+
+            constructor.Attributes = MemberAttributes.Public;
+            constructor.Parameters.Add(
+                new CodeParameterDeclarationExpression(
+                    typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName));
+            constructor.ChainedConstructorArgs.Add(GetService(service, serviceClass));
+            constructor.ChainedConstructorArgs.Add(
+                new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName));
+            return constructor;
         }
 
         [VisibleForTestOnly]
+        internal CodeMemberField CreateDiscoveryConstant(IService service)
+        {
+            string json = ((BaseService) service).GetDiscoveryDocument();
+
+            // Example:  private const string DiscoveryDocument = "...";
+            var field = new CodeMemberField(typeof(string), DiscoveryConstantName);
+            field.Attributes = MemberAttributes.Const | MemberAttributes.Private; 
+            field.InitExpression = new CodePrimitiveExpression(json);
+            return field;
+        }
+        
+        [VisibleForTestOnly]
         internal CodeExpression GetService(IService service, CodeTypeDeclaration serviceClass)
         {
-            /*
-            new DiscoveryService(
-                new WebDiscoveryDevice(
-                    new Uri(string.Format(
-                        "https://www.googleapis.com/discovery/0.1/describe?api={0}&version={1}",
-                        serviceName, serviceVersion))
-                    )).GetService(DiscoveryVersionUsed)
-            */
-            CodeExpression discoveryUrl = GetDiscoveryUrl(service, serviceClass);
-
-            var uriConstructor = new CodeObjectCreateExpression();
-            uriConstructor.CreateType = new CodeTypeReference(typeof(Uri));
-            uriConstructor.Parameters.Add(discoveryUrl);
-
-            var webConstructor = new CodeObjectCreateExpression();
-            webConstructor.CreateType = new CodeTypeReference(typeof(CachedWebDiscoveryDevice));
-            webConstructor.Parameters.Add(uriConstructor);
+            // Example:
+            //     new DiscoveryService(new StringDiscoveryDevice(DiscoveryDocument)).GetService(DiscoveryVersionUsed)
+            var discoveryDevice = new CodeObjectCreateExpression();
+            discoveryDevice.CreateType = new CodeTypeReference(typeof(StringDiscoveryDevice));
+            discoveryDevice.Parameters.Add(new CodeVariableReferenceExpression(DiscoveryConstantName));
 
             var discoveryConstructor = new CodeObjectCreateExpression();
             discoveryConstructor.CreateType = new CodeTypeReference(typeof(DiscoveryService));
-            discoveryConstructor.Parameters.Add(webConstructor);
+            discoveryConstructor.Parameters.Add(discoveryDevice);
 
             var getServiceCall = new CodeMethodInvokeExpression();
             getServiceCall.Method = new CodeMethodReferenceExpression(discoveryConstructor, "GetService");
@@ -100,21 +113,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             return getServiceCall;
         }
 
-        private static string GetUrlFormat(IService service)
-        {
-            switch (service.DiscoveryVersion)
-            {
-                case DiscoveryVersion.Version_0_3:
-                    return "https://www.googleapis.com/discovery/v0.3/describe/{0}/{1}";
-                case DiscoveryVersion.Version_1_0:
-                    return "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
-                default:
-                    throw new NotSupportedException(
-                        string.Format("Discovery Version {0} is not supported", service.DiscoveryVersion));
-            }
-        }
-
-
         /// <summary>
         /// Returns a CodeExpression that creates a Discovery specific FactoryParameter.
         /// Resulting Code:     new FactoryParameterV*(new Uri(DiscoveryService.BaseUri))
@@ -122,16 +120,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         [VisibleForTestOnly]
         internal CodeExpression GetVersionSpecificParameter(IService service, CodeTypeDeclaration serviceClass)
         {
-            // DiscoveryService.BaseUri
+            // Example:  DiscoveryService.BaseUri
             var baseUriRef = new CodeFieldReferenceExpression(
                 new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.BaseUriName);
 
-            // new Uri(..)
+            // Example:  new Uri(..)
             var uriConstructor = new CodeObjectCreateExpression();
             uriConstructor.CreateType = new CodeTypeReference(typeof(Uri));
             uriConstructor.Parameters.Add(baseUriRef);
 
-            // new ..FactoryParameters(..)
+            // Example:  new ..FactoryParameters(..)
             switch (service.DiscoveryVersion)
             {
                 case DiscoveryVersion.Version_0_3:
@@ -146,25 +144,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                     throw new NotSupportedException(
                         "The Discovery version " + service.DiscoveryVersion + " is not yet supported");
             }
-        }
-
-        /// <summary>
-        /// Generates the following code
-        /// <code>
-        ///     Authentication.AuthenticatorFactory.
-        ///         GetInstance().
-        ///         GetRegisteredAuthenticator();   
-        /// </code>
-        /// </summary>
-        [VisibleForTestOnly]
-        internal CodeExpression GetAuthenticator()
-        {
-            var authenticatorFactory =
-                new CodeMethodInvokeExpression(
-                    new CodeMethodReferenceExpression(
-                        new CodeTypeReferenceExpression(typeof(AuthenticatorFactory)), "GetInstance"));
-            return new CodeMethodInvokeExpression(authenticatorFactory, "GetRegisteredAuthenticator");
-            //return new CodeObjectCreateExpression("ConsoleAuthenticator");
         }
 
         public override string ToString()

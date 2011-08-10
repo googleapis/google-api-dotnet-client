@@ -29,6 +29,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\GoogleApis.Tools.CodeGen.IntegrationTests.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Moq">
@@ -51,6 +53,7 @@
     <Compile Include="BaseIntegrationTest.cs" />
     <Compile Include="CodegenTest.cs" />
     <Compile Include="Core\RequestTests.cs" />
+    <Compile Include="Core\ServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemTest.cs" />
   </ItemGroup>

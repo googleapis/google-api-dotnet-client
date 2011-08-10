@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Discovery.cs" />
+    <Compile Include="Discovery.v1.cs" />
     <Compile Include="GoogleApiDiscover.cs" />
     <Compile Include="GoogleApiGenerate.cs" />
   </ItemGroup>

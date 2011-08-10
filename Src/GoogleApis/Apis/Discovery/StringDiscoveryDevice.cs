@@ -34,6 +34,20 @@ namespace Google.Apis.Discovery
 
         private Stream outputStream { get; set; }
 
+        /// <summary>
+        /// Creates a new StringDiscoveryDevice.
+        /// </summary>
+        public StringDiscoveryDevice() {}
+
+        /// <summary>
+        /// Creates a new StringDiscoveryDevice.
+        /// </summary>
+        /// <param name="document">The string containing the discovery document</param>
+        public StringDiscoveryDevice(string document)
+        {
+            Document = document;
+        }
+
         #region IDiscoveryDevice Members
 
         /// <summary>

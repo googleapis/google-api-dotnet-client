@@ -79,7 +79,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// Then assignes these to local variables.
         /// e.g.
         ///     <code>
-        ///         public BuzzService(IService genericService, IAuthenticator authenticator) {
+        ///         protected BuzzService(IService genericService, IAuthenticator authenticator) {
         ///             this.genericService = genericService;
         ///             this.authenticator = authenticator;
         ///     </code>
@@ -88,7 +88,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal CodeConstructor CreateConstructorWithArgs()
         {
             var constructor = new CodeConstructor();
-            constructor.Attributes = MemberAttributes.Public;
+            constructor.Attributes = MemberAttributes.Family;
             constructor.Parameters.Add(
                 new CodeParameterDeclarationExpression(typeof(IService), ServiceClassGenerator.GenericServiceName));
             constructor.Parameters.Add(
