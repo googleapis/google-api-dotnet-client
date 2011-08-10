@@ -18,12 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UpdateWikiLists.Util
+namespace Google.Build.Utils.Text
 {
     /// <summary>
     /// Template helper class
     /// </summary>
-    internal class Template : List<string>
+    public class Template : List<string>
     {
         public Template(string data)
         {
@@ -51,7 +51,10 @@ namespace UpdateWikiLists.Util
         }
     }
 
-    internal class Entries : Dictionary<string, object>
+    /// <summary>
+    /// Class containing the key-value entries of a template.
+    /// </summary>
+    public class Entries : Dictionary<string, object>
     {
         /// <summary>
         /// Adds the formatted string to this template.

@@ -14,11 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Diagnostics;
 using System.IO;
 using Google.Apis.Samples.Helper;
-using UpdateWikiLists.Util;
+using Google.Build.Utils.Repositories;
 using UpdateWikiLists.Wiki;
 
 namespace UpdateWikiLists
@@ -26,36 +25,50 @@ namespace UpdateWikiLists
     /// <summary>
     /// Main Program class.
     /// </summary>
-    internal class Program
+    public class Program
     {
         /// <summary>
-        /// The .wiki repository
+        /// Updates the 
         /// </summary>
-        public static Hg Wiki { get; private set; }
-
-        /// <summary>
-        /// The .samples repository
-        /// </summary>
-        public static Hg Samples { get; private set; }
+        /// <param name="wiki"></param>
+        /// <param name="samples"></param>
+        public static void UpdateWiki(Hg wiki, Hg samples)
+        {
+            // Make the changes.
+            CommandLine.WriteAction("Updating 'APILibraries.wiki' ...");
+            new APILibraries(samples).InsertIntoFile(Path.Combine(wiki.WorkingDirectory, "APILibraries.wiki"));
+        }
 
         static void Main(string[] args)
         {
             CommandLine.DisplayGoogleSampleHeader("Update Wiki");
             CommandLine.EnableExceptionHandling();
 
-            using (Wiki = Hg.Clone("https://code.google.com/p/google-api-dotnet-client.wiki/"))
-            using (Samples = Hg.Clone("https://code.google.com/p/google-api-dotnet-client.samples/"))
+            using (Hg wiki = Hg.Clone("https://code.google.com/p/google-api-dotnet-client.wiki/"))
+            using (Hg samples = Hg.Clone("https://code.google.com/p/google-api-dotnet-client.samples/"))
             {
-                // Make the changes.
-                APILibraries.InsertIntoFile(Path.Combine(Wiki.WorkingDirectory, "APILibraries.wiki"));
+                // Make all the changes.
+                UpdateWiki(wiki, samples);
                 
                 // Show them to the user.
                 CommandLine.WriteAction("Opening modified working directory ...");
-                Process.Start(Wiki.WorkingDirectory);
-                if (CommandLine.RequestUserChoice("Do you want to push these changes to the server?"))
+
+                if (!wiki.HasUncommitedChanges)
                 {
-                    Wiki.Commit("Updated the generated section of the APILibraries.wiki.");
-                    Wiki.Push();
+                    CommandLine.WriteAction("No changes detected.");
+                    CommandLine.PressAnyKeyToExit();
+                }
+                else
+                {
+                    CommandLine.WriteAction("Showing diff ...");
+                    wiki.ShowDiff();
+                    Process.Start(wiki.WorkingDirectory);
+
+                    if (CommandLine.RequestUserChoice("Do you want to push these changes to the server?"))
+                    {
+                        wiki.Commit("Updated the generated section of the APILibraries.wiki.");
+                        wiki.Push();
+                    }
                 }
             }
         }
