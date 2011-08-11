@@ -300,29 +300,26 @@ namespace BuildRelease
             string destFile = Samples.Combine("Lib", Path.GetFileName(codegenProject.BinaryFile));
             File.Copy(codegenProject.BinaryFile, destFile, true);
 
+            // Build the ServiceGenerator.
+            Project serviceGenerator =
+                new Project(Samples.Combine("ServiceGenerator", "GoogleApis.ServiceGenerator.csproj"));
+
             try
             {
-                // Build the ServiceGenerator.
-                Project serviceGenerator =
-                    new Project(Samples.Combine("ServiceGenerator", "GoogleApis.ServiceGenerator.csproj"));
                 serviceGenerator.RunBuildTask();
 
                 // Generate its own discovery dependency.
                 var runner = new Runner(serviceGenerator.BinaryFile , "--non-interactive", "-c", "-o=" + ServiceDir, "discovery", "v1");
                 runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
                 runner.Run();
-
-                CommandLine.WriteLine();
-                return serviceGenerator;
-            } catch (Exception)
+            } 
+            catch (Exception)
             {
-                CommandLine.WriteLine();
-                CommandLine.WriteError("Automatic migration of the ServiceGenerator has failed!");
-                CommandLine.WriteError("Please fix the Discovery dependency of the generator manually,");
-                CommandLine.WriteError("and then re-run this build.");
-                CommandLine.WriteLine();
-                throw;
+                CommandLine.WriteError("Automatic single-step migration of the ServiceGenerator has failed!");
             }
+
+            CommandLine.WriteLine();
+            return serviceGenerator;
         }
 
         private static void UpdateSamples(IEnumerable<Project> releaseProjects, Project serviceGenerator)
@@ -347,17 +344,29 @@ namespace BuildRelease
                 File.Copy(file, Path.Combine(thirdpartyDir, Path.GetFileName(file)));
             }
 
-            // Build the updated ServiceGenerator.
-            serviceGenerator.RunBuildTask();
-
-            // Clear the "Services" directory.
-            DirUtils.ClearDir(ServiceDir);
-
             // Generate all strongly typed services.
-            var runner = new Runner(serviceGenerator.BinaryFile, "--non-interactive", "-o="+ServiceDir, "-c", "-a");
-            runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
-            runner.Run();
-            
+            try
+            {
+                // Build the updated ServiceGenerator.
+                serviceGenerator.RunBuildTask();
+
+                // Clear the "Services" directory.
+                DirUtils.ClearDir(ServiceDir);
+
+                // Run the generator.
+                var runner = new Runner(
+                    serviceGenerator.BinaryFile, "--non-interactive", "-o=" + ServiceDir, "-c", "-a");
+                runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
+                runner.Run();
+            } catch (Exception)
+            {
+                CommandLine.WriteLine();
+                CommandLine.WriteError("Migrating the ServiceGenerator has failed.");
+                CommandLine.WriteError("Please fix the Discovery dependency of the generator manually,");
+                CommandLine.WriteError("and then re-run this build.");
+                throw;
+            }
+
             // Build all the samples projects.
             CommandLine.WriteAction("Building samples...");
             foreach (string csproj in
