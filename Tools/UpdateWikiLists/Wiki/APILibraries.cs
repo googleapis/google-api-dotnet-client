@@ -94,7 +94,7 @@ namespace UpdateWikiLists.Wiki
             tmpl.Add("|| [{URL_DOCU} Documentation] | " +
                      "[https://code.google.com/apis/explorer/#_s={NAME}&_v={VERSION} APIs Explorer] ||");
             string formalName = api.Name.ToUpperFirstChar();
-            string formalVersion = api.Version.ToUpperFirstChar();
+            string formalVersion = api.Version;
             string binFileName = string.Format("Google.Apis.{0}.{1}.dll", formalName, formalVersion);
 
             // Fill in the data.
