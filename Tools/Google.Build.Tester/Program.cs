@@ -15,10 +15,10 @@ limitations under the License.
 */
 
 using System;
-using System.Runtime.InteropServices;
-using Google.Apis.Samples.Helper;
-using Google.Build.Utils;
-using Google.Build.Utils.Build;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Security.Policy;
 
 namespace Google.Build.Tester
 {
@@ -28,37 +28,38 @@ namespace Google.Build.Tester
     public class Program
     {
         /// <summary>
-        /// Runs the unit tester on the specified assembly.
+        /// Path to the Unit tester binary.
         /// </summary>
-        /// <remarks>Called from extern assemblies.</remarks>
-        public static void Run(string assembly)
+        public static string BinPath
         {
-            // Retrieve the path to the unit tester.
-            Uri testerUri = new Uri(typeof(Program).Assembly.CodeBase);
-            string nativePath = testerUri.LocalPath;
-
-            // Run the unit tester
-            try
-            {
-                new Runner(nativePath, assembly).Run();
-            } catch (ExternalException ex)
-            {
-                CommandLine.WriteError("{0} tests failed.", ex.ErrorCode);
-                if (!CommandLine.RequestUserChoice("Do you want to continue anyway?"))
-                {
-                    throw;
-                }
-            }
+            get { return new Uri(typeof(Program).Assembly.CodeBase).LocalPath; }
         }
 
         internal static void Main(string[] args)
         {
-            int exitCode;
-            using (var tester = new UnitTester(String.Join(" ", args)))
+            // Check the parameter.
+            string assembly = String.Join(" ", args);
+            if (!File.Exists(assembly))
             {
-                exitCode = tester.Run();
+                Console.Error.WriteLine("Assembly not found: "+assembly);
+                Environment.Exit(-1);
             }
-            Environment.ExitCode = exitCode;
+
+            // Run the unit tester.
+            try
+            {
+                Environment.ExitCode = UnitTester.Run(assembly);
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                Console.Error.WriteLine("Failed to load types:");
+                foreach (Exception e in ex.LoaderExceptions)
+                {
+                    Console.Error.WriteLine();
+                    Console.Error.WriteLine("  " + e.Message);
+                }
+                Environment.Exit(-2);
+            }
         }
     }
 }

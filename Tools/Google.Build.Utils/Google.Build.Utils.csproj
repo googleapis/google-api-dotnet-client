@@ -79,7 +79,6 @@
     <Compile Include="Runner.cs" />
     <Compile Include="Text\Template.cs" />
     <Compile Include="Text\TextUtils.cs" />
-    <Compile Include="UnitTester.cs" />
     <Compile Include="Zip.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Google.Apis.Samples.Helper;
 using Google.Build.Utils;
 using Google.Build.Utils.Build;
@@ -214,13 +215,34 @@ namespace BuildRelease
             foreach (Project proj in projects)
             {
                 proj.RunBuildTask();
-                Google.Build.Tester.Program.Run(proj.BinaryFile);
+                RunUnitTest(proj.BinaryFile);
             }
 
             CommandLine.WriteLine();
             apiVersion = FileVersionInfo.GetVersionInfo(baseApi.BinaryFile);
             allProjects = projects.ToArray();
             return releaseProjects;
+        }
+
+        /// <summary>
+        /// Runs the unit tester on the specified assembly.
+        /// </summary>
+        /// <remarks>Called from extern assemblies.</remarks>
+        public static void RunUnitTest(string assembly)
+        {
+            // Run the unit tester.
+            try
+            {
+                new Runner(Google.Build.Tester.Program.BinPath, assembly).Run();
+            }
+            catch (ExternalException ex)
+            {
+                CommandLine.WriteError(" {0} tests failed.", ex.ErrorCode < 0 ? "Loading" : ex.ErrorCode.ToString());
+                if (!CommandLine.RequestUserChoice("Do you want to continue anyway?"))
+                {
+                    throw;
+                }
+            }
         }
 
         private static string GetTagName(FileVersionInfo releaseVersion)
