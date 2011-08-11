@@ -98,14 +98,14 @@ namespace UpdateWikiLists.Wiki
             string binFileName = string.Format("Google.Apis.{0}.{1}.dll", formalName, formalVersion);
 
             // Fill in the data.
-            const string RELEASE_DIR = "http://contrib.google-api-dotnet-client.googlecode.com/hg/current";
+            const string RELEASE_DIR = "http://contrib.google-api-dotnet-client.googlecode.com/hg/Current";
             const string BINARY_PATH = RELEASE_DIR + "/Generated/Bin/{0}Service/{1}";
             var data = new Entries();
             data.Add("URL_DOCU", api.DocumentationLink);
             data.Add("URL_BINARY", BINARY_PATH, formalName, binFileName);
             data.Add("URL_XML", BINARY_PATH, formalName, Path.ChangeExtension(binFileName, ".xml"));
             data.Add("FILE_BINARY", binFileName);
-            data.Add("URL_SOURCE", RELEASE_DIR + "/Generated/Source/{0}Service.cs", formalName);
+            data.Add("URL_SOURCE", RELEASE_DIR + "/Generated/Source/{0}", Path.ChangeExtension(binFileName, ".cs"));
             data.Add("NAME", api.Name);
             data.Add("VERSION", api.Version);
             return tmpl.ToString(data);
