@@ -44,7 +44,11 @@ namespace Google.Build.Utils.Build
         /// <summary>
         /// The Configuration to build. Default: "Release"
         /// </summary>
-        public string Configuration { get; set; }
+        public string Configuration
+        {
+            get { return internalProject.GetProperty("Configuration").EvaluatedValue; }
+            set { internalProject.SetProperty("Configuration", value); }
+        }
 
         /// <summary>
         /// Path to the generated binary file.
@@ -90,15 +94,14 @@ namespace Google.Build.Utils.Build
             }
             ProjectFile = projectFile;
             WorkingDirectory = Path.GetDirectoryName(projectFile);
-            Configuration = "Release";
             internalProject = (from p in ProjectCollection.GlobalProjectCollection.LoadedProjects
                                where p.FullPath == Path.GetFullPath(projectFile)
                                select p).SingleOrDefault() ?? new Microsoft.Build.Evaluation.Project(ProjectFile);
+            Configuration = "Release";
         }
 
         private void Build(string target)
         {
-            internalProject.SetProperty("Configuration", Configuration);
             if (!internalProject.Build(target))
             {
                 // If the build fails, re-run this build with a logger attached.

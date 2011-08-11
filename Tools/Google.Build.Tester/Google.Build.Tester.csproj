@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Apis.Samples.Helper">
-      <HintPath>..\Lib\Google.Apis.Samples.Helper.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.core">
       <HintPath>..\Lib\nunit.core.dll</HintPath>
     </Reference>
@@ -58,12 +55,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTester.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Google.Build.Utils\Google.Build.Utils.csproj">
-      <Project>{A6E792C8-D5E7-40DD-9483-3901E70BF93F}</Project>
-      <Name>Google.Build.Utils</Name>
-    </ProjectReference>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
