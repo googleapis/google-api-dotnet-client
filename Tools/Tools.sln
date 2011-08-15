@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildRelease", "BuildReleas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Build.Tester", "Google.Build.Tester\Google.Build.Tester.csproj", "{585E1BD4-C989-4041-9AA2-14EEB13D8F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Mobile", "System.Web.Mobile\System.Web.Mobile.csproj", "{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,16 @@ Global
 		{585E1BD4-C989-4041-9AA2-14EEB13D8F15}.Release|Mixed Platforms.Build.0 = Release|x86
 		{585E1BD4-C989-4041-9AA2-14EEB13D8F15}.Release|x86.ActiveCfg = Release|x86
 		{585E1BD4-C989-4041-9AA2-14EEB13D8F15}.Release|x86.Build.0 = Release|x86
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
