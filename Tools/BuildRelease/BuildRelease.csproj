@@ -57,6 +57,10 @@
       <Project>{A6E792C8-D5E7-40DD-9483-3901E70BF93F}</Project>
       <Name>Google.Build.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\System.Web.Mobile\System.Web.Mobile.csproj">
+      <Project>{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}</Project>
+      <Name>System.Web.Mobile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UpdateWikiLists\UpdateWikiLists.csproj">
       <Project>{B79948E3-8B09-4EBE-835E-DEB93DB8C0FC}</Project>
       <Name>UpdateWikiLists</Name>
