@@ -103,7 +103,7 @@ namespace Google.Build.Utils.Repositories
             }
             else
             {
-                CommandLine.WriteAction("Using existing repository for " + Name + " ..");
+                CommandLine.WriteAction("Using existing repository for " + Name + " at " + WorkingDirectory + " ..");
                 RunHg("status");
             }
         }

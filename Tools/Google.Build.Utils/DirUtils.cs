@@ -67,6 +67,25 @@ namespace Google.Build.Utils
         }
 
         /// <summary>
+        /// Copies a single file to the specified destination.
+        /// </summary>
+        /// <param name="sourceFile">The source file.</param>
+        /// <param name="destFolder">The destination folder.</param>
+        public static void CopyFile(string sourceFile, string destFolder)
+        {
+            CommandLine.WriteAction(
+                "Copying '" + Path.GetFileName(sourceFile) + "' to '" + Path.GetFileName(destFolder) + "/' ...");
+
+            if (!Directory.Exists(destFolder))
+            {
+                Directory.CreateDirectory(destFolder);
+            }
+
+            string destFile = Path.Combine(destFolder, Path.GetFileName(sourceFile));
+            File.Copy(sourceFile, destFile, true);
+        }
+
+        /// <summary>
         /// Copies all files and directories from the source to the destination.
         /// </summary>
         public static void CopyFiles(string source, string dest)

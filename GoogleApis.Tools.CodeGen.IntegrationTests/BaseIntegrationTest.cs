@@ -92,27 +92,38 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             env.AppendLine("public class GeneratedClass {");
             {
                 env.AppendLine(
-                    string.Format("public static {0} GeneratedMethod() {{", returnValueType ?? typeof(T).FullName));
+                    string.Format("  public static {0} GeneratedMethod() {{", returnValueType ?? typeof(T).FullName));
                 {
-                    foreach (var line in commands)
+                    var lines =
+                        commands.SelectMany(str => str.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
+                    foreach (var line in lines)
                     {
-                        env.AppendLine(line);
+                        env.AppendLine("   "+line);
                     }
                 }
-                env.AppendLine("}");
+                env.AppendLine("  }");
             }
             env.AppendLine("}");
 
-            // Compile the code.
-            string furtherReferences = GetReferencePathToAssembly(toInclude);
-            Assembly generatedAssembly =
-                CompileLibrary(
-                    (cp, provider) => provider.CompileAssemblyFromSource(cp, env.ToString()), furtherReferences);
-            Assert.NotNull(generatedAssembly);
+            Assembly generatedAssembly = null;
+            try
+            {
+                // Compile the code.
+                string furtherReferences = GetReferencePathToAssembly(toInclude);
+                generatedAssembly =
+                    CompileLibrary(
+                        (cp, provider) => provider.CompileAssemblyFromSource(cp, env.ToString()), furtherReferences);
+                Assert.NotNull(generatedAssembly);
+            }
+            catch (ArgumentException ex)
+            {
+                string P = Environment.NewLine + Environment.NewLine.PadLeft(15, '-');
+                throw new Exception("Failing code:" + P + env + P, ex);
+            }
 
             // Run the code.
             MethodInfo genMethod = generatedAssembly.GetType("GeneratedClass").GetMethod("GeneratedMethod");
-            return (T)genMethod.Invoke(null, BindingFlags.Static, null, null, null);
+            return (T) genMethod.Invoke(null, BindingFlags.Static, null, null, null);
         }
 
         /// <summary>

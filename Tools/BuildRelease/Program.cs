@@ -29,8 +29,36 @@ using Google.Build.Utils.Text;
 
 namespace BuildRelease
 {
+    /// <summary>
+    /// Release Builder.
+    /// Will automatically check out all repositories, run unit tests and create a release.
+    /// Can be re-run if the build should fail.
+    /// </summary>
     public class Program
     {
+        #region Command Line Arguments
+        public class CommandLineArguments
+        {
+            [CommandLine.Argument("local", ShortName = "l",
+                Description = "Uses the local repository instead of checking out a new one. Not releasable.")]
+            public bool UseLocalRepository { get; set; }
+
+            /// <summary>
+            /// True if this repository set can be used to build a full release.
+            /// </summary>
+            public bool CanRelease
+            {
+                get { return UseLocalRepository; }
+            }
+        }
+
+        /// <summary>
+        /// Command line arguments.
+        /// </summary>
+        public static CommandLineArguments Arguments { get; private set; }
+
+        #endregion
+
         /// <summary>
         /// The "default" repository.
         /// </summary>
@@ -83,6 +111,7 @@ namespace BuildRelease
                             break;
                     }
                 }
+                files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
                 return files.ToArray();
             }
         }
@@ -116,16 +145,22 @@ namespace BuildRelease
             CommandLine.DisplayGoogleSampleHeader("Release Builder: "+WorkingCopy);
             CommandLine.EnableExceptionHandling();
 
+            // Parse command line arguments
+            CommandLine.ParseArguments(Arguments = new CommandLineArguments(), args);
+
             // 1. Create the local repositories.
             CheckoutRepositories();
 
             // Ask the user whether he wants to start the build
-            CommandLine.WriteLine("{{white}} =======================================");
-            CommandLine.WriteLine();
-            CommandLine.WriteLine(" {{gray}}Repositories checked out. Start the build?");
-            CommandLine.WriteLine(" {{gray}}(Change the AssemblyVersion before starting the build)");
-            CommandLine.PressEnterToContinue();
-            CommandLine.WriteLine();
+            if (!Arguments.UseLocalRepository)
+            {
+                CommandLine.WriteLine("{{white}} =======================================");
+                CommandLine.WriteLine();
+                CommandLine.WriteLine(" {{gray}}Repositories checked out. Start the build?");
+                CommandLine.WriteLine(" {{gray}}(Change the AssemblyVersion before starting the build)");
+                CommandLine.PressEnterToContinue();
+                CommandLine.WriteLine();
+            }
 
             // 2. Create the project/build tasks
             FileVersionInfo apiVersion;
@@ -151,6 +186,14 @@ namespace BuildRelease
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteResult("Version: ", apiVersion.ProductVersion);
             CommandLine.WriteLine();
+
+            if (Arguments.UseLocalRepository)
+            {
+                CommandLine.WriteAction("Local build done.");
+                CommandLine.PressAnyKeyToExit();
+                return;
+            }
+
             CommandLine.WriteLine("   {{gray}}In the next step all changes will be commited and tagged.");
             CommandLine.WriteLine("   {{gray}}Only continue when you are sure that you don't have to make any new changes.");
             CommandLine.RequestUserInput("Do you want to continue with the release? Type YES.", ref res);
@@ -185,7 +228,17 @@ namespace BuildRelease
             CommandLine.WriteLine("{{white}} Checking out repositories");
             CommandLine.WriteLine("{{white}} =======================================");
             const string URL = "https://code.google.com/p/google-api-dotnet-client{0}/";
-            Default = Hg.Get("default", string.Format(URL, ""));
+
+            if (Arguments.UseLocalRepository)
+            {
+                CommandLine.WriteAction("Using local Default repository. This won't release!");
+                Default = Hg.Get("../../../../../", string.Format(URL, ""));
+            }
+            else
+            {
+                Default = Hg.Get("default", string.Format(URL, ""));
+            }
+
             Samples = Hg.Get("samples", string.Format(URL, ".samples"));
             Wiki = Hg.Get("wiki", string.Format(URL, ".wiki"));
             Contrib = Hg.Get("contrib", string.Format(URL, ".contrib"));
@@ -251,6 +304,11 @@ namespace BuildRelease
             CommandLine.WriteLine("{{white}} Creating Tag for the release");
             CommandLine.WriteLine("{{white}} =======================================");
 
+            if (Arguments.UseLocalRepository)
+            {
+                return "local";
+            }
+
             const string tagFile = "release.tag";
 
             if (File.Exists(tagFile))
@@ -297,8 +355,7 @@ namespace BuildRelease
             CommandLine.WriteLine("{{white}} =======================================");
 
             // Update the *.Codegen.dll.
-            string destFile = Samples.Combine("Lib", Path.GetFileName(codegenProject.BinaryFile));
-            File.Copy(codegenProject.BinaryFile, destFile, true);
+            DirUtils.CopyFile(codegenProject.BinaryFile, Samples.Combine("Lib"));
 
             // Build the ServiceGenerator.
             Project serviceGenerator =
@@ -341,7 +398,7 @@ namespace BuildRelease
             Directory.CreateDirectory(thirdpartyDir);
             foreach (string file in ThirdPartyFiles)
             {
-                File.Copy(file, Path.Combine(thirdpartyDir, Path.GetFileName(file)));
+                DirUtils.CopyFile(file, thirdpartyDir);
             }
 
             // Generate all strongly typed services.
@@ -413,7 +470,7 @@ namespace BuildRelease
                 // Copy all third party dlls into this directory.
                 foreach (string file in ThirdPartyFiles)
                 {
-                    File.Copy(file, Path.Combine(libDir, Path.GetFileName(file)));
+                    DirUtils.CopyFile(file, libDir);
                 }
 
                 // Copy all release dlls to this directory.
@@ -443,7 +500,7 @@ namespace BuildRelease
                     string ext = Path.GetExtension(fileName).ToLower();
                     if (toSrc.Contains(ext)) // Copy this file into the "Source" directory.
                     {
-                        File.Copy(file, Path.Combine(sourceDir, fileName));
+                        DirUtils.CopyFile(file, sourceDir);
                     }
                     if (toBin.Contains(ext)) // Copy this file into the "Binary" directory.
                     {
@@ -454,11 +511,7 @@ namespace BuildRelease
 
                         // Copy the file there.
                         string folder = Path.Combine(binDir, folderName);
-                        if (!Directory.Exists(folder))
-                        {
-                            Directory.CreateDirectory(folder);
-                        }
-                        File.Copy(file, Path.Combine(folder, fileName));
+                        DirUtils.CopyFile(file, folder);
                     }
                 }
             }

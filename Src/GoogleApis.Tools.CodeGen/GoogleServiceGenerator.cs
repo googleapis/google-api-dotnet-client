@@ -149,7 +149,7 @@ namespace Google.Apis.Tools.CodeGen
                          new StandardServiceFieldResourceDecorator(),
                          new StandardResourceNameResourceDecorator(),
                          new StandardConstructorResourceDecorator(),
-                         new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = true },
+                         new RequestMethodResourceDecorator(typeProvider) { AddOptionalParameters = false },
                      }).AsReadOnly
                     ();
         }
