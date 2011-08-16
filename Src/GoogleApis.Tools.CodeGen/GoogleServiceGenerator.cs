@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen
                             new ServiceRequestInheritanceDecorator(typeProvider),
                             new BodyPropertyDecorator(typeProvider),
                             new ServiceRequestFieldDecorator(),
-                            new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = true },
+                            new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
                         }).AsReadOnly();
         }
 
