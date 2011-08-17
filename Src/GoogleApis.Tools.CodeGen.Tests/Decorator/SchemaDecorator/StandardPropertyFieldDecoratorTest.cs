@@ -153,7 +153,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
                 "public", schema, implDetails, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
-            Assert.AreEqual(typeof(bool).FullName, generatedField.Type.BaseType);
+            Assert.AreEqual(typeof(Nullable<>).FullName, generatedField.Type.BaseType);
+            Assert.AreEqual(typeof(bool).FullName, generatedField.Type.TypeArguments[0].BaseType);
             Assert.AreEqual("publicValue", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 

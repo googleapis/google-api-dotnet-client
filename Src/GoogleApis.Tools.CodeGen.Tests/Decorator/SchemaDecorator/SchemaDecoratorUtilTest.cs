@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.CodeDom;
 using System.Linq;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
@@ -54,18 +55,25 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         {
             var schema = new JsonSchema();
             var internalClassProvider = new ObjectInternalClassProvider();
+
             schema.Type = JsonSchemaType.String;
-            Assert.AreEqual(
-                typeof(string).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
+            CodeTypeReference result = SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider);
+            Assert.AreEqual(typeof(string).FullName, result.BaseType);
+
             schema.Type = JsonSchemaType.Integer;
-            Assert.AreEqual(
-                typeof(long).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
+            result = SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider);
+            Assert.AreEqual(typeof(Nullable<>).FullName, result.BaseType);
+            Assert.AreEqual(typeof(long).FullName, result.TypeArguments[0].BaseType);
+
             schema.Type = JsonSchemaType.Float;
-            Assert.AreEqual(
-                typeof(double).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
+            result = SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider);
+            Assert.AreEqual(typeof(Nullable<>).FullName, result.BaseType);
+            Assert.AreEqual(typeof(double).FullName, result.TypeArguments[0].BaseType);
+
             schema.Type = JsonSchemaType.Boolean;
-            Assert.AreEqual(
-                typeof(bool).FullName, SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider).BaseType);
+            result = SchemaDecoratorUtil.GetCodeType(schema, null, internalClassProvider);
+            Assert.AreEqual(typeof(Nullable<>).FullName, result.BaseType);
+            Assert.AreEqual(typeof(bool).FullName, result.TypeArguments[0].BaseType);
         }
 
         /// <summary>

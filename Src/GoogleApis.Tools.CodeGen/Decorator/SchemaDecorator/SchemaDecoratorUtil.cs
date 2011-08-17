@@ -68,11 +68,11 @@ namespace Google.Apis.Tools.CodeGen
                 case JsonSchemaType.String:
                     return new CodeTypeReference(typeof(string));
                 case JsonSchemaType.Integer:
-                    return new CodeTypeReference(typeof(long));
+                    return new CodeTypeReference(typeof(long?));
                 case JsonSchemaType.Boolean:
-                    return new CodeTypeReference(typeof(bool));
+                    return new CodeTypeReference(typeof(bool?));
                 case JsonSchemaType.Float:
-                    return new CodeTypeReference(typeof(double));
+                    return new CodeTypeReference(typeof(double?));
                 case JsonSchemaType.Array:
                     return GetArrayTypeReference(propertySchema, details, internalClassProvider);
                 case JsonSchemaType.Object:
