@@ -181,9 +181,6 @@ namespace BuildRelease
             // 5. Update the Wiki
             UpdateWiki();
 
-            // Create Changelog
-            CreateChangelog(tag);
-
             // Ask the user whether he wants to continue the release.
             string res = "no";
             CommandLine.WriteLine("{{white}} =======================================");
@@ -520,7 +517,7 @@ namespace BuildRelease
             }
             #endregion
 
-            #region
+            #region Current/ZipFiles
             string zipFilesDir = Path.Combine(genDir, "ZipFiles");
             CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(zipFilesDir, Contrib.WorkingDirectory));
             Directory.CreateDirectory(zipFilesDir);
@@ -550,25 +547,10 @@ namespace BuildRelease
             }
             #endregion
 
-            // Copy the content to the <tagname> release directory.
-            DirUtils.CopyFiles(currentDir, releaseDir);
-            
-            CommandLine.WriteLine();
-        }
-
-        /// <summary>
-        /// Creates a changelog of the changes since the last release.
-        /// </summary>
-        /// <remarks>Has to be executed before commiting the new release tag.</remarks>
-        private static void CreateChangelog(string tag)
-        {
-            CommandLine.WriteLine("{{white}} =======================================");
-            CommandLine.WriteLine("{{white}} Creating changelog");
-            CommandLine.WriteLine("{{white}} =======================================");
-
+            #region Current/Changes.txt
             CommandLine.WriteAction("Writing file...");
-            string file = Path.Combine(WorkingCopy, "changelog.txt");
-            using (var writer = new StreamWriter(file, false))
+            string changelogFile = Path.Combine(currentDir, "Changes.txt");
+            using (var writer = new StreamWriter(changelogFile, false))
             {
                 writer.WriteLine("Google .NET Client Library");
                 writer.WriteLine("Changelog for the release '{0}'", tag);
@@ -577,13 +559,19 @@ namespace BuildRelease
 
                 foreach (string line in Default.CreateChangelist())
                 {
-                    writer.WriteLine("  "+line);
+                    writer.WriteLine("  " + line);
                 }
             }
-            
+            #endregion
+
             // Open the created changelog.
             CommandLine.WriteAction("Showing result...");
-            Process.Start(file);
+            Process.Start(changelogFile);
+
+            // Copy the content to the <tagname> release directory.
+            DirUtils.CopyFiles(currentDir, releaseDir);
+            
+            CommandLine.WriteLine();
         }
 
         private static void UpdateWiki()
