@@ -101,7 +101,7 @@ namespace Google.Apis.Discovery
             serviceUri.ThrowIfNull("serviceUri");
 
             // Retrieve Scheme and Host
-            ServerUrl = serviceUri.GetLeftPart(UriPartial.Authority);
+            ServerUrl = serviceUri.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped);
             ServerUrl.ThrowIfNullOrEmpty("ServerUrl");
 
             // Retrieve the remaining right part

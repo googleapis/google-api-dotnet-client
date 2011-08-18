@@ -13,6 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+using System.Collections.Generic;
 using Google.Apis.Json;
 using NUnit.Framework;
 using System.Collections;
@@ -83,8 +85,8 @@ namespace Google.Apis.Tests.Json
             Assert.That(dict["basePath"], Is.EqualTo("/moderator/v1/"));
             Assert.That(dict["auth"], Is.InstanceOf<JsonDictionary>());
             Assert.That(((JsonDictionary) dict["auth"])["oauth2"], Is.InstanceOf<JsonDictionary>());
-            Assert.That(dict["features"], Is.InstanceOf<ArrayList>());
-            Assert.That(((ArrayList) dict["features"])[0], Is.EqualTo("dataWrapper"));
+            Assert.That(dict["features"], Is.InstanceOf<List<object>>());
+            Assert.That(((List<object>) dict["features"])[0], Is.EqualTo("dataWrapper"));
         }
 
         /// <summary>
@@ -123,8 +125,8 @@ namespace Google.Apis.Tests.Json
         {
             string jsonAsText = "[ true, \"Value2\", false, null ]";
             object o = JsonReader.Parse(jsonAsText);
-            Assert.IsInstanceOf(typeof(ArrayList), o);
-            ArrayList a = o as ArrayList;
+            Assert.IsInstanceOf(typeof(List<object>), o);
+            List<object> a = o as List<object>;
             Assert.AreEqual(4, a.Count);
             Assert.AreEqual(false, a[2]);
 
@@ -136,7 +138,7 @@ namespace Google.Apis.Tests.Json
             o = JsonReader.Parse(jsonAsText);
             Assert.IsTrue(o is JsonDictionary);
             JsonDictionary j = o as JsonDictionary;
-            a = j["name"] as ArrayList;
+            a = j["name"] as List<object>;
             Assert.IsNotNull(a);
         }
 

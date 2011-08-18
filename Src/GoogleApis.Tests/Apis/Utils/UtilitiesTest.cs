@@ -237,7 +237,7 @@ namespace Google.Apis.Tests.Apis.Util
             dict.Add("String", "abc");
             dict.Add("Anon", new { A = "A", B = "B" });
 
-            var list = new ArrayList();
+            var list = new List<object>();
             list.Add("string");
             list.Add(123);
             list.Add(null);

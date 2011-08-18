@@ -15,7 +15,7 @@ limitations under the License.
 */
 /* Change history
 * Oct 13 2008  Joe Feser       joseph.feser@gmail.com
-* Converted ArrayLists and other .NET 1.1 collections to use Generics
+* Converted List<object>s and other .NET 1.1 collections to use Generics
 * Combined IExtensionElement and IExtensionElementFactory interfaces
 * 
 */

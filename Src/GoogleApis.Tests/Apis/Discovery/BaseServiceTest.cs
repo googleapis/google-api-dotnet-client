@@ -311,8 +311,8 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("version", "v1");
             dict.Add("description", "Test Description");
             dict.Add("documentationLink", "https://www.google.com/");
-            dict.Add("features", new ArrayList { "feature1", "feature2" });
-            dict.Add("labels", new ArrayList { "label1", "label2" });
+            dict.Add("features", new List<object>{ "feature1", "feature2" });
+            dict.Add("labels", new List<object>{ "label1", "label2" });
             dict.Add("id", "TestId");
             dict.Add("title", "Test API");
 

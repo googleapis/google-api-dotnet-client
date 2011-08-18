@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Collections;
 using Google.Apis.Logging;
@@ -105,7 +106,7 @@ namespace Google.Apis.Json
 
             if (token.Type != JsonToken.TokenType.String && token.Type != JsonToken.TokenType.ObjectEnd)
             {
-                throw new InvalidDataException(
+                throw new ArgumentException(
                     "Unable to parse object. Found object " + token +
                     " while looking for property name or object end.");
             }
@@ -133,7 +134,7 @@ namespace Google.Apis.Json
                             dict.Add(token.Value, value);
                             break;
                         default:
-                            throw new InvalidDataException(
+                            throw new ArgumentException(
                                 "Found invalid Json was expecting } or , or : found " + cur);
                     }
                 }
@@ -141,9 +142,9 @@ namespace Google.Apis.Json
             return dict;
         }
 
-        private static ArrayList ParseArray(TokenStream ts)
+        private static List<object> ParseArray(TokenStream ts)
         {
-            ArrayList list = new ArrayList();
+            var list = new List<object>();
             for (JsonToken cur = ts.GetNextToken(); cur != null; cur = ts.GetNextToken())
             {
                 if (cur.Type == JsonToken.TokenType.ArrayEnd)
