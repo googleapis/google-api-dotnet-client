@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Google.Apis.Samples.Helper;
 
 namespace Google.Build.Utils.Repositories
@@ -199,6 +200,17 @@ namespace Google.Build.Utils.Repositories
         public string Combine(params string[] dirs)
         {
             return dirs.Aggregate(WorkingDirectory, Path.Combine);
+        }
+
+        /// <summary>
+        /// Creates a change list by listing all changes made since the last release.
+        /// </summary>
+        public IEnumerable<string> CreateChangelist()
+        {
+            Regex tagRegex = new Regex("Added tag [^b]+ for changeset [^b]+", RegexOptions.Compiled);
+            string branch = RunListeningHg("branch").Single();
+            return RunListeningHg("log --template \"{{rev}}: {{desc}}\\r\\n\" -b {0}", branch)
+                        .TakeWhile(line => !tagRegex.IsMatch(line));
         }
 
         private void CloneFrom(Uri uri)
