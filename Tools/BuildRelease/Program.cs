@@ -134,15 +134,15 @@ namespace BuildRelease
             } catch (Exception expected) {}
 
             // Create the name of the local working copy.
-            WorkingCopy = DateTime.UtcNow.ToString("d", CultureInfo.CreateSpecificCulture("en-US")).Replace('/', '-');
-            string fullPath = Path.GetFullPath(WorkingCopy);
+            string workingCopy = DateTime.UtcNow.ToString("d", CultureInfo.CreateSpecificCulture("en-US")).Replace('/', '-');
+            string fullPath = Path.GetFullPath(workingCopy);
             if (!Directory.Exists(fullPath))
             {
                 Directory.CreateDirectory(fullPath);
             }
 
-            Environment.CurrentDirectory = Path.GetFullPath(WorkingCopy);
-            CommandLine.DisplayGoogleSampleHeader("Release Builder: "+WorkingCopy);
+            Environment.CurrentDirectory = WorkingCopy = fullPath;
+            CommandLine.DisplayGoogleSampleHeader("Release Builder: "+workingCopy);
             CommandLine.EnableExceptionHandling();
 
             // Parse command line arguments
@@ -181,6 +181,9 @@ namespace BuildRelease
             // 5. Update the Wiki
             UpdateWiki();
 
+            // Create Changelog
+            CreateChangelog(tag);
+
             // Ask the user whether he wants to continue the release.
             string res = "no";
             CommandLine.WriteLine("{{white}} =======================================");
@@ -212,10 +215,10 @@ namespace BuildRelease
                     }
                 }
 
-                // 5. Commit & tag the release
+                // 6. Commit & tag the release
                 CommitAndTagRelease(tag);
 
-                // 6. Push
+                // 7. Push
                 PushChanges();
             }
             CommandLine.PressAnyKeyToExit();
@@ -551,6 +554,36 @@ namespace BuildRelease
             DirUtils.CopyFiles(currentDir, releaseDir);
             
             CommandLine.WriteLine();
+        }
+
+        /// <summary>
+        /// Creates a changelog of the changes since the last release.
+        /// </summary>
+        /// <remarks>Has to be executed before commiting the new release tag.</remarks>
+        private static void CreateChangelog(string tag)
+        {
+            CommandLine.WriteLine("{{white}} =======================================");
+            CommandLine.WriteLine("{{white}} Creating changelog");
+            CommandLine.WriteLine("{{white}} =======================================");
+
+            CommandLine.WriteAction("Writing file...");
+            string file = Path.Combine(WorkingCopy, "changelog.txt");
+            using (var writer = new StreamWriter(file, false))
+            {
+                writer.WriteLine("Google .NET Client Library");
+                writer.WriteLine("Changelog for the release '{0}'", tag);
+                writer.WriteLine(DateTime.UtcNow.ToLongDateString());
+                writer.WriteLine("===========================================");
+
+                foreach (string line in Default.CreateChangelist())
+                {
+                    writer.WriteLine("  "+line);
+                }
+            }
+            
+            // Open the created changelog.
+            CommandLine.WriteAction("Showing result...");
+            Process.Start(file);
         }
 
         private static void UpdateWiki()
