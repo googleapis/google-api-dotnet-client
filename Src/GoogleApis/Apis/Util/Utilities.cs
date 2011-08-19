@@ -159,101 +159,6 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
-        /// name that matches the passed in name - or null if no match is found.
-        /// </summary>
-        /// <param name="coll">May not be null</param>
-        /// <param name="name">May not be null or empty</param>
-        public static CodeMemberField FindFieldByName(this CodeTypeMemberCollection coll, string name)
-        {
-            coll.ThrowIfNull("coll");
-            name.ThrowIfNullOrEmpty(name);
-
-            foreach (CodeTypeMember member in coll)
-            {
-                if ((member is CodeMemberField) == false)
-                {
-                    continue;
-                }
-                var field = (CodeMemberField) member;
-                if (field.Name == name)
-                {
-                    return field;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the first <see cref="System.CodeDom.CodeTypeMember"/> with a 
-        /// name that matches the passed in name - or null if no match is found.
-        /// </summary>
-        /// <param name="coll">May not be null</param>
-        /// <param name="name">May not be null or empty</param>
-        public static CodeTypeMember FindMemberByName(this CodeTypeMemberCollection coll, string name)
-        {
-            coll.ThrowIfNull("coll");
-            name.ThrowIfNullOrEmpty(name);
-
-            foreach (CodeTypeMember member in coll)
-            {
-                if (member.Name == name)
-                {
-                    return member;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the first <see cref="System.CodeDom.CodeTypeDeclaration"/> with a 
-        /// name that matches the passed in name - or null if no match is found.
-        /// </summary>
-        /// <param name="coll">May not be null</param>
-        /// <param name="name">May not be null or empty</param>
-        public static CodeTypeDeclaration FindTypeMemberByName(this CodeTypeMemberCollection coll, string name)
-        {
-            coll.ThrowIfNull("coll");
-            name.ThrowIfNullOrEmpty(name);
-
-            foreach (CodeTypeMember member in coll)
-            {
-                var field = member as CodeTypeDeclaration;
-                if (field != null && field.Name == name)
-                {
-                    return field;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
-        /// name that matches the passed in name - or Null if no match found.
-        /// </summary>
-        /// <param name="coll">May not be null</param>
-        /// <param name="name">May not be null or empty</param>
-        public static CodeMemberProperty FindPropertyByName(this CodeTypeMemberCollection coll, string name)
-        {
-            coll.ThrowIfNull("coll");
-            name.ThrowIfNullOrEmpty(name);
-
-            foreach (CodeTypeMember member in coll)
-            {
-                if ((member is CodeMemberProperty) == false)
-                {
-                    continue;
-                }
-                var property = (CodeMemberProperty) member;
-                if (property.Name == name)
-                {
-                    return property;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
         /// Returns the first matching custom attribute (or null) of the specified member
         /// </summary>
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
@@ -322,9 +227,30 @@ namespace Google.Apis.Util
                 return null;
             }
 
-            // Get the type converter
-            TypeConverter converter = TypeDescriptor.GetConverter(o);
-            return converter.ConvertToString(o);
+            // Get the type converter if available
+            if (o.GetType().IsEnum)
+            {
+                var enumConverter = new EnumStringValueTypeConverter();
+                return (string)enumConverter.ConvertTo(o, typeof(string));
+            }
+
+            return o.ToString();
+        }
+
+        /// <summary>
+        /// Parses the specified array as an ascii string.
+        /// </summary>
+        public static string GetAsciiString(IEnumerable<byte> bytes)
+        {
+            return bytes.Aggregate("", (str, b) => str + (char) b);
+        }
+
+        /// <summary>
+        /// Converts the specified string into an ascii byte array.
+        /// </summary>
+        public static byte[] GetBytesFromAsciiString(string str)
+        {
+            return str.Select(c => (byte) c).ToArray();
         }
         
         /// <summary>

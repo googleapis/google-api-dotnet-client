@@ -75,10 +75,8 @@ namespace Google.Apis.Discovery.Schema
             Default = schema.Default;
             Description = schema.Description;
             Disallow = schema.Disallow;
-            DivisibleBy = schema.DivisibleBy;
             Enum = schema.Enum;
-            ExclusiveMaximum = schema.ExclusiveMaximum;
-            ExclusiveMinimum = schema.ExclusiveMinimum;
+            
             Extends = schema.Extends;
             Format = schema.Format;
             Hidden = schema.Hidden;
@@ -93,14 +91,22 @@ namespace Google.Apis.Discovery.Schema
             MinimumLength = schema.MinimumLength;
             Options = schema.Options;
             Pattern = schema.Pattern;
-            PatternProperties = schema.PatternProperties;
+            
             Properties = schema.Properties;
             ReadOnly = schema.ReadOnly;
-            Required = schema.Required;
+            
             Requires = schema.Requires;
             Title = schema.Title;
             Transient = schema.Transient;
             Type = schema.Type;
+             
+#if !SILVERLIGHT
+            Required = schema.Required;
+            PatternProperties = schema.PatternProperties;
+            ExclusiveMaximum = schema.ExclusiveMaximum;
+            ExclusiveMinimum = schema.ExclusiveMinimum;
+            DivisibleBy = schema.DivisibleBy;
+#endif
         }
     }
 }

@@ -59,17 +59,21 @@ namespace Google.Apis
         /// <param name="consumerSecret">The consumer secret</param>
         /// <param name="httpMethod">The http method</param>
         /// <returns>The OAuth authorization header</returns>
-        public static string GenerateHeader(Uri uri, String consumerKey, String consumerSecret, String httpMethod)
+        public static string GenerateAuthorizationHeader(Uri uri,
+                                                         String consumerKey,
+                                                         String consumerSecret,
+                                                         String httpMethod)
         {
-            return GenerateHeader(uri, consumerKey, consumerSecret, string.Empty, string.Empty, httpMethod);
+            return GenerateAuthorizationHeader(
+                uri, consumerKey, consumerSecret, string.Empty, string.Empty, httpMethod);
         }
 
-        public static string GenerateHeader(Uri uri,
-                                            String consumerKey,
-                                            String consumerSecret,
-                                            String token,
-                                            String tokenSecret,
-                                            String httpMethod)
+        public static string GenerateAuthorizationHeader(Uri uri,
+                                                         String consumerKey,
+                                                         String consumerSecret,
+                                                         String token,
+                                                         String tokenSecret,
+                                                         String httpMethod)
         {
             OAuthUtil oauthUtil = new OAuthUtil();
             string timeStamp = oauthUtil.GenerateTimeStamp();
@@ -79,7 +83,7 @@ namespace Google.Apis
                 uri, consumerKey, consumerSecret, token, tokenSecret, httpMethod.ToUpper(), timeStamp, nonce);
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("Authorization: OAuth oauth_version=\"1.0\",");
+            sb.Append("OAuth oauth_version=\"1.0\",");
             sb.AppendFormat("oauth_nonce=\"{0}\",", EncodingPerRFC3986(nonce));
             sb.AppendFormat("oauth_timestamp=\"{0}\",", EncodingPerRFC3986(timeStamp));
             sb.AppendFormat("oauth_consumer_key=\"{0}\",", EncodingPerRFC3986(consumerKey));

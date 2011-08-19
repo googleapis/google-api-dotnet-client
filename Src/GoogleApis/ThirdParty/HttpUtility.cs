@@ -42,17 +42,18 @@ using System.IO;
 using System.Security.Permissions;
 using System.Text;
 using System.Web.Util;
+using Google.Apis.Util;
 
 namespace System.Web
 {
 
-#if !MOBILE
+#if !MOBILE && !SILVERLIGHT
     // CAS - no InheritanceDemand here as the class is sealed
     [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
 #endif
     public sealed class HttpUtility
     {
-        sealed class HttpQSCollection : NameValueCollection
+        sealed class HttpQSCollection : Dictionary<string,string>
         {
             public override string ToString()
             {
@@ -60,10 +61,9 @@ namespace System.Web
                 if (count == 0)
                     return "";
                 StringBuilder sb = new StringBuilder();
-                string[] keys = AllKeys;
-                for (int i = 0; i < count; i++)
+                foreach (var pair in this)
                 {
-                    sb.AppendFormat("{0}={1}&", keys[i], this[keys[i]]);
+                    sb.AppendFormat("{0}={1}&", pair.Key, pair.Value);
                 }
                 if (sb.Length > 0)
                     sb.Length--;
@@ -186,8 +186,7 @@ namespace System.Web
             }
 
             byte[] buf = bytes.ToArray();
-            bytes = null;
-            return e.GetString(buf);
+            return e.GetString(buf, 0, buf.Length);
 
         }
 
@@ -417,7 +416,7 @@ namespace System.Web
             // avoided GetByteCount call
             byte[] bytes = new byte[Enc.GetMaxByteCount(s.Length)];
             int realLen = Enc.GetBytes(s, 0, s.Length, bytes, 0);
-            return Encoding.ASCII.GetString(UrlEncodeToBytes(bytes, 0, realLen));
+            return Utilities.GetAsciiString(UrlEncodeToBytes(bytes, 0, realLen));
         }
 
         public static string UrlEncode(byte[] bytes)
@@ -428,7 +427,7 @@ namespace System.Web
             if (bytes.Length == 0)
                 return String.Empty;
 
-            return Encoding.ASCII.GetString(UrlEncodeToBytes(bytes, 0, bytes.Length));
+            return Utilities.GetAsciiString(UrlEncodeToBytes(bytes, 0, bytes.Length));
         }
 
         public static string UrlEncode(byte[] bytes, int offset, int count)
@@ -439,7 +438,7 @@ namespace System.Web
             if (bytes.Length == 0)
                 return String.Empty;
 
-            return Encoding.ASCII.GetString(UrlEncodeToBytes(bytes, offset, count));
+            return Utilities.GetAsciiString(UrlEncodeToBytes(bytes, offset, count));
         }
 
         public static byte[] UrlEncodeToBytes(string str)
@@ -486,7 +485,7 @@ namespace System.Web
             if (str == null)
                 return null;
 
-            return Encoding.ASCII.GetString(UrlEncodeUnicodeToBytes(str));
+            return Utilities.GetAsciiString(UrlEncodeUnicodeToBytes(str));
         }
 
         public static byte[] UrlEncodeUnicodeToBytes(string str)
@@ -687,28 +686,28 @@ namespace System.Web
 #endif
         }
 
-        public static NameValueCollection ParseQueryString(string query)
+        public static Dictionary<string,string> ParseQueryString(string query)
         {
             return ParseQueryString(query, Encoding.UTF8);
         }
 
-        public static NameValueCollection ParseQueryString(string query, Encoding encoding)
+        public static Dictionary<string,string> ParseQueryString(string query, Encoding encoding)
         {
             if (query == null)
                 throw new ArgumentNullException("query");
             if (encoding == null)
                 throw new ArgumentNullException("encoding");
             if (query.Length == 0 || (query.Length == 1 && query[0] == '?'))
-                return new NameValueCollection();
+                return new Dictionary<string, string>();
             if (query[0] == '?')
                 query = query.Substring(1);
 
-            NameValueCollection result = new HttpQSCollection();
+            var result = new HttpQSCollection();
             ParseQueryString(query, encoding, result);
             return result;
         }
 
-        internal static void ParseQueryString(string query, Encoding encoding, NameValueCollection result)
+        internal static void ParseQueryString(string query, Encoding encoding, Dictionary<string,string> result)
         {
             if (query.Length == 0)
                 return;

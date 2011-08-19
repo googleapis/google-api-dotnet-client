@@ -67,14 +67,13 @@ namespace Google.Apis.Tests.Apis.Discovery.Schema
         public void ResolvePassTest()
         {
             var actual = new FutureJsonSchema("123ABC");
-            var sucess = new JsonSchema { Id = "123ABC", Maximum = 12.5, Minimum = 5.3, Required = true };
+            var sucess = new JsonSchema { Id = "123ABC", Maximum = 12.5, Minimum = 5.3 };
 
             actual.Resolve(sucess);
 
             Assert.True(actual.Resolved);
             Assert.AreEqual(12.5, actual.Maximum.Value);
             Assert.AreEqual(5.3, actual.Minimum.Value);
-            Assert.AreEqual(true, actual.Required);
         }
     }
 }

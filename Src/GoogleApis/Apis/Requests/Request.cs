@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.IO.Compression;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -27,11 +26,20 @@ using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
+#if !SILVERLIGHT
+using System.IO.Compression;
+#endif
+
 namespace Google.Apis.Requests
 {
     /// <summary>
     /// Request to a service.
     /// </summary>
+    /// <remarks>
+    /// Features which are not (yet) supported on SilverLight:
+    /// - The UserAgent header.
+    /// - GZip Compression
+    /// </remarks>
     public class Request : IRequest
     {
         private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
@@ -64,7 +72,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public int RetryInitialWaitTime { get; set; }
 
-        private static readonly String ApiVersion = typeof(Request).Assembly.GetName().Version.ToString();
+        private static readonly String ApiVersion = Utilities.GetLibraryVersion();
 
         public static readonly ReadOnlyCollection<string> SupportedHttpMethods =
             new List<string> { POST, PUT, DELETE, GET, PATCH }.AsReadOnly();
@@ -76,7 +84,7 @@ namespace Google.Apis.Requests
         {
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
-            
+
             MaximumRetries = 3;
             RetryWaitTimeIncreaseFactor = 2.0;
             RetryInitialWaitTime = 1000;
@@ -249,7 +257,7 @@ namespace Google.Apis.Requests
             var validator = new MethodValidator(Method, Parameters);
             if (validator.ValidateAllParameters() == false)
             {
-                return null;
+                throw new InvalidOperationException("Request parameter validation failed for ["+this+"]");
             }
 
             WebRequest request = CreateWebRequest();
@@ -263,7 +271,26 @@ namespace Google.Apis.Requests
                 try
                 {
                     // If we can get a valid response, return immediately.
+#if !SILVERLIGHT
                     WebResponse response = request.GetResponse();
+#else
+                    WebResponse response = null;
+                    request.BeginGetResponse(
+                        a =>
+                            {
+                                var req = (WebRequest) a.AsyncState;
+                                response = req.EndGetResponse(a);
+                            }, request);
+
+                    // TODO(mlinder): Implement propery async fetches for Silverlight.
+                    int timeout = 100;
+                    while (response == null) // Due to Silverlights nature this is an endless loop.
+                    {
+                        Thread.Sleep(100);
+                        if (timeout-- == 0)
+                            throw new TimeoutException("Fetch failed. Timeout.");
+                    }
+#endif
                     return new Response(response);
                 }
                 catch (WebException ex)
@@ -426,7 +453,7 @@ namespace Google.Apis.Requests
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (!parameterDefinition.IsRequired  && value.IsNullOrEmpty())
+                        if (!parameterDefinition.IsRequired && value.IsNullOrEmpty())
                         {
                             continue;
                         }
@@ -459,7 +486,7 @@ namespace Google.Apis.Requests
                 case ReturnType.Json:
                     return "application/json";
                 default:
-                    throw new ArgumentOutOfRangeException("returnType", returnType, "Unknown return type");
+                    throw new ArgumentOutOfRangeException("returnType", "Unknown Return-type: " + returnType);
             }
         }
 
@@ -499,13 +526,17 @@ namespace Google.Apis.Requests
 
             // Insert the content type and user agent.
             request.ContentType = string.Format(
-                "{0}; charset={1}", GetReturnMimeType(ReturnType), ContentCharset.HeaderName);
+                "{0}; charset={1}", GetReturnMimeType(ReturnType), ContentCharset.WebName);
             string appName = FormatForUserAgent(ApplicationName);
             string apiVersion = FormatForUserAgent(ApiVersion);
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
             string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
+
+            // The UserAgent header can only be set on a non-Silverlight platform.
+#if !SILVERLIGHT
             request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
-            
+#endif
+
             // Add the E-tag header:
             if (!string.IsNullOrEmpty(ETag))
             {
@@ -528,11 +559,13 @@ namespace Google.Apis.Requests
             }
 
             // Check if compression is supported.
+#if !SILVERLIGHT
             if (Service.GZipEnabled)
             {
                 request.UserAgent += GZipUserAgentSuffix;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             }
+#endif
 
             // Attach a body if a POST and there is something to attach.
             if (HttpMethodHasBody(request.Method))
@@ -545,7 +578,17 @@ namespace Google.Apis.Requests
                 {
                     // Set the "Content-Length" header, which is required for every http method declaring a body. This 
                     // is required as e.g. the google servers will throw a "411 - Length required" error otherwise.
+#if !SILVERLIGHT
                     request.ContentLength = 0;
+#endif
+                    /* On Silverlight version 4, set by the ContentLength property. On the browser HTTP stack, 
+                     * this ContentLength property is not required to be set because the Silverlight runtime 
+                     * will automatically populate the header with the correct value based on the buffered 
+                     * request body. If a Silverlight application on either the browser or client HTTP stack
+                     * sets this property to a value that does not match the size of the provided request body, 
+                     * a ProtocolViolationException is thrown when the request is sent.
+                     * On Silverlight version 3, set by the system or the web browser that hosts the 
+                     * Silverlight application. */
                 }
             }
 
@@ -557,7 +600,7 @@ namespace Google.Apis.Requests
         {
             return fragment.Replace(' ', '_');
         }
-        
+
         /// <summary>
         /// Adds the body of this request to the specified WebRequest.
         /// </summary>
@@ -565,15 +608,26 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal void AttachBody(WebRequest request)
         {
-            Stream bodyStream = request.GetRequestStream();
+            request.BeginGetRequestStream(EndAttachBody, request);
+        }
+
+        /// <summary>
+        /// Ends the AttachBody request asynchronously.
+        /// </summary>
+        internal void EndAttachBody(IAsyncResult result)
+        {
+            WebRequest request = (WebRequest)result.AsyncState;
+            Stream bodyStream = request.EndGetRequestStream(result);
 
             // If enabled: Encapsulate in GZipStream.
+#if !SILVERLIGHT
             if (Service.GZipEnabled)
             {
                 // Change the content encoding and apply a gzip filter.
                 request.Headers.Add(HttpRequestHeader.ContentEncoding, GZipEncoding);
                 bodyStream = new GZipStream(bodyStream, CompressionMode.Compress);
             }
+#endif
 
             // Write data into the stream.
             using (bodyStream)

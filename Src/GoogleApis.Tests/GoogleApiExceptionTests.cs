@@ -35,7 +35,7 @@ namespace Google.Apis.Tests
             var service = new MockService();
 
             var exception = new GoogleApiException(service, "Test");
-            Assert.IsInstanceOf<ApplicationException>(exception);
+            Assert.IsInstanceOf<Exception>(exception);
             Assert.That(exception.Service, Is.EqualTo(service));
             Assert.That(exception.ToString(), Contains.Substring(service.Name));
         }

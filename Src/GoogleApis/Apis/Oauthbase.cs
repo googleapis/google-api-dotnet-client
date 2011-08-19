@@ -85,7 +85,7 @@ namespace Google.Apis
                 throw new ArgumentNullException("data");
             }
 
-            byte[] dataBuffer = Encoding.ASCII.GetBytes(data);
+            byte[] dataBuffer = Util.Utilities.GetBytesFromAsciiString(data);
             byte[] hashBytes = hashAlgorithm.ComputeHash(dataBuffer);
 
             return Convert.ToBase64String(hashBytes);
@@ -328,7 +328,8 @@ namespace Google.Apis
                         url, consumerKey, token, tokenSecret, httpMethod, timeStamp, nonce, HMACSHA1SignatureType);
 
                     HMACSHA1 hmacsha1 = new HMACSHA1();
-                    hmacsha1.Key = Encoding.ASCII.GetBytes(GenerateOAuthSignature(consumerSecret, tokenSecret));
+                    hmacsha1.Key =
+                        Util.Utilities.GetBytesFromAsciiString(GenerateOAuthSignature(consumerSecret, tokenSecret));
 
                     return GenerateSignatureUsingHash(signatureBase, hmacsha1);
                 case SignatureTypes.RSASHA1:

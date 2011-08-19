@@ -18,7 +18,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
@@ -64,7 +66,15 @@ namespace Google.Apis.Tests.Apis.Requests
             // Create a mock webrequest.
             var requestStream = new MemoryStream();
             var mockWebrequest = new Mock<WebRequest>();
-            mockWebrequest.Setup(r => r.GetRequestStream()).Returns(requestStream);
+            mockWebrequest
+                .Setup(r => r.BeginGetRequestStream(It.IsAny<AsyncCallback>(), It.IsAny<object>()))
+                .Callback((AsyncCallback res, object state) =>
+                              {
+                                  Mock<IAsyncResult> async = new Mock<IAsyncResult>();
+                                  async.SetupGet(r => r.AsyncState).Returns(state);
+                                  res(async.Object);
+                              });
+            mockWebrequest.Setup(r => r.EndGetRequestStream(It.IsAny<IAsyncResult>())).Returns(requestStream);
             mockWebrequest.Setup(r => r.Headers).Returns(headers);
 
             // Call the method we are testing
@@ -72,7 +82,10 @@ namespace Google.Apis.Tests.Apis.Requests
             request.AttachBody(mockWebrequest.Object);
 
             // Confirm the results.
-            mockWebrequest.Verify((r) => r.GetRequestStream(), Times.Once());
+            mockWebrequest.Verify(
+                r => r.BeginGetRequestStream(It.IsAny<AsyncCallback>(), It.IsAny<object>()), Times.Once());
+            mockWebrequest.Verify(r => r.EndGetRequestStream(It.IsAny<IAsyncResult>()), Times.Once());
+
             if (additionalAsserts != null)
             {
                 additionalAsserts(request, headers, requestStream.ToArray());
@@ -429,7 +442,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
             // Test the default user agent (without gzip):
             string expectedUserAgent = string.Format(
-                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetAssemblyVersion(),
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetLibraryVersion(),
                 Environment.OSVersion.Platform, Environment.OSVersion.Version);
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
 
