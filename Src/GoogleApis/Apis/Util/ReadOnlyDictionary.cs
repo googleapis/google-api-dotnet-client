@@ -47,9 +47,11 @@ namespace Google.Apis.Util
     /// base class instead of creating their own. 
     /// </para>
     /// </remarks>
-    [Serializable]
     [DebuggerDisplay("Count = {Count}")]
     [DebuggerTypeProxy(typeof(ReadOnlyDictionaryDebugView<,>))]
+#if !SILVERLIGHT 
+    [Serializable]
+#endif
     public class ReadOnlyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary
     {
         private readonly IDictionary<TKey, TValue> source;

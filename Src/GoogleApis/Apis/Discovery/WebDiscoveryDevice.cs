@@ -59,11 +59,13 @@ namespace Google.Apis.Discovery
         public Stream Fetch()
         {
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
+#if !SILVERLIGHT
             request.Timeout = TimeoutInSeconds * 1000;
-            Stream responseData;
+#endif
 
-            response = (HttpWebResponse) request.GetResponse();
-            responseData = response.GetResponseStream();
+            IAsyncResult async = request.BeginGetResponse(null, null);
+            response = (HttpWebResponse) request.EndGetResponse(async);
+            Stream responseData = response.GetResponseStream();
 
             return responseData;
         }

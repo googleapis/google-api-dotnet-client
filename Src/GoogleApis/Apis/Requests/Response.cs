@@ -26,6 +26,7 @@ namespace Google.Apis.Requests
     /// </summary>
     public class Response : IResponse
     {
+        private const string ETagResponseHeader = "ETag";
         private readonly WebResponse innerResponse;
         private Stream responseStream;
 
@@ -45,7 +46,7 @@ namespace Google.Apis.Requests
 
         public string ETag
         {
-            get { return innerResponse.Headers[HttpResponseHeader.ETag]; }
+            get { return innerResponse.Headers[ETagResponseHeader]; }
         }
     }
 }

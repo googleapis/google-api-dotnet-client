@@ -85,7 +85,7 @@ namespace Google.Apis.Discovery.Schema
                 return;
             }
 
-            throw new ApplicationException("The following Schema ids where unresolved " + errors);
+            throw new InvalidOperationException("The following Schema ids where unresolved " + errors);
         }
 
         #region Nested type: FutureAwareList

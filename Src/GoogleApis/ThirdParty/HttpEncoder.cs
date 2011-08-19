@@ -41,6 +41,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 #if NET_4_0
 using System.Web.Configuration;
@@ -55,7 +56,7 @@ namespace System.Web.Util
     {
         static char[] hexChars = "0123456789abcdef".ToCharArray();
         static object entitiesLock = new object();
-        static SortedDictionary<string, char> entities;
+        static Dictionary<string, char> entities;
 #if NET_4_0
 		static Lazy <HttpEncoder> defaultEncoder;
 		static Lazy <HttpEncoder> currentEncoderLazy;
@@ -236,7 +237,8 @@ namespace System.Web.Util
             for (int i = 0; i < length; i++)
                 UrlPathEncodeChar(value[i], result);
 
-            return Encoding.ASCII.GetString(result.ToArray());
+            byte[] asciiChars = result.ToArray();
+            return asciiChars.Select(b => (char) b).Aggregate("", (str, c) => str + c);
         }
 
         internal static byte[] UrlEncodeToBytes(byte[] bytes, int offset, int count)
@@ -666,7 +668,7 @@ namespace System.Web.Util
         {
             // Build the hash table of HTML entity references.  This list comes
             // from the HTML 4.01 W3C recommendation.
-            entities = new SortedDictionary<string, char>(StringComparer.Ordinal);
+            entities = new Dictionary<string, char>(StringComparer.Ordinal);
 
             entities.Add("nbsp", '\u00A0');
             entities.Add("iexcl", '\u00A1');

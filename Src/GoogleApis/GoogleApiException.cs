@@ -25,7 +25,7 @@ namespace Google
     /// <summary>
     /// Represents an exception thrown by an API Service.
     /// </summary>
-    public class GoogleApiException : ApplicationException
+    public class GoogleApiException : Exception
     {
         private readonly IService service;
 

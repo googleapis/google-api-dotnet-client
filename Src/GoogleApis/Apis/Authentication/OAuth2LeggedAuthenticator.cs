@@ -56,9 +56,9 @@ namespace Google.Apis.Authentication
         {
             base.ApplyAuthenticationToRequest(request);
 
-            string oauthHeader = OAuthUtil.GenerateHeader(
+            string oauthHeader = OAuthUtil.GenerateAuthorizationHeader(
                 request.RequestUri, ConsumerKey, ConsumerSecret, null, null, request.Method);
-            request.Headers.Add(oauthHeader);
+            request.Headers[HttpRequestHeader.Authorization] = oauthHeader;
         }
 
         /// <summary>

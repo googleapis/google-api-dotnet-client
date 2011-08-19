@@ -59,8 +59,6 @@ namespace Google.Apis.Authentication
             if (requestFactory != null)
             {
                 HttpWebRequest request = requestFactory.Create(uriResult);
-                // turn off autoredirect
-                request.AllowAutoRedirect = false;
                 request.Method = httpMethod;
                 ApplyAuthenticationToRequest(request);
                 return request;

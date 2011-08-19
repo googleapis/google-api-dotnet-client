@@ -50,7 +50,7 @@ namespace Google.Apis.Discovery.Schema
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(
+                throw new ArgumentException(
                     string.Format("Failed to parse schema [{0}] which was defined as [{1}]", name, jsonSchemaDefinition),
                     ex);
             }

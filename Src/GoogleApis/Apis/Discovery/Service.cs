@@ -59,6 +59,7 @@ namespace Google.Apis.Discovery
         private IResource rootResource;
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
+        private bool gzipSupport = true;
 
         internal BaseService(JsonDictionary values, BaseFactoryParameters param) : this()
         {
@@ -91,7 +92,6 @@ namespace Google.Apis.Discovery
 
         private BaseService()
         {
-            GZipEnabled = true;
             Serializer = new NewtonsoftJsonSerializer();
         }
 
@@ -251,7 +251,7 @@ namespace Google.Apis.Discovery
                 return root;
             }
 
-            string[] split = fullResourceName.Split(new[] { '.' }, 2);
+            string[] split = fullResourceName.Split(new[] { '.' });
             string topResourceName = split[0];
             IResource topResource = root.Resources[topResourceName];
 
@@ -262,7 +262,7 @@ namespace Google.Apis.Discovery
             }
             
             // Retrieve the top resource, and re-run this method on it.
-            string fullSubresourceName = split[1];
+            string fullSubresourceName = String.Join(".", split, 1, split.Length - 1);
             return GetResource(topResource, fullSubresourceName);
         }
 
@@ -281,6 +281,10 @@ namespace Google.Apis.Discovery
 
         public T DeserializeResponse<T>(IResponse input)
         {
+            input.ThrowIfNull("input");
+            input.Stream.ThrowIfNull("input.Stream");
+            Serializer.ThrowIfNull("Serializer");
+
             // Read in the entire content.
             string text;
             using (var reader = new StreamReader(input.Stream))
@@ -356,7 +360,23 @@ namespace Google.Apis.Discovery
             return Features.Contains(feature.GetStringValue());
         }
 
-        public bool GZipEnabled { get; set; }
+        public bool GZipEnabled
+        {
+            get
+            {
+#if SILVERLIGHT
+                return false;
+#endif
+                return gzipSupport;
+            }
+            set
+            {
+#if SILVERLIGHT
+                throw new NotImplementedException("GZip Support is not yet available on Silverlight.");
+#endif
+                gzipSupport = value;
+            }
+        }
 
         #endregion
 

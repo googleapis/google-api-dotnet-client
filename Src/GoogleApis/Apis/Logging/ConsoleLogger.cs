@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#if !SILVERLIGHT
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -108,3 +110,5 @@ namespace Google.Apis.Logging
         }
     }
 }
+
+#endif

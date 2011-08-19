@@ -376,5 +376,156 @@ namespace Google.Apis.Tools.CodeGen.Tests
             Assert.Throws<ArgumentException>(() => GeneratorUtils.GetSchemaReference("", "Type"));
             Assert.AreEqual("Namespace.Type", GeneratorUtils.GetSchemaReference("Namespace", "Type").BaseType);
         }
+
+        /// <summary>
+        /// Tests the FindPropertyByName method.
+        /// </summary>
+        [Test]
+        public void FindPropertyByNameTest()
+        {
+            CodeTypeMemberCollection collection = null;
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindPropertyByName(null));
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindPropertyByName("name"));
+
+            collection = new CodeTypeMemberCollection(new[] { new CodeTypeMember(), });
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindPropertyByName(null));
+            Assert.Throws(typeof(ArgumentException), () => collection.FindPropertyByName(""));
+
+            Assert.IsNull(collection.FindPropertyByName("AnyString"));
+
+            collection.Add(CreateMemberProperty("Fish"));
+            collection.Add(CreateMemberProperty("Cat"));
+            collection.Add(CreateMemberProperty("Tree"));
+            collection.Add(CreateMemberProperty("House"));
+
+            CodeTypeMember willNotFind = new CodeMemberMethod();
+            willNotFind.Name = "WillNotFindMethod";
+            collection.Add(willNotFind);
+
+            willNotFind = new CodeMemberField();
+            willNotFind.Name = "WillNotFindField";
+            collection.Add(willNotFind);
+
+            willNotFind = new CodeMemberEvent();
+            willNotFind.Name = "WillNotFindEvent";
+            collection.Add(willNotFind);
+
+            Assert.IsNull(collection.FindPropertyByName("AnyString"));
+            Assert.IsNull(collection.FindPropertyByName("WillNotFindMethod"));
+            Assert.IsNull(collection.FindPropertyByName("WillNotFindField"));
+            Assert.IsNull(collection.FindPropertyByName("WillNotFindEvent"));
+            Assert.IsNotNull(collection.FindPropertyByName("Fish"));
+            Assert.IsNotNull(collection.FindPropertyByName("Cat"));
+            Assert.IsNotNull(collection.FindPropertyByName("Tree"));
+            Assert.IsNotNull(collection.FindPropertyByName("House"));
+
+            Assert.AreEqual("Fish", collection.FindPropertyByName("Fish").Name);
+            Assert.AreEqual("Cat", collection.FindPropertyByName("Cat").Name);
+            Assert.AreEqual("Tree", collection.FindPropertyByName("Tree").Name);
+            Assert.AreEqual("House", collection.FindPropertyByName("House").Name);
+        }
+
+        /// <summary>
+        /// Tests the FindMemberByName method.
+        /// </summary>
+        [Test]
+        public void FindMemberByNameTest()
+        {
+            CodeTypeMemberCollection collection = null;
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindMemberByName(null));
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindMemberByName("name"));
+
+            collection = new CodeTypeMemberCollection(new[] { new CodeTypeMember(), });
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindMemberByName(null));
+            Assert.Throws(typeof(ArgumentException), () => collection.FindMemberByName(""));
+
+            Assert.IsNull(collection.FindMemberByName("AnyString"));
+
+            collection.Add(CreateMemberProperty("Fish"));
+            collection.Add(CreateMemberProperty("Cat"));
+            collection.Add(CreateMemberProperty("Tree"));
+            collection.Add(CreateMemberProperty("House"));
+
+            CodeTypeMember willAlsoFind = new CodeMemberMethod();
+            willAlsoFind.Name = "WillAlsoFindMethod";
+            collection.Add(willAlsoFind);
+
+            willAlsoFind = new CodeMemberField();
+            willAlsoFind.Name = "WillAlsoFindField";
+            collection.Add(willAlsoFind);
+
+            willAlsoFind = new CodeMemberEvent();
+            willAlsoFind.Name = "WillAlsoFindEvent";
+            collection.Add(willAlsoFind);
+
+            Assert.IsNull(collection.FindMemberByName("AnyString"));
+            Assert.IsNotNull(collection.FindMemberByName("WillAlsoFindMethod"));
+            Assert.IsNotNull(collection.FindMemberByName("WillAlsoFindField"));
+            Assert.IsNotNull(collection.FindMemberByName("WillAlsoFindEvent"));
+            Assert.IsNotNull(collection.FindMemberByName("Fish"));
+            Assert.IsNotNull(collection.FindMemberByName("Cat"));
+            Assert.IsNotNull(collection.FindMemberByName("Tree"));
+            Assert.IsNotNull(collection.FindMemberByName("House"));
+
+            Assert.AreEqual("Fish", collection.FindMemberByName("Fish").Name);
+            Assert.AreEqual("Cat", collection.FindMemberByName("Cat").Name);
+            Assert.AreEqual("Tree", collection.FindMemberByName("Tree").Name);
+            Assert.AreEqual("House", collection.FindMemberByName("House").Name);
+        }
+
+        private CodeMemberProperty CreateMemberProperty(string name)
+        {
+            var member = new CodeMemberProperty();
+            member.Name = name;
+            return member;
+        }
+
+        /// <summary>
+        /// Tests the FindMemberByName method.
+        /// </summary>
+        [Test]
+        public void FindTypeMemberByNameTest()
+        {
+            CodeTypeMemberCollection collection = null;
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindTypeMemberByName(null));
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindTypeMemberByName("name"));
+
+            collection = new CodeTypeMemberCollection(new[] { new CodeTypeMember(), });
+
+            Assert.Throws(typeof(ArgumentNullException), () => collection.FindTypeMemberByName(null));
+            Assert.Throws(typeof(ArgumentException), () => collection.FindTypeMemberByName(""));
+
+            Assert.IsNull(collection.FindTypeMemberByName("AnyString"));
+
+            collection.Add(CreateMemberProperty("Fish"));
+
+            CodeTypeMember member = new CodeMemberMethod();
+            member.Name = "Method";
+            collection.Add(member);
+
+            member = new CodeMemberField();
+            member.Name = "Field";
+            collection.Add(member);
+
+            member = new CodeMemberEvent();
+            member.Name = "Event";
+            collection.Add(member);
+
+            collection.Add(new CodeTypeDeclaration() { Name = "Class" });
+
+            Assert.IsNull(collection.FindTypeMemberByName("AnyString"));
+            Assert.IsNull(collection.FindTypeMemberByName("Method"));
+            Assert.IsNull(collection.FindTypeMemberByName("Field"));
+            Assert.IsNull(collection.FindTypeMemberByName("Event"));
+            Assert.IsNull(collection.FindTypeMemberByName("Fish"));
+
+            Assert.IsNotNull(collection.FindTypeMemberByName("Class"));
+            Assert.AreEqual("Class", collection.FindTypeMemberByName("Class").Name);
+        }
     }
 }

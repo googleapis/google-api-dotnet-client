@@ -164,7 +164,9 @@ namespace Google.Apis.Requests
         /// </summary>
         public TResponse Fetch()
         {
-            return service.DeserializeResponse<TResponse>(GetResponse());
+            IResponse response = GetResponse();
+            response.ThrowIfNull("response");
+            return service.DeserializeResponse<TResponse>(response);
         }
 
         /// <summary>
@@ -173,7 +175,9 @@ namespace Google.Apis.Requests
         /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public Stream FetchAsStream()
         {
-            return GetResponse().Stream;
+            IResponse response = GetResponse();
+            response.ThrowIfNull("response");
+            return response.Stream;
         }
         
         /// <summary>

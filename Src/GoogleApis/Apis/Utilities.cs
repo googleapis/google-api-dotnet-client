@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 using System.Reflection;
@@ -160,36 +161,6 @@ namespace Google.Apis
             return HttpUtility.UrlDecode(value);
         }
 
-
-        /// <summary>helper to read in a string and replace the reserved URI 
-        /// characters with hex encoding</summary> 
-        /// <param name="content">the parameter string</param>
-        /// <returns>hex encoded string</returns>
-        public static string UriEncodeReserved(string content)
-        {
-            if (content == null)
-            {
-                return null;
-            }
-
-            StringBuilder returnString = new StringBuilder(256);
-
-            foreach (char ch in content)
-            {
-                if (ch == ';' || ch == '/' || ch == '?' || ch == ':' || ch == '@' || ch == '&' || ch == '=' || ch == '+' ||
-                    ch == '$' || ch == ',' || ch == '%')
-                {
-                    returnString.Append(Uri.HexEscape(ch));
-                }
-                else
-                {
-                    returnString.Append(ch);
-                }
-            }
-
-            return returnString.ToString();
-        }
-
         /// <summary>
         ///  tests an etag for weakness. returns TRUE for weak etags and for null strings
         /// </summary>
@@ -208,36 +179,6 @@ namespace Google.Apis
             return false;
         }
 
-        /// <summary>helper to read in a string and replace the reserved URI 
-        /// characters with hex encoding</summary> 
-        /// <param name="content">the parameter string</param>
-        /// <returns>hex encoded string</returns>
-        public static string UriEncodeUnsafe(string content)
-        {
-            if (content == null)
-            {
-                return null;
-            }
-
-            StringBuilder returnString = new StringBuilder(256);
-
-            foreach (char ch in content)
-            {
-                if (ch == ';' || ch == '/' || ch == '?' || ch == ':' || ch == '@' || ch == '&' || ch == '=' || ch == '+' ||
-                    ch == '$' || ch == ',' || ch == ' ' || ch == '\'' || ch == '"' || ch == '>' || ch == '<' ||
-                    ch == '#' || ch == '%')
-                {
-                    returnString.Append(Uri.HexEscape(ch));
-                }
-                else
-                {
-                    returnString.Append(ch);
-                }
-            }
-            return returnString.ToString();
-        }
-
-
         /// <summary>Method to output just the date portion as string</summary>
         /// <param name="dateTime">the DateTime object to output as a string</param>
         /// <returns>an rfc-3339 string</returns>
@@ -246,22 +187,6 @@ namespace Google.Apis
             // Add "full-date T partial-time"
             return dateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
-
-
-        /// <summary>Method to output DateTime as string</summary>
-        /// <param name="dateTime">the DateTime object to output as a string</param>
-        /// <returns>an rfc-3339 string</returns>
-        public static string LocalDateTimeInUTC(DateTime dateTime)
-        {
-            TimeSpan diffFromUtc = TimeZone.CurrentTimeZone.GetUtcOffset(dateTime);
-
-            // Add "full-date T partial-time"
-            string strOutput = dateTime.ToString("s", CultureInfo.InvariantCulture);
-
-            // Add "time-offset"
-            return strOutput + FormatTimeOffset(diffFromUtc);
-        }
-
 
         /// <summary>Helper method to format a TimeSpan as a string compliant with the "time-offset" format defined in RFC-3339</summary>
         /// <param name="spanFromUtc">the TimeSpan to format</param>
@@ -296,32 +221,14 @@ namespace Google.Apis
 
         /////////////////////////////////////////////////////////////////////////////
 
-
         /// <summary>
-        /// save method to get an attribute value from an xmlnode
+        /// Returns the version of the Core library.
         /// </summary>
-        /// <param name="attributeName"></param>
-        /// <param name="xmlNode"></param>
-        /// <returns></returns>
-        public static string GetAttributeValue(string attributeName, XmlNode xmlNode)
+        public static string GetLibraryVersion()
         {
-            if (xmlNode != null && attributeName != null && xmlNode.Attributes != null &&
-                xmlNode.Attributes[attributeName] != null)
-            {
-                return xmlNode.Attributes[attributeName].Value;
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// returns the current assembly version using split() instead of the version 
-        /// attribute to avoid security issues
-        /// </summary>
-        /// <returns>the current assembly version as a string</returns>
-        public static string GetAssemblyVersion()
-        {
-            return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            // Don't use asm.GetName() here, as this will raise a SecurityException on Silverlight.
+            // Look up the name by parsing the full assembly name instead.
+            return Regex.Match(typeof(Utilities).FullName, "Version=[\\d\\.]+").Groups[1].ToString();
         }
 
         /// <summary>
@@ -329,7 +236,13 @@ namespace Google.Apis
         /// </summary>
         public static string GetAssemblyTitle()
         {
-            Assembly asm = Assembly.GetEntryAssembly();
+            Assembly asm = 
+#if SILVERLIGHT
+                Assembly.GetCallingAssembly();
+#else
+                Assembly.GetEntryAssembly();
+#endif
+
             if (asm == null)
             {
                 return null;
@@ -363,6 +276,34 @@ namespace Google.Apis
 
             return result.ToString();
         }
+
+#if SILVERLIGHT
+        /// <summary>
+        /// Silverlight implementation of the .Split(char[], int) overload.
+        /// </summary>
+        /// <remarks>Will only work with one split character.</remarks>
+        public static string[] Split(this string str, char[] separators, int segments)
+        {
+            if (separators.Length != 1)
+            {
+                throw new NotImplementedException("Only one separator is supported at the moment.");   
+            }
+            
+            string[] split = str.Split(separators);
+            if (split.Length <= segments)
+            {
+                return split; // Nothing to be done.
+            }
+
+            string[] newSplit = new string[segments];
+            int lastElementIndex = segments - 1;
+
+            Array.Copy(split, 0, newSplit, 0, segments - 1);
+            newSplit[lastElementIndex] = String.Join(
+                separators[0].ToString(), split, lastElementIndex, split.Length - (lastElementIndex));
+            return newSplit;
+        }
+#endif
 
         #region LINQ extensions
 
