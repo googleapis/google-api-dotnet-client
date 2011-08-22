@@ -150,13 +150,49 @@ namespace Google.Apis.Requests
             return request;
         }
 
-        private IResponse GetResponse()
+        /// <summary>
+        /// Retrieves a response asynchronously
+        /// </summary>
+        /// <param name="responseHandler">Method to call once a response has been received.</param>
+        private void GetAsyncResponse(Action<IAsyncRequestResult> responseHandler)
         {
             string requestName = string.Format("{0}.{1}", ResourcePath, MethodName);
             logger.Debug("Start Executing " + requestName);
-            IResponse response = BuildRequest().ExecuteRequest();
-            logger.Debug("Done Executing " + requestName);
-            return response;
+            IRequest request = BuildRequest();
+            request.ExecuteRequestAsync(result =>
+                                            {
+                                                logger.Debug("Done Executing " + requestName);
+                                                responseHandler(result);
+                                            });
+        }
+
+        /// <summary>
+        /// Receives a response synchronously.
+        /// </summary>
+        /// <returns>The received response.</returns>
+        private IResponse GetResponse()
+        {
+            AutoResetEvent waitHandle = new AutoResetEvent(false);
+            IAsyncRequestResult result = null;
+            GetAsyncResponse(r =>
+                                 {
+                                     result = r;
+                                     waitHandle.Set();
+                                 });
+            waitHandle.WaitOne();
+            return result.GetResponse();
+        }
+
+        /// <summary>
+        /// Fetches the specified response as an object.
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        [VisibleForTestOnly]
+        internal TResponse FetchObject(IResponse response)
+        {
+            response.ThrowIfNull("response");
+            return service.DeserializeResponse<TResponse>(response);
         }
 
         /// <summary>
@@ -164,9 +200,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public TResponse Fetch()
         {
-            IResponse response = GetResponse();
-            response.ThrowIfNull("response");
-            return service.DeserializeResponse<TResponse>(response);
+            return FetchObject(GetResponse());
         }
 
         /// <summary>
@@ -224,17 +258,26 @@ namespace Google.Apis.Requests
         /// </summary>
         public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
         {
-            BeginFetch(
+            GetAsyncResponse(
                 state =>
-                {
-                    TResponse result = EndFetch(state);
-
-                    // Only invoke the method if it was set.
-                    if (methodToCall != null)
                     {
-                        methodToCall(result);
-                    }
-                }, null);
+                        var result = new LazyResult<TResponse>(() =>
+                                {
+                                    // Retrieve and convert the response.
+                                    IResponse response = state.GetResponse();
+                                    return FetchObject(response);
+                                });
+
+                        // Only invoke the method if it was set.
+                        if (methodToCall != null)
+                        {
+                            methodToCall(result);
+                        }
+                        else
+                        {
+                            result.GetResult();
+                        }
+                    });
         }
 
         /// <summary>
@@ -244,17 +287,28 @@ namespace Google.Apis.Requests
         /// <remarks>The returned stream is encoded in UTF-8.</remarks>
         public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
         {
-            BeginFetchAsStream(
+            GetAsyncResponse(
                 state =>
                     {
-                        Stream result = EndFetchAsStream(state);
+                        var result = new LazyResult<Stream>(
+                            () =>
+                                {
+                                    // Retrieve and convert the response.
+                                    IResponse response = state.GetResponse();
+                                    response.ThrowIfNull("response");
+                                    return response.Stream;
+                                });
 
                         // Only invoke the method if it was set.
                         if (methodToCall != null)
                         {
                             methodToCall(result);
                         }
-                    }, null);
+                        else
+                        {
+                            result.GetResult(); // Resolve the result in any case.
+                        }
+                    });
         }
 
         /// <summary>
@@ -287,7 +341,7 @@ namespace Google.Apis.Requests
         /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
         public IAsyncResult BeginFetch(AsyncCallback callback, object state)
         {
-            return BeginFetchInternal(callback, state, () => Fetch());
+            return BeginFetchInternal(callback, state, result => FetchObject(result.GetResponse()));
         }
 
         /// <summary>
@@ -301,11 +355,11 @@ namespace Google.Apis.Requests
         /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
         public IAsyncResult BeginFetchAsStream(AsyncCallback callback, object state)
         {
-            return BeginFetchInternal(callback, state, FetchAsStream);
+            return BeginFetchInternal(callback, state, result => result.GetResponse().Stream);
         }
 
         [VisibleForTestOnly]
-        internal IAsyncResult BeginFetchInternal(AsyncCallback callback, object state, Func<object> fetchFunction)
+        internal IAsyncResult BeginFetchInternal(AsyncCallback callback, object state, Func<IAsyncRequestResult, object> fetchFunction)
         {
             RequestAsyncResult asyncState = new RequestAsyncResult();
             asyncState.AsyncState = state;
@@ -313,11 +367,11 @@ namespace Google.Apis.Requests
 
             // Create a WaitHandle representing our current task, and run it.
             asyncState.AsyncWaitHandle = new AutoResetEvent(false);
-            ThreadPool.QueueUserWorkItem(
-                o =>
+            GetAsyncResponse(
+                result =>
                     {
                         // Fetch the result.
-                        asyncState.Result = fetchFunction();
+                        asyncState.Result = fetchFunction(result);
 
                         // Signal that the operation has completed.
                         asyncState.IsCompleted = true;

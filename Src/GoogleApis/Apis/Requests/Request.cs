@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -246,6 +247,159 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Container class for the asynchronous execution of a request.
+        /// </summary>
+        private struct AsyncExecutionState
+        {
+            /// <summary>
+            /// The current try we are in. 1 based.
+            /// </summary>
+            public int Try { get; set; }
+
+            /// <summary>
+            /// The time we will wait between the current and the next request if the current one fails.
+            /// </summary>
+            public double WaitTime { get; set; }
+
+            /// <summary>
+            /// The method which will be called once the request has been completed.
+            /// </summary>
+            public Action<IAsyncRequestResult> ResponseHandler { get; set; }
+
+            /// <summary>
+            /// The request which is currently being executed.
+            /// </summary>
+            public WebRequest CurrentRequest { get; set; }
+        }
+
+        /// <summary>
+        /// Represents the result of an asynchronous Request.
+        /// </summary>
+        private class AsyncRequestResult : IAsyncRequestResult
+        {
+            private readonly IResponse response;
+            private readonly GoogleApiRequestException exception;
+
+            public AsyncRequestResult(IResponse response)
+            {
+                this.response = response;
+            }
+            public AsyncRequestResult(GoogleApiRequestException exception)
+            {
+                this.exception = exception;
+            }
+
+            public IResponse GetResponse()
+            {
+                if (exception != null) // Request failed.
+                {
+                    throw exception;
+                }
+
+                return response; // Request succeeded.
+            }
+        }
+
+        /// <summary>
+        /// Begins executing a request based upon the current execution state.
+        /// </summary>
+        /// <remarks>Does not check preconditions.</remarks>
+        private void InternalBeginExecuteRequest(AsyncExecutionState state)
+        {
+            state.CurrentRequest.BeginGetResponse(InternalEndExecuteRequest, state);
+        }
+
+        /// <summary>
+        /// Ends executing an asynchronous request.
+        /// </summary>
+        private void InternalEndExecuteRequest(IAsyncResult async)
+        {
+            AsyncExecutionState state = (AsyncExecutionState)async.AsyncState;
+            try
+            {
+                WebResponse response = state.CurrentRequest.EndGetResponse(async);
+                state.ResponseHandler(new AsyncRequestResult(new Response(response)));
+            }
+            catch (WebException ex)
+            {
+                // Try to get an error response object.
+                RequestError error = null;
+                if (ex.Response != null)
+                {
+                    IResponse errorResponse = new Response(ex.Response);
+                    error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
+                }
+
+                // Try to handle the response somehow.
+                bool wasHandled = false;
+                if (SupportsRetry)
+                {
+                    // Wait some time before sending another request.
+                    Thread.Sleep((int)state.WaitTime);
+                    state.WaitTime *= RetryWaitTimeIncreaseFactor;
+                    state.Try++;
+
+                    foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
+                    {
+                        if (handler.CanHandleErrorResponse(ex, error))
+                        {
+                            // The provided handler was able to handle this error. Retry sending the request.
+                            handler.HandleErrorResponse(ex, error, state.CurrentRequest = CreateWebRequest());
+                            wasHandled = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (wasHandled) // If a change to the request has been made, execute it again.
+                {
+                    InternalBeginExecuteRequest(state);
+                }
+                else // No solution to our problem was found.
+                {
+                    // Retrieve additional information about the http response (if applicable).
+                    HttpStatusCode status = 0;
+                    HttpWebResponse httpResponse = ex.Response as HttpWebResponse;
+                    if (httpResponse != null)
+                    {
+                        status = httpResponse.StatusCode;
+                    }
+
+                    // We were unable to handle the exception. Throw it.
+                    var e = new GoogleApiRequestException(Service, this, error, ex) { HttpStatusCode = status };
+                    state.ResponseHandler(new AsyncRequestResult(e));
+                }
+            }
+            catch (Exception ex) // Unknown exception.
+            {
+                var e = new GoogleApiRequestException(Service, this, null, ex);
+                state.ResponseHandler(new AsyncRequestResult(e));
+            }
+        }
+
+        /// <summary>
+        /// Executes the request asynchronously, and calls the specified delegate once done.
+        /// </summary>
+        /// <param name="responseHandler">The method to call once a response has been received.</param>
+        public void ExecuteRequestAsync(Action<IAsyncRequestResult> responseHandler)
+        {
+            // Validate the input.
+            var validator = new MethodValidator(Method, Parameters);
+            if (validator.ValidateAllParameters() == false)
+            {
+                throw new InvalidOperationException("Request parameter validation failed for [" + this + "]");
+            }
+
+            InternalBeginExecuteRequest(new AsyncExecutionState 
+                                        {
+                                            ResponseHandler = responseHandler,
+                                            Try = 1,
+                                            WaitTime = RetryInitialWaitTime,
+                                            CurrentRequest =  CreateWebRequest()
+                                        });
+        }
+
+        /// <summary>
         /// Executes a request given the configuration options supplied.
         /// </summary>
         /// <returns>
@@ -253,93 +407,15 @@ namespace Google.Apis.Requests
         /// </returns>
         public IResponse ExecuteRequest()
         {
-            // Validate the input
-            var validator = new MethodValidator(Method, Parameters);
-            if (validator.ValidateAllParameters() == false)
-            {
-                throw new InvalidOperationException("Request parameter validation failed for ["+this+"]");
-            }
-
-            WebRequest request = CreateWebRequest();
-
-            // Try to execute the request.
-            int tries = 0;
-            double waitTime = RetryInitialWaitTime;
-            while (true)
-            {
-                tries++;
-                try
-                {
-                    // If we can get a valid response, return immediately.
-#if !SILVERLIGHT
-                    WebResponse response = request.GetResponse();
-#else
-                    WebResponse response = null;
-                    request.BeginGetResponse(
-                        a =>
-                            {
-                                var req = (WebRequest) a.AsyncState;
-                                response = req.EndGetResponse(a);
-                            }, request);
-
-                    // TODO(mlinder): Implement propery async fetches for Silverlight.
-                    int timeout = 100;
-                    while (response == null) // Due to Silverlights nature this is an endless loop.
-                    {
-                        Thread.Sleep(100);
-                        if (timeout-- == 0)
-                            throw new TimeoutException("Fetch failed. Timeout.");
-                    }
-#endif
-                    return new Response(response);
-                }
-                catch (WebException ex)
-                {
-                    // Try to get an error response object.
-                    RequestError error = null;
-                    if (ex.Response != null)
-                    {
-                        IResponse errorResponse = new Response(ex.Response);
-                        error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
-                    }
-
-                    // Try finding an error handler for this response.
-                    bool isHandled = false;
-                    if (SupportsRetry)
-                    {
-                        foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
-                        {
-                            if (handler.CanHandleErrorResponse(ex, error))
-                            {
-                                // The provided handler was able to handle this error. Retry sending the request.
-                                handler.HandleErrorResponse(ex, error, request = CreateWebRequest());
-                                isHandled = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (!isHandled || tries >= MaximumRetries)
-                    {
-                        // Retrieve additional information about the http response (if applicable).
-                        HttpStatusCode status = 0;
-                        HttpWebResponse httpResponse = ex.Response as HttpWebResponse;
-                        if (httpResponse != null)
-                        {
-                            status = httpResponse.StatusCode;
-                        }
-
-                        // We were unable to handle the exception. Throw it.
-                        throw new GoogleApiRequestException(Service, this, error, ex) { HttpStatusCode = status };
-                    }
-
-                    if (tries > 1) // The first retry occurs immediately.
-                    {
-                        Thread.Sleep((int)waitTime);
-                        waitTime = waitTime * RetryWaitTimeIncreaseFactor;
-                    }
-                }
-            }
+            AutoResetEvent waitHandle = new AutoResetEvent(false);
+            IAsyncRequestResult result = null;
+            ExecuteRequestAsync(r =>
+                                    {
+                                        result = r;
+                                        waitHandle.Set();
+                                    });
+            waitHandle.WaitOne();
+            return result.GetResponse();
         }
 
         #endregion

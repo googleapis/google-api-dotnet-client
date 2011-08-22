@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.IO;
 using System.Collections.Generic;
 using Google.Apis.Authentication;
@@ -91,8 +92,27 @@ namespace Google.Apis.Requests
         IRequest WithETagAction(ETagAction action);
 
         /// <summary>
+        /// Executes the request asynchronously, and calls the specified delegate once done.
+        /// </summary>
+        /// <param name="responseHandler">The method to call once a response has been received.</param>
+        void ExecuteRequestAsync(Action<IAsyncRequestResult> responseHandler);
+
+        /// <summary>
         /// Executes the request and returns the response.
         /// </summary>
         IResponse ExecuteRequest();
     }
+
+    /// <summary>
+    /// Represents the result of a asynchronous Request.
+    /// </summary>
+    public interface IAsyncRequestResult
+    {
+        /// <summary>
+        /// Retrieves the response to this request.
+        /// </summary>
+        /// <exception cref="GoogleApiRequestException">Thrown if the request failed</exception>
+        IResponse GetResponse();
+    }
+
 }
