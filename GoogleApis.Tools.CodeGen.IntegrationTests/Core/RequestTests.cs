@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
@@ -87,6 +89,51 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
 
             // Confirm that the IErrorResponseHandler has run and tried to resend/modify the request.
             Assert.IsTrue(auth.Called);
+        }
+
+        /// <summary>
+        /// Tests executing an asynchronous request.
+        /// </summary>
+        [Test]
+        public void TestAsyncSystem()
+        {
+            var request =
+               (Request)
+               Request.CreateRequest(
+                   new MockService(),
+                   new MockMethod
+                   {
+                       HttpMethod = "GET",
+                       Name = "TestMethod",
+                       // Define an invalid URI which will cause a WebException to be thrown.
+                       RestPath = "https://localhost:12345/",
+                       Parameters = new Dictionary<string, IParameter>()
+                   });
+
+            AutoResetEvent waitHandle = new AutoResetEvent(false);
+
+            bool isBlocking = true;
+            request.WithParameters(new Dictionary<string, string>());
+            request.ExecuteRequestAsync(result =>
+                                            {
+                                                // Check whether the request is indeed async.
+                                                Thread.Sleep(10);
+                                                Assert.IsFalse(isBlocking);
+
+                                                // Check whether retrieving an response will throw an exception
+                                                // because of the invalid rest URI of this request.
+                                                Assert.Throws<GoogleApiRequestException>(
+                                                    () => result.GetResponse());
+
+                                                waitHandle.Set();
+                                            });
+            isBlocking = false;
+
+            // Confirm that the code in the anonymous method was executed.
+            if (!waitHandle.WaitOne(10000))
+            {
+                Assert.Fail("Async-Request did not terminate.");
+            }
         }
     }
 }

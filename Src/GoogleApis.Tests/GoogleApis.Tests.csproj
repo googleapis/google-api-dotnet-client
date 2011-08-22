@@ -81,6 +81,7 @@
     <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
     <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
     <Compile Include="Apis\Utils\LazyBindingTest.cs" />
+    <Compile Include="Apis\Utils\LazyResultTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />

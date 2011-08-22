@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
 
@@ -31,6 +32,8 @@ namespace Google.Apis.Testing
         {
             HasExecuted = false;
         }
+
+        public bool SuspendAsyncRequest = false;
 
         public string RpcName { get; set; }
         public ReturnType ReturnType { get; set; }
@@ -118,6 +121,34 @@ namespace Google.Apis.Testing
         {
             ETagAction = action;
             return this;
+        }
+
+        private class MockAsyncRequestResult : IAsyncRequestResult
+        {
+            private readonly IResponse response;
+            
+            public MockAsyncRequestResult(IResponse response)
+            {
+                this.response = response;
+            }
+            
+            public IResponse GetResponse()
+            {
+                return response;
+            }
+        }
+
+        public virtual void ExecuteRequestAsync(Action<IAsyncRequestResult> responseHandler)
+        {
+            ThreadPool.QueueUserWorkItem((o) =>
+                                             {
+                                                 while (SuspendAsyncRequest)
+                                                 {
+                                                     Thread.Sleep(10);
+                                                 }
+
+                                                 responseHandler(new MockAsyncRequestResult(ExecuteRequest()));
+                                             });
         }
 
         public IResponse ExecuteRequest()

@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.IO;
 using System.Runtime.InteropServices;
+using Google.Apis.Util;
 
 namespace Google.Apis.Requests
 {
@@ -62,5 +63,5 @@ namespace Google.Apis.Requests
     /// <summary>
     /// Delegate for executing an asynchronous request.
     /// </summary>
-    public delegate void ExecuteRequestDelegate<T>(T response);
+    public delegate void ExecuteRequestDelegate<T>(LazyResult<T> response);
 }
