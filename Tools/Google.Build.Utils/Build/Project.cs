@@ -157,6 +157,39 @@ namespace Google.Build.Utils.Build
         }
 
         /// <summary>
+        /// Copies the resulting binaries and dependencies to the specified directory.
+        /// </summary>
+        public void CopyAllFilesTo(string dir)
+        {
+            Log("Copying output to " + Path.GetFileName(dir) + " ...");
+
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            // Copy all output files into the target directory
+            string buildDir = Path.GetDirectoryName(BinaryFile);
+            foreach (string file in Directory.GetFiles(buildDir, "*.*", SearchOption.TopDirectoryOnly))
+            {
+                switch (Path.GetExtension(file).ToLower())
+                {
+                    default:
+                        continue; // Unsupported.
+                    case ".dll":
+                    case ".exe":
+                    case ".pdb":
+                    case ".xml":
+                        break; // Copy all assemblies and relevant information into the target directory.
+                }
+
+                string fileName = Path.GetFileName(file);
+                Log("  * " + fileName);
+                File.Copy(file, Path.Combine(dir, fileName), true);
+            }
+        }
+
+        /// <summary>
         /// Runs the 
         /// </summary>
         public void RunBuildTask()
