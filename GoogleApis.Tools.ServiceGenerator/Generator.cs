@@ -20,6 +20,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Security.Policy;
 using Google;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.v1.Data;
@@ -189,7 +190,7 @@ namespace GoogleApis.Tools.ServiceGenerator
 
             foreach (Type type in new[] { typeof(Newtonsoft.Json.JsonConvert), typeof(GoogleApiException) })
             {
-                cp.ReferencedAssemblies.Add(type.Assembly.CodeBase.Replace("file:///", ""));
+                cp.ReferencedAssemblies.Add(new Uri(type.Assembly.CodeBase).LocalPath);
             }
 
             var provider = CodeDomProvider.CreateProvider("CSharp");
@@ -205,8 +206,8 @@ namespace GoogleApis.Tools.ServiceGenerator
             }
             else
             {
-                Console.Out.WriteLine("  Library generated in '" + targetFile + "'!");
-                Console.Out.WriteLine("  XML Doc generated in '" + xmlDocFile + "'!");
+                Console.Out.WriteLine("  Library generated in '" + targetFile + "'");
+                Console.Out.WriteLine("  XML Doc generated in '" + xmlDocFile + "'");
             }
         }
                 

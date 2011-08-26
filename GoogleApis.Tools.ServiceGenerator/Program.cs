@@ -28,6 +28,7 @@ namespace GoogleApis.Tools.ServiceGenerator
     {
         static void Main(string[] args)
         {
+            // Set the default settings.
             string outputDir = "Services";
             var flags = GeneratorFlags.CompileLibrary;
 
@@ -36,6 +37,7 @@ namespace GoogleApis.Tools.ServiceGenerator
                 args = new[] { "--help" };
             }
 
+            // Run the application.
             try
             {
                 // Parse arguments.
