@@ -540,8 +540,8 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         #endregion
-		
-		/// <summary>
+        
+        /// <summary>
         /// Returns the first <see cref="System.CodeDom.CodeMemberProperty"/> with a 
         /// name that matches the passed in name - or null if no match is found.
         /// </summary>

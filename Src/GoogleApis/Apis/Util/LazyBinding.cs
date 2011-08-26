@@ -16,7 +16,6 @@ limitations under the License.
 
 using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace Google.Apis.Util
@@ -34,14 +33,7 @@ namespace Google.Apis.Util
         /// <exception cref="FileNotFoundException">The assembly was not found.</exception>
         public static Assembly GetAssembly(string name)
         {
-#if SILVERLIGHT
             return Assembly.Load(name);
-#else
-            // Check whether an assembly with that name is already loaded, or load it otherwise.
-            return (from Assembly loadedAssembly in AppDomain.CurrentDomain.GetAssemblies()
-                    where loadedAssembly.GetName().Name == name
-                    select loadedAssembly).SingleOrDefault() ?? Assembly.Load(name);
-#endif
         }
 
         /// <summary>

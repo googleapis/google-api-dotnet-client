@@ -284,6 +284,15 @@ namespace Google.Apis
         /// <remarks>Will only work with one split character.</remarks>
         public static string[] Split(this string str, char[] separators, int segments)
         {
+            if (segments <= 0)
+            {
+                throw new ArgumentException("Must have at least one segment.", "segments");
+            }
+            if (separators.Length == 0 || segments == 1)
+            {
+                // If no seperator has been specified or only one segment is requested, return the original string.
+                return new[] { str };
+            }
             if (separators.Length != 1)
             {
                 throw new NotImplementedException("Only one separator is supported at the moment.");   

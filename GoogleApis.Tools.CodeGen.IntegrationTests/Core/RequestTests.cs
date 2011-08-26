@@ -110,27 +110,29 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
                        Parameters = new Dictionary<string, IParameter>()
                    });
 
-            AutoResetEvent waitHandle = new AutoResetEvent(false);
+            AutoResetEvent mainThread = new AutoResetEvent(false);
+            AutoResetEvent workerThread = new AutoResetEvent(false);
 
-            bool isBlocking = true;
             request.WithParameters(new Dictionary<string, string>());
             request.ExecuteRequestAsync(result =>
                                             {
                                                 // Check whether the request is indeed async.
-                                                Thread.Sleep(10);
-                                                Assert.IsFalse(isBlocking);
+                                                if (!mainThread.WaitOne(5000))
+                                                {
+                                                    Assert.Fail("Async-Request was blocking.");
+                                                }
 
                                                 // Check whether retrieving an response will throw an exception
                                                 // because of the invalid rest URI of this request.
                                                 Assert.Throws<GoogleApiRequestException>(
                                                     () => result.GetResponse());
 
-                                                waitHandle.Set();
+                                                workerThread.Set();
                                             });
-            isBlocking = false;
+            mainThread.Set();
 
             // Confirm that the code in the anonymous method was executed.
-            if (!waitHandle.WaitOne(10000))
+            if (!workerThread.WaitOne(5000))
             {
                 Assert.Fail("Async-Request did not terminate.");
             }
