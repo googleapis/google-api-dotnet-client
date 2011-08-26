@@ -43,6 +43,10 @@ namespace BuildRelease
                 Description = "Uses the local repository instead of checking out a new one. Not releasable.")]
             public bool UseLocalRepository { get; set; }
 
+            [CommandLine.Argument("stable", ShortName = "s",
+                Description = "Creates a stable release instead of a development build.")]
+            public bool IsStableRelease { get; set; }
+
             /// <summary>
             /// True if this repository set can be used to build a full release.
             /// </summary>
@@ -166,17 +170,15 @@ namespace BuildRelease
             FileVersionInfo apiVersion;
             Project[] allProjects;
             Project[] baseLibrary = BuildProjects(out apiVersion, out allProjects);
-            Project codegen = baseLibrary.Where(proj => proj.Name == "GoogleApis.Tools.CodeGen").Single();
-            
+            Project servicegen = baseLibrary.Where(proj => proj.Name == "GoogleApis.Tools.ServiceGenerator").Single();
+
             // Retrieve tag name
             string tag = GetTagName(apiVersion);
 
-            // 3. Update & Build the samples
-            Project servicegen = UpdateServiceGenerator(codegen);
             UpdateSamples(baseLibrary, servicegen);
 
             // 4. Build contrib
-            BuildContribRelease(tag, baseLibrary, allProjects);
+            BuildContribRelease(tag, baseLibrary, allProjects, servicegen);
 
             // 5. Update the Wiki
             UpdateWiki();
@@ -257,8 +259,9 @@ namespace BuildRelease
             Project baseApi = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.csproj"));
             Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen", "GoogleApis.Tools.CodeGen.csproj"));
             Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2", "GoogleApis.Authentication.OAuth2.csproj"));
+            Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator", "GoogleApis.Tools.ServiceGenerator.csproj"));
 
-            var releaseProjects = new[] { baseApi, codegen, oauth2 };
+            var releaseProjects = new[] { baseApi, codegen, oauth2, generator };
             projects.AddRange(releaseProjects);
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests", "GoogleApis.Tests.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests", "GoogleApis.Tools.CodeGen.Tests.csproj")));
@@ -342,43 +345,6 @@ namespace BuildRelease
             return tag;
         }
 
-        /// <summary>
-        /// Migrates the service generator to the newest version. This is achieved by first creating its own
-        /// dependency using the new CodeGen.dll.
-        /// </summary>
-        /// <param name="codegenProject">The project pointing to the CodeGenerator.dll</param>
-        /// <returns>Project pointing to the ServiceGenerator.exe</returns>
-        private static Project UpdateServiceGenerator(Project codegenProject)
-        {
-            CommandLine.WriteLine("{{white}} =======================================");
-            CommandLine.WriteLine("{{white}} Updating the ServiceGenerator");
-            CommandLine.WriteLine("{{white}} =======================================");
-
-            // Update the *.Codegen.dll.
-            DirUtils.CopyFile(codegenProject.BinaryFile, Samples.Combine("Lib"));
-
-            // Build the ServiceGenerator.
-            Project serviceGenerator =
-                new Project(Samples.Combine("ServiceGenerator", "GoogleApis.ServiceGenerator.csproj"));
-
-            try
-            {
-                serviceGenerator.RunBuildTask();
-
-                // Generate its own discovery dependency.
-                var runner = new Runner(serviceGenerator.BinaryFile , "--non-interactive", "-c", "-o=" + ServiceDir, "discovery", "v1");
-                runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
-                runner.Run();
-            } 
-            catch (Exception)
-            {
-                CommandLine.WriteError("Automatic single-step migration of the ServiceGenerator has failed!");
-            }
-
-            CommandLine.WriteLine();
-            return serviceGenerator;
-        }
-
         private static void UpdateSamples(IEnumerable<Project> releaseProjects, Project serviceGenerator)
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -402,27 +368,11 @@ namespace BuildRelease
             }
 
             // Generate all strongly typed services.
-            try
-            {
-                // Build the updated ServiceGenerator.
-                serviceGenerator.RunBuildTask();
-
-                // Clear the "Services" directory.
-                DirUtils.ClearDir(ServiceDir);
-
-                // Run the generator.
-                var runner = new Runner(
-                    serviceGenerator.BinaryFile, "--non-interactive", "-o=" + ServiceDir, "-c", "-a");
-                runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
-                runner.Run();
-            } catch (Exception)
-            {
-                CommandLine.WriteLine();
-                CommandLine.WriteError("Migrating the ServiceGenerator has failed.");
-                CommandLine.WriteError("Please fix the Discovery dependency of the generator manually,");
-                CommandLine.WriteError("and then re-run this build.");
-                throw;
-            }
+            DirUtils.ClearDir(ServiceDir);
+            var runner = new Runner(
+                serviceGenerator.BinaryFile, "--google", "--output", ServiceDir, "repository");
+            runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
+            runner.Run();
 
             // Build all the samples projects.
             CommandLine.WriteAction("Building samples...");
@@ -445,14 +395,15 @@ namespace BuildRelease
         /// </summary>
         private static void BuildContribRelease(string tag,
                                                 IEnumerable<Project> baseLibrary,
-                                                IEnumerable<Project> allProjects)
+                                                IEnumerable<Project> allProjects,
+                                                Project serviceGenerator)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Building Contrib-Release");
             CommandLine.WriteLine("{{white}} =======================================");
 
             string releaseDir = Contrib.Combine(tag);
-            string currentDir = Contrib.Combine("Current");
+            string currentDir = Contrib.Combine(Arguments.IsStableRelease ? "Stable" : "Current");
 
             // Clear existing directories.
             DirUtils.ClearOrCreateDir(releaseDir);
@@ -515,6 +466,12 @@ namespace BuildRelease
                     }
                 }
             }
+
+            // Current/Generated/Bin/ServiceGenerator/
+            string serviceGeneratorDir = Path.Combine(binDir, "ServiceGenerator");
+            Directory.CreateDirectory(serviceGeneratorDir);
+            serviceGenerator.CopyAllFilesTo(serviceGeneratorDir);
+            
             #endregion
 
             #region Current/ZipFiles
