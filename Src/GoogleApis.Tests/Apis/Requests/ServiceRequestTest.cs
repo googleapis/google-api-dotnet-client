@@ -45,10 +45,13 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 Assert.AreEqual("Resource", resource);
                 Assert.AreEqual("Method", method);
-                return
-                    LastRequest =
-                    new MockRequest()
-                        { StreamToReturn = new MemoryStream(), SuspendAsyncRequest = CreateSuspendedRequests };
+                LastRequest = new MockRequest
+                                  {
+                                      StreamToReturn = new MemoryStream(), 
+                                      SuspendAsyncRequest = CreateSuspendedRequests
+                                  };
+                return LastRequest;
+
             }
 
             public string SerializeObject(object data)

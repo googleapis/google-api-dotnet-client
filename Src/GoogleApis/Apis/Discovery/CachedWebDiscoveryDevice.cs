@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Don't include the CachedWebDiscoveryDevice on Silverlight as the File-operations are not available,
+// and because this discovery implementation should not be used at runtime.
 #if !SILVERLIGHT
 
 using System;
@@ -31,7 +33,7 @@ namespace Google.Apis.Discovery
     public class CachedWebDiscoveryDevice : IDiscoveryDevice
     {
         private const int BufferSize = 32 * 1024; // 32kb
-       private static readonly ILogger logger = ApplicationContext.Logger.ForType<CachedWebDiscoveryDevice>();
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<CachedWebDiscoveryDevice>();
 
         private DirectoryInfo cacheDirectory;
         private FileStream fileStream;

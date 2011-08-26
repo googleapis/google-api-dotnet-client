@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
+using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
@@ -51,6 +52,8 @@ namespace Google.Apis.Requests
         /// The charset used for content encoding.
         /// </summary>
         public static readonly Encoding ContentCharset = Encoding.UTF8;
+
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<Request>();
 
         public const string DELETE = "DELETE";
         public const string GET = "GET";
@@ -247,29 +250,29 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Container class for the asynchronous execution of a request.
+        /// Container struct for the asynchronous execution of a request.
         /// </summary>
         private struct AsyncExecutionState
         {
             /// <summary>
             /// The current try we are in. 1 based.
             /// </summary>
-            public int Try { get; set; }
+            public int Try;
 
             /// <summary>
             /// The time we will wait between the current and the next request if the current one fails.
             /// </summary>
-            public double WaitTime { get; set; }
+            public double WaitTime;
 
             /// <summary>
             /// The method which will be called once the request has been completed.
             /// </summary>
-            public Action<IAsyncRequestResult> ResponseHandler { get; set; }
+            public Action<IAsyncRequestResult> ResponseHandler;
 
             /// <summary>
             /// The request which is currently being executed.
             /// </summary>
-            public WebRequest CurrentRequest { get; set; }
+            public WebRequest CurrentRequest;
         }
 
         /// <summary>
@@ -312,67 +315,76 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Ends executing an asynchronous request.
         /// </summary>
-        private void InternalEndExecuteRequest(IAsyncResult async)
+        private void InternalEndExecuteRequest(IAsyncResult asyncResult)
         {
-            AsyncExecutionState state = (AsyncExecutionState)async.AsyncState;
+            AsyncExecutionState state = (AsyncExecutionState)asyncResult.AsyncState;
             try
             {
-                WebResponse response = state.CurrentRequest.EndGetResponse(async);
+                WebResponse response = state.CurrentRequest.EndGetResponse(asyncResult);
                 state.ResponseHandler(new AsyncRequestResult(new Response(response)));
             }
             catch (WebException ex)
             {
-                // Try to get an error response object.
-                RequestError error = null;
-                if (ex.Response != null)
-                {
-                    IResponse errorResponse = new Response(ex.Response);
-                    error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
-                }
-
-                // Try to handle the response somehow.
-                bool wasHandled = false;
-                if (SupportsRetry)
-                {
-                    // Wait some time before sending another request.
-                    Thread.Sleep((int)state.WaitTime);
-                    state.WaitTime *= RetryWaitTimeIncreaseFactor;
-                    state.Try++;
-
-                    foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
-                    {
-                        if (handler.CanHandleErrorResponse(ex, error))
-                        {
-                            // The provided handler was able to handle this error. Retry sending the request.
-                            handler.HandleErrorResponse(ex, error, state.CurrentRequest = CreateWebRequest());
-                            wasHandled = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (wasHandled) // If a change to the request has been made, execute it again.
-                {
-                    InternalBeginExecuteRequest(state);
-                }
-                else // No solution to our problem was found.
-                {
-                    // Retrieve additional information about the http response (if applicable).
-                    HttpStatusCode status = 0;
-                    HttpWebResponse httpResponse = ex.Response as HttpWebResponse;
-                    if (httpResponse != null)
-                    {
-                        status = httpResponse.StatusCode;
-                    }
-
-                    // We were unable to handle the exception. Throw it.
-                    var e = new GoogleApiRequestException(Service, this, error, ex) { HttpStatusCode = status };
-                    state.ResponseHandler(new AsyncRequestResult(e));
-                }
+                HandleFailedRequest(state, ex);   
             }
             catch (Exception ex) // Unknown exception.
             {
                 var e = new GoogleApiRequestException(Service, this, null, ex);
+                state.ResponseHandler(new AsyncRequestResult(e));
+            }
+        }
+
+        /// <summary>
+        /// Handles a failed request, and tries to fix it if possible.
+        /// </summary>
+        private void HandleFailedRequest(AsyncExecutionState state, WebException exception)
+        {
+            // Try to get an error response object.
+            RequestError error = null;
+            if (exception.Response != null)
+            {
+                IResponse errorResponse = new Response(exception.Response);
+                error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
+            }
+
+            // Try to handle the response somehow.
+            bool wasHandled = false;
+            if (SupportsRetry && state.Try < MaximumRetries)
+            {
+                // Wait some time before sending another request.
+                Thread.Sleep((int)state.WaitTime);
+                state.WaitTime *= RetryWaitTimeIncreaseFactor;
+                state.Try++;
+
+                foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
+                {
+                    if (handler.CanHandleErrorResponse(exception, error))
+                    {
+                        // The provided handler was able to handle this error. Retry sending the request.
+                        handler.HandleErrorResponse(exception, error, state.CurrentRequest = CreateWebRequest());
+                        wasHandled = true;
+                        break;
+                    }
+                }
+            }
+
+            if (wasHandled) // If a change to the request has been made, execute it again.
+            {
+                logger.Warning("Retrying request [{0}]", this);
+                InternalBeginExecuteRequest(state);
+            }
+            else // No solution to our problem was found.
+            {
+                // Retrieve additional information about the http response (if applicable).
+                HttpStatusCode status = 0;
+                HttpWebResponse httpResponse = exception.Response as HttpWebResponse;
+                if (httpResponse != null)
+                {
+                    status = httpResponse.StatusCode;
+                }
+
+                // We were unable to handle the exception. Throw it wrapped in a GoogleApiRequestException.
+                var e = new GoogleApiRequestException(Service, this, error, exception) { HttpStatusCode = status };
                 state.ResponseHandler(new AsyncRequestResult(e));
             }
         }
@@ -609,6 +621,7 @@ namespace Google.Apis.Requests
             string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
 
             // The UserAgent header can only be set on a non-Silverlight platform.
+            // Silverlight uses the user agent of the browser instead.
 #if !SILVERLIGHT
             request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
 #endif
@@ -656,15 +669,9 @@ namespace Google.Apis.Requests
                     // is required as e.g. the google servers will throw a "411 - Length required" error otherwise.
 #if !SILVERLIGHT
                     request.ContentLength = 0;
+#else
+                    // Set by the browser on Silverlight. Cannot be modified by the user.
 #endif
-                    /* On Silverlight version 4, set by the ContentLength property. On the browser HTTP stack, 
-                     * this ContentLength property is not required to be set because the Silverlight runtime 
-                     * will automatically populate the header with the correct value based on the buffered 
-                     * request body. If a Silverlight application on either the browser or client HTTP stack
-                     * sets this property to a value that does not match the size of the provided request body, 
-                     * a ProtocolViolationException is thrown when the request is sent.
-                     * On Silverlight version 3, set by the system or the web browser that hosts the 
-                     * Silverlight application. */
                 }
             }
 

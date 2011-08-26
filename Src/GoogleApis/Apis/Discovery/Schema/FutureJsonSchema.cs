@@ -100,6 +100,8 @@ namespace Google.Apis.Discovery.Schema
             Transient = schema.Transient;
             Type = schema.Type;
              
+            // The Newtonsoft.Silverlight implementation does not contain all properties.
+            // Only add them if we are using the regular Newtonsoft.dll
 #if !SILVERLIGHT
             Required = schema.Required;
             PatternProperties = schema.PatternProperties;

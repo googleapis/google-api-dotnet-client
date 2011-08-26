@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Build.Tester", "Goog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Mobile", "System.Web.Mobile\System.Web.Mobile.csproj", "{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncProjectFiles", "SyncProjectFiles\SyncProjectFiles.csproj", "{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,16 @@ Global
 		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C8CF8B7C-6FB8-49A1-80F2-CAF56E30049C}.Release|x86.ActiveCfg = Release|Any CPU
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Debug|x86.ActiveCfg = Debug|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Debug|x86.Build.0 = Debug|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Release|Any CPU.ActiveCfg = Release|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Release|x86.ActiveCfg = Release|x86
+		{B67203F0-A8A2-4D52-BA2F-97D0DC146EC0}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

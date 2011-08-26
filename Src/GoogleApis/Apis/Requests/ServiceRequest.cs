@@ -159,7 +159,7 @@ namespace Google.Apis.Requests
             string requestName = string.Format("{0}.{1}", ResourcePath, MethodName);
             logger.Debug("Start Executing " + requestName);
             IRequest request = BuildRequest();
-            request.ExecuteRequestAsync(result =>
+            request.ExecuteRequestAsync((IAsyncRequestResult result) =>
                                             {
                                                 logger.Debug("Done Executing " + requestName);
                                                 responseHandler(result);
@@ -259,7 +259,7 @@ namespace Google.Apis.Requests
         public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
         {
             GetAsyncResponse(
-                state =>
+                (IAsyncRequestResult state) =>
                     {
                         var result = new LazyResult<TResponse>(() =>
                                 {
@@ -288,7 +288,7 @@ namespace Google.Apis.Requests
         public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
         {
             GetAsyncResponse(
-                state =>
+                (IAsyncRequestResult state) =>
                     {
                         var result = new LazyResult<Stream>(
                             () =>
@@ -359,7 +359,9 @@ namespace Google.Apis.Requests
         }
 
         [VisibleForTestOnly]
-        internal IAsyncResult BeginFetchInternal(AsyncCallback callback, object state, Func<IAsyncRequestResult, object> fetchFunction)
+        internal IAsyncResult BeginFetchInternal(AsyncCallback callback,
+                                                 object state,
+                                                 Func<IAsyncRequestResult, object> fetchFunction)
         {
             RequestAsyncResult asyncState = new RequestAsyncResult();
             asyncState.AsyncState = state;

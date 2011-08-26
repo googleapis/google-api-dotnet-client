@@ -59,6 +59,8 @@ namespace Google.Apis.Discovery
         public Stream Fetch()
         {
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(DiscoveryUri);
+
+            // The timeout property is only supported on regular .NET.
 #if !SILVERLIGHT
             request.Timeout = TimeoutInSeconds * 1000;
 #endif

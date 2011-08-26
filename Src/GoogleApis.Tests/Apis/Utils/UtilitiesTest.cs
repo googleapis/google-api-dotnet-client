@@ -298,5 +298,26 @@ namespace Google.Apis.Tests.Apis.Util
             CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, new[] { 1 }.Concat(2).Concat(3).Concat(4));
             CollectionAssert.AreEqual(new[] { 1 }, new int[0].Concat(1));
         }
+
+#if SILVERLIGHT
+        /// <summary>
+        /// Tests the String.Split extension method.
+        /// </summary>
+        [Test]
+        public void SplitTest()
+        {
+            char[] seperators = new[] { '.' };
+            const string testString = "one.two..three";
+            Func<char[], int, string[]> split = (seps, segs) => Utilities.Split(testString, seps, segs);
+
+            Assert.Throws<NotImplementedException>(() => split(new[] { 'a', 'b' }, 2));
+            Assert.Throws<ArgumentException>(() => split(seperators, 0));
+            CollectionAssert.AreEqual(new[] { testString }, split(new char[0], 3));
+            CollectionAssert.AreEqual(new[] {"one", "two", "", "three"}, split(seperators, 4));
+            CollectionAssert.AreEqual(new[] { "one", "two", ".three" }, split(seperators, 3));
+            CollectionAssert.AreEqual(new[] { "one", "two..three" }, split(seperators, 2));
+            CollectionAssert.AreEqual(new[] { testString }, split(seperators, 1));
+        }
+#endif        
     }
 }
