@@ -98,7 +98,7 @@ namespace UpdateWikiLists.Wiki
             string binFileName = string.Format("Google.Apis.{0}.{1}.dll", formalName, formalVersion);
 
             // Fill in the data.
-            const string RELEASE_DIR = "http://contrib.google-api-dotnet-client.googlecode.com/hg/Current";
+            const string RELEASE_DIR = "http://contrib.google-api-dotnet-client.googlecode.com/hg/Stable";
             const string BINARY_PATH = RELEASE_DIR + "/Generated/Bin/{0}Service/{1}";
             var data = new Entries();
             data.Add("URL_DOCU", api.DocumentationLink);

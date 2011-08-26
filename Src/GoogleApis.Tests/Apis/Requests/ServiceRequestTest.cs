@@ -147,8 +147,17 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new MockServiceRequest<string>(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
+            var wait = new AutoResetEvent(false);
             request.FetchAsyncAsStream();
-            request.FetchAsyncAsStream(Assert.IsNotNull);
+            request.FetchAsyncAsStream((response) =>
+                                           { 
+                                               Assert.IsNotNull(response.GetResult());
+                                               wait.Set();
+                                           });
+            if (!wait.WaitOne(5000))
+            {
+                Assert.Fail("Async-task was not finished.");
+            }
         }
 
         /// <summary>
@@ -160,8 +169,17 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new MockServiceRequest<string>(new MockRequestProvider());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
+            var wait = new AutoResetEvent(false);
             request.FetchAsync();
-            request.FetchAsync((response) => Assert.AreEqual("FooBar", response));
+            request.FetchAsync((response) =>
+                                   {
+                                       Assert.AreEqual("FooBar", response.GetResult());
+                                       wait.Set();
+                                   });
+            if (!wait.WaitOne(5000))
+            {
+                Assert.Fail("Async-task was not finished.");
+            }
         }
 
         /// <summary>

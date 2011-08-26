@@ -175,13 +175,17 @@ namespace BuildRelease
             // Retrieve tag name
             string tag = GetTagName(apiVersion);
 
+            // TODO(mlinder): Should we only use a Stable version for our Samples? 
             UpdateSamples(baseLibrary, servicegen);
 
             // 4. Build contrib
             BuildContribRelease(tag, baseLibrary, allProjects, servicegen);
 
             // 5. Update the Wiki
-            UpdateWiki();
+            if (Arguments.IsStableRelease)
+            {
+                UpdateWiki();
+            }
 
             // Ask the user whether he wants to continue the release.
             string res = "no";
@@ -257,11 +261,12 @@ namespace BuildRelease
             
             var projects = new List<Project>();
             Project baseApi = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.csproj"));
+            Project baseApiSilverlight = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.Silverlight.csproj"));
             Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen", "GoogleApis.Tools.CodeGen.csproj"));
             Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2", "GoogleApis.Authentication.OAuth2.csproj"));
             Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator", "GoogleApis.Tools.ServiceGenerator.csproj"));
 
-            var releaseProjects = new[] { baseApi, codegen, oauth2, generator };
+            var releaseProjects = new[] { baseApi, baseApiSilverlight, codegen, oauth2, generator };
             projects.AddRange(releaseProjects);
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests", "GoogleApis.Tests.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests", "GoogleApis.Tools.CodeGen.Tests.csproj")));
@@ -271,7 +276,10 @@ namespace BuildRelease
             foreach (Project proj in projects)
             {
                 proj.RunBuildTask();
-                RunUnitTest(proj.BinaryFile);
+                if (!releaseProjects.Contains(proj)) // If this assembly may contain tests, then run them.
+                {
+                    RunUnitTest(proj.BinaryFile);
+                }
             }
 
             CommandLine.WriteLine();
