@@ -20,7 +20,6 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Security.Policy;
 using Google;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.v1.Data;
@@ -33,6 +32,11 @@ namespace GoogleApis.Tools.ServiceGenerator
     /// </summary>
     public class Generator
     {
+        /// <summary>
+        /// The prefix which is used when a Google service is being generated.
+        /// </summary>
+        private const string GooglePrefix = "Google.Apis.";
+
         /// <summary>
         /// The directory where the generated files will be put.
         /// </summary>
@@ -92,11 +96,9 @@ namespace GoogleApis.Tools.ServiceGenerator
         /// Generates a service from the specified discovery uri.
         /// </summary>
         /// <param name="url">The URL or file where the discovery document can be found.</param>
-        /// <param name="outputDir">The directory in which the generated services are put.</param>
-        /// <param name="flags">The flags describing the generator settings.</param>
         public void GenerateService(Uri url)
         {
-            Console.WriteLine(" Generating: "+url);
+            Console.WriteLine(" Generating: " + url);
 
             // Create the output directory if it does not exist yet.
             if (!Directory.Exists(OutputDir))
@@ -115,7 +117,7 @@ namespace GoogleApis.Tools.ServiceGenerator
                                              }
                                        : new StringDiscoveryDevice { Document = Utils.FetchDocument(url) };
             var discovery = new DiscoveryService(src);
-            var service = discovery.GetService(DiscoveryVersion.Version_1_0);
+            IService service = discovery.GetService(DiscoveryVersion.Version_1_0);
 
             // Generate the formal names based upon the discovery data.
             string name = service.Name;
@@ -124,7 +126,7 @@ namespace GoogleApis.Tools.ServiceGenerator
             string formalServiceName = GeneratorUtils.UpperFirstLetter(name);
             if ((Flags & GeneratorFlags.GoogleService) > 0) // If this is a google service, add the google prefix.
             {
-                formalServiceName = "Google.Apis." + formalServiceName;
+                formalServiceName = GooglePrefix + formalServiceName;
             }
 
             string baseFileName = Path.Combine(OutputDir, formalServiceName + "." + version);
@@ -188,11 +190,13 @@ namespace GoogleApis.Tools.ServiceGenerator
             cp.IncludeDebugInformation = true;
             cp.CompilerOptions = "/doc:" + xmlDocFile;
 
+            // Add the (third party) references required by the generated code.
             foreach (Type type in new[] { typeof(Newtonsoft.Json.JsonConvert), typeof(GoogleApiException) })
             {
                 cp.ReferencedAssemblies.Add(new Uri(type.Assembly.CodeBase).LocalPath);
             }
 
+            // Compile the code into a .dll.
             var provider = CodeDomProvider.CreateProvider("CSharp");
             CompilerResults results = provider.CompileAssemblyFromDom(cp, code);
 
