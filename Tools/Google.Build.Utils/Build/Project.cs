@@ -174,13 +174,14 @@ namespace Google.Build.Utils.Build
             {
                 switch (Path.GetExtension(file).ToLower())
                 {
-                    default:
-                        continue; // Unsupported.
                     case ".dll":
                     case ".exe":
                     case ".pdb":
                     case ".xml":
                         break; // Copy all assemblies and relevant information into the target directory.
+
+                    default:
+                        continue; // Unsupported.
                 }
 
                 string fileName = Path.GetFileName(file);

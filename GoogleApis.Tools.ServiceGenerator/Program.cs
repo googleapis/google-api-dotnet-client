@@ -52,8 +52,6 @@ namespace GoogleApis.Tools.ServiceGenerator
                     {
                         switch (arg)
                         {
-                            default:
-                                throw new ArgumentException("Unknown argument: " + arg);
                             case "--help":
                             case "-h":
                                 Console.WriteLine("SYNTAX:  ServiceGenerator.exe [<arguments>] <Type> <Source>");
@@ -70,18 +68,24 @@ namespace GoogleApis.Tools.ServiceGenerator
                                 Console.WriteLine("   --google             Will add a Google prefix to the service");
                                 Console.WriteLine("   --output, -o <dir>   Changes the output directory");
                                 return;
+
                             case "--no-compile":
                             case "-nc":
                                 flags &= ~GeneratorFlags.CompileLibrary;
                                 break;
+
                             case "--google":
                                 flags |= GeneratorFlags.GoogleService;
                                 break;
+
                             case "--output":
                             case "-o":
                                 enumerator.MoveNext();
                                 outputDir = enumerator.GetParameterValue("--output");
                                 break;
+
+                            default:
+                                throw new ArgumentException("Unknown argument: " + arg);
                         }
                     }
                     else
@@ -107,18 +111,18 @@ namespace GoogleApis.Tools.ServiceGenerator
                 Generator generator = new Generator(flags) { OutputDir = outputDir};
                 switch (type)
                 {
-                    default:
-                        throw new ArgumentException("Unknown type: "+type);
                     case "repository":
                         var apis = (source == null)
                                        ? DiscoveryRepository.RetrieveGoogleDiscovery()
                                        : DiscoveryRepository.RetrieveDiscovery(new Uri(source));
                         generator.GenerateServices(apis);
                         break;
+
                     case "url":
                         source.ThrowIfNull("source");
                         generator.GenerateService(new Uri(source));
                         break;
+
                     case "service":
                         source.ThrowIfNull("source");
                         var api =
@@ -128,16 +132,19 @@ namespace GoogleApis.Tools.ServiceGenerator
 
                         if (api == null)
                         {
-                            throw new ArgumentException("The api '"+source+"' was not found in the repository.");
+                            throw new ArgumentException("The api '" + source + "' was not found in the repository.");
                         }
 
                         generator.GenerateService(api);
                         break;
+
+                    default:
+                        throw new ArgumentException("Unknown type: " + type);
                 }
             }
             catch (Exception exception)
             {
-                Console.Error.WriteLine("ERROR: "+exception.Message);
+                Console.Error.WriteLine("ERROR: " + exception.Message);
                 Console.Error.WriteLine(exception.StackTrace);
                 Environment.Exit(1);
             }

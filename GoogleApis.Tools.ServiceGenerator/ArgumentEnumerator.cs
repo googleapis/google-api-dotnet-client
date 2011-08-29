@@ -50,8 +50,7 @@ namespace GoogleApis.Tools.ServiceGenerator
         }
 
         /// <summary>
-        /// Checks whether the current value is set. Returns it if possible, or throws an exception otherwise.
-        /// Reads out the current value, and moves the enumerator to the next value.
+        /// Returns current value if set, or throws an exception otherwise.
         /// </summary>
         /// <param name="parameterName">The name of the parameter to show to the user (if not set).</param>
         public string GetMandatory(string parameterName)
@@ -62,8 +61,8 @@ namespace GoogleApis.Tools.ServiceGenerator
         }
 
         /// <summary>
-        /// Checks whether the current value is set. Returns it if possible, or throws an exception otherwise.
-        /// Reads out the current value, and moves the enumerator to the next value.
+        /// Returns current value if set, or throws an exception otherwise.
+        /// Throws an exception if the current value is not a value of a parameter.
         /// </summary>
         /// <param name="parameterName">The name of the parameter to show to the user (if not set).</param>
         public string GetParameterValue(string parameterName)

@@ -39,9 +39,10 @@ namespace GoogleApis.Tools.ServiceGenerator
             var items = new NewtonsoftJsonSerializer().Deserialize<DirectoryList>(document).Items 
                             ?? Enumerable.Empty<DirectoryList.ItemsData>();
 
-            // Make the path references absolute.
+            // Make the path references rooted. We do this so that we can use just the ItemsData object
+            // to generate an API.
             string basePath = listUri.ToString().Substring(0, listUri.ToString().LastIndexOf('/') + 1);
-            foreach (var api in items)
+            foreach (DirectoryList.ItemsData api in items)
             {
                 if (api.DiscoveryLink.StartsWith("./"))
                 {
