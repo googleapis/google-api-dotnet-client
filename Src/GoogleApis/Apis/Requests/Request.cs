@@ -534,20 +534,20 @@ namespace Google.Apis.Requests
                 {
                     value = parameterDefinition.DefaultValue;
                 }
+                string escapedValue = value == null ? null : Uri.EscapeDataString(value);
                 switch (parameterDefinition.ParameterType)
                 {
                     case "path":
-                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), value);
+                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), escapedValue);
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (!parameterDefinition.IsRequired && value.IsNullOrEmpty())
+                        if (!parameterDefinition.IsRequired && escapedValue.IsNullOrEmpty())
                         {
                             continue;
                         }
 
-                        queryParams.Add(
-                            Uri.EscapeDataString(parameterDefinition.Name) + "=" + Uri.EscapeDataString(value));
+                        queryParams.Add(Uri.EscapeDataString(parameterDefinition.Name) + "=" + escapedValue);
                         break;
                     default:
                         throw new NotSupportedException(
@@ -562,7 +562,7 @@ namespace Google.Apis.Requests
                 path += "?" + String.Join("&", queryParams.ToArray());
             }
 
-            return new Uri(BaseURI, path);
+            return UriFactory.Create(BaseURI, path);
         }
 
         private static string GetReturnMimeType(ReturnType returnType)
