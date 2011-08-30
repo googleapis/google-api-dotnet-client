@@ -41,7 +41,10 @@ namespace Google.Apis.Requests
             Uri Modify(Uri uri);
         }
 
-        private static readonly IUriModifier[] Modifiers = new[] { new UriSlashUnescapeWorkaround()  };
+        private static readonly IUriModifier[] Modifiers = new[]
+                                                               {
+                                                                   new UriSlashUnescapeWorkaround()
+                                                               };
 
         #region Uri-Constructors
 
@@ -85,6 +88,7 @@ namespace Google.Apis.Requests
             return uri;
         }
 
+#if !SILVERLIGHT
         /// <summary>
         /// This is a workaround for the "Uri-Slash-Unescape" bug in the System.Uri class of the Microsoft .NET 
         /// Framework. The bug causes all "%2F" to be unescaped into "/", therefore making it impossible to pass "/" 
@@ -99,43 +103,32 @@ namespace Google.Apis.Requests
         /// any other option, then prefer it over this one. The code is just provided to make the library usable under
         /// Microsoft .NET
         /// </summary>
-        [VisibleForTestOnly]
-        internal class UriSlashUnescapeWorkaround : IUriModifier
+        private class UriSlashUnescapeWorkaround : IUriModifier
         {
             private static readonly FieldInfo m_Flags = 
                 typeof(Uri).GetField("m_Flags", BindingFlags.Instance | BindingFlags.NonPublic);
 
             public bool RequiresModification(Uri uri)
             {
-                // Mono does not have this bug.
-                if (Utilities.IsRunningOnMono)
-                {
-                    return false;
-                }
-
-                // If we cannot find the m_Flags field, then the internal implementation of the Uri class has changed.
-                if (m_Flags == null)
-                {
-                    return false;
-                }
-
-                // If we have a escaped %2F in the original string, but not in the resulting string, then it has been
-                // unescaped by the Uri class and needs to be fixed.
-                if (uri.OriginalString.Contains("%2F") && !uri.ToString().Contains("%2F"))
-                {
-                    return true;
-                }
-
-                // Otherwise disable the workaround.
-                return false;
+                return (!Utilities.IsRunningOnMono &&
+                        m_Flags != null &&
+                        uri.OriginalString.Contains("%2F") &&
+                        !uri.ToString().Contains("%2F"));
             }
 
+            /// <summary>
+            /// Uses reflection to modify a private field in the Uri object in order to disable to Unescape-mechanism
+            /// for the PathAndQuery field. This will only work as long as the internal implementation of the Uri
+            /// class does not drastically change. 
+            /// </summary>
+            /// <param name="uri">The Uri to modify.</param>
+            /// <returns>The uri which has been passed as a parameter (with the Unescape-mechanism disabled)</returns>
             public Uri Modify(Uri uri)
             {
                 // Access the .PathAndQuery field to initialize the Uri object.
-                string paq = uri.PathAndQuery;
+                string pathAndQuery = uri.PathAndQuery;
 
-                // Lookup the internal "m_Flags" field, and disable the Path- and QueryNotCanonical flags.
+                // Retrieve the value of the private "m_Flags" field, and disable the Path- and QueryNotCanonical bits.
                 ulong flags = (ulong)m_Flags.GetValue(uri);
                 flags &= ~((ulong)0x30); // Disable Flags.PathNotCanonical|Flags.QueryNotCanonical
                 m_Flags.SetValue(uri, flags);
@@ -143,5 +136,23 @@ namespace Google.Apis.Requests
                 return uri;
             }
         }
+#else
+        /// <summary>
+        /// Empty stub for the Silverlight implementation.
+        /// todo(mlinder): Check whether the same bug exists on Silverlight, and find a way to fix it there too.
+        /// </summary>
+        private class UriSlashUnescapeWorkaround : IUriModifier
+        {
+            public bool RequiresModification(Uri uri)
+            {
+                return false;
+            }
+
+            public Uri Modify(Uri uri)
+            {
+                throw new NotImplementedException();
+            }
+        }
+#endif
     }
 }
