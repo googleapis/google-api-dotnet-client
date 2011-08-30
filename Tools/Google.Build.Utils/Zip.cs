@@ -15,7 +15,9 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Google.Apis.Samples.Helper;
 using Ionic.Zip;
 
@@ -50,6 +52,37 @@ namespace Google.Build.Utils
         {
             CommandLine.WriteResult("Adding Directory", Path.GetFileName(dir) + " -> " + zipDir);
             zipFile.AddDirectory(dir, zipDir);
+        }
+
+        /// <summary>
+        /// Removes the specified entry from this zip if it existed in the first place.
+        /// </summary>
+        /// <returns>True if an entry was removed.</returns>
+        public bool RemoveFile(string entry)
+        {
+            if (!zipFile.ContainsEntry(entry))
+            {
+                return false;
+            }
+            zipFile.RemoveEntry(entry);
+            return true;
+        }
+
+        /// <summary>
+        /// Removes the specified directory from this zip.
+        /// </summary>
+        /// <returns>True if the directory existed before.</returns>
+        public bool RemoveDirectory(string entry)
+        {
+            if (!entry.EndsWith("/"))
+            {
+                entry = entry + "/";
+            }
+            List<ZipEntry> toRemove = (from file in zipFile 
+                                       where file.FileName.StartsWith(entry) 
+                                       select file).ToList();
+            zipFile.RemoveEntries(toRemove);
+            return toRemove.Count > 0;
         }
 
         public void Dispose()

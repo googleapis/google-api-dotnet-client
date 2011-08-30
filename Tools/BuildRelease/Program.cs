@@ -132,7 +132,7 @@ namespace BuildRelease
         [STAThread]
         static void Main(string[] args)
         {
-            // Try to enlarge the window
+            // Try to enlarge the window.
             try
             {
                 Console.SetWindowSize(Console.LargestWindowWidth * 8 / 9, Console.LargestWindowHeight * 8 / 9);
@@ -150,13 +150,13 @@ namespace BuildRelease
             CommandLine.DisplayGoogleSampleHeader("Release Builder: "+workingCopy);
             CommandLine.EnableExceptionHandling();
 
-            // Parse command line arguments
+            // Parse command line arguments.
             CommandLine.ParseArguments(Arguments = new CommandLineArguments(), args);
 
             // 1. Create the local repositories.
             CheckoutRepositories();
 
-            // Ask the user whether he wants to start the build
+            // Ask the user whether he wants to start the build.
             if (!Arguments.UseLocalRepository)
             {
                 CommandLine.WriteLine("{{white}} =======================================");
@@ -167,23 +167,25 @@ namespace BuildRelease
                 CommandLine.WriteLine();
             }
 
-            // 2. Create the project/build tasks
+            // 2. Create the project/build tasks.
             FileVersionInfo apiVersion;
             Project[] allProjects;
             Project[] baseLibrary = BuildProjects(out apiVersion, out allProjects);
             Project servicegen = baseLibrary.Where(proj => proj.Name == "GoogleApis.Tools.ServiceGenerator").Single();
 
-            // Retrieve tag name
+            // Retrieve tag name.
             string tag = GetTagName(apiVersion);
+            
+            if (Arguments.IsStableRelease)
+            {
+                UpdateSamples(baseLibrary, servicegen);
+            }
 
-            // TODO(mlinder): Should we only use a Stable version for our Samples? 
-            UpdateSamples(baseLibrary, servicegen);
-
-            // 4. Build contrib
+            // 4. Build contrib.
             string notes = CreateChangelog(tag);
             notes = BuildContribRelease(tag, notes, baseLibrary, allProjects, servicegen);
 
-            // 5. Update the Wiki
+            // 5. Update the Wiki.
             if (Arguments.IsStableRelease)
             {
                 UpdateWiki(notes);
@@ -517,6 +519,9 @@ namespace BuildRelease
                 using (Zip zip = new Zip(Path.Combine(zipFilesDir, "Source.zip")))
                 {
                     zip.AddDirectory(Default.WorkingDirectory, "");
+                    zip.RemoveDirectory(".hg");
+                    zip.RemoveFile(".hgtags");
+                    zip.RemoveFile(".hgignore");
                 }
 
                 // Binary.zip
@@ -530,6 +535,9 @@ namespace BuildRelease
                 using (Zip zip = new Zip(Path.Combine(zipFilesDir, "Samples.zip")))
                 {
                     zip.AddDirectory(Samples.WorkingDirectory, "");
+                    zip.RemoveDirectory(".hg");
+                    zip.RemoveFile(".hgtags");
+                    zip.RemoveFile(".hgignore");
                 }
             }
             #endregion
