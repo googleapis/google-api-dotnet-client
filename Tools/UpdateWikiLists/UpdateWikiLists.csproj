@@ -64,7 +64,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wiki\APILibraries.cs" />
+    <Compile Include="Wiki\APILibrariesPage.cs" />
+    <Compile Include="Wiki\DownloadsPage.cs" />
     <Compile Include="Wiki\WikiUtils.cs" />
   </ItemGroup>
   <ItemGroup>

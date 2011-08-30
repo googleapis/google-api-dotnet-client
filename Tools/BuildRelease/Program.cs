@@ -21,6 +21,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using Google.Apis.Samples.Helper;
 using Google.Build.Utils;
 using Google.Build.Utils.Build;
@@ -179,12 +180,13 @@ namespace BuildRelease
             UpdateSamples(baseLibrary, servicegen);
 
             // 4. Build contrib
-            BuildContribRelease(tag, baseLibrary, allProjects, servicegen);
+            string notes = CreateChangelog(tag);
+            notes = BuildContribRelease(tag, notes, baseLibrary, allProjects, servicegen);
 
             // 5. Update the Wiki
             if (Arguments.IsStableRelease)
             {
-                UpdateWiki();
+                UpdateWiki(notes);
             }
 
             // Ask the user whether he wants to continue the release.
@@ -353,6 +355,24 @@ namespace BuildRelease
             return tag;
         }
 
+        private static string CreateChangelog(string tag)
+        {
+            StringBuilder log = new StringBuilder();
+            log.AppendLine("Google .NET Client Library");
+            log.AppendLine(string.Format("{0}Release '{1}'", Arguments.IsStableRelease ? "Stable " : "", tag));
+            log.AppendLine(DateTime.UtcNow.ToLongDateString());
+            log.AppendLine("===========================================");
+
+            log.AppendLine();
+            log.AppendLine("Changes:");
+            foreach (string line in Default.CreateChangelist())
+            {
+                log.AppendLine("  " + line);
+            }
+
+            return log.ToString();
+        }
+
         private static void UpdateSamples(IEnumerable<Project> releaseProjects, Project serviceGenerator)
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -401,10 +421,12 @@ namespace BuildRelease
         ///     - Updated Sample repository
         ///     - Existing release tag name
         /// </summary>
-        private static void BuildContribRelease(string tag,
-                                                IEnumerable<Project> baseLibrary,
-                                                IEnumerable<Project> allProjects,
-                                                Project serviceGenerator)
+        /// <returns>Edited changelog.</returns>
+        private static string BuildContribRelease(string tag,
+                                                  string changelog,
+                                                  IEnumerable<Project> baseLibrary,
+                                                  IEnumerable<Project> allProjects,
+                                                  Project serviceGenerator)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Building Contrib-Release");
@@ -512,40 +534,33 @@ namespace BuildRelease
             }
             #endregion
 
-            #region Current/Changes.txt
+            #region Current/ReleaseNotes.txt
             CommandLine.WriteAction("Writing file...");
-            string changelogFile = Path.Combine(currentDir, "Changes.txt");
+            string changelogFile = Path.Combine(currentDir, "ReleaseNotes.txt");
             using (var writer = new StreamWriter(changelogFile, false))
             {
-                writer.WriteLine("Google .NET Client Library");
-                writer.WriteLine("Changelog for the release '{0}'", tag);
-                writer.WriteLine(DateTime.UtcNow.ToLongDateString());
-                writer.WriteLine("===========================================");
-
-                foreach (string line in Default.CreateChangelist())
-                {
-                    writer.WriteLine("  " + line);
-                }
+                writer.WriteLine(changelog);
             }
             #endregion
 
             // Open the created changelog.
             CommandLine.WriteAction("Showing result...");
-            Process.Start(changelogFile);
+            Process.Start(changelogFile).WaitForExit();
 
             // Copy the content to the <tagname> release directory.
             DirUtils.CopyFiles(currentDir, releaseDir);
             
             CommandLine.WriteLine();
+            return File.ReadAllText(changelogFile);
         }
 
-        private static void UpdateWiki()
+        private static void UpdateWiki(string releaseNotes)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Updating the Wiki");
             CommandLine.WriteLine("{{white}} =======================================");
 
-            UpdateWikiLists.Program.UpdateWiki(Wiki, Samples);
+            UpdateWikiLists.Program.UpdateWiki(Wiki, Samples, releaseNotes);
 
             CommandLine.WriteLine();
         }

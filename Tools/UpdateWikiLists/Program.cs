@@ -28,15 +28,19 @@ namespace UpdateWikiLists
     public class Program
     {
         /// <summary>
-        /// Updates the 
+        /// Updates the Wiki
         /// </summary>
-        /// <param name="wiki"></param>
-        /// <param name="samples"></param>
-        public static void UpdateWiki(Hg wiki, Hg samples)
+        public static void UpdateWiki(Hg wiki, Hg samples, string releaseNotes)
         {
             // Make the changes.
             CommandLine.WriteAction("Updating 'APILibraries.wiki' ...");
-            new APILibraries(samples).InsertIntoFile(Path.Combine(wiki.WorkingDirectory, "APILibraries.wiki"));
+            new APILibrariesPage(samples).InsertIntoFile(Path.Combine(wiki.WorkingDirectory, "APILibraries.wiki"));
+
+            if (releaseNotes != null)
+            {
+                CommandLine.WriteAction("Updating 'Downloads.wiki' ...");
+                new DownloadsPage(releaseNotes).InsertIntoFile(Path.Combine(wiki.WorkingDirectory, "Downloads.wiki"));
+            }
         }
 
         static void Main(string[] args)
@@ -48,7 +52,7 @@ namespace UpdateWikiLists
             using (Hg samples = Hg.Clone("https://code.google.com/p/google-api-dotnet-client.samples/"))
             {
                 // Make all the changes.
-                UpdateWiki(wiki, samples);
+                UpdateWiki(wiki, samples, null);
                 
                 // Show them to the user.
                 CommandLine.WriteAction("Opening modified working directory ...");

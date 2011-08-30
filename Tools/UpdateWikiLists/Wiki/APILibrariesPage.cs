@@ -28,7 +28,7 @@ namespace UpdateWikiLists.Wiki
     /// <summary>
     /// Updater for the APILibraries wiki page.
     /// </summary>
-    public class APILibraries
+    public class APILibrariesPage
     {
         private const string StartTag = "<wiki:comment>BEGIN_GENERATED</wiki:comment>";
         private const string EndTag = "<wiki:comment>END_GENERATED</wiki:comment>";
@@ -38,7 +38,7 @@ namespace UpdateWikiLists.Wiki
         /// </summary>
         public Hg Samples { get; private set; }
         
-        public APILibraries(Hg samples)
+        public APILibrariesPage(Hg samples)
         {
             Samples = samples;
         }
