@@ -167,6 +167,20 @@ namespace BuildRelease
                 CommandLine.WriteLine();
             }
 
+            // Clean up the default/ repository by removing cache-files.
+            string toDelete = Default.Combine("_ReSharper.GoogleApisClient");
+            if (Directory.Exists(toDelete))
+            {
+                Directory.Delete(toDelete, true);
+            }
+            foreach (string pattern in new[] { "*.dotcover", "*.user", "*.suo" })
+            {
+                foreach (string file in Directory.GetFiles(Default.WorkingDirectory, pattern))
+                {
+                    File.Delete(file);
+                }
+            }
+
             // 2. Create the project/build tasks.
             FileVersionInfo apiVersion;
             Project[] allProjects;
