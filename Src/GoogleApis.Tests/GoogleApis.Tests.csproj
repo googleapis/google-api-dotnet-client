@@ -79,6 +79,7 @@
     <Compile Include="Apis\Requests\ResponseTest.cs" />
     <Compile Include="Apis\Logging\Log4NetLoggerTests.cs" />
     <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
+    <Compile Include="Apis\Requests\UriFactoryTest.cs" />
     <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
     <Compile Include="Apis\Utils\LazyBindingTest.cs" />
     <Compile Include="Apis\Utils\LazyResultTest.cs" />

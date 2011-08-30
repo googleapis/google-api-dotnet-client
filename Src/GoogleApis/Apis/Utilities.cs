@@ -45,6 +45,11 @@ namespace Google.Apis
     public static class Utilities
     {
         /// <summary>
+        /// True when the Mono-runtime is used to execute this code.
+        /// </summary>
+        public static readonly bool IsRunningOnMono = (Type.GetType("Mono.Runtime") != null);
+        
+        /// <summary>
         /// xsd version of bool:true
         /// </summary>
         public const string XSDTrue = "true";
