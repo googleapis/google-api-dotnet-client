@@ -35,6 +35,22 @@ namespace Google.Build.Utils.Text
         /// <returns>[..] {startTag} content {endTag} [..]</returns>
         public static string InsertIntoText(string sourceText, string startTag, string endTag, string content)
         {
+            return ReplaceInText(sourceText, startTag, endTag, old => content);
+        }
+
+        /// <summary>
+        /// Replaces the text within the given tags using the specified replace function.
+        /// </summary>
+        /// <param name="sourceText">The text containing the tags.</param>
+        /// <param name="startTag">The tag marking the start of the replacement area.</param>
+        /// <param name="endTag">The tag marking the end of the replacement area.</param>
+        /// <param name="replace">The function used to replace the tag content.</param>
+        /// <returns>The resulting text.</returns>
+        public static string ReplaceInText(string sourceText,
+                                           string startTag,
+                                           string endTag,
+                                           Func<string, string> replace)
+        {
             // Find the start tag.
             int startIndex = sourceText.IndexOf(startTag);
             if (startIndex < 0)
@@ -49,12 +65,25 @@ namespace Google.Build.Utils.Text
             {
                 throw new ArgumentException("End Tag not found: " + endTag);
             }
-            
+
             // Replace the text
-            string newText = sourceText.Substring(0, startIndex) + Environment.NewLine + 
-                             content + Environment.NewLine + 
-                             sourceText.Substring(endIndex);
-            return newText;
+            string oldText = sourceText.Substring(startIndex, endIndex - startIndex).Trim('\r', '\n');
+            string newText = replace(oldText);
+            return sourceText.Substring(0, startIndex) + Environment.NewLine +
+                   newText + Environment.NewLine +
+                   sourceText.Substring(endIndex);
+        }
+
+        /// <summary>
+        /// Replaces the text within the given tags using the specified replace function.
+        /// </summary>
+        /// <param name="file">The file to replace the text in.</param>
+        /// <param name="startTag">The tag marking the start of the replacement area.</param>
+        /// <param name="endTag">The tag marking the end of the replacement area.</param>
+        /// <param name="replace">The function used to replace the tag content.</param>
+        public static void ReplaceInFile(string file, string startTag, string endTag, Func<string, string> replace)
+        {
+            File.WriteAllText(file, ReplaceInText(File.ReadAllText(file), startTag, endTag, replace));
         }
 
         /// <summary>
