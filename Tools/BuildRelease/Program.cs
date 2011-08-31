@@ -95,6 +95,16 @@ namespace BuildRelease
         public static string WorkingCopy { get; private set; }
 
         /// <summary>
+        /// Extracts the version and name part out of the specified tag.
+        /// </summary>
+        /// <param name="tag">date-version-name</param>
+        /// <returns></returns>
+        public static string ExtractTagVersionAndName(string tag)
+        {
+            return tag.Substring(tag.IndexOf('-') + 1);
+        }
+
+        /// <summary>
         /// Points to third party dependencies.
         /// </summary>
         public static string[] ThirdPartyFiles
@@ -197,12 +207,13 @@ namespace BuildRelease
 
             // 4. Build contrib.
             string notes = CreateChangelog(tag);
-            notes = BuildContribRelease(tag, notes, baseLibrary, allProjects, servicegen);
+            string zipDir;
+            notes = BuildContribRelease(tag, notes, baseLibrary, allProjects, servicegen, out zipDir);
 
             // 5. Update the Wiki.
             if (Arguments.IsStableRelease)
             {
-                UpdateWiki(notes);
+                UpdateWiki(notes, zipDir);
             }
 
             // Ask the user whether he wants to continue the release.
@@ -335,11 +346,10 @@ namespace BuildRelease
 
             if (Arguments.UseLocalRepository)
             {
-                return "local";
+                return "date-version-local";
             }
 
             const string tagFile = "release.tag";
-
             if (File.Exists(tagFile))
             {
                 string existing = File.ReadAllText(tagFile);
@@ -442,7 +452,8 @@ namespace BuildRelease
                                                   string changelog,
                                                   IEnumerable<Project> baseLibrary,
                                                   IEnumerable<Project> allProjects,
-                                                  Project serviceGenerator)
+                                                  Project serviceGenerator,
+                                                  out string zipDir)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Building Contrib-Release");
@@ -525,6 +536,8 @@ namespace BuildRelease
             CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(zipFilesDir, Contrib.WorkingDirectory));
             Directory.CreateDirectory(zipFilesDir);
             {
+                
+                
                 // Source.zip
                 foreach (Project project in allProjects)
                 {
@@ -571,18 +584,29 @@ namespace BuildRelease
 
             // Copy the content to the <tagname> release directory.
             DirUtils.CopyFiles(currentDir, releaseDir);
-            
+
+            // Rename the zips in the named release.
+            // Example: Binary.zip -> google-api-dotnet-client-1.0.0-beta.Binary.zip
+            string fileFormat = "google-api-dotnet-client-" + ExtractTagVersionAndName(tag) + ".{0}";
+            zipDir = zipFilesDir.Replace(currentDir, releaseDir);
+            foreach (string file in Directory.GetFiles(zipDir, "*.zip"))
+            {
+                string dir = Path.GetDirectoryName(file);
+                string newFile = string.Format(fileFormat, Path.GetFileName(file).ToLower());
+                File.Move(file, Path.Combine(dir, newFile));
+            }
+
             CommandLine.WriteLine();
             return File.ReadAllText(changelogFile);
         }
 
-        private static void UpdateWiki(string releaseNotes)
+        private static void UpdateWiki(string releaseNotes, string zipDir)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Updating the Wiki");
             CommandLine.WriteLine("{{white}} =======================================");
 
-            UpdateWikiLists.Program.UpdateWiki(Wiki, Samples, releaseNotes);
+            UpdateWikiLists.Program.UpdateWiki(Wiki, Samples, releaseNotes, zipDir);
 
             CommandLine.WriteLine();
         }
