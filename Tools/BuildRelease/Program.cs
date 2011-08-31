@@ -523,11 +523,6 @@ namespace BuildRelease
                     }
                 }
             }
-
-            // Current/Generated/Bin/ServiceGenerator/
-            string serviceGeneratorDir = Path.Combine(binDir, "ServiceGenerator");
-            Directory.CreateDirectory(serviceGeneratorDir);
-            serviceGenerator.CopyAllFilesTo(serviceGeneratorDir);
             
             #endregion
 
