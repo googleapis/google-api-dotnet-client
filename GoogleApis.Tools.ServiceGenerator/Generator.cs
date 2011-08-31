@@ -112,8 +112,7 @@ namespace GoogleApis.Tools.ServiceGenerator
                                        ? (IDiscoveryDevice)
                                          new StreamDiscoveryDevice
                                              {
-                                                 DiscoveryStream =
-                                                     File.Open(url.ToString().Replace("file:///", ""), FileMode.Open)
+                                                 DiscoveryStream = File.Open(url.LocalPath, FileMode.Open)
                                              }
                                        : new StringDiscoveryDevice { Document = Utils.FetchDocument(url) };
             var discovery = new DiscoveryService(src);
