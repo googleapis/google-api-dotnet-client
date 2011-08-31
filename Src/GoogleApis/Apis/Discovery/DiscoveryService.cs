@@ -24,6 +24,7 @@ namespace Google.Apis.Discovery
     ///
     /// </summary>
     /// <example>
+    ///     <code>
     /// var webDiscovery = new WebDiscoveryDevice { DiscoveryURI = "http://test.com"};
     /// var d = new Discover(webDiscovery);
     /// var buzzApi = d.CreateAPI();
@@ -43,6 +44,7 @@ namespace Google.Apis.Discovery
     /// var buzzApi = d.CreateAPI();
     /// 
     /// var buzzFeed = buzzApi.WithCredentials().On().Get(Dictionary());
+    ///     </code>
     /// </example>
     public class DiscoveryService : IDiscoveryService
     {
