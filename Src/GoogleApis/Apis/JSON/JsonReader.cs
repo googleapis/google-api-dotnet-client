@@ -26,24 +26,10 @@ namespace Google.Apis.Json
     /// basic JsonReader that can parse either strings or streams into some
     /// dictionary form.
     /// </summary>
-    public class JsonReader
+    public static class JsonReader
     {
-        private static readonly ILogger logger = ApplicationContext.Logger.ForType<JsonReader>();
-        private static JsonReader theInstance;
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType(typeof(JsonReader));
 
-        private JsonReader() {}
-
-        /// <summary>
-        /// Returns the default instance of this class
-        /// </summary>
-        public static JsonReader GetInstance()
-        {
-            if (theInstance == null)
-            {
-                theInstance = new JsonReader();
-            }
-            return theInstance;
-        }
 
         /// <summary>
         /// Parses the json document into the appropriate expression/dictionary
