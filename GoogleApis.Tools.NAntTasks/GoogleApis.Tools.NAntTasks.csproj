@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD476737-EC71-4357-9FEF-0AAB9AEC1419}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis.Tools.NAntTasks</RootNamespace>
+    <AssemblyName>GoogleApis.Tools.NAntTasks</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Core">
+      <HintPath>..\ThirdParty\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Discovery.v1.cs" />
+    <Compile Include="GoogleApiDiscover.cs" />
+    <Compile Include="GoogleApiGenerate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj">
+      <Project>{76106493-68EF-4E44-AF2E-971ABF29B300}</Project>
+      <Name>GoogleApis.Authentication.OAuth2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Src\GoogleApis\GoogleApis.csproj">
+      <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
+      <Name>GoogleApis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
+      <Project>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</Project>
+      <Name>GoogleApis.Tools.CodeGen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties InternalTargetFrameworkVersion="3.5" />
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+    <None Include="Client.Release.build">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="buildimpl\Generate.Service.build">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Google.Apis.Discovery.V1.dll" />
+    <Content Include="lib\Google.Apis.Discovery.V1.pdb" />
+    <Content Include="lib\Google.Apis.Discovery.V1.xml" />
+    <Content Include="NAnt.Config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+</Project>
