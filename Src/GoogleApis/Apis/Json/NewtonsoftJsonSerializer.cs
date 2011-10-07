@@ -17,7 +17,7 @@ limitations under the License.
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Google.Apis.JSON
+namespace Google.Apis.Json
 {
     /// <summary>
     /// Class for serialization and deserialization of Json documents using the Newtonsoft Library
