@@ -199,22 +199,26 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             foreach (DiscoveryVersion v in new[] { DiscoveryVersion.Version_1_0, DiscoveryVersion.Version_0_3 })
             {
+                IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
+
                 using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
                 {
-                    IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
-
                     // Verify that the response is decoded correctly.
-                    try
+                    GoogleApiException ex = Assert.Throws<GoogleApiException>(() =>
                     {
                         impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
-                        Assert.Fail("GoogleApiException was not thrown for invalid Json");
-                    }
-                    catch (GoogleApiException ex)
-                    {
-                        // Check that the contents of the error json was translated into the exception object.
-                        // We cannot compare the entire exception as it depends on the implementation and might change.
-                        Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
-                    }
+                    });
+                    // Check that the contents of the error json was translated into the exception object.
+                    // We cannot compare the entire exception as it depends on the implementation and might change.
+                    Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
+                }
+
+                using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+                {
+                    RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
+                    Assert.AreEqual(400, error.Code);
+                    Assert.AreEqual("Required", error.Message);
+                    Assert.AreEqual(1, error.Errors.Count);
                 }
             }
         }

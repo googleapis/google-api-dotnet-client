@@ -278,6 +278,29 @@ namespace Google.Apis.Discovery
             return Serializer.Serialize(obj);
         }
 
+        /// <summary>
+        /// Deserializes an error response into a <see cref="RequestError"/> object
+        /// </summary>
+        /// <exception cref="GoogleApiException">If no error is found in the response.</exception>
+        /// <param name="input"><see cref="IResponse"/> containing an error.</param>
+        /// <returns>The <see cref="RequestError"/> object deserialized from the stream.</returns>
+        public RequestError DeserializeError(IResponse input)
+        {
+            Serializer.ThrowIfNull("Serializer");
+            input.ThrowIfNull("input");
+            input.Stream.ThrowIfNull("input.Stream");
+
+            // Read in the entire content.
+            var response = Serializer.Deserialize<StandardResponse<object>>(input.ReadToEnd());
+            if (response.Error == null)
+            {
+                throw new GoogleApiException(this, 
+                    "An Error occured, but the error response could not be deserialized.");
+            }
+
+            return response.Error;
+        }
+
         public T DeserializeResponse<T>(IResponse input)
         {
             input.ThrowIfNull("input");
@@ -285,11 +308,7 @@ namespace Google.Apis.Discovery
             Serializer.ThrowIfNull("Serializer");
 
             // Read in the entire content.
-            string text;
-            using (var reader = new StreamReader(input.Stream))
-            {
-                text = reader.ReadToEnd();
-            }
+            string text = input.ReadToEnd();
 
             // If a string is request, don't parse the response.
             if (typeof(T).Equals(typeof(string)))

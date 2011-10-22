@@ -49,4 +49,15 @@ namespace Google.Apis.Requests
             get { return innerResponse.Headers[ETagResponseHeader]; }
         }
     }
+
+    public static class ResponseHelpers
+    {
+        public static string ReadToEnd(this IResponse response)
+        {
+            using (var stream = new StreamReader(response.Stream))
+            {
+                return stream.ReadToEnd();
+            }
+        }
+    }
 }
