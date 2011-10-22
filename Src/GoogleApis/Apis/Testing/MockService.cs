@@ -86,6 +86,11 @@ namespace Google.Apis.Tests.Apis.Requests
             throw new NotImplementedException();
         }
 
+        public RequestError DeserializeError(IResponse input)
+        {
+            throw new NotImplementedException();
+        }
+
         public T DeserializeResponse<T>(IResponse input)
         {
             throw new NotImplementedException();
