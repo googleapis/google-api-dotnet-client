@@ -50,7 +50,7 @@ namespace Google.Apis.Requests
         }
     }
 
-    public static class ResponseHelpers
+    public static class ResponseExtensions
     {
         public static string ReadToEnd(this IResponse response)
         {

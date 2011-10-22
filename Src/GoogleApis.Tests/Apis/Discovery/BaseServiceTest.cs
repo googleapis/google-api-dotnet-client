@@ -95,6 +95,11 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.That(result.Status, Is.Null);
         }
 
+        private IService CreateService(DiscoveryVersion version)
+        {
+          return version == DiscoveryVersion.Version_0_3 ? CreateLegacyV03Service() : CreateV1Service();
+        }
+
         private IService CreateV1Service()
         {
             var dict = new JsonDictionary();
@@ -178,7 +183,8 @@ namespace Google.Apis.Tests.Apis.Discovery
         /// Tests the deserialization for server error responses.
         /// </summary>
         [Test]
-        public void TestErrorDeserialization()
+        public void TestErrorDeserialization(
+          [Values(DiscoveryVersion.Version_0_3, DiscoveryVersion.Version_1_0)] DiscoveryVersion version)
         {
             const string ErrorResponse =
                 @"{
@@ -197,29 +203,26 @@ namespace Google.Apis.Tests.Apis.Discovery
                     }
                 }";
 
-            foreach (DiscoveryVersion v in new[] { DiscoveryVersion.Version_1_0, DiscoveryVersion.Version_0_3 })
+            IService impl = CreateService(version);
+
+            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
             {
-                IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
-
-                using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+                // Verify that the response is decoded correctly.
+                GoogleApiException ex = Assert.Throws<GoogleApiException>(() =>
                 {
-                    // Verify that the response is decoded correctly.
-                    GoogleApiException ex = Assert.Throws<GoogleApiException>(() =>
-                    {
-                        impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
-                    });
-                    // Check that the contents of the error json was translated into the exception object.
-                    // We cannot compare the entire exception as it depends on the implementation and might change.
-                    Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
-                }
+                    impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
+                });
+                // Check that the contents of the error json was translated into the exception object.
+                // We cannot compare the entire exception as it depends on the implementation and might change.
+                Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
+            }
 
-                using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
-                {
-                    RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
-                    Assert.AreEqual(400, error.Code);
-                    Assert.AreEqual("Required", error.Message);
-                    Assert.AreEqual(1, error.Errors.Count);
-                }
+            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+            {
+                RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
+                Assert.AreEqual(400, error.Code);
+                Assert.AreEqual("Required", error.Message);
+                Assert.AreEqual(1, error.Errors.Count);
             }
         }
 
