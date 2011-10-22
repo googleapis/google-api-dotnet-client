@@ -43,6 +43,11 @@ namespace UpdateWikiLists.Wiki
             Samples = samples;
         }
 
+        public string GetApiTitle(DirectoryList.ItemsData a)
+        {
+          return (a.Title ?? a.Name ?? a.Description).ToUpperFirstChar();
+        }
+
         /// <summary>
         /// Generates the API listing
         /// </summary>
@@ -59,19 +64,16 @@ namespace UpdateWikiLists.Wiki
             tmpl.Add("=== Samples ===");
             tmpl.Add("{SAMPLES}");
 
-            var apiGroups = from a in Discovery.ListApis()
-                            orderby a.Title ascending 
-                            group a by a.Name
-                            into grp 
-                            select new { Info = grp.First(), APIs = grp };
-            var apis = apiGroups.Select(qry => tmpl.ToString(new Entries
-                                    {
-                                        { "TITLE", qry.Info.Title.WithoutWikiLinks() }, 
-                                        { "DESCRIPTION", qry.Info.Description.WithoutWikiLinks().MakeSentence('.') },
-                                        { "CONTENT", GenerateApiVersions(qry.APIs) },
-                                        { "SAMPLES", GenerateSamples(qry.Info.Name) }
-                                    }));
-            return apis.Aggregate(TextUtils.JoinLines);
+            return Discovery.ListApis()
+              .GroupBy(api => api.Name)
+              .Select(grp => new { Title=GetApiTitle(grp.First()), APIs=grp })
+              .OrderBy(qry => qry.Title)
+              .Select(qry => tmpl.ToString(new Entries {
+                        { "TITLE", qry.Title.WithoutWikiLinks() }, 
+                        { "DESCRIPTION", qry.APIs.First().Description.WithoutWikiLinks().MakeSentence('.') },
+                        { "CONTENT", GenerateApiVersions(qry.APIs) },
+                        { "SAMPLES", GenerateSamples(qry.APIs.Key) } }))
+              .Aggregate(TextUtils.JoinLines);
         }
 
         /// <summary>
