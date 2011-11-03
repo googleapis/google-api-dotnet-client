@@ -22,6 +22,7 @@ using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using NUnit.Framework;
+using Moq;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
@@ -61,7 +62,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
         private static RequestClassGenerator ConstructRequestGenerator()
         {
-            return new RequestClassGenerator(GoogleServiceGenerator.GetSchemaAwareRequestDecorators("Generated"));
+            var mockService = new Mock<IService>();
+            mockService
+              .Setup(m => m.Parameters)
+              .Returns(() => null);
+
+            return new RequestClassGenerator(
+              GoogleServiceGenerator.GetSchemaAwareRequestDecorators("Generated", mockService.Object));
         }
 
 

@@ -119,10 +119,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         [VisibleForTestOnly]
         internal static CodeTypeReference GetParameterTypeReference(CodeTypeDeclaration classDeclaration,
-                                                                    IParameter param,
-                                                                    IMethod method)
+                                                                    IParameter param)
         {
-            method.ThrowIfNull("method");
             Type underlyingType = GetParameterType(param);
             CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
             bool isValueType = underlyingType.IsValueType;
@@ -159,7 +157,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                                                                             IParameter param,
                                                                            IMethod method)
         {
-            CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param, method);
+            CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param);
             var decl = new CodeParameterDeclarationExpression(
                 paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
 
