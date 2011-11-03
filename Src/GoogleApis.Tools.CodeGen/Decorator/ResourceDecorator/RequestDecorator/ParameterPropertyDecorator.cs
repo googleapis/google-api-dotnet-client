@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
@@ -27,35 +29,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// e.g.
     ///     <c>public string Name { get; set; }</c>
     /// </summary>
-    public class ParameterPropertyDecorator : IRequestDecorator
+    public abstract class BaseParameterPropertyDecorator : IRequestDecorator
     {
-        #region IRequestDecorator Members
-
-        public void DecorateClass(IResource resource,
+        public abstract void DecorateClass(IResource resource,
                                   IMethod request,
                                   CodeTypeDeclaration requestClass,
-                                  CodeTypeDeclaration resourceClass)
-        {
-            if (request.Parameters == null)
-            {
-                return; // Nothing to do here.
-            }
-
-            // Create a list of all used words based upon the existing resource class.
-            IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
-            foreach (IParameter parameter in request.Parameters.Values)
-            {
-                // Generate and add the parameter properties.
-                foreach (CodeTypeMember newMember in
-                         GenerateParameterProperty(parameter, request, resourceClass, usedWords))
-                {
-                    requestClass.Members.Add(newMember);
-                    usedWords.Add(newMember.Name);
-                }
-            }
-        }
-
-        #endregion
+                                  CodeTypeDeclaration resourceClass);
 
         internal CodeTypeMemberCollection GenerateParameterProperty(IParameter parameter,
                                                                     IMethod method,
@@ -65,7 +44,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             // Get the name and return type of this parameter.
             string name = parameter.Name;
             CodeTypeReference returnType = ResourceBaseGenerator.GetParameterTypeReference(
-                resourceClass, parameter, method);
+                resourceClass, parameter);
 
             // Generate the property and field.
             CodeTypeMemberCollection newMembers = DecoratorUtil.CreateAutoProperty(
@@ -89,5 +68,71 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             return newMembers;
         }
+    }
+
+    public class ParameterPropertyDecorator : BaseParameterPropertyDecorator
+    {
+        public override void DecorateClass(IResource resource,
+                                  IMethod request,
+                                  CodeTypeDeclaration requestClass,
+                                  CodeTypeDeclaration resourceClass)
+        {
+            if (request.Parameters == null)
+            {
+                return; // Nothing to do here.
+            }
+
+            // Create a list of all used words based upon the existing resource class.
+            IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
+            foreach (IParameter parameter in request.Parameters.Values)
+            {
+                // Generate and add the parameter properties.
+                foreach (CodeTypeMember newMember in
+                         GenerateParameterProperty(parameter, request, resourceClass, usedWords))
+                {
+                    requestClass.Members.Add(newMember);
+                    usedWords.Add(newMember.Name);
+                }
+            }
+        }
+    }
+
+    public class CommonParameterRequestDecorator : ParameterPropertyDecorator
+    {
+      public CommonParameterRequestDecorator(IDictionary<string, IParameter> parameters)
+      {
+          this.parameters = parameters;
+      }
+
+      private readonly IDictionary<string, IParameter> parameters;
+
+      public override void DecorateClass(IResource resource,
+                                  IMethod request,
+                                  CodeTypeDeclaration requestClass,
+                                  CodeTypeDeclaration resourceClass)
+      {
+        if (parameters == null || parameters.Count == 0)
+        {
+          return;
+        }
+
+        // Create a list of all used words based upon the existing resource class.
+        IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
+        
+        var filteredParams = parameters
+          .Where(p => !request.Parameters.ContainsKey(p.Key))
+          .Select(p => p.Value);
+
+        foreach (IParameter parameter in filteredParams)
+        {
+          // Generate and add the parameter properties.
+          foreach (CodeTypeMember newMember in
+                   GenerateParameterProperty(parameter, request, resourceClass, usedWords))
+          {
+            requestClass.Members.Add(newMember);
+            usedWords.Add(newMember.Name);
+          }
+        }
+      }
     }
 }
