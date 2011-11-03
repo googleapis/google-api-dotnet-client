@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<project name="BuildGeneratedServices" default="produce-all-services" basedir="../">
+  <description>Builds GoogleApis and all generated services</description>
+
+  <include buildfile="./NAnt.Config.xml" failonerror="true"/>
+  
+  <property name="msbuild.executable" value="${framework::get-framework-directory(build.framework)}\msbuild.exe" />
+  <property name="msbuild.options" value='/p:Configuration=Release /p:Platform="AnyCPU" /v:n /toolsversion:4.0' />
+  <property name="google.api.proj" value="${google.project.base}/GoogleApis/GoogleApis.csproj" />
+  <property name="google.generate.proj" value="${google.project.base}/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.csproj" />
+  <property name="google.oauth2.proj" value="${google.project.base}/GoogleApis.Authentication.OAuth2/GoogleApis.Authentication.OAuth2.csproj" />
+  <property name="google.nant.proj" value="GoogleApis.Tools.NAntTasks.csproj" />
+
+  <property name="nant.windows.bin.path" value="C:\Tools\nant\bin\" />
+  <property name="nant.linux.bin.path" value="/usr/local/shar/NAnt/bin/" />
+  <property name="nant.task.path" value="extensions\common\neutral" />
+  <property name="nant.lib.path" value="lib\common\neutral" />
+
+  <property name="zip.source.file" value="${generated.zip}/Source.zip" />
+  <property name="zip.binary.file" value="${generated.zip}/Binary.zip" />
+
+  <property name="current.service" value="N/A"/>
+  <!--
+  <property name="current.service.regex.pattern" 
+            value="(?'current.service.name'[^|]+)|(?'current.service.version'[^|]+)|(?'current.service.classname'[^|]+)|(?'current.service.namespace'[^|]+)|"/>
+            -->
+  <property name="current.service.regex.pattern"
+            value="(?'name'[^|]+)\|(?'version'[^|]+)\|(?'classname'[^|]+)\|(?'namespace'[^|]+)"/>
+
+  <target name="config">
+    <property name="nant.bin.path" value="error" />
+    <if test="${directory::exists(nant::get-base-directory())}">
+      <property name="nant.bin.path" value="${nant::get-base-directory()}" />
+    </if>
+    <if test="${nant.bin.path == 'error' and directory::exists(nant.windows.bin.path)}">
+      <property name="nant.bin.path" value="${nant.windows.bin.path}" />
+    </if>
+    <if test="${nant.bin.path == 'error' and directory::exists(nant.linux.bin.path)}">
+      <property name="nant.bin.path" value="${nant.linux.bin.path}" />
+    </if>
+    <if test="${nant.bin.path == 'error'}">
+      <fail message="Failed to find nant, looked in ${nant.windows.bin.path} and ${nant.linux.bin.path}"/>
+    </if>
+    <echo message="Using the Nant installation in: ${nant.bin.path}" />
+  </target>
+
+  <target name="clean-google-api" depends="config">
+    <exec program="${msbuild.executable}"
+          commandline='${google.api.proj} /t:Clean ${msbuild.options}'
+          workingdir="." />
+    <exec program="${msbuild.executable}"
+          commandline='${google.generate.proj} /t:Clean ${msbuild.options}'
+          workingdir="." />
+    <exec program="${msbuild.executable}"
+          commandline='${google.oauth2.proj} /t:Clean ${msbuild.options}'
+          workingdir="." />
+  </target>
+
+  <target name="clean" depends="clean-google-api, config" description="Delete Generated Files">
+    <delete dir="${generated.source}" failonerror="false" />
+    <delete dir="${generated.library}" failonerror="false" />
+    <delete dir="${generated.binary}" failonerror="false" />
+    <delete dir="${generated.zip}" failonerror="false" />
+  </target>
+
+  <target name="prep" depends="clean, config">
+    <mkdir dir="${generated.source}" />
+    <mkdir dir="${generated.library}" />
+    <mkdir dir="${generated.binary}" />
+    <mkdir dir="${generated.zip}" />
+	<echo message="Using the assemblies found in: ${assembly.dir}" />
+    <assemblyfileset id="generated.code.dependancies" basedir="${generated.library}">
+	  <include name="${assembly.dir}/mscorlib.dll" />
+      <include name="${assembly.dir}/System.dll" />
+      <include name="Google.Apis.dll" />
+      <include name="log4net.dll" />
+      <include name="Newtonsoft.Json.Net35.dll" />      
+    </assemblyfileset>
+  </target>
+
+  <target name="build-google-nant-task" depends="prep">
+    <exec program="${msbuild.executable}" 
+          commandline='${google.nant.proj} /t:Build ${msbuild.options}' workingdir="." />
+  </target>
+
+  <target name="build-google-api" depends="prep">
+    <exec program="${msbuild.executable}" 
+          commandline='${google.api.proj} /t:Build ${msbuild.options}' workingdir="." />
+    <exec program="${msbuild.executable}" 
+          commandline='${google.generate.proj} /t:Build ${msbuild.options}' workingdir="." />
+    <exec program="${msbuild.executable}"
+          commandline='${google.oauth2.proj} /t:Build ${msbuild.options}' workingdir="." />
+    <copy todir="${generated.library}" overwrite="true" flatten="true">
+      <fileset basedir="${google.project.base}">
+        <include name="GoogleApis/bin/Release/*.*"/>
+        <include name="GoogleApis.Tools.CodeGen/bin/Release/*.*"/>
+        <include name="GoogleApis.Authentication.OAuth2/bin/Release/*.*"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="update-nant-tasks" depends="config, build-google-api, build-google-nant-task">
+    <echo message="Coping from NAntTask bin/Release"/>
+    <copy todir="${nant.bin.path}${nant.task.path}" overwrite="true" flatten="true" failonerror="false">
+      <fileset basedir="bin/Release">
+        <include name="GoogleApis.Tools.NAntTasks.dll" />
+        <include name="GoogleApis.Tools.NAntTasks.pdb" />
+      </fileset>
+    </copy>
+    <echo message="Coping from GoogleApi Libs from ${generated.library}"/>
+    <copy todir="${nant.bin.path}${nant.lib.path}" overwrite="true" flatten="true">
+      <fileset basedir="${generated.library}">
+        <include name="*.dll" />
+        <include name="*.pdb" />
+      </fileset>
+    </copy>
+    <copy todir="${nant.bin.path}${nant.lib.path}" overwrite="true" flatten="true">
+      <fileset basedir="lib">
+        <include name="*.dll" />
+        <include name="*.pdb" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="discover-all-services" >
+    <description>
+      Calls Discovery.list to fetches all the Api Names and versions
+      Sets 
+        google.api.all, 
+        google.api.suggested.regex
+    </description>
+    <google-api-discover />
+  </target>
+  
+  <target name="produce-all-services" depends="discover-all-services,build-google-api,prep" 
+          description="Generates, Compiles and Zips all services">
+    <foreach item="String" property="current.service" delim="^" in="${google.api.all}" trim="Both">
+      <regex pattern="${google.api.suggested.regex}" input="${current.service}" />
+      <echo message="Producing service ${apiname} ${apiversion} as class ${apinamespace}.${apiclassname}" />
+      <call target="compile-service" />
+    </foreach>
+    
+    <call target="zip-source" cascade="false" />
+    <call target="zip-binary" cascade="false" />
+  </target>
+
+  <target name="generate-service"
+          depends="config"
+          description="Generates the source of the current service">
+    <echo message="Generating ${apiname}"/>
+    <google-api-generate
+        discoveryurl="https://www.googleapis.com/discovery/v1/apis/${apiname}/${apiversion}/rest"
+        outputfile="${generated.source}/${apiclassname}Service.cs"
+        clientnamespace="Google.Apis.${apiclassname}.${apinamespace}"
+        apiversion="${apiversion}"
+        baseurl="https://www.googleapis.com/"
+        />
+  </target>
+
+  <target name="compile-service"
+          description="Generates then compiles the current service"
+          depends="generate-service">
+    <echo message="Compiling ${apiname}" />
+    <mkdir dir="${generated.binary}/${apiclassname}Service"/>
+    <csc target="library"
+         output="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.dll"
+         doc="${generated.binary}/${apiclassname}Service/Google.Apis.${apiclassname}.${apinamespace}.xml"
+		 noconfig="true" nostdlib="true"
+         debug="PdbOnly">
+      <sources>
+        <include name="${generated.source}/${apiclassname}Service.cs" />
+      </sources>
+      <references refid="generated.code.dependancies" />
+    </csc>
+  </target>
+
+  <target name="zip-source">
+    <description>
+      Zips the source, both the checked in source and the generated source
+    </description>
+    <zip zipfile="${zip.source.file}">
+      <fileset basedir="${google.project.root}" prefix="google-api-dotnet-client">
+        <exclude name="**/bin" />
+        <exclude name="**/bin/**" />
+        <exclude name="**/obj" />
+        <exclude name="**/obj/**" />
+        <exclude name="**/${generated.dir}/**" />
+        <exclude name="**/${fresh.source.dir}/**" />
+        <exclude name="**/.hg/**" />
+        <include name="**" />
+      </fileset>
+      <fileset basedir="${generated.source}" prefix="google-api-dotnet-client/GeneratedSource">
+        <include name="**/*.cs" />
+      </fileset>
+    </zip>
+  </target>
+  
+  <target name="zip-binary" depends="generate-service">
+    <description>
+      Zips the source, both the checked in source and the generated source
+    </description>
+    <zip zipfile="${zip.binary.file}">
+      <fileset prefix="google-api-dotnet-client/binary">
+        <include name="${generated.library}/**" />
+        <include name="${generated.binary}/**" />
+      </fileset>
+    </zip>
+  </target>
+</project>
