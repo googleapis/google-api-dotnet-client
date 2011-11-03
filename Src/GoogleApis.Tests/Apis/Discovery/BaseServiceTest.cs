@@ -38,11 +38,11 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class ConcreteClass : BaseService
         {
             public ConcreteClass(JsonDictionary js)
-                : base(js, new ConcreteFactoryParameters()) {}
+              : base(js, new ConcreteFactoryParameters()) { }
 
             public override DiscoveryVersion DiscoveryVersion
             {
-                get { throw new NotImplementedException(); }
+                get { return DiscoveryVersion.Version_1_0; }
             }
 
             public new string ServerUrl 
@@ -349,6 +349,44 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(2, impl.Scopes.Count);
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/two"));
+        }
+
+        /// <summary>
+        /// Confirms that OAuth2 scopes can be parsed correctly.
+        /// </summary>
+        [Test]
+        public void TestParameters()
+        {
+          const string testJson =
+          @"{
+            'alt': {
+             'type': 'string',
+             'description': 'Data format for the response.',
+             'default': 'json',
+             'enum': [
+              'json'
+             ],
+             'enumDescriptions': [
+              'Responses with Content-Type of application/json'
+             ],
+             'location': 'query'
+            },
+            'fields': {
+             'type': 'string',
+             'description': 'Selector specifying which fields to include in a partial response.',
+             'location': 'query'
+            },
+            'prettyPrint': {
+             'type': 'boolean',
+             'description': 'Returns response with indentations and line breaks.',
+             'default': 'true',
+             'location': 'query'
+            },
+           }";
+          var paramDict = Google.Apis.Json.JsonReader.Parse(testJson.Replace('\'', '\"')) as JsonDictionary;
+          var dict = new JsonDictionary() { { "parameters", paramDict}, { "name", "TestName" }, { "version", "v1" } };
+          var impl = new ConcreteClass(dict);
+          Assert.That(impl.Parameters.Count, Is.EqualTo(3));
         }
 
         /// <summary>
