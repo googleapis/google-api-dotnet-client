@@ -108,6 +108,7 @@ namespace Google.Apis.Discovery
         public IList<string> Labels { get; private set; }
         public IList<string> Features { get; private set; }
         public IDictionary<string, Scope> Scopes { get; private set; }
+        public IDictionary<string, IParameter> Parameters { get; private set; }
 
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
