@@ -79,6 +79,7 @@ namespace Google.Apis.Discovery
             Description = values.GetValueAsNull("description") as string;
             Title = values.GetValueAsNull("title") as string;
             Scopes = LoadScopes();
+            Parameters = LoadParameters();
 
             // Load resources
             rootResource = CreateResource(new KeyValuePair<string, object>("", information));
@@ -236,6 +237,27 @@ namespace Google.Apis.Discovery
             
             return scopes;
         }
+
+        /// <summary>
+        /// Loads the common parameters from the json information dictionary and parses it into a dictionary.
+        /// Always returns a valid dictionary.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IDictionary<string, IParameter> LoadParameters()
+        {
+          // Access the "auth" node.
+          var paramsObj = information.GetValueAsNull("parameters") as JsonDictionary;
+          if (paramsObj != null)
+          {
+            return paramsObj.Select(p => ParameterFactory.GetParameter(DiscoveryVersion, p))
+              .ToDictionary(p => p.Name);
+          }
+          else
+          {
+            return new Dictionary<string, IParameter>();
+          }
+        }
+
 
         /// <summary>
         /// Retrieves a resource using the full resource name.
