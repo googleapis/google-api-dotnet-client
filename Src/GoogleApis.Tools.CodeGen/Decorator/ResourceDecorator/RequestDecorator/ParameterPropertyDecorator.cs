@@ -70,6 +70,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         }
     }
 
+    /// <summary>
+    /// Parameter property decorator for method parameters.
+    /// </summary>
     public class ParameterPropertyDecorator : BaseParameterPropertyDecorator
     {
         public override void DecorateClass(IResource resource,
@@ -97,42 +100,49 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         }
     }
 
+    /// <summary>
+    /// Adds service-wide parameters to the request objects.
+    /// </summary>
+    /// <remarks>
+    /// Services have parameters which apply to all methods on that service. These are specified
+    /// at the service level.
+    /// </remarks>
     public class CommonParameterRequestDecorator : ParameterPropertyDecorator
     {
-      public CommonParameterRequestDecorator(IDictionary<string, IParameter> parameters)
-      {
-          this.parameters = parameters;
-      }
-
-      private readonly IDictionary<string, IParameter> parameters;
-
-      public override void DecorateClass(IResource resource,
-                                  IMethod request,
-                                  CodeTypeDeclaration requestClass,
-                                  CodeTypeDeclaration resourceClass)
-      {
-        if (parameters == null || parameters.Count == 0)
+        public CommonParameterRequestDecorator(IDictionary<string, IParameter> parameters)
         {
-          return;
+            this.parameters = parameters;
         }
 
-        // Create a list of all used words based upon the existing resource class.
-        IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
-        
-        var filteredParams = parameters
-          .Where(p => !request.Parameters.ContainsKey(p.Key))
-          .Select(p => p.Value);
+        private readonly IDictionary<string, IParameter> parameters;
 
-        foreach (IParameter parameter in filteredParams)
+        public override void DecorateClass(IResource resource,
+                                    IMethod request,
+                                    CodeTypeDeclaration requestClass,
+                                    CodeTypeDeclaration resourceClass)
         {
-          // Generate and add the parameter properties.
-          foreach (CodeTypeMember newMember in
-                   GenerateParameterProperty(parameter, request, resourceClass, usedWords))
-          {
-            requestClass.Members.Add(newMember);
-            usedWords.Add(newMember.Name);
-          }
+            if (parameters == null || parameters.Count == 0)
+            {
+                return;
+            }
+
+            // Create a list of all used words based upon the existing resource class.
+            IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
+
+            var filteredParams = parameters
+              .Where(p => !request.Parameters.ContainsKey(p.Key))
+              .Select(p => p.Value);
+
+            foreach (IParameter parameter in filteredParams)
+            {
+                // Generate and add the parameter properties.
+                foreach (CodeTypeMember newMember in
+                         GenerateParameterProperty(parameter, request, resourceClass, usedWords))
+                {
+                    requestClass.Members.Add(newMember);
+                    usedWords.Add(newMember.Name);
+                }
+            }
         }
-      }
     }
 }
