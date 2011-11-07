@@ -352,41 +352,69 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Confirms that OAuth2 scopes can be parsed correctly.
+        /// Test that the Parameters property is initialized.
         /// </summary>
         [Test]
-        public void TestParameters()
+        public void TestCommonParameters()
         {
-          const string testJson =
-          @"{
-            'alt': {
-             'type': 'string',
-             'description': 'Data format for the response.',
-             'default': 'json',
-             'enum': [
-              'json'
-             ],
-             'enumDescriptions': [
-              'Responses with Content-Type of application/json'
-             ],
-             'location': 'query'
-            },
+            const string testJson =
+            @"{
             'fields': {
-             'type': 'string',
-             'description': 'Selector specifying which fields to include in a partial response.',
-             'location': 'query'
+                'type': 'string',
+                'description': 'Selector specifying which fields to include in a partial response.',
+                'location': 'query'
             },
             'prettyPrint': {
-             'type': 'boolean',
-             'description': 'Returns response with indentations and line breaks.',
-             'default': 'true',
-             'location': 'query'
+                'type': 'boolean',
+                'description': 'Returns response with indentations and line breaks.',
+                'default': 'true',
+                'location': 'query'
             },
-           }";
-          var paramDict = Google.Apis.Json.JsonReader.Parse(testJson.Replace('\'', '\"')) as JsonDictionary;
-          var dict = new JsonDictionary() { { "parameters", paramDict}, { "name", "TestName" }, { "version", "v1" } };
-          var impl = new ConcreteClass(dict);
-          Assert.That(impl.Parameters.Count, Is.EqualTo(3));
+            }";
+            var paramDict = Google.Apis.Json.JsonReader.Parse(testJson.Replace('\'', '\"')) as JsonDictionary;
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict}, 
+                { "name", "TestName" },
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(2));
+            Assert.That(impl.Parameters.Keys, 
+                Is.EquivalentTo(new string[] { "fields", "prettyPrint" }));
+            var prettyPrint = impl.Parameters["prettyPrint"];
+            Assert.That(prettyPrint.Description,
+                Is.EqualTo("Returns response with indentations and line breaks."));
+            Assert.That(prettyPrint.ValueType, Is.EqualTo("boolean"));
+        }
+
+        /// <summary>
+        /// Test a service with empty parameters.
+        /// </summary>
+        [Test]
+        public void TestCommonParametersEmpty()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict }, 
+                { "name", "TestName" }, 
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
+        }
+
+        /// <summary>
+        /// Test a service with no parameters
+        /// </summary>
+        [Test]
+        public void TestCommonParametersMissing()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { { "name", "TestName" }, { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
         }
 
         /// <summary>
