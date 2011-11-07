@@ -47,12 +47,9 @@ using System.Text;
 using System.Web.Configuration;
 #endif
 
-namespace System.Web.Util
+namespace ImportedFromMono.System.Web.Util
 {
-#if NET_4_0
-	public
-#endif
-    class HttpEncoder
+    internal class HttpEncoder
     {
         static char[] hexChars = "0123456789abcdef".ToCharArray();
         static object entitiesLock = new object();
