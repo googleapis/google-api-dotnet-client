@@ -245,7 +245,7 @@ namespace Google.Apis.Discovery
         [VisibleForTestOnly]
         internal IDictionary<string, IParameter> LoadParameters()
         {
-          // Access the "auth" node.
+          // Access the "parameters" node for service-wide parameters.
           var paramsObj = information.GetValueAsNull("parameters") as JsonDictionary;
           if (paramsObj != null)
           {
