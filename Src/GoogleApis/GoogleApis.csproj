@@ -63,7 +63,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Web" />
     <Reference Include="nunit.framework">
       <HintPath>..\..\ThirdParty\nunit.framework.dll</HintPath>
     </Reference>
