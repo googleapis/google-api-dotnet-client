@@ -87,6 +87,14 @@ namespace Google.Apis.Discovery
         IDictionary<string, ISchema> Schemas { get; }
 
         /// <summary>
+        /// A dictionary containing all of the common parameters for this service.
+        /// </summary>
+        /// <remarks>
+        /// Common parameters are parameters which apply to all methods of a particular service.
+        /// </remarks>
+        IDictionary<string, IParameter> Parameters { get; }
+
+        /// <summary>
         /// Defines the serialisator to use for requests and responses
         /// </summary>
         ISerializer Serializer { get; set; }
@@ -105,6 +113,14 @@ namespace Google.Apis.Discovery
         /// Deserializes the stream defined by the format used by this service into a .NET object
         /// </summary>
         T DeserializeResponse<T>(IResponse input);
+
+        /// <summary>
+        /// Deserializes an error response into a <see cref="RequestError"/> object
+        /// </summary>
+        /// <exception cref="GoogleApiException">If no error is found in the response.</exception>
+        /// <param name="input"><see cref="IResponse"/> containing an error.</param>
+        /// <returns>The <see cref="RequestError"/> object deserialized from the stream.</returns>
+        RequestError DeserializeError(IResponse input);
 
         /// <summary>
         /// Returns true if this feature is defined for this service

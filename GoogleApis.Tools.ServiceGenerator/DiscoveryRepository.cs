@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Google.Apis.Discovery.v1.Data;
-using Google.Apis.JSON;
+using Google.Apis.Json;
 
 namespace GoogleApis.Tools.ServiceGenerator
 {

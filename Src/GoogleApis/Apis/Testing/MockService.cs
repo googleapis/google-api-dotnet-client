@@ -71,6 +71,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
         public IDictionary<string, Scope> Scopes { get; private set; }
+        public IDictionary<string, IParameter> Parameters { get; private set; }
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
         public string Description { get; private set; }
@@ -82,6 +83,11 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         public string SerializeRequest(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RequestError DeserializeError(IResponse input)
         {
             throw new NotImplementedException();
         }

@@ -20,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Google.Apis.Json;
-using Google.Apis.JSON;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -80,6 +79,7 @@ namespace Google.Apis.Discovery
             Description = values.GetValueAsNull("description") as string;
             Title = values.GetValueAsNull("title") as string;
             Scopes = LoadScopes();
+            Parameters = LoadParameters();
 
             // Load resources
             rootResource = CreateResource(new KeyValuePair<string, object>("", information));
@@ -109,6 +109,7 @@ namespace Google.Apis.Discovery
         public IList<string> Labels { get; private set; }
         public IList<string> Features { get; private set; }
         public IDictionary<string, Scope> Scopes { get; private set; }
+        public IDictionary<string, IParameter> Parameters { get; private set; }
 
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
@@ -238,6 +239,27 @@ namespace Google.Apis.Discovery
         }
 
         /// <summary>
+        /// Loads the common parameters from the json information dictionary and parses it into a dictionary.
+        /// Always returns a valid dictionary.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal IDictionary<string, IParameter> LoadParameters()
+        {
+          // Access the "parameters" node for service-wide parameters.
+          var paramsObj = information.GetValueAsNull("parameters") as JsonDictionary;
+          if (paramsObj != null)
+          {
+            return paramsObj.Select(p => ParameterFactory.GetParameter(DiscoveryVersion, p))
+              .ToDictionary(p => p.Name);
+          }
+          else
+          {
+            return new Dictionary<string, IParameter>();
+          }
+        }
+
+
+        /// <summary>
         /// Retrieves a resource using the full resource name.
         /// Example:
         ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
@@ -279,6 +301,29 @@ namespace Google.Apis.Discovery
             return Serializer.Serialize(obj);
         }
 
+        /// <summary>
+        /// Deserializes an error response into a <see cref="RequestError"/> object
+        /// </summary>
+        /// <exception cref="GoogleApiException">If no error is found in the response.</exception>
+        /// <param name="input"><see cref="IResponse"/> containing an error.</param>
+        /// <returns>The <see cref="RequestError"/> object deserialized from the stream.</returns>
+        public RequestError DeserializeError(IResponse input)
+        {
+            Serializer.ThrowIfNull("Serializer");
+            input.ThrowIfNull("input");
+            input.Stream.ThrowIfNull("input.Stream");
+
+            // Read in the entire content.
+            var response = Serializer.Deserialize<StandardResponse<object>>(input.ReadToEnd());
+            if (response.Error == null)
+            {
+                throw new GoogleApiException(this, 
+                    "An Error occured, but the error response could not be deserialized.");
+            }
+
+            return response.Error;
+        }
+
         public T DeserializeResponse<T>(IResponse input)
         {
             input.ThrowIfNull("input");
@@ -286,11 +331,7 @@ namespace Google.Apis.Discovery
             Serializer.ThrowIfNull("Serializer");
 
             // Read in the entire content.
-            string text;
-            using (var reader = new StreamReader(input.Stream))
-            {
-                text = reader.ReadToEnd();
-            }
+            string text = input.ReadToEnd();
 
             // If a string is request, don't parse the response.
             if (typeof(T).Equals(typeof(string)))

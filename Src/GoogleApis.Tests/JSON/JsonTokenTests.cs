@@ -29,7 +29,7 @@ namespace Google.Apis.Tests.Json
         /// A test for JSONToken Constructor
         ///</summary>
         [Test]
-        public void JSONTokenConstructorTest()
+        public void JsonTokenConstructorTest()
         {
             JsonToken target = new JsonToken();
             Assert.IsNotNull(target);
