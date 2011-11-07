@@ -87,6 +87,14 @@ namespace Google.Apis.Discovery
         IDictionary<string, ISchema> Schemas { get; }
 
         /// <summary>
+        /// A dictionary containing all of the common parameters for this service.
+        /// </summary>
+        /// <remarks>
+        /// Common parameters are parameters which apply to all methods of a particular service.
+        /// </remarks>
+        IDictionary<string, IParameter> Parameters { get; }
+
+        /// <summary>
         /// Defines the serialisator to use for requests and responses
         /// </summary>
         ISerializer Serializer { get; set; }

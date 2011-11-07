@@ -38,11 +38,11 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class ConcreteClass : BaseService
         {
             public ConcreteClass(JsonDictionary js)
-                : base(js, new ConcreteFactoryParameters()) {}
+              : base(js, new ConcreteFactoryParameters()) { }
 
             public override DiscoveryVersion DiscoveryVersion
             {
-                get { throw new NotImplementedException(); }
+                get { return DiscoveryVersion.Version_1_0; }
             }
 
             public new string ServerUrl 
@@ -349,6 +349,72 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(2, impl.Scopes.Count);
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/two"));
+        }
+
+        /// <summary>
+        /// Test that the Parameters property is initialized.
+        /// </summary>
+        [Test]
+        public void TestCommonParameters()
+        {
+            const string testJson =
+            @"{
+            'fields': {
+                'type': 'string',
+                'description': 'Selector specifying which fields to include in a partial response.',
+                'location': 'query'
+            },
+            'prettyPrint': {
+                'type': 'boolean',
+                'description': 'Returns response with indentations and line breaks.',
+                'default': 'true',
+                'location': 'query'
+            },
+            }";
+            var paramDict = Google.Apis.Json.JsonReader.Parse(testJson.Replace('\'', '\"')) as JsonDictionary;
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict}, 
+                { "name", "TestName" },
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(2));
+            Assert.That(impl.Parameters.Keys, 
+                Is.EquivalentTo(new string[] { "fields", "prettyPrint" }));
+            var prettyPrint = impl.Parameters["prettyPrint"];
+            Assert.That(prettyPrint.Description,
+                Is.EqualTo("Returns response with indentations and line breaks."));
+            Assert.That(prettyPrint.ValueType, Is.EqualTo("boolean"));
+        }
+
+        /// <summary>
+        /// Test a service with empty parameters.
+        /// </summary>
+        [Test]
+        public void TestCommonParametersEmpty()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict }, 
+                { "name", "TestName" }, 
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
+        }
+
+        /// <summary>
+        /// Test a service with no parameters
+        /// </summary>
+        [Test]
+        public void TestCommonParametersMissing()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { { "name", "TestName" }, { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
         }
 
         /// <summary>
