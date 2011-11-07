@@ -55,12 +55,14 @@ namespace Google.Apis.Tools.CodeGen
         /// <summary>
         /// List of all request class decorators
         /// </summary>
-        public static IList<IRequestDecorator> GetSchemaAwareRequestDecorators(string schemaNamespace)
+        public static IList<IRequestDecorator> GetSchemaAwareRequestDecorators(
+          string schemaNamespace, IService service)
         {
             var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
 
             return (new List<IRequestDecorator>
                         {
+                            new CommonParameterRequestDecorator(service.Parameters),
                             new ParameterPropertyDecorator(),
                             new ServiceRequestInheritanceDecorator(typeProvider),
                             new BodyPropertyDecorator(typeProvider),
@@ -222,7 +224,7 @@ namespace Google.Apis.Tools.CodeGen
             ResourceContainerGenerator resourceContainerGenerator =
                 new ResourceContainerGenerator(resourceContainerDecorators);
             var requestClassGenerator = new RequestClassGenerator(
-                GetSchemaAwareRequestDecorators(codeClientNamespace + ".Data"));
+                GetSchemaAwareRequestDecorators(codeClientNamespace + ".Data", service));
 
             var serviceClass =
                 new ServiceClassGenerator(service, serviceDecorators, resourceContainerGenerator).CreateServiceClass();

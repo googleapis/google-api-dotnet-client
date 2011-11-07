@@ -141,7 +141,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                 // Retrieve parameter name and type.
                 string name = parameter.Name;
                 CodeTypeReference type = ResourceBaseGenerator.GetParameterTypeReference(
-                    resourceClass, parameter, request);
+                    resourceClass, parameter);
 
                 // Generate valid names for the parameter and the field.
                 IEnumerable<string> usedWords = from IParameter p in request.Parameters.Values select p.Name;
