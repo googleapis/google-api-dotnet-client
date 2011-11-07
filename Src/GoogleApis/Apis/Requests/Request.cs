@@ -287,6 +287,7 @@ namespace Google.Apis.Requests
             {
                 this.response = response;
             }
+
             public AsyncRequestResult(GoogleApiRequestException exception)
             {
                 this.exception = exception;
@@ -318,63 +319,80 @@ namespace Google.Apis.Requests
         private void InternalEndExecuteRequest(IAsyncResult asyncResult)
         {
             AsyncExecutionState state = (AsyncExecutionState)asyncResult.AsyncState;
+            AsyncRequestResult asyncRequestResult = null;
+            bool retried = false;
             try
             {
-                WebResponse response = state.CurrentRequest.EndGetResponse(asyncResult);
-                state.ResponseHandler(new AsyncRequestResult(new Response(response)));
+                asyncRequestResult = new AsyncRequestResult(new Response(
+                    state.CurrentRequest.EndGetResponse(asyncResult)));
             }
             catch (WebException ex)
             {
-                HandleFailedRequest(state, ex);   
+                // Returns null if the attempt was retried.
+                retried = HandleFailedRequest(state, ex, out asyncRequestResult);
             }
             catch (Exception ex) // Unknown exception.
             {
-                var e = new GoogleApiRequestException(Service, this, null, ex);
-                state.ResponseHandler(new AsyncRequestResult(e));
+                asyncRequestResult = new AsyncRequestResult(
+                    new GoogleApiRequestException(Service, this, null, ex));
+            }
+            finally
+            {
+                // If the async result is null, this indicates that the request was retried.
+                // Another handler will be executed to respond to that attempt, so do not
+                // call the handler yet.
+                if (!retried)
+                    state.ResponseHandler(asyncRequestResult);
             }
         }
 
         /// <summary>
         /// Handles a failed request, and tries to fix it if possible.
         /// </summary>
-        private void HandleFailedRequest(AsyncExecutionState state, WebException exception)
+        /// <remarks>
+        /// Can not throw an exception.
+        /// </remarks>
+        /// <returns>
+        /// Returns true if the request was handled and is being retried.
+        /// Returns false if the request could not be retried.
+        /// </returns>
+        private bool HandleFailedRequest(AsyncExecutionState state,
+            WebException exception, out AsyncRequestResult asyncRequestResult)
         {
-            // Try to get an error response object.
-            RequestError error = null;
-            if (exception.Response != null)
+            try
             {
-                IResponse errorResponse = new Response(exception.Response);
-                error = Service.DeserializeResponse<StandardResponse<object>>(errorResponse).Error;
-            }
-
-            // Try to handle the response somehow.
-            bool wasHandled = false;
-            if (SupportsRetry && state.Try < MaximumRetries)
-            {
-                // Wait some time before sending another request.
-                Thread.Sleep((int)state.WaitTime);
-                state.WaitTime *= RetryWaitTimeIncreaseFactor;
-                state.Try++;
-
-                foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
+                RequestError error = null;
+                // Try to get an error response object.
+                if (exception.Response != null)
                 {
-                    if (handler.CanHandleErrorResponse(exception, error))
+                    IResponse errorResponse = new Response(exception.Response);
+                    error = Service.DeserializeError(errorResponse);
+                }
+
+                // Try to handle the response somehow.
+                if (SupportsRetry && state.Try < MaximumRetries)
+                {
+                    // Wait some time before sending another request.
+                    Thread.Sleep((int)state.WaitTime);
+                    state.WaitTime *= RetryWaitTimeIncreaseFactor;
+                    state.Try++;
+
+                    foreach (IErrorResponseHandler handler in GetErrorResponseHandlers())
                     {
-                        // The provided handler was able to handle this error. Retry sending the request.
-                        handler.HandleErrorResponse(exception, error, state.CurrentRequest = CreateWebRequest());
-                        wasHandled = true;
-                        break;
+                        if (handler.CanHandleErrorResponse(exception, error))
+                        {
+                            state.CurrentRequest = CreateWebRequest();
+                            // The provided handler was able to handle this error. Retry sending the request.
+                            handler.HandleErrorResponse(exception, error, state.CurrentRequest);
+                            logger.Warning("Retrying request [{0}]", this);
+                            InternalBeginExecuteRequest(state);
+                            // Signal that this begin/end request pair has no result because it has been retried.
+                            asyncRequestResult = null;
+                            return true;
+                        }
                     }
                 }
-            }
 
-            if (wasHandled) // If a change to the request has been made, execute it again.
-            {
-                logger.Warning("Retrying request [{0}]", this);
-                InternalBeginExecuteRequest(state);
-            }
-            else // No solution to our problem was found.
-            {
                 // Retrieve additional information about the http response (if applicable).
                 HttpStatusCode status = 0;
                 HttpWebResponse httpResponse = exception.Response as HttpWebResponse;
@@ -384,9 +402,15 @@ namespace Google.Apis.Requests
                 }
 
                 // We were unable to handle the exception. Throw it wrapped in a GoogleApiRequestException.
-                var e = new GoogleApiRequestException(Service, this, error, exception) { HttpStatusCode = status };
-                state.ResponseHandler(new AsyncRequestResult(e));
+                asyncRequestResult = new AsyncRequestResult(
+                    new GoogleApiRequestException(Service, this, error, exception) { HttpStatusCode = status });
             }
+            catch (Exception ex)
+            {
+                asyncRequestResult = new AsyncRequestResult(
+                    new GoogleApiRequestException(Service, this, null, ex));
+            }
+            return false;
         }
 
         /// <summary>

@@ -21,7 +21,6 @@ using System.IO;
 using System.Text;
 using Google.Apis.Discovery;
 using Google.Apis.Json;
-using Google.Apis.JSON;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -39,11 +38,11 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class ConcreteClass : BaseService
         {
             public ConcreteClass(JsonDictionary js)
-                : base(js, new ConcreteFactoryParameters()) {}
+              : base(js, new ConcreteFactoryParameters()) { }
 
             public override DiscoveryVersion DiscoveryVersion
             {
-                get { throw new NotImplementedException(); }
+                get { return DiscoveryVersion.Version_1_0; }
             }
 
             public new string ServerUrl 
@@ -94,6 +93,11 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
             Assert.That(result.LongURL, Is.EqualTo("http://google.com/"));
             Assert.That(result.Status, Is.Null);
+        }
+
+        private IService CreateService(DiscoveryVersion version)
+        {
+          return version == DiscoveryVersion.Version_0_3 ? CreateLegacyV03Service() : CreateV1Service();
         }
 
         private IService CreateV1Service()
@@ -179,7 +183,8 @@ namespace Google.Apis.Tests.Apis.Discovery
         /// Tests the deserialization for server error responses.
         /// </summary>
         [Test]
-        public void TestErrorDeserialization()
+        public void TestErrorDeserialization(
+          [Values(DiscoveryVersion.Version_0_3, DiscoveryVersion.Version_1_0)] DiscoveryVersion version)
         {
             const string ErrorResponse =
                 @"{
@@ -198,25 +203,26 @@ namespace Google.Apis.Tests.Apis.Discovery
                     }
                 }";
 
-            foreach (DiscoveryVersion v in new[] { DiscoveryVersion.Version_1_0, DiscoveryVersion.Version_0_3 })
-            {
-                using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
-                {
-                    IService impl = (v == DiscoveryVersion.Version_1_0 ? CreateV1Service() : CreateLegacyV03Service());
+            IService impl = CreateService(version);
 
-                    // Verify that the response is decoded correctly.
-                    try
-                    {
-                        impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
-                        Assert.Fail("GoogleApiException was not thrown for invalid Json");
-                    }
-                    catch (GoogleApiException ex)
-                    {
-                        // Check that the contents of the error json was translated into the exception object.
-                        // We cannot compare the entire exception as it depends on the implementation and might change.
-                        Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
-                    }
-                }
+            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+            {
+                // Verify that the response is decoded correctly.
+                GoogleApiException ex = Assert.Throws<GoogleApiException>(() =>
+                {
+                    impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
+                });
+                // Check that the contents of the error json was translated into the exception object.
+                // We cannot compare the entire exception as it depends on the implementation and might change.
+                Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
+            }
+
+            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+            {
+                RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
+                Assert.AreEqual(400, error.Code);
+                Assert.AreEqual("Required", error.Message);
+                Assert.AreEqual(1, error.Errors.Count);
             }
         }
 
@@ -343,6 +349,72 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual(2, impl.Scopes.Count);
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/one"));
             Assert.IsTrue(impl.Scopes.ContainsKey("https://www.example.com/auth/two"));
+        }
+
+        /// <summary>
+        /// Test that the Parameters property is initialized.
+        /// </summary>
+        [Test]
+        public void TestCommonParameters()
+        {
+            const string testJson =
+            @"{
+            'fields': {
+                'type': 'string',
+                'description': 'Selector specifying which fields to include in a partial response.',
+                'location': 'query'
+            },
+            'prettyPrint': {
+                'type': 'boolean',
+                'description': 'Returns response with indentations and line breaks.',
+                'default': 'true',
+                'location': 'query'
+            },
+            }";
+            var paramDict = Google.Apis.Json.JsonReader.Parse(testJson.Replace('\'', '\"')) as JsonDictionary;
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict}, 
+                { "name", "TestName" },
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(2));
+            Assert.That(impl.Parameters.Keys, 
+                Is.EquivalentTo(new string[] { "fields", "prettyPrint" }));
+            var prettyPrint = impl.Parameters["prettyPrint"];
+            Assert.That(prettyPrint.Description,
+                Is.EqualTo("Returns response with indentations and line breaks."));
+            Assert.That(prettyPrint.ValueType, Is.EqualTo("boolean"));
+        }
+
+        /// <summary>
+        /// Test a service with empty parameters.
+        /// </summary>
+        [Test]
+        public void TestCommonParametersEmpty()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { 
+                { "parameters", paramDict }, 
+                { "name", "TestName" }, 
+                { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
+        }
+
+        /// <summary>
+        /// Test a service with no parameters
+        /// </summary>
+        [Test]
+        public void TestCommonParametersMissing()
+        {
+            var paramDict = new JsonDictionary();
+            var dict = new JsonDictionary() { { "name", "TestName" }, { "version", "v1" } };
+            var impl = new ConcreteClass(dict);
+
+            Assert.That(impl.Parameters, Is.Not.Null);
+            Assert.That(impl.Parameters.Count, Is.EqualTo(0));
         }
 
         /// <summary>

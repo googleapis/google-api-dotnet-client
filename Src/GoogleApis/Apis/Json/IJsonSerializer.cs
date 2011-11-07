@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-namespace Google.Apis.JSON
+namespace Google.Apis.Json
 {
     /// <summary>
     /// Represents a Json Serializer
