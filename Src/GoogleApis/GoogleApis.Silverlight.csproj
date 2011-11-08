@@ -84,7 +84,6 @@
     <Compile Include="Apis\Requests\Response.cs" />
     <Compile Include="Apis\Requests\ServiceRequest.cs" />
     <Compile Include="Apis\Util\LazyBinding.cs" />
-    <Compile Include="Apis\Testing\MockResponse.cs" />
     <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />
     <Compile Include="Apis\Json\IJsonSerializer.cs" />
@@ -94,8 +93,6 @@
     <Compile Include="Apis\Requests\RequestError.cs" />
     <Compile Include="Apis\Requests\SingleError.cs" />
     <Compile Include="Apis\Util\EnumStringValueTypeConverter.cs" />
-    <Compile Include="Apis\Testing\MockMethod.cs" />
-    <Compile Include="Apis\Testing\MockParameter.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />
     <Compile Include="Apis\Util\StringValueAttribute.cs" />
     <Compile Include="ApplicationContext.cs" />
@@ -123,8 +120,6 @@
     <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
     <Compile Include="Apis\Requests\IRequest.cs" />
     <Compile Include="Apis\Requests\ReturnType.cs" />
-    <Compile Include="Apis\Testing\MockRequest.cs" />
-    <Compile Include="Apis\Testing\MockService.cs" />
     <Compile Include="Apis\Discovery\IRequestProvider.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\Json\JsonToken.cs" />
@@ -146,7 +141,6 @@
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolver.cs" />
     <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
-    <Compile Include="Apis\Testing\MoreAsserts.cs" />
     <Compile Include="GoogleApiException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
