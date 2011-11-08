@@ -297,6 +297,7 @@ namespace BuildRelease
 
             var releaseProjects = new[] { baseApi, baseApiSilverlight, codegen, oauth2, generator };
             projects.AddRange(releaseProjects);
+            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests.Utility", "GoogleApis.Tests.Utility.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests", "GoogleApis.Tests.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests", "GoogleApis.Tools.CodeGen.Tests.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests", "GoogleApis.Authentication.OAuth2.Tests.csproj")));
