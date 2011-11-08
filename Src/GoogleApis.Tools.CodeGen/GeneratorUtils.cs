@@ -421,6 +421,30 @@ namespace Google.Apis.Tools.CodeGen
         }
 
         /// <summary>
+        /// Return a safe name for a namespace.
+        /// </summary>
+        /// <param name="basename">The target (potentially unsafe) name.</param>
+        /// <returns>A safe namepsace name.</returns>
+        public static string GetNamespaceName(string basename)
+        {
+            if (String.IsNullOrEmpty(basename))
+            {
+                return null;
+            }
+
+            StringBuilder safeName = new StringBuilder();
+
+            if (!IsValidFirstChar(basename[0]))
+            {
+                safeName.Append("_");
+            }
+
+            return safeName
+                .Append(basename.Select(c => IsValidBodyChar(c)?c:'_').ToArray())
+                .ToString();
+        }
+
+        /// <summary>
         /// Returns a safe and appropriate class name for the specified resource container.
         /// </summary>
         public static string GetClassName(IResourceContainer resource, IEnumerable<string> wordsUsedInContext)
