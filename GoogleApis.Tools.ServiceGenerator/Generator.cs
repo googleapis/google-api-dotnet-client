@@ -123,15 +123,17 @@ namespace GoogleApis.Tools.ServiceGenerator
             string version = service.Version;
 
             string formalServiceName = GeneratorUtils.UpperFirstLetter(name);
+            string serviceNamespace = GeneratorUtils.GetNamespaceName(formalServiceName);
             if ((Flags & GeneratorFlags.GoogleService) > 0) // If this is a google service, add the google prefix.
             {
                 formalServiceName = GooglePrefix + formalServiceName;
+                serviceNamespace = GooglePrefix + serviceNamespace;
             }
 
             string baseFileName = Path.Combine(OutputDir, formalServiceName + "." + version);
             string fileName = baseFileName + ".cs";
             string libfileName = baseFileName + ".dll";
-            string serviceNamespace = String.Format("{0}.{1}", formalServiceName, version.Replace('.', '_'));
+            serviceNamespace = String.Format("{0}.{1}", serviceNamespace, GeneratorUtils.GetNamespaceName(version));
 
             // Produce the code.
             var generator = new GoogleServiceGenerator(service, serviceNamespace);

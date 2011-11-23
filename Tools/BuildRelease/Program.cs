@@ -130,7 +130,7 @@ namespace BuildRelease
                             break;
                     }
                 }
-                files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
+                //files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
                 return files.ToArray();
             }
         }
