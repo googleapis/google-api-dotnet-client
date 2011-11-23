@@ -45,18 +45,12 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Security.Permissions;
 using System.Text;
-using System.Web;
 using Google.Apis.Util;
 
 using HttpEncoder = ImportedFromMono.System.Web.Util.HttpEncoder;
 
 namespace ImportedFromMono.System.Web
 {
-
-#if !MOBILE && !SILVERLIGHT
-    // CAS - no InheritanceDemand here as the class is sealed
-    [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
-#endif
     internal sealed class HttpUtility
     {
         sealed class HttpQSCollection : Dictionary<string,string>
