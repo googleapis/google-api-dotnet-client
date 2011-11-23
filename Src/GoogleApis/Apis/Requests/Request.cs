@@ -552,7 +552,16 @@ namespace Google.Apis.Requests
             // Replace the substitution parameters.
             foreach (var parameter in Parameters)
             {
-                IParameter parameterDefinition = Method.Parameters[parameter.Key];
+                IParameter parameterDefinition;// = Method.Parameters[parameter.Key];
+
+                if (!(Method.Parameters.TryGetValue(parameter.Key, out parameterDefinition)
+                    || Service.Parameters.TryGetValue(parameter.Key, out parameterDefinition)
+                    ))
+                {
+                    throw new GoogleApiException(Service,
+                        String.Format("Invalid parameter \"{0}\" specified.", parameter.Key));
+                }
+                
                 string value = parameter.Value;
                 if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default.
                 {
@@ -566,12 +575,10 @@ namespace Google.Apis.Requests
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (!parameterDefinition.IsRequired && escapedValue.IsNullOrEmpty())
+                        if (parameterDefinition.IsRequired || escapedValue.IsNotNullOrEmpty())
                         {
-                            continue;
+                            queryParams.Add(Uri.EscapeDataString(parameterDefinition.Name) + "=" + escapedValue);
                         }
-
-                        queryParams.Add(Uri.EscapeDataString(parameterDefinition.Name) + "=" + escapedValue);
                         break;
                     default:
                         throw new NotSupportedException(

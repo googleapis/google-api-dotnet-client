@@ -119,6 +119,10 @@
     <Compile Include="Decorator\ResourceDecorator\DefaultEnglishCommentCreatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj">
+      <Project>{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}</Project>
+      <Name>GoogleApis.Tests.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
       <Project>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</Project>
       <Name>GoogleApis.Tools.CodeGen</Name>
