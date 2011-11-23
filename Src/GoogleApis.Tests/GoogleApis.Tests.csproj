@@ -115,6 +115,10 @@
     <Compile Include="Apis\Discovery\BaseServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj">
+      <Project>{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}</Project>
+      <Name>GoogleApis.Tests.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
       <Name>GoogleApis</Name>

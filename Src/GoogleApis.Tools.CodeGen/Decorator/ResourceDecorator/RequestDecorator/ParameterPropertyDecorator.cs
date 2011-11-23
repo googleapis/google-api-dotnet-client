@@ -127,10 +127,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             }
 
             // Create a list of all used words based upon the existing resource class.
-            IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
+            var usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
+            var handCodedParameters = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase)
+                { "alt", "fields", "key", "userip" };
 
             var filteredParams = parameters
               .Where(p => !request.Parameters.ContainsKey(p.Key))
+              .Where(p => !handCodedParameters.Contains(p.Key))
               .Select(p => p.Value);
 
             foreach (IParameter parameter in filteredParams)
