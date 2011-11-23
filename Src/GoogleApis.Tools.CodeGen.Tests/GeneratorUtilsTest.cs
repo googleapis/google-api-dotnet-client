@@ -527,5 +527,13 @@ namespace Google.Apis.Tools.CodeGen.Tests
             Assert.IsNotNull(collection.FindTypeMemberByName("Class"));
             Assert.AreEqual("Class", collection.FindTypeMemberByName("Class").Name);
         }
+
+        [Test, Sequential]
+        public void GetNamespaceNameTest(
+            [Values("v1", "__", "1.1", "v1-sandbox", "")] string inName,
+            [Values("v1", "__", "_1_1", "v1_sandbox", null)] string outName)
+        {
+            Assert.That(GeneratorUtils.GetNamespaceName(inName), Is.EqualTo(outName));
+        }
     }
 }
