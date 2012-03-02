@@ -136,7 +136,15 @@ namespace Google.Apis.Authentication.OAuth2
                 if (State != null && !string.IsNullOrEmpty(State.AccessToken))
                 {
                     // Apply authorization to the current request
-                    tokenProvider.AuthorizeRequest(request, State); 
+                    if (string.IsNullOrEmpty(State.RefreshToken))
+                    {
+                        ClientBase.AuthorizeRequest(request, State.AccessToken);
+                    }
+                    else 
+                    {
+                        // This only works if State has a refresh token
+                        tokenProvider.AuthorizeRequest(request, State);
+                    }
                 }
             }
             finally
