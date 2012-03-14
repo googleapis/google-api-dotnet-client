@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google</RootNamespace>
+    <AssemblyName>Google.Apis</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>GoogleApis.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Release\Google.Apis.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apis\Authentication\DelegateAuthenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\Features.cs" />
+    <Compile Include="Apis\Discovery\Scope.cs" />
+    <Compile Include="Apis\Requests\UriFactory.cs" />
+    <Compile Include="Apis\Util\LazyResult.cs" />
+    <Compile Include="ThirdParty\HttpEncoder.cs" />
+    <Compile Include="ThirdParty\HttpUtility.cs" />
+    <Compile Include="Apis\ISerializer.cs" />
+    <Compile Include="Apis\Logging\ConsoleLogger.cs" />
+    <Compile Include="Apis\Logging\ILogger.cs" />
+    <Compile Include="Apis\Logging\Log4NetLogger.cs" />
+    <Compile Include="Apis\Logging\NullLogger.cs" />
+    <Compile Include="Apis\Requests\IServiceRequest.cs" />
+    <Compile Include="Apis\Requests\ETagAction.cs" />
+    <Compile Include="Apis\Requests\IResponse.cs" />
+    <Compile Include="Apis\Requests\ParameterCollection.cs" />
+    <Compile Include="Apis\Requests\Response.cs" />
+    <Compile Include="Apis\Requests\ServiceRequest.cs" />
+    <Compile Include="Apis\Util\LazyBinding.cs" />
+    <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
+    <Compile Include="Apis\Util\Repeatable.cs" />
+    <Compile Include="Apis\Json\IJsonSerializer.cs" />
+    <Compile Include="Apis\Json\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Apis\Requests\IDirectResponseSchema.cs" />
+    <Compile Include="Apis\Requests\IErrorResponseHandler.cs" />
+    <Compile Include="Apis\Requests\RequestError.cs" />
+    <Compile Include="Apis\Requests\SingleError.cs" />
+    <Compile Include="Apis\Util\EnumStringValueTypeConverter.cs" />
+    <Compile Include="Apis\Util\StandardResponse.cs" />
+    <Compile Include="Apis\Util\StringValueAttribute.cs" />
+    <Compile Include="ApplicationContext.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Apis\Discovery\Service.cs" />
+    <Compile Include="Apis\Discovery\DiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StreamDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\StringDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\WebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactory.cs" />
+    <Compile Include="Apis\Requests\Request.cs" />
+    <Compile Include="Apis\Discovery\Method.cs" />
+    <Compile Include="Apis\Discovery\Resource.cs" />
+    <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
+    <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
+    <Compile Include="Apis\Authentication\Authenticator.cs" />
+    <Compile Include="Apis\Authentication\NullAuthenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuthAuthenticator.cs" />
+    <Compile Include="Apis\Authentication\OAuth2LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Requests\MethodValidator.cs" />
+    <Compile Include="Apis\Discovery\IDiscoveryService.cs" />
+    <Compile Include="Apis\Discovery\IService.cs" />
+    <Compile Include="Apis\Authentication\IAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
+    <Compile Include="Apis\Requests\IRequest.cs" />
+    <Compile Include="Apis\Requests\ReturnType.cs" />
+    <Compile Include="Apis\Discovery\IRequestProvider.cs" />
+    <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
+    <Compile Include="Apis\Json\JsonToken.cs" />
+    <Compile Include="Apis\Json\TokenStream.cs" />
+    <Compile Include="Apis\Json\JsonDictionary.cs" />
+    <Compile Include="Apis\Json\JsonReader.cs" />
+    <Compile Include="Apis\OAuthBase.cs" />
+    <Compile Include="Apis\OAuthUtil.cs" />
+    <Compile Include="Apis\Utilities.cs" />
+    <Compile Include="Apis\Discovery\IResourceContainer.cs" />
+    <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
+    <Compile Include="Apis\Discovery\IMethod.cs" />
+    <Compile Include="Apis\Discovery\Parameter.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryImpl.cs" />
+    <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
+    <Compile Include="Apis\Util\Utilities.cs" />
+    <Compile Include="Apis\Discovery\Schema\ISchema.cs" />
+    <Compile Include="Apis\Discovery\Schema\SchemaImpl.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolver.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchema.cs" />
+    <Compile Include="Apis\Discovery\IParameter.cs" />
+    <Compile Include="GoogleApiException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="/*&#xA;Copyright 2010 Google Inc&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;    http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;*/" inheritsSet="Apache2License" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>$(ProjectDir)..\..\Tools\Bin\SyncProjectFiles.exe $(ProjectPath) $(ProjectDir)\GoogleApis.Silverlight.csproj</PreBuildEvent>
+  </PropertyGroup>
+</Project>
