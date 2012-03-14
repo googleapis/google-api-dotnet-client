@@ -125,17 +125,18 @@ namespace Google.Apis.Tools.CodeGen
             var arrayItems = propertySchema.Items;
             if (arrayItems != null && arrayItems.Count == 1)
             {
-                if (arrayItems[0].Id.IsNotNullOrEmpty())
+                CodeTypeReference itemType = arrayItems[0].Id.IsNotNullOrEmpty()
+                    ? new CodeTypeReference(arrayItems[0].Id)
+                    : GetCodeType(arrayItems[0], details, internalClassProvider);
+                logger.Debug("type for array {0}", itemType.BaseType);
+                return new CodeTypeReference(typeof(IList<>))
                 {
-                    return new CodeTypeReference("IList<" + arrayItems[0].Id + ">");
-                }
-                string arrayType = "IList<" + GetCodeType(arrayItems[0], details, internalClassProvider).BaseType + ">";
-                logger.Debug("type for array {0}", arrayType);
-                return new CodeTypeReference(arrayType);
+                    TypeArguments = { itemType }
+                };
             }
 
             logger.Warning("Found Array of unhandled type. {0}", propertySchema);
-            return new CodeTypeReference("IList");
+            return new CodeTypeReference(typeof(System.Collections.IList));
         }
     }
 }
