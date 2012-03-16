@@ -18,8 +18,8 @@ using System;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Text;
-using System.Web;
 using System.Globalization;
+using HttpUtility = ImportedFromMono.System.Web.HttpUtility;
 
 namespace Google.Apis
 {

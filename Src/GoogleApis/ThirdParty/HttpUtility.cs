@@ -35,23 +35,23 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+// In order to support the .NET Client Profile 3.5, a workaround for two
+// missing classes involved an import of these classes from Mono.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Security.Permissions;
 using System.Text;
-using System.Web.Util;
 using Google.Apis.Util;
 
-namespace System.Web
-{
+using HttpEncoder = ImportedFromMono.System.Web.Util.HttpEncoder;
 
-#if !MOBILE && !SILVERLIGHT
-    // CAS - no InheritanceDemand here as the class is sealed
-    [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
-#endif
-    public sealed class HttpUtility
+namespace ImportedFromMono.System.Web
+{
+    internal sealed class HttpUtility
     {
         sealed class HttpQSCollection : Dictionary<string,string>
         {

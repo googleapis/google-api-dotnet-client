@@ -31,10 +31,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Xml;
 using System.Reflection;
 using Google.Apis.Util;
+using HttpUtility = ImportedFromMono.System.Web.HttpUtility;
 
 #endregion
 
