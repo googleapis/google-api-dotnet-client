@@ -48,6 +48,10 @@ namespace BuildRelease
                 Description = "Creates a stable release instead of a development build.")]
             public bool IsStableRelease { get; set; }
 
+            [CommandLine.Argument("tag", ShortName = "t",
+                Description = "Use this as the tag suffix for this build.")]
+            public string Tag { get; set; }
+
             /// <summary>
             /// True if this repository set can be used to build a full release.
             /// </summary>
@@ -170,17 +174,6 @@ namespace BuildRelease
             // 1. Create the local repositories.
             CheckoutRepositories();
 
-            // Ask the user whether he wants to start the build.
-            if (!Arguments.UseLocalRepository)
-            {
-                CommandLine.WriteLine("{{white}} =======================================");
-                CommandLine.WriteLine();
-                CommandLine.WriteLine(" {{gray}}Repositories checked out. Start the build?");
-                CommandLine.WriteLine(" {{gray}}(Change the AssemblyVersion before starting the build)");
-                CommandLine.PressEnterToContinue();
-                CommandLine.WriteLine();
-            }
-
             // Clean up the default/ repository by removing cache-files.
             string toDelete = Default.Combine("_ReSharper.GoogleApisClient");
             if (Directory.Exists(toDelete))
@@ -233,6 +226,9 @@ namespace BuildRelease
                 return;
             }
 
+            // 6. Commit & tag the release
+            CommitAndTagRelease(tag);
+
             CommandLine.WriteLine("   {{gray}}In the next step all changes will be commited and tagged.");
             CommandLine.WriteLine("   {{gray}}Only continue when you are sure that you don't have to make any new changes.");
             CommandLine.RequestUserInput("Do you want to continue with the release? Type YES.", ref res);
@@ -250,9 +246,6 @@ namespace BuildRelease
                         return;
                     }
                 }
-
-                // 6. Commit & tag the release
-                CommitAndTagRelease(tag);
 
                 // 7. Push
                 PushChanges();
@@ -354,15 +347,6 @@ namespace BuildRelease
                 return "date-version-local";
             }
 
-            const string tagFile = "release.tag";
-            if (File.Exists(tagFile))
-            {
-                string existing = File.ReadAllText(tagFile);
-                CommandLine.WriteResult("Existing tag", existing);
-                CommandLine.WriteLine();
-                return existing;
-            }
-
             DateTime releaseDate = DateTime.UtcNow;
             string tag = string.Format("{0:D4}{1:D2}{2:D2}-{3}.{4}.{5}",
                                        releaseDate.Year,
@@ -372,16 +356,12 @@ namespace BuildRelease
                                        releaseVersion.ProductMinorPart,
                                        releaseVersion.ProductBuildPart);
 
-            // Add a suffix?
-            string suffix = "";
-            CommandLine.RequestUserInput("Tag suffix", ref suffix);
-            if (!string.IsNullOrEmpty(suffix))
+            if (!string.IsNullOrEmpty(Arguments.Tag))
             {
-                tag += "-" + suffix;
+                tag += "-" + Arguments.Tag;
             }
 
             CommandLine.WriteResult("Tag", tag);
-            File.WriteAllText(tagFile, tag);
             CommandLine.WriteLine();
             return tag;
         }
