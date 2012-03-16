@@ -154,7 +154,7 @@ namespace BuildRelease
             try
             {
                 Console.SetWindowSize(Console.LargestWindowWidth * 8 / 9, Console.LargestWindowHeight * 8 / 9);
-            } catch (Exception expected) {}
+            } catch (Exception) {}
 
             // Create the name of the local working copy.
             string workingCopy = DateTime.UtcNow.ToString("d", CultureInfo.CreateSpecificCulture("en-US")).Replace('/', '-');
