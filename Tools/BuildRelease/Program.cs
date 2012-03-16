@@ -118,15 +118,19 @@ namespace BuildRelease
                     switch (Path.GetFileName(file))
                     {
                         case "Moq.dll":
+                        case "Moq.LICENSE":
                         case "NAnt.Core.dll":
+                        case "NAnt.Core.GNU.LICENSE":
+                        case "NAnt.Core.LICENSE":
                         case "nunit.framework":
+                        case "nunit.framework.LICENSE":
                             continue; // Skip those files. They are not required for normal operation.
                         default:
                             files.Add(file);
                             break;
                     }
                 }
-                files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
+                //files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
                 return files.ToArray();
             }
         }
