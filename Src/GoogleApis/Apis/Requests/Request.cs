@@ -310,6 +310,7 @@ namespace Google.Apis.Requests
         /// <remarks>Does not check preconditions.</remarks>
         private void InternalBeginExecuteRequest(AsyncExecutionState state)
         {
+            ((HttpWebRequest)state.CurrentRequest).ServicePoint.Expect100Continue = false;
             state.CurrentRequest.BeginGetResponse(InternalEndExecuteRequest, state);
         }
 
