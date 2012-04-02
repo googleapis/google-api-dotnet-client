@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis.Tests</RootNamespace>
+    <AssemblyName>Google.Apis.Tests</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Google.Apis.Tests.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\ThirdParty\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\ThirdParty\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
+    <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
+    <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
+    <Compile Include="Apis\Logging\ConsoleLoggerTests.cs" />
+    <Compile Include="Apis\Logging\NullLoggerTests.cs" />
+    <Compile Include="Apis\Requests\ResponseTest.cs" />
+    <Compile Include="Apis\Logging\Log4NetLoggerTests.cs" />
+    <Compile Include="Apis\Requests\ServiceRequestTest.cs" />
+    <Compile Include="Apis\Requests\UriFactoryTest.cs" />
+    <Compile Include="Apis\Utils\EnumStringValueTypeConverterTest.cs" />
+    <Compile Include="Apis\Utils\LazyBindingTest.cs" />
+    <Compile Include="Apis\Utils\LazyResultTest.cs" />
+    <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
+    <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />
+    <Compile Include="Apis\Utils\RepeatableTest.cs" />
+    <Compile Include="ApplicationContextTests.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CachedWebDiscoveryDeviceTests.cs" />
+    <Compile Include="DiscoveryTests.cs" />
+    <Compile Include="GoogleApiExceptionTests.cs" />
+    <Compile Include="WebDiscoveryDeviceTests.cs" />
+    <Compile Include="FileDiscoveryDeviceTests.cs" />
+    <Compile Include="StreamDiscoveryDeviceTests.cs" />
+    <Compile Include="StringDiscoveryDeviceTests.cs" />
+    <Compile Include="JSON\TokenStreamTest.cs" />
+    <Compile Include="JSON\JsonTokenTests.cs" />
+    <Compile Include="JSON\JsonReaderTests.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryTest.cs" />
+    <Compile Include="Apis\Authentication\NullAuthenticatorTest.cs" />
+    <Compile Include="Apis\Requests\RequestTest.cs" />
+    <Compile Include="Apis\Requests\MethodValidatorTests.cs" />
+    <Compile Include="Apis\Discovery\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceFactoryImplTest.cs" />
+    <Compile Include="Apis\Discovery\V0_3\ServiceTest.cs" />
+    <Compile Include="Apis\Utils\UtilitiesTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\SchemaImplTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaResolverTest.cs" />
+    <Compile Include="Apis\Discovery\Schema\FutureJsonSchemaTest.cs" />
+    <Compile Include="Apis\Discovery\BaseMethodTest.cs" />
+    <Compile Include="Apis\Discovery\BaseParameterTest.cs" />
+    <Compile Include="Apis\Testing\MoreAssertsTests.cs" />
+    <Compile Include="Apis\Discovery\BaseServiceTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj">
+      <Project>{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}</Project>
+      <Name>GoogleApis.Tests.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+      <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
+      <Name>GoogleApis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+    <None Include="GoogleApisTests.xml" />
+  </ItemGroup>
+  <ItemGroup />
+</Project>
