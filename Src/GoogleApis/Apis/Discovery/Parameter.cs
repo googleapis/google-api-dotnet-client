@@ -24,174 +24,143 @@ using Google.Apis.Testing;
 namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// Abstract parameter factory.
+    /// Abstract implementation of a parameter.
     /// </summary>
-    internal abstract class ParameterFactory
+    [VisibleForTestOnly]
+    internal abstract class BaseParameter : ServiceObject, IParameter
     {
+        protected readonly JsonDictionary information;
+
         /// <summary>
-        /// Returns a parameter with the given values.
+        /// Creates a new parameter with the specified name and value.
         /// </summary>
-        internal static IParameter GetParameter(DiscoveryVersion version, KeyValuePair<string, object> kvp)
+        public BaseParameter(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory)
         {
-            switch (version)
+            Name = name;
+            information = dictionary;
+			information.ThrowIfNull("got no valid dictionary");
+        }
+
+        #region IParameter Members
+
+        public string Name { get; private set; }
+
+        public abstract string ParameterType { get; }
+        public abstract string DefaultValue { get; }
+
+        public string Pattern
+        {
+            get { return information.GetValueAsNull(ServiceFactory.Pattern) as string; }
+        }
+
+        public bool IsRequired
+        {
+            get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
+        }
+
+        public bool IsRepeatable
+        {
+            get { return (bool)(information.GetValueAsNull("repeated") ?? false); }
+        }
+
+        public string ValueType
+        {
+            get { return information.GetValueAsNull(ServiceFactory.ValueType) as string; }
+        }
+
+        public string Description
+        {
+            get { return information.GetValueAsNull(ServiceFactory.Description) as string; }
+        }
+
+        public string Maximum
+        {
+            get { return information.GetValueAsNull(ServiceFactory.Maximum) as string; }
+        }
+
+        public string Minimum
+        {
+            get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
+        }
+
+        public IEnumerable<string> EnumValues
+        {
+            get
             {
-                case DiscoveryVersion.Version_0_3:
-                    return new ParameterV0_3(kvp);
-                case DiscoveryVersion.Version_1_0:
-                    return new ParameterV1_0(kvp);
-                default:
-                    throw new NotSupportedException("Unsupported version of Discovery " + version);
+                IEnumerable list = information.GetValueAsNull("enum") as IEnumerable;
+                if (list == null)
+                {
+                    yield break;
+                }
+
+                foreach (string s in list)
+                {
+                    yield return s;
+                }
             }
         }
 
-        #region Nested type: BaseParameter
-
         /// <summary>
-        /// Abstract implementation of a parameter.
+        /// Returns a set of enum value descriptions.
         /// </summary>
-        [VisibleForTestOnly]
-        internal class BaseParameter : IParameter
+        public IEnumerable<string> EnumValueDescriptions
         {
-            protected readonly JsonDictionary information;
-
-            /// <summary>
-            /// Creates a new parameter with the specified name and value.
-            /// </summary>
-            public BaseParameter(KeyValuePair<string, object> kvp)
+            get
             {
-                Name = kvp.Key;
-                information = kvp.Value as JsonDictionary;
-                if (information == null)
+                IEnumerable list = information.GetValueAsNull("enumDescriptions") as IEnumerable;
+                if (list == null)
                 {
-                    throw new ArgumentException("got no valid dictionary");
+                    yield break;
                 }
-            }
 
-            /// <summary>
-            /// Returns a set of enum value descriptions.
-            /// </summary>
-            public IEnumerable<string> EnumValueDescriptions
-            {
-                get
+                foreach (string s in list)
                 {
-                    IEnumerable list = information.GetValueAsNull("enumDescriptions") as IEnumerable;
-                    if (list == null)
-                    {
-                        yield break;
-                    }
-
-                    foreach (string s in list)
-                    {
-                        yield return s;
-                    }
+                    yield return s;
                 }
-            }
-
-            #region IParameter Members
-
-            public string Name { get; private set; }
-
-            public virtual string ParameterType
-            {
-                get { return information.GetValueAsNull(ServiceFactory.ParameterType) as string; }
-            }
-
-            public string Pattern
-            {
-                get { return information.GetValueAsNull(ServiceFactory.Pattern) as string; }
-            }
-
-            public bool IsRequired
-            {
-                get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
-            }
-
-            public bool IsRepeatable
-            {
-                get { return (bool)(information.GetValueAsNull("repeated") ?? false); }
-            }
-
-            public virtual string DefaultValue
-            {
-                get { return information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
-            }
-
-            public string ValueType
-            {
-                get { return information.GetValueAsNull(ServiceFactory.ValueType) as string; }
-            }
-
-            public string Description
-            {
-                get { return information.GetValueAsNull(ServiceFactory.Description) as string; }
-            }
-
-            public string Maximum
-            {
-                get { return information.GetValueAsNull(ServiceFactory.Maximum) as string; }
-            }
-
-            public string Minimum
-            {
-                get { return information.GetValueAsNull(ServiceFactory.Minimum) as string; }
-            }
-
-            public IEnumerable<string> EnumValues
-            {
-                get
-                {
-                    IEnumerable list = information.GetValueAsNull("enum") as IEnumerable;
-                    if (list == null)
-                    {
-                        yield break;
-                    }
-
-                    foreach (string s in list)
-                    {
-                        yield return s;
-                    }
-                }
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Nested type: ParameterV0_3
-
-        /// <summary>
-        /// A discovery v0.3 implementation of a parameter.
-        /// </summary>
-        [VisibleForTestOnly]
-        internal class ParameterV0_3 : BaseParameter
-        {
-            public ParameterV0_3(KeyValuePair<string, object> kvp) : base(kvp) {}
-
-            public override string ParameterType
-            {
-                get { return information.GetValueAsNull("restParameterType") as string; }
-            }
-
-            public override string DefaultValue
-            {
-                get { return information.GetValueAsNull("defaultValue") as string; }
             }
         }
 
         #endregion
+    }
 
-        #region Nested type: ParameterV1_0
+    /// <summary>
+    /// A discovery v0.3 implementation of a parameter.
+    /// </summary>
+    [VisibleForTestOnly]
+    internal class ParameterV0_3 : BaseParameter
+    {
+        public ParameterV0_3(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory, name, dictionary) { }
 
-        /// <summary>
-        /// A discovery v1.0 implementation of a parameter.
-        /// </summary>
-        [VisibleForTestOnly]
-        internal class ParameterV1_0 : BaseParameter
+        public override string ParameterType
         {
-            public ParameterV1_0(KeyValuePair<string, object> kvp) : base(kvp) {}
+            get { return information.GetValueAsNull("restParameterType") as string; }
         }
 
-        #endregion
+        public override string DefaultValue
+        {
+            get { return information.GetValueAsNull("defaultValue") as string; }
+        }
+    }
+
+    /// <summary>
+    /// A discovery v1.0 implementation of a parameter.
+    /// </summary>
+    [VisibleForTestOnly]
+    internal class ParameterV1_0 : BaseParameter
+    {
+        public ParameterV1_0(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory, name, dictionary) { }
+
+        public override string ParameterType
+        {
+            get { return information.GetValueAsNull(ServiceFactory.ParameterType) as string; }
+        }
+
+        public override string DefaultValue
+        {
+            get { return information.GetValueAsNull(ServiceFactory.DefaultValue) as string; }
+        }
     }
 }

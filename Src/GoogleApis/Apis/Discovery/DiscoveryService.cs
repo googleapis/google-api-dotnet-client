@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+
 namespace Google.Apis.Discovery
 {
     /// <summary>
@@ -64,31 +66,31 @@ namespace Google.Apis.Discovery
         #region IDiscoveryService Members
 
         /// <summary>
-        /// Creates an API object that provides access to the methods defined in the discovery document.
+        /// Create a service object for a specific version of discovery.
         /// </summary>
-        /// <param name="version"></param>
-        /// <param name="param"></param>
-        /// <param name="discoveryVersion">The version of discovery used to create the service</param>
-        public IService GetService(DiscoveryVersion discoveryVersion, IFactoryParameter param)
+        /// <param name="version">Version of discovery to use.</param>
+        /// <returns></returns>
+        public IService GetService(DiscoveryVersion version)
         {
-            IServiceFactory factory;
+            return this.GetService(version, null);
+        }
 
+
+        /// <summary>
+        /// Create a service object for a specific version of discovery.
+        /// </summary>
+        /// <param name="version">Version of discovery to use.</param>
+        /// <param name="param">Parameters intended to initialize the factory.</param>
+        /// <returns></returns>
+        public IService GetService(DiscoveryVersion version, FactoryParameters param)
+        {
+            var factory = ServiceFactory.Get(version);
             using (var documentStream = DiscoveryDevice.Fetch())
             {
                 // Parse the document.
-                factory = ServiceFactory.CreateServiceFactory(documentStream, discoveryVersion, param);
+                var dictionary = Json.JsonReader.Parse(documentStream) as Json.JsonDictionary;
+                return factory.CreateService(dictionary, param);
             }
-
-            return factory.GetService();
-        }
-
-        /// <summary>
-        /// Creates an API object that provides access to the methods defined in the discovery document.
-        /// Uses default factory parameters to construct the service
-        /// </summary>
-        public IService GetService(DiscoveryVersion discoveryVersion)
-        {
-            return GetService(discoveryVersion, null);
         }
 
         #endregion

@@ -38,12 +38,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class ConcreteClass : BaseService
         {
             public ConcreteClass(JsonDictionary js)
-              : base(js, new ConcreteFactoryParameters()) { }
-
-            public override DiscoveryVersion DiscoveryVersion
-            {
-                get { return DiscoveryVersion.Version_1_0; }
-            }
+                : base(ServiceFactory.Default, js, new ConcreteFactoryParameters()) { }
 
             public new string ServerUrl 
             {
@@ -58,7 +53,7 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             #region Nested type: ConcreteFactoryParameters
 
-            private class ConcreteFactoryParameters : BaseFactoryParameters
+            private class ConcreteFactoryParameters : FactoryParameters
             {
                 public ConcreteFactoryParameters() : base("http://test/", "testService/") {}
             }
@@ -452,7 +447,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
 
             // Create the resource hierachy.
-            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
+            var topResource = ServiceFactory.Default.CreateResource("Top", topJson);
             var subResource = topResource.Resources["Sub"];
             var grandchildResource = subResource.Resources["Grandchild"];
             container.Resources.Add("Top", topResource); 

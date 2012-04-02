@@ -49,10 +49,7 @@ namespace Google.Apis.Tests.Apis.Requests
             IMethod m = new MockMethod();
             var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
 
-            var jsonObj = new KeyValuePair<string, object>("test", dict);
-
-
-            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
 
@@ -68,10 +65,7 @@ namespace Google.Apis.Tests.Apis.Requests
             IMethod m = new MockMethod();
             var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
 
-            var jsonObj = new KeyValuePair<string, object>("test", dict);
-
-
-            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
             Assert.IsTrue(validator.ValidateRegex(p, "Test"));
@@ -87,8 +81,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var dict = new JsonDictionary { { "name", "test" } };
 
             // Create the parameter.
-            var jsonObj = new KeyValuePair<string, object>("test", dict);
-            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
 
@@ -110,8 +103,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var dict = new JsonDictionary { { "name", "test" }, { "enum", new[] { "one", "two", "three" } } };
 
             // Create the parameter.
-            var jsonObj = new KeyValuePair<string, object>("test", dict);
-            var p = new ParameterFactory.BaseParameter(jsonObj);
+            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
 

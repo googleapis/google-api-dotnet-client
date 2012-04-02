@@ -47,7 +47,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("minimum", "43");
             dict.Add("maximum", "53");
             dict.Add("pattern", "[1-9][0-9]*");
-            var impl = new ParameterFactory.BaseParameter(new KeyValuePair<string, object>(name, dict));
+            var impl = ServiceFactory.Default.CreateParameter(name, dict);
 
             Assert.AreEqual("TestName", impl.Name);
             Assert.AreEqual("path", impl.ParameterType);
