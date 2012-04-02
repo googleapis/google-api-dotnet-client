@@ -111,5 +111,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Path { get; set; }
 
         public bool IsServiceResource { get; set; }
+
+        public IServiceFactory Factory { get; set; }
     }
 }

@@ -4409,7 +4409,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// </summary>
         public static IResource CreateResourceDiscoveryV_1_0(string resourceName, string json)
         {
-            return new ResourceV1_0(CreateJsonResourceDefinition(resourceName, json));
+            return ServiceFactory.Default.CreateResource(resourceName, (JsonDictionary) JsonReader.Parse(json));
         }
 
         protected void AddReferenceToDeclaringAssembly(Type target, CompilerParameters cp)
@@ -4487,9 +4487,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var buzzTestFetcher = new StringDiscoveryDevice { Document = BuzzServiceAsJson };
             var discovery = new DiscoveryService(buzzTestFetcher);
             // Build the service based on discovery information.
-            return discovery.GetService(
-                DiscoveryVersion.Version_0_3,
-                new FactoryParameterV0_3("http://test.server.example.com", "/testService"));
+            return discovery.GetService(DiscoveryVersion.Version_0_3, new FactoryParameters("http://test.server.example.com", "/testService"));
         }
 
         protected IService CreateAdSenseV1_0Service()
@@ -4498,7 +4496,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             var discovery = new DiscoveryService(buzzTestFetcher);
 
             // Build the service based on discovery information.
-            return discovery.GetService(DiscoveryVersion.Version_1_0, null);
+            return discovery.GetService(DiscoveryVersion.Version_1_0);
         }
     }
 }

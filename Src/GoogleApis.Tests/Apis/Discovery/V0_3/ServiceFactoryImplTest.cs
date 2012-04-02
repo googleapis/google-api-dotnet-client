@@ -508,14 +508,11 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test]
         public void ServiceFactoryDiscovery_ConstructorFailTest()
         {
-            var param = new FactoryParameterV0_3("server", "base");
+            var param = new FactoryParameters("http://example.com", "base");
             var json = (JsonDictionary) JsonReader.Parse(BuzzV0_3_Json);
 
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(null, param));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV0_3(json, null));
-
             json = (JsonDictionary) JsonReader.Parse(Discovery.ServiceFactoryImplTest.BadDiscoveryv1_0_No_Name);
-            Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV0_3(json, param));
+            Assert.Throws(typeof(ArgumentException), () => ServiceFactory.Get(DiscoveryVersion.Version_0_3).CreateService(json, param));
         }
 
         /// <summary>
@@ -524,14 +521,14 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test]
         public void ServiceFactoryDiscovery_ConstructorSuccessTest()
         {
-            var param = new FactoryParameterV0_3("server", "http://base");
+            var param = new FactoryParameters("http://example.com", "base");
             var json = (JsonDictionary) JsonReader.Parse(BuzzV0_3_Json);
-            var fact = new ServiceFactoryDiscoveryV0_3(json, param);
+            var fact = ServiceFactory.Get(DiscoveryVersion.Version_0_3);
+            var service = fact.CreateService(json, param);
 
-            Assert.AreEqual("buzz", fact.Name);
-            Assert.AreEqual(param, fact.Param);
-            Assert.AreEqual(json, fact.Information);
-            Assert.IsInstanceOf(typeof(ServiceV0_3), fact.GetService());
+            Assert.IsInstanceOf(typeof(ServiceV0_3), service);
+            Assert.That(service.Name, Is.EqualTo("buzz"));
+            Assert.That(service.BaseUri.ToString(), Is.EqualTo("http://example.com/base"));
         }
     }
 }

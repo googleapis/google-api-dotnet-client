@@ -29,7 +29,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         /// <summary>
         /// Mock class for testing purposes
         /// </summary>
-        private class MockFactoryParameters : BaseFactoryParameters
+        private class MockFactoryParameters : FactoryParameters
         {
             public MockFactoryParameters() : base() {}
             public MockFactoryParameters(string serverUrl) : base(serverUrl) { }
@@ -70,7 +70,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             Assert.Throws<ArgumentNullException>(() => new MockFactoryParameters((Uri)null));
             Assert.Throws<ArgumentNullException>(() => new MockFactoryParameters((string)null));
-            Assert.Throws<ArgumentException>(() => new MockFactoryParameters(""));
+            Assert.Throws<UriFormatException>(() => new MockFactoryParameters(""));
             Assert.DoesNotThrow(() => new MockFactoryParameters("http://foo", null));
         }
     }

@@ -62,7 +62,8 @@ namespace Google.Apis.Tests.Apis.Discovery
         private class BaseMethodTestImpl : BaseMethod
         {
             public BaseMethodTestImpl(string name, string json)
-                : base(DiscoveryVersion.Version_1_0, new KeyValuePair<string, object>(name, JsonReader.Parse(json))) {}
+                : base(ServiceFactory.Get(DiscoveryVersion.Version_1_0), 
+                  name, JsonReader.Parse(json) as JsonDictionary) {}
         }
 
         /// <summary>

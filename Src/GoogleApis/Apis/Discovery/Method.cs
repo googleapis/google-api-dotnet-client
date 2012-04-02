@@ -25,12 +25,11 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Abstract implementation of a method
     /// </summary>
-    internal abstract class BaseMethod : IMethod
+    internal abstract class BaseMethod : ServiceObject, IMethod
     {
         private const string PathUrl = "path";
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseMethod>();
 
-        private readonly DiscoveryVersion discoveryVersion;
         private readonly JsonDictionary information;
 
         private Dictionary<string, IParameter> parameters;
@@ -38,11 +37,11 @@ namespace Google.Apis.Discovery
 
         protected JsonDictionary Information { get { return information; }}
 
-        internal BaseMethod(DiscoveryVersion version, KeyValuePair<string, object> kvp)
+        internal BaseMethod(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory)
         {
-            discoveryVersion = version;
-            Name = kvp.Key;
-            information = kvp.Value as JsonDictionary;
+            Name = name;
+            information = dictionary;
             if (information == null)
             {
                 throw new ArgumentException("got no valid dictionary");
@@ -137,7 +136,7 @@ namespace Google.Apis.Discovery
             var parameters = new Dictionary<string, IParameter>();
             foreach (KeyValuePair<string, object> kvp in js)
             {
-                IParameter p = ParameterFactory.GetParameter(discoveryVersion, kvp);
+                IParameter p = CreateParameter(kvp);
                 parameters.Add(kvp.Key, p);
             }
             return parameters;
@@ -149,7 +148,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class MethodV1_0 : BaseMethod
     {
-        public MethodV1_0(DiscoveryVersion version, KeyValuePair<string, object> kvp) : base(version, kvp) {}
+        public MethodV1_0(IServiceFactory factory, string name, JsonDictionary dictionary) : 
+            base(factory, name, dictionary) {}
     }
 
     /// <summary>
@@ -159,7 +159,8 @@ namespace Google.Apis.Discovery
     {
         private const string PathUrl = "restPath";
 
-        public MethodV0_3(DiscoveryVersion version, KeyValuePair<string, object> kvp) : base(version, kvp) {}
+        public MethodV0_3(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory, name, dictionary) { }
 
         public override string RestPath
         {

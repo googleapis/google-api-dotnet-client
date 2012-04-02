@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Json;
 using Google.Apis.Util;
@@ -30,18 +31,40 @@ namespace Google.Apis.Discovery
     public interface IServiceFactory
     {
         /// <summary>
-        /// Creates and returns the service this factory can create.
+        /// Creates the service from a JsonDictionary.
         /// </summary>
-        IService GetService();
-    }
+        /// <param name="dictionary">A JsonDictionary describing the service.</param>
+        /// <param name="param">Parameters to the service construction (if needed).</param>
+        /// <returns></returns>
+        IService CreateService(JsonDictionary dictionary, FactoryParameters param);
 
-    /// <summary>
-    /// A marker interface, different versions of discovery use different 
-    /// IFactoryParameters, you will need to pass in one that matches the
-    /// version of discovery you use.
-    /// </summary>
-    /// <seealso cref="FactoryParmeterV0_3"/>
-    public interface IFactoryParameter {}
+        /// <summary>
+        /// Creates an IMethod from a JsonDictionary description.
+        /// </summary>
+        /// <param name="name">The name of the method.</param>
+        /// <param name="dictionary">A JsonDictionary describing the method.</param>
+        /// <returns></returns>
+        IMethod CreateMethod(string name, JsonDictionary dictionary);
+
+        /// <summary>
+        /// Creates an IParameter from a JsonDictionary description.
+        /// </summary>
+        /// <param name="name">The name of the parameter.</param>
+        /// <param name="dictionary">A JsonDictionary describing the parameter.</param>
+        IParameter CreateParameter(string name, JsonDictionary dictionary);
+        
+        /// <summary>
+        /// Creates an IResource from a JsonDictionary description.
+        /// </summary>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="dictionary">A JsonDictionary describing the resource.</param>
+        IResource CreateResource(string name, JsonDictionary dictionary);
+
+        /// <summary>
+        /// The version of discovery represented by this factory.
+        /// </summary>
+        DiscoveryVersion Version { get; }
+    }
 
     /// <summary>
     /// An abstract and static factory which can be used to generate
@@ -61,6 +84,7 @@ namespace Google.Apis.Discovery
         internal const string ParameterOrder = "parameterOrder";
         internal const string ResponseType = "response";
         internal const string RequestType = "request";
+        internal const string MediaUpload = "mediaUpload";
 
         internal const string ParameterType = "location";
         internal const string Pattern = "pattern";
@@ -72,44 +96,33 @@ namespace Google.Apis.Discovery
         internal const string Minimum = "minimum";
 
         /// <summary>
-        /// Creates a service factory for the discovery version requested, with the given parameters
+        /// The Service Factory for the current default version of discovery (Currently Version 1.0)
         /// </summary>
-        /// <param name="discovery">A stream which contains information about the service to construct</param>
-        /// <param name="version">The discovery version to use</param>
-        /// <param name="parameters">
-        /// A set of (optional) factory parameters used to construct the service. 
-        /// If this parameter is null, then a default set of FactoryParameters is created
-        /// </param>
-        public static IServiceFactory CreateServiceFactory(Stream discovery,
-                                                           DiscoveryVersion version,
-                                                           IFactoryParameter parameters)
+        public static IServiceFactory Default
         {
-            discovery.ThrowIfNull("discovery");
-            version.ThrowIfNull("version");
-
-            JsonDictionary information = JsonReader.Parse(discovery) as JsonDictionary;
-
-            switch (version)
+            get
             {
-                case DiscoveryVersion.Version_0_3:
-                    return new ServiceFactoryDiscoveryV0_3(
-                        information, (FactoryParameterV0_3) (parameters ?? new FactoryParameterV0_3()));
-                case DiscoveryVersion.Version_1_0:
-                    return new ServiceFactoryDiscoveryV1_0(
-                        information, (FactoryParameterV1_0) (parameters ?? new FactoryParameterV1_0()));
-                default:
-                    throw new NotSupportedException("The Version " + version + " is not supported");
+                return ServiceFactory.Get(DiscoveryVersion.Version_1_0);
             }
         }
 
         /// <summary>
-        /// Creates a service factory for the discovery version requested
+        /// Get an IServiceFactory instance for a specific version of the discovery service.
         /// </summary>
-        /// <param name="discovery">A stream which contains information about the service to construct</param>
-        /// <param name="version">The discovery version to use</param>
-        public static IServiceFactory CreateServiceFactory(Stream discovery, DiscoveryVersion version)
+        /// <remarks>
+        /// Currently supports discovery versions 0.3 and 1.0
+        /// </remarks>
+        public static IServiceFactory Get(DiscoveryVersion version)
         {
-            return CreateServiceFactory(discovery, version, null);
+            switch (version)
+            {
+                case DiscoveryVersion.Version_0_3:
+                    return ServiceFactoryDiscoveryV0_3.GetInstance();
+                case DiscoveryVersion.Version_1_0:
+                    return ServiceFactoryDiscoveryV1_0.GetInstance();
+                default:
+                    throw new NotSupportedException();
+            }
         }
     }
 }
