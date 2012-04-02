@@ -55,9 +55,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             // Create a top and a sub resource.
             var subJson = new JsonDictionary();
             var topJson = new JsonDictionary();
-            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
-            var subResource = new ResourceV1_0(new KeyValuePair<string, object>("Sub", subJson));
-            subResource.Parent = topResource;
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
+            var topResource = factory.CreateResource("Top", topJson);
+            var subResource = factory.CreateResource("Sub", subJson);
+            ((Resource)subResource).Parent = topResource;
 
             var decorator = new StandardResourceNameResourceDecorator();
             var decoratedClass = new CodeTypeDeclaration { Name = "Sub" };

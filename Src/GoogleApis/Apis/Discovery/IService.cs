@@ -126,5 +126,10 @@ namespace Google.Apis.Discovery
         /// Returns true if this feature is defined for this service
         /// </summary>
         bool HasFeature(Features feature);
+
+        /// <summary>
+        /// The IServiceFactory used to construct objects for this discovery service.
+        /// </summary>
+        IServiceFactory Factory { get; }
     }
 }

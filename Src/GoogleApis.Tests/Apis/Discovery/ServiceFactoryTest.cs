@@ -20,6 +20,7 @@ using System.Text;
 using System.Linq;
 using NUnit.Framework;
 using Google.Apis.Discovery;
+using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
@@ -116,16 +117,6 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Tests that the CreateServiceFactory-method validates parameters
-        /// </summary>
-        [Test]
-        public void TestCreateServiceFactoryInvalidParameters()
-        {
-            Assert.Throws<ArgumentNullException>(
-                () => ServiceFactory.CreateServiceFactory(null, DiscoveryVersion.Version_1_0, null));
-        }
-
-        /// <summary>
         /// Tests that the CreateServiceFactory-method validates the discovery version
         /// </summary>
         [Test]
@@ -133,7 +124,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             var stream = CreateStringStream(DiscoveryV1_0Example);
             Assert.Throws<NotSupportedException>(
-                () => ServiceFactory.CreateServiceFactory(stream, (DiscoveryVersion) 56, null));
+                () => ServiceFactory.Get((DiscoveryVersion) 56));
         }
 
         /// <summary>
@@ -143,7 +134,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestCreateServiceFactoryV0_3()
         {
             var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_0_3, null);
+            IServiceFactory factory = ServiceFactory.Get(DiscoveryVersion.Version_0_3);
             Assert.NotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
         }
@@ -156,14 +147,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         {
             // Test without factory parameter
             var stream = CreateStringStream(DiscoveryV1_0Example);
-            IServiceFactory factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_1_0, null);
-            Assert.IsNotNull(factory);
-            Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
-
-            // Test with FactoryParameter
-            stream = CreateStringStream(DiscoveryV1_0Example);
-            var param = new FactoryParameterV1_0("https://googlecode.com/");
-            factory = ServiceFactory.CreateServiceFactory(stream, DiscoveryVersion.Version_1_0, param);
+            IServiceFactory factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
             Assert.IsNotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);
         }
@@ -174,9 +158,9 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void TestV0_3GetService()
         {
-            var factory = ServiceFactory.CreateServiceFactory(
-                CreateStringStream(DiscoveryV0_3SmallestExample), DiscoveryVersion.Version_0_3, null);
-            IService service = factory.GetService();
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_0_3);
+            var json = JsonReader.Parse(CreateStringStream(DiscoveryV0_3SmallestExample)) as JsonDictionary;
+            IService service = factory.CreateService(json, null);
 
             Assert.NotNull(service);
             Assert.AreEqual(1, service.Resources.Count);
@@ -192,9 +176,9 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void TestV1_0GetService()
         {
-            var factory = ServiceFactory.CreateServiceFactory(
-                CreateStringStream(DiscoveryV1_0Example), DiscoveryVersion.Version_1_0, null);
-            IService service = factory.GetService();
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
+            var json = JsonReader.Parse(CreateStringStream(DiscoveryV1_0Example)) as JsonDictionary;
+            IService service = factory.CreateService(json, null);
 
             Assert.NotNull(service);
             Assert.AreEqual(2, service.Resources.Count);

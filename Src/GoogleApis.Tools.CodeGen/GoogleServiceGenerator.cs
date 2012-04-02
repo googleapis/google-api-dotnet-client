@@ -186,7 +186,7 @@ namespace Google.Apis.Tools.CodeGen
 
             var discovery = CreateDefaultCachingDiscovery(url);
             // Build the service based on discovery information.
-            var service = discovery.GetService(DiscoveryVersion.Version_1_0);
+            var service = discovery.GetService(DiscoveryVersion.Version_1_0, new FactoryParameters());
 
             var generator = new GoogleServiceGenerator(service, clientNamespace);
             var generatedCode = generator.GenerateCode();

@@ -34,12 +34,12 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void ConstructTest()
         {
-            Assert.Throws<ArgumentException>(
-                () => new ResourceV1_0(new KeyValuePair<string, object>("Test", null)));
             Assert.Throws<ArgumentNullException>(
-                () => new ResourceV1_0(new KeyValuePair<string, object>(null, new JsonDictionary())));
+                () => new Resource(ServiceFactory.Default, "Test", null));
+            Assert.Throws<ArgumentNullException>(
+                () => new Resource(ServiceFactory.Default, null, new JsonDictionary()));
             Assert.DoesNotThrow(
-                () => new ResourceV1_0(new KeyValuePair<string, object>("TestResource", new JsonDictionary())));
+                () => new Resource(ServiceFactory.Default, "TestResource", new JsonDictionary()));
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             topJson.Add("resources", new JsonDictionary() { { "Sub", new JsonDictionary() } });
 
             // Create the resource hierachy and confirm results.
-            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
+            var topResource = new Resource(ServiceFactory.Default, "Top", topJson);
             Assert.IsNotNull(topResource.Resources);
             Assert.AreEqual(1, topResource.Resources.Count);
             Assert.AreEqual("Sub", topResource.Resources["Sub"].Name);
@@ -71,7 +71,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
 
             // Create the resource hierachy.
-            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("Top", topJson));
+            var topResource = new Resource(ServiceFactory.Default, "Top", topJson);
             var subResource = topResource.Resources["Sub"];
             var grandchildResource = subResource.Resources["Grandchild"];
          
@@ -93,7 +93,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
 
             // Create the resource hierachy.
-            var topResource = new ResourceV1_0(new KeyValuePair<string, object>("", topJson));
+            var topResource = new Resource(ServiceFactory.Default, "", topJson);
             var subResource = topResource.Resources["Sub"];
             var grandchildResource = subResource.Resources["Grandchild"];
 

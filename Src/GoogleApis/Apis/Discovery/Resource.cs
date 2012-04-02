@@ -60,7 +60,7 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// Abstract implementation of a resource.
     /// </summary>
-    internal abstract class BaseResource : IResource
+    internal class Resource : ServiceObject, IResource
     {
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<IResource>();
         private readonly JsonDictionary information;
@@ -70,15 +70,15 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a new resource for the specified discovery version with the specified name and json dictionary.
         /// </summary>
-        internal BaseResource(DiscoveryVersion version, KeyValuePair<string, object> kvp)
+        internal Resource(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory)
         {
-            kvp.ThrowIfNull("kvp");
-            kvp.Key.ThrowIfNull("kvp");
+            name.ThrowIfNull("name");
+            dictionary.ThrowIfNull("dictionary");
 
-            DiscoveryVersion = version;
-            logger.Debug("Constructing Resource [{0}]", kvp.Key);
-            Name = kvp.Key;
-            information = kvp.Value as JsonDictionary;
+            logger.Debug("Constructing Resource [{0}]", name);
+            Name = name;
+            information = dictionary;
             if (information == null)
             {
                 throw new ArgumentException("got no valid dictionary");
@@ -92,17 +92,12 @@ namespace Google.Apis.Discovery
                 foreach (KeyValuePair<string, object> pair in resourceJson)
                 {
                     // Create the subresource.
-                    var subResource = (BaseResource)CreateResource(pair);
+                    var subResource = (Resource)Factory.CreateResource(pair.Key, pair.Value as JsonDictionary);
                     subResource.Parent = this;
                     resources.Add(pair.Key, subResource);
                 }
             }
         }
-
-        /// <summary>
-        /// The discovery version used for creating this resource.
-        /// </summary>
-        internal DiscoveryVersion DiscoveryVersion { get; private set; }
 
         #region IResource Members
 
@@ -207,50 +202,6 @@ namespace Google.Apis.Discovery
             // Generate the full name using recursion.
             return GetFullName(parentResource) + "." + resource.Name;
         }
-
-        protected abstract IResource CreateResource(KeyValuePair<string, object> kvp);
-        protected abstract IMethod CreateMethod(KeyValuePair<string, object> kvp);
-    }
-
-    #endregion
-
-    #region ResourceV1_0
-
-    internal class ResourceV1_0 : BaseResource
-    {
-        internal ResourceV1_0(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_1_0, kvp) {}
-
-        protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
-        {
-            return new MethodV1_0(DiscoveryVersion, kvp);
-        }
-
-        protected override IResource CreateResource(KeyValuePair<string, object> kvp)
-        {
-            return new ResourceV1_0(kvp);
-        }
-    }
-
-    #endregion
-
-    #region ResourceV0_3
-
-    /// <summary>
-    /// Represents a Resource as defined by Discovery V0.3
-    /// </summary>
-    internal class ResourceV0_3 : BaseResource
-    {
-        internal ResourceV0_3(KeyValuePair<string, object> kvp) : base(DiscoveryVersion.Version_0_3, kvp) { }
-
-        protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
-        {
-            return new MethodV0_3(DiscoveryVersion, kvp);
-        }
-
-        protected override IResource CreateResource(KeyValuePair<string, object> kvp)
-        {
-            return new ResourceV0_3(kvp);
-        }
     }
 
     #endregion
@@ -261,24 +212,22 @@ namespace Google.Apis.Discovery
     /// Mock resource for testing purposes.
     /// </summary>
     [VisibleForTestOnly]
-    internal class MockResource : BaseResource
+    internal class MockResource : Resource
     {
-        public MockResource() : this(new KeyValuePair<string, object>("MockMethod", new JsonDictionary())) {}
+        public MockResource() : this(new MockResourceFactory(), "MockMethod", new JsonDictionary()) {}
 
-        public MockResource(KeyValuePair<string, object> kvp)
-            : base(DiscoveryVersion.Version_1_0, kvp)
+        public MockResource(IServiceFactory factory, string name, JsonDictionary dictionary)
+            : base(factory, name, dictionary)
         {
 
         }
 
-        protected override IResource CreateResource(KeyValuePair<string, object> kvp)
+        private class MockResourceFactory : ServiceFactoryDiscoveryV1_0
         {
-            return new MockResource(kvp);
-        }
-
-        protected override IMethod CreateMethod(KeyValuePair<string, object> kvp)
-        {
-            throw new NotImplementedException();
+            public override IResource CreateResource(string name, JsonDictionary dictionary)
+            {
+                return new MockResource(this, name, dictionary);
+            }
         }
     }
 

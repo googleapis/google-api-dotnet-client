@@ -44,9 +44,9 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
 
         private ServiceV0_3 CreateService()
         {
-            var param = new FactoryParameterV0_3("http://server/");
+            var param = new FactoryParameters("http://example.com/");
             var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
-            return new ServiceV0_3(param, json);
+            return (ServiceV0_3)ServiceFactoryDiscoveryV0_3.GetInstance().CreateService(json, param);
         }
 
         /// <summary>
@@ -55,16 +55,18 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test]
         public void ConstuctorArgumentValidationTest()
         {
-            var param = new FactoryParameterV0_3("http://server/");
+            var param = new FactoryParameters("http://server/");
             var js = new JsonDictionary();
             js["name"] = "TestName";
             js["version"] = "v1";
             js["restBasePath"] = "test/path";
 
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(null, js));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceV0_3(param, null));
+            var factory = ServiceFactoryDiscoveryV0_3.GetInstance();
 
-            new ServiceV0_3(param, js);
+            Assert.DoesNotThrow(() => factory.CreateService(js, null));
+            Assert.Throws(typeof(ArgumentNullException), () => factory.CreateService(null, param));
+
+            factory.CreateService(js, param);
         }
 
         /// <summary>

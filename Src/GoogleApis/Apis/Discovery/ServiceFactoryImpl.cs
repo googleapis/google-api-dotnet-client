@@ -22,61 +22,9 @@ using Google.Apis.Util;
 namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// Defines the factory parameters which are used to create a v1.0 Service
-    /// </summary>
-    public class FactoryParameterV1_0 : BaseFactoryParameters
-    {
-        public FactoryParameterV1_0() {}
-
-        /// <summary>
-        /// Creates a new v1.0 factory parameter by splitting the specified service URI into ServerUrl and BasePath
-        /// </summary>
-        public FactoryParameterV1_0(Uri serviceUri) : base(serviceUri) {}
-
-        /// <summary>
-        /// Creates a parameter set for a v1.0 service
-        /// </summary>
-        /// <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        public FactoryParameterV1_0(string serverUrl) : base(serverUrl) {}
-
-        /// <summary>
-        /// Creates a parameter set for a v1.0 service
-        /// </summary>
-        /// <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        /// <param name="basePath">The relative path to the service on the server</param>
-        public FactoryParameterV1_0(string serverUrl, string basePath) : base(serverUrl, basePath) {}
-    }
-
-    /// <summary>
-    ///   Defines the factory parameters which are used to create a v0.3 Service
-    /// </summary>
-    public class FactoryParameterV0_3 : BaseFactoryParameters
-    {
-        public FactoryParameterV0_3() {}
-
-        /// <summary>
-        /// Creates a new v0.3 factory parameter by splitting the specified service URI into ServerUrl and BasePath
-        /// </summary>
-        public FactoryParameterV0_3(Uri serviceUri) : base(serviceUri) {}
-
-        /// <summary>
-        /// Creates a parameter set for a v0.3 service
-        /// </summary>
-        /// <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        public FactoryParameterV0_3(string serverUrl) : base(serverUrl) {}
-
-        /// <summary>
-        /// Creates a parameter set for a v0.3 service
-        /// </summary>
-        /// <param name="serverUrl">The absolute URL pointing to the server on which the service resides</param>
-        /// <param name="basePath">The relative path to the service on the server</param>
-        public FactoryParameterV0_3(string serverUrl, string basePath) : base(serverUrl, basePath) {}
-    }
-
-    /// <summary>
     /// Defines the base factory parameters which are used to create a service
     /// </summary>
-    public abstract class BaseFactoryParameters : IFactoryParameter
+    public class FactoryParameters
     {
         /// <summary>
         /// The default server URL used
@@ -88,7 +36,7 @@ namespace Google.Apis.Discovery
         /// Creates a new factory parameter for a service
         /// Sets the server url to the default google url
         /// </summary>
-        protected BaseFactoryParameters()
+        public FactoryParameters()
         {
             ServerUrl = DefaultServerUrl;
         }
@@ -96,7 +44,7 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a new factory parameter by splitting the specified service URI into ServerUrl and BasePath
         /// </summary>
-        protected BaseFactoryParameters(Uri serviceUri)
+        public FactoryParameters(Uri serviceUri)
         {
             serviceUri.ThrowIfNull("serviceUri");
 
@@ -112,10 +60,9 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// Creates a new factory parameter for a service
         /// </summary>
-        protected BaseFactoryParameters(string serverUrl)
+        public FactoryParameters(string serverUrl)
+            : this(new Uri(serverUrl))
         {
-            serverUrl.ThrowIfNullOrEmpty("serverUrl");
-            ServerUrl = serverUrl;
         }
 
         /// <summary>
@@ -123,7 +70,8 @@ namespace Google.Apis.Discovery
         /// </summary>
         /// <param name="serverUrl">URL of this service</param>
         /// <param name="basePath">Base path to the service</param>
-        protected BaseFactoryParameters(string serverUrl, string basePath) : this(serverUrl)
+        public FactoryParameters(string serverUrl, string basePath)
+            : this(serverUrl)
         {
             BasePath = basePath;
         }
@@ -142,64 +90,82 @@ namespace Google.Apis.Discovery
     /// <summary>
     /// A Factory used by discovery to create v1.0 Services
     /// </summary>
-    internal class ServiceFactoryDiscoveryV1_0 : BaseServiceFactory
+    internal class ServiceFactoryDiscoveryV1_0 : IServiceFactory
     {
-        public ServiceFactoryDiscoveryV1_0(JsonDictionary discovery, FactoryParameterV1_0 param)
-            : base(discovery, param) {}
+        protected ServiceFactoryDiscoveryV1_0() : base() { }
 
-        public override IService GetService()
+        public virtual IMethod CreateMethod(string name, JsonDictionary dictionary)
         {
-            return new ServiceV1_0((FactoryParameterV1_0) Param, Information);
+            return new MethodV1_0(this, name, dictionary);
+        }
+
+        public virtual IParameter CreateParameter(string name, JsonDictionary dictionary)
+        {
+            return new ParameterV1_0(this, name, dictionary);
+        }
+
+        public virtual IResource CreateResource(string name, JsonDictionary dictionary)
+        {
+            return new Resource(this, name, dictionary);
+        }
+
+        public virtual IService CreateService(JsonDictionary dictionary, FactoryParameters param)
+        {
+            return new ServiceV1_0(this, dictionary, param);
+        }
+
+        public virtual DiscoveryVersion Version { get { return DiscoveryVersion.Version_1_0; } }
+
+        private static IServiceFactory instance;
+
+        public static IServiceFactory GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ServiceFactoryDiscoveryV1_0();
+            }
+            return instance;
         }
     }
 
     /// <summary>
     ///   A Factory used by discovery to create v0.3 Services
     /// </summary>
-    internal class ServiceFactoryDiscoveryV0_3 : BaseServiceFactory
+    internal class ServiceFactoryDiscoveryV0_3 : IServiceFactory
     {
-        public ServiceFactoryDiscoveryV0_3(JsonDictionary discovery, FactoryParameterV0_3 param)
-            : base(discovery, param) {}
+        protected ServiceFactoryDiscoveryV0_3() : base() { }
 
-        public override IService GetService()
+        public virtual IMethod CreateMethod(string name, JsonDictionary dictionary)
         {
-            return new ServiceV0_3((FactoryParameterV0_3) Param, Information);
+            return new MethodV1_0(this, name, dictionary);
         }
-    }
 
-    /// <summary>
-    ///   An abstract version independent implementation of a service factory
-    /// </summary>
-    internal abstract class BaseServiceFactory : IServiceFactory
-    {
-        protected BaseServiceFactory(JsonDictionary discovery, BaseFactoryParameters param)
+        public virtual IParameter CreateParameter(string name, JsonDictionary dictionary)
         {
-            discovery.ThrowIfNullOrEmpty("discovery");
-            param.ThrowIfNull("param");
+            return new ParameterV1_0(this, name, dictionary);
+        }
 
-            Name = discovery.GetMandatoryValue<string>("name");
-            if (Name.IsNullOrEmpty())
+        public virtual IResource CreateResource(string name, JsonDictionary dictionary)
+        {
+            return new Resource(this, name, dictionary);
+        }
+
+        public virtual IService CreateService(JsonDictionary dictionary, FactoryParameters param)
+        {
+            return new ServiceV0_3(this, dictionary, param);
+        }
+
+        public virtual DiscoveryVersion Version { get { return DiscoveryVersion.Version_0_3; } }
+
+        private static IServiceFactory instance;
+
+        public static IServiceFactory GetInstance()
+        {
+            if (instance == null)
             {
-                throw new ArgumentException("No service name found in the JsonDictionary");
+                instance = new ServiceFactoryDiscoveryV0_3();
             }
-
-            Information = discovery;
-            Param = param;
+            return instance;
         }
-
-        [VisibleForTestOnly]
-        internal JsonDictionary Information { get; private set; }
-
-        [VisibleForTestOnly]
-        internal BaseFactoryParameters Param { get; private set; }
-
-        [VisibleForTestOnly]
-        internal string Name { get; private set; }
-
-        #region IServiceFactory Members
-
-        public abstract IService GetService();
-
-        #endregion
     }
 }

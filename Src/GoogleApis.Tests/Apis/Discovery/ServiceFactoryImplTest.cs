@@ -49,16 +49,17 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void ServiceFactoryDiscoveryV1_0ConstructorFailTest()
         {
-            Assert.Throws<ArgumentNullException>(() => new FactoryParameterV1_0((string)null));
+            Assert.Throws<ArgumentNullException>(() => new FactoryParameters((string)null));
             var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
 
             // Test if the constructor will fail if required arguments are missing
-            var param = new FactoryParameterV1_0();
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(null, param));
-            Assert.Throws(typeof(ArgumentNullException), () => new ServiceFactoryDiscoveryV1_0(json, null));
+            var param = new FactoryParameters();
+            Assert.Throws(typeof(ArgumentNullException), () => factory.CreateService(null, param));
+            Assert.DoesNotThrow(() => factory.CreateService(json, null));
 
             json = (JsonDictionary) JsonReader.Parse(BadDiscoveryv1_0_No_Name);
-            Assert.Throws(typeof(ArgumentException), () => new ServiceFactoryDiscoveryV1_0(json, param));
+            Assert.Throws(typeof(ArgumentException), () => factory.CreateService(json, param));
         }
 
         /// <summary>
@@ -67,14 +68,12 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest()
         {
-            var param = new FactoryParameterV1_0("http://server/");
+            var param = new FactoryParameters("http://server/");
             var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
-            var fact = new ServiceFactoryDiscoveryV1_0(json, param);
+            var service = ServiceFactory.Get(DiscoveryVersion.Version_1_0).CreateService(json, param);
 
-            Assert.AreEqual("adsense", fact.Name);
-            Assert.AreEqual(param, fact.Param);
-            Assert.AreEqual(json, fact.Information);
-            Assert.IsInstanceOf(typeof(ServiceV1_0), fact.GetService());
+            Assert.IsInstanceOf(typeof(ServiceV1_0), service);
+            Assert.AreEqual("adsense", service.Name);
         }
     }
 }
