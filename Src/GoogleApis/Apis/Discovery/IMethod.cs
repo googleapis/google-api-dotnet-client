@@ -67,6 +67,11 @@ namespace Google.Apis.Discovery
         bool HasBody { get; }
 
         /// <summary>
+        /// Media upload information (if this is a media upload method).
+        /// </summary>
+        MediaUpload MediaUpload { get; }
+
+        /// <summary>
         /// A set of parameters passed with the request
         /// </summary>
         Dictionary<string, IParameter> Parameters { get; }
