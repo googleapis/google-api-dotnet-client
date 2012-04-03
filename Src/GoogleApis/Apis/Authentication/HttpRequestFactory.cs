@@ -26,9 +26,19 @@ namespace Google.Apis.Authentication
     {
         #region ICreateHttpRequest Members
 
-        public HttpWebRequest Create(Uri target)
+        public HttpWebRequest Create(Uri target, string method)
         {
-            return WebRequest.Create(target) as HttpWebRequest;
+            var req = WebRequest.Create(target) as HttpWebRequest;
+            req.Method = method;
+
+            // Turn off Expect100Continue behavior. For web method calls it is not used
+            // and many servers reject the request if this is present on PUT or POST 
+            // requests with a body present. If used, Expect100Continue prevents the client
+            // from sending the request body unless the server approves the request by sending
+            // Expect100Continue.
+            req.ServicePoint.Expect100Continue = false;
+
+            return req;
         }
 
         #endregion

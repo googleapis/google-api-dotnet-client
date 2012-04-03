@@ -21,6 +21,6 @@ namespace Google.Apis.Authentication
 {
     public interface ICreateHttpRequest
     {
-        HttpWebRequest Create(Uri target);
+        HttpWebRequest Create(Uri target, string method);
     }
 }

@@ -54,34 +54,9 @@ namespace Google.Apis.Authentication
         /// <returns></returns>
         public override void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            base.ApplyAuthenticationToRequest(request);
-
             string oauthHeader = OAuthUtil.GenerateAuthorizationHeader(
                 request.RequestUri, ConsumerKey, ConsumerSecret, null, null, request.Method);
             request.Headers[HttpRequestHeader.Authorization] = oauthHeader;
-        }
-
-        /// <summary>
-        /// Takes an existing httpwebrequest and modifies its uri according to 
-        /// the authentication system used. Only overridden in 2leggedoauth case
-        /// Here we need to add the xoauthrequestor parameter
-        /// </summary>
-        /// <param name="source">the original uri</param>
-        /// <returns></returns>
-        public override Uri ApplyAuthenticationToUri(Uri source)
-        {
-            UriBuilder builder = new UriBuilder(source);
-            string queryToAppend = OAuthParameter + "=" + OAuthUser + "%40" + OAuthDomain;
-
-            if (builder.Query.Length > 1)
-            {
-                builder.Query = builder.Query + "&" + queryToAppend;
-            }
-            else
-            {
-                builder.Query = queryToAppend;
-            }
-            return builder.Uri;
         }
     }
 }

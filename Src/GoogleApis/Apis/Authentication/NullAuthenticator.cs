@@ -29,30 +29,11 @@ namespace Google.Apis.Authentication
         /// </summary>
         public static readonly NullAuthenticator Instance = new NullAuthenticator();
 
-        private readonly NullAuthenticatorImpl impl;
-
-        public NullAuthenticator()
-        {
-            impl = new NullAuthenticatorImpl();
-        }
-
         #region IAuthenticator Members
 
-        public HttpWebRequest CreateHttpWebRequest(string httpMethod, Uri targetUri)
+        public void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            return impl.CreateHttpWebRequest(httpMethod, targetUri);
-        }
-
-        #endregion
-
-        #region Nested type: NullAuthenticatorImpl
-
-        /// <summary>
-        /// We use this to hide the fact that NullAuthenticator uses Authenticator behind the scenes
-        /// This is particularly useful as we are setting the application name to null. 
-        /// </summary>
-        private class NullAuthenticatorImpl : Authenticator
-        {
+            // No-op
         }
 
         #endregion
