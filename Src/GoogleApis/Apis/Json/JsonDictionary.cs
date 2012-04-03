@@ -58,5 +58,11 @@ namespace Google.Apis.Json
 
             return (T) val;
         }
+
+        public T Get<T>(string key)
+            where T : class
+        {
+            return this[key] as T;
+        }
     }
 }
