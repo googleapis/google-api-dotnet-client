@@ -32,7 +32,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
     [TestFixture]
     public class RequestTests
     {
-        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
+        private class MockErrorHandlingAuthenticator : IAuthenticator, IErrorResponseHandler
         {
             private int callOrder;
             public bool Called { get; private set; }
@@ -55,6 +55,15 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
                 Assert.IsFalse(Called);
                 Called = true;
             }
+
+            #region IAuthenticator Members
+
+            public void ApplyAuthenticationToRequest(HttpWebRequest request)
+            {
+                // No-op
+            }
+
+            #endregion
         }
         
         /// <summary>

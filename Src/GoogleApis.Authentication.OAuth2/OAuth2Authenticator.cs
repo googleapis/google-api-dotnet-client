@@ -25,7 +25,7 @@ namespace Google.Apis.Authentication.OAuth2
     /// <summary>
     /// Implements an OAuth2 authenticator using the DotNetOpenAuth library.
     /// </summary>
-    public class OAuth2Authenticator<TClient> : Authenticator, IErrorResponseHandler where TClient : ClientBase
+    public class OAuth2Authenticator<TClient> : IAuthenticator, IErrorResponseHandler where TClient : ClientBase
     {
         private readonly Func<TClient, IAuthorizationState> authProvider;
         private readonly TClient tokenProvider;
@@ -125,10 +125,8 @@ namespace Google.Apis.Authentication.OAuth2
             }
         }
 
-        public override void ApplyAuthenticationToRequest(HttpWebRequest request)
+        public void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            base.ApplyAuthenticationToRequest(request);
-
             // Populate the AuthorizationState with an access token.
             LoadAccessToken();
             try

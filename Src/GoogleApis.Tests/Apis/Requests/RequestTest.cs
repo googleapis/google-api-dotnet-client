@@ -36,9 +36,12 @@ namespace Google.Apis.Tests.Apis.Requests
         private const string SimpleDeveloperKey = "ABC123";
         private const string ComplexDeveloperKey = "?&^%  ABC123";
 
-        private class MockAuthenticator : Authenticator {}
+        private class MockAuthenticator : IAuthenticator
+        {
+            public void ApplyAuthenticationToRequest(HttpWebRequest request) { }
+        }
 
-        private class MockErrorHandlingAuthenticator : Authenticator, IErrorResponseHandler
+        private class MockErrorHandlingAuthenticator : IAuthenticator, IErrorResponseHandler
         {
             #region IErrorResponseHandler Members
 
@@ -50,6 +53,8 @@ namespace Google.Apis.Tests.Apis.Requests
             public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
 
             #endregion
+
+            public void ApplyAuthenticationToRequest(HttpWebRequest request) { }
         }
 
         private void AssertBody(bool gzipEnabled, string body,

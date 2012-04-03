@@ -33,9 +33,12 @@ namespace Google.Apis.Tests.Authentication
         public void SimpleCallTest()
         {
             var auth = new NullAuthenticator();
-            var webRequest = auth.CreateHttpWebRequest("GET", new Uri("https://www.google.com"));
+            var webRequest = new HttpRequestFactory().Create(new Uri("https://www.google.com"), "GET");
+            auth.ApplyAuthenticationToRequest(webRequest);
 
             Assert.IsNotNull(webRequest);
+            Assert.That(webRequest.RequestUri, Is.EqualTo(new Uri("https://www.google.com")));
+            Assert.That(webRequest.Method, Is.EqualTo("GET"));
         }
     }
 }

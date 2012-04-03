@@ -110,7 +110,6 @@
     <Compile Include="Apis\Discovery\Resource.cs" />
     <Compile Include="Apis\Authentication\ICreateHttpRequest.cs" />
     <Compile Include="Apis\Authentication\HttpRequestFactory.cs" />
-    <Compile Include="Apis\Authentication\Authenticator.cs" />
     <Compile Include="Apis\Authentication\NullAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuthAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth2LeggedAuthenticator.cs" />

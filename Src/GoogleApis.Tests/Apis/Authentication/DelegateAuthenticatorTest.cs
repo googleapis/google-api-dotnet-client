@@ -44,7 +44,8 @@ namespace Google.Apis.Tests.Apis.Authentication
         public void SimpleModificationTest()
         {
             var auth = new DelegateAuthenticator((request) => request.Timeout = 1234);
-            WebRequest result = auth.CreateHttpWebRequest("GET", new Uri("http://example.com/"));
+            HttpWebRequest result = new HttpRequestFactory().Create(new Uri("http://example.com/"), "GET");
+            auth.ApplyAuthenticationToRequest(result);
 
             // Verify the results.
             Assert.AreEqual("http://example.com/", result.RequestUri.ToString());
@@ -59,9 +60,11 @@ namespace Google.Apis.Tests.Apis.Authentication
         public void SimpleModificationWithPreviousAuthenticatorTest()
         {
             var firstAuth = new DelegateAuthenticator(request => request.Method = "POST");
-            var auth = new DelegateAuthenticator(request => request.Timeout = 1234)
-                           { PreviousAuthenticator = firstAuth };
-            WebRequest result = auth.CreateHttpWebRequest("GET", new Uri("http://example.com/"));
+            var auth = new DelegateAuthenticator(request => request.Timeout = 1234);
+            HttpWebRequest result = (new HttpRequestFactory()).Create(new Uri("http://example.com/"), "GET");
+
+            firstAuth.ApplyAuthenticationToRequest(result);
+            auth.ApplyAuthenticationToRequest(result);
 
             // Verify the results.
             Assert.AreEqual("http://example.com/", result.RequestUri.ToString());

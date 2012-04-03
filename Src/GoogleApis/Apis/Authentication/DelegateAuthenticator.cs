@@ -26,33 +26,34 @@ namespace Google.Apis.Authentication
     public class DelegateAuthenticator : IAuthenticator
     {
         /// <summary>
-        /// The previous authenticator in the chain to call. Used to construct the HttpWebRequest.
-        /// </summary>
-        public IAuthenticator PreviousAuthenticator { get; set; }
-
-        /// <summary>
         /// The delegate which is used to modify the webrequest.
         /// </summary>
-        public Action<HttpWebRequest> ModifyRequestDelegate { get; private set; } 
+        private readonly RequestModifier modifyRequestDelegate;
+
+        /// <summary>
+        /// Delegate used to modify a request for authentication.
+        /// </summary>
+        /// <param name="webRequest">The request needing authentication.</param>
+        public delegate void RequestModifier(HttpWebRequest webRequest);
         
         /// <summary>
         /// Creates a new DelegateAuthenticator.
         /// </summary>
         /// <param name="modifyRequest">Delegate used to modify the webrequest.</param>
-        public DelegateAuthenticator(Action<HttpWebRequest> modifyRequest)
+        public DelegateAuthenticator(RequestModifier modifyRequest)
         {
             modifyRequest.ThrowIfNull("modifyRequest");
-            ModifyRequestDelegate = modifyRequest;
+            modifyRequestDelegate = modifyRequest;
         }
 
-        public HttpWebRequest CreateHttpWebRequest(string httpMethod, Uri targetUri)
+        /// <summary>
+        /// Apply authentication to the request. Calls the RequestModifier delegate
+        /// modify the request by adding authentication information.
+        /// </summary>
+        /// <param name="webRequest">The request needing authentication.</param>
+        public virtual void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            // If we have a previous authenticator, use this one first. Otherwise create the default Authenticator.
-            HttpWebRequest request =
-                (PreviousAuthenticator ?? NullAuthenticator.Instance).CreateHttpWebRequest(httpMethod, targetUri);
-
-            ModifyRequestDelegate(request);
-            return request;
+            modifyRequestDelegate(request);
         }
     }
 }
