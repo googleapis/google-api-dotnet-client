@@ -19,7 +19,7 @@ namespace Google.Apis.Authentication
     /// <summary>
     /// The abstract class used for all OAuth authenticators
     /// </summary>
-    public abstract class OAuthAuthenticator : Authenticator
+    public abstract class OAuthAuthenticator : IAuthenticator
     {
         protected OAuthAuthenticator(string consumerKey, string consumerSecret) : base()
         {
@@ -36,5 +36,11 @@ namespace Google.Apis.Authentication
         /// The Consumer Secret of OAuth
         /// </summary>
         public string ConsumerSecret { get; private set; }
+
+        #region IAuthenticator Members
+
+        public abstract void ApplyAuthenticationToRequest(System.Net.HttpWebRequest request);
+
+        #endregion
     }
 }

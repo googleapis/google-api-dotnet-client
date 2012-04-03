@@ -26,8 +26,11 @@ namespace Google.Apis.Authentication
     public interface IAuthenticator
     {
         /// <summary>
-        /// Creates the final Web Request which uses the current authentification
+        /// Takes an existing httpwebrequest and modifies its headers according to 
+        /// the authentication system used.
         /// </summary>
-        HttpWebRequest CreateHttpWebRequest(string httpMethod, Uri targetUri);
+        /// <param name="request"></param>
+        /// <returns></returns>
+        void ApplyAuthenticationToRequest(HttpWebRequest request);
     }
 }

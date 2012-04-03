@@ -82,12 +82,12 @@ namespace Google.Apis.Requests
             new List<string> { POST, PUT, DELETE, GET, PATCH }.AsReadOnly();
 
         private string applicationName;
-        private Uri requestUrl;
 
         public Request()
         {
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
+            WebRequestFactory = new HttpRequestFactory();
 
             MaximumRetries = 3;
             RetryWaitTimeIncreaseFactor = 2.0;
@@ -310,7 +310,6 @@ namespace Google.Apis.Requests
         /// <remarks>Does not check preconditions.</remarks>
         private void InternalBeginExecuteRequest(AsyncExecutionState state)
         {
-            ((HttpWebRequest)state.CurrentRequest).ServicePoint.Expect100Continue = false;
             state.CurrentRequest.BeginGetResponse(InternalEndExecuteRequest, state);
         }
 
@@ -632,6 +631,24 @@ namespace Google.Apis.Requests
             }
         }
 
+        private ICreateHttpRequest webRequestFactory;
+
+        /// <summary>
+        /// Factory used to create HttpWebRequest objects.
+        /// </summary>
+        public ICreateHttpRequest WebRequestFactory 
+        {
+            get
+            {
+                return this.webRequestFactory;
+            }
+            set
+            {
+                value.ThrowIfNull("HttpRequestFactory");
+                this.webRequestFactory = value;
+            }
+        }
+
         /// <summary>
         /// Creates the ready-to-send WebRequest containing all the data specified in this request class.
         /// </summary>
@@ -639,10 +656,11 @@ namespace Google.Apis.Requests
         internal WebRequest CreateWebRequest()
         {
             // Formulate the RequestUrl.
-            requestUrl = BuildRequestUrl();
+            Uri requestUrl = BuildRequestUrl();
 
             // Create the request.
-            HttpWebRequest request = Authenticator.CreateHttpWebRequest(Method.HttpMethod, requestUrl);
+            HttpWebRequest request = WebRequestFactory.Create(requestUrl, Method.HttpMethod);
+            Authenticator.ApplyAuthenticationToRequest(request);
 
             // Insert the content type and user agent.
             request.ContentType = string.Format(

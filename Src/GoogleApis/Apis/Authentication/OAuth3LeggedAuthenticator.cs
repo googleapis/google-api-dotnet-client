@@ -66,8 +66,6 @@ namespace Google.Apis.Authentication
         /// </summary>
         public override void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
-            base.ApplyAuthenticationToRequest(request);
-
             string oauthHeader = OAuthUtil.GenerateAuthorizationHeader(
                 request.RequestUri, ConsumerKey, ConsumerSecret, Token, TokenSecret, request.Method);
             request.Headers[HttpRequestHeader.Authorization] = oauthHeader;
