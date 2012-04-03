@@ -46,6 +46,8 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public IEnumerable<string> ParameterOrder { get; set; }
 
+        public MediaUpload MediaUpload { get; set; }
+        
         #endregion
     }
 }

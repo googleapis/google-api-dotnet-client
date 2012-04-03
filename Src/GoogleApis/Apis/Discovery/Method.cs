@@ -118,6 +118,15 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public MediaUpload MediaUpload
+        {
+            get
+            {
+                var dict = information.GetValueAsNull(ServiceFactory.MediaUpload) as JsonDictionary;
+                return dict == null ?  null : new MediaUpload(dict);
+            }
+        }
+
         #endregion
 
         private Dictionary<string, IParameter> FetchParameters()

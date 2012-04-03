@@ -74,6 +74,7 @@
     <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
+    <Compile Include="Apis\Discovery\MediaUploadTest.cs" />
     <Compile Include="Apis\Logging\ConsoleLoggerTests.cs" />
     <Compile Include="Apis\Logging\NullLoggerTests.cs" />
     <Compile Include="Apis\Requests\ResponseTest.cs" />
