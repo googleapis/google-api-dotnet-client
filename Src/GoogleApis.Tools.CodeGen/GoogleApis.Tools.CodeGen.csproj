@@ -79,6 +79,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\IPropertyDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ResponseInterfaceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecorator.cs" />
     <Compile Include="Generator\RequestClassGenerator.cs" />

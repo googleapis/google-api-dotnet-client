@@ -30,61 +30,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// Adds Newtonsoft.Json.JsonPropertyAttribute to each property.
     /// Requires StandardPropertyDecorator or similar to have run before this. 
     /// </summary>
-    public class NewtonSoftPropertyAttributeDecorator : ISchemaDecorator, INestedClassSchemaDecorator
+    public class NewtonSoftPropertyAttributeDecorator : IPropertyDecorator
     {
-        private static readonly ILogger logger =
-            ApplicationContext.Logger.ForType<NewtonSoftPropertyAttributeDecorator>();
-
         private static readonly CodeTypeReference jsonPropertyAttribute =
             new CodeTypeReference(typeof(JsonPropertyAttribute));
 
-        #region INestedClassSchemaDecorator Members
+        #region IPropertyDecorator Members
 
-        public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
-                                          string name,
-                                          JsonSchema schema,
-                                          IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
-                                          INestedClassProvider internalClassProvider)
+        public void DecorateProperty(CodeMemberProperty propertyDefinition, KeyValuePair<string, JsonSchema> propertyPair)
         {
-            AddAttributesToAllProperties(name, schema, typeDeclaration);
+            propertyDefinition.CustomAttributes.Add(CreateAttribute(propertyPair.Key));
         }
 
         #endregion
-
-        #region ISchemaDecorator Members
-
-        public void DecorateClass(CodeTypeDeclaration typeDeclaration,
-                                  ISchema schema,
-                                  IDictionary<JsonSchema, SchemaImplementationDetails> implDetails,
-                                  INestedClassProvider internalClassProvider)
-        {
-            AddAttributesToAllProperties(schema.Name, schema.SchemaDetails, typeDeclaration);
-        }
-
-        #endregion
-
-        [VisibleForTestOnly]
-        internal void AddAttributesToAllProperties(string name, JsonSchema schema, CodeTypeDeclaration typeDeclaration)
-        {
-            schema.ThrowIfNull("schema");
-            name.ThrowIfNullOrEmpty("name");
-            logger.Debug("Adding attributes to properties for {0}", name);
-
-            if (schema.Properties.IsNullOrEmpty())
-            {
-                logger.Debug("No properties found for schema " + name);
-                return;
-            }
-
-            int index = 0;
-            foreach (var propertyPair in schema.Properties)
-            {
-                var schemaFieldName = propertyPair.Key;
-                var propertyDefinition = SchemaUtil.FindCodePropertyForName(
-                    typeDeclaration, schemaFieldName, index++, schema.Properties.Keys);
-                propertyDefinition.CustomAttributes.Add(CreateAttribute(schemaFieldName));
-            }
-        }
 
         [VisibleForTestOnly]
         internal static CodeAttributeDeclaration CreateAttribute(string name)
