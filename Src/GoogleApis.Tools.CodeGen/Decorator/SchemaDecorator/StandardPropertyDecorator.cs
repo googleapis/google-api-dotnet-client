@@ -34,6 +34,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     {
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<StandardPropertyDecorator>();
 
+        private readonly IEnumerable<IPropertyDecorator> propertyDecorators;
+
+        public StandardPropertyDecorator(params IPropertyDecorator[] propertyDecorators)
+        {
+            propertyDecorators.ThrowIfNull("propertyDecorators");
+            this.propertyDecorators = propertyDecorators;
+        }
+
         #region INestedClassSchemaDecorator Members
 
         public void DecorateInternalClass(CodeTypeDeclaration typeDeclaration,
@@ -83,7 +91,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             name.ThrowIfNullOrEmpty("name");
             logger.Debug("Adding properties for {0}", name);
 
-
             var fields = new List<CodeMemberProperty>();
 
             if (schema.Properties.IsNullOrEmpty())
@@ -102,6 +109,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
                 CodeMemberProperty property = GenerateProperty(
                     propertyPair.Key, propertyPair.Value, details, index++, internalClassProvider,
                     allUsedWordsInContext.Except(new[] { propertyPair.Key }));
+
+                foreach (var decorator in propertyDecorators)
+                {
+                    decorator.DecorateProperty(property, propertyPair);
+                }
+
                 fields.Add(property);
             }
             return fields;
