@@ -28,7 +28,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     /// <summary>
     /// Decorator which adds comments to schemas
     /// </summary>
-    public class StandardSchemaCommentDecorator : ISchemaDecorator, INestedClassSchemaDecorator
+    public class StandardSchemaCommentDecorator : ISchemaDecorator, INestedClassSchemaDecorator, IPropertyDecorator
     {
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<StandardSchemaCommentDecorator>();
 
@@ -46,7 +46,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             internalClassProvider.ThrowIfNull("internalClassProvider");
 
             typeDeclaration.Comments.AddRange(CreateComment(schema));
-            AddCommentsToAllProperties(name, schema, typeDeclaration);
         }
 
         #endregion
@@ -65,40 +64,27 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             schema.SchemaDetails.ThrowIfNull("schema.SchemaDetails");
 
             typeDeclaration.Comments.AddRange(CreateComment(schema.SchemaDetails));
-            AddCommentsToAllProperties(schema.Name, schema.SchemaDetails, typeDeclaration);
+        }
+
+        #endregion
+
+        #region IPropertyDecorator Members
+
+        public void DecorateProperty(CodeMemberProperty propertyDefinition, KeyValuePair<string, JsonSchema> propertyPair)
+        {
+            propertyDefinition.ThrowIfNull("propertyDefinition");
+            propertyPair.ThrowIfNull("propertyPair");
+
+            propertyDefinition.Comments.AddRange(CreateComment(propertyPair.Value));
         }
 
         #endregion
 
         [VisibleForTestOnly]
-        internal void AddCommentsToAllProperties(string name, JsonSchema schema, CodeTypeDeclaration typeDeclaration)
-        {
-            schema.ThrowIfNull("schema");
-            name.ThrowIfNullOrEmpty("name");
-            typeDeclaration.ThrowIfNull("typeDeclaration");
-
-            logger.Debug("Adding attributes to properties for {0}", name);
-
-            if (schema.Properties.IsNullOrEmpty())
-            {
-                logger.Debug("No properties found for schema " + name);
-                return;
-            }
-
-            int index = 0;
-            foreach (var propertyPair in schema.Properties)
-            {
-                var schemaFieldName = propertyPair.Key;
-                var propertyDefinition = SchemaUtil.FindCodePropertyForName(
-                    typeDeclaration, schemaFieldName, index++, schema.Properties.Keys);
-                propertyDefinition.Comments.AddRange(CreateComment(propertyPair.Value));
-            }
-        }
-
-        [VisibleForTestOnly]
         internal CodeCommentStatementCollection CreateComment(JsonSchema schema)
         {
             schema.ThrowIfNull("schema");
+
             return DecoratorUtil.CreateSummaryComment(schema.Description);
         }
     }
