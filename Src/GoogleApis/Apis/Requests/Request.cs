@@ -408,7 +408,7 @@ namespace Google.Apis.Requests
             catch (Exception ex)
             {
                 asyncRequestResult = new AsyncRequestResult(
-                    new GoogleApiRequestException(Service, this, null, ex));
+                    new GoogleApiRequestException(Service, this, null, exception));
             }
             return false;
         }

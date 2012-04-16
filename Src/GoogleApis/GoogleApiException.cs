@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
@@ -72,7 +73,7 @@ namespace Google
         /// Creates an API Request Exception.
         /// </summary>
         public GoogleApiRequestException(IService service, IRequest request, RequestError error, Exception inner)
-            : base(service, error != null ? error.ToString() : "<null>", inner)
+            : base(service, PickMessage(error, inner), inner)
         {
             Request = request;
             RequestError = error;
@@ -82,10 +83,23 @@ namespace Google
         /// Creates an API Request Exception.
         /// </summary>
         public GoogleApiRequestException(IService service, IRequest request, RequestError error)
-            : base(service, error != null ? error.ToString() : "<null>")
+            : base(service, PickMessage(error, null))
         {
             Request = request;
             RequestError = error;
+        }
+
+        private static string PickMessage(RequestError error, Exception inner)
+        {
+            if (error != null)
+            {
+                return error.ToString();
+            }
+            if (inner != null)
+            {
+                return inner.Message;
+            }
+            return "An error has ocurred, but no message is available.";
         }
 
         /// <summary>
