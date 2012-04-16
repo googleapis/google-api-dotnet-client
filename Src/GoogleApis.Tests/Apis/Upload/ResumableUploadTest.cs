@@ -309,6 +309,43 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        /// <summary>
+        /// Test that the upload client functions with multiple chunk uploads and 200 responses
+        /// </summary>
+        /// <remarks>
+        /// Compare to TestUploadWith308OnChunks
+        /// </remarks>
+        [Test]
+        public void TestUploadProgress()
+        {
+            // Would rather use a "correct" port-finding logic but this class doesn't support it.
+            using (var server = new MockResumableUploadServer())
+            {
+                var payload = Encoding.UTF8.GetBytes(UploadTestData);
+                var stream = new MemoryStream(payload);
+                var upload = new MockResumableUpload(stream, "text/plain", server);
+                var len = payload.Length;
+
+                server.ExpectRequest(context =>
+                {
+                    // Prepare the response.
+                    context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
+                });
+
+                server.ExpectRequest(context =>
+                {
+                });
+
+                var progressEvents = new Queue<IUploadProgress>();
+
+                upload.ProgressChanged += (progress) => {
+                    progressEvents.Enqueue(progress);
+                };
+
+                upload.Upload();
+            }
+        }
+
         string UploadTestData = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
