@@ -73,6 +73,7 @@
     <Compile Include="Apis\Discovery\Scope.cs" />
     <Compile Include="Apis\Discovery\ServiceObject.cs" />
     <Compile Include="Apis\Requests\UriFactory.cs" />
+    <Compile Include="Apis\Upload\ResumableUpload.cs" />
     <Compile Include="Apis\Util\LazyResult.cs" />
     <Compile Include="ThirdParty\HttpEncoder.cs" />
     <Compile Include="ThirdParty\HttpUtility.cs" />
@@ -173,6 +174,7 @@
       <Link>LICENSE</Link>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
