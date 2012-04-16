@@ -143,8 +143,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
             // Check if this is an optional value parameter.
             if (isValueType && !param.IsRequired)
             {
+                paramTypeRef = new CodeTypeReference(typeof(Nullable<>))
+                {
+                    TypeArguments = { paramTypeRef.BaseType }
+                };
                 // An optional value parameter has to be nullable.
-                paramTypeRef = new CodeTypeReference(paramTypeRef.BaseType + "?");
             }
 
             return paramTypeRef;

@@ -52,7 +52,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         #endregion
 
         /// <summary>
-        /// Generates the <c>IRequest.CreateRequest()</c> method.
+        /// Generates the <c>IRequestProvider.CreateRequest()</c> method.
         /// </summary>
         /// <returns><c>CodeMemberMethod</c> describing the method.</returns>
         internal CodeMemberMethod GenerateCreateRequestMethod()
@@ -60,6 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var method = new CodeMemberMethod();
 
             method.Name = CreateRequestMethodName;
+            method.ImplementationTypes.Add(typeof(IRequestProvider));
             method.ReturnType = new CodeTypeReference(typeof(IRequest));
             method.Attributes = MemberAttributes.Public;
             method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "resource"));

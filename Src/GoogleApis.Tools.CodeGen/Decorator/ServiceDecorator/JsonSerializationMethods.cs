@@ -105,6 +105,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             // public string ObjectToJson(object obj)
             var method = new CodeMemberMethod();
             method.Name = SerializationMethodName;
+            method.ImplementationTypes.Add(typeof(IRequestProvider));
             method.Attributes = MemberAttributes.Public;
             method.Parameters.Add(
                 new CodeParameterDeclarationExpression(new CodeTypeReference(typeof(object)), "obj"));
@@ -138,6 +139,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var method = new CodeMemberMethod();
             var typeParameter = new CodeTypeParameter("T");
             method.Name = DeserializationMethodName;
+            method.ImplementationTypes.Add(typeof(IRequestProvider));
             method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IResponse), "response"));
             method.TypeParameters.Add(typeParameter);
             method.ReturnType = new CodeTypeReference(typeParameter);
