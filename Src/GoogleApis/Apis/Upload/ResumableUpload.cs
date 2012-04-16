@@ -139,6 +139,60 @@ namespace Google.Apis.Upload
 
         #endregion // Properties
 
+        #region Progress Monitoring
+
+        /// <summary>
+        /// Class that communicates the progress of resumable uploads to a container.
+        /// </summary>
+        private class ResumableUploadProgress : IUploadProgress
+        {
+            /// <summary>
+            /// Create a ResumableUploadProgress instance.
+            /// </summary>
+            /// <param name="status">The status of the upload.</param>
+            /// <param name="bytesSent">The number of bytes sent so far.</param>
+            public ResumableUploadProgress(UploadStatus status, long bytesSent)
+            {
+                this.Status = status;
+                this.BytesSent = bytesSent;
+            }
+
+            /// <summary>
+            /// Create a ResumableUploadProgress instance.
+            /// </summary>
+            /// <param name="exception">An exception that occurred during the upload.</param>
+            /// <param name="bytesSent">The number of bytes sent before this exception occurred.</param>
+            public ResumableUploadProgress(Exception exception, long bytesSent)
+            {
+                this.Status = UploadStatus.Failed;
+                this.BytesSent = bytesSent;
+                this.Exception = exception;
+            }
+
+            public UploadStatus Status { get; private set; }
+            public long BytesSent { get; private set; }
+            public Exception Exception { get; private set; }
+        }
+
+        private ResumableUploadProgress Progress { get; set; }
+
+        public event Action<IUploadProgress> ProgressChanged;
+
+        private void UpdateProgress(UploadStatus status, long byteCount)
+        {
+            var p = new ResumableUploadProgress(status, byteCount);
+            this.Progress = p;
+            if(ProgressChanged != null)
+                ProgressChanged(p);
+        }
+
+        public IUploadProgress GetProgress()
+        {
+            return this.Progress;
+        }
+
+        #endregion
+
         #region Upload Implementation
         /// <summary>
         /// Perform the upload.
@@ -148,11 +202,15 @@ namespace Google.Apis.Upload
             long bytesSent = 0;
             try
             {
+                UpdateProgress(UploadStatus.Starting, 0);
                 Uri url = InitializeUpload();
+                UpdateProgress(UploadStatus.Uploading, 0);
                 while (bytesSent < this.Stream.Length)
                 {
                     bytesSent += SendChunk(url, bytesSent);
+                    UpdateProgress(UploadStatus.Uploading, bytesSent);
                 }
+                UpdateProgress(UploadStatus.Completed, bytesSent);
             }
             catch (WebException we)
             {
@@ -169,6 +227,18 @@ namespace Google.Apis.Upload
                         throw new Exception(y["message"] as string);
                     }
                 }
+            }
+            catch (Exception)
+            {
+                /// Attempt to update the progress to show failure,
+                /// swallow any exceptions that occured and re-throw the original
+                /// exception.
+                try
+                {
+                    UpdateProgress(UploadStatus.Failed, bytesSent);
+                }
+                catch (Exception) { }
+                throw;
             }
         }
 
