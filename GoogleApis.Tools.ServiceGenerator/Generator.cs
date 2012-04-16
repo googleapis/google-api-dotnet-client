@@ -37,6 +37,21 @@ namespace GoogleApis.Tools.ServiceGenerator
         /// </summary>
         private const string GooglePrefix = "Google.Apis.";
 
+        public const string CodeDomProviderLanguageVisualBasic = "VisualBasic";
+        public const string CodeFileExtensionVisualBasic = ".vb";
+
+        public const string CodeDomProviderLanguageCSharp = "CSharp";
+        public const string CodeFileExtensionCSharp = ".cs";
+
+        private const string LibraryExtension = ".dll";
+
+        /// <summary>
+        /// Set the language of the CodeDomProvider
+        /// </summary>
+        public string CodeDomProviderLanguage { get; set; }
+
+        public string CodeFileExtension { get; set; }
+
         /// <summary>
         /// The directory where the generated files will be put.
         /// </summary>
@@ -54,6 +69,8 @@ namespace GoogleApis.Tools.ServiceGenerator
         {
             OutputDir = "Services";
             Flags = flags;
+            CodeDomProviderLanguage = CodeDomProviderLanguageCSharp;
+            CodeDomProviderLanguage = CodeFileExtensionCSharp;
         }
 
         /// <summary>
@@ -131,8 +148,8 @@ namespace GoogleApis.Tools.ServiceGenerator
             }
 
             string baseFileName = Path.Combine(OutputDir, formalServiceName + "." + version);
-            string fileName = baseFileName + ".cs";
-            string libfileName = baseFileName + ".dll";
+            string fileName = baseFileName + CodeFileExtension;
+            string libfileName = baseFileName + LibraryExtension;
             serviceNamespace = String.Format("{0}.{1}", serviceNamespace, GeneratorUtils.GetNamespaceName(version));
 
             // Produce the code.
@@ -151,9 +168,9 @@ namespace GoogleApis.Tools.ServiceGenerator
         /// </summary>
         /// <param name="generatedCode"></param>
         /// <param name="targetFile"></param>
-        private static void WriteCodeToFile(CodeCompileUnit generatedCode, string targetFile)
+        private void WriteCodeToFile(CodeCompileUnit generatedCode, string targetFile)
         {
-            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var provider = CodeDomProvider.CreateProvider(CodeDomProviderLanguage);
 
             using (StreamWriter sw = new StreamWriter(targetFile, false))
             {
@@ -172,7 +189,7 @@ namespace GoogleApis.Tools.ServiceGenerator
         /// <summary>
         /// Compiles the specified code unit into a .dll.
         /// </summary>
-        private static void CompileIntoLibrary(IService service, CodeCompileUnit code, string targetFile)
+        private void CompileIntoLibrary(IService service, CodeCompileUnit code, string targetFile)
         {
             // Set the AssemblyInfo
             AddAssemblyInfo<AssemblyTitleAttribute>(code, service.Title);
@@ -198,7 +215,7 @@ namespace GoogleApis.Tools.ServiceGenerator
             }
 
             // Compile the code into a .dll.
-            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var provider = CodeDomProvider.CreateProvider(CodeDomProviderLanguage);
             CompilerResults results = provider.CompileAssemblyFromDom(cp, code);
 
             if (results.Errors.HasErrors || results.CompiledAssembly == null)

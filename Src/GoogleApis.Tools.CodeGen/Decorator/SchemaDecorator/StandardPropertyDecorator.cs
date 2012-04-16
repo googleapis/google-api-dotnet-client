@@ -132,6 +132,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             propertySchema.ThrowIfNull("propertySchema");
 
             var ret = new CodeMemberProperty();
+            if(string.Equals(name, "etag", System.StringComparison.InvariantCultureIgnoreCase))
+                ret.ImplementationTypes.Add(new CodeTypeReference(typeof(Google.Apis.Requests.IDirectResponseSchema)));
             ret.Name = SchemaDecoratorUtil.GetPropertyName(name, disallowedNames);
             ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, details, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;
