@@ -113,8 +113,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal CodeConditionStatement CreateWithApiKey()
         {
             // !string.IsNullOrEmpty(Key)
-            var condition =
-                new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
+            var condition = new CodeBinaryOperatorExpression(
+                new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "IsNullOrEmpty",
+                        new CodeVariableReferenceExpression(ApiKeyServiceDecorator.PropertyName)),
+                CodeBinaryOperatorType.ValueEquality,
+                new CodePrimitiveExpression(false));
+
+            //var condition =
+                //new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
 
             // if (...) {
             var block = new CodeConditionStatement(condition);
