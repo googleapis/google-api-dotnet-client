@@ -77,7 +77,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         internal CodeTypeMemberCollection GenerateBodyProperty(IMethod request, CodeTypeReference bodyType)
         {
             return DecoratorUtil.CreateAutoProperty(
-                BodyPropertyName, BodyPropertyComment, bodyType, Enumerable.Empty<string>(), false);
+                BodyPropertyName, BodyPropertyComment, bodyType, Enumerable.Empty<string>(), false, null);
         }
 
         /// <summary>

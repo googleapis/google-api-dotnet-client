@@ -66,8 +66,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             CodeTypeReference item = SchemaDecoratorUtil.GetCodeType(itemScheme, implDetail, internalClassProvider);
 
             // Insert the base type before any interface declaration
-            var baseType = string.Format("List<{0}>", item.BaseType);
-            typeDeclaration.BaseTypes.Insert(0, new CodeTypeReference(baseType));
+            typeDeclaration.BaseTypes.Insert(0, new CodeTypeReference(typeof(List<>))
+                {
+                    TypeArguments = { item }
+                });
         }
 
         #endregion
