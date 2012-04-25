@@ -741,16 +741,7 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal void AttachBody(WebRequest request)
         {
-            request.BeginGetRequestStream(EndAttachBody, request);
-        }
-
-        /// <summary>
-        /// Ends the AttachBody request asynchronously.
-        /// </summary>
-        internal void EndAttachBody(IAsyncResult result)
-        {
-            WebRequest request = (WebRequest)result.AsyncState;
-            Stream bodyStream = request.EndGetRequestStream(result);
+            Stream bodyStream = request.GetRequestStream();
 
             // If enabled: Encapsulate in GZipStream.
 #if !SILVERLIGHT
