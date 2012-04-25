@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen", "Src\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj", "{22F162B0-DC09-4F3B-935C-D1FAF2367032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen.Tests", "Src\GoogleApis.Tools.CodeGen.Tests\GoogleApis.Tools.CodeGen.Tests.csproj", "{B277BF03-9704-48D1-82A3-F7A3A8B174F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.CodeGen.IntegrationTests", "GoogleApis.Tools.CodeGen.IntegrationTests\GoogleApis.Tools.CodeGen.IntegrationTests.csproj", "{B13D7964-0E39-4055-9969-5451754A23E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2", "Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj", "{76106493-68EF-4E44-AF2E-971ABF29B300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2.Tests", "Src\GoogleApis.Authentication.OAuth2.Tests\GoogleApis.Authentication.OAuth2.Tests.csproj", "{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tools.ServiceGenerator", "GoogleApis.Tools.ServiceGenerator\GoogleApis.Tools.ServiceGenerator.csproj", "{FAD28B73-7185-4D31-8939-8AD91C3A8384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests.Utility", "Src\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj", "{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F162B0-DC09-4F3B-935C-D1FAF2367032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B277BF03-9704-48D1-82A3-F7A3A8B174F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B277BF03-9704-48D1-82A3-F7A3A8B174F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B277BF03-9704-48D1-82A3-F7A3A8B174F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B277BF03-9704-48D1-82A3-F7A3A8B174F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13D7964-0E39-4055-9969-5451754A23E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13D7964-0E39-4055-9969-5451754A23E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13D7964-0E39-4055-9969-5451754A23E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13D7964-0E39-4055-9969-5451754A23E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD28B73-7185-4D31-8939-8AD91C3A8384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD28B73-7185-4D31-8939-8AD91C3A8384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD28B73-7185-4D31-8939-8AD91C3A8384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD28B73-7185-4D31-8939-8AD91C3A8384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Src\GoogleApis\GoogleApis.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.EolMarker = Windows
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$1.scope = text/plain
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 120
+		$2.EolMarker = Windows
+		$2.inheritsSet = VisualStudio
+		$2.inheritsScope = text/plain
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.PropertyBraceStyle = NextLine
+		$3.StatementBraceStyle = NextLine
+		$3.IfElseBraceForcement = AddBraces
+		$3.ForBraceForcement = AddBraces
+		$3.ForEachBraceForcement = AddBraces
+		$3.WhileBraceForcement = AddBraces
+		$3.UsingBraceForcement = AddBraces
+		$3.FixedBraceForcement = AddBraces
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+	EndGlobalSection
+EndGlobal
