@@ -426,6 +426,8 @@ namespace Google.Apis.Discovery
         {
             js.ThrowIfNull("values");
 
+            RemoveAnnotations(js, 0);
+
             var working = new Dictionary<string, ISchema>();
 
             var resolver = new FutureJsonSchemaResolver();
@@ -443,6 +445,28 @@ namespace Google.Apis.Discovery
             resolver.ResolveAndVerify();
 
             return working.AsReadOnly();
+        }
+
+        /// <summary>
+        /// Newtonsoft JSon parser fails to parse json containing a "$ref" and an adjacent
+        /// object property. Google service discovery currently generates this in the "annotations"
+        /// property.
+        /// </summary>
+        /// <param name="js"></param>
+        /// <param name="depth"></param>
+        internal static void RemoveAnnotations(JsonDictionary js, int depth)
+        {
+            if (js.ContainsKey("$ref") && js.ContainsKey("annotations") && depth >= 3)
+            {
+                js.Remove("annotations");
+            }
+
+            foreach (var jd in js.Values
+                .Where(o => o is JsonDictionary)
+                .Select(o => o as JsonDictionary))
+            {
+                RemoveAnnotations(jd, depth + 1);
+            }
         }
 
         /// <summary>
