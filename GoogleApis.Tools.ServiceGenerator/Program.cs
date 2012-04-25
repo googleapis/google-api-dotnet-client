@@ -166,8 +166,12 @@ namespace GoogleApis.Tools.ServiceGenerator
             }
             catch (Exception exception)
             {
-                Console.Error.WriteLine("ERROR: " + exception.Message);
-                Console.Error.WriteLine(exception.StackTrace);
+                while (exception != null)
+                {
+                    Console.Error.WriteLine("ERROR: " + exception.Message);
+                    Console.Error.WriteLine(exception.StackTrace);
+                    exception = exception.InnerException;
+                }
                 Environment.Exit(1);
             }
         }
