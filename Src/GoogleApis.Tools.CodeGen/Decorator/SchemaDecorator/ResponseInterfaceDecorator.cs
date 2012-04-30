@@ -69,7 +69,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         {
             CodeTypeReference type = new CodeTypeReference(typeof(RequestError));
             CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
-                ErrorPropertyName, null, type, Enumerable.Empty<string>(), false);
+                ErrorPropertyName, null, type, Enumerable.Empty<string>(), false, typeof(IDirectResponseSchema));
 
             // Find the created property and add the JsonProperty to it.
             foreach (CodeTypeMember member in col)
@@ -93,7 +93,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             }
 
             CodeTypeReference type = new CodeTypeReference(typeof(string));
-            return DecoratorUtil.CreateAutoProperty(ETagPropertyName, null, type, Enumerable.Empty<string>(), false);
+            return DecoratorUtil.CreateAutoProperty(ETagPropertyName, null, type, Enumerable.Empty<string>(), false, typeof(IDirectResponseSchema));
         }
     }
 }

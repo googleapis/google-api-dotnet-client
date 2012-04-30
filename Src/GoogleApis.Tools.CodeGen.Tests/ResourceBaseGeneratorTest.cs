@@ -119,7 +119,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             param.IsRequired = false;
             param.ValueType = "integer";
             refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param);
-            Assert.AreEqual("System.Int64?", refType.BaseType);
+            Assert.AreEqual(typeof(Nullable<>).FullName, refType.BaseType);
+            Assert.AreEqual(1, refType.TypeArguments.Count);
+            Assert.AreEqual(typeof(Int64).FullName, refType.TypeArguments[0].BaseType);
 
             // Enumeration
             param.IsRequired = true;
@@ -137,7 +139,9 @@ namespace Google.Apis.Tools.CodeGen.Tests
             param.EnumValues = new[] { "TestA", "TestB" };
             param.EnumValueDescriptions = new[] { "DescA", "DescB" };
             refType = ResourceBaseGenerator.GetParameterTypeReference(decl, param);
-            Assert.AreEqual("TestEnum" + "?", refType.BaseType);
+            Assert.AreEqual(typeof(Nullable<>).FullName, refType.BaseType);
+            Assert.AreEqual(1, refType.TypeArguments.Count);
+            Assert.AreEqual("TestEnum", refType.TypeArguments[0].BaseType);
         }
 
         /// <summary>

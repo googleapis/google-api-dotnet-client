@@ -103,7 +103,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 
             CodeMemberField field = DecoratorUtil.CreateBackingField(name, type, usedWords);
             Assert.IsNotNull(field);
-            Assert.That(field.Name, Is.EqualTo("testProperty"));
+            Assert.That(field.Name, Is.EqualTo("_TestProperty"));
             Assert.That(field.Type.BaseType, Is.EqualTo(typeof(bool).FullName));
             Assert.That(field.Attributes, Is.EqualTo(MemberAttributes.Private));
         }

@@ -69,15 +69,8 @@ namespace Google.Apis.Tests.Apis.Requests
             // Create a mock webrequest.
             var requestStream = new MemoryStream();
             var mockWebrequest = new Mock<WebRequest>();
-            mockWebrequest
-                .Setup(r => r.BeginGetRequestStream(It.IsAny<AsyncCallback>(), It.IsAny<object>()))
-                .Callback((AsyncCallback res, object state) =>
-                              {
-                                  Mock<IAsyncResult> async = new Mock<IAsyncResult>();
-                                  async.SetupGet(r => r.AsyncState).Returns(state);
-                                  res(async.Object);
-                              });
-            mockWebrequest.Setup(r => r.EndGetRequestStream(It.IsAny<IAsyncResult>())).Returns(requestStream);
+
+            mockWebrequest.Setup(r => r.GetRequestStream()).Returns(requestStream);
             mockWebrequest.Setup(r => r.Headers).Returns(headers);
 
             // Call the method we are testing
@@ -85,9 +78,7 @@ namespace Google.Apis.Tests.Apis.Requests
             request.AttachBody(mockWebrequest.Object);
 
             // Confirm the results.
-            mockWebrequest.Verify(
-                r => r.BeginGetRequestStream(It.IsAny<AsyncCallback>(), It.IsAny<object>()), Times.Once());
-            mockWebrequest.Verify(r => r.EndGetRequestStream(It.IsAny<IAsyncResult>()), Times.Once());
+            mockWebrequest.Verify(r => r.GetRequestStream(), Times.Once());
 
             if (additionalAsserts != null)
             {
@@ -186,7 +177,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         });
 
             request.WithParameters(parameterValues);
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual(
                 "https://example.com/?alt=json&optionalWithEmpty=d&" +
@@ -206,7 +197,7 @@ namespace Google.Apis.Tests.Apis.Requests
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
         }
@@ -233,7 +224,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = GetSimpleRequest();
             request.WithUserIp("FooBar");
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
             Assert.IsTrue(url.ToString().EndsWith("&userIp=FooBar"));
         }
 
@@ -245,7 +236,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var request = GetSimpleRequest();
             request.WithFields("FooBar");
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
             Assert.IsTrue(url.ToString().EndsWith("&fields=FooBar"));
         }
 
@@ -262,7 +253,7 @@ namespace Google.Apis.Tests.Apis.Requests
                     service,
                     new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
             request.WithKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
         }
@@ -308,7 +299,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         });
 
             request.WithParameters(parameterValues);
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual("https://example.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
@@ -343,7 +334,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         });
 
             request.WithParameters(query);
-            var url = request.BuildRequestUrl();
+            var url = request.BuildRequest().RequestUri;
 
             // Check that the resulting query string is identical with the input.
             Assert.AreEqual("?alt=json&" + query, url.Query);
@@ -393,6 +384,7 @@ namespace Google.Apis.Tests.Apis.Requests
             HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
 
             // Test that the header is set, even if no body is specified.
+            Assert.AreEqual("POST", webRequest.Method);
             Assert.AreEqual(0, webRequest.ContentLength);
 
             // The content-length field will be automatically set as soon as content is written into the

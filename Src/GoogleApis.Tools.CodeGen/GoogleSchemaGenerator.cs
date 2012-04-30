@@ -38,9 +38,10 @@ namespace Google.Apis.Tools.CodeGen
             (new List<ISchemaDecorator>
                  {
                      new StandardPropertyFieldDecorator(),
-                     new StandardPropertyDecorator(),
+                     new StandardPropertyDecorator(
+                         new NewtonSoftPropertyAttributeDecorator(),
+                         new StandardSchemaCommentDecorator()),
                      new StandardSchemaCommentDecorator(),
-                     new NewtonSoftPropertyAttributeDecorator(),
                      new ArraySchemaDecorator(),
                      new AdditionalPropertiesSchemaDecorator(),
                      new ResponseInterfaceDecorator(),

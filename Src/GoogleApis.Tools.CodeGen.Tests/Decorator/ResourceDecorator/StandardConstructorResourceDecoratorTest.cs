@@ -99,7 +99,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             // Check the field name
             Assert.That(firstStatement.Left, Is.InstanceOf<CodeFieldReferenceExpression>());
-            Assert.That(((CodeFieldReferenceExpression)firstStatement.Left).FieldName, Is.EqualTo("subresource"));
+            Assert.That(((CodeFieldReferenceExpression)firstStatement.Left).FieldName, Is.EqualTo("_Subresource"));
 
             // Check the constructor
             var right = firstStatement.Right as CodeObjectCreateExpression;
