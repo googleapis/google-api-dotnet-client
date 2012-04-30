@@ -79,6 +79,7 @@
     <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
+    <Compile Include="Decorator\SchemaDecorator\IPropertyDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ResponseInterfaceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecorator.cs" />
     <Compile Include="Generator\RequestClassGenerator.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethods.cs" />
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
-    <Compile Include="Decorator\SchemaDecorator\SchemaUtil.cs" />
     <Compile Include="Decorator\ResourceDecorator\MethodCommentCreator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

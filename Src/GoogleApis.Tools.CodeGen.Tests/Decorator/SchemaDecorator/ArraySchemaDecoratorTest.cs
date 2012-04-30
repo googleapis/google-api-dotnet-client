@@ -66,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.DoesNotThrow(() => decorator.DecorateClass(decl, schema, implDetails, internalClassProvider));
 
             Assert.That(decl.BaseTypes.Count, Is.EqualTo(1));
-            Assert.That(decl.BaseTypes[0].BaseType, Is.StringStarting("List<"));
+            Assert.That(decl.BaseTypes[0].BaseType, Is.EqualTo(typeof(List<>).FullName));
 
             // Subtype will only be created later on by the NestedClassGenerator,
             // and therefore cannot be tested here

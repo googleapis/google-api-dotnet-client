@@ -82,10 +82,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         [Test]
         public void GetFieldName()
         {
-            Assert.AreEqual("fISH", SchemaDecoratorUtil.GetFieldName("FISH", Enumerable.Empty<string>()));
-            Assert.AreEqual("intValue", SchemaDecoratorUtil.GetFieldName("int", Enumerable.Empty<string>()));
+            Assert.AreEqual("_FISH", SchemaDecoratorUtil.GetFieldName("FISH", Enumerable.Empty<string>()));
+            Assert.AreEqual("_int", SchemaDecoratorUtil.GetFieldName("int", Enumerable.Empty<string>()));
             Assert.AreEqual(
-                "fishAndChips", SchemaDecoratorUtil.GetFieldName("fish-and-chips", Enumerable.Empty<string>()));
+                "_fishAndChips", SchemaDecoratorUtil.GetFieldName("fish-and-chips", Enumerable.Empty<string>()));
         }
 
         /// <summary>

@@ -52,7 +52,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         #endregion
 
         /// <summary>
-        /// Generates the <c>IRequest.CreateRequest()</c> method.
+        /// Generates the <c>IRequestProvider.CreateRequest()</c> method.
         /// </summary>
         /// <returns><c>CodeMemberMethod</c> describing the method.</returns>
         internal CodeMemberMethod GenerateCreateRequestMethod()
@@ -60,6 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var method = new CodeMemberMethod();
 
             method.Name = CreateRequestMethodName;
+            method.ImplementationTypes.Add(typeof(IRequestProvider));
             method.ReturnType = new CodeTypeReference(typeof(IRequest));
             method.Attributes = MemberAttributes.Public;
             method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "resource"));
@@ -113,8 +114,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal CodeConditionStatement CreateWithApiKey()
         {
             // !string.IsNullOrEmpty(Key)
-            var condition =
-                new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
+            var condition = new CodeBinaryOperatorExpression(
+                new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "IsNullOrEmpty",
+                        new CodeVariableReferenceExpression(ApiKeyServiceDecorator.PropertyName)),
+                CodeBinaryOperatorType.ValueEquality,
+                new CodePrimitiveExpression(false));
+
+            //var condition =
+                //new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
 
             // if (...) {
             var block = new CodeConditionStatement(condition);

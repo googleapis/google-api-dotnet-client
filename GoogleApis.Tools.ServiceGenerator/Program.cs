@@ -29,6 +29,8 @@ namespace GoogleApis.Tools.ServiceGenerator
         static void Main(string[] args)
         {
             // Set the default settings.
+            string codeLanguage = Generator.CodeDomProviderLanguageCSharp;
+            string codeFileExtension = Generator.CodeFileExtensionCSharp;
             string outputDir = "Services";
             var flags = GeneratorFlags.CompileLibrary;
 
@@ -67,6 +69,9 @@ namespace GoogleApis.Tools.ServiceGenerator
                                 Console.WriteLine("   --no-compile, -nc    Will not generate a .dll");
                                 Console.WriteLine("   --google             Will add a Google prefix to the service");
                                 Console.WriteLine("   --output, -o <dir>   Changes the output directory");
+                                Console.WriteLine(" Language Parameters:");
+                                Console.WriteLine("   --csharp, -cs       [Default] Output C# code");
+                                Console.WriteLine("   --visualbasic, -vb  Output Visual Basic code");
                                 return;
 
                             case "--no-compile":
@@ -82,6 +87,18 @@ namespace GoogleApis.Tools.ServiceGenerator
                             case "-o":
                                 enumerator.MoveNext();
                                 outputDir = enumerator.GetParameterValue("--output");
+                                break;
+
+                            case "--visualbasic":
+                            case "-vb":
+                                codeLanguage = Generator.CodeDomProviderLanguageVisualBasic;
+                                codeFileExtension = Generator.CodeFileExtensionVisualBasic;
+                                break;
+
+                            case "--csharp":
+                            case "-cs":
+                                codeLanguage = Generator.CodeDomProviderLanguageCSharp;
+                                codeFileExtension = Generator.CodeDomProviderLanguageVisualBasic;
                                 break;
 
                             default:
@@ -108,7 +125,12 @@ namespace GoogleApis.Tools.ServiceGenerator
                 type.ThrowIfNullOrEmpty("type");
 
                 // Create the generator, and run it.
-                Generator generator = new Generator(flags) { OutputDir = outputDir};
+                Generator generator = new Generator(flags)
+                {
+                    OutputDir = outputDir,
+                    CodeDomProviderLanguage = codeLanguage,
+                    CodeFileExtension = codeFileExtension
+                };
                 switch (type)
                 {
                     case "repository":
@@ -144,8 +166,12 @@ namespace GoogleApis.Tools.ServiceGenerator
             }
             catch (Exception exception)
             {
-                Console.Error.WriteLine("ERROR: " + exception.Message);
-                Console.Error.WriteLine(exception.StackTrace);
+                while (exception != null)
+                {
+                    Console.Error.WriteLine("ERROR: " + exception.Message);
+                    Console.Error.WriteLine(exception.StackTrace);
+                    exception = exception.InnerException;
+                }
                 Environment.Exit(1);
             }
         }

@@ -29,6 +29,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator
     /// </summary>
     internal static class DecoratorUtil
     {
+        public static CodeTypeMemberCollection CreateAutoProperty(string name,
+                                                                  string summaryComment,
+                                                                  CodeTypeReference propertyType,
+                                                                  IEnumerable<string> usedNames,
+                                                                  bool readOnly)
+        {
+            return CreateAutoProperty(name, summaryComment, propertyType, usedNames, readOnly, null);
+        }
         /// <summary>
         /// Creates and adds a public auto-property (property and backening field) to the class.
         /// </summary>
@@ -36,7 +44,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                                                                   string summaryComment,
                                                                   CodeTypeReference propertyType,
                                                                   IEnumerable<string> usedNames,
-                                                                  bool readOnly)
+                                                                  bool readOnly,
+                                                                  Type implementedInterface)
         {
             // Validate parameters.
             name.ThrowIfNullOrEmpty("name");
@@ -55,6 +64,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             var property = new CodeMemberProperty();
             property.Name = propertyName;
             property.Attributes = MemberAttributes.Public;
+            if (implementedInterface != null)
+                property.ImplementationTypes.Add(implementedInterface);
 
             if (summaryComment.IsNotNullOrEmpty())
             {

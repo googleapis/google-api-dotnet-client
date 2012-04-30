@@ -48,7 +48,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             // Generate the property and field.
             CodeTypeMemberCollection newMembers = DecoratorUtil.CreateAutoProperty(
-                name, parameter.Description, returnType, usedNames, parameter.IsRequired);
+                name, parameter.Description, returnType, usedNames, parameter.IsRequired, null);
 
             // Add the KeyAttribute to the property.
             foreach (CodeTypeMember member in newMembers)

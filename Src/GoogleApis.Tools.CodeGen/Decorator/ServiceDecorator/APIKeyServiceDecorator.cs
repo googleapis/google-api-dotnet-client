@@ -40,7 +40,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
                 PropertyName, "Sets the API-Key (or DeveloperKey) which this service uses for all requests",
                 new CodeTypeReference(typeof(string)), GeneratorUtils.GetUsedWordsFromMembers(serviceClass.Members),
-                false);
+                false, null);
 
             serviceClass.Members.AddRange(col);
         }

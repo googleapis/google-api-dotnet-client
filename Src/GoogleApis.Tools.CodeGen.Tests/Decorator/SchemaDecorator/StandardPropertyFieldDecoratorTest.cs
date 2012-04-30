@@ -80,7 +80,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             foreach (var field in generatedFields)
             {
                 Assert.That(
-                    NamesToType.ContainsKey(field.Name), "field name was not present in namesToType " + field.Name);
+                    NamesToType.ContainsKey(field.Name.Substring(1)), "field name was not present in namesToType " + field.Name);
             }
 
             int item = 0;
@@ -88,7 +88,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             {
                 var field = generatedFields[item++];
                 Assert.AreEqual(
-                    pair.Key, field.Name, string.Format("Name different for expected at index {0}", item - 1));
+                    "_" + pair.Key, field.Name, string.Format("Name different for expected at index {0}", item - 1));
                 Assert.AreEqual(
                     SchemaDecoratorUtil.GetCodeType(new JsonSchema { Type = pair.Value }, null, internalClassProvider)
                         .BaseType, field.Type.BaseType);
@@ -145,7 +145,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
 
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(string).FullName, generatedField.Type.BaseType);
-            Assert.AreEqual("normalName", generatedField.Name);
+            Assert.AreEqual("_normalName", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 
             schema.Type = JsonSchemaType.Boolean;
@@ -155,14 +155,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             Assert.NotNull(generatedField);
             Assert.AreEqual(typeof(Nullable<>).FullName, generatedField.Type.BaseType);
             Assert.AreEqual(typeof(bool).FullName, generatedField.Type.TypeArguments[0].BaseType);
-            Assert.AreEqual("publicValue", generatedField.Name);
+            Assert.AreEqual("_public", generatedField.Name);
             Assert.AreEqual(MemberAttributes.Private, generatedField.Attributes);
 
             generatedField = decorator.GenerateField(
                 "UPPERCASE", schema, implDetails, 2, internalClassProvider, Enumerable.Empty<string>());
 
             Assert.NotNull(generatedField);
-            Assert.AreEqual("uPPERCASE", generatedField.Name);
+            Assert.AreEqual("_UPPERCASE", generatedField.Name);
         }
     }
 }

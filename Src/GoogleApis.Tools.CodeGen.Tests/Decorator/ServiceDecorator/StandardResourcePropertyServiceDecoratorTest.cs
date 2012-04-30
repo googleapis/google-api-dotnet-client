@@ -40,7 +40,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             Assert.IsNotNull(codeField);
             Assert.AreEqual(ResourceName+"Resource", codeField.Type.BaseType);
-            Assert.AreEqual("test", codeField.Name);
+            Assert.AreEqual("_Test", codeField.Name);
         }
 
         /// <summary>
