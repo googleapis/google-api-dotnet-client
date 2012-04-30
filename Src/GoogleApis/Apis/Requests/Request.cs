@@ -527,26 +527,31 @@ namespace Google.Apis.Requests
         /// Builds the resulting Url for the whole request.
         /// </summary>
         [VisibleForTestOnly]
-        internal Uri BuildRequestUrl()
+        internal HttpWebRequest BuildRequest()
         {
-            string restPath = Method.RestPath;
-            var queryParams = new List<string>();
+            var requestBuilder = new HttpWebRequestBuilder()
+            {
+                BaseUri = Service.BaseUri,
+                Path = Method.RestPath,
+                Method = Method.HttpMethod,
+            };
 
-            queryParams.Add(ReturnType == ReturnType.Json ? "alt=json" : "alt=atom");
+            requestBuilder.QueryParameters.Add("alt",
+                ReturnType == ReturnType.Json?"json":"atom");
 
             if (DeveloperKey.IsNotNullOrEmpty())
             {
-                queryParams.Add("key=" + Uri.EscapeDataString(DeveloperKey));
+                requestBuilder.QueryParameters.Add("key", DeveloperKey);
             }
 
             if (FieldsMask.IsNotNullOrEmpty())
             {
-                queryParams.Add("fields=" + Uri.EscapeDataString(FieldsMask));
+                requestBuilder.QueryParameters.Add("fields", FieldsMask);
             }
 
             if (UserIp.IsNotNullOrEmpty())
             {
-                queryParams.Add("userIp=" + Uri.EscapeDataString(UserIp));
+                requestBuilder.QueryParameters.Add("userIp", UserIp);
             }
 
             // Replace the substitution parameters.
@@ -567,17 +572,16 @@ namespace Google.Apis.Requests
                 {
                     value = parameterDefinition.DefaultValue;
                 }
-                string escapedValue = value == null ? null : Uri.EscapeDataString(value);
                 switch (parameterDefinition.ParameterType)
                 {
                     case "path":
-                        restPath = restPath.Replace(String.Format("{{{0}}}", parameter.Key), escapedValue);
+                        requestBuilder.PathParameters.Add(parameter.Key, value);
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.IsRequired || escapedValue.IsNotNullOrEmpty())
+                        if (parameterDefinition.IsRequired || value.IsNotNullOrEmpty())
                         {
-                            queryParams.Add(Uri.EscapeDataString(parameterDefinition.Name) + "=" + escapedValue);
+                            requestBuilder.QueryParameters.Add(parameter.Key, value);
                         }
                         break;
                     default:
@@ -586,14 +590,7 @@ namespace Google.Apis.Requests
                 }
             }
 
-            // URL encode the parameters and append them to the URI.
-            string path = restPath;
-            if (queryParams.Count > 0)
-            {
-                path += "?" + String.Join("&", queryParams.ToArray());
-            }
-
-            return UriFactory.Create(BaseURI, path);
+            return requestBuilder.GetWebRequest();
         }
 
         private static string GetReturnMimeType(ReturnType returnType)
@@ -655,11 +652,9 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal WebRequest CreateWebRequest()
         {
-            // Formulate the RequestUrl.
-            Uri requestUrl = BuildRequestUrl();
+            HttpWebRequest request = BuildRequest();
 
             // Create the request.
-            HttpWebRequest request = WebRequestFactory.Create(requestUrl, Method.HttpMethod);
             Authenticator.ApplyAuthenticationToRequest(request);
 
             // Insert the content type and user agent.
@@ -782,7 +777,7 @@ namespace Google.Apis.Requests
 
         public override string ToString()
         {
-            return string.Format("{0}({1} @ {2})", GetType(), Method.Name, BuildRequestUrl());
+            return string.Format("{0}({1} @ {2})", GetType(), Method.Name, BuildRequest().RequestUri);
         }
     }
 }
