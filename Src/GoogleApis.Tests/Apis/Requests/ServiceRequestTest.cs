@@ -81,10 +81,10 @@ namespace Google.Apis.Tests.Apis.Requests
                 get { return "Method"; }
             }
 
-            [RequestParameter]
+            [RequestParameter("testparametera", RequestParameterType.Path)]
             public int TestParameterA { get; set; }
 
-            [RequestParameter("B")]
+            [RequestParameter("B", RequestParameterType.Path)]
             public int TestParameterB { get; set; }
 
             public int TestParameterC { get; set; }

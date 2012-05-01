@@ -31,6 +31,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </summary>
     public abstract class BaseParameterPropertyDecorator : IRequestDecorator
     {
+        private const string PathParameter = "path";
+
         public abstract void DecorateClass(IResource resource,
                                   IMethod request,
                                   CodeTypeDeclaration requestClass,
@@ -59,10 +61,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                     continue;
                 }
 
+                RequestParameterType requestParameterType =
+                    parameter.ParameterType == PathParameter ? RequestParameterType.Path : RequestParameterType.Query;
+
                 // Declare the RequestParameter attribute.
                 CodeTypeReference attributeType = new CodeTypeReference(typeof(RequestParameterAttribute));
+
+                // Generates something like.. 
+                // [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 CodeAttributeDeclaration attribute = new CodeAttributeDeclaration(attributeType);
                 attribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(parameter.Name)));
+                attribute.Arguments.Add(
+                    new CodeAttributeArgument(
+                        new CodeFieldReferenceExpression(
+                            new CodeTypeReferenceExpression(typeof(RequestParameterType)),
+                                Enum.GetName(typeof(RequestParameterType), requestParameterType))));
                 property.CustomAttributes.Add(attribute);
             }
 
