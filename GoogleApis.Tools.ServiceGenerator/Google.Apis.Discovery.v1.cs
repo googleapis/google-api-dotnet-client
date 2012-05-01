@@ -1423,7 +1423,7 @@ namespace Google.Apis.Discovery.v1 {
             }
             
             /// <summary>The name of the API.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("api")]
+            [Google.Apis.Util.RequestParameterAttribute("api", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Api {
                 get {
                     return this.api;
@@ -1431,7 +1431,7 @@ namespace Google.Apis.Discovery.v1 {
             }
             
             /// <summary>The version of the API.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("version")]
+            [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Version {
                 get {
                     return this.version;
@@ -1464,7 +1464,7 @@ namespace Google.Apis.Discovery.v1 {
             }
             
             /// <summary>Only include APIs with a matching label, such as 'graduated' or 'labs'.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("label")]
+            [Google.Apis.Util.RequestParameterAttribute("label", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Label? Label {
                 get {
                     return this.label;
@@ -1475,7 +1475,7 @@ namespace Google.Apis.Discovery.v1 {
             }
             
             /// <summary>Only include APIs with the given name.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name")]
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name {
                 get {
                     return this.name;
@@ -1486,7 +1486,7 @@ namespace Google.Apis.Discovery.v1 {
             }
             
             /// <summary>Return only the preferred version of an API.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("preferred")]
+            [Google.Apis.Util.RequestParameterAttribute("preferred", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Boolean? Preferred {
                 get {
                     return this.preferred;
