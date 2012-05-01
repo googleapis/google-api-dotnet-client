@@ -47,41 +47,52 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         [VisibleForTestOnly]
         internal CodeMemberField CreateVersionField(IService service)
         {
-            var version = new CodeMemberField(typeof(string), VersionName);
-            version.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            version.InitExpression = new CodePrimitiveExpression(service.Version);
-            return version;
+            return new CodeMemberField()
+            {
+                Name = VersionName,
+                Type = new CodeTypeReference(typeof(string)),
+                Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                InitExpression = new CodePrimitiveExpression(service.Version),
+            };
         }
 
         [VisibleForTestOnly]
-        internal CodeMemberField CreateNameField(IService service)
+        internal CodeMemberProperty CreateNameField(IService service)
         {
-            var name = new CodeMemberField(typeof(string), NameName);
-            name.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            name.InitExpression = new CodePrimitiveExpression(service.Name);
-            return name;
+            return new CodeMemberProperty()
+            {
+                Name = NameName,
+                Type = new CodeTypeReference(typeof(string)),
+                Attributes = MemberAttributes.Public,
+                GetStatements = { new CodeMethodReturnStatement(new CodePrimitiveExpression(service.Name)) }
+            };
         }
 
         [VisibleForTestOnly]
-        internal CodeMemberField CreateUriField(IService service)
+        internal CodeMemberProperty CreateUriField(IService service)
         {
-            var uri = new CodeMemberField(typeof(string), BaseUriName);
-            uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            uri.InitExpression = new CodePrimitiveExpression(service.BaseUri.ToString());
-            return uri;
+            return new CodeMemberProperty()
+            {
+                Name = BaseUriName,
+                Type = new CodeTypeReference(typeof(string)),
+                Attributes = MemberAttributes.Public,
+                GetStatements = { new CodeMethodReturnStatement(new CodePrimitiveExpression(service.BaseUri.ToString())) },
+                ImplementationTypes = { typeof(IRequestProvider) },
+            };
         }
 
         [VisibleForTestOnly]
         internal CodeMemberField CreateDiscoveryVersionField(IService service)
         {
-            var uri = new CodeMemberField(typeof(DiscoveryVersion), DiscoveryVersionName);
-            uri.Attributes = MemberAttributes.Const | MemberAttributes.Private;
-            uri.InitExpression =
-                new CodeFieldReferenceExpression(
-                    new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
-                    Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion));
-
-            return uri;
+            return new CodeMemberField()
+            {
+                Name = DiscoveryVersionName,
+                Type = new CodeTypeReference(typeof(DiscoveryVersion)),
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                InitExpression = new CodeFieldReferenceExpression(
+                        new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
+                            Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion))
+            };
         }
 
         public override string ToString()

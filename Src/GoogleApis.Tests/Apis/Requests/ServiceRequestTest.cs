@@ -40,6 +40,8 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             public bool CreateSuspendedRequests { get; set; }
             public MockRequest LastRequest { get; private set; }
+            public string BaseUri { get; set; }
+            public Google.Apis.Authentication.IAuthenticator Authenticator { get; set; }
 
             public virtual IRequest CreateRequest(string resource, string method)
             {
@@ -81,10 +83,10 @@ namespace Google.Apis.Tests.Apis.Requests
                 get { return "Method"; }
             }
 
-            [RequestParameter]
+            [RequestParameter("testparametera", RequestParameterType.Path)]
             public int TestParameterA { get; set; }
 
-            [RequestParameter("B")]
+            [RequestParameter("B", RequestParameterType.Path)]
             public int TestParameterB { get; set; }
 
             public int TestParameterC { get; set; }

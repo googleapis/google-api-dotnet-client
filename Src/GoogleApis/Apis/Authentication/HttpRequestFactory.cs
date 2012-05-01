@@ -44,5 +44,10 @@ namespace Google.Apis.Authentication
         }
 
         #endregion
+
+        /// <summary>
+        /// Gets an instance of HttpRequestFactory (immutable)
+        /// </summary>
+        public static HttpRequestFactory Instance { get { return new HttpRequestFactory(); } }
     }
 }

@@ -63,10 +63,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         {
             var constructor = new CodeConstructor();
 
-            // public [ResourceClass]([ServiceClass] service)
+            // public [ResourceClass]([ServiceClass] service, Google.Apis.Authentication.IAuthenticator authenticator)
             constructor.Attributes = MemberAttributes.Public;
             constructor.Parameters.Add(
                 new CodeParameterDeclarationExpression(serviceClassName, ResourceBaseGenerator.ServiceFieldName));
+            constructor.Parameters.Add(
+                new CodeParameterDeclarationExpression(typeof(Google.Apis.Authentication.IAuthenticator),
+                    ResourceClassGenerator.AuthenticatorName));
 
             // this.service = service
             constructor.Statements.Add(
@@ -74,6 +77,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     new CodeFieldReferenceExpression(
                         new CodeThisReferenceExpression(), ResourceBaseGenerator.ServiceFieldName),
                     new CodeArgumentReferenceExpression(ResourceBaseGenerator.ServiceFieldName)));
+
+            // this.authenticator = authenticator
+            constructor.Statements.Add(
+                new CodeAssignStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(), ResourceClassGenerator.AuthenticatorName),
+                    new CodeArgumentReferenceExpression(ResourceClassGenerator.AuthenticatorName)));
 
             // Initialize subresources
             constructor.Statements.AddRange(CreateSubresourceCreateStatements(resource));
@@ -99,6 +109,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 var fieldConstructor = new CodeObjectCreateExpression(fieldType);
                 fieldConstructor.Parameters.Add(
                     new CodeVariableReferenceExpression(ResourceBaseGenerator.ServiceFieldName));
+                fieldConstructor.Parameters.Add(
+                    new CodeVariableReferenceExpression(ResourceClassGenerator.AuthenticatorName));
 
                 // subResource = ...
                 var assign = new CodeAssignStatement(fieldRef, fieldConstructor);

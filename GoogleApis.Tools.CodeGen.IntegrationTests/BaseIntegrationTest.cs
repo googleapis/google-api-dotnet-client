@@ -33,13 +33,17 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
     /// </summary>
     public abstract class BaseIntegrationTest
     {
+        protected const string CSharp = "CSharp";
+        protected const string VisualBasic = "VisualBasic";
+
         /// <summary>
         /// Compiles a source file into a library by using the specified compile function.
         /// </summary>
-        protected static Assembly CompileLibrary(Func<CompilerParameters, CodeDomProvider, CompilerResults> compile,
+        protected static Assembly CompileLibrary(string language,
+                                                 Func<CompilerParameters, CodeDomProvider, CompilerResults> compile,
                                                  params string[] furtherReferences)
         {
-            var provider = CodeDomProvider.CreateProvider("CSharp");
+            var provider = CodeDomProvider.CreateProvider(language);
             var compilerParameters = new CompilerParameters();
 
             // Add all referenced assemblies of the CodeGen to this lib.
@@ -111,7 +115,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                 // Compile the code.
                 string furtherReferences = GetReferencePathToAssembly(toInclude);
                 generatedAssembly =
-                    CompileLibrary(
+                    CompileLibrary("CSharp",
                         (cp, provider) => provider.CompileAssemblyFromSource(cp, env.ToString()), furtherReferences);
                 Assert.NotNull(generatedAssembly);
             }
@@ -139,12 +143,12 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         /// <summary>
         /// Compiles a code unit into a library.
         /// </summary>
-        protected static Assembly CompileCodeUnit(CodeCompileUnit generatedCode)
+        protected static Assembly CompileCodeUnit(string language, CodeCompileUnit generatedCode)
         {
             // Compile the code
             try
             {
-                var assembly = CompileLibrary((cp, provider) => provider.CompileAssemblyFromDom(cp, generatedCode));
+                var assembly = CompileLibrary(language, (cp, provider) => provider.CompileAssemblyFromDom(cp, generatedCode));
                 return assembly;
             }
             catch (ArgumentException ex)

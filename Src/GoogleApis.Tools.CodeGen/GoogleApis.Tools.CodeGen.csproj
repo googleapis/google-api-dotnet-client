@@ -66,6 +66,8 @@
     <Compile Include="Decorator\DefaultObjectProvider.cs" />
     <Compile Include="Decorator\IObjectProvider.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BodyPropertyDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BaseRequestConstructorDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\UploadConstructorDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestMethodResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\RequestConstructorDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestFieldDecorator.cs" />

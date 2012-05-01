@@ -36,8 +36,15 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                                   string serviceClassName,
                                   IEnumerable<IResourceDecorator> allDecorators)
         {
-            resourceClass.Members.Add(
-                resource.IsServiceResource ? (CodeTypeMember) CreateFakeServiceField() : CreateServiceField());
+            if (resource.IsServiceResource)
+            {
+                resourceClass.Members.Add(CreateFakeServiceField());
+            }
+            else
+            {
+                resourceClass.Members.Add(CreateServiceField(serviceClassName));
+                resourceClass.Members.Add(CreateAuthenticatorField());
+            }
         }
 
         public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember)
@@ -56,10 +63,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         /// Adds <code>private BuzzService service;</code> to the resource class.
         /// </summary>
         [VisibleForTestOnly]
-        internal CodeMemberField CreateServiceField()
+        internal CodeMemberField CreateServiceField(string serviceClassName)
         {
             CodeMemberField serviceField;
-            serviceField = new CodeMemberField(typeof(IRequestProvider), ResourceBaseGenerator.ServiceFieldName);
+            serviceField = new CodeMemberField(serviceClassName, ResourceBaseGenerator.ServiceFieldName);
+            serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
+            return serviceField;
+        }
+
+        /// <summary>
+        /// Adds <code>private Google.Apis.Authentication.IAuthenticator authenticator;</code> to the resource class.
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeMemberField CreateAuthenticatorField()
+        {
+            CodeMemberField serviceField;
+            serviceField = new CodeMemberField(typeof(Google.Apis.Authentication.IAuthenticator),
+                ServiceClassGenerator.AuthenticatorName);
             serviceField.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             return serviceField;
         }

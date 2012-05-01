@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+using System.Linq;
 using System.CodeDom;
 using System.Collections.Generic;
 using Google.Apis.Discovery;
@@ -34,15 +36,35 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <remarks>{0} represents the name of the method for which this request is intended.</remarks>
         public const string RequestClassNamingScheme = "{0}Request";
 
+        private readonly IEnumerable<IRequestDecorator> commonDecorators;
         private readonly IEnumerable<IRequestDecorator> requestDecorators;
+        private readonly IEnumerable<IRequestDecorator> mediaUploadDecorators;
 
         /// <summary>
-        /// Constructs a new instance of the request class generator, and uses the specified decorator list
+        /// Constructs a new instance of the request class generator, and uses the specified decorator lists
         /// to decorate the generated request classes.
         /// </summary>
-        public RequestClassGenerator(IEnumerable<IRequestDecorator> requestDecorators)
+        /// <param name="commonDecorators">Decorators used on all request classes (method and upload).</param>
+        /// <param name="requestDecorators">Decorators used on method requests only.</param>
+        /// <param name="mediaUploadDecorators">Decorators used on media upload requests only.</param>
+        public RequestClassGenerator(
+            IEnumerable<IRequestDecorator> commonDecorators,
+            IEnumerable<IRequestDecorator> requestDecorators,
+            IEnumerable<IRequestDecorator> mediaUploadDecorators)
         {
+            this.commonDecorators = commonDecorators;
             this.requestDecorators = requestDecorators;
+            this.mediaUploadDecorators = mediaUploadDecorators;
+        }
+
+        /// <summary>
+        /// Constructs a new instance of the request class generator, and uses the specified decorator lists
+        /// to decorate the generated request classes.
+        /// </summary>
+        /// <param name="commonDecorators">Decorators used on all request classes (method and upload).</param>
+        public RequestClassGenerator(IEnumerable<IRequestDecorator> commonDecorators)
+            : this(commonDecorators, Enumerable.Empty<IRequestDecorator>(), Enumerable.Empty<IRequestDecorator>())
+        {
         }
 
         /// <summary>
@@ -76,9 +98,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
             CodeTypeDeclaration requestClass = new CodeTypeDeclaration();
             string proposedName = GetProposedName(method);
             requestClass.Name = GeneratorUtils.GetClassName(proposedName, usedNames);
+            var decorators = commonDecorators.Concat(
+                (method.MediaUpload == null) ? requestDecorators : mediaUploadDecorators);
 
             // Run the decorators for request classes.
-            foreach (IRequestDecorator decorator in requestDecorators)
+            foreach (IRequestDecorator decorator in decorators)
             {
                 decorator.DecorateClass(resource, method, requestClass, resourceClass);
             }
