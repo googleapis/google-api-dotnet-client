@@ -25,25 +25,19 @@ using Google.Apis.Tools.CodeGen.Generator;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
-    /// Generates the two standard constructors of a request.
-    ///  1. A constructor taking the service and mandatory parameters.
-    ///  2. A constructor taking the service and all mandatory + optional parameters.
+    /// Generates the standard constructors of an upload request.
+    ///  1. A constructor taking the service and mandatory parameters and initalizing the base class
+    ///     with the baseUri, path and HTTP method for this upload request.
     /// Example:
-    /// <c>public ListRequest(ISchemaAwareRequestExecutor service, int requiredParameter, ..) : base(service) {..}</c>
-    /// <c>public ListRequest(ISchemaAwareRequestExecutor s, int required, string optional..) : base(service) {..}</c>
+    /// <c>public InsertRequest(BaseService service, int requiredParameter, ..) : base(service.BaseUri, "path", "POST") {..}</c>
     /// </summary>
-    public class RequestConstructorDecorator : BaseRequestConstructorDecorator
+    public class UploadConstructorDecorator : BaseRequestConstructorDecorator
     {
-        /// <summary>
-        /// Defines whether this decorator should also add a constructor containing optional and mandatory parameters.
-        /// </summary>
-        public bool CreateOptionalConstructor { get; set; }
-
         /// <summary>
         /// Creates a new request constructor decorator.
         /// </summary>
-        /// <remarks>Will create only the mandatory-only constructor</remarks>
-        public RequestConstructorDecorator(IObjectTypeProvider objectTypeProvider) : base(objectTypeProvider) { }
+        /// <remarks>Will create the constructor with all required properties.</remarks>
+        public UploadConstructorDecorator(IObjectTypeProvider objectTypeProvider) : base(objectTypeProvider) { }
 
         #region IRequestDecorator Members
 
@@ -53,11 +47,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration resourceClass)
         {
             requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, false));
-
-            if (CreateOptionalConstructor && request.HasOptionalParameters())
-            {
-                requestClass.Members.Add(CreateRequiredConstructor(resourceClass, request, true));
-            }
         }
 
         #endregion
@@ -77,8 +66,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), "service");
             constructor.Parameters.Add(serviceArg);
 
-            // : base(service)
-            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("service"));
+            // : base(service, "path", "HTTPMETHOD")
+            constructor.BaseConstructorArgs.Add(
+                new CodePropertyReferenceExpression(
+                    new CodeVariableReferenceExpression("service"), "BaseUri"));
+            constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.RestPath));
+            constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.HttpMethod));
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);

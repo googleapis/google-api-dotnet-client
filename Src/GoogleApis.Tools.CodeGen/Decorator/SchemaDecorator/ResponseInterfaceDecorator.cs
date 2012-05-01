@@ -87,8 +87,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         [VisibleForTestOnly]
         internal static CodeTypeMemberCollection CreateETagProperty(CodeTypeDeclaration typeDeclaration)
         {
-            if (typeDeclaration.Members.FindPropertyByName(ETagPropertyName) != null)
+            CodeMemberProperty property = typeDeclaration.Members.FindPropertyByName(ETagPropertyName);
+            if (property != null)
             {
+                if (property.ImplementationTypes.Count == 0)
+                    property.ImplementationTypes.Add(new CodeTypeReference(typeof(IDirectResponseSchema)));
                 return new CodeTypeMemberCollection(); // Don't add a new property; it's already there.
             }
 

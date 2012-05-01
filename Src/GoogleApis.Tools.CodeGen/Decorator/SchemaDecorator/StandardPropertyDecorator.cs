@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,9 +55,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             schema.ThrowIfNull("schema");
             implDetails.ThrowIfNull("details");
             internalClassProvider.ThrowIfNull("internalClassProvider");
+
+            SchemaImplementationDetails details = implDetails[schema];
+
             typeDeclaration.Members.AddRange(
-                GenerateAllProperties(name, schema, implDetails, internalClassProvider, typeDeclaration.Name).ToArray(
-                    ));
+                GenerateAllProperties(name, schema, implDetails, internalClassProvider, 
+                                      typeDeclaration.Name)
+                     .ToArray());
         }
 
         #endregion
@@ -71,6 +76,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             typeDeclaration.ThrowIfNull("typeDeclatation");
             schema.ThrowIfNull("schema");
             implDetails.ThrowIfNull("implDetails");
+            
             typeDeclaration.Members.AddRange(
                 GenerateAllProperties(
                     schema.Name, schema.SchemaDetails, implDetails, internalClassProvider, typeDeclaration.Name).
@@ -132,8 +138,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             propertySchema.ThrowIfNull("propertySchema");
 
             var ret = new CodeMemberProperty();
-            if(string.Equals(name, "etag", System.StringComparison.InvariantCultureIgnoreCase))
-                ret.ImplementationTypes.Add(new CodeTypeReference(typeof(Google.Apis.Requests.IDirectResponseSchema)));
             ret.Name = SchemaDecoratorUtil.GetPropertyName(name, disallowedNames);
             ret.Type = SchemaDecoratorUtil.GetCodeType(propertySchema, details, internalClassProvider);
             ret.Attributes = MemberAttributes.Public;

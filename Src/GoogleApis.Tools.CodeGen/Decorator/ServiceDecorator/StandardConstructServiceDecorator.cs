@@ -126,11 +126,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         {
             IEnumerable<string> otherNames = otherResourceNames.Without(resource.Name);
 
+            // Generate:  _files = new FilesResource(this, authenticator);
             constructor.Statements.Add(
                 new CodeAssignStatement(
                     ServiceClassGenerator.GetFieldReference(resource, otherNames),
                     new CodeObjectCreateExpression(
-                        GeneratorUtils.GetClassName(resource, otherNames), new CodeThisReferenceExpression())));
+                        GeneratorUtils.GetClassName(resource, otherNames), 
+                        new CodeThisReferenceExpression(),
+                        new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName))));
         }
 
         public override string ToString()

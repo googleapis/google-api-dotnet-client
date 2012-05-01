@@ -41,17 +41,20 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             decorator.DecorateClass(service, codeType);
 
-            Assert.AreEqual(2, codeType.Members.Count);
+            Assert.AreEqual(3, codeType.Members.Count);
             Assert.IsInstanceOf(typeof(CodeMemberField), codeType.Members[0]);
             Assert.IsInstanceOf(typeof(CodeMemberField), codeType.Members[1]);
+            Assert.IsInstanceOf(typeof(CodeMemberProperty), codeType.Members[2]);
 
             CodeMemberField serviceDeclaration = (CodeMemberField) codeType.Members[0];
-            CodeMemberField authenticationDeclaration = (CodeMemberField) codeType.Members[1];
+            CodeMemberField authenticationDeclaration = (CodeMemberField)codeType.Members[1];
+            CodeMemberProperty authenticationPropertyDeclaration = (CodeMemberProperty)codeType.Members[2];
 
             Assert.AreEqual(ServiceClassGenerator.GenericServiceName, serviceDeclaration.Name);
             Assert.AreEqual(ServiceClassGenerator.AuthenticatorName, authenticationDeclaration.Name);
             Assert.AreEqual(typeof(IService).FullName, serviceDeclaration.Type.BaseType);
             Assert.AreEqual(typeof(IAuthenticator).FullName, authenticationDeclaration.Type.BaseType);
+            Assert.AreEqual("Authenticator", authenticationPropertyDeclaration.Name);
 
             CheckCompile(codeType, false, "Failed To Compile result from StandardServiceFieldResourceDecorator");
         }

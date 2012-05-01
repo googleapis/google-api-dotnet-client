@@ -14,9 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.CodeDom;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Upload;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
@@ -26,12 +28,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     public class ServiceRequestInheritanceDecorator : IRequestDecorator
     {
         private readonly IObjectTypeProvider objectTypeProvider;
+        private readonly Type baseType;
 
         /// <summary>
         /// Creates a new ServiceRequestInheritanceDecorator, which uses the specified type provider.
         /// </summary>
-        public ServiceRequestInheritanceDecorator(IObjectTypeProvider objectTypeProvider)
+        public ServiceRequestInheritanceDecorator(IObjectTypeProvider objectTypeProvider, Type baseType)
         {
+            this.baseType = baseType;
             this.objectTypeProvider = objectTypeProvider;
         }
 
@@ -47,8 +51,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                    ? new CodeTypeReference(typeof(string))
                                    : objectTypeProvider.GetReturnType(request);
 
-            // Create the base reference
-            var baseRef = new CodeTypeReference(typeof(ServiceRequest<>));
+            var baseRef = new CodeTypeReference(baseType) { Options = CodeTypeReferenceOptions.GlobalReference };
             baseRef.TypeArguments.Add(responseType);
             requestClass.BaseTypes.Add(baseRef);
         }

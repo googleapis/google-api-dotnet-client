@@ -34,14 +34,20 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         public void DecorateClassTest()
         {
             var decorator = new StandardServiceFieldResourceDecorator();
-            CodeTypeDeclaration codeType = CreateDecoratedResourceClass(decorator);
+            CodeNamespace nameSpace = new CodeNamespace("Google.Apis.Tools.CodeGen.Tests");
+            nameSpace.Types.Add(new CodeTypeDeclaration("TestServiceClass"));
 
-            Assert.AreEqual(1, codeType.Members.Count);
+            CodeTypeDeclaration codeType = CreateDecoratedResourceClass(decorator);
+            nameSpace.Types.Add(codeType);
+
+            Assert.AreEqual(2, codeType.Members.Count);
             Assert.IsInstanceOf(typeof(CodeMemberField), codeType.Members[0]);
             var codeField = (CodeMemberField) codeType.Members[0];
             Assert.AreEqual(ResourceBaseGenerator.ServiceFieldName, codeField.Name);
+            var ccu = new CodeCompileUnit();
+            ccu.Namespaces.Add(nameSpace);
 
-            CheckCompile(codeType, false, "Failed To Compile StandardServiceFieldResourceDecorator");
+            CheckCompile(ccu, false, "Failed To Compile StandardServiceFieldResourceDecorator");
         }
 
         /// <summary>
@@ -50,12 +56,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         [Test]
         public void TestCreateServiceField()
         {
+            string serviceName = typeof(IRequestProvider).FullName;
             var decorator = new StandardServiceFieldResourceDecorator();
-            CodeMemberField codeField = decorator.CreateServiceField();
+            CodeMemberField codeField = decorator.CreateServiceField(serviceName);
 
             Assert.IsNotNull(codeField);
             Assert.AreEqual(ResourceBaseGenerator.ServiceFieldName, codeField.Name);
-            Assert.AreEqual(typeof(IRequestProvider).FullName, codeField.Type.BaseType);
+            Assert.AreEqual(serviceName, codeField.Type.BaseType);
             Assert.IsNull(codeField.InitExpression);
         }
     }
