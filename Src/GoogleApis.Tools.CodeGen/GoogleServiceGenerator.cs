@@ -50,7 +50,27 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public const string GoogleDiscoveryURL = "https://www.googleapis.com/discovery/v1/apis/{0}/{1}/rest";
 
+        /// <summary>
+        /// The nested namespace where data classes are generated.
+        /// </summary>
+        private const string DataNamespaceExtension = ".Data";
+
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<GoogleServiceGenerator>();
+
+        /// <summary>
+        /// List of all request class decorators
+        /// </summary>
+        public static IList<IRequestDecorator> GetSchemaAwareCommonRequestDecorators(
+          string schemaNamespace, IService service)
+        {
+            var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
+
+            return (new List<IRequestDecorator>
+                        {
+                            new CommonParameterRequestDecorator(service.Parameters),
+                            new ParameterPropertyDecorator(),
+                        }).AsReadOnly();
+        }
 
         /// <summary>
         /// List of all request class decorators
@@ -60,14 +80,29 @@ namespace Google.Apis.Tools.CodeGen
         {
             var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
 
+            return (new List<IRequestDecorator>()
+                        {
+                            new ServiceRequestInheritanceDecorator(typeProvider,
+                                typeof(Google.Apis.Requests.ServiceRequest<>)),
+                            new BodyPropertyDecorator(typeProvider),
+                            new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
+                            new ServiceRequestFieldDecorator(),
+                        }).AsReadOnly();
+        }
+
+        /// <summary>
+        /// List of all upload class decorators
+        /// </summary>
+        public static IList<IRequestDecorator> GetSchemaAwareUploadDecorators(
+          string schemaNamespace, IService service)
+        {
+            var typeProvider = new DefaultObjectTypeProvider(schemaNamespace);
+
             return (new List<IRequestDecorator>
                         {
-                            new CommonParameterRequestDecorator(service.Parameters),
-                            new ParameterPropertyDecorator(),
-                            new ServiceRequestInheritanceDecorator(typeProvider),
-                            new BodyPropertyDecorator(typeProvider),
-                            new ServiceRequestFieldDecorator(),
-                            new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
+                            new ServiceRequestInheritanceDecorator(typeProvider,
+                                typeof(Google.Apis.Upload.ResumableUpload<>)),
+                            new UploadConstructorDecorator(typeProvider),
                         }).AsReadOnly();
         }
 
@@ -132,9 +167,9 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public GoogleServiceGenerator(IService service, string clientNamespace)
             : this(
-                service, clientNamespace, GetSchemaAwareResourceDecorators(clientNamespace + ".Data"),
+                service, clientNamespace, GetSchemaAwareResourceDecorators(DataNamespace(clientNamespace)),
                 SchemaAwareServiceDecorators, StandardResourceContainerDecorator,
-                new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, clientNamespace + ".Data")) {}
+                new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, DataNamespace(clientNamespace))) {}
 
         /// <summary>
         /// Returns a list of all schema aware resource decorators
@@ -224,7 +259,9 @@ namespace Google.Apis.Tools.CodeGen
             ResourceContainerGenerator resourceContainerGenerator =
                 new ResourceContainerGenerator(resourceContainerDecorators);
             var requestClassGenerator = new RequestClassGenerator(
-                GetSchemaAwareRequestDecorators(codeClientNamespace + ".Data", service));
+                GetSchemaAwareCommonRequestDecorators(DataNamespace(codeClientNamespace), service),
+                GetSchemaAwareRequestDecorators(DataNamespace(codeClientNamespace), service),
+                GetSchemaAwareUploadDecorators(DataNamespace(codeClientNamespace), service));
 
             var serviceClass =
                 new ServiceClassGenerator(service, serviceDecorators, resourceContainerGenerator).CreateServiceClass();
@@ -246,6 +283,8 @@ namespace Google.Apis.Tools.CodeGen
             LogDecorators();
 
             var compileUnit = new CodeCompileUnit();
+
+            
 
             var schemaCode = GenerateSchemaCode();
             if (schemaCode != null)
@@ -314,6 +353,11 @@ namespace Google.Apis.Tools.CodeGen
             codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             codeNamespace.Imports.Add(new CodeNamespaceImport("Google.Apis"));
             codeNamespace.Imports.Add(new CodeNamespaceImport("Google.Apis.Discovery"));
+        }
+
+        private static string DataNamespace(string clientNamespace)
+        {
+            return clientNamespace + DataNamespaceExtension;
         }
     }
 }

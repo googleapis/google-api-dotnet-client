@@ -120,9 +120,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         [VisibleForTestOnly]
         internal CodeExpression GetVersionSpecificParameter(IService service, CodeTypeDeclaration serviceClass)
         {
-            // Example:  DiscoveryService.BaseUri
-            var baseUriRef = new CodeFieldReferenceExpression(
-                new CodeTypeReferenceExpression(serviceClass.Name), VersionInformationServiceDecorator.BaseUriName);
+            // Example:  "http://www.example.com/" (The hard-coded baseUri)
+            var baseUriRef = new CodePrimitiveExpression(service.BaseUri.ToString());
 
             // Example:  new Uri(..)
             var uriConstructor = new CodeObjectCreateExpression();

@@ -34,6 +34,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             AddServiceFields(serviceClass);
+            AddAuthenticatorProperty(serviceClass);
         }
 
         #endregion
@@ -47,6 +48,25 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             field = new CodeMemberField(typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName);
             field.Attributes = MemberAttributes.Final | MemberAttributes.Private;
             serviceClass.Members.Add(field);
+        }
+
+        /// <summary>
+        /// Add a IAuthenticator property "Authenticator" to the service.
+        /// </summary>
+        /// <param name="serviceClass">The service class to decorate.</param>
+        private void AddAuthenticatorProperty(CodeTypeDeclaration serviceClass)
+        {
+            serviceClass.Members.Add(new CodeMemberProperty() { 
+                Attributes = MemberAttributes.Final | MemberAttributes.Public,
+                Name = ServiceClassGenerator.AuthenticatorPropertyName,
+                Type = new CodeTypeReference(typeof(IAuthenticator)),
+                GetStatements = { 
+                    new CodeMethodReturnStatement(
+                        new CodeFieldReferenceExpression(
+                            new CodeThisReferenceExpression(), ServiceClassGenerator.AuthenticatorName))
+                },
+                ImplementationTypes = { typeof(IRequestProvider) },
+            });
         }
 
         public override string ToString()

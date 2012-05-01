@@ -43,7 +43,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         {
             IService service = GetService(discoveryJson);
             CodeCompileUnit code = CodegenService(service);
-            return CompileCodeUnit(code);
+            return CompileCodeUnit(CSharp, code);
         }
 
         /// <summary>

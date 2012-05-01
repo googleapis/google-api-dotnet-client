@@ -38,6 +38,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.AreEqual(VersionInformationServiceDecorator.DiscoveryVersionName, codeMemberField.Name);
         }
 
+        private object GetReturnPrimitiveValue(CodeMemberProperty property)
+        {
+            Assert.That(property.GetStatements.Count, Is.EqualTo(1));
+            Assert.That(property.GetStatements[0], Is.TypeOf(typeof(CodeMethodReturnStatement)));
+            var returnStatement = property.GetStatements[0] as CodeMethodReturnStatement;
+            Assert.That(returnStatement.Expression, Is.TypeOf(typeof(CodePrimitiveExpression)));
+            var primitive = returnStatement.Expression as CodePrimitiveExpression;
+            return primitive.Value;
+        }
+
         /// <summary>
         /// Tests if the generation of a name field works
         /// </summary>
@@ -48,7 +58,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var codeMemberField = decorator.CreateNameField(CreateService());
 
             Assert.AreEqual(VersionInformationServiceDecorator.NameName, codeMemberField.Name);
-            Assert.AreEqual(Name, ((CodePrimitiveExpression) codeMemberField.InitExpression).Value);
+            Assert.AreEqual(Name, GetReturnPrimitiveValue(codeMemberField));
         }
 
         /// <summary>
@@ -61,7 +71,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var codeMemberField = decorator.CreateUriField(CreateService());
 
             Assert.AreEqual(VersionInformationServiceDecorator.BaseUriName, codeMemberField.Name);
-            Assert.AreEqual(BaseUri.ToString(), ((CodePrimitiveExpression) codeMemberField.InitExpression).Value);
+            Assert.AreEqual(BaseUri.ToString(), GetReturnPrimitiveValue(codeMemberField));
         }
 
         /// <summary>
@@ -74,7 +84,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             var codeMemberField = decorator.CreateVersionField(CreateService());
 
             Assert.AreEqual(VersionInformationServiceDecorator.VersionName, codeMemberField.Name);
-            Assert.AreEqual(Version, ((CodePrimitiveExpression) codeMemberField.InitExpression).Value);
+            Assert.AreEqual(Version, ((CodePrimitiveExpression)codeMemberField.InitExpression).Value);
         }
 
         /// <summary>
