@@ -23,6 +23,7 @@ using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Util;
+using System.Reflection;
 
 namespace Google.Apis.Upload
 {
@@ -33,6 +34,10 @@ namespace Google.Apis.Upload
     /// See: http://code.google.com/apis/gdata/docs/resumable_upload.html for
     /// information on the protocol.
     /// </remarks>
+    /// <typeparam name="T">
+    /// The type of the body of this request. Generally this should be the metadata related 
+    /// to the content to be uploaded. Must be serializable to/from JSON.
+    /// </typeparam>
     public abstract class ResumableUpload<T>
     {
         #region Constants
@@ -47,7 +52,7 @@ namespace Google.Apis.Upload
         /// total.
         /// </summary>
         /// <seealso cref="MinumumChunkSize"/>
-        private const int DefaultChunkSize = MinimumChunkSize * 4;
+        private const int DefaultChunkSize = MinimumChunkSize * 40;
         
         /// <summary>
         /// Buffer size is used to read chunks from the input stream and write to the output stream.
@@ -55,12 +60,12 @@ namespace Google.Apis.Upload
         ///       input to the request.
         /// <summary>
         private const int BufferSize = 16384; // 16 KB
-        
+
         /// <summary>
-        /// Constants for HTTP headers related to the resumable upload protocol.
+        /// The mime type for the encoded JSON body.
         /// </summary>
         private const string JsonMimeType = "application/json";
-        
+
         /// <summary>
         /// Payload description headers, describing the content itself.
         /// </summary>
@@ -72,9 +77,24 @@ namespace Google.Apis.Upload
         private const string PayloadContentLengthHeader = "X-Upload-Content-Length";
 
         /// <summary>
-        /// 
+        /// The error key when an error response is received.
         /// </summary>
         private const string ErrorKey = "error";
+
+        /// <summary>
+        /// The message portion of the error block if an error response is received.
+        /// </summary>
+        private const string MessageKey = "message";
+
+        /// <summary>
+        /// Specify the type of this upload (this class supports resumable only).
+        /// </summary>
+        private const string UploadType = "uploadType";
+
+        /// <summary>
+        /// The uploadType parameter value for resumable uploads.
+        /// </summary>
+        private const string Resumable = "resumable";
 
         #endregion // Constants
 
@@ -83,33 +103,46 @@ namespace Google.Apis.Upload
         /// <summary>
         /// Create a resumable upload instance with the required parameters.
         /// </summary>
-        /// <param name="stream">The payload stream to be uploaded.</param>
-        /// <param name="contentType">The content-type of the data to be uploaded.</param>
-        protected ResumableUpload(Stream stream, string contentType)
+        /// <param name="baseUri">The baseUri of the service.</param>
+        /// <param name="path">The path for this media upload method.</param>
+        /// <param name="httpMethod">The HTTP method to start this upload.</param>
+        protected ResumableUpload(string baseUri, string path, string httpMethod)
         {
-            stream.ThrowIfNull("stream");
-            contentType.ThrowIfNullOrEmpty("contentType");
+            baseUri.ThrowIfNull("baseUri");
+            path.ThrowIfNull("path");
+            httpMethod.ThrowIfNullOrEmpty("httpMethod");
+
+            this.baseUri = baseUri;
+            this.path = path;
+            this.httpMethod = httpMethod;
 
             this.RequestFactory = HttpRequestFactory.Instance;
             this.Authenticator = NullAuthenticator.Instance;
             this.ChunkSize = DefaultChunkSize;
-            this.Stream = stream;
-            this.ContentType = contentType;
         }
 
         #endregion // Construction
 
+        #region Fields
+
+        /// <summary>
+        /// Base URI of this service.
+        /// </summary>
+        private string baseUri;
+
+        /// <summary>
+        /// Path of the method (combined with <see cref="baseUri"/> to produce the absolute URI.
+        /// </summary>
+        private string path;
+
+        /// <summary>
+        /// HTTP Method of this upload (used to initialize the upload).
+        /// </summary>
+        private string httpMethod;
+
+        #endregion
+
         #region Properties
-
-        /// <summary>
-        /// Payload stream to be uploaded.
-        /// </summary>
-        public Stream Stream { get; set; }
-
-        /// <summary>
-        /// Content-Type to be uploaded (required).
-        /// </summary>
-        public string ContentType { get; set; }
 
         /// <summary>
         /// The body of this request.
@@ -126,7 +159,6 @@ namespace Google.Apis.Upload
         /// </summary>
         public ICreateHttpRequest RequestFactory { get; set; }
 
-
         /// <summary>
         /// The size of each chunk sent to the servers.
         /// </summary>
@@ -135,7 +167,7 @@ namespace Google.Apis.Upload
         /// Currently, google's resumable upload implementation requires sequential chunks in multiples
         /// of the <see cref="MinimumChunkSize"/> specified 
         /// </remarks>
-        protected int ChunkSize { get; set; }
+        public int ChunkSize { get; set; }
 
         #endregion // Properties
 
@@ -174,10 +206,21 @@ namespace Google.Apis.Upload
             public Exception Exception { get; private set; }
         }
 
+        /// <summary>
+        /// Current state of progress of the upload.
+        /// </summary>
+        /// <seealso cref="ProgressChanged"/>
         private ResumableUploadProgress Progress { get; set; }
 
+        /// <summary>
+        /// Event called whenever the progress of the upload changes.
+        /// </summary>
         public event Action<IUploadProgress> ProgressChanged;
 
+        /// <summary>
+        /// Update the current progress and call the <see cref="ProgressChanged"/> event to
+        /// notify listeners.
+        /// </summary>
         private void UpdateProgress(UploadStatus status, long byteCount)
         {
             var p = new ResumableUploadProgress(status, byteCount);
@@ -186,6 +229,11 @@ namespace Google.Apis.Upload
                 ProgressChanged(p);
         }
 
+        /// <summary>
+        /// Get the current progress state.
+        /// </summary>
+        /// <returns>An IUploadProgress describing the current progress of the upload.</returns>
+        /// <seealso cref="ProgressChanged"/>
         public IUploadProgress GetProgress()
         {
             return this.Progress;
@@ -195,19 +243,23 @@ namespace Google.Apis.Upload
 
         #region Upload Implementation
         /// <summary>
-        /// Perform the upload.
+        /// Upload the content in <paramref name="stream"/> to the server. This method is synchronous
+        /// and will block until the upload is completed.
         /// </summary>
-        public void Upload()
+        /// <param name="stream">The stream containing the content to upload.</param>
+        /// <param name="contentType">Content type of the content to be uploaded.</param>
+        /// <remarks>The Stream <paramref name="stream"/> must support the "Length" property.</remarks>
+        public void Upload(Stream stream, string contentType)
         {
             long bytesSent = 0;
             try
             {
                 UpdateProgress(UploadStatus.Starting, 0);
-                Uri url = InitializeUpload();
+                Uri url = InitializeUpload(stream.Length, contentType);
                 UpdateProgress(UploadStatus.Uploading, 0);
-                while (bytesSent < this.Stream.Length)
+                while (bytesSent < stream.Length)
                 {
-                    bytesSent += SendChunk(url, bytesSent);
+                    bytesSent += SendChunk(stream, url, bytesSent);
                     UpdateProgress(UploadStatus.Uploading, bytesSent);
                 }
                 UpdateProgress(UploadStatus.Completed, bytesSent);
@@ -221,12 +273,21 @@ namespace Google.Apis.Upload
                 var x = Json.JsonReader.Parse(r) as Json.JsonDictionary;
                 if (x.ContainsKey(ErrorKey))
                 {
-                    var y = x["error"] as Json.JsonDictionary;
-                    if (y.ContainsKey("message"))
+                    var y = x[ErrorKey] as Json.JsonDictionary;
+                    if (y.ContainsKey(MessageKey))
                     {
-                        throw new Exception(y["message"] as string);
+                        throw new Exception(y[MessageKey] as string);
                     }
                 }
+                /// Attempt to update the progress to show failure,
+                /// swallow any exceptions that occured and re-throw the original
+                /// exception.
+                try
+                {
+                    UpdateProgress(UploadStatus.Failed, bytesSent);
+                }
+                catch (Exception) { }
+                throw;
             }
             catch (Exception)
             {
@@ -246,29 +307,33 @@ namespace Google.Apis.Upload
         /// Initializes the resumable upload by calling the resumable rest interface to get
         /// a unique upload Location
         /// </summary>
+        /// <param name="contentLength">Length of the content to be uploaded (in bytes).</param>
+        /// <param name="contentType">Content type of the content to be uploaded.</param>
         /// <returns>
         /// The unique upload location for this upload, returned in the Location header
         /// </returns>
-        private Uri InitializeUpload()
+        private Uri InitializeUpload(long contentLength, string contentType)
         {
-            HttpWebRequest request = CreateInitializeRequest();
+            HttpWebRequest request = CreateInitializeRequest(contentLength, contentType);
             WebResponse response = request.GetResponse();
+            // TODO: Process the body of this response.
             return new Uri(response.Headers["Location"]);
         }
 
         /// <summary>
         /// Upload a chunk of the data to the server.
         /// </summary>
+        /// <param name="stream">The stream of content to be uploaded.</param>
         /// <param name="uri">The upload location (specifically generated for this upload).</param>
         /// <param name="position">The current position in the payload.</param>
-        protected virtual long SendChunk(Uri uri, long position)
+        protected virtual long SendChunk(Stream stream, Uri uri, long position)
         {
-            long chunkSize = Math.Min(this.Stream.Length - position, ChunkSize);
+            long chunkSize = Math.Min(stream.Length - position, ChunkSize);
             byte[] buffer = new byte[Math.Min(chunkSize, BufferSize)];
             var req = this.RequestFactory.Create(uri, Request.PUT);
             req.ContentLength = chunkSize;
             req.Headers.Add(HttpRequestHeader.ContentRange,
-                GetContentRangeHeader(position, chunkSize, this.Stream.Length));
+                GetContentRangeHeader(position, chunkSize, stream.Length));
 
             try
             {
@@ -277,7 +342,7 @@ namespace Google.Apis.Upload
                 int dataWritten = 0;
                 while (dataWritten < chunkSize)
                 {
-                    int len = this.Stream.Read(buffer, 0, buffer.Length);
+                    int len = stream.Read(buffer, 0, buffer.Length);
                     requestStream.Write(buffer, 0, len);
                     dataWritten += len;
                 }
@@ -314,7 +379,7 @@ namespace Google.Apis.Upload
         /// <param name="chunkStart">Start of the chunk.</param>
         /// <param name="chunkSize">Size of the chunk being sent.</param>
         /// <param name="totalSize">Total number of bytes in the entire file.</param>
-        /// <returns></returns>
+        /// <returns>The content range header value.</returns>
         private string GetContentRangeHeader(long chunkStart, long chunkSize, long totalSize)
         {
             long chunkEnd = chunkStart + chunkSize - 1;
@@ -327,16 +392,25 @@ namespace Google.Apis.Upload
         /// <returns>
         /// An HttpWebRequest configured to initialize a request.
         /// </returns>
-        private HttpWebRequest CreateInitializeRequest()
+        /// <param name="contentLength">Length of the content to be uploaded (in bytes).</param>
+        /// <param name="contentType">Content type of the content to be uploaded.</param>
+        private HttpWebRequest CreateInitializeRequest(long contentLength, string contentType)
         {
-            var baseUri = new UriBuilder(this.InitializeUri);
-            baseUri.Query = String.Join("&", GetQueryParameters()
-                .Select(x => String.Format("{0}={1}", x.Key, x.Value))
-                .ToArray());
+            HttpWebRequestBuilder builder = new HttpWebRequestBuilder()
+            {
+                BaseUri = new Uri(this.baseUri),
+                Method = this.httpMethod,
+                Path = this.path,
+                HttpRequestFactory = this.RequestFactory,
+            };
 
-            var request = this.RequestFactory.Create(baseUri.Uri, this.HttpMethod);
-            request.Headers.Add(PayloadContentTypeHeader, this.ContentType);
-            request.Headers.Add(PayloadContentLengthHeader, this.Stream.Length.ToString());
+            builder.QueryParameters["uploadType"] = "resumable";
+
+            SetAllPropertyValues(builder);
+
+            var request = builder.GetWebRequest();
+            request.Headers.Add(PayloadContentTypeHeader, contentType);
+            request.Headers.Add(PayloadContentLengthHeader, contentLength.ToString());
 
             if (this.Authenticator != null)
                 Authenticator.ApplyAuthenticationToRequest(request);
@@ -344,7 +418,7 @@ namespace Google.Apis.Upload
             var json = new Json.NewtonsoftJsonSerializer();
             string bodyText = json.Serialize(this.Body);
             byte[] body = Encoding.UTF8.GetBytes(bodyText);
-            request.ContentType = "application/json";
+            request.ContentType = JsonMimeType;
             request.ContentLength = body.Length;
 
             var requestBodyStream = request.GetRequestStream();
@@ -352,34 +426,42 @@ namespace Google.Apis.Upload
             return request;
         }
 
-        #endregion Upload Implementation
-
-        #region Abstract Methods
-
         /// <summary>
-        /// The HttpMethod of the upload initialization request.
+        /// Reflectively enumerate the properties of this object looking for all properties containing
+        /// the RequestParameterAttribute and copy their values into the HttpWebRequestBuilder.
         /// </summary>
-        protected abstract string HttpMethod { get; }
-
-        /// <summary>
-        /// The BaseUri of the upload initialization request.
-        /// </summary>
-        protected abstract Uri InitializeUri { get; }
-
-        /// <summary>
-        /// The BaseUri of the upload initialization request.
-        /// </summary>
-        /// protected abstract Uri Path { get; }
-
-        /// <summary>
-        /// Gets a dictionary 
-        /// </summary>
-        /// <returns>A dictionary of the query parameters applied to this request.</returns>
-        protected virtual IDictionary<string, string> GetQueryParameters()
+        /// <param name="requestBuilder">The builder used to assemble the web request to initialize this upload.</param>
+        private void SetAllPropertyValues(HttpWebRequestBuilder requestBuilder)
         {
-            return new Dictionary<string, string>() { { "uploadType", "resumable" } };
+            Type myType = this.GetType();
+            var properties = myType.GetProperties();
+
+            foreach (var property in properties)
+            {
+                var attribute = property.GetCustomAttribute<Google.Apis.Util.RequestParameterAttribute>();
+
+                if (attribute != null)
+                {
+                    string name = attribute.Name ?? property.Name.ToLower();
+                    object valueObject = property.GetValue(this, new object[] {} );
+                    string value = String.Empty;
+                    if (valueObject != null)
+                    {
+                        value = valueObject.ToString();
+                    }
+
+                    if (attribute.Type == RequestParameterType.Path)
+                    {
+                        requestBuilder.PathParameters.Add(name, value);
+                    }
+                    else if (!String.IsNullOrEmpty(value))
+                    {
+                        requestBuilder.QueryParameters.Add(name, value);
+                    }
+                }
+            }
         }
 
-        #endregion // Abstract Methods
+        #endregion Upload Implementation
     }
 }
