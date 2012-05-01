@@ -78,7 +78,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                 new CodeMethodInvokeExpression(
                     new CodeMethodReferenceExpression(
                         new CodeVariableReferenceExpression("request"), "WithAuthentication"),
-                    new CodeVariableReferenceExpression("authenticator"));
+                    new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName));
             var returnStatment = new CodeMethodReturnStatement(statement);
 
             method.Statements.Add(returnStatment);

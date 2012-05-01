@@ -30,8 +30,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// <seealso cref="IServiceDecorator"/>
     public class ServiceClassGenerator : BaseGenerator
     {
-        public const string GenericServiceName = "genericService";
-        public const string AuthenticatorName = "authenticator";
+        public const string GenericServiceName = "_service";
+        public const string AuthenticatorName = "_authenticator";
+        public const string AuthenticatorPropertyName = "Authenticator";
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceClassGenerator>();
 
         private readonly IEnumerable<IServiceDecorator> decorators;

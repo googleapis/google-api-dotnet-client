@@ -38,5 +38,15 @@ namespace Google.Apis.Discovery
         /// Deserializes a response into the specified object.
         /// </summary>
         T DeserializeResponse<T>(IResponse response);
+
+        /// <summary>
+        /// The BaseUri of the service. All request paths should be relative to this URI.
+        /// </summary>
+        string BaseUri { get; }
+
+        /// <summary>
+        /// The Authenticator for this service.
+        /// </summary>
+        Google.Apis.Authentication.IAuthenticator Authenticator { get; }
     }
 }

@@ -48,10 +48,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var decorator = new StandardConstructorResourceDecorator();
             CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateEmptyResource());
-            Assert.AreEqual(1, constructor.Parameters.Count);
+            Assert.AreEqual(2, constructor.Parameters.Count);
             var param = constructor.Parameters[0];
             Assert.AreEqual(ServiceClassName, param.Type.BaseType);
-            Assert.AreEqual(1, constructor.Statements.Count);
+            Assert.AreEqual(2, constructor.Statements.Count);
+            param = constructor.Parameters[1];
+            Assert.AreEqual(typeof(Google.Apis.Authentication.IAuthenticator).FullName, param.Type.BaseType);
         }
 
 
@@ -63,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         {
             var decorator = new StandardConstructorResourceDecorator();
             CodeConstructor constructor = decorator.CreateConstructor(ServiceClassName, CreateNonEmptyResource());
-            Assert.AreEqual(3, constructor.Statements.Count);
+            Assert.AreEqual(4, constructor.Statements.Count);
         }
 
         /// <summary>

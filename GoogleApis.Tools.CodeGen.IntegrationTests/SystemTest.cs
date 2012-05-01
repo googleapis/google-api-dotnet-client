@@ -62,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         }
 
        
-        private static Assembly TestService(API api)
+        private static Assembly TestService(string language, API api)
         {
             Logger.Debug("Testing service: " + api.Title);
 
@@ -73,7 +73,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             CodeCompileUnit code = CodegenService(service);
 
             // Compile the service
-            Assembly asm = CompileCodeUnit(code);
+            Assembly asm = CompileCodeUnit(language, code);
 
             // Return the result
             return asm;
@@ -92,7 +92,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         {
             // Generate discovery.
             CodeCompileUnit code = CodegenService(discovery);
-            return CompileCodeUnit(code);
+            return CompileCodeUnit(CSharp, code);
         }
 
         private static API[] DiscoveryListServices(Assembly discovery)
@@ -171,7 +171,21 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
         /// Runs the code generator on all discovered services.
         /// </summary>
         [Test]
-        public void CodegenAllServicesTest()
+        public void CodegenAllServicesTestCSharp()
+        {
+            CodegenAllServicesTest(CSharp);
+        }
+
+        /// <summary>
+        /// Runs the code generator on all discovered services.
+        /// </summary>
+        [Test]
+        public void CodegenAllServicesTestVisualBasic()
+        {
+            CodegenAllServicesTest(VisualBasic);
+        }
+
+        private void CodegenAllServicesTest(string language)
         {
             // Discover discovery.
             IService discovery = DiscoverDiscovery();
@@ -189,7 +203,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             {
                 try
                 {
-                    Assert.NotNull(TestService(api));
+                    Assert.NotNull(TestService(language, api));
                 }
                 catch (Exception e)
                 {
