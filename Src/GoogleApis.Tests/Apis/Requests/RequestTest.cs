@@ -70,15 +70,28 @@ namespace Google.Apis.Tests.Apis.Requests
             var requestStream = new MemoryStream();
             var mockWebrequest = new Mock<WebRequest>();
 
-            mockWebrequest.Setup(r => r.GetRequestStream()).Returns(requestStream);
+            mockWebrequest.Setup(r => r.EndGetRequestStream(It.IsAny<IAsyncResult>())).Returns(requestStream);
             mockWebrequest.Setup(r => r.Headers).Returns(headers);
+
+            var waitHandle = new System.Threading.AutoResetEvent(false);
 
             // Call the method we are testing
             request.WithBody(body);
-            request.AttachBody(mockWebrequest.Object);
+
+            Action<WebRequest> x = (r) => waitHandle.Set();
+
+            var mockasync = new Mock<IAsyncResult>();
+            mockasync.Setup(r => r.AsyncState).Returns(new object[] { mockWebrequest.Object, x });
+
+            request.EndAttachBody(mockasync.Object);
+
+            if (!waitHandle.WaitOne(3000))
+            {
+                Assert.Fail("AttachBody did not complete.");
+            }
 
             // Confirm the results.
-            mockWebrequest.Verify(r => r.GetRequestStream(), Times.Once());
+            mockWebrequest.Verify(r => r.EndGetRequestStream(It.IsAny<System.IAsyncResult>()), Times.Once());
 
             if (additionalAsserts != null)
             {
@@ -381,7 +394,7 @@ namespace Google.Apis.Tests.Apis.Requests
                         { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com/test", });
 
             request.WithParameters("");
-            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
 
             // Test that the header is set, even if no body is specified.
             Assert.AreEqual("POST", webRequest.Method);
@@ -413,7 +426,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
             request.WithParameters("");
 
-            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.IsTrue(webRequest.Headers[HttpRequestHeader.ContentType].Contains("charset=utf-8"));
             Assert.IsNotNull(webRequest);
         }
@@ -433,7 +446,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
             request.WithParameters("");
 
-            HttpWebRequest webRequest = (HttpWebRequest) request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
 
             // Test the default user agent (without gzip):
             string expectedUserAgent = string.Format(
@@ -444,7 +457,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // Confirm that the (gzip) tag is added if GZip is supported.
             service.GZipEnabled = true;
             expectedUserAgent += " (gzip)";
-            webRequest = (HttpWebRequest) request.CreateWebRequest();
+            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
@@ -528,31 +541,31 @@ namespace Google.Apis.Tests.Apis.Requests
             
             // No etag:
             request.WithETagAction(ETagAction.Ignore).WithETag("test123");
-            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest();
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
 
             // No etag (2):
             request.WithETagAction(ETagAction.IfMatch).WithETag(null);
-            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
 
             // If-Match:
             request.WithETagAction(ETagAction.IfMatch).WithETag("test123");
-            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfMatch]);
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
 
             // If-None-Match:
             request.WithETagAction(ETagAction.IfNoneMatch).WithETag("test123");
-            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
             Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
 
             // Default:
             request.WithETagAction(ETagAction.Default).WithETag("test123");
-            webRequest = (HttpWebRequest)request.CreateWebRequest();
+            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
             Assert.IsNull(webRequest.Headers[HttpRequestHeader.IfMatch]);
             Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
         }
