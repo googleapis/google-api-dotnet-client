@@ -1,4 +1,5 @@
-﻿/*
+﻿#if !SILVERLIGHT
+/*
 Copyright 2012 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -465,3 +466,4 @@ namespace Google.Apis.Upload
         #endregion Upload Implementation
     }
 }
+#endif

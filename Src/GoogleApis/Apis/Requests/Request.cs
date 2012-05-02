@@ -381,11 +381,16 @@ namespace Google.Apis.Requests
                     {
                         if (handler.CanHandleErrorResponse(exception, error))
                         {
-                            state.CurrentRequest = CreateWebRequest();
                             // The provided handler was able to handle this error. Retry sending the request.
                             handler.HandleErrorResponse(exception, error, state.CurrentRequest);
                             logger.Warning("Retrying request [{0}]", this);
-                            InternalBeginExecuteRequest(state);
+
+                            // Begin a new request and when it is completed being assembled, execute it 
+                            // asynchronously.
+                            state.CurrentRequest = CreateWebRequest((request) =>
+                            {
+                                InternalBeginExecuteRequest(state);
+                            });
                             // Signal that this begin/end request pair has no result because it has been retried.
                             asyncRequestResult = null;
                             return true;
@@ -405,7 +410,7 @@ namespace Google.Apis.Requests
                 asyncRequestResult = new AsyncRequestResult(
                     new GoogleApiRequestException(Service, this, error, exception) { HttpStatusCode = status });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 asyncRequestResult = new AsyncRequestResult(
                     new GoogleApiRequestException(Service, this, null, exception));
@@ -426,13 +431,19 @@ namespace Google.Apis.Requests
                 throw new InvalidOperationException("Request parameter validation failed for [" + this + "]");
             }
 
-            InternalBeginExecuteRequest(new AsyncExecutionState 
-                                        {
-                                            ResponseHandler = responseHandler,
-                                            Try = 1,
-                                            WaitTime = RetryInitialWaitTime,
-                                            CurrentRequest =  CreateWebRequest()
-                                        });
+            // Begin a new request and when it is completed being assembled, execute it asynchronously.
+            CreateWebRequest((request) =>
+            {
+                // When the request is completed constructing, execute it.
+                var state = new AsyncExecutionState()
+                {
+                    ResponseHandler = responseHandler,
+                    Try = 1,
+                    WaitTime = RetryInitialWaitTime,
+                    CurrentRequest = request
+                };
+                InternalBeginExecuteRequest(state);
+            });
         }
 
         /// <summary>
@@ -649,8 +660,9 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Creates the ready-to-send WebRequest containing all the data specified in this request class.
         /// </summary>
+        /// <param name="onRequestReady">An action to execute when the request has been prepared.</param>
         [VisibleForTestOnly]
-        internal WebRequest CreateWebRequest()
+        internal WebRequest CreateWebRequest(Action<WebRequest> onRequestReady)
         {
             HttpWebRequest request = BuildRequest();
 
@@ -706,7 +718,8 @@ namespace Google.Apis.Requests
             {
                 if (!string.IsNullOrEmpty(Body))
                 {
-                    AttachBody(request);
+                    AttachBody(request, onRequestReady);
+                    return request;
                 }
                 else
                 {
@@ -720,6 +733,7 @@ namespace Google.Apis.Requests
                 }
             }
 
+            onRequestReady(request);
             return request;
         }
 
@@ -732,11 +746,27 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Adds the body of this request to the specified WebRequest.
         /// </summary>
+        /// <param name="request">The WebRequest which needs a body attached.</param>
+        /// <param name="onRequestReady">An action to complete when the request is ready.</param>
         /// <remarks>Automatically applies GZip-compression if globally enabled.</remarks>
         [VisibleForTestOnly]
-        internal void AttachBody(WebRequest request)
+        internal void AttachBody(WebRequest request, Action<WebRequest> onRequestReady)
         {
-            Stream bodyStream = request.GetRequestStream();
+            request.BeginGetRequestStream(new AsyncCallback(EndAttachBody), 
+                new object[] { request, onRequestReady });
+        }
+
+        /// <summary>
+        /// Complete the attach-body portion of the request and continue executing the call.
+        /// </summary>
+        /// <param name="asyncResult">The asyncResult of the attach body call.</param>
+        internal void EndAttachBody(IAsyncResult asyncResult)
+        {
+            object[] state = (object[])asyncResult.AsyncState;
+            WebRequest request = (WebRequest)state[0];
+            Action<WebRequest> onRequestReady = (Action<WebRequest>)state[1];
+
+            Stream bodyStream = request.EndGetRequestStream(asyncResult);
 
             // If enabled: Encapsulate in GZipStream.
 #if !SILVERLIGHT
@@ -754,6 +784,8 @@ namespace Google.Apis.Requests
                 byte[] postBody = ContentCharset.GetBytes(Body);
                 bodyStream.Write(postBody, 0, postBody.Length);
             }
+
+            onRequestReady(request);
         }
 
         /// <summary>
