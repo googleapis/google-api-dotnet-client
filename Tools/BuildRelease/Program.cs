@@ -445,11 +445,16 @@ namespace BuildRelease
             CommandLine.WriteLine("{{white}} =======================================");
 
             string releaseDir = Contrib.Combine(tag);
-            string currentDir = Contrib.Combine(Arguments.IsStableRelease ? "Stable" : "Current");
+            string currentDir = Contrib.Combine("Current");
+            string stableDir = Contrib.Combine("Stable");
 
             // Clear existing directories.
             DirUtils.ClearOrCreateDir(releaseDir);
             DirUtils.ClearOrCreateDir(currentDir);
+            if (Arguments.IsStableRelease)
+            {
+                DirUtils.ClearOrCreateDir(stableDir);
+            }
 
             // Create the <current> release
             string genDir = Path.Combine(currentDir, "Generated");
@@ -564,6 +569,10 @@ namespace BuildRelease
 
             // Copy the content to the <tagname> release directory.
             DirUtils.CopyFiles(currentDir, releaseDir);
+            if (Arguments.IsStableRelease)
+            {
+                DirUtils.CopyFiles(currentDir, stableDir);
+            }
 
             // Rename the zips in the named release.
             // Example: Binary.zip -> google-api-dotnet-client-1.0.0-beta.Binary.zip
