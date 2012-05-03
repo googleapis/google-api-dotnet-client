@@ -7,6 +7,7 @@ using System.Net;
 using Google.Apis.Util;
 
 using Google.Apis.Upload;
+using Moq;
 
 
 using NUnit.Framework;
@@ -132,6 +133,46 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             }
 
             protected MockResumableUpload(MockResumableUploadServer server, string path)
+                : base(server.BaseUri, path, "PUT")
+            {
+                this.server = server;
+            }
+
+            /// <summary>
+            /// Test helper method to allow overriding the ChunkSize
+            /// </summary>
+            /// <param name="chunkSize"></param>
+            new public int ChunkSize
+            {
+                get { return base.ChunkSize; }
+                set { base.ChunkSize = value; }
+            }
+        }
+
+        public class TestRequest
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+        }
+
+        public class TestResponse
+        {
+            public int id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+        }
+
+        private class MockResumableUploadWithResponse<TRequest, TResponse> : ResumableUpload<TRequest, TResponse>
+        {
+            private MockResumableUploadServer server;
+
+            public MockResumableUploadWithResponse(MockResumableUploadServer server)
+                : this(server, "")
+            {
+                this.server = server;
+            }
+
+            protected MockResumableUploadWithResponse(MockResumableUploadServer server, string path)
                 : base(server.BaseUri, path, "PUT")
             {
                 this.server = server;
@@ -384,8 +425,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             }
         }
 
-
-
         [Test]
         public void TestUploadSingleChunkWithQueryParameters()
         {
@@ -420,6 +459,72 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 });
 
                 upload.Upload(stream, "text/plain");
+
+                server.ValidateMethodsCompleted();
+            }
+        }
+
+        /// <summary>
+        /// Test an upload with json request and respone body.
+        /// </summary>
+        [Test]
+        public void TestUploadWithRequestAndResponseBody()
+        {
+            using (var server = new MockResumableUploadServer())
+            {
+                var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
+                var upload = new MockResumableUploadWithResponse<TestRequest, TestResponse>(server);
+
+                
+                var serializer = new Google.Apis.Json.NewtonsoftJsonSerializer();
+
+                upload.Body = new TestRequest()
+                {
+                    Name = "test object",
+                    Description = "the description",
+                };
+
+                server.ExpectRequest(context =>
+                {
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+
+                    Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
+                    Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
+
+                    Assert.That(context.Request.HasEntityBody);
+                    TestRequest req = serializer.Deserialize<TestRequest>(context.Request.InputStream);
+                    Assert.That(req, Is.Not.Null);
+                    Assert.That(req.Name, Is.EqualTo(upload.Body.Name));
+                    Assert.That(req.Description, Is.EqualTo(upload.Body.Description));
+
+                    context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
+                    context.Response.ContentType = "application/json";
+
+                    var testResponse = new TestResponse() { id = 123, Name = "foo", Description = "bar" };
+
+                    serializer.Serialize(testResponse, context.Response.OutputStream);
+                });
+
+                server.ExpectRequest(context =>
+                {
+                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
+                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
+                });
+
+                TestResponse response = null;
+                int eventCount = 0;
+
+                upload.ResponseReceived += (r) => { response = r; eventCount++; };
+                upload.Upload(stream, "text/plain");
+
+                Assert.That(upload.ResponseBody, Is.Not.Null);
+                Assert.That(upload.ResponseBody.id, Is.EqualTo(123));
+                Assert.That(upload.ResponseBody.Name, Is.EqualTo("foo"));
+                Assert.That(upload.ResponseBody.Description, Is.EqualTo("bar"));
+
+                Assert.That(response, Is.SameAs(upload.ResponseBody));
+                Assert.That(eventCount, Is.EqualTo(1));
 
                 server.ValidateMethodsCompleted();
             }

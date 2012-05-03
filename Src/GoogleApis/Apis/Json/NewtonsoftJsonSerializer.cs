@@ -26,6 +26,19 @@ namespace Google.Apis.Json
     {
         private static readonly JsonSerializer newtonsoftSerializer;
 
+        private static NewtonsoftJsonSerializer instance;
+
+        /// <summary>
+        /// A singleton instance of the Newtonsoft Json Serializer
+        /// </summary>
+        public static NewtonsoftJsonSerializer Instance
+        {
+            get
+            {
+                return (instance = instance ?? new NewtonsoftJsonSerializer());
+            }
+        }
+
         static NewtonsoftJsonSerializer()
         {
             // Initialize the Newtonsoft serializer

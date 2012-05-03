@@ -35,11 +35,11 @@ namespace Google.Apis.Upload
     /// See: http://code.google.com/apis/gdata/docs/resumable_upload.html for
     /// information on the protocol.
     /// </remarks>
-    /// <typeparam name="T">
+    /// <typeparam name="TRequest">
     /// The type of the body of this request. Generally this should be the metadata related 
     /// to the content to be uploaded. Must be serializable to/from JSON.
     /// </typeparam>
-    public abstract class ResumableUpload<T>
+    public abstract class ResumableUpload<TRequest>
     {
         #region Constants
         /// <summary>
@@ -119,6 +119,7 @@ namespace Google.Apis.Upload
 
             this.RequestFactory = HttpRequestFactory.Instance;
             this.Authenticator = NullAuthenticator.Instance;
+            this.Serializer = Json.NewtonsoftJsonSerializer.Instance;
             this.ChunkSize = DefaultChunkSize;
         }
 
@@ -148,7 +149,7 @@ namespace Google.Apis.Upload
         /// <summary>
         /// The body of this request.
         /// </summary>
-        public T Body { get; set;  }
+        public TRequest Body { get; set; }
 
         /// <summary>
         /// Authenticator which modifies requests for authentication.
@@ -170,7 +171,18 @@ namespace Google.Apis.Upload
         /// </remarks>
         public int ChunkSize { get; set; }
 
+        public ISerializer Serializer { get; set; }
+
         #endregion // Properties
+
+        #region Events
+
+        /// <summary>
+        /// Event called whenever the progress of the upload changes.
+        /// </summary>
+        public event Action<IUploadProgress> ProgressChanged;
+
+        #endregion //Events
 
         #region Progress Monitoring
 
@@ -212,11 +224,6 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <seealso cref="ProgressChanged"/>
         private ResumableUploadProgress Progress { get; set; }
-
-        /// <summary>
-        /// Event called whenever the progress of the upload changes.
-        /// </summary>
-        public event Action<IUploadProgress> ProgressChanged;
 
         /// <summary>
         /// Update the current progress and call the <see cref="ProgressChanged"/> event to
@@ -317,8 +324,20 @@ namespace Google.Apis.Upload
         {
             HttpWebRequest request = CreateInitializeRequest(contentLength, contentType);
             WebResponse response = request.GetResponse();
-            // TODO: Process the body of this response.
-            return new Uri(response.Headers["Location"]);
+            string location = response.Headers["Location"];
+
+            // Allow the response to be processed.
+            ProcessResponse(response);
+
+            return new Uri(location);
+        }
+
+        /// <summary>
+        /// Process a response from the upload initialization call.
+        /// </summary>
+        /// <param name="webResponse">The web response from the initialization method call.</param>
+        protected virtual void ProcessResponse(WebResponse webResponse)
+        {
         }
 
         /// <summary>
@@ -416,8 +435,7 @@ namespace Google.Apis.Upload
             if (this.Authenticator != null)
                 Authenticator.ApplyAuthenticationToRequest(request);
 
-            var json = new Json.NewtonsoftJsonSerializer();
-            string bodyText = json.Serialize(this.Body);
+            string bodyText = this.Serializer.Serialize(this.Body);
             byte[] body = Encoding.UTF8.GetBytes(bodyText);
             request.ContentType = JsonMimeType;
             request.ContentLength = body.Length;
@@ -465,5 +483,78 @@ namespace Google.Apis.Upload
 
         #endregion Upload Implementation
     }
+
+    /// <summary>
+    /// Media upload which uses Google's resumable media upload protocol to upload data.
+    /// The version with two types contains both a request object and a response object.
+    /// </summary>
+    /// <remarks>
+    /// See: http://code.google.com/apis/gdata/docs/resumable_upload.html for
+    /// information on the protocol.
+    /// </remarks>
+    /// <typeparam name="TRequest">
+    /// The type of the body of this request. Generally this should be the metadata related 
+    /// to the content to be uploaded. Must be serializable to/from JSON.
+    /// </typeparam>
+    /// <typeparam name="TResponse">
+    /// The type of the response body.
+    /// </typeparam>
+    public class ResumableUpload<TRequest, TResponse> : ResumableUpload<TRequest>
+    {
+        #region Construction
+
+        /// <summary>
+        /// Create a resumable upload instance with the required parameters.
+        /// </summary>
+        /// <param name="baseUri">The baseUri of the service.</param>
+        /// <param name="path">The path for this media upload method.</param>
+        /// <param name="httpMethod">The HTTP method to start this upload.</param>
+        protected ResumableUpload(string baseUri, string path, string httpMethod)
+            : base(baseUri, path, httpMethod) { }
+
+        #endregion //Construction
+
+        #region Properties
+
+        /// <summary>
+        /// The response body.
+        /// </summary>
+        /// <remarks>
+        /// This property will be set during upload. The <see cref="ResponseReceived"/> event
+        /// is triggered when this has been set.
+        /// </remarks>
+        public TResponse ResponseBody { get; private set; }
+
+        #endregion // Properties
+
+        #region Events
+
+        /// <summary>
+        /// Event called when the response metadata is processed.
+        /// </summary>
+        public event Action<TResponse> ResponseReceived;
+
+        #endregion // Events
+
+        #region Overrides
+
+        /// <summary>
+        /// Process the response body and generate a 
+        /// </summary>
+        /// <param name="webResponse"></param>
+        protected override void ProcessResponse(WebResponse webResponse)
+        {
+            base.ProcessResponse(webResponse);
+
+            Stream responseStream = webResponse.GetResponseStream();
+
+            ResponseBody = this.Serializer.Deserialize<TResponse>(responseStream);
+
+            if(ResponseReceived != null)
+                ResponseReceived(ResponseBody);
+        }
+
+        #endregion // Overrides
+    }
 }
-#endif
+#endif // !SILVERLIGHT
