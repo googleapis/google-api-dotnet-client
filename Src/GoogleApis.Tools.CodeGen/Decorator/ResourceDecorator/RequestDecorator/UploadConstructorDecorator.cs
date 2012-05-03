@@ -62,7 +62,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var constructor = new CodeConstructor();
             constructor.Attributes = MemberAttributes.Public;
 
-            // ISchemaAwareRequestExecutor service
+            // IRequestProvider service
             var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), "service");
             constructor.Parameters.Add(serviceArg);
 
@@ -70,14 +70,27 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.BaseConstructorArgs.Add(
                 new CodePropertyReferenceExpression(
                     new CodeVariableReferenceExpression("service"), "BaseUri"));
-            constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.RestPath));
+            constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.MediaUpload.Simple.Path));
             constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.HttpMethod));
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
             AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
+            AddAuthorizationAssignment(constructor);
 
             return constructor;
+        }
+
+        /// <summary>
+        /// Adds this.Authenticator = service.Authenticator to <paramref name="constructor"/>
+        /// </summary>
+        /// <param name="constructor">The resumable upload constructor.</param>
+        private void AddAuthorizationAssignment(CodeConstructor constructor)
+        {
+            constructor.Statements.Add(
+                new CodeAssignStatement(
+                    new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "Authenticator"),
+                    new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("service"), "Authenticator")));
         }
     }
 }
