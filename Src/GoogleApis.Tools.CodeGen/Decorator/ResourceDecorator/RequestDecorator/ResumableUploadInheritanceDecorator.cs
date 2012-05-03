@@ -23,16 +23,18 @@ using Google.Apis.Upload;
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
-    /// A decorator which adds the ServiceRequest inheritance to the class
+    /// A decorator which adds the ResumableUpload inheritance to the class
+    /// Adds : ResumableUpload<RequestType> for types with no response body.
+    /// Adds : ResumableUpload<RequestType, ResponseType> for types with response body.
     /// </summary>
-    public class ServiceRequestInheritanceDecorator : IRequestDecorator
+    public class ResumableUploadInheritanceDecorator : IRequestDecorator
     {
         private readonly IObjectTypeProvider objectTypeProvider;
 
         /// <summary>
-        /// Creates a new ServiceRequestInheritanceDecorator, which uses the specified type provider.
+        /// Creates a new ResumableUploadInheritanceDecorator, which uses the specified type provider.
         /// </summary>
-        public ServiceRequestInheritanceDecorator(IObjectTypeProvider objectTypeProvider)
+        public ResumableUploadInheritanceDecorator(IObjectTypeProvider objectTypeProvider)
         {
             this.objectTypeProvider = objectTypeProvider;
         }
@@ -45,13 +47,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration resourceClass)
         {
             // Retrieve the response type.
-            var responseType = string.IsNullOrEmpty(request.ResponseType)
+            var requestType = string.IsNullOrEmpty(request.RequestType)
                                    ? new CodeTypeReference(typeof(string))
-                                   : objectTypeProvider.GetReturnType(request);
+                                   : objectTypeProvider.GetBodyType(request);
 
-            var baseRef = new CodeTypeReference(typeof(ServiceRequest<>));
-            baseRef.TypeArguments.Add(responseType);
-            requestClass.BaseTypes.Add(baseRef);
+            if (string.IsNullOrEmpty(request.ResponseType))
+            {
+                var baseRef = new CodeTypeReference(typeof(ResumableUpload<>));
+                baseRef.TypeArguments.Add(requestType);
+                requestClass.BaseTypes.Add(baseRef);
+            }
+            else
+            {
+                var baseRef = new CodeTypeReference(typeof(ResumableUpload<,>));
+                baseRef.TypeArguments.Add(requestType);
+                baseRef.TypeArguments.Add(objectTypeProvider.GetReturnType(request));
+                requestClass.BaseTypes.Add(baseRef);
+            }
         }
 
         #endregion

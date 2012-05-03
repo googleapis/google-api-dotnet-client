@@ -37,7 +37,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         public void ConstructTest()
         {
             Assert.DoesNotThrow(() => new ServiceRequestInheritanceDecorator(
-                new DefaultObjectTypeProvider("Schema"), typeof(ServiceRequest<>)));
+                new DefaultObjectTypeProvider("Schema")));
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         public void DecorateClassTest()
         {
             var decorator = new ServiceRequestInheritanceDecorator(
-                new DefaultObjectTypeProvider("Schema"), typeof(ServiceRequest<>));
+                new DefaultObjectTypeProvider("Schema"));
             var resource = new MockResource();
             var method = new MockMethod() { ResponseType = "MySchema" };
             var decl = new CodeTypeDeclaration();
