@@ -82,8 +82,7 @@ namespace Google.Apis.Tools.CodeGen
 
             return (new List<IRequestDecorator>()
                         {
-                            new ServiceRequestInheritanceDecorator(typeProvider,
-                                typeof(Google.Apis.Requests.ServiceRequest<>)),
+                            new ServiceRequestInheritanceDecorator(typeProvider),
                             new BodyPropertyDecorator(typeProvider),
                             new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
                             new ServiceRequestFieldDecorator(),
@@ -100,8 +99,7 @@ namespace Google.Apis.Tools.CodeGen
 
             return (new List<IRequestDecorator>
                         {
-                            new ServiceRequestInheritanceDecorator(typeProvider,
-                                typeof(Google.Apis.Upload.ResumableUpload<>)),
+                            new ResumableUploadInheritanceDecorator(typeProvider),
                             new UploadConstructorDecorator(typeProvider),
                         }).AsReadOnly();
         }

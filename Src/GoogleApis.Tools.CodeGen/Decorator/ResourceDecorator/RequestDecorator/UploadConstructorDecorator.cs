@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2011 Google Inc
+Copyright 2012 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -33,6 +33,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </summary>
     public class UploadConstructorDecorator : BaseRequestConstructorDecorator
     {
+        private const string AuthenticatorName = "Authenticator";
+        private const string ServiceName = "service";
+        private const string BaseUriName = "BaseUri";
+
         /// <summary>
         /// Creates a new request constructor decorator.
         /// </summary>
@@ -63,20 +67,20 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.Attributes = MemberAttributes.Public;
 
             // IRequestProvider service
-            var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), "service");
+            var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
             // : base(service, "path", "HTTPMETHOD")
             constructor.BaseConstructorArgs.Add(
                 new CodePropertyReferenceExpression(
-                    new CodeVariableReferenceExpression("service"), "BaseUri"));
+                    new CodeVariableReferenceExpression(ServiceName), BaseUriName));
             constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.MediaUpload.Simple.Path));
             constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.HttpMethod));
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
-            AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
             AddAuthorizationAssignment(constructor);
+            AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
 
             return constructor;
         }
@@ -89,8 +93,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         {
             constructor.Statements.Add(
                 new CodeAssignStatement(
-                    new CodePropertyReferenceExpression(new CodeThisReferenceExpression(), "Authenticator"),
-                    new CodePropertyReferenceExpression(new CodeVariableReferenceExpression("service"), "Authenticator")));
+                    new CodePropertyReferenceExpression(
+                        new CodeThisReferenceExpression(), AuthenticatorName),
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression(ServiceName), AuthenticatorName)));
         }
     }
 }
