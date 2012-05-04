@@ -216,9 +216,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 server.ExpectRequest(context =>
                 {
-                    var reqUrl = new UriBuilder(server.BaseUri);
-                    reqUrl.Query = "uploadType=resumable";
-                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(reqUrl.Uri));
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
                     context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
@@ -228,6 +227,37 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
                     var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
+                });
+
+                upload.Upload(stream, "text/plain");
+
+                server.ValidateMethodsCompleted();
+            }
+        }
+
+        [Test]
+        public void TestUploadEmptyFile()
+        {
+            using (var server = new MockResumableUploadServer())
+            {
+                var stream = new MemoryStream(new byte[0]);
+                var upload = new MockResumableUpload(server);
+
+                server.ExpectRequest(context =>
+                {
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
+                    Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
+                    Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo("0"));
+
+                    context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
+                });
+
+                server.ExpectRequest(context =>
+                {
+                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
+                    var range = String.Format("bytes 0-0/0", UploadTestData.Length - 1, UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -258,9 +288,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     // Validate the request
-                    var reqUrl = new UriBuilder(server.BaseUri);
-                    reqUrl.Query = "uploadType=resumable";
-                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(reqUrl.Uri));
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
 
@@ -318,9 +347,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     // Validate the request
-                    var reqUrl = new UriBuilder(server.BaseUri);
-                    reqUrl.Query = "uploadType=resumable";
-                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(reqUrl.Uri));
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
 
@@ -403,10 +431,10 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 server.ExpectRequest(context =>
                 {
-                    var reqUrl = new UriBuilder(server.BaseUri);
-                    reqUrl.Path = String.Format("testPath/{0}", upload.id);
-                    reqUrl.Query = "uploadType=resumable";
-                    Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(reqUrl.Uri));
+                    Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
+                    Assert.That(context.Request.Url.AbsolutePath,
+                        Is.EqualTo(String.Format("/testPath/{0}", upload.id)));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
                     context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
@@ -441,7 +469,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsolutePath, Is.EqualTo("/testPath/123"));
-                    Assert.That(context.Request.QueryString.Count, Is.EqualTo(3));
+                    Assert.That(context.Request.QueryString.Count, Is.EqualTo(4));
                     Assert.That(context.Request.QueryString["querya"], Is.EqualTo("QueryValueA"));
                     Assert.That(context.Request.QueryString["queryb"], Is.EqualTo("QueryValueB"));
                     Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
@@ -486,30 +514,34 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 server.ExpectRequest(context =>
                 {
+                    // Verify the initialization request
                     Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
-
+                    Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
 
+                    // Verify the request body
                     Assert.That(context.Request.HasEntityBody);
                     TestRequest req = serializer.Deserialize<TestRequest>(context.Request.InputStream);
                     Assert.That(req, Is.Not.Null);
                     Assert.That(req.Name, Is.EqualTo(upload.Body.Name));
                     Assert.That(req.Description, Is.EqualTo(upload.Body.Description));
 
+                    // Give the location for the next chunk
                     context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
-                    context.Response.ContentType = "application/json";
-
-                    var testResponse = new TestResponse() { id = 123, Name = "foo", Description = "bar" };
-
-                    serializer.Serialize(testResponse, context.Response.OutputStream);
                 });
 
                 server.ExpectRequest(context =>
                 {
+                    // Verify the chunk-request
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
                     var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
+
+                    // Send the response-body
+                    context.Response.ContentType = "application/json";
+                    var testResponse = new TestResponse() { id = 123, Name = "foo", Description = "bar" };
+                    serializer.Serialize(testResponse, context.Response.OutputStream);
                 });
 
                 TestResponse response = null;
