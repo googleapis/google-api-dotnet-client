@@ -265,11 +265,11 @@ namespace Google.Apis.Upload
                 UpdateProgress(UploadStatus.Starting, 0);
                 Uri url = InitializeUpload(stream.Length, contentType);
                 UpdateProgress(UploadStatus.Uploading, 0);
-                while (bytesSent < stream.Length)
+                do
                 {
                     bytesSent += SendChunk(stream, url, bytesSent);
                     UpdateProgress(UploadStatus.Uploading, bytesSent);
-                }
+                } while (bytesSent < stream.Length);
                 UpdateProgress(UploadStatus.Completed, bytesSent);
             }
             catch (WebException we)
@@ -324,10 +324,8 @@ namespace Google.Apis.Upload
         {
             HttpWebRequest request = CreateInitializeRequest(contentLength, contentType);
             WebResponse response = request.GetResponse();
-            string location = response.Headers["Location"];
 
-            // Allow the response to be processed.
-            ProcessResponse(response);
+            string location = response.Headers["Location"];
 
             return new Uri(location);
         }
@@ -369,8 +367,17 @@ namespace Google.Apis.Upload
 
                 // req.GetResponse() will throw an exception when this request 
                 // completes successfully because the server returns an HTTP 308
-                // on success.
-                var response = req.GetResponse();
+                // on successful upload of a chunk. On the last chunk, server
+                // returns 200 OK or 201 Created
+                HttpWebResponse response = (HttpWebResponse)req.GetResponse();
+
+                // Only the final chunk will reach here in the code. That final chunk
+                // response body has the content for the status code.
+                if (response.StatusCode == HttpStatusCode.OK ||
+                    response.StatusCode == HttpStatusCode.Created)
+                {
+                    ProcessResponse(response);
+                }
             }
             catch (WebException we)
             {
@@ -402,7 +409,11 @@ namespace Google.Apis.Upload
         /// <returns>The content range header value.</returns>
         private string GetContentRangeHeader(long chunkStart, long chunkSize, long totalSize)
         {
-            long chunkEnd = chunkStart + chunkSize - 1;
+            // If a file of length 0 is sent, one chunk needs to be sent with 0 size.
+            // This chunk will be bytes 0-0/0, but the typical logic would produce 0--1/0
+            // So we take the Max of 0 and the calculated chunk size to ensure it is never
+            // negative.
+            long chunkEnd = Math.Max(0, chunkStart + chunkSize - 1);
             return String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, totalSize);
         }
 
@@ -425,6 +436,7 @@ namespace Google.Apis.Upload
             };
 
             builder.QueryParameters["uploadType"] = "resumable";
+            builder.QueryParameters["alt"] = "json";
 
             SetAllPropertyValues(builder);
 
