@@ -68,7 +68,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 }
                 else
                 {
-                    context.Response.StatusCode = 500;
+                    context.Response.StatusCode = 404;
                     JsonError(context.Response.OutputStream, "Server received an unexpected request.");
                 }
                 context.Response.Close();
@@ -226,7 +226,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    var range = String.Format("bytes */{0}", UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -257,7 +257,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-0/0", UploadTestData.Length - 1, UploadTestData.Length);
+                    var range = String.Format("bytes */0");
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -443,7 +443,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    var range = String.Format("bytes */{0}", UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -482,7 +482,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    var range = String.Format("bytes */{0}", UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -535,7 +535,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 {
                     // Verify the chunk-request
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
+                    var range = String.Format("bytes */{0}", UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
 
                     // Send the response-body

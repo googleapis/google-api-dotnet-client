@@ -396,12 +396,15 @@ namespace Google.Apis.Upload
         /// <list type="">
         /// <item>X is the first byte being sent.</item>
         /// <item>Y is the last byte in the range being sent (inclusive).</item>
-        /// <item>Y is the total number of bytes in the range.</item>
+        /// <item>T is the total number of bytes in the range.</item>
+        /// or in the case of a full block, of the form: "bytes */T" where:
+        /// <list type="">
+        /// <item>T is the total number of bytes in the range.</item>
         /// </list>
         /// </summary>
         /// <remarks>
-        /// The specified range is 0 based inclusive, so uploading a 100 byte file in one chunk
-        /// would be specified as bytes 0-99/100.
+        // See: RFC2616 HTTP/1.1, Section 14.16 Header Field Definitions, Content-Range
+        // http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
         /// </remarks>
         /// <param name="chunkStart">Start of the chunk.</param>
         /// <param name="chunkSize">Size of the chunk being sent.</param>
@@ -410,11 +413,18 @@ namespace Google.Apis.Upload
         private string GetContentRangeHeader(long chunkStart, long chunkSize, long totalSize)
         {
             // If a file of length 0 is sent, one chunk needs to be sent with 0 size.
-            // This chunk will be bytes 0-0/0, but the typical logic would produce 0--1/0
-            // So we take the Max of 0 and the calculated chunk size to ensure it is never
-            // negative.
-            long chunkEnd = Math.Max(0, chunkStart + chunkSize - 1);
-            return String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, totalSize);
+            // This chunk cannot be specified with the standard (inclusive) range header.
+            // In this case, or in any other case where we are sending the full block, 
+            // specify a the full range as "*" instead of an inclusive range.
+            if (chunkStart == 0 && chunkSize == totalSize)
+            {
+                return String.Format("bytes */{0}", totalSize);
+            }
+            else
+            {
+                long chunkEnd = chunkStart + chunkSize - 1;
+                return String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, totalSize);
+            }
         }
 
         /// <summary>
