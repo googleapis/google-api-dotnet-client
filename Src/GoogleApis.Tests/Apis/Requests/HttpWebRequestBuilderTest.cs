@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Google.Apis.Requests;
+using Google.Apis.Util;
 using Google.Apis.Json;
 
 namespace Google.Apis.Tests.Apis.Requests
@@ -93,8 +94,9 @@ namespace Google.Apis.Tests.Apis.Requests
             var builder = new HttpWebRequestBuilder()
             {
                 BaseUri = UriFactory.Create("http://www.example.com/"),
-                QueryParameters = { { "testQueryParam", "testValue" } }
             };
+
+            builder.AddParameter(RequestParameterType.Query, "testQueryParam", "testValue");
 
             var wr = builder.GetWebRequest();
 
@@ -112,10 +114,9 @@ namespace Google.Apis.Tests.Apis.Requests
             var builder = new HttpWebRequestBuilder()
             {
                 BaseUri = UriFactory.Create("http://www.example.com/"),
-                QueryParameters = {
-                    { "testQueryParamA", "testValueA" },
-                    { "testQueryParamB", "testValueB" },}
             };
+            builder.AddParameter(RequestParameterType.Query, "testQueryParamA", "testValueA");
+            builder.AddParameter(RequestParameterType.Query, "testQueryParamB", "testValueB");
 
             var wr = builder.GetWebRequest();
 
@@ -133,8 +134,9 @@ namespace Google.Apis.Tests.Apis.Requests
             var builder = new HttpWebRequestBuilder()
             {
                 BaseUri = UriFactory.Create("http://www.example.com/"),
-                QueryParameters = { { "test Query Param", "test %va/ue" }, }
             };
+
+            builder.AddParameter(RequestParameterType.Query, "test Query Param", "test %va/ue");
 
             var wr = builder.GetWebRequest();
 
@@ -153,9 +155,9 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 BaseUri = UriFactory.Create("http://www.example.com/"),
                 Path = "test/{id}/foo/bar",
-                PathParameters = { { "id", "value" }, },
             };
 
+            builder.AddParameter(RequestParameterType.Path, "id", "value");
             var wr = builder.GetWebRequest();
 
             Assert.That(wr.Method, Is.EqualTo("GET"));
@@ -172,13 +174,86 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 BaseUri = UriFactory.Create("http://www.example.com/"),
                 Path = "test/{id}",
-                PathParameters = { { "id", " %va/ue" }, },
             };
 
+            builder.AddParameter(RequestParameterType.Path, "id", " %va/ue");
             var wr = builder.GetWebRequest();
 
             Assert.That(wr.Method, Is.EqualTo("GET"));
             Assert.That(wr.RequestUri.AbsoluteUri, Is.EqualTo("http://www.example.com/test/%20%25va%2Fue"));
+        }
+
+        /// <summary>
+        /// Verify that repeatable query parameters are supported
+        /// </summary>
+        /// <remarks>
+        /// See Issue #211: http://code.google.com/p/google-api-dotnet-client/issues/detail?id=211
+        /// </remarks>
+        [Test]
+        public void TestMultipleQueryParameters()
+        {
+            var builder = new HttpWebRequestBuilder()
+            {
+                BaseUri = UriFactory.Create("http://www.example.com/"),
+            };
+
+            builder.AddParameter(RequestParameterType.Query, "q", "value1");
+            builder.AddParameter(RequestParameterType.Query, "q", "value2");
+
+            var wr = builder.GetWebRequest();
+
+            Assert.That(wr.Method, Is.EqualTo("GET"));
+            Assert.That(wr.RequestUri.AbsoluteUri, Is.EqualTo("http://www.example.com/?q=value1&q=value2"));
+        }
+
+        /// <summary>
+        /// Verify that repeated path parameters are not supported
+        /// </summary>
+        /// <remarks>
+        /// See Issue #211: http://code.google.com/p/google-api-dotnet-client/issues/detail?id=211
+        /// </remarks>
+        [Test]
+        public void TestMultiplePathParameters()
+        {
+            var builder = new HttpWebRequestBuilder();
+
+            builder.AddParameter(RequestParameterType.Path, "q", "value1");
+            Assert.Throws<ArgumentException>(() =>
+            {
+                builder.AddParameter(RequestParameterType.Path, "q", "value2");
+            });
+        }
+
+        /// <summary>
+        /// Verify that null and empty path parameters are not allowed.
+        /// </summary>
+        [Test]
+        public void TestNullPathParameters()
+        {
+            var builder = new HttpWebRequestBuilder();
+
+            Assert.Throws<ArgumentException>(
+                () => builder.AddParameter(RequestParameterType.Path, "q", null));
+            Assert.Throws<ArgumentException>(
+                () => builder.AddParameter(RequestParameterType.Path, "q", String.Empty));
+        }
+
+        /// <summary>
+        /// Verify that empty query parameters are not ignored.
+        /// </summary>
+        [Test]
+        public void TestNullQueryParameters()
+        {
+            var builder = new HttpWebRequestBuilder()
+            {
+                BaseUri = new Uri("http://www.example.com"),
+                Path = "",
+            };
+
+            builder.AddParameter(RequestParameterType.Query, "q", null);
+            builder.AddParameter(RequestParameterType.Query, "p", String.Empty);
+
+            Assert.That(builder.BuildUri().AbsoluteUri, Is.EqualTo("http://www.example.com/"));
         }
     }
 }

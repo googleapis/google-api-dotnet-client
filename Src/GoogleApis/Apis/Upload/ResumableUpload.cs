@@ -445,8 +445,8 @@ namespace Google.Apis.Upload
                 HttpRequestFactory = this.RequestFactory,
             };
 
-            builder.QueryParameters["uploadType"] = "resumable";
-            builder.QueryParameters["alt"] = "json";
+            builder.AddParameter(RequestParameterType.Query, "uploadType", "resumable");
+            builder.AddParameter(RequestParameterType.Query, "alt", "json");
 
             SetAllPropertyValues(builder);
 
@@ -491,14 +491,7 @@ namespace Google.Apis.Upload
                         value = valueObject.ToString();
                     }
 
-                    if (attribute.Type == RequestParameterType.Path)
-                    {
-                        requestBuilder.PathParameters.Add(name, value);
-                    }
-                    else if (!String.IsNullOrEmpty(value))
-                    {
-                        requestBuilder.QueryParameters.Add(name, value);
-                    }
+                    requestBuilder.AddParameter(attribute.Type, name, value);
                 }
             }
         }

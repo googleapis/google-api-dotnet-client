@@ -547,23 +547,12 @@ namespace Google.Apis.Requests
                 Method = Method.HttpMethod,
             };
 
-            requestBuilder.QueryParameters.Add("alt",
+            requestBuilder.AddParameter(RequestParameterType.Query, "alt",
                 ReturnType == ReturnType.Json?"json":"atom");
 
-            if (DeveloperKey.IsNotNullOrEmpty())
-            {
-                requestBuilder.QueryParameters.Add("key", DeveloperKey);
-            }
-
-            if (FieldsMask.IsNotNullOrEmpty())
-            {
-                requestBuilder.QueryParameters.Add("fields", FieldsMask);
-            }
-
-            if (UserIp.IsNotNullOrEmpty())
-            {
-                requestBuilder.QueryParameters.Add("userIp", UserIp);
-            }
+            requestBuilder.AddParameter(RequestParameterType.Query, "key", DeveloperKey);
+            requestBuilder.AddParameter(RequestParameterType.Query, "fields", FieldsMask);
+            requestBuilder.AddParameter(RequestParameterType.Query, "userIp", UserIp);
 
             // Replace the substitution parameters.
             foreach (var parameter in Parameters)
@@ -586,14 +575,17 @@ namespace Google.Apis.Requests
                 switch (parameterDefinition.ParameterType)
                 {
                     case "path":
-                        requestBuilder.PathParameters.Add(parameter.Key, value);
+                        requestBuilder.AddParameter(RequestParameterType.Path, parameter.Key, value);
                         break;
                     case "query":
                         // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.IsRequired || value.IsNotNullOrEmpty())
+                        if (parameterDefinition.IsRequired && String.IsNullOrEmpty(value))
                         {
-                            requestBuilder.QueryParameters.Add(parameter.Key, value);
+                            throw new GoogleApiException(Service,
+                                String.Format("Required parameter \"{0}\" missing.", parameter.Key));
                         }
+                        requestBuilder.AddParameter(RequestParameterType.Query, 
+                            parameter.Key, value);
                         break;
                     default:
                         throw new NotSupportedException(
