@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 
+using Google.Apis.Util;
 using Google.Apis.Authentication;
 
 namespace Google.Apis.Requests
@@ -55,13 +56,13 @@ namespace Google.Apis.Requests
         /// path contains "{key}" that portion of the path will be replaced by the value 
         /// for the specified key in this dictionary.
         /// </summary>
-        public IDictionary<string, string> PathParameters { get; private set; }
+        private IDictionary<string, string> PathParameters { get; set; }
 
         /// <summary>
         /// A dictionary containing the parameters which will apply to the query portion
         /// of this request.
         /// </summary>
-        public IDictionary<string, string> QueryParameters { get; private set; }
+        private List<KeyValuePair<string, string>> QueryParameters { get; set; }
 
         /// <summary>
         /// The base uri for this request (usually applies to the service itself).
@@ -88,7 +89,7 @@ namespace Google.Apis.Requests
         public HttpWebRequestBuilder()
         {
             this.PathParameters = new Dictionary<string, string>();
-            this.QueryParameters = new Dictionary<string, string>();
+            this.QueryParameters = new List<KeyValuePair<string, string>>();
             this.Method = "GET";
             this.UriFactory = DefaultUriFactory;
             this.HttpRequestFactory = DefaultRequestFactory;
@@ -128,6 +129,35 @@ namespace Google.Apis.Requests
         {
             Uri uri = BuildUri();
             return HttpRequestFactory.Create(uri, this.Method);
+        }
+
+        /// <summary>
+        /// Add a parameter value.
+        /// </summary>
+        /// <param name="type">Type of the parameter (must be Path or Query).</param>
+        /// <param name="name">Parameter name.</param>
+        /// <param name="value">Parameter value.</param>
+        public void AddParameter(RequestParameterType type, string name, string value)
+        {
+            switch (type)
+            {
+                case RequestParameterType.Path:
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        throw new ArgumentException("Path parameters cannot be null or empty.");
+                    }
+                    PathParameters.Add(name, value);
+                    break;
+                case RequestParameterType.Query:
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        break;
+                    }
+                    QueryParameters.Add(new KeyValuePair<string, string>(name, value));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("type");
+            }
         }
     }
 }
