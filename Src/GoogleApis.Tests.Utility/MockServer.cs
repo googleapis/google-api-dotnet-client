@@ -94,6 +94,12 @@ namespace Google.Apis.Tests.Utility
             }
         }
 
+        /// <summary>
+        /// Tell the MockServer to expect a request and program the response.
+        /// </summary>
+        /// <param name="requestAction">
+        /// A callback to validate the request and prepare the response.
+        /// </param>
         public void ExpectRequest(Action<HttpListenerContext> requestAction)
         {
             ServerActions.Enqueue(requestAction);
