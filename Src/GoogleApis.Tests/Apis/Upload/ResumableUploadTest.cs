@@ -1,16 +1,28 @@
-﻿using System;
+﻿/*
+Copyright 2012 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Net;
-using Google.Apis.Util;
-
+using System.Text;
 using Google.Apis.Upload;
-using Moq;
-
-
+using Google.Apis.Util;
 using NUnit.Framework;
+
+using Google.Apis.Tests.Utility;
 
 namespace Google.Apis.Tests.Apis.Upload
 {
@@ -23,104 +35,7 @@ exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
 occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-        private class MockResumableUploadServer : IDisposable
-        {
-            private HttpListener Listener { get; set; }
-            public int Port { get; private set; }
-            public string BaseUri { get; private set; }
-            public string UploadUri { get; private set; }
-
-            // Would rather use a "correct" port-finding logic but the HttpListener
-            // class doesn't support it.
-            private const int DefaultPort = 22123;
-
-            public MockResumableUploadServer()
-            {
-                this.Port = DefaultPort;
-                this.BaseUri = String.Format("http://localhost:{0}/", this.Port);
-                this.UploadUri = String.Format("http://localhost:{0}/upload", this.Port);
-
-                this.Listener = new HttpListener();
-                this.Listener.Prefixes.Add(this.BaseUri);
-                this.Listener.Start();
-
-                this.Listener.BeginGetContext(OnRequest, null);
-            }
-
-            private Queue<Action<HttpListenerContext>> ServerActions
-                = new Queue<Action<HttpListenerContext>>();
-
-            private void OnRequest(IAsyncResult asyncResult)
-            {
-                var context = this.Listener.EndGetContext(asyncResult);
-                if (ServerActions.Count > 0)
-                {
-                    var action = ServerActions.Dequeue();
-                    try
-                    {
-                        action(context);
-                    }
-                    catch (Exception ex)
-                    {
-                        context.Response.StatusCode = 500;
-                        JsonError(context.Response.OutputStream, ex.Message);
-                    }
-                }
-                else
-                {
-                    context.Response.StatusCode = 404;
-                    JsonError(context.Response.OutputStream, "Server received an unexpected request.");
-                }
-                context.Response.Close();
-
-                if(ServerActions.Count != 0)
-                    this.Listener.BeginGetContext(OnRequest, null);
-            }
-
-            private void JsonError(Stream outputStream, string errorMessage)
-            {
-                var sb = new StringBuilder();
-                sb.Append("{ 'error' : { 'message' : '");
-                sb.Append(errorMessage); // TODO: JSON encode
-                sb.Append("' } }");
-                using (StreamWriter sw = new StreamWriter(outputStream))
-                {
-                    sw.Write(sb.ToString());
-                }
-            }
-
-            public void ExpectRequest(Action<HttpListenerContext> requestAction)
-            {
-                ServerActions.Enqueue(requestAction);
-            }
-
-            public void ValidateMethodsCompleted()
-            {
-                Assert.That(ServerActions.Count, Is.EqualTo(0), "Expected server actions were not completed.");
-            }
-
-            #region Disposable
-
-            void IDisposable.Dispose()
-            {
-                Dispose(true);
-            }
-
-            ~MockResumableUploadServer()
-            {
-                Dispose(false);
-            }
-
-            private void Dispose(bool disposing)
-            {
-                if (disposing)
-                {
-                    this.Listener.Stop();
-                }
-            }
-
-            #endregion
-        }
+        private class MockResumableUploadServer : MockServer { }
 
         private class MockResumableUpload : ResumableUpload<object>
         {
@@ -231,8 +146,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 });
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
             }
         }
 
@@ -262,8 +175,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 });
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
             }
         }
 
@@ -320,8 +231,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 }
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
                 Assert.That(payload, Is.EqualTo(dataStream.ToArray()));
             }
         }
@@ -379,8 +288,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 }
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
                 Assert.That(payload, Is.EqualTo(dataStream.ToArray()));
             }
         }
@@ -448,8 +355,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 });
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
             }
         }
 
@@ -487,8 +392,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 });
 
                 upload.Upload(stream, "text/plain");
-
-                server.ValidateMethodsCompleted();
             }
         }
 
@@ -557,8 +460,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 Assert.That(response, Is.SameAs(upload.ResponseBody));
                 Assert.That(eventCount, Is.EqualTo(1));
-
-                server.ValidateMethodsCompleted();
             }
         }
     }

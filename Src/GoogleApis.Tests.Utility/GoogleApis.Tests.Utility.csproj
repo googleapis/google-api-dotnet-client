@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="MockRequest.cs" />
     <Compile Include="MockResponse.cs" />
+    <Compile Include="MockServer.cs" />
     <Compile Include="MockService.cs" />
     <Compile Include="MoreAsserts.cs" />
   </ItemGroup>
