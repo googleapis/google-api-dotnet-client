@@ -25,7 +25,8 @@ namespace Google.Apis.Authentication.OAuth2
     /// <summary>
     /// Implements an OAuth2 authenticator using the DotNetOpenAuth library.
     /// </summary>
-    public class OAuth2Authenticator<TClient> : IAuthenticator, IErrorResponseHandler where TClient : ClientBase
+    public class OAuth2Authenticator<TClient> : IAuthenticator, IErrorResponseHandler
+        where TClient : ClientBase
     {
         private readonly Func<TClient, IAuthorizationState> authProvider;
         private readonly TClient tokenProvider;
@@ -104,7 +105,7 @@ namespace Google.Apis.Authentication.OAuth2
             }
 
             // Refresh our access token:
-            tokenProvider.RefreshToken(State, null);
+            tokenProvider.RefreshAuthorization(State, null);
 
             // Overwrite the current auth header:
             ApplyAuthenticationToRequest((HttpWebRequest)request);
