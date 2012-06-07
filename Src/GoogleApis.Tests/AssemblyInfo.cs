@@ -28,7 +28,6 @@ using log4net.Config;
 [assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: XmlConfigurator(Watch = true)]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
