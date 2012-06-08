@@ -88,6 +88,7 @@ namespace Google.Apis.Requests
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
             WebRequestFactory = new HttpRequestFactory();
+            Parameters = new ParameterCollection();
 
             MaximumRetries = 3;
             RetryWaitTimeIncreaseFactor = 2.0;
