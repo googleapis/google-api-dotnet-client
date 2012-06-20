@@ -154,8 +154,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         [Test]
         public void GetProposedNameTest()
         {
-            Assert.AreEqual("TestRequest", RequestClassGenerator.GetProposedName(new MockMethod() { Name = "Test"}));
-            Assert.AreEqual("AbcRequest", RequestClassGenerator.GetProposedName(new MockMethod() { Name = "abc" }));
+            Assert.AreEqual("TestRequest", RequestClassGenerator.GetProposedName(
+                new MockMethod() { Name = "Test"},
+                RequestClassGenerator.RequestClassNamingScheme));
+            Assert.AreEqual("AbcRequest", RequestClassGenerator.GetProposedName(
+                new MockMethod() { Name = "abc" },
+                RequestClassGenerator.RequestClassNamingScheme));
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         /// <remarks>{0} represents the name of the method for which this request is intended.</remarks>
         public const string RequestClassNamingScheme = "{0}Request";
+        public const string MediaUploadClassNamingScheme = "{0}MediaUpload";
 
         private readonly IEnumerable<IRequestDecorator> commonDecorators;
         private readonly IEnumerable<IRequestDecorator> requestDecorators;
@@ -80,6 +81,14 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 CodeTypeDeclaration requestClass = GenerateRequestClass(resource, method, resourceClass, usedNames);
                 newMembers.Add(requestClass);
                 usedNames.Add(requestClass.Name);
+
+                if (method.MediaUpload != null)
+                {
+                    // Generate the request class and add it to the result collection.
+                    CodeTypeDeclaration uploadClass = GenerateMediaUploadClass(resource, method, resourceClass, usedNames);
+                    newMembers.Add(uploadClass);
+                    usedNames.Add(uploadClass.Name);
+                }
             }
 
             return newMembers;
@@ -96,10 +105,33 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             // Generate a request class for this method
             CodeTypeDeclaration requestClass = new CodeTypeDeclaration();
-            string proposedName = GetProposedName(method);
+            string proposedName = GetProposedName(method, RequestClassNamingScheme);
             requestClass.Name = GeneratorUtils.GetClassName(proposedName, usedNames);
-            var decorators = commonDecorators.Concat(
-                (method.MediaUpload == null) ? requestDecorators : mediaUploadDecorators);
+            var decorators = commonDecorators.Concat(requestDecorators);
+
+            // Run the decorators for request classes.
+            foreach (IRequestDecorator decorator in decorators)
+            {
+                decorator.DecorateClass(resource, method, requestClass, resourceClass);
+            }
+
+            return requestClass;
+        }
+
+        /// <summary>
+        /// Generates a request class for the specified method
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeTypeDeclaration GenerateMediaUploadClass(IResource resource,
+                                                              IMethod method,
+                                                              CodeTypeDeclaration resourceClass,
+                                                              IEnumerable<string> usedNames)
+        {
+            // Generate a request class for this method
+            CodeTypeDeclaration requestClass = new CodeTypeDeclaration();
+            string proposedName = GetProposedName(method, MediaUploadClassNamingScheme);
+            requestClass.Name = GeneratorUtils.GetClassName(proposedName, usedNames);
+            var decorators = commonDecorators.Concat(mediaUploadDecorators);
 
             // Run the decorators for request classes.
             foreach (IRequestDecorator decorator in decorators)
@@ -114,9 +146,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// Returns the proposed name for a request class for the specified method.
         /// Does not check for used names.
         /// </summary>
-        public static string GetProposedName(IMethod method)
+        public static string GetProposedName(IMethod method, string namingScheme)
         {
-            return GeneratorUtils.GetClassName(string.Format(RequestClassNamingScheme, method.Name), new string[0]);
+            return GeneratorUtils.GetClassName(string.Format(namingScheme, method.Name), new string[0]);
         }
     }
 }
