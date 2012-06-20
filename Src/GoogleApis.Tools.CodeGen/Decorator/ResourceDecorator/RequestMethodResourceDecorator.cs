@@ -35,6 +35,22 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     public class RequestMethodResourceDecorator : IResourceDecorator
     {
         /// <summary>
+        /// Enum used to communicate to code which version of the helper methods to generate
+        /// on a particular method call. 
+        /// </summary>
+        internal enum MethodType
+        {
+            /// <summary>
+            /// Generate a standard ServiceRequest helper method.
+            /// </summary>
+            Request,
+            /// <summary>
+            /// Generate a MediaUpload ServiceReqeuest helper method.
+            /// </summary>
+            Media,
+        }
+
+        /// <summary>
         /// Defines whether optional parameters are added to the request methods or not.
         /// </summary>
         public bool AddOptionalParameters { get; set; }
@@ -64,16 +80,29 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 logger.Debug("Adding RequestObject Method {0}.{1}", resource.Name, method.Name);
                 
                 // Add the default request method to the class:
-                CodeTypeMember convenienceMethod = gen.CreateMethod(resourceClass, resource, method, false);
+                CodeTypeMember convenienceMethod = 
+                    gen.CreateMethod(resourceClass, resource, method, false, MethodType.Request);
                 if (convenienceMethod != null)
                 {
                     resourceClass.Members.Add(convenienceMethod);
                 }
 
+                // Add the media upload request method to the class:
+                if (method.MediaUpload != null)
+                {
+                    CodeTypeMember uploadMethod = 
+                        gen.CreateMethod(resourceClass, resource, method, false, MethodType.Media);
+                    if (uploadMethod != null)
+                    {
+                        resourceClass.Members.Add(uploadMethod);
+                    }
+                }
+
                 // Add the request method specifiying all parameters (also optional ones) to the class:
                 if (AddOptionalParameters && method.HasOptionalParameters())
                 {
-                    convenienceMethod = gen.CreateMethod(resourceClass, resource, method, true);
+                    convenienceMethod = 
+                        gen.CreateMethod(resourceClass, resource, method, true, MethodType.Request);
                     if (convenienceMethod != null)
                     {
                         resourceClass.Members.Add(convenienceMethod);
@@ -107,6 +136,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             private readonly IMethodCommentCreator commentCreator;
             private readonly IObjectTypeProvider objectTypeProvider;
 
+            private const string StreamParameterName = "stream";
+            private const string ContentTypeParameterName = "contentType";
+
             public ResourceGenerator(string className,
                                      IObjectTypeProvider objectTypeProvider,
                                      IMethodCommentCreator commentCreator)
@@ -129,7 +161,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             public CodeMemberMethod CreateMethod(CodeTypeDeclaration classDeclaration,
                                                  IResource resource,
                                                  IMethod method,
-                                                 bool addOptionalParameters)
+                                                 bool addOptionalParameters,
+                                                 MethodType methodType)
             {
                 // Create a new method and make it public.
                 var member = new CodeMemberMethod();
@@ -159,9 +192,28 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 AddDeclaredParameters(
                     classDeclaration, method, member, constructorParameters, addOptionalParameters);
 
+                string requestClassNamingScheme = RequestClassGenerator.RequestClassNamingScheme;
+
+                // If this is the media-upload convenience method, add the stream and content-type
+                // parameters.
+                if (methodType == MethodType.Media)
+                {
+                    member.Parameters.Add(new CodeParameterDeclarationExpression(
+                        typeof(System.IO.Stream), StreamParameterName));
+                    member.Parameters.Add(new CodeParameterDeclarationExpression(
+                        typeof(System.String), ContentTypeParameterName));
+
+                    constructorParameters.Add(new CodeVariableReferenceExpression(StreamParameterName));
+                    constructorParameters.Add(new CodeVariableReferenceExpression(ContentTypeParameterName));
+
+                    requestClassNamingScheme = RequestClassGenerator.MediaUploadClassNamingScheme;
+                }
+
                 // new ...Request(paramOne, paramTwo, paramThree)
                 // TODO(mlinder): add method signature collision checking here.
-                CodeTypeReference requestType = new CodeTypeReference(RequestClassGenerator.GetProposedName(method));
+                CodeTypeReference requestType = new CodeTypeReference(
+                    RequestClassGenerator.GetProposedName(
+                        method, requestClassNamingScheme));
                 member.ReturnType = requestType;
                 var newRequest = new CodeObjectCreateExpression(requestType);
                 newRequest.Parameters.AddRange(constructorParameters);

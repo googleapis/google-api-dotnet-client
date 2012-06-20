@@ -49,17 +49,17 @@ namespace Google.Apis.Upload
         private const int MinimumChunkSize = 262144; // 256 KB
         
         /// <summary>
-        /// Default chunk size is set to 4 times the <see cref="MinumumChunkSize"/>of 256KB or 1MB 
+        /// Default chunk size is set to 4 times the <see cref="MinimumChunkSize"/>of 256KB or 1MB 
         /// total.
         /// </summary>
-        /// <seealso cref="MinumumChunkSize"/>
+        /// <seealso cref="MinimumChunkSize"/>
         private const int DefaultChunkSize = MinimumChunkSize * 40;
         
         /// <summary>
         /// Buffer size is used to read chunks from the input stream and write to the output stream.
         /// TODO: Improve the read/write scheme to remove the buffer altogether and simply pipe the
         ///       input to the request.
-        /// <summary>
+        /// </summary>
         private const int BufferSize = 16384; // 16 KB
 
         /// <summary>
@@ -107,11 +107,22 @@ namespace Google.Apis.Upload
         /// <param name="baseUri">The baseUri of the service.</param>
         /// <param name="path">The path for this media upload method.</param>
         /// <param name="httpMethod">The HTTP method to start this upload.</param>
-        protected ResumableUpload(string baseUri, string path, string httpMethod)
+        /// <param name="contentStream">The stream containing the content to upload.</param>
+        /// <param name="contentType">Content type of the content to be uploaded.</param>
+        /// <remarks>
+        /// The stream <paramref name="contentStream"/> must support the "Length" property.
+        /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the 
+        /// upload is completed.
+        /// Caller is responsible for closing the <paramref name="contentStream"/>.
+        /// </remarks>
+        protected ResumableUpload(string baseUri, string path, string httpMethod,
+            Stream contentStream, string contentType)
         {
             baseUri.ThrowIfNull("baseUri");
             path.ThrowIfNull("path");
             httpMethod.ThrowIfNullOrEmpty("httpMethod");
+            contentStream.ThrowIfNull("stream");
+            contentType.ThrowIfNull("contentType");
 
             this.baseUri = baseUri;
             this.path = path;
@@ -121,6 +132,9 @@ namespace Google.Apis.Upload
             this.Authenticator = NullAuthenticator.Instance;
             this.Serializer = Json.NewtonsoftJsonSerializer.Instance;
             this.ChunkSize = DefaultChunkSize;
+
+            this.contentStream = contentStream;
+            this.contentType = contentType;
         }
 
         #endregion // Construction
@@ -141,6 +155,16 @@ namespace Google.Apis.Upload
         /// HTTP Method of this upload (used to initialize the upload).
         /// </summary>
         private string httpMethod;
+
+        /// <summary>
+        /// Stream of data to upload.
+        /// </summary>
+        private Stream contentStream;
+
+        /// <summary>
+        /// Content-Type of data to upload.
+        /// </summary>
+        private string contentType;
 
         #endregion
 
@@ -171,6 +195,9 @@ namespace Google.Apis.Upload
         /// </remarks>
         public int ChunkSize { get; set; }
 
+        /// <summary>
+        /// Serializer used to serialize <see cref="Body"/> of the request.
+        /// </summary>
         public ISerializer Serializer { get; set; }
 
         #endregion // Properties
@@ -251,25 +278,22 @@ namespace Google.Apis.Upload
 
         #region Upload Implementation
         /// <summary>
-        /// Upload the content in <paramref name="stream"/> to the server. This method is synchronous
+        /// Upload the content to the server. This method is synchronous
         /// and will block until the upload is completed.
         /// </summary>
-        /// <param name="stream">The stream containing the content to upload.</param>
-        /// <param name="contentType">Content type of the content to be uploaded.</param>
-        /// <remarks>The Stream <paramref name="stream"/> must support the "Length" property.</remarks>
-        public void Upload(Stream stream, string contentType)
+        public void Upload()
         {
             long bytesSent = 0;
             try
             {
                 UpdateProgress(UploadStatus.Starting, 0);
-                Uri url = InitializeUpload(stream.Length, contentType);
+                Uri url = InitializeUpload(contentStream.Length, contentType);
                 UpdateProgress(UploadStatus.Uploading, 0);
                 do
                 {
-                    bytesSent += SendChunk(stream, url, bytesSent);
+                    bytesSent += SendChunk(contentStream, url, bytesSent);
                     UpdateProgress(UploadStatus.Uploading, bytesSent);
-                } while (bytesSent < stream.Length);
+                } while (bytesSent < contentStream.Length);
                 UpdateProgress(UploadStatus.Completed, bytesSent);
             }
             catch (WebException we)
@@ -287,9 +311,9 @@ namespace Google.Apis.Upload
                         throw new Exception(y[MessageKey] as string);
                     }
                 }
-                /// Attempt to update the progress to show failure,
-                /// swallow any exceptions that occured and re-throw the original
-                /// exception.
+                // Attempt to update the progress to show failure,
+                // swallow any exceptions that occured and re-throw the original
+                // exception.
                 try
                 {
                     UpdateProgress(UploadStatus.Failed, bytesSent);
@@ -299,9 +323,9 @@ namespace Google.Apis.Upload
             }
             catch (Exception)
             {
-                /// Attempt to update the progress to show failure,
-                /// swallow any exceptions that occured and re-throw the original
-                /// exception.
+                // Attempt to update the progress to show failure,
+                // swallow any exceptions that occured and re-throw the original
+                // exception.
                 try
                 {
                     UpdateProgress(UploadStatus.Failed, bytesSent);
@@ -331,9 +355,9 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>
-        /// Process a response from the upload initialization call.
+        /// Process a response from the final upload chunk call.
         /// </summary>
-        /// <param name="webResponse">The web response from the initialization method call.</param>
+        /// <param name="webResponse">The web response body from the final uploaded chunk.</param>
         protected virtual void ProcessResponse(WebResponse webResponse)
         {
         }
@@ -398,13 +422,11 @@ namespace Google.Apis.Upload
         /// <item>Y is the last byte in the range being sent (inclusive).</item>
         /// <item>T is the total number of bytes in the range.</item>
         /// or in the case of a full block, of the form: "bytes */T" where:
-        /// <list type="">
-        /// <item>T is the total number of bytes in the range.</item>
         /// </list>
         /// </summary>
         /// <remarks>
-        // See: RFC2616 HTTP/1.1, Section 14.16 Header Field Definitions, Content-Range
-        // http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
+        /// See: RFC2616 HTTP/1.1, Section 14.16 Header Field Definitions, Content-Range
+        /// http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16
         /// </remarks>
         /// <param name="chunkStart">Start of the chunk.</param>
         /// <param name="chunkSize">Size of the chunk being sent.</param>
@@ -524,8 +546,17 @@ namespace Google.Apis.Upload
         /// <param name="baseUri">The baseUri of the service.</param>
         /// <param name="path">The path for this media upload method.</param>
         /// <param name="httpMethod">The HTTP method to start this upload.</param>
-        protected ResumableUpload(string baseUri, string path, string httpMethod)
-            : base(baseUri, path, httpMethod) { }
+        /// <param name="contentStream">The stream containing the content to upload.</param>
+        /// <param name="contentType">Content type of the content to be uploaded.</param>
+        /// <remarks>
+        /// The stream <paramref name="contentStream"/> must support the "Length" property.
+        /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the 
+        /// upload is completed.
+        /// Caller is responsible for closing the <paramref name="contentStream"/>.
+        /// </remarks>
+        protected ResumableUpload(string baseUri, string path, string httpMethod,
+            Stream contentStream, string contentType)
+            : base(baseUri, path, httpMethod, contentStream, contentType) { }
 
         #endregion //Construction
 

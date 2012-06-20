@@ -83,7 +83,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
                 "a", new MockParameter() { Name = "a", ParameterType = "string", IsRequired = false });
             method.Parameters.Add(
                 "b", new MockParameter() { Name = "b", ParameterType = "string", IsRequired = true });
-            CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true);
+            CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true, 
+                RequestMethodResourceDecorator.MethodType.Request);
 
             Assert.AreEqual("Test", generatedMethod.Name);
             Assert.AreEqual(2, generatedMethod.Parameters.Count); // two parameters defined.

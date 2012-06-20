@@ -37,6 +37,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         private const string ServiceName = "service";
         private const string BaseUriName = "BaseUri";
 
+        private const string StreamParameterName = "stream";
+        private const string ContentTypeParameterName = "contentType";
+
         /// <summary>
         /// Creates a new request constructor decorator.
         /// </summary>
@@ -79,8 +82,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
+
+            // Add common upload arguements.
+            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(StreamParameterName));
+            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(ContentTypeParameterName));
+
             AddAuthorizationAssignment(constructor);
             AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
+
+            constructor.Parameters.Add(new CodeParameterDeclarationExpression(
+                new CodeTypeReference(typeof(System.IO.Stream)), StreamParameterName));
+            constructor.Parameters.Add(new CodeParameterDeclarationExpression(
+                new CodeTypeReference(typeof(System.String)), ContentTypeParameterName));
 
             return constructor;
         }

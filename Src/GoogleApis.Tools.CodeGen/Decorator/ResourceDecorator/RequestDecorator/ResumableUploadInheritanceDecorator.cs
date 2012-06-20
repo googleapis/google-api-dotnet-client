@@ -24,8 +24,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
     /// A decorator which adds the ResumableUpload inheritance to the class
-    /// Adds : ResumableUpload<RequestType> for types with no response body.
-    /// Adds : ResumableUpload<RequestType, ResponseType> for types with response body.
+    /// Adds : <see cref="ResumableUpload{RequestType}"/> for types with no response body.
+    /// Adds : <see cref="ResumableUpload{RequestType, ResponseType}"/> for types with response body.
     /// </summary>
     public class ResumableUploadInheritanceDecorator : IRequestDecorator
     {
@@ -41,6 +41,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
         #region IRequestDecorator Members
 
+        /// <summary>
+        /// Adds code to the class "requestClass" based on the specified "request" method.
+        /// </summary>
         public void DecorateClass(IResource resource,
                                   IMethod request,
                                   CodeTypeDeclaration requestClass,

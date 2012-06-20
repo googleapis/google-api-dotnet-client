@@ -41,14 +41,16 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
         {
             private MockResumableUploadServer server;
 
-            public MockResumableUpload(MockResumableUploadServer server)
-                : this(server, "")
+            public MockResumableUpload(MockResumableUploadServer server,
+                Stream stream, string contentType)
+                : this(server, "", stream, contentType)
             {
                 this.server = server;
             }
 
-            protected MockResumableUpload(MockResumableUploadServer server, string path)
-                : base(server.BaseUri, path, "PUT")
+            protected MockResumableUpload(MockResumableUploadServer server, string path,
+                Stream stream, string contentType)
+                : base(server.BaseUri, path, "PUT", stream, contentType)
             {
                 this.server = server;
             }
@@ -81,14 +83,16 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
         {
             private MockResumableUploadServer server;
 
-            public MockResumableUploadWithResponse(MockResumableUploadServer server)
-                : this(server, "")
+            public MockResumableUploadWithResponse(MockResumableUploadServer server,
+                Stream stream, string contentType)
+                : this(server, "", stream, contentType)
             {
                 this.server = server;
             }
 
-            protected MockResumableUploadWithResponse(MockResumableUploadServer server, string path)
-                : base(server.BaseUri, path, "PUT")
+            protected MockResumableUploadWithResponse(MockResumableUploadServer server, string path,
+                Stream stream, string contentType)
+                : base(server.BaseUri, path, "PUT", stream, contentType)
             {
                 this.server = server;
             }
@@ -106,8 +110,9 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
         private class MockResumableWithParameters : MockResumableUpload
         {
-            public MockResumableWithParameters(MockResumableUploadServer server)
-                : base(server, "testPath/{id}")
+            public MockResumableWithParameters(MockResumableUploadServer server,
+                Stream stream, string contentType)
+                : base(server, "testPath/{id}", stream, contentType)
             {
             }
 
@@ -127,7 +132,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new MockResumableUpload(server);
 
                 server.ExpectRequest(context =>
                 {
@@ -145,7 +149,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableUpload(server, stream, "text/plain");
+                upload.Upload();
             }
         }
 
@@ -155,7 +160,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(new byte[0]);
-                var upload = new MockResumableUpload(server);
 
                 server.ExpectRequest(context =>
                 {
@@ -174,7 +178,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableUpload(server, stream, "text/plain");
+                upload.Upload();
             }
         }
 
@@ -191,8 +196,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             {
                 var payload = Encoding.UTF8.GetBytes(UploadTestData);
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(server);
-                upload.ChunkSize = 100;
+                const int chunkSize = 100;
 
                 var len = payload.Length;
 
@@ -213,7 +217,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 int chunkStart = 0;
                 while (chunkStart < len)
                 {
-                    var chunkEnd = Math.Min(len, chunkStart + upload.ChunkSize) - 1;
+                    var chunkEnd = Math.Min(len, chunkStart + chunkSize) - 1;
                     var range = String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, UploadTestData.Length);
                     server.ExpectRequest(context =>
                     {
@@ -227,10 +231,12 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                         Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
                         Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                     });
-                    chunkStart += upload.ChunkSize;
+                    chunkStart += chunkSize;
                 }
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableUpload(server, stream, "text/plain");
+                upload.ChunkSize = chunkSize;
+                upload.Upload();
                 Assert.That(payload, Is.EqualTo(dataStream.ToArray()));
             }
         }
@@ -248,8 +254,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             {
                 var payload = Encoding.UTF8.GetBytes(UploadTestData);
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(server);
-                upload.ChunkSize = 100;
+                const int chunkSize = 100;
 
                 var len = payload.Length;
 
@@ -270,7 +275,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 int chunkStart = 0;
                 while (chunkStart < len)
                 {
-                    var chunkEnd = Math.Min(len, chunkStart + upload.ChunkSize) - 1;
+                    var chunkEnd = Math.Min(len, chunkStart + chunkSize) - 1;
                     var range = String.Format("bytes {0}-{1}/{2}", chunkStart, chunkEnd, UploadTestData.Length);
                     server.ExpectRequest(context =>
                     {
@@ -284,10 +289,12 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                         Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
                         Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                     });
-                    chunkStart += upload.ChunkSize;
+                    chunkStart += chunkSize;
                 }
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableUpload(server, stream, "text/plain");
+                upload.ChunkSize = chunkSize;
+                upload.Upload();
                 Assert.That(payload, Is.EqualTo(dataStream.ToArray()));
             }
         }
@@ -305,7 +312,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             {
                 var payload = Encoding.UTF8.GetBytes(UploadTestData);
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(server);
                 var len = payload.Length;
 
                 server.ExpectRequest(context =>
@@ -320,28 +326,30 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 var progressEvents = new Queue<IUploadProgress>();
 
+                var upload = new MockResumableUpload(server, stream, "text/plain");
+
                 upload.ProgressChanged += (progress) => {
                     progressEvents.Enqueue(progress);
                 };
 
-                upload.Upload(stream, "text/plain");
+                upload.Upload();
             }
         }
 
         [Test]
         public void TestUploadSingleChunkWithParameters()
         {
+            const int id = 123;
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new MockResumableWithParameters(server) { id = 123 };
 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.QueryString["uploadType"], Is.EqualTo("resumable"));
                     Assert.That(context.Request.QueryString["alt"], Is.EqualTo("json"));
                     Assert.That(context.Request.Url.AbsolutePath,
-                        Is.EqualTo(String.Format("/testPath/{0}", upload.id)));
+                        Is.EqualTo(String.Format("/testPath/{0}", id)));
                     Assert.That(context.Request.Headers["X-Upload-Content-Type"], Is.EqualTo("text/plain"));
                     Assert.That(context.Request.Headers["X-Upload-Content-Length"], Is.EqualTo(stream.Length.ToString()));
                     context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
@@ -354,7 +362,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableWithParameters(server, stream, "text/plain") { id = id };
+                upload.Upload();
             }
         }
 
@@ -364,12 +373,6 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new MockResumableWithParameters(server)
-                {
-                    id = 123,
-                    querya = "QueryValueA",
-                    queryb = "QueryValueB",
-                };
 
                 server.ExpectRequest(context =>
                 {
@@ -391,7 +394,13 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
-                upload.Upload(stream, "text/plain");
+                var upload = new MockResumableWithParameters(server, stream, "text/plain")
+                {
+                    id = 123,
+                    querya = "QueryValueA",
+                    queryb = "QueryValueB",
+                };
+                upload.Upload();
             }
         }
 
@@ -404,12 +413,10 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-                var upload = new MockResumableUploadWithResponse<TestRequest, TestResponse>(server);
-
-                
+             
                 var serializer = new Google.Apis.Json.NewtonsoftJsonSerializer();
 
-                upload.Body = new TestRequest()
+                var body = new TestRequest()
                 {
                     Name = "test object",
                     Description = "the description",
@@ -427,8 +434,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     Assert.That(context.Request.HasEntityBody);
                     TestRequest req = serializer.Deserialize<TestRequest>(context.Request.InputStream);
                     Assert.That(req, Is.Not.Null);
-                    Assert.That(req.Name, Is.EqualTo(upload.Body.Name));
-                    Assert.That(req.Description, Is.EqualTo(upload.Body.Description));
+                    Assert.That(req.Name, Is.EqualTo(body.Name));
+                    Assert.That(req.Description, Is.EqualTo(body.Description));
 
                     // Give the location for the next chunk
                     context.Response.Headers.Add(HttpResponseHeader.Location, server.UploadUri.ToString());
@@ -450,8 +457,13 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 TestResponse response = null;
                 int eventCount = 0;
 
+                var upload = new MockResumableUploadWithResponse<TestRequest, TestResponse>(server, stream, "text/plain")
+                {
+                    Body = body,
+                };
+
                 upload.ResponseReceived += (r) => { response = r; eventCount++; };
-                upload.Upload(stream, "text/plain");
+                upload.Upload();
 
                 Assert.That(upload.ResponseBody, Is.Not.Null);
                 Assert.That(upload.ResponseBody.id, Is.EqualTo(123));
