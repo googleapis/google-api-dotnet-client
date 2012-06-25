@@ -97,6 +97,11 @@ namespace Google.Apis.Upload
         /// </summary>
         private const string Resumable = "resumable";
 
+        /// <summary>
+        /// Content-Range header value for the body upload of zero length files.
+        /// </summary>
+        private const string ZeroByteContentRangeHeader = "bytes */0";
+
         #endregion // Constants
 
         #region Construction
@@ -436,11 +441,10 @@ namespace Google.Apis.Upload
         {
             // If a file of length 0 is sent, one chunk needs to be sent with 0 size.
             // This chunk cannot be specified with the standard (inclusive) range header.
-            // In this case, or in any other case where we are sending the full block, 
-            // specify a the full range as "*" instead of an inclusive range.
-            if (chunkStart == 0 && chunkSize == totalSize)
+            // In this case, use * to indicate no bytes sent in the Content-Range header.
+            if (chunkStart == 0 && chunkSize == 0 && totalSize == 0)
             {
-                return String.Format("bytes */{0}", totalSize);
+                return ZeroByteContentRangeHeader;
             }
             else
             {
