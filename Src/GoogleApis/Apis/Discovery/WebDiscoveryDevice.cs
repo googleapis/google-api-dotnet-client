@@ -54,7 +54,7 @@ namespace Google.Apis.Discovery
         /// Fetches the discovery document from a Webserver using HttpWebRequest.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/>
+        /// A <see cref="System.Stream"/>
         /// </returns>
         public Stream Fetch()
         {
