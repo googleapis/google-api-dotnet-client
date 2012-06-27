@@ -143,7 +143,7 @@ namespace Google.Build.Tester
         /// <returns>Number of failed tests.</returns>
         public Results Run()
         {
-            runner.Run(this);
+            runner.Run(this, null, false, LoggingThreshold.Warn);
             return domain.GetData("Results") as Results;
         }
 
