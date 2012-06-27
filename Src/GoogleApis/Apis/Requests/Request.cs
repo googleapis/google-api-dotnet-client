@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -541,6 +542,9 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Builds the resulting Url for the whole request.
         /// </summary>
+        /// <remarks>
+        /// Uses request decorators from <see cref="GetRequestDecorators()"/>.
+        /// </remarks>
         [VisibleForTestOnly]
         internal HttpWebRequest BuildRequest()
         {
@@ -558,10 +562,28 @@ namespace Google.Apis.Requests
             requestBuilder.AddParameter(RequestParameterType.Query, "fields", FieldsMask);
             requestBuilder.AddParameter(RequestParameterType.Query, "userIp", UserIp);
 
-
             AssembleParameters(requestBuilder);
 
-            return requestBuilder.GetWebRequest();
+            HttpWebRequest request = requestBuilder.GetWebRequest();
+
+            IEnumerable<IRequestDecorator> modifiers = GetRequestDecorators();
+            foreach (var modifier in modifiers)
+            {
+                modifier.DecorateRequest(request);
+            }
+
+            Authenticator.ApplyAuthenticationToRequest(request);
+
+            return request;
+        }
+
+        /// <summary>
+        /// Return a list of IRequestDecorators used to build up the HttpWebRequest.
+        /// </summary>
+        /// <returns>The IRequestDecorators for this request.</returns>
+        private IEnumerable<IRequestDecorator> GetRequestDecorators()
+        {
+            return new IRequestDecorator[] { };
         }
 
         protected abstract void AssembleParameters(HttpWebRequestBuilder requestBuilder);
@@ -627,9 +649,6 @@ namespace Google.Apis.Requests
         internal WebRequest CreateWebRequest(Action<WebRequest> onRequestReady)
         {
             HttpWebRequest request = BuildRequest();
-
-            // Create the request.
-            Authenticator.ApplyAuthenticationToRequest(request);
 
             // Insert the content type and user agent.
             request.ContentType = string.Format(

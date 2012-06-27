@@ -73,6 +73,7 @@
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\Discovery\MediaUpload.cs" />
+    <Compile Include="Apis\Requests\IRequestDecorator.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />
     <Compile Include="Apis\Discovery\ServiceObject.cs" />
     <Compile Include="Apis\Requests\DynamicRequest.cs" />
