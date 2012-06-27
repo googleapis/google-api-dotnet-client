@@ -78,6 +78,7 @@
     <Compile Include="Apis\Discovery\ServiceObject.cs" />
     <Compile Include="Apis\Requests\DynamicRequest.cs" />
     <Compile Include="Apis\Requests\HttpWebRequestBuilder.cs" />
+    <Compile Include="Apis\Requests\RequestDecorators\UserAgentRequestDecorator.cs" />
     <Compile Include="Apis\Requests\UriFactory.cs" />
     <Compile Include="Apis\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\Upload\ResumableUpload.cs" />

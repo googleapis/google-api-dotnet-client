@@ -44,8 +44,6 @@ namespace Google.Apis.Requests
     /// </remarks>
     public abstract class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
-        private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
         /// <summary>
@@ -583,7 +581,13 @@ namespace Google.Apis.Requests
         /// <returns>The IRequestDecorators for this request.</returns>
         private IEnumerable<IRequestDecorator> GetRequestDecorators()
         {
-            return new IRequestDecorator[] { };
+            return new IRequestDecorator[] {
+            // The UserAgent header can only be set on a non-Silverlight platform.
+            // Silverlight uses the user agent of the browser instead.
+#if !SILVERLIGHT
+                new RequestDecorators.UserAgentRequestDecorator(this.ApplicationName, this.GZipEnabled),
+#endif
+            };
         }
 
         protected abstract void AssembleParameters(HttpWebRequestBuilder requestBuilder);
@@ -653,16 +657,6 @@ namespace Google.Apis.Requests
             // Insert the content type and user agent.
             request.ContentType = string.Format(
                 "{0}; charset={1}", GetReturnMimeType(ReturnType), ContentCharset.WebName);
-            string appName = FormatForUserAgent(ApplicationName);
-            string apiVersion = FormatForUserAgent(ApiVersion);
-            string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
-            string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
-
-            // The UserAgent header can only be set on a non-Silverlight platform.
-            // Silverlight uses the user agent of the browser instead.
-#if !SILVERLIGHT
-            request.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
-#endif
 
             // Add the E-tag header:
             if (!string.IsNullOrEmpty(ETag))
@@ -689,7 +683,6 @@ namespace Google.Apis.Requests
 #if !SILVERLIGHT
             if (GZipEnabled)
             {
-                request.UserAgent += GZipUserAgentSuffix;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             }
 #endif
@@ -716,12 +709,6 @@ namespace Google.Apis.Requests
 
             onRequestReady(request);
             return request;
-        }
-
-        [VisibleForTestOnly]
-        internal string FormatForUserAgent(string fragment)
-        {
-            return fragment.Replace(' ', '_');
         }
 
         /// <summary>
