@@ -36,6 +36,16 @@ namespace Google.Apis.Tests.Apis.Requests
         private const string SimpleDeveloperKey = "ABC123";
         private const string ComplexDeveloperKey = "?&^%  ABC123";
 
+        private class MockRequest : Request
+        {
+            public MockRequest() : base(new Uri("http://www.example.com"), "test/path", "GET") { }
+
+            protected override void AssembleParameters(HttpWebRequestBuilder requestBuilder)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         private class MockAuthenticator : IAuthenticator
         {
             public void ApplyAuthenticationToRequest(HttpWebRequest request) { }
@@ -359,7 +369,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ConstructorTest()
         {
-            var request = new Request();
+            var request = new MockRequest();
             Assert.IsNotNull(request.Authenticator);
             Assert.IsTrue(request.SupportsRetry);
         }
@@ -435,7 +445,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// Tests the user-agent string of the request created by the .CreateRequest method.
         /// </summary>
         [Test]
-        public void CreateRequestOnRequestUserAgentTest()
+        public void CreateRequestOnRequestUserAgentTestNoGzip()
         {
             var service = new MockService();
             var request =
@@ -453,11 +463,32 @@ namespace Google.Apis.Tests.Apis.Requests
                 "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetLibraryVersion(),
                 Environment.OSVersion.Platform, Environment.OSVersion.Version);
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
+        }
 
-            // Confirm that the (gzip) tag is added if GZip is supported.
-            service.GZipEnabled = true;
-            expectedUserAgent += " (gzip)";
-            webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
+        /// <summary>
+        /// Tests the user-agent string of the request created by the .CreateRequest method.
+        /// </summary>
+        [Test]
+        public void CreateRequestOnRequestUserAgentTestGzip()
+        {
+            var service = new MockService()
+            {
+                GZipEnabled = true,
+            };
+            var request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com/test", });
+
+            request.WithParameters("");
+
+            HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
+
+            // Test the default user agent (without gzip):
+            string expectedUserAgent = string.Format(
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2} (gzip)", Utilities.GetLibraryVersion(),
+                Environment.OSVersion.Platform, Environment.OSVersion.Version);
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
@@ -489,7 +520,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FormatForUserAgentTest()
         {
-            var request = new Request();
+            var request = new MockRequest();
 
             Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
             Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
@@ -612,7 +643,7 @@ namespace Google.Apis.Tests.Apis.Requests
             dict.Add("100", 100L);
             dict.Add("True", true);
             dict.Add("False", false);
-            var request = new Request();
+            var request = new MockRequest();
             request.WithParameters(dict);
             Assert.AreEqual(dict.Count, request.Parameters.Count);
             Assert.AreEqual("a", request.Parameters.GetFirstMatch("a"));

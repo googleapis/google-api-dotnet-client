@@ -318,8 +318,7 @@ namespace Google.Apis.Discovery
             var response = Serializer.Deserialize<StandardResponse<object>>(input.ReadToEnd());
             if (response.Error == null)
             {
-                throw new GoogleApiException(this, 
-                    "An Error occured, but the error response could not be deserialized.");
+                throw new GoogleApiException("An Error occured, but the error response could not be deserialized.");
             }
 
             return response.Error;
@@ -352,17 +351,17 @@ namespace Google.Apis.Discovery
                 }
                 catch(JsonReaderException ex)
                 {
-                    throw new GoogleApiException(this, "Failed to parse response from server as json ["+text+"]", ex);
+                    throw new GoogleApiException("Failed to parse response from server as json ["+text+"]", ex);
                 }
 
                 if (response.Error != null)
                 {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                    throw new GoogleApiException("Server error - " + response.Error);
                 }
             
                 if (response.Data == null)
                 {
-                    throw new GoogleApiException(this, "The response could not be deserialized.");
+                    throw new GoogleApiException("The response could not be deserialized.");
                 }
 
                 return response.Data;
@@ -376,7 +375,7 @@ namespace Google.Apis.Discovery
             }
             catch (JsonReaderException ex)
             {
-                throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
+                throw new GoogleApiException("Failed to parse response from server as json [" + text + "]", ex);
             }
 
             // If this schema/object provides an error container, check it.
@@ -390,7 +389,7 @@ namespace Google.Apis.Discovery
                 // Check for errors.
                 if (response.Error != null)
                 {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
+                    throw new GoogleApiException("Server error - " + response.Error);
                 }
             }
 

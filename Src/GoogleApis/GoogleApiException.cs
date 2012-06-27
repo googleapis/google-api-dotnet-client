@@ -28,40 +28,32 @@ namespace Google
     /// </summary>
     public class GoogleApiException : Exception
     {
-        private readonly IService service;
-
         /// <summary>
         /// Creates an API Service exception.
         /// </summary>
-        public GoogleApiException(IService service, string message, Exception inner) : base(message, inner)
+        public GoogleApiException(string message, Exception inner)
+            : base(message, inner)
         {
-            service.ThrowIfNull("service");
-            this.service = service;
         }
 
         /// <summary>
         /// Creates an API Service exception
         /// </summary>
-        public GoogleApiException(IService service, string message) : this(service, message, null) {}
+        public GoogleApiException(string message)
+            : this(message, null)
+        {
+        }
 
         /// <summary>
         /// The service that has thrown the exception.
         /// </summary>
-        public IService Service
-        {
-            get { return service; }
-        }
+        public IService Service { get; set; }
 
         /// <summary>
         /// The http status code which was returned along with this error,
         /// or 0 if unavailable.
         /// </summary>
         public HttpStatusCode HttpStatusCode { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), Service.Name);
-        }
     }
 
     /// <summary>
@@ -72,8 +64,8 @@ namespace Google
         /// <summary>
         /// Creates an API Request Exception.
         /// </summary>
-        public GoogleApiRequestException(IService service, IRequest request, RequestError error, Exception inner)
-            : base(service, PickMessage(error, inner), inner)
+        public GoogleApiRequestException(IRequest request, RequestError error, Exception inner)
+            : base(PickMessage(error, inner), inner)
         {
             Request = request;
             RequestError = error;
@@ -83,7 +75,7 @@ namespace Google
         /// Creates an API Request Exception.
         /// </summary>
         public GoogleApiRequestException(IService service, IRequest request, RequestError error)
-            : base(service, PickMessage(error, null))
+            : base(PickMessage(error, null))
         {
             Request = request;
             RequestError = error;

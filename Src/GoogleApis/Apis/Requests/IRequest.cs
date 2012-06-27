@@ -27,13 +27,6 @@ namespace Google.Apis.Requests
     public interface IRequest
     {
         /// <summary>
-        /// Specifies the RPC name to use.
-        /// </summary>
-        /// <param name="rpcName"></param>
-        /// <returns></returns>
-        IRequest On(string rpcName);
-
-        /// <summary>
         /// Specifies the return type of this method.
         /// </summary>
         IRequest Returning(ReturnType returnType);

@@ -226,9 +226,10 @@ namespace Google.Apis.Requests
             foreach (PropertyInfo property in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 // Retrieve the attribute.
-                RequestParameterAttribute requestParameterAttribute =
-                    property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as
-                    RequestParameterAttribute;
+                RequestParameterAttribute requestParameterAttribute = property
+                    .GetCustomAttributes(false)
+                    .OfType<RequestParameterAttribute>()
+                    .FirstOrDefault();
                 if (requestParameterAttribute == null)
                 {
                     continue;

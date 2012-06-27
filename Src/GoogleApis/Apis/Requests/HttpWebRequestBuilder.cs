@@ -28,7 +28,7 @@ namespace Google.Apis.Requests
     /// <summary>
     /// Utility class used to build an HttpWebRequest from the various parts of a REST Method call.
     /// </summary>
-    internal class HttpWebRequestBuilder
+    public class HttpWebRequestBuilder
     {
         /// <summary>
         /// Cached default request factory.
@@ -48,7 +48,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Gets/Sets a factory used to create Uri objects.
         /// </summary>
-        public UriFactory UriFactory { get; set; }
+        internal UriFactory UriFactory { get; set; }
 
         /// <summary>
         /// A dictionary containing the parameters which will be inserted into the path
@@ -137,7 +137,7 @@ namespace Google.Apis.Requests
         /// <param name="type">Type of the parameter (must be Path or Query).</param>
         /// <param name="name">Parameter name.</param>
         /// <param name="value">Parameter value.</param>
-        public void AddParameter(RequestParameterType type, string name, string value)
+        public virtual void AddParameter(RequestParameterType type, string name, string value)
         {
             switch (type)
             {

@@ -34,29 +34,9 @@ namespace Google.Apis.Tests
         {
             var service = new MockService();
 
-            var exception = new GoogleApiException(service, "Test");
+            var exception = new GoogleApiException("Test") { Service = service };
             Assert.IsInstanceOf<Exception>(exception);
             Assert.That(exception.Service, Is.EqualTo(service));
-            Assert.That(exception.ToString(), Contains.Substring(service.Name));
-        }
-
-        /// <summary>
-        /// Tests if the exception can thrown correctly
-        /// </summary>
-        [Test]
-        public void ThrowTest()
-        {
-            var service = new MockService();
-            Assert.Throws<GoogleApiException>(() => { throw new GoogleApiException(service, "Test"); });
-        }
-
-        /// <summary>
-        /// Tests that the constructor will fail when invalid arguments are passed
-        /// </summary>
-        [Test]
-        public void ConstructorFailTest()
-        {
-            Assert.Throws<ArgumentNullException>(() => new GoogleApiException(null, "Test"));
         }
     }
 }

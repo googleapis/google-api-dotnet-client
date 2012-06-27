@@ -23,7 +23,6 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using Google.Apis.Authentication;
-using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -42,7 +41,7 @@ namespace Google.Apis.Requests
     /// - The UserAgent header.
     /// - GZip Compression
     /// </remarks>
-    public class Request : IRequest
+    public abstract class Request : IRequest
     {
         private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
         private const string GZipUserAgentSuffix = " (gzip)";
@@ -53,7 +52,7 @@ namespace Google.Apis.Requests
         /// </summary>
         public static readonly Encoding ContentCharset = Encoding.UTF8;
 
-        private static readonly ILogger logger = ApplicationContext.Logger.ForType<Request>();
+        protected static readonly ILogger logger = ApplicationContext.Logger.ForType<Request>();
 
         public const string DELETE = "DELETE";
         public const string GET = "GET";
@@ -83,8 +82,12 @@ namespace Google.Apis.Requests
 
         private string applicationName;
 
-        public Request()
+        protected Request(Uri baseUri, string path, string httpMethod)
         {
+            this.BaseURI = baseUri;
+            this.Path = path;
+            this.HttpMethod = httpMethod;
+
             applicationName = Utilities.GetAssemblyTitle() ?? "Unknown_Application";
             Authenticator = new NullAuthenticator();
             WebRequestFactory = new HttpRequestFactory();
@@ -98,7 +101,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// The authenticator used for this request.
         /// </summary>
-        internal IAuthenticator Authenticator { get; private set; }
+        internal IAuthenticator Authenticator { get; set; }
 
         /// <summary>
         /// The developer API Key sent along with the request.
@@ -109,7 +112,7 @@ namespace Google.Apis.Requests
         /// Set of method parameters.
         /// </summary>
         [VisibleForTestOnly]
-        internal ParameterCollection Parameters { get; set; }
+        protected internal ParameterCollection Parameters { get; set; }
 
         /// <summary>
         /// The application name used within the user agent string.
@@ -120,16 +123,20 @@ namespace Google.Apis.Requests
             get { return applicationName; }
         }
 
-        private IService Service { get; set; }
-        private IMethod Method { get; set; }
-        private Uri BaseURI { get; set; }
-        private string RPCName { get; set; } // note: this property is apparently never used
-        private string Body { get; set; }
-        private ReturnType ReturnType { get; set; }
-        private ETagAction ETagAction { get; set; }
-        private string ETag { get; set; }
-        private string FieldsMask { get; set; }
-        private string UserIp { get; set; }
+        protected Uri BaseURI { get; set; }
+        protected string Path { get; set; }
+        protected string HttpMethod { get; set; }
+        protected string Body { get; set; }
+        protected ReturnType ReturnType { get; set; }
+        protected ETagAction ETagAction { get; set; }
+        protected string ETag { get; set; }
+        protected string FieldsMask { get; set; }
+        protected string UserIp { get; set; }
+#if !SILVERLIGHT
+        protected bool GZipEnabled { get; set; }
+#endif //!SILVERLIGHT
+
+        private ISerializer Serializer { get; set; }
 
         /// <summary>
         /// Defines whether this request can be sent multiple times.
@@ -140,19 +147,6 @@ namespace Google.Apis.Requests
         }
 
         #region IRequest Members
-
-        /// <summary>
-        /// The method to call
-        /// </summary>
-        /// <returns>
-        /// A <see cref="Request"/>
-        /// </returns>
-        public IRequest On(string rpcName)
-        {
-            RPCName = rpcName;
-
-            return this;
-        }
 
         /// <summary>
         /// Sets the type of data that is expected to be returned from the request.
@@ -334,8 +328,7 @@ namespace Google.Apis.Requests
             }
             catch (Exception ex) // Unknown exception.
             {
-                asyncRequestResult = new AsyncRequestResult(
-                    new GoogleApiRequestException(Service, this, null, ex));
+                asyncRequestResult = new AsyncRequestResult(new GoogleApiRequestException(this, null, ex));
             }
             finally
             {
@@ -366,8 +359,11 @@ namespace Google.Apis.Requests
                 // Try to get an error response object.
                 if (exception.Response != null)
                 {
-                    IResponse errorResponse = new Response(exception.Response);
-                    error = Service.DeserializeError(errorResponse);
+                    using (Stream responseStream = exception.Response.GetResponseStream())
+                    {
+                        var response = Serializer.Deserialize<StandardResponse<object>>(responseStream);
+                        error = response.Error;
+                    }
                 }
 
                 // Try to handle the response somehow.
@@ -409,14 +405,19 @@ namespace Google.Apis.Requests
 
                 // We were unable to handle the exception. Throw it wrapped in a GoogleApiRequestException.
                 asyncRequestResult = new AsyncRequestResult(
-                    new GoogleApiRequestException(Service, this, error, exception) { HttpStatusCode = status });
+                    new GoogleApiRequestException(this, error, exception)
+                        { HttpStatusCode = status });
             }
             catch (Exception)
             {
                 asyncRequestResult = new AsyncRequestResult(
-                    new GoogleApiRequestException(Service, this, null, exception));
+                    new GoogleApiRequestException(this, null, exception));
             }
             return false;
+        }
+
+        protected virtual void Validate()
+        {
         }
 
         /// <summary>
@@ -425,12 +426,7 @@ namespace Google.Apis.Requests
         /// <param name="responseHandler">The method to call once a response has been received.</param>
         public void ExecuteRequestAsync(Action<IAsyncRequestResult> responseHandler)
         {
-            // Validate the input.
-            var validator = new MethodValidator(Method, Parameters);
-            if (validator.ValidateAllParameters() == false)
-            {
-                throw new InvalidOperationException("Request parameter validation failed for [" + this + "]");
-            }
+            Validate();
 
             // Begin a new request and when it is completed being assembled, execute it asynchronously.
             CreateWebRequest((request) =>
@@ -485,23 +481,30 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Given an API method, create the appropriate Request for it.
         /// </summary>
-        public static IRequest CreateRequest(IService service, IMethod method)
+        public static IRequest CreateRequest(Google.Apis.Discovery.IService service,
+            Google.Apis.Discovery.IMethod method)
         {
-            switch (method.HttpMethod)
+            return DynamicRequest.CreateDynamicRequest(service, method);
+        }
+
+        /*TODO
+        /// <summary>
+        /// Given an API method, create the appropriate Request for it.
+        /// </summary>
+        public static IRequest CreateRequest(Uri baseUri, string path, string httpMethod)
+        {
+            switch (httpMethod)
             {
                 case GET:
                 case PUT:
                 case POST:
                 case DELETE:
                 case PATCH:
-                    return new Request { Service = service, Method = method, BaseURI = service.BaseUri };
+                    return new Request() { BaseURI = baseUri, Path=path, HttpMethod = httpMethod };
                 default:
-                    throw new NotSupportedException(
-                        string.Format(
-                            "The HttpMethod[{0}] of Method[{1}] in Service[{2}] was not supported", method.HttpMethod,
-                            method.Name, service.Name));
+                    throw new NotSupportedException(string.Format("The HttpMethod[{0}] was not supported", httpMethod));
             }
-        }
+        }*/
 
         /// <summary>
         /// Sets the Application name on the UserAgent String.
@@ -543,9 +546,9 @@ namespace Google.Apis.Requests
         {
             var requestBuilder = new HttpWebRequestBuilder()
             {
-                BaseUri = Service.BaseUri,
-                Path = Method.RestPath,
-                Method = Method.HttpMethod,
+                BaseUri = this.BaseURI,
+                Path = this.Path,
+                Method = this.HttpMethod,
             };
 
             requestBuilder.AddParameter(RequestParameterType.Query, "alt",
@@ -555,47 +558,13 @@ namespace Google.Apis.Requests
             requestBuilder.AddParameter(RequestParameterType.Query, "fields", FieldsMask);
             requestBuilder.AddParameter(RequestParameterType.Query, "userIp", UserIp);
 
-            // Replace the substitution parameters.
-            foreach (var parameter in Parameters)
-            {
-                IParameter parameterDefinition;// = Method.Parameters[parameter.Key];
 
-                if (!(Method.Parameters.TryGetValue(parameter.Key, out parameterDefinition)
-                    || Service.Parameters.TryGetValue(parameter.Key, out parameterDefinition)
-                    ))
-                {
-                    throw new GoogleApiException(Service,
-                        String.Format("Invalid parameter \"{0}\" specified.", parameter.Key));
-                }
-                
-                string value = parameter.Value;
-                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default.
-                {
-                    value = parameterDefinition.DefaultValue;
-                }
-                switch (parameterDefinition.ParameterType)
-                {
-                    case "path":
-                        requestBuilder.AddParameter(RequestParameterType.Path, parameter.Key, value);
-                        break;
-                    case "query":
-                        // If the parameter is optional and no value is given, don't add to url.
-                        if (parameterDefinition.IsRequired && String.IsNullOrEmpty(value))
-                        {
-                            throw new GoogleApiException(Service,
-                                String.Format("Required parameter \"{0}\" missing.", parameter.Key));
-                        }
-                        requestBuilder.AddParameter(RequestParameterType.Query, 
-                            parameter.Key, value);
-                        break;
-                    default:
-                        throw new NotSupportedException(
-                            "Found an unsupported Parametertype [" + parameterDefinition.ParameterType + "]");
-                }
-            }
+            AssembleParameters(requestBuilder);
 
             return requestBuilder.GetWebRequest();
         }
+
+        protected abstract void AssembleParameters(HttpWebRequestBuilder requestBuilder);
 
         private static string GetReturnMimeType(ReturnType returnType)
         {
@@ -699,7 +668,7 @@ namespace Google.Apis.Requests
 
             // Check if compression is supported.
 #if !SILVERLIGHT
-            if (Service.GZipEnabled)
+            if (GZipEnabled)
             {
                 request.UserAgent += GZipUserAgentSuffix;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
@@ -763,7 +732,7 @@ namespace Google.Apis.Requests
 
             // If enabled: Encapsulate in GZipStream.
 #if !SILVERLIGHT
-            if (Service.GZipEnabled)
+            if (GZipEnabled)
             {
                 // Change the content encoding and apply a gzip filter.
                 request.Headers.Add(HttpRequestHeader.ContentEncoding, GZipEncoding);
@@ -802,7 +771,7 @@ namespace Google.Apis.Requests
 
         public override string ToString()
         {
-            return string.Format("{0}({1} @ {2})", GetType(), Method.Name, BuildRequest().RequestUri);
+            return string.Format("{0}({2})", GetType(), BuildRequest().RequestUri);
         }
     }
 }
