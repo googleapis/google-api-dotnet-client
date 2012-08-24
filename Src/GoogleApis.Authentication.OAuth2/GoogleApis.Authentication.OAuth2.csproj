@@ -12,8 +12,6 @@
     <AssemblyName>Google.Apis.Authentication.OAuth2</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +51,7 @@
     <Compile Include="DotNetOpenAuth\NativeApplicationClient.cs" />
     <Compile Include="OAuth2Authenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DotNetOpenAuth\AssertionFlowClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">

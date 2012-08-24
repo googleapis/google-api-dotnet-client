@@ -50,6 +50,7 @@
     <Compile Include="GoogleAuthenticationServerTest.cs" />
     <Compile Include="OAuth2AuthenticatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DotNetOpenAuth\AssertionFlowClientTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj">
@@ -69,4 +70,9 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Content Include="test-key.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
