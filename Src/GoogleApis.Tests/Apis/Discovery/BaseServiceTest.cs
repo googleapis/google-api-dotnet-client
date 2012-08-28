@@ -203,18 +203,6 @@ namespace Google.Apis.Tests.Apis.Discovery
 
             using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
             {
-                // Verify that the response is decoded correctly.
-                GoogleApiException ex = Assert.Throws<GoogleApiException>(() =>
-                {
-                    impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream });
-                });
-                // Check that the contents of the error json was translated into the exception object.
-                // We cannot compare the entire exception as it depends on the implementation and might change.
-                Assert.That(ex.ToString(), Contains.Substring("resource.longUrl"));
-            }
-
-            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
-            {
                 RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
                 Assert.AreEqual(400, error.Code);
                 Assert.AreEqual("Required", error.Message);
