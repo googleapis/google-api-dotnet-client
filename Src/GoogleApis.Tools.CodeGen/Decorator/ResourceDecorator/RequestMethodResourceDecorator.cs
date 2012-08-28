@@ -246,8 +246,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     }
 
                     // Generate a safe parameter name which was not yet used.
+                    // Also exclude method name as VB can not have parameterName the same as mnethod name.
                     string parameterName = GeneratorUtils.GetParameterName(
-                        param, method.Parameters.Keys.Without(param.Name));
+                        param, method.Parameters.Keys.Without(param.Name).Concat(method.Name));
 
                     // Declare the parameter, and add it to the list of constructor parameters of the request class.
                     member.Parameters.Add(DeclareInputParameter(classDeclaration, param, method));

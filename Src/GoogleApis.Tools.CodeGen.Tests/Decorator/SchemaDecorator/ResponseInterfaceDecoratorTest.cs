@@ -42,22 +42,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
         }
 
         /// <summary>
-        /// Tests the CreateErrorProperty method.
-        /// </summary>
-        [Test]
-        public void CreateErrorPropertyTest()
-        {
-            CodeTypeMemberCollection col = ResponseInterfaceDecorator.CreateErrorProperty(new CodeTypeDeclaration());
-
-            var prop = col[1] as CodeMemberProperty;
-            Assert.AreEqual(prop.Name, "Error");
-            Assert.AreEqual(typeof(RequestError).FullName, prop.Type.BaseType);
-            Assert.AreEqual(1, prop.CustomAttributes.Count);
-
-            // AutoProperty functionality is tested in the DecoratorUtils test case.
-        }
-
-        /// <summary>
         /// Tests the CreateETagProperty method.
         /// </summary>
         [Test]
@@ -110,7 +94,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
 
             Assert.AreEqual(1, declaration.BaseTypes.Count);
-            Assert.AreEqual(4, declaration.Members.Count); // 2 properties with a field each
+            Assert.AreEqual(2, declaration.Members.Count); // 1 properties with a field each
 
             // Test with already existing e-tag field.
             declaration = new CodeTypeDeclaration();
@@ -118,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
 
             Assert.AreEqual(1, declaration.BaseTypes.Count);
-            Assert.AreEqual(3, declaration.Members.Count); // one property with a field, and the previously added one.
+            Assert.AreEqual(1, declaration.Members.Count);
         }
     }
 }

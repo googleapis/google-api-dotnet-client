@@ -27,8 +27,8 @@ namespace Google.Apis.Requests
         /// <summary>
         /// All errors the server returned along with the request. 'null' when the request succeeded.
         /// </summary>
-        [JsonProperty("error")]
-        RequestError Error { get; set; }
+//        [JsonProperty("error")]
+//        RequestError Error { get; set; }
 
         /// <summary>
         /// The e-tag of this response.

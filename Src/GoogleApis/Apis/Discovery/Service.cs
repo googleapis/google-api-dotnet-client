@@ -386,12 +386,6 @@ namespace Google.Apis.Discovery
 
                 // Set the e-tag.
                 response.ETag = input.ETag;
-
-                // Check for errors.
-                if (response.Error != null)
-                {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
-                }
             }
 
             return result;

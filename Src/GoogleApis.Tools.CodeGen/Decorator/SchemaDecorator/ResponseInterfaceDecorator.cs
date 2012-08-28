@@ -33,9 +33,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
     public class ResponseInterfaceDecorator : ISchemaDecorator
     {
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResponseInterfaceDecorator>();
-        private const string ErrorPropertyName = "Error";
         private const string ETagPropertyName = "ETag";
-        private const string ErrorJsonName = "error";
 
         public void DecorateClass(CodeTypeDeclaration typeDeclaration,
                                   ISchema schema,
@@ -54,7 +52,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
             {
                 logger.Debug("Applying decorator to schema "+schema.Name);
                 typeDeclaration.BaseTypes.Add(GetIResponseBaseType());
-                typeDeclaration.Members.AddRange(CreateErrorProperty(typeDeclaration));
                 typeDeclaration.Members.AddRange(CreateETagProperty(typeDeclaration));
             }
         }
@@ -62,26 +59,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator
         private static CodeTypeReference GetIResponseBaseType()
         {
             return new CodeTypeReference(typeof(IDirectResponseSchema));
-        }
-
-        [VisibleForTestOnly]
-        internal static CodeTypeMemberCollection CreateErrorProperty(CodeTypeDeclaration typeDeclaration)
-        {
-            CodeTypeReference type = new CodeTypeReference(typeof(RequestError));
-            CodeTypeMemberCollection col = DecoratorUtil.CreateAutoProperty(
-                ErrorPropertyName, null, type, Enumerable.Empty<string>(), false, typeof(IDirectResponseSchema));
-
-            // Find the created property and add the JsonProperty to it.
-            foreach (CodeTypeMember member in col)
-            {
-                if (member is CodeMemberProperty)
-                {
-                    member.CustomAttributes.Add(NewtonSoftPropertyAttributeDecorator.CreateAttribute(ErrorJsonName));
-                    break;
-                }
-            }
-
-            return col;
         }
 
         [VisibleForTestOnly]
