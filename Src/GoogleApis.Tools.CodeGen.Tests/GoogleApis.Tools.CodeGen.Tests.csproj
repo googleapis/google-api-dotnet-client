@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B277BF03-9704-48D1-82A3-F7A3A8B174F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Google.Apis.Tools.CodeGen.Tests</RootNamespace>
+    <AssemblyName>Google.Apis.Tools.CodeGen.Tests</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>
+    </DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Google.Apis.Tools.CodeGen.Tests.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdParty\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\ThirdParty\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\..\ThirdParty\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\ThirdParty\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Decorator\DecoratorUtilTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\EnumResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BodyPropertyDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ParameterPropertyDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\RequestConstructorDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestFieldDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ServiceRequestInheritanceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestMethodResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardConstructorResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\BaseResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\SubresourceClassDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\AdditionalPropertiesSchemaDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ResponseInterfaceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecoratorTest.cs" />
+    <Compile Include="Generator\ImplementationDetailsGeneratorTest.cs" />
+    <Compile Include="Generator\MethodGeneratorUtilsTest.cs" />
+    <Compile Include="Generator\RequestClassGeneratorTest.cs" />
+    <Compile Include="Generator\ResourceClassGeneratorTest.cs" />
+    <Compile Include="ResourceBaseGeneratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\Log4NetResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\MockResourceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\BaseServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\CreateRequestMethodServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ServiceDecorator\StandardResourcePropertyServiceDecoratorTest.cs" />
+    <Compile Include="GeneratorUtilsTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecoratorTest.cs" />
+    <Compile Include="Generator\SchemaGeneratorTest.cs" />
+    <Compile Include="Generator\MockSchema.cs" />
+    <Compile Include="GoogleServiceGeneratorTest.cs" />
+    <Compile Include="BaseCodeGeneratorTest.cs" />
+    <Compile Include="GoogleSchemaGeneratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtilTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardPropertyFieldDecoratorTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\ObjectInternalClassProvider.cs" />
+    <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethodsTest.cs" />
+    <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecoratorTest.cs" />
+    <Compile Include="Decorator\ResourceDecorator\DefaultEnglishCommentCreatorTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj">
+      <Project>{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}</Project>
+      <Name>GoogleApis.Tests.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tools.CodeGen\GoogleApis.Tools.CodeGen.csproj">
+      <Project>{22F162B0-DC09-4F3B-935C-D1FAF2367032}</Project>
+      <Name>GoogleApis.Tools.CodeGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+      <Project>{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}</Project>
+      <Name>GoogleApis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tests\GoogleApis.Tests.csproj">
+      <Project>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</Project>
+      <Name>GoogleApis.Tests</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
