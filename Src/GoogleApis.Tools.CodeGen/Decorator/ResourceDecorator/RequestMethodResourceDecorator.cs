@@ -246,7 +246,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                     }
 
                     // Generate a safe parameter name which was not yet used.
-                    // Also exclude method name as VB can not have parameterName the same as mnethod name.
+                    // Also exclude method name as VB can not have parameterName the same as method name.
                     string parameterName = GeneratorUtils.GetParameterName(
                         param, method.Parameters.Keys.Without(param.Name).Concat(method.Name));
 

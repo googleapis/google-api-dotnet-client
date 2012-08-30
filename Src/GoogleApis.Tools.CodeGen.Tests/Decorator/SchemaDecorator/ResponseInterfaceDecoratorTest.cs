@@ -94,7 +94,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.SchemaDecorator
             decorator.DecorateClass(declaration, schema, implDetails, internalClassProvider);
 
             Assert.AreEqual(1, declaration.BaseTypes.Count);
-            Assert.AreEqual(2, declaration.Members.Count); // 1 properties with a field each
+            Assert.AreEqual(2, declaration.Members.Count); // 1 property with a field.
 
             // Test with already existing e-tag field.
             declaration = new CodeTypeDeclaration();
