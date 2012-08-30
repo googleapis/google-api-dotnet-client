@@ -156,13 +156,14 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Creates a declaration for the specified parameter.
         /// </summary>
-        protected CodeParameterDeclarationExpression DeclareInputParameter(CodeTypeDeclaration classDeclaration,
-                                                                            IParameter param,
-                                                                           IMethod method)
+        protected CodeParameterDeclarationExpression DeclareInputParameter(
+            CodeTypeDeclaration classDeclaration, IParameter param, IMethod method)
         {
             CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param);
             var decl = new CodeParameterDeclarationExpression(
-                paramTypeRef, GeneratorUtils.GetParameterName(param, method.Parameters.Keys.Without(param.Name)));
+                paramTypeRef,
+                GeneratorUtils.GetParameterName(param,
+                    method.Parameters.Keys.Without(param.Name).Concat(method.Name)));
 
             // If this parameter is optional, mark it as as a C# 4.0 optional parameter:
             if (!param.IsRequired)

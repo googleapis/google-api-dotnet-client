@@ -21,10 +21,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Google.Apis.Discovery;
+
 using Microsoft.CSharp;
-using NUnit.Framework;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using NUnit.Framework;
+
+using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.IntegrationTests
 {
@@ -159,7 +162,16 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                 {
                     var options = new CodeGeneratorOptions();
                     options.IndentString = "  ";
-                    new CSharpCodeProvider().GenerateCodeFromCompileUnit(generatedCode, writer, options);
+                    switch (language)
+                    {
+                        default:
+                        case CSharp:
+                            new CSharpCodeProvider().GenerateCodeFromCompileUnit(generatedCode, writer, options);
+                            break;
+                        case VisualBasic:
+                            new VBCodeProvider().GenerateCodeFromCompileUnit(generatedCode, writer, options);
+                            break;
+                    }
                 }
                 string code = stringBuilder.ToString();
                 throw new ArgumentException(ex.Message + Environment.NewLine.PadRight(20, '=') + code);
