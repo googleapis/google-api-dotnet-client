@@ -62,7 +62,7 @@ namespace Google.Apis.Authentication.OAuth2.Tests.DotNetOpenAuth
         public void SetUp()
         {
             client = new AssertionFlowClient(
-                GoogleAuthenticationServer.Description, new X509Certificate2(@"test-key.p12", "notasecret")) {
+                GoogleAuthenticationServer.Description, new X509Certificate2(@"test-key.p12", "notasecret", X509KeyStorageFlags.Exportable)) {
                 Scope = Scope,
                 ServiceAccountId = ServiceAccountId
             };
@@ -142,10 +142,9 @@ namespace Google.Apis.Authentication.OAuth2.Tests.DotNetOpenAuth
             signatureBase.Append(assertion[1]);
             string signature = urlsafeBase64Decode(assertion[2]);
 
-            var key = (RSACryptoServiceProvider) client.Certificate.PrivateKey;
             Assert.AreEqual(
                 signature,
-                Encoding.UTF8.GetString(key.SignData(Encoding.ASCII.GetBytes(signatureBase.ToString()), "SHA256")));
+                Encoding.UTF8.GetString(client.Key.SignData(Encoding.ASCII.GetBytes(signatureBase.ToString()), "SHA256")));
         }
 
         /// <summary>

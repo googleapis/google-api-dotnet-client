@@ -244,7 +244,13 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
 
             Header = new GoogleAssertionFlowHeader();
             Certificate = certificate;
-            Key = (RSACryptoServiceProvider) Certificate.PrivateKey;
+
+            // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24
+            RSACryptoServiceProvider rsa = (RSACryptoServiceProvider) certificate.PrivateKey;
+            byte[] privateKeyBlob = rsa.ExportCspBlob(true);
+
+            Key = new RSACryptoServiceProvider();
+            Key.ImportCspBlob(privateKeyBlob);
         }
 
         /// <summary>
@@ -287,7 +293,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// </value>
         public AssertionFlowHeader Header { get; set; }
 
-        private RSACryptoServiceProvider Key { get; set; }
+        public RSACryptoServiceProvider Key { get; private set; }
 
         /// <summary>
         /// Helper method to retrieve the Authorization State from the 
