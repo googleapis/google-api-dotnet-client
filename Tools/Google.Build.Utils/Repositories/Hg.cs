@@ -143,14 +143,8 @@ namespace Google.Build.Utils.Repositories
         public void Tag(string tagName, bool force = false)
         {
             CommandLine.WriteAction("Tagging " + Name + " with "+tagName+"..");
-            if (force)
-            {
-                RunHg("tag -f \"{0}\"", tagName);
-            }
-            else
-            {
-                RunHg("tag \"{0}\"", tagName);
-            }
+            string options = (force ? "-f " : "");
+            RunHg("tag {0}\"{1}\"", options, tagName);
         }
 
         /// <summary>
