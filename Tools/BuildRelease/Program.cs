@@ -628,10 +628,10 @@ namespace BuildRelease
                     }
                     catch (Exception ex)
                     {
-                        CommandLine.WriteLine("Tagging Failed with message {0}",ex.Message);
-                        string res = "yes";
-                        CommandLine.RequestUserInput("Do you want to foruce the lable? Type yes.", ref res);
-                        if (res.ToLower() == "yes")
+                        CommandLine.WriteError("Tagging Failed with message {0}",ex.Message);
+                        string response = "yes";
+                        CommandLine.RequestUserInput("Do you want to force the lable?", ref response);
+                        if (response.ToLower() == "yes")
                         {
                             repository.Tag(tag, true);
                         }
@@ -653,7 +653,6 @@ namespace BuildRelease
 
             foreach (Hg repository in AllRepositories)
             {
-                CommandLine.WriteLine("Pushing Repository {0}", repository.Name);
                 repository.Push();
             }
 
