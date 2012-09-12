@@ -82,8 +82,16 @@ namespace Google.Build.Utils.Repositories
         {
             get
             {
-                string[] changes = RunListeningHg("outgoing", "-l", "1");
-                return changes.Length >= 4;
+                try
+                {
+                    string[] changes = RunListeningHg("outgoing {0} {1}", "-l", "1");
+                    return changes.Length >= 4;
+                }
+                catch (ExternalException)
+                {
+                    // RunHg throws error in non-zero return hg outgoing returns 1 if there where no changes.
+                    return false;
+                }
             }
         }
 
@@ -132,10 +140,17 @@ namespace Google.Build.Utils.Repositories
         /// Adds a tag to the last revision.
         /// </summary>
         /// <param name="tagName">The tag to add.</param>
-        public void Tag(string tagName)
+        public void Tag(string tagName, bool force = false)
         {
             CommandLine.WriteAction("Tagging " + Name + " with "+tagName+"..");
-            RunHg("tag \"{0}\"", tagName);
+            if (force)
+            {
+                RunHg("tag -f \"{0}\"", tagName);
+            }
+            else
+            {
+                RunHg("tag \"{0}\"", tagName);
+            }
         }
 
         /// <summary>

@@ -59,6 +59,13 @@ namespace BuildRelease
             {
                 get { return UseLocalRepository; }
             }
+
+            public override string ToString()
+            {
+                return string.Format("CommandLineArguments " +
+                    "[UseLocalRepository : {0}; IsStableRelease : {1}; Tag : {2}; CanRelease : {3}]"
+                    , UseLocalRepository, IsStableRelease, Tag, CanRelease);
+            }
         }
 
         /// <summary>
@@ -168,8 +175,10 @@ namespace BuildRelease
             CommandLine.DisplayGoogleSampleHeader("Release Builder: "+workingCopy);
             CommandLine.EnableExceptionHandling();
 
+            Arguments = new CommandLineArguments() { Tag="beta", IsStableRelease = true, UseLocalRepository = false};
             // Parse command line arguments.
-            CommandLine.ParseArguments(Arguments = new CommandLineArguments(), args);
+            CommandLine.ParseArguments(Arguments, args);
+            CommandLine.WriteLine(Arguments.ToString());
 
             // 1. Create the local repositories.
             CheckoutRepositories();
@@ -613,7 +622,24 @@ namespace BuildRelease
                 bool madeCommit = repository.Commit("Release " + tag);
                 if (repository == Default || madeCommit)
                 {
-                    repository.Tag(tag);
+                    try
+                    {
+                        repository.Tag(tag, false);
+                    }
+                    catch (Exception ex)
+                    {
+                        CommandLine.WriteLine("Tagging Failed with message {0}",ex.Message);
+                        string res = "yes";
+                        CommandLine.RequestUserInput("Do you want to foruce the lable? Type yes.", ref res);
+                        if (res.ToLower() == "yes")
+                        {
+                            repository.Tag(tag, true);
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
                 }
             }
             CommandLine.WriteLine();
@@ -627,6 +653,7 @@ namespace BuildRelease
 
             foreach (Hg repository in AllRepositories)
             {
+                CommandLine.WriteLine("Pushing Repository {0}", repository.Name);
                 repository.Push();
             }
 
