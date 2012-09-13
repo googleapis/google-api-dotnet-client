@@ -89,7 +89,7 @@ namespace Google.Build.Utils.Repositories
                 }
                 catch (ExternalException)
                 {
-                    // RunListeningHg throws an ExternalException when the lunched process retuns non-zero on exiting
+                    // RunListeningHg throws an ExternalException when the launched process returns non-zero on exiting
                     // the executable "hg outgoing" returns 1 if there where no changes.
                     // So treat ExternalException as no changes.
                     return false;
@@ -143,7 +143,7 @@ namespace Google.Build.Utils.Repositories
         /// </summary>
         /// <param name="tagName">The tag to add.</param>
         /// <param name="force">
-        /// If set to true will overwrite existing labels of this name see "hg help tag" and it's 
+        /// If set to true will overwrite existing labels of this name see "hg help tag" and its
         /// --force parameter.
         /// </param>
         public void Tag(string tagName, bool force = false)
