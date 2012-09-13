@@ -628,9 +628,9 @@ namespace BuildRelease
                     }
                     catch (Exception ex)
                     {
-                        CommandLine.WriteError("Tagging Failed with message {0}",ex.Message);
+                        CommandLine.WriteError("Tagging Failed with message {0}", ex.Message);
                         string response = "yes";
-                        CommandLine.RequestUserInput("Do you want to force the lable?", ref response);
+                        CommandLine.RequestUserInput("Do you want to force the label?", ref response);
                         if (response.ToLower() == "yes")
                         {
                             repository.Tag(tag, true);

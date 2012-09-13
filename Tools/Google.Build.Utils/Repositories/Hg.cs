@@ -89,7 +89,9 @@ namespace Google.Build.Utils.Repositories
                 }
                 catch (ExternalException)
                 {
-                    // RunHg throws error in non-zero return hg outgoing returns 1 if there where no changes.
+                    // RunListeningHg throws an ExternalException when the lunched process retuns non-zero on exiting
+                    // the executable "hg outgoing" returns 1 if there where no changes.
+                    // So treat ExternalException as no changes.
                     return false;
                 }
             }
@@ -140,6 +142,10 @@ namespace Google.Build.Utils.Repositories
         /// Adds a tag to the last revision.
         /// </summary>
         /// <param name="tagName">The tag to add.</param>
+        /// <param name="force">
+        /// If set to true will overwrite existing labels of this name see "hg help tag" and it's 
+        /// --force parameter.
+        /// </param>
         public void Tag(string tagName, bool force = false)
         {
             CommandLine.WriteAction("Tagging " + Name + " with "+tagName+"..");
