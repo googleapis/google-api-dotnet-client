@@ -82,8 +82,18 @@ namespace Google.Build.Utils.Repositories
         {
             get
             {
-                string[] changes = RunListeningHg("outgoing", "-l", "1");
-                return changes.Length >= 4;
+                try
+                {
+                    string[] changes = RunListeningHg("outgoing {0} {1}", "-l", "1");
+                    return changes.Length >= 4;
+                }
+                catch (ExternalException)
+                {
+                    // RunListeningHg throws an ExternalException when the launched process returns non-zero on exiting
+                    // the executable "hg outgoing" returns 1 if there where no changes.
+                    // So treat ExternalException as no changes.
+                    return false;
+                }
             }
         }
 
@@ -132,10 +142,15 @@ namespace Google.Build.Utils.Repositories
         /// Adds a tag to the last revision.
         /// </summary>
         /// <param name="tagName">The tag to add.</param>
-        public void Tag(string tagName)
+        /// <param name="force">
+        /// If set to true will overwrite existing labels of this name see "hg help tag" and its
+        /// --force parameter.
+        /// </param>
+        public void Tag(string tagName, bool force = false)
         {
             CommandLine.WriteAction("Tagging " + Name + " with "+tagName+"..");
-            RunHg("tag \"{0}\"", tagName);
+            string options = (force ? "-f " : "");
+            RunHg("tag {0}\"{1}\"", options, tagName);
         }
 
         /// <summary>
