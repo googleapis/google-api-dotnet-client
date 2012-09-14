@@ -260,6 +260,20 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("FooBar", result.UserIp);
         }
 
+        /// <summary>
+        /// Tests the that the QuotaUser will be set on the resulting request.
+        /// </summary>
+        [Test]
+        public void QuotaUserTest()
+        {
+            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            request.QuotaUser = "FooBar";
+
+            // Confirm that the E-tag and the behavior is passed along.
+            MockRequest result = (MockRequest)request.BuildRequest();
+            Assert.AreEqual("FooBar", result.QuotaUser);
+        }
+
         #region Asynchronous Operation Tests
 
         /// <summary>

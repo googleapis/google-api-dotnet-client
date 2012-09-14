@@ -66,6 +66,11 @@ namespace Google.Apis.Requests
         IRequest WithUserIp(string userIp);
 
         /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides UserIp if both are provided.
+        /// </summary>
+        IRequest WithQuotaUser(string quotaUser);
+
+        /// <summary>
         /// Adds a body to this request (POST, PUT, ..).
         /// </summary>
         /// <remarks>The body will be encoded in UTF-8.</remarks>
