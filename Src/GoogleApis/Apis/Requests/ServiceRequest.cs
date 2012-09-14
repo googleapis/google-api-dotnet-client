@@ -70,7 +70,9 @@ namespace Google.Apis.Requests
         public string UserIp { get; set; }
 
         /// <summary>
-        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides UserIp if both are provided.
+        /// Available to use for quota purposes for server-side applications.
+        /// Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+        /// Overrides UserIp if both are provided.
         /// </summary>
         public string QuotaUser { get; set; }
 
