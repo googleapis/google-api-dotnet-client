@@ -130,6 +130,7 @@ namespace Google.Apis.Requests
         private string ETag { get; set; }
         private string FieldsMask { get; set; }
         private string UserIp { get; set; }
+        private string QuotaUser { get; set; }
 
         /// <summary>
         /// Defines whether this request can be sent multiple times.
@@ -536,6 +537,17 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Available to use for quota purposes for server-side applications.
+        /// Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+        /// Overrides UserIp if both are provided.
+        /// </summary>
+        public IRequest WithQuotaUser(string quotaUser)
+        {
+            QuotaUser = quotaUser;
+            return this;
+        }
+
+        /// <summary>
         /// Builds the resulting Url for the whole request.
         /// </summary>
         [VisibleForTestOnly]
@@ -554,6 +566,7 @@ namespace Google.Apis.Requests
             requestBuilder.AddParameter(RequestParameterType.Query, "key", DeveloperKey);
             requestBuilder.AddParameter(RequestParameterType.Query, "fields", FieldsMask);
             requestBuilder.AddParameter(RequestParameterType.Query, "userIp", UserIp);
+            requestBuilder.AddParameter(RequestParameterType.Query, "quotaUser", QuotaUser);
 
             // Replace the substitution parameters.
             foreach (var parameter in Parameters)

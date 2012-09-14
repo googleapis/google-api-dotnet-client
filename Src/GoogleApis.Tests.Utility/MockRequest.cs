@@ -46,6 +46,7 @@ namespace Google.Apis.Testing
         public string ETag { get; set; }
         public ETagAction ETagAction { get; set; }
         public string UserIp { get; set; }
+        public string QuotaUser { get; set; }
         public string Fields { get; set; }
 
         #region IRequest Members
@@ -90,6 +91,12 @@ namespace Google.Apis.Testing
         public IRequest WithUserIp(string userIp)
         {
             UserIp = userIp;
+            return this;
+        }
+
+        public IRequest WithQuotaUser(string quotaUser)
+        {
+            QuotaUser = quotaUser;
             return this;
         }
 
