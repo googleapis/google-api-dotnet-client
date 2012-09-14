@@ -242,6 +242,18 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>
+        /// Tests if the WithQuotaUser method works
+        /// </summary>
+        [Test]
+        public void BuildRequestUrlWithQuotaUserTest()
+        {
+            var request = GetSimpleRequest();
+            request.WithQuotaUser("FooBar");
+            var url = request.BuildRequest().RequestUri;
+            Assert.IsTrue(url.ToString().EndsWith("&quotaUser=FooBar"));
+        }
+
+        /// <summary>
         /// Tests if the WithFieldsMask method works
         /// </summary>
         [Test]

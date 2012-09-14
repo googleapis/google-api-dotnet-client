@@ -192,6 +192,6 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>$(ProjectDir)..\..\Tools\Bin\SyncProjectFiles.exe $(ProjectPath) $(ProjectDir)\GoogleApis.Silverlight.csproj</PreBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)..\..\Tools\Bin\SyncProjectFiles.exe" "$(ProjectPath) $(ProjectDir)\GoogleApis.Silverlight.csproj"</PreBuildEvent>
   </PropertyGroup>
 </Project>
