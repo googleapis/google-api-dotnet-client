@@ -1,0 +1,78 @@
+{
+  "languages": {
+    "dart": {
+      "displayName": "Dart",
+      "description": "Dart libraries for Google APIS.",
+      "variations": {
+        "default": {
+          "path": "default",
+          "platforms": ["cmd-line"]
+         }
+       }
+    },
+    "gwt": {
+      "displayName": "GWT",
+      "description": "GWT libraries for Google APIS.",
+      "variations": {
+        "default": {
+          "path": "default",
+          "platforms": ["cmd-line"]
+        },
+        "stable": {
+          "path": "stable",
+          "platforms": ["cmd-line"]
+        }
+      }
+    },
+    "java": {
+      "displayName": "Java",
+      "description": "Java libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default",
+          "platforms": ["cmd-line"]
+        },
+        "stable": {
+          "path": "stable",
+          "platforms": ["cmd-line"]
+        },
+        "models_only": {
+          "path": "models_only",
+          "platforms": ["cmd-line"]
+        }
+      }
+    },
+    "php": {
+      "displayName": "PHP",
+      "description": "PHP libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default",
+          "platforms": ["cmd-line"]
+        },
+        "stable": {
+          "path": "stable",
+          "platforms": ["cmd-line"]
+        }
+      }
+    },
+    "python": {
+      "displayName": "Python",
+      "description": "Python libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "stable",
+          "platforms": ["cmd-line", "appengine"]
+        }
+      }
+    }
+  },
+  "platforms": {
+    "cmd-line": {
+      "displayName": "Command-Line"
+    },
+    "web": {
+      "displayName": "Web"
+    }
+  }
+}

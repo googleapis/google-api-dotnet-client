@@ -1,0 +1,58 @@
+{% language java %}{% collapsenewlines %}{% copyright_block %}
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package {{ model.package.name }};
+
+
+{% imports model %}
+{% if not features.thin_models %}
+import com.google.api.client.http.HttpHeaders;
+{% endif %}
+import com.google.api.client.json.GenericJson;
+{% endimports %}
+
+
+/**{% filter block_comment %}
+ * {% if model.description %}{{ model.description }}{% else %}Model definition for {{ model.className }}.{% endif %}
+ *
+ * <p>
+ * This is the Java data model class that specifies how to parse/serialize into the JSON that is
+ * transmitted over HTTP when working with the {{ api.title }}. For a detailed explanation see:
+ * {% endfilter %}
+ * <a href="http://code.google.com/p/google-api-java-client/wiki/Json">http://code.google.com/p/google-api-java-client/wiki/Json</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+public final class {{ model.className }} extends GenericJson {
+
+{% call_template _model_content_def current_model model %}
+
+{% if not features.thin_models %}{% if not model.parent %}
+  private HttpHeaders responseHeaders;
+
+  /**{% filter block_comment %}
+   * Sets the HTTP headers returned with the server response, or <code>null</code>.
+   *
+   * This member should only be non-null if this object was the top level
+   * element of a response. For example, a request that returns a single
+   * {@link {{ model.className }}} would include the response headers, while a request
+   * which returns an array of {@link {{ model.className }}}, would have a non-null
+   * response header in the enclosing object only.
+   * {% endfilter %}
+   */
+  public void setResponseHeaders(HttpHeaders responseHeaders) {
+    this.responseHeaders = responseHeaders;
+  }
+
+  /**
+   * Returns the HTTP headers that were returned with the server response, or
+   * <code>null</code>.
+   */
+  public HttpHeaders getResponseHeaders() {
+    return responseHeaders;
+  }{% endif %}{% endif %}
+{% for child in model.children %}{% indent %}{% call_template _model_def model child %}{% endindent %}
+{% endfor %}}{% endcollapsenewlines %}

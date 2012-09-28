@@ -1,0 +1,11 @@
+{% parameter_list %}
+  {% for p in method.requiredParameters %}
+    {% parameter %}{{ p.typeHint }}${{ p.codeName }}{% end_parameter %}
+  {% endfor %}
+  {% if method.requestType %}
+    {% parameter %}
+      {{ api.owner }}_{{ method.requestType.className }} $postBody
+    {% end_parameter %}
+  {% endif %}
+  {% parameter %}$optParams = array(){% end_parameter %}
+{% end_parameter_list %}

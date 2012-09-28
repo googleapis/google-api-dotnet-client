@@ -1,0 +1,54 @@
+Change Summary
+
+1.2.0
+
+2012-08-29
+* Roll up of dozens of changes to the generator structure.
+* Addition of a rough Dart binding.
+* Many changes to the Java surface to reflect new features.
+
+
+1.1.1
+
+2011-10-20
+* add DataType classes to replace the use of strings for types.
+  - Completely rework the interpretation of JsonSchema into DataTypes to
+    make them clearer.
+* A large set of refactorings in an ongoing effort to make Api definitions
+  distinct from the language we will generate in
+  - add LanguageModel, which each language subclasses to provide utililes
+    for formatting DataTypes for use in templates
+  - defer creation of codeType from API parsing to code generation, using
+    the pair of LanguageModel and DataType to emit the right thing.
+* Add Packages to the things which can appear in code. Use package.name in
+  templates rather than explictly building relative paths.
+* Add a parent/child relationship between data models. This is to pave the
+  way for generators which represent anonymous classes as nested classes.
+* Add tags for building parameter lists. This moved the code to create those
+  lists from Annotators buried in the per-language generators out to templates.
+* Add a 'call_template' tag to make it factor out common template idioms.
+
+2011-07-13
+* Fix django usage for PHP generator
+* Fix autoescape problem with django 1.x vs. 0.96
+
+2011-07-25
+* Added experimental C# generator. This is just a placeholder for now. It does
+  not generate code that works yet.
+
+2011-07-27
+* Support for additionalProperties when used as a pure map.
+* Update to g.a.j.c 1.5
+
+2011-08-01
+* Added experimental Go generator. This is just a placeholder for now. It does
+  not generate code that works yet.
+
+2011-08-05
+* Added experimental Objective-C generator. This is just a placeholder for now.   It does not generate code that works yet.
+
+2011-08-10
+* Update Java surface to 1.2.0-beta
+
+2011-08-19
+* Various refactorings to make packaging easier.

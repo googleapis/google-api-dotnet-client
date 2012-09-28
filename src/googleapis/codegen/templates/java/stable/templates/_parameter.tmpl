@@ -1,0 +1,5 @@
+{% filter java_parameter_wrap %}{% filter noblanklines %}{{ parameter.description }}
+{% if parameter.default %}[default: {{ parameter.default }}]{% endif %}
+{% if parameter.minimum %}[minimum: {{ parameter.minimum }}]{% endif %}
+{% if parameter.maximum %}[maximum: {{ parameter.maximum }}]{% endif %}
+{% endfilter %}{% endfilter %}

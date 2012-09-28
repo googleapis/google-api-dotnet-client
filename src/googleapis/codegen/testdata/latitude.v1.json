@@ -1,0 +1,132 @@
+{
+ "name": "latitude",
+ "version": "v1",
+ "description": "Google Latitude API",
+ "restBasePath": "/latitude/v1/",
+ "rpcPath": "/rpc",
+ "features": [
+  "dataWrapper"
+ ],
+ "schemas": {
+  "LatitudeCurrentlocationGetResponseJson": "{\"id\":\"LatitudeCurrentlocationGetResponseJson\",\"$ref\":\"LatitudeLocationResourceJson\"}",
+  "LatitudeCurrentlocationResourceJson": "{\"id\":\"LatitudeCurrentlocationResourceJson\",\"$ref\":\"LatitudeLocationResourceJson\"}",
+  "LatitudeLocationListResponse": "{\"id\":\"LatitudeLocationListResponse\",\"properties\":{\"items\":{\"items\":{\"$ref\":\"LatitudeLocationResourceJson\"},\"type\":\"array\"},\"kind\":{\"default\":\"latitude#locationFeed\",\"type\":\"string\"}},\"type\":\"object\"}",
+  "LatitudeLocationResourceJson": "{\"id\":\"LatitudeLocationResourceJson\",\"properties\":{\"placeid\":{\"type\":\"any\"},\"speed\":{\"type\":\"any\"},\"timestampMs\":{\"type\":\"any\"},\"altitude\":{\"type\":\"any\"},\"longitude\":{\"type\":\"any\"},\"latitude\":{\"type\":\"any\"},\"accuracy\":{\"type\":\"any\"},\"altitudeAccuracy\":{\"type\":\"any\"},\"heading\":{\"type\":\"any\"},\"kind\":{\"default\":\"latitude#location\",\"type\":\"string\"}},\"type\":\"object\"}"
+ },
+ "resources": {
+  "currentLocation": {
+   "methods": {
+    "delete": {
+     "restPath": "currentLocation",
+     "rpcMethod": "latitude.currentLocation.delete",
+     "httpMethod": "DELETE"
+    },
+    "get": {
+     "restPath": "currentLocation",
+     "rpcMethod": "latitude.currentLocation.get",
+     "httpMethod": "GET",
+     "parameters": {
+      "granularity": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      }
+     },
+     "response": {
+      "$ref": "LatitudeCurrentlocationResourceJson"
+     }
+    },
+    "insert": {
+     "restPath": "currentLocation",
+     "rpcMethod": "latitude.currentLocation.insert",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "LatitudeCurrentlocationResourceJson"
+     },
+     "response": {
+      "$ref": "LatitudeCurrentlocationResourceJson"
+     }
+    }
+   }
+  },
+  "location": {
+   "methods": {
+    "delete": {
+     "restPath": "location/{locationId}",
+     "rpcMethod": "latitude.location.delete",
+     "httpMethod": "DELETE",
+     "parameters": {
+      "locationId": {
+       "restParameterType": "path",
+       "pattern": "[^/]+",
+       "required": true,
+       "repeated": false
+      }
+     }
+    },
+    "get": {
+     "restPath": "location/{locationId}",
+     "rpcMethod": "latitude.location.get",
+     "httpMethod": "GET",
+     "parameters": {
+      "granularity": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      },
+      "locationId": {
+       "restParameterType": "path",
+       "pattern": "[^/]+",
+       "required": true,
+       "repeated": false
+      }
+     },
+     "response": {
+      "$ref": "LatitudeLocationResourceJson"
+     }
+    },
+    "insert": {
+     "restPath": "location",
+     "rpcMethod": "latitude.location.insert",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "LatitudeLocationResourceJson"
+     },
+     "response": {
+      "$ref": "LatitudeLocationResourceJson"
+     }
+    },
+    "list": {
+     "restPath": "location",
+     "rpcMethod": "latitude.location.list",
+     "httpMethod": "GET",
+     "parameters": {
+      "granularity": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      },
+      "max-results": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      },
+      "max-time": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      },
+      "min-time": {
+       "restParameterType": "query",
+       "required": false,
+       "repeated": false
+      }
+     },
+     "response": {
+      "$ref": "LatitudeLocationListResponse"
+     }
+    }
+   }
+  }
+ }
+}

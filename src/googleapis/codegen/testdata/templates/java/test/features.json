@@ -1,0 +1,67 @@
+{
+  "USED_IN": ["targets_test.py"],
+
+  "description": "Description for java",
+  "releaseVersion": "release-version",
+  "baseClientLibrary": "base-client-library",
+  "requires": [
+    {
+      "name": "never required",
+      "environments": ["manual"],
+      "version": "1.10.3-beta",
+      "files": [
+        {
+          "type": "bundle",
+          "downloadUrl": "http://foo/bar.zip"
+        }
+      ]
+    },{
+      "name": "base is always required",
+      "environments": ["*"],
+      "version": "1.10.3-beta",
+      "files": [
+        {
+          "type": "source",
+          "path": "libs-sources/base-sources.jar"
+        },{
+          "type": "binary",
+          "path": "libs/base.jar"
+        },{
+          "type": "documentation",
+          "path": "libs-sources/base-docs.jar"
+        }
+      ]
+    },{
+      "name": "required on gae",
+      "environments": ["appengine"],
+      "version": "1.10.3-beta",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/client-appengine.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/client-appengine-sources.jar"
+        }
+      ]
+    },{
+      "name": "required on gae, but useful to all",
+      "environments": ["appengine", "generic"],
+      "version": "1",
+      "files": [{"type": "binary", "path": "libs/logging.jar"}]
+    },{
+      "name": "required on servlet or gae",
+      "environments": ["servlet", "appengine"],
+      "version": "1.10.3-beta",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/servlet.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/servlet-sources.jar"
+        }
+      ]
+    }
+  ]
+}

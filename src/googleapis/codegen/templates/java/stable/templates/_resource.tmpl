@@ -1,0 +1,22 @@
+/**
+ * An accessor for creating requests from the {{ resource.className }} collection.
+ *
+ * The typical use is:<pre>
+ *   {@code {{ api.className }} {{ api.name }} = new {{ api.className }}(...);}
+ *   {@code {{ api.className }}.{{ resource.className }}.List request = {{ api.name }}.{{ resource.codeName }}().list(parameters ...)}</pre>
+ *
+ * @return the resource collection
+ */
+public {{ resource.className }} {{ resource.codeName }}() {
+  return new {{ resource.className }}();
+}
+
+/**
+ * The "{{ resource.wireName }}" collection of methods.
+ */
+public class {{ resource.className }} {{% indent %}
+{% for method in resource.methods %}
+{% emit_method_def method %}{% endfor %}
+{% for subr in resource.resources %}
+{% emit_resource_def subr %}{% endfor %}
+{% endindent %}}

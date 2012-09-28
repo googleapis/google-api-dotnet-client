@@ -1,0 +1,9 @@
+{
+"java" : {
+       "stable" : {
+                "releaseVersion" : "0.0.1",
+                "path" : "stable",
+                "description" : "This release targets Java X.Y.Z"
+                }
+       }
+}

@@ -1,0 +1,24 @@
+{% language java %}{% collapsenewlines %}{% copyright_block %}
+{% filter noblanklines %}
+/*
+ * This file was generated.
+ *  with {{ tool.name }} {{ tool.version }}{% if tool.buildDate %} (build: {{ tool.buildDate }}){% endif %}
+{% if options.include_timestamp %}
+ *  on {{ tool.runDate }} at {{ tool.runTime }} {% endif %}
+ */
+{% endfilter %}
+
+package {{ api.package.name }};
+
+/**
+ * Available OAuth 2.0 scopes for use with the {{ api.title }}.
+ *
+ * @since 1.4
+ */
+public class {{ api.className }}Scopes {{% if api.authscopes %}{% for authscope in api.authscopes %}
+
+  /** {{ authscope.description }}. */
+  public static final String {{ authscope.name }} = "{{ authscope.value }}";{% endfor %}{% endif %}
+
+  private {{ api.className }}Scopes() {}
+}{% endcollapsenewlines %}

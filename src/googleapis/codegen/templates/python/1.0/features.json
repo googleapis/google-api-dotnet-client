@@ -1,0 +1,18 @@
+{
+  "language": "python",
+  "description": "Python libraries for Google APIs.",
+  "releaseVersion": "1.0",
+  "requires": [
+    {
+      "name": "Google APIs Client Library for Python",
+      "environments": ["*"],
+      "version": "1.0",
+      "files": [
+        {
+          "type": "bundle",
+          "downloadUrl": "http://google-api-python-client.googlecode.com/files/google-api-python-client-gae-1.0.zip"
+        }
+      ]
+    }
+  ]
+}

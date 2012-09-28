@@ -1,0 +1,15 @@
+  {% if param.pattern %}
+    if (!getSuppressPatternChecks()) {
+    {% if param.repeated %}
+      for (String {{ param.codeName }}Elem : {{ param.codeName }}) {
+        Preconditions.checkArgument({{param.codeName}}Pattern.matcher({{ param.codeName }}Elem).matches(),
+            "Parameter {{ param.codeName }} elements must conform to the pattern " +
+            {% literal param.pattern %});
+      }
+    {% else %}
+      Preconditions.checkArgument({{param.codeName}}Pattern.matcher({{ param.codeName }}).matches(),
+          "Parameter {{ param.codeName }} must conform to the pattern " +
+          {% literal param.pattern %});
+    {% endif %}
+    }
+  {% endif %}

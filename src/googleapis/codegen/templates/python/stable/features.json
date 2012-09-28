@@ -1,0 +1,18 @@
+{
+  "language": "python",
+  "description": "Python libraries for Google APIs.",
+  "releaseVersion": "1.0",
+  "requires": [
+    {
+      "name": "Google API Python Client",
+      "environments": ["*"],
+      "version": "1.0c2",
+      "files": [
+        {
+          "type": "bundle",
+          "downloadUrl": "http://code.google.com/p/google-api-python-client/downloads/detail?name=google-api-python-client-1.0c2.zip&can=2&q="
+        }
+      ]
+    }
+  ]
+}

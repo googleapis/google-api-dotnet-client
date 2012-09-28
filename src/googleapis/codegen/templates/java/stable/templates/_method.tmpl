@@ -1,0 +1,327 @@
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}
+ * {% endif %}
+ * Create a request for the method
+ * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+ *
+ * This request holds the parameters needed by the the {{ api.name }}
+ * server.  After setting any optional parameters, call the
+ * {@link {{ method.className }}#execute()}
+ * method to invoke the remote operation.
+ * {% endfilter %}
+ * {% for param in method.requiredParameters %}
+ * @param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * @param content the {@link {{ method.requestType.fullClassName }}}{% endif %}
+ * @return the request
+ * @throws IOException if the initialization of the request fails
+ */
+public {{ method.className }} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.fullClassName }} content
+      {% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %}) throws IOException {
+  {{ method.className }} result = new {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}content{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %});
+  initialize(result);
+  return result;
+}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}
+ * {% endif %}
+ * Create a request for the method
+ * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+ *
+ * This request holds the parameters needed by the the {{ api.name }}
+ * server.  After setting any optional parameters, call the
+ * {@link {{ method.className }}#execute()}
+ * method to invoke the remote operation.
+ * {% endfilter %}
+ *
+ * <p>
+ * This method should be used for uploading media content.
+ * </p>
+ *
+ * {% for param in method.requiredParameters %}@param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * @param content the {@link {{ method.requestType.fullClassName }}} media metadata or {@code null} if none{% endif %}
+ * @param mediaContent The media HTTP content or {@code null} if none.
+ * @return the request
+ * @throws IOException if the initialization of the request fails
+ */
+public {{ method.className }} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.fullClassName }} content
+      {% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %},
+    com.google.api.client.http.AbstractInputStreamContent mediaContent) throws IOException {
+  {{ method.className }} result = new {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}content{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %}, mediaContent);
+  initialize(result);
+  return result;
+}{% endif %}
+
+public class {{ method.className }} extends {{ api.className }}Request {
+
+  private static final String REST_PATH = "{{ method.restPath }}";
+
+  {% for param in method.parameters %}
+    {% if param.pattern %}
+  private final java.util.regex.Pattern {{ param.codeName }}Pattern =
+      java.util.regex.Pattern.compile({% literal param.pattern %});
+    {% endif %}
+  {% endfor %}
+
+{% filter noblanklines %}
+  /**
+   * Internal constructor.  Use the convenience method instead.
+   */
+  {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
+    {% endif %}
+    {% end_parameter_list %}) {
+    super({{ api.className }}.this, HttpMethod.{{ method.httpMethod }}, REST_PATH, {% if method.requestType %}content{% else %}null{% endif %});
+  {% for param in method.requiredParameters %}
+    this.{{ param.codeName }} = Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
+    {% call_template _pattern_check_def param param %}
+  {% endfor %}
+  {% if method.requestType %}
+    Preconditions.checkNotNull(content);
+  {% endif %}
+  {% call_template _alt_def method method %}
+  {% if resource.isMedia %}{% ifequal method.httpMethod "GET" %}{% ifnotequal method.className "List" %}
+  this.downloader =
+      new com.google.api.client.googleapis.media.MediaHttpDownloader(
+          getRequestFactory().getTransport(), getRequestFactory().getInitializer());
+  {% endifnotequal %}{% endifequal %} {% endif %}
+  }
+{% endfilter %}
+
+{% filter noblanklines %}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}
+  /**
+   * Internal constructor for media upload.  Use the convenience method instead.
+   */
+  {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
+    {% endif %}
+    {% end_parameter_list %},
+      com.google.api.client.http.AbstractInputStreamContent mediaContent) {
+    super({{ api.className }}.this, HttpMethod.{{ method.httpMethod }},
+        "/upload" + new GenericUrl(getBaseUrl()).getRawPath() + REST_PATH, {% if method.requestType %}content{% else %}null{% endif %});
+  {% for param in method.requiredParameters %}
+    this.{{ param.codeName }} = Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
+  {% endfor %}
+    this.uploader =
+      new com.google.api.client.googleapis.media.MediaHttpUploader(mediaContent,
+        getRequestFactory().getTransport(), getRequestFactory().getInitializer());
+    this.uploader.setInitiationMethod(HttpMethod.{{ method.httpMethod  }});
+    {% if method.requestType %}
+    if (content != null) {
+      this.uploader.setMetadata({{ api.className }}.this.createSerializer(content));
+    }
+    {% endif %}
+  {% call_template _alt_def method method %}
+  }
+{% endif %}
+{% endfilter %}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}  @Override
+  public HttpResponse executeUnparsed() throws IOException {
+    if (this.uploader == null) {
+      return super.executeUnparsed();
+    }
+    HttpResponse response = uploader.upload(buildHttpRequestUrl());
+    if (!response.isSuccessStatusCode()) {
+      throw com.google.api.client.googleapis.json.GoogleJsonResponseException.from(
+          getJsonFactory(), response);
+    }
+    return response;
+  }
+
+  @Override
+  public HttpRequest buildHttpRequest() throws IOException {
+    if (this.uploader == null) {
+      return super.buildHttpRequest();
+    }
+    throw new UnsupportedOperationException();
+  }{% endif %}
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * Sends the "{{ method.codeName }}" request to the {{ api.className }}
+   * server.
+   * {% endfilter %}
+   * {% if method.response %}
+   * @return the {@link {{ method.responseType.fullClassName }}} response{% endif %}
+   * @throws IOException if the request fails
+   */
+  public {{ method.responseType.fullClassName }} execute() throws IOException {
+    HttpResponse response = executeUnparsed();
+    {% if method.response %}
+      {% if method.simple_upload_supported or method.resumable_upload_supported %}
+    {{ method.responseType.fullClassName }} result = {{ api.className }}.this.getJsonHttpParser().parse(response,
+        {{ method.responseType.fullClassName }}.class);
+      {% else %}
+    {{ method.responseType.fullClassName }} result = response.parseAs(
+        {{ method.responseType.fullClassName }}.class);
+      {% endif %}{% if not features.thin_models %}
+    result.setResponseHeaders(response.getHeaders());{% endif %}
+    return result;
+    {% else %}
+    response.ignore();
+    {% endif %}
+  }
+{% endfilter %}
+{% if resource.isMedia %}{% ifequal method.httpMethod "GET" %}{% ifnotequal method.className "List" %}
+  /**{% filter block_comment %}
+   * Sends the "{{ method.codeName }}" request to the {{ api.className }}
+   * server and returns the input stream of the downloaded media content.
+   * {% endfilter %}
+   *
+   * <p>
+   * Callers are responsible for closing the input stream.
+   * </p>
+   *
+   * @return the input stream of the downloaded media content
+   * @throws IOException if the request fails
+   * @deprecated (scheduled to be removed in 1.7) Use {@link #download} to write to an output
+   *             stream. If the downloaded stream needs to be parsed
+   *             {@code request.setAlt("media").executeAsInputStream()} can be used instead.
+   */
+  @Deprecated
+  public java.io.InputStream executeAsMedia() throws IOException {
+    setAlt("media");
+    HttpResponse response = executeUnparsed();
+    return response.getContent();
+  }
+
+  /**
+   * @since 1.6
+   */
+  @Override
+  public void download(java.io.OutputStream outputStream) throws IOException {
+    downloader.download(buildHttpRequestUrl(), outputStream);
+  }
+{% endifnotequal %}{% endifequal %}{% endif %}
+  /**
+   * Queues the "{{ method.codeName }}" request to the {{ api.className }} server into the given batch request.
+   *
+   * <p>
+   * Example usage:
+   * </p>
+   *
+   * <pre>
+     request.queue(batchRequest, new JsonBatchCallback&lt;{% if method.response %}{{ method.responseType.safeClassName }}{% else %}Void{% endif %}&gt;() {
+
+       public void onSuccess({% if method.response %}{{ method.responseType.safeClassName }}{% else %}Void{% endif %} content, GoogleHeaders responseHeaders) {
+         log("Success");
+       }
+
+       public void onFailure(GoogleJsonError e, GoogleHeaders responseHeaders) {
+         log(e.getMessage());
+       }
+     });
+   * </pre>
+   *
+   * @param batch a single batch of requests
+   * @param callback batch callback
+   * @since 1.6
+   */
+  public void queue(com.google.api.client.googleapis.batch.BatchRequest batch,
+      com.google.api.client.googleapis.batch.json.JsonBatchCallback<{% if method.response %}{{ method.responseType.fullClassName }}{% else %}Void{% endif %}> callback)
+      throws IOException {
+    batch.queue(buildHttpRequest(), {% if method.response %}{{ method.responseType.fullClassName }}{% else %}Void{% endif %}.class,
+        com.google.api.client.googleapis.json.GoogleJsonErrorContainer.class, callback);
+  }
+
+  /**
+   * @since 1.7
+   */
+  @Override
+  public {{ method.className }} setFields(String fields) {
+    super.setFields(fields);
+    return this;
+  }
+{% for param in method.parameters %}
+  {% doc_comment_if param.description %}
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.codeName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.codeName }};
+
+  /**{% filter block_comment %}{{ param.description }}
+{% if param.default %} [default: {{ param.default }}]{% endif %}
+{% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
+{% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %} {% endfilter %}
+   */
+  public {{ param.codeType }} get{% camel_case param.wireName %}() {
+    return {{ param.codeName }};
+  }
+
+  {% doc_comment_if param.description %}
+  public {{ method.className }} set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
+{% filter noblanklines %}
+    {% call_template _pattern_check_def param param %}
+    this.{{ param.codeName }} = {{ param.codeName }};
+    return this;
+{% endfilter %}
+  }
+{% ifequal param.codeType "Boolean" %}{% ifnotequal param.default null %}
+{% call_template _bool_getter_content_def property param %}
+{% endifnotequal %}{% endifequal %}{% endfor %}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}
+  /**
+   * Media HTTP uploader or {@code null} if there is no media HTTP content provided to be uploaded.
+   */
+  private com.google.api.client.googleapis.media.MediaHttpUploader uploader;
+
+  /**
+   * Returns the Media HTTP Uploader or {@code null} if there is no media HTTP content provided to
+   * be uploaded.
+   */
+  public com.google.api.client.googleapis.media.MediaHttpUploader getMediaHttpUploader() {
+    return uploader;
+  }
+{% endif %}
+{% if resource.isMedia %}{% ifequal method.httpMethod "GET" %}{% ifnotequal method.className "List" %}
+  /**
+   * Media HTTP downloader.
+   */
+  private com.google.api.client.googleapis.media.MediaHttpDownloader downloader;
+
+  /**
+   * Returns the Media HTTP downloader.
+   *
+   * @since 1.6
+   */
+  public com.google.api.client.googleapis.media.MediaHttpDownloader getMediaHttpDownloader() {
+    return downloader;
+  }
+{% endifnotequal %}{% endifequal %}{% endif %}
+}
