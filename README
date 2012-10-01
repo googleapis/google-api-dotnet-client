@@ -24,29 +24,30 @@ Introduction
   generation is template driven, so it is easy to support multiple variations
   of a library.
 
+  The generator currently has templates for Java, GWT, PHP and Dart.
+
 
 Prerequisites
 
   * Python 2.6 or newer
-  * Google apputils - http://code.google.com/p/google-apputils-python/
-  * django templates (1.3 or newer) - either through django or
-    Google AppEngine SDKs
+  * django templates (1.3 or newer)
+  * google-apputils - http://code.google.com/p/google-apputils-python/
   * google-api-python-client - http://code.google.com/p/google-api-python-client
-  * httplib2 - http://code.google.com/p/httplib2/
   * python-gflags - http://code.google.com/p/python-gflags/
-
+  * httplib2 - http://code.google.com/p/httplib2/
 
 Everything can be installed quickly with easy_install
 
   If you do not have setuptools, install it from the pypi repository
   http://pypi.python.org/pypi/setuptools/
 
-  easy_install --upgrade google-apputils
-  easy_install --upgrade google-api-python-client
-  easy_install python-gflags
-  easy_install httplib2
-  easy_install urllib3
-  easy_install django
+  Then:
+    easy_install django
+    easy_install --upgrade google-apputils
+    easy_install --upgrade google-api-python-client
+
+  google-api-python-client pulls in python-gflags and httplib2, so you should
+  not have to install those yourself.
 
 
 Running the generator

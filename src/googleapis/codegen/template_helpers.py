@@ -219,8 +219,10 @@ class CachingTemplateLoader(object):
       A compiled django template.
     """
     relpath = os.path.relpath(template_path, template_dir)
-    if self.UNSTABLE_VARIATION_PATTERN.match(relpath):
-      # unstable, don't cache
+    if (self.UNSTABLE_VARIATION_PATTERN.match(relpath) or
+        os.environ.get('NOCACHE')):
+      # don't cache if specifically requested (for testing) or
+      # for unstable variations
       return self._LoadTemplate(template_path)
 
     template = self._cache.get(template_path)
