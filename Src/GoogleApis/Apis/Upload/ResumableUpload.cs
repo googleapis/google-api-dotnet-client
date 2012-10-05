@@ -363,13 +363,15 @@ namespace Google.Apis.Upload
             // If the response is not Json parsable just carry on to rethrow original exception.
             catch (ArgumentException) { }
 
-            if (responseDictionary != null && responseDictionary.ContainsKey(ErrorKey))
+            if (responseDictionary == null || !responseDictionary.ContainsKey(ErrorKey))
             {
-                var error = responseDictionary[ErrorKey] as Json.JsonDictionary;
-                if (error != null && error.ContainsKey(MessageKey) && error[MessageKey] is string)
-                {
-                    throw new Exception(error[MessageKey] as string, we);
-                }
+                return;
+            }
+
+            var error = responseDictionary[ErrorKey] as Json.JsonDictionary;
+            if (error != null && error.ContainsKey(MessageKey) && error[MessageKey] is string)
+            {
+                throw new Exception(error[MessageKey] as string, we);
             }
         }
 
