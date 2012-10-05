@@ -308,7 +308,11 @@ namespace Google.Apis.Upload
                     var responseStream = we.Response.GetResponseStream();
                     if (responseStream == null)
                         throw;
-                    string response = (new StreamReader(responseStream)).ReadToEnd();
+                    string response = null;
+                    using (StreamReader reader = new StreamReader(responseStream))
+                    {
+                        response = reader.ReadToEnd();
+                    }
                     Json.JsonDictionary responseDictionary = null;
                     try
                     {
