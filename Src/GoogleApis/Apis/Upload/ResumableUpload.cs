@@ -344,6 +344,7 @@ namespace Google.Apis.Upload
             {
                 return;
             }
+
             string response = null;
             using (StreamReader reader = new StreamReader(responseStream))
             {
@@ -353,6 +354,7 @@ namespace Google.Apis.Upload
             {
                 return;
             }
+
             Json.JsonDictionary responseDictionary = null;
             try
             {
