@@ -303,17 +303,29 @@ namespace Google.Apis.Upload
             }
             catch (WebException we)
             {
-                var responseStream = we.Response.GetResponseStream();
-                if (responseStream == null)
-                    throw;
-                string r = (new StreamReader(responseStream)).ReadToEnd();
-                var x = Json.JsonReader.Parse(r) as Json.JsonDictionary;
-                if (x.ContainsKey(ErrorKey))
+                if (we.Response != null)
                 {
-                    var y = x[ErrorKey] as Json.JsonDictionary;
-                    if (y.ContainsKey(MessageKey))
+                    var responseStream = we.Response.GetResponseStream();
+                    if (responseStream == null)
+                        throw;
+                    string response = (new StreamReader(responseStream)).ReadToEnd();
+                    Json.JsonDictionary responseDictionary = null;
+                    try
                     {
-                        throw new Exception(y[MessageKey] as string);
+                        responseDictionary = Json.JsonReader.Parse(response) as Json.JsonDictionary;
+                    }
+                    catch (ArgumentException)
+                    {
+                        // If the response is not Json parsable just carry on to rethrow origanal exception.
+                        ;
+                    }
+                    if (responseDictionary != null && responseDictionary.ContainsKey(ErrorKey))
+                    {
+                        var error = responseDictionary[ErrorKey] as Json.JsonDictionary;
+                        if (error != null && error.ContainsKey(MessageKey))
+                        {
+                            throw new Exception(error[MessageKey] as string, we);
+                        }
                     }
                 }
                 // Attempt to update the progress to show failure,
