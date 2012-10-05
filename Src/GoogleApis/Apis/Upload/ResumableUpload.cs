@@ -303,35 +303,7 @@ namespace Google.Apis.Upload
             }
             catch (WebException we)
             {
-                if (we.Response != null)
-                {
-                    var responseStream = we.Response.GetResponseStream();
-                    if (responseStream == null)
-                        throw;
-                    string response = null;
-                    using (StreamReader reader = new StreamReader(responseStream))
-                    {
-                        response = reader.ReadToEnd();
-                    }
-                    Json.JsonDictionary responseDictionary = null;
-                    try
-                    {
-                        responseDictionary = Json.JsonReader.Parse(response) as Json.JsonDictionary;
-                    }
-                    catch (ArgumentException)
-                    {
-                        // If the response is not Json parsable just carry on to rethrow origanal exception.
-                        ;
-                    }
-                    if (responseDictionary != null && responseDictionary.ContainsKey(ErrorKey))
-                    {
-                        var error = responseDictionary[ErrorKey] as Json.JsonDictionary;
-                        if (error != null && error.ContainsKey(MessageKey))
-                        {
-                            throw new Exception(error[MessageKey] as string, we);
-                        }
-                    }
-                }
+                ThrowErrorMessageIfPresent(we);
                 // Attempt to update the progress to show failure,
                 // swallow any exceptions that occured and re-throw the original
                 // exception.
@@ -353,6 +325,49 @@ namespace Google.Apis.Upload
                 }
                 catch (Exception) { }
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// If the WebException contains a Json response with an error.message node throw an exception with that text.
+        /// Otherwise just return.
+        /// </summary>
+        private void ThrowErrorMessageIfPresent(WebException we)
+        {
+            if (we.Response == null)
+            {
+                return;
+            }
+
+            var responseStream = we.Response.GetResponseStream();
+            if (responseStream == null)
+            {
+                return;
+            }
+            string response = null;
+            using (StreamReader reader = new StreamReader(responseStream))
+            {
+                response = reader.ReadToEnd();
+            }
+            if (response.IsNullOrEmpty())
+            {
+                return;
+            }
+            Json.JsonDictionary responseDictionary = null;
+            try
+            {
+                responseDictionary = Json.JsonReader.Parse(response) as Json.JsonDictionary;
+            }
+            // If the response is not Json parsable just carry on to rethrow original exception.
+            catch (ArgumentException) { }
+
+            if (responseDictionary != null && responseDictionary.ContainsKey(ErrorKey))
+            {
+                var error = responseDictionary[ErrorKey] as Json.JsonDictionary;
+                if (error != null && error.ContainsKey(MessageKey) && error[MessageKey] is string)
+                {
+                    throw new Exception(error[MessageKey] as string, we);
+                }
             }
         }
 
