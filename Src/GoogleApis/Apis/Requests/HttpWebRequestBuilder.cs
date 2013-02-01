@@ -109,8 +109,11 @@ namespace Google.Apis.Requests
             if (QueryParameters.Count > 0)
             {
                 restPath.Append("?");
+                // If paramter value is empty - just add the "name", otherwise "name=value"
                 restPath.Append(String.Join("&", QueryParameters.Select(
-                    x => String.Format("{0}={1}", Uri.EscapeDataString(x.Key), Uri.EscapeDataString(x.Value)))
+                    x => x.Value.IsNullOrEmpty() ?
+                        Uri.EscapeDataString(x.Key) :
+                        String.Format("{0}={1}", Uri.EscapeDataString(x.Key), Uri.EscapeDataString(x.Value)))
                     .ToArray()));
             }
 
@@ -132,7 +135,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Add a parameter value.
+        /// Adds a parameter value.
         /// </summary>
         /// <param name="type">Type of the parameter (must be Path or Query).</param>
         /// <param name="name">Parameter name.</param>
@@ -149,7 +152,7 @@ namespace Google.Apis.Requests
                     PathParameters.Add(name, value);
                     break;
                 case RequestParameterType.Query:
-                    if (string.IsNullOrEmpty(value))
+                    if (value == null) // don't allow null values on query (empty value is valid)
                     {
                         break;
                     }

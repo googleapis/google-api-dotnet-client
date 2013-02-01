@@ -17,11 +17,11 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
@@ -125,12 +125,8 @@ namespace Google.Apis.Requests
         private Uri BaseURI { get; set; }
         private string RPCName { get; set; } // note: this property is apparently never used
         private string Body { get; set; }
-        private ReturnType ReturnType { get; set; }
         private ETagAction ETagAction { get; set; }
         private string ETag { get; set; }
-        private string FieldsMask { get; set; }
-        private string UserIp { get; set; }
-        private string QuotaUser { get; set; }
 
         /// <summary>
         /// Defines whether this request can be sent multiple times.
@@ -152,23 +148,6 @@ namespace Google.Apis.Requests
         {
             RPCName = rpcName;
 
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the type of data that is expected to be returned from the request.
-        /// 
-        /// Defaults to Json.
-        /// </summary>
-        /// <param name="returnType">
-        /// A <see cref="ReturnType"/>
-        /// </param>
-        /// <returns>
-        /// A <see cref="Request"/>
-        /// </returns>
-        public IRequest Returning(ReturnType returnType)
-        {
-            ReturnType = returnType;
             return this;
         }
 
@@ -517,37 +496,6 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Specifies the partial field mask of this method. 
-        /// The response of this request will only contain the fields specified in this mask.
-        /// </summary>
-        /// <param name="mask">Selector specifying which fields to include in a partial response.</param>
-        public IRequest WithFields(string mask)
-        {
-            FieldsMask = mask;
-            return this;
-        }
-
-        /// <summary>
-        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
-        /// </summary>
-        public IRequest WithUserIp(string userIp)
-        {
-            UserIp = userIp;
-            return this;
-        }
-
-        /// <summary>
-        /// Available to use for quota purposes for server-side applications.
-        /// Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-        /// Overrides UserIp if both are provided.
-        /// </summary>
-        public IRequest WithQuotaUser(string quotaUser)
-        {
-            QuotaUser = quotaUser;
-            return this;
-        }
-
-        /// <summary>
         /// Builds the resulting Url for the whole request.
         /// </summary>
         [VisibleForTestOnly]
@@ -560,13 +508,7 @@ namespace Google.Apis.Requests
                 Method = Method.HttpMethod,
             };
 
-            requestBuilder.AddParameter(RequestParameterType.Query, "alt",
-                ReturnType == ReturnType.Json?"json":"atom");
-
             requestBuilder.AddParameter(RequestParameterType.Query, "key", DeveloperKey);
-            requestBuilder.AddParameter(RequestParameterType.Query, "fields", FieldsMask);
-            requestBuilder.AddParameter(RequestParameterType.Query, "userIp", UserIp);
-            requestBuilder.AddParameter(RequestParameterType.Query, "quotaUser", QuotaUser);
 
             // Replace the substitution parameters.
             foreach (var parameter in Parameters)
@@ -580,9 +522,9 @@ namespace Google.Apis.Requests
                     throw new GoogleApiException(Service,
                         String.Format("Invalid parameter \"{0}\" specified.", parameter.Key));
                 }
-                
+
                 string value = parameter.Value;
-                if (value.IsNullOrEmpty()) // If the parameter is present and has no value, use the default.
+                if (value == null) // If the parameter is null, use the default value.
                 {
                     value = parameterDefinition.DefaultValue;
                 }
@@ -598,8 +540,11 @@ namespace Google.Apis.Requests
                             throw new GoogleApiException(Service,
                                 String.Format("Required parameter \"{0}\" missing.", parameter.Key));
                         }
-                        requestBuilder.AddParameter(RequestParameterType.Query, 
-                            parameter.Key, value);
+
+                        if (!Object.Equals(value, parameterDefinition.DefaultValue) || parameterDefinition.IsRequired)
+                        {
+                            requestBuilder.AddParameter(RequestParameterType.Query, parameter.Key, value);
+                        }
                         break;
                     default:
                         throw new NotSupportedException(
@@ -610,17 +555,13 @@ namespace Google.Apis.Requests
             return requestBuilder.GetWebRequest();
         }
 
-        private static string GetReturnMimeType(ReturnType returnType)
+        /// <summary>
+        /// Gets the supported return mime type
+        /// </summary>
+        private static string GetReturnMimeType()
         {
-            switch (returnType)
-            {
-                case ReturnType.Atom:
-                    return "application/atom+xml";
-                case ReturnType.Json:
-                    return "application/json";
-                default:
-                    throw new ArgumentOutOfRangeException("returnType", "Unknown Return-type: " + returnType);
-            }
+            // The .NET client library supports only json format
+            return "application/json";
         }
 
         /// <summary>
@@ -650,7 +591,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Factory used to create HttpWebRequest objects.
         /// </summary>
-        public ICreateHttpRequest WebRequestFactory 
+        public ICreateHttpRequest WebRequestFactory
         {
             get
             {
@@ -677,7 +618,7 @@ namespace Google.Apis.Requests
 
             // Insert the content type and user agent.
             request.ContentType = string.Format(
-                "{0}; charset={1}", GetReturnMimeType(ReturnType), ContentCharset.WebName);
+                "{0}; charset={1}", GetReturnMimeType(), ContentCharset.WebName);
             string appName = FormatForUserAgent(ApplicationName);
             string apiVersion = FormatForUserAgent(ApiVersion);
             string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
@@ -758,7 +699,7 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal void AttachBody(WebRequest request, Action<WebRequest> onRequestReady)
         {
-            request.BeginGetRequestStream(new AsyncCallback(EndAttachBody), 
+            request.BeginGetRequestStream(new AsyncCallback(EndAttachBody),
                 new object[] { request, onRequestReady });
         }
 

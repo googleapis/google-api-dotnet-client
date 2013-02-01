@@ -17,11 +17,14 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
+using Google.Apis.Json;
 using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using Google.Apis.Util;
-using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
@@ -46,14 +49,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void DecorateClassTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>()};
-            method.Parameters.Add("Param", new MockParameter() { Name = "Param"});
-            method.Parameters.Add("Param2", new MockParameter() { Name = "Param2"});
+            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            method.Parameters.Add("Param", new MockParameter() { Name = "Param" });
+            method.Parameters.Add("Param2", new MockParameter() { Name = "Param2" });
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
             var resourceDecl = new CodeTypeDeclaration();
             var requestDecl = new CodeTypeDeclaration();
-            
+
             // Confirm that the decorator adds the two parameters as properties with a backing field each.
             var decorator = new ParameterPropertyDecorator();
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
@@ -92,7 +95,53 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             Assert.AreEqual(
                 typeof(RequestParameterAttribute).FullName, property.CustomAttributes[0].AttributeType.BaseType);
             Assert.AreEqual(
-                "Param", ((CodePrimitiveExpression) property.CustomAttributes[0].Arguments[0].Value).Value);
+                "Param", ((CodePrimitiveExpression)property.CustomAttributes[0].Arguments[0].Value).Value);
+        }
+
+        /// <summary>
+        /// Tests the GenerateParameterProperty method.
+        /// </summary>
+        [Test]
+        public void GenerateCommonParameterPropertyTest()
+        {
+            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var resource = new MockResource();
+            resource.Methods.Add("Method", method);
+            var resourceDecl = new CodeTypeDeclaration();
+            var requestDecl = new CodeTypeDeclaration();
+
+            #region Create common Parameters
+            IDictionary<string, IParameter> commonParameters = new Dictionary<string, IParameter>();
+            var dict = new JsonDictionary { 
+                { "name", "alt" }, { "location", "query" }, { "type", "string" }, { "default", "json" } };
+            var p = ServiceFactory.Default.CreateParameter("alt", dict);
+            commonParameters["alt"] = p;
+            #endregion
+
+            // Confirm that two properties and two fields are generated.
+            var decorator = new CommonParameterRequestDecorator(commonParameters);
+            decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
+
+            Assert.AreEqual(2, requestDecl.Members.Count); // Property  + field.
+            Assert.AreEqual(0, resourceDecl.Members.Count);
+
+            CodeTypeMemberCollection newMembers = requestDecl.Members;
+
+            // Check the generated field.
+            Assert.IsInstanceOf<CodeMemberField>(newMembers[0]);
+            Assert.AreEqual("_alt", newMembers[0].Name);
+
+            // Check the generated property.
+            Assert.IsInstanceOf<CodeMemberProperty>(newMembers[1]);
+            CodeMemberProperty property = (CodeMemberProperty)newMembers[1];
+            Assert.AreEqual("Alt", property.Name);
+
+            // Check that the property has a Key attribute.
+            Assert.AreEqual(1, property.CustomAttributes.Count);
+            Assert.AreEqual(
+                typeof(RequestParameterAttribute).FullName, property.CustomAttributes[0].AttributeType.BaseType);
+            Assert.AreEqual(
+                "alt", ((CodePrimitiveExpression)property.CustomAttributes[0].Arguments[0].Value).Value);
         }
     }
 }

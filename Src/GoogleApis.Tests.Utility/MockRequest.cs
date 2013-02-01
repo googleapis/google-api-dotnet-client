@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+
 using Google.Apis.Requests;
 using Google.Apis.Authentication;
 
@@ -36,7 +37,6 @@ namespace Google.Apis.Testing
         public bool SuspendAsyncRequest = false;
 
         public string RpcName { get; set; }
-        public ReturnType ReturnType { get; set; }
         public ParameterCollection Parameters { get; set; }
         public string Body { get; set; }
         public IAuthenticator Authenticator { get; set; }
@@ -45,22 +45,12 @@ namespace Google.Apis.Testing
         public string DeveloperKey { get; set; }
         public string ETag { get; set; }
         public ETagAction ETagAction { get; set; }
-        public string UserIp { get; set; }
-        public string QuotaUser { get; set; }
-        public string Fields { get; set; }
 
         #region IRequest Members
 
         public IRequest On(string rpcName)
         {
             RpcName = rpcName;
-            return this;
-        }
-
-
-        public IRequest Returning(ReturnType returnType)
-        {
-            ReturnType = returnType;
             return this;
         }
 
@@ -82,30 +72,12 @@ namespace Google.Apis.Testing
             return this;
         }
 
-        public IRequest WithFields(string mask)
-        {
-            Fields = mask;
-            return this;
-        }
-
-        public IRequest WithUserIp(string userIp)
-        {
-            UserIp = userIp;
-            return this;
-        }
-
-        public IRequest WithQuotaUser(string quotaUser)
-        {
-            QuotaUser = quotaUser;
-            return this;
-        }
-
         public IRequest WithBody(string body)
         {
             Body = body;
             return this;
         }
-        
+
         public IRequest WithAuthentication(IAuthenticator authenticator)
         {
             Authenticator = authenticator;
@@ -133,12 +105,12 @@ namespace Google.Apis.Testing
         private class MockAsyncRequestResult : IAsyncRequestResult
         {
             private readonly IResponse response;
-            
+
             public MockAsyncRequestResult(IResponse response)
             {
                 this.response = response;
             }
-            
+
             public IResponse GetResponse()
             {
                 return response;

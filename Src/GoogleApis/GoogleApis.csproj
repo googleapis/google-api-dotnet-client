@@ -125,7 +125,6 @@
     <Compile Include="Apis\Authentication\IAuthenticator.cs" />
     <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
     <Compile Include="Apis\Requests\IRequest.cs" />
-    <Compile Include="Apis\Requests\ReturnType.cs" />
     <Compile Include="Apis\Discovery\IRequestProvider.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\Json\JsonToken.cs" />

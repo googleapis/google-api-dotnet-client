@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+
 using Google.Apis.Discovery;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
@@ -68,7 +69,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                 CodeTypeReference attributeType = new CodeTypeReference(typeof(RequestParameterAttribute));
 
                 // Generates something like.. 
-                // [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                // [Google.Apis.Util.RequestParameterAttribute("prettyPrint", 
+                //   Google.Apis.Util.RequestParameterType.Query)]
                 CodeAttributeDeclaration attribute = new CodeAttributeDeclaration(attributeType);
                 attribute.Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(parameter.Name)));
                 attribute.Arguments.Add(
@@ -141,12 +143,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             // Create a list of all used words based upon the existing resource class.
             var usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
-            var handCodedParameters = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase)
-                { "alt", "fields", "key", "userip", "quotauser" };
 
+            // Key already exists on IRequest class, and it IS shared on the service level
+            var excludeParameters = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase) { "key" };
             var filteredParams = parameters
               .Where(p => !request.Parameters.ContainsKey(p.Key))
-              .Where(p => !handCodedParameters.Contains(p.Key))
+              .Where(p => !excludeParameters.Contains(p.Key))
               .Select(p => p.Value);
 
             foreach (IParameter parameter in filteredParams)

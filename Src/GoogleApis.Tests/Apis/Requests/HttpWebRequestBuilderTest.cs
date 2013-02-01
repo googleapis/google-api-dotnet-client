@@ -101,7 +101,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var wr = builder.GetWebRequest();
 
             Assert.That(wr.Method, Is.EqualTo("GET"));
-            Assert.That(wr.RequestUri.AbsoluteUri, 
+            Assert.That(wr.RequestUri.AbsoluteUri,
                 Is.EqualTo("http://www.example.com/?testQueryParam=testValue"));
         }
 
@@ -141,7 +141,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var wr = builder.GetWebRequest();
 
             Assert.That(wr.Method, Is.EqualTo("GET"));
-            Assert.That(wr.RequestUri.AbsoluteUri, 
+            Assert.That(wr.RequestUri.AbsoluteUri,
                 Is.EqualTo("http://www.example.com/?test%20Query%20Param=test%20%25va%2Fue"));
         }
 
@@ -253,7 +253,7 @@ namespace Google.Apis.Tests.Apis.Requests
             builder.AddParameter(RequestParameterType.Query, "q", null);
             builder.AddParameter(RequestParameterType.Query, "p", String.Empty);
 
-            Assert.That(builder.BuildUri().AbsoluteUri, Is.EqualTo("http://www.example.com/"));
+            Assert.That(builder.BuildUri().AbsoluteUri, Is.EqualTo("http://www.example.com/?p"));
         }
     }
 }
