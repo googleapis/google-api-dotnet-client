@@ -21,6 +21,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Linq;
+
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Testing;
@@ -60,23 +61,6 @@ namespace Google.Apis.Requests
         public string ETag { get; set; }
 
         /// <summary>
-        /// Selector specifying which fields to include in a partial response.
-        /// </summary>
-        public string FieldsMask { get; set; }
-
-        /// <summary>
-        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
-        /// </summary>
-        public string UserIp { get; set; }
-
-        /// <summary>
-        /// Available to use for quota purposes for server-side applications.
-        /// Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-        /// Overrides UserIp if both are provided.
-        /// </summary>
-        public string QuotaUser { get; set; }
-
-        /// <summary>
         /// Creates a new service request.
         /// </summary>
         protected ServiceRequest(IRequestProvider service)
@@ -101,7 +85,7 @@ namespace Google.Apis.Requests
         {
             get { return service; }
         }
-        
+
         /// <summary>
         /// Should return the body of the request (if applicable), or null.
         /// </summary>
@@ -135,9 +119,6 @@ namespace Google.Apis.Requests
             request.WithBody(GetSerializedBody());
             request.WithParameters(CreateParameterDictionary());
             request.WithETagAction(ETagAction);
-            request.WithFields(FieldsMask);
-            request.WithUserIp(UserIp);
-            request.WithQuotaUser(QuotaUser);
 
             // Check if there is an ETag to attach.
             if (!string.IsNullOrEmpty(ETag))
@@ -221,7 +202,7 @@ namespace Google.Apis.Requests
             response.ThrowIfNull("response");
             return response.Stream;
         }
-        
+
         /// <summary>
         /// Creates a parameter dictionary by using reflection to look at all properties marked with a KeyAttribute.
         /// </summary>
@@ -268,24 +249,24 @@ namespace Google.Apis.Requests
         {
             GetAsyncResponse(
                 (IAsyncRequestResult state) =>
-                    {
-                        var result = new LazyResult<TResponse>(() =>
-                                {
-                                    // Retrieve and convert the response.
-                                    IResponse response = state.GetResponse();
-                                    return FetchObject(response);
-                                });
+                {
+                    var result = new LazyResult<TResponse>(() =>
+                            {
+                                // Retrieve and convert the response.
+                                IResponse response = state.GetResponse();
+                                return FetchObject(response);
+                            });
 
-                        // Only invoke the method if it was set.
-                        if (methodToCall != null)
-                        {
-                            methodToCall(result);
-                        }
-                        else
-                        {
-                            result.GetResult();
-                        }
-                    });
+                    // Only invoke the method if it was set.
+                    if (methodToCall != null)
+                    {
+                        methodToCall(result);
+                    }
+                    else
+                    {
+                        result.GetResult();
+                    }
+                });
         }
 
         /// <summary>
@@ -297,26 +278,26 @@ namespace Google.Apis.Requests
         {
             GetAsyncResponse(
                 (IAsyncRequestResult state) =>
-                    {
-                        var result = new LazyResult<Stream>(
-                            () =>
-                                {
-                                    // Retrieve and convert the response.
-                                    IResponse response = state.GetResponse();
-                                    response.ThrowIfNull("response");
-                                    return response.Stream;
-                                });
+                {
+                    var result = new LazyResult<Stream>(
+                        () =>
+                        {
+                            // Retrieve and convert the response.
+                            IResponse response = state.GetResponse();
+                            response.ThrowIfNull("response");
+                            return response.Stream;
+                        });
 
-                        // Only invoke the method if it was set.
-                        if (methodToCall != null)
-                        {
-                            methodToCall(result);
-                        }
-                        else
-                        {
-                            result.GetResult(); // Resolve the result in any case.
-                        }
-                    });
+                    // Only invoke the method if it was set.
+                    if (methodToCall != null)
+                    {
+                        methodToCall(result);
+                    }
+                    else
+                    {
+                        result.GetResult(); // Resolve the result in any case.
+                    }
+                });
         }
 
         /// <summary>
@@ -379,25 +360,25 @@ namespace Google.Apis.Requests
             asyncState.AsyncWaitHandle = new AutoResetEvent(false);
             GetAsyncResponse(
                 result =>
-                    {
-                        // Fetch the result.
-                        asyncState.Result = fetchFunction(result);
+                {
+                    // Fetch the result.
+                    asyncState.Result = fetchFunction(result);
 
-                        // Signal that the operation has completed.
-                        asyncState.IsCompleted = true;
-                        if (callback != null)
-                        {
-                            callback(asyncState);
-                        }
-                        ((AutoResetEvent)asyncState.AsyncWaitHandle).Set();
-                    });
+                    // Signal that the operation has completed.
+                    asyncState.IsCompleted = true;
+                    if (callback != null)
+                    {
+                        callback(asyncState);
+                    }
+                    ((AutoResetEvent)asyncState.AsyncWaitHandle).Set();
+                });
             return asyncState;
         }
 
         [VisibleForTestOnly]
         internal object EndFetchInternal(IAsyncResult asyncResult)
         {
-            RequestAsyncResult asyncState = (RequestAsyncResult) asyncResult;
+            RequestAsyncResult asyncState = (RequestAsyncResult)asyncResult;
             asyncState.ThrowIfNull("asyncResult");
 
             // If this request was not finished, wait for it to finish.
@@ -418,7 +399,7 @@ namespace Google.Apis.Requests
         /// <remarks>Will complete the request synchronously if called manually.</remarks>
         public TResponse EndFetch(IAsyncResult asyncResult)
         {
-            return (TResponse) EndFetchInternal(asyncResult);
+            return (TResponse)EndFetchInternal(asyncResult);
         }
 
         /// <summary>
@@ -429,7 +410,7 @@ namespace Google.Apis.Requests
         /// <remarks>Will complete the request synchronously if called manually.</remarks>
         public Stream EndFetchAsStream(IAsyncResult asyncResult)
         {
-            return (Stream) EndFetchInternal(asyncResult);
+            return (Stream)EndFetchInternal(asyncResult);
         }
 
         #endregion

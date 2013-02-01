@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+
 using Google.Apis.Json;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -54,7 +55,7 @@ namespace Google.Apis.Discovery
 
             // Retrieve the remaining right part
             BasePath = serviceUri.GetComponents(UriComponents.PathAndQuery, UriFormat.UriEscaped);
-            ServerUrl.ThrowIfNullOrEmpty("BasePath");
+            BasePath.ThrowIfNullOrEmpty("BasePath");
         }
 
         /// <summary>

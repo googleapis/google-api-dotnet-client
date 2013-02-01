@@ -18,12 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+
+using Moq;
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using Moq;
-using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -49,7 +51,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Assert.AreEqual("Method", method);
                 LastRequest = new MockRequest
                                   {
-                                      StreamToReturn = new MemoryStream(), 
+                                      StreamToReturn = new MemoryStream(),
                                       SuspendAsyncRequest = CreateSuspendedRequests
                                   };
                 return LastRequest;
@@ -71,7 +73,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         private class MockServiceRequest<T> : ServiceRequest<T>
         {
-            public MockServiceRequest(IRequestProvider service) : base(service) {}
+            public MockServiceRequest(IRequestProvider service) : base(service) { }
 
             protected override string ResourcePath
             {
@@ -152,7 +154,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var wait = new AutoResetEvent(false);
             request.FetchAsyncAsStream();
             request.FetchAsyncAsStream((response) =>
-                                           { 
+                                           {
                                                Assert.IsNotNull(response.GetResult());
                                                wait.Set();
                                            });
@@ -205,7 +207,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var request = new MockServiceRequest<string>(new MockRequestProvider());
             request.ETag = "FooBar";
             request.ETagAction = ETagAction.IfMatch;
-            
+
             // Confirm that the E-tag and the behavior is passed along.
             MockRequest result = (MockRequest)request.BuildRequest();
             Assert.AreEqual("FooBar", result.ETag);
@@ -232,48 +234,6 @@ namespace Google.Apis.Tests.Apis.Requests
             mockBody.Verify();
         }
 
-        /// <summary>
-        /// Tests the that the FieldsMask will be set on the resulting request.
-        /// </summary>
-        [Test]
-        public void FieldsMaskTest()
-        {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
-            request.FieldsMask = "FooBar";
-
-            // Confirm that the E-tag and the behavior is passed along.
-            MockRequest result = (MockRequest)request.BuildRequest();
-            Assert.AreEqual("FooBar", result.Fields);
-        }
-
-        /// <summary>
-        /// Tests the that the UserIp will be set on the resulting request.
-        /// </summary>
-        [Test]
-        public void UserIpTest()
-        {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
-            request.UserIp = "FooBar";
-
-            // Confirm that the E-tag and the behavior is passed along.
-            MockRequest result = (MockRequest)request.BuildRequest();
-            Assert.AreEqual("FooBar", result.UserIp);
-        }
-
-        /// <summary>
-        /// Tests the that the QuotaUser will be set on the resulting request.
-        /// </summary>
-        [Test]
-        public void QuotaUserTest()
-        {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
-            request.QuotaUser = "FooBar";
-
-            // Confirm that the E-tag and the behavior is passed along.
-            MockRequest result = (MockRequest)request.BuildRequest();
-            Assert.AreEqual("FooBar", result.QuotaUser);
-        }
-
         #region Asynchronous Operation Tests
 
         /// <summary>
@@ -284,7 +244,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var requestProvider = new MockRequestProvider { CreateSuspendedRequests = true };
             var request = new MockServiceRequest<string>(requestProvider);
-            
+
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             string result = null;
             IAsyncResult async = request.BeginFetchInternal(

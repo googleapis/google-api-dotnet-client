@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.IO;
 using System.Collections.Generic;
+
 using Google.Apis.Authentication;
 
 namespace Google.Apis.Requests
@@ -34,11 +35,6 @@ namespace Google.Apis.Requests
         IRequest On(string rpcName);
 
         /// <summary>
-        /// Specifies the return type of this method.
-        /// </summary>
-        IRequest Returning(ReturnType returnType);
-
-        /// <summary>
         /// Specifies the parameter set of this method.
         /// </summary>
         IRequest WithParameters(IDictionary<string, object> parameters);
@@ -52,25 +48,6 @@ namespace Google.Apis.Requests
         /// Specifies the parameter query string of this method.
         /// </summary>
         IRequest WithParameters(string parameters);
-
-        /// <summary>
-        /// Specifies the partial field mask of this method. 
-        /// The response of this request will only contain the fields specified in this mask.
-        /// </summary>
-        /// <param name="mask">Selector specifying which fields to include in a partial response.</param>
-        IRequest WithFields(string mask);
-
-        /// <summary>
-        /// IP address of the site where the request originates. Use this if you want to enforce per-user limits.
-        /// </summary>
-        IRequest WithUserIp(string userIp);
-
-        /// <summary>
-        /// Available to use for quota purposes for server-side applications.
-        /// Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-        /// Overrides UserIp if both are provided.
-        /// </summary>
-        IRequest WithQuotaUser(string quotaUser);
 
         /// <summary>
         /// Adds a body to this request (POST, PUT, ..).

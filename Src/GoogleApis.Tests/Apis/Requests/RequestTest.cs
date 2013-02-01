@@ -19,11 +19,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+
+using Moq;
+using NUnit.Framework;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
-using Moq;
-using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -50,7 +52,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 return false;
             }
 
-            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) {}
+            public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request) { }
 
             #endregion
 
@@ -65,7 +67,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var mockmethod = new MockMethod { HttpMethod = "GET", Name = "Test", RestPath = "https://example.com" };
             var request = (Request)Request.CreateRequest(mockservice, mockmethod);
             var headers = new WebHeaderCollection();
-            
+
             // Create a mock webrequest.
             var requestStream = new MemoryStream();
             var mockWebrequest = new Mock<WebRequest>();
@@ -143,10 +145,14 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var parameterDefinitions = new Dictionary<string, IParameter>();
             parameterDefinitions.Add(
-                "required", new MockParameter { Name = "required", IsRequired = true, ParameterType = "query" });
+                "required", new MockParameter
+                    {
+                        Name = "required",
+                        IsRequired = true,
+                        ParameterType = "query"
+                    });
             parameterDefinitions.Add(
-                "optionalWithValue",
-                new MockParameter
+                "optionalWithValue", new MockParameter
                     {
                         Name = "optionalWithValue",
                         IsRequired = false,
@@ -154,16 +160,31 @@ namespace Google.Apis.Tests.Apis.Requests
                         DefaultValue = "DoesNotDisplay"
                     });
             parameterDefinitions.Add(
-                "optionalWithNull",
-                new MockParameter
-                    { Name = "optionalWithNull", IsRequired = false, ParameterType = "query", DefaultValue = "c" });
+                "optionalWithValue2", new MockParameter
+                {
+                    Name = "optionalWithValue",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DoesNotDisplay"
+                });
             parameterDefinitions.Add(
-                "optionalWithEmpty",
-                new MockParameter
-                    { Name = "optionalWithEmpty", IsRequired = false, ParameterType = "query", DefaultValue = "d" });
+                "optionalWithNull", new MockParameter
+                    {
+                        Name = "optionalWithNull",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "c"
+                    });
             parameterDefinitions.Add(
-                "optionalNotPressent",
-                new MockParameter
+                "optionalWithEmpty", new MockParameter
+                    {
+                        Name = "optionalWithEmpty",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "d"
+                    });
+            parameterDefinitions.Add(
+                "optionalNotPressent", new MockParameter
                     {
                         Name = "optionalNotPressent",
                         IsRequired = false,
@@ -171,11 +192,16 @@ namespace Google.Apis.Tests.Apis.Requests
                         DefaultValue = "DoesNotDisplay"
                     });
             var parameterValues = new SortedDictionary<string, string>();
+            // requierd paramter, will be added to query
             parameterValues.Add("required", "a");
+            // different from default, will be added to query
             parameterValues.Add("optionalWithValue", "b");
+            // set default value, will not be added to query
+            parameterValues.Add("optionalWithValue2", "DoesNotDisplay");
+            // null value, will not be added to query
             parameterValues.Add("optionalWithNull", null);
+            // different from default, "" and not "d", will be added to query
             parameterValues.Add("optionalWithEmpty", "");
-
             var service = new MockService();
             var request =
                 (Request)
@@ -193,8 +219,8 @@ namespace Google.Apis.Tests.Apis.Requests
             var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual(
-                "https://example.com/?alt=json&optionalWithEmpty=d&" +
-                "optionalWithNull=c&optionalWithValue=b&required=a", url.AbsoluteUri);
+                "https://example.com/?" +
+                "optionalWithEmpty&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -212,7 +238,7 @@ namespace Google.Apis.Tests.Apis.Requests
             request.WithKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequest().RequestUri;
 
-            Assert.AreEqual("https://example.com/?alt=json" + "&key=" + SimpleDeveloperKey, url.ToString());
+            Assert.AreEqual("https://example.com/?" + "key=" + SimpleDeveloperKey, url.ToString());
         }
 
         /// <summary>
@@ -220,49 +246,13 @@ namespace Google.Apis.Tests.Apis.Requests
         /// </summary>
         private Request GetSimpleRequest()
         {
-            var service = new MockService() { BaseUri = new Uri("http://example.com")};
+            var service = new MockService() { BaseUri = new Uri("http://example.com") };
             var request =
                 (Request)
                 Request.CreateRequest(
                     service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "" });
             request.WithParameters("");
             return request;
-        }
-
-        /// <summary>
-        /// Tests if the WithUserIp method works
-        /// </summary>
-        [Test]
-        public void BuildRequestUrlWithUserIpTest()
-        {
-            var request = GetSimpleRequest();
-            request.WithUserIp("FooBar");
-            var url = request.BuildRequest().RequestUri;
-            Assert.IsTrue(url.ToString().EndsWith("&userIp=FooBar"));
-        }
-
-        /// <summary>
-        /// Tests if the WithQuotaUser method works
-        /// </summary>
-        [Test]
-        public void BuildRequestUrlWithQuotaUserTest()
-        {
-            var request = GetSimpleRequest();
-            request.WithQuotaUser("FooBar");
-            var url = request.BuildRequest().RequestUri;
-            Assert.IsTrue(url.ToString().EndsWith("&quotaUser=FooBar"));
-        }
-
-        /// <summary>
-        /// Tests if the WithFieldsMask method works
-        /// </summary>
-        [Test]
-        public void BuildRequestUrlWithFieldsMaskTest()
-        {
-            var request = GetSimpleRequest();
-            request.WithFields("FooBar");
-            var url = request.BuildRequest().RequestUri;
-            Assert.IsTrue(url.ToString().EndsWith("&fields=FooBar"));
         }
 
         /// <summary>
@@ -280,7 +270,7 @@ namespace Google.Apis.Tests.Apis.Requests
             request.WithKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequest().RequestUri;
 
-            Assert.AreEqual("https://example.com/?alt=json" + "&key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?" + "key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -326,7 +316,7 @@ namespace Google.Apis.Tests.Apis.Requests
             request.WithParameters(parameterValues);
             var url = request.BuildRequest().RequestUri;
 
-            Assert.AreEqual("https://example.com/?alt=json&optionalWithValue=b&required=a", url.AbsoluteUri);
+            Assert.AreEqual("https://example.com/?optionalWithEmpty&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
         /// <summary>
@@ -362,7 +352,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var url = request.BuildRequest().RequestUri;
 
             // Check that the resulting query string is identical with the input.
-            Assert.AreEqual("?alt=json&" + query, url.Query);
+            Assert.AreEqual("?" + query, url.Query);
         }
 
         /// <summary>
@@ -388,7 +378,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod
-                        { HttpMethod = "NOSUCHMETHOD", Name = "TestMethod", RestPath = "https://example.com", }));
+                    {
+                        HttpMethod = "NOSUCHMETHOD",
+                        Name = "TestMethod",
+                        RestPath = "https://example.com",
+                    }));
         }
 
         /// <summary>
@@ -403,7 +397,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 Request.CreateRequest(
                     service,
                     new MockMethod
-                        { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com/test", });
+                    {
+                        HttpMethod = "POST",
+                        Name = "TestMethod",
+                        RestPath = "https://example.com/test",
+                    });
 
             request.WithParameters("");
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
@@ -452,9 +450,12 @@ namespace Google.Apis.Tests.Apis.Requests
             var service = new MockService();
             var request =
                 (Request)
-                Request.CreateRequest(
-                    service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com/test", });
+                Request.CreateRequest(service, new MockMethod
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com/test",
+                });
 
             request.WithParameters("");
 
@@ -481,18 +482,40 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var service = new MockService();
             Request.CreateRequest(
-                service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com", });
+                service, new MockMethod
+                {
+                    HttpMethod = "GET",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com",
+                });
             Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "POST", Name = "TestMethod", RestPath = "https://example.com", });
+                service, new MockMethod
+                {
+                    HttpMethod = "POST",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com",
+                });
             Request.CreateRequest(
-                service, new MockMethod { HttpMethod = "PUT", Name = "TestMethod", RestPath = "https://example.com", });
+                service, new MockMethod
+                {
+                    HttpMethod = "PUT",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com",
+                });
             Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "DELETE", Name = "TestMethod", RestPath = "https://example.com", });
+                service, new MockMethod
+                {
+                    HttpMethod = "DELETE",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com",
+                });
             Request.CreateRequest(
-                service,
-                new MockMethod { HttpMethod = "PATCH", Name = "TestMethod", RestPath = "https://example.com", });
+                service, new MockMethod
+                {
+                    HttpMethod = "PATCH",
+                    Name = "TestMethod",
+                    RestPath = "https://example.com",
+                });
         }
 
         /// <summary>
@@ -550,7 +573,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 });
 
             request.WithParameters("");
-            
+
             // No etag:
             request.WithETagAction(ETagAction.Ignore).WithETag("test123");
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
