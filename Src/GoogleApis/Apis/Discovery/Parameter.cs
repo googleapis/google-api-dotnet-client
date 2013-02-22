@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Google.Apis.Json;
 using Google.Apis.Util;
 using Google.Apis.Testing;
@@ -27,7 +28,7 @@ namespace Google.Apis.Discovery
     /// Abstract implementation of a parameter.
     /// </summary>
     [VisibleForTestOnly]
-    internal abstract class BaseParameter : ServiceObject, IParameter
+    internal abstract class BaseParameter : ServiceObject, IDiscoveryParameter
     {
         protected readonly JsonDictionary information;
 
@@ -39,7 +40,7 @@ namespace Google.Apis.Discovery
         {
             Name = name;
             information = dictionary;
-			information.ThrowIfNull("got no valid dictionary");
+            information.ThrowIfNull("got no valid dictionary");
         }
 
         #region IParameter Members
@@ -56,7 +57,7 @@ namespace Google.Apis.Discovery
 
         public bool IsRequired
         {
-            get { return (bool) (information.GetValueAsNull(ServiceFactory.Required) ?? false); }
+            get { return (bool)(information.GetValueAsNull(ServiceFactory.Required) ?? false); }
         }
 
         public bool IsRepeatable

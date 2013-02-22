@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+
 using Google.Apis.Json;
 using Google.Apis.Util;
 
@@ -47,12 +48,12 @@ namespace Google.Apis.Discovery
         IMethod CreateMethod(string name, JsonDictionary dictionary);
 
         /// <summary>
-        /// Creates an IParameter from a JsonDictionary description.
+        /// Creates an IDiscoveryParameter from a JsonDictionary description.
         /// </summary>
         /// <param name="name">The name of the parameter.</param>
         /// <param name="dictionary">A JsonDictionary describing the parameter.</param>
-        IParameter CreateParameter(string name, JsonDictionary dictionary);
-        
+        IDiscoveryParameter CreateParameter(string name, JsonDictionary dictionary);
+
         /// <summary>
         /// Creates an IResource from a JsonDictionary description.
         /// </summary>

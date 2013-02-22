@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -75,11 +76,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator
                 new CodeMethodReturnStatement(ServiceClassGenerator.GetFieldReference(resource, otherResourceNames)));
 
             return getter;
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name;
         }
     }
 }

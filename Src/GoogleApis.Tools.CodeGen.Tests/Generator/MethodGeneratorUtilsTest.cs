@@ -16,15 +16,15 @@ limitations under the License.
 
 using System.Collections.Generic;
 using System.Linq;
+
 using NUnit.Framework;
+
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
-    /// <summary>
-    /// Tests for the MethodGeneratorUtil class.
-    /// </summary>
+    /// <summary> Tests for the MethodGeneratorUtil class. </summary>
     [TestFixture]
     public class MethodGeneratorUtilsTest
     {
@@ -96,7 +96,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         public void TestGetOptionalParameters()
         {
             var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<IParameter> parameters = method.GetOptionalParameters().ToList();
+            List<IDiscoveryParameter> parameters = method.GetOptionalParameters().ToList();
             Assert.AreEqual(2, parameters.Count);
             Assert.AreEqual("opt_a", parameters[0].Name);
             Assert.AreEqual("opt_b", parameters[1].Name);
@@ -113,7 +113,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         public void TestGetRequiredParameters()
         {
             var method = GetMethod(BaseCodeGeneratorTest.TestMethodNames.getTest);
-            List<IParameter> parameters = method.GetRequiredParameters().ToList();
+            List<IDiscoveryParameter> parameters = method.GetRequiredParameters().ToList();
             Assert.AreEqual(2, parameters.Count);
             Assert.AreEqual("req_a", parameters[0].Name);
             Assert.AreEqual("req_b", parameters[1].Name);

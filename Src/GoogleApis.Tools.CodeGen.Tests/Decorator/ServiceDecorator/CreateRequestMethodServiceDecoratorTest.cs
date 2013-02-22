@@ -15,17 +15,16 @@ limitations under the License.
 */
 
 using System.CodeDom;
-using Google.Apis.Requests;
+
 using NUnit.Framework;
-using Google.Apis.Discovery;
+
+using Google.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Tests for the StandardExecuteMethodServiceDecorator class
-    /// </summary>
+    /// <summary> Tests for the StandardExecuteMethodServiceDecorator class. </summary>
     [TestFixture]
     public class CreateRequestMethodServiceDecoratorTest : BaseServiceDecoratorTest
     {
@@ -56,30 +55,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             Assert.AreEqual(CreateRequestMethodServiceDecorator.CreateRequestMethodName, method.Name);
 
-            Assert.AreEqual(2, method.Parameters.Count);
-            Assert.AreEqual("System.String", method.Parameters[0].Type.BaseType);
-            Assert.AreEqual("System.String", method.Parameters[1].Type.BaseType);
+            Assert.AreEqual(1, method.Parameters.Count);
+            Assert.AreEqual(typeof(IClientServiceRequest).FullName, method.Parameters[0].Type.BaseType);
             Assert.AreEqual(typeof(IRequest).FullName, method.ReturnType.BaseType);
-        }
-
-        /// <summary>
-        /// Tests the class decorator
-        /// </summary>
-        [Test]
-        public void TestDecorateClass()
-        {
-            IService service = CreateService();
-            var decorator = new CreateRequestMethodServiceDecorator();
-            var codeType = new CodeTypeDeclaration("TestClass");
-
-            var requiredDecorator = new StandardServiceFieldServiceDecorator();
-            requiredDecorator.DecorateClass(service, codeType);
-            var anotherRequiredDecorator = new ApiKeyServiceDecorator();
-            anotherRequiredDecorator.DecorateClass(service, codeType);
-
-            decorator.DecorateClass(service, codeType);
-
-            CheckCompile(codeType, false, "Failed To Compile StandardExecuteMethodServiceDecorator");
         }
     }
 }

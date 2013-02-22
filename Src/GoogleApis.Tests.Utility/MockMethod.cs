@@ -17,11 +17,9 @@ limitations under the License.
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tests.Apis.Requests
+namespace Google.Apis.Testing
 {
-    /// <summary>
-    /// A mock method for testing purposes.
-    /// </summary>
+    /// <summary> A mock method for testing purposes. </summary>
     public class MockMethod : IMethod
     {
         #region IMethod Members
@@ -42,12 +40,12 @@ namespace Google.Apis.Tests.Apis.Requests
 
         public bool HasBody { get; set; }
 
-        public Dictionary<string, IParameter> Parameters { get; set; }
+        public Dictionary<string, IDiscoveryParameter> Parameters { get; set; }
 
         public IEnumerable<string> ParameterOrder { get; set; }
 
         public MediaUpload MediaUpload { get; set; }
-        
+
         #endregion
     }
 }

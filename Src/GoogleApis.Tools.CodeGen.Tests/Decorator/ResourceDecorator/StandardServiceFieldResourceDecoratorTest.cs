@@ -42,7 +42,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 
             Assert.AreEqual(2, codeType.Members.Count);
             Assert.IsInstanceOf(typeof(CodeMemberField), codeType.Members[0]);
-            var codeField = (CodeMemberField) codeType.Members[0];
+            var codeField = (CodeMemberField)codeType.Members[0];
             Assert.AreEqual(ResourceBaseGenerator.ServiceFieldName, codeField.Name);
             var ccu = new CodeCompileUnit();
             ccu.Namespaces.Add(nameSpace);
@@ -56,7 +56,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
         [Test]
         public void TestCreateServiceField()
         {
-            string serviceName = typeof(IRequestProvider).FullName;
+            string serviceName = typeof(IClientService).FullName;
             var decorator = new StandardServiceFieldResourceDecorator();
             CodeMemberField codeField = decorator.CreateServiceField(serviceName);
 

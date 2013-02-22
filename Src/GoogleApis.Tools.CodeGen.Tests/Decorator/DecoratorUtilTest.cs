@@ -18,15 +18,18 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+
+using NUnit.Framework;
+
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
-using NUnit.Framework;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 {
-    /// <summary>
-    /// Tests the DecoratorUtil class.
-    /// </summary>
+    /// <summary> Tests the DecoratorUtil class. </summary>
     [TestFixture]
     public class DecoratorUtilTest
     {
@@ -84,7 +87,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
         {
             const string name = "TestProperty";
             CodeTypeReference type = new CodeTypeReference(typeof(object));
-            string[] usedWords = new string[] {};
+            string[] usedWords = new string[] { };
 
             Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField(null, type, usedWords));
             Assert.Throws<ArgumentNullException>(() => DecoratorUtil.CreateBackingField(name, null, usedWords));
@@ -151,7 +154,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
                 "<summary>A &apos;Short&quot; &lt;description&gt; &lt;for/&gt; test &amp; fun</summary>";
             Assert.AreEqual(desiredComment, result[0].Comment.Text);
         }
-        
+
         /// <summary>
         /// Tests the AddMembersToClass method.
         /// </summary>
@@ -193,7 +196,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
 
             // Test parameter validation.
             Assert.Throws<ArgumentNullException>(
-                () => DecoratorUtil.GetEnumerablePairs((string[]) null, values).First());
+                () => DecoratorUtil.GetEnumerablePairs((string[])null, values).First());
             Assert.DoesNotThrow(() => DecoratorUtil.GetEnumerablePairs(keys, (string[])null).First());
 
             Assert.Throws<ArgumentException>(() => DecoratorUtil.GetEnumerablePairs(keys, invalidSized).First());
@@ -202,8 +205,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             // Test simple operation.
             IEnumerable<KeyValuePair<string, string>> joined = DecoratorUtil.GetEnumerablePairs(keys, values);
             Assert.AreEqual(3, joined.Count());
-            
-            foreach (KeyValuePair<string,string> pair in joined)
+
+            foreach (KeyValuePair<string, string> pair in joined)
             {
                 Assert.AreEqual(pair.Key[0] - 'a', pair.Value[0] - '1');
             }
@@ -287,6 +290,96 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator
             Assert.IsTrue(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsA));
             Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsB));
             Assert.IsFalse(DecoratorUtil.IsFittingEnum(testEnum, enumValues, enumCommentsC));
+        }
+
+        /// <summary>
+        /// Tests initialize parameters with null dictionary
+        /// </summary>
+        [Test]
+        public void CreateInitParameters_NullDictionary()
+        {
+            CodeMemberMethod method = new CodeMemberMethod();
+            DecoratorUtil.AddInitializeParameters(method, "par", null);
+
+            Assert.AreEqual(2, method.Statements.Count); // new and assignment
+            Assert.That(method.Statements[0], Is.InstanceOf<CodeVariableDeclarationStatement>());
+            Assert.That(method.Statements[1], Is.InstanceOf<CodeAssignStatement>());
+        }
+
+        /// <summary>
+        /// Tests initialize parameters with null dictionary
+        /// </summary>
+        [Test]
+        public void CreateInitParameters_EmptyDictionary()
+        {
+            CodeMemberMethod method = new CodeMemberMethod();
+            DecoratorUtil.AddInitializeParameters(method, "par", new Dictionary<string, IDiscoveryParameter> { });
+
+            Assert.AreEqual(2, method.Statements.Count); // new and assignment
+            Assert.That(method.Statements[0], Is.InstanceOf<CodeVariableDeclarationStatement>());
+            Assert.That(method.Statements[1], Is.InstanceOf<CodeAssignStatement>());
+        }
+
+        /// <summary>
+        /// Tests the new init parameters with empty parameters
+        /// </summary>
+        [Test]
+        public void CreateInitParameters_WithParameters()
+        {
+            CodeMemberMethod method = new CodeMemberMethod();
+
+            var parameters = new Dictionary<string, IDiscoveryParameter>();
+            parameters["param1"] = new MockParameter
+            {
+                Name = "param1",
+                DefaultValue = "default",
+                IsRequired = true,
+                Pattern = "pattern",
+                ParameterType = "type",
+                EnumValues = new[] { "1", "2" }
+            };
+            DecoratorUtil.AddInitializeParameters(method, "par", parameters);
+
+            Assert.AreEqual(3, method.Statements.Count); // new, assignment and add parameter on dictionary methods
+            Assert.That(method.Statements[0], Is.InstanceOf<CodeVariableDeclarationStatement>());
+
+            // parameters.Add(param1, ...)
+            Assert.That(method.Statements[1], Is.InstanceOf<CodeExpressionStatement>());
+            CodeExpressionStatement exp = method.Statements[1] as CodeExpressionStatement;
+            Assert.That(exp.Expression, Is.InstanceOf<CodeMethodInvokeExpression>());
+            CodeMethodInvokeExpression addMethod = exp.Expression as CodeMethodInvokeExpression;
+            Assert.AreEqual("Add", addMethod.Method.MethodName);
+            Assert.AreEqual(2, addMethod.Parameters.Count);
+
+            // parameters = param1, CreateRuntimeParameter(...)
+            Assert.That(addMethod.Parameters[0], Is.InstanceOf<CodePrimitiveExpression>());
+            var nameExp = addMethod.Parameters[0] as CodePrimitiveExpression;
+            Assert.AreEqual("param1", nameExp.Value);
+            Assert.That(addMethod.Parameters[1], Is.InstanceOf<CodeMethodInvokeExpression>());
+            var createParameterExp = addMethod.Parameters[1] as CodeMethodInvokeExpression;
+            Assert.AreEqual("CreateRuntimeParameter", createParameterExp.Method.MethodName);
+            Assert.AreEqual(6, createParameterExp.Parameters.Count);
+
+            // name
+            Assert.That(createParameterExp.Parameters[0], Is.InstanceOf<CodePrimitiveExpression>());
+            Assert.AreEqual("param1", (createParameterExp.Parameters[0] as CodePrimitiveExpression).Value);
+            // is required
+            Assert.That(createParameterExp.Parameters[1], Is.InstanceOf<CodePrimitiveExpression>());
+            Assert.AreEqual(true, (createParameterExp.Parameters[1] as CodePrimitiveExpression).Value);
+            // parameter type
+            Assert.That(createParameterExp.Parameters[2], Is.InstanceOf<CodePrimitiveExpression>());
+            Assert.AreEqual("type", (createParameterExp.Parameters[2] as CodePrimitiveExpression).Value);
+            // default value
+            Assert.That(createParameterExp.Parameters[3], Is.InstanceOf<CodePrimitiveExpression>());
+            Assert.AreEqual("default", (createParameterExp.Parameters[3] as CodePrimitiveExpression).Value);
+            // pattern
+            Assert.That(createParameterExp.Parameters[4], Is.InstanceOf<CodePrimitiveExpression>());
+            Assert.AreEqual("pattern", (createParameterExp.Parameters[4] as CodePrimitiveExpression).Value);
+            // enum values
+            Assert.That(createParameterExp.Parameters[5], Is.InstanceOf<CodeArrayCreateExpression>());
+            Assert.AreEqual(2, (createParameterExp.Parameters[5] as CodeArrayCreateExpression).Initializers.Count);
+
+            Assert.That(method.Statements[2], Is.InstanceOf<CodeAssignStatement>());
         }
     }
 }

@@ -15,8 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
-using System.Collections.Generic;
-using System.IO;
+
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
@@ -52,33 +51,32 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         #endregion
 
         /// <summary>
-        /// Generates the <c>IRequestProvider.CreateRequest()</c> method.
+        /// Generates the <c>IClientService.CreateRequest()</c> method.
         /// </summary>
         /// <returns><c>CodeMemberMethod</c> describing the method.</returns>
         internal CodeMemberMethod GenerateCreateRequestMethod()
         {
             var method = new CodeMemberMethod();
 
+            // Generate: public override Google.Apis.Requests.IRequest CreateRequest(IServiceRequest serviceRequest)
             method.Name = CreateRequestMethodName;
-            method.ImplementationTypes.Add(typeof(IRequestProvider));
             method.ReturnType = new CodeTypeReference(typeof(IRequest));
-            method.Attributes = MemberAttributes.Public;
-            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "resource"));
-            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "method"));
+            method.Attributes = MemberAttributes.Public | MemberAttributes.Override;
+            method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(IClientServiceRequest), "serviceRequest"));
 
-            //Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);
+            //Google.Apis.Requests.IRequest request = Request.CreateRequest(this, serviceRequest);
             method.Statements.Add(CreateRequestLocalVar());
 
             // if (string.IsNullOrEmpty(APIKey) == false)
             //     request = request.WithAPIKey(APIKey)
             method.Statements.Add(CreateWithApiKey());
 
-            // return request.WithAuthentication(authenticator);
+            // return request.WithAuthentication(Authenticator);
             var statement =
                 new CodeMethodInvokeExpression(
                     new CodeMethodReferenceExpression(
                         new CodeVariableReferenceExpression("request"), "WithAuthentication"),
-                    new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName));
+                    new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorPropertyName));
             var returnStatment = new CodeMethodReturnStatement(statement);
 
             method.Statements.Add(returnStatment);
@@ -86,17 +84,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
 
         /// <summary>
-        /// <code>Google.Apis.Requests.Request request = this.genericService.CreateRequest(resource, method);</code>
+        /// <code>Google.Apis.Requests.IRequest request = Request.CreateRequest(this, serviceRequest);</code>
         /// </summary>
         private CodeVariableDeclarationStatement CreateRequestLocalVar()
         {
             var createRequest = new CodeMethodInvokeExpression();
             createRequest.Method =
                 new CodeMethodReferenceExpression(
-                    new CodeFieldReferenceExpression(
-                        new CodeThisReferenceExpression(), ServiceClassGenerator.GenericServiceName), "CreateRequest");
-            createRequest.Parameters.Add(new CodeVariableReferenceExpression("resource"));
-            createRequest.Parameters.Add(new CodeVariableReferenceExpression("method"));
+                    new CodeTypeReferenceExpression(typeof(Request)), "CreateRequest");
+            createRequest.Parameters.Add(new CodeThisReferenceExpression());
+            createRequest.Parameters.Add(new CodeVariableReferenceExpression("serviceRequest"));
 
             var createAndAssignRequest = new CodeVariableDeclarationStatement();
             createAndAssignRequest.Type = new CodeTypeReference(typeof(IRequest));
@@ -116,19 +113,16 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             // !string.IsNullOrEmpty(Key)
             var condition = new CodeBinaryOperatorExpression(
                 new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "IsNullOrEmpty",
-                        new CodeVariableReferenceExpression(ApiKeyServiceDecorator.PropertyName)),
+                        new CodeVariableReferenceExpression("ApiKey")),
                 CodeBinaryOperatorType.ValueEquality,
                 new CodePrimitiveExpression(false));
-
-            //var condition =
-                //new CodeSnippetExpression("!string.IsNullOrEmpty(" + ApiKeyServiceDecorator.PropertyName + ")");
 
             // if (...) {
             var block = new CodeConditionStatement(condition);
 
-            // request = request.WithKey(APIKey)
+            // request = request.WithKey(Key)
             var getProperty = new CodePropertyReferenceExpression(
-                new CodeThisReferenceExpression(), ApiKeyServiceDecorator.PropertyName);
+                new CodeThisReferenceExpression(), "ApiKey");
             var request = new CodeMethodInvokeExpression(
                 new CodeVariableReferenceExpression("request"), "WithKey", getProperty);
 
@@ -138,11 +132,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             block.TrueStatements.Add(trueCase);
 
             return block;
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name;
         }
     }
 }

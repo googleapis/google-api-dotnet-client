@@ -15,7 +15,11 @@ limitations under the License.
 */
 
 using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+
 using Google.Apis.Discovery;
+using Google.Apis.Requests;
 using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
@@ -24,8 +28,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// A decorator which implements abstract properties of the ServiceRequest class
     /// 
     /// Example:
-    /// <c>protected override string ResourceName { get { return ...; } } </c>
-    /// <c>protected override string MethodName { get { return ...; } } </c>
+    /// <c>public override string ResourceName { get { return ...; } } </c>
+    /// <c>public override string MethodName { get { return ...; } } </c>
     /// </summary>
     public class ServiceRequestFieldDecorator : IRequestDecorator
     {
@@ -37,12 +41,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration resourceClass)
         {
             // protected override string ResourceName { get { ... } }
-            CodeMemberProperty property = GenerateStringConstantPropertyOverride(
-                "ResourcePath", resource.Path);
+            CodeMemberProperty property = GenerateStringConstantPropertyOverride("ResourcePath", resource.Path);
             requestClass.Members.Add(property);
 
             // protected override string MethodName { get { ... } }
             property = GenerateStringConstantPropertyOverride("MethodName", request.Name);
+            requestClass.Members.Add(property);
+
+            // protected override string HttpMethod { get { ... } }
+            property = GenerateStringConstantPropertyOverride("HttpMethod", request.HttpMethod);
+            requestClass.Members.Add(property);
+
+            // protected override string RestPath { get { ... } }
+            property = GenerateStringConstantPropertyOverride("RestPath", request.RestPath);
             requestClass.Members.Add(property);
         }
 
@@ -52,7 +63,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         /// Generates a property which will return a constant string.
         /// Will not do a used-name check. Assumes the name can be chosen.
         /// Example:
-        /// <c>protected override string PropertyName { get { ... } }</c>
+        /// <c>public override string PropertyName { get { ... } }</c>
         /// </summary>
         [VisibleForTestOnly]
         internal static CodeMemberProperty GenerateStringConstantPropertyOverride(string propertyName,
@@ -61,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var property = new CodeMemberProperty();
             property.Name = propertyName;
             property.Type = new CodeTypeReference(typeof(string));
-            property.Attributes = MemberAttributes.Family | MemberAttributes.Override; // "protected".
+            property.Attributes = MemberAttributes.Public | MemberAttributes.Override;
             property.HasGet = true;
 
             // get { return "..."; }

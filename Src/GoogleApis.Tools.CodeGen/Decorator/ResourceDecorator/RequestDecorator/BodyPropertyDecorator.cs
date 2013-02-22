@@ -89,7 +89,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             // protected override object GetBody() {
             var method = new CodeMemberMethod();
             method.Attributes = MemberAttributes.Override | MemberAttributes.Family;
-            method.Name = ServiceRequest<object>.GetBodyMethodName;
+            method.Name = ClientServiceRequest<object>.GetBodyMethodName;
             method.ReturnType = new CodeTypeReference(typeof(object));
 
             //   return Body;

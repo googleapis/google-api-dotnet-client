@@ -15,31 +15,67 @@ limitations under the License.
 */
 
 using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+
+using Google.Apis.Discovery;
 
 namespace Google.Apis.Util
 {
     /// <summary>
-    /// A class containing utility methods
+    /// A class containing utility methods.
     /// </summary>
     public static class Utilities
     {
         /// <summary>
-        /// Fetches an element from a dictionary in a safe way, returning null if there is no value present.
+        /// Fetches an element from a dictionary in a safe way, returning <c>default(value)</c> if there is no value 
+        /// present.
         /// </summary>
         public static TValue GetValueAsNull<TKey, TValue>(this IDictionary<TKey, TValue> data, TKey key)
         {
+            return GetValue(data, key, () => default(TValue));
+        }
+
+        /// <summary>
+        /// Fetches an element from a dictionary in a safe way, 
+        /// returning a value specified by the input func if there is no value present.
+        /// </summary>
+        public static TReturnValue GetValue<TKey, TValue, TReturnValue>(this IDictionary<TKey, TValue> data, TKey key,
+            Func<TReturnValue> defaultFunc) where TReturnValue : TValue
+        {
+            key.ThrowIfNull("key");
+            defaultFunc.ThrowIfNull("defaultFunc");
             TValue result;
-            if (!data.TryGetValue(key, out result))
+            if (!data.TryGetValue(key, out result) || !(result is TReturnValue))
             {
-                return default(TValue);
+                return defaultFunc();
             }
-            return result;
+            return (TReturnValue)result;
+        }
+
+
+        private static readonly IEnumerable EmptyList = new List<object>().AsReadOnly();
+        /// <summary>
+        /// If the enumerable is <code>null</code>, returns empty list. Otherwise returns the input list.
+        /// </summary>
+        public static IEnumerable<T> NullToEmpty<T>(this IEnumerable<T> data)
+        {
+            // casting the enumerable to T is ok, because it's an empty list
+            return data ?? EmptyList.Cast<T>();
+        }
+
+        private static readonly IDictionary<object, object> EmptyDictionary =
+            new Dictionary<object, object>().AsReadOnly();
+        /// <summary>
+        /// If the dictionary is <code>null</code>, returns empty dictionary. Otherwise returns the input dictionary.
+        /// </summary>
+        public static IDictionary<TKey, TValue> NullToEmpty<TKey, TValue>(
+            this IDictionary<TKey, TValue> data)
+        {
+            // casting is ok here, because it's an empty dictionary
+            return data ?? EmptyDictionary.ToDictionary(k => (TKey)k.Key, k => (TValue)k.Value);
         }
 
         /// <summary>
@@ -47,8 +83,8 @@ namespace Google.Apis.Util
         /// with ToString, or null. If key does not exist in data, is null or not an IEnumerable we will 
         /// return the empty list.
         /// </summary>
-        public static IEnumerable<string> GetValueAsStringListOrEmpty<TKey, TValue>(this IDictionary<TKey, TValue> data,
-                                                                                    TKey key)
+        public static IEnumerable<string> GetValueAsStringListOrEmpty<TKey, TValue>(
+            this IDictionary<TKey, TValue> data, TKey key)
         {
             data.ThrowIfNull("data");
             IEnumerable value = GetValueAsNull(data, key) as IEnumerable;
@@ -105,7 +141,7 @@ namespace Google.Apis.Util
                 return null;
             }
             return formatArgs.Length > 0 ? string.Format(message, formatArgs) : message;
-        }   
+        }
 
         /// <summary>
         /// Returns a readonly variant of the given dictionary
@@ -127,8 +163,6 @@ namespace Google.Apis.Util
         /// <summary>
         /// Returns true when the string is NOT null or empty
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
         public static bool IsNotNullOrEmpty(this string str)
         {
             return !string.IsNullOrEmpty(str);
@@ -164,14 +198,12 @@ namespace Google.Apis.Util
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
             object[] results = info.GetCustomAttributes(typeof(T), false);
-            return results.Length == 0 ? null : (T) results[0];
+            return results.Length == 0 ? null : (T)results[0];
         }
 
         /// <summary>
         /// Returns the defined string value of an enum value
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         public static string GetStringValue(this Enum value)
         {
             FieldInfo entry = value.GetType().GetField(value.ToString());
@@ -218,8 +250,6 @@ namespace Google.Apis.Util
         /// Tries to convert the specified object to a string. Uses custom type converters if available.
         /// Returns null for a null object.
         /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
         public static string ConvertToString(object o)
         {
             if (o == null)
@@ -242,7 +272,7 @@ namespace Google.Apis.Util
         /// </summary>
         public static string GetAsciiString(IEnumerable<byte> bytes)
         {
-            return bytes.Aggregate("", (str, b) => str + (char) b);
+            return bytes.Aggregate("", (str, b) => str + (char)b);
         }
 
         /// <summary>
@@ -250,9 +280,9 @@ namespace Google.Apis.Util
         /// </summary>
         public static byte[] GetBytesFromAsciiString(string str)
         {
-            return str.Select(c => (byte) c).ToArray();
+            return str.Select(c => (byte)c).ToArray();
         }
-        
+
         /// <summary>
         /// Please don't use this unless absolutely nessasery.
         /// Returns if the current runtime is Mono, this is used to work around different behavior in the runtime.
@@ -260,6 +290,23 @@ namespace Google.Apis.Util
         public static bool IsMonoRuntime()
         {
             return Type.GetType("Mono.Runtime") != null;
+        }
+
+        /// <summary>
+        /// Creates a new <code>IParameter</code> by the specified values.
+        /// </summary>
+        public static IParameter CreateRuntimeParameter(string name, bool isRequired, string parameterType,
+            string defaultValue, string pattern, IEnumerable<string> enumValues)
+        {
+            return new RuntimeParameter
+            {
+                Name = name,
+                IsRequired = isRequired,
+                ParameterType = parameterType,
+                DefaultValue = defaultValue,
+                Pattern = pattern,
+                EnumValues = enumValues
+            };
         }
     }
 }

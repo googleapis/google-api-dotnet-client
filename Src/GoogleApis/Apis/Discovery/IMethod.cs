@@ -74,7 +74,7 @@ namespace Google.Apis.Discovery
         /// <summary>
         /// A set of parameters passed with the request
         /// </summary>
-        Dictionary<string, IParameter> Parameters { get; }
+        Dictionary<string, IDiscoveryParameter> Parameters { get; }
 
         /// <summary>
         /// The order in which parameters should be passed in a request.

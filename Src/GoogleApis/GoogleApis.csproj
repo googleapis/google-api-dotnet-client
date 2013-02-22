@@ -41,7 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DocumentationFile>GoogleApis.xml</DocumentationFile>
+    <DocumentationFile>Google.Apis.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,11 +68,16 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\DelegateAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
+    <Compile Include="Apis\Discovery\BaseClientService.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
+    <Compile Include="Apis\Discovery\IClientService.cs" />
     <Compile Include="Apis\Discovery\MediaUpload.cs" />
+    <Compile Include="Apis\Discovery\RuntimeParameter.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />
     <Compile Include="Apis\Discovery\ServiceObject.cs" />
+    <Compile Include="Apis\Requests\ClientServiceRequest.cs" />
     <Compile Include="Apis\Requests\HttpWebRequestBuilder.cs" />
+    <Compile Include="Apis\Requests\IClientServiceRequest.cs" />
     <Compile Include="Apis\Requests\UriFactory.cs" />
     <Compile Include="Apis\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\Upload\ResumableUpload.cs" />
@@ -84,12 +89,10 @@
     <Compile Include="Apis\Logging\ILogger.cs" />
     <Compile Include="Apis\Logging\Log4NetLogger.cs" />
     <Compile Include="Apis\Logging\NullLogger.cs" />
-    <Compile Include="Apis\Requests\IServiceRequest.cs" />
     <Compile Include="Apis\Requests\ETagAction.cs" />
     <Compile Include="Apis\Requests\IResponse.cs" />
     <Compile Include="Apis\Requests\ParameterCollection.cs" />
     <Compile Include="Apis\Requests\Response.cs" />
-    <Compile Include="Apis\Requests\ServiceRequest.cs" />
     <Compile Include="Apis\Util\LazyBinding.cs" />
     <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />
@@ -125,7 +128,6 @@
     <Compile Include="Apis\Authentication\IAuthenticator.cs" />
     <Compile Include="Apis\Discovery\CachedWebDiscoveryDevice.cs" />
     <Compile Include="Apis\Requests\IRequest.cs" />
-    <Compile Include="Apis\Discovery\IRequestProvider.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\Json\JsonToken.cs" />
     <Compile Include="Apis\Json\TokenStream.cs" />

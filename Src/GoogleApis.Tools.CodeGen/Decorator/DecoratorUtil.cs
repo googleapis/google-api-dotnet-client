@@ -19,6 +19,8 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+
+using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
@@ -29,23 +31,42 @@ namespace Google.Apis.Tools.CodeGen.Decorator
     /// </summary>
     internal static class DecoratorUtil
     {
+        /// <summary>
+        /// Creates and adds a public auto-property (property and backening field) to the class.
+        /// </summary>
+        /// <param name="name">Suggested name for the property</param>
+        /// <param name="summaryComment">The property's summary</param>
+        /// <param name="propertyType">The proeprty's type</param>
+        /// <param name="usedNames">A list of already in used names, the final name can't used one of those</param>
+        /// <param name="readOnly">Should a setter be generated?</param>
         public static CodeTypeMemberCollection CreateAutoProperty(string name,
                                                                   string summaryComment,
                                                                   CodeTypeReference propertyType,
                                                                   IEnumerable<string> usedNames,
                                                                   bool readOnly)
         {
-            return CreateAutoProperty(name, summaryComment, propertyType, usedNames, readOnly, null);
+            return CreateAutoProperty(name, summaryComment, propertyType, usedNames, readOnly, null, null);
         }
+
         /// <summary>
         /// Creates and adds a public auto-property (property and backening field) to the class.
+        /// Add the ability to add base class (using <code>implementedInterface</code>
+        /// to the specified propterty and specified <code>attributes</code>.
         /// </summary>
+        /// <param name="name">Suggested name for the property</param>
+        /// <param name="summaryComment">The property's summary</param>
+        /// <param name="propertyType">The proeprty's type</param>
+        /// <param name="usedNames">A list of already in used names, the final name can't used one of those</param>
+        /// <param name="readOnly">Should a setter be generated?</param>
+        /// <param name="implementedInterface">The property's ImplementationTypes</param>
+        /// <param name="attributes">The proeprty's Attributes (default is <code>MemberAttributes.Public</code></param>
         public static CodeTypeMemberCollection CreateAutoProperty(string name,
                                                                   string summaryComment,
                                                                   CodeTypeReference propertyType,
                                                                   IEnumerable<string> usedNames,
                                                                   bool readOnly,
-                                                                  Type implementedInterface)
+                                                                  Type implementedInterface = null,
+                                                                  Nullable<MemberAttributes> attributes = null)
         {
             // Validate parameters.
             name.ThrowIfNullOrEmpty("name");
@@ -63,7 +84,11 @@ namespace Google.Apis.Tools.CodeGen.Decorator
             // Add property.
             var property = new CodeMemberProperty();
             property.Name = propertyName;
-            property.Attributes = MemberAttributes.Public;
+            if (attributes.HasValue)
+                property.Attributes = attributes.Value;
+            else
+                property.Attributes = MemberAttributes.Public; // default is public
+
             if (implementedInterface != null)
                 property.ImplementationTypes.Add(implementedInterface);
 
@@ -259,7 +284,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator
                                                  select d).Single();
 
 
-                string enumFieldValue = ((CodePrimitiveExpression) decl.Arguments[0].Value).Value.ToString();
+                string enumFieldValue = ((CodePrimitiveExpression)decl.Arguments[0].Value).Value.ToString();
 
                 if (!enumPairDictionary.ContainsKey(enumFieldValue))
                 {
@@ -288,6 +313,69 @@ namespace Google.Apis.Tools.CodeGen.Decorator
 
             // Every check has passed. This enum is compatible with what we are looking for.
             return true;
+        }
+
+
+        /// <summary>
+        /// Initiazlies the class's parameters by the specified parameters dictionary 
+        /// (used on service and request levels)
+        /// </summary>
+        /// <param name="constructor"></param>
+        /// <param name="parametersName"></param>
+        /// <param name="parameters"></param>
+        [VisibleForTestOnly]
+        internal static void AddInitializeParameters(CodeMemberMethod method, string parametersName,
+            IDictionary<string, IDiscoveryParameter> parameters)
+        {
+            method.ThrowIfNull("method");
+            parametersName.ThrowIfNullOrEmpty("parametersName");
+
+            var parametersCreateStatement = new CodeObjectCreateExpression(
+                        typeof(Dictionary<string, IParameter>));
+
+            // Generate: parameters = new Dictionary<string, IParameter>();
+            method.Statements.Add(
+                new CodeVariableDeclarationStatement(typeof(Dictionary<string, IParameter>),
+                    "parameters", parametersCreateStatement));
+
+            foreach (IDiscoveryParameter parameter in parameters.NullToEmpty().Values)
+            {
+                // init code expression list with enum values
+                IList<CodeExpression> enumValues = new List<CodeExpression>();
+                foreach (string e in parameter.EnumValues.NullToEmpty())
+                {
+                    enumValues.Add(new CodePrimitiveExpression(e));
+                }
+
+                // Generate: Utilities.CreateParameter(name, isRequired, ...)
+                var createParameter = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
+                    new CodeTypeReferenceExpression(typeof(Google.Apis.Util.Utilities)), "CreateRuntimeParameter"),
+                    new CodePrimitiveExpression(parameter.Name),
+                    new CodePrimitiveExpression(parameter.IsRequired),
+                    new CodePrimitiveExpression(parameter.ParameterType),
+                    new CodePrimitiveExpression(parameter.DefaultValue),
+                    new CodePrimitiveExpression(parameter.Pattern),
+                    new CodeArrayCreateExpression("System.string", enumValues.ToArray()));
+
+                // Generate: parameters.Add(name, CreateParameter(...)
+                var addParameter = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
+                    new CodeVariableReferenceExpression("parameters"), "Add"),
+                    new CodeExpression[] { new CodePrimitiveExpression(parameter.Name), createParameter });
+
+                method.Statements.Add(addParameter);
+            }
+
+
+            var readonlyCreateStatement = new CodeObjectCreateExpression(
+                        typeof(ReadOnlyDictionary<string, IParameter>),
+                        new CodeVariableReferenceExpression("parameters"));
+
+            // Generate: _parameters = new ReadOnlyDictionary<string, IParameter>(parameters)
+            method.Statements.Add(
+                new CodeAssignStatement(new CodeFieldReferenceExpression(
+                    new CodeThisReferenceExpression(), parametersName),
+                    readonlyCreateStatement));
+
         }
     }
 }

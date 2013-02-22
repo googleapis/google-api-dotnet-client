@@ -17,16 +17,17 @@ limitations under the License.
 using System;
 using System.CodeDom;
 using System.Linq;
-using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
-using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+
 using NUnit.Framework;
+
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Tests for the ScopeEnumDecorator.
-    /// </summary>
+    /// <summary> Tests for the ScopeEnumDecorator. </summary>
     [TestFixture]
     public class ScopeEnumDecoratorTest : BaseServiceDecoratorTest
     {

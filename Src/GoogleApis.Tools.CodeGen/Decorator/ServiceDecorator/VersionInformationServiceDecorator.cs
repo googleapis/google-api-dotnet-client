@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 
@@ -28,8 +29,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
     public class VersionInformationServiceDecorator : IServiceDecorator
     {
         public const string VersionName = "Version";
-        public const string NameName = "Name";
-        public const string BaseUriName = "BaseUri";
         public const string DiscoveryVersionName = "DiscoveryVersionUsed";
 
         #region IServiceDecorator Members
@@ -37,8 +36,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.Members.Add(CreateVersionField(service));
-            serviceClass.Members.Add(CreateNameField(service));
-            serviceClass.Members.Add(CreateUriField(service));
             serviceClass.Members.Add(CreateDiscoveryVersionField(service));
         }
 
@@ -57,31 +54,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         }
 
         [VisibleForTestOnly]
-        internal CodeMemberProperty CreateNameField(IService service)
-        {
-            return new CodeMemberProperty()
-            {
-                Name = NameName,
-                Type = new CodeTypeReference(typeof(string)),
-                Attributes = MemberAttributes.Public,
-                GetStatements = { new CodeMethodReturnStatement(new CodePrimitiveExpression(service.Name)) }
-            };
-        }
-
-        [VisibleForTestOnly]
-        internal CodeMemberProperty CreateUriField(IService service)
-        {
-            return new CodeMemberProperty()
-            {
-                Name = BaseUriName,
-                Type = new CodeTypeReference(typeof(string)),
-                Attributes = MemberAttributes.Public,
-                GetStatements = { new CodeMethodReturnStatement(new CodePrimitiveExpression(service.BaseUri.ToString())) },
-                ImplementationTypes = { typeof(IRequestProvider) },
-            };
-        }
-
-        [VisibleForTestOnly]
         internal CodeMemberField CreateDiscoveryVersionField(IService service)
         {
             return new CodeMemberField()
@@ -93,11 +65,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                         new CodeTypeReferenceExpression(typeof(DiscoveryVersion)),
                             Enum.GetName(typeof(DiscoveryVersion), service.DiscoveryVersion))
             };
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name;
         }
     }
 }

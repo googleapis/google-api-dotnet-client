@@ -13,16 +13,18 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+
+using Google.Apis.Testing;
 using Google.Apis.Upload;
 using Google.Apis.Util;
-using NUnit.Framework;
 
-using Google.Apis.Tests.Utility;
+using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Upload
 {
@@ -145,7 +147,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, 
+                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1,
                         UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
@@ -281,7 +283,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                     server.ExpectRequest(context =>
                     {
                         var buffer = new byte[100];
-                        while(true)
+                        while (true)
                         {
                             int x = context.Request.InputStream.Read(buffer, 0, buffer.Length);
                             if (x == 0) break;
@@ -329,7 +331,8 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
 
                 var upload = new MockResumableUpload(server, stream, "text/plain");
 
-                upload.ProgressChanged += (progress) => {
+                upload.ProgressChanged += (progress) =>
+                {
                     progressEvents.Enqueue(progress);
                 };
 
@@ -392,7 +395,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 server.ExpectRequest(context =>
                 {
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length-1, UploadTestData.Length);
+                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
                 });
 
@@ -415,7 +418,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
             using (var server = new MockResumableUploadServer())
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
-             
+
                 var serializer = new Google.Apis.Json.NewtonsoftJsonSerializer();
 
                 var body = new TestRequest()
@@ -447,7 +450,7 @@ occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 
                 {
                     // Verify the chunk-request
                     Assert.That(context.Request.Url.AbsoluteUri, Is.EqualTo(server.UploadUri.ToString()));
-                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length-1, UploadTestData.Length);
+                    var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1, UploadTestData.Length);
                     Assert.That(context.Request.Headers["Content-Range"], Is.EqualTo(range));
 
                     // Send the response-body

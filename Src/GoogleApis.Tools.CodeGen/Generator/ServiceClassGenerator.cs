@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+
 using System.Linq;
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
@@ -30,9 +31,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
     /// <seealso cref="IServiceDecorator"/>
     public class ServiceClassGenerator : BaseGenerator
     {
-        public const string GenericServiceName = "_service";
-        public const string AuthenticatorName = "_authenticator";
+        public const string AuthenticatorName = "authenticator";
         public const string AuthenticatorPropertyName = "Authenticator";
+
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceClassGenerator>();
 
         private readonly IEnumerable<IServiceDecorator> decorators;
@@ -59,7 +60,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
             logger.Debug("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
             serviceClass.IsPartial = true;
-            serviceClass.BaseTypes.Add(typeof(IRequestProvider));
+            serviceClass.BaseTypes.Add(typeof(BaseClientService));
 
             // Decorate the service class.
             foreach (IServiceDecorator serviceDecorator in decorators)

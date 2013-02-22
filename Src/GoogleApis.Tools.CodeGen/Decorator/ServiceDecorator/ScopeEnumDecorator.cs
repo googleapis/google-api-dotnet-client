@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -89,7 +90,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
                 // Add the description.
                 newMember.Comments.AddRange(DecoratorUtil.CreateSummaryComment(scope.Description));
-                
+
                 usedWords.Add(safeName);
                 decl.Members.Add(newMember);
             }
@@ -119,7 +120,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                 string segment = uri.Segments.Last();
 
                 if (segment.Length >= 3)
-                { 
+                {
                     // Identifier should have three characters at least.
                     return segment;
                 }

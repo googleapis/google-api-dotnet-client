@@ -24,9 +24,7 @@ using Google.Apis.Authentication;
 
 namespace Google.Apis.Testing
 {
-    /// <summary>
-    /// Mock request for testing purposes.
-    /// </summary>
+    /// <summary> A mock request for testing purposes. </summary>
     public class MockRequest : IRequest
     {
         public MockRequest()

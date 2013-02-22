@@ -26,12 +26,11 @@ using NUnit.Framework;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary>
-    /// Tests for the "Request" class
-    /// </summary>
+    /// <summary> Tests for the "Request" class. </summary>
     [TestFixture]
     public class RequestTest
     {
@@ -63,9 +62,19 @@ namespace Google.Apis.Tests.Apis.Requests
                                 Action<Request, WebHeaderCollection, byte[]> additionalAsserts)
         {
             // Create the request.
-            var mockservice = new MockService { GZipEnabled = gzipEnabled };
-            var mockmethod = new MockMethod { HttpMethod = "GET", Name = "Test", RestPath = "https://example.com" };
-            var request = (Request)Request.CreateRequest(mockservice, mockmethod);
+            var initializer = new BaseClientService.Initializer()
+            {
+                GZipEnabled = gzipEnabled
+            };
+            var mockService = new MockClientService(initializer);
+
+            var mockMethod = new MockClientServiceRequest
+                {
+                    HttpMethod = "GET",
+                    MethodName = "Test",
+                    RestPath = "https://example.com"
+                };
+            var request = (Request)Request.CreateRequest(mockService, mockMethod);
             var headers = new WebHeaderCollection();
 
             // Create a mock webrequest.
@@ -101,9 +110,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary>
-        /// Tests the AttachBody() method with enabled GZipSupport.
-        /// </summary>
+        /// <summary> Tests the AttachBody() method with enabled GZipSupport. </summary>
         [Test]
         public void AttachBodyGZipTest()
         {
@@ -112,9 +119,7 @@ namespace Google.Apis.Tests.Apis.Requests
                                 { Assert.AreEqual("gzip", headers[HttpRequestHeader.ContentEncoding]); });
         }
 
-        /// <summary>
-        /// Tests the AttachBody() method.
-        /// </summary>
+        /// <summary> Tests the AttachBody() method. </summary>
         [Test]
         public void AttachBodyTest()
         {
@@ -126,9 +131,7 @@ namespace Google.Apis.Tests.Apis.Requests
                                 });
         }
 
-        /// <summary>
-        /// Tests the AttachBody() method with unicode characters.
-        /// </summary>
+        /// <summary> Tests the AttachBody() method with unicode characters. </summary>
         [Test]
         public void AttachBodyUnicodeTest()
         {
@@ -137,9 +140,7 @@ namespace Google.Apis.Tests.Apis.Requests
                                  { Assert.AreEqual(Body, Request.ContentCharset.GetString(attachement)); });
         }
 
-        /// <summary>
-        /// Tests a request with default settings
-        /// </summary>
+        /// <summary> Tests a request with default settings. </summary>
         [Test]
         public void BuildRequestUrlWithDefaultedParameters()
         {
@@ -202,17 +203,17 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithNull", null);
             // different from default, "" and not "d", will be added to query
             parameterValues.Add("optionalWithEmpty", "");
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod
+                    new MockClientServiceRequest
                         {
                             HttpMethod = "GET",
-                            Name = "TestMethod",
+                            MethodName = "TestMethod",
                             RestPath = "https://example.com",
-                            Parameters = parameterDefinitions
+                            RequestParameters = parameterDefinitions
                         });
 
             request.WithParameters(parameterValues);
@@ -223,59 +224,61 @@ namespace Google.Apis.Tests.Apis.Requests
                 "optionalWithEmpty&optionalWithValue=b&required=a", url.AbsoluteUri);
         }
 
-        /// <summary>
-        /// Tests if the WithDeveloperKey method works
-        /// </summary>
+        /// <summary> Tests if the WithDeveloperKey method works. </summary>
         [Test]
         public void BuildRequestUrlWithDeveloperKeysTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "GET",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com"
+                        });
             request.WithKey(SimpleDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual("https://example.com/?" + "key=" + SimpleDeveloperKey, url.ToString());
         }
 
-        /// <summary>
-        /// Creates a simple GET request for a "TestMethod".
-        /// </summary>
+        /// <summary> Creates a simple GET request for a "TestMethod". </summary>
         private Request GetSimpleRequest()
         {
-            var service = new MockService() { BaseUri = new Uri("http://example.com") };
+            var service = new MockClientService("http://example.com");
             var request =
                 (Request)
                 Request.CreateRequest(
-                    service, new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "" });
+                    service, new MockClientServiceRequest { HttpMethod = "GET", MethodName = "TestMethod", RestPath = "" });
             request.WithParameters("");
             return request;
         }
 
-        /// <summary>
-        /// Tests if developer keys are escaped properly
-        /// </summary>
+        /// <summary> Tests if the WithUserIp method works. </summary>
         [Test]
         public void BuildRequestUrlWithDeveloperKeysTest_RequiresEscape()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "GET",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com"
+                        });
             request.WithKey(ComplexDeveloperKey).WithParameters(new Dictionary<string, string>());
             var url = request.BuildRequest().RequestUri;
 
             Assert.AreEqual("https://example.com/?" + "key=%3F%26%5E%25%20%20ABC123", url.AbsoluteUri);
         }
 
-        /// <summary>
-        /// Tests if null is handled correctly @ optional parameters
-        /// </summary>
+        /// <summary> Tests if null is handled correctly @ optional parameters.</summary>
         [Test]
         public void BuildRequestUrlWithNullOptionalParameters()
         {
@@ -300,17 +303,17 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterValues.Add("optionalWithNull", null);
             parameterValues.Add("optionalWithEmpty", "");
 
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod
+                    new MockClientServiceRequest
                         {
                             HttpMethod = "GET",
-                            Name = "TestMethod",
+                            MethodName = "TestMethod",
                             RestPath = "https://example.com",
-                            Parameters = parameterDefinitions
+                            RequestParameters = parameterDefinitions
                         });
 
             request.WithParameters(parameterValues);
@@ -333,19 +336,19 @@ namespace Google.Apis.Tests.Apis.Requests
             parameterDefinitions.Add(
                 "optionalWithValue",
                 new MockParameter { Name = "optionalWithValue", IsRequired = false, ParameterType = "query" });
-            var service = new MockService();
+            var service = new MockClientService();
 
             // Cast the IRequest to a Request to access internal construction methods.
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod
+                    new MockClientServiceRequest
                         {
                             HttpMethod = "GET",
-                            Name = "TestMethod",
+                            MethodName = "TestMethod",
                             RestPath = "https://test.google.com",
-                            Parameters = parameterDefinitions
+                            RequestParameters = parameterDefinitions
                         });
 
             request.WithParameters(query);
@@ -355,9 +358,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("?" + query, url.Query);
         }
 
-        /// <summary>
-        /// Tests if the constructor will succeed
-        /// </summary>
+        /// <summary> Tests if the constructor will succeed. </summary>
         [Test]
         public void ConstructorTest()
         {
@@ -366,23 +367,21 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.IsTrue(request.SupportsRetry);
         }
 
-        /// <summary>
-        /// Tests if invalid data will throw an exception
-        /// </summary>
+        /// <summary> Tests if invalid data will throw an exception. </summary>
         [Test]
         public void CreateRequestFailureTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             Assert.Throws<NotSupportedException>(
                 () =>
                 Request.CreateRequest(
                     service,
-                    new MockMethod
-                    {
-                        HttpMethod = "NOSUCHMETHOD",
-                        Name = "TestMethod",
-                        RestPath = "https://example.com",
-                    }));
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "NOSUCHMETHOD",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com",
+                        }));
         }
 
         /// <summary>
@@ -391,17 +390,17 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void CreateRequestOnRequestContentLengthTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod
-                    {
-                        HttpMethod = "POST",
-                        Name = "TestMethod",
-                        RestPath = "https://example.com/test",
-                    });
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "POST",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com/test",
+                        });
 
             request.WithParameters("");
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
@@ -415,23 +414,21 @@ namespace Google.Apis.Tests.Apis.Requests
             // a valid connection to the server.
         }
 
-        /// <summary>
-        /// Tests the .CreateRequest method of a request
-        /// </summary>
+        /// <summary> Tests the CreateRequest method of a request </summary>
         [Test]
         public void CreateRequestOnRequestTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             var request =
                 (Request)
                 Request.CreateRequest(
                     service,
-                    new MockMethod
+                    new MockClientServiceRequest
                         {
                             HttpMethod = "GET",
-                            Name = "TestMethod",
+                            MethodName = "TestMethod",
                             RestPath = "https://example.com",
-                            Parameters = new Dictionary<string, IParameter> { { "TestParam", null } }
+                            RequestParameters = new Dictionary<string, IParameter> { { "TestParam", null } }
                         });
 
             request.WithParameters("");
@@ -441,86 +438,97 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.IsNotNull(webRequest);
         }
 
-        /// <summary>
-        /// Tests the user-agent string of the request created by the .CreateRequest method.
-        /// </summary>
+        /// <summary> Tests the user-agent string of the request created by the CreateRequest method. </summary>
         [Test]
         public void CreateRequestOnRequestUserAgentTest()
         {
-            var service = new MockService();
-            var request =
-                (Request)
-                Request.CreateRequest(service, new MockMethod
+            var service = new MockClientService(new BaseClientService.Initializer()
                 {
-                    HttpMethod = "GET",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com/test",
+                    GZipEnabled = false
                 });
 
-            request.WithParameters("");
-
+            var request =
+                (Request)
+                Request.CreateRequest(service,
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "GET",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com/test",
+                        });
             HttpWebRequest webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
 
-            // Test the default user agent (without gzip):
+            // Test the user agent (without gzip):
             string expectedUserAgent = string.Format(
                 "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetLibraryVersion(),
                 Environment.OSVersion.Platform, Environment.OSVersion.Version);
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
 
             // Confirm that the (gzip) tag is added if GZip is supported.
-            service.GZipEnabled = true;
-            expectedUserAgent += " (gzip)";
+            service = new MockClientService(new BaseClientService.Initializer()
+            {
+                GZipEnabled = true
+            });
+            request =
+                (Request)
+                Request.CreateRequest(
+                    service,
+                    new MockClientServiceRequest
+                    {
+                        HttpMethod = "GET",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com/test",
+                    });
+
             webRequest = (HttpWebRequest)request.CreateWebRequest((r) => { });
+
+            expectedUserAgent += " (gzip)";
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
         }
 
-        /// <summary>
-        /// Tests the creation of simple http requests
-        /// </summary>
+        /// <summary> Tests the creation of simple http requests. </summary>
         [Test]
         public void CreateRequestSimpleCreateTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             Request.CreateRequest(
-                service, new MockMethod
-                {
-                    HttpMethod = "GET",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com",
-                });
+                service, new MockClientServiceRequest
+                    {
+                        HttpMethod = "GET",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com",
+                    });
             Request.CreateRequest(
-                service, new MockMethod
-                {
-                    HttpMethod = "POST",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com",
-                });
+                service, new MockClientServiceRequest
+                    {
+                        HttpMethod = "POST",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com",
+                    });
             Request.CreateRequest(
-                service, new MockMethod
-                {
-                    HttpMethod = "PUT",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com",
-                });
+                service, new MockClientServiceRequest
+                    {
+                        HttpMethod = "PUT",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com",
+                    });
             Request.CreateRequest(
-                service, new MockMethod
-                {
-                    HttpMethod = "DELETE",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com",
-                });
+                service, new MockClientServiceRequest
+                    {
+                        HttpMethod = "DELETE",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com",
+                    });
             Request.CreateRequest(
-                service, new MockMethod
-                {
-                    HttpMethod = "PATCH",
-                    Name = "TestMethod",
-                    RestPath = "https://example.com",
-                });
+                service, new MockClientServiceRequest
+                    {
+                        HttpMethod = "PATCH",
+                        MethodName = "TestMethod",
+                        RestPath = "https://example.com",
+                    });
         }
 
-        /// <summary>
-        /// Tests the application name property
-        /// </summary>
+        /// <summary> Tests the application name property. </summary>
         [Test]
         public void FormatForUserAgentTest()
         {
@@ -530,17 +538,20 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
         }
 
-        /// <summary>
-        /// Tests the results of the GetErrorResponseHandlers method.
-        /// </summary>
+        /// <summary> Tests the results of the GetErrorResponseHandlers method. </summary>
         [Test]
         public void GetErrorResponseHandlersTest()
         {
             var request =
                 (Request)
                 Request.CreateRequest(
-                    new MockService(),
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+                    new MockClientService(),
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "GET",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com"
+                        });
 
             // Confirm that there are no error response handlers by default.
             CollectionAssert.IsEmpty(request.GetErrorResponseHandlers());
@@ -555,21 +566,19 @@ namespace Google.Apis.Tests.Apis.Requests
             CollectionAssert.AreEqual(new IErrorResponseHandler[] { auth }, request.GetErrorResponseHandlers());
         }
 
-        /// <summary>
-        /// Tests the .CreateRequest method of a request with ETags.
-        /// </summary>
+        /// <summary> Tests the .CreateRequest method of a request with ETags. </summary>
         [Test]
         public void CreateRequestOnRequestETagTest()
         {
-            var service = new MockService();
+            var service = new MockClientService();
             var request = (Request)Request.CreateRequest(
                 service,
-                new MockMethod
+                new MockClientServiceRequest
                 {
                     HttpMethod = "GET",
-                    Name = "TestMethod",
+                    MethodName = "TestMethod",
                     RestPath = "https://test.google.com",
-                    Parameters = new Dictionary<string, IParameter>() { { "TestParam", null } }
+                    RequestParameters = new Dictionary<string, IParameter>() { { "TestParam", null } }
                 });
 
             request.WithParameters("");
@@ -605,9 +614,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual("test123", webRequest.Headers[HttpRequestHeader.IfNoneMatch]);
         }
 
-        /// <summary>
-        /// Tests the .GetDefaultETagAction method of a request with different http verbs.
-        /// </summary>
+        /// <summary> Tests the .GetDefaultETagAction method of a request with different http verbs. </summary>
         [Test]
         public void GetDefaultETagActionTest()
         {
@@ -619,24 +626,25 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.AreEqual(ETagAction.Ignore, Request.GetDefaultETagAction("invalid"));
         }
 
-        /// <summary>
-        /// Tests if the developer key is assigned correctly
-        /// </summary>
+        /// <summary> Tests if the developer key is assigned correctly. </summary>
         [Test]
         public void WithDeveloperKeyAssignTest()
         {
             var request =
                 (Request)
                 Request.CreateRequest(
-                    new MockService(),
-                    new MockMethod { HttpMethod = "GET", Name = "TestMethod", RestPath = "https://example.com" });
+                    new MockClientService(),
+                    new MockClientServiceRequest
+                        {
+                            HttpMethod = "GET",
+                            MethodName = "TestMethod",
+                            RestPath = "https://example.com"
+                        });
             request.WithKey(SimpleDeveloperKey);
             Assert.AreEqual(SimpleDeveloperKey, request.DeveloperKey);
         }
 
-        /// <summary>
-        /// Tests if the parameter dictionary is set correctly
-        /// </summary>
+        /// <summary> Tests if the parameter dictionary is set correctly. </summary>
         [Test]
         public void WithParametersDictStringObject()
         {

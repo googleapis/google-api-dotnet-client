@@ -22,7 +22,7 @@ using System.Text;
 
 using NUnit.Framework;
 
-namespace Google.Apis.Tests.Utility
+namespace Google.Apis.Testing
 {
     /// <summary>
     /// MockServer creates a server which allows us to set up and validate requests and

@@ -15,20 +15,19 @@ limitations under the License.
 */
 
 using System.CodeDom;
+
 using NUnit.Framework;
+
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Tests for the VersionInformationServiceDecorator class
-    /// </summary>
+    /// <summary> Tests for the VersionInformationServiceDecorator class. </summary>
     [TestFixture]
     public class VersionInformationServiceDecoratorTest : BaseServiceDecoratorTest
     {
-        /// <summary>
-        /// Tests if the generation of a discovery version field works
-        /// </summary>
+        /// <summary> Tests if the generation of a discovery version field works. </summary>
         [Test]
         public void TestCreateDiscoveryVersionField()
         {
@@ -38,45 +37,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.AreEqual(VersionInformationServiceDecorator.DiscoveryVersionName, codeMemberField.Name);
         }
 
-        private object GetReturnPrimitiveValue(CodeMemberProperty property)
-        {
-            Assert.That(property.GetStatements.Count, Is.EqualTo(1));
-            Assert.That(property.GetStatements[0], Is.TypeOf(typeof(CodeMethodReturnStatement)));
-            var returnStatement = property.GetStatements[0] as CodeMethodReturnStatement;
-            Assert.That(returnStatement.Expression, Is.TypeOf(typeof(CodePrimitiveExpression)));
-            var primitive = returnStatement.Expression as CodePrimitiveExpression;
-            return primitive.Value;
-        }
-
-        /// <summary>
-        /// Tests if the generation of a name field works
-        /// </summary>
-        [Test]
-        public void TestCreateNameField()
-        {
-            var decorator = new VersionInformationServiceDecorator();
-            var codeMemberField = decorator.CreateNameField(CreateService());
-
-            Assert.AreEqual(VersionInformationServiceDecorator.NameName, codeMemberField.Name);
-            Assert.AreEqual(Name, GetReturnPrimitiveValue(codeMemberField));
-        }
-
-        /// <summary>
-        /// Tests if the generation of an uri field works
-        /// </summary>
-        [Test]
-        public void TestCreateUriField()
-        {
-            var decorator = new VersionInformationServiceDecorator();
-            var codeMemberField = decorator.CreateUriField(CreateService());
-
-            Assert.AreEqual(VersionInformationServiceDecorator.BaseUriName, codeMemberField.Name);
-            Assert.AreEqual(BaseUri.ToString(), GetReturnPrimitiveValue(codeMemberField));
-        }
-
-        /// <summary>
-        /// Tests if the generation of a version field works
-        /// </summary>
+        /// <summary> Tests if the generation of a version field works. </summary>
         [Test]
         public void TestCreateVersionField()
         {
@@ -87,17 +48,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             Assert.AreEqual(Version, ((CodePrimitiveExpression)codeMemberField.InitExpression).Value);
         }
 
-        /// <summary>
-        /// Tests if the class decorator works
-        /// </summary>
+        /// <summary> Tests if the class decorator works. </summary>
         [Test]
         public void TestDecorateClass()
         {
             var decorator = new VersionInformationServiceDecorator();
             CodeTypeDeclaration codeType = new CodeTypeDeclaration("TestClass");
             decorator.DecorateClass(CreateService(), codeType);
-
-            Assert.AreEqual(4, codeType.Members.Count);
+            Assert.AreEqual(2, codeType.Members.Count);
 
             CheckCompile(codeType, true, "Failed to compile VersionInformationServiceDecorator output");
         }

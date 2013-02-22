@@ -49,7 +49,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                    ? new CodeTypeReference(typeof(string))
                                    : objectTypeProvider.GetReturnType(request);
 
-            var baseRef = new CodeTypeReference(typeof(ServiceRequest<>));
+            var baseRef = new CodeTypeReference(typeof(ClientServiceRequest<>));
             baseRef.TypeArguments.Add(responseType);
             requestClass.BaseTypes.Add(baseRef);
         }

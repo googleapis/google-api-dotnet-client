@@ -17,18 +17,18 @@ limitations under the License.
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
-using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
-using Google.Apis.Tools.CodeGen.Generator;
+
 using NUnit.Framework;
 using Moq;
 
+using Google.Apis.Discovery;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
+using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Testing;
+
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
-    /// <summary>
-    /// Test cases for the ResourceContainerGenerator.
-    /// </summary>
+    /// <summary> Test cases for the ResourceContainerGenerator. </summary>
     [TestFixture]
     public class ResourceClassGeneratorTest
     {
@@ -48,9 +48,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                 Count++;
             }
 
-            public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+            public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
-            public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+            public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
             #endregion
         }
@@ -127,7 +127,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             var resource = new MockResource();
             resource.Name = "Test";
-            resource.Resources .Add(new KeyValuePair<string, IResource>("Sub", subresource));
+            resource.Resources.Add(new KeyValuePair<string, IResource>("Sub", subresource));
 
             // Run the generator.
             var counter = new CountingDecorator();

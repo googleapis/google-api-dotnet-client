@@ -22,34 +22,34 @@ using NUnit.Framework;
 
 using Google.Apis.Discovery;
 using Google.Apis.Json;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using Google.Apis.Util;
 
+
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
-    /// <summary>
-    /// Tests for the ParameterPropertyDecorator class.
-    /// </summary>
+    /// <summary> Tests for the ParameterPropertyDecorator class. </summary>
     [TestFixture]
     public class ParameterPropertyDecoratorTest
     {
-        /// <summary>
-        /// Tests the constructor of this decorator.
-        /// </summary>
+        /// <summary> Tests the constructor of this decorator. </summary>
         [Test]
         public void ConstructTest()
         {
             Assert.DoesNotThrow(() => new ParameterPropertyDecorator());
         }
 
-        /// <summary>
-        /// Tests the DecorateClass method.
-        /// </summary>
+        /// <summary> Tests the DecorateClass method. </summary>
         [Test]
         public void DecorateClassTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters =
+                        new Dictionary<string, IDiscoveryParameter>()
+                };
             method.Parameters.Add("Param", new MockParameter() { Name = "Param" });
             method.Parameters.Add("Param2", new MockParameter() { Name = "Param2" });
             var resource = new MockResource();
@@ -64,14 +64,16 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             Assert.AreEqual(0, resourceDecl.Members.Count);
         }
 
-        /// <summary>
-        /// Tests the GenerateParameterProperty method.
-        /// </summary>
+        /// <summary> Tests the GenerateParameterProperty method. </summary>
         [Test]
         public void GenerateParameterPropertyTest()
         {
             var parameter = new MockParameter() { Name = "Param" };
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             method.Parameters.Add("Param", parameter);
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
@@ -104,14 +106,18 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void GenerateCommonParameterPropertyTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
             var resourceDecl = new CodeTypeDeclaration();
             var requestDecl = new CodeTypeDeclaration();
 
             #region Create common Parameters
-            IDictionary<string, IParameter> commonParameters = new Dictionary<string, IParameter>();
+            IDictionary<string, IDiscoveryParameter> commonParameters = new Dictionary<string, IDiscoveryParameter>();
             var dict = new JsonDictionary { 
                 { "name", "alt" }, { "location", "query" }, { "type", "string" }, { "default", "json" } };
             var p = ServiceFactory.Default.CreateParameter("alt", dict);

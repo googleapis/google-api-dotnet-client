@@ -21,11 +21,10 @@ using Google.Apis.Discovery;
 using Google.Apis.Discovery.Schema;
 using Google.Apis.Requests;
 
-namespace Google.Apis.Tests.Apis.Requests
+
+namespace Google.Apis.Testing
 {
-    /// <summary>
-    /// Mock service for testing purposes
-    /// </summary>
+    /// <summary> Mock service for testing purposes. </summary>
     public class MockService : IService
     {
         public const string DefaultBaseUrl = "https://testexample.google.com";
@@ -71,11 +70,11 @@ namespace Google.Apis.Tests.Apis.Requests
         public string Id { get; private set; }
         public IList<string> Labels { get; private set; }
         public IDictionary<string, Scope> Scopes { get; private set; }
-        public IDictionary<string, IParameter> Parameters { get; private set; }
+        public IDictionary<string, IDiscoveryParameter> Parameters { get; set; }
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
         public string Description { get; private set; }
-        public IList<string> Features { get; private set; }
+        public IList<string> Features { get; set; }
 
         public IRequest CreateRequest(string resource, string methodName)
         {

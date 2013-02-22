@@ -51,10 +51,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         }
 
 
-        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
 
-        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
         #endregion
 
@@ -69,7 +69,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 new CodeParameterDeclarationExpression(serviceClassName, ResourceBaseGenerator.ServiceFieldName));
             constructor.Parameters.Add(
                 new CodeParameterDeclarationExpression(typeof(Google.Apis.Authentication.IAuthenticator),
-                    ResourceClassGenerator.AuthenticatorName));
+                    ServiceClassGenerator.AuthenticatorName));
 
             // this.service = service
             constructor.Statements.Add(
@@ -82,12 +82,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             constructor.Statements.Add(
                 new CodeAssignStatement(
                     new CodeFieldReferenceExpression(
-                        new CodeThisReferenceExpression(), ResourceClassGenerator.AuthenticatorName),
-                    new CodeArgumentReferenceExpression(ResourceClassGenerator.AuthenticatorName)));
+                        new CodeThisReferenceExpression(), ServiceClassGenerator.AuthenticatorName),
+                    new CodeArgumentReferenceExpression(ServiceClassGenerator.AuthenticatorName)));
 
             // Initialize subresources
             constructor.Statements.AddRange(CreateSubresourceCreateStatements(resource));
-            
+
             return constructor;
         }
 
@@ -110,7 +110,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
                 fieldConstructor.Parameters.Add(
                     new CodeVariableReferenceExpression(ResourceBaseGenerator.ServiceFieldName));
                 fieldConstructor.Parameters.Add(
-                    new CodeVariableReferenceExpression(ResourceClassGenerator.AuthenticatorName));
+                    new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName));
 
                 // subResource = ...
                 var assign = new CodeAssignStatement(fieldRef, fieldConstructor);

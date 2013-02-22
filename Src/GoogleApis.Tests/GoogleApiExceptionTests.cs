@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 using System;
-using Google.Apis.Tests.Apis.Requests;
+
 using NUnit.Framework;
 
 namespace Google.Apis.Tests
@@ -32,12 +32,11 @@ namespace Google.Apis.Tests
         [Test]
         public void ConstructorTest()
         {
-            var service = new MockService();
+            var name = "TestName_ConstructorTest";
 
-            var exception = new GoogleApiException(service, "Test");
+            var exception = new GoogleApiException(name, "Test");
             Assert.IsInstanceOf<Exception>(exception);
-            Assert.That(exception.Service, Is.EqualTo(service));
-            Assert.That(exception.ToString(), Contains.Substring(service.Name));
+            Assert.That(exception.ToString(), Contains.Substring(name));
         }
 
         /// <summary>
@@ -46,8 +45,7 @@ namespace Google.Apis.Tests
         [Test]
         public void ThrowTest()
         {
-            var service = new MockService();
-            Assert.Throws<GoogleApiException>(() => { throw new GoogleApiException(service, "Test"); });
+            Assert.Throws<GoogleApiException>(() => { throw new GoogleApiException("name", "Test"); });
         }
 
         /// <summary>

@@ -15,7 +15,9 @@ limitations under the License.
 */
 
 using System.CodeDom;
+
 using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
@@ -23,9 +25,7 @@ using Google.Apis.Tools.CodeGen.Generator;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Tests for the StandardConstructServiceDecorator class
-    /// </summary>
+    /// <summary> Tests for the StandardConstructServiceDecorator class. </summary>
     [TestFixture]
     public class StandardConstructServiceDecoratorTest : BaseServiceDecoratorTest
     {
@@ -46,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             foreach (var statment in method.Statements)
             {
                 Assert.IsInstanceOf(typeof(CodeAssignStatement), statment);
-                var assign = (CodeAssignStatement) statment;
+                var assign = (CodeAssignStatement)statment;
                 Assert.IsNotNull(assign.Left);
                 Assert.IsNotNull(assign.Right);
                 Assert.IsInstanceOf(typeof(CodeFieldReferenceExpression), assign.Left);
@@ -61,17 +61,14 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         public void TestCreateConstructorWithArgs()
         {
             var decorator = new StandardConstructServiceDecorator();
+            IService service = CreateBuzzService();
             CodeConstructor constructor = decorator.CreateConstructorWithArgs();
 
-            Assert.AreEqual(2, constructor.Parameters.Count);
-            Assert.AreEqual(typeof(IService).FullName, constructor.Parameters[0].Type.BaseType);
-            Assert.AreEqual(typeof(IAuthenticator).FullName, constructor.Parameters[1].Type.BaseType);
-            Assert.AreEqual(ServiceClassGenerator.GenericServiceName, constructor.Parameters[0].Name);
-            Assert.AreEqual(ServiceClassGenerator.AuthenticatorName, constructor.Parameters[1].Name);
-            Assert.GreaterOrEqual(2, constructor.Statements.Count);
+            Assert.AreEqual(1, constructor.Parameters.Count);
+            Assert.AreEqual(typeof(BaseClientService.Initializer).FullName, constructor.Parameters[0].Type.BaseType);
+            Assert.AreEqual("initializer", constructor.Parameters[0].Name);
 
-            Assert.IsInstanceOf(typeof(CodeAssignStatement), constructor.Statements[0]);
-            Assert.IsInstanceOf(typeof(CodeAssignStatement), constructor.Statements[1]);
+            Assert.AreEqual(0, constructor.Statements.Count);
         }
 
         /// <summary>
@@ -89,9 +86,10 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             Assert.AreEqual(1, codeType.Members.Count); // We expect one member to be added
             Assert.IsInstanceOf(typeof(CodeConstructor), codeType.Members[0]);
-            var constructor = (CodeConstructor) codeType.Members[0];
-            // Test that both of the add statment methods where called.
-            Assert.GreaterOrEqual(constructor.Statements.Count, 9);
+            var constructor = (CodeConstructor)codeType.Members[0];
+
+            // Assinging service.Resource.Count statemenets + initParameters()
+            Assert.AreEqual(constructor.Statements.Count, service.Resources.Count + 1);
 
             //We have already tested the statment formation in the other tests.
         }

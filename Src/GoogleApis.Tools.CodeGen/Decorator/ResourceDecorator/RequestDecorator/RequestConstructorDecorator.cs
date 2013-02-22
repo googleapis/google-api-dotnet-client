@@ -15,9 +15,7 @@ limitations under the License.
 */
 
 using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -34,6 +32,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </summary>
     public class RequestConstructorDecorator : BaseRequestConstructorDecorator
     {
+        internal const string ServiceName = "service";
+
         /// <summary>
         /// Defines whether this decorator should also add a constructor containing optional and mandatory parameters.
         /// </summary>
@@ -74,15 +74,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.Attributes = MemberAttributes.Public;
 
             // ISchemaAwareRequestExecutor service
-            var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), "service");
+            var serviceArg = new CodeParameterDeclarationExpression(typeof(IClientService), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
             // : base(service)
-            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("service"));
+            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(ServiceName));
 
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
             AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
+
+            // generate: initParameters()
+            constructor.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), "InitParameters")));
 
             return constructor;
         }

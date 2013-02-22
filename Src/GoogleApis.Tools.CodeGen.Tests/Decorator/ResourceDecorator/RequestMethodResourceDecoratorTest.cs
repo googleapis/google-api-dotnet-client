@@ -16,17 +16,18 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
-using NUnit.Framework;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
 {
-    /// <summary>
-    /// Tests the RequestMethodResourceDecorator
-    /// </summary>
+    /// <summary> Tests the RequestMethodResourceDecorator. </summary>
     [TestFixture]
     public class RequestMethodResourceDecoratorTest : BaseResourceDecoratorTest
     {
@@ -78,12 +79,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator
             // Generate a method.
             var decl = new CodeTypeDeclaration();
             var resource = new MockResource();
-            var method = new MockMethod() { Name = "Test", Parameters = new Dictionary<string, IParameter>()};
+            var method = new MockMethod() { Name = "Test", Parameters = new Dictionary<string, IDiscoveryParameter>() };
             method.Parameters.Add(
                 "a", new MockParameter() { Name = "a", ParameterType = "string", IsRequired = false });
             method.Parameters.Add(
                 "b", new MockParameter() { Name = "b", ParameterType = "string", IsRequired = true });
-            CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true, 
+            CodeMemberMethod generatedMethod = generator.CreateMethod(decl, resource, method, true,
                 RequestMethodResourceDecorator.MethodType.Request);
 
             Assert.AreEqual("Test", generatedMethod.Name);

@@ -16,10 +16,12 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
-using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
-using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
+
 using NUnit.Framework;
+
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
@@ -44,7 +46,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void DecorateClassTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IDiscoveryParameter>() };
             method.Parameters.Add("Param", new MockParameter() { Name = "Param" });
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
@@ -54,11 +56,15 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             // Confirm that the decorator has run correctly.
             var decorator = new ServiceRequestFieldDecorator();
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
-            Assert.AreEqual(2, requestDecl.Members.Count); // 2 properties
+            Assert.AreEqual(4, requestDecl.Members.Count); // 4 properties
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[0]);
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[1]);
+            Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[2]);
+            Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[3]);
             Assert.AreEqual("ResourcePath", requestDecl.Members[0].Name);
             Assert.AreEqual("MethodName", requestDecl.Members[1].Name);
+            Assert.AreEqual("HttpMethod", requestDecl.Members[2].Name);
+            Assert.AreEqual("RestPath", requestDecl.Members[3].Name);
         }
 
         /// <summary>
@@ -74,8 +80,9 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             Assert.AreEqual("Name", property.Name);
             Assert.IsTrue(property.HasGet);
             Assert.IsFalse(property.HasSet);
+            Assert.IsTrue((property.Attributes & MemberAttributes.Public) == MemberAttributes.Public);
             Assert.AreEqual(1, property.GetStatements.Count);
-            CodeExpression value = ((CodeMethodReturnStatement) property.GetStatements[0]).Expression;
+            CodeExpression value = ((CodeMethodReturnStatement)property.GetStatements[0]).Expression;
             Assert.AreEqual("Value", ((CodePrimitiveExpression)value).Value);
         }
     }

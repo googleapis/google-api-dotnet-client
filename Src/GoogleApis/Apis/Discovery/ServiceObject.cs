@@ -16,13 +16,14 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+
 using Google.Apis.Json;
 
 namespace Google.Apis.Discovery
 {
     /// <summary>
     /// Base class for all objects that are part of the Discovery Service and a
-    /// constructed by the IServiceFactory
+    /// constructed by the IServiceFactory.
     /// </summary>
     public abstract class ServiceObject
     {
@@ -70,8 +71,8 @@ namespace Google.Apis.Discovery
         /// <param name="kvp">A KeyValuePair containing the name and data for this 
         /// portion of the service document. The key should be the name of the parameter,
         /// value should be a JsonDictionary describing the parameter.</param>
-        /// <returns>An IParameter instance as defined by the json description.</returns>
-        protected IParameter CreateParameter(KeyValuePair<string, object> kvp)
+        /// <returns>An IDiscoveryParameter instance as defined by the json description.</returns>
+        protected IDiscoveryParameter CreateParameter(KeyValuePair<string, object> kvp)
         {
             return Factory.CreateParameter(kvp.Key, kvp.Value as JsonDictionary);
         }

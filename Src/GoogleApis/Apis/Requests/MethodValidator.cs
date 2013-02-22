@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Util;
@@ -24,20 +25,20 @@ using Google.Apis.Util;
 namespace Google.Apis
 {
     /// <summary>
-    /// Logic for validating that a method is correct.
+    /// Logic for validating that a method (<code>IServiceRequest</code>) is correct.
     /// </summary>
     public class MethodValidator
     {
-        public MethodValidator(IMethod method, ParameterCollection parameters)
+        public MethodValidator(IClientServiceRequest method, ParameterCollection parameters)
         {
             CurrentMethod = method;
             Parameters = parameters;
         }
 
         /// <summary>
-        /// The method which is currently being validated.
+        /// The serivce requeust which is currently being validated.
         /// </summary>
-        public IMethod CurrentMethod { get; private set; }
+        public IClientServiceRequest CurrentMethod { get; private set; }
 
         /// <summary>
         /// The parameters of the method.
@@ -52,7 +53,7 @@ namespace Google.Apis
         /// </returns>
         public bool ValidateAllParameters()
         {
-            var parameters = CurrentMethod.Parameters;
+            var parameters = CurrentMethod.RequestParameters;
             // Itterate across all the parameters in the discovery document, and check them against supplied arguments.
             foreach (var parameter in parameters)
             {
@@ -93,7 +94,7 @@ namespace Google.Apis
             {
                 return !param.IsRequired;
             }
-        
+
             // The parameter is present, validate the regex.
             bool isValidData = ValidateRegex(param, currentParam) && ValidateEnum(param, currentParam);
             if (isValidData == false)

@@ -69,8 +69,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var constructor = new CodeConstructor();
             constructor.Attributes = MemberAttributes.Public;
 
-            // IRequestProvider service
-            var serviceArg = new CodeParameterDeclarationExpression(typeof(IRequestProvider), ServiceName);
+            // IClientService service
+            var serviceArg = new CodeParameterDeclarationExpression(typeof(IClientService), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
             // : base(service, "path", "HTTPMETHOD")

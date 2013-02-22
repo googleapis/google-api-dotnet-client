@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Util;
@@ -23,7 +24,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Discovery
 {
     /// <summary>
-    /// Abstract implementation of a method
+    /// Abstract implementation of a method.
     /// </summary>
     internal abstract class BaseMethod : ServiceObject, IMethod
     {
@@ -32,10 +33,10 @@ namespace Google.Apis.Discovery
 
         private readonly JsonDictionary information;
 
-        private Dictionary<string, IParameter> parameters;
+        private Dictionary<string, IDiscoveryParameter> parameters;
         private IEnumerable<string> parameterOrder;
 
-        protected JsonDictionary Information { get { return information; }}
+        protected JsonDictionary Information { get { return information; } }
 
         internal BaseMethod(IServiceFactory factory, string name, JsonDictionary dictionary)
             : base(factory)
@@ -59,7 +60,7 @@ namespace Google.Apis.Discovery
 
         public virtual string RestPath
         {
-            get { return information[PathUrl] as string; }
+            get { return information.GetValueAsNull(PathUrl) as string; }
         }
 
         public string RpcName
@@ -105,14 +106,15 @@ namespace Google.Apis.Discovery
             get { return information.GetValueAsNull(ServiceFactory.RequestType) != null; }
         }
 
-        public Dictionary<string, IParameter> Parameters
+        public Dictionary<string, IDiscoveryParameter> Parameters
         {
             get { return parameters ?? (parameters = FetchParameters()); }
         }
 
         public IEnumerable<string> ParameterOrder
         {
-            get {
+            get
+            {
                 return parameterOrder ??
                        (parameterOrder = information.GetValueAsStringListOrEmpty(ServiceFactory.ParameterOrder));
             }
@@ -123,29 +125,29 @@ namespace Google.Apis.Discovery
             get
             {
                 var dict = information.GetValueAsNull(ServiceFactory.MediaUpload) as JsonDictionary;
-                return dict == null ?  null : new MediaUpload(dict);
+                return dict == null ? null : new MediaUpload(dict);
             }
         }
 
         #endregion
 
-        private Dictionary<string, IParameter> FetchParameters()
+        private Dictionary<string, IDiscoveryParameter> FetchParameters()
         {
             if (information.ContainsKey(ServiceFactory.Parameters) == false)
             {
-                return new Dictionary<string, IParameter>(0);
+                return new Dictionary<string, IDiscoveryParameter> { };
             }
 
             JsonDictionary js = information[ServiceFactory.Parameters] as JsonDictionary;
             if (js == null)
             {
-                return new Dictionary<string, IParameter>(0);
+                return new Dictionary<string, IDiscoveryParameter> { };
             }
 
-            var parameters = new Dictionary<string, IParameter>();
+            var parameters = new Dictionary<string, IDiscoveryParameter>();
             foreach (KeyValuePair<string, object> kvp in js)
             {
-                IParameter p = CreateParameter(kvp);
+                IDiscoveryParameter p = CreateParameter(kvp);
                 parameters.Add(kvp.Key, p);
             }
             return parameters;
@@ -157,8 +159,8 @@ namespace Google.Apis.Discovery
     /// </summary>
     internal class MethodV1_0 : BaseMethod
     {
-        public MethodV1_0(IServiceFactory factory, string name, JsonDictionary dictionary) : 
-            base(factory, name, dictionary) {}
+        public MethodV1_0(IServiceFactory factory, string name, JsonDictionary dictionary) :
+            base(factory, name, dictionary) { }
     }
 
     /// <summary>
@@ -173,7 +175,7 @@ namespace Google.Apis.Discovery
 
         public override string RestPath
         {
-            get { return Information[PathUrl] as string; }
+            get { return Information.GetValueAsNull(PathUrl) as string; }
         }
     }
 }

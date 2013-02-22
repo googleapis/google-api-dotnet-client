@@ -67,6 +67,7 @@
     <Compile Include="Decorator\IObjectProvider.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BodyPropertyDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\BaseRequestConstructorDecorator.cs" />
+    <Compile Include="Decorator\ResourceDecorator\RequestDecorator\InitRequestParametersDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\ResumableUploadInheritanceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestDecorator\UploadConstructorDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\RequestMethodResourceDecorator.cs" />
@@ -84,19 +85,19 @@
     <Compile Include="Decorator\SchemaDecorator\ArraySchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\IPropertyDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\ResponseInterfaceDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\InitServiceParametersDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\ScopeEnumDecorator.cs" />
+    <Compile Include="Decorator\ServiceDecorator\BaseClientServiceAbstractPropertiesDecorator.cs" />
     <Compile Include="Generator\RequestClassGenerator.cs" />
     <Compile Include="Generator\SchemaImplementationDetails.cs" />
     <Compile Include="Decorator\ServiceDecorator\EasyConstructServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\IServiceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\ApiKeyServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\VersionInformationServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\CreateRequestMethodServiceDecorator.cs" />
     <Compile Include="Decorator\ServiceDecorator\StandardConstructServiceDecorator.cs" />
     <Compile Include="GeneratorUtils.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardResourceNameResourceDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\StandardServiceFieldResourceDecorator.cs" />
-    <Compile Include="Decorator\ServiceDecorator\StandardServiceFieldServiceDecorator.cs" />
     <Compile Include="Generator\ImplementationDetailsGenerator.cs" />
     <Compile Include="Generator\MethodGeneratorUtils.cs" />
     <Compile Include="GoogleServiceGenerator.cs" />
@@ -115,7 +116,6 @@
     <Compile Include="Decorator\SchemaDecorator\SchemaDecoratorUtil.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassSchemaDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\INestedClassProvider.cs" />
-    <Compile Include="Decorator\ServiceDecorator\JsonSerializationMethods.cs" />
     <Compile Include="Decorator\SchemaDecorator\NewtonSoftPropertyAttributeDecorator.cs" />
     <Compile Include="Decorator\SchemaDecorator\StandardSchemaCommentDecorator.cs" />
     <Compile Include="Decorator\ResourceDecorator\MethodCommentCreator.cs" />
