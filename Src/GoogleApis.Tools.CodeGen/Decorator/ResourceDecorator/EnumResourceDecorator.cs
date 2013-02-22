@@ -19,11 +19,11 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+
 using Google.Apis.Discovery;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using Google.Apis.Testing;
-
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
 {
@@ -43,7 +43,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         {
             foreach (IMethod method in resource.Methods.Values)
             {
-                foreach (IParameter parameter in method.Parameters.Values)
+                foreach (IDiscoveryParameter parameter in method.Parameters.Values)
                 {
                     if (parameter.EnumValues.IsNullOrEmpty())
                     {
@@ -65,9 +65,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             }
         }
 
-        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+        public void DecorateMethodBeforeExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
-        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) {}
+        public void DecorateMethodAfterExecute(IResource resource, IMethod method, CodeMemberMethod codeMember) { }
 
         #endregion
 

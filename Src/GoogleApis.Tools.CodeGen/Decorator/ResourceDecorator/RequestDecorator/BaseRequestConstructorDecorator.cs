@@ -18,6 +18,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -80,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                 return; // Nothing to do here.
             }
 
-            foreach (IParameter parameter in request.GetAllParametersSorted())
+            foreach (IDiscoveryParameter parameter in request.GetAllParametersSorted())
             {
                 if (!addOptional && !parameter.IsRequired)
                 {
@@ -93,7 +94,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                     resourceClass, parameter);
 
                 // Generate valid names for the parameter and the field.
-                IEnumerable<string> usedWords = from IParameter p in request.Parameters.Values select p.Name;
+                IEnumerable<string> usedWords = from p in request.Parameters.Values select p.Name;
                 string parameterName = GeneratorUtils.GetParameterName(parameter, usedWords.Without(parameter.Name));
                 string fieldName = GeneratorUtils.GetFieldName(name, Enumerable.Empty<string>());
 

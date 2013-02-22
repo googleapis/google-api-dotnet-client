@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
+
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
@@ -29,7 +30,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     /// </summary>
     public interface IMethodCommentCreator
     {
-        CodeCommentStatementCollection CreateParameterComment(IParameter parameter, string programaticName);
+        CodeCommentStatementCollection CreateParameterComment(IDiscoveryParameter parameter, string programaticName);
         CodeCommentStatementCollection CreateMethodComment(IMethod method);
     }
 
@@ -40,7 +41,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
     {
         #region IMethodCommentCreator Members
 
-        public CodeCommentStatementCollection CreateParameterComment(IParameter parameter, string programaticName)
+        public CodeCommentStatementCollection CreateParameterComment(IDiscoveryParameter parameter,
+            string programaticName)
         {
             parameter.ThrowIfNull("parameter");
             programaticName.ThrowIfNullOrEmpty("programaticName");
@@ -70,7 +72,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         #endregion
 
         [VisibleForTestOnly]
-        internal string GetParameterMetaData(IParameter param, string programaticName)
+        internal string GetParameterMetaData(IDiscoveryParameter param, string programaticName)
         {
             var strings = new List<string>();
             if (param.Name != programaticName && param.Name.IsNotNullOrEmpty())

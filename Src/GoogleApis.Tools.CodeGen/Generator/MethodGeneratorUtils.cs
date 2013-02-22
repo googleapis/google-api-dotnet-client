@@ -16,8 +16,8 @@ limitations under the License.
 
 using System.Collections.Generic;
 using System.Linq;
+
 using Google.Apis.Discovery;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tools.CodeGen.Generator
 {
@@ -30,33 +30,33 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// Return all required IParemters from the given method.
         /// Sorted by proposed order, and alphabeticly for the remaining parameters.
         /// </summary>
-        public static IEnumerable<IParameter> GetRequiredParameters(this IMethod method)
+        public static IEnumerable<IDiscoveryParameter> GetRequiredParameters(this IMethod method)
         {
             return (from p in method.GetAllParametersSorted() where p.IsRequired select p);
         }
 
 
         /// <summary>
-        /// Return all optional IParameters from the given method.
+        /// Return all optional IDiscoveryParameter from the given method.
         /// Sorted by proposed order, and alphabeticly for the remaining parameters.
         /// </summary>
-        public static IEnumerable<IParameter> GetOptionalParameters(this IMethod method)
+        public static IEnumerable<IDiscoveryParameter> GetOptionalParameters(this IMethod method)
         {
             return (from p in method.GetAllParametersSorted() where !p.IsRequired select p);
         }
 
         /// <summary>
-        /// Return all IParameters from the given method.
+        /// Return all IDiscoveryParameter from the given method.
         /// Sorted by proposed order, then required, then optional, alphabeticly within those groupings.
         /// </summary>
-        public static IEnumerable<IParameter> GetAllParametersSorted(this IMethod method)
+        public static IEnumerable<IDiscoveryParameter> GetAllParametersSorted(this IMethod method)
         {
             if (method.Parameters == null)
             {
                 yield break;
             }
 
-            var remainingParameters = new List<IParameter>(method.Parameters.Values);
+            var remainingParameters = new List<IDiscoveryParameter>(method.Parameters.Values);
 
             // First add all parameters in the suggested order.
             if (method.ParameterOrder != null)
@@ -66,7 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     if (method.Parameters.ContainsKey(parameterName))
                     {
                         // Return the parameter, and remove it from the lit of remaining parameters.
-                        IParameter parameter = method.Parameters[parameterName];
+                        IDiscoveryParameter parameter = method.Parameters[parameterName];
                         remainingParameters.Remove(parameter);
                         yield return parameter;
                     }
@@ -80,7 +80,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
                  orderby parameter.IsRequired descending, parameter.Name
                  select parameter);
 
-            foreach (IParameter parameter in sortedParameters)
+            foreach (IDiscoveryParameter parameter in sortedParameters)
             {
                 yield return parameter;
             }

@@ -16,19 +16,18 @@ limitations under the License.
 
 using System;
 using System.CodeDom;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
-using Google.Apis.Tools.CodeGen.Decorator;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
 using Google.Apis.Util;
-using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-    /// <summary>
-    /// Test the class ResourceBaseGenerator.
-    /// </summary>
+    /// <summary> Test the class ResourceBaseGenerator. </summary>
     [TestFixture]
     public class ResourceBaseGeneratorTest : BaseCodeGeneratorTest
     {
@@ -95,7 +94,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             param.ValueType = "string";
             Assert.AreEqual(typeof(Repeatable<string>), ResourceBaseGenerator.GetParameterType(param));
         }
-        
+
         [Test]
         public void TestGetParameterTypeReference()
         {

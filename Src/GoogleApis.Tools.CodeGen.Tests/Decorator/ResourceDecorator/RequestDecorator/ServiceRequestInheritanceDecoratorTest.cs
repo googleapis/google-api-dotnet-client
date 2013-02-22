@@ -15,24 +15,23 @@ limitations under the License.
 */
 
 using System.CodeDom;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
-using NUnit.Framework;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
-    /// <summary>
-    /// Tests for the ServiceRequestInheritanceDecorator.
-    /// </summary>
+    /// <summary> Tests for the ServiceRequestInheritanceDecorator. </summary>
     [TestFixture]
     public class ServiceRequestInheritanceDecoratorTest
     {
-        /// <summary>
-        /// Tests the constructor of this decorator.
-        /// </summary>
+        /// <summary> Tests the constructor of this decorator. </summary>
         [Test]
         public void ConstructTest()
         {
@@ -40,9 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
                 new DefaultObjectTypeProvider("Schema")));
         }
 
-        /// <summary>
-        /// Confirms that the decorator adds the ServiceRequest inheritance.
-        /// </summary>
+        /// <summary> Confirms that the decorator adds the ServiceRequest inheritance. </summary>
         [Test]
         public void DecorateClassTest()
         {
@@ -56,7 +53,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             // Check for ": ServiceRequest<Schema.MySchema>".
             decorator.DecorateClass(resource, method, decl, resourceDecl);
             Assert.AreEqual(1, decl.BaseTypes.Count);
-            Assert.AreEqual(typeof(ServiceRequest<>).FullName, decl.BaseTypes[0].BaseType);
+            Assert.AreEqual(typeof(ClientServiceRequest<>).FullName, decl.BaseTypes[0].BaseType);
             Assert.AreEqual(1, decl.BaseTypes[0].TypeArguments.Count);
             Assert.AreEqual("Schema.MySchema", decl.BaseTypes[0].TypeArguments[0].BaseType);
         }

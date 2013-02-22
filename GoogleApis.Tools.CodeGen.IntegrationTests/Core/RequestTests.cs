@@ -18,11 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
+
+using NUnit.Framework;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
-using Google.Apis.Tests.Apis.Requests;
-using NUnit.Framework;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
 {
@@ -65,7 +67,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
 
             #endregion
         }
-        
+
         /// <summary>
         /// Tests that the requests will retry execution if a WebException is received and 
         /// that the request will fail after a retry.
@@ -74,16 +76,15 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
         public void TestRetrySystem()
         {
             var request =
-                (Request)
                 Request.CreateRequest(
-                    new MockService(),
-                    new MockMethod
+                    new MockClientService(),
+                    new MockClientServiceRequest
                     {
                         HttpMethod = "GET",
-                        Name = "TestMethod",
+                        MethodName = "TestMethod",
                         // Define an invalid URI which will cause a WebException to be thrown.
                         RestPath = "https://localhost:12345/",
-                        Parameters = new Dictionary<string, IParameter>()
+                        RequestParameters = new Dictionary<string, IParameter>()
                     });
 
             var auth = new MockErrorHandlingAuthenticator();
@@ -107,16 +108,15 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
         public void TestAsyncSystem()
         {
             var request =
-               (Request)
                Request.CreateRequest(
-                   new MockService(),
-                   new MockMethod
+                   new MockClientService(),
+                   new MockClientServiceRequest
                    {
                        HttpMethod = "GET",
-                       Name = "TestMethod",
+                       MethodName = "TestMethod",
                        // Define an invalid URI which will cause a WebException to be thrown.
                        RestPath = "https://localhost:12345/",
-                       Parameters = new Dictionary<string, IParameter>()
+                       RequestParameters = new Dictionary<string, IParameter>()
                    });
 
             AutoResetEvent mainThread = new AutoResetEvent(false);

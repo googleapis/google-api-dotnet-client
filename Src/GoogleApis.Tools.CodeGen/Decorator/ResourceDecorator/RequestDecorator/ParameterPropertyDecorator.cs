@@ -39,7 +39,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration requestClass,
                                   CodeTypeDeclaration resourceClass);
 
-        internal CodeTypeMemberCollection GenerateParameterProperty(IParameter parameter,
+        internal CodeTypeMemberCollection GenerateParameterProperty(IDiscoveryParameter parameter,
                                                                     IMethod method,
                                                                     CodeTypeDeclaration resourceClass,
                                                                     IEnumerable<string> usedNames)
@@ -102,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 
             // Create a list of all used words based upon the existing resource class.
             IList<string> usedWords = new List<string>(GeneratorUtils.GetUsedWordsFromMembers(requestClass.Members));
-            foreach (IParameter parameter in request.Parameters.Values)
+            foreach (IDiscoveryParameter parameter in request.Parameters.Values)
             {
                 // Generate and add the parameter properties.
                 foreach (CodeTypeMember newMember in
@@ -124,12 +124,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
     /// </remarks>
     public class CommonParameterRequestDecorator : ParameterPropertyDecorator
     {
-        public CommonParameterRequestDecorator(IDictionary<string, IParameter> parameters)
+        public CommonParameterRequestDecorator(IDictionary<string, IDiscoveryParameter> parameters)
         {
             this.parameters = parameters;
         }
 
-        private readonly IDictionary<string, IParameter> parameters;
+        private readonly IDictionary<string, IDiscoveryParameter> parameters;
 
         public override void DecorateClass(IResource resource,
                                     IMethod request,
@@ -151,7 +151,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
               .Where(p => !excludeParameters.Contains(p.Key))
               .Select(p => p.Value);
 
-            foreach (IParameter parameter in filteredParams)
+            foreach (IDiscoveryParameter parameter in filteredParams)
             {
                 // Generate and add the parameter properties.
                 foreach (CodeTypeMember newMember in

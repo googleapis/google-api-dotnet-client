@@ -15,14 +15,13 @@ limitations under the License.
 */
 
 using System;
+
 using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Abstract test class for ServiceDecorator tests
-    /// </summary>
+    /// <summary> An abstract test class for ServiceDecorator tests. </summary>
     public abstract class BaseServiceDecoratorTest : BaseCodeGeneratorTest
     {
         protected const string Name = "TestName";

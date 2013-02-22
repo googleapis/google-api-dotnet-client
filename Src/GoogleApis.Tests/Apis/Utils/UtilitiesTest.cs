@@ -50,6 +50,42 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.IsNull(dict.GetValueAsNull(3));
         }
 
+        [Test]
+        public void NullOrEmptyEnumerableTest()
+        {
+            // null enumerable
+            IList<string> obj = null;
+            var result = obj.NullToEmpty();
+            Assert.NotNull(result);
+            Assert.AreEqual(0, result.Count());
+
+            // not null enumerable
+            obj = new List<string>() { "one" };
+            result = obj.NullToEmpty();
+            Assert.NotNull(result);
+            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual("one", result.FirstOrDefault());
+        }
+
+
+        [Test]
+        public void NullOrEmptyDictionaryTest()
+        {
+            // null dictionary
+            IDictionary<string, int> dic = null;
+            var result = dic.NullToEmpty();
+            Assert.NotNull(result);
+            Assert.AreEqual(0, result.Count());
+
+            // not null dictionary
+            var dic2 = new Dictionary<int, string>();
+            dic2[1] = "one";
+            IDictionary<int, string> result2 = dic2.NullToEmpty();
+            Assert.NotNull(result2);
+            Assert.AreEqual(1, result2.Count());
+            Assert.AreEqual("one", result2[1]);
+        }
+
         /// <summary>
         /// Tests the GetvalueAsNull method with primitive types.
         /// </summary>
@@ -318,6 +354,6 @@ namespace Google.Apis.Tests.Apis.Util
             CollectionAssert.AreEqual(new[] { "one", "two..three" }, split(seperators, 2));
             CollectionAssert.AreEqual(new[] { testString }, split(seperators, 1));
         }
-#endif        
+#endif
     }
 }

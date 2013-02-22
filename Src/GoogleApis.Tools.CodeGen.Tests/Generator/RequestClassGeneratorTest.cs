@@ -14,20 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.CodeDom;
 using System.Linq;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
-using NUnit.Framework;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
-    /// <summary>
-    /// Tests for the RequestClass generator.
-    /// </summary>
+    /// <summary> Tests for the RequestClass generator. </summary>
     [TestFixture]
     public class RequestClassGeneratorTest
     {
@@ -65,8 +65,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             // Create a test resource.
             var resource = new MockResource();
-            resource.Methods.Add("MethodA", new MockMethod() { Name = "MethodA"});
-            resource.Methods.Add("MethodB", new MockMethod() { Name = "MethodB"});
+            resource.Methods.Add("MethodA", new MockMethod() { Name = "MethodA" });
+            resource.Methods.Add("MethodB", new MockMethod() { Name = "MethodB" });
 
             // Run the generator
             CodeTypeMemberCollection collection = generator.GenerateRequestClasses(decl, resource);
@@ -81,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
                         string.Format(RequestClassGenerator.RequestClassNamingScheme, "MethodB"),
                     },
                 from CodeTypeMember m in collection select m.Name);
-        } 
+        }
 
         private class MockRequestDecorator : IRequestDecorator
         {
@@ -155,7 +155,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         public void GetProposedNameTest()
         {
             Assert.AreEqual("TestRequest", RequestClassGenerator.GetProposedName(
-                new MockMethod() { Name = "Test"},
+                new MockMethod() { Name = "Test" },
                 RequestClassGenerator.RequestClassNamingScheme));
             Assert.AreEqual("AbcRequest", RequestClassGenerator.GetProposedName(
                 new MockMethod() { Name = "abc" },

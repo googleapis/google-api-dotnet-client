@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Testing;
@@ -25,19 +26,19 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 {
     /// <summary>
     /// Adds the standard constuctor to the service class, 
-    ///     assing genericService and authenticator to local vars
-    ///     and create a Resouce for each resource mentioned in the discovery document.
+    /// Invokes base service constructor with the initializer class and 
+    /// creates a Resouce for each resource mentioned in the discovery document.
     /// e.g.
     ///     <code>
-    ///     public BuzzService(IService genericService, IAuthenticator authenticator) {
-    ///        this.genericService = genericService;
-    ///        this.authenticator = authenticator;
-    ///        this.activities = new Activities(this);
-    ///        this.comments = new Comments(this);
-    ///        this.groups = new Groups(this);
-    ///        this.people = new People(this);
-    ///        this.photos = new Photos(this);
-    ///        this.related = new Related(this);
+    ///     public XXXService(Initializer initializer) : base(initializer) 
+    ///     {
+    ///        this.activities = new Activities(this, Authenticator);
+    ///        this.comments = new Comments(this, Authenticator);
+    ///        this.groups = new Groups(this, Authenticator);
+    ///        this.people = new People(this, Authenticator);
+    ///        this.photos = new Photos(this, Authenticator);
+    ///        this.related = new Related(this, Authenticator);
+    ///        initParameters();
     ///    }
     ///     </code>
     /// </summary>
@@ -50,6 +51,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
             var baseConstructor = CreateConstructorWithArgs();
 
             AddResourceAssignments(service, baseConstructor);
+
+            // generate: initParameters()
+            baseConstructor.Statements.Add(new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), "InitParameters")));
 
             serviceClass.Members.Add(baseConstructor);
         }
@@ -75,47 +80,21 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
 
 
         /// <summary>
-        /// Creates the constructor with two arguments, ISerivce and IAuthenticator.
-        /// Then assignes these to local variables.
+        /// Creates the initializer constructor.
         /// e.g.
         ///     <code>
-        ///         protected BuzzService(IService genericService, IAuthenticator authenticator) {
-        ///             this.genericService = genericService;
-        ///             this.authenticator = authenticator;
+        ///         public XXXService(Initializer initializer)
+        ///           : base(initializer) {}
         ///     </code>
         /// </summary>
         [VisibleForTestOnly]
         internal CodeConstructor CreateConstructorWithArgs()
         {
             var constructor = new CodeConstructor();
-            constructor.Attributes = MemberAttributes.Family;
+            constructor.Attributes = MemberAttributes.Public;
             constructor.Parameters.Add(
-                new CodeParameterDeclarationExpression(typeof(IService), ServiceClassGenerator.GenericServiceName));
-            constructor.Parameters.Add(
-                new CodeParameterDeclarationExpression(typeof(IAuthenticator), ServiceClassGenerator.AuthenticatorName));
-
-            {
-                var assignService = new CodeAssignStatement();
-                // this.genericService = 
-                assignService.Left = new CodeFieldReferenceExpression(
-                    new CodeThisReferenceExpression(), ServiceClassGenerator.GenericServiceName);
-                // generricService
-                assignService.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.GenericServiceName);
-
-                constructor.Statements.Add(assignService);
-            }
-
-            {
-                var assignAuthenticator = new CodeAssignStatement();
-                // this.authenticator = 
-                assignAuthenticator.Left = new CodeFieldReferenceExpression(
-                    new CodeThisReferenceExpression(), ServiceClassGenerator.AuthenticatorName);
-                // authenticator
-                assignAuthenticator.Right = new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName);
-
-                constructor.Statements.Add(assignAuthenticator);
-            }
-
+                new CodeParameterDeclarationExpression(typeof(BaseClientService.Initializer), "initializer"));
+            constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("initializer"));
             return constructor;
         }
 
@@ -131,14 +110,9 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                 new CodeAssignStatement(
                     ServiceClassGenerator.GetFieldReference(resource, otherNames),
                     new CodeObjectCreateExpression(
-                        GeneratorUtils.GetClassName(resource, otherNames), 
+                        GeneratorUtils.GetClassName(resource, otherNames),
                         new CodeThisReferenceExpression(),
-                        new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorName))));
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name;
+                        new CodeVariableReferenceExpression(ServiceClassGenerator.AuthenticatorPropertyName))));
         }
     }
 }

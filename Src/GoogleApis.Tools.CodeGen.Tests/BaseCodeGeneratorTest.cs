@@ -20,9 +20,11 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using log4net;
 using Newtonsoft.Json;
 using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 using JsonReader = Google.Apis.Json.JsonReader;
@@ -4399,7 +4401,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// </summary>
         public static KeyValuePair<string, object> CreateJsonResourceDefinition(string resourceName, string jsonString)
         {
-            var json = (JsonDictionary) JsonReader.Parse(jsonString);
+            var json = (JsonDictionary)JsonReader.Parse(jsonString);
 
             return new KeyValuePair<string, object>(resourceName, json);
         }
@@ -4409,7 +4411,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         /// </summary>
         public static IResource CreateResourceDiscoveryV_1_0(string resourceName, string json)
         {
-            return ServiceFactory.Default.CreateResource(resourceName, (JsonDictionary) JsonReader.Parse(json));
+            return ServiceFactory.Default.CreateResource(resourceName, (JsonDictionary)JsonReader.Parse(json));
         }
 
         protected void AddReferenceToDeclaringAssembly(Type target, CompilerParameters cp)
@@ -4427,17 +4429,59 @@ namespace Google.Apis.Tools.CodeGen.Tests
             cp.ReferencedAssemblies.Add(assemblyPath);
         }
 
+        /// <summary>
+        /// Checks that the <code>codeType</code> compiled correctly
+        /// </summary>
+        /// <param name="codeType">The code type (class) to compile</param>
+        /// <param name="warnAsError">A boolean indicating if a warning will be count as an error</param>
+        /// <param name="errorMessage">The error message</param>
         protected void CheckCompile(CodeTypeDeclaration codeType, bool warnAsError, string errorMessage)
+        {
+            CheckCompile(codeType, warnAsError, errorMessage, null, null);
+        }
+
+        /// <summary>
+        /// Checks that the <code>codeType</code> compiled correctly
+        /// </summary>
+        /// <param name="codeType">The code type (class) to compile</param>
+        /// <param name="warnAsError">A boolean indicating if a warning will be count as an error</param>
+        /// <param name="errorMessage">The error message</param>
+        /// <param name="imports">Additional imports to add to the compile unit</param>
+        /// <param name="types">Additional types to add their assembly to the compiled unit</param>
+        protected void CheckCompile(CodeTypeDeclaration codeType, bool warnAsError, string errorMessage,
+            CodeNamespaceImport[] imports, Type[] types)
         {
             var compileUnit = new CodeCompileUnit();
             var client = new CodeNamespace("Google.Apis.Tools.CodeGen.Tests");
             compileUnit.Namespaces.Add(client);
             client.Types.Add(codeType);
 
-            CheckCompile(compileUnit, warnAsError, errorMessage);
+            if (imports != null)
+                client.Imports.AddRange(imports);
+
+            CheckCompile(compileUnit, warnAsError, errorMessage, types);
         }
 
+        /// <summary>
+        /// Checks that the specified <code>codeCompileUnit</code> compiled correctly
+        /// </summary>
+        /// <param name="codeCompileUnit">The unit to compile</param>
+        /// <param name="warnAsError">A boolean indicating if a warning will be count as an error</param>
+        /// <param name="errorMessage">The error message</param>
         protected void CheckCompile(CodeCompileUnit codeCompileUnit, bool warnAsError, string errorMessage)
+        {
+            CheckCompile(codeCompileUnit, warnAsError, errorMessage, null);
+        }
+
+        /// <summary>
+        /// Checks that the specified <code>codeCompileUnit</code> compiled correctly
+        /// </summary>
+        /// <param name="codeCompileUnit">The unit to compile</param>
+        /// <param name="warnAsError">A boolean indicating if a warning will be count as an error</param>
+        /// <param name="errorMessage">The error message</param>
+        /// <param name="types">Additional types to add their assembly to the compiled unit</param>
+        protected void CheckCompile(CodeCompileUnit codeCompileUnit, bool warnAsError, string errorMessage,
+            Type[] types)
         {
             string language = "CSharp";
             CodeDomProvider provider = CodeDomProvider.CreateProvider(language);
@@ -4447,6 +4491,12 @@ namespace Google.Apis.Tools.CodeGen.Tests
             AddReferenceToDeclaringAssembly(typeof(DiscoveryService), cp);
             AddReferenceToDeclaringAssembly(typeof(ILog), cp);
             AddReferenceToDeclaringAssembly(typeof(JsonSerializer), cp);
+            if (types != null)
+            {
+                foreach (var t in types)
+                    AddReferenceToDeclaringAssembly(t, cp);
+            }
+
 
             cp.GenerateExecutable = false;
             cp.GenerateInMemory = true;

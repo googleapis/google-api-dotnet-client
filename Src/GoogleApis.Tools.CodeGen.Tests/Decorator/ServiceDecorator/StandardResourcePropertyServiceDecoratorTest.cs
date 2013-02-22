@@ -15,15 +15,16 @@ limitations under the License.
 */
 
 using System.CodeDom;
-using NUnit.Framework;
-using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
 using System.Linq;
+
+using NUnit.Framework;
+
+using Google.Apis.Tools.CodeGen.Decorator.ResourceContainerDecorator;
+
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {
-    /// <summary>
-    /// Tests for the StandardResourcePropertyServiceDecorator class
-    /// </summary>
+    /// <summary> Tests for the StandardResourcePropertyServiceDecorator class. </summary>
     [TestFixture]
     public class StandardResourcePropertyServiceDecoratorTest : BaseServiceDecoratorTest
     {
@@ -39,7 +40,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
             CodeMemberField codeField = decorator.CreateResourceField(resource, Enumerable.Empty<string>());
 
             Assert.IsNotNull(codeField);
-            Assert.AreEqual(ResourceName+"Resource", codeField.Type.BaseType);
+            Assert.AreEqual(ResourceName + "Resource", codeField.Type.BaseType);
             Assert.AreEqual("_Test", codeField.Name);
         }
 
@@ -66,6 +67,6 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
         /// todo: Write a test for StandardResourcePropertyServiceDecorator.DecorateClass
         /// </summary>
         [Test]
-        public void TestDecorateClass() {}
+        public void TestDecorateClass() { }
     }
 }

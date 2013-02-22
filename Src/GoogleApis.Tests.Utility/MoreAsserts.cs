@@ -16,13 +16,12 @@ limitations under the License.
 
 using System.Collections;
 using System.Collections.Generic;
+
 using NUnit.Framework;
 
 namespace Google.Apis.Testing
 {
-    /// <summary>
-    /// Assertion helper methods
-    /// </summary>
+    /// <summary> Assertion helper methods </summary>
     public class MoreAsserts
     {
         /// <summary>
@@ -48,9 +47,7 @@ namespace Google.Apis.Testing
             }
         }
 
-        /// <summary>
-        /// Asserts that the list is empty
-        /// </summary>
+        /// <summary> Asserts that the list is empty </summary>
         public static void IsEmpty<T>(IList<T> list)
         {
             if (list == null)
@@ -63,9 +60,7 @@ namespace Google.Apis.Testing
             }
         }
 
-        /// <summary>
-        /// Asserts that the enumerable is empty
-        /// </summary>
+        /// <summary> Asserts that the enumerable is empty </summary>
         public static void IsEmpty<T>(IEnumerable<T> collection)
         {
             if (collection == null)

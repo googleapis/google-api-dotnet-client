@@ -15,8 +15,10 @@ limitations under the License.
 */
 
 using System;
-using Google.Apis.Requests;
+
 using NUnit.Framework;
+
+using Google.Apis.Requests;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -32,7 +34,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void CreateUriTest()
         {
-            Assert.AreEqual(new Uri("http://example.com/").ToString(), 
+            Assert.AreEqual(new Uri("http://example.com/").ToString(),
                             UriFactory.Create("http://example.com/").ToString());
         }
 
@@ -66,7 +68,7 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             const string pathAndQuery = "/te%2Fst/";
             const string testUrl = "http://example.com" + pathAndQuery;
-            
+
             Assert.AreEqual(pathAndQuery, UriFactory.Create(testUrl).PathAndQuery);
         }
     }

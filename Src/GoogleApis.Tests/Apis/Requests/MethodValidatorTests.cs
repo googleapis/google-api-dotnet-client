@@ -15,10 +15,12 @@ limitations under the License.
 */
 
 using System.Collections.Generic;
-using Google.Apis.Requests;
+
 using NUnit.Framework;
+
 using Google.Apis.Discovery;
-using Google.Apis.Json;
+using Google.Apis.Requests;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -34,8 +36,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ConstructorTest()
         {
-            MockMethod m = new MockMethod();
-            m.Name = "Test";
+            MockClientServiceRequest m = new MockClientServiceRequest();
+            m.MethodName = "Test";
 
             Assert.IsInstanceOf<MethodValidator>(new MethodValidator(m, new ParameterCollection()));
         }
@@ -46,14 +48,14 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateRegexEmptyNeedsDataTest()
         {
-            IMethod m = new MockMethod();
-            var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
+            MockClientServiceRequest m = new MockClientServiceRequest();
+            m.RequestParameters = new Dictionary<string, IParameter>();
+            m.RequestParameters["name"] = new MockParameter() { Pattern = ".+", Name = "test" };
 
-            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
 
-            Assert.IsFalse(validator.ValidateRegex(p, ""));
+            Assert.IsFalse(validator.ValidateRegex(m.RequestParameters["name"], ""));
         }
 
         /// <summary>
@@ -62,13 +64,14 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateRegexTest()
         {
-            IMethod m = new MockMethod();
-            var dict = new JsonDictionary { { "name", "test" }, { "pattern", ".+" } };
+            MockClientServiceRequest m = new MockClientServiceRequest();
+            m.RequestParameters = new Dictionary<string, IParameter>();
+            m.RequestParameters["name"] = new MockParameter() { Pattern = ".+", Name = "test" };
 
-            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
-            Assert.IsTrue(validator.ValidateRegex(p, "Test"));
+
+            Assert.IsTrue(validator.ValidateRegex(m.RequestParameters["name"], "Test"));
         }
 
         /// <summary>
@@ -77,13 +80,14 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateEnumNullTest()
         {
-            IMethod m = new MockMethod();
-            var dict = new JsonDictionary { { "name", "test" } };
+            MockClientServiceRequest m = new MockClientServiceRequest();
+            m.RequestParameters = new Dictionary<string, IParameter>();
+            m.RequestParameters["name"] = new MockParameter() { Name = "test" };
 
-            // Create the parameter.
-            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
+
+            var p = m.RequestParameters["name"];
 
             // Confirm that the method validates enumerations correctly.
             Assert.IsTrue(validator.ValidateEnum(p, "one"));
@@ -99,13 +103,18 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateEnumTest()
         {
-            IMethod m = new MockMethod();
-            var dict = new JsonDictionary { { "name", "test" }, { "enum", new[] { "one", "two", "three" } } };
+            MockClientServiceRequest m = new MockClientServiceRequest();
+            m.RequestParameters = new Dictionary<string, IParameter>();
+            m.RequestParameters["name"] = new MockParameter
+                {
+                    Name = "test",
+                    EnumValues = new string[] { "one", "two", "three" }
+                };
 
-            // Create the parameter.
-            var p = ServiceFactory.Default.CreateParameter("test", dict);
             var inputData = new ParameterCollection();
             var validator = new MethodValidator(m, inputData);
+
+            var p = m.RequestParameters["name"];
 
             // Confirm that the method validates enumerations correctly.
             Assert.IsTrue(validator.ValidateEnum(p, "one"));

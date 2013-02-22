@@ -35,11 +35,6 @@ namespace Google.Apis.Tools.CodeGen.Generator
         private readonly string serviceClassName;
 
         /// <summary>
-        /// Name of the IAuthenticator field of the resource class.
-        /// </summary>
-        public const string AuthenticatorName = "_authenticator";
-
-        /// <summary>
         /// Returns the generator used to generate the Resource Container.
         /// </summary>
         public ResourceContainerGenerator ContainerGenerator

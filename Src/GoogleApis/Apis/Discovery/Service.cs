@@ -18,14 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+
+using Newtonsoft.Json;
+
 using Google.Apis.Json;
 using Google.Apis.Logging;
-using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Discovery.Schema;
-using Newtonsoft.Json;
 
 namespace Google.Apis.Discovery
 {
@@ -36,28 +36,12 @@ namespace Google.Apis.Discovery
     /// </summary>
     public abstract class BaseService : ServiceObject, IService
     {
-        /// <summary>
-        /// Name of the method used for serialization (object -> json)
-        /// </summary>
-        public const string SerializationMethodName = "SerializeRequest";
-
-        /// <summary>
-        /// Name of the method used for deserialization (json -> object)
-        /// </summary>
-        public const string DeserializationMethodName = "DeserializeResponse";
-
-        /// <summary>
-        /// Name of the property defining the ISerializer
-        /// </summary>
-        public const string SerializerPropertyName = "Serializer";
-
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseService>();
 
         protected internal readonly JsonDictionary information;
         private IResource rootResource;
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
-        private bool gzipSupport = true;
 
         internal BaseService(IServiceFactory factory, JsonDictionary values, FactoryParameters param)
             : this(factory)
@@ -110,7 +94,7 @@ namespace Google.Apis.Discovery
         public IList<string> Labels { get; private set; }
         public IList<string> Features { get; private set; }
         public IDictionary<string, Scope> Scopes { get; private set; }
-        public IDictionary<string, IParameter> Parameters { get; private set; }
+        public IDictionary<string, IDiscoveryParameter> Parameters { get; private set; }
 
         public string DocumentationLink { get; private set; }
         public string Protocol { get; private set; }
@@ -179,17 +163,6 @@ namespace Google.Apis.Discovery
         }
 
         /// <summary>
-        /// Creates a Request Object based on the HTTP Method Type.
-        /// </summary>
-        public IRequest CreateRequest(string resource, string methodName)
-        {
-            var method = GetResource(this, resource).Methods[methodName];
-            var request = Request.CreateRequest(this, method);
-
-            return request;
-        }
-        
-        /// <summary>
         /// Loads the set of scopes from the json information dictionary and parses it into a dictionary.
         /// Always returns a valid dictionary.
         /// </summary>
@@ -197,7 +170,7 @@ namespace Google.Apis.Discovery
         internal IDictionary<string, Scope> LoadScopes()
         {
             Dictionary<string, Scope> scopes = new Dictionary<string, Scope>();
-            
+
             // Access the "auth" node.
             var authObj = information.GetValueAsNull("auth") as JsonDictionary;
             if (authObj == null)
@@ -220,7 +193,7 @@ namespace Google.Apis.Discovery
             }
 
             // Iterate through all scopes.
-            foreach (KeyValuePair<string,object> pair in scopesObj)
+            foreach (KeyValuePair<string, object> pair in scopesObj)
             {
                 // Create a new scope object.
                 var scope = new Scope();
@@ -235,7 +208,7 @@ namespace Google.Apis.Discovery
                 // Add it to the scopes dictionary.
                 scopes.Add(scope.ID, scope);
             }
-            
+
             return scopes;
         }
 
@@ -244,174 +217,12 @@ namespace Google.Apis.Discovery
         /// Always returns a valid dictionary.
         /// </summary>
         [VisibleForTestOnly]
-        internal IDictionary<string, IParameter> LoadParameters()
+        internal IDictionary<string, IDiscoveryParameter> LoadParameters()
         {
-          // Access the "parameters" node for service-wide parameters.
-          var paramsObj = information.GetValueAsNull("parameters") as JsonDictionary;
-          if (paramsObj != null)
-          {
+            // Access the "parameters" node for service-wide parameters.
+            var paramsObj = information.GetValue("parameters", () => new JsonDictionary());
             return paramsObj.Select(p => CreateParameter(p))
-              .ToDictionary(p => p.Name);
-          }
-          else
-          {
-            return new Dictionary<string, IParameter>();
-          }
-        }
-
-
-        /// <summary>
-        /// Retrieves a resource using the full resource name.
-        /// Example:
-        ///     TopResource.SubResource will retrieve the SubResource which can be found under the TopResource.
-        /// </summary>
-        [VisibleForTestOnly]
-        internal static IResource GetResource(IResource root, string fullResourceName)
-        {
-            fullResourceName.ThrowIfNull("fullResourceName");
-            if (string.IsNullOrEmpty(fullResourceName))
-            {
-                return root;
-            }
-
-            string[] split = fullResourceName.Split(new[] { '.' });
-            string topResourceName = split[0];
-            IResource topResource = root.Resources[topResourceName];
-
-            if (split.Length <= 1)
-            {
-                // This is the resource we are looking for.
-                return topResource;
-            }
-            
-            // Retrieve the top resource, and re-run this method on it.
-            string fullSubresourceName = String.Join(".", split, 1, split.Length - 1);
-            return GetResource(topResource, fullSubresourceName);
-        }
-
-        public string SerializeRequest(object obj)
-        {
-            if (HasFeature(Discovery.Features.LegacyDataResponse))
-            {
-                // Legacy path
-                var request = new StandardResponse<object> { Data = obj };
-                return Serializer.Serialize(request);
-            }
-
-            // New v1.0 path
-            return Serializer.Serialize(obj);
-        }
-
-        /// <summary>
-        /// Deserializes an error response into a <see cref="RequestError"/> object
-        /// </summary>
-        /// <exception cref="GoogleApiException">If no error is found in the response.</exception>
-        /// <param name="input"><see cref="IResponse"/> containing an error.</param>
-        /// <returns>The <see cref="RequestError"/> object deserialized from the stream.</returns>
-        public RequestError DeserializeError(IResponse input)
-        {
-            Serializer.ThrowIfNull("Serializer");
-            input.ThrowIfNull("input");
-            input.Stream.ThrowIfNull("input.Stream");
-
-            // Read in the entire content.
-            var response = Serializer.Deserialize<StandardResponse<object>>(input.ReadToEnd());
-            if (response.Error == null)
-            {
-                throw new GoogleApiException(this, 
-                    "An Error occured, but the error response could not be deserialized.");
-            }
-
-            return response.Error;
-        }
-
-        public T DeserializeResponse<T>(IResponse input)
-        {
-            input.ThrowIfNull("input");
-            input.Stream.ThrowIfNull("input.Stream");
-            Serializer.ThrowIfNull("Serializer");
-
-            // Read in the entire content.
-            string text = input.ReadToEnd();
-
-            // If a string is request, don't parse the response.
-            if (typeof(T).Equals(typeof(string)))
-            {
-                return (T) (object) text;
-            }
-
-            // Check if there was an error returned. The error node is returned in both paths
-            // Deserialize the stream based upon the format of the stream.
-            if (HasFeature(Discovery.Features.LegacyDataResponse))
-            {
-                // Legacy path (deprecated!)
-                StandardResponse<T> response;
-                try
-                {
-                    response = Serializer.Deserialize<StandardResponse<T>>(text);
-                }
-                catch(JsonReaderException ex)
-                {
-                    throw new GoogleApiException(this, "Failed to parse response from server as json ["+text+"]", ex);
-                }
-
-                if (response.Error != null)
-                {
-                    throw new GoogleApiException(this, "Server error - " + response.Error);
-                }
-            
-                if (response.Data == null)
-                {
-                    throw new GoogleApiException(this, "The response could not be deserialized.");
-                }
-
-                return response.Data;
-            }
-
-            // New path: Deserialize the object directly.
-            T result = default(T);
-            try
-            {
-                result = Serializer.Deserialize<T>(text);
-            }
-            catch (JsonReaderException ex)
-            {
-                throw new GoogleApiException(this, "Failed to parse response from server as json [" + text + "]", ex);
-            }
-
-            // If this schema/object provides an error container, check it.
-            if (result is IDirectResponseSchema)
-            {
-                var response = (IDirectResponseSchema) result;
-
-                // Set the e-tag.
-                response.ETag = input.ETag;
-            }
-
-            return result;
-        }
-
-        public bool HasFeature(Features feature)
-        {
-            return Features.Contains(feature.GetStringValue());
-        }
-
-        public bool GZipEnabled
-        {
-            get
-            {
-#if SILVERLIGHT
-                return false;
-#endif
-                return gzipSupport;
-            }
-            set
-            {
-#if SILVERLIGHT
-                throw new NotImplementedException("GZip Support is not yet available on Silverlight.");
-#endif
-                gzipSupport = value;
-            }
+                  .ToDictionary(p => p.Name);
         }
 
         #endregion

@@ -16,18 +16,18 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Linq;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Requests;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
-using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
-    /// <summary>
-    /// Tests for the BodyPropertyDecorator.
-    /// </summary>
+    /// <summary> Tests for the BodyPropertyDecorator. </summary>
     [TestFixture]
     public class BodyPropertyDecoratorTest
     {
@@ -105,7 +105,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var method = new MockMethod() { Name = "Test", RequestType = "SomeSchema", HasBody = true };
             CodeMemberMethod newMethod = decorator.GenerateGetBodyOverride(method);
 
-            Assert.AreEqual(ServiceRequest<object>.GetBodyMethodName, newMethod.Name);
+            Assert.AreEqual(ClientServiceRequest<object>.GetBodyMethodName, newMethod.Name);
             Assert.AreEqual(MemberAttributes.Override | MemberAttributes.Family, newMethod.Attributes);
             Assert.AreEqual(0, newMethod.Parameters.Count);
             Assert.AreEqual(typeof(object).FullName, newMethod.ReturnType.BaseType);

@@ -30,25 +30,42 @@ using Google.Apis.Util;
 namespace Google.Apis.Tests.Apis.Requests
 {
     /// <summary>
-    /// Tests for the ServiceRequest class.
+    /// Tests for the ClientServiceRequest class.
     /// </summary>
     [TestFixture]
-    public class ServiceRequestTest
+    public class ClientServiceRequestTest
     {
         /// <summary>
-        /// Mock implementation of a IRequestProvider.
+        /// Mock implementation of a BaseClientService.
         /// </summary>
-        private class MockRequestProvider : IRequestProvider
+        private class MockClientService : BaseClientService
         {
+            public MockClientService()
+                : base(new Initializer())
+            {
+            }
+
             public bool CreateSuspendedRequests { get; set; }
             public MockRequest LastRequest { get; private set; }
-            public string BaseUri { get; set; }
-            public Google.Apis.Authentication.IAuthenticator Authenticator { get; set; }
+            public override string BaseUri { get { return "BaseUri"; } }
 
-            public virtual IRequest CreateRequest(string resource, string method)
+            public override IList<string> Features
             {
-                Assert.AreEqual("Resource", resource);
-                Assert.AreEqual("Method", method);
+                get { throw new NotImplementedException(); }
+            }
+
+            public override string Name
+            {
+                get { return "Test MockClientService"; }
+            }
+
+            public override IDictionary<string, IParameter> ServiceParameters
+            {
+                get { throw new NotImplementedException(); }
+            }
+
+            public override IRequest CreateRequest(IClientServiceRequest request)
+            {
                 LastRequest = new MockRequest
                                   {
                                       StreamToReturn = new MemoryStream(),
@@ -58,31 +75,46 @@ namespace Google.Apis.Tests.Apis.Requests
 
             }
 
-            public string SerializeObject(object data)
+            public override string SerializeObject(object data)
             {
                 // Return a random string. The result won't matter/won't be checked, but we don't want the
                 // code to throw an exception here.
                 return "Not implemented";
             }
 
-            public T DeserializeResponse<T>(IResponse response)
+            public override T DeserializeResponse<T>(IResponse response)
             {
                 return (T)Convert.ChangeType("FooBar", typeof(T));
             }
+
+            public override RequestError DeserializeError(IResponse input)
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        private class MockServiceRequest<T> : ServiceRequest<T>
+        private class MockServiceRequest<T> : ClientServiceRequest<T>
         {
-            public MockServiceRequest(IRequestProvider service) : base(service) { }
+            public MockServiceRequest(IClientService service) : base(service) { }
 
-            protected override string ResourcePath
+            public override string ResourcePath
             {
                 get { return "Resource"; }
             }
 
-            protected override string MethodName
+            public override string MethodName
             {
                 get { return "Method"; }
+            }
+
+            public override string HttpMethod
+            {
+                get { return "HttpMethod"; }
+            }
+
+            public override string RestPath
+            {
+                get { return "RestPath"; }
             }
 
             [RequestParameter("testparametera", RequestParameterType.Path)]
@@ -110,7 +142,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ConstructTest()
         {
-            Assert.DoesNotThrow(() => new MockServiceRequest<string>(new MockRequestProvider()));
+            Assert.DoesNotThrow(() => new MockServiceRequest<string>(new MockClientService()));
         }
 
         /// <summary>
@@ -119,7 +151,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void CreateParameterDictionaryTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
             request.TestParameterA = 42;
             request.TestParameterB = 43;
             request.TestParameterC = 44;
@@ -136,7 +168,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FetchAsStreamTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.IsNotNull(request.FetchAsStream());
@@ -148,7 +180,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FetchAsyncAsStreamTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             var wait = new AutoResetEvent(false);
@@ -170,7 +202,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FetchAsyncTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             var wait = new AutoResetEvent(false);
@@ -192,7 +224,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FetchTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             Assert.AreEqual("FooBar", request.Fetch());
@@ -204,7 +236,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ETagTest()
         {
-            var request = new MockServiceRequest<string>(new MockRequestProvider());
+            var request = new MockServiceRequest<string>(new MockClientService());
             request.ETag = "FooBar";
             request.ETagAction = ETagAction.IfMatch;
 
@@ -223,7 +255,7 @@ namespace Google.Apis.Tests.Apis.Requests
             var mockBody = new Mock<IDirectResponseSchema>();
             mockBody.Setup(b => b.ETag).Returns("FooBar");
 
-            var request = new MockServiceRequest<IDirectResponseSchema>(new MockRequestProvider());
+            var request = new MockServiceRequest<IDirectResponseSchema>(new MockClientService());
             request.ETagAction = ETagAction.IfMatch;
             request.Body = mockBody.Object;
 
@@ -242,8 +274,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void BeginEndFetchInternalTest()
         {
-            var requestProvider = new MockRequestProvider { CreateSuspendedRequests = true };
-            var request = new MockServiceRequest<string>(requestProvider);
+            var clientService = new MockClientService { CreateSuspendedRequests = true };
+            var request = new MockServiceRequest<string>(clientService);
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             string result = null;
@@ -257,7 +289,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.IsNull(async.AsyncState);
 
             // Let the async operation continue.
-            requestProvider.LastRequest.SuspendAsyncRequest = false;
+            clientService.LastRequest.SuspendAsyncRequest = false;
             if (!async.AsyncWaitHandle.WaitOne(5000))
             {
                 Assert.Fail("Async Operation seems to be stuck.");
@@ -276,8 +308,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void BeginEndFetchInternalSynchronousTest()
         {
-            var requestProvider = new MockRequestProvider { CreateSuspendedRequests = true };
-            var request = new MockServiceRequest<string>(requestProvider);
+            var clientService = new MockClientService { CreateSuspendedRequests = true };
+            var request = new MockServiceRequest<string>(clientService);
 
             // Request validation is done in the MockSchemaAwareRequestExecutor.
             IAsyncResult async = request.BeginFetchInternal(null, null, r => request.FetchObject(r.GetResponse()));
@@ -289,7 +321,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.IsNull(async.AsyncState);
 
             // Let the async operation continue.
-            requestProvider.LastRequest.SuspendAsyncRequest = false;
+            clientService.LastRequest.SuspendAsyncRequest = false;
             Assert.AreEqual("FooBar", request.EndFetchInternal(async));
 
             // Check the result.
@@ -303,8 +335,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void BeginEndFetchTest()
         {
-            var requestProvider = new MockRequestProvider { CreateSuspendedRequests = true };
-            var request = new MockServiceRequest<string>(requestProvider);
+            var clientService = new MockClientService { CreateSuspendedRequests = true };
+            var request = new MockServiceRequest<string>(clientService);
 
             string result = null;
             IAsyncResult async = request.BeginFetch(cb => result = request.EndFetch(cb), null);
@@ -312,7 +344,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // Check the result.
             Assert.IsFalse(async.AsyncWaitHandle.WaitOne(30));
             Assert.IsFalse(async.IsCompleted);
-            requestProvider.LastRequest.SuspendAsyncRequest = false;
+            clientService.LastRequest.SuspendAsyncRequest = false;
             if (!async.AsyncWaitHandle.WaitOne(5000))
             {
                 Assert.Fail("Asynchronous Fetch operation seems to be stuck.");
@@ -326,8 +358,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void BeginEndFetchAsStreamTest()
         {
-            var requestProvider = new MockRequestProvider { CreateSuspendedRequests = true };
-            var request = new MockServiceRequest<string>(requestProvider);
+            var clientService = new MockClientService { CreateSuspendedRequests = true };
+            var request = new MockServiceRequest<string>(clientService);
 
             Stream result = null;
             IAsyncResult async = request.BeginFetchAsStream(cb => result = request.EndFetchAsStream(cb), null);
@@ -335,7 +367,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // Check the result.
             Assert.IsFalse(async.AsyncWaitHandle.WaitOne(30));
             Assert.IsFalse(async.IsCompleted);
-            requestProvider.LastRequest.SuspendAsyncRequest = false;
+            clientService.LastRequest.SuspendAsyncRequest = false;
             if (!async.AsyncWaitHandle.WaitOne(5000))
             {
                 Assert.Fail("Asynchronous Fetch operation seems to be stuck.");

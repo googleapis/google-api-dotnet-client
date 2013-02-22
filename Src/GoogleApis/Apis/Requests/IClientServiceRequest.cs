@@ -14,8 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+
+using Google.Apis.Discovery;
 using Google.Apis.Util;
 
 namespace Google.Apis.Requests
@@ -26,8 +29,23 @@ namespace Google.Apis.Requests
     /// <remarks>
     /// Should execute the request (specified by the instance of this class) once a "Fetch" method is called.
     /// </remarks>
-    interface IServiceRequest
+    public interface IClientServiceRequest
     {
+        /// <summary>
+        /// The name of the method to which this request belongs.
+        /// </summary>
+        string MethodName { get; }
+
+        /// <summary>
+        /// The rest path of this request.
+        /// </summary>
+        string RestPath { get; }
+
+        /// <summary>
+        /// The http method of this request.
+        /// </summary>
+        string HttpMethod { get; }
+
         /// <summary>
         /// Executes the request synchronously and returns the unparsed response stream.
         /// </summary>
@@ -38,6 +56,11 @@ namespace Google.Apis.Requests
         /// and optionally calls the specified method once finished.
         /// </summary>
         void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall);
+
+        /// <summary>
+        /// The parameters information for this specific request
+        /// </summary>
+        IDictionary<string, IParameter> RequestParameters { get; }
     }
 
     /// <summary>
@@ -47,7 +70,7 @@ namespace Google.Apis.Requests
     /// Should execute the request (specified by the instance of this class) once a "Fetch" method is called.
     /// </remarks>
     /// <typeparam name="TResponse">Type of the response returned when executing this request.</typeparam>
-    interface IServiceRequest<TResponse> : IServiceRequest
+    interface IClientServiceRequest<TResponse> : IClientServiceRequest
     {
         /// <summary>
         /// Executes the request synchronously and returns the result.

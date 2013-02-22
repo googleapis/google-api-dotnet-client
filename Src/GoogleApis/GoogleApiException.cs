@@ -15,9 +15,8 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
 using System.Net;
-using Google.Apis.Discovery;
+
 using Google.Apis.Requests;
 using Google.Apis.Util;
 
@@ -28,29 +27,22 @@ namespace Google
     /// </summary>
     public class GoogleApiException : Exception
     {
-        private readonly IService service;
+        private readonly string serivceName;
 
         /// <summary>
         /// Creates an API Service exception.
         /// </summary>
-        public GoogleApiException(IService service, string message, Exception inner) : base(message, inner)
+        public GoogleApiException(string serviceName, string message, Exception inner)
+            : base(message, inner)
         {
-            service.ThrowIfNull("service");
-            this.service = service;
+            serviceName.ThrowIfNull("serviceName");
+            this.serivceName = serviceName;
         }
 
         /// <summary>
         /// Creates an API Service exception
         /// </summary>
-        public GoogleApiException(IService service, string message) : this(service, message, null) {}
-
-        /// <summary>
-        /// The service that has thrown the exception.
-        /// </summary>
-        public IService Service
-        {
-            get { return service; }
-        }
+        public GoogleApiException(string serviceName, string message) : this(serviceName, message, null) { }
 
         /// <summary>
         /// The http status code which was returned along with this error,
@@ -60,7 +52,7 @@ namespace Google
 
         public override string ToString()
         {
-            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), Service.Name);
+            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), serivceName);
         }
     }
 
@@ -72,8 +64,8 @@ namespace Google
         /// <summary>
         /// Creates an API Request Exception.
         /// </summary>
-        public GoogleApiRequestException(IService service, IRequest request, RequestError error, Exception inner)
-            : base(service, PickMessage(error, inner), inner)
+        public GoogleApiRequestException(string serviceName, IRequest request, RequestError error, Exception inner)
+            : base(serviceName, PickMessage(error, inner), inner)
         {
             Request = request;
             RequestError = error;
@@ -82,8 +74,8 @@ namespace Google
         /// <summary>
         /// Creates an API Request Exception.
         /// </summary>
-        public GoogleApiRequestException(IService service, IRequest request, RequestError error)
-            : base(service, PickMessage(error, null))
+        public GoogleApiRequestException(string serviceName, IRequest request, RequestError error)
+            : base(serviceName, PickMessage(error, null))
         {
             Request = request;
             RequestError = error;

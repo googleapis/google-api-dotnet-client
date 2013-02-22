@@ -18,18 +18,16 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
-    /// <summary>Represents a parameter for a method. </summary>
+    /// <summary>
+    /// Represents a parameter for a method. 
+    /// This interface is used by both Discovery and Runtime compoenents.
+    /// </summary>
     public interface IParameter
     {
         /// <summary>
         /// Name of the parameter.
         /// </summary>
         string Name { get; }
-
-        /// <summary>
-        /// The type of the parameter.
-        /// </summary>
-        string ParameterType { get; }
 
         /// <summary>
         /// The pattern in which this parameter has to be defined.
@@ -42,14 +40,31 @@ namespace Google.Apis.Discovery
         bool IsRequired { get; }
 
         /// <summary>
-        /// Defines whether this parameter can be repeated multiple times.
-        /// </summary>
-        bool IsRepeatable { get; }
-
-        /// <summary>
         /// The default value of this parameter.
         /// </summary>
         string DefaultValue { get; }
+
+        /// <summary>
+        /// A list of valid enum values. (Only for enum values)
+        /// </summary>
+        IEnumerable<string> EnumValues { get; }
+
+        /// <summary>
+        /// The type of the parameter.
+        /// </summary>
+        string ParameterType { get; }
+    }
+
+    /// <summary>
+    /// Represents a parameter for a method and includes all the meta data of a parameter, including properties
+    /// which the runtime component doesn't need to be aware of (e.g. Description).
+    /// </summary>
+    public interface IDiscoveryParameter : IParameter
+    {
+        /// <summary>
+        /// Defines whether this parameter can be repeated multiple times.
+        /// </summary>
+        bool IsRepeatable { get; }
 
         /// <summary>
         /// The type of the value.
@@ -70,11 +85,6 @@ namespace Google.Apis.Discovery
         /// The minimum valid value. (Only for numeric values)
         /// </summary>
         string Minimum { get; }
-
-        /// <summary>
-        /// A list of valid enum values. (Only for enum values)
-        /// </summary>
-        IEnumerable<string> EnumValues { get; }
 
         /// <summary>
         /// A list of valid enum value descriptions. (Only for enum values)

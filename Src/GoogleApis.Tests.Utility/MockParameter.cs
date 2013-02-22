@@ -17,12 +17,10 @@ limitations under the License.
 using System.Collections.Generic;
 using Google.Apis.Discovery;
 
-namespace Google.Apis.Tests.Apis.Requests
+namespace Google.Apis.Testing
 {
-    /// <summary>
-    /// Mock class for testing purposes
-    /// </summary>
-    public class MockParameter : IParameter
+    /// <summary> A mock class for testing purposes </summary>
+    public class MockParameter : IDiscoveryParameter
     {
         #region IParameter Members
 

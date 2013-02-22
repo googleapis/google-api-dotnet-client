@@ -17,17 +17,17 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.CodeDom;
+
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
+
 using Google.Apis.Tools.CodeGen.Decorator.SchemaDecorator;
-using Google.Apis.Tests.Apis.Requests;
 using Google.Apis.Tools.CodeGen.Tests.Generator;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-    /// <summary>
-    /// Tests for the GoogleSchemaGenerator class
-    /// </summary>
+    /// <summary> Tests for the GoogleSchemaGenerator class. </summary>
     [TestFixture]
     public class GoogleSchemaGeneratorTest
     {

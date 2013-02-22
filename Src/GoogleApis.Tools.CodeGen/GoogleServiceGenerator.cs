@@ -19,6 +19,7 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Testing;
@@ -86,6 +87,7 @@ namespace Google.Apis.Tools.CodeGen
                             new BodyPropertyDecorator(typeProvider),
                             new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
                             new ServiceRequestFieldDecorator(),
+                            new InitRequestParametersDecorator(),
                         }).AsReadOnly();
         }
 
@@ -110,14 +112,13 @@ namespace Google.Apis.Tools.CodeGen
         public static readonly IList<IServiceDecorator> SchemaAwareServiceDecorators =
             (new List<IServiceDecorator>
                  {
-                     new StandardServiceFieldServiceDecorator(),
                      new StandardConstructServiceDecorator(),
                      new EasyConstructServiceDecorator(),
                      new VersionInformationServiceDecorator(),
                      new CreateRequestMethodServiceDecorator(),
-                     new JsonSerializationMethods(),
-                     new ApiKeyServiceDecorator(),
+                     new BaseClientServiceAbstractPropertiesDecorator(),
                      new ScopeEnumDecorator(),
+                     new InitServiceParametersDecorator(),
                  }).AsReadOnly();
 
         /// <summary>
@@ -165,9 +166,12 @@ namespace Google.Apis.Tools.CodeGen
         /// </summary>
         public GoogleServiceGenerator(IService service, string clientNamespace)
             : this(
-                service, clientNamespace, GetSchemaAwareResourceDecorators(DataNamespace(clientNamespace)),
-                SchemaAwareServiceDecorators, StandardResourceContainerDecorator,
-                new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, DataNamespace(clientNamespace))) {}
+            service,
+            clientNamespace,
+            GetSchemaAwareResourceDecorators(DataNamespace(clientNamespace)),
+            SchemaAwareServiceDecorators, StandardResourceContainerDecorator,
+            new GoogleSchemaGenerator(GoogleSchemaGenerator.DefaultSchemaDecorators, DataNamespace(clientNamespace)))
+        { }
 
         /// <summary>
         /// Returns a list of all schema aware resource decorators
@@ -282,7 +286,7 @@ namespace Google.Apis.Tools.CodeGen
 
             var compileUnit = new CodeCompileUnit();
 
-            
+
 
             var schemaCode = GenerateSchemaCode();
             if (schemaCode != null)

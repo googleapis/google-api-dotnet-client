@@ -15,24 +15,22 @@ limitations under the License.
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
+using Newtonsoft.Json;
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using Newtonsoft.Json;
-using NUnit.Framework;
-using System.Linq;
 
 namespace Google.Apis.Tests.Apis.Discovery
 {
-    /// <summary>
-    /// Test for the "BaseService" class.
-    /// </summary>
+    /// <summary> Test for the "BaseService" class. </summary>
     [TestFixture]
     public class BaseServiceTest
     {
@@ -41,7 +39,7 @@ namespace Google.Apis.Tests.Apis.Discovery
             public ConcreteClass(JsonDictionary js)
                 : base(ServiceFactory.Default, js, new ConcreteFactoryParameters()) { }
 
-            public new string ServerUrl 
+            public new string ServerUrl
             {
                 get { return base.ServerUrl; }
                 set { base.ServerUrl = value; }
@@ -50,50 +48,23 @@ namespace Google.Apis.Tests.Apis.Discovery
             {
                 get { return base.BasePath; }
                 set { base.BasePath = value; }
-            } 
+            }
 
             #region Nested type: ConcreteFactoryParameters
 
             private class ConcreteFactoryParameters : FactoryParameters
             {
-                public ConcreteFactoryParameters() : base("http://test/", "testService/") {}
+                public ConcreteFactoryParameters() : base("http://test/", "testService/") { }
             }
 
             #endregion
         }
 
-        /// <summary>
-        /// A Json schema for testing serialization/deserialization.
-        /// </summary>
-        internal class MockJsonSchema : IDirectResponseSchema
-        {
-            [JsonProperty("kind")]
-            public string Kind { get; set; }
-
-            [JsonProperty("longUrl")]
-            public string LongURL { get; set; }
-
-            [JsonProperty("status")]
-            public string Status { get; set; }
-
-            public RequestError Error { get; set; }
-
-            public string ETag { get; set; }
-        }
-
         #region Test Helper methods
-
-        private void CheckDeserializationResults(MockJsonSchema result)
-        {
-            Assert.NotNull(result);
-            Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
-            Assert.That(result.LongURL, Is.EqualTo("http://google.com/"));
-            Assert.That(result.Status, Is.Null);
-        }
 
         private IService CreateService(DiscoveryVersion version)
         {
-          return version == DiscoveryVersion.Version_0_3 ? CreateLegacyV03Service() : CreateV1Service();
+            return version == DiscoveryVersion.Version_0_3 ? CreateLegacyV03Service() : CreateV1Service();
         }
 
         private IService CreateV1Service()
@@ -116,123 +87,6 @@ namespace Google.Apis.Tests.Apis.Discovery
         #endregion
 
         /// <summary>
-        /// This tests the v0.3 Deserialization of the BaseService.
-        /// </summary>
-        [Test]
-        public void TestDeserializationV0_3()
-        {
-            const string ResponseV0_3 =
-                @"{ ""data"" : 
-                     {
-                        ""kind"": ""urlshortener#url"",
-                        ""longUrl"": ""http://google.com/"",
-                     } 
-                  }";
-
-            IService impl = CreateLegacyV03Service();
-
-            // Check that the default serializer is set.
-            Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
-
-            // Check that the response is decoded correctly.
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
-            var response = new MockResponse() { Stream = stream };
-            CheckDeserializationResults(impl.DeserializeResponse<MockJsonSchema>(response));
-        }
-
-        /// <summary>
-        /// This tests the v1 Deserialization of the BaseService.
-        /// </summary>
-        [Test]
-        public void TestDeserializationV1()
-        {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
-
-            IService impl = CreateV1Service();
-
-            // Check that the default serializer is set
-            Assert.IsInstanceOf<NewtonsoftJsonSerializer>(impl.Serializer);
-
-            // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            CheckDeserializationResults(
-                impl.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream }));
-        }
-
-        /// <summary>
-        /// Confirms that the serializer won't do anything if a string is the requested response type.
-        /// </summary>
-        [Test]
-        public void TestDeserializationString()
-        {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
-
-            IService impl = CreateV1Service();
-
-            // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            string result = impl.DeserializeResponse<string>(new MockResponse() { Stream = stream });
-            Assert.AreEqual(ResponseV1, result);
-        }
-
-        /// <summary>
-        /// Tests the deserialization for server error responses.
-        /// </summary>
-        [Test]
-        public void TestErrorDeserialization(
-          [Values(DiscoveryVersion.Version_0_3, DiscoveryVersion.Version_1_0)] DiscoveryVersion version)
-        {
-            const string ErrorResponse =
-                @"{
-                    ""error"": {
-                        ""errors"": [
-                            {
-                                ""domain"": ""global"",
-                                ""reason"": ""required"",
-                                ""message"": ""Required"",
-                                ""locationType"": ""parameter"",
-                                ""location"": ""resource.longUrl""
-                            }
-                        ],
-                        ""code"": 400,
-                        ""message"": ""Required""
-                    }
-                }";
-
-            IService impl = CreateService(version);
-
-            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
-            {
-                RequestError error = impl.DeserializeError(new MockResponse() { Stream = stream });
-                Assert.AreEqual(400, error.Code);
-                Assert.AreEqual("Required", error.Message);
-                Assert.AreEqual(1, error.Errors.Count);
-            }
-        }
-
-        /// <summary>
-        /// This tests the "Features" extension of services.
-        /// </summary>
-        [Test]
-        public void TestFeaturesV1()
-        {
-            IService impl = CreateV1Service();
-            Assert.NotNull(impl.Features);
-            Assert.IsFalse(impl.HasFeature(Features.LegacyDataResponse));
-        }
-
-        /// <summary>
-        /// This test is designed to test the "Features" extension of services.
-        /// </summary>
-        [Test]
-        public void TestFeaturesV03()
-        {
-            IService impl = CreateLegacyV03Service();
-            Assert.NotNull(impl.Features);
-            Assert.IsTrue(impl.HasFeature(Features.LegacyDataResponse));
-        }
-
-        /// <summary>
         /// This test confirms that the BaseService will not crash on non-existent, optional fields
         /// within the JSON document.
         /// </summary>
@@ -251,45 +105,6 @@ namespace Google.Apis.Tests.Apis.Discovery
         }
 
         /// <summary>
-        /// Tests if serialization works.
-        /// </summary>
-        [Test]
-        public void TestSerializationV0_3()
-        {
-            const string ResponseV0_3 =
-                "{\"data\":{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}}";
-
-            MockJsonSchema schema = new MockJsonSchema();
-            schema.Kind = "urlshortener#url";
-            schema.LongURL = "http://google.com/";
-
-            IService impl = CreateLegacyV03Service();
-
-            // Check if a response is serialized correctly
-            string result = impl.SerializeRequest(schema);
-            Assert.AreEqual(ResponseV0_3, result);
-        }
-
-        /// <summary>
-        /// Tests if serialization works.
-        /// </summary>
-        [Test]
-        public void TestSerializationV1()
-        {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
-
-            MockJsonSchema schema = new MockJsonSchema();
-            schema.Kind = "urlshortener#url";
-            schema.LongURL = "http://google.com/";
-
-            IService impl = CreateV1Service();
-
-            // Check if a response is serialized correctly
-            string result = impl.SerializeRequest(schema);
-            Assert.AreEqual(ResponseV1, result);
-        }
-
-        /// <summary>
         /// The test targets the more basic properties of the BaseService.
         /// It should ensure that all properties return the values assigned to them within the JSON document.
         /// </summary>
@@ -301,8 +116,8 @@ namespace Google.Apis.Tests.Apis.Discovery
             dict.Add("version", "v1");
             dict.Add("description", "Test Description");
             dict.Add("documentationLink", "https://www.google.com/");
-            dict.Add("features", new List<object>{ "feature1", "feature2" });
-            dict.Add("labels", new List<object>{ "label1", "label2" });
+            dict.Add("features", new List<object> { "feature1", "feature2" });
+            dict.Add("labels", new List<object> { "label1", "label2" });
             dict.Add("id", "TestId");
             dict.Add("title", "Test API");
 
@@ -362,7 +177,7 @@ namespace Google.Apis.Tests.Apis.Discovery
                 { "version", "v1" } };
             var impl = new ConcreteClass(dict);
             Assert.That(impl.Parameters.Count, Is.EqualTo(2));
-            Assert.That(impl.Parameters.Keys, 
+            Assert.That(impl.Parameters.Keys,
                 Is.EquivalentTo(new string[] { "fields", "prettyPrint" }));
             var prettyPrint = impl.Parameters["prettyPrint"];
             Assert.That(prettyPrint.Description,
@@ -420,34 +235,6 @@ namespace Google.Apis.Tests.Apis.Discovery
             Assert.AreEqual("testMethod", impl.Methods["testMethod"].Name);
         }
 
-        /// <summary>
-        /// Tests the BaseResource.GetResource method.
-        /// </summary>
-        [Test]
-        public void TestGetResource()
-        {
-            var container = CreateV1Service();
-            container.Resources.Clear();
-
-            // Create json.
-            var subJson = new JsonDictionary();
-            subJson.Add("resources", new JsonDictionary { { "Grandchild", new JsonDictionary() } });
-            var topJson = new JsonDictionary();
-            topJson.Add("resources", new JsonDictionary { { "Sub", subJson } });
-
-            // Create the resource hierachy.
-            var topResource = ServiceFactory.Default.CreateResource("Top", topJson);
-            var subResource = topResource.Resources["Sub"];
-            var grandchildResource = subResource.Resources["Grandchild"];
-            container.Resources.Add("Top", topResource); 
-
-            // Check the generated full name.
-            Assert.AreEqual(container.Methods, BaseService.GetResource(container, "").Methods);
-            Assert.AreEqual(topResource, BaseService.GetResource(container, "Top"));
-            Assert.AreEqual(subResource, BaseService.GetResource(container, "Top.Sub"));
-            Assert.AreEqual(grandchildResource, BaseService.GetResource(container, "Top.Sub.Grandchild"));
-        }
-
         [Test]
         public void TestBaseUri()
         {
@@ -467,23 +254,23 @@ namespace Google.Apis.Tests.Apis.Discovery
             instance.BasePath = "test/";
             instance.ServerUrl = "https://www.test.value";
             Assert.AreEqual("https://www.test.value/test/", instance.BaseUri.ToString());
-            
+
             // Mono's Uri class strips double forward slashes so this test will not work.
             // Only run for MS.Net
-            if ( Google.Apis.Util.Utilities.IsMonoRuntime() == false)
+            if (Google.Apis.Util.Utilities.IsMonoRuntime() == false)
             {
                 instance.BasePath = "//test/";
                 instance.ServerUrl = "https://www.test.value";
                 Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-                
+
                 instance.BasePath = "//test/";
                 instance.ServerUrl = "https://www.test.value/";
                 Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-                
+
                 instance.BasePath = "test/";
                 instance.ServerUrl = "https://www.test.value//";
                 Assert.AreEqual("https://www.test.value//test/", instance.BaseUri.ToString());
-                
+
                 instance.BasePath = "/test//";
                 instance.ServerUrl = "https://www.test.value/";
                 Assert.AreEqual("https://www.test.value/test//", instance.BaseUri.ToString());
@@ -533,7 +320,7 @@ namespace Google.Apis.Tests.Apis.Discovery
         private JsonDictionary AssertNode(JsonDictionary dict, params string[] nodes)
         {
             JsonDictionary cur = dict;
-            for(int i=0;i<nodes.Length;i++)
+            for (int i = 0; i < nodes.Length; i++)
             {
                 Assert.That(cur.ContainsKey(nodes[i]));
                 Assert.That(cur[nodes[i]], Is.TypeOf(typeof(JsonDictionary)));

@@ -15,14 +15,16 @@ limitations under the License.
 */
 
 using System;
-using Google.Apis.Discovery;
+using System.Collections;
+using System.Collections.Generic;
+
 using NUnit.Framework;
+
+using Google.Apis.Discovery;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-    /// <summary>
-    /// Tests for the GoogleServiceGenerator class
-    /// </summary>
+    /// <summary> Tests for the GoogleServiceGenerator class. </summary>
     [TestFixture]
     public class GoogleServiceGeneratorTest : BaseCodeGeneratorTest
     {

@@ -24,5 +24,5 @@ namespace Google.Apis.Testing
     /// <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
-    public class VisibleForTestOnly : Attribute {}
+    public class VisibleForTestOnly : Attribute { }
 }

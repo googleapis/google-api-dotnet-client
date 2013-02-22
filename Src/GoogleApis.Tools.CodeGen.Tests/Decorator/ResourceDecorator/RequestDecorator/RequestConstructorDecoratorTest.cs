@@ -16,11 +16,13 @@ limitations under the License.
 
 using System.CodeDom;
 using System.Collections.Generic;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
-using Google.Apis.Tests.Apis.Requests;
+using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Decorator;
 using Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator;
-using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDecorator
 {
@@ -46,7 +48,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void DecorateClassTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             method.Parameters.Add("Param", new MockParameter() { Name = "Param" });
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
@@ -77,7 +83,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         public void CreateConstructorTest()
         {
             var parameter = new MockParameter() { Name = "Param", IsRequired = true };
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             method.Parameters.Add("Param", parameter);
             var resource = new MockResource();
             resource.Methods.Add("Method", method);
@@ -98,7 +108,11 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         [Test]
         public void AddBodyParameterTest()
         {
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             var typeProvider = new DefaultObjectTypeProvider("Schema");
 
             // Confirm that no body parameter is added.
@@ -106,7 +120,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             CodeConstructor constructor = new CodeConstructor();
             method.HasBody = false;
             decorator.AddBodyParameter(constructor, method);
-           
+
             Assert.AreEqual(0, constructor.Parameters.Count);
             Assert.AreEqual(0, constructor.Statements.Count);
 
@@ -129,8 +143,12 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
         public void AddRequiredParametersTest()
         {
             var parameterA = new MockParameter() { Name = "ParamA", IsRequired = false };
-            var parameterB = new MockParameter() { Name = "ParamB", IsRequired = true};
-            var method = new MockMethod() { Name = "Method", Parameters = new Dictionary<string, IParameter>() };
+            var parameterB = new MockParameter() { Name = "ParamB", IsRequired = true };
+            var method = new MockMethod()
+                {
+                    Name = "Method",
+                    Parameters = new Dictionary<string, IDiscoveryParameter>()
+                };
             method.Parameters.Add("ParamA", parameterA);
             method.Parameters.Add("ParamB", parameterB);
             var resource = new MockResource();

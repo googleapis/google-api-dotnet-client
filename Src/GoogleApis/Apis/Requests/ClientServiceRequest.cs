@@ -35,9 +35,9 @@ namespace Google.Apis.Requests
     /// </summary>
     /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
-    public abstract class ServiceRequest<TResponse> : IServiceRequest<TResponse>
+    public abstract class ClientServiceRequest<TResponse> : IClientServiceRequest<TResponse>
     {
-        protected ServiceRequest()
+        protected ClientServiceRequest()
         {
             ETagAction = ETagAction.Default;
         }
@@ -47,8 +47,8 @@ namespace Google.Apis.Requests
         /// </summary>
         public const string GetBodyMethodName = "GetBody";
 
-        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ServiceRequest<TResponse>>();
-        private readonly IRequestProvider service;
+        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
+        private readonly IClientService service;
 
         /// <summary>
         /// Defines whether the E-Tag will be used in a specified way or ignored.
@@ -63,25 +63,31 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Creates a new service request.
         /// </summary>
-        protected ServiceRequest(IRequestProvider service)
+        protected ClientServiceRequest(IClientService service)
         {
             this.service = service;
         }
 
+        #region IClientServiceRequest Properties
+
+        public abstract string MethodName { get; }
+        public abstract string RestPath { get; }
+        public abstract string HttpMethod { get; }
+
+        protected IDictionary<string, IParameter> _requestParameters;
+        public IDictionary<string, IParameter> RequestParameters { get { return _requestParameters; } }
+
+        #endregion
+
         /// <summary>
         /// Name of the Resource to which the method belongs.
         /// </summary>
-        protected abstract string ResourcePath { get; }
-
-        /// <summary>
-        /// The name of the method to which this request belongs.
-        /// </summary>
-        protected abstract string MethodName { get; }
+        public abstract string ResourcePath { get; }
 
         /// <summary>
         /// The service on which the request will be executed.
         /// </summary>
-        protected IRequestProvider Service
+        protected IClientService Service
         {
             get { return service; }
         }
@@ -115,7 +121,7 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal IRequest BuildRequest()
         {
-            IRequest request = service.CreateRequest(ResourcePath, MethodName);
+            IRequest request = service.CreateRequest(this);
             request.WithBody(GetSerializedBody());
             request.WithParameters(CreateParameterDictionary());
             request.WithETagAction(ETagAction);

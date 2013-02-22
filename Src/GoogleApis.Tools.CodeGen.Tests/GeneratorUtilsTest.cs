@@ -18,15 +18,15 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+
 using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Json;
 
 namespace Google.Apis.Tools.CodeGen.Tests
 {
-    /// <summary>
-    /// Tests for the GeneratorUtils class
-    /// </summary>
+    /// <summary> Tests for the GeneratorUtils class. </summary>
     [TestFixture]
     public class GeneratorUtilsTest
     {
@@ -37,7 +37,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void GetParameterNameTest()
         {
             var factory = ServiceFactory.Default;
-            IParameter param = factory.CreateParameter("safeName", new JsonDictionary());
+            var param = factory.CreateParameter("safeName", new JsonDictionary());
             Assert.AreEqual("safeName", GeneratorUtils.GetParameterName(param, Enumerable.Empty<string>()));
 
             param = factory.CreateParameter("string", new JsonDictionary());
@@ -65,7 +65,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
                 "member",
                 GeneratorUtils.GetSafeMemberName(
                     simpleSafeWords, GeneratorUtils.TargetCase.ToLower, "!@#$$%^&^&**((())+}{|\":\\\t\r"));
-            
+
             foreach (string word in GeneratorUtils.UnsafeWords)
             {
                 Assert.AreEqual(word + "Member", GeneratorUtils.GetSafeMemberName(GeneratorUtils.UnsafeWords, 0, word));
@@ -132,30 +132,30 @@ namespace Google.Apis.Tools.CodeGen.Tests
             }
 
             Assert.IsTrue(GeneratorUtils.IsValidBodyChar('_'));
-            
+
             for (char c = Char.MinValue; c < '0'; c++)
             {
-                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int)c + " should be invalid");
             }
 
-            for (char c = (char) ('9' + 1); c < 'A'; c++)
+            for (char c = (char)('9' + 1); c < 'A'; c++)
             {
-                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int)c + " should be invalid");
             }
 
-            for (char c = (char) ('Z' + 1); c < 'a'; c++)
+            for (char c = (char)('Z' + 1); c < 'a'; c++)
             {
                 if (c == '_')
                 {
                     continue;
                 }
 
-                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int)c + " should be invalid");
             }
 
-            for (char c = (char) ('z' + 1); c < Char.MaxValue; c++)
+            for (char c = (char)('z' + 1); c < Char.MaxValue; c++)
             {
-                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidBodyChar(c), "Char " + (int)c + " should be invalid");
             }
         }
 
@@ -178,22 +178,22 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
             for (char c = Char.MinValue; c < 'A'; c++)
             {
-                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int)c + " should be invalid");
             }
 
-            for (char c = (char) ('Z' + 1); c < 'a'; c++)
+            for (char c = (char)('Z' + 1); c < 'a'; c++)
             {
                 if (c == '_')
                 {
                     continue;
                 }
 
-                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int)c + " should be invalid");
             }
 
-            for (char c = (char) ('z' + 1); c < Char.MaxValue; c++)
+            for (char c = (char)('z' + 1); c < Char.MaxValue; c++)
             {
-                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int) c + " should be invalid");
+                Assert.IsFalse(GeneratorUtils.IsValidFirstChar(c), "Char " + (int)c + " should be invalid");
             }
         }
 
@@ -217,7 +217,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
                 new[] { "MockClass", "FieldA", "FieldB", "NestedClassC" },
                 GeneratorUtils.GetWordContextListFromClass(decl));
         }
-        
+
         /// <summary>
         /// Checks that the MakeValidMemberName method returns valid member names.
         /// </summary>
@@ -260,7 +260,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
             // Test with a valid name.
             Assert.IsTrue(GeneratorUtils.IsNameValidInContext("foobar", emptyList));
             Assert.IsTrue(GeneratorUtils.IsNameValidInContext("foobar", forbiddenContext));
-            
+
             // Test with some invalid names.
             Assert.IsFalse(GeneratorUtils.IsNameValidInContext("foo", forbiddenContext));
             Assert.IsFalse(GeneratorUtils.IsNameValidInContext("evil", forbiddenContext));
@@ -306,7 +306,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
         public void AppendIndicesTest()
         {
             Assert.Throws<ArgumentException>(() => GeneratorUtils.AppendIndices("test", 10, 1).First());
-            
+
             CollectionAssert.AreEqual(new string[0], GeneratorUtils.AppendIndices(null, 1, 5));
             CollectionAssert.AreEqual(new string[0], GeneratorUtils.AppendIndices("", 1, 5));
             CollectionAssert.AreEqual(new[] { "abc1", "abc2", "abc3" }, GeneratorUtils.AppendIndices("abc", 1, 3));

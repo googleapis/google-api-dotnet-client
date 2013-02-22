@@ -16,18 +16,17 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using Google.Apis.Discovery;
-using Google.Apis.Discovery.Schema;
-using Google.Apis.Tests.Apis.Requests;
-using Google.Apis.Tools.CodeGen.Generator;
+
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
 
+using Google.Apis.Discovery;
+using Google.Apis.Testing;
+using Google.Apis.Tools.CodeGen.Generator;
+
 namespace Google.Apis.Tools.CodeGen.Tests.Generator
 {
-    /// <summary>
-    /// Test for the ImplementationDetailsGenerator class
-    /// </summary>
+    /// <summary> A test for the ImplementationDetailsGenerator class. </summary>
     [TestFixture]
     public class ImplementationDetailsGeneratorTest
     {
@@ -77,7 +76,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             var schema = new JsonSchema();
             var service = new MockService();
             service.Schemas.Add("TestSchema", new MockSchema() { SchemaDetails = schema });
-            var method = new MockMethod() { ResponseType = "TestSchema"};
+            var method = new MockMethod() { ResponseType = "TestSchema" };
 
             // Test parameter validation:
             Assert.Throws<ArgumentNullException>(
@@ -111,7 +110,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
 
             var resource = new MockResource();
             resource.Resources.Add("Subresource", subresource);
-            
+
             var service = new MockService();
             service.Schemas.Add("TestSchema", new MockSchema { SchemaDetails = schema });
             service.Resources.Add("TestResource", resource);
@@ -122,7 +121,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             Assert.Throws<ArgumentNullException>(
                 () => ImplementationDetailsGenerator.AddIsMethodResult(dic, null, service.Resources.Values));
             Assert.Throws<ArgumentNullException>(
-                () => ImplementationDetailsGenerator.AddIsMethodResult(dic, service, (IEnumerable<IResource>) null));
+                () => ImplementationDetailsGenerator.AddIsMethodResult(dic, service, (IEnumerable<IResource>)null));
 
             // Test recursive add:
             ImplementationDetailsGenerator.AddIsMethodResult(dic, service, service.Resources.Values);
@@ -140,7 +139,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
         {
             var gen = new ImplementationDetailsGenerator();
             Assert.Throws<ArgumentNullException>(() => gen.GenerateDetails(null));
-            
+
             // Test the generation for the mock service.
             var service = new MockService();
             IDictionary<JsonSchema, SchemaImplementationDetails> dic = gen.GenerateDetails(service);
@@ -187,7 +186,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Generator
             // Test parameter validation.
             Assert.Throws<ArgumentNullException>(() => ImplementationDetailsGenerator.AddDetails(null, schema));
             Assert.Throws<ArgumentNullException>(() => ImplementationDetailsGenerator.AddDetails(dic, null));
-            
+
             // Test simple execution.
             ImplementationDetailsGenerator.AddDetails(dic, schema);
             Assert.AreEqual(1, dic.Count);

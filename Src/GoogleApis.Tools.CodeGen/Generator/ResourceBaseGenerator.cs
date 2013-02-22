@@ -18,6 +18,7 @@ using System;
 using System.CodeDom;
 using System.IO;
 using System.Runtime.InteropServices;
+
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
@@ -75,7 +76,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// Returns the parameter type specified within the parameter.
         /// </summary>
         [VisibleForTestOnly]
-        internal static Type GetParameterType(IParameter param)
+        internal static Type GetParameterType(IDiscoveryParameter param)
         {
             param.ThrowIfNull("param");
             Type baseType = GetUnderlyingParameterType(param);
@@ -92,10 +93,10 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// <summary>
         /// Retrieves the underlying, unmodified type of a parameter.
         /// </summary>
-        private static Type GetUnderlyingParameterType(IParameter param)
+        private static Type GetUnderlyingParameterType(IDiscoveryParameter param)
         {
             param.ThrowIfNull("param");
-            
+
             switch (param.ValueType)
             {
                 case null:
@@ -119,7 +120,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         [VisibleForTestOnly]
         internal static CodeTypeReference GetParameterTypeReference(CodeTypeDeclaration classDeclaration,
-                                                                    IParameter param)
+                                                                    IDiscoveryParameter param)
         {
             Type underlyingType = GetParameterType(param);
             CodeTypeReference paramTypeRef = new CodeTypeReference(underlyingType);
@@ -157,7 +158,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// Creates a declaration for the specified parameter.
         /// </summary>
         protected CodeParameterDeclarationExpression DeclareInputParameter(
-            CodeTypeDeclaration classDeclaration, IParameter param, IMethod method)
+            CodeTypeDeclaration classDeclaration, IDiscoveryParameter param, IMethod method)
         {
             CodeTypeReference paramTypeRef = GetParameterTypeReference(classDeclaration, param);
             var decl = new CodeParameterDeclarationExpression(
@@ -177,7 +178,7 @@ namespace Google.Apis.Tools.CodeGen.Generator
 
         protected void AddParameterComment(IMethodCommentCreator commentCreator,
                                            CodeMemberMethod member,
-                                           IParameter param,
+                                           IDiscoveryParameter param,
                                            string parameterName)
         {
             if (commentCreator != null)

@@ -100,7 +100,7 @@ namespace Google.Apis.Discovery
             return new MethodV1_0(this, name, dictionary);
         }
 
-        public virtual IParameter CreateParameter(string name, JsonDictionary dictionary)
+        public virtual IDiscoveryParameter CreateParameter(string name, JsonDictionary dictionary)
         {
             return new ParameterV1_0(this, name, dictionary);
         }
@@ -141,7 +141,7 @@ namespace Google.Apis.Discovery
             return new MethodV1_0(this, name, dictionary);
         }
 
-        public virtual IParameter CreateParameter(string name, JsonDictionary dictionary)
+        public virtual IDiscoveryParameter CreateParameter(string name, JsonDictionary dictionary)
         {
             return new ParameterV1_0(this, name, dictionary);
         }

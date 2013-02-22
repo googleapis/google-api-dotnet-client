@@ -92,10 +92,10 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
         {
             // private BuzzService service { .. }
             CodeMemberProperty serviceProperty = new CodeMemberProperty();
-            serviceProperty.Type = new CodeTypeReference(typeof(IRequestProvider));
+            serviceProperty.Type = new CodeTypeReference(typeof(IClientService));
             serviceProperty.Name = ResourceBaseGenerator.ServiceFieldName;
             serviceProperty.Attributes = MemberAttributes.Final | MemberAttributes.Private;
-            
+
             // get { return this; }
             serviceProperty.HasGet = true;
             serviceProperty.GetStatements.Add(new CodeMethodReturnStatement(new CodeThisReferenceExpression()));
