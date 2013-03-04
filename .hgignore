@@ -1,0 +1,47 @@
+# use glob syntax.
+syntax: glob
+
+# Misc Mac/Windows stuff
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# builds
+
+*.exe
+*.ex_
+
+# vb6
+
+*.SCC
+*.vbw
+*.pdb
+*.log
+*.Log
+
+# c-sharp
+/bin
+/obj
+*.user
+*.suo
+_ReSharper.*
+*.sln.cache
+
+bin/**
+bin/Debug/**
+obj/**
+
+# MonoDevelp
+*.pidb
+*.userprefs
+*.Tests.csproj-Debug-*.xml
+*.csproj.test-cache
+test-results/**
+glob:Samples/OAuth2Web/local.config
+glob:Samples/ApiExplorerWeb/local.config
+Src/GoogleApis.Tools.CodeGen/GoogleApis.Tools.CodeGen.xml
+Src/GoogleApis/Google.Apis.xml
+Src/GoogleApis.Authentication.OAuth2/Google.Apis.Authentication.OAuth2.xml
+*.dotCover
+*.orig
