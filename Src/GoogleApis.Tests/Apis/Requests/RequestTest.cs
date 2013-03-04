@@ -528,16 +528,6 @@ namespace Google.Apis.Tests.Apis.Requests
                     });
         }
 
-        /// <summary> Tests the application name property. </summary>
-        [Test]
-        public void FormatForUserAgentTest()
-        {
-            var request = new Request();
-
-            Assert.AreEqual("Unknown_Application", request.FormatForUserAgent("Unknown Application"));
-            Assert.AreEqual("T_e_s_t", request.FormatForUserAgent("T e s t"));
-        }
-
         /// <summary> Tests the results of the GetErrorResponseHandlers method. </summary>
         [Test]
         public void GetErrorResponseHandlersTest()

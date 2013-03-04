@@ -40,29 +40,17 @@ using HttpUtility = ImportedFromMono.System.Web.HttpUtility;
 
 namespace Google.Apis
 {
-    /// <summary>String utilities
-    /// </summary> 
+    /// <summary> String utilities. </summary>
     public static class Utilities
     {
-        /// <summary>
-        /// True when the Mono-runtime is used to execute this code.
-        /// </summary>
+        /// <summary> True when the Mono-runtime is used to execute this code. </summary>
         public static readonly bool IsRunningOnMono = (Type.GetType("Mono.Runtime") != null);
-        
-        /// <summary>
-        /// xsd version of bool:true
-        /// </summary>
+
+        /// <summary> xsd version of bool:true. </summary>
         public const string XSDTrue = "true";
 
-        /// <summary>
-        /// xsd version of bool:false
-        /// </summary>
+        /// <summary> xsd version of bool:false. </summary>
         public const string XSDFalse = "false";
-
-        /// <summary>
-        /// default user string
-        /// </summary>
-        public const string DefaultUser = "default";
 
         /// <summary>returns a blank emptyDate. That's the default for an empty string date</summary> 
         public static DateTime EmptyDate
@@ -74,7 +62,7 @@ namespace Google.Apis
             }
         }
 
-        /// <summary>helper to read in a string and Encode it</summary> 
+        /// <summary> Helper to read in a string and Encode it. </summary> 
         /// <param name="content">the xmlreader string</param>
         /// <returns>UTF8 encoded string</returns>
         public static string EncodeString(string content)
@@ -226,28 +214,23 @@ namespace Google.Apis
 
         /////////////////////////////////////////////////////////////////////////////
 
-        /// <summary>
-        /// Returns the version of the Core library.
-        /// </summary>
+        /// <summary> Returns the version of the Core library. </summary>
         public static string GetLibraryVersion()
         {
             // Don't use asm.GetName() here, as this will raise a SecurityException on Silverlight.
             // Look up the name by parsing the full assembly name instead.
-            return Regex.Match(typeof(Utilities).FullName, "Version=[\\d\\.]+").Groups[1].ToString();
+            return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
         }
 
-        /// <summary>
-        /// Returns the title of the calling assembly, or null if not set/unavailable.
-        /// </summary>
+        /// <summary> Returns the title of the calling assembly, or null if not set/unavailable. </summary>
         public static string GetAssemblyTitle()
         {
-            Assembly asm = 
-#if SILVERLIGHT
-                Assembly.GetCallingAssembly();
-#else
-                Assembly.GetEntryAssembly();
-#endif
 
+#if SILVERLIGHT
+            Assembly asm = Assembly.GetCallingAssembly();
+#else
+            Assembly asm = Assembly.GetEntryAssembly();
+#endif
             if (asm == null)
             {
                 return null;
@@ -266,7 +249,7 @@ namespace Google.Apis
 
             // Create the resulting string
             var result = new StringBuilder(input.Length);
-            
+
             foreach (char c in input)
             {
                 // Replace invalid characters with the replacement string

@@ -44,7 +44,8 @@ namespace Google.Apis.Requests
     /// </remarks>
     public class Request : IRequest
     {
-        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3}";
+        // [ApplicatioName] google-api-dotnet-client/[ApiVersion] [Os]/[OsVersion] [ClrVersion]
+        private const string UserAgent = "{0} google-api-dotnet-client/{1} {2}/{3} {4}";
         private const string GZipUserAgentSuffix = " (gzip)";
         private const string GZipEncoding = "gzip";
 
@@ -620,15 +621,15 @@ namespace Google.Apis.Requests
             // Insert the content type and user agent.
             httpRequest.ContentType = string.Format(
                 "{0}; charset={1}", GetReturnMimeType(), ContentCharset.WebName);
-            string appName = FormatForUserAgent(ApplicationName);
-            string apiVersion = FormatForUserAgent(ApiVersion);
-            string platform = FormatForUserAgent(Environment.OSVersion.Platform.ToString());
-            string platformVer = FormatForUserAgent(Environment.OSVersion.Version.ToString());
 
             // The UserAgent header can only be set on a non-Silverlight platform.
             // Silverlight uses the user agent of the browser instead.
 #if !SILVERLIGHT
-            httpRequest.UserAgent = String.Format(UserAgent, appName, apiVersion, platform, platformVer);
+            var osPlatform = Environment.OSVersion.Platform;
+            var osVersion = Environment.OSVersion.Version;
+            var clrVersion = Environment.Version;
+            httpRequest.UserAgent = String.Format(UserAgent, ApplicationName, ApiVersion,
+                osPlatform, osVersion, clrVersion);
 #endif
 
             // Add the E-tag header:
@@ -683,12 +684,6 @@ namespace Google.Apis.Requests
 
             onRequestReady(httpRequest);
             return httpRequest;
-        }
-
-        [VisibleForTestOnly]
-        internal string FormatForUserAgent(string fragment)
-        {
-            return fragment.Replace(' ', '_');
         }
 
         /// <summary>
