@@ -460,8 +460,8 @@ namespace Google.Apis.Tests.Apis.Requests
 
             // Test the user agent (without gzip):
             string expectedUserAgent = string.Format(
-                "Unknown_Application google-api-dotnet-client/{0} {1}/{2}", Utilities.GetLibraryVersion(),
-                Environment.OSVersion.Platform, Environment.OSVersion.Version);
+                "Unknown_Application google-api-dotnet-client/{0} {1}/{2} {3}", Utilities.GetLibraryVersion(),
+                Environment.OSVersion.Platform, Environment.OSVersion.Version, Environment.Version);
             Assert.AreEqual(expectedUserAgent, webRequest.UserAgent);
 
             // Confirm that the (gzip) tag is added if GZip is supported.
