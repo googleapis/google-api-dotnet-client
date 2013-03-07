@@ -21,6 +21,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+
 using Google.Apis.Samples.Helper;
 
 namespace Google.Build.Utils.Repositories
@@ -68,7 +69,8 @@ namespace Google.Build.Utils.Repositories
                 {
                     RunListeningHg("incoming");
                     return true; // Exit code was 0
-                } catch (ExternalException)
+                }
+                catch (ExternalException)
                 {
                     return false;
                 }
@@ -97,9 +99,10 @@ namespace Google.Build.Utils.Repositories
             }
         }
 
-        private Hg(Uri repositoryUri) : this(repositoryUri, Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()))
+        private Hg(Uri repositoryUri)
+            : this(repositoryUri, Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()))
         {
-            
+
         }
         private Hg(Uri repositoryUri, string localDir)
         {
@@ -148,7 +151,7 @@ namespace Google.Build.Utils.Repositories
         /// </param>
         public void Tag(string tagName, bool force = false)
         {
-            CommandLine.WriteAction("Tagging " + Name + " with "+tagName+"..");
+            CommandLine.WriteAction("Tagging " + Name + " with " + tagName + "..");
             string options = (force ? "-f " : "");
             RunHg("tag {0}\"{1}\"", options, tagName);
         }
@@ -169,11 +172,11 @@ namespace Google.Build.Utils.Repositories
             var missingFiles = RunListeningHg("status -d")
                                 .Where(l => l.StartsWith("! "))
                                 .Select(l => "\"" + l.Substring("! ".Length) + "\"");
-            
+
             string files = String.Join(" ", missingFiles);
             if (!string.IsNullOrEmpty(files))
             {
-                CommandLine.WriteAction("Removing files: "+files);
+                CommandLine.WriteAction("Removing files: " + files);
                 RunHg("remove {0}", files);
             }
         }
@@ -190,6 +193,14 @@ namespace Google.Build.Utils.Repositories
 
             CommandLine.WriteAction("Pushing " + Name + " ..");
             RunShellHg("push");
+        }
+
+        /// <summary> Updates the repository by the branch name. </summary>
+        /// <param name="branchName"></param>
+        public void Update(string branchName)
+        {
+            CommandLine.WriteAction("Updating branch to " + branchName);
+            RunShellHg("update " + branchName);
         }
 
         /// <summary>
@@ -222,7 +233,7 @@ namespace Google.Build.Utils.Repositories
         /// </summary>
         public IEnumerable<string> CreateChangelist()
         {
-            Regex tagRegex = new Regex("Added tag [^b]+ for changeset [^b]+", RegexOptions.Compiled);
+            Regex tagRegex = new Regex("Added tag [0-9A-Za-z.-]+ for changeset [^b]+", RegexOptions.Compiled);
             string branch = RunListeningHg("branch").Single();
             return RunListeningHg("log --template \"{{rev}}: {{desc}}\\r\\n\" -b {0}", branch)
                         .TakeWhile(line => !tagRegex.IsMatch(line));
@@ -230,7 +241,7 @@ namespace Google.Build.Utils.Repositories
 
         private void CloneFrom(Uri uri)
         {
-            CommandLine.WriteAction("Fetching "+uri+" ..");
+            CommandLine.WriteAction("Fetching " + uri + " ..");
             RunHg("clone {0} {1}", uri.ToString(), WorkingDirectory);
         }
 

@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2011 Google Inc
+Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,13 +18,13 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+
+using Google.Apis.Samples.Helper;
 using Google.Build.Utils.Text;
 
-namespace UpdateWikiLists.Wiki
+namespace BuildRelease.Wiki
 {
-    /// <summary>
-    /// Updater for the Downloads wiki page.
-    /// </summary>
+    /// <summary> Updator for the Downloads wiki page. </summary>
     public class DownloadsPage
     {
         private const string StableStartTag = "<wiki:comment>GENERATED_STABLE_BEGIN</wiki:comment>";
@@ -34,21 +34,15 @@ namespace UpdateWikiLists.Wiki
 
         private static readonly Regex LinkRegex = new Regex(@"\[([^ \]]*/)\S+ ([^\]]+)]", RegexOptions.Compiled);
 
-        /// <summary>
-        /// The Samples repository used for generating the list of samples.
-        /// </summary>
+        /// <summary> The Samples repository used for generating the list of samples. </summary>
         public string ReleaseNotes { get; private set; }
 
-        /// <summary>
-        /// The directory containing the release .zip files
-        /// </summary>
+        /// <summary> The directory containing the release .zip files. </summary>
         public string ZipDir { get; private set; }
 
-        /// <summary>
-        /// Name of this release.
-        /// </summary>
+        /// <summary> The Name of this release. </summary>
         public string ReleaseName { get; private set; }
-        
+
         public DownloadsPage(string releaseNotes, string zipDir)
         {
             ReleaseNotes = releaseNotes;
@@ -56,22 +50,20 @@ namespace UpdateWikiLists.Wiki
             ReleaseName = Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(zipDir)));
         }
 
-        /// <summary>
-        /// Generates the Releases Notes section.
-        /// </summary>
-        public string GenerateNotes()
+        /// <summary> Generates the Releases Notes section. </summary>
+        private string GenerateNotes()
         {
             return "{{{" + Environment.NewLine + ReleaseNotes + Environment.NewLine + "}}}";
         }
 
-        /// <summary>
-        /// Replaces the download links within the specified text.
+        /// <summary> 
+        /// Replaces the download links references for binaries, source and samples to the current version number.
         /// </summary>
         /// <param name="input">The text block containing the wiki links.</param>
         /// <returns>Replaced & updated text.</returns>
-        public string ReplaceLinks(string input)
+        private string ReplaceLinks(string input)
         {
-            const string format = 
+            const string format =
                 "[http://contrib.google-api-dotnet-client.googlecode.com/hg/{0}/Generated/ZipFiles/{1} {2}]";
             return LinkRegex.Replace(input, (match) => string.Format(format,
                                                                      ReleaseName,
@@ -90,15 +82,23 @@ namespace UpdateWikiLists.Wiki
             return Path.GetFileName(Directory.GetFiles(ZipDir, "*" + keyword + "*").Single());
         }
 
-        /// <summary>
-        /// Modifies the existing Downloads wiki file by replacing the "generated" section.
-        /// </summary>
-        public void InsertIntoFile(string file)
+        /// <summary> Modifies the existing Downloads wiki file by replacing the "generated" section. </summary>
+        private void InsertIntoFile(string file)
         {
             string content = File.ReadAllText(file);
             content = TextUtils.InsertIntoText(content, StableStartTag, StableEndTag, GenerateNotes());
             content = TextUtils.ReplaceInText(content, DownloadsStartTag, DownloadsEndTag, ReplaceLinks);
             File.WriteAllText(file, content);
+        }
+
+        /// <summary> Updates the Wiki. </summary>
+        public void UpdateWiki(string workingDirectory)
+        {
+            if (ReleaseNotes != null)
+            {
+                CommandLine.WriteAction("Updating 'Downloads.wiki' ...");
+                InsertIntoFile(Path.Combine(workingDirectory, "Downloads.wiki"));
+            }
         }
     }
 }
