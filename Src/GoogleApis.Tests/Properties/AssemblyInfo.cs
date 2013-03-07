@@ -15,11 +15,12 @@ limitations under the License.
 */
 
 using System.Reflection;
+using log4net.Config;
 
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("GoogleApis.Tools.CodeGen.Tests")]
+[assembly: AssemblyTitle("GoogleApis.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
@@ -27,11 +28,11 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: XmlConfigurator(Watch = true)]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
-
 [assembly: AssemblyVersion("1.2.*")]
 
 // The following attributes are used to specify the signing key for the assembly, 
