@@ -57,13 +57,13 @@ namespace Google.Build.Utils.Build
         {
             get { return internalProject.GetPropertyValue("TargetPath"); }
         }
-        
+
         /// <summary>
         /// The simple name of this project.
         /// </summary>
         public string Name
         {
-            get { return internalProject.GetPropertyValue("ProjectName");  }
+            get { return internalProject.GetPropertyValue("ProjectName"); }
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Google.Build.Utils.Build
                 // If the build fails, re-run this build with a logger attached.
                 internalProject.Build(target, new[] { new ConsoleLogger(LoggerVerbosity.Quiet) });
                 Process.Start(WorkingDirectory);
-                throw new ApplicationException("Build of project [" + this + ":"+target+"] failed!");
+                throw new ApplicationException("Build of project [" + this + ":" + target + "] failed!");
             }
         }
 
@@ -140,7 +140,7 @@ namespace Google.Build.Utils.Build
         /// </summary>
         public void CopyTo(string dir)
         {
-            Log("Copying output to "+Path.GetFileName(dir)+" ...");
+            Log("Copying output to " + Path.GetFileName(dir) + " ...");
 
             if (!Directory.Exists(dir))
             {
@@ -190,9 +190,7 @@ namespace Google.Build.Utils.Build
             }
         }
 
-        /// <summary>
-        /// Runs the 
-        /// </summary>
+        /// <summary> Cleans and Compiles the project.  </summary>
         public void RunBuildTask()
         {
             CommandLine.WriteAction("Running [" + Name + "] build task..");
@@ -207,7 +205,48 @@ namespace Google.Build.Utils.Build
 
         private void Log(string msg)
         {
-            CommandLine.WriteLine("{{green}}  "+msg, this);
+            CommandLine.WriteLine("{{green}}  " + msg, this);
+        }
+
+        /// <summary> Replaces Assembly version numner with the given one. </summary>
+        public void ReplaceVersion(string newVersion)
+        {
+            // no need to increase version
+            if (newVersion == null)
+                return;
+
+            var ASSEMBLY_INFO_PREFIX = "[assembly: AssemblyVersion(\"";
+            var assemblyInfoFile = System.IO.Path.Combine(WorkingDirectory, "Properties", "AssemblyInfo.cs");
+
+            try
+            {
+                // read all lines and replace the current version with the given newVersion
+                var allLines = File.ReadAllLines(assemblyInfoFile).Select(
+                    l =>
+                    {
+                        // if the line contains assembly information, replace old version with new version
+                        if (l.StartsWith(ASSEMBLY_INFO_PREFIX))
+                            return ReplaceVersionInLine(l, ASSEMBLY_INFO_PREFIX, newVersion);
+                        else
+                            return l;
+                    });
+                File.WriteAllLines(assemblyInfoFile, allLines);
+            }
+            catch (Exception ex)
+            {
+                // TODO(peleyal): remove before commiting
+                CommandLine.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary> Returns the assembly infromation line with the new version. </summary>
+        private string ReplaceVersionInLine(string line, string assemblyVersionPrefix, string newVersion)
+        {
+            var startVersion = assemblyVersionPrefix.Length;
+            // '.*' ends the old version number (e.g 1.2.* \ 1.3.0.*)
+            var endVersion = line.IndexOf(".*", startVersion);
+            var oldVersion = line.Substring(startVersion, endVersion - startVersion);
+            return line.Replace(assemblyVersionPrefix + oldVersion, assemblyVersionPrefix + newVersion);
         }
     }
 }

@@ -27,7 +27,15 @@ namespace Google
     /// </summary>
     public class GoogleApiException : Exception
     {
-        private readonly string serivceName;
+        private readonly string serviceName;
+
+        /// <summary>
+        /// Gets the service name which related to this exception.
+        /// </summary>
+        public string ServiceName
+        {
+            get { return serviceName; }
+        }
 
         /// <summary>
         /// Creates an API Service exception.
@@ -36,7 +44,7 @@ namespace Google
             : base(message, inner)
         {
             serviceName.ThrowIfNull("serviceName");
-            this.serivceName = serviceName;
+            this.serviceName = serviceName;
         }
 
         /// <summary>
@@ -52,7 +60,7 @@ namespace Google
 
         public override string ToString()
         {
-            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), serivceName);
+            return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), serviceName);
         }
     }
 
