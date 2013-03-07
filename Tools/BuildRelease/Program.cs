@@ -17,132 +17,97 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
+
+using BuildRelease.Wiki;
 using Google.Apis.Samples.Helper;
 using Google.Build.Utils;
 using Google.Build.Utils.Build;
 using Google.Build.Utils.Repositories;
-using Google.Build.Utils.Text;
 
 namespace BuildRelease
 {
     /// <summary>
     /// Release Builder.
     /// Will automatically check out all repositories, run unit tests and create a release.
-    /// Can be re-run if the build should fail.
+    /// Can be re-run if the build should fail - Run this tool again, with the same dir argument after fixing the 
+    /// problem.
     /// </summary>
     public class Program
     {
         #region Command Line Arguments
         public class CommandLineArguments
         {
-            [CommandLine.Argument("local", ShortName = "l",
+            [Argument("version", ShortName = "v",
+                Description = "[Required] The version number of this release - <Major.Minor.Build> only.")]
+            public string Version { get; set; }
+
+            [Argument("local", ShortName = "l",
                 Description = "Uses the local repository instead of checking out a new one. Not releasable.")]
             public bool UseLocalRepository { get; set; }
 
-            [CommandLine.Argument("stable", ShortName = "s",
-                Description = "Creates a stable release instead of a development build.")]
-            public bool IsStableRelease { get; set; }
-
-            [CommandLine.Argument("tag", ShortName = "t",
+            [Argument("tag", ShortName = "t",
                 Description = "Use this as the tag suffix for this build.")]
             public string Tag { get; set; }
 
-            /// <summary>
-            /// True if this repository set can be used to build a full release.
-            /// </summary>
-            public bool CanRelease
-            {
-                get { return UseLocalRepository; }
-            }
+            [Argument("dir", ShortName = "d",
+                Description = "Use this as the output directory for this build (relative to current directory). " +
+                "If not specified, dir will be set to current date.")]
+            public string OutputDirectory { get; set; }
 
             public override string ToString()
             {
                 return string.Format("CommandLineArguments " +
-                    "[UseLocalRepository : {0}; IsStableRelease : {1}; Tag : {2}; CanRelease : {3}]"
-                    , UseLocalRepository, IsStableRelease, Tag, CanRelease);
+                    "[UseLocalRepository: {0}; Tag: {1}; Dir: {2}; Version: {3}]",
+                    UseLocalRepository, Tag, OutputDirectory, Version);
             }
         }
 
-        /// <summary>
-        /// Command line arguments.
-        /// </summary>
+        /// <summary> Command line arguments. </summary>
         public static CommandLineArguments Arguments { get; private set; }
 
         #endregion
 
-        /// <summary>
-        /// The "default" repository.
-        /// </summary>
+        /// <summary> The "default" repository. </summary>
         public static Hg Default { get; private set; }
 
-        /// <summary>
-        /// The "samples" repository.
-        /// </summary>
+        /// <summary> The "samples" repository. </summary>
         public static Hg Samples { get; private set; }
 
-        /// <summary>
-        /// The "wiki" repository.
-        /// </summary>
+        /// <summary> The "wiki" repository. </summary>
         public static Hg Wiki { get; private set; }
 
-        /// <summary>
-        /// The "contrib" repository.
-        /// </summary>
+        /// <summary> The "contrib" repository. </summary>
         public static Hg Contrib { get; private set; }
 
-        /// <summary>
-        /// An array of all relevant mercurial repositories.
-        /// </summary>
+        /// <summary> An array of all relevant mercurial repositories. </summary>
         public static Hg[] AllRepositories { get; private set; }
 
-        /// <summary>
-        /// The name of the directory containing the working copy.
-        /// </summary>
+        /// <summary> The name of the directory containing the working copy. </summary>
         public static string WorkingCopy { get; private set; }
 
-        /// <summary>
-        /// Extracts the version and name part out of the specified tag.
-        /// </summary>
-        /// <param name="tag">date-version-name</param>
-        /// <returns></returns>
-        public static string ExtractTagVersionAndName(string tag)
-        {
-            return tag.Substring(tag.IndexOf('-') + 1);
-        }
+        private static int MajorVersion { get; set; }
+        private static int MinorVersion { get; set; }
+        private static int BuildVersion { get; set; }
 
-        /// <summary>
-        /// Points to third party dependencies.
-        /// </summary>
-        public static string[] ThirdPartyFiles
+        private static IEnumerable<string> _excludeThirdParties = new[] 
+        { 
+            "Moq.dll", "Moq.LICENSE", "nunit.framework.dll", "nunit.framework.LICENSE" 
+        };
+
+        /// <summary> Points to third party dependencies which will appear in the bundle. </summary>
+        public static IEnumerable<string> ThirdPartyFiles
         {
             get
             {
-                var files = new List<string>();
                 string dir = Default.Combine("ThirdParty");
-                foreach (string file in Directory.GetFiles(dir, "*"))
-                {
-                    switch (Path.GetFileName(file))
-                    {
-                        case "Moq.dll":
-                        case "Moq.LICENSE":
-                        case "NAnt.Core.dll":
-                        case "NAnt.Core.GNU.LICENSE":
-                        case "NAnt.Core.LICENSE":
-                        case "nunit.framework":
-                        case "nunit.framework.LICENSE":
-                            continue; // Skip those files. They are not required for normal operation.
-                        default:
-                            files.Add(file);
-                            break;
-                    }
-                }
-                //files.Add(typeof(System.Web.UI.MobileControls.TextBox).Assembly.GetCodebasePath());
-                return files.ToArray();
+                return from file in Directory.GetFiles(dir, "*")
+                       where !_excludeThirdParties.Contains(Path.GetFileName(file))
+                       select file;
             }
         }
 
@@ -161,29 +126,166 @@ namespace BuildRelease
             try
             {
                 Console.SetWindowSize(Console.LargestWindowWidth * 8 / 9, Console.LargestWindowHeight * 8 / 9);
-            } catch (Exception) {}
+            }
+            catch (Exception) { }
+
+            CommandLine.DisplayGoogleSampleHeader("Build Release");
+            CommandLine.EnableExceptionHandling();
+
+            // Init arguments
+            if (!InitArguments(args))
+            {
+                CommandLine.PressAnyKeyToExit();
+                return;
+            }
+
+            // Clone repositories
+            CheckoutRepositories();
+
+            // Clean up the default/ repository by removing cache-files
+            CleanDefaultRepository();
+
+            // Check for incoming changes
+            foreach (Hg repository in AllRepositories)
+            {
+                if (repository.HasIncomingChanges)
+                {
+                    CommandLine.WriteError(
+                        "Repository [{0}] has incoming changes. Run hg pull & update first!", repository.Name);
+                    CommandLine.PressAnyKeyToExit();
+                    return;
+                }
+            }
+
+            // Build projects
+            FileVersionInfo apiVersion;
+            Project[] allProjects;
+            Project[] baseLibraries = BuildProjects(out apiVersion, out allProjects);
+            Project servicegen = baseLibraries.Where(proj => proj.Name == "GoogleApis.Tools.ServiceGenerator").Single();
+
+            // Create tag
+            string tag = GetTagName(apiVersion);
+
+            // Update samples
+            UpdateSamples(baseLibraries, servicegen);
+
+            // Update contrib
+            string notes = CreateChangelog(tag);
+            string zipDir;
+            notes = BuildContribRelease(tag, notes, baseLibraries, allProjects, servicegen, out zipDir);
+
+            // Update wiki
+            UpdateWiki(notes, zipDir);
+
+            CommandLine.WriteLine("{{white}} =======================================");
+            CommandLine.WriteResult("Version: ", apiVersion.ProductVersion);
+            CommandLine.WriteLine();
+
+            if (Arguments.UseLocalRepository)
+            {
+                CommandLine.WriteAction("Local build done.");
+                CommandLine.PressAnyKeyToExit();
+                return;
+            }
+
+            // Ask the user whether he wants to continue the release.
+            string res = "no";
+            CommandLine.WriteLine("   {{gray}}In the next step all changes will be commited, tagged and pushed.");
+            CommandLine.WriteLine("   {{gray}}Only continue when you are sure that you don't have to make " +
+                "any new changes.");
+            CommandLine.RequestUserInput("Do you want to continue with the release? Type YES.", ref res);
+            CommandLine.WriteLine();
+
+            if (res != "YES")
+            {
+                Console.WriteLine("Done - NO CODE was commited, tagged or pushed");
+                CommandLine.PressAnyKeyToExit();
+                return;
+            }
+
+            // Commit
+            CommitAndTagRelease(tag);
+
+            // Push
+            PushChanges();
+
+            // Create branch
+            PrintCreateBranch();
+
+            CommandLine.PressAnyKeyToExit();
+        }
+
+        /// <summary> Prints the user orders how to create a branch. </summary>
+        private static void PrintCreateBranch()
+        {
+            if (BuildVersion != 0)
+            {
+                // No need to branch in that case
+                return;
+            }
+
+            // TODO(peleyal): automate this as well
+            CommandLine.WriteAction("You should create a new branch for this release now:");
+            CommandLine.WriteAction("cd " + Default.WorkingDirectory);
+            var branchVersion = string.Format("{0}.{1}", MajorVersion, MinorVersion);
+            CommandLine.WriteAction("hg branch " + branchVersion);
+            CommandLine.WriteAction(string.Format("hg commit -m create {0} branch", branchVersion));
+            CommandLine.WriteAction("hg push --new-branch");
+        }
+
+        /// <summary> 
+        /// Inits the Arguments for this release. 
+        /// Returns <code>true</code> if all arguments are valid.
+        /// </summary>
+        private static bool InitArguments(string[] args)
+        {
+            // TODO(peleyal): Add default value option on Argument (and then add those values to the definition above)
+            Arguments = new CommandLineArguments()
+            {
+                Tag = "beta",
+                UseLocalRepository = false
+            };
+
+            // Parse command line arguments.
+            CommandLineFlags.ParseArguments(Arguments, args);
+            if (string.IsNullOrEmpty(Arguments.Version))
+            {
+                CommandLine.WriteError("Version number can't be null");
+                return false;
+            }
+
+            var match = Regex.Match(Arguments.Version, @"^(\d+)\.(\d+)\.(\d)+$");
+            if (!match.Success)
+            {
+                CommandLine.WriteError("Invalid version Number. Version should be in <Major>.<Minor>.<Build> form.");
+                return false;
+            }
+
+            MajorVersion = int.Parse(match.Groups[1].Value);
+            MinorVersion = int.Parse(match.Groups[2].Value);
+            BuildVersion = int.Parse(match.Groups[3].Value);
 
             // Create the name of the local working copy.
-            string workingCopy = DateTime.UtcNow.ToString("d", CultureInfo.CreateSpecificCulture("en-US")).Replace('/', '-');
-            string fullPath = Path.GetFullPath(workingCopy);
+            if (String.IsNullOrEmpty(Arguments.OutputDirectory))
+            {
+                Arguments.OutputDirectory = DateTime.UtcNow.ToString("yyyy-MM-dd-hh-mm-ss");
+            }
+
+            string fullPath = Path.GetFullPath(Arguments.OutputDirectory);
             if (!Directory.Exists(fullPath))
             {
                 Directory.CreateDirectory(fullPath);
             }
 
             Environment.CurrentDirectory = WorkingCopy = fullPath;
-            CommandLine.DisplayGoogleSampleHeader("Release Builder: "+workingCopy);
-            CommandLine.EnableExceptionHandling();
-
-            Arguments = new CommandLineArguments() { Tag="beta", IsStableRelease = true, UseLocalRepository = false};
-            // Parse command line arguments.
-            CommandLine.ParseArguments(Arguments, args);
             CommandLine.WriteLine(Arguments.ToString());
 
-            // 1. Create the local repositories.
-            CheckoutRepositories();
+            return true;
+        }
 
-            // Clean up the default/ repository by removing cache-files.
+        /// <summary> Cleans the default repository from user files ('resharper', '.user', etc.). </summary>
+        private static void CleanDefaultRepository()
+        {
             string toDelete = Default.Combine("_ReSharper.GoogleApisClient");
             if (Directory.Exists(toDelete))
             {
@@ -196,73 +298,9 @@ namespace BuildRelease
                     File.Delete(file);
                 }
             }
-
-            // 2. Create the project/build tasks.
-            FileVersionInfo apiVersion;
-            Project[] allProjects;
-            Project[] baseLibrary = BuildProjects(out apiVersion, out allProjects);
-            Project servicegen = baseLibrary.Where(proj => proj.Name == "GoogleApis.Tools.ServiceGenerator").Single();
-
-            // Retrieve tag name.
-            string tag = GetTagName(apiVersion);
-            
-            if (Arguments.IsStableRelease)
-            {
-                UpdateSamples(baseLibrary, servicegen);
-            }
-
-            // 4. Build contrib.
-            string notes = CreateChangelog(tag);
-            string zipDir;
-            notes = BuildContribRelease(tag, notes, baseLibrary, allProjects, servicegen, out zipDir);
-
-            // 5. Update the Wiki.
-            if (Arguments.IsStableRelease)
-            {
-                UpdateWiki(notes, zipDir);
-            }
-
-            // Ask the user whether he wants to continue the release.
-            string res = "no";
-            CommandLine.WriteLine("{{white}} =======================================");
-            CommandLine.WriteResult("Version: ", apiVersion.ProductVersion);
-            CommandLine.WriteLine();
-
-            if (Arguments.UseLocalRepository)
-            {
-                CommandLine.WriteAction("Local build done.");
-                CommandLine.PressAnyKeyToExit();
-                return;
-            }
-
-            // 6. Commit & tag the release
-            CommitAndTagRelease(tag);
-
-            CommandLine.WriteLine("   {{gray}}In the next step all changes will be commited and tagged.");
-            CommandLine.WriteLine("   {{gray}}Only continue when you are sure that you don't have to make any new changes.");
-            CommandLine.RequestUserInput("Do you want to continue with the release? Type YES.", ref res);
-            CommandLine.WriteLine();
-            if (res == "YES")
-            {
-                // Check for incoming changes
-                foreach (Hg repository in AllRepositories)
-                {
-                    if (repository.HasIncomingChanges)
-                    {
-                        CommandLine.WriteError(
-                            "Repository [{0}] has incoming changes. Run hg pull & update first!", repository.Name);
-                        CommandLine.PressAnyKeyToExit();
-                        return;
-                    }
-                }
-
-                // 7. Push
-                PushChanges();
-            }
-            CommandLine.PressAnyKeyToExit();
         }
 
-        
+        /// <summary> Checks out all repositories. </summary>
         private static void CheckoutRepositories()
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -278,6 +316,10 @@ namespace BuildRelease
             else
             {
                 Default = Hg.Get("default", string.Format(URL, ""));
+                if (BuildVersion != 0)
+                {
+                    Default.Update(string.Format("{0}.{1}", MajorVersion, MinorVersion));
+                }
             }
 
             Samples = Hg.Get("samples", string.Format(URL, ".samples"));
@@ -288,29 +330,43 @@ namespace BuildRelease
             CommandLine.WriteLine();
         }
 
+        /// <summary> 
+        /// Builds projects.
+        /// In addition runs UnitTest for testing projects.
+        /// </summary>
         private static Project[] BuildProjects(out FileVersionInfo apiVersion, out Project[] allProjects)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Building the Projects");
             CommandLine.WriteLine("{{white}} =======================================");
-            
+
             var projects = new List<Project>();
             Project baseApi = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.csproj"));
-            Project baseApiSilverlight = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.Silverlight.csproj"));
-            Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen", "GoogleApis.Tools.CodeGen.csproj"));
-            Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2", "GoogleApis.Authentication.OAuth2.csproj"));
-            Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator", "GoogleApis.Tools.ServiceGenerator.csproj"));
+
+            Project baseApiSilverlight = new Project(Default.Combine("Src", "GoogleApis",
+                "GoogleApis.Silverlight.csproj"));
+            Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen",
+                "GoogleApis.Tools.CodeGen.csproj"));
+            Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2",
+                "GoogleApis.Authentication.OAuth2.csproj"));
+            Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator",
+                "GoogleApis.Tools.ServiceGenerator.csproj"));
 
             var releaseProjects = new[] { baseApi, baseApiSilverlight, codegen, oauth2, generator };
             projects.AddRange(releaseProjects);
-            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests.Utility", "GoogleApis.Tests.Utility.csproj")));
+            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests.Utility",
+                "GoogleApis.Tests.Utility.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests", "GoogleApis.Tests.csproj")));
-            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests", "GoogleApis.Tools.CodeGen.Tests.csproj")));
-            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests", "GoogleApis.Authentication.OAuth2.Tests.csproj")));
-            projects.Add(new Project(Default.Combine("GoogleApis.Tools.CodeGen.IntegrationTests", "GoogleApis.Tools.CodeGen.IntegrationTests.csproj")));
+            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests",
+                "GoogleApis.Tools.CodeGen.Tests.csproj")));
+            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests",
+                "GoogleApis.Authentication.OAuth2.Tests.csproj")));
+            projects.Add(new Project(Default.Combine("GoogleApis.Tools.CodeGen.IntegrationTests",
+                "GoogleApis.Tools.CodeGen.IntegrationTests.csproj")));
 
             foreach (Project proj in projects)
             {
+                proj.ReplaceVersion(Arguments.Version);
                 proj.RunBuildTask();
                 if (!releaseProjects.Contains(proj)) // If this assembly may contain tests, then run them.
                 {
@@ -345,6 +401,7 @@ namespace BuildRelease
             }
         }
 
+        /// <summary> Gets tag name by the given release version. </summary>
         private static string GetTagName(FileVersionInfo releaseVersion)
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -356,15 +413,7 @@ namespace BuildRelease
                 return "date-version-local";
             }
 
-            DateTime releaseDate = DateTime.UtcNow;
-            string tag = string.Format("{0:D4}{1:D2}{2:D2}-{3}.{4}.{5}",
-                                       releaseDate.Year,
-                                       releaseDate.Month,
-                                       releaseDate.Day,
-                                       releaseVersion.ProductMajorPart,
-                                       releaseVersion.ProductMinorPart,
-                                       releaseVersion.ProductBuildPart);
-
+            string tag = Arguments.Version;
             if (!string.IsNullOrEmpty(Arguments.Tag))
             {
                 tag += "-" + Arguments.Tag;
@@ -375,11 +424,12 @@ namespace BuildRelease
             return tag;
         }
 
+        /// <summary> Returns all changelist notes for this release. </summary>
         private static string CreateChangelog(string tag)
         {
             StringBuilder log = new StringBuilder();
             log.AppendLine("Google .NET Client Library");
-            log.AppendLine(string.Format("{0}Release '{1}'", Arguments.IsStableRelease ? "Stable " : "", tag));
+            log.AppendLine(string.Format("Stable Release '{0}'", tag));
             log.AppendLine(DateTime.UtcNow.ToLongDateString());
             log.AppendLine("===========================================");
 
@@ -393,6 +443,7 @@ namespace BuildRelease
             return log.ToString();
         }
 
+        /// <summary> Udates the samples repository. </summary>
         private static void UpdateSamples(IEnumerable<Project> releaseProjects, Project serviceGenerator)
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -405,7 +456,7 @@ namespace BuildRelease
 
             foreach (Project p in releaseProjects)
             {
-                p.CopyTo(libDir);   
+                p.CopyTo(libDir);
             }
 
             string thirdpartyDir = Samples.Combine("Lib", "ThirdParty");
@@ -427,7 +478,7 @@ namespace BuildRelease
             foreach (string csproj in
                 Directory.GetFiles(Samples.WorkingDirectory, "*.csproj", SearchOption.AllDirectories))
             {
-                Project project = new Project(csproj);    
+                Project project = new Project(csproj);
                 project.RunBuildTask();
                 project.Clean();
             }
@@ -455,88 +506,48 @@ namespace BuildRelease
 
             string releaseDir = Contrib.Combine(tag);
             string currentDir = Contrib.Combine("Current");
-            string stableDir = Contrib.Combine("Stable");
 
             // Clear existing directories.
             DirUtils.ClearOrCreateDir(releaseDir);
+            // TODO(peleyal): remove currentDir eventually (after at least one or two releases)
             DirUtils.ClearOrCreateDir(currentDir);
-            if (Arguments.IsStableRelease)
-            {
-                DirUtils.ClearOrCreateDir(stableDir);
-            }
 
             // Create the <current> release
             string genDir = Path.Combine(currentDir, "Generated");
             Directory.CreateDirectory(genDir);
 
-            #region Current/Generated/Lib
-            string libDir = Path.Combine(genDir, "Lib");
-            CommandLine.WriteAction("Generating dir: "+DirUtils.GetRelativePath(libDir, Contrib.WorkingDirectory));
-            Directory.CreateDirectory(libDir);
+            #region Current/Generated/Bin
+            string binDir = Path.Combine(genDir, "Bin");
+            CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(binDir, Contrib.WorkingDirectory));
+            Directory.CreateDirectory(binDir);
             {
                 // Copy all third party dlls into this directory.
                 foreach (string file in ThirdPartyFiles)
                 {
-                    DirUtils.CopyFile(file, libDir);
+                    DirUtils.CopyFile(file, binDir);
                 }
 
                 // Copy all release dlls to this directory.
                 foreach (Project project in baseLibrary)
                 {
-                    project.CopyTo(libDir);
+                    project.CopyTo(binDir);
                 }
             }
-            #endregion
-
-            #region Current/Generated/Bin - and - Current/Generated/Source
-            string binDir = Path.Combine(genDir, "Bin");
-            string sourceDir = Path.Combine(genDir, "Source");
-            CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(binDir, Contrib.WorkingDirectory));
-            CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(sourceDir, Contrib.WorkingDirectory));
-            Directory.CreateDirectory(binDir);
-            Directory.CreateDirectory(sourceDir);
-            {
-                // Iterate through all services, and put them into the right directory
-                string[] toBin = new[] { ".dll", ".xml", ".pdb" };
-                string[] toSrc = new[] { ".cs" };
-
-                foreach (string file in Directory.GetFiles(ServiceDir, "*"))
-                {
-                    string fileName = Path.GetFileName(file);
-                    CommandLine.WriteResult("File", fileName);
-                    string ext = Path.GetExtension(fileName).ToLower();
-                    if (toSrc.Contains(ext)) // Copy this file into the "Source" directory.
-                    {
-                        DirUtils.CopyFile(file, sourceDir);
-                    }
-                    if (toBin.Contains(ext)) // Copy this file into the "Binary" directory.
-                    {
-                        // Get the folder name by looking at the .dll assembly info.
-                        string id = FileVersionInfo.GetVersionInfo(Path.ChangeExtension(file, ".dll")).ProductName;
-                        string serviceName = id.Split(':')[0]; // "buzz:v1" -> "buzz"
-                        string folderName = serviceName.ToUpperFirstChar() + "Service"; // "buzz" -> "BuzzService"
-
-                        // Copy the file there.
-                        string folder = Path.Combine(binDir, folderName);
-                        DirUtils.CopyFile(file, folder);
-                    }
-                }
-            }
-            
             #endregion
 
             #region Current/ZipFiles
             string zipFilesDir = Path.Combine(genDir, "ZipFiles");
-            CommandLine.WriteAction("Generating dir: " + DirUtils.GetRelativePath(zipFilesDir, Contrib.WorkingDirectory));
+            CommandLine.WriteAction("Generating dir: " +
+                DirUtils.GetRelativePath(zipFilesDir, Contrib.WorkingDirectory));
             Directory.CreateDirectory(zipFilesDir);
             {
-                
-                
-                // Source.zip
+                // clean all projects
                 foreach (Project project in allProjects)
                 {
                     project.Clean();
                 }
+
+                // Source.zip
                 using (Zip zip = new Zip(Path.Combine(zipFilesDir, "Source.zip")))
                 {
                     zip.AddDirectory(Default.WorkingDirectory, "");
@@ -548,8 +559,7 @@ namespace BuildRelease
                 // Binary.zip
                 using (Zip zip = new Zip(Path.Combine(zipFilesDir, "Binary.zip")))
                 {
-                    zip.AddDirectory(binDir, "Services");
-                    zip.AddDirectory(libDir, "Lib");
+                    zip.AddDirectory(binDir, "");
                 }
 
                 // Samples.zip
@@ -578,14 +588,10 @@ namespace BuildRelease
 
             // Copy the content to the <tagname> release directory.
             DirUtils.CopyFiles(currentDir, releaseDir);
-            if (Arguments.IsStableRelease)
-            {
-                DirUtils.CopyFiles(currentDir, stableDir);
-            }
 
             // Rename the zips in the named release.
             // Example: Binary.zip -> google-api-dotnet-client-1.0.0-beta.Binary.zip
-            string fileFormat = "google-api-dotnet-client-" + ExtractTagVersionAndName(tag) + ".{0}";
+            string fileFormat = "google-api-dotnet-client-" + tag + ".{0}";
             zipDir = zipFilesDir.Replace(currentDir, releaseDir);
             foreach (string file in Directory.GetFiles(zipDir, "*.zip"))
             {
@@ -598,17 +604,19 @@ namespace BuildRelease
             return File.ReadAllText(changelogFile);
         }
 
+        /// <summary> Updates wiki Downloads page. </summary>
         private static void UpdateWiki(string releaseNotes, string zipDir)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Updating the Wiki");
             CommandLine.WriteLine("{{white}} =======================================");
 
-            UpdateWikiLists.Program.UpdateWiki(Wiki, Samples, releaseNotes, zipDir);
+            new DownloadsPage(releaseNotes, zipDir).UpdateWiki(Wiki.WorkingDirectory);
 
             CommandLine.WriteLine();
         }
-        
+
+        /// <summary> Commits and Tags this release with the given tag </summary>
         private static void CommitAndTagRelease(string tag)
         {
             CommandLine.WriteLine("{{white}} =======================================");
@@ -645,6 +653,7 @@ namespace BuildRelease
             CommandLine.WriteLine();
         }
 
+        /// <summary> Pushes the changes in all repositories. </summary>
         private static void PushChanges()
         {
             CommandLine.WriteLine("{{white}} =======================================");

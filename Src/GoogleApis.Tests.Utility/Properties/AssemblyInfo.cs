@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2010 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,21 +20,26 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("GoogleApis")]
+[assembly: AssemblyTitle("GoogleApis.Tests.Utility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright � Google Inc 2012")]
+[assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: InternalsVisibleTo("Google.Apis.Tests")]
 [assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]
 
+
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: System.Runtime.InteropServices.ComVisible(false)]
+
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
-
 [assembly: AssemblyVersion("1.2.*")]
 
 // The following attributes are used to specify the signing key for the assembly, 
