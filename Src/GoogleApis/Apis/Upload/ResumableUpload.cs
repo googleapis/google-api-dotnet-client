@@ -15,16 +15,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
+
 using Google.Apis.Authentication;
-using Google.Apis.Discovery;
 using Google.Apis.Requests;
 using Google.Apis.Util;
-using System.Reflection;
+
 
 namespace Google.Apis.Upload
 {
@@ -47,14 +45,14 @@ namespace Google.Apis.Upload
         /// Google upload servers.
         /// </summary>
         private const int MinimumChunkSize = 262144; // 256 KB
-        
+
         /// <summary>
-        /// Default chunk size is set to 4 times the <see cref="MinimumChunkSize"/>of 256KB or 1MB 
+        /// Default chunk size is set to 40 times the <see cref="MinimumChunkSize"/>of 256KB or 10MB 
         /// total.
         /// </summary>
         /// <seealso cref="MinimumChunkSize"/>
         private const int DefaultChunkSize = MinimumChunkSize * 40;
-        
+
         /// <summary>
         /// Buffer size is used to read chunks from the input stream and write to the output stream.
         /// TODO: Improve the read/write scheme to remove the buffer altogether and simply pipe the
@@ -265,7 +263,7 @@ namespace Google.Apis.Upload
         {
             var p = new ResumableUploadProgress(status, byteCount);
             this.Progress = p;
-            if(ProgressChanged != null)
+            if (ProgressChanged != null)
                 ProgressChanged(p);
         }
 
@@ -448,7 +446,7 @@ namespace Google.Apis.Upload
                 // Catch and release on HTTP response code 308. The upload protocol
                 // uses 308 to indicate that there is more data expected from the server.
                 var response = we.Response as HttpWebResponse;
-                if(response == null || response.StatusCode != (HttpStatusCode)308)
+                if (response == null || response.StatusCode != (HttpStatusCode)308)
                     throw;
             }
 
@@ -507,8 +505,6 @@ namespace Google.Apis.Upload
             };
 
             builder.AddParameter(RequestParameterType.Query, "uploadType", "resumable");
-            builder.AddParameter(RequestParameterType.Query, "alt", "json");
-
             SetAllPropertyValues(builder);
 
             var request = builder.GetWebRequest();
@@ -545,14 +541,11 @@ namespace Google.Apis.Upload
                 if (attribute != null)
                 {
                     string name = attribute.Name ?? property.Name.ToLower();
-                    object valueObject = property.GetValue(this, new object[] {} );
-                    string value = String.Empty;
-                    if (valueObject != null)
+                    object value = property.GetValue(this, new object[] { });
+                    if (value != null)
                     {
-                        value = valueObject.ToString();
+                        requestBuilder.AddParameter(attribute.Type, name, value.ToString());
                     }
-
-                    requestBuilder.AddParameter(attribute.Type, name, value);
                 }
             }
         }
@@ -635,7 +628,7 @@ namespace Google.Apis.Upload
 
             ResponseBody = this.Serializer.Deserialize<TResponse>(responseStream);
 
-            if(ResponseReceived != null)
+            if (ResponseReceived != null)
                 ResponseReceived(ResponseBody);
         }
 
