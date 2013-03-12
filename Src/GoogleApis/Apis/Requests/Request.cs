@@ -25,11 +25,13 @@ using System.Threading;
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
 #if !SILVERLIGHT
 using System.IO.Compression;
+
 #endif
 
 namespace Google.Apis.Requests

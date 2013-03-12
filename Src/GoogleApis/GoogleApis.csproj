@@ -68,9 +68,9 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\DelegateAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
-    <Compile Include="Apis\Discovery\BaseClientService.cs" />
+    <Compile Include="Apis\Services\BaseClientService.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
-    <Compile Include="Apis\Discovery\IClientService.cs" />
+    <Compile Include="Apis\Services\IClientService.cs" />
     <Compile Include="Apis\Discovery\MediaUpload.cs" />
     <Compile Include="Apis\Discovery\RuntimeParameter.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />

@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
-    <Compile Include="Apis\Discovery\BaseClientServiceTest.cs" />
+    <Compile Include="Apis\Services\BaseClientServiceTest.cs" />
     <Compile Include="Apis\Discovery\BaseResourceTest.cs" />
     <Compile Include="Apis\Discovery\FactoryParametersTest.cs" />
     <Compile Include="Apis\Discovery\MediaUploadTest.cs" />

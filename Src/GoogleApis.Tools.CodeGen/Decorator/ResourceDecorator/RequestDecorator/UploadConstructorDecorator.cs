@@ -18,7 +18,9 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+
 using Google.Apis.Discovery;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 

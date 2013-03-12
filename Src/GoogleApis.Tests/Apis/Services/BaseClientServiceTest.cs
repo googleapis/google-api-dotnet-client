@@ -25,8 +25,9 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using Google.Apis.Services;
 
-namespace Google.Apis.Tests.Apis.Discovery
+namespace Google.Apis.Tests.Apis.Services
 {
     /// <summary> Test for the BaseClientService class. </summary>
     [TestFixture]

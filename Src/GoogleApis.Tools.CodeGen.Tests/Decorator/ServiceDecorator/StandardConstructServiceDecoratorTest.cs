@@ -22,6 +22,7 @@ using Google.Apis.Discovery;
 using Google.Apis.Authentication;
 using Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator;
 using Google.Apis.Tools.CodeGen.Generator;
+using Google.Apis.Services;
 
 namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 {

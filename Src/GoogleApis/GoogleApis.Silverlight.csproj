@@ -72,9 +72,7 @@
   <ItemGroup>
     <Compile Include="Apis\Authentication\DelegateAuthenticator.cs" />
     <Compile Include="Apis\Authentication\OAuth3LeggedAuthenticator.cs" />
-    <Compile Include="Apis\Discovery\BaseClientService.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
-    <Compile Include="Apis\Discovery\IClientService.cs" />
     <Compile Include="Apis\Discovery\MediaUpload.cs" />
     <Compile Include="Apis\Discovery\RuntimeParameter.cs" />
     <Compile Include="Apis\Discovery\Scope.cs" />
@@ -83,9 +81,12 @@
     <Compile Include="Apis\Requests\HttpWebRequestBuilder.cs" />
     <Compile Include="Apis\Requests\IClientServiceRequest.cs" />
     <Compile Include="Apis\Requests\UriFactory.cs" />
+    <Compile Include="Apis\Services\BaseClientService.cs" />
+    <Compile Include="Apis\Services\IClientService.cs" />
     <Compile Include="Apis\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\Upload\ResumableUpload.cs" />
     <Compile Include="Apis\Util\LazyResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThirdParty\HttpEncoder.cs" />
     <Compile Include="ThirdParty\HttpUtility.cs" />
     <Compile Include="Apis\ISerializer.cs" />
@@ -110,7 +111,6 @@
     <Compile Include="Apis\Util\StandardResponse.cs" />
     <Compile Include="Apis\Util\StringValueAttribute.cs" />
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Apis\Discovery\Service.cs" />
     <Compile Include="Apis\Discovery\DiscoveryService.cs" />
     <Compile Include="Apis\Discovery\IDiscoveryDevice.cs" />

@@ -20,15 +20,15 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Util;
 
-
-namespace Google.Apis.Discovery
+namespace Google.Apis.Services
 {
     /// <summary>
-    /// A safe thread base class for a client service which provides common mechanizm for all services, like 
+    /// A thread-safe base class for a client service which provides common mechanizm for all services, like 
     /// serialization and gzip support.
     /// </summary>
     public abstract class BaseClientService : IClientService
