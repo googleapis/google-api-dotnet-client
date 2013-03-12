@@ -126,12 +126,12 @@ namespace GoogleApis.Tools.ServiceGenerator
             // Discover the service.
             Console.WriteLine("  Fetching " + url);
             IDiscoveryDevice src = url.IsFile
-                                       ? (IDiscoveryDevice)
-                                         new StreamDiscoveryDevice
-                                             {
-                                                 DiscoveryStream = File.Open(url.LocalPath, FileMode.Open)
-                                             }
-                                       : new StringDiscoveryDevice { Document = Utils.FetchDocument(url) };
+                ? (IDiscoveryDevice)
+                new StreamDiscoveryDevice
+                    {
+                        DiscoveryStream = File.Open(url.LocalPath, FileMode.Open, FileAccess.Read)
+                    }
+                : new StringDiscoveryDevice { Document = Utils.FetchDocument(url) };
             var discovery = new DiscoveryService(src);
             IService service = discovery.GetService(DiscoveryVersion.Version_1_0);
 
@@ -232,7 +232,7 @@ namespace GoogleApis.Tools.ServiceGenerator
                 Console.Out.WriteLine("  XML Doc generated in '" + xmlDocFile + "'");
             }
         }
-                
+
         /// <summary>
         /// Adds the specified AssemblyInfo attribute to the code unit.
         /// </summary>
