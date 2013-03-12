@@ -17,13 +17,14 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Linq;
 
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 

@@ -15,14 +15,14 @@ limitations under the License.
 */
 
 using System.Collections.Generic;
-
 using Google.Apis.Authentication;
+using Google.Apis.Discovery;
 using Google.Apis.Requests;
 
-namespace Google.Apis.Discovery
+namespace Google.Apis.Services
 {
     /// <summary>
-    /// Implementors of this interface are able to create arbitory requests against a service
+    /// Implementors of this interface are able to create arbitrary requests against a service
     /// resource name and method, as well as to create and retrieve information related to a request.
     /// </summary>
     public interface IClientService

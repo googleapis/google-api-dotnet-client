@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Services;
 
 namespace Google.Apis.Testing
 {

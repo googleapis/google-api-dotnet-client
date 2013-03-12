@@ -15,9 +15,9 @@ limitations under the License.
 */
 
 using System.CodeDom;
-
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 
 namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator

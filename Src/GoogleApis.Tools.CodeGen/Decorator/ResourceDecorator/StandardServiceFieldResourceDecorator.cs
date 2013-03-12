@@ -15,7 +15,9 @@ limitations under the License.
 */
 using System.CodeDom;
 using System.Collections.Generic;
+
 using Google.Apis.Discovery;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
 
