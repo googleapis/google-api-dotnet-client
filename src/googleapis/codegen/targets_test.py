@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-# Copyright 2011 Google Inc. All Rights Reserved.
 
 
 __author__ = 'jcgregorio@google.com (Joe Gregorio)'

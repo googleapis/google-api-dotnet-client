@@ -5,34 +5,39 @@
 
 A JSON template is a dictionary of JSON data in which string values
 may be simple templates in string.Template format (i.e.,
-$dollarSignEscaping).  The templates is expanded against its own data,
-optionally updated with additional context.
+$dollarSignEscaping).  By default, the template is expanded against
+its own data, optionally updated with additional context.
 """
 
+import json
 from string import Template
+import sys
 
 __author__ = 'smulloni@google.com (Jacob Smullyan)'
 
 
-def ExpandJsonTemplate(json_data, extra_context=None):
-  """Recursively template-expand a json dict against itself.
+def ExpandJsonTemplate(json_data, extra_context=None, use_self=True):
+  """Recursively template-expand a json dict against itself or other context.
 
-  The context for string expansion is the json dict itself, updated
+  The context for string expansion is the json dict itself by default, updated
   by extra_context, if supplied.
 
   Args:
     json_data: (dict) A JSON object where string values may be templates.
     extra_context: (dict) Additional context for template expansion.
+    use_self: (bool) Whether to expand the template against itself, or only use
+        extra_context.
 
   Returns:
     A dict where string template values have been expanded against
     the context.
   """
-  if extra_context:
+  if use_self:
     context = dict(json_data)
-    context.update(extra_context)
   else:
-    context = json_data
+    context = {}
+  if extra_context:
+    context.update(extra_context)
 
   def RecursiveExpand(obj):
     if isinstance(obj, list):
@@ -45,3 +50,13 @@ def ExpandJsonTemplate(json_data, extra_context=None):
       return obj
 
   return RecursiveExpand(json_data)
+
+
+if __name__ == '__main__':
+  if len(sys.argv) > 1:
+    json_in = open(sys.argv[1])
+  else:
+    json_in = sys.stdin
+  data = json.load(json_in)
+  expanded = ExpandJsonTemplate(data)
+  json.dump(expanded, sys.stdout, indent=2)

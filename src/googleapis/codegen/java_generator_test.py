@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,6 @@
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
-from django import v1_3  # pylint: disable-msg=W0611
-
 from google.apputils import basetest
 from googleapis.codegen import data_types
 from googleapis.codegen import java_generator
@@ -31,18 +28,49 @@ class JavaApiTest(basetest.TestCase):
 
   def testToClassName(self):
     """Test creating safe class names from object names."""
+    # 'parameters': {}
     api = java_generator.JavaApi({
         'name': 'dummy',
         'version': 'v1',
+        'resources': {
+            'foo': {
+                'methods': {
+                    'bar': {
+                        'id': 'bar',
+                        }
+                    }
+                }
+            }
+        })
+    self.assertEquals('Foo', api.ToClassName('foo', api))
+    self.assertEquals('DummyClass', api.ToClassName('class', None))
+    self.assertEquals('DummyDefault', api.ToClassName('default', None))
+    self.assertEquals('DummyImport', api.ToClassName('import', None))
+    self.assertEquals('DummyObject', api.ToClassName('object', None))
+    self.assertEquals('DummyString', api.ToClassName('string', None))
+    self.assertEquals('DummyTrue', api.ToClassName('true', None))
+    self.assertEquals('dummy', api.values['name'])
+    self.assertEquals('Dummy', api._class_name)
+
+    # Test the renaming of the object when it matches the API name.
+    self.assertEquals('Dummy', api.ToClassName('dummy', api))
+    foo = api._resources[0]
+    self.assertEquals('DummyOperations',
+                      api.ToClassName('dummy', foo, element_type='resource'))
+    bar = foo._methods[0]
+    self.assertEquals('DummyOperation',
+                      api.ToClassName('dummy', bar, element_type='method'))
+
+  def testToClassNameWithCanonical(self):
+    api = java_generator.JavaApi({
+        'name': 'dummy',
+        'canonicalName': 'Dummy Service',
+        'version': 'v1',
         'resources': {}
         })
-    self.assertEquals('Foo', api.ToClassName('foo'))
-    self.assertEquals('DummyClass', api.ToClassName('class'))
-    self.assertEquals('DummyDefault', api.ToClassName('default'))
-    self.assertEquals('DummyImport', api.ToClassName('import'))
-    self.assertEquals('DummyObject', api.ToClassName('object'))
-    self.assertEquals('DummyString', api.ToClassName('string'))
-    self.assertEquals('DummyTrue', api.ToClassName('true'))
+    self.assertEquals('dummy', api.values['name'])
+    self.assertEquals('DummyService', api._class_name)
+    self.assertEquals('DummyServiceClass', api.ToClassName('class', None))
 
   def testGetCodeTypeFromDictionary(self):
     """Test mapping of JSON schema types to Java class names."""
@@ -68,6 +96,32 @@ class JavaApiTest(basetest.TestCase):
           language_model.GetCodeTypeFromDictionary(test_case[1]))
 
 
+class Java14GeneratorTest(basetest.TestCase):
+
+  def testDefaultPath(self):
+    def MakeGen(host):
+      gen = java_generator.Java14Generator({
+          'name': 'fake',
+          'version': 'v1',
+          'rootUrl': 'https://%s/' % host,
+          'servicePath': 'fake/v1',
+          'ownerDomain': host,
+          })
+      gen.AnnotateApiForLanguage(gen.api)
+      return gen
+
+    gen = MakeGen('google.com')
+    self.assertEquals('com/google/api/services/fake', gen.api.module.path)
+    self.assertEquals('com/google/api/services/fake/model',
+                      gen.api.model_module.path)
+
+    gen = MakeGen('my-custom_app.appspot.com')
+    self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
+
+    gen = MakeGen('localhost')
+    self.assertEquals('localhost/fake', gen.api.module.path)
+
+
 class JavaGeneratorTest(basetest.TestCase):
 
   def testImportsForArray(self):
@@ -76,7 +130,7 @@ class JavaGeneratorTest(basetest.TestCase):
     The goal is to see that an array of a primative type which requires an
     import really works.
     """
-    gen = java_generator.JavaGenerator({
+    gen = java_generator.Java12Generator({
         'name': 'dummy',
         'version': 'v1',
         'resources': {},
@@ -106,7 +160,7 @@ class JavaGeneratorTest(basetest.TestCase):
                 }
             }
         })
-    gen.AnnotateApiForLanguage(gen._api)
+    gen.AnnotateApiForLanguage(gen.api)
     found_big_integer = False
     found_date_time = False
     for schema in gen._api._schemas.values():
@@ -123,26 +177,26 @@ class JavaGeneratorTest(basetest.TestCase):
 
   def testDefaultPath(self):
     def MakeGen(host):
-      gen = java_generator.JavaGenerator({
+      gen = java_generator.Java12Generator({
           'name': 'fake',
           'version': 'v1',
           'rootUrl': 'https://%s/' % host,
-          'servicePath': 'fake/v1'
+          'servicePath': 'fake/v1',
+          'ownerDomain': host,
           })
-      gen.api.SetTemplateValue('ownerDomain', host)
+      gen.AnnotateApiForLanguage(gen.api)
       return gen
 
     gen = MakeGen('google.com')
-    self.assertEquals('com/google/api/services/fake',
-                      gen.DefaultPackagePath(gen.api))
+    self.assertEquals('com/google/api/services/fake', gen.api.module.path)
+    self.assertEquals('com/google/api/services/fake/model',
+                      gen.api.model_module.path)
 
     gen = MakeGen('my-custom_app.appspot.com')
-    self.assertEquals('com/appspot/mycustom_app/api/services/fake',
-                      gen.DefaultPackagePath(gen.api))
+    self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
 
     gen = MakeGen('localhost')
-    self.assertEquals('localhost/api/services/fake',
-                      gen.DefaultPackagePath(gen.api))
+    self.assertEquals('localhost/fake', gen.api.module.path)
 
 
 class JavaLanguageModelTest(basetest.TestCase):
@@ -173,6 +227,37 @@ class JavaLanguageModelTest(basetest.TestCase):
     self.assertRaises(ValueError, render_method, dv)
 
     dv.SetTemplateValue('codeType', 'Long')
+    self.assertEqual('42L', render_method(dv))
+
+
+class Java14LanguageModelTest(basetest.TestCase):
+  def setUp(self):
+    self.language_model = java_generator.Java14LanguageModel()
+
+  def _CreateDataValue(self, value, val_type):
+    def_dict = {
+        'className': 'Foo',
+        'type': val_type,
+        }
+    prototype = data_types.DataType(
+        def_dict, None, language_model=self.language_model)
+    dv = template_objects.DataValue(value, prototype)
+    return dv
+
+  def testRenderBoolean(self):
+    dv = self._CreateDataValue(True, 'boolean')
+    render_method = self.language_model._SUPPORTED_TYPES['boolean']
+    self.assertEqual('true', render_method(dv))
+
+    dv.SetValue(False)
+    self.assertEqual('false', render_method(dv))
+
+  def testRenderInteger(self):
+    dv = self._CreateDataValue(42, 'integer')
+    render_method = self.language_model._SUPPORTED_TYPES['integer']
+    self.assertRaises(ValueError, render_method, dv)
+
+    dv.SetTemplateValue('codeType', 'java.lang.Long')
     self.assertEqual('42L', render_method(dv))
 
 

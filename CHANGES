@@ -1,5 +1,28 @@
 Change Summary
 
+1.3
+
+2013-03-14
+* Update to Python 2.7
+* rename templates from 'stable' to explicitly versioned
+* Many changes to the Java surface in preparation for the 1.14 series
+* Allow comments in the json configuration files
+* Allow expansion of variables in the features.json files
+* Improved code coverage
+* Fixes to parent lineage in parsed API structure
+* Fixed the time stamp and copyright blocks so they can be easily disabled
+  (for doing side-by-side testing)
+* Allow alternate generated package names via new discovery fields.
+* Renamed uses of 'package' meaning "a unit of code in a programming' language
+  to the term 'module'. All CodeObjects now belong to a module.
+* Better type specifications for array and map types.
+* Sort resources, methods and parameters so that we do not get random different
+  in emitted code in each run.
+* Preliminary support for yet another Dart style
+* Allow Dart souce bundle to be .tgz format
+* support for canonicalName in Discovery
+
+
 1.2.0
 
 2012-08-29

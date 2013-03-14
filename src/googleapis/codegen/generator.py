@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,7 @@
 
 """Base library generator.
 
-This module holds the base classes used for all code generators
+This module holds the base classes used for all code generators.
 """
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
@@ -33,13 +32,15 @@ from googleapis.codegen import files
 from googleapis.codegen.django_helpers import DjangoRenderTemplate
 from googleapis.codegen.language_model import LanguageModel
 from googleapis.codegen.template_objects import UseableInTemplates
+# Has to be after django_helpers pylint: disable-msg=g-bad-import-order
+from googleapis.codegen import template_helpers
 
 # This block is static information about the generator which will get passed
 # into templates.
 _GENERATOR_INFORMATION = {
     'name': 'google-apis-code-generator',
-    'version': '1.2.0',
-    'buildDate': '2012-08-29',
+    'version': '1.3.0',
+    'buildDate': '2013-03-14',
     }
 
 # app.yaml and other names that app engine refuses to open.
@@ -109,6 +110,28 @@ class TemplateGenerator(object):
         }
     variables_dict.update(context_dict)
     return DjangoRenderTemplate(template_path, variables_dict)
+
+  def RenderTemplateToFile(self, template_path, context_dict, package,
+                           output_path):
+    """Render a template as a file in the output package.
+
+    Args:
+      template_path: (str) Full path to a template.
+      context_dict: (dict) A dictionary to augment the standard template
+        dictionary.
+      package: (LibraryPackage) output package.
+      output_path: (str) file path in the package.
+
+    Returns:
+      None
+    """
+    try:
+      content = self.RenderTemplate(template_path, context_dict)
+      out = package.StartFile(output_path)
+      out.write(content)
+      package.EndFile()
+    except template_helpers.Halt:
+      pass
 
   def WalkTemplateTree(self, path_to_tree, path_replacements, list_replacements,
                        variables, package, file_filter=None):
@@ -196,9 +219,7 @@ class TemplateGenerator(object):
         if file_filter and not file_filter(full_template_path,
                                            full_output_path):
           continue
-        out = package.StartFile(full_output_path)
-        out.write(self.RenderTemplate(path, variables))
-        package.EndFile()
+        self.RenderTemplateToFile(path, variables, package, full_output_path)
       else:
         full_output_path = os.path.join(relative_path, file_name)
         if file_filter and not file_filter(full_template_path,
@@ -296,11 +317,10 @@ class TemplateGenerator(object):
       name_in_zip = file_name[:-5]  # strip '.tmpl'
       if file_filter and not file_filter(None, name_in_zip):
         continue
-      out = package.StartFile(os.path.join(relative_path, name_in_zip))
       d = dict(variables)
       d[call_info[0]] = element
-      out.write(self.RenderTemplate(template_path, d))
-      package.EndFile()
+      self.RenderTemplateToFile(
+          template_path, d, package, os.path.join(relative_path, name_in_zip))
 
 
 class ToolInformation(UseableInTemplates):

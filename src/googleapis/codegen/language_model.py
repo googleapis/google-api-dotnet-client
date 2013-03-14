@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@
 
 The LanguageModel class contains conceptual elements which are common to
 programming languages, but differ in the details. For example, this class
-had the concept of the delimiter between parts of a package. In Java this
+had the concept of the delimiter between parts of a module. In Java this
 would be a '.', in C++ a '::'.
 """
 __author__ = 'aiuto@google.com (Tony Aiuto)'
@@ -31,19 +30,19 @@ class LanguageModel(object):
 
   def __init__(self,
                class_name_delimiter='.',
-               package_name_delimiter=None):
+               module_name_delimiter=None):
     """Create a LanguageModel.
 
     Args:
       class_name_delimiter: (str) The string which delimits parts of a class
           name in code.
-      package_name_delimiter: (str) The string which delimits parts of a
-          package name in code. Defaults to class_name_delimiter
+      module_name_delimiter: (str) The string which delimits parts of a module
+          name in code. Defaults to class_name_delimiter
     """
     super(LanguageModel, self).__init__()
     self._class_name_delimiter = class_name_delimiter
-    self._package_name_delimiter = (
-        package_name_delimiter or class_name_delimiter)
+    self._module_name_delimiter = (
+        module_name_delimiter or class_name_delimiter)
 
     # pylint: disable-msg=C6409
     self._SUPPORTED_TYPES = {
@@ -121,8 +120,8 @@ class LanguageModel(object):
     return self._class_name_delimiter
 
   @property
-  def package_name_delimiter(self):
-    return self._package_name_delimiter
+  def module_name_delimiter(self):
+    return self._module_name_delimiter
 
   def GetCodeTypeFromDictionary(self, json_schema):
     """Convert a json schema primitive type into the most suitable class name.
@@ -210,6 +209,20 @@ class LanguageModel(object):
     """
     return utilities.CamelCase(s)
 
+  def ToPropertyGetterMethodWithDelim(self, prop_name):
+    """Convert a property name to the name of the getter method that returns it.
+
+    Subclasses should override as appropriate.
+
+    Args:
+      prop_name: (str) The name of a property.
+    Returns:
+      The language specific name of the getter method that returns the specified
+      property. The default implementation returns .getxyz for a property called
+      xyz.
+    """
+    return '%sget%s()' % (self._class_name_delimiter, prop_name)
+
   def RenderDataValue(self, data_value):
     """Translate a value to an appropriate structure for the target language.
 
@@ -231,6 +244,20 @@ class LanguageModel(object):
       raise ValueError(
           'Rendering the provided type (%s) is not supported by the %s.' %
           (type_str, type(self).__name__))
+
+  # pylint: disable-msg=unused-argument
+  def DefaultContainerPathForOwner(self, owner_name, owner_domain):
+    """Computes the default path to a module for the given owner information.
+
+    Subclasses almost certainly want to overrride this.
+
+    Args:
+      owner_name: The canonical name of the API owner. E.g. "YouTube"
+      owner_domain: The domain name of the owner.
+    Returns:
+      (str) The path to use for the namespace of this API.
+    """
+    return '/'.join(utilities.ReversedDomainComponents(owner_domain))
 
 
 class DocumentingLanguageModel(LanguageModel):

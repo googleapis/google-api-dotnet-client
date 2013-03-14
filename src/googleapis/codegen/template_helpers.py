@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -112,12 +111,14 @@ _language_defaults = {
     'cpp': {
         _LINE_WIDTH: 80,
         _PARAMETER_INDENT: 4,
-        _LEVEL_INDENT: 4,
+        _LEVEL_INDENT: 2,
         _COMMENT_START: '// ',
         _COMMENT_CONTINUE: '// ',
         _COMMENT_END: '',
         _DOC_COMMENT_START: '/// ',
         _DOC_COMMENT_CONTINUE: '/// ',
+        _IMPORT_REGEX: r'^#include\s+(?P<import>[\<\"][a-zA-Z0-9./_\-]+[\>\"])',
+        _IMPORT_TEMPLATE: '#include %s'
         },
     'csharp': {
         _LINE_WIDTH: 120,
@@ -294,7 +295,7 @@ def _GetArgFromToken(token):
     token: (django.template.Token) the token holding this tag
   Returns:
     (str) The argument word contained in the token.
-  Raise:
+  Raises:
     TemplateSyntaxError: if the token has no argument.
   """
   try:
@@ -500,6 +501,25 @@ def collapse_blanklines(value):  # pylint: disable-msg=C6409
       previous_blank = False
   return '\n'.join(lines)
 
+
+class Halt(Exception):
+  """The exception raised when a 'halt' tag is encountered."""
+  pass
+
+
+@register.simple_tag
+def halt():  # pylint: disable-msg=C6409
+  """A tag which raises a Halt exception.
+
+  Usage:
+    {% if some_condition %}{% halt %}{% endif %}
+
+  Raises:
+    Halt: always
+  """
+  raise Halt()
+
+
 #
 # Tags for programming language concepts
 #
@@ -698,10 +718,14 @@ class DocCommentNode(django_template.Node):
 
     available_width = (_GetFromContext(context, _LINE_WIDTH) -
                        context.get(_CURRENT_INDENT, 0))
-    one_line = '%s%s%s%s%s' % (start_prefix, begin_tag, text, end_tag,
-                               comment_end)
-    if len(one_line) < available_width:
-      return one_line
+
+    # If the text has no EOL and is short, it may be a one-liner,
+    # though still not necessarily because of other comment overhead.
+    if len(text) < available_width and not '\n' in text:
+      one_line = '%s%s%s%s%s' % (start_prefix, begin_tag, text, end_tag,
+                                 comment_end)
+      if len(one_line) < available_width:
+        return one_line
 
     wrapper = textwrap.TextWrapper(width=available_width,
                                    replace_whitespace=False,
@@ -781,6 +805,52 @@ def DoCamelCase(unused_parser, token):
   return CamelCaseNode(variable_name)
 
 
+class ParameterGetterChainNode(django_template.Node):
+  """Node for returning the parameter getter chain of methods.
+
+  The parameter getter chain here refers to the sequence of getters necessary
+  to return the specified parameter. For example, for parameter xyz this method
+  could return: ".getParent1().getParent2().getParent1().getXyz()".
+  The chain is as long as the number of ancestors of the specified parameter.
+  """
+
+  def __init__(self, variable_name):
+    super(ParameterGetterChainNode, self).__init__()
+    self._variable_name = variable_name
+
+  def render(self, context):  # pylint: disable-msg=C6409
+    """Render the node."""
+    try:
+      prop = django_template.resolve_variable(self._variable_name, context)
+    except django_template.VariableDoesNotExist:
+      return ''
+
+    lang_model = prop.language_model
+    parent_pointer = prop.data_type.parent
+    getter_chain_list = []
+
+    while parent_pointer.parent:
+      # Append a getter for an ancestor of the property.
+      getter_chain_list.append(
+          lang_model.ToPropertyGetterMethodWithDelim(
+              parent_pointer.safeClassName))
+      # Move the pointer up one level
+      parent_pointer = parent_pointer.parent
+
+    # Now append a final getter for the original property.
+    getter_chain_list.append(
+        lang_model.ToPropertyGetterMethodWithDelim(
+            str(prop.GetTemplateValue('wireName'))))
+
+    return ''.join(getter_chain_list)
+
+
+@register.tag(name='param_getter_chain')
+def DoParameterGetterChain(unused_parser, token):
+  variable_name = _GetArgFromToken(token)
+  return ParameterGetterChainNode(variable_name)
+
+
 class ImportsNode(django_template.Node):
   """Node for outputting language specific imports."""
 
@@ -788,7 +858,7 @@ class ImportsNode(django_template.Node):
     self._nodelist = nodelist
     self._element = element
 
-  def render(self, context):  #pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable-msg=C6409
     """Render the node."""
 
     explicit_import_text = self._nodelist.render(context)
@@ -981,8 +1051,8 @@ class TemplateNode(django_template.Node):
       context[key] = value
     return s
 
-  @staticmethod
-  def CreateTemplateNode(token, template, bound_variable):
+  @classmethod
+  def CreateTemplateNode(cls, token, template, bound_variable):
     """Helper function to create a TemplateNode by parsing a tag.
 
     Args:
@@ -995,7 +1065,7 @@ class TemplateNode(django_template.Node):
       a TemplateNode
     """
     variable_name = _GetArgFromToken(token)
-    return TemplateNode(template, {bound_variable: variable_name})
+    return cls(template, {bound_variable: variable_name})
 
 
 @register.tag(name='call_template')
@@ -1022,26 +1092,6 @@ def CallTemplate(unused_parser, token):
   unused_tag, template = contents[0:2]
   bindings = dict(zip(contents[2::2], contents[3::2]))
   return TemplateNode('%s.tmpl' % template, bindings)
-
-
-@register.tag(name='emit_enum_def')
-def DoEmitEnumDef(unused_parser, token):
-  """Emit an enum definition through a language specific template.
-
-  Evalutes the template named '_enum.tmpl' with the variable 'enum' bound
-  to the specified value.
-
-  Usage:
-    {% emit_enum_def var %}
-
-  Args:
-    unused_parser: (parser) the Django parser context.
-    token: (django.template.Token) the token holding this tag
-
-  Returns:
-    a TemplateNode
-  """
-  return TemplateNode.CreateTemplateNode(token, '_enum.tmpl', 'enum')
 
 
 @register.tag(name='emit_method_def')

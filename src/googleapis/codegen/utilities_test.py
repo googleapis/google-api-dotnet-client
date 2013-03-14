@@ -1,4 +1,5 @@
 #!/usr/bin/python2.6
+# -*- coding: utf-8 -*-
 #
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
@@ -18,9 +19,7 @@
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-
 from google.apputils import basetest
-
 from googleapis.codegen import utilities
 
 
@@ -36,6 +35,59 @@ class UtilitiesTest(basetest.TestCase):
     self.assertEquals('HelloWorld', utilities.CamelCase('helloWorld'))
     self.assertEquals('HelloWorld', utilities.CamelCase('hello.world'))
     self.assertEquals('HELLOWORLD', utilities.CamelCase('HELLO_WORLD'))
+    self.assertEquals('HelloWorld', utilities.CamelCase('hello/world'))
+    self.assertEquals('HelloWorld', utilities.CamelCase('/hello/world/'))
+    self.assertEquals('', utilities.CamelCase(''))
+    self.assertEquals(' ', utilities.CamelCase(' '))
+    self.assertEquals(' ', utilities.CamelCase('. '))
+
+  def testUnCamelCase(self):
+    """Basic CamelCase functionality."""
+    # standard case
+    self.assertEquals('hello_world', utilities.UnCamelCase('helloWorld'))
+    self.assertEquals('hello_world', utilities.UnCamelCase('Hello_world'))
+    self.assertEquals('hello_world', utilities.UnCamelCase('helloWorld'))
+    self.assertEquals('hello_world', utilities.UnCamelCase('HELLO_WORLD'))
+    self.assertEquals('hello_world', utilities.UnCamelCase('HELLOworld'))
+    self.assertEquals('hello_world', utilities.UnCamelCase('helloWORLD'))
+    self.assertEquals('hello2_world', utilities.UnCamelCase('Hello2World'))
+
+    # keep existing separators
+    self.assertEquals('hello_world', utilities.UnCamelCase('hello_world'))
+    self.assertEquals('_hello_world', utilities.UnCamelCase('_hello_world'))
+    self.assertEquals('_hello_world', utilities.UnCamelCase('_HelloWorld'))
+    self.assertEquals('hello__world', utilities.UnCamelCase('Hello__World'))
+
+    # embedded acronym
+    self.assertEquals('hello_xw_orld', utilities.UnCamelCase('HelloXWorld'))
+
+    # minimal input
+    self.assertEquals('h', utilities.UnCamelCase('H'))
+    self.assertEquals('', utilities.UnCamelCase(''))
+
+    # Other cases involving expanded alphabet.
+    self.assertEquals('_', utilities.UnCamelCase('_'))
+    self.assertEquals('hello-world', utilities.UnCamelCase('hello-world'))
+    self.assertEquals('hello.world', utilities.UnCamelCase('hello.world'))
+    self.assertEquals('hello/world', utilities.UnCamelCase('hello/world'))
+    self.assertEquals('hello world', utilities.UnCamelCase('Hello World'))
+    self.assertEquals(' ', utilities.UnCamelCase(' '))
+
+  def testSanitizeDomain(self):
+    self.assertIsNone(utilities.SanitizeDomain(None))
+    self.assertEquals('google.com', utilities.SanitizeDomain('google.com'))
+    self.assertEquals('google.com', utilities.SanitizeDomain('GooglE.com'))
+    self.assertEquals('google.com', utilities.SanitizeDomain('goo|gle.com'))
+    self.assertEquals('google.com', utilities.SanitizeDomain('goo gle.com'))
+    self.assertEquals('googl.com', utilities.SanitizeDomain('googlê.com'))
+    self.assertEquals('www_test.appspot.com',
+                      utilities.SanitizeDomain('www-test.appspot.com'))
+
+  def testReversedDomainComponents(self):
+    self.assertEquals([],
+                      utilities.ReversedDomainComponents(''))
+    self.assertEquals(['com', 'google'],
+                      utilities.ReversedDomainComponents('google.com'))
 
 
 if __name__ == '__main__':

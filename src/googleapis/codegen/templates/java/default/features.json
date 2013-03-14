@@ -1,23 +1,36 @@
 {
   "language": "java",
   "description": "Java libraries for Google APIs.",
-  "releaseVersion": "1.9.0-beta",
-  "baseClientLibrary": "1.12.0-beta-SNAPSHOT",
-  "oauthClientLibrary": "1.12.0-beta-SNAPSHOT",
-  "httpClientLibrary": "1.12.0-beta-SNAPSHOT",
+  "generator": "java1_15",
+  "releaseVersion": "1.15.0-beta-SNAPSHOT",
+  "baseClientLibrary": "1.15.0-beta-SNAPSHOT",
+  "oauthClientLibrary": "1.15.0-beta-SNAPSHOT",
+  "httpClientLibrary": "1.15.0-beta-SNAPSHOT",
   "commonsLoggingVersion": "1.1.1",
   "gsonVersion": "2.1",
-  "guavaVersion": "11.0.1",
-  "httpClientVersion": "4.0.3",
+  "httpClientVersion": "4.0.1",
   "httpCoreVersion": "4.0.1",
-  "jacksonCoreAslVersion": "1.9.9",
-  "jackson2CoreVersion": "2.0.5",
+  "jacksonCoreAslVersion": "1.9.11",
+  "jackson2CoreVersion": "2.1.3",
   "jdo2ApiVersion": "2.3-eb",
   "jettyVersion": "6.1.26",
   "jettyUtilVersion": "6.1.26",
-  "jsr305Version": "1.3.9",
   "transactionApiVersion": "1.1",
   "xpp3Version": "1.1.4c",
+  "descriptor_additions": {
+    "proguard-config": "proguard-google-api-client.txt",
+    "files": [
+    {
+      "path": "${___library_file_name___}.jar.properties",
+      "type": "android.properties"
+    } ]
+  },
+  "javadoc_links": [ 
+    "http://docs.oracle.com/javase/7/docs/api",
+    "http://javadoc.google-http-java-client.googlecode.com/hg/${httpClientLibrary}",
+    "http://javadoc.google-oauth-java-client.googlecode.com/hg/${oauthClientLibrary}",
+    "http://javadoc.google-api-java-client.googlecode.com/hg/${baseClientLibrary}"
+  ],
   "requires": [
     {
       "name": "Google API Java Client Bundle",
@@ -100,6 +113,22 @@
         }
       ]
     },{
+      "name": "Servlet extensions to the Google APIs Client Library",
+      "environments": ["appengine", "servlet"],
+      "version": "${baseClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/google-api-client-servlet-${baseClientLibrary}.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/google-api-client-servlet-${baseClientLibrary}-sources.jar"
+        },{
+          "type": "license",
+          "path": "dependencies/APACHE-LICENSE.txt"
+        }
+      ]
+    },{
       "name": "Google OAuth Client Library",
       "environments": ["*"],
       "version": "${oauthClientLibrary}",
@@ -145,6 +174,22 @@
         },{
           "type": "source",
           "path": "libs-sources/google-oauth-client-java6-${oauthClientLibrary}-sources.jar"
+        },{
+          "type": "license",
+          "path": "dependencies/APACHE-LICENSE.txt"
+        }
+      ]
+    },{
+      "name": "Java 7 (and higher) extensions to the Google OAuth Client Library",
+      "environments": ["generic"],
+      "version": "${oauthClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/google-oauth-client-java7-${oauthClientLibrary}.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/google-oauth-client-java7-${oauthClientLibrary}-sources.jar"
         },{
           "type": "license",
           "path": "dependencies/APACHE-LICENSE.txt"
@@ -310,25 +355,6 @@
         }
       ]
     },{
-      "name": "Google Guava",
-      "environments": ["*"],
-      "version": "${guavaVersion}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/guava-${guavaVersion}.jar"
-        },{
-          "type": "source",
-          "path": "libs-sources/guava-${guavaVersion}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/APACHE-LICENSE.txt"
-        },{
-          "type": "android-properties",
-          "path": "libs/guava-${guavaVersion}.jar.properties"
-        }
-      ]
-    },{
       "name": "GSON",
       "environments": ["*"],
       "version": "${gsonVersion}",
@@ -460,19 +486,6 @@
         },{
           "type": "source",
           "path": "libs-sources/jetty-util-${jettyUtilVersion}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/APACHE-LICENSE.txt"
-        }
-      ]
-    },{
-      "name": "JSR 305",
-      "environments": ["*"],
-      "version": "${jsr305Version}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/jsr305-${jsr305Version}.jar"
         },{
           "type": "license",
           "path": "dependencies/APACHE-LICENSE.txt"

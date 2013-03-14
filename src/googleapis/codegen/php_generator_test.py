@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,6 @@
 __author__ = 'chirags@google.com (Chirag Shah)'
 
 
-
-from django import v1_3  # pylint: disable-msg=W0611
 
 from google.apputils import basetest
 from googleapis.codegen import api
@@ -95,9 +92,9 @@ class PHPApiTest(basetest.TestCase):
 
   def testToClassName(self):
     """Test creating safe class names from object names."""
-    self.assertEquals('Foo', self.api.ToClassName('foo'))
-    self.assertEquals('TestObject', self.api.ToClassName('object'))
-    self.assertEquals('TestString', self.api.ToClassName('string'))
+    self.assertEquals('Foo', self.api.ToClassName('foo', None))
+    self.assertEquals('TestObject', self.api.ToClassName('object', None))
+    self.assertEquals('TestString', self.api.ToClassName('string', None))
 
   def testGetCodeTypeFromDictionary(self):
     """Test mapping of JSON schema types to PHP class names."""

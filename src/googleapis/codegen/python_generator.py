@@ -186,13 +186,15 @@ class PythonApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(PythonApi, self).__init__(discovery_doc)
 
-  def ToClassName(self, s, element_type=None):  # pylint: disable-msg=W0613
+  # pylint: disable-msg=W0613
+  def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Python class name.
 
     Overrides the default.
 
     Args:
       s: (str) A rosy name of data element.
+      element: (object) The object we need a class name for.
       element_type: (str) The kind of element (resource|method) to name.
     Returns:
       A name suitable for use as a class in the generator's target language.

@@ -105,6 +105,17 @@ def main(unused_argv):
   if FLAGS.output_type == 'full':
     options['include_dependencies'] = True
 
+  # try to determine what generator to use from the language variant.
+  language_variants = Targets().VariationsForLanguage(FLAGS.language)
+  if language_variants:
+    features = language_variants.GetFeatures(FLAGS.language_variant)
+    template_dir = features.template_dir
+    generator_name = features.get('generator', FLAGS.language)
+  else:
+    template_dir = os.path.join(template_dir, FLAGS.languages)
+    features = None
+    generator_name = FLAGS.language
+
   # Instantiate the right code generator
   try:
     if FLAGS.language == 'any':
@@ -114,7 +125,7 @@ def main(unused_argv):
       lm = language_model.DocumentingLanguageModel()
       api.VisitAll(lambda o: o.SetLanguageModel(lm))
     else:
-      generator_class = generator_lookup.GetGeneratorByLanguage(FLAGS.language)
+      generator_class = generator_lookup.GetGeneratorByLanguage(generator_name)
       api = generator_class(discovery_doc).api
 
   except ValueError:
@@ -122,14 +133,9 @@ def main(unused_argv):
 
   gen = TemplateExpander(api, options=options)
 
-  # Get the path to the template set.
-  language_variants = Targets().VariationsForLanguage(FLAGS.language)
-  if language_variants:
-    template_dir = language_variants.AbsoluteTemplateDir(FLAGS.language_variant)
-    features = language_variants.GetFeatures(FLAGS.language_variant)
+  if features:
     gen.SetFeatures(features)
-  else:
-    template_dir = os.path.join(template_dir, FLAGS.language)
+
   template_dir = os.path.join(template_dir, FLAGS.templates)
   gen.SetTemplateDir(template_dir)
 

@@ -6,9 +6,11 @@
       "variations": {
         "default": {
           "path": "default",
-          "platforms": ["cmd-line"]
-         }
-       }
+        },
+        "next": {
+          "path": "0.2",
+        }
+      }
     },
     "gwt": {
       "displayName": "GWT",
@@ -16,11 +18,9 @@
       "variations": {
         "default": {
           "path": "default",
-          "platforms": ["cmd-line"]
         },
         "stable": {
-          "path": "stable",
-          "platforms": ["cmd-line"]
+          "path": "0.4-alpha",
         }
       }
     },
@@ -30,15 +30,12 @@
       "variations": {
         "default": {
           "path": "default",
-          "platforms": ["cmd-line"]
         },
         "stable": {
-          "path": "stable",
-          "platforms": ["cmd-line"]
+          "path": "1.14.0-beta",
         },
         "models_only": {
           "path": "models_only",
-          "platforms": ["cmd-line"]
         }
       }
     },
@@ -48,11 +45,9 @@
       "variations": {
         "default": {
           "path": "default",
-          "platforms": ["cmd-line"]
         },
         "stable": {
-          "path": "stable",
-          "platforms": ["cmd-line"]
+          "path": "0.3",
         }
       }
     },
@@ -61,18 +56,9 @@
       "description": "Python libraries for Google APIs.",
       "variations": {
         "default": {
-          "path": "stable",
-          "platforms": ["cmd-line", "appengine"]
+          "path": "1.0",
         }
       }
-    }
-  },
-  "platforms": {
-    "cmd-line": {
-      "displayName": "Command-Line"
-    },
-    "web": {
-      "displayName": "Web"
     }
   }
 }

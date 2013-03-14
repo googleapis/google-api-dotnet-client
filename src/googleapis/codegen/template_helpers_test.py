@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -140,22 +139,41 @@ class TemplateHelpersTest(basetest.TestCase):
     TryDocComment('java', value, expected)
     TryDocComment('php', value, expected)
 
+    # single line csharp and cpp
+    value = 'Hello, World!'
+    TryDocComment('cpp', value, '/// %s' % value)
+    TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
+
+    # single line but with '\n' in it
+    value = '123\n456'
+    expected_expansion = '123 456'
+    # NOTE(user): 20130111
+    # Java and PHP have their own special methods for handling comments.
+    # I think this case is wrong, but am not addressing it at this time
+    # since it is still syntactically correct.
+    TryDocComment('java', value, '/**\n * %s\n */' % expected_expansion)
+    TryDocComment('php', value, '/**\n * %s\n */' % expected_expansion)
+    TryDocComment('cpp', value, '/// %s' % expected_expansion)
+    TryDocComment('csharp', value,
+                  '/// <summary>%s</summary>' % expected_expansion)
+
     # multi line java and php
     value = '%s %s %s' % (alphabet, alphabet, alphabet)
     expected = '/**\n * %s\n * %s\n * %s\n */' % (alphabet, alphabet, alphabet)
     TryDocComment('java', value, expected)
     TryDocComment('php', value, expected)
 
-    # single line csharp
-    value = '%s' % alphabet
-    expected = '/// <summary>%s</summary>' % alphabet
-    TryDocComment('csharp', value, expected)
+    # single line csharp and c++
+    value = alphabet
+    TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
+    TryDocComment('cpp', value, '/// %s' % value)
 
     # multi line csharp
     value = '%s %s %s' % (alphabet, alphabet, alphabet)
-    expected = '/// <summary>%s\n/// %s\n/// %s</summary>' % (
-        alphabet, alphabet, alphabet)
-    TryDocComment('csharp', value, expected)
+    expected_expansion = '%s\n/// %s\n/// %s' % (alphabet, alphabet, alphabet)
+    TryDocComment('csharp', value,
+                  '/// <summary>%s</summary>' % expected_expansion)
+    TryDocComment('cpp', value, '/// %s' % expected_expansion)
 
   def testCallTemplate(self):
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} def'
@@ -305,6 +323,17 @@ class TemplateHelpersTest(basetest.TestCase):
     loader.GetTemplate(stable_path, template_dir)
     self.assertTrue(stable_path in loader._cache)
     self.assertFalse(test_path in loader._cache)
+
+  def testHalt(self):
+    # See that it raises the error
+    template = django_template.Template('{% halt %}')
+    context = django_template.Context({})
+    self.assertRaises(
+        template_helpers.Halt, template.render, context)
+    # But make sure it raises on execution, not parsing. :-)
+    template = django_template.Template('{% if false %}{% halt %}{% endif %}OK')
+    context = django_template.Context({})
+    self.assertEquals('OK', template.render(context))
 
 
 if __name__ == '__main__':

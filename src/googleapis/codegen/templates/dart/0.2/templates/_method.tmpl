@@ -1,0 +1,77 @@
+{% comment %}
+  Renders a method body.
+  [method] the method to render.
+{% endcomment %}// Method {{ method.contextCodeType }}
+{% collapsenewlines %}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}{% endif %}
+ * {% for p in method.requiredParameters %}
+ * {% emit_parameter_doc p %}{% endfor %}
+ * {% for p in method.optionalParameters %}
+ * {% emit_parameter_doc p %}{% endfor %}
+ * {% if method.requestType %}
+ * [content] the {{ method.requestType.className }}{% endif %}
+ * {% endfilter %}
+ */
+Future{% if method.responseType.className %}<{{ method.responseType.className }}>{% endif %} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}
+        {% call_template _parameter_type param p %} {{ p.codeName }}
+      {% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.className }} content
+      {% end_parameter %}
+    {% endif %}
+    {% if method.optionalParameters %}
+      {% parameter %}{Map optParams}{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %}) {
+  var completer = new Completer();
+  var url = {% literal method.path %};
+  var urlParams = new Map();
+  var queryParams = new Map();
+
+{% filter noblanklines %}
+  var paramErrors = new List();
+{% for p in method.requiredParameters %}
+  if ({{ p.codeName }} == null) paramErrors.add("{{ p.codeName }} is required");
+  if ({{ p.codeName }} != null) urlParams[{% literal p.wireName %}] = {{ p.codeName}};
+{% endfor %}
+{% endfilter %}
+  if (optParams != null) {
+    optParams.forEach((key, value) {
+      if (value != null && queryParams[key] == null) {
+        queryParams[key] = value;
+      }
+    });
+  }
+
+  if (!paramErrors.isEmpty) {
+    completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+    return completer.future;
+  }
+
+  var response;
+  response = _client.request({% parameter_list %}
+      {% parameter %}url{% end_parameter %}
+      {% parameter %}{% literal method.httpMethod %}{% end_parameter %}
+      {% if method.requestType %}
+          {% parameter %}body: content.toString(){% end_parameter %}
+      {% endif %}
+      {% parameter %}urlParams: urlParams{% end_parameter %}
+      {% parameter %}queryParams: queryParams{% end_parameter %}
+      {% end_parameter_list %});
+{% filter noblanklines %}
+  response
+{% if method.responseType.className %}
+    .then((data) => completer.complete(new {{ method.responseType.className }}.fromJson(data)))
+{% else %}
+    .then(() => completer.complete())
+{% endif %}
+    .catchError((e) { completer.completeError(e); return true; });
+  return completer.future;
+{% endfilter %}
+}
+{% endcollapsenewlines %}

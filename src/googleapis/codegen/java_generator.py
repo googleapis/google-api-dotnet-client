@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,28 +30,25 @@ from googleapis.codegen.java_import_manager import JavaImportManager
 from googleapis.codegen.language_model import LanguageModel
 
 
-class JavaGenerator(api_library_generator.ApiLibraryGenerator):
-  """The Java code generator."""
+class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
+  """Base for Java code generators."""
+
+  _support_prop_methods = True
 
   def __init__(self, discovery, language='java', language_model=None,
                options=None):
     if not language_model:
-      language_model = JavaLanguageModel()
-    super(JavaGenerator, self).__init__(JavaApi, discovery, language,
-                                        language_model, options=options)
+      language_model = self._GetDefaultLanguageModel()
+    super(BaseJavaGenerator, self).__init__(JavaApi, discovery, language,
+                                            language_model, options=options)
+
+  @classmethod
+  def _GetDefaultLanguageModel(cls):
+    return JavaLanguageModel()
 
   def _InnerModelClassesSupported(self):
     """Gets whether or not inner model classes are supported."""
     return True
-
-  def DefaultPackagePath(self, the_api):
-    """Overrides the default implementation."""
-    owner_domain = the_api.values['ownerDomain']
-    owner_parts = owner_domain.split('.')
-    list.reverse(owner_parts)
-    owner_parts = [x.replace('-', '').replace('.', '') for x in owner_parts]
-    return '%s/api/services/%s' % ('/'.join(owner_parts),
-                                   the_api.values['name'])
 
   def AnnotateApi(self, the_api):
     """Annotate the Api dictionary with Java specifics."""
@@ -73,17 +69,18 @@ class JavaGenerator(api_library_generator.ApiLibraryGenerator):
       resource: (Resource) The resource which owns this method.
     """
     # Chain up so our parameters are annotated first.
-    super(JavaGenerator, self).AnnotateMethod(the_api, method, resource)
-
-    # TODO(user): This is a hack until http-client supports the PROP methods
-    http_method = method.values.get('httpMethod')
-    if (http_method == 'PROPFIND' or http_method == 'OPTIONS'
-        or http_method == 'REPORT'):
-      method.SetTemplateValue('httpMethodOverride', http_method)
-      method.SetTemplateValue('httpMethod', 'GET')
-    if method == 'PROPPATCH':
-      method.SetTemplateValue('httpMethodOverride', http_method)
-      method.SetTemplateValue('httpMethod', 'PATCH')
+    super(BaseJavaGenerator, self).AnnotateMethod(the_api, method, resource)
+    if not self._support_prop_methods:
+      # TODO(user): This is a hack until the Java client supports the
+      # PROP methods
+      http_method = method.values.get('httpMethod')
+      if (http_method == 'PROPFIND' or http_method == 'OPTIONS'
+          or http_method == 'REPORT'):
+        method.SetTemplateValue('httpMethodOverride', http_method)
+        method.SetTemplateValue('httpMethod', 'GET')
+      if method == 'PROPPATCH':
+        method.SetTemplateValue('httpMethodOverride', http_method)
+        method.SetTemplateValue('httpMethod', 'PATCH')
 
   def AnnotateParameter(self, unused_method, parameter):
     """Annotate a Parameter with Java specific elements."""
@@ -113,7 +110,7 @@ class JavaGenerator(api_library_generator.ApiLibraryGenerator):
     data_type = element.data_type
     json_type = data_type.json_type
     while json_type == 'array' or json_type == 'map':
-      data_type = data_type._base_type
+      data_type = data_type._base_type  # pylint: disable-msg=protected-access
       json_type = data_type.json_type
     json_format = data_type.values.get('format')
 
@@ -128,6 +125,54 @@ class JavaGenerator(api_library_generator.ApiLibraryGenerator):
       # Set all template values, if specified.
       for template_value in import_definition.template_values:
         element.SetTemplateValue(template_value, True)
+
+
+class Java8Generator(BaseJavaGenerator):
+  """A Java generator for language version 1.8."""
+  _support_prop_methods = False
+
+  @classmethod
+  def _GetDefaultLanguageModel(cls):
+    return Java8LanguageModel()
+
+
+class Java12Generator(BaseJavaGenerator):
+  """A Java generator for language version 1.12 and 1.13."""
+
+
+class Java14Generator(BaseJavaGenerator):
+  """A Java generator for language version 1.14 and higher."""
+
+  @classmethod
+  def _GetDefaultLanguageModel(cls):
+    return Java14LanguageModel()
+
+  def AnnotateParameter(self, unused_method, parameter):
+    """Annotate a Parameter with Java specific elements."""
+    self._HandleJsonString(parameter)
+
+  def AnnotateProperty(self, unused_api, prop, unused_schema):
+    """Annotate a Property with Java specific elements."""
+    self._HandleJsonString(prop)
+
+  def _HandleJsonString(self, element):
+    """Handles imports for the specified element.
+
+    Args:
+      element: (Property|Parameter) The property we want to set the import for.
+    """
+    # For collections, we have to get the imports for the first non-collection
+    # up the base_type chain.
+    data_type = element.data_type
+    json_type = data_type.json_type
+    while json_type == 'array' or json_type == 'map':
+      data_type = data_type._base_type  # pylint: disable-msg=protected-access
+      json_type = data_type.json_type
+    json_format = data_type.values.get('format')
+
+    if json_type == 'string' and (json_format == 'int64'
+                                  or json_format == 'uint64'):
+      element.SetTemplateValue('requiresJsonString', True)
 
 
 class JavaLanguageModel(LanguageModel):
@@ -291,7 +336,7 @@ class JavaLanguageModel(LanguageModel):
     safe_class_name = utilities.CamelCase(s)
     if parent:
       for ancestor in parent.full_path:
-        if ancestor.class_name == safe_class_name:
+        if ancestor.safeClassName == safe_class_name:
           safe_class_name = '%s%s' % (parent.class_name, safe_class_name)
     if safe_class_name.lower() in JavaLanguageModel.RESERVED_CLASS_NAMES:
       # Prepend the service name
@@ -299,12 +344,121 @@ class JavaLanguageModel(LanguageModel):
                                   utilities.CamelCase(s))
     return safe_class_name
 
+  def ToPropertyGetterMethodWithDelim(self, prop_name):
+    """Convert a property name to the name of the getter method that returns it.
+
+    Args:
+      prop_name: (str) The name of a property.
+    Returns:
+      A Java specific name of the getter method that returns the specified
+      property. Eg: returns .getXyz for a property called xyz.
+    """
+    return '%sget%s()' % (self._class_name_delimiter,
+                          utilities.CamelCase(prop_name))
+
+  def CodeTypeForVoid(self):
+    """Return the Java type name for a void.
+
+    Overrides the default.
+
+    Returns:
+      (str) 'EmptyResponse'
+    """
+    return 'Void'
+
+  def DefaultContainerPathForOwner(self, unused_owner_name, owner_domain):
+    """Returns the default path for the module containing this API."""
+    # TODO(user): Figure out if this rule is correct. Get decision at PM level
+    if owner_domain == 'google.com':
+      return 'com/google/api/services'
+    return '/'.join(utilities.ReversedDomainComponents(owner_domain))
+
+
+class Java8LanguageModel(JavaLanguageModel):
+  """Language model for the Java 1.8 template version."""
+
+  def CodeTypeForVoid(self):
+    """Return the Java 1.8 type name for a void.
+
+    Overrides the default.
+
+    Returns:
+      (str) 'EmptyResponse'
+    """
+    return 'void'
+
+
+class Java14LanguageModel(JavaLanguageModel):
+  """A LanguageModel tuned for Java (version 1.14 and higher)."""
+
+  # TODO(user): lift up this implementation into JavaLanguageModel
+
+  # Dictionary of json type and format to its corresponding data type.
+  TYPE_FORMAT_TO_DATATYPE = {
+      ('boolean', None): 'java.lang.Boolean',
+      ('any', None): 'java.lang.Object',
+      ('integer', 'int16'): 'java.lang.Short',
+      ('integer', 'int32'): 'java.lang.Integer',
+      ('integer', 'uint32'): 'java.lang.Long',
+      ('number', 'double'): 'java.lang.Double',
+      ('number', 'float'): 'java.lang.Float',
+      ('object', None): 'java.lang.Object',
+      ('string', None): 'java.lang.String',
+      ('string', 'byte'): 'java.lang.String',
+      ('string', 'date'): 'com.google.api.client.util.DateTime',
+      ('string', 'date-time'): 'com.google.api.client.util.DateTime',
+      ('string', 'int64'): 'java.lang.Long',
+      ('string', 'uint64'): 'java.math.BigInteger',
+      }
+
+  def _Int(self, data_value):
+    """Convert provided int to language specific literal."""
+    # Available types can be found in class variables
+    code_types = {
+        'java.lang.Short': '%s',
+        'java.lang.Integer': '%s',
+        'java.lang.Long': '%sL',
+        }
+    try:
+      return code_types[data_value.code_type] % long(data_value.value)
+    except KeyError:
+      raise ValueError(
+          ('Provided DataValue (%s) does not present an appropriate Java '
+           'annotated code type (%s).') %
+          (data_value.value, data_value.code_type))
+
+  def GetCodeTypeFromDictionary(self, def_dict):
+    """Convert a json schema type to a suitable Java type name.
+
+    Overrides the default.
+
+    Args:
+      def_dict: (dict) A dictionary describing Json schema for this Property.
+    Returns:
+      A name suitable for use as a class in the generator's target language.
+    """
+    json_type = def_dict.get('type', 'string')
+    json_format = def_dict.get('format')
+
+    datatype = (self.TYPE_FORMAT_TO_DATATYPE.get((json_type, json_format)))
+    if datatype:
+      # If there is an entry in the type format to datatype
+      # dictionary set it as the native format.
+      native_format = datatype
+    else:
+      # Could not find it in the dictionary, set it to the json type.
+      native_format = utilities.CamelCase(json_type)
+    return native_format
+
 
 class JavaApi(api.Api):
   """An Api with Java annotations."""
 
   def __init__(self, discovery_doc, **unused_kwargs):
     super(JavaApi, self).__init__(discovery_doc)
+    # Java puts the model classes in a module nested under the API, so adjust
+    # the path accordingly.
+    self.model_module.SetPath('model')
 
   def TopLevelModelClasses(self):
     """Return the models which are not children of another model.
@@ -318,7 +472,8 @@ class JavaApi(api.Api):
     return [m for m in self.ModelClasses()
             if not m.parent and not isinstance(m, data_types.ArrayDataType)]
 
-  def ToClassName(self, s, element_type=None):
+  # pylint: disable-msg=W0613
+  def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Java class name.
 
     In Java, nested class names cannot share the same name as the outer class
@@ -328,16 +483,18 @@ class JavaApi(api.Api):
 
     Args:
       s: (str) A rosy name of data element.
+      element: (object) The object we need a class name for.
       element_type: (str) The kind of object we need a class name for.
     Returns:
       A name suitable for use as a class in the generator's target language.
     """
-    if s.lower() in JavaLanguageModel.RESERVED_CLASS_NAMES:
+    # Camelcase what we have and account for spaces in canonical names
+    name = utilities.CamelCase(s).replace(' ', '')
+    if name.lower() in JavaLanguageModel.RESERVED_CLASS_NAMES:
       # Prepend the service name
-      return '%s%s' % (utilities.CamelCase(self.values['name']),
-                       utilities.CamelCase(s))
+      service = self._class_name or utilities.CamelCase(self.values['name'])
+      return service + name
 
-    name = utilities.CamelCase(s)
     if name == self.values.get('className'):
       if 'resource' == element_type:
         name += 'Operations'

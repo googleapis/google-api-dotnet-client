@@ -1,0 +1,38 @@
+{% if current_model.arrayOf %}
+@com.google.api.client.util.Key
+{{ current_model.safeCodeType}} items;
+{% endif %}{% for property in current_model.properties %}
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * The value may be {@code null}.
+   */
+  @com.google.api.client.util.Key{% ifnotequal property.wireName property.codeName %}("{{ property.wireName }}"){% endifnotequal %}{% if property.requiresJsonString %} @JsonString{% endif %}{% endfilter %}
+  {% if features.thin_models %}public{% else %}private{% endif %} {{ property.safeCodeType }} {{ property.codeName }};
+
+{% filter noblanklines %}
+  {% if property.data_type.isContainer %}
+{% call_template _proguard_content_def schema property.data_type.baseType %}
+  {% endif %}
+{% endfilter %}
+{% endfor %}
+{% if not features.thin_models %}{% for property in current_model.properties %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * The value returned may be {@code null}.
+   */
+  public {{ property.safeCodeType }} get{% camel_case property.wireName %}() {
+    return {{ property.codeName }};
+  }
+
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * The value set may be {@code null}.
+   */
+  public {{ current_model.safeClassName }} set{% camel_case property.wireName %}({{ property.safeCodeType }} {{property.codeName }}) {
+    this.{{ property.codeName }} = {{ property.codeName}};
+    return this;
+  }
+{% ifequal property.codeType "Boolean" %}{% ifnotequal property.default null %}
+{% call_template _bool_getter_content_def property property %}
+{% endifnotequal %}{% endifequal %}{% endfor %}{% endif %}

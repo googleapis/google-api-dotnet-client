@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,6 +48,25 @@ class DataType(template_objects.CodeObject):
     schema_id = def_dict.get('id')
     if schema_id:
       self.SetTemplateValue('className', schema_id)
+    # Top level primitive and container classes end up as known schema objects,
+    # because some languages will want to generate definitions for them. Thus
+    # they need a module. ComplexDataType instances might set a different
+    # module in their constructor. The check for the api is to facilitiate
+    # unit tests, which sometimes create types without any API.
+    # TODO(user): Do not set _module here. Let it be dyanmically found from
+    # the parent when needed. But, there is currently a problem with
+    # BuildSchemaDefinitions where the top level schemas do not have a parent
+    # because we are calling 'self.DataTypeFromJson(def_dict, name)' without
+    # the parent parameter. If we add parent there, all hell seems to break.
+    # Fix that and remove this.
+    if self.api and hasattr(self.api, 'model_module'):
+      self._module = self.api.model_module
+
+    # Set some specific annotations as template values.
+    annotations = def_dict.get('annotations')
+    if annotations:
+      required = annotations.get('required')
+      self.SetTemplateValue('required_for_methods', required)
 
   @property
   def json_type(self):
@@ -58,7 +76,6 @@ class DataType(template_objects.CodeObject):
   @property
   def code_type(self):
     """Returns the string representing this datatype."""
-    #raise NotImplementedError('DataType subclasses must implement code_type')
     return self.values.get('codeType') or self.values.get('className')
 
   @property
@@ -85,9 +102,8 @@ class DataType(template_objects.CodeObject):
       safe_class_name = self.values.get('wireName')
       if not safe_class_name:
         return None
-      language_model = self._FindNearestLanguageModel()
-      if language_model:
-        safe_class_name = language_model.ToSafeClassName(
+      if self.language_model:
+        safe_class_name = self.language_model.ToSafeClassName(
             safe_class_name, self._api, self._parent)
       self.SetTemplateValue('safeClassName', safe_class_name)
     return safe_class_name
@@ -125,9 +141,8 @@ class PrimitiveDataType(DataType):
   @property
   def code_type(self):
     """Returns the language specific type representing this datatype."""
-    language_model = self._FindNearestLanguageModel()
-    if language_model:
-      s = language_model.GetCodeTypeFromDictionary(self._def_dict)
+    if self.language_model:
+      s = self.language_model.GetCodeTypeFromDictionary(self._def_dict)
       return s
     return self.values.get('type')
 
@@ -192,35 +207,51 @@ class ComplexDataType(DataType):
     return self.class_name or self.safeClassName
 
 
-class ArrayDataType(ComplexDataType):
-  """DataType which represents a array of another DataType."""
+class ContainerDataType(ComplexDataType):
+  """Superclass for all DataTypes which represent containers."""
 
-  def __init__(self, default_name, base_type, parent=None, wire_name=None):
+  def __init__(self, name, base_type, parent=None, wire_name=None):
     """Construct an ArrayDataType.
 
     Args:
-      default_name: (str) The name to give this type if there is no 'id' in
+      name: (str) The name to give this type if there is no 'id' in
         the default dict.
       base_type: (DataType) The DataType to represent an array of.
       parent: (TemplateObject) The parent of this object.
       wire_name: (str) The identifier used in the wire protocol for this object.
     """
     # Access to protected _language_model OK here. pylint: disable-msg=W0212
-    super(ArrayDataType, self).__init__(
-        default_name, {}, base_type.api, parent=parent,
+    super(ContainerDataType, self).__init__(
+        name, {}, base_type.api, parent=parent,
         language_model=base_type._language_model,
         wire_name=wire_name)
     self._base_type = base_type
-    self._json_type = 'array'
     self.SetTemplateValue('isContainer', True)
     self.SetTemplateValue('baseType', base_type)
     self.SetTemplateValue('builtIn', True)
-    self.SetTemplateValue('arrayOf', base_type)
-    # TODO(user): This gets parenting right so language models propogate down.
+    # TODO(user): This gets parenting right so language models propagate down.
     # We should invert the computation of code_type so we ask the language
-    # model for code type of a primative.
+    # model for code type of a primitive.
     if isinstance(base_type, PrimitiveDataType):
       self._base_type.SetParent(self)
+
+
+class ArrayDataType(ContainerDataType):
+  """DataType which represents a array of another DataType."""
+
+  def __init__(self, name, base_type, parent=None, wire_name=None):
+    """Construct an ArrayDataType.
+
+    Args:
+      name: (str) The name to give this type.
+      base_type: (DataType) The DataType to represent an array of.
+      parent: (TemplateObject) The parent of this object.
+      wire_name: (str) The identifier used in the wire protocol for this object.
+    """
+    super(ArrayDataType, self).__init__(name, base_type, parent=parent,
+                                        wire_name=wire_name)
+    self._json_type = 'array'
+    self.SetTemplateValue('arrayOf', base_type)
 
   @property
   def code_type(self):
@@ -231,45 +262,33 @@ class ArrayDataType(ComplexDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    language_model = self._FindNearestLanguageModel()
-    return language_model.CodeTypeForArrayOf(self._base_type.code_type)
+    return self.language_model.CodeTypeForArrayOf(self._base_type.code_type)
 
   @property
   def safe_code_type(self):
-    language_model = self._FindNearestLanguageModel()
-    return language_model.CodeTypeForArrayOf(self._base_type.safe_code_type)
+    return self.language_model.CodeTypeForArrayOf(
+        self._base_type.safe_code_type)
 
 
-class MapDataType(ComplexDataType):
+class MapDataType(ContainerDataType):
   """DataType which represents a map of string to another DataType.
 
   This is the base class for things which might be data type definitions, such
   as Schema objects derived from JSONSchema blocks or primitive types.
   """
 
-  def __init__(self, default_name, base_type, parent=None, wire_name=None):
+  def __init__(self, name, base_type, parent=None, wire_name=None):
     """Construct a MapDataType.
 
     Args:
-      default_name: (str) The name to give this type if there is no 'id' in
-        the default dict.
+      name: (str) The name to give this type.
       base_type: (DataType) The DataType to represent an map of string to.
       parent: (TemplateObject) The parent of this object.
       wire_name: (str) The identifier used in the wire protocol for this object.
     """
-    # Access to protected _language_model OK here. pylint: disable-msg=W0212
-    super(MapDataType, self).__init__(default_name, {}, base_type.api,
-                                      parent=parent,
-                                      language_model=base_type._language_model,
+    super(MapDataType, self).__init__(name, base_type, parent=parent,
                                       wire_name=wire_name)
-    self._base_type = base_type
     self._json_type = 'map'
-    if isinstance(base_type, PrimitiveDataType):
-      self._base_type.SetParent(self)
-    # Mark me as not generatable
-    self.SetTemplateValue('isContainer', True)
-    self.SetTemplateValue('baseType', base_type)
-    self.SetTemplateValue('builtIn', True)
     self.SetTemplateValue('mapOf', base_type)
 
   @property
@@ -281,8 +300,7 @@ class MapDataType(ComplexDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    language_model = self._FindNearestLanguageModel()
-    return language_model.CodeTypeForMapOf(self._base_type.code_type)
+    return self.language_model.CodeTypeForMapOf(self._base_type.code_type)
 
   @property
   def safe_code_type(self):
@@ -293,8 +311,7 @@ class MapDataType(ComplexDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    language_model = self._FindNearestLanguageModel()
-    return language_model.CodeTypeForMapOf(self._base_type.safe_code_type)
+    return self.language_model.CodeTypeForMapOf(self._base_type.safe_code_type)
 
 
 class SchemaReference(DataType):
@@ -303,21 +320,36 @@ class SchemaReference(DataType):
   Provides a lazy reference to schema by name.
   """
 
-  def __init__(self, referenced_schema, api):
+  def __init__(self, referenced_schema_name, api):
     """Construct a SchemaReference.
 
     Args:
-      referenced_schema: (str) The name of the schema we are referencing.
+      referenced_schema_name: (str) The name of the schema we are referencing.
       api: (Api) The Api instance which owns this element.
 
     Returns:
       SchemaReference
     """
     super(SchemaReference, self).__init__({}, api)
-    self._referenced_schema = referenced_schema
-    self.SetTemplateValue('className', referenced_schema)
-    self.SetTemplateValue('wireName', referenced_schema)
+    self._referenced_schema_name = referenced_schema_name
+    self.SetTemplateValue('className', referenced_schema_name)
+    self.SetTemplateValue('wireName', referenced_schema_name)
     self.SetTemplateValue('reference', True)
+
+  # TODO(user): 20130227
+  # I thought there was another way to do this, but I don't remember
+  # right now. This feels like something we should do after parsing all
+  # the schemas, so that we can resolve in one pass and not worry about
+  # loading order.
+  @property
+  def referenced_schema(self):
+    """Returns the concrete schema being referenced by this instance."""
+    data_type = self
+    while isinstance(data_type, SchemaReference):
+      # pylint: disable-msg=protected-access
+      data_type = data_type.api.SchemaByName(data_type._referenced_schema_name)
+
+    return data_type
 
   @property
   def values(self):
@@ -333,7 +365,7 @@ class SchemaReference(DataType):
     Returns:
       dict of values which can be used in template.
     """
-    s = self.api.SchemaByName(self._referenced_schema)
+    s = self.referenced_schema
     if s:
       return s.values
     return self._def_dict
@@ -341,19 +373,24 @@ class SchemaReference(DataType):
   @property
   def code_type(self):
     """Returns the string representing the datatype of this variable."""
-    s = self.api.SchemaByName(self._referenced_schema)
+    s = self.referenced_schema
     if s:
       return s.code_type
     return self._def_dict.get('codeType') or self._def_dict.get('className')
 
   @property
   def safe_code_type(self):  # pylint: disable-msg=C6409
-    return self.api.SchemaByName(self._referenced_schema).safe_code_type
+    return self.referenced_schema.safe_code_type
 
   @property
   def parent(self):
     """Returns the parent of the schema I reference."""
-    return self.api.SchemaByName(self._referenced_schema).parent
+    return self.referenced_schema.parent
+
+  @property
+  def module(self):
+    """Returns the module of the schema I reference."""
+    return self.referenced_schema.module
 
 
 class Void(PrimitiveDataType):
@@ -381,7 +418,6 @@ class Void(PrimitiveDataType):
   @property
   def code_type(self):
     """Returns the string representing the datatype of this variable."""
-    language_model = self._FindNearestLanguageModel()
-    if language_model:
-      return language_model.CodeTypeForVoid()
+    if self.language_model:
+      return self.language_model.CodeTypeForVoid()
     return 'void'

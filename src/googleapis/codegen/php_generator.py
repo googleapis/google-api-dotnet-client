@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +28,7 @@ Features:
 
 __author__ = 'chirags@google.com (Chirag Shah)'
 
+import collections
 import json
 
 from googleapis.codegen import api
@@ -294,13 +294,14 @@ class PHPApi(api.Api):
   # pylint: disable-msg=W0613
   # The parameter element_type is deliberately unused since PHP doesn't
   # support nested classes.
-  def ToClassName(self, s, element_type=None):
+  def ToClassName(self, s, unused_element, element_type=None):
     """Convert a discovery name to a suitable PHP class name.
 
     Overrides the default.
 
     Args:
       s: (string) The wire format name of a class.
+      unused_element: (object) The object we need a class name for.
       element_type: (string) The kind of object we need a class name for.
     Returns:
       A name suitable for use as a class in PHP.
@@ -320,7 +321,7 @@ def _StripResource(resource):
   """Return a copy of a resource dict with extraneous properties removed."""
   if not isinstance(resource, dict):
     return resource
-  ret = {}
+  ret = collections.OrderedDict()
   for name, value in resource.iteritems():
     if not name in _EXTRA_PROPERTIES:
       ret[name] = _StripResource(value)

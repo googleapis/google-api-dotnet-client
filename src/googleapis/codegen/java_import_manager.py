@@ -43,8 +43,8 @@ class JavaImportManager(object):
     self._other_imports = set()
     self._java_imports = set()
 
-  @staticmethod
-  def GetCachedImportManager(element):
+  @classmethod
+  def GetCachedImportManager(cls, element):
     """Gets an import manager instance that corresponds to the class name.
 
     If the schema does not have a cached import manager, one is created
@@ -59,7 +59,7 @@ class JavaImportManager(object):
     import_mngr = _CLASS_NAME_TO_IMPORT_MANAGER.get(element)
     if not import_mngr:
       # This class does not have an import manager yet. Instantiate it.
-      import_mngr = JavaImportManager(element)
+      import_mngr = cls(element)
       _CLASS_NAME_TO_IMPORT_MANAGER[element] = import_mngr
     return import_mngr
 

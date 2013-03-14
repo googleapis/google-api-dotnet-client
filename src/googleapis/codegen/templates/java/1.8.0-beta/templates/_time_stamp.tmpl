@@ -1,0 +1,8 @@
+{% filter noblanklines %}
+/*
+ * This file was generated.
+{% if options.include_timestamp %}
+ *  with {{ tool.name }} {{ tool.version }}{% if tool.buildDate %} (build: {{ tool.buildDate }}){% endif %}
+ *  on {{ tool.runDate }} at {{ tool.runTime }} {% endif %}
+ */
+{% endfilter %}

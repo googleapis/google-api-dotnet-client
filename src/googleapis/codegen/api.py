@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +43,7 @@ from googleapis.codegen import utilities
 _ADDITIONAL_PROPERTIES = 'additionalProperties'
 _DEFAULT_SERVICE_HOST = 'www.googleapis.com'
 _DEFAULT_OWNER_DOMAIN = 'google.com'
-_DEFAULT_OWNER = 'google'
+_DEFAULT_OWNER_NAME = 'Google'
 
 
 class ApiException(Exception):
@@ -93,18 +92,20 @@ class Api(template_objects.CodeObject):
 
   def __init__(self, discovery_doc, language=None):
     super(Api, self).__init__(discovery_doc, self)
-    # Establish a default owner.
-    self.SetTemplateValue('owner', discovery_doc.get('owner') or _DEFAULT_OWNER)
     name = self.values['name']
+    self.SetTemplateValue('wireName', name)
     self._validator.ValidateApiName(name)
     if name != 'freebase':
       self._validator.ValidateApiVersion(self.values['version'])
-    self._class_name = self.ToClassName(name, element_type='api')
+    canonical_name = self.values.get('canonicalName', name)
+    self._class_name = self.ToClassName(canonical_name, self)
+    # Guard against language implementor not taking care of spaces
+    self._class_name = self._class_name.replace(' ', '')
+    self._NormalizeOwnerInformation()
     self._language = language
     self._template_dir = None
     self._surface_features = {}
     self._schemas = {}
-    self.void_type = data_types.Void(self)
     self._methods_by_name = {}
 
     self.SetTemplateValue('className', self._class_name)
@@ -118,6 +119,10 @@ class Api(template_objects.CodeObject):
       self.values['revision'] = 'snapshot'
 
     self._NormalizeUrlComponents()
+
+    # Build data types and methods
+    self._SetupModules()
+    self.void_type = data_types.Void(self)
     self._BuildSchemaDefinitions()
     self._BuildResourceDefinitions()
     self.SetTemplateValue('resources', self._resources)
@@ -127,14 +132,16 @@ class Api(template_objects.CodeObject):
 
     # Replace methods dict with Methods
     self._methods = []
-    for name, method_dict in self.values.get('methods', {}).iteritems():
-      self._methods.append(Method(self, name, method_dict))
+    method_dict = self.values.get('methods') or {}
+    for name in sorted(method_dict):
+      self._methods.append(Method(self, name, method_dict[name]))
     self.SetTemplateValue('methods', self._methods)
 
     # Global parameters
     self._parameters = []
-    for name, param_dict in self.values.get('parameters', {}).iteritems():
-      parameter = Parameter(self, name, param_dict, self)
+    param_dict = self.values.get('parameters') or {}
+    for name in sorted(param_dict):
+      parameter = Parameter(self, name, param_dict[name], self)
       self._parameters.append(parameter)
       if name == 'alt':
         self.SetTemplateValue('alt', parameter)
@@ -155,11 +162,32 @@ class Api(template_objects.CodeObject):
     """The dictionary of all the schema objects found in the API."""
     return self._schemas
 
+  def _SetupModules(self):
+    """Compute and set the module(s) which this API belongs under."""
+    # The containing module is based on the owner information.
+    self._containing_module = template_objects.Module(
+        path=self.values.get('modulePath'),
+        owner_name=self.values.get('owner'),
+        owner_domain=self.values.get('ownerDomain'))
+    self.SetTemplateValue('containingModule', self._containing_module)
+
+    # The API is a child of the containing_module
+    base = self.values['name']
+    if self.values.get('version_module'):
+      base = '%s/%s' % (base, self.values['versionNoDots'])
+    self._module = template_objects.Module(path=base,
+                                           parent=self._containing_module)
+    self.SetTemplateValue('module', self._module)
+
+    # The default module for data models defined by this API.
+    self._model_module = template_objects.Module(path=None, parent=self._module)
+
   def _BuildResourceDefinitions(self):
     """Loop over the resources in the discovery doc and build definitions."""
     self._resources = []
-    for name, def_dict in self.values.get('resources', {}).iteritems():
-      resource = Resource(self, name, def_dict)
+    def_dict = self.values.get('resources') or {}
+    for name in sorted(def_dict):
+      resource = Resource(self, name, def_dict[name], parent=self)
       self._resources.append(resource)
 
   def _BuildSchemaDefinitions(self):
@@ -171,6 +199,13 @@ class Api(template_objects.CodeObject):
         if isinstance(def_dict, unicode):
           def_dict = json.loads(def_dict)
         self._schemas[name] = self.DataTypeFromJson(def_dict, name)
+
+  def _NormalizeOwnerInformation(self):
+    """Ensure that owner and ownerDomain are set to sane values."""
+    self.SetTemplateValue('owner',
+                          self.values.get('owner') or _DEFAULT_OWNER_NAME)
+    domain = self.values.get('ownerDomain', _DEFAULT_OWNER_DOMAIN)
+    self.SetTemplateValue('ownerDomain', utilities.SanitizeDomain(domain))
 
   def _NormalizeUrlComponents(self):
     """Sets template values concerning the path to the service.
@@ -223,7 +258,6 @@ class Api(template_objects.CodeObject):
     # TODO(user): Revert to 'if not service_path' once oauth2 is fixed.
     if service_path is None:
       self._api.SetTemplateValue('servicePath', base_path[1:])
-    self._api.SetTemplateValue('ownerDomain', _DEFAULT_OWNER_DOMAIN)
 
     # Make sure template writers do not revert
     self._api.DeleteTemplateValue('baseUrl')
@@ -273,7 +307,8 @@ class Api(template_objects.CodeObject):
       # Use the path to the schema as a key. This means that an anonymous class
       # for the 'person' property under the schema 'Activity' will have the
       # unique name 'Activity.person', rather than 'ActivityPerson'.
-      path = '.'.join([a.values.get('wireName') for a in schema.full_path])
+      path = '.'.join(
+          [a.values.get('wireName', '<anon>') for a in schema.full_path])
       Trace('DataTypeFromJson: add %s to cache' % path)
       self._schemas[path] = schema
     return schema
@@ -328,6 +363,9 @@ class Api(template_objects.CodeObject):
       func: (function) Method to call on each object.
     """
     Trace('Applying function to all nodes')
+    func(self._containing_module)
+    func(self._module)
+    func(self._model_module)
     for resource in self.values['resources']:
       self._VisitResource(resource, func)
     # Top level methods
@@ -372,29 +410,42 @@ class Api(template_objects.CodeObject):
       func: (function) Method to call on each object.
     """
     func(schema)
+    func(schema.module)
     for prop in schema.values.get('properties', []):
       func(prop)
     for child in self.children:
       func(child)
 
-  def ToClassName(self, s, element_type=None):  # pylint: disable-msg=W0613
-    """Convert a name to a suitable member name in the target language.
+  # Do not warn about unused arguments, pylint: disable-msg=W0613
+  def ToClassName(self, s, element, element_type=None):
+    """Convert a name to a suitable class name in the target language.
 
     This default implementation camel cases the string, which is appropriate
-    for Java and C++.  Subclasses may override as appropriate.
+    for some languages.  Subclasses are encouraged to override this.
 
     Args:
       s: (str) A rosy name of data element.
-      element_type: (str) The kind of object we are making a class name for.
-        E.g. resource, method, schema.
+      element: (object) The object we are making a class name for.
+      element_type: (str) Deprecated. The kind of object we are making a class
+        name for.  E.g. resource, method, schema.
+        TODO(user): replace type in favor of class of element, but that will
+        require changing the place where we call ToClassName with no element.
     Returns:
       A name suitable for use as a class in the generator's target language.
     """
-    return utilities.CamelCase(s)
+    return utilities.CamelCase(s).replace(' ', '')
 
   @property
   def class_name(self):
     return self.values['className']
+
+  @property
+  def model_module(self):
+    return self._model_module
+
+  @property
+  def containing_module(self):
+    return self._containing_module
 
 
 class Schema(data_types.ComplexDataType):
@@ -421,12 +472,14 @@ class Schema(data_types.ComplexDataType):
     # Protect against malicious discovery
     template_objects.CodeObject.ValidateName(name)
     self.SetTemplateValue('wireName', name)
-    class_name = api.ToClassName(name, element_type='schema')
+    class_name = api.ToClassName(name, self, element_type='schema')
     self.SetTemplateValue('className', class_name)
     self.SetTemplateValue('properties', [])
+    self._module = (template_objects.Module.ModuleFromDictionary(self.values)
+                    or api.model_module)
 
-  @staticmethod
-  def Create(api, default_name, def_dict, wire_name, parent=None):
+  @classmethod
+  def Create(cls, api, default_name, def_dict, wire_name, parent=None):
     """Construct a Schema or DataType from a discovery dictionary.
 
     Schemas contain either object declarations, simple type declarations, or
@@ -457,7 +510,10 @@ class Schema(data_types.ComplexDataType):
       name = schema_id
     else:
       name = default_name
-    class_name = api.ToClassName(name, element_type='schema')
+    class_name = api.ToClassName(name, None, element_type='schema')
+
+    Trace('Create: %s, parent=%s' % (
+        name, parent.values.get('wireName', '<anon>') if parent else 'None'))
 
     # Schema objects come in several patterns.
     #
@@ -496,10 +552,11 @@ class Schema(data_types.ComplexDataType):
         if props:
           # This case 1 from above
           properties = []
-          schema = Schema(api, name, def_dict, parent=parent)
+          schema = cls(api, name, def_dict, parent=parent)
           if wire_name:
             schema.SetTemplateValue('wireName', wire_name)
-          for prop_name, prop_dict in props.iteritems():
+          for prop_name in sorted(props):
+            prop_dict = props[prop_name]
             Trace('  adding prop: %s to %s' % (prop_name, name))
             properties.append(Property(api, schema, prop_name, prop_dict))
           schema.SetTemplateValue('properties', properties)
@@ -531,7 +588,7 @@ class Schema(data_types.ComplexDataType):
         else:
           lname = name
         logging.warning('object without properties %s: %s', lname, def_dict)
-        schema = Schema(api, name, def_dict, parent=parent)
+        schema = cls(api, name, def_dict, parent=parent)
         if wire_name:
           schema.SetTemplateValue('wireName', wire_name)
         return schema
@@ -582,9 +639,11 @@ class Schema(data_types.ComplexDataType):
       #
       # For case 3, we will end up with a dangling reference and fail later.
       schema = api.SchemaByName(referenced_schema)
+      # The stored "schema" may not be an instance of Schema, but rather a
+      # data_types.PrimitiveDataType, which has no 'wireName' value.
       if schema:
-        Trace('Schema.Create: %s => %s' % (default_name,
-                                           schema.values['wireName']))
+        Trace('Schema.Create: %s => %s' %
+              (default_name, schema.values.get('wireName', '<unknown>')))
         return schema
       return data_types.SchemaReference(referenced_schema, api)
 
@@ -598,23 +657,32 @@ class Schema(data_types.ComplexDataType):
 class Resource(template_objects.CodeObject):
   """The definition of a resource."""
 
-  def __init__(self, api, name, def_dict):
-    super(Resource, self).__init__(def_dict, api)
+  def __init__(self, api, name, def_dict, parent=None):
+    """Creates a Resource.
+
+    Args:
+      api: (Api) The Api which owns this Method.
+      name: (string) The discovery name of the method.
+      def_dict: (dict) The discovery dictionary for this method.
+      parent: (CodeObject) The resource containing this method, if any.
+    """
+    super(Resource, self).__init__(def_dict, api, parent=parent)
     self.ValidateName(name)
     self._raw_def_dict = copy.deepcopy(def_dict)
-    class_name = api.ToClassName(name, element_type='resource')
+    class_name = api.ToClassName(name, self, element_type='resource')
     self.SetTemplateValue('className', class_name)
     self.SetTemplateValue('wireName', name)
     # Replace methods dict with Methods
     self._methods = []
-    for name, method_dict in self.values.get('methods', {}).iteritems():
-      self._methods.append(Method(api, name, method_dict, parent=self))
+    method_dict = self.values.get('methods') or {}
+    for name in sorted(method_dict):
+      self._methods.append(Method(api, name, method_dict[name], parent=self))
     self.SetTemplateValue('methods', self._methods)
     # Get sub resources
     self._resources = []
-    for name, r_def_dict in self.values.get('resources', {}).iteritems():
-      r = Resource(api, name, r_def_dict)
-      r.SetParent(self)
+    r_def_dict = self.values.get('resources') or {}
+    for name in sorted(r_def_dict):
+      r = Resource(api, name, r_def_dict[name], parent=self)
       self._resources.append(r)
     self.SetTemplateValue('resources', self._resources)
 
@@ -661,11 +729,12 @@ class Method(template_objects.CodeObject):
     """
     super(Method, self).__init__(def_dict, api, parent=parent)
     self.ValidateName(name)
-    class_name = api.ToClassName(name, element_type='method')
+    class_name = api.ToClassName(name, self, element_type='method')
     if parent and class_name == parent.values['className']:
       # Some languages complain when the collection name is the same as the
       # method name.
       class_name = '%sRequest' % class_name
+    # TODO(user): wireName should be set from the id.
     self.SetTemplateValue('wireName', name)
     self.SetTemplateValue('className', class_name)
     http_method = def_dict.get('httpMethod', 'POST').upper()
@@ -709,7 +778,7 @@ class Method(template_objects.CodeObject):
     order = self.values.get('parameterOrder', [])
     req_parameters = []
     opt_parameters = []
-    for name, def_dict in self.values.get('parameters', {}).items():
+    for name, def_dict in self.values.get('parameters', {}).iteritems():
       param = Parameter(api, name, def_dict, self)
       if name == 'alt':
         # Treat the alt parameter differently
@@ -730,6 +799,10 @@ class Method(template_objects.CodeObject):
     req_parameters.extend(opt_parameters)
     self.SetTemplateValue('parameters', req_parameters)
 
+    self._InitMediaUpload(parent)
+    self._InitPageable(api)
+
+  def _InitMediaUpload(self, parent):
     media_upload = self.values.get('mediaUpload')
     if media_upload:
       if parent:
@@ -738,12 +811,44 @@ class Method(template_objects.CodeObject):
       # method.
       accepted_mime_ranges = media_upload.get('accept')
       self.SetTemplateValue('accepted_mime_ranges', accepted_mime_ranges)
-      self.SetTemplateValue('max_size', media_upload.get('maxSize'))
+      max_size = media_upload.get('maxSize')
+      self.SetTemplateValue('max_size', max_size)
+      self.SetTemplateValue('max_size_bytes',
+                            self._ConvertUploadSize(max_size))
       # Find which upload protocols are supported.
       upload_protocols = media_upload['protocols']
       for upload_protocol in upload_protocols:
         self._SetUploadTemplateValues(
             upload_protocol, upload_protocols[upload_protocol])
+
+  def _InitPageable(self, api):
+    response_type = self.values.get('responseType')
+    if (response_type != api.void_type
+        and self.FindCodeObjectWithWireName(
+            response_type.values.get('properties'), 'nextPageToken')
+        and self.FindCodeObjectWithWireName(
+            self.optional_parameters, 'pageToken')):
+      self.SetTemplateValue('isPageable', True)
+
+  @staticmethod
+  def _ConvertUploadSize(size):
+    """Convert a size like 10G/K/M/B to a number."""
+    # See Java implementation at:
+    if not size:
+      return None
+    units = [('GB', 2 ** 30),
+             ('MB', 2 ** 20),
+             ('KB', 2 ** 10),
+             ('B', 1)]
+    size = size.upper()
+    for suffix, multiplier in units:
+      if size.endswith(suffix):
+        num_units = size[:-len(suffix)]
+        try:
+          return int(num_units) * multiplier
+        except (ValueError, KeyError):
+          break
+    return None
 
   def _SetUploadTemplateValues(self, upload_protocol, protocol_dict):
     """Sets upload specific template values.
@@ -784,6 +889,22 @@ class Method(template_objects.CodeObject):
   @property
   def query_parameters(self):
     return [p for p in self.values['parameters'] if p.location == 'query']
+
+  @staticmethod
+  def FindCodeObjectWithWireName(things, wire_name):
+    """Looks for an element having the given wire_name.
+
+    Args:
+      things: (array of DataType) List of parameters or properties to search.
+      wire_name: (str) The wireName we are looking to find.
+
+    Returns:
+      None or element with the given wire_name.
+    """
+    if not things: return None
+    for e in things:
+      if e.values['wireName'] == wire_name: return e
+    return None
 
   #
   # Expose some properties with the naming convention we use in templates
@@ -943,7 +1064,7 @@ class Enum(data_types.DataType):
     self._base_type = base_type
     self.SetTemplateValue('wireName', name)
     self.SetTemplateValue('className',
-                          api.ToClassName(name, element_type='enum'))
+                          api.ToClassName(name, self, element_type='enum'))
     names = [s.lstrip('@').upper().replace('-', '_') for s in values]
     clean_descriptions = []
     for desc in descriptions:

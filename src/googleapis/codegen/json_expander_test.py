@@ -31,6 +31,12 @@ class JsonExpanderTest(basetest.TestCase):
     expanded = json_expander.ExpandJsonTemplate(d, extra)
     self.assertEquals(y_val, expanded["t"])
 
+  def testExpandNoSelf(self):
+    d = dict(x="aha", t1="$x")
+    extra = dict(x="no-no")
+    expanded = json_expander.ExpandJsonTemplate(d, extra, use_self=False)
+    self.assertEquals("no-no", expanded["t1"])
+
 
 if __name__ == "__main__":
   basetest.main()

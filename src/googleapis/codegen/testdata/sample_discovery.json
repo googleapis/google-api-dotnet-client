@@ -67,6 +67,76 @@
   }
  },
  "schemas": {
+  "AllTypes": {
+   "id": "AllTypes",
+   "type": "object",
+   "properties": {
+    "boolean": {
+     "type": "boolean"
+     },
+    "any": {
+     "type": "any"
+     },
+    "int16": {
+     "type": "integer",
+     "format": "int16"
+     },
+    "uint32": {
+     "type": "integer",
+     "format": "uint32"
+     },
+    "int32": {
+     "type": "integer",
+     "format": "int32"
+     },
+    "double": {
+     "type": "number",
+     "format": "double"
+     },
+    "float": {
+     "type": "number",
+     "format": "float"
+     },
+    "object": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+       }
+      }
+     },
+    "string": {
+     "type": "string"
+     },
+    "bytes": {
+     "type": "string",
+     "format": "byte"
+     },
+    "date": {
+     "type": "string",
+     "format": "date"
+     },
+    "datetime": {
+     "type": "string",
+     "format": "date-time"
+     },
+    "int64": {
+     "type": "string",
+     "format": "int64"
+     },
+    "uint64": {
+     "type": "string",
+     "format": "uint64"
+     },
+    "uint64array": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "uint64"
+      }
+     }
+    }
+   },
   "Activity": {
    "id": "Activity",
    "type": "object",
@@ -84,6 +154,9 @@
        "type": "any"
       },
       "thumbnailUrl": {
+       "type": "any"
+      },
+      "/freebase/object_profile/linkcount": {
        "type": "any"
       }
      }
@@ -112,7 +185,12 @@
      }
     },
     "crosspostSource": {
-     "type": "any"
+     "type": "any",
+     "annotations": {
+       "required": [
+         "activities.insert"
+       ]
+     }
     },
     "detectedlLang": {
      "type": "any"
@@ -121,7 +199,12 @@
      "type": "any"
     },
     "id": {
-     "type": "any"
+     "type": "any",
+     "annotations": {
+       "required": [
+         "activities.insert"
+       ]
+     }
     },
     "kind": {
      "type": "string",
@@ -1799,6 +1882,7 @@
      ]
     },
     "insert": {
+     "id": "activities.insert",
      "restPath": "activities/{userId}/@self",
      "rpcMethod": "chili.activities.insert",
      "httpMethod": "POST",

@@ -9,11 +9,11 @@ to make sure they won't blow up at run time.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-import json
 import os
 import re
 
 from google.apputils import basetest
+from googleapis.codegen import json_with_comments
 from googleapis.codegen import platforms
 from googleapis.codegen.json_expander import ExpandJsonTemplate
 
@@ -55,7 +55,7 @@ class ConfigurationTest(basetest.TestCase):
     self.assertLess(1, len(content))
     json_file.close()
     try:
-      json_data = json.loads(content)
+      json_data = json_with_comments.Loads(content)
     except ValueError as err:
       # Ignore the known broken files.
       if not path.endswith('testdata/broken.json'):
@@ -112,6 +112,16 @@ class ConfigurationTest(basetest.TestCase):
 
   def testCheckDependenciesExist(self):
     # Test that the file actually exist.
+    targets = self.LoadJsonFile(os.path.join(self._SRC_DATA_DIR,
+                                             'targets.json'))
+
+    def VariantNameForFeaturePath(path):
+      lang_name, variant_path = path.split('/')[-3:-1]
+      variants = targets['languages'][lang_name]['variations']
+      for varname, variant in variants.iteritems():
+        if variant['path'] == variant_path:
+          return varname
+
     for path in self.WalkFileTree('features\.json$'):
       # Skip this check for test files.
       if path.find('/testdata/') >= 0:
@@ -123,7 +133,9 @@ class ConfigurationTest(basetest.TestCase):
       if not language:
         continue
       # Skip this check for 'default' versions of language surface. Those don't
-      # get used in the service, so they done need dependencies
+      # get used in the service, so they don't need dependencies
+      if VariantNameForFeaturePath(path) == 'default':
+        continue
       if path.find('%s/default' % language) >= 0:
         continue
 

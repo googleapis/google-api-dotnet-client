@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +25,7 @@ import copy
 
 from googleapis.codegen import html_stripper
 from googleapis.codegen import name_validator
+from googleapis.codegen import utilities
 from googleapis.codegen.django_helpers import MarkSafe
 
 
@@ -103,6 +103,7 @@ class CodeObject(UseableInTemplates):
     self._children = []
     self._parent = None
     self._language_model = language_model
+    self._module = None
     self.SetParent(parent)
     # Sanitize the 'description'. It is a block of user written text we want to
     # emit whenever possible.
@@ -111,13 +112,13 @@ class CodeObject(UseableInTemplates):
       self.SetTemplateValue('description',
                             self.ValidateAndSanitizeComment(self.StripHTML(d)))
 
-  @staticmethod
-  def ValidateName(name):
+  @classmethod
+  def ValidateName(cls, name):
     """Validate that the name is safe to use in generated code."""
-    CodeObject._validator.Validate(name)
+    cls._validator.Validate(name)
 
-  @staticmethod
-  def ValidateAndSanitizeComment(comment):
+  @classmethod
+  def ValidateAndSanitizeComment(cls, comment):
     """Remove unsafe constructions from a string and make it safe in templates.
 
     Make sure a string intended as a comment has only safe constructs in it and
@@ -131,7 +132,7 @@ class CodeObject(UseableInTemplates):
       (str) The comment with HTML-unsafe constructions removed.
     """
     comment = comment.encode('ASCII', 'ignore')
-    return MarkSafe(CodeObject._validator.ValidateAndSanitizeComment(comment))
+    return MarkSafe(cls._validator.ValidateAndSanitizeComment(comment))
 
   @staticmethod
   def StripHTML(input_string):
@@ -153,6 +154,28 @@ class CodeObject(UseableInTemplates):
     return self._parent
 
   @property
+  def module(self):
+    """Returns the module this object would belong in.
+
+    Walks up the ancesters _module is undefined for self. If a module can not
+    be found, raises an error, since this indicates either a problem building
+    the API model or in writing a template. Failing silently does not help
+    debug that.
+
+    Returns:
+      Module
+
+    Raises:
+      ValueError: If the module can not be determined.
+    """
+    if self._module:
+      return self._module
+    if self.parent:
+      return self.parent.module
+    raise ValueError('Asked for module of CodeObject without any: %s, %s' %
+                     (self.values.get('wireName', '<unnamed>'), self))
+
+  @property
   def codeName(self):  # pylint: disable-msg=C6409
     """Returns a language appropriate name for this object.
 
@@ -165,9 +188,8 @@ class CodeObject(UseableInTemplates):
     code_name = self.GetTemplateValue('codeName')
     if not code_name:
       code_name = self.values['wireName']
-      language_model = self._FindNearestLanguageModel()
-      if language_model:
-        code_name = language_model.ToMemberName(code_name, self._api)
+      if self.language_model:
+        code_name = self.language_model.ToMemberName(code_name, self._api)
       self.SetTemplateValue('codeName', code_name)
     return MarkSafe(code_name)
 
@@ -177,17 +199,15 @@ class CodeObject(UseableInTemplates):
 
     This property can only be used during template expansion.  Walks up the
     parent chain building a fully qualified class name. If the object is in a
-    package, include the package name.
+    module, include the module name.
 
     Returns:
       (str) The class name of this object.
     """
-    p = self.FindTopParent()
-    package = p.values.get('package')
-    if package:
-      language_model = self._FindNearestLanguageModel()
-      class_name_delimiter = language_model.class_name_delimiter
-      return package.name + class_name_delimiter + self.RelativeClassName(None)
+    module = self.module
+    if module:
+      class_name_delimiter = self.language_model.class_name_delimiter
+      return module.name + class_name_delimiter + self.RelativeClassName(None)
     return MarkSafe(self.RelativeClassName(None))
 
   @property
@@ -217,7 +237,7 @@ class CodeObject(UseableInTemplates):
     if self.parent:
       full_name = self.parent.RelativeClassName(other)
     if full_name:
-      language_model = self._FindNearestLanguageModel()
+      language_model = self.language_model
       if language_model:
         class_name_delimiter = language_model.class_name_delimiter
       full_name += class_name_delimiter
@@ -282,14 +302,21 @@ class CodeObject(UseableInTemplates):
     if self._parent:
       self._parent.children.append(self)
 
-  def _FindNearestLanguageModel(self):
-    """Find the nearest LanguageModel by walking my parents."""
+  @property
+  def language_model(self):
+    """Returns the nearest LanguageModel by walking my parents.
+
+    Memoizes the computation, by setting self._language_model after the first
+    parent lookup.
+
+    Returns:
+      (LanguageModel) A LanguageModel
+    """
     if self._language_model:
       return self._language_model
     if self._parent:
-      # Access to protected member OK here. pylint: disable-msg=W0212
-      return self._parent._FindNearestLanguageModel()
-    return None
+      self._language_model = self._parent.language_model
+    return self._language_model
 
   @property
   def codeType(self):  # pylint: disable-msg=C6409
@@ -316,60 +343,112 @@ class CodeObject(UseableInTemplates):
     return MarkSafe(self.safe_code_type)
 
 
-class Package(CodeObject):
-  """A code object which represents the concept of a package.
+class Module(CodeObject):
+  """A code object which represents the concept of a module.
 
-  A Package has two properties available for use in templates:
-    name: The full name of this package, including the parent of this Package.
-    path: The file path where this package would be stored in a full generated
+  A Module has two properties available for use in templates:
+    name: The full name of this module, including the parent of this Module.
+    path: The file path where this module would be stored in a full generated
           code layout. Since the templates can not open files for writing, this
           is intended for use inside documentation.
 
+  These values are derived from elements defining the owner of the API or
+  shared data type as described in http://goto/apiarylibrarynamespacing
+
   Typically, a code generator will create a model (e.g. an Api) and assign a
-  a Package to the top node. Other nodes in the model might be in different
-  packages, which can be created as children of the top Package. E.g.
+  a Module to the top node. Other nodes in the model might be in different
+  modules, which can be created as children of the top Module. E.g.
     api = LoadApi(....)
-    language_model = JavaLanguageModel()
-    top_package = Package('com/google/api/services/zoo',
-                          language_model=language_model)
-    api.SetTemplateValue('package', top_package)
-    models_package = Package('models', parent=top_package)
-    for x in api.ModelClasses():
-      x.SetTemplateValue('package', models_package)
+    top_module = Module(... api owner information ...)
+    api_module = Module(api.name, parent=top_module)
+    api._module = api_module
+    model_module = Module('model', parent=api_module)
+    for s in api.schemas:
+      s._module = model_module
+
+  Shared data types contain information that specify the module they belong to,
+  which may be different from the module for the API itself.
+
+  Modules are mutable up until the first time the name or path properties
+  are evaluated.
   """
 
-  def __init__(self, path, parent=None, language_model=None):
-    """Construct a Package.
+  def __init__(self, path=None, owner_name=None, owner_domain=None, parent=None,
+               language_model=None):
+    """Construct a Module.
 
     Args:
-      path: (str) A '/' delimited path to this package.
+      path: (str) A '/' delimited path to this module.
+      owner_name: (str) The name of the owner of the API, as they would like it
+        to appear in library code. E.g "Best Buy"
+      owner_domain: (str) The domain of the owner of the API, as they would like
+        it to appear in library code.
       parent: (CodeObject) The parent of this element.
       language_model: (LanguageModel) The language we are targetting.
         Dynamically defaults to the parent's language model.
     """
-    super(Package, self).__init__({}, None, parent=parent,
-                                  language_model=language_model)
+    super(Module, self).__init__({}, None,
+                                 parent=parent,
+                                 language_model=language_model)
     self._path = path
-    self._name = None
+    self._owner_name = owner_name
+    self._owner_domain = utilities.SanitizeDomain(owner_domain)
+    self._name = None  # will be memoized on first call to name property
+
+  @classmethod
+  def ModuleFromDictionary(cls, def_dict):
+    """Returns a Module corresponding the library_definition of an object.
+
+    If there is a 'library_definition' section in the given dictionary, use it
+    to construct a Module from that information. Return None if there is no
+    definition.
+
+    Args:
+      def_dict: (dict) Discovery style object definition.
+    Returns:
+      Module or None.
+    """
+    lib_def = def_dict.get('library_definition')
+    if not lib_def:
+      return None
+    return Module(path=lib_def.get('modulePath') or '',
+                  owner_name=lib_def.get('owner'),
+                  owner_domain=lib_def.get('domain'))
+
+  def SetPath(self, path):
+    """Changes the path for this module.
+
+    May be called up until the first time we ask for the module name. This
+    restriction is to detect a class of coding errors which could occur if we
+    incorrectly share the Module across types of different parentage.
+
+    Args:
+      path: (str) Path for this module ('/' delimited).
+
+    Raises:
+      ValueError: if called after the name or path properties have been evaled.
+    """
+    if self._name:
+      raise ValueError('SetPath called after first use of name property')
+    self._path = path
 
   @property
   def name(self):
-    """Returns the language appropriate name for a package."""
+    """Returns the language appropriate name for a module."""
     if not self._name:
-      self.SetLanguageModel(self._FindNearestLanguageModel())
-      self._name = self._path.replace(
-          '/', self._language_model.package_name_delimiter)
-    if self.parent:
-      return self._language_model.package_name_delimiter.join([self.parent.name,
-                                                               self._name])
+      self._name = self.path.replace(
+          '/', self.language_model.module_name_delimiter)
     return self._name
 
   @property
   def path(self):
     """Returns the / delimited file path for this package."""
     if self.parent:
-      return '/'.join([self.parent.path, self._path])
-    return self._path
+      base_path = self.parent.path
+    else:
+      base_path = self.language_model.DefaultContainerPathForOwner(
+          self._owner_name, self._owner_domain)
+    return '/'.join(x for x in (base_path, self._path) if x)
 
 
 class DataValue(CodeObject):
@@ -390,9 +469,10 @@ class DataValue(CodeObject):
       data_type = val_type
 
     # Type may be a reference, we want the real thing...
-    if hasattr(data_type, '_referenced_schema'):
-      # pylint: disable-msg=W0212
-      data_type = data_type.api.SchemaByName(data_type._referenced_schema)
+    # TODO(user): 20130227
+    # If you need this trickery here, we are doing something wrong in the
+    # overall structure.
+    data_type = getattr(data_type, 'referenced_schema', data_type)
 
     self._value = value
     self._data_type = data_type
@@ -407,7 +487,7 @@ class DataValue(CodeObject):
 
   def GetLanguageModel(self):
     # pylint: disable-msg=W0212
-    return self.data_type._FindNearestLanguageModel()
+    return self.data_type.language_model
 
   @property
   def value(self):

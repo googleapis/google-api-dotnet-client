@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,6 @@
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
-from django import v1_3  # pylint: disable-msg=W0611
-
 from google.apputils import basetest
 
 from googleapis.codegen import api
@@ -38,33 +35,35 @@ class TemplateObjectsTest(basetest.TestCase):
   def testFullyQualifiedClassName(self):
     foo = template_objects.CodeObject({'className': 'Foo'}, None,
                                       language_model=self.language_model)
+    foo._module = template_objects.Module('test',
+                                          language_model=self.language_model)
     bar = template_objects.CodeObject({'className': 'Bar'}, None, parent=foo)
     baz = template_objects.CodeObject({'className': 'Baz'}, None, parent=bar)
 
-    self.assertEquals('Foo|Bar|Baz', baz.fullClassName)
+    self.assertEquals('test|Foo|Bar|Baz', baz.fullClassName)
     self.assertEquals('', baz.RelativeClassName(baz))
     self.assertEquals('Baz', baz.RelativeClassName(bar))
     self.assertEquals('Bar|Baz', baz.RelativeClassName(foo))
 
-  def testPackage(self):
-    p = template_objects.Package('hello/world',
-                                 language_model=self.language_model)
-    self.assertEquals('hello|world', p.name)
-    self.assertEquals('hello/world', p.path)
+  def testModule(self):
+    m = template_objects.Module('hello/world',
+                                language_model=self.language_model)
+    self.assertEquals('hello|world', m.name)
+    self.assertEquals('hello/world', m.path)
 
-  def testPackageParenting(self):
-    p = template_objects.Package('hello/world',
-                                 language_model=self.language_model)
-    child = template_objects.Package('everyone', parent=p)
+  def testModuleParenting(self):
+    m = template_objects.Module('hello/world',
+                                language_model=self.language_model)
+    child = template_objects.Module('everyone', parent=m)
     self.assertEquals('hello|world|everyone', child.name)
     self.assertEquals('hello/world/everyone', child.path)
 
-  def testPackageNaming(self):
-    p = template_objects.Package('hello/world',
-                                 language_model=self.language_model)
+  def testModuleNaming(self):
+    p = template_objects.Module('hello/world',
+                                language_model=self.language_model)
     foo = template_objects.CodeObject({'className': 'Foo'}, None,
                                       language_model=self.language_model)
-    foo.SetTemplateValue('package', p)
+    foo._module = p
     bar = template_objects.CodeObject({'className': 'Bar'}, None, parent=foo)
     baz = template_objects.CodeObject({'className': 'Baz'}, None, parent=bar)
 
@@ -121,6 +120,10 @@ class TemplateObjectsTest(basetest.TestCase):
         }
 
     class MockApi(object):
+
+      def __init__(self):
+        self.model_module = None
+
       def SetSchema(self, schema):
         self.schema = schema
 
@@ -128,7 +131,7 @@ class TemplateObjectsTest(basetest.TestCase):
         self.schema_ref = schema_ref
 
       # pylint: disable-msg=W0613
-      def ToClassName(self, name, element_type):
+      def ToClassName(self, name, element, element_type):
         return name
 
       # pylint: disable-msg=W0613
@@ -139,6 +142,7 @@ class TemplateObjectsTest(basetest.TestCase):
       def DataTypeFromJson(self, unused_def_dict, tentative_class_name,
                            parent=None, wire_name=None):
         return self.schema_ref
+
     mock_api = MockApi()
     schema = api.Schema(mock_api, 'Bar', bar_def_dict)
     mock_api.SetSchema(schema)

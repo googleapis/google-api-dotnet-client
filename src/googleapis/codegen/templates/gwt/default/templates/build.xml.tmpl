@@ -22,7 +22,7 @@
 
   <target name="build-base" description="Compiles base lib with javac">
     <copy includeemptydirs="true" todir="${build.classes.dir}/com/google/api/gwt">
-      <fileset dir="${baselibdir}" excludes="**/oauth2/**,**/samples/**,**/opensource/**,BUILD,OWNERS,package-info.class" />
+      <fileset dir="${baselibdir}" excludes="**/oauth2/**,**/samples/**,**/opensource/**,package-info.class" />
     </copy>
 
     <javac srcdir="${baselibdir}" excludes="**/oauth2/**,**/samples/**" destdir="${build.classes.dir}">

@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +18,21 @@
 __author__ = 'robertvawter@google.com (Bob Vawter)'
 
 from googleapis.codegen import java_generator
+from googleapis.codegen import utilities
 from googleapis.codegen.import_definition import ImportDefinition
 
 
-class GwtGenerator(java_generator.JavaGenerator):
+class GwtGenerator(java_generator.BaseJavaGenerator):
   """The GWT code generator."""
 
   def __init__(self, discovery, options=None):
     super(GwtGenerator, self).__init__(discovery, 'gwt', GwtLanguageModel(),
                                        options=options)
+    self.api.module.SetPath('%s/shared' % self.api.values['name'])
 
   def _InnerModelClassesSupported(self):
     """Gets whether or not inner model classes are supported."""
     return False
-
-  def DefaultPackagePath(self, api):
-    """Overrides the default implementation."""
-    return 'com/google/api/gwt/services/%s/shared' % api.values['name']
 
   def AnnotateApi(self, api):
     """Add GWT specific annotations to the Api dictionary."""
@@ -73,6 +70,20 @@ class GwtGenerator(java_generator.JavaGenerator):
       parameter.SetTemplateValue('codeType', '%s.%s' %
                                  (method.values['className'],
                                   enum_type.values['className']))
+
+  def AnnotateResource(self, api, resource):
+    """Add GWT-specific annotations and naming schemes."""
+    super(GwtGenerator, self).AnnotateResource(api, resource)
+    parent_list = resource.ancestors[1:]
+    parent_list.append(resource)
+    parent_classes = [p.values.get('className') for p in parent_list]
+    resource.SetTemplateValue('contextCodeType', '.'.join(parent_classes))
+    # for the codeName, we do not lowercase my code name
+    code_name = '_'.join(parent_classes[0:-1]).lower()
+    if code_name:
+      code_name += '_'
+    code_name += resource.codeName
+    resource.SetTemplateValue('contextCodeName', code_name)
 
 
 class GwtLanguageModel(java_generator.JavaLanguageModel):
@@ -121,3 +132,8 @@ class GwtLanguageModel(java_generator.JavaLanguageModel):
     # passing the type to use for empty responses, just signal that an empty
     # response is required, and handle that in the templates.
     return 'EmptyResponse'
+
+  def DefaultContainerPathForOwner(self, unused_owner_name, owner_domain):
+    """Overrides the default implementation."""
+    return '%s/api/gwt/services' % '/'.join(
+        utilities.ReversedDomainComponents(owner_domain))

@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,10 +31,10 @@ class DartLanguageModel(language_model.LanguageModel):
 
   _SCHEMA_TYPE_TO_DART_TYPE = {
       'any': 'core.Object',
-      'boolean': 'core.bool',
-      'integer': 'core.int',
-      'long': 'core.long',
-      'number': 'core.double',
+      'boolean': 'bool',
+      'integer': 'int',
+      'long': 'long',
+      'number': 'double',
       'string': 'core.String',
       'object': 'core.Object',
       }
@@ -130,13 +129,26 @@ class DartGenerator(api_library_generator.ApiLibraryGenerator):
                                r.values['className'])
       self.AnnotateResource(the_api, r)
     resource.values['className'] += 'Resource'
+
+    parent_list = resource.ancestors[1:]
+    parent_list.append(resource)
+    parent_classes = [p.values.get('className') for p in parent_list]
+    resource.SetTemplateValue('contextCodeType', '.'.join(parent_classes))
     super(DartGenerator, self).AnnotateResource(the_api, resource)
+
+  def AnnotateMethod(self, the_api, method, unused_resource):
+    """Add Dart-specific annotations and naming schemes."""
+    parent_list = method.ancestors[1:]
+    parent_list.append(method)
+    parent_classes = [p.values.get('className') for p in parent_list]
+    method.SetTemplateValue('contextCodeType', '.'.join(parent_classes))
+    super(DartGenerator, self).AnnotateMethod(the_api, method, None)
 
   def AnnotateParameter(self, method, parameter):
     """Override default implementation.
 
-    If the parameter is an enum, and any enum values have numeric names,
-    then replace the name X with VALUE_X.
+    If the parameter is an enum, and any enum values names start with
+    a digit, then replace the name X with VALUE_X.
 
     Args:
       method: (Method) The method this parameter belongs to.
@@ -144,13 +156,26 @@ class DartGenerator(api_library_generator.ApiLibraryGenerator):
     """
     enum_type = parameter.GetTemplateValue('enumType')
     if enum_type:
+      # TODO(user): most languages need some variation of this,
+      # provide a default implementation in the API parser.
 
       def Fix(pair):
-        if pair[0].isdigit():
+        if pair[0][:1].isdigit():
           pair = tuple(['VALUE_' + pair[0]] + list(pair[1:]))
         return pair
       pairs = enum_type.GetTemplateValue('pairs')
       enum_type.SetTemplateValue('pairs', map(Fix, pairs))
+
+      # Crazy Dart naming
+      # TODO(user): Figure out better naming for top level parameters.
+      # The logic below removes the API from resource method parameters, but
+      # leaves them on API level method parameters.
+      ancestors = parameter.ancestors
+      if len(ancestors) > 1:
+        ancestors = ancestors[1:]
+      ancestors.append(enum_type)
+      parent_classes = [p.values.get('className') for p in ancestors]
+      enum_type.SetTemplateValue('codeType', ''.join(parent_classes))
     super(DartGenerator, self).AnnotateParameter(method, parameter)
 
 
@@ -160,20 +185,22 @@ class DartApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(DartApi, self).__init__(discovery_doc)
 
-  def ToClassName(self, s, element_type=None):  # pylint: disable-msg=W0613
+  # pylint: disable-msg=W0613
+  def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Dart class name.
 
     Overrides the default.
 
     Args:
       s: (str) A rosy name of data element.
+      element: (object) The object we need a class name for.
       element_type: (str) The kind of element (resource|method) to name.
     Returns:
       A name suitable for use as a class in the generator's target language.
     """
 
     candidate = utilities.CamelCase(s)
-    if 'api' == element_type:
+    if isinstance(element, api.Api):
       candidate += 'Api'
     while candidate in DartLanguageModel.RESERVED_CLASS_NAMES:
       candidate += '_'

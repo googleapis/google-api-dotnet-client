@@ -1,0 +1,36 @@
+{
+  "language": "gwt",
+  "description": "GWT libraries for Google APIs.",
+  "releaseVersion": "0.4-alpha",
+  "baseClientLibrary": "2.4.0",
+  "javadoc_links": [
+    "http://google-web-toolkit.googlecode.com/svn/javadoc/2.4/",
+    "http://docs.oracle.com/javase/7/docs/api"
+  ],
+  "requires": [
+    {
+      "name": "Google Web Toolkit",
+      "environments": ["gwt"],
+      "version": "2.4.0",
+      "files": [
+        {
+          "type": "bundle",
+          "downloadUrl": "https://google-web-toolkit.googlecode.com/files/gwt-2.4.0.zip"
+        },{
+          "type": "binary",
+          "path": "dependencies/gwt-user.jar"
+        }
+      ]
+    },{
+      "name": "GWT Client Library",
+      "environments": ["gwt"],
+      "version": "0.4-alpha",
+      "files": [
+        {
+          "type": "binary",
+          "path": "dependencies/gwt-client.jar"
+        }
+      ]
+    }
+  ]
+}

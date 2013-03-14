@@ -1,5 +1,5 @@
 #!/usr/bin/python2.6
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 #
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
@@ -27,15 +27,17 @@ from googleapis.codegen import name_validator
 class NameValidatorTest(basetest.TestCase):
 
   def testVariableNameValidator(self):
-    good_names = ['$ref', '_a', '_private', 'a_var.name', 't1', 'max-results']
-    bad_names = ['$', '1st_result', '^test', '.variable', '1', '_',
-                 'not_valid.', 'no spaces', 'no/slash']
+    good_names = ['$ref', '_a', '_private', 'a_var.name', 't1', 'max-results',
+                  'slashes/are/allowed', '/even/at/the/start/and/end/',
+                  'now_valid.']
+    bad_names = ['$', '1st_result', '^test', '.variable', '1', '_', 'no spaces']
 
     for varname in good_names:
       name_validator.Validate(varname)
     for varname in bad_names:
       print "'%s'" % varname
-      self.assertRaises(ValueError, name_validator.Validate, varname)
+      self.assertRaises(name_validator.ValidationError,
+                        name_validator.Validate, varname)
 
   def testApiNameValidator(self):
     good_names = ['valid', 'isValid', 'is2Valid']
@@ -46,7 +48,8 @@ class NameValidatorTest(basetest.TestCase):
       name_validator.ValidateApiName(varname)
     for varname in bad_names:
       print "'%s'" % varname
-      self.assertRaises(ValueError, name_validator.ValidateApiName, varname)
+      self.assertRaises(name_validator.ValidationError,
+                        name_validator.ValidateApiName, varname)
 
   def testApiVersionValidator(self):
     good_names = ['v1', 'v1_us', 'v1.2', '1.2']
@@ -57,7 +60,8 @@ class NameValidatorTest(basetest.TestCase):
       name_validator.ValidateApiVersion(varname)
     for varname in bad_names:
       print "'%s'" % varname
-      self.assertRaises(ValueError, name_validator.ValidateApiVersion, varname)
+      self.assertRaises(name_validator.ValidationError,
+                        name_validator.ValidateApiVersion, varname)
 
   def testCommentValidator(self):
     good_comments = ['Responses with Content-Type',
@@ -86,7 +90,8 @@ class NameValidatorTest(basetest.TestCase):
 
   def testUtf8InComment(self):
     comment = 'Base64-encoded (RFC 4648 §5) data.'
-    self.assertRaises(ValueError, name_validator.ValidateAndSanitizeComment,
+    self.assertRaises(name_validator.ValidationError,
+                      name_validator.ValidateAndSanitizeComment,
                       comment)
 
 

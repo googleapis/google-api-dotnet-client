@@ -1,6 +1,6 @@
 {
   "description": "Dart libraries for Google APIs.",
-  "releaseVersion": "1.0",
+  "releaseVersion": "0.1",
   "requires": [
     {
       "name": "Google API Dart Client",

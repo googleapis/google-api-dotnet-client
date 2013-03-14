@@ -22,8 +22,8 @@ components generated and required by a library.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-import array
 import os
+import StringIO
 import time
 import zipfile
 
@@ -32,44 +32,6 @@ from googleapis.codegen.library_package import LibraryPackage
 
 class ZipLibraryPackage(LibraryPackage):
   """The library package."""
-
-  class _Buffer(object):
-    """An in memory buffer for a file contents.
-
-    This implements the StringIO interface, but never interprets strings as
-    unicode.  It also implements most of a file like interface.
-
-    When AppEngine move to Python 2.6, we may be able to use the io module
-    instead of this.
-    """
-    # Suppress spurious warnings about methods write, close, and getValue.
-    # pylint: disable-msg=C6409
-
-    def __init__(self):
-      self._buffer = array.array('c')
-
-    #
-    # StringIO methods
-    #
-
-    def write(self, s):
-      self._buffer.fromstring(s)
-
-    def close(self):
-      self._buffer = None
-
-    def getvalue(self):
-      return self._buffer.tostring()
-
-    #
-    # file methods
-    #
-
-    def tell(self):
-      return len(self._buffer.tostring())
-
-    def flush(self):
-      pass
 
   def __init__(self, stream):
     """Create a new ZipLibraryPackage.
@@ -92,8 +54,10 @@ class ZipLibraryPackage(LibraryPackage):
       A file-like object to write the contents to.
     """
     self.EndFile()
-    self._current_file_data = ZipLibraryPackage._Buffer()
-    self._current_file_name = '%s%s' % (self._file_path_prefix, name)
+    self._current_file_data = StringIO.StringIO()
+    name = '%s%s' % (self._file_path_prefix, name)
+    # Let this explode if the name is not ascii.
+    self._current_file_name = name.encode('ascii')
     self.CreateDirectory(os.path.dirname(self._current_file_name))
     return self._current_file_data
 
@@ -117,8 +81,9 @@ class ZipLibraryPackage(LibraryPackage):
       directory = os.path.dirname(directory)
     to_create.reverse()  # have to build from top down
     for directory in to_create:
-      # Create the directory entry
-      info = zipfile.ZipInfo((directory + '/').encode('utf-8'),
+      # Create the directory entry.  File and directory names must be
+      # ascii.
+      info = zipfile.ZipInfo((directory + '/').encode('ascii'),
                              date_time=time.localtime(time.time())[:6])
       # Notes from the web and zipfile sources:
       # external_attr is 32 in size, with the unix permissions in the
@@ -131,12 +96,15 @@ class ZipLibraryPackage(LibraryPackage):
   def EndFile(self):
     """Flush the current output file to the ZIP container."""
     if self._current_file_data:
-      # Note: Forcing the file name to utf-8 is needed for Python 2.5.
-      info = zipfile.ZipInfo(self._current_file_name.encode('utf-8'),
+      info = zipfile.ZipInfo(self._current_file_name,
                              date_time=time.localtime(time.time())[:6])
       # This is a chmod 0644, but you have to read the zipfile sources to know
       info.external_attr = 0644 << 16
-      self._zip.writestr(info, self._current_file_data.getvalue())
+      data = self._current_file_data.getvalue()
+      # File contents may be utf-8
+      if isinstance(data, unicode):
+        data = data.encode('utf-8')
+      self._zip.writestr(info, data)
       self._current_file_data.close()
       self._current_file_data = None
 
@@ -150,3 +118,7 @@ class ZipLibraryPackage(LibraryPackage):
       self.EndFile()
       self._zip.close()
       self._zip = None
+
+  def FileExtension(self):
+    """Returns the file extension for this archive, which is zip."""
+    return 'zip'

@@ -14,32 +14,50 @@ from googleapis.codegen import php_generator
 from googleapis.codegen import python_generator
 
 
-_GENERATORS = {
+# Multiple generators per language are possible, as is the case with
+# Java below. Template trees can specify a specific generator in their
+# features.json file (with the "generator" attribute); this will refer
+# to a key in these dictionaries.  If a template tree does not
+# include this specification, the language name is used as a key.
+_GENERATORS_BY_LANGUAGE = {
     'dart': dart_generator.DartGenerator,
     'gwt': gwt_generator.GwtGenerator,
-    'java': java_generator.JavaGenerator,
+    'java': java_generator.Java14Generator,
     'php': php_generator.PHPGenerator,
     'python': python_generator.PythonGenerator,
     }
 
 
-def GetGeneratorByLanguage(language):
+_ALL_GENERATORS = {
+    'java1_8': java_generator.Java8Generator,
+    'java1_12': java_generator.Java12Generator,
+    'java1_13': java_generator.Java12Generator,
+    'java1_14': java_generator.Java14Generator,
+    'java1_15': java_generator.Java14Generator,
+}
+
+
+_ALL_GENERATORS.update(_GENERATORS_BY_LANGUAGE)
+
+
+def GetGeneratorByLanguage(language_or_generator):
   """Return the appropriate generator for this language.
 
   Args:
-    language: (str) the language for which to return a generator.
+    language_or_generator: (str) the language for which to return a generator,
+        or the name of a specific generator.
 
   Raises:
     ValueError: If provided language isn't supported.
 
   Returns:
-    The appropriate code generator object.
+    The appropriate code generator object (which may be None).
   """
-  generator = _GENERATORS.get(language)
-  if generator:
-    return generator
-  else:
-    raise ValueError('Unsupported language: %s' % language)
+
+  try:
+    return _ALL_GENERATORS[language_or_generator]
+  except KeyError:
+    raise ValueError('Unsupported language: %s' % language_or_generator)
 
 
 def SupportedLanguages():
@@ -48,4 +66,4 @@ def SupportedLanguages():
   Returns:
     list(str)
   """
-  return sorted(_GENERATORS.keys())
+  return sorted(_GENERATORS_BY_LANGUAGE)

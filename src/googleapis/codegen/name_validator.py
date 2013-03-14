@@ -25,14 +25,13 @@ __author__ = 'wclarkso@google.com (Will Clarkson)'
 import re
 
 
-# The first character must alpha (a-zA-Z) or an underscore (no single digits)
-# Subsequent characters can be alpha numeric. We also permit them to have an
-# underscore (_), dot (.) or dash (-). But, we require that there be an
-# alpha_numeric or underscore character at the end.
-# This prevents against 'abcd123_.' which is not a valid name.
-# NOTE: the '$' character is to get around $ref variable name in some APIs
+# The first character must alpha (a-zA-Z), a slash (/), or an
+# underscore (no single digits).  Subsequent characters can be alpha
+# numeric. We also permit them to have a slash(/), underscore (_), dot
+# (.) or dash (-).  NOTE: the '$' character is to get around $ref
+# variable name in some APIs.
 _VARNAME_REGEX = re.compile(
-    r'([a-zA-Z]$)|([a-zA-Z_$]{1}[a-zA-Z0-9_.-]*[a-zA-Z0-9_]{1})$')
+    r'^[a-zA-Z]$|([a-zA-Z_/$][a-zA-Z0-9_./-]+)$')
 
 # Valid comments may only contain dash ('-'), a-z, A-Z, 0-9, comma (','),
 # apostrophe forward slash bracket opening/closing '[' or ']', colons (':')
@@ -47,6 +46,10 @@ _API_NAME_REGEX = re.compile(r'[a-z][a-zA-Z0-9_]*$')
 _API_VERSION_REGEX = re.compile(r'[a-z0-9][a-zA-Z0-9._]*$')
 
 
+class ValidationError(ValueError):
+  pass
+
+
 def Validate(name):
   """Validates the name against a regular expression object.
 
@@ -55,13 +58,16 @@ def Validate(name):
 
   Args:
     name: (str) name of variable or method
+  Returns:
+    (str) The name.
 
   Raises:
-    ValueError: An Error if name does not conform to style
+    ValidationError: An Error if name does not conform to style
   """
   if _VARNAME_REGEX.match(name) is None:
-    raise ValueError(
+    raise ValidationError(
         'Variable %s does not conform to style guide' % name)
+  return name
 
 
 def ValidateApiName(api_name):
@@ -71,29 +77,35 @@ def ValidateApiName(api_name):
 
   Args:
     api_name: (str) The API name to check.
+  Returns:
+    (str) The api name.
 
   Raises:
-    ValueError: An Error if name does not conform to style
+    ValidationError: An Error if name does not conform to style
   """
   if _API_NAME_REGEX.match(api_name) is None:
-    raise ValueError(
+    raise ValidationError(
         'API name %s does not conform to style guide' % api_name)
+  return api_name
 
 
 def ValidateApiVersion(api_version):
   """Validates a potential API version.
 
-  An API vesrion must match the regular expression[a-z0-9][a-zA-Z0-9.]*
+  An API version must match the regular expression[a-z0-9][a-zA-Z0-9.]*
 
   Args:
     api_version: (str) The API version to check.
+  Returns:
+    (str) The api version.
 
   Raises:
-    ValueError: An Error if version does not conform to style
+    ValidationError: An Error if version does not conform to style
   """
   if _API_VERSION_REGEX.match(api_version) is None:
-    raise ValueError(
+    raise ValidationError(
         'API version %s does not conform to style guide' % api_version)
+  return api_version
 
 
 def ValidateAndSanitizeComment(comment_string):
@@ -106,11 +118,11 @@ def ValidateAndSanitizeComment(comment_string):
     (str) ASCII-Only string with invalid characters removed
 
   Raises:
-    ValueError: An Error if vomment does not conform to style
+    ValidationError: An Error if vomment does not conform to style
   """
   # Disallow non-ASCII (Error if present)
   if _COMMENT_REGEX.match(comment_string) is None:
-    raise ValueError(
+    raise ValidationError(
         'Comment %s does not conform to style guide' % comment_string)
   else:
     # Strip anything which is known to be a comment terminator in any

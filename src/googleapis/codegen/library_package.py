@@ -123,3 +123,10 @@ class LibraryPackage(object):
     output_stream = self.StartFile(file_name)
     output_stream.write(content)
     self.EndFile()
+
+  def FileExtension(self):
+    """Return the file extension for this type of library, without the dot.
+
+    Subclasses should implement this if they produce an archive file.
+    """
+    return None

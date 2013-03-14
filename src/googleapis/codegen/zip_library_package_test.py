@@ -1,4 +1,5 @@
 #!/usr/bin/python2.6
+# -*- coding: utf-8 -*-
 #
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
@@ -31,7 +32,8 @@ FLAGS = flags.FLAGS
 
 class ZipLibraryPackageTest(basetest.TestCase):
   _FILE_NAME = 'a_test'
-  _FILE_CONTENTS = 'this is a test'
+  _DISALLOWED_FILE_NAME = 'unicode_☃☄'
+  _FILE_CONTENTS = u'this is a test - ☃☄'
   _TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), 'testdata')
 
   def setUp(self):
@@ -40,6 +42,10 @@ class ZipLibraryPackageTest(basetest.TestCase):
 
   def tearDown(self):
     pass
+
+  def testAsciiFilenames(self):
+    self.assertRaises(UnicodeError, self._package.StartFile,
+                      self._DISALLOWED_FILE_NAME)
 
   def testBasicWriteFile(self):
     stream = self._package.StartFile(self._FILE_NAME)
@@ -52,7 +58,8 @@ class ZipLibraryPackageTest(basetest.TestCase):
     info_list = archive.infolist()
     self.assertEquals(1, len(info_list))
     self.assertEquals(self._FILE_NAME, info_list[0].filename)
-    self.assertEquals(len(self._FILE_CONTENTS), info_list[0].file_size)
+    self.assertEquals(len(self._FILE_CONTENTS.encode('utf-8')),
+                      info_list[0].file_size)
 
   def testStartAutomaticallyClosesPreviousFile(self):
     stream = self._package.StartFile(self._FILE_NAME)
@@ -199,6 +206,8 @@ class ZipLibraryPackageTest(basetest.TestCase):
     index += 1
     self.assertEquals(index, len(info_list))
 
+  def testFileExtension(self):
+    self.assertEquals('zip', self._package.FileExtension())
 
 if __name__ == '__main__':
   basetest.main()

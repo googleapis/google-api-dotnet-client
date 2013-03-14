@@ -1,17 +1,16 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 
 """Targets class describes which languages/platforms we support."""
 
 __author__ = 'wclarkso@google.com (Will Clarkson)'
 
-import json
 import logging
 import os
 
 
 from googleapis.codegen import files
+from googleapis.codegen import json_with_comments
 from googleapis.codegen.json_expander import ExpandJsonTemplate
 
 
@@ -47,7 +46,7 @@ class Targets(object):
   }
   """
 
-  def __init__(self, targets_path=None, template_root=None):
+  def __init__(self, targets_path=None, template_root=None, targets_dict=None):
     """Constructor.
 
     Loads targets file.
@@ -55,29 +54,22 @@ class Targets(object):
     Args:
       targets_path: (str) Path to targets file. Defaults to './targets.json'
       template_root: (str) Path to template root. Defaults to '.'
+      targets_dict: (dict) Initial data, if not supplied from a file.
 
     Raises:
       ValueError: if the targets file does not contain the required sections.
     """
     self.targets_path = targets_path or Targets._default_targets_path
     self.template_root = template_root or Targets._default_template_root
-    self._targets_dict = json.loads(files.GetFileContents(self.targets_path))
+    if targets_dict:
+      self._targets_dict = targets_dict
+    else:
+      self._targets_dict = json_with_comments.Loads(
+          files.GetFileContents(self.targets_path))
 
     # Do some basic validation that this has the required fields
-    if ('languages' not in self._targets_dict or
-        'platforms' not in self._targets_dict):
-      raise ValueError('languages or platforms is not in targets.json')
-
-  def IsValid(self, selection):
-    """Returns True if the selection is valid."""
-    try:
-      language_variations = self.VariationsForLanguage(selection.language)
-      if language_variations:
-        features = language_variations.GetFeatures(selection.language_variant)
-        return selection.platform in features['platforms']
-    except KeyError:
-      pass
-    return False
+    if 'languages' not in self._targets_dict:
+      raise ValueError('languages not in targets.json')
 
   def Dict(self):
     """The targets.json file as a dictionary."""
@@ -96,34 +88,7 @@ class Targets(object):
     return self._targets_dict['languages']
 
   def Platforms(self):
-    return self._targets_dict['platforms']
-
-  def SupportsSkeletons(self, selection):
-    """Returns True if the selected target supports skeletons."""
-    # TODO(user): Move this logic into the server side.
-    language_variations = self.VariationsForLanguage(selection.language)
-    variant_features = language_variations.get(selection.language_variant, {})
-    return variant_features.get('skeleton', False)
-
-  def Path(self, selection):
-    """Returns the path of the selected target."""
-    language_variations = self.VariationsForLanguage(selection.language)
-    variant_features = language_variations.get(selection.language_variant, {})
-    return variant_features.get('path', '')
-
-  @classmethod
-  def SetDefaultTargetsFile(cls, path):
-    """Sets a new default full path to the targets description file.
-
-    Normally, 'targets.json' is found relative to the gen directory. An
-    application might want to override its top level targets, without having
-    to isolate every Targets() constructor.
-
-    Args:
-      path: (str) full path of targets file.
-    """
-    logging.info('setting default targets path to %s', path)
-    cls._default_targets_path = path
+    return self._targets_dict.get('platforms', {})
 
   @classmethod
   def SetDefaultTemplateRoot(cls, path):
@@ -135,22 +100,23 @@ class Targets(object):
     logging.info('setting default template root to %s', path)
     cls._default_template_root = path
 
-  # Note that the 'templates' path element in the paths below differs
-  # from the source layout, but that is where the templates_fileset
-  # BUILD target puts those files.
-  #
-  # TODO(user): Rationalize the layout, probably by moving contents
-  # of that target to a sub-directory in the source tree, to reduce
-  # developer cognitive dissonance.
 
-  # set the initial default file.
+  # Set the initial default file.
   _default_targets_path = os.path.join(os.path.dirname(__file__),
                                        'templates',
                                        'targets.json')
 
-  # set the initial template root.
+  # Set the initial template root.
   _default_template_root = os.path.join(os.path.dirname(__file__),
                                         'templates')
+
+  # Whether to use variation release versions when calculating template paths.
+  use_versioned_paths = False
+
+  @classmethod
+  def SetUseVersionedPaths(cls, use_versioned_paths):
+    """Sets whether versions are used in the template path."""
+    cls.use_versioned_paths = use_versioned_paths
 
 
 class Variations(dict):
@@ -160,26 +126,49 @@ class Variations(dict):
     super(Variations, self).__init__(variations_dict)
     self._targets = targets
     self._language = language
-    self._variations_dict = variations_dict
 
   def IsValid(self, variation):
     """Test is a variation exists."""
-    return variation in self._variations_dict
+    return variation in self
 
-  def RelativeTemplateDir(self, variation):
-    """Returns the template dir for the selected variation.
+  def _RelativeTemplateDir(self, variation):
+    """Returns the path to template dir for the selected variation.
+
+    By default, the path is the same as the variation name. It can be
+    overridden in two ways, of descending precedence:
+      1. by the 'releaseVersion' element, if use_versioned_paths is set.
+      2. with an explicit 'path' statement.
 
     Args:
       variation: (str) A target variation name.
     Returns:
-      (str) features dictionary
+      (str) Relative path to template directory.
     """
-    return os.path.join(self._language,
-                        self._variations_dict[variation]['path'])
+    if self._targets.use_versioned_paths:
+      path = self[variation].get('releaseVersion') or variation
+    else:
+      path = None
+    if not path:
+      path = self[variation].get('path') or variation
+    return os.path.join(self._language, path)
 
-  def AbsoluteTemplateDir(self, variation):
+  def _AbsoluteTemplateDir(self, variation):
+    """Returns the path to template dir for the selected variation.
+
+    Args:
+      variation: (str) A target variation name.
+    Returns:
+      (str) Absolute path to template directory.
+    """
     return os.path.join(self._targets.template_root,
-                        self.RelativeTemplateDir(variation))
+                        self._RelativeTemplateDir(variation))
+
+  def GetFeaturesForReleaseVersion(self, release_version):
+    for name in self:
+      features = self.GetFeatures(name)
+      if release_version == features.get('releaseVersion'):
+        return features
+    return None
 
   def GetFeatures(self, variation):
     """Returns the features dictionary for a specific variation.
@@ -192,12 +181,10 @@ class Variations(dict):
     Returns:
       (Features) features dictionary
     """
-    features = Features(self._variations_dict[variation])
-    json_path = os.path.join(
-        self._targets.template_root,
-        self._language,
-        features['path'],
-        'features.json')
+    template_dir = self._AbsoluteTemplateDir(variation)
+    features = Features(template_dir, self[variation], variation)
+    json_path = os.path.join(template_dir, 'features.json')
+
     try:
       features_json = files.GetFileContents(json_path)
     except files.FileDoesNotExist:
@@ -206,15 +193,20 @@ class Variations(dict):
       # fix/remove any tests that fail as a result.
       return features
 
-    features.update(ExpandJsonTemplate(json.loads(features_json)))
+    features.update(ExpandJsonTemplate(json_with_comments.Loads(features_json)))
+    # If not specified, the releaseVersion matches the variation
+    if not features.get('releaseVersion'):
+      features['releaseVersion'] = variation
     return features
 
 
 class Features(dict):
   """A dictionary describing the features of a particular API variation."""
 
-  def __init__(self, initial_content=None):
+  def __init__(self, template_dir, initial_content=None, name=None):
     super(Features, self).__init__(initial_content or {})
+    self.name = name
+    self.template_dir = template_dir
 
   def DependenciesForEnvironment(self, environment=None):
     """Returns the list of dependencies for an environment.

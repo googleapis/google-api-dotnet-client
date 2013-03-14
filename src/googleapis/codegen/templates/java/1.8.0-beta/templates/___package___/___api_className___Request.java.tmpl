@@ -1,0 +1,58 @@
+{% language java %}{% collapsenewlines %}{% copyright_block %}
+{% filter noblanklines %}
+/*
+ * This file was generated.
+ *  with {{ tool.name }} {{ tool.version }}{% if tool.buildDate %} (build: {{ tool.buildDate }}){% endif %}
+{% if options.include_timestamp %}
+ *  on {{ tool.runDate }} at {{ tool.runTime }} {% endif %}
+ */
+{% endfilter %}
+
+package {{ api.module.name }};
+
+import com.google.api.client.http.HttpMethod;
+import com.google.api.client.http.json.JsonHttpClient;
+import com.google.api.client.http.json.JsonHttpRequest;
+
+
+/**
+ * Generated {{ api.className }} request.
+ *
+ * @since 1.3.0
+ */
+public class {{ api.className }}Request extends JsonHttpRequest {
+
+  /**
+   * Builds an instance of {{ api.className }}Request.
+   *
+   * @param client The JSON HTTP client which handles this request
+   * @param method HTTP Method type
+   * @param uriTemplate URI template
+   * @param content A POJO that can be serialized into JSON or {@code null} for none
+   */
+  public {{ api.className }}Request(
+      JsonHttpClient client, HttpMethod method, String uriTemplate, Object content) {
+    super(client, method, uriTemplate, content);
+  }
+{% for param in api.parameters %}
+
+  {% doc_comment_if param.description %}
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.codeName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.codeName }};
+
+  /**{% filter block_comment %}
+   * {% filter noblanklines %}{{ param.description }}
+  {% if param.default %} [default: {{ param.default }}]{% endif %}
+  {% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
+  {% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %} {% endfilter %} {% endfilter %}
+   */
+  public {{ param.codeType }} get{% camel_case param.wireName %}() {
+    return {{ param.codeName }};
+  }
+
+  {% doc_comment_if param.description %}
+  public {{ api.className }}Request set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
+    this.{{ param.codeName }} = {{ param.codeName }};
+    return this;
+  }{% endfor %}
+}{% endcollapsenewlines %}

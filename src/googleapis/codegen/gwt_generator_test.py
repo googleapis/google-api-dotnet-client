@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,6 @@
 __author__ = 'yanivi@google.com (Yaniv Inbar)'
 
 
-
-from django import v1_3  # pylint: disable-msg=W0611
 
 from google.apputils import basetest
 from googleapis.codegen import gwt_generator

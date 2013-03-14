@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +17,6 @@
 
 __author__ = 'akesling@google.com (Alex Kesling)'
 
-
-from django import v1_3  # pylint: disable-msg=W0611
 
 from google.apputils import basetest
 

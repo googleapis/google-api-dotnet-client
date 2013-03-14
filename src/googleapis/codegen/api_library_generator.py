@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,10 +20,7 @@ This module specializes TemplateGenerator for building API libraries.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-from googleapis.codegen import template_objects
 from googleapis.codegen.generator import TemplateGenerator
-
-_DEFAULT_SERVICE_HOST = 'https://www.googleapis.com'
 
 
 class ApiLibraryGenerator(TemplateGenerator):
@@ -45,53 +41,77 @@ class ApiLibraryGenerator(TemplateGenerator):
     super(ApiLibraryGenerator, self).__init__(language_model=language_model,
                                               options=options)
     # Load the API definition and an prepare it for generating code.
+    # TODO(user): package_path and version_package are really changes to the
+    # API data model, rather than generator options. Move them to a distinct
+    # parameter, and pass them down to the api_loader.
+    options = options or {}
+    module_path = options.get('package_path')
+    if module_path:
+      discovery['modulePath'] = module_path
+    if options.get('version_package'):
+      discovery['version_module'] = True
     self._api = api_loader(discovery)
     self._language = language
-
-    # top level package for the generated code. The 'path' of the package is
-    # used to expand '___package___' instances in file names found in the
-    # template tree.
-    self._package = None
-    # package for generated models, defaults to top level package
-    self._model_package = None
 
   @property
   def api(self):
     return self._api
 
   @property
-  def package(self):
-    return self._package
+  def model_module(self):
+    return self._api.model_module
 
-  @property
-  def model_package(self):
-    return self._model_package or self._package
-
-  def SetPackage(self, package):
-    """Sets the package this code tree should be generated into.
-
-    Args:
-      package: (template_objects.Package) The package this code belongs in.
-    """
-    self._package = package
-    self._api.SetTemplateValue('package', self._package)
-
-  def GeneratePackage(self, package_writer):
+  def GeneratePackage(self, package_writer, path_replacements=None,
+                      extra_defines=None):
     """Generate the entire package of an API library.
 
     Overrides superclass.
 
     Args:
       package_writer: (LibraryPackage) output package
+      path_replacements: (dict) dict holding elements which should be replaced
+        if found in a path. (See generator.WalkTemplateTree for details.)
+      extra_defines: (dict) Dictionary of extra definitions to provide to the
+        templates
     """
     api = self._api
     self.AnnotateApiForLanguage(api)
-    self.GenerateLibrarySource(api, package_writer)
-    if self._options.get('include_dependencies'):
-      self.WalkTemplateTree('dependencies', {}, {}, {'api': api.values},
-                            package_writer)
 
-  def GenerateLibrarySource(self, api, source_package_writer):
+    self._BuildPathReplacements(path_replacements)
+    self._top_level_defines = {'api': api.values}
+    self._top_level_defines.update(extra_defines or {})
+
+    self._GenerateLibrarySource(api, package_writer)
+    if self._options.get('include_dependencies'):
+      self.WalkTemplateTree('dependencies', self._path_replacements, {},
+                            self._top_level_defines, package_writer)
+
+  def _BuildPathReplacements(self, path_replacements):
+    """Build the set of path replacements used for template tree walking.
+
+    Augments a default list of path replacements with a caller provided set.
+    Side effects: Sets self._path_replacements.
+
+    Args:
+      path_replacements: (dict) caller provided dict holding elements which
+        should be replaced if found in a path.
+    """
+    self._path_replacements = {
+        '___package___': self._api.module.path,
+        '___language___': self._language,
+        }
+    if not isinstance(self._api.values['revision'], (unicode, str)):
+        # Make sure revision is a string
+      self._path_replacements['___api_revision___'] = str(
+          self._api.values['revision'])
+
+    for key, value in self._api.values.iteritems():
+      if isinstance(value, (unicode, str)):
+        self._path_replacements['___api_%s___' % key] = value
+
+    self._path_replacements.update(path_replacements or {})
+
+  def _GenerateLibrarySource(self, api, source_package_writer):
     """Default operations to generate the package.
 
     Do all the default operations for generating a package.
@@ -104,22 +124,13 @@ class ApiLibraryGenerator(TemplateGenerator):
       api: (Api) The Api instance we are writing a libary for.
       source_package_writer: (LibraryPackage) source output package.
     """
-    if self._package:
-      package_path = self._package.path
-    else:
-      package_path = '.'
-    path_replacements = {
-        '___package___': package_path,
-        '___api_className___': api.values['className'],
-        '___api_name___': api.values['name'],
-        '___api_version___': api.values['version'],
-        }
     list_replacements = {
         '___models_': ['model', api.ModelClasses()],
         '___topLevelModels_': ['model', api.TopLevelModelClasses()],
         }
-    self.WalkTemplateTree('templates', path_replacements, list_replacements,
-                          {'api': api.values}, source_package_writer)
+    self.WalkTemplateTree('templates', self._path_replacements,
+                          list_replacements,
+                          self._top_level_defines, source_package_writer)
     # Call back to the language specific generator to give it a chance to emit
     # special case elements.
     self.GenerateExtraSourceOutput(source_package_writer)
@@ -148,11 +159,6 @@ class ApiLibraryGenerator(TemplateGenerator):
     """
     the_api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
     the_api.void_type.SetLanguageModel(self.language_model)
-    the_api.SetTemplateValue(
-        'libraryNameBase',
-        'google-api-%s-%s' % (the_api.values['name'],
-                              the_api.values['version']))
-    self._SetUpPackages(the_api)
     self._AnnotateTree(the_api)
 
   def _AnnotateTree(self, api):
@@ -170,7 +176,9 @@ class ApiLibraryGenerator(TemplateGenerator):
     """
     self.AnnotateApi(api)
     for schema in api.all_schemas.values():
-      schema.SetTemplateValue('package', self.model_package)
+      # TODO(user): remove this after completing the transition away from
+      # package in all the templates
+      schema.SetTemplateValue('package', self.model_module)
       self.AnnotateSchema(api, schema)
       for prop in schema.values.get('properties', []):
         self.AnnotateProperty(api, prop, schema)
@@ -187,7 +195,8 @@ class ApiLibraryGenerator(TemplateGenerator):
     Args:
       api: (Api) The Api.
     """
-    pass
+    for parameter in api.values.get('parameters') or []:
+      self.AnnotateParameter(api, parameter)
 
   def AnnotateMethod(self, unused_api, method, unused_resource):
     """Extension point for subclasses to annotate Resources.
@@ -250,44 +259,6 @@ class ApiLibraryGenerator(TemplateGenerator):
       schema: (Schema) The Schema to annotate
     """
     pass
-
-  def DefaultPackagePath(self, the_api):
-    """Returns the default package path for this API.
-
-    Individual languages generators should probably override this.
-
-    Args:
-      the_api: (Api) and API to pick a path for
-
-    Returns:
-      (str) a package path.
-    """
-    return 'com/google/%s' % the_api.values['name']
-
-  def _SetUpPackages(self, the_api):
-    """Do the default setup for the packages associated with an API.
-
-    Priority of ways to set the package path.
-    1. package_path from options
-    2. package_path from api definition
-    3. DefaultPackagePath() from (language specific) generator
-
-    Once we get that, we add the version if the version_package option is set.
-
-    Args:
-      the_api: (Api) and API to pick the api information from.
-    """
-    package_path = self._options.get('package_path')
-    if package_path is None:
-      package_path = the_api.GetTemplateValue('packagePath')
-    if package_path is None:
-      package_path = self.DefaultPackagePath(the_api)
-    if self._options.get('version_package'):
-      package_path = '%s/%s' % (package_path, the_api.values['versionNoDots'])
-    self.SetPackage(template_objects.Package(
-        package_path, language_model=self.language_model))
-    self._model_package = template_objects.Package('model',
-                                                   parent=self._package)
 
 
 class NullLibraryGenerator(ApiLibraryGenerator):

@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +17,8 @@
 
 __author__ = 'akesling@google.com (Alex Kesling)'
 
+import json
 
-from django import v1_3  # pylint: disable-msg=W0611
 
 from google.apputils import basetest
 
@@ -55,8 +54,9 @@ class PythonLanguageModelTest(basetest.TestCase):
     qux_dv = self._CreateDataValue('\\"qux', 'string')
     dv = self._CreateDataValue({'foo': bar_dv, 'baz': qux_dv}, 'object')
     render_method = self.language_model._SUPPORTED_TYPES['object']
-    self.assertEqual(
-        '{"foo": "bar\\"", "baz": "\\\\\\"qux"}', render_method(dv))
+    expected = {'foo': 'bar"', 'baz': '\\"qux'}
+    got = json.loads(render_method(dv))
+    self.assertEqual(expected, got)
 
   def testRenderList(self):
     bar_dv = self._CreateDataValue('bar"', 'string')

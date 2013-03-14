@@ -1,5 +1,4 @@
 #!/usr/bin/python2.6
-#
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,6 +41,7 @@ class ApiTest(basetest.TestCase):
   # The base discovery doc for most tests.
   _TEST_DISCOVERY_DOC = 'sample_discovery.json'
   _TEST_DISCOVERY_RPC_DOC = 'sample_discovery.rpc.json'
+  _TEST_SHARED_TYPES_DOC = 'sample_shared.json'
 
   def ApiFromDiscoveryDoc(self, path):
     """Load a discovery doc from a file and creates a library Api.
@@ -131,10 +131,10 @@ class ApiTest(basetest.TestCase):
             tests_executed += 1
 
           if method.values['wireName'] == 'get':
-            optional_names = [p.values['wireName']
-                              for p in method.optional_parameters]
-            self.assertEquals(['truncateAtom', 'max-comments', 'hl',
-                               'max-liked'],
+            optional_names = set(p.values['wireName']
+                                 for p in method.optional_parameters)
+            self.assertEquals(set(['truncateAtom', 'max-comments', 'hl',
+                                   'max-liked']),
                               optional_names)
             tests_executed += 1
     self.assertEquals(7, tests_executed)
@@ -450,6 +450,43 @@ class ApiTest(basetest.TestCase):
     # no servicePath
     self.assertRaises(ValueError, LoadApi, {'rootUrl': 'https://foo.com/'})
 
+  def testCanonicalName(self):
+    d = {'name': 'fake', 'version': 'v1', 'canonicalName': 'My API'}
+    api = Api(d)
+    self.assertEquals('fake', api.values['name'])
+    self.assertEquals('MyAPI', api._class_name)
+
+  def testNormalizeOwnerInformation(self):
+    d = {'name': 'fake', 'version': 'v1'}
+    api = Api(d)
+    self.assertEquals('Google', api.values['owner'])
+    self.assertEquals('google.com', api.values['ownerDomain'])
+
+    d = {'name': 'fake', 'version': 'v1', 'ownerDomain': 'youtube.com'}
+    api = Api(d)
+    self.assertEquals('Google', api.values['owner'])
+    self.assertEquals('youtube.com', api.values['ownerDomain'])
+
+    d = {'name': 'fake', 'version': 'v1',
+         'owner': 'You Tube', 'ownerDomain': 'youtube.com'}
+    api = Api(d)
+    self.assertEquals('You Tube', api.values['owner'])
+    self.assertEquals('youtube.com', api.values['ownerDomain'])
+
+  def testSharedTypes(self):
+    api = self.ApiFromDiscoveryDoc(self._TEST_SHARED_TYPES_DOC)
+    api.VisitAll(lambda o: o.SetLanguageModel(language_model.LanguageModel()))
+    # class defined by the API
+    photos_feed_schema = api._schemas['PhotosFeed']
+    # type defined from a shared type repo
+    photo_schema = api._schemas[
+        'http://www.googleapis.com/types/v1/com.google/plus/v2/photo']
+    self.assertEquals('PhotosFeed', photos_feed_schema.values['wireName'])
+    self.assertEquals('com.google.myservice', photos_feed_schema.module.name)
+    self.assertEquals('Photo', photo_schema.values['wireName'])
+    self.assertEquals('com.google.plus.pictures', photo_schema.module.name)
+    self.assertEquals('com/google/plus/pictures', photo_schema.module.path)
+
 
 class ApiExceptionTest(basetest.TestCase):
 
@@ -478,6 +515,21 @@ def FindByWireName(list_of_resource_or_method, wire_name):
     if x.values['wireName'] == wire_name:
       return x
   return None
+
+
+class UnitConvertionTest(basetest.TestCase):
+  """Test for unit conversion."""
+
+  def testConvertUploadSize(self):
+    m = Method._ConvertUploadSize
+    self.assertEquals(None, m(None))
+    self.assertEquals(None, m('4'))
+    self.assertEquals(None, m('4C'))
+    self.assertEquals(4, m('4B'))
+    self.assertEquals(4 * 2 ** 10, m('4KB'))
+    self.assertEquals(12 * 2 ** 20, m('12MB'))
+    self.assertEquals(10 * 2 ** 30, m('10GB'))
+
 
 if __name__ == '__main__':
   basetest.main()

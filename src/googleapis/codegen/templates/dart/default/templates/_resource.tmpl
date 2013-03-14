@@ -1,7 +1,7 @@
 {% comment %}
   Renders a resource class.
   [resource] the resource to render.
-{% endcomment %}// Resource {{ resource.parentPath|join:"." }}.{{ resource.className }}
+{% endcomment %}// Resource {{ resource.contextCodeType }}
 class {{ resource.className }} extends core.Object {
   final {{ api.className }} _$service;
   {% for r in resource.resources %}final {{ r.className }} {{ r.codeName }};
