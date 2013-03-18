@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Build.Utils", "Google.Build.Utils\Google.Build.Utils.csproj", "{A6E792C8-D5E7-40DD-9483-3901E70BF93F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildRelease", "BuildRelease\BuildRelease.csproj", "{0273723C-9B94-4A13-9635-4519633D9E0E}"
