@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "Src\GoogleApis\GoogleApis.csproj", "{CBB5E638-F8D5-48DB-93BE-5A7CDD7ED107}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
