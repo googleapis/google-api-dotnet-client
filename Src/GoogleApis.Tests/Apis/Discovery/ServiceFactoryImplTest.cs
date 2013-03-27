@@ -29,51 +29,128 @@ namespace Google.Apis.Tests.Apis.Discovery
     {
         internal const string BadDiscoveryv1_0_No_Name =
             @"{
- 'NO_name': 'adsense-mgmt',
- 'version': 'v1beta1',
- 'description': 'AdSense Management API',
- 'restBasePath': '/adsense-mgmt/v1beta1/',
- 'rpcPath': '/rpc',
- 'resources': {
-  'mgmt': {
-   'resources': {
-    'adunits': {'foo':'bar' }
-    }
-    }
-    }
-    }";
+                'version': 'v1',
+                'description': 'desc',
+                'rootUrl': 'https://www.example.com/',
+                'basePath': '/something/v1/',                    
+                'resources': {
+                    'mgmt': {
+                        'resources': {
+                            'adunits': {'foo':'bar' }
+                        }
+                    }
+                }
+            }";
+        internal const string BadDiscoveryv1_0_No_RootUrl =
+            @"{
+                'name': 'NAME',
+                'version': 'v1',
+                'description': 'desc',
+                'basePath': '/basePath/v1/',
+                'resources': {
+                    'mgmt': {
+                        'resources': {
+                            'adunits': {'foo':'bar' }
+                        }
+                    }
+                }
+            }";
+        internal const string BadDiscoveryv1_0_No_BasePath =
+            @"{
+                'name': 'NAME',
+                'version': 'v1',
+                'description': 'desc',
+                'rootUrl': 'https://www.example.com/',
+                'resources': {
+                    'mgmt': {
+                        'resources': {
+                            'adunits': {'foo':'bar' }
+                        }
+                    }
+                }
+            }";
+        internal const string ValidDiscoveryv1_0 =
+            @"{
+                ""name"": ""NAME"",
+                ""version"": ""v1"",
+                ""description"": ""desc"",
+                ""rootUrl"": ""https://www.example.com/"",
+                ""basePath"": ""/something/v1/"",
+                ""resources"": {
+                    ""mgmt"": {
+                        ""resources"": {
+                            ""adunits"": {""foo"":""bar"" }
+                        }
+                    }
+                }
+            }";
 
-        /// <summary>
-        /// Tests that the v1.0 constructor will fail when provided with invalid arguments
-        /// </summary>
+        /// <summary> Tests that the v1.0 constructor will fail when provided with invalid arguments. </summary>
         [Test]
-        public void ServiceFactoryDiscoveryV1_0ConstructorFailTest()
+        public void ServiceFactoryDiscoveryV1_0_ConstructorFailTest()
         {
             Assert.Throws<ArgumentNullException>(() => new FactoryParameters((string)null));
-            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
             var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
 
-            // Test if the constructor will fail if required arguments are missing
-            var param = new FactoryParameters();
-            Assert.Throws(typeof(ArgumentNullException), () => factory.CreateService(null, param));
-            Assert.DoesNotThrow(() => factory.CreateService(json, null));
+            // discovery doc is null
+            Assert.Throws(typeof(ArgumentNullException), () => factory.CreateService(null, null));
 
-            json = (JsonDictionary) JsonReader.Parse(BadDiscoveryv1_0_No_Name);
-            Assert.Throws(typeof(ArgumentException), () => factory.CreateService(json, param));
+            // name is missing the discovery doc
+            var json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_Name);
+            Assert.Throws(typeof(ArgumentException), () => factory.CreateService(json, null));
+
+            // basePath is missing in the dicsvoery doc, and there is no use in FactoryParameters
+            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_BasePath);
+            Assert.Throws(typeof(ArgumentException), () => factory.CreateService(json, null));
+
+            // rootUrl is missing in the dicsvoery doc, and there is no use in FactoryParameters
+            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_RootUrl);
+            Assert.Throws(typeof(ArgumentException), () => factory.CreateService(json, null));
         }
 
-        /// <summary>
-        /// Tests that the v1.0 constructor will work when provided with valid arguments
-        /// </summary>
+        /// <summary> Tests that the v1.0 constructor will work when provided with valid arguments. </summary>
         [Test]
-        public void ServiceFactoryDiscoveryV1_0ConstructorSuccessTest()
+        public void ServiceFactoryDiscoveryV1_0_ConstructorSuccessTest()
         {
-            var param = new FactoryParameters("http://server/");
-            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryTest.DiscoveryV1_0Example);
-            var service = ServiceFactory.Get(DiscoveryVersion.Version_1_0).CreateService(json, param);
+            var json = (JsonDictionary)JsonReader.Parse(ValidDiscoveryv1_0);
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
 
+            var service = factory.CreateService(json, null);
             Assert.IsInstanceOf(typeof(ServiceV1_0), service);
-            Assert.AreEqual("adsense", service.Name);
+            Assert.AreEqual("NAME", service.Name);
+
+            // other constructor success tests appear in ServiceFactoryDiscoveryV10_BaseUri test
+        }
+
+        /// <summary> Tests that BaseUri property is set with the expected value. </summary>
+        [Test]
+        public void ServiceFactoryDiscoveryV1_0_BaseUri()
+        {
+            var param = new FactoryParameters("http://server/path/");
+            var factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
+
+            // discovery doc contains both baseUrl and rootUrl, create service with FactoryParameters.
+            // BaseUri is equal to factory parameters URI
+            var json = (JsonDictionary)JsonReader.Parse(ValidDiscoveryv1_0);
+            var service = factory.CreateService(json, param);
+            Assert.AreEqual("http://server/path/", service.BaseUri.ToString());
+
+            // discovery doc contains both baseUrl and rootUrl, create service without FactoryParameters.
+            // BaseUri is equal to the rootUrl + basePath from discovery doc
+            service = factory.CreateService(json, null);
+            Assert.AreEqual("https://www.example.com/something/v1/", service.BaseUri.ToString());
+
+            // discovery doc contains basePath but not rootUrl, create service with FactoryParameters.
+            // BaseUri is equal to factory parameters URI
+            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_RootUrl);
+            service = factory.CreateService(json, param);
+            Assert.AreEqual("http://server/path/", service.BaseUri.ToString());
+
+            // discovery doc contains rootUrl but not BasePath, create service with FactoryParameters.
+            // BaseUri is equal to factory parameters URI
+            json = (JsonDictionary)JsonReader.Parse(BadDiscoveryv1_0_No_BasePath);
+            service = factory.CreateService(json, param);
+            Assert.AreEqual("http://server/path/", service.BaseUri.ToString());
         }
     }
 }

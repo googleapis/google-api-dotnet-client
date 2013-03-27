@@ -39,7 +39,8 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
                     ""version"": ""v1"",
                     ""description"": ""A test service"",
                     ""protocol"": ""rest"",
-                    ""basePath"": ""https://example.com/basePath/"",
+                    ""rootUrl"": ""https://example.com/"",
+                    ""basePath"": ""/basePath/"",
                     ""schemas"": { },
                     ""methods"": {
                         ""doTest"": {
@@ -74,7 +75,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests.Core
                         }
                     }
                 }";
-            
+
             // Generate this service.
             IService service = GetService(JSON);
             Assert.AreEqual(1, service.Methods.Count);

@@ -45,7 +45,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         private ServiceV0_3 CreateService()
         {
             var param = new FactoryParameters("http://example.com/");
-            var json = (JsonDictionary) JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
+            var json = (JsonDictionary)JsonReader.Parse(ServiceFactoryImplTest.BuzzV0_3_Json);
             return (ServiceV0_3)ServiceFactoryDiscoveryV0_3.GetInstance().CreateService(json, param);
         }
 
@@ -60,6 +60,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
             js["name"] = "TestName";
             js["version"] = "v1";
             js["restBasePath"] = "test/path";
+            js["rootUrl"] = "https://wwww.example.com";
 
             var factory = ServiceFactoryDiscoveryV0_3.GetInstance();
 
@@ -95,7 +96,7 @@ namespace Google.Apis.Tests.Apis.Discovery.V0_3
         [Test]
         public void ParseSchemasTest()
         {
-            JsonDictionary js = (JsonDictionary) JsonReader.Parse(SchemaJson);
+            JsonDictionary js = (JsonDictionary)JsonReader.Parse(SchemaJson);
             var dict = BaseService.ParseSchemas(js);
             Assert.IsNotNull(dict);
             Assert.AreEqual(8, dict.Count);
