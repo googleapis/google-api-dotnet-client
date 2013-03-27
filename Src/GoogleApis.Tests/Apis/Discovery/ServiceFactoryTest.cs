@@ -30,86 +30,96 @@ namespace Google.Apis.Tests.Apis.Discovery
     [TestFixture]
     public class ServiceFactoryTest
     {
-        private const string EmptyJson = "{'Fish' : 'chips'}"; // I guess David wrote this :-D
-
-        //TODO(davidwaters) Fill in exmaples
-        public const string DiscoveryV1_0Example =
-            @"{""kind"": ""discovery#restDescription"",
- ""id"": ""adsense:v1beta1"",
- ""name"": ""adsense"",
- ""version"": ""v1beta1"",
- ""description"": ""AdSense Management API"",
- ""icons"": {
-  ""x16"": ""http://www.google.com/images/icons/product/search-16.gif"",
-  ""x32"": ""http://www.google.com/images/icons/product/search-32.gif""
- },
- ""labels"": [
-  ""labs""
- ],
- ""protocol"": ""rest"",
- ""basePath"": ""/adsense/v1beta1/"",
- ""auth"": {
-        ""oauth2"": {
-            ""scopes"": {
-                ""https://www.googleapis.com/auth/adsense"": {
-                    ""description"": ""View your AdSense data""
+        internal const string DiscoveryV1_0Example =
+          @"{""kind"": ""discovery#restDescription"",
+             ""id"": ""adsense:v1beta1"",
+             ""name"": ""adsense"",
+             ""version"": ""v1beta1"",
+             ""description"": ""AdSense Management API"",
+             ""icons"": {
+              ""x16"": ""http://www.google.com/images/icons/product/search-16.gif"",
+              ""x32"": ""http://www.google.com/images/icons/product/search-32.gif""
+             },
+             ""labels"": [
+              ""labs""
+             ],
+             ""protocol"": ""rest"",
+             ""rootUrl"":""https://www.googleapis.com/"",
+             ""basePath"": ""/adsense/v1beta1/"",
+             ""auth"": {
+                    ""oauth2"": {
+                        ""scopes"": {
+                            ""https://www.googleapis.com/auth/adsense"": {
+                                ""description"": ""View your AdSense data""
+                            }
+                        }
+                    }
+             },
+             ""schemas"": {'sample' : {'id':'Sample'}},
+             ""resources"": {
+              ""adclients"": {
+               ""methods"": {
+                ""list"": {
+                 ""id"": ""adsense.adclients.list"",
+                 ""path"": ""ad_clients"",
+                 ""httpMethod"": ""GET"",
+                 ""description"": ""List all ad clients in this AdSense account."",
+                 ""response"": {
+                  ""$ref"": ""AdClients""
+                 },
+                 ""scopes"": [
+                  ""https://www.googleapis.com/auth/adsense""
+                 ]
                 }
+               }
+              },
+              ""adunits"": {
+               ""methods"": {
+                ""list"": {
+                 ""id"": ""adsense.adunits.list"",
+                 ""path"": ""ad_clients/{ad_client_id}/ad_units"",
+                 ""httpMethod"": ""GET"",
+                 ""description"": ""List all ad units in this AdSense account."",
+                 ""parameters"": {
+                  ""ad_client_id"": {
+                   ""type"": ""string"",
+                   ""description"": ""Ad client for which to list ad units."",
+                   ""required"": true,
+                   ""location"": ""path""
+                  }
+                 },
+                 ""parameterOrder"": [
+                  ""ad_client_id""
+                 ],
+                 ""response"": {
+                  ""$ref"": ""AdUnits""
+                 },
+                 ""scopes"": [
+                  ""https://www.googleapis.com/auth/adsense""
+                 ]
+                }
+               }
+              }
+             }
             }
-        }
- },
- ""schemas"": {'sample' : {'id':'Sample'}},
- ""resources"": {
-  ""adclients"": {
-   ""methods"": {
-    ""list"": {
-     ""id"": ""adsense.adclients.list"",
-     ""path"": ""ad_clients"",
-     ""httpMethod"": ""GET"",
-     ""description"": ""List all ad clients in this AdSense account."",
-     ""response"": {
-      ""$ref"": ""AdClients""
-     },
-     ""scopes"": [
-      ""https://www.googleapis.com/auth/adsense""
-     ]
-    }
-   }
-  },
-  ""adunits"": {
-   ""methods"": {
-    ""list"": {
-     ""id"": ""adsense.adunits.list"",
-     ""path"": ""ad_clients/{ad_client_id}/ad_units"",
-     ""httpMethod"": ""GET"",
-     ""description"": ""List all ad units in this AdSense account."",
-     ""parameters"": {
-      ""ad_client_id"": {
-       ""type"": ""string"",
-       ""description"": ""Ad client for which to list ad units."",
-       ""required"": true,
-       ""location"": ""path""
-      }
-     },
-     ""parameterOrder"": [
-      ""ad_client_id""
-     ],
-     ""response"": {
-      ""$ref"": ""AdUnits""
-     },
-     ""scopes"": [
-      ""https://www.googleapis.com/auth/adsense""
-     ]
-    }
-   }
-  }
- }
-}
-";
+            ";
 
         public const string DiscoveryV0_3SmallestExample =
-            "{'name' : 'SmallExample'," + "'restBasePath' : 'https://api.example.com/example'," + "'version' : 'v1'," +
-            "'resources' : {'mgmt' : {'name' : 'mgmt', " + "'resources' : {" +
-            "'a':{'name':'a'}, 'b':{'name':'b'}, 'c':{}}}";
+            @"{ 'name': 'SmallExample',
+                'rootUrl': 'https://api.example.com/',
+                'restBasePath' : '/example/',
+                'version' : 'v1',
+                'resources' : {
+                    'mgmt' : {
+                        'name' : 'mgmt', 
+                        'resources' : {
+                            'a': {'name': 'a'}, 
+                            'b': {'name': 'b'}, 
+                            'c': { }
+                        }
+                    }
+                }
+            }";
 
         private Stream CreateStringStream(string source)
         {
@@ -122,9 +132,8 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void TestCreateServiceFactoryInvalidVersion()
         {
-            var stream = CreateStringStream(DiscoveryV1_0Example);
             Assert.Throws<NotSupportedException>(
-                () => ServiceFactory.Get((DiscoveryVersion) 56));
+                () => ServiceFactory.Get((DiscoveryVersion)56));
         }
 
         /// <summary>
@@ -133,7 +142,6 @@ namespace Google.Apis.Tests.Apis.Discovery
         [Test]
         public void TestCreateServiceFactoryV0_3()
         {
-            var stream = CreateStringStream(DiscoveryV0_3SmallestExample);
             IServiceFactory factory = ServiceFactory.Get(DiscoveryVersion.Version_0_3);
             Assert.NotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV0_3), factory);
@@ -146,7 +154,6 @@ namespace Google.Apis.Tests.Apis.Discovery
         public void TestCreateServiceFactoryV1_0()
         {
             // Test without factory parameter
-            var stream = CreateStringStream(DiscoveryV1_0Example);
             IServiceFactory factory = ServiceFactory.Get(DiscoveryVersion.Version_1_0);
             Assert.IsNotNull(factory);
             Assert.IsInstanceOf(typeof(ServiceFactoryDiscoveryV1_0), factory);

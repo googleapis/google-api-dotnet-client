@@ -60,7 +60,8 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                     ""version"": ""v1"",
                     ""description"": ""A test service"",
                     ""protocol"": ""rest"",
-                    ""basePath"": ""https://example.com/basePath/"",
+                    ""rootUrl"": ""https://example.com/"",
+                    ""basePath"": ""/basePath/"",
                     ""resources"": {
                         ""myclass"": {
                             ""methods"": {
@@ -80,7 +81,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                         }
                     }
                 }";
-            
+
             // Generate this service.
             Assembly generatedAssembly = GenerateService(JSON);
             Assert.IsNotNull(generatedAssembly);
@@ -100,7 +101,8 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                     ""version"": ""v1"",
                     ""description"": ""A test service"",
                     ""protocol"": ""rest"",
-                    ""basePath"": ""https://example.com/basePath/"",
+                    ""rootUrl"": ""https://example.com/"",
+                    ""basePath"": ""/basePath/"",
                     ""schemas"": {
                         ""TestSchema"": {
                            ""id"": ""TestSchema"",
@@ -152,7 +154,8 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                     ""version"": ""v1"",
                     ""description"": ""A test service"",
                     ""protocol"": ""rest"",
-                    ""basePath"": ""https://example.com/basePath/"",
+                    ""rootUrl"": ""https://example.com"",
+                    ""basePath"": ""/basePath/"",
                     ""schemas"": { },
                     ""methods"": {
                         ""doTest"": {

@@ -38,40 +38,44 @@ namespace Google.Apis.Discovery
     {
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<BaseService>();
 
-        protected internal readonly JsonDictionary information;
+        private readonly JsonDictionary discoveryDoc;
         private IResource rootResource;
         private IDictionary<String, ISchema> schemas;
         private ISerializer serializer;
 
-        internal BaseService(IServiceFactory factory, JsonDictionary values, FactoryParameters param)
+        internal BaseService(IServiceFactory factory, JsonDictionary discoveryDoc, FactoryParameters param)
             : this(factory)
         {
-            values.ThrowIfNull("values");
-            param = param ?? new FactoryParameters();
+            discoveryDoc.ThrowIfNull("discoveryDoc");
+            this.discoveryDoc = discoveryDoc;
 
             // Set required properties
-            Version = values.GetMandatoryValue<string>("version");
-            Name = values.GetMandatoryValue<string>("name");
-            information = values;
+            Version = discoveryDoc.GetMandatoryValue<string>("version");
+            Name = discoveryDoc.GetMandatoryValue<string>("name");
 
             // Set optional properties
-            Id = values.GetValueAsNull("id") as string;
-            Labels = values.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
-            Features = values.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
-            DocumentationLink = values.GetValueAsNull("documentationLink") as string;
-            Protocol = values.GetValueAsNull("protocol") as string;
-            Description = values.GetValueAsNull("description") as string;
-            Title = values.GetValueAsNull("title") as string;
+            Id = discoveryDoc.GetValueAsNull("id") as string;
+            Labels = discoveryDoc.GetValueAsStringListOrEmpty("labels").ToList().AsReadOnly();
+            Features = discoveryDoc.GetValueAsStringListOrEmpty("features").ToList().AsReadOnly();
+            DocumentationLink = discoveryDoc.GetValueAsNull("documentationLink") as string;
+            Protocol = discoveryDoc.GetValueAsNull("protocol") as string;
+            Description = discoveryDoc.GetValueAsNull("description") as string;
+            Title = discoveryDoc.GetValueAsNull("title") as string;
             Scopes = LoadScopes();
             Parameters = LoadParameters();
 
             // Load resources
-            rootResource = CreateResource(new KeyValuePair<string, object>("", information));
+            rootResource = CreateResource(new KeyValuePair<string, object>("", discoveryDoc));
 
-            // Determine the Server URL and (optional) Base Path
-            param.ServerUrl.ThrowIfNull("param.ServerUrl");
-            ServerUrl = param.ServerUrl;
-            BasePath = param.BasePath;
+            // Sets the Server URL (Base Path will be set on the concete class)
+            if (param != null && param.ServerUrl != null)
+            {
+                ServerUrl = param.ServerUrl;
+            }
+            else
+            {
+                ServerUrl = discoveryDoc.GetMandatoryValue("rootUrl") as string;
+            }
         }
 
         private BaseService(IServiceFactory factory)
@@ -119,7 +123,7 @@ namespace Google.Apis.Discovery
 
         public Uri RpcUri
         {
-            get { return new Uri(information[ServiceFactory.RpcUrl] as string); }
+            get { return new Uri(discoveryDoc[ServiceFactory.RpcUrl] as string); }
         }
 
         public IDictionary<string, IResource> Resources
@@ -137,9 +141,9 @@ namespace Google.Apis.Discovery
                 }
 
                 logger.Debug("Fetching Schemas for service {0}", Name);
-                if (information.ContainsKey(ServiceFactory.Schemas))
+                if (discoveryDoc.ContainsKey(ServiceFactory.Schemas))
                 {
-                    var js = (JsonDictionary)information[ServiceFactory.Schemas];
+                    var js = (JsonDictionary)discoveryDoc[ServiceFactory.Schemas];
                     schemas = ParseSchemas(js);
                 }
                 else
@@ -163,7 +167,7 @@ namespace Google.Apis.Discovery
         }
 
         /// <summary>
-        /// Loads the set of scopes from the json information dictionary and parses it into a dictionary.
+        /// Loads the set of scopes from the json disocvery doc dictionary and parses it into a dictionary.
         /// Always returns a valid dictionary.
         /// </summary>
         [VisibleForTestOnly]
@@ -172,7 +176,7 @@ namespace Google.Apis.Discovery
             Dictionary<string, Scope> scopes = new Dictionary<string, Scope>();
 
             // Access the "auth" node.
-            var authObj = information.GetValueAsNull("auth") as JsonDictionary;
+            var authObj = discoveryDoc.GetValueAsNull("auth") as JsonDictionary;
             if (authObj == null)
             {
                 return scopes;
@@ -213,14 +217,14 @@ namespace Google.Apis.Discovery
         }
 
         /// <summary>
-        /// Loads the common parameters from the json information dictionary and parses it into a dictionary.
+        /// Loads the common parameters from the json discovery doc dictionary and parses it into a dictionary.
         /// Always returns a valid dictionary.
         /// </summary>
         [VisibleForTestOnly]
         internal IDictionary<string, IDiscoveryParameter> LoadParameters()
         {
             // Access the "parameters" node for service-wide parameters.
-            var paramsObj = information.GetValue("parameters", () => new JsonDictionary());
+            var paramsObj = discoveryDoc.GetValue("parameters", () => new JsonDictionary());
             return paramsObj.Select(p => CreateParameter(p))
                   .ToDictionary(p => p.Name);
         }
@@ -280,7 +284,7 @@ namespace Google.Apis.Discovery
         /// <returns>Json formatted discovery document.</returns>
         public string GetDiscoveryDocument()
         {
-            return serializer.Serialize(information);
+            return serializer.Serialize(discoveryDoc);
         }
         public Dictionary<string, IMethod> Methods
         {
@@ -301,6 +305,22 @@ namespace Google.Apis.Discovery
         {
             get { return rootResource.IsServiceResource; }
         }
+
+        /// <summary> 
+        /// Sets BasePath property. If the the given factory params contain BasePath use it, otherwise use the given 
+        /// base path field to query the dicsovery doc.
+        /// </summary>
+        protected void SetBasePath(FactoryParameters param, string basePathField)
+        {
+            if (param != null && param.BasePath != null)
+            {
+                BasePath = param.BasePath;
+            }
+            else
+            {
+                BasePath = discoveryDoc.GetMandatoryValue<string>(basePathField);
+            }
+        }
     }
 
     #endregion
@@ -320,11 +340,7 @@ namespace Google.Apis.Discovery
         public ServiceV1_0(IServiceFactory factory, JsonDictionary values, FactoryParameters param)
             : base(factory, values, param)
         {
-            // If no BasePath has been set, then retrieve it from the json document
-            if (BasePath.IsNullOrEmpty())
-            {
-                BasePath = information.GetMandatoryValue<string>(BasePathField);
-            }
+            SetBasePath(param, BasePathField);
         }
     }
 
@@ -345,11 +361,7 @@ namespace Google.Apis.Discovery
         public ServiceV0_3(IServiceFactory factory, JsonDictionary values, FactoryParameters param)
             : base(factory, values, param)
         {
-            // If no BasePath has been set, then retrieve it from the json document
-            if (BasePath.IsNullOrEmpty())
-            {
-                BasePath = information.GetMandatoryValue<string>(RestBasePathField);
-            }
+            SetBasePath(param, RestBasePathField);
         }
     }
 

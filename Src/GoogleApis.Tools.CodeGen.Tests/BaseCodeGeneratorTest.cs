@@ -153,6 +153,7 @@ namespace Google.Apis.Tools.CodeGen.Tests
   ""labs""
  ],
  ""protocol"": ""rest"",
+ ""rootUrl"": ""https://www.googleapis.com"",
  ""basePath"": ""/adsense/v1beta1/"",
  ""auth"": {
   ""oauth2"": {
@@ -4542,8 +4543,8 @@ namespace Google.Apis.Tools.CodeGen.Tests
 
         protected IService CreateAdSenseV1_0Service()
         {
-            var buzzTestFetcher = new StringDiscoveryDevice { Document = AdSenseDiscoveryV1 };
-            var discovery = new DiscoveryService(buzzTestFetcher);
+            var adsenseTestFetcher = new StringDiscoveryDevice { Document = AdSenseDiscoveryV1 };
+            var discovery = new DiscoveryService(adsenseTestFetcher);
 
             // Build the service based on discovery information.
             return discovery.GetService(DiscoveryVersion.Version_1_0);
