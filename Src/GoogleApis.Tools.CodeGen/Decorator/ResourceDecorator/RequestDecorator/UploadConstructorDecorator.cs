@@ -38,6 +38,7 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         private const string AuthenticatorName = "Authenticator";
         private const string ServiceName = "service";
         private const string BaseUriName = "BaseUri";
+        private const string BasePathName = "BasePath";
 
         private const string StreamParameterName = "stream";
         private const string ContentTypeParameterName = "contentType";
@@ -75,11 +76,23 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var serviceArg = new CodeParameterDeclarationExpression(typeof(IClientService), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
-            // : base(service, "path", "HTTPMETHOD")
+            // : base(service.BaseUri, string.Format("%s%s%s", "/upload", service.BasePath, "RESOURCE_PATH"), 
+            // "HTTP_METHOD", ... (required parameters)
+
+            // service.BaseUri
             constructor.BaseConstructorArgs.Add(
                 new CodePropertyReferenceExpression(
                     new CodeVariableReferenceExpression(ServiceName), BaseUriName));
-            constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.MediaUpload.Simple.Path));
+            // string.Format("%s%s%s", "/upload", service.BasePath, "RESOURCE_PATH")
+            var path = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
+                new CodeTypeReferenceExpression(typeof(string)), "Format"),
+                    new CodePrimitiveExpression("%s%s%s"),
+                    new CodePrimitiveExpression("/upload"),
+                    new CodePropertyReferenceExpression(
+                        new CodeVariableReferenceExpression(ServiceName), BasePathName),
+                    new CodePrimitiveExpression(request.RestPath));
+            constructor.BaseConstructorArgs.Add(path);
+            // "HTTP_METHOD"
             constructor.BaseConstructorArgs.Add(new CodePrimitiveExpression(request.HttpMethod));
 
             // Add all required arguments to the constructor.

@@ -1655,7 +1655,6 @@ namespace Google.Apis.Discovery.v1
 
     public partial class DiscoveryService : Google.Apis.Services.BaseClientService
     {
-
         public const string Version = "v1";
 
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -1695,6 +1694,14 @@ namespace Google.Apis.Discovery.v1
             get
             {
                 return "https://www.googleapis.com/discovery/v1/";
+            }
+        }
+
+        public override string BasePath
+        {
+            get
+            {
+                return "/discovery/v1/";
             }
         }
 

@@ -56,6 +56,7 @@ namespace Google.Apis.Testing
         public IDictionary<string, IResource> Resources { get; set; }
         public string Version { get; set; }
         public Uri BaseUri { get; set; }
+        public string BasePath { get; set; }
         public Uri RpcUri { get; set; }
         public bool GZipEnabled { get; set; }
         public DiscoveryVersion DiscoveryVersion { get; set; }

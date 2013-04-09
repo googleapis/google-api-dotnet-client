@@ -31,6 +31,8 @@ namespace Google.Apis.Testing
 
         private string _baseUri;
         public override string BaseUri { get { return _baseUri; } }
+        private string _basePath;
+        public override string BasePath { get { return _basePath; } }
 
         private IList<string> _features = new List<string> { "rest", "rpc", "json", "atom" };
         public override IList<string> Features { get { return _features; } }

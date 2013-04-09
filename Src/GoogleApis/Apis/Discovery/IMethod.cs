@@ -26,59 +26,43 @@ namespace Google.Apis.Discovery
     /// <see cref="IResource"/>
     public interface IMethod
     {
-        /// <summary>
-        /// Name of this method
-        /// </summary>
+        /// <summary> The name of this method. </summary>
         string Name { get; }
 
-        /// <summary>
-        /// A description of this method
-        /// </summary>
+        /// <summary> A description of this method. </summary>
         string Description { get; }
 
-        /// <summary>
-        /// The rest path to this method
-        /// </summary>
+        /// <summary> The rest path to this method. </summary>
         string RestPath { get; }
 
-        /// <summary>
-        /// The name of the RPC
-        /// </summary>
+        /// <summary> The name of the RPC. </summary>
         string RpcName { get; }
 
-        /// <summary>
-        /// The http method required by this method
-        /// </summary>
+        /// <summary> The http method required by this method. </summary>
         string HttpMethod { get; }
 
-        /// <summary>
-        /// The response type of the request
-        /// </summary>
+        /// <summary> The response type of the request. </summary>
         string ResponseType { get; }
 
-        /// <summary>
-        /// The type of the request required by this method
-        /// </summary>
+        /// <summary> The type of the request required by this method. </summary>
         string RequestType { get; }
 
-        /// <summary>
-        /// Whether this request has a body attached to it.
-        /// </summary>
+        /// <summary> Indicates if this request has a body. </summary>
         bool HasBody { get; }
 
-        /// <summary>
-        /// Media upload information (if this is a media upload method).
-        /// </summary>
+        /// <summary> Media upload information (if this is a media upload method). </summary>
         MediaUpload MediaUpload { get; }
 
-        /// <summary>
-        /// A set of parameters passed with the request
-        /// </summary>
+        /// <summary> Indicates if the method supports media upload. </summary>
+        bool SupportMediaUpload { get; }
+
+        /// <summary> Indicates if the method supports media download. </summary>
+        bool SupportMediaDownload { get; }
+
+        /// <summary> Parameters which are related to this request. </summary>
         Dictionary<string, IDiscoveryParameter> Parameters { get; }
 
-        /// <summary>
-        /// The order in which parameters should be passed in a request.
-        /// </summary>
+        /// <summary> The order in which parameters should be passed in a request. </summary>
         IEnumerable<string> ParameterOrder { get; }
     }
 }

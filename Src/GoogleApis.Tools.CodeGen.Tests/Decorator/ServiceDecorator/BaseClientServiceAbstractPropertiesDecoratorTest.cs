@@ -66,9 +66,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
         #region BaseUri
 
-        /// <summary>
-        /// Tests if the generation of an uri field works
-        /// </summary>
+        /// <summary> Tests if the generation of BaseUri field works. </summary>
         [Test]
         public void TestCreateUriField()
         {
@@ -77,6 +75,21 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
             Assert.AreEqual("BaseUri", codeMemberField.Name);
             Assert.AreEqual(BaseUri.ToString(), GetReturnPrimitiveValue(codeMemberField));
+        }
+
+        #endregion
+
+        #region BasePath
+
+        /// <summary> Tests if the generation of BasePath field works. </summary>
+        [Test]
+        public void TestCreatePathField()
+        {
+            var decorator = new BaseClientServiceAbstractPropertiesDecorator();
+            var codeMemberField = decorator.CreateBasePathProperty(CreateService());
+
+            Assert.AreEqual("BasePath", codeMemberField.Name);
+            Assert.AreEqual(BasePath, GetReturnPrimitiveValue(codeMemberField));
         }
 
         #endregion

@@ -37,6 +37,9 @@ namespace Google.Apis.Services
         /// </summary>
         string BaseUri { get; }
 
+        /// <summary> The BasePath of the service. </summary>
+        string BasePath { get; }
+
         /// <summary>
         /// The Authenticator for this service.
         /// </summary>

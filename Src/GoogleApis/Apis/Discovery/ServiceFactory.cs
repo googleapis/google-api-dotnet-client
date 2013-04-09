@@ -96,6 +96,9 @@ namespace Google.Apis.Discovery
         internal const string Maximum = "maximum";
         internal const string Minimum = "minimum";
 
+        internal const string SupportMediaUpload = "supportsMediaUpload";
+        internal const string SupportMediaDownload = "supportsMediaDownload";
+
         /// <summary>
         /// The Service Factory for the current default version of discovery (Currently Version 1.0)
         /// </summary>

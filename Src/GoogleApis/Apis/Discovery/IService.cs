@@ -37,6 +37,9 @@ namespace Google.Apis.Discovery
         /// </summary>
         Uri BaseUri { get; }
 
+        /// <summary> BasePath of the resource. </summary>
+        string BasePath { get; }
+
         /// <summary> 
         /// The Rpc URI of this service. 
         /// This field is no longer available with discovery version v1.

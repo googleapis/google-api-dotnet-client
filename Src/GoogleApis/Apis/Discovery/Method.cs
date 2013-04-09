@@ -129,6 +129,24 @@ namespace Google.Apis.Discovery
             }
         }
 
+        public bool SupportMediaUpload
+        {
+            get
+            {
+                var support = information.GetValueAsNull(ServiceFactory.SupportMediaUpload);
+                return support is bool && (bool)support;
+            }
+        }
+
+        public bool SupportMediaDownload
+        {
+            get
+            {
+                var support = information.GetValueAsNull(ServiceFactory.SupportMediaDownload);
+                return support is bool && (bool)support;
+            }
+        }
+
         #endregion
 
         private Dictionary<string, IDiscoveryParameter> FetchParameters()

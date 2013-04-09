@@ -46,6 +46,10 @@ namespace Google.Apis.Testing
 
         public MediaUpload MediaUpload { get; set; }
 
+        public bool SupportMediaUpload { get; set; }
+
+        public bool SupportMediaDownload { get; set; }
+
         #endregion
     }
 }
