@@ -36,6 +36,7 @@ namespace Google.Apis.Testing
         public abstract IDictionary<string, IParameter> ServiceParameters { get; }
         public abstract IList<string> Features { get; }
         public abstract string BaseUri { get; }
+        public abstract string BasePath { get; }
         public abstract string Name { get; }
     }
 }

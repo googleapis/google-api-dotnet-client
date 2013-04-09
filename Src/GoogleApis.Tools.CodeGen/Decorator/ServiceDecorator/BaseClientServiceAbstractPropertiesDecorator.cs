@@ -33,12 +33,14 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         internal const string ServiceParametersName = "serviceParameters";
         internal const string NameName = "Name";
         internal const string BaseUriName = "BaseUri";
+        internal const string BasePathName = "BasePath";
 
         public void DecorateClass(IService service, CodeTypeDeclaration serviceClass)
         {
             serviceClass.Members.Add(CreateFeaturesProperty(service));
             serviceClass.Members.Add(CreateNameProperty(service));
             serviceClass.Members.Add(CreateUriProperty(service));
+            serviceClass.Members.Add(CreateBasePathProperty(service));
 
             serviceClass.Members.AddRange(CreateServiceParametersProperty());
         }
@@ -49,7 +51,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// public override IDictionary<string,IParameter> ServiceParameters { get { return _serviceParameters; } }
         /// </c>
         /// </summary>
-        /// <returns></returns>
         [VisibleForTestOnly]
         internal CodeTypeMemberCollection CreateServiceParametersProperty()
         {
@@ -65,8 +66,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// public override IList<string> Features { get { return new string[n] { ... }; } }
         /// </c>
         /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
         [VisibleForTestOnly]
         internal CodeMemberProperty CreateFeaturesProperty(IService service)
         {
@@ -92,8 +91,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// public override string Name { get { return "discovery"; } }
         /// </c>
         /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
         [VisibleForTestOnly]
         internal CodeMemberProperty CreateNameProperty(IService service)
         {
@@ -113,8 +110,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
         /// public override string BaseUri { get { return "https://www.googleapis.com/discovery/v1/"; } }
         /// </c>
         /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
         [VisibleForTestOnly]
         internal CodeMemberProperty CreateUriProperty(IService service)
         {
@@ -125,6 +120,25 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ServiceDecorator
                 Attributes = MemberAttributes.Public | MemberAttributes.Override,
                 GetStatements = { new CodeMethodReturnStatement(
                     new CodePrimitiveExpression(service.BaseUri.ToString())) },
+            };
+        }
+
+        /// <summary>
+        /// Adds a BasePath property which returns the base path for this resource, e.g.
+        /// <c>
+        /// public override string BasePath { get { return "/discovery/v1/"; } }
+        /// </c>
+        /// </summary>
+        [VisibleForTestOnly]
+        internal CodeMemberProperty CreateBasePathProperty(IService service)
+        {
+            return new CodeMemberProperty()
+            {
+                Name = BasePathName,
+                Type = new CodeTypeReference(typeof(string)),
+                Attributes = MemberAttributes.Public | MemberAttributes.Override,
+                GetStatements = { new CodeMethodReturnStatement(
+                    new CodePrimitiveExpression(service.BasePath)) },
             };
         }
     }

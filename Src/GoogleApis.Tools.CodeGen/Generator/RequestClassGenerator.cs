@@ -82,10 +82,11 @@ namespace Google.Apis.Tools.CodeGen.Generator
                 newMembers.Add(requestClass);
                 usedNames.Add(requestClass.Name);
 
-                if (method.MediaUpload != null)
+                if (method.SupportMediaUpload)
                 {
                     // Generate the request class and add it to the result collection.
-                    CodeTypeDeclaration uploadClass = GenerateMediaUploadClass(resource, method, resourceClass, usedNames);
+                    CodeTypeDeclaration uploadClass = GenerateMediaUploadClass(resource, method, resourceClass,
+                        usedNames);
                     newMembers.Add(uploadClass);
                     usedNames.Add(uploadClass.Name);
                 }

@@ -50,6 +50,7 @@ namespace Google.Apis.Tests.Apis.Requests
             public bool CreateSuspendedRequests { get; set; }
             public MockRequest LastRequest { get; private set; }
             public override string BaseUri { get { return "BaseUri"; } }
+            public override string BasePath { get { return "BasePath"; } }
 
             public override IList<string> Features
             {

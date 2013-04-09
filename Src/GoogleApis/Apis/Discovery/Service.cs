@@ -85,10 +85,10 @@ namespace Google.Apis.Discovery
         }
 
         protected string ServerUrl { get; set; }
-        protected string BasePath { get; set; }
 
         #region IService Members
 
+        public string BasePath { get; set; }
         public string Name { get; private set; }
         public string Version { get; private set; }
         public string Description { get; private set; }
