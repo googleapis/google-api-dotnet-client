@@ -76,18 +76,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var serviceArg = new CodeParameterDeclarationExpression(typeof(IClientService), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
-            // : base(service.BaseUri, string.Format("%s%s%s", "/upload", service.BasePath, "RESOURCE_PATH"), 
+            // : base(service.BaseUri, string.Format("/{0}{1}{2}", "upload", service.BasePath, "RESOURCE_PATH"), 
             // "HTTP_METHOD", ... (required parameters)
 
             // service.BaseUri
             constructor.BaseConstructorArgs.Add(
                 new CodePropertyReferenceExpression(
                     new CodeVariableReferenceExpression(ServiceName), BaseUriName));
-            // string.Format("%s%s%s", "/upload", service.BasePath, "RESOURCE_PATH")
+            // string.Format("/{0}{1}{2}", "upload", service.BasePath, "RESOURCE_PATH")
             var path = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
                 new CodeTypeReferenceExpression(typeof(string)), "Format"),
-                    new CodePrimitiveExpression("%s%s%s"),
-                    new CodePrimitiveExpression("/upload"),
+                    new CodePrimitiveExpression("/{0}{1}{2}"),
+                    new CodePrimitiveExpression("upload"),
                     new CodePropertyReferenceExpression(
                         new CodeVariableReferenceExpression(ServiceName), BasePathName),
                     new CodePrimitiveExpression(request.RestPath));
