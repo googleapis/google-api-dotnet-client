@@ -105,7 +105,7 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             var method = new MockMethod() { Name = "Test", RequestType = "SomeSchema", HasBody = true };
             CodeMemberMethod newMethod = decorator.GenerateGetBodyOverride(method);
 
-            Assert.AreEqual(ClientServiceRequest<object>.GetBodyMethodName, newMethod.Name);
+            Assert.AreEqual("GetBody", newMethod.Name);
             Assert.AreEqual(MemberAttributes.Override | MemberAttributes.Family, newMethod.Attributes);
             Assert.AreEqual(0, newMethod.Parameters.Count);
             Assert.AreEqual(typeof(object).FullName, newMethod.ReturnType.BaseType);

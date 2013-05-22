@@ -44,7 +44,7 @@ namespace Google.Apis.Tests.Apis.Logging
         public void GetTypeTest()
         {
             var logger = new NullLogger();
-            Assert.IsNotNull(logger.ForType<ConsoleLoggerTests>());
+            Assert.IsNotNull(logger.ForType<NullLoggerTests>());
         }
 
         /// <summary>

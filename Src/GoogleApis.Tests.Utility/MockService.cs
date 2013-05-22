@@ -77,31 +77,6 @@ namespace Google.Apis.Testing
         public string Description { get; private set; }
         public IList<string> Features { get; set; }
 
-        public IRequest CreateRequest(string resource, string methodName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string SerializeRequest(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public RequestError DeserializeError(IResponse input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T DeserializeResponse<T>(IResponse input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool HasFeature(Features feature)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         public Dictionary<string, IMethod> Methods { get; set; }

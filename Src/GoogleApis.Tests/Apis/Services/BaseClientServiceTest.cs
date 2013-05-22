@@ -14,18 +14,26 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using NUnit.Framework;
 
+using Google.Apis.Authentication;
 using Google.Apis.Discovery;
+using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Requests;
+using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using Google.Apis.Services;
 
 namespace Google.Apis.Tests.Apis.Services
 {
@@ -95,8 +103,8 @@ namespace Google.Apis.Tests.Apis.Services
 
             // Check that the response is decoded correctly.
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
-            var response = new MockResponse() { Stream = stream };
-            CheckDeserializationResults(client.DeserializeResponse<MockJsonSchema>(response));
+            var response = new HttpResponseMessage { Content = new StreamContent(stream) };
+            CheckDeserializationResults(client.DeserializeResponse<MockJsonSchema>(response).Result);
         }
 
 
@@ -114,8 +122,9 @@ namespace Google.Apis.Tests.Apis.Services
 
             // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
+            var response = new HttpResponseMessage { Content = new StreamContent(stream) };
             CheckDeserializationResults(
-                client.DeserializeResponse<MockJsonSchema>(new MockResponse() { Stream = stream }));
+                client.DeserializeResponse<MockJsonSchema>(response).Result);
         }
 
         /// <summary> Tests if serialization works. </summary>
@@ -165,7 +174,8 @@ namespace Google.Apis.Tests.Apis.Services
 
             // Check that the response is decoded correctly
             var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
-            string result = client.DeserializeResponse<string>(new MockResponse() { Stream = stream });
+            var response = new HttpResponseMessage { Content = new StreamContent(stream) };
+            string result = client.DeserializeResponse<string>(response).Result;
             Assert.AreEqual(ResponseV1, result);
         }
 
@@ -195,11 +205,129 @@ namespace Google.Apis.Tests.Apis.Services
 
             using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
             {
-                RequestError error = client.DeserializeError(new MockResponse() { Stream = stream });
+                var response = new HttpResponseMessage { Content = new StreamContent(stream) };
+                RequestError error = client.DeserializeError(response).Result;
                 Assert.AreEqual(400, error.Code);
                 Assert.AreEqual("Required", error.Message);
                 Assert.AreEqual(1, error.Errors.Count);
             }
         }
+
+        #region Authentication
+
+        /// <summary> 
+        /// Mock authentication message handler which returns unauthorized response in the first call, and in the 
+        /// second call it returns a successful response.
+        /// </summary>
+        class MockAuthenticationMessageHandler : CountableMessageHandler
+        {
+            internal static string FirstToken = "invalid";
+            internal static string SecondToken = "valid";
+
+            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+                CancellationToken cancellationToken)
+            {
+                switch (Calls)
+                {
+                    case 1:
+                        Assert.That(request.Headers.GetValues("Authorization").Count(), Is.EqualTo(1));
+                        Assert.That(request.Headers.GetValues("Authorization").First(), Is.EqualTo(FirstToken));
+                        return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.Unauthorized };
+                    case 2:
+                        Assert.That(request.Headers.GetValues("Authorization").Count(), Is.EqualTo(1));
+                        Assert.That(request.Headers.GetValues("Authorization").First(), Is.EqualTo(SecondToken));
+                        return new HttpResponseMessage();
+                    default:
+                        throw new Exception("There should be only two calls");
+                }
+            }
+        }
+
+        /// <summary> Mock Authenticator which adds Authorization header to a request on the second call. </summary>
+        class Authenticator : IAuthenticator
+        {
+            public int ApplyCalls { get; set; }
+
+            public void ApplyAuthenticationToRequest(System.Net.HttpWebRequest request)
+            {
+                ApplyCalls++;
+                switch (ApplyCalls)
+                {
+                    case 1:
+                        request.Headers["Authorization"] = MockAuthenticationMessageHandler.FirstToken;
+                        break;
+                    case 2:
+                        request.Headers["Authorization"] = MockAuthenticationMessageHandler.SecondToken;
+                        break;
+                    default:
+                        throw new Exception("There should be only two calls");
+                }
+            }
+        }
+
+        /// <summary> Mock Authenticator which handles unsuccessful response by "refreshing" the token. </summary>
+        class AuthenticatorUnsuccessfulHandler : Authenticator, IHttpUnsuccessfulResponseHandler
+        {
+            public int HandleCalls { get; set; }
+
+            public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+            {
+                HandleCalls++;
+                // Mock a refresh token process here... (second apply will attach SecondToken authorization)
+                return true;
+            }
+        }
+
+        /// <summary> 
+        /// Tests that authenticator helpers invokes both apply authentication and handle response methods on the 
+        /// authentication instance.
+        /// </summary>
+        [Test]
+        public void Test_Authentication_UnsuccessfulHandler()
+        {
+            var handler = new MockAuthenticationMessageHandler();
+            var authenticator = new AuthenticatorUnsuccessfulHandler();
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler),
+                    Authenticator = authenticator
+                }))
+            {
+                var response = service.HttpClient.SendAsync(
+                    new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
+                // the authenticator handles unsuccessful response handler by "refreshing" the token, so the request
+                // will success
+                Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+                Assert.That(handler.Calls, Is.EqualTo(2));
+                Assert.That(authenticator.ApplyCalls, Is.EqualTo(2));
+                Assert.That(authenticator.HandleCalls, Is.EqualTo(1));
+            }
+        }
+
+        /// <summary> 
+        /// Tests an authenticator which doesn't implement unsuccessful response handler, and as a result the request
+        /// fails (when the token is invalid).
+        /// </summary>
+        [Test]
+        public void Test_Authentication()
+        {
+            var handler = new MockAuthenticationMessageHandler();
+            var authenticator = new Authenticator();
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler),
+                    Authenticator = authenticator
+                }))
+            {
+                var response = service.HttpClient.SendAsync(
+                    new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
+                // the authenticator doesn't implement unsuccessful response handler, so the request fails
+                Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+                Assert.That(handler.Calls, Is.EqualTo(1));
+                Assert.That(authenticator.ApplyCalls, Is.EqualTo(1));
+            }
+        }
+
+        #endregion
     }
 }

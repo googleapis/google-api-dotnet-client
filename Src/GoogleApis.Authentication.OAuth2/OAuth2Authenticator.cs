@@ -16,16 +16,19 @@ limitations under the License.
 
 using System;
 using System.Net;
+using System.Net.Http;
+
 using DotNetOpenAuth.OAuth2;
+
+using Google.Apis.Http;
 using Google.Apis.Requests;
 using Google.Apis.Util;
 
 namespace Google.Apis.Authentication.OAuth2
 {
-    /// <summary>
-    /// Implements an OAuth2 authenticator using the DotNetOpenAuth library.
-    /// </summary>
-    public class OAuth2Authenticator<TClient> : IAuthenticator, IErrorResponseHandler where TClient : ClientBase
+    /// <summary> Implements an OAuth2 authenticator using the DotNetOpenAuth library. </summary>
+    public class OAuth2Authenticator<TClient> : IAuthenticator, IHttpUnsuccessfulResponseHandler
+        where TClient : ClientBase
     {
         private readonly Func<TClient, IAuthorizationState> authProvider;
         private readonly TClient tokenProvider;
@@ -72,46 +75,6 @@ namespace Google.Apis.Authentication.OAuth2
             }
         }
 
-        #region IErrorResponseHandler Members
-
-        public bool CanHandleErrorResponse(WebException exception, RequestError error)
-        {
-            exception.ThrowIfNull("exception");
-
-            // If we have an access token, and the response was 401, then the access token
-            // probably expired. We can try to handle this error.
-            if (State == null)
-            {
-                return false;
-            }
-
-            var response = exception.Response as HttpWebResponse;
-            if (response == null)
-            {
-                return false;
-            }
-
-            return response.StatusCode == HttpStatusCode.Unauthorized;
-        }
-
-        public void HandleErrorResponse(WebException exception, RequestError error, WebRequest request)
-        {
-            request.ThrowIfNull("request");
-            if (!(request is HttpWebRequest))
-            {
-                throw new InvalidCastException(
-                    "Expected a HttpWebRequest, but got a " + request.GetType() + " instead.");
-            }
-
-            // Refresh our access token:
-            tokenProvider.RefreshToken(State, null);
-
-            // Overwrite the current auth header:
-            ApplyAuthenticationToRequest((HttpWebRequest)request);
-        }
-
-        #endregion
-
         /// <summary>
         /// Checks if an access token has been set. If this is not the case, this method will use the specified
         /// State provider to generate a new AuthorizationState.
@@ -127,6 +90,13 @@ namespace Google.Apis.Authentication.OAuth2
 
         public void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
+            // Turn off Expect100Continue behavior. For web method calls it is not used
+            // and many servers reject the request if this is present on PUT or POST 
+            // requests with a body present. If used, Expect100Continue prevents the client
+            // from sending the request body unless the server approves the request by sending
+            // Expect100Continue.
+            request.ServicePoint.Expect100Continue = false;
+
             // Populate the AuthorizationState with an access token.
             LoadAccessToken();
             try
@@ -138,7 +108,7 @@ namespace Google.Apis.Authentication.OAuth2
                     {
                         ClientBase.AuthorizeRequest(request, State.AccessToken);
                     }
-                    else 
+                    else
                     {
                         // This only works if State has a refresh token
                         tokenProvider.AuthorizeRequest(request, State);
@@ -152,6 +122,14 @@ namespace Google.Apis.Authentication.OAuth2
                     State = null;
                 }
             }
+        }
+
+        /// <summary> 
+        /// Override handle response to refresh the token when Unauthorized status code is received. 
+        /// </summary>
+        public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+        {
+            return response.StatusCode == HttpStatusCode.Unauthorized && tokenProvider.RefreshToken(State, null);
         }
     }
 }

@@ -64,9 +64,8 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ServiceDecorator
 
         /// <summary>
         /// Tests if the decorate class method works
-        /// todo: Write a test for StandardResourcePropertyServiceDecorator.DecorateClass
+        /// TODO: Write a test for StandardResourcePropertyServiceDecorator.DecorateClass
         /// </summary>
-        [Test]
         public void TestDecorateClass() { }
     }
 }

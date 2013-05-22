@@ -86,10 +86,12 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
         [VisibleForTestOnly]
         internal CodeMemberMethod GenerateGetBodyOverride(IMethod request)
         {
+            // TODO(peleyal): change object GetBody() to object Body { get; set;}
+
             // protected override object GetBody() {
             var method = new CodeMemberMethod();
             method.Attributes = MemberAttributes.Override | MemberAttributes.Family;
-            method.Name = ClientServiceRequest<object>.GetBodyMethodName;
+            method.Name = "GetBody";
             method.ReturnType = new CodeTypeReference(typeof(object));
 
             //   return Body;

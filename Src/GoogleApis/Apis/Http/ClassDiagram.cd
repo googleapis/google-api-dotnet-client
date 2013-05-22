@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Google.Apis.Http.ConfigurableHttpClient">
+    <Position X="5.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\ConfigurableHttpClient.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MessageHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Google.Apis.Http.ConfigurableMessageHandler">
+    <Position X="5.5" Y="2.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAhACAAAAAMEAAAEAIAgAAQAAAAAAAAIAIAAUAAAEBA=</HashCode>
+      <FileName>Apis\Http\ConfigurableMessageHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="UnsuccessfulResponseHandlers" />
+      <Property Name="ExceptionHandlers" />
+      <Property Name="ExecuteInterceptors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Google.Apis.Http.HttpClientFactory" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\HttpClientFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Google.Apis.Http.CreateHttpClientArgs">
+    <Position X="8.25" Y="1.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Apis\Http\IHttpClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Google.Apis.Http.IConfigurableHttpClientInitializer">
+    <Position X="8.25" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\IConfigurableHttpClientInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Google.Apis.Http.IHttpClientFactory">
+    <Position X="10.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\IHttpClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Google.Apis.Http.IHttpExceptionHandler">
+    <Position X="0.5" Y="2.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\IHttpExceptionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Google.Apis.Http.IHttpExecuteInterceptor">
+    <Position X="0.5" Y="5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Apis\Http\IHttpExecuteInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Google.Apis.Http.IHttpUnsuccessfulResponseHandler">
+    <Position X="0.5" Y="3.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\IHttpUnsuccessfulResponseHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

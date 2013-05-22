@@ -46,7 +46,7 @@ namespace Google.Apis.Discovery.Schema
         public void Resolve(JsonSchema schema)
         {
             schema.ThrowIfNull("schema");
-            if (schema is FutureJsonSchema && ((FutureJsonSchema) schema).Resolved == false)
+            if (schema is FutureJsonSchema && ((FutureJsonSchema)schema).Resolved == false)
             {
                 throw new ArgumentException("Schema given to resolve this future was an unresolved future.", "schema");
             }
@@ -76,12 +76,11 @@ namespace Google.Apis.Discovery.Schema
             Description = schema.Description;
             Disallow = schema.Disallow;
             Enum = schema.Enum;
-            
+
             Extends = schema.Extends;
             Format = schema.Format;
             Hidden = schema.Hidden;
             Id = schema.Id;
-            Identity = schema.Identity;
             Items = schema.Items;
             Maximum = schema.Maximum;
             MaximumItems = schema.MaximumItems;
@@ -89,26 +88,21 @@ namespace Google.Apis.Discovery.Schema
             Minimum = schema.Minimum;
             MinimumItems = schema.MinimumItems;
             MinimumLength = schema.MinimumLength;
-            Options = schema.Options;
             Pattern = schema.Pattern;
-            
+
             Properties = schema.Properties;
             ReadOnly = schema.ReadOnly;
-            
+
             Requires = schema.Requires;
             Title = schema.Title;
             Transient = schema.Transient;
             Type = schema.Type;
-             
-            // The Newtonsoft.Silverlight implementation does not contain all properties.
-            // Only add them if we are using the regular Newtonsoft.dll
-#if !SILVERLIGHT
+
             Required = schema.Required;
             PatternProperties = schema.PatternProperties;
             ExclusiveMaximum = schema.ExclusiveMaximum;
             ExclusiveMinimum = schema.ExclusiveMinimum;
             DivisibleBy = schema.DivisibleBy;
-#endif
         }
     }
 }

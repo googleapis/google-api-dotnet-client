@@ -44,7 +44,8 @@ namespace Google.Apis.Tests.Apis.Authentication
         public void SimpleModificationTest()
         {
             var auth = new DelegateAuthenticator((request) => request.Timeout = 1234);
-            HttpWebRequest result = new HttpRequestFactory().Create(new Uri("http://example.com/"), "GET");
+            HttpWebRequest result = HttpWebRequest.Create(new Uri("http://example.com/")) as HttpWebRequest;
+            result.Method = "GET";
             auth.ApplyAuthenticationToRequest(result);
 
             // Verify the results.
@@ -61,7 +62,8 @@ namespace Google.Apis.Tests.Apis.Authentication
         {
             var firstAuth = new DelegateAuthenticator(request => request.Method = "POST");
             var auth = new DelegateAuthenticator(request => request.Timeout = 1234);
-            HttpWebRequest result = (new HttpRequestFactory()).Create(new Uri("http://example.com/"), "GET");
+            HttpWebRequest result = HttpWebRequest.Create(new Uri("http://example.com/")) as HttpWebRequest;
+            result.Method = "GET";
 
             firstAuth.ApplyAuthenticationToRequest(result);
             auth.ApplyAuthenticationToRequest(result);

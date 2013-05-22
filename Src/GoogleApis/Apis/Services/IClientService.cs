@@ -14,86 +14,85 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 using Google.Apis.Authentication;
 using Google.Apis.Discovery;
+using Google.Apis.Http;
 using Google.Apis.Requests;
 
 namespace Google.Apis.Services
 {
     /// <summary>
-    /// Implementors of this interface are able to create arbitrary requests against a service
-    /// resource name and method, as well as to create and retrieve information related to a request.
+    /// Client service contains all the necessary information a Google service requires. 
+    /// Each concrete <see cref="Google.Api.Request.IClientServiceRequest"/> has a reference to a service for 
+    /// important properties like API key, application name, base Uri, etc.
+    /// This service interface also contains serialization methods to serialize an object to stream and deserialize a 
+    /// stream into an object.
     /// </summary>
-    public interface IClientService
+    public interface IClientService : IDisposable
     {
-        /// <summary>
-        /// The service name.
+        /// <summary> Gets the Http client which is used to create requests. </summary>
+        ConfigurableHttpClient HttpClient { get; }
+
+        /// <summary> 
+        /// Gets an Http client initializer which is able to custom properties on 
+        /// <see cref="Google.Apis.Http.ConfigurableHttpClient"/> and 
+        /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
         /// </summary>
+        IConfigurableHttpClientInitializer HttpClientInitializer { get; }
+
+        /// <summary> Gets the service name. </summary>
         string Name { get; }
 
-        /// <summary>
-        /// The BaseUri of the service. All request paths should be relative to this URI.
-        /// </summary>
+        /// <summary> Gets the BaseUri of the service. All request paths should be relative to this URI. </summary>
         string BaseUri { get; }
 
-        /// <summary> The BasePath of the service. </summary>
+        /// <summary> Gets the BasePath of the service. </summary>
         string BasePath { get; }
 
-        /// <summary>
-        /// The Authenticator for this service.
-        /// </summary>
+        /// <summary> Gets the Authenticator for this service. </summary>
         IAuthenticator Authenticator { get; }
 
-        /// <summary>
-        /// The supported features by this service.
-        /// </summary>
+        /// <summary> Gets the supported features by this service. </summary>
         IList<string> Features { get; }
 
-        /// <summary>
-        /// The common parameters information for this service.
-        /// </summary>
+        /// <summary> Gets the common parameters information for this service. </summary>
         IDictionary<string, IParameter> ServiceParameters { get; }
 
-        /// <summary>
-        /// True if GZip is supported by this service.
-        /// </summary>
+        /// <summary> Gets or sets whether this service supports GZip. </summary>
         bool GZipEnabled { get; }
 
-        /// <summary>
-        /// API-Key (DeveloperKey) which this service uses for all requests.
-        /// </summary>
+        /// <summary> Gets the API-Key (DeveloperKey) which this service uses for all requests. </summary>
         string ApiKey { get; }
 
+        /// <summary> Gets the application name to be used in the User-Agent header. </summary>
+        string ApplicationName { get; }
+
         /// <summary>
-        /// Creates a request with the specified settings.
+        /// Sets the content of the request by the given body and the this service's configuration. 
+        /// First the body object is serialized by the Serializer and then, if the GZip is enabled, the content will be
+        /// wrapped in a GZip stream.
         /// </summary>
-        IRequest CreateRequest(IClientServiceRequest request);
+        void SetRequestSerailizedContent(HttpRequestMessage request, object body);
 
         #region Serialization Methods
 
-        /// <summary>
-        /// The serializer used by this service.
-        /// </summary>
+        /// <summary> Gets the Serializer used by this service. </summary>
         ISerializer Serializer { get; }
 
-        /// <summary>
-        /// Serializes an object into a string representation.
-        /// </summary>
+        /// <summary> Serializes an object into a string representation. </summary>
         string SerializeObject(object data);
 
-        /// <summary>
-        /// Deserializes a response into the specified object.
-        /// </summary>
-        T DeserializeResponse<T>(IResponse response);
+        /// <summary> Deserializes a response into the specified object. </summary>
+        Task<T> DeserializeResponse<T>(HttpResponseMessage response);
 
-        /// <summary>
-        /// Deserializes an error response into a <see cref="RequestError"/> object
-        /// </summary>
+        /// <summary> Deserializes an error response into a <see cref="RequestError"/> object. </summary>
         /// <exception cref="GoogleApiException">If no error is found in the response.</exception>
-        /// <param name="input"><see cref="IResponse"/> containing an error.</param>
-        /// <returns>The <see cref="RequestError"/> object deserialized from the stream.</returns>
-        RequestError DeserializeError(IResponse input);
+        Task<RequestError> DeserializeError(HttpResponseMessage response);
 
         #endregion
     }

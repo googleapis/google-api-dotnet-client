@@ -16,75 +16,48 @@ limitations under the License.
 
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 using Google.Apis.Discovery;
-using Google.Apis.Util;
+using Google.Apis.Services;
 
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Represents a basic, non generic request to a service.
+    /// Client service request represents a specific service request with the given response type. The request supports
+    /// both sync and async execution to get the response type and also sync and async methods to return only the 
+    /// stream.
     /// </summary>
-    /// <remarks>
-    /// Should execute the request (specified by the instance of this class) once a "Fetch" method is called.
-    /// </remarks>
-    public interface IClientServiceRequest
+    public interface IClientServiceRequest<TResponse>
     {
-        /// <summary>
-        /// The name of the method to which this request belongs.
-        /// </summary>
+        /// <summary> Gets the service which is related to this request. </summary>
+        IClientService Service { get; }
+
+        /// <summary> Gets the name of the method to which this request belongs. </summary>
         string MethodName { get; }
 
-        /// <summary>
-        /// The rest path of this request.
-        /// </summary>
+        /// <summary> Gets the rest path of this request. </summary>
         string RestPath { get; }
 
-        /// <summary>
-        /// The http method of this request.
-        /// </summary>
+        /// <summary> Gets the Http method of this request. </summary>
         string HttpMethod { get; }
 
-        /// <summary>
-        /// Executes the request synchronously and returns the unparsed response stream.
-        /// </summary>
-        Stream FetchAsStream();
+        /// <summary> Gets the resource path of this request. </summary>
+        string ResourcePath { get; }
 
-        /// <summary>
-        /// Executes the request asynchronously without parsing the response, 
-        /// and optionally calls the specified method once finished.
-        /// </summary>
-        void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall);
-
-        /// <summary>
-        /// The parameters information for this specific request
-        /// </summary>
+        /// <summary> Gets the parameters information for this specific request </summary>
         IDictionary<string, IParameter> RequestParameters { get; }
+
+        /// <summary> Executes the request asynchronously and returns the result stream. </summary>
+        Task<Stream> ExecuteAsStreamAsync();
+
+        /// <summary> Executes the request and returns the result stream. </summary>
+        Stream ExecuteAsStream();
+
+        /// <summary> Executes the request asynchronously and returns the result object. </summary>
+        Task<TResponse> ExecuteAsync();
+
+        /// <summary> Executes the request and returns the result object. </summary>
+        TResponse Execute();
     }
-
-    /// <summary>
-    /// Represents a request with a specified return type.
-    /// </summary>
-    /// <remarks>
-    /// Should execute the request (specified by the instance of this class) once a "Fetch" method is called.
-    /// </remarks>
-    /// <typeparam name="TResponse">Type of the response returned when executing this request.</typeparam>
-    interface IClientServiceRequest<TResponse> : IClientServiceRequest
-    {
-        /// <summary>
-        /// Executes the request synchronously and returns the result.
-        /// </summary>
-        TResponse Fetch();
-
-        /// <summary>
-        /// Executes the request asynchronously and optionally calls the specified method once finished.
-        /// </summary>
-        void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall);
-    }
-
-    /// <summary>
-    /// Delegate for executing an asynchronous request.
-    /// </summary>
-    public delegate void ExecuteRequestDelegate<T>(LazyResult<T> response);
 }

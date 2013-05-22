@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System.Reflection;
-using log4net.Config;
 
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
@@ -25,10 +24,9 @@ using log4net.Config;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright � Google Inc 2012")]
+[assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: XmlConfigurator(Watch = true)]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

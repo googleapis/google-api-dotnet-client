@@ -18,8 +18,8 @@ using System;
 using System.CodeDom;
 using System.IO;
 using System.Runtime.InteropServices;
-
 using Google.Apis.Discovery;
+using Google.Apis.Http;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Testing;
@@ -48,8 +48,8 @@ namespace Google.Apis.Tools.CodeGen.Generator
         {
             switch (method.HttpMethod)
             {
-                case Request.GET:
-                case Request.DELETE:
+                case HttpConsts.Get:
+                case HttpConsts.Delete:
                     if (!addBodyIfUnused)
                     {
                         break;
@@ -61,9 +61,9 @@ namespace Google.Apis.Tools.CodeGen.Generator
                     member.Statements.Add(bodyVarDeclaration);
                     break;
 
-                case Request.PUT:
-                case Request.POST:
-                case Request.PATCH:
+                case HttpConsts.Put:
+                case HttpConsts.Post:
+                case HttpConsts.Patch:
                     // add body Parameter.
                     member.Parameters.Add(new CodeParameterDeclarationExpression(bodyType, "body"));
                     break;
@@ -204,39 +204,6 @@ namespace Google.Apis.Tools.CodeGen.Generator
         protected virtual CodeExpression GetBodyAsString(IMethod method)
         {
             return new CodeVariableReferenceExpression("body");
-        }
-
-        /// <summary>
-        /// this.service.ExecuteRequest(...);
-        /// </summary>
-        protected CodeMethodInvokeExpression CreateExecuteCall(IMethod method)
-        {
-            var call = new CodeMethodInvokeExpression();
-
-
-            call.Method =
-                new CodeMethodReferenceExpression(
-                    new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), ServiceFieldName),
-                    CreateRequestMethodServiceDecorator.CreateRequestMethodName);
-
-            call.Parameters.Add(
-                new CodeFieldReferenceExpression(new CodeTypeReferenceExpression(GetClassName()), ResourceNameConst));
-            call.Parameters.Add(new CodePrimitiveExpression(method.Name));
-            call.Parameters.Add(GetBodyAsString(method));
-            call.Parameters.Add(new CodeVariableReferenceExpression(ParameterDictionaryName));
-            return call;
-        }
-
-        /// <summary>
-        /// ret = this.service.ExecuteRequest(...);
-        /// </summary>
-        protected virtual CodeStatement CreateExecuteRequest(IMethod method)
-        {
-            var call = CreateExecuteCall(method);
-            var dotStream = new CodePropertyReferenceExpression(call, "Stream");
-            var assign = new CodeVariableDeclarationStatement(typeof(Stream), ReturnVariableName, dotStream);
-
-            return assign;
         }
 
         protected abstract string GetClassName();

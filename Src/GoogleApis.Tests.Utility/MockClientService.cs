@@ -38,30 +38,21 @@ namespace Google.Apis.Testing
         public override IList<string> Features { get { return _features; } }
         public void SetFeatures(IList<string> features) { _features = features; }
 
-        public override IDictionary<string, IParameter> ServiceParameters { get { return null; } }
-
-        public override Google.Apis.Requests.IRequest CreateRequest(Google.Apis.Requests.IClientServiceRequest request)
+        private IDictionary<string, IParameter> _serviceParameters = new Dictionary<string, IParameter>();
+        public override IDictionary<string, IParameter> ServiceParameters
         {
-            throw new NotImplementedException();
+            get { return _serviceParameters; }
         }
 
-        public MockClientService()
-            : this(new Initializer(), @"https://testexample.google.com")
-        {
-        }
-        public MockClientService(Initializer initializer)
-            : this(initializer, @"https://testexample.google.com")
-        {
-        }
-        public MockClientService(string baseUri)
+        public MockClientService(string baseUri = @"https://testexample.google.com")
             : this(new Initializer(), baseUri)
         {
         }
-        public MockClientService(Initializer initializer, string baseUri)
+
+        public MockClientService(Initializer initializer, string baseUri = @"https://testexample.google.com")
             : base(initializer)
         {
             _baseUri = baseUri;
         }
-
     }
 }

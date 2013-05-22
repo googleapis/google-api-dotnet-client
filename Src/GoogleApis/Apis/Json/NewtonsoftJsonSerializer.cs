@@ -20,7 +20,7 @@ using Newtonsoft.Json;
 namespace Google.Apis.Json
 {
     /// <summary>
-    /// Class for serialization and deserialization of Json documents using the Newtonsoft Library
+    /// Class for serialization and deserialization of Json documents using the Newtonsoft Library.
     /// </summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
@@ -28,9 +28,7 @@ namespace Google.Apis.Json
 
         private static NewtonsoftJsonSerializer instance;
 
-        /// <summary>
-        /// A singleton instance of the Newtonsoft Json Serializer
-        /// </summary>
+        /// <summary> A singleton instance of the Newtonsoft Json Serializer. </summary>
         public static NewtonsoftJsonSerializer Instance
         {
             get
@@ -45,6 +43,11 @@ namespace Google.Apis.Json
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
             newtonsoftSerializer = JsonSerializer.Create(settings);
+        }
+
+        public string Format
+        {
+            get { return "json"; }
         }
 
         public void Serialize(object obj, Stream target)

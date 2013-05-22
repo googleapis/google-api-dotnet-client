@@ -7,6 +7,12 @@ syntax: glob
 Thumbs.db
 Desktop.ini
 
+# Tests
+TestResults/**
+
+# NuGet
+packages/**
+
 # builds
 
 *.exe

@@ -18,29 +18,22 @@ using System.IO;
 
 namespace Google.Apis
 {
-    /// <summary>
-    /// Interface for serialization and deserialization
-    /// </summary>
+    /// <summary> Interface for serialization and deserialization. </summary>
     public interface ISerializer
     {
-        /// <summary>
-        /// Serializes the specified object into a Stream
-        /// </summary>
+        /// <summary> Gets the application format this Serializer supports (e.g. "json", "xml", etc.) </summary>
+        string Format { get; }
+
+        /// <summary> Serializes the specified object into a Stream. </summary>
         void Serialize(object obj, Stream target);
 
-        /// <summary>
-        /// Serializes the specified object into a string
-        /// </summary>
+        /// <summary> Serializes the specified object into a string. </summary>
         string Serialize(object obj);
 
-        /// <summary>
-        /// Deserializes the string into an object
-        /// </summary>
+        /// <summary> Deserializes the string into an object. </summary>
         T Deserialize<T>(string input);
 
-        /// <summary>
-        /// Deserializes the stream into an object
-        /// </summary>
+        /// <summary> Deserializes the stream into an object. </summary>
         T Deserialize<T>(Stream input);
     }
 }
