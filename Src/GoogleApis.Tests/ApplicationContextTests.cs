@@ -15,17 +15,60 @@ limitations under the License.
 */
 
 using System;
-using Google.Apis.Logging;
+
 using NUnit.Framework;
+
+using Google.Apis.Logging;
 
 namespace Google.Apis.Tests
 {
-    /// <summary>
-    /// Tests for the "ApplicationContext"-class.
-    /// </summary>
+    /// <summary> Tests for <see cref="Google.ApplicationContext"/>. </summary>
     [TestFixture]
     public class ApplicationContextTests
     {
+        private class MockLogger : ILogger
+        {
+            public bool IsDebugEnabled
+            {
+                get { throw new NotImplementedException(); }
+            }
+
+            public ILogger ForType(Type type)
+            {
+                throw new NotImplementedException();
+            }
+
+            public ILogger ForType<T>()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Info(string message, params object[] formatArgs)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Warning(string message, params object[] formatArgs)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Debug(string message, params object[] formatArgs)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Error(Exception exception, string message, params object[] formatArgs)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Error(string message, params object[] formatArgs)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         /// <summary>
         /// Checks the registered default logger.
         /// </summary>
@@ -45,10 +88,10 @@ namespace Google.Apis.Tests
             Assert.IsInstanceOf<NullLogger>(ApplicationContext.Logger);
 
             // Register a new logger:
-            Assert.DoesNotThrow(() => ApplicationContext.RegisterLogger(new ConsoleLogger()));
+            Assert.DoesNotThrow(() => ApplicationContext.RegisterLogger(new MockLogger()));
 
             // Fail test:
-            Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new ConsoleLogger()));
+            Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
         }
     }
 }

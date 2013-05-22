@@ -49,9 +49,6 @@ namespace Google.Apis.Util
     /// </remarks>
     [DebuggerDisplay("Count = {Count}")]
     [DebuggerTypeProxy(typeof(ReadOnlyDictionaryDebugView<,>))]
-#if !SILVERLIGHT 
-    [Serializable]
-#endif
     public class ReadOnlyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary
     {
         private readonly IDictionary<TKey, TValue> source;
@@ -98,7 +95,7 @@ namespace Google.Apis.Util
         /// containing the keys of the dictionary object.</summary>
         ICollection IDictionary.Keys
         {
-            get { return ((IDictionary) source).Keys; }
+            get { return ((IDictionary)source).Keys; }
         }
 
         /// <summary>
@@ -106,7 +103,7 @@ namespace Google.Apis.Util
         /// </summary>
         ICollection IDictionary.Values
         {
-            get { return ((IDictionary) source).Values; }
+            get { return ((IDictionary)source).Values; }
         }
 
         /// <summary>
@@ -115,7 +112,7 @@ namespace Google.Apis.Util
         /// </summary>
         bool ICollection.IsSynchronized
         {
-            get { return ((ICollection) source).IsSynchronized; }
+            get { return ((ICollection)source).IsSynchronized; }
         }
 
         /// <summary>
@@ -123,7 +120,7 @@ namespace Google.Apis.Util
         /// </summary>
         object ICollection.SyncRoot
         {
-            get { return ((ICollection) source).SyncRoot; }
+            get { return ((ICollection)source).SyncRoot; }
         }
 
         /// <summary>
@@ -139,7 +136,7 @@ namespace Google.Apis.Util
         /// </exception>
         object IDictionary.this[object key]
         {
-            get { return ((IDictionary) source)[key]; }
+            get { return ((IDictionary)source)[key]; }
             set { ThrowNotSupportedException(); }
         }
 
@@ -178,7 +175,7 @@ namespace Google.Apis.Util
         /// </returns>
         bool IDictionary.Contains(object key)
         {
-            return ((IDictionary) source).Contains(key);
+            return ((IDictionary)source).Contains(key);
         }
 
         /// <summary>
@@ -190,7 +187,7 @@ namespace Google.Apis.Util
         /// </returns>
         IDictionaryEnumerator IDictionary.GetEnumerator()
         {
-            return ((IDictionary) source).GetEnumerator();
+            return ((IDictionary)source).GetEnumerator();
         }
 
         /// <summary>
@@ -217,7 +214,7 @@ namespace Google.Apis.Util
         /// </param>
         void ICollection.CopyTo(Array array, int index)
         {
-            ((ICollection) source).CopyTo(array, index);
+            ((ICollection)source).CopyTo(array, index);
         }
 
         #endregion
@@ -426,7 +423,7 @@ namespace Google.Apis.Util
         /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable) source).GetEnumerator();
+            return ((IEnumerable)source).GetEnumerator();
         }
 
         #endregion

@@ -17,9 +17,9 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-
 using Google.Apis.Discovery;
 
 namespace Google.Apis.Util
@@ -143,13 +143,18 @@ namespace Google.Apis.Util
             return formatArgs.Length > 0 ? string.Format(message, formatArgs) : message;
         }
 
-        /// <summary>
-        /// Returns a readonly variant of the given dictionary
-        /// </summary>
+        /// <summary> Returns a readonly variant of the given dictionary. </summary>
         public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)
         {
-            dict.ThrowIfNull("this");
+            dict.ThrowIfNull("dict");
             return new ReadOnlyDictionary<TKey, TValue>(dict);
+        }
+
+        /// <summary> Returns a readonly variant of the given list. </summary>
+        public static ReadOnlyCollection<T> AsReadOnly<T>(this IList<T> list)
+        {
+            list.ThrowIfNull("list");
+            return new ReadOnlyCollection<T>(list);
         }
 
         /// <summary>
@@ -257,11 +262,13 @@ namespace Google.Apis.Util
                 return null;
             }
 
-            // Get the type converter if available
             if (o.GetType().IsEnum)
             {
-                var enumConverter = new EnumStringValueTypeConverter();
-                return (string)enumConverter.ConvertTo(o, typeof(string));
+                // try to convert the Enum value using the StringValue attribute
+                var enumType = o.GetType();
+                FieldInfo field = enumType.GetField(o.ToString());
+                StringValueAttribute attribute = field.GetCustomAttribute<StringValueAttribute>();
+                return attribute != null ? attribute.Text : o.ToString();
             }
 
             return o.ToString();
@@ -273,14 +280,6 @@ namespace Google.Apis.Util
         public static string GetAsciiString(IEnumerable<byte> bytes)
         {
             return bytes.Aggregate("", (str, b) => str + (char)b);
-        }
-
-        /// <summary>
-        /// Converts the specified string into an ascii byte array.
-        /// </summary>
-        public static byte[] GetBytesFromAsciiString(string str)
-        {
-            return str.Select(c => (byte)c).ToArray();
         }
 
         /// <summary>

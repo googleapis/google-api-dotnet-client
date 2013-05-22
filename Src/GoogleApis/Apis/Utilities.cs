@@ -20,10 +20,6 @@ limitations under the License.
 * 
 */
 
-#region Using directives
-
-#define USE_TRACING
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,10 +29,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Reflection;
-using Google.Apis.Util;
-using HttpUtility = ImportedFromMono.System.Web.HttpUtility;
 
-#endregion
+using Google.Apis.Util;
 
 namespace Google.Apis
 {
@@ -133,27 +127,6 @@ namespace Google.Apis
             return returnString.ToString();
         }
 
-
-        /// <summary>
-        /// used as a cover method to hide the actual decoding implementation
-        /// decodes an html decoded string
-        /// </summary>
-        /// <param name="value">the string to decode</param>
-        public static string DecodedValue(string value)
-        {
-            return HttpUtility.HtmlDecode(value);
-        }
-
-        /// <summary>
-        /// used as a cover method to hide the actual decoding implementation
-        /// decodes an URL decoded string
-        /// </summary>
-        /// <param name="value">the string to decode</param>
-        public static string UrlDecodedValue(string value)
-        {
-            return HttpUtility.UrlDecode(value);
-        }
-
         /// <summary>
         ///  tests an etag for weakness. returns TRUE for weak etags and for null strings
         /// </summary>
@@ -217,27 +190,7 @@ namespace Google.Apis
         /// <summary> Returns the version of the Core library. </summary>
         public static string GetLibraryVersion()
         {
-            // Don't use asm.GetName() here, as this will raise a SecurityException on Silverlight.
-            // Look up the name by parsing the full assembly name instead.
             return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
-        }
-
-        /// <summary> Returns the title of the calling assembly, or null if not set/unavailable. </summary>
-        public static string GetAssemblyTitle()
-        {
-
-#if SILVERLIGHT
-            Assembly asm = Assembly.GetCallingAssembly();
-#else
-            Assembly asm = Assembly.GetEntryAssembly();
-#endif
-            if (asm == null)
-            {
-                return null;
-            }
-
-            object[] attributes = asm.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-            return attributes.Length == 0 ? null : ((AssemblyTitleAttribute)attributes[0]).Title;
         }
 
         /// <summary>
@@ -264,43 +217,6 @@ namespace Google.Apis
 
             return result.ToString();
         }
-
-#if SILVERLIGHT
-        /// <summary>
-        /// Silverlight implementation of the .Split(char[], int) overload.
-        /// </summary>
-        /// <remarks>Will only work with one split character.</remarks>
-        public static string[] Split(this string str, char[] separators, int segments)
-        {
-            if (segments <= 0)
-            {
-                throw new ArgumentException("Must have at least one segment.", "segments");
-            }
-            if (separators.Length == 0 || segments == 1)
-            {
-                // If no seperator has been specified or only one segment is requested, return the original string.
-                return new[] { str };
-            }
-            if (separators.Length != 1)
-            {
-                throw new NotImplementedException("Only one separator is supported at the moment.");   
-            }
-            
-            string[] split = str.Split(separators);
-            if (split.Length <= segments)
-            {
-                return split; // Nothing to be done.
-            }
-
-            string[] newSplit = new string[segments];
-            int lastElementIndex = segments - 1;
-
-            Array.Copy(split, 0, newSplit, 0, segments - 1);
-            newSplit[lastElementIndex] = String.Join(
-                separators[0].ToString(), split, lastElementIndex, split.Length - (lastElementIndex));
-            return newSplit;
-        }
-#endif
 
         #region LINQ extensions
 

@@ -20,10 +20,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+
+using NUnit.Framework;
+
 using Google.Apis.Discovery;
 using Google.Apis.Logging;
 using Google.Apis.Tools.CodeGen.Generator;
-using NUnit.Framework;
 
 namespace Google.Apis.Tools.CodeGen.IntegrationTests
 {
@@ -61,7 +63,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             return discovery.GetService(DiscoveryVersion.Version_1_0);
         }
 
-       
+
         private static Assembly TestService(string language, API api)
         {
             Logger.Debug("Testing service: " + api.Title);
@@ -100,7 +102,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             // Build the command.
             var code = new StringBuilder();
             code.AppendLine("Generated.DiscoveryService service = new Generated.DiscoveryService();");
-            code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List().Fetch();");
+            code.AppendLine("Generated.Data.DirectoryList list = service.Apis.List().Execute();");
             code.AppendLine("if (list == null) throw new Exception(\"Response is null\");");
             code.AppendLine(
                 string.Format(

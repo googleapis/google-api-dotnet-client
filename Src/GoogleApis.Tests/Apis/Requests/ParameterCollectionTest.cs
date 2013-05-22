@@ -14,10 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
+
+using NUnit.Framework;
+
 using Google.Apis.Requests;
 using Google.Apis.Util;
-using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -74,17 +77,23 @@ namespace Google.Apis.Tests.Apis.Requests
             CollectionAssert.AreEqual(new[] { "cookie", "bar", "pudding" }, col.GetAllMatches("chocolate"));
         }
 
-        /// <summary>
-        /// Tests the FromQueryString method and confirms that duplicates are possible.
-        /// </summary>
+        /// <summary> Tests the FromQueryString method and confirms that duplicates are possible. </summary>
         [Test]
         public void FromQueryStringTest()
         {
-            const string query = "q=foo&q=bar&chocolate=bar";
+            const string query = "q=foo1&q=bar&q=foo2&chocolate=bar";
             var collection = ParameterCollection.FromQueryString(query);
-            Assert.That(collection.Count, Is.EqualTo(3));
-            CollectionAssert.AreEqual(new[] { "foo", "bar" }, collection.GetAllMatches("q"));
+            Assert.That(collection.Count, Is.EqualTo(4));
+            CollectionAssert.AreEqual(new[] { "foo1", "bar", "foo2" }, collection.GetAllMatches("q"));
             CollectionAssert.AreEqual(new[] { "bar" }, collection.GetAllMatches("chocolate"));
+        }
+
+        /// <summary> Tests the FromQueryString method throws exception on invalid input. </summary>
+        [Test]
+        public void FromQueryStringTest_Invalid()
+        {
+            const string query = "q=foo1&q=bar&q=foo2=invalid&chocolate=bar";
+            Assert.Throws<ArgumentException>(() => ParameterCollection.FromQueryString(query));
         }
 
         /// <summary>
@@ -93,10 +102,10 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void FromDictionaryTest()
         {
-            Dictionary<string,object> dictionary = new Dictionary<string,object>();
+            Dictionary<string, object> dictionary = new Dictionary<string, object>();
             dictionary.Add("q", new string[] { "foo", "bar" });
             dictionary.Add("q2", new object[] { "foo", "bar" });
-            dictionary.Add("q3", (Repeatable<string>)(new [] { "foo", "bar" }));
+            dictionary.Add("q3", (Repeatable<string>)(new[] { "foo", "bar" }));
             dictionary.Add("chocolate", "bar");
             dictionary.Add("test", null);
 

@@ -23,6 +23,7 @@ namespace Google.Apis.Testing
     /// purpose of testing. Mark as internal and makr the testing assembly as friend using
     /// <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property |
+        AttributeTargets.Field)]
     public class VisibleForTestOnly : Attribute { }
 }

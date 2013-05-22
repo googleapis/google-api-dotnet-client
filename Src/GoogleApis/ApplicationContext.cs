@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+
 using Google.Apis.Logging;
 
 namespace Google
@@ -30,7 +31,7 @@ namespace Google
         /// <summary>
         /// Returns the logger used within this ApplicationContext.
         /// </summary>
-        /// <remarks>Will create a Log4NetLogger if no logger was registered previously</remarks>
+        /// <remarks>Will create a <see cref="NullLogger"/> if no logger was registered previously</remarks>
         public static ILogger Logger
         {
             get

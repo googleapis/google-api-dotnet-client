@@ -28,16 +28,17 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
 {
     /// <summary>
     /// Generates the standard constructors of an upload request.
-    ///  1. A constructor taking the service and mandatory parameters and initalizing the base class
-    ///     with the baseUri, path and HTTP method for this upload request.
+    /// A resumable upload constructor takes the service and mandatory parameters and initializes the base class with 
+    /// the service, path and HTTP method for this upload request.
     /// Example:
-    /// <c>public InsertRequest(BaseService service, int requiredParameter, ..) : base(service.BaseUri, "path", "POST") {..}</c>
+    /// <c>
+    /// public InsertRequest(IClientService service, int requiredParameter, ..) 
+    ///     : base(service, "path", "POST") {..}
+    /// </c>
     /// </summary>
     public class UploadConstructorDecorator : BaseRequestConstructorDecorator
     {
-        private const string AuthenticatorName = "Authenticator";
         private const string ServiceName = "service";
-        private const string BaseUriName = "BaseUri";
         private const string BasePathName = "BasePath";
 
         private const string StreamParameterName = "stream";
@@ -76,13 +77,13 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             var serviceArg = new CodeParameterDeclarationExpression(typeof(IClientService), ServiceName);
             constructor.Parameters.Add(serviceArg);
 
-            // : base(service.BaseUri, string.Format("/{0}{1}{2}", "upload", service.BasePath, "RESOURCE_PATH"), 
+            // : base(service, string.Format("/{0}{1}{2}", "upload", service.BasePath, "RESOURCE_PATH"), 
             // "HTTP_METHOD", ... (required parameters)
 
-            // service.BaseUri
+            // service
             constructor.BaseConstructorArgs.Add(
-                new CodePropertyReferenceExpression(
-                    new CodeVariableReferenceExpression(ServiceName), BaseUriName));
+                new CodeVariableReferenceExpression(ServiceName));
+
             // string.Format("/{0}{1}{2}", "upload", service.BasePath, "RESOURCE_PATH")
             var path = new CodeMethodInvokeExpression(new CodeMethodReferenceExpression(
                 new CodeTypeReferenceExpression(typeof(string)), "Format"),
@@ -102,7 +103,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(StreamParameterName));
             constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression(ContentTypeParameterName));
 
-            AddAuthorizationAssignment(constructor);
             AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
 
             constructor.Parameters.Add(new CodeParameterDeclarationExpression(
@@ -111,20 +111,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                 new CodeTypeReference(typeof(System.String)), ContentTypeParameterName));
 
             return constructor;
-        }
-
-        /// <summary>
-        /// Adds this.Authenticator = service.Authenticator to <paramref name="constructor"/>
-        /// </summary>
-        /// <param name="constructor">The resumable upload constructor.</param>
-        private void AddAuthorizationAssignment(CodeConstructor constructor)
-        {
-            constructor.Statements.Add(
-                new CodeAssignStatement(
-                    new CodePropertyReferenceExpression(
-                        new CodeThisReferenceExpression(), AuthenticatorName),
-                    new CodePropertyReferenceExpression(
-                        new CodeVariableReferenceExpression(ServiceName), AuthenticatorName)));
         }
     }
 }

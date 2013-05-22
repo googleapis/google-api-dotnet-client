@@ -25,7 +25,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright � Google Inc 2012")]
+[assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: InternalsVisibleTo("Google.Apis.Tools.CodeGen.Tests")]

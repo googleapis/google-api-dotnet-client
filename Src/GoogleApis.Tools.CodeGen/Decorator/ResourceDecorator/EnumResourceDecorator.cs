@@ -97,17 +97,6 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator
             var decl = new CodeTypeDeclaration(name);
             decl.IsEnum = true;
 
-            // Get the EnumStringValueTypeConverter type.
-            Type converterType = typeof(EnumStringValueTypeConverter);
-
-            // [TypeConverter(..)]
-            var typeConvAttribute = new CodeAttributeDeclaration(
-                new CodeTypeReference(typeof(TypeConverterAttribute)));
-
-            // .. typeof(EnumStringValueTypeConverter) ..
-            typeConvAttribute.Arguments.Add(new CodeAttributeArgument(new CodeTypeOfExpression(converterType)));
-            decl.CustomAttributes.Add(typeConvAttribute);
-
             foreach (KeyValuePair<string, string> enumEntry in entries)
             {
                 // Consider the names of all members in the current type as used words.

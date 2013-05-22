@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2011 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
+using System.Threading.Tasks;
 
 using Google.Apis.Discovery;
+using Google.Apis.Http;
 using Google.Apis.Logging;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -31,183 +33,277 @@ using Google.Apis.Util;
 namespace Google.Apis.Requests
 {
     /// <summary>
-    /// Represents an abstract, strongly typed request base class to make requests made to a service.
+    /// Represents an abstract, strongly typed request base class to make requests to a service.
     /// Supports a strongly typed response.
     /// </summary>
-    /// <remarks>Internally uses the dynamic Request class to execute requests.</remarks>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ClientServiceRequest<TResponse> : IClientServiceRequest<TResponse>
     {
-        protected ClientServiceRequest()
-        {
-            ETagAction = ETagAction.Default;
-        }
+        /// <summary> The class logger </summary>
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
 
-        /// <summary>
-        /// The name of the "GetBody" method
-        /// </summary>
-        public const string GetBodyMethodName = "GetBody";
-
-        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
+        /// <summary> The service on which this request will be executed. </summary>
         private readonly IClientService service;
 
-        /// <summary>
-        /// Defines whether the E-Tag will be used in a specified way or ignored.
-        /// </summary>
+        /// <summary> Defines whether the E-Tag will be used in a specified way or be ignored. </summary>
         public ETagAction ETagAction { get; set; }
-
-        /// <summary>
-        /// The E-Tag to use with this request. If this is null, the e-tag of the body will be used (if possible).
-        /// </summary>
-        public string ETag { get; set; }
-
-        /// <summary>
-        /// Creates a new service request.
-        /// </summary>
-        protected ClientServiceRequest(IClientService service)
-        {
-            this.service = service;
-        }
 
         #region IClientServiceRequest Properties
 
         public abstract string MethodName { get; }
         public abstract string RestPath { get; }
         public abstract string HttpMethod { get; }
+        public abstract string ResourcePath { get; }
 
         protected IDictionary<string, IParameter> _requestParameters;
         public IDictionary<string, IParameter> RequestParameters { get { return _requestParameters; } }
 
-        #endregion
-
-        /// <summary>
-        /// Name of the Resource to which the method belongs.
-        /// </summary>
-        public abstract string ResourcePath { get; }
-
-        /// <summary>
-        /// The service on which the request will be executed.
-        /// </summary>
-        protected IClientService Service
+        public IClientService Service
         {
             get { return service; }
         }
 
-        /// <summary>
-        /// Should return the body of the request (if applicable), or null.
-        /// </summary>
+        #endregion
+
+        /// <summary> Creates a new service request. </summary>
+        protected ClientServiceRequest(IClientService service)
+        {
+            this.service = service;
+        }
+
+        #region Execution
+
+        public TResponse Execute()
+        {
+            try
+            {
+                using (var response = ExecuteUnparsed().Result)
+                {
+                    return ParseResponse(response).Result;
+                }
+            }
+            catch (AggregateException ex)
+            {
+                // if an exception was thrown during the tasks, unwrap and throw it
+                throw ex.InnerException;
+            }
+        }
+
+        public Stream ExecuteAsStream()
+        {
+            // TODO(peleyal): should we copy the stream, and dispose the response?
+            try
+            {
+                // sync call
+                var response = ExecuteUnparsed().Result;
+                return response.Content.ReadAsStreamAsync().Result;
+            }
+            catch (AggregateException ex)
+            {
+                // if an exception was thrown during the tasks, unwrap and throw it
+                throw ex.InnerException;
+            }
+        }
+
+        public async Task<TResponse> ExecuteAsync()
+        {
+            using (var response = await ExecuteAsyncUnparsed().ConfigureAwait(false))
+            {
+                return await ParseResponse(response).ConfigureAwait(false);
+            }
+        }
+
+        public async Task<Stream> ExecuteAsStreamAsync()
+        {
+            // TODO(peleyal): should we copy the stream, and dispose the response?
+            var response = await ExecuteAsyncUnparsed().ConfigureAwait(false);
+            return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        }
+
+        #region Helpers
+
+        /// <summary> Sync executes the request without parsing the result. </summary>
+        private async Task<HttpResponseMessage> ExecuteUnparsed()
+        {
+            using (var request = CreateRequest())
+            {
+                return await service.HttpClient.SendAsync(request).ConfigureAwait(false);
+            }
+        }
+
+        /// <summary> Async executes the request without parsing the result. </summary>
+        private Task<HttpResponseMessage> ExecuteAsyncUnparsed()
+        {
+            // create a new task completion source and return its task. In additional task we actually send the request
+            // using ExecuteUnparsed and setting the result or the exception on the completion source
+            TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+            Task.Factory.StartNew(async () =>
+                {
+                    try
+                    {
+                        var response = await ExecuteUnparsed().ConfigureAwait(false);
+                        tcs.SetResult(response);
+                    }
+                    catch (Exception ex)
+                    {
+                        // exception was thrown - it must be set on the task completion source
+                        tcs.SetException(ex);
+                    }
+                }).ConfigureAwait(false);
+            return tcs.Task;
+        }
+
+        /// <summary> Parses the response and deserialize the content into the requested response object. </summary>
+        private async Task<TResponse> ParseResponse(HttpResponseMessage response)
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                return await service.DeserializeResponse<TResponse>(response).ConfigureAwait(false);
+            }
+            var error = await service.DeserializeError(response).ConfigureAwait(false);
+            throw new GoogleApiException(service.Name, error.ToString());
+        }
+
+        #endregion
+
+        #endregion
+
+        /// <summary> Creates an Http request message with all class parameters, developer-key, ETag, etc. </summary>
+        [VisibleForTestOnly]
+        internal HttpRequestMessage CreateRequest()
+        {
+            var builder = new RequestBuilder()
+            {
+                BaseUri = new Uri(Service.BaseUri),
+                Path = RestPath,
+                Method = HttpMethod,
+            };
+
+            // init parameters
+            builder.AddParameter(RequestParameterType.Query, "key", service.ApiKey);
+            AddParameters(builder, ParameterCollection.FromDictionary(CreateParameterDictionary()));
+
+            var request = builder.CreateRequest();
+            object body = GetBody();
+            if (body != null)
+            {
+                service.SetRequestSerailizedContent(request, body);
+            }
+
+            AddETag(request);
+            return request;
+        }
+
         protected virtual object GetBody()
         {
             return null;
         }
 
-        /// <summary>
-        /// Returns the serialized version of the body, or null if unavailable.
-        /// </summary>
-        private string GetSerializedBody()
-        {
-            object body = GetBody();
-            if (body == null)
-            {
-                return null;
-            }
+        #region ETag
 
-            // Serialize the body.
-            return service.SerializeObject(body);
+        /// <summary> 
+        /// Adds the right ETag action (e.g. If-Match) header to the given HTTP request if the body contains ETag.
+        /// </summary>
+        private void AddETag(HttpRequestMessage request)
+        {
+            IDirectResponseSchema body = GetBody() as IDirectResponseSchema;
+            if (body != null && !string.IsNullOrEmpty(body.ETag))
+            {
+                ETagAction action = ETagAction == ETagAction.Default ? GetDefaultETagAction(HttpMethod) : ETagAction;
+                switch (action)
+                {
+                    case ETagAction.IfMatch:
+                        request.Headers.IfMatch.Add(new EntityTagHeaderValue(body.ETag));
+                        break;
+                    case ETagAction.IfNoneMatch:
+                        request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(body.ETag));
+                        break;
+                }
+            }
         }
 
         /// <summary>
-        /// Builds an executeable base request containing the data of this request class.
+        /// Returns the default ETagAction for a specific http verb.
         /// </summary>
         [VisibleForTestOnly]
-        internal IRequest BuildRequest()
+        internal static ETagAction GetDefaultETagAction(string httpMethod)
         {
-            IRequest request = service.CreateRequest(this);
-            request.WithBody(GetSerializedBody());
-            request.WithParameters(CreateParameterDictionary());
-            request.WithETagAction(ETagAction);
+            switch (httpMethod)
+            {
+                // Incoming data should only be updated if it has been changed on the server.
+                case HttpConsts.Get:
+                    return ETagAction.IfNoneMatch;
 
-            // Check if there is an ETag to attach.
-            if (!string.IsNullOrEmpty(ETag))
-            {
-                request.WithETag(ETag);
+                // Outgoing data should only be committed if it hasn't been changed on the server.
+                case HttpConsts.Put:
+                case HttpConsts.Post:
+                case HttpConsts.Patch:
+                case HttpConsts.Delete:
+                    return ETagAction.IfMatch;
+
+                default:
+                    return ETagAction.Ignore;
             }
-            else
+        }
+
+        #endregion
+
+        #region Parameters
+
+        /// <summary> Adds path and query parameters to the given <c>requestBuilder</c>. </summary>
+        private void AddParameters(RequestBuilder requestBuilder, ParameterCollection inputParameters)
+        {
+            foreach (var parameter in inputParameters)
             {
-                // If no custom ETag has been set, try to use the one which might come with the body.
-                // If this is a ISchemaResponse, the etag has been added to the object as it was created.
-                IDirectResponseSchema body = GetBody() as IDirectResponseSchema;
-                if (body != null)
+                IParameter parameterDefinition;
+
+                if (!(RequestParameters.TryGetValue(parameter.Key, out parameterDefinition)
+                    || Service.ServiceParameters.TryGetValue(parameter.Key, out parameterDefinition)))
                 {
-                    request.WithETag(body.ETag);
+                    throw new GoogleApiException(Service.Name,
+                        String.Format("Invalid parameter \"{0}\" was specified", parameter.Key));
+                }
+
+                string value = parameter.Value;
+                if (!ParameterValidator.ValidateParameter(parameterDefinition, value))
+                {
+                    throw new GoogleApiException(Service.Name,
+                        string.Format("Parameter validation failed for \"{0}\"", parameterDefinition.Name));
+                }
+
+                if (value == null) // If the parameter is null, use the default value.
+                {
+                    value = parameterDefinition.DefaultValue;
+                }
+
+                switch (parameterDefinition.ParameterType)
+                {
+                    case "path":
+                        requestBuilder.AddParameter(RequestParameterType.Path, parameter.Key, value);
+                        break;
+                    case "query":
+                        // If the parameter is optional and no value is given, don't add to url.
+                        if (!Object.Equals(value, parameterDefinition.DefaultValue) || parameterDefinition.IsRequired)
+                        {
+                            requestBuilder.AddParameter(RequestParameterType.Query, parameter.Key, value);
+                        }
+                        break;
+                    default:
+                        throw new GoogleApiException(service.Name,
+                            string.Format("Unsupported parameter type \"{0}\" for \"{1}\"",
+                            parameterDefinition.ParameterType, parameterDefinition.Name));
                 }
             }
 
-            return request;
-        }
-
-        /// <summary>
-        /// Retrieves a response asynchronously
-        /// </summary>
-        /// <param name="responseHandler">Method to call once a response has been received.</param>
-        private void GetAsyncResponse(Action<IAsyncRequestResult> responseHandler)
-        {
-            string requestName = string.Format("{0}.{1}", ResourcePath, MethodName);
-            logger.Debug("Start Executing " + requestName);
-            IRequest request = BuildRequest();
-            request.ExecuteRequestAsync((IAsyncRequestResult result) =>
-                                            {
-                                                logger.Debug("Done Executing " + requestName);
-                                                responseHandler(result);
-                                            });
-        }
-
-        /// <summary>
-        /// Receives a response synchronously.
-        /// </summary>
-        /// <returns>The received response.</returns>
-        private IResponse GetResponse()
-        {
-            AutoResetEvent waitHandle = new AutoResetEvent(false);
-            IAsyncRequestResult result = null;
-            GetAsyncResponse(r =>
-                                 {
-                                     result = r;
-                                     waitHandle.Set();
-                                 });
-            waitHandle.WaitOne();
-            return result.GetResponse();
-        }
-
-        /// <summary>
-        /// Fetches the specified response as an object.
-        /// </summary>
-        /// <param name="response"></param>
-        /// <returns></returns>
-        [VisibleForTestOnly]
-        internal TResponse FetchObject(IResponse response)
-        {
-            response.ThrowIfNull("response");
-            return service.DeserializeResponse<TResponse>(response);
-        }
-
-        /// <summary>
-        ///Executes the request synchronously and returns the result.
-        /// </summary>
-        public TResponse Fetch()
-        {
-            return FetchObject(GetResponse());
-        }
-
-        /// <summary>
-        /// Executes the request synchronously and returns the unparsed response stream.
-        /// </summary>
-        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
-        public Stream FetchAsStream()
-        {
-            IResponse response = GetResponse();
-            response.ThrowIfNull("response");
-            return response.Stream;
+            // check if there is a required parameter which wasn't set
+            foreach (var parameter in Service.ServiceParameters.Values.Union(RequestParameters.Values))
+            {
+                if (parameter.IsRequired && !inputParameters.ContainsKey(parameter.Name))
+                {
+                    throw new GoogleApiException(service.Name,
+                        string.Format("Parameter \"{0}\" is missing", parameter.Name));
+                }
+            }
         }
 
         /// <summary>
@@ -237,7 +333,6 @@ namespace Google.Apis.Requests
                 // Set the value in the dictionary.
                 var propertyType = property.PropertyType;
                 var value = property.GetValue(this, null);
-
                 if (propertyType.IsValueType || value != null)
                 {
                     dict.Add(name, value);
@@ -245,179 +340,6 @@ namespace Google.Apis.Requests
             }
 
             return dict;
-        }
-
-        #region Async Support
-
-        /// <summary>
-        /// Executes the request asynchronously and optionally calls the specified method once finished.
-        /// </summary>
-        public void FetchAsync([Optional] ExecuteRequestDelegate<TResponse> methodToCall)
-        {
-            GetAsyncResponse(
-                (IAsyncRequestResult state) =>
-                {
-                    var result = new LazyResult<TResponse>(() =>
-                            {
-                                // Retrieve and convert the response.
-                                IResponse response = state.GetResponse();
-                                return FetchObject(response);
-                            });
-
-                    // Only invoke the method if it was set.
-                    if (methodToCall != null)
-                    {
-                        methodToCall(result);
-                    }
-                    else
-                    {
-                        result.GetResult();
-                    }
-                });
-        }
-
-        /// <summary>
-        /// Executes the request asynchronously without parsing the response, 
-        /// and calls the specified method once finished.
-        /// </summary>
-        /// <remarks>The returned stream is encoded in UTF-8.</remarks>
-        public void FetchAsyncAsStream([Optional] ExecuteRequestDelegate<Stream> methodToCall)
-        {
-            GetAsyncResponse(
-                (IAsyncRequestResult state) =>
-                {
-                    var result = new LazyResult<Stream>(
-                        () =>
-                        {
-                            // Retrieve and convert the response.
-                            IResponse response = state.GetResponse();
-                            response.ThrowIfNull("response");
-                            return response.Stream;
-                        });
-
-                    // Only invoke the method if it was set.
-                    if (methodToCall != null)
-                    {
-                        methodToCall(result);
-                    }
-                    else
-                    {
-                        result.GetResult(); // Resolve the result in any case.
-                    }
-                });
-        }
-
-        /// <summary>
-        /// Describes the state of an asynchronous fetch operation.
-        /// </summary>
-        private class RequestAsyncResult : IAsyncResult
-        {
-            public bool IsCompleted { get; set; }
-
-            public WaitHandle AsyncWaitHandle { get; set; }
-
-            public object AsyncState { get; set; }
-
-            public bool CompletedSynchronously { get; set; }
-
-            /// <summary>
-            /// The result returned by this asynchronous operation.
-            /// </summary>
-            public object Result { get; set; }
-        }
-
-        /// <summary>
-        /// Begins an asynchronous Fetch request.
-        /// </summary>
-        /// <param name="callback">The method to call once the request has been completed. Optional.</param>
-        /// <param name="state">
-        ///   A user-defined object used to pass application-specific state information to the
-        ///   <paramref name="callback"/> method invoked when the asynchronous operation completes. Optional.
-        /// </param>
-        /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
-        public IAsyncResult BeginFetch(AsyncCallback callback, object state)
-        {
-            return BeginFetchInternal(callback, state, result => FetchObject(result.GetResponse()));
-        }
-
-        /// <summary>
-        /// Begins an asynchronous FetchAsStream request.
-        /// </summary>
-        /// <param name="callback">The method to call once the request has been completed. Optional.</param>
-        /// <param name="state">
-        ///   A user-defined object used to pass application-specific state information to the
-        ///   <paramref name="callback"/> method invoked when the asynchronous operation completes. Optional.
-        /// </param>
-        /// <returns>An IAsyncResult describing the state of the asynchronous operation.</returns>
-        public IAsyncResult BeginFetchAsStream(AsyncCallback callback, object state)
-        {
-            return BeginFetchInternal(callback, state, result => result.GetResponse().Stream);
-        }
-
-        [VisibleForTestOnly]
-        internal IAsyncResult BeginFetchInternal(AsyncCallback callback,
-                                                 object state,
-                                                 Func<IAsyncRequestResult, object> fetchFunction)
-        {
-            RequestAsyncResult asyncState = new RequestAsyncResult();
-            asyncState.AsyncState = state;
-            asyncState.IsCompleted = false;
-
-            // Create a WaitHandle representing our current task, and run it.
-            asyncState.AsyncWaitHandle = new AutoResetEvent(false);
-            GetAsyncResponse(
-                result =>
-                {
-                    // Fetch the result.
-                    asyncState.Result = fetchFunction(result);
-
-                    // Signal that the operation has completed.
-                    asyncState.IsCompleted = true;
-                    if (callback != null)
-                    {
-                        callback(asyncState);
-                    }
-                    ((AutoResetEvent)asyncState.AsyncWaitHandle).Set();
-                });
-            return asyncState;
-        }
-
-        [VisibleForTestOnly]
-        internal object EndFetchInternal(IAsyncResult asyncResult)
-        {
-            RequestAsyncResult asyncState = (RequestAsyncResult)asyncResult;
-            asyncState.ThrowIfNull("asyncResult");
-
-            // If this request was not finished, wait for it to finish.
-            if (!asyncState.IsCompleted)
-            {
-                asyncState.AsyncWaitHandle.WaitOne();
-                asyncState.CompletedSynchronously = true;
-            }
-
-            return asyncState.Result;
-        }
-
-        /// <summary>
-        /// Completes an asynchronous Fetch request.
-        /// </summary>
-        /// <param name="asyncResult">The IAsyncResult passed from BeginFetch.</param>
-        /// <returns>The response object.</returns>
-        /// <remarks>Will complete the request synchronously if called manually.</remarks>
-        public TResponse EndFetch(IAsyncResult asyncResult)
-        {
-            return (TResponse)EndFetchInternal(asyncResult);
-        }
-
-        /// <summary>
-        /// Completes an asynchronous FetchAsStream request.
-        /// </summary>
-        /// <param name="asyncResult">The IAsyncResult passed from BeginFetch.</param>
-        /// <returns>The response stream.</returns>
-        /// <remarks>Will complete the request synchronously if called manually.</remarks>
-        public Stream EndFetchAsStream(IAsyncResult asyncResult)
-        {
-            return (Stream)EndFetchInternal(asyncResult);
         }
 
         #endregion

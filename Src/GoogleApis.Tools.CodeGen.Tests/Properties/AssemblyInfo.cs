@@ -24,7 +24,7 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright � Google Inc 2012")]
+[assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

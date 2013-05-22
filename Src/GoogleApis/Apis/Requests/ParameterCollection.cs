@@ -26,8 +26,8 @@ namespace Google.Apis.Requests
     /// </summary>
     public class ParameterCollection : List<KeyValuePair<string, string>>
     {
-        public ParameterCollection() : base() {}
-        public ParameterCollection(IEnumerable<KeyValuePair<string,string>> collection) : base(collection) { }
+        public ParameterCollection() : base() { }
+        public ParameterCollection(IEnumerable<KeyValuePair<string, string>> collection) : base(collection) { }
 
         /// <summary>
         /// Adds a single parameter to this collection.
@@ -122,10 +122,15 @@ namespace Google.Apis.Requests
             foreach (var param in qsParam)
             {
                 // Split the parameter into key and value.
-                var info = param.Split(new [] {'='}, 2);
-                if (info.Length >= 2)
+                var info = param.Split(new[] { '=' });
+                if (info.Length == 2)
                 {
                     collection.Add(Uri.UnescapeDataString(info[0]), Uri.UnescapeDataString(info[1]));
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(
+                        "Invalid query string [{0}]. Invalid part [{1}]", qs, param));
                 }
             }
 

@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Linq;
+
 using Google.Apis.Util;
 
 namespace GoogleApis.Tools.ServiceGenerator
@@ -117,7 +118,7 @@ namespace GoogleApis.Tools.ServiceGenerator
                         }
                         else
                         {
-                            Console.Error.WriteLine("Unexpected argument: "+enumerator.Current);
+                            Console.Error.WriteLine("Unexpected argument: " + enumerator.Current);
                         }
                     }
                 }

@@ -115,7 +115,6 @@ namespace Google.Apis.Tools.CodeGen
                      new StandardConstructServiceDecorator(),
                      new EasyConstructServiceDecorator(),
                      new VersionInformationServiceDecorator(),
-                     new CreateRequestMethodServiceDecorator(),
                      new BaseClientServiceAbstractPropertiesDecorator(),
                      new ScopeEnumDecorator(),
                      new InitServiceParametersDecorator(),
