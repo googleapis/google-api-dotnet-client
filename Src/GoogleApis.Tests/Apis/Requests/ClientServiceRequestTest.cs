@@ -123,11 +123,6 @@ namespace Google.Apis.Tests.Apis.Requests
                 get { return httpMethod; }
             }
 
-            public override string ResourcePath
-            {
-                get { return "resource-path"; }
-            }
-
             protected override object GetBody()
             {
                 return body;

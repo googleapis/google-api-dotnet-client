@@ -42,9 +42,6 @@ namespace Google.Apis.Requests
         /// <summary> Gets the Http method of this request. </summary>
         string HttpMethod { get; }
 
-        /// <summary> Gets the resource path of this request. </summary>
-        string ResourcePath { get; }
-
         /// <summary> Gets the parameters information for this specific request </summary>
         IDictionary<string, IParameter> RequestParameters { get; }
 

@@ -56,15 +56,13 @@ namespace Google.Apis.Tools.CodeGen.Tests.Decorator.ResourceDecorator.RequestDec
             // Confirm that the decorator has run correctly.
             var decorator = new ServiceRequestFieldDecorator();
             decorator.DecorateClass(resource, method, requestDecl, resourceDecl);
-            Assert.AreEqual(4, requestDecl.Members.Count); // 4 properties
+            Assert.AreEqual(3, requestDecl.Members.Count); // 3 properties (method name, http method and rest path)
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[0]);
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[1]);
             Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[2]);
-            Assert.IsInstanceOf<CodeMemberProperty>(requestDecl.Members[3]);
-            Assert.AreEqual("ResourcePath", requestDecl.Members[0].Name);
-            Assert.AreEqual("MethodName", requestDecl.Members[1].Name);
-            Assert.AreEqual("HttpMethod", requestDecl.Members[2].Name);
-            Assert.AreEqual("RestPath", requestDecl.Members[3].Name);
+            Assert.AreEqual("MethodName", requestDecl.Members[0].Name);
+            Assert.AreEqual("HttpMethod", requestDecl.Members[1].Name);
+            Assert.AreEqual("RestPath", requestDecl.Members[2].Name);
         }
 
         /// <summary>

@@ -53,7 +53,6 @@ namespace Google.Apis.Requests
         public abstract string MethodName { get; }
         public abstract string RestPath { get; }
         public abstract string HttpMethod { get; }
-        public abstract string ResourcePath { get; }
 
         protected IDictionary<string, IParameter> _requestParameters;
         public IDictionary<string, IParameter> RequestParameters { get { return _requestParameters; } }
