@@ -40,12 +40,8 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
                                   CodeTypeDeclaration requestClass,
                                   CodeTypeDeclaration resourceClass)
         {
-            // protected override string ResourceName { get { ... } }
-            CodeMemberProperty property = GenerateStringConstantPropertyOverride("ResourcePath", resource.Path);
-            requestClass.Members.Add(property);
-
             // protected override string MethodName { get { ... } }
-            property = GenerateStringConstantPropertyOverride("MethodName", request.Name);
+            var property = GenerateStringConstantPropertyOverride("MethodName", request.Name);
             requestClass.Members.Add(property);
 
             // protected override string HttpMethod { get { ... } }
