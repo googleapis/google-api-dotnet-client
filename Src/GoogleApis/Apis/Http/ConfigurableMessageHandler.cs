@@ -185,7 +185,13 @@ namespace Google.Apis.Http
                     // try to handle the exception with each handler
                     foreach (var handler in exceptionHandlers)
                     {
-                        exceptionHandled |= handler.HandleException(request, lastException, triesRemaining > 0);
+                        exceptionHandled |= handler.HandleException(new HandleExceptionArgs
+                            {
+                                Request = request,
+                                Exception = lastException,
+                                TotalTries = NumTries,
+                                CurrentFailedTry = NumTries - triesRemaining,
+                            });
                     }
 
                     if (!exceptionHandled)
@@ -214,10 +220,13 @@ namespace Google.Apis.Http
                         // try to handle the abnormal Http response with each handler
                         foreach (var handler in unsuccessfulResponseHandlers)
                         {
-                            errorHandled |= handler.HandleResponse(request, response, triesRemaining > 0);
-                            // TODO(peleyal): implement BackOffUnsucessfulHandler
-                            // check http://msdn.microsoft.com/en-us/library/hh680934(v=pandp.50).aspx as a good 
-                            // reference for exponential back-off 
+                            errorHandled |= handler.HandleResponse(new HandleUnsuccessfulResponseArgs
+                                {
+                                    Request = request,
+                                    Response = response,
+                                    TotalTries = NumTries,
+                                    CurrentFailedTry = NumTries - triesRemaining,
+                                });
                         }
 
                         if (!errorHandled)

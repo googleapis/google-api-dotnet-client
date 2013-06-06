@@ -127,9 +127,9 @@ namespace Google.Apis.Authentication.OAuth2
         /// <summary> 
         /// Override handle response to refresh the token when Unauthorized status code is received. 
         /// </summary>
-        public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+        public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
         {
-            return response.StatusCode == HttpStatusCode.Unauthorized && tokenProvider.RefreshToken(State, null);
+            return args.Response.StatusCode == HttpStatusCode.Unauthorized && tokenProvider.RefreshToken(State, null);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2012 Google Inc
+Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -27,6 +28,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 using Google.Apis.Http;
+using Google.Apis.Util;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Http
 {
@@ -39,7 +42,7 @@ namespace Google.Apis.Tests.Apis.Http
         /// <summary> Unsuccessful handler which always returns <c>true</c>. </summary>
         private class TrueUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
         {
-            public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
             {
                 return true;
             }
@@ -288,11 +291,10 @@ namespace Google.Apis.Tests.Apis.Http
             {
                 public int Calls { get; set; }
 
-                public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response,
-                    bool supportsRetry)
+                public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
                 {
                     ++Calls;
-                    return response.StatusCode.Equals(HttpStatusCode.ServiceUnavailable);
+                    return args.Response.StatusCode.Equals(HttpStatusCode.ServiceUnavailable);
                 }
             }
         }
@@ -383,8 +385,18 @@ namespace Google.Apis.Tests.Apis.Http
         /// <summary> Mock exception message handler which verifies that exception handler is being called. </summary>
         private class ExceptionMessageHandler : CountableMessageHandler
         {
+            public ExceptionMessageHandler()
+            {
+                Exception = new Exception(ExceptionMessage);
+            }
+
             /// <summary> Gets or sets indication if exception should be thrown. </summary>
             public bool ThrowException { get; set; }
+
+            /// <summary> 
+            /// Gets or sets a specific exception to throw. Default value is <seealso cref="System.Exception"/> 
+            /// with <see cref="ExceptionMessage"/>. </summary>
+            public Exception Exception { get; set; }
 
             /// <summary> 
             /// The exception message which is thrown in case <see cref="ThrowException"/> is <c>true</c>. 
@@ -396,8 +408,9 @@ namespace Google.Apis.Tests.Apis.Http
             {
                 if (ThrowException)
                 {
-                    throw new Exception(ExceptionMessage);
+                    throw Exception;
                 }
+
                 return new HttpResponseMessage();
             }
 
@@ -412,7 +425,7 @@ namespace Google.Apis.Tests.Apis.Http
                     Handle = handle;
                 }
 
-                public bool HandleException(HttpRequestMessage request, Exception exception, bool supportsRetry)
+                public bool HandleException(HandleExceptionArgs args)
                 {
                     ++Calls;
                     return Handle;
@@ -519,6 +532,218 @@ namespace Google.Apis.Tests.Apis.Http
 
         #endregion
 
+        #region Back-off
+
+        #region Exception
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when exception is thrown. 
+        /// Use default max time span (2 minutes).
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max2Minutes()
+        {
+            // create exponential back-off without delta interval, so expected seconds are exactly 1, 2, 4, 8, etc.
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+        }
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when exception is thrown. 
+        /// Max time span is set to 200 milliseconds (as a result the back-off handler can't handle the exception).
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max200Milliseconds()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+                {
+                    MaxTimeSpan = TimeSpan.FromMilliseconds(200)
+                };
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+        }
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when exception is thrown. 
+        /// Max time span is set to 1 hour.
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_Throw_Max1Hour()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+                {
+                    MaxTimeSpan = TimeSpan.FromHours(1)
+                };
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer);
+        }
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when 
+        /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/>> is thrown. 
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_ThrowCanceledException()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new TaskCanceledException());
+        }
+
+        /// <summary>
+        /// Tests that back-off handler works as expected with the not defaulted exception handler. 
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_DifferentHandler()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            initializer.HandleExceptionFunc = e => (e is InvalidCastException);
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException());
+
+            initializer.HandleExceptionFunc = e => !(e is InvalidCastException);
+            SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException());
+        }
+
+        /// <summary> Tests that back-off handler works as expected when exception isn't thrown. </summary>
+        [Test]
+        public void SendAsync_BackOffExceptionHandler_DontThrow()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            SubtestSendAsync_BackOffExceptionHandler(false, initializer);
+        }
+
+        /// <summary> Subtest that back-off handler works as expected when exception is or isn't thrown. </summary>
+        private void SubtestSendAsync_BackOffExceptionHandler(bool throwException,
+            BackOffHandler.Initializer initializer, Exception exceptionToThrow = null)
+        {
+            var handler = new ExceptionMessageHandler { ThrowException = throwException };
+            if (exceptionToThrow != null)
+            {
+                handler.Exception = exceptionToThrow;
+            }
+
+            var configurableHanlder = new ConfigurableMessageHandler(handler);
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHanlder.ExceptionHandlers.Add(boHandler);
+
+            int boHandleCount = 0;
+            // if an exception should be thrown and the handler can handle it then calculate the handle count by the 
+            // lg(MaxTimeSpan)
+            if (throwException && initializer.HandleExceptionFunc(exceptionToThrow))
+            {
+                boHandleCount = Math.Min((int)Math.Floor(Math.Log(boHandler.MaxTimeSpan.TotalSeconds, 2)) + 1,
+                    configurableHanlder.NumTries - 1);
+                boHandleCount = boHandleCount >= 0 ? boHandleCount : 0;
+            }
+
+            using (var client = new HttpClient(configurableHanlder))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
+                try
+                {
+                    HttpResponseMessage response = client.SendAsync(request).Result;
+                    Assert.False(throwException);
+                }
+                catch (AggregateException ae)
+                {
+                    Assert.True(throwException);
+                    Assert.That(ae.InnerException.Message, Is.EqualTo(handler.Exception.Message));
+                }
+
+                Assert.That(boHandler.Waits.Count, Is.EqualTo(boHandleCount));
+                // check the exponential behavior - wait 1, 2, 4, 8, ... seconds.
+                if (throwException)
+                {
+                    for (int i = 0; i < boHandler.Waits.Count; ++i)
+                    {
+                        Assert.That(boHandler.Waits[i].TotalSeconds, Is.EqualTo((int)Math.Pow(2, i)));
+                    }
+                }
+                Assert.That(handler.Calls, Is.EqualTo(boHandleCount + 1));
+            }
+        }
+
+        #endregion
+
+        #region Unsuccessful Response Handler
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when the server returns 5xx and the maximum time span is set
+        /// to 5 seconds.
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffUnsuccessfulResponseHandler_ServiceUnavailable_Max5Seconds()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+                {
+                    MaxTimeSpan = TimeSpan.FromSeconds(5)
+                };
+            SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer);
+        }
+
+        /// <summary> 
+        /// Tests that back-off handler works as expected when the server returns 5xx and the maximum time span is set
+        /// to 10 hours.
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffUnsuccessfulResponseHandler_ServiceUnavailable_Max10Hours()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                MaxTimeSpan = TimeSpan.FromHours(10)
+            };
+            SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer);
+        }
+
+        /// <summary> 
+        /// Tests that back-off handler isn't be called when the server returns a successful response.
+        /// </summary>
+        [Test]
+        public void SendAsync_BackOffUnsuccessfulResponseHandler_OK()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.OK, initializer);
+        }
+
+        /// <summary> 
+        /// Subtest that back-off handler works as expected when a successful or abnormal response is returned. 
+        /// </summary>
+        private void SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode statusCode,
+            BackOffHandler.Initializer initializer)
+        {
+            var handler = new UnsuccessfulResponseMessageHandler { ResponseStatusCode = statusCode };
+
+            var configurableHanlder = new ConfigurableMessageHandler(handler);
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHanlder.UnsuccessfulResponseHandlers.Add(boHandler);
+
+            int boHandleCount = 0;
+            if (initializer.HandleUnsuccessfulResponseFunc != null &&
+                initializer.HandleUnsuccessfulResponseFunc(new HttpResponseMessage { StatusCode = statusCode }))
+            {
+                boHandleCount = Math.Min((int)Math.Floor(Math.Log(boHandler.MaxTimeSpan.TotalSeconds, 2)) + 1,
+                    configurableHanlder.NumTries - 1);
+                boHandleCount = boHandleCount >= 0 ? boHandleCount : 0;
+            }
+
+            using (var client = new HttpClient(configurableHanlder))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
+                HttpResponseMessage response = client.SendAsync(request).Result;
+
+                Assert.That(boHandler.Waits.Count, Is.EqualTo(boHandleCount));
+
+                // check the exponential behavior - wait 1, 2, 4, 8, ... seconds.
+                for (int i = 0; i < boHandler.Waits.Count; ++i)
+                {
+                    Assert.That(boHandler.Waits[i].TotalSeconds, Is.EqualTo((int)Math.Pow(2, i)));
+                }
+
+                Assert.That(handler.Calls, Is.EqualTo(boHandleCount + 1));
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region Content
 
         /// <summary> Mock message handler which verifies that the content is correct on retry. </summary>
@@ -612,7 +837,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         /// <summary> Tests setting number of tries. </summary>
         [Test]
-        public void TestNumTries_Setter()
+        public void NumTries_Setter()
         {
             var configurableHanlder = new ConfigurableMessageHandler(new HttpClientHandler());
             // valid values

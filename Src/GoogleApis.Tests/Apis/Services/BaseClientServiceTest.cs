@@ -270,7 +270,7 @@ namespace Google.Apis.Tests.Apis.Services
         {
             public int HandleCalls { get; set; }
 
-            public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
             {
                 HandleCalls++;
                 // Mock a refresh token process here... (second apply will attach SecondToken authorization)
@@ -326,6 +326,33 @@ namespace Google.Apis.Tests.Apis.Services
                 Assert.That(handler.Calls, Is.EqualTo(1));
                 Assert.That(authenticator.ApplyCalls, Is.EqualTo(1));
             }
+        }
+
+        #endregion
+
+        #region Constructor
+
+        [Test]
+        public void Constructor_DefaultValues()
+        {
+            var service = new MockClientService(new BaseClientService.Initializer());
+            Assert.NotNull(service.HttpClient);
+            Assert.Null(service.HttpClientInitializer);
+            Assert.That(service.Authenticator, Is.EqualTo(NullAuthenticator.Instance));
+            Assert.True(service.GZipEnabled);
+
+            // back-off handlers are added by default
+            Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count, Is.EqualTo(1));
+            Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
+                Is.InstanceOf<BackOffHandler>());
+            Assert.That(service.HttpClient.MessageHandler.ExceptionHandlers.Count, Is.EqualTo(1));
+            Assert.That(service.HttpClient.MessageHandler.ExceptionHandlers[0],
+                Is.InstanceOf<BackOffHandler>());
+
+            // one execute interceptor (for adding the "Authenticate" header
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[0],
+                Is.InstanceOf<AuthenticatorInterceptor>());
         }
 
         #endregion

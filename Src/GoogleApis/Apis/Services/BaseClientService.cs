@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -52,8 +53,19 @@ namespace Google.Apis.Services
 
         #region Initializer
 
-        /// <summary> An initializer class for the client service.
+        /// <summary> 
+        /// Indicates if exponential back-off is used automatically on exception in a service request and\or when 5xx 
+        /// response is returned form the server.
         /// </summary>
+        [Flags]
+        public enum ExponentialBackOffPolicy
+        {
+            None = 0,
+            Exception = 1,
+            UnsuccessfulResponse5xx = 2
+        }
+
+        /// <summary> An initializer class for the client service. </summary>
         public class Initializer
         {
             /// <summary> 
@@ -68,6 +80,17 @@ namespace Google.Apis.Services
             /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
             /// </summary>
             public IConfigurableHttpClientInitializer HttpClientInitializer { get; set; }
+
+            /// <summary>
+            /// Get or sets the exponential back-off policy used by the service. Default value is <c>Exception</c> |
+            /// <c>UnsuccessfulResponse5xx</c>, which means that exponential back-off is used on any 5xx abnormal Http
+            /// response and on any exception whose thrown when sending a request (except task canceled exception).
+            /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
+            /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
+            /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
+            /// implementation (using <seealso cref="Google.Api.Http.BackOffHandler"/>).
+            /// </summary>
+            public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
             /// <summary> Gets and Sets whether this service supports GZip. Default value is <c>true</c>. </summary>
             public bool GZipEnabled { get; set; }
@@ -97,14 +120,50 @@ namespace Google.Apis.Services
                 GZipEnabled = true;
                 Serializer = new NewtonsoftJsonSerializer();
                 Authenticator = NullAuthenticator.Instance;
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception |
+                    ExponentialBackOffPolicy.UnsuccessfulResponse5xx;
+            }
+        }
+
+        /// <summary>
+        /// An initializer which adds exponential back-off as exception handler and\or unsuccessful response handler by
+        /// the given <seealso cref="BaseClientService.ExponentialBackOffPolicy"/>.
+        /// </summary>
+        private class ExponentialBackOffInitializer : IConfigurableHttpClientInitializer
+        {
+            private ExponentialBackOffPolicy Policy { get; set; }
+            private Func<BackOffHandler> CreateBackOff { get; set; }
+
+            /// <summary>
+            /// Constructs a new back-off initializer with the given policy and back-off handler create function.
+            /// </summary>
+            public ExponentialBackOffInitializer(ExponentialBackOffPolicy policy, Func<BackOffHandler> createBackOff)
+            {
+                Policy = policy;
+                CreateBackOff = createBackOff;
+            }
+
+            public void Initialize(ConfigurableHttpClient httpClient)
+            {
+                var backOff = CreateBackOff();
+
+                // add exception handler and\or unsuccessful response handler
+                if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception)
+                {
+                    httpClient.MessageHandler.ExceptionHandlers.Add(backOff);
+                }
+
+                if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse5xx) ==
+                    ExponentialBackOffPolicy.UnsuccessfulResponse5xx)
+                {
+                    httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(backOff);
+                }
             }
         }
 
         #endregion
 
-        /// <summary>
-        /// Constructs a new base client with the specified initializer
-        /// </summary>
+        /// <summary> Constructs a new base client with the specified initializer. </summary>
         protected BaseClientService(Initializer initializer)
         {
             // sets the right properties by the initializer's properties
@@ -131,8 +190,6 @@ namespace Google.Apis.Services
             return Features.Contains(feature.GetStringValue());
         }
 
-        #region IClientService Members
-
         private ConfigurableHttpClient CreateHttpClient(Initializer initializer)
         {
             // if factory wasn't set use the default Http client factory
@@ -143,15 +200,39 @@ namespace Google.Apis.Services
                     ApplicationName = ApplicationName,
                 };
 
-            // add initializers
+            // add the user's input initializer
             if (HttpClientInitializer != null)
             {
                 args.Initializers.Add(HttpClientInitializer);
             }
+
+            // add exponential back-off initializer if necessary
+            if (initializer.DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
+            {
+                args.Initializers.Add(new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
+                    CreateBackOffHandler));
+            }
+
+            // add authenticator initializer to intercept a request and add the "Authorization" header and also handle
+            // abnormal 401 responses in case the authenticator is an instance of unsuccessful response handler.
             args.Initializers.Add(new AuthenticatorMessageHandlerInitializer(Authenticator));
 
             return factory.CreateHttpClient(args);
         }
+
+        /// <summary>
+        /// Creates the back-off handler with <seealso cref="Google.Apis.Util.ExponentialBackOff"/>. 
+        /// Overrides this method to change the default behavior of back-off handler (e.g. you can change the maximum
+        /// waited request's time span, or create a back-off handler with you own implementation of 
+        /// <seealso cref="Google.Apis.Util.IBackOff"/>).
+        /// </summary>
+        protected virtual BackOffHandler CreateBackOffHandler()
+        {
+            // TODO(peleyal): consider return here interface and not the concrete class
+            return new BackOffHandler(new ExponentialBackOff());
+        }
+
+        #region IClientService Members
 
         public ConfigurableHttpClient HttpClient { get; private set; }
 

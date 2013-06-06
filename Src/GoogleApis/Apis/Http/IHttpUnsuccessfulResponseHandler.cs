@@ -22,6 +22,28 @@ using System.Text;
 
 namespace Google.Apis.Http
 {
+    /// <summary> Argument class to <see cref="IHttpUnsuccessfulResponseHandler.HandleResponse"/>. </summary>
+    public class HandleUnsuccessfulResponseArgs
+    {
+        /// <summary> Gets or sets the sent request. </summary>
+        public HttpRequestMessage Request { get; set; }
+
+        /// <summary> Gets or sets the abnormal response. </summary>
+        public HttpResponseMessage Response { get; set; }
+
+        /// <summary> Gets or sets the total number of tries to send the request. </summary>
+        public int TotalTries { get; set; }
+
+        /// <summary> Gets or sets the current failed try. </summary>
+        public int CurrentFailedTry { get; set; }
+
+        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c> </summary>
+        public bool SupportsRetry
+        {
+            get { return TotalTries - CurrentFailedTry > 0; }
+        }
+    }
+
     /// <summary> 
     /// Unsuccessful response handler which is invoked when an abnormal Http response is returned when sending an Http 
     /// request.
@@ -33,11 +55,10 @@ namespace Google.Apis.Http
         /// A simple rule must be followed, if you modify the request object in a way that the abnormal response can 
         /// be resolved, you must return <c>true</c>.
         /// </summary>
-        /// <param name="request">The sent request</param>
-        /// <param name="response">The abnormal response</param>
-        /// <param name="supportsRetry">Whether there will actually be a retry if this handler returns <c>true</c>
+        /// <param name="args">
+        /// Handle response argument which contains properties like the request, the response, current failed try.
         /// </param>
         /// <returns>Whether or not this handler has made a change that will require the request to be resent</returns>
-        bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry);
+        bool HandleResponse(HandleUnsuccessfulResponseArgs args);
     }
 }

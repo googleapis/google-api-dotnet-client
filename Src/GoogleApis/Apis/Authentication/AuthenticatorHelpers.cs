@@ -22,11 +22,13 @@ using System.Net.Http;
 using System.Text;
 
 using Google.Apis.Http;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Authentication
 {
     // TODO(peleyal): this class should be removed when implementing our OAuth2 library. Our future credential
     // object will implement both IHttpExecuteInterceptor and IHttpUnsuccessfulResponseHandler
+    [VisibleForTestOnly]
     internal class AuthenticatorInterceptor : IHttpExecuteInterceptor
     {
         private IAuthenticator Authenticator { get; set; }
