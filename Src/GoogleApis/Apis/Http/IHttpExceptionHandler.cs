@@ -22,6 +22,28 @@ using System.Text;
 
 namespace Google.Apis.Http
 {
+    /// <summary> Argument class to <see cref="IHttpExceptionHandler.HandleException"/>. </summary>
+    public class HandleExceptionArgs
+    {
+        /// <summary> Gets or sets the sent request. </summary>
+        public HttpRequestMessage Request { get; set; }
+
+        /// <summary> Gets or sets the exception which occurred during sending the request. </summary>
+        public Exception Exception { get; set; }
+
+        /// <summary> Gets or sets the total number of tries to send the request. </summary>
+        public int TotalTries { get; set; }
+
+        /// <summary> Gets or sets the current failed try. </summary>
+        public int CurrentFailedTry { get; set; }
+
+        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c> </summary>
+        public bool SupportsRetry
+        {
+            get { return TotalTries - CurrentFailedTry > 0; }
+        }
+    }
+
     /// <summary> 
     /// Exception handler which is invoked when an exception is thrown during an Http request.
     /// </summary>
@@ -32,11 +54,10 @@ namespace Google.Apis.Http
         /// A simple rule must be followed, if you modify the request object in a way that the exception can be 
         /// resolved, you must return <c>true</c>.
         /// </summary>
-        /// <param name="request">The sent request</param>
-        /// <param name="exception">The exception that occurred during sending</param>
-        /// <param name="supportsRetry">Whether there will actually be a retry if this handler returns <c>true</c>
+        /// <param name="args">
+        /// Handle exception argument which contains properties like the request, the exception, current failed try.
         /// </param>
         /// <returns>Whether or not this handler has made a change that will require the request to be resent</returns>
-        bool HandleException(HttpRequestMessage request, Exception exception, bool supportsRetry);
+        bool HandleException(HandleExceptionArgs args);
     }
 }

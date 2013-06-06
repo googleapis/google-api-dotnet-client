@@ -18,7 +18,9 @@ using System;
 using System.Collections.Generic;
 
 using Google.Apis.Discovery;
+using Google.Apis.Http;
 using Google.Apis.Services;
+using Google.Apis.Util;
 
 namespace Google.Apis.Testing
 {
@@ -31,8 +33,7 @@ namespace Google.Apis.Testing
 
         private string _baseUri;
         public override string BaseUri { get { return _baseUri; } }
-        private string _basePath;
-        public override string BasePath { get { return _basePath; } }
+        public override string BasePath { get { return string.Empty; } }
 
         private IList<string> _features = new List<string> { "rest", "rpc", "json", "atom" };
         public override IList<string> Features { get { return _features; } }
@@ -53,6 +54,13 @@ namespace Google.Apis.Testing
             : base(initializer)
         {
             _baseUri = baseUri;
+        }
+
+        protected override BackOffHandler CreateBackOffHandler()
+        {
+            // we create a mock back-off handler here which doesn't make calls to thread sleep. It just add the waited
+            // time span into a list.
+            return new MockBackOffHandler(new ExponentialBackOff());
         }
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="Apis\Logging\NullLoggerTests.cs" />
     <Compile Include="Apis\Requests\ClientServiceRequestTest.cs" />
     <Compile Include="Apis\Upload\ResumableUploadTest.cs" />
+    <Compile Include="Apis\Utils\ExponentialBackOffTest.cs" />
     <Compile Include="Apis\Utils\LazyResultTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />

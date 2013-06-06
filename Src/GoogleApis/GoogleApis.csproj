@@ -106,6 +106,7 @@
     <Compile Include="Apis\Discovery\WebDiscoveryDevice.cs" />
     <Compile Include="Apis\Http\ConfigurableHttpClient.cs" />
     <Compile Include="Apis\Http\ConfigurableMessageHandler.cs" />
+    <Compile Include="Apis\Http\BackOffHandler.cs" />
     <Compile Include="Apis\Http\HttpClientFactory.cs" />
     <Compile Include="Apis\Http\HttpConsts.cs" />
     <Compile Include="Apis\Http\HttpExtenstions.cs" />
@@ -139,6 +140,8 @@
     <Compile Include="Apis\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\Upload\ResumableUpload.cs" />
     <Compile Include="Apis\Utilities.cs" />
+    <Compile Include="Apis\Util\ExponentialBackOff.cs" />
+    <Compile Include="Apis\Util\IBackOff.cs" />
     <Compile Include="Apis\Util\LazyResult.cs" />
     <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />

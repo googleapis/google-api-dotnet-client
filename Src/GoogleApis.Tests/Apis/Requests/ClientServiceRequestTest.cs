@@ -17,9 +17,9 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -286,10 +286,9 @@ namespace Google.Apis.Tests.Apis.Requests
             /// <summary> Unsuccessful response handler which "handles" service unavailable responses. </summary>
             internal class ServiceUnavailableUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
             {
-                public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response,
-                    bool supportsRetry)
+                public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
                 {
-                    return response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable;
+                    return args.Response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable;
                 }
             }
 
@@ -305,6 +304,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 }
             }
         }
+
         #region Execute (and ExecuteAsync)
 
         [Test]
@@ -428,32 +428,76 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests execute when exception is thrown during sending the request. </summary>
-        [Test]
-        public void Execute_ThrowException()
+        /// <summary> 
+        /// A subtest for testing execute when an exception is thrown during sending the request, with or without 
+        /// back-off. If back-off handler is attached to the service's message handler, there are going to be several 
+        /// retries (up to 2 minutes).
+        /// </summary>
+        /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
+        private void SubtestExecute_ThrowException(bool backOff)
         {
             var handler = new MockMessageHandler(true);
             var initializer = new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
                 };
+
+            // by default back-off is used, so disable it in case backOff is false
+            if (!backOff)
+            {
+                initializer.DefaultExponentialBackOffPolicy = BaseClientService.ExponentialBackOffPolicy.None;
+            }
+
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
                 Assert.Throws<InvalidOperationMockException>(() => request.Execute());
-                Assert.That(handler.Calls, Is.EqualTo(1));
+
+                // if back-off is enabled, we use 2 minutes maximum wait time for a request, so we should make lg(120)
+                // + 1 calls
+                int calls = backOff ? (int)Math.Ceiling(Math.Log(120, 2) + 1) : 1;
+                Assert.That(handler.Calls, Is.EqualTo(calls));
             }
         }
 
-        /// <summary> Tests execute async when exception is thrown during sending the request. </summary>
+        /// <summary> 
+        /// Tests execute when an exception is thrown during a request and exponential back-off is enabled.
+        /// </summary>
         [Test]
-        public void ExecuteAsync_ThrowException()
+        public void Execute_ThrowException_WithBackOff()
+        {
+            SubtestExecute_ThrowException(true);
+        }
+
+        /// <summary> 
+        /// Tests execute when an exception is thrown during a request and exponential back-off is disabled.
+        /// </summary>
+        [Test]
+        public void Execute_ThrowException_WithoutBackOff()
+        {
+            SubtestExecute_ThrowException(false);
+        }
+
+        /// <summary> 
+        /// A subtest for testing async execute when an exception is thrown during sending the request, with or without 
+        /// back-off handler. If back-off handler is attached to the service's message handler, there are going to be 
+        /// several retries (up to 2 minutes).
+        /// </summary>
+        /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
+        private void SubtestExecuteAsync_ThrowException(bool backOff)
         {
             var handler = new MockMessageHandler(true);
             var initializer = new BaseClientService.Initializer()
             {
                 HttpClientFactory = new MockHttpClientFactory(handler)
             };
+
+            // by default back-off is used, so disable it in case backOff is false
+            if (!backOff)
+            {
+                initializer.DefaultExponentialBackOffPolicy = BaseClientService.ExponentialBackOffPolicy.None;
+            }
+
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
@@ -467,8 +511,30 @@ namespace Google.Apis.Tests.Apis.Requests
                 {
                     Assert.That(ex.InnerException, Is.AssignableFrom(typeof(InvalidOperationMockException)));
                 }
-                Assert.That(handler.Calls, Is.EqualTo(1));
+
+                // if back-off is enabled, we use 2 minutes maximum wait time for a request, so we should make lg(120)
+                // + 1 calls
+                int calls = backOff ? (int)Math.Ceiling(Math.Log(120, 2) + 1) : 1;
+                Assert.That(handler.Calls, Is.EqualTo(calls));
             }
+        }
+
+        /// <summary> 
+        /// Tests async execute when an exception is thrown during a request and exponential back-off is enabled.
+        /// </summary>
+        [Test]
+        public void ExecuteAsync_ThrowException_WithBackOff()
+        {
+            SubtestExecuteAsync_ThrowException(true);
+        }
+
+        /// <summary> 
+        /// Tests async execute when an exception is thrown during a request and exponential back-off is disabled.
+        /// </summary>
+        [Test]
+        public void ExecuteAsync_ThrowException_WithoutBackOff()
+        {
+            SubtestExecuteAsync_ThrowException(false);
         }
 
         /// <summary> Tests execute when server returned an error. </summary>

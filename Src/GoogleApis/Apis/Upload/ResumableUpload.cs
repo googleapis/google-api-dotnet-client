@@ -212,25 +212,26 @@ namespace Google.Apis.Upload
                 Owner.Service.HttpClient.MessageHandler.ExceptionHandlers.Add(this);
             }
 
-            public bool HandleResponse(HttpRequestMessage request, HttpResponseMessage response, bool supportsRetry)
+            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
             {
-                var statusCode = (int)response.StatusCode;
+                var statusCode = (int)args.Response.StatusCode;
                 // handle the error if and only if all the following conditions occur:
                 // - there is going to be an actual retry
                 // - the message request is for media upload with the current Uri (remember that the message handler
                 //   can be invoked from other threads \ messages, so we should call server error callback only if the
                 //   request is in the current context).
                 // - we got a 5xx server error.
-                if (supportsRetry && request.RequestUri.Equals(Owner.UploadUri) && statusCode / 100 == 5)
+                if (args.SupportsRetry && args.Request.RequestUri.Equals(Owner.UploadUri) && statusCode / 100 == 5)
                 {
-                    return OnServerError(request);
+                    return OnServerError(args.Request);
                 }
                 return false;
             }
 
-            public bool HandleException(HttpRequestMessage request, Exception exception, bool supportsRetry)
+            public bool HandleException(HandleExceptionArgs args)
             {
-                return supportsRetry && request.RequestUri.Equals(Owner.UploadUri) ? OnServerError(request) : false;
+                return args.SupportsRetry && args.Request.RequestUri.Equals(Owner.UploadUri) ?
+                    OnServerError(args.Request) : false;
             }
 
             /// <summary> Changes the request in order to resume the interrupted upload. </summary>
