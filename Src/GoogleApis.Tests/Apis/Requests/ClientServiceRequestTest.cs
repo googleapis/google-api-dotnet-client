@@ -611,12 +611,15 @@ namespace Google.Apis.Tests.Apis.Requests
                 int calls = 100;
                 handler.Serializer = service.Serializer;
 
+                CountdownEvent ce = new CountdownEvent(calls);
                 foreach (var i in Enumerable.Range(1, calls))
                 {
                     var request = new TestClientServiceRequest(service, "GET", null) { CallNum = i };
-                    tasks.Add(request.ExecuteAsync());
+                    var task = request.ExecuteAsync();
+                    task.ContinueWith(c => ce.Signal());
+                    tasks.Add(task);
                 }
-                Task.WaitAll(tasks.ToArray());
+                ce.Wait();
 
                 for (var i = 1; i <= tasks.Count; ++i)
                 {

@@ -22,13 +22,19 @@ namespace Google.Apis.Tests
     /// <summary> Base mock message handler which counts the number of calls. </summary>
     public abstract class CountableMessageHandler : HttpMessageHandler
     {
+        private int calls;
+
         /// <summary> Gets or sets the calls counter. </summary>
-        public int Calls { get; set; }
+        public int Calls
+        {
+            get { return calls; }
+            set { calls = value; }
+        }
 
         sealed protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage
             request, CancellationToken cancellationToken)
         {
-            ++Calls;
+            Interlocked.Increment(ref calls);
             return SendAsyncCore(request, cancellationToken);
         }
 

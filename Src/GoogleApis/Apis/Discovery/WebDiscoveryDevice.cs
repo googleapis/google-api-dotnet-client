@@ -61,8 +61,9 @@ namespace Google.Apis.Discovery
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(DiscoveryUri);
 
-            // Remove when upgrading to PCL (timeout property is only supported on regular .NET).
-            request.Timeout = TimeoutInSeconds * 1000;
+            // TODO(peleyal): add back when splitting Google.Apis to discovery and runtime dlls. This class should be
+            // in the discovery dll. (timeout property is only supported on regular .NET).
+            //request.Timeout = TimeoutInSeconds * 1000;
 
             IAsyncResult async = request.BeginGetResponse(null, null);
             response = (HttpWebResponse)request.EndGetResponse(async);
