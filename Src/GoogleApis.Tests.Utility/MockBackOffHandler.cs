@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 using Google.Apis.Http;
 using Google.Apis.Util;
@@ -42,7 +43,7 @@ namespace Google.Apis.Testing
             Waits = new List<TimeSpan>();
         }
 
-        protected override void Wait(TimeSpan ts)
+        protected override void Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
             Waits.Add(ts);
         }

@@ -353,13 +353,25 @@ namespace Google.Apis.Services
 
         public virtual async Task<RequestError> DeserializeError(HttpResponseMessage response)
         {
-            var str = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var errorResponse = Serializer.Deserialize<StandardResponse<object>>(str);
-            if (errorResponse.Error == null)
+            StandardResponse<object> errorResponse = null;
+            try
             {
-                throw new GoogleApiException(Name,
-                    "An Error occurred, but the error response could not be deserialized");
+                var str = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                errorResponse = Serializer.Deserialize<StandardResponse<object>>(str);
+                if (errorResponse.Error == null)
+                {
+                    throw new GoogleApiException(Name,
+                        "An Error occurred, but the error response could not be deserialized");
+                }
             }
+            catch (Exception ex)
+            {
+                // exception will be thrown in case the response content is empty or it can't be deserialized to 
+                // Standard response (which contains data and error properties)
+                throw new GoogleApiException(Name,
+                    "An Error occurred, but the error response could not be deserialized", ex);
+            }
+
             return errorResponse.Error;
         }
 

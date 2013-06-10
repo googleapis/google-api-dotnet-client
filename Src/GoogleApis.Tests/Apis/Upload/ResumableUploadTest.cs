@@ -287,9 +287,15 @@ anim id est laborum.";
         {
             public MemoryStream ReceivedData = new MemoryStream();
 
+            /// <summary> The cancellation token we are going to use to cancel a request.</summary>
+            public CancellationTokenSource CancellationTokenSource { get; set; }
+
+            /// <summary> The request index we are going to cancel.</summary>
+            public int CancelRequestNum { get; set; }
+
             // on the 4th request - server returns error (if supportedError isn't none)
-            internal const int ErrorOnCall = 4;
             // on the 5th request - server returns 308 with "Range" header is "bytes 0-299" (depends on supportedError)
+            internal const int ErrorOnCall = 4;
 
             private ServerError supportedError;
 
@@ -301,18 +307,23 @@ anim id est laborum.";
             private int bytesRecieved = 0;
 
             public MultipleChunksMessageHandler(bool knownSize, ServerError supportedError, int len, int chunkSize,
-                bool alwaysFailFromFirst503 = false)
+                bool alwaysFailFromFirstError = false)
             {
                 this.knownSize = knownSize;
                 this.supportedError = supportedError;
                 this.len = len;
                 this.chunkSize = chunkSize;
-                this.alwaysFailFromFirstError = alwaysFailFromFirst503;
+                this.alwaysFailFromFirstError = alwaysFailFromFirstError;
             }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
+                if (Calls == CancelRequestNum && CancellationTokenSource != null)
+                {
+                    CancellationTokenSource.Cancel();
+                }
+
                 var response = new HttpResponseMessage();
                 if (Calls == 1)
                 {
@@ -373,6 +384,10 @@ anim id est laborum.";
                     }
                     else if (Calls >= ErrorOnCall && alwaysFailFromFirstError)
                     {
+                        if (supportedError == ServerError.Exception)
+                        {
+                            throw new Exception("ERROR");
+                        }
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
                             string.Format(@"bytes */{0}", knownSize ? UploadTestData.Length.ToString() : "*")));
                         response.StatusCode = HttpStatusCode.ServiceUnavailable;
@@ -718,14 +733,13 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> Tests uploading media which fails in the middle (server returns 5xx responses). </summary>
-        [Test]
-        public void TestChunkUploadFail()
+        /// <summary> Test helper to test a fail uploading by with the given server error.</summary>
+        private void SubtestChunkUploadFail(ServerError error)
         {
             int chunkSize = 100;
             var payload = Encoding.UTF8.GetBytes(UploadTestData);
 
-            var handler = new MultipleChunksMessageHandler(true, ServerError.ServerUnavailable, payload.Length,
+            var handler = new MultipleChunksMessageHandler(true, error, payload.Length,
                 chunkSize, true);
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
@@ -738,9 +752,9 @@ anim id est laborum.";
 
                 IUploadProgress lastProgressStatus = null;
                 upload.ProgressChanged += (p) =>
-                    {
-                        lastProgressStatus = p;
-                    };
+                {
+                    lastProgressStatus = p;
+                };
                 upload.Upload();
 
                 var exepctedCalls = MultipleChunksMessageHandler.ErrorOnCall +
@@ -749,6 +763,66 @@ anim id est laborum.";
                 Assert.NotNull(lastProgressStatus);
                 Assert.NotNull(lastProgressStatus.Exception);
                 Assert.That(lastProgressStatus.Status, Is.EqualTo(UploadStatus.Failed));
+            }
+        }
+
+        /// <summary> 
+        /// Tests failed uploading media (server returns 5xx responses all the time from some request).
+        /// </summary>
+        [Test]
+        public void TestChunkUploadFail_ServerUnavailable()
+        {
+            SubtestChunkUploadFail(ServerError.ServerUnavailable);
+        }
+
+        /// <summary> 
+        /// Tests failed uploading media (exception is thrown all the time from some request).
+        /// </summary>
+        [Test]
+        public void TestChunkUploadFail_Exception()
+        {
+            SubtestChunkUploadFail(ServerError.Exception);
+        }
+
+        /// <summary> Tests uploading media when cancelling a request in the middle.</summary>
+        [Test]
+        public void TestChunkUploadFail_Cancel()
+        {
+            TestChunkUploadFail_Cancel(1); // cancel the request initialization
+            TestChunkUploadFail_Cancel(2); // cancel the first media upload data
+            TestChunkUploadFail_Cancel(5); // cancel a request in the middle of the upload
+        }
+
+        /// <summary> Helper test to test canceling media upload in the middle.</summary>
+        /// <param name="cancelRequest">The request index to cancel.</param>
+        private void TestChunkUploadFail_Cancel(int cancelRequest)
+        {
+            int chunkSize = 100;
+            var payload = Encoding.UTF8.GetBytes(UploadTestData);
+
+            var handler = new MultipleChunksMessageHandler(true, ServerError.None, payload.Length, chunkSize, false);
+            handler.CancellationTokenSource = new CancellationTokenSource();
+            handler.CancelRequestNum = cancelRequest;
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                }))
+            {
+                var stream = new MemoryStream(payload);
+                var upload = new MockResumableUpload(service, stream, "text/plain");
+                upload.ChunkSize = chunkSize;
+
+                try
+                {
+                    var result = upload.UploadAsync(handler.CancellationTokenSource.Token).Result;
+                    Assert.Fail();
+                }
+                catch (AggregateException ae)
+                {
+                    Assert.IsInstanceOf<TaskCanceledException>(ae.InnerException);
+                }
+
+                Assert.That(handler.Calls, Is.EqualTo(cancelRequest));
             }
         }
 
