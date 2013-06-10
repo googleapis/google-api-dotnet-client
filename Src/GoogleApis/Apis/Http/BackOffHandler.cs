@@ -16,8 +16,8 @@ limitations under the License.
 
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
-
 using Google.Apis.Logging;
 using Google.Apis.Util;
 
@@ -119,7 +119,7 @@ namespace Google.Apis.Http
         {
             // if the func returns true try to handle this current failed try
             return HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response) &&
-                Handle(args.SupportsRetry, args.CurrentFailedTry);
+                Handle(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
         }
 
         #endregion
@@ -130,7 +130,7 @@ namespace Google.Apis.Http
         {
             // if the func returns true try to handle this current failed try
             return HandleExceptionFunc != null && HandleExceptionFunc(args.Exception) &&
-                Handle(args.SupportsRetry, args.CurrentFailedTry);
+                Handle(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
         }
 
         #endregion
@@ -141,7 +141,7 @@ namespace Google.Apis.Http
         /// block for x milliseconds (x is defined by the <see cref="BackOff"/> instance), and this handler returns 
         /// <c>true</c>.
         /// </summary>
-        private bool Handle(bool supportsRetry, int currentFailedTry)
+        private bool Handle(bool supportsRetry, int currentFailedTry, CancellationToken cancellationToken)
         {
             if (!supportsRetry || BackOff.MaxNumOfRetries < currentFailedTry)
             {
@@ -154,15 +154,22 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            Wait(ts);
+            Wait(ts, cancellationToken);
             Logger.Debug("Back-Off handled the error. Waited {0}ms before next retry...", ts.TotalMilliseconds);
             return true;
         }
 
-        /// <summary> Waits the given time span. Override this method is recommended for mocking purposes. </summary>
-        protected virtual void Wait(TimeSpan ts)
+        /// <summary> Waits the given time span. Override this method is recommended for mocking purposes.</summary>
+        /// <param name="ts">TimeSpan to wait (and block the current thread)</param>
+        /// <param name="cancellationToken">The cancellation token in case the user wants to cancel the operation in 
+        /// the middle</param>
+        protected virtual void Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
-            TaskEx.Delay(ts).Wait();
+            try
+            {
+                TaskEx.Delay(ts, cancellationToken).Wait();
+            }
+            catch (Exception) { }
         }
     }
 }

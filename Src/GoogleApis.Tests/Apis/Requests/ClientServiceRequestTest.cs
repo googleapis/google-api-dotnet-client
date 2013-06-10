@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -34,6 +35,7 @@ using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+
 
 namespace Google.Apis.Tests.Apis.Requests
 {
@@ -234,6 +236,7 @@ namespace Google.Apis.Tests.Apis.Requests
             {
             }
         }
+
         /// <summary> A message handler which returns an Http response message or throw an exception. </summary>
         class MockMessageHandler : CountableMessageHandler
         {
@@ -251,6 +254,32 @@ namespace Google.Apis.Tests.Apis.Requests
                     throw new InvalidOperationMockException("INVALID");
                 }
                 return new HttpResponseMessage();
+            }
+        }
+
+        /// <summary> A message handler which is used to cancel an Http request in the middle.</summary>
+        class CancelRedirectMessageHandler : CountableMessageHandler
+        {
+            /// <summary> The cancellation token we are going to use to cancel a request.</summary>
+            public CancellationTokenSource CancellationTokenSource { get; set; }
+
+            /// <summary> The request index we are going to cancel.</summary>
+            public int CancelRequestNum { get; set; }
+
+            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+                CancellationToken cancellationToken)
+            {
+                if (Calls == CancelRequestNum)
+                {
+                    CancellationTokenSource.Cancel();
+                }
+                var response = new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.Redirect,
+                        RequestMessage = request
+                    };
+                response.Headers.Location = new Uri("http://www.test.com");
+                return response;
             }
         }
 
@@ -306,6 +335,62 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         #region Execute (and ExecuteAsync)
+
+        /// <summary> Tests that canceling a outgoing request to the server works as expected.</summary>
+        [Test]
+        public void ExecuteAsync_Cancel()
+        {
+            SubtestExecuteAsync_Cancel(1);
+            SubtestExecuteAsync_Cancel(5);
+            SubtestExecuteAsync_Cancel(10);
+            SubtestExecuteAsync_Cancel(11);
+        }
+
+        /// <summary>
+        /// Test helper to test canceling token in a middle of a request to the server
+        /// </summary>
+        /// <param name="cancelRequestNum">
+        /// The index of the "server"'s request which a cancel token will be mimic.
+        /// </param>
+        private void SubtestExecuteAsync_Cancel(int cancelRequestNum)
+        {
+            var handler = new CancelRedirectMessageHandler();
+            handler.CancellationTokenSource = new CancellationTokenSource();
+            handler.CancelRequestNum = cancelRequestNum;
+
+            var initializer = new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                };
+
+            TestClientServiceRequest request;
+            using (var service = new MockClientService(initializer))
+            {
+                request = new TestClientServiceRequest(service, "POST", new MockRequest());
+                try
+                {
+                    request.ExecuteAsync(handler.CancellationTokenSource.Token).Wait();
+                    Assert.Fail();
+                }
+                catch (AggregateException ex)
+                {
+                    if (ex.InnerException is TaskCanceledException)
+                    {
+                        // we expect a task canceled exception in case the canceled request is less or equal total
+                        // number of retries
+                        Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
+                    }
+                    else
+                    {
+                        // exception should be thrown as a result of casting to MockResponse object
+                        Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
+                    }
+                }
+
+                var expectedCalls = Math.Min(service.HttpClient.MessageHandler.NumTries, cancelRequestNum);
+                Assert.That(handler.Calls, Is.EqualTo(expectedCalls));
+            }
+        }
 
         [Test]
         public void Execute_DisposeService()

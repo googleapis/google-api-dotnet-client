@@ -277,12 +277,25 @@ namespace Google.Apis.Tests.Apis.Http
         /// </summary>
         private class UnsuccessfulResponseMessageHandler : CountableMessageHandler
         {
-            /// <summary> Status code to return on the response. </summary>
+            /// <summary> Gets or sets the status code to return on the response.</summary>
             public HttpStatusCode ResponseStatusCode { get; set; }
+
+            /// <summary> Gets or sets the cancellation token source.</summary>
+            public CancellationTokenSource CancellationTokenSource { get; set; }
+
+            /// <summary> 
+            /// Gets or sets the request number to invoke the Cancel method on <see cref="CancellationTokenSource"/>.
+            /// </summary>
+            public int CancelRequestNum { get; set; }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
+                if (Calls == CancelRequestNum)
+                {
+                    CancellationTokenSource.Cancel();
+                }
+
                 return new HttpResponseMessage { StatusCode = ResponseStatusCode };
             }
 
@@ -702,13 +715,35 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.OK, initializer);
         }
 
+        /// <summary> Tests that back-off handler is canceled when cancellation token is used.</summary>
+        [Test]
+        public void SendAsync_BackOffUnsuccessfulResponseHandler_Cancel()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 2);
+            SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 6);
+        }
+
         /// <summary> 
-        /// Subtest that back-off handler works as expected when a successful or abnormal response is returned. 
+        /// Subtest that back-off handler works as expected when a successful or abnormal response is returned.
+        /// For testing the back-off handler in case of a canceled request, set the <code>cancelRequestNum</code>
+        /// parameter to the index of the request you want to cancel.
         /// </summary>
         private void SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode statusCode,
-            BackOffHandler.Initializer initializer)
+            BackOffHandler.Initializer initializer, int cancelRequestNum = 0)
         {
             var handler = new UnsuccessfulResponseMessageHandler { ResponseStatusCode = statusCode };
+
+            CancellationToken cancellationToken = CancellationToken.None;
+            bool cancel = cancelRequestNum > 0;
+
+            if (cancel)
+            {
+                CancellationTokenSource tcs = new CancellationTokenSource();
+                handler.CancellationTokenSource = tcs;
+                handler.CancelRequestNum = cancelRequestNum;
+                cancellationToken = tcs.Token;
+            }
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var boHandler = new MockBackOffHandler(initializer);
@@ -721,12 +756,26 @@ namespace Google.Apis.Tests.Apis.Http
                 boHandleCount = Math.Min((int)Math.Floor(Math.Log(boHandler.MaxTimeSpan.TotalSeconds, 2)) + 1,
                     configurableHanlder.NumTries - 1);
                 boHandleCount = boHandleCount >= 0 ? boHandleCount : 0;
+                if (cancel)
+                {
+                    boHandleCount = Math.Min(boHandleCount, cancelRequestNum);
+                }
             }
 
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, "https://test-exception-handler");
-                HttpResponseMessage response = client.SendAsync(request).Result;
+                try
+                {
+                    HttpResponseMessage response = client.SendAsync(request, cancellationToken).Result;
+                    Assert.False(cancel);
+                }
+                catch (AggregateException ae)
+                {
+                    // a canceled request should throw an exception
+                    Assert.IsInstanceOf<TaskCanceledException>(ae.InnerException);
+                    Assert.True(cancel);
+                }
 
                 Assert.That(boHandler.Waits.Count, Is.EqualTo(boHandleCount));
 
@@ -736,7 +785,9 @@ namespace Google.Apis.Tests.Apis.Http
                     Assert.That(boHandler.Waits[i].TotalSeconds, Is.EqualTo((int)Math.Pow(2, i)));
                 }
 
-                Assert.That(handler.Calls, Is.EqualTo(boHandleCount + 1));
+                // if the request was canceled the number of calls to the message handler is equal to the number of 
+                // calls to back-off handler
+                Assert.That(handler.Calls, Is.EqualTo(boHandleCount + (cancel ? 0 : 1)));
             }
         }
 
