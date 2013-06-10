@@ -149,6 +149,8 @@ namespace Google.Apis.Http
             HttpResponseMessage response = null;
             do // while (triesRemaining > 0)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 if (response != null)
                 {
                     response.Dispose();
@@ -191,6 +193,7 @@ namespace Google.Apis.Http
                                 Exception = lastException,
                                 TotalTries = NumTries,
                                 CurrentFailedTry = NumTries - triesRemaining,
+                                CancellationToken = cancellationToken
                             });
                     }
 
@@ -226,6 +229,7 @@ namespace Google.Apis.Http
                                     Response = response,
                                     TotalTries = NumTries,
                                     CurrentFailedTry = NumTries - triesRemaining,
+                                    CancellationToken = cancellationToken
                                 });
                         }
 
