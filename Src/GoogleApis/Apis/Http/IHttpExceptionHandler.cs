@@ -19,29 +19,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 
 namespace Google.Apis.Http
 {
-    /// <summary> Argument class to <see cref="IHttpExceptionHandler.HandleException"/>. </summary>
+    /// <summary> Argument class to <see cref="IHttpExceptionHandler.HandleException"/>.</summary>
     public class HandleExceptionArgs
     {
-        /// <summary> Gets or sets the sent request. </summary>
+        /// <summary> Gets or sets the sent request.</summary>
         public HttpRequestMessage Request { get; set; }
 
-        /// <summary> Gets or sets the exception which occurred during sending the request. </summary>
+        /// <summary> Gets or sets the exception which occurred during sending the request.</summary>
         public Exception Exception { get; set; }
 
-        /// <summary> Gets or sets the total number of tries to send the request. </summary>
+        /// <summary> Gets or sets the total number of tries to send the request.</summary>
         public int TotalTries { get; set; }
 
-        /// <summary> Gets or sets the current failed try. </summary>
+        /// <summary> Gets or sets the current failed try.</summary>
         public int CurrentFailedTry { get; set; }
 
-        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c> </summary>
+        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c>.</summary>
         public bool SupportsRetry
         {
             get { return TotalTries - CurrentFailedTry > 0; }
         }
+
+        /// <summary> Gets and sets the cancellation token which belongs to the request.</summary>
+        public CancellationToken CancellationToken { get; set; }
     }
 
     /// <summary> 
