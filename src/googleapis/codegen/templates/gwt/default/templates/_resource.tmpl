@@ -4,9 +4,9 @@
 @JsonRpcService
 public interface {{ resource.className }}Context extends RequestContext {
 {% for method in resource.methods %}{% indent %}
-{% emit_method_def method %}{% endindent %}{% endfor %}
+{% call_template _method method=method %}{% endindent %}{% endfor %}
 }
 {% if resource.resources %}public interface {{ resource.className }} {
 {% for r in resource.resources %}{% indent %}
-{% call_template _resource resource r %}{% endindent %}{% endfor %}
+{% call_template _resource resource=r %}{% endindent %}{% endfor %}
 }{% endif %}

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,6 +34,15 @@ from googleapis.codegen.api import Schema
 
 FLAGS = flags.FLAGS
 
+
+
+class FakeLanguageModel(language_model.LanguageModel):
+
+  def GetCodeTypeFromDictionary(self, def_dict):
+    return def_dict.get('type')
+
+  def CodeTypeForArrayOf(self, s):
+    return 'Array[%s]' % s
 
 
 class ApiTest(basetest.TestCase):
@@ -179,14 +188,6 @@ class ApiTest(basetest.TestCase):
     self.assertEquals(2, have_sub_resources_and_methods)
 
   def testArrayOfArray(self):
-
-    class FakeLanguageModel(language_model.LanguageModel):
-      def GetCodeTypeFromDictionary(self, def_dict):
-        return def_dict.get('type')
-
-      def CodeTypeForArrayOf(self, s):
-        return 'Array[%s]' % s
-
     discovery_doc = {
         'name': 'fake',
         'version': 'v1',
@@ -249,6 +250,147 @@ class ApiTest(basetest.TestCase):
         return
     self.fail('Did not find NoProperties')
 
+  def testSchemaWithAdditionalPropertiesWithoutId(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'Snorg': {
+                'id': 'Snorg',
+                'type': 'object',
+                'additionalProperties': {
+                    'type': 'object',
+                    'properties': {
+                        'thing': {
+                            'type': 'boolean'
+                            }
+                        }
+                    }
+                },
+            'SnorgFresser': {
+                'id': 'SnorgFresser',
+                'type': 'object',
+                'properties': {
+                    'snacks': {
+                        'type': 'array',
+                        'items': {
+                            '$ref': 'Snorg'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    schemas = api._schemas
+    self.assertTrue('SnorgFresser' in schemas)
+    self.assertTrue('Snorg' in schemas)
+    self.assertTrue('SnorgElement' in schemas)
+    snorg = api.SchemaByName('Snorg')
+    self.assertTrue(snorg)
+    self.assertFalse('Snorg' in api.ModelClasses())
+    snorg_element = api.SchemaByName('SnorgElement')
+    self.assertTrue(snorg_element)
+    self.assertTrue(snorg_element in api.ModelClasses())
+
+  def testNestedSchemaWithAdditionalProperties(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'RestDescription': {
+                'id': 'RestDescription',
+                'type': 'object',
+                'properties': {
+                    'auth': {
+                        'type': 'object',
+                        'properties': {
+                            'oauth2': {
+                                'type': 'object',
+                                'properties': {
+                                    'scopes': {
+                                        'type': 'object',
+                                        'additionalProperties': {
+                                            'type': 'object',
+                                            'properties': {
+                                                'description': {
+                                                    'type': 'string',
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    expected_names = {'RestDescription',
+                      'RestDescriptionAuth',
+                      'RestDescriptionAuthOauth2',
+                      'RestDescriptionAuthOauth2ScopesElement'}
+    schema_names = set(x.values.get('className') for x
+                       in api._schemas.itervalues())
+    self.assertEquals(expected_names, schema_names)
+    scopes_elem = api._schemas['RestDescription.auth.oauth2.scopesElement']
+    self.assertEquals('scopesElement', scopes_elem.safe_code_type)
+    self.assertEquals('RestDescriptionAuthOauth2ScopesElement',
+                      scopes_elem.code_type)
+    oauth2_elem = api._schemas['RestDescription.auth.oauth2']
+    self.assertEquals('oauth2', oauth2_elem.safe_code_type)
+    self.assertEquals('RestDescriptionAuthOauth2', oauth2_elem.code_type)
+
+  def testSchemaWithAdditionalPropertiesWithId(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'Snorg': {
+                'id': 'Snorg',
+                'type': 'object',
+                'additionalProperties': {
+                    'id': 'Skrimpkin',
+                    'type': 'object',
+                    'properties': {
+                        'thing': {
+                            'type': 'boolean'
+                            }
+                        }
+                    }
+                },
+            'SnorgFresser': {
+                'id': 'SnorgFresser',
+                'type': 'object',
+                'properties': {
+                    'snacks': {
+                        'type': 'array',
+                        'items': {
+                            '$ref': 'Snorg'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    schemas = api._schemas
+    self.assertTrue('SnorgFresser' in schemas)
+    self.assertTrue('Snorg' in schemas)
+    self.assertTrue('Skrimpkin' in schemas)
+    snorg = api.SchemaByName('Snorg')
+    self.assertTrue(snorg)
+    self.assertFalse('Snorg' in api.ModelClasses())
+    skrimpkin = api.SchemaByName('Skrimpkin')
+    self.assertTrue(skrimpkin)
+    self.assertTrue(skrimpkin in api.ModelClasses())
+
   def testUndefinedSchema(self):
     # This should generated an empty "Bar" class.
     discovery_doc = {
@@ -301,6 +443,13 @@ class ApiTest(basetest.TestCase):
                                 'lang_zh-TW'])
       self.assertTrue(desc in ['English (US)', 'Italian',
                                'Chinese (Simplified)', 'Chinese (Traditional)'])
+    accuracies = [p for p in m1.values['parameters']
+                  if p.values['wireName'] == 'accuracy'][0]
+    e = accuracies.values['enumType']
+    self.assertEquals(m1, e.parent)
+    for name, value, desc in e.values['pairs']:
+      self.assertTrue(name in ['VALUE_1', 'VALUE_2', 'VALUE_3'])
+      self.assertTrue(value in ['1', '2', '3'])
 
   def testScopes(self):
     gen = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
@@ -487,6 +636,11 @@ class ApiTest(basetest.TestCase):
     self.assertEquals('com.google.plus.pictures', photo_schema.module.name)
     self.assertEquals('com/google/plus/pictures', photo_schema.module.path)
 
+  def testMethods(self):
+    api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+    self.assertLess(25, len(api.all_methods))
+    self.assertLess(0, len(api.top_level_methods))
+
 
 class ApiExceptionTest(basetest.TestCase):
 
@@ -495,6 +649,40 @@ class ApiExceptionTest(basetest.TestCase):
     self.assertEquals('foo', str(e))
     e = ApiException('foo', {'bar': 1})
     self.assertEquals("""foo: {'bar': 1}""", str(e))
+
+
+class ApiModulesTest(basetest.TestCase):
+
+  def setUp(self):
+    self.discovery_doc = json.loads(
+        """
+        {
+         "name": "fake",
+         "version": "v1",
+         "schemas": {},
+         "resources": {}
+        }
+        """)
+    self.language_model = FakeLanguageModel()
+
+  def testModuleOwnerDomain(self):
+    self.discovery_doc['ownerDomain'] = 'foo.bar'
+    api = Api(self.discovery_doc)
+    api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
+    self.assertEquals('bar/foo/fake', api.values['module'].path)
+
+  def testModulePackagePath(self):
+    self.discovery_doc['packagePath'] = 'foo/BAR'
+    api = Api(self.discovery_doc)
+    api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
+    self.assertEquals('com/google/foo/BAR/fake', api.values['module'].path)
+
+  def testModuleOwnerDomainAndPackagePath(self):
+    self.discovery_doc['ownerDomain'] = 'toasty.com'
+    self.discovery_doc['packagePath'] = 'foo/BAR'
+    api = Api(self.discovery_doc)
+    api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
+    self.assertEquals('com/toasty/foo/BAR/fake', api.values['module'].path)
 
 
 def FindByWireName(list_of_resource_or_method, wire_name):

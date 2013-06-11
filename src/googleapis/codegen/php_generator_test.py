@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,15 +51,15 @@ class PHPApiTest(basetest.TestCase):
     """Test creating safe class names from object names."""
     test_schema = api.Schema(self.api, 'testSchema', {})
     type_to_hint = [
-        ({'$ref': 'Activity'}, 'Google_Activity '),
+        ({'$ref': 'Activity'}, 'Google_Service_Test_Activity'),
         ({'type': 'boolean'}, ''),
         ({'type': 'integer'}, ''),
         ({'type': 'string'}, ''),  # PHP doesn't support primitive type hints.
         ({'type': 'StRing'}, ''),  # PHP var names are case-insensitive.
-        ({'$ref': 'Photo'}, 'Google_Photo '),
+        ({'$ref': 'Photo'}, 'Google_Service_Test_Photo'),
         ({'type': 'array', 'items': {'type': 'string'}}, ''),
         ({'type': 'object', 'properties': {'p1': {'type': 'string'}}},
-         'Google_TestSchemaTest '),
+         'Google_Service_Test_TestSchemaTest'),
         ]
     for type_dict, expected_hint in type_to_hint:
       test_property = api.Property(self.api, test_schema, 'test', type_dict)

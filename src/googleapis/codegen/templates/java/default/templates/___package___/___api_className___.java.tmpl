@@ -27,9 +27,11 @@ public class {{ api.className }} extends com.google.api.client.googleapis.servic
 
   // Note: Leave this static initializer at the top of the file.
   static {
-    com.google.api.client.util.Preconditions.checkState(com.google.api.client.googleapis.GoogleUtils.VERSION.equals("{{ features.baseClientLibrary }}"),
+    com.google.api.client.util.Preconditions.checkState(
+        com.google.api.client.googleapis.GoogleUtils.MAJOR_VERSION == 1 &&
+        com.google.api.client.googleapis.GoogleUtils.MINOR_VERSION >= 15,
         "You are currently running with version %s of google-api-client. " +
-        "You need version {{ features.baseClientLibrary }} of google-api-client to run version " +
+        "You need at least version 1.15 of google-api-client to run version " +
         "{{ features.releaseVersion }} of the {{ api.title }} library.", com.google.api.client.googleapis.GoogleUtils.VERSION);
   }
 
@@ -100,10 +102,10 @@ public class {{ api.className }} extends com.google.api.client.googleapis.servic
   }
 
 {% for resource in api.resources %}
-{% indent %}{% emit_resource_def resource %}{% endindent %}
+{% indent %}{% call_template _resource resource=resource %}{% endindent %}
 {% endfor %}
 {% for method in api.methods %}
-{% indent %}{% emit_method_def method %}{% endindent %}
+{% indent %}{% call_template _method method=method %}{% endindent %}
 {% endfor %}
 
   /**

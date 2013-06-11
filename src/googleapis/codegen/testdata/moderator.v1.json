@@ -563,19 +563,19 @@
        "description": "Searches the public series and returns the search results.",
        "parameters": {
         "max-results": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Maximum number of results to return.",
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
         },
         "q": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Search query.",
          "type": "string"
         },
         "start-index": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Index of the first result to be retrieved.",
          "type": "integer",
          "minimum": "0",
@@ -658,12 +658,12 @@
      "description": "Inserts a response for the specified submission in the specified topic within the specified series.",
      "parameters": {
       "anonymous": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Set to true to mark the new submission as anonymous.",
        "type": "boolean"
       },
       "parentSubmissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the parent Submission within the Series.",
        "type": "integer",
@@ -671,7 +671,7 @@
        "maximum": "4294967295"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -679,7 +679,7 @@
        "maximum": "4294967295"
       },
       "topicId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Topic within the Series.",
        "type": "integer",
@@ -706,29 +706,29 @@
      "description": "Lists or searches the responses for the specified submission within the specified series and returns the search results.",
      "parameters": {
       "author": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Restricts the results to submissions by a specific author.",
        "type": "string"
       },
       "hasAttachedVideo": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies whether to restrict to submissions that have videos attached.",
        "type": "boolean"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to return.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Search query.",
        "type": "string"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -736,19 +736,19 @@
        "maximum": "4294967295"
       },
       "sort": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Sort order.",
        "type": "string"
       },
       "start-index": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Index of the first result to be retrieved.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -775,7 +775,7 @@
      "description": "Returns the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -809,19 +809,19 @@
      "description": "Searches the series and returns the search results.",
      "parameters": {
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to return.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Search query.",
        "type": "string"
       },
       "start-index": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Index of the first result to be retrieved.",
        "type": "integer",
        "minimum": "0",
@@ -839,7 +839,7 @@
      "description": "Updates the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -868,29 +868,29 @@
        "description": "Searches the responses for the specified series and returns the search results.",
        "parameters": {
         "author": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Restricts the results to submissions by a specific author.",
          "type": "string"
         },
         "hasAttachedVideo": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Specifies whether to restrict to submissions that have videos attached.",
          "type": "boolean"
         },
         "max-results": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Maximum number of results to return.",
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
         },
         "q": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Search query.",
          "type": "string"
         },
         "seriesId": {
-         "restParameterType": "path",
+         "location": "path",
          "required": true,
          "description": "The decimal ID of the Series.",
          "type": "integer",
@@ -898,12 +898,12 @@
          "maximum": "4294967295"
         },
         "sort": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Sort order.",
          "type": "string"
         },
         "start-index": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Index of the first result to be retrieved.",
          "type": "integer",
          "minimum": "0",
@@ -928,34 +928,34 @@
        "description": "Searches the submissions for the specified series and returns the search results.",
        "parameters": {
         "author": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Restricts the results to submissions by a specific author.",
          "type": "string"
         },
         "hasAttachedVideo": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Specifies whether to restrict to submissions that have videos attached.",
          "type": "boolean"
         },
         "lang": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "The language code for the language the client prefers resuls in.",
          "type": "string"
         },
         "max-results": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Maximum number of results to return.",
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
         },
         "q": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Search query.",
          "type": "string"
         },
         "seriesId": {
-         "restParameterType": "path",
+         "location": "path",
          "required": true,
          "description": "The decimal ID of the Series.",
          "type": "integer",
@@ -963,12 +963,12 @@
          "maximum": "4294967295"
         },
         "sort": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Sort order.",
          "type": "string"
         },
         "start-index": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Index of the first result to be retrieved.",
          "type": "integer",
          "minimum": "0",
@@ -995,12 +995,12 @@
      "description": "Returns the specified submission within the specified series.",
      "parameters": {
       "lang": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "The language code for the language the client prefers resuls in.",
        "type": "string"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1008,7 +1008,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1031,12 +1031,12 @@
      "description": "Inserts a new submission in the specified topic within the specified series.",
      "parameters": {
       "anonymous": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Set to true to mark the new submission as anonymous.",
        "type": "boolean"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1044,7 +1044,7 @@
        "maximum": "4294967295"
       },
       "topicId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Topic within the Series.",
        "type": "integer",
@@ -1074,7 +1074,7 @@
      "description": "Deletes the specified tag from the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1082,7 +1082,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1090,7 +1090,7 @@
        "maximum": "4294967295"
       },
       "tagId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "type": "string"
       }
@@ -1108,7 +1108,7 @@
      "description": "Inserts a new tag for the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1116,7 +1116,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1142,7 +1142,7 @@
      "description": "Lists all tags for the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1150,7 +1150,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1177,7 +1177,7 @@
      "description": "Returns the specified topic from the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1185,7 +1185,7 @@
        "maximum": "4294967295"
       },
       "topicId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Topic within the Series.",
        "type": "integer",
@@ -1208,7 +1208,7 @@
      "description": "Inserts a new topic into the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1233,23 +1233,23 @@
      "description": "Searches the topics within the specified series and returns the search results.",
      "parameters": {
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to return.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "mode": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "string"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Search query.",
        "type": "string"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1257,7 +1257,7 @@
        "maximum": "4294967295"
       },
       "start-index": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Index of the first result to be retrieved.",
        "type": "integer",
        "minimum": "0",
@@ -1278,7 +1278,7 @@
      "description": "Updates the specified topic within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1286,7 +1286,7 @@
        "maximum": "4294967295"
       },
       "topicId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Topic within the Series.",
        "type": "integer",
@@ -1316,29 +1316,29 @@
        "description": "Searches the submissions for the specified topic within the specified series and returns the search results.",
        "parameters": {
         "author": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Restricts the results to submissions by a specific author.",
          "type": "string"
         },
         "hasAttachedVideo": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Specifies whether to restrict to submissions that have videos attached.",
          "type": "boolean"
         },
         "max-results": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Maximum number of results to return.",
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
         },
         "q": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Search query.",
          "type": "string"
         },
         "seriesId": {
-         "restParameterType": "path",
+         "location": "path",
          "required": true,
          "description": "The decimal ID of the Series.",
          "type": "integer",
@@ -1346,19 +1346,19 @@
          "maximum": "4294967295"
         },
         "sort": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Sort order.",
          "type": "string"
         },
         "start-index": {
-         "restParameterType": "query",
+         "location": "query",
          "description": "Index of the first result to be retrieved.",
          "type": "integer",
          "minimum": "0",
          "maximum": "4294967295"
         },
         "topicId": {
-         "restParameterType": "path",
+         "location": "path",
          "required": true,
          "description": "The decimal ID of the Topic within the Series.",
          "type": "integer",
@@ -1387,7 +1387,7 @@
      "description": "Returns the votes by the authenticated user for the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1395,7 +1395,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1403,7 +1403,7 @@
        "maximum": "4294967295"
       },
       "userId": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "string"
       }
      },
@@ -1422,7 +1422,7 @@
      "description": "Inserts a new vote by the authenticated user for the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1430,7 +1430,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1456,14 +1456,14 @@
      "description": "Lists the votes by the authenticated user for the given series.",
      "parameters": {
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to return.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1471,7 +1471,7 @@
        "maximum": "4294967295"
       },
       "start-index": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Index of the first result to be retrieved.",
        "type": "integer",
        "minimum": "0",
@@ -1492,7 +1492,7 @@
      "description": "Updates the votes by the authenticated user for the specified submission within the specified series.",
      "parameters": {
       "seriesId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Series.",
        "type": "integer",
@@ -1500,7 +1500,7 @@
        "maximum": "4294967295"
       },
       "submissionId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The decimal ID of the Submission within the Series.",
        "type": "integer",
@@ -1508,7 +1508,7 @@
        "maximum": "4294967295"
       },
       "userId": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "string"
       }
      },

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,12 +28,12 @@ import time
 import zipfile
 
 
-from googleapis.codegen import files
 from googleapis.codegen.django_helpers import DjangoRenderTemplate
 from googleapis.codegen.language_model import LanguageModel
 from googleapis.codegen.template_objects import UseableInTemplates
 # Has to be after django_helpers pylint: disable-msg=g-bad-import-order
 from googleapis.codegen import template_helpers
+from googleapis.codegen.filesys import files
 
 # This block is static information about the generator which will get passed
 # into templates.
@@ -90,7 +90,7 @@ class TemplateGenerator(object):
     """Returns the full path to a template."""
     return os.path.join(self._template_dir, template_name)
 
-  def RenderTemplate(self, template_path, context_dict=dict()):
+  def RenderTemplate(self, template_path, context_dict=None):
     """Render a template.
 
     Renders a template with the standard dictionary of bindings.
@@ -108,7 +108,8 @@ class TemplateGenerator(object):
         'template_dir': self._template_dir,  # path to the template tree
         'features': self._surface_features,  # sub language options
         }
-    variables_dict.update(context_dict)
+    if context_dict:
+      variables_dict.update(context_dict)
     return DjangoRenderTemplate(template_path, variables_dict)
 
   def RenderTemplateToFile(self, template_path, context_dict, package,

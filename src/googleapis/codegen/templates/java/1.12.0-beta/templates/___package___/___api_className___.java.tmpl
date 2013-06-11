@@ -135,10 +135,10 @@ public class {{ api.className }} extends AbstractGoogleJsonClient {
   }
 
 {% for resource in api.resources %}
-{% indent %}{% emit_resource_def resource %}{% endindent %}
+{% indent %}{% call_template _resource resource resource %}{% endindent %}
 {% endfor %}
 {% for method in api.methods %}
-{% indent %}{% emit_method_def method %}{% endindent %}
+{% indent %}{% call_template _method method method %}{% endindent %}
 {% endfor %}
 
   /**

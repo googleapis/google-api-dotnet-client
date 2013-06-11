@@ -5,10 +5,10 @@
       "description": "Dart libraries for Google APIS.",
       "variations": {
         "default": {
-          "path": "default",
+          "path": "default"
         },
         "next": {
-          "path": "0.2",
+          "path": "0.2"
         }
       }
     },
@@ -17,10 +17,10 @@
       "description": "GWT libraries for Google APIS.",
       "variations": {
         "default": {
-          "path": "default",
+          "path": "default"
         },
         "stable": {
-          "path": "0.4-alpha",
+          "path": "0.4-alpha"
         }
       }
     },
@@ -29,13 +29,13 @@
       "description": "Java libraries for Google APIs.",
       "variations": {
         "default": {
-          "path": "default",
+          "path": "default"
         },
         "stable": {
-          "path": "1.14.0-beta",
+          "path": "1.14.0-beta"
         },
         "models_only": {
-          "path": "models_only",
+          "path": "models_only"
         }
       }
     },
@@ -44,10 +44,10 @@
       "description": "PHP libraries for Google APIs.",
       "variations": {
         "default": {
-          "path": "default",
+          "path": "default"
         },
         "stable": {
-          "path": "0.3",
+          "path": "0.3"
         }
       }
     },
@@ -56,7 +56,7 @@
       "description": "Python libraries for Google APIs.",
       "variations": {
         "default": {
-          "path": "1.0",
+          "path": "1.0"
         }
       }
     }

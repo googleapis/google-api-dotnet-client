@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,12 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
 import os
+import textwrap
 
 from google.apputils import basetest
-# pylint: disable-msg=W0611
-from googleapis.codegen import data_types
+# pylint: disable-msg=unused-import
 from googleapis.codegen import django_helpers
-from googleapis.codegen import language_model
 from googleapis.codegen import template_helpers
-from googleapis.codegen import template_objects
 from django import template as django_template  # pylint: disable-msg=C6203
 
 
@@ -91,14 +89,20 @@ class TemplateHelpersTest(basetest.TestCase):
        // %s %s %s
        // %s %s""" % (alphabet, alphabet, alphabet, alphabet, alphabet)
     self.assertEquals(expected, template_helpers.block_comment(value))
+    value = '// %s %s %s %s' % ((alphabet,) * 4)
+    expected = '// %s %s %s\n// %s' % ((alphabet,) * 4)
+    self.assertEquals(expected, template_helpers.block_comment(value))
 
   def testNoblanklines(self):
     self.assertEquals('a\nb', template_helpers.noblanklines('a\nb'))
     self.assertEquals('a\nb', template_helpers.noblanklines('a\nb\n\n'))
     self.assertEquals('a\nb', template_helpers.noblanklines('\na\n\nb\n'))
 
+  def _GetContext(self, data=None):
+    return django_template.Context(data or {})
+
   def testCollapseNewLines(self):
-    context = django_template.Context({})
+    context = self._GetContext()
 
     class NodesList(object):
 
@@ -121,9 +125,88 @@ class TemplateHelpersTest(basetest.TestCase):
         NodesList('a\n\n\n\nb'))
     self.assertEquals('a\n\nb', collapse_node.render(context))
 
+  def testDocCommentBlocks(self):
+
+    def Render(language, text, block):
+      context = self._GetContext()
+      lang_node = template_helpers.LanguageNode(language)
+      lang_node.render(context)
+      doc_comment_node = template_helpers.DocCommentNode(
+          text=text, comment_type='doc', wrap_blocks=block)
+      return doc_comment_node.render(context)
+
+    s1 = [('We can all agree that this comment is '
+           'almost certain to be too long for a '),
+          'single line due to its excessive verbosity.']
+    s2 = 'This is short and sweet.'
+    text = '\n'.join([''.join(s1), s2])
+    no_blocks = Render('cpp', text, False)
+    with_blocks = Render('cpp', text, True)
+    self.assertNotEqual(no_blocks, with_blocks)
+    self.assertTrue((' * %s' % s2) in no_blocks)
+    self.assertTrue(s1[1] + ' ' +  s2 in with_blocks)
+
+  def testWrapInComment(self):
+    text = textwrap.dedent("""\
+    Line one.
+
+    Line three.
+
+    Line five.
+    """)
+
+    expected = textwrap.dedent("""\
+    /**
+     * Line one.
+     *
+     * Line three.
+     *
+     * Line five.
+     */""")
+    for should_wrap in (True, False):
+      wrapped = template_helpers._WrapInComment(
+          text, wrap_blocks=should_wrap, start_prefix='/**',
+          continue_prefix=' * ',
+          comment_end=' */', begin_tag='', end_tag='',
+          available_width=80)
+      self.assertEquals(expected, wrapped)
+
+  def testDocCommmentsEol(self):
+    source_tmpl = textwrap.dedent("""\
+    {% language java %}
+    {% doc_comment XXX %}
+    Sets the '<code>{{ p.wireName }}</code>' attribute.
+    {% if p.deprecated %}
+    @deprecated
+    {% endif %}
+    @param[in] value {{ p.description }}
+    {% enddoc_comment %}
+    """)
+    for should_block in ('block', 'noblock'):
+      source = source_tmpl.replace('XXX', should_block)
+      template = django_template.Template(source)
+      context = self._GetContext({
+          'p': {
+              'deprecated': True,
+              'wireName': 'foobar',
+              'description': 'A description.',
+              }})
+
+      rendered = template.render(context)
+      expected = (
+          '\n'
+          '/**\n'
+          ' * Sets the \'<code>foobar</code>\' attribute.\n'
+          ' *\n'
+          ' * @deprecated\n'
+          ' *\n'
+          ' * @param[in] value A description.\n'
+          ' */\n')
+      self.assertEquals(expected, rendered, 'should block is %s' % should_block)
+
   def testDocComments(self):
     def TryDocComment(language, input_text, expected):
-      context = django_template.Context({})
+      context = self._GetContext()
       lang_node = template_helpers.LanguageNode(language)
       lang_node.render(context)
       context['_LINE_WIDTH'] = 50  # to make expected easier to read
@@ -141,7 +224,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
     # single line csharp and cpp
     value = 'Hello, World!'
-    TryDocComment('cpp', value, '/// %s' % value)
+    TryDocComment('cpp', value, '/** %s */' % value)
     TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
 
     # single line but with '\n' in it
@@ -153,7 +236,7 @@ class TemplateHelpersTest(basetest.TestCase):
     # since it is still syntactically correct.
     TryDocComment('java', value, '/**\n * %s\n */' % expected_expansion)
     TryDocComment('php', value, '/**\n * %s\n */' % expected_expansion)
-    TryDocComment('cpp', value, '/// %s' % expected_expansion)
+    TryDocComment('cpp', value, '/**\n * %s\n */' % expected_expansion)
     TryDocComment('csharp', value,
                   '/// <summary>%s</summary>' % expected_expansion)
 
@@ -166,19 +249,33 @@ class TemplateHelpersTest(basetest.TestCase):
     # single line csharp and c++
     value = alphabet
     TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
-    TryDocComment('cpp', value, '/// %s' % value)
+    TryDocComment('cpp', value, '/** %s */' % value)
 
     # multi line csharp
     value = '%s %s %s' % (alphabet, alphabet, alphabet)
     expected_expansion = '%s\n/// %s\n/// %s' % (alphabet, alphabet, alphabet)
     TryDocComment('csharp', value,
                   '/// <summary>%s</summary>' % expected_expansion)
-    TryDocComment('cpp', value, '/// %s' % expected_expansion)
+
+    expected_expansion = '%s\n * %s\n * %s' % (alphabet, alphabet, alphabet)
+    TryDocComment('cpp', value, '/**\n * %s\n */' % expected_expansion)
 
   def testCallTemplate(self):
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} def'
     template = django_template.Template(source)
-    rendered = template.render(django_template.Context({
+    rendered = template.render(self._GetContext({
+        'template_dir': self._TEST_DATA_DIR,
+        'api': {
+            'xxx': 'yyy'
+            },
+        'bar': 'baz'
+        }))
+    self.assertEquals('abc 1baz1 2yyy2 3yyy3 def', rendered)
+
+  def testCallTemplateWithEqualsSyntax(self):
+    source = 'abc {% call_template _call_test foo=bar qux=api.xxx %} def'
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {
             'xxx': 'yyy'
@@ -191,7 +288,7 @@ class TemplateHelpersTest(basetest.TestCase):
     """Make sure variable stacking happens correctly on call_template."""
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} {{foo}}'
     template = django_template.Template(source)
-    rendered = template.render(django_template.Context({
+    rendered = template.render(self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {
             'xxx': 'yyy'
@@ -212,20 +309,184 @@ class TemplateHelpersTest(basetest.TestCase):
           {% parameter %}string b{% end_parameter %}
         {% end_parameter_list %})"""
     template = django_template.Template(source)
-    rendered = template.render(django_template.Context({}))
+    rendered = template.render(self._GetContext())
     self.assertEquals('method(int a, string b)', rendered)
+
+  def testParamEscaping(self):
+    source = """method({% parameter_list %}
+        {% parameter %}JsonCppArray<string> a{% end_parameter %}
+        {% end_parameter_list %})"""
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext({}))
+    self.assertEquals('method(JsonCppArray<string> a)', rendered)
+    source = """method({% parameter_list %}
+        {% parameter %}{{ foo }} a{% end_parameter %}
+        {% end_parameter_list %})"""
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext(
+        {'foo': 'JsonCppArray<string>'}))
+    # HTML escaping has not been turned off
+    self.assertEquals('method(JsonCppArray&lt;string&gt; a)', rendered)
+    source = '{% language cpp %}' + source
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext(
+        {'foo': 'JsonCppArray<string>'}))
+    self.assertEquals('method(JsonCppArray<string> a)', rendered)
+    source = """{% language cpp %}
+        {% call_template _escape_test foo foo %}
+    """
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext(
+        {'template_dir': self._TEST_DATA_DIR,
+         'foo': 'JsonCppArray<string>'})).strip()
+    self.assertEquals('method(JsonCppArray<string> a)', rendered)
 
   def testImportWithoutManager(self):
     expected = """import hello_world
                   import abc"""
     source = '{% imports x %}\n' + expected + '\n{% endimports %}'
     template = django_template.Template(source)
-    rendered = template.render(django_template.Context({'x': {}}))
+    rendered = template.render(self._GetContext({'x': {}}))
     self.assertEquals(expected, rendered)
+
+  def testNoEol(self):
+    def TryIt(source, expected, ctxt=None):
+      template = django_template.Template(source)
+      rendered = template.render(self._GetContext(ctxt))
+      self.assertEquals(expected, rendered)
+
+    source = textwrap.dedent("""\
+    {% noeol %}
+    public{% sp %}
+    get
+    {{ name }}() {
+    {% eol %}
+      return
+    {% sp %}
+    {{ x }};
+    {% if thing %}{% eol %}{% endif %}
+    }
+    {% endnoeol %}""")
+
+    expected = 'public getFoo() {\n  return foo;\n}'
+    TryIt(source, expected, {'name': 'Foo', 'x': 'foo', 'thing': '1'})
+
+    source = textwrap.dedent("""\
+    {% noeol %}
+    First {{ name }} Later
+    {% endnoeol %}""")
+
+    expected = 'First Bob Later'
+    TryIt(source, expected, {'name': 'Bob'})
+
+  def testNoBlank(self):
+    def TryIt(source, expected, ctxt=None):
+      template = django_template.Template(source)
+      rendered = template.render(self._GetContext(ctxt))
+      self.assertEquals(expected, rendered)
+
+    source = textwrap.dedent("""\
+    {% noblank %}
+
+    This is all going to be fine.
+
+    Don't be alarmed.
+
+    There are no empty lines here.
+
+    {% endnoblank %}""")
+
+    expected = ('This is all going to be fine.\n'
+                'Don\'t be alarmed.\n'
+                'There are no empty lines here.\n')
+
+    TryIt(source, expected, {})
+
+    source = textwrap.dedent("""\
+    {% noblank %}
+    This is all going to be fine.
+
+    Don't be alarmed.
+
+    There is one empty line here.
+
+    {% eol %}
+
+
+    {% endnoblank %}""")
+
+    expected = ('This is all going to be fine.\n'
+                'Don\'t be alarmed.\n'
+                'There is one empty line here.\n\n')
+
+    TryIt(source, expected, {})
+
+  def testNestedNoBlank(self):
+    source = textwrap.dedent("""\
+    {% noblank %}
+    Foo
+    {% noeol %}
+    Bar
+    {% eol %}
+    {% endnoeol %}
+    {% eol %}
+    {% endnoblank %}X
+    """)
+    expected = 'Foo\nBar\n\nX\n'
+    template = django_template.Template(source)
+    self.assertEquals(expected, template.render(self._GetContext({})))
+
+  def testNoBlankRecurse(self):
+
+    def TryIt(source, expected):
+      ctxt = self._GetContext({
+          'template_dir': self._TEST_DATA_DIR
+          })
+      template = django_template.Template(source)
+      gotten = template.render(ctxt)
+      self.assertEquals(expected, gotten)
+
+    recurse_source = textwrap.dedent("""\
+    {% noblank recurse %}
+    {% call_template _eoltest %}
+    {% endnoblank %}
+    """)
+    recurse_expected = '|\n|\nX\nX\n'
+
+    TryIt(recurse_source, recurse_expected)
+
+    norecurse_source = textwrap.dedent("""\
+    {% noblank %}
+    {% call_template _eoltest %}
+    {% endnoblank %}
+    """)
+
+    norecurse_expected = '|\n|\n\n\nX\n\n\nX\n'
+
+    TryIt(norecurse_source, norecurse_expected)
+
+    recurse_source = textwrap.dedent("""\
+    {% noblank recurse %}
+    {% call_template _eoltest2 %}
+    {% endnoblank %}
+    """)
+    recurse_expected = '|\n|\n\n\nX\nX\n'
+
+    TryIt(recurse_source, recurse_expected)
+
+    norecurse_source = textwrap.dedent("""\
+    {% noblank %}
+    {% call_template _eoltest2 %}
+    {% endnoblank %}
+    """)
+
+    norecurse_expected = '|\n|\n\n\nX\n\nX\n'
+
+    TryIt(norecurse_source, norecurse_expected)
 
   def testLiteral(self):
     def TryTestLiteral(language, input_text, expected):
-      context = django_template.Context({
+      context = self._GetContext({
           'foo': 'foo\nb"a$r',
           'bar': 'baz',
           'pattern': '\\d{4}-\\d{2}-\\d{2}'})
@@ -247,7 +508,7 @@ class TemplateHelpersTest(basetest.TestCase):
     expected_license_preamble = 'Licensed under the Apache License'
     template = django_template.Template(
         '{% language java %}{% copyright_block %}')
-    context = django_template.Context({
+    context = self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {},
         })
@@ -270,7 +531,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
     # try a good one
     template = django_template.Template('{% camel_case foo %}')
-    context = django_template.Context({'foo': 'hello_world'})
+    context = self._GetContext({'foo': 'hello_world'})
     self.assertEquals('HelloWorld', template.render(context))
 
     # Missing the arg
@@ -280,39 +541,6 @@ class TemplateHelpersTest(basetest.TestCase):
         self.fail('TemplateSyntaxError not raised')
       except django_template.TemplateSyntaxError as e:
         self.assertEquals('tag requires a single argument: %s' % tag, str(e))
-
-  def testDataContextNode(self):
-    # This happens to test the "value_of" tag as well.
-    lang_model = language_model.LanguageModel('|')
-    foo_def_dict = {
-        'className': 'Foo',
-        'type': 'string',
-        }
-    prototype = data_types.DataType(
-        foo_def_dict, None, language_model=lang_model)
-    dv = template_objects.DataValue('four', prototype)
-
-    source = '{% value_of data %}'
-    template = django_template.Template(source)
-
-    context = django_template.Context({'data': dv})
-    self.assertEquals('"four"', template.render(context))
-
-    context = django_template.Context({'data': 'foo'})
-    self.assertRaises(
-        django_template.TemplateSyntaxError, template.render, context)
-
-    bar_def_dict = {
-        'className': 'Foo',
-        'type': 'parrot',
-        }
-    prototype = data_types.DataType(
-        bar_def_dict, None, language_model=lang_model)
-    dv = template_objects.DataValue('fred', prototype)
-
-    context = django_template.Context({'data': dv})
-    self.assertRaises(
-        django_template.TemplateSyntaxError, template.render, context)
 
   def testCache(self):
     loader = template_helpers.CachingTemplateLoader()
@@ -327,12 +555,12 @@ class TemplateHelpersTest(basetest.TestCase):
   def testHalt(self):
     # See that it raises the error
     template = django_template.Template('{% halt %}')
-    context = django_template.Context({})
+    context = self._GetContext({})
     self.assertRaises(
         template_helpers.Halt, template.render, context)
     # But make sure it raises on execution, not parsing. :-)
     template = django_template.Template('{% if false %}{% halt %}{% endif %}OK')
-    context = django_template.Context({})
+    context = self._GetContext({})
     self.assertEquals('OK', template.render(context))
 
 

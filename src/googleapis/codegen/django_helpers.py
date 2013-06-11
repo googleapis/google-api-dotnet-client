@@ -1,5 +1,4 @@
-#!/usr/bin/python2.6
-#
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +36,7 @@ try:
 except RuntimeError:
   pass
 
-from googleapis.codegen import files
+from googleapis.codegen.filesys import files
 
 # COV_NF_END
 
@@ -55,7 +54,7 @@ def DjangoRenderTemplate(template_path, context_dict):
 
   Args:
     template_path: (str) Path to file.
-    context_dict: (dict) The dictionary to use for template evalutaion.
+    context_dict: (dict) The dictionary to use for template evaluation.
   Returns:
     (str) The expanded template.
   """

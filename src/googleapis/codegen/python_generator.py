@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2012 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -119,7 +119,7 @@ class PythonLanguageModel(language_model.LanguageModel):
     """
     return 'dict'
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def ToMemberName(self, s, the_api):
     """Convert a wire format name into a suitable Python variable name."""
     return s.replace('-', '_')
@@ -138,7 +138,7 @@ class PythonGenerator(api_library_generator.ApiLibraryGenerator):
         language_model=PYTHON_LANGUAGE_MODEL,
         options=options)
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def AnnotateMethod(self, the_api, method, resource):
     """Correct naming for APIClient methods in Python.
 
@@ -165,7 +165,7 @@ class PythonGenerator(api_library_generator.ApiLibraryGenerator):
     parameter.SetTemplateValue('codeName',
                                discovery_client.key2param(parameter.codeName))
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def AnnotateResource(self, the_api, resource):
     """Correct naming for APIClient resources in Python.
 
@@ -186,7 +186,7 @@ class PythonApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(PythonApi, self).__init__(discovery_doc)
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Python class name.
 

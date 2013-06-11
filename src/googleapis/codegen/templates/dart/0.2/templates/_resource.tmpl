@@ -4,10 +4,10 @@
 {% endcomment %}
 class {{ resource.className }} extends Resource {
 
-  {{ api.className }}(Client client) : super(client) {
+  {{ resource.className }}(Client client) : super(client) {
   }
 {% for m in resource.methods %}
-{% indent %}{% call_template _method method m %}{% endindent %}{% endfor %}
+{% indent %}{% call_template _method method=m %}{% endindent %}{% endfor %}
 }
 {% for r in resource.resources %}
-{% call_template _resource resource r %}{% endfor %}
+{% call_template _resource resource=r %}{% endfor %}

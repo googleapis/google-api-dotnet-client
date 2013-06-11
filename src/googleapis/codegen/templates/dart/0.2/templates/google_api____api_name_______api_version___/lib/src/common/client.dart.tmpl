@@ -4,45 +4,45 @@ part of {{ api.name }}_{{ api.version }}_api_client;
  * Base class for all API clients, offering generic methods for HTTP Requests to the API
  */
 abstract class Client {
-  String basePath;
-  String rootUrl;
-  bool makeAuthRequests;
-  Map params;
+  core.String basePath;
+  core.String rootUrl;
+  core.bool makeAuthRequests;
+  core.Map params;
 
   static const _boundary = "-------314159265358979323846";
   static const _delimiter = "\r\n--$_boundary\r\n";
   static const _closeDelim = "\r\n--$_boundary--";
 
   Client() {
-    params = new Map();
+    params = new core.Map();
     makeAuthRequests = false;
   }
 
   /**
    * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
    */
-  Future request(String requestUrl, String method, {String body, String contentType:"application/json", Map urlParams, Map queryParams});
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams});
 
   /**
    * Joins [content] (encoded as Base64-String) with specified [contentType] and additional request [body] into one multipart-body and send a HTTPRequest with [method] (usually POST) to [requestUrl]
    */
-  Future upload(String requestUrl, String method, String body, String content, String contentType, {Map urlParams, Map queryParams}) {
-    var multiPartBody = new StringBuffer();
+  async.Future upload(core.String requestUrl, core.String method, core.String body, core.String content, core.String contentType, {core.Map urlParams, core.Map queryParams}) {
+    var multiPartBody = new core.StringBuffer();
     if (contentType == null || contentType.isEmpty) {
       contentType = "application/octet-stream";
     }
     multiPartBody
-    ..add(_delimiter)
-    ..add("Content-Type: application/json\r\n\r\n")
-    ..add(body)
-    ..add(_delimiter)
-    ..add("Content-Type: ")
-    ..add(contentType)
-    ..add("\r\n")
-    ..add("Content-Transfer-Encoding: base64\r\n")
-    ..add("\r\n")
-    ..add(content)
-    ..add(_closeDelim);
+    ..write(_delimiter)
+    ..write("Content-Type: application/json\r\n\r\n")
+    ..write(body)
+    ..write(_delimiter)
+    ..write("Content-Type: ")
+    ..write(contentType)
+    ..write("\r\n")
+    ..write("Content-Transfer-Encoding: base64\r\n")
+    ..write("\r\n")
+    ..write(content)
+    ..write(_closeDelim);
 
     return request(requestUrl, method, body: multiPartBody.toString(), contentType: "multipart/mixed; boundary=\"$_boundary\"", urlParams: urlParams, queryParams: queryParams);
   }
@@ -58,9 +58,9 @@ abstract class Resource {
 }
 
 /// Exception thrown when the HTTP Request to the API failed
-class APIRequestException implements Exception {
-  final String msg;
+class APIRequestException implements core.Exception {
+  final core.String msg;
   const APIRequestException([this.msg]);
-  String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
+  core.String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
 }
 

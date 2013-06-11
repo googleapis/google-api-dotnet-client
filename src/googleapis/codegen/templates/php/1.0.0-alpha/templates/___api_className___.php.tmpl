@@ -1,0 +1,43 @@
+<?php
+{% language php %}{% copyright_block %}
+
+/**
+ * Service definition for {{ api.className }} ({{ api.version }}).
+ *
+ * <p>
+ * {{ api.description }}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="{{ api.documentationLink }}" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+class {{ api.owner }}_Service_{{ api.className }} extends Google_Service {
+{% call_template _resource_var resource=api %}
+  /**{% filter block_comment %}
+   * Constructs the internal representation of the {{ api.className }} service.
+   * {% endfilter %}
+   *
+   * @param Google_Client $client
+   */
+  public function __construct(Google_Client $client) {
+    $this->servicePath = {% literal api.servicePath %};
+    $this->version = {% literal api.version %};
+    $this->serviceName = {% literal api.name %};
+
+    $client->addService($this->serviceName, $this->version);
+{% call_template _resource_decl resource=api %}
+{% for r in api.methods %}
+{% call_template _resource_decl resource=r %}{% endfor %}
+  }
+}
+
+{% for resource in api.resources %}
+{% indent %}{% call_template _resource resource=resource %}{% endindent %}
+{% endfor %}
+
+{% for model in api.models %}
+{% call_template _model_class model=model api=api %}{% endfor %}

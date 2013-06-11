@@ -5,16 +5,16 @@ part of {{ api.name }}_{{ api.version }}_api_browser;
  */
 abstract class BrowserClient extends Client {
 
-  OAuth2 _auth;
-  bool _jsClientLoaded = false;
+  oauth.OAuth2 _auth;
+  core.bool _jsClientLoaded = false;
 
-  BrowserClient([OAuth2 this._auth]) : super();
+  BrowserClient([oauth.OAuth2 this._auth]) : super();
 
   /**
    * Loads the JS Client Library to make CORS-Requests
    */
-  Future<bool> _loadJsClient() {
-    var completer = new Completer();
+  async.Future<core.bool> _loadJsClient() {
+    var completer = new async.Completer();
 
     if (_jsClientLoaded) {
       completer.complete(true);
@@ -28,10 +28,10 @@ abstract class BrowserClient extends Client {
       });
     });
 
-    ScriptElement script = new ScriptElement();
+    html.ScriptElement script = new html.ScriptElement();
     script.src = "http://apis.google.com/js/client.js?onload=handleClientLoad";
     script.type = "text/javascript";
-    document.body.children.add(script);
+    html.document.body.children.add(script);
 
     return completer.future;
   }
@@ -39,12 +39,12 @@ abstract class BrowserClient extends Client {
   /**
    * Makes a request via the JS Client Library to circumvent CORS-problems
    */
-  Future _makeJsClientRequest(String requestUrl, String method, {String body, String contentType, Map queryParams}) {
-    var completer = new Completer();
-    var requestData = new Map();
+  async.Future _makeJsClientRequest(core.String requestUrl, core.String method, {core.String body, core.String contentType, core.Map queryParams}) {
+    var completer = new async.Completer();
+    var requestData = new core.Map();
     requestData["path"] = requestUrl;
     requestData["method"] = method;
-    requestData["headers"] = new Map();
+    requestData["headers"] = new core.Map();
 
     if (queryParams != null) {
       requestData["params"] = queryParams;
@@ -61,7 +61,7 @@ abstract class BrowserClient extends Client {
     js.scoped(() {
       var request = js.context.gapi.client.request(js.map(requestData));
       var callback = new js.Callback.once((jsonResp, rawResp) {
-        if (jsonResp is bool && jsonResp == false) {
+        if (jsonResp is core.bool && jsonResp == false) {
           var raw = JSON.parse(rawResp);
           if (raw["gapiRequest"]["data"]["status"] >= 400) {
             completer.completeError(new APIRequestException("JS Client - ${raw["gapiRequest"]["data"]["status"]} ${raw["gapiRequest"]["data"]["statusText"]} - ${raw["gapiRequest"]["data"]["body"]}"));
@@ -81,9 +81,9 @@ abstract class BrowserClient extends Client {
   /**
    * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
    */
-  Future request(String requestUrl, String method, {String body, String contentType:"application/json", Map urlParams, Map queryParams}) {
-    var request = new HttpRequest();
-    var completer = new Completer();
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams}) {
+    var request = new html.HttpRequest();
+    var completer = new async.Completer();
 
     if (urlParams == null) urlParams = {};
     if (queryParams == null) queryParams = {};
@@ -100,9 +100,9 @@ abstract class BrowserClient extends Client {
     } else {
       path ="$rootUrl${basePath.substring(1)}$requestUrl";
     }
-    var url = new UrlPattern(path).generate(urlParams, queryParams);
+    var url = new oauth.UrlPattern(path).generate(urlParams, queryParams);
 
-    request.on.loadEnd.add((Event e) {
+    request.onLoadEnd.listen((_) {
       if (request.status == 200) {
         var data = JSON.parse(request.responseText);
         completer.complete(data);
@@ -114,7 +114,7 @@ abstract class BrowserClient extends Client {
             } else {
               path ="$basePath$requestUrl";
             }
-            url = new UrlPattern(path).generate(urlParams, {});
+            url = new oauth.UrlPattern(path).generate(urlParams, {});
             _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
               .then((response) {
                 var data = JSON.parse(response);
@@ -131,7 +131,7 @@ abstract class BrowserClient extends Client {
             var errorJson;
             try {
               errorJson = JSON.parse(request.responseText);
-            } on FormatException {
+            } on core.FormatException {
               errorJson = null;
             }
             if (errorJson != null && errorJson.containsKey("error")) {

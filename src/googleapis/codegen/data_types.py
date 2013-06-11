@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -128,6 +128,7 @@ class PrimitiveDataType(DataType):
     """
     super(PrimitiveDataType, self).__init__(def_dict, api, parent=parent)
     self.SetTemplateValue('builtIn', True)
+    self.SetTemplateValue('isScalar', True)
 
   @property
   def class_name(self):
@@ -421,3 +422,59 @@ class Void(PrimitiveDataType):
     if self.language_model:
       return self.language_model.CodeTypeForVoid()
     return 'void'
+
+
+class Enum(DataType):
+  """The definition of an Enum.
+
+  Example enum in discovery.
+    "enum": [
+        "@comments",
+        "@consumption",
+        "@liked",
+        "@public",
+        "@self"
+       ],
+    "enumDescriptions": [
+        "Limit to activities commented on by the user.",
+        "Limit to activities to be consumed by the user.",
+        "Limit to activities liked by the user.",
+        "Limit to public activities posted by the user.",
+        "Limit to activities posted by the user."
+       ]
+  """
+
+  def __init__(self, api, name, base_type, values, descriptions, parent):
+    """Create an enum.
+
+    Args:
+      api: (Api) The Api which owns this Property
+      name: (str) The name for this enum.
+      base_type: (str) The underlying (language specific) type of the values.
+      values: ([str]) List of possible values.
+      descriptions: ([str]) List of value descriptions
+      parent: (Method) The method owning this enum.
+    """
+    super(Enum, self).__init__({}, api, parent=parent)
+    self.ValidateName(name)
+    self._base_type = base_type
+    self.SetTemplateValue('wireName', name)
+    self.SetTemplateValue('className',
+                          api.ToClassName(name, self, element_type='enum'))
+    def FixName(name):
+      name = name[0].isdigit() and 'VALUE_' + name or name.lstrip('@')
+      return name.upper().replace('-', '_')
+    names = [FixName(s) for s in values]
+    def FixDescription(desc):
+      return self.ValidateAndSanitizeComment(self.StripHTML(desc))
+    # TODO(user): Not really a "pair". Maybe either give this a better
+    # name than pairs (i.e. tuples, items, name_val_desc, etc),
+    # and/or create a class that encapsulates those properties.
+    pairs = zip(names, values, map(FixDescription, descriptions))
+    self.SetTemplateValue('pairs', pairs)
+
+  @property
+  def codeType(self):  # pylint: disable-msg=C6409
+    # Enums want to use their path to the class name because they are
+    # heavily scoped to methods.
+    return self.fullClassName()

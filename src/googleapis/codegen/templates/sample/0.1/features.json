@@ -1,0 +1,19 @@
+{
+  "description": "A sample codegen template tree",
+  # the releaseVersion should always match the name to this template folder.
+  "releaseVersion": "0.1",
+  "someVariable": "This string is from features.json",
+  "requires": [
+  {
+    "name": "The magic foo library that we need",
+    "environments": ["*"],
+    "version": "0",
+    "files": [
+    {
+      "type": "binary",
+      "path": "lib/foo.lib"
+    }
+    ]
+  }
+  ]
+}

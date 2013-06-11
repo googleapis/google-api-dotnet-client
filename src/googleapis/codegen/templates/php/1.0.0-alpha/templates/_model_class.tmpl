@@ -1,0 +1,32 @@
+
+{% filter noblanklines %}
+class {{ api.owner }}_Service_{{ api.className }}_{{ model.className }}
+{% ifequal model.dataType "array" %}
+    extends Google_Collection {
+{% else %}
+    extends Google_Model {
+{% endifequal %}
+{% for property in model.properties %}
+  {% if property.typeHint %}
+  protected $__{{ property.codeName }}Type = '{{ property.typeHint|cut:" " }}';
+  protected $__{{ property.codeName }}DataType = '{{ property.dataType }}';
+  {% endif %}
+  public ${{ property.codeName }};
+{% endfor %}
+{% for property in model.properties %}
+  {% ifequal property.type "array" %}
+  public function set{{ property.codeName|capfirst }}(${{ property.codeName }}) {
+    $this->{{ property.codeName }} = ${{ property.codeName }};
+  }
+  {% else %}
+  public function set{{ property.codeName|capfirst }}({{ property.typeHint }}${{ property.codeName }}) {
+    $this->{{ property.codeName }} = ${{ property.codeName }};
+  }
+  {% endifequal %}
+
+  public function get{{ property.codeName|capfirst }}() {
+    return $this->{{ property.codeName }};
+  }
+  {% endfor %}
+}
+{% endfilter %}

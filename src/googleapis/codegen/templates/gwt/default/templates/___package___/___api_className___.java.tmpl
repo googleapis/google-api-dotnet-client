@@ -51,10 +51,10 @@ public interface {{ api.className }} extends RequestFactory {
     }
   }{% endif %}
 {% for resource in api.resources %}{% indent %}
-{% call_template _resource resource resource %}{% endindent %}{% endfor %}
+{% call_template _resource resource=resource %}{% endindent %}{% endfor %}
 
 {% indent %}{% for resource in api.resources %}
-{% call_template _resource_ctors resource resource %}{% endfor %}
+{% call_template _resource_ctors resource=resource %}{% endfor %}
 {% endindent %}
 
 {% if api.methods %}
@@ -66,7 +66,7 @@ public interface {{ api.className }} extends RequestFactory {
    */
   @JsonRpcService
   public interface Context extends RequestContext {{% indent 2 %}
-{% for method in api.methods %}{% emit_method_def method %}{% endfor %}
+{% for method in api.methods %}{% call_template _method method=method %}{% endfor %}
   {% endindent %}}
 {% endif %}
 }

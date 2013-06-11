@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,10 +23,10 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 import copy
 
-from googleapis.codegen import html_stripper
 from googleapis.codegen import name_validator
 from googleapis.codegen import utilities
 from googleapis.codegen.django_helpers import MarkSafe
+from googleapis.codegen.utilities import html_stripper
 
 
 class UseableInTemplates(object):
@@ -60,9 +60,12 @@ class UseableInTemplates(object):
     """
     return self._def_dict.get(name, None)
 
-  def SetTemplateValue(self, name, value):
+  # pylint: disable=unused-argument
+  def SetTemplateValue(self, name, value, meaning=None):
     """Adds a name/value pair to the template."""
     self._def_dict[name] = value
+    # TODO(user): call something like docmaker.add(
+    #    self.__class__.__name__, name, meaning)
 
   def DeleteTemplateValue(self, name):
     """Delete a value from the object."""
@@ -88,13 +91,15 @@ class CodeObject(UseableInTemplates):
 
   _validator = name_validator
 
-  def __init__(self, def_dict, api, parent=None, language_model=None):
+  def __init__(self, def_dict, api, parent=None, wire_name=None,
+               language_model=None):
     """Construct a CodeObject.
 
     Args:
       def_dict: (dict) The discovery dictionary for this element.
       api: (Api) The Api instance which owns this element.
       parent: (CodeObject) The parent of this element.
+      wire_name: (str) The name of this object as it appears in the protocol.
       language_model: (LanguageModel) The language we are targetting.
         Dynamically defaults to the parent's language model.
     """
@@ -104,6 +109,11 @@ class CodeObject(UseableInTemplates):
     self._parent = None
     self._language_model = language_model
     self._module = None
+    if wire_name:
+      self.SetTemplateValue(
+          'wireName',
+          wire_name,
+          meaning='The name of this object as it appears in the data stream.')
     self.SetParent(parent)
     # Sanitize the 'description'. It is a block of user written text we want to
     # emit whenever possible.
@@ -176,7 +186,7 @@ class CodeObject(UseableInTemplates):
                      (self.values.get('wireName', '<unnamed>'), self))
 
   @property
-  def codeName(self):  # pylint: disable-msg=C6409
+  def codeName(self):  # pylint: disable=g-bad-name
     """Returns a language appropriate name for this object.
 
     This property should only be used during template expansion. It is computed
@@ -185,16 +195,21 @@ class CodeObject(UseableInTemplates):
     Returns:
       (str) a name for an instance of this object.
     """
+    # Note that if code name is in self._def_dict (and hence GetTemplateValue
+    # returns something) then this property won't be called during template
+    # expansion at all.  Therefore, the change this makes -- marking codeName
+    # safe -- may never take place at all.
     code_name = self.GetTemplateValue('codeName')
     if not code_name:
       code_name = self.values['wireName']
       if self.language_model:
         code_name = self.language_model.ToMemberName(code_name, self._api)
-      self.SetTemplateValue('codeName', code_name)
-    return MarkSafe(code_name)
+    code_name = MarkSafe(code_name)
+    self.SetTemplateValue('codeName', code_name)
+    return code_name
 
   @property
-  def fullClassName(self):  # pylint: disable-msg=C6409
+  def fullClassName(self):  # pylint: disable=g-bad-name
     """Returns the fully qualified class name for this object.
 
     This property can only be used during template expansion.  Walks up the
@@ -211,7 +226,7 @@ class CodeObject(UseableInTemplates):
     return MarkSafe(self.RelativeClassName(None))
 
   @property
-  def packageRelativeClassName(self):  # pylint: disable-msg=C6409
+  def packageRelativeClassName(self):  # pylint: disable=g-bad-name
     """Returns the class name for this object relative to its package.
 
     Walks up the parent chain building a fully qualified class name.
@@ -247,7 +262,7 @@ class CodeObject(UseableInTemplates):
     return full_name
 
   @property
-  def parentPath(self):  # pylint: disable-msg=C6409
+  def parentPath(self):  # pylint: disable=g-bad-name
     """Returns the classNames from my ultimate parent to my immediate parent.
 
     Walks up the parent chain building a list of ancestors.
@@ -319,7 +334,7 @@ class CodeObject(UseableInTemplates):
     return self._language_model
 
   @property
-  def codeType(self):  # pylint: disable-msg=C6409
+  def codeType(self):  # pylint: disable=g-bad-name
     """Accessor for codeType for use in templates.
 
     If the template value for codeType was explicitly set, return that,
@@ -332,7 +347,7 @@ class CodeObject(UseableInTemplates):
     return MarkSafe(self.GetTemplateValue('codeType') or self.code_type)
 
   @property
-  def safeCodeType(self):  # pylint: disable-msg=C6409
+  def safeCodeType(self):  # pylint: disable=g-bad-name
     """Expose this in template using the template naming convention.
 
     Just redirect to safe_code_type.
@@ -373,12 +388,12 @@ class Module(CodeObject):
   are evaluated.
   """
 
-  def __init__(self, path=None, owner_name=None, owner_domain=None, parent=None,
-               language_model=None):
+  def __init__(self, package_path=None, owner_name=None, owner_domain=None,
+               parent=None, language_model=None):
     """Construct a Module.
 
     Args:
-      path: (str) A '/' delimited path to this module.
+      package_path: (str) A '/' delimited path to this module.
       owner_name: (str) The name of the owner of the API, as they would like it
         to appear in library code. E.g "Best Buy"
       owner_domain: (str) The domain of the owner of the API, as they would like
@@ -390,8 +405,8 @@ class Module(CodeObject):
     super(Module, self).__init__({}, None,
                                  parent=parent,
                                  language_model=language_model)
-    self._path = path
-    self._owner_name = owner_name
+    self._package_path = utilities.NoSpaces(package_path)
+    self._owner_name = utilities.NoSpaces(owner_name)
     self._owner_domain = utilities.SanitizeDomain(owner_domain)
     self._name = None  # will be memoized on first call to name property
 
@@ -411,7 +426,11 @@ class Module(CodeObject):
     lib_def = def_dict.get('library_definition')
     if not lib_def:
       return None
-    return Module(path=lib_def.get('modulePath') or '',
+    # Newer style uses modulePath, but some paths through Discovery may use
+    # packagePath instead.
+    return Module(package_path=(lib_def.get('modulePath')
+                                or lib_def.get('packagePath')
+                                or ''),
                   owner_name=lib_def.get('owner'),
                   owner_domain=lib_def.get('domain'))
 
@@ -430,7 +449,19 @@ class Module(CodeObject):
     """
     if self._name:
       raise ValueError('SetPath called after first use of name property')
-    self._path = path
+    self._package_path = path
+
+  @property
+  def owner_domain(self):
+    return self._owner_domain
+
+  @property
+  def owner_name(self):
+    return self._owner_name
+
+  @property
+  def package_path(self):
+    return self._package_path
 
   @property
   def name(self):
@@ -442,69 +473,9 @@ class Module(CodeObject):
 
   @property
   def path(self):
-    """Returns the / delimited file path for this package."""
+    """Returns the full / delimited file path for this package."""
     if self.parent:
       base_path = self.parent.path
     else:
-      base_path = self.language_model.DefaultContainerPathForOwner(
-          self._owner_name, self._owner_domain)
-    return '/'.join(x for x in (base_path, self._path) if x)
-
-
-class DataValue(CodeObject):
-  """Provide a reasonable value wrapper for converting types to strings."""
-
-  def __init__(self, value, val_type):
-    # Because val_type could be a schema and DataObject tries to deepcopy
-    # the definition dictionary when schemas store CodeObjects in their
-    # _def_dicts. Sidestep this part.
-    super(DataValue, self).__init__(
-        {}, api=val_type.api, parent=val_type.parent)
-    self._def_dict = val_type.values
-
-    # Type may be passed in wrapped in a Property/Parameter object...
-    if hasattr(val_type, 'data_type'):
-      data_type = val_type.data_type
-    else:
-      data_type = val_type
-
-    # Type may be a reference, we want the real thing...
-    # TODO(user): 20130227
-    # If you need this trickery here, we are doing something wrong in the
-    # overall structure.
-    data_type = getattr(data_type, 'referenced_schema', data_type)
-
-    self._value = value
-    self._data_type = data_type
-    self._metadata = {}
-
-  def SetValue(self, value):
-    self._value = value
-
-  def SetLanguageModel(self, language_model):
-    super(DataValue, self).SetLanguageModel(language_model)
-    self.data_type.SetLanguageModel(language_model)
-
-  def GetLanguageModel(self):
-    # pylint: disable-msg=W0212
-    return self.data_type.language_model
-
-  @property
-  def value(self):
-    return self._value
-
-  @property
-  def data_type(self):
-    return self._data_type
-
-  @property
-  def code_type(self):
-    # Certain data types return a code_type dependent on language model...
-    # so we assure that our data_type uses the correct one for safety.
-    if self._language_model:
-      self._data_type.SetLanguageModel(self._language_model)
-    return self._data_type.code_type
-
-  @property
-  def metadata(self):
-    return self._metadata
+      base_path = self.language_model.DefaultContainerPathForOwner(self)
+    return '/'.join(x for x in (base_path, self._package_path) if x)

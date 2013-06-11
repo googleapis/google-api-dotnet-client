@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,43 +51,6 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     super(PHPGenerator, self).__init__(PHPApi, discovery, 'php',
                                        language_model=PhpLanguageModel(),
                                        options=options)
-
-    # Capitalize the owner since it is used to namespace each generated class.
-    owner = self._api.values['owner']
-    self._api.values['owner'] = owner[0].upper() + owner[1:]
-
-  def GeneratePackage(self, package):
-    """Create all the service classes and bundle them into a single package.
-
-    Args:
-      package: (LibraryPackage) output package
-    """
-    self.AnnotateApiForLanguage(self._api)
-
-    service_file = '%s_%sService.php' % (self._api.values['owner'],
-                                         self._api.values['className'])
-    out = package.StartFile(service_file)
-    self.__GenerateApiClass(out)
-    generated = {}
-    for schema in self._api.ModelClasses():
-      # Skip schemas that refer to others.
-      if schema.class_name in generated:
-        continue
-      self.__GenerateModelClass(out, schema)
-      generated[schema.class_name] = True
-
-  def __GenerateApiClass(self, ostream):
-    """Generate the main API class."""
-    template_path = self.PathToTemplate('api_service_class.tmpl')
-    ostream.write(self.RenderTemplate(template_path, {'api': self._api.values}))
-
-  def __GenerateModelClass(self, ostream, schema):
-    """Generate a data model class for every schema element."""
-    template_path = self.PathToTemplate('_model_class.tmpl')
-    ostream.write(self.RenderTemplate(template_path, {
-        'api': self._api.values,
-        'model': schema.values
-        }))
 
   def AnnotateResource(self, the_api, resource):
     """Add the discovery dictionary as data to each resource.
@@ -143,7 +106,7 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
       method.SetTemplateValue('hasParams', True)
     method.SetTemplateValue('name', self._ToMethodName(method.values, resource))
 
-  def AnnotateProperty(self, unused_api, prop, unused_schema):
+  def AnnotateProperty(self, unused_api, prop, schema):
     """Annotate properties with a PHP type hint.
 
     Overrides default implementation.
@@ -151,10 +114,14 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     Args:
       unused_api: (Api) The API this Property belongs to.
       prop: (Property) The Property to annotate.
-      unused_schema: (Schema) The Schema this Property belongs to.
+      schema: (Schema) The Schema this Property belongs to.
     """
     if isinstance(prop.data_type, data_types.ArrayDataType):
       prop.SetTemplateValue('dataType', 'array')
+      schema.SetTemplateValue('dataType', 'array')
+    elif not schema.GetTemplateValue('dataType'):
+      schema.SetTemplateValue('dataType', 'object')
+
     if isinstance(prop.data_type, data_types.MapDataType):
       prop.SetTemplateValue('dataType', 'map')
     self._SetTypeHint(prop)
@@ -172,8 +139,9 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     if code_type and code_type.lower() in PhpLanguageModel.PHP_TYPES:
       prop.values['typeHint'] = ''
     else:
-      prop.values['typeHint'] = '%s_%s ' % (self._api.values['owner'],
-                                            code_type)
+      prop.values['typeHint'] = ('%s_Service_%s_%s' %
+                                 (self._api.values['owner'].title(),
+                                  self._api.values['className'], code_type))
 
 
 class PhpLanguageModel(language_model.LanguageModel):
@@ -283,15 +251,7 @@ class PhpLanguageModel(language_model.LanguageModel):
 class PHPApi(api.Api):
   """An Api with PHP annotations."""
 
-  def __init__(self, discovery_doc, **unused_kwargs):
-    """Create a new PHPApi.
-
-    Args:
-      discovery_doc: (dict) The discovery document dictionary.
-    """
-    super(PHPApi, self).__init__(discovery_doc)
-
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   # The parameter element_type is deliberately unused since PHP doesn't
   # support nested classes.
   def ToClassName(self, s, unused_element, element_type=None):
@@ -311,6 +271,7 @@ class PHPApi(api.Api):
       return utilities.CamelCase(self.values['name']) + utilities.CamelCase(s)
     return utilities.CamelCase(s)
 
+
 # Properties that should be stripped when serializing parts of the
 # discovery document.
 _EXTRA_PROPERTIES = ['description', 'enumDescriptions', 'resources', 'pattern',
@@ -323,6 +284,6 @@ def _StripResource(resource):
     return resource
   ret = collections.OrderedDict()
   for name, value in resource.iteritems():
-    if not name in _EXTRA_PROPERTIES:
+    if name not in _EXTRA_PROPERTIES:
       ret[name] = _StripResource(value)
   return ret

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +25,7 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 import collections
 import json
+import logging
 
 
 import httplib2
@@ -32,10 +33,8 @@ import httplib2
 from google.apputils import app
 import gflags as flags
 from googleapis.codegen import generator_lookup
-from googleapis.codegen.filesystem_library_package import FilesystemLibraryPackage
-from googleapis.codegen.tar_library_package import TarLibraryPackage
+from googleapis.codegen.filesys import package_writer_foundry
 from googleapis.codegen.targets import Targets
-from googleapis.codegen.zip_library_package import ZipLibraryPackage
 
 FLAGS = flags.FLAGS
 
@@ -102,11 +101,10 @@ flags.DEFINE_string(
     ' using "/" as a separator, not "."'
     )
 flags.DEFINE_bool('version_package', False, 'Put API version in package paths')
+flags.DEFINE_bool('verbose', False, 'Enable verbose logging')
 
 flags.DECLARE_key_flag('api_name')
 flags.DECLARE_key_flag('api_version')
-flags.DECLARE_key_flag('discovery_server')
-flags.DECLARE_key_flag('discovery_version')
 flags.DECLARE_key_flag('include_timestamp')
 flags.DECLARE_key_flag('input')
 flags.DECLARE_key_flag('language')
@@ -129,6 +127,9 @@ def main(unused_argv):
     raise app.UsageError(
         'You can only specify one of --output_dir or --output_file')
 
+  if FLAGS.verbose:
+    logging.basicConfig(level=logging.DEBUG)
+
   # Get the discovery document
   if FLAGS.api_name:
     if not FLAGS.api_version:
@@ -140,7 +141,9 @@ def main(unused_argv):
     f.close()
   discovery_doc = json.loads(content, object_pairs_hook=collections.OrderedDict)
 
-  package_writer = GetPackageWriter(FLAGS.output_dir, FLAGS.output_file)
+  package_writer = package_writer_foundry.GetPackageWriter(
+      output_dir=FLAGS.output_dir, output_file=FLAGS.output_file,
+      output_format=FLAGS.output_format)
 
   Generate(discovery_doc=discovery_doc,
            package_writer=package_writer,
@@ -177,6 +180,10 @@ def Generate(discovery_doc, package_writer,
 
   # determine language version from language variant.
   language_variations = Targets().VariationsForLanguage(language)
+  if not language_variations:
+    raise app.UsageError('Language %s missing from '
+                         'apiserving/libgen/gen/targets.json' %
+                         language)
   features = language_variations.GetFeatures(language_variant)
   if not features:
     raise app.UsageError('Unsupported language variant: '
@@ -202,28 +209,6 @@ def Generate(discovery_doc, package_writer,
              output_type=output_type,
              language=language,
              language_variant=language_variant)
-
-
-def GetPackageWriter(output_dir=None, output_file=None, output_format=None):
-  """Get an output writer for a package."""
-  if output_dir is None:
-    output_dir = FLAGS.output_dir
-  if output_file is None:
-    output_file = FLAGS.output_file
-  if output_format is None:
-    output_format = FLAGS.output_format
-
-  if output_dir:
-    package_writer = FilesystemLibraryPackage(output_dir)
-  else:
-    out = open(output_file, 'w')
-    if output_format == 'tgz':
-      package_writer = TarLibraryPackage(out)
-    elif output_format == 'tar':
-      package_writer = TarLibraryPackage(out, compress=False)
-    else:
-      package_writer = ZipLibraryPackage(out)
-  return package_writer
 
 
 def GetApiDiscovery(api_name, api_version):

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2012 Google Inc. All Rights Reserved.
 #
 
@@ -12,6 +12,7 @@ from googleapis.codegen import gwt_generator
 from googleapis.codegen import java_generator
 from googleapis.codegen import php_generator
 from googleapis.codegen import python_generator
+from googleapis.codegen import sample_generator
 
 
 # Multiple generators per language are possible, as is the case with
@@ -25,6 +26,7 @@ _GENERATORS_BY_LANGUAGE = {
     'java': java_generator.Java14Generator,
     'php': php_generator.PHPGenerator,
     'python': python_generator.PythonGenerator,
+    'sample': sample_generator.SampleGenerator,
     }
 
 

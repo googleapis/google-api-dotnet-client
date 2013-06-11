@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ import textwrap
 
 import django.template as django_template  # pylint: disable-msg=C6203
 
-from googleapis.codegen import files
 from googleapis.codegen import utilities
+from googleapis.codegen.filesys import files
 
 
 register = django_template.Library()
@@ -115,8 +115,9 @@ _language_defaults = {
         _COMMENT_START: '// ',
         _COMMENT_CONTINUE: '// ',
         _COMMENT_END: '',
-        _DOC_COMMENT_START: '/// ',
-        _DOC_COMMENT_CONTINUE: '/// ',
+        _DOC_COMMENT_START: '/** ',
+        _DOC_COMMENT_CONTINUE: ' * ',
+        _DOC_COMMENT_END: ' */',
         _IMPORT_REGEX: r'^#include\s+(?P<import>[\<\"][a-zA-Z0-9./_\-]+[\>\"])',
         _IMPORT_TEMPLATE: '#include %s'
         },
@@ -228,8 +229,11 @@ class CachingTemplateLoader(object):
 
     template = self._cache.get(template_path)
     if not template:
-      template = self._LoadTemplate(template_path)
-      self._cache[template_path] = template
+      try:
+        template = self._LoadTemplate(template_path)
+        self._cache[template_path] = template
+      except django_template.TemplateSyntaxError as err:
+        raise django_template.TemplateSyntaxError('%s: %s' % (relpath, err))
     return template
 
   def _LoadTemplate(self, template_path):
@@ -240,7 +244,7 @@ class CachingTemplateLoader(object):
 _TEMPLATE_LOADER = CachingTemplateLoader()
 
 
-def _RenderToString(template_path, context_dict):
+def _RenderToString(template_path, context):
   """Renders a template specified by a file path with a give values dict.
 
   NOTE: This routine is essentially a copy of what is in django_helpers.
@@ -249,15 +253,15 @@ def _RenderToString(template_path, context_dict):
 
   Args:
     template_path: (str) Path to file.
-    context_dict: (dict) The dictionary to use for template evalutaion.
+    context: (Context) A django Context.
   Returns:
     (str) The expanded template.
   """
   # FRAGILE: this relies on template_dir being passed in to the
   # context (in generator.py)
   t = _TEMPLATE_LOADER.GetTemplate(template_path,
-                                   context_dict.get('template_dir', ''))
-  return t.render(django_template.Context(context_dict))
+                                   context.get('template_dir', ''))
+  return t.render(context)
 
 
 def _GetFromContext(context, *variable):
@@ -526,7 +530,7 @@ def halt():  # pylint: disable-msg=C6409
 
 
 class LanguageNode(django_template.Node):
-  """Node for language settting."""
+  """Node for language setting."""
 
   def __init__(self, language):
     self._language = language
@@ -543,14 +547,7 @@ class LanguageNode(django_template.Node):
     Returns:
       An empty string.
     """
-    # This is a hack to support django 0.96 and 1.2.  In 1.something and above
-    # we want to turn off autoescape. For 0.96, setting context.autoescape
-    # fails. This allows it to work in both situations.
-    try:
-      context.autoescape = False
-    except AttributeError:
-      pass
-    # end - hack for django 0.96 support
+    context.autoescape = False
     context[_LANGUAGE] = self._language
     per_language_defaults = _language_defaults.get(self._language)
     if per_language_defaults:
@@ -673,13 +670,130 @@ def DoCollapseNewLines(parser, unused_token):
   return CollapsedNewLinesNode(nodelist)
 
 
+EOL_MARKER = '\x00eol\x00'
+SPACE_MARKER = '\x00sp\x00'
+NOBLANK_STACK = '___noblank__stack___'
+
+
+@register.simple_tag(takes_context=True)
+def eol(context):  # pylint:disable=g-bad-name
+  # Inside a noblock node, return special marker
+  if  context.get(NOBLANK_STACK):
+    return EOL_MARKER
+  return '\n'
+
+
+@register.simple_tag(takes_context=True)
+def sp(context):  # pylint:disable=g-bad-name
+  # Inside a noblock node, return special marker
+  if context.get(NOBLANK_STACK):
+    return SPACE_MARKER
+  return ' '
+
+
+class NoBlankNode(django_template.Node):
+  """Node for remove eols from output."""
+
+  def __init__(self, nodelist, recurse=False, noeol=False):
+    self.nodelist = nodelist
+    self.recurse = recurse
+    self.noeol = noeol
+
+  def _CleanText(self, text):
+    lines = [line for line in text.splitlines(True)
+             if line.strip()]
+    if self.noeol:
+      # Remove whitespace at the end of a source line, so that invisible
+      # whitespace is not significant (users should use {%sp%} in that
+      # situation)..  The text passed in here doesn't necessarily end with a
+      # newline, so take care not to strip out whitespace unless it does.
+      def Clean(s):
+        if s.endswith('\n'):
+          return s.rstrip()
+        return s
+      lines = [Clean(line) for line in lines]
+    text = ''.join(lines)
+    return text
+
+  def _ReplaceMarkers(self, text):
+    return text.replace(EOL_MARKER, '\n').replace(SPACE_MARKER, ' ')
+
+  def render(self, context):  # pylint:disable=g-bad-name
+    """Render the node."""
+    stack = context.get(NOBLANK_STACK)
+    if stack is None:
+      stack = context[NOBLANK_STACK] = [self]
+    else:
+      stack.append(self)
+    try:
+      output = []
+      for n in self.nodelist:
+        text = n.render(context)
+        if not isinstance(n, TemplateNode) or self.recurse:
+          text = self._CleanText(text)
+        output.append(text)
+      text = ''.join(output)
+      # Only replace markers if we are the last node in the stack.
+      if len(stack) == 1:
+        text = self._ReplaceMarkers(text)
+      return text
+    finally:
+      stack.pop()
+
+
+@register.tag(name='noblank')
+def DoNoBlank(parser, token):
+  """Suppress all empty lines unless explicitly added."""
+  args = token.split_contents()
+  if len(args) > 2:
+    raise django_template.TemplateSyntaxError(
+        'noblank expects at most one argument')
+  if len(args) == 2:
+    recursearg = args[1]
+    if recursearg not in ('recurse', 'norecurse'):
+      raise django_template.TemplateSyntaxError(
+          'argument to noblank must be either "norecurse" '
+          '(the default) or "recurse"')
+    recurse = recursearg == 'recurse'
+  else:
+    recurse = False
+
+  nodelist = parser.parse(('endnoblank',))
+  parser.delete_first_token()
+  return NoBlankNode(nodelist, recurse=recurse)
+
+
+@register.tag(name='noeol')
+def DoNoEol(parser, token):
+  """Suppress all empty lines unless explicitly added."""
+  args = token.split_contents()
+  if len(args) > 2:
+    raise django_template.TemplateSyntaxError(
+        'noeol expects at most one argument')
+  if len(args) == 2:
+    recursearg = args[1]
+    if recursearg not in ('recurse', 'norecurse'):
+      raise django_template.TemplateSyntaxError(
+          'argument to noeol must be either "norecurse" '
+          '(the default) or "recurse"')
+    recurse = recursearg == 'recurse'
+  else:
+    recurse = False
+
+  nodelist = parser.parse(('endnoeol',))
+  parser.delete_first_token()
+  return NoBlankNode(nodelist, recurse=recurse, noeol=True)
+
+
 class DocCommentNode(django_template.Node):
   """Node for comments which should be formatted as doc-style comments."""
 
-  def __init__(self, text=None, nodelist=None, comment_type=None):
+  def __init__(self, text=None, nodelist=None, comment_type=None,
+               wrap_blocks=True):
     self._text = text
     self._nodelist = nodelist
     self._comment_type = comment_type
+    self._wrap_blocks = wrap_blocks
 
   def render(self, context):  # pylint: disable-msg=C6409
     """Render the node."""
@@ -719,30 +833,62 @@ class DocCommentNode(django_template.Node):
     available_width = (_GetFromContext(context, _LINE_WIDTH) -
                        context.get(_CURRENT_INDENT, 0))
 
-    # If the text has no EOL and is short, it may be a one-liner,
-    # though still not necessarily because of other comment overhead.
-    if len(text) < available_width and not '\n' in text:
-      one_line = '%s%s%s%s%s' % (start_prefix, begin_tag, text, end_tag,
-                                 comment_end)
-      if len(one_line) < available_width:
-        return one_line
+    return _WrapInComment(
+        text,
+        wrap_blocks=self._wrap_blocks,
+        start_prefix=start_prefix,
+        continue_prefix=continue_prefix,
+        comment_end=comment_end,
+        begin_tag=begin_tag,
+        end_tag=end_tag,
+        available_width=available_width)
 
-    wrapper = textwrap.TextWrapper(width=available_width,
-                                   replace_whitespace=False,
-                                   initial_indent=continue_prefix,
-                                   subsequent_indent=continue_prefix)
-    wrapped_blocks = []
-    text = '%s%s%s' % (begin_tag, text, end_tag)
-    for block in _DivideIntoBlocks(text.split('\n'), ''):
-      wrapped_blocks.append(wrapper.fill(' '.join(block)))
-    ret = ''
-    if start_prefix != continue_prefix:
-      ret = '%s\n' % start_prefix.rstrip()
-    stripped_prefix = continue_prefix.rstrip()
-    ret += ('\n%s\n' % stripped_prefix).join(wrapped_blocks)
-    if comment_end:
-      ret += '\n%s' % comment_end
-    return ret
+
+def _WrapInComment(text, wrap_blocks, start_prefix,
+                   continue_prefix, comment_end, begin_tag,
+                   end_tag, available_width):
+  # If the text has no EOL and is short, it may be a one-liner,
+  # though still not necessarily because of other comment overhead.
+  if len(text) < available_width and '\n' not in text:
+    one_line = '%s%s%s%s%s' % (start_prefix, begin_tag, text, end_tag,
+                               comment_end)
+    if len(one_line) < available_width:
+      return one_line
+
+  wrapper = textwrap.TextWrapper(width=available_width,
+                                 replace_whitespace=False,
+                                 initial_indent=continue_prefix,
+                                 subsequent_indent=continue_prefix)
+  text = '%s%s%s' % (begin_tag, text, end_tag)
+  continue_rstripped = continue_prefix.rstrip()
+  if wrap_blocks:
+    blocks = _DivideIntoBlocks(text.split('\n'), '')
+    block_joiner = '\n%s\n' % continue_rstripped
+  else:
+    blocks = [[l] for l in text.split('\n')]
+    # Eliminate spurious blanks at beginning and end,
+    # for compatibility with wrap_blocks behavior.
+    for idx in (0, -1):
+      if blocks and not blocks[idx][0]:
+        del blocks[idx]
+    block_joiner = '\n'
+
+  wrapped_blocks = []
+  for block in blocks:
+    t = ' '.join(block)
+    if not t.strip():
+      # The text wrapper won't apply an indent to an empty string
+      wrapped_blocks.append(continue_rstripped)
+    else:
+      wrapped_blocks.append(wrapper.fill(t))
+  ret = ''
+  if start_prefix != continue_prefix:
+    ret += '%s\n' % start_prefix.rstrip()
+
+  ret += block_joiner.join(wrapped_blocks)
+  if comment_end:
+    ret += '\n%s' % comment_end
+  return ret
 
 
 class CommentIfNode(DocCommentNode):
@@ -780,6 +926,45 @@ def DoDocCommentIf(unused_parser, token):
   """If a variable has content, emit it as a document compatible comment."""
   variable_name = _GetArgFromToken(token)
   return CommentIfNode(variable_name, comment_type='doc')
+
+
+@register.tag(name='doc_comment')
+def DoDocComment(parser, token):
+  """A block tag for documentation comments.
+
+  Example usage:
+    {% doc_comment noblock %}
+    With the noblock parameter, line returns will be considered hard returns
+    and kept in the output, although long lines will be wrapped.
+
+    Without noblock, contiguous non-empty lines will be wrapped together as
+    paragraphs.
+    {% enddoc_comment %}
+
+  Args:
+    parser: (Parser): A django template parser.
+    token: (str): Token passed into the parser.
+  Returns:
+    (DocCommentNode) A template node.
+  """
+  args = token.split_contents()
+  if len(args) > 2:
+    raise django_template.TemplateSyntaxError(
+        'doc_comment expects at most one argument')
+  if len(args) == 2:
+    wraparg = args[1]
+    if wraparg not in ('block', 'noblock'):
+      raise django_template.TemplateSyntaxError(
+          'argument to doc_comment (wrap_blocks) '
+          'must be either "block" (the default) or "noblock"')
+    wrap_blocks = wraparg == 'block'
+  else:
+    wrap_blocks = True
+
+  nodelist = parser.parse(('enddoc_comment',))
+  parser.delete_first_token()
+  return DocCommentNode(nodelist=nodelist, comment_type='doc',
+                        wrap_blocks=wrap_blocks)
 
 
 class CamelCaseNode(django_template.Node):
@@ -1072,11 +1257,15 @@ class TemplateNode(django_template.Node):
 def CallTemplate(unused_parser, token):
   """Interpret a template with an additional set of variable bindings.
 
-  Evalutes the template named 'template_name.tmpl' with the variable
-  'bound_value_name' bound to value of the variable 'value_name'.
+  Evaluates the template named 'template_name.tmpl' with the variables 'name1',
+  'name2', etc., bound to the values of the variables 'val1', 'val2'.
 
-  Usage:
-    {% call_template template_name bound_variable_name value_name %}
+  Usage -- either:
+    {% call_template template_name name1=val1 name2=val2 %}
+  or (for backwards compatibility):
+    {% call_template template_name name1 val1 name2 val2 %}
+
+  Mixing the two styles is not allowed.
 
   Args:
     unused_parser: (parser) the Django parser context.
@@ -1086,52 +1275,32 @@ def CallTemplate(unused_parser, token):
     a TemplateNode
   """
   contents = token.split_contents()
-  if len(contents) < 2 or (len(contents) % 2) != 0:
+  if len(contents) < 2:
     raise django_template.TemplateSyntaxError(
-        'tag requires 2 arguments, plus key-value pairs: %s' % token.contents)
-  unused_tag, template = contents[0:2]
-  bindings = dict(zip(contents[2::2], contents[3::2]))
+        'tag requires at least 1 argument, the called template')
+  unused_tag, template = contents[:2]
+  template_path = '%s.tmpl' % template
+  toks = contents[2:]
+  if not toks:
+    return TemplateNode(template_path, {})
+
+  has_equals = set('=' in t for t in toks)
+  # Either all arguments should contain a '=', or none should.
+  if len(has_equals) != 1:
+    raise django_template.TemplateSyntaxError(
+        'use either name1=value1 name2=value2 syntax, '
+        'or name1 value1 name2 value2 syntax, but not both')
+  has_equals = has_equals.pop()
+  if has_equals:
+    # If the actual key/value pairs are malformed, let it explode later
+    bindings = dict(tok.split('=', 1) for tok in toks)
+  else:
+    if len(toks) % 2 != 0:
+      raise django_template.TemplateSyntaxError(
+          'odd number of keys and values found')
+    bindings = dict(zip(toks[0::2], toks[1::2]))
+
   return TemplateNode('%s.tmpl' % template, bindings)
-
-
-@register.tag(name='emit_method_def')
-def DoEmitMethodDef(unused_parser, token):
-  """Emit a method definition through a language specific template.
-
-  Evalutes the template named '_method.tmpl' with the variable 'method' bound
-  to the specified value.
-
-  Usage:
-    {% emit_method_def var %}
-
-  Args:
-    unused_parser: (parser) the Django parser context.
-    token: (django.template.Token) the token holding this tag
-
-  Returns:
-    a TemplateNode
-  """
-  return TemplateNode.CreateTemplateNode(token, '_method.tmpl', 'method')
-
-
-@register.tag(name='emit_model_def')
-def DoEmitModelDef(unused_parser, token):
-  """Emit a data model definition through a language specific template.
-
-  Evaluates a template named '_model.tmpl' with the variable 'model'
-  bound to the specified value.
-
-  Usage:
-    {% emit_model_def model %}
-
-  Args:
-    unused_parser: (parser) the Django parser context
-    token: (django.template.Token) the token holding this tag
-
-  Returns:
-    a TemplateNode
-  """
-  return TemplateNode.CreateTemplateNode(token, '_model.tmpl', 'model')
 
 
 @register.tag(name='emit_parameter_doc')
@@ -1152,26 +1321,6 @@ def DoEmitParameterDoc(unused_parser, token):
     a TemplateNode
   """
   return TemplateNode.CreateTemplateNode(token, '_parameter.tmpl', 'parameter')
-
-
-@register.tag(name='emit_resource_def')
-def DoEmitResourceDef(unused_parser, token):
-  """Emit a resource definition through a language specific template.
-
-  Evalutes the template named '_resource.tmpl' with the variable 'resource'
-  bound to the specified value.
-
-  Usage:
-    {% emit_resource_def var %}
-
-  Args:
-    unused_parser: (parser) the Django parser context.
-    token: (django.template.Token) the token holding this tag
-
-  Returns:
-    a TemplateNode
-  """
-  return TemplateNode.CreateTemplateNode(token, '_resource.tmpl', 'resource')
 
 
 @register.tag(name='copyright_block')

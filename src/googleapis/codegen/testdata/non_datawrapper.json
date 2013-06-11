@@ -70,7 +70,7 @@
      "description": "Get a count of link Things",
      "parameters": {
       "thingUrl": {
-       "restParameterType": "query",
+       "location": "query",
        "repeated": false,
        "description": "a description would go here.",
        "type": "string"

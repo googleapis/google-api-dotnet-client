@@ -1,0 +1,4 @@
+{% comment %}
+  Renders an expression evaluating to a function from a value of a particular type to JSON.
+  [type] the data type.
+{% endcomment %}{% if type.arrayOf %}map({% call_template _serialize type=type.baseType %}){% else %}{% if type.mapOf %}mapValues({% call_template _serialize type=type.baseType %}){% else %}{% if type.isScalar %}identity{% else %}{{ type.className }}.serialize{% endif %}{% endif %}{% endif %}

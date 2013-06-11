@@ -13,30 +13,35 @@
 #  limitations under the License.
 
 Google APIs Code Generator
+https://code.google.com/p/google-apis-client-generator/
 
-September. 26, 2012
+June 11, 2013
 
 Introduction
 
   This is a tool for generating client libraries from Google APIs Discovery
   documents. It builds a rich (but language neutral) model of the API and
-  then invokes a language specific backend to emit the library. Much of the
-  generation is template driven, so it is easy to support multiple variations
-  of a library.
+  then invokes a language specific backend to emit the library. The language
+  generators are template driven, so it is easy for a developer knowning
+  language X to write templates for code in X, without having to learn much
+  Python.
 
-  The generator currently has templates for Java, GWT, PHP and Dart.
-
+  The generator currently has templates for Java, GWT, PHP and Dart. There
+  may be multiple variations of each language. Typically we have a 'default'
+  variant (which matches the head of the respective base client libraries)
+  and a 'stable' variant, which reflects what Google publishes as the
+  preferred library download.
 
 Prerequisites
 
-  * Python 2.6 or newer
+  * Python 2.7 or newer
   * django templates (1.3 or newer)
   * google-apputils - http://code.google.com/p/google-apputils-python/
   * google-api-python-client - http://code.google.com/p/google-api-python-client
   * python-gflags - http://code.google.com/p/python-gflags/
   * httplib2 - http://code.google.com/p/httplib2/
 
-Everything can be installed quickly with easy_install
+Everything can be installed quickly with easy_install or pip.
 
   If you do not have setuptools, install it from the pypi repository
   http://pypi.python.org/pypi/setuptools/
@@ -50,14 +55,23 @@ Everything can be installed quickly with easy_install
   not have to install those yourself.
 
 
-Running the generator
+Running the library generator
 
   You must set PYTHONPATH to the path to the src folder. You should invoke
   the program using the full path to generate_library.py. E.g.
 
-  PYTHONPATH=$(/bin/pwd)/src:$PYTHONPATH \
-    python $(/bin/pwd)/src/googleapis/codegen/generate_library.py \
-      --api_name=moderator --api_version=v1 --output_dir=generated
+  export PYTHONPATH=$(/bin/pwd)/src:$PYTHONPATH
+  python $(/bin/pwd)/src/googleapis/codegen/generate_library.py \
+    --input=src/googleapis/codegen/testdata/moderator.v1.json \
+    --language=java \
+    --output_dir=/tmp/generated
+
+Expand arbitrary templates
+
+  python $(/bin/pwd)/src/googleapis/codegen/expand_templates.py \
+    --discovery=src/googleapis/codegen/testdata/moderator.v1.json \
+    --language=any --templates=discovery_check \
+    --output_dir=/tmp/generated
 
 
 Contact

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,13 +38,13 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
   def __init__(self, discovery, language='java', language_model=None,
                options=None):
     if not language_model:
-      language_model = self._GetDefaultLanguageModel()
+      language_model = self._GetDefaultLanguageModel(options)
     super(BaseJavaGenerator, self).__init__(JavaApi, discovery, language,
                                             language_model, options=options)
 
   @classmethod
-  def _GetDefaultLanguageModel(cls):
-    return JavaLanguageModel()
+  def _GetDefaultLanguageModel(cls, options=None):
+    return JavaLanguageModel(options=options)
 
   def _InnerModelClassesSupported(self):
     """Gets whether or not inner model classes are supported."""
@@ -110,7 +110,7 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
     data_type = element.data_type
     json_type = data_type.json_type
     while json_type == 'array' or json_type == 'map':
-      data_type = data_type._base_type  # pylint: disable-msg=protected-access
+      data_type = data_type._base_type  # pylint: disable=protected-access
       json_type = data_type.json_type
     json_format = data_type.values.get('format')
 
@@ -132,8 +132,8 @@ class Java8Generator(BaseJavaGenerator):
   _support_prop_methods = False
 
   @classmethod
-  def _GetDefaultLanguageModel(cls):
-    return Java8LanguageModel()
+  def _GetDefaultLanguageModel(cls, options=None):
+    return Java8LanguageModel(options=options)
 
 
 class Java12Generator(BaseJavaGenerator):
@@ -144,8 +144,8 @@ class Java14Generator(BaseJavaGenerator):
   """A Java generator for language version 1.14 and higher."""
 
   @classmethod
-  def _GetDefaultLanguageModel(cls):
-    return Java14LanguageModel()
+  def _GetDefaultLanguageModel(cls, options=None):
+    return Java14LanguageModel(options=options)
 
   def AnnotateParameter(self, unused_method, parameter):
     """Annotate a Parameter with Java specific elements."""
@@ -166,7 +166,7 @@ class Java14Generator(BaseJavaGenerator):
     data_type = element.data_type
     json_type = data_type.json_type
     while json_type == 'array' or json_type == 'map':
-      data_type = data_type._base_type  # pylint: disable-msg=protected-access
+      data_type = data_type._base_type  # pylint: disable=protected-access
       json_type = data_type.json_type
     json_format = data_type.values.get('format')
 
@@ -233,12 +233,13 @@ class JavaLanguageModel(LanguageModel):
       'float', 'integer', 'object', 'string', 'true', 'false',
       ]
 
-  def __init__(self):
+  def __init__(self, options=None):
     super(JavaLanguageModel, self).__init__(class_name_delimiter='.')
     self._type_map = JavaLanguageModel.TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS
 
     self._SUPPORTED_TYPES['boolean'] = self._Boolean
     self._SUPPORTED_TYPES['integer'] = self._Int
+    self._options = options
 
   def _Boolean(self, data_value):
     """Convert provided boolean to language specific literal."""
@@ -319,7 +320,7 @@ class JavaLanguageModel(LanguageModel):
       return '%s%s' % (the_api.values['name'], camel_s)
     return camel_s[0].lower() + camel_s[1:]
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def ToSafeClassName(self, s, the_api, parent=None):
     """Convert a name to a suitable class name in Java.
 
@@ -366,12 +367,9 @@ class JavaLanguageModel(LanguageModel):
     """
     return 'Void'
 
-  def DefaultContainerPathForOwner(self, unused_owner_name, owner_domain):
-    """Returns the default path for the module containing this API."""
-    # TODO(user): Figure out if this rule is correct. Get decision at PM level
-    if owner_domain == 'google.com':
-      return 'com/google/api/services'
-    return '/'.join(utilities.ReversedDomainComponents(owner_domain))
+  def DefaultContainerPathForOwner(self, module):
+    """Overrides the default."""
+    return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
 
 
 class Java8LanguageModel(JavaLanguageModel):
@@ -472,7 +470,7 @@ class JavaApi(api.Api):
     return [m for m in self.ModelClasses()
             if not m.parent and not isinstance(m, data_types.ArrayDataType)]
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Java class name.
 

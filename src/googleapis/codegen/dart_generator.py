@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,10 +31,10 @@ class DartLanguageModel(language_model.LanguageModel):
 
   _SCHEMA_TYPE_TO_DART_TYPE = {
       'any': 'core.Object',
-      'boolean': 'bool',
-      'integer': 'int',
-      'long': 'long',
-      'number': 'double',
+      'boolean': 'core.bool',
+      'integer': 'core.int',
+      'long': 'core.int',
+      'number': 'core.double',
       'string': 'core.String',
       'object': 'core.Object',
       }
@@ -156,16 +156,6 @@ class DartGenerator(api_library_generator.ApiLibraryGenerator):
     """
     enum_type = parameter.GetTemplateValue('enumType')
     if enum_type:
-      # TODO(user): most languages need some variation of this,
-      # provide a default implementation in the API parser.
-
-      def Fix(pair):
-        if pair[0][:1].isdigit():
-          pair = tuple(['VALUE_' + pair[0]] + list(pair[1:]))
-        return pair
-      pairs = enum_type.GetTemplateValue('pairs')
-      enum_type.SetTemplateValue('pairs', map(Fix, pairs))
-
       # Crazy Dart naming
       # TODO(user): Figure out better naming for top level parameters.
       # The logic below removes the API from resource method parameters, but
@@ -185,7 +175,7 @@ class DartApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(DartApi, self).__init__(discovery_doc)
 
-  # pylint: disable-msg=W0613
+  # pylint: disable=unused-argument
   def ToClassName(self, s, element, element_type=None):
     """Convert a discovery name to a suitable Dart class name.
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import zipfile
 from google.apputils import basetest
 
 from googleapis.codegen import generator
-from googleapis.codegen import zip_library_package
+from googleapis.codegen.filesys import zip_library_package
 
 
 class GeneratorTest(basetest.TestCase):

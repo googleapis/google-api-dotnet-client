@@ -1,0 +1,19 @@
+{% comment %}
+  Renders a resource class.
+  [resource] the resource to render.
+{% endcomment %}// Resource {{ resource.contextCodeType }}
+class {{ resource.className }} extends core.Object {
+  final {{ api.className }} _$service;
+  {% for r in resource.resources %}final {{ r.className }} {{ r.codeName }};
+  {% endfor %}
+  {{ resource.className }}._internal({{ api.className }} $service) : _$service = $service{% for r in resource.resources %},
+    {{ r.codeName }} = new {{ r.className }}._internal($service){% endfor %};
+{% for m in resource.methods %}{% indent %}
+{% call_template _method method=m %}
+{% endindent %}{% endfor %}}
+{% for m in resource.methods %}{% for param in m.parameters %}{% if param.enumType %}
+{% call_template _enum param=param %}
+{% endif %}{% endfor %}{% endfor %}
+{% for r in resource.resources %}
+{% call_template _resource resource=r %}
+{% endfor %}

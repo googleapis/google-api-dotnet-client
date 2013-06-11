@@ -12,7 +12,7 @@
 
 {% filter noblanklines %}
   {% if property.data_type.isContainer %}
-{% call_template _proguard_content_def schema property.data_type.baseType %}
+{% call_template _proguard_content_def schema=property.data_type.baseType %}
   {% endif %}
 {% endfilter %}
 {% endfor %}
@@ -71,7 +71,7 @@
   }
 {% endifequal %}{% endifequal %}
 {% ifequal property.codeType "java.lang.Boolean" %}{% ifnotequal property.default null %}
-{% call_template _bool_getter_content_def property property %}
+{% call_template _bool_getter_content_def property=property %}
 {% endifnotequal %}{% endifequal %}{% endfor %}{% endif %}
 {% if not features.thin_models %}
 

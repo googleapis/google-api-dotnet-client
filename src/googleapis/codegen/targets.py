@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 
 """Targets class describes which languages/platforms we support."""
@@ -9,9 +9,9 @@ import logging
 import os
 
 
-from googleapis.codegen import files
-from googleapis.codegen import json_with_comments
-from googleapis.codegen.json_expander import ExpandJsonTemplate
+from googleapis.codegen.filesys import files
+from googleapis.codegen.utilities import json_expander
+from googleapis.codegen.utilities import json_with_comments
 
 
 class Targets(object):
@@ -100,6 +100,10 @@ class Targets(object):
     logging.info('setting default template root to %s', path)
     cls._default_template_root = path
 
+  @classmethod
+  def GetDefaultTemplateRoot(cls):
+    return cls._default_template_root
+
 
   # Set the initial default file.
   _default_targets_path = os.path.join(os.path.dirname(__file__),
@@ -149,7 +153,7 @@ class Variations(dict):
     else:
       path = None
     if not path:
-      path = self[variation].get('path') or variation
+      path = self.get(variation, {}).get('path') or variation
     return os.path.join(self._language, path)
 
   def _AbsoluteTemplateDir(self, variation):
@@ -181,8 +185,10 @@ class Variations(dict):
     Returns:
       (Features) features dictionary
     """
+    if not variation:
+      return None
     template_dir = self._AbsoluteTemplateDir(variation)
-    features = Features(template_dir, self[variation], variation)
+    features = Features(template_dir, self.get(variation), variation)
     json_path = os.path.join(template_dir, 'features.json')
 
     try:
@@ -193,7 +199,8 @@ class Variations(dict):
       # fix/remove any tests that fail as a result.
       return features
 
-    features.update(ExpandJsonTemplate(json_with_comments.Loads(features_json)))
+    features.update(json_expander.ExpandJsonTemplate(
+        json_with_comments.Loads(features_json)))
     # If not specified, the releaseVersion matches the variation
     if not features.get('releaseVersion'):
       features['releaseVersion'] = variation
@@ -203,10 +210,14 @@ class Variations(dict):
 class Features(dict):
   """A dictionary describing the features of a particular API variation."""
 
+  # TODO(user): Do we need initial_content? The only thing we see in it is
+  # path, which should be set explicitly to the dirname of the real file path.
   def __init__(self, template_dir, initial_content=None, name=None):
     super(Features, self).__init__(initial_content or {})
     self.name = name
     self.template_dir = template_dir
+    if 'path' not in self:
+      self['path'] = os.path.basename(template_dir)
 
   def DependenciesForEnvironment(self, environment=None):
     """Returns the list of dependencies for an environment.

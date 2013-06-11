@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,9 +30,9 @@ TODO(user): Refactor this so that the API can be loaded first, then annotated.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-import copy
 import json
 import logging
+import operator
 import urlparse
 
 
@@ -44,6 +44,9 @@ _ADDITIONAL_PROPERTIES = 'additionalProperties'
 _DEFAULT_SERVICE_HOST = 'www.googleapis.com'
 _DEFAULT_OWNER_DOMAIN = 'google.com'
 _DEFAULT_OWNER_NAME = 'Google'
+
+
+_LOGGER = logging.getLogger('codegen')
 
 
 class ApiException(Exception):
@@ -59,7 +62,6 @@ class ApiException(Exception):
     super(ApiException, self).__init__()
     self._reason = reason
     self._def_dict = def_dict
-    self._raw_def_dict = copy.deepcopy(def_dict)
 
   def __str__(self):
     if self._def_dict:
@@ -91,9 +93,9 @@ class Api(template_objects.CodeObject):
   """
 
   def __init__(self, discovery_doc, language=None):
-    super(Api, self).__init__(discovery_doc, self)
+    super(Api, self).__init__(discovery_doc, self,
+                              wire_name=discovery_doc['name'])
     name = self.values['name']
-    self.SetTemplateValue('wireName', name)
     self._validator.ValidateApiName(name)
     if name != 'freebase':
       self._validator.ValidateApiVersion(self.values['version'])
@@ -107,6 +109,7 @@ class Api(template_objects.CodeObject):
     self._surface_features = {}
     self._schemas = {}
     self._methods_by_name = {}
+    self._all_methods = []
 
     self.SetTemplateValue('className', self._class_name)
     self.SetTemplateValue('versionNoDots',
@@ -131,11 +134,11 @@ class Api(template_objects.CodeObject):
     self.SetTemplateValue('models', self.ModelClasses())
 
     # Replace methods dict with Methods
-    self._methods = []
+    self._top_level_methods = []
     method_dict = self.values.get('methods') or {}
     for name in sorted(method_dict):
-      self._methods.append(Method(self, name, method_dict[name]))
-    self.SetTemplateValue('methods', self._methods)
+      self._top_level_methods.append(Method(self, name, method_dict[name]))
+    self.SetTemplateValue('methods', self._top_level_methods)
 
     # Global parameters
     self._parameters = []
@@ -165,22 +168,28 @@ class Api(template_objects.CodeObject):
   def _SetupModules(self):
     """Compute and set the module(s) which this API belongs under."""
     # The containing module is based on the owner information.
+    path = self.values.get('modulePath') or self.values.get('packagePath')
     self._containing_module = template_objects.Module(
-        path=self.values.get('modulePath'),
+        package_path=path,
         owner_name=self.values.get('owner'),
         owner_domain=self.values.get('ownerDomain'))
     self.SetTemplateValue('containingModule', self._containing_module)
 
     # The API is a child of the containing_module
     base = self.values['name']
+    # TODO(user): Introduce a breaking change where we always prefer
+    # canonicalName.
+    if self.values.get('packagePath'):
+      base = self.values.get('canonicalName') or base
     if self.values.get('version_module'):
       base = '%s/%s' % (base, self.values['versionNoDots'])
-    self._module = template_objects.Module(path=base,
+    self._module = template_objects.Module(package_path=base,
                                            parent=self._containing_module)
     self.SetTemplateValue('module', self._module)
 
     # The default module for data models defined by this API.
-    self._model_module = template_objects.Module(path=None, parent=self._module)
+    self._model_module = template_objects.Module(package_path=None,
+                                                 parent=self._module)
 
   def _BuildResourceDefinitions(self):
     """Loop over the resources in the discovery doc and build definitions."""
@@ -264,13 +273,8 @@ class Api(template_objects.CodeObject):
 
   def ModelClasses(self):
     """Return all the model classes."""
-    ret = []
-    for schema in self._schemas.values():
-      if schema not in ret:
-        if isinstance(schema, Schema):
-          ret.append(schema)
-    ret.sort(lambda x, y: cmp(x.class_name, y.class_name))
-    return ret
+    ret = set(s for s in self._schemas.itervalues() if isinstance(s, Schema))
+    return sorted(ret, key=operator.attrgetter('class_name'))
 
   def TopLevelModelClasses(self):
     """Return the models which are not children of another model."""
@@ -309,9 +313,14 @@ class Api(template_objects.CodeObject):
       # unique name 'Activity.person', rather than 'ActivityPerson'.
       path = '.'.join(
           [a.values.get('wireName', '<anon>') for a in schema.full_path])
-      Trace('DataTypeFromJson: add %s to cache' % path)
+      _LOGGER.debug('DataTypeFromJson: add %s to cache', path)
       self._schemas[path] = schema
     return schema
+
+  def AddMethod(self, method):
+    """Add a new method to the set of all methods."""
+    self._all_methods.append(method)
+    self._methods_by_name[method.values['id']] = method
 
   def MethodByName(self, method_name):
     """Find a method by name.
@@ -322,25 +331,7 @@ class Api(template_objects.CodeObject):
     Returns:
       Method object or None if not found.
     """
-
-    def SearchForMethod(obj, method_name):
-      """Helper to walk tree and look for methods."""
-      for method in obj.values.get('methods', []):
-        if method.values.get('id') == method_name:
-          return method
-      for resource in obj.values.get('resources', []):
-        method = SearchForMethod(resource, method_name)
-        if method:
-          return method
-      return None
-
-    # lazy cache of method id to the Method object.
-    method = self._methods_by_name.get(method_name)
-    if not method:
-      method = SearchForMethod(self, method_name)
-      if method:
-        self._methods_by_name[method_name] = method
-    return method
+    return self._methods_by_name.get(method_name)
 
   def SchemaByName(self, schema_name):
     """Find a schema by name.
@@ -362,7 +353,7 @@ class Api(template_objects.CodeObject):
     Args:
       func: (function) Method to call on each object.
     """
-    Trace('Applying function to all nodes')
+    _LOGGER.debug('Applying function to all nodes')
     func(self._containing_module)
     func(self._module)
     func(self._model_module)
@@ -416,7 +407,7 @@ class Api(template_objects.CodeObject):
     for child in self.children:
       func(child)
 
-  # Do not warn about unused arguments, pylint: disable-msg=W0613
+  # Do not warn about unused arguments, pylint: disable=unused-argument
   def ToClassName(self, s, element, element_type=None):
     """Convert a name to a suitable class name in the target language.
 
@@ -447,6 +438,16 @@ class Api(template_objects.CodeObject):
   def containing_module(self):
     return self._containing_module
 
+  @property
+  def all_methods(self):
+    """All the methods in the entire API."""
+    return self._all_methods
+
+  @property
+  def top_level_methods(self):
+    """All the methods at the API top level (not in a resource)."""
+    return self._top_level_methods
+
 
 class Schema(data_types.ComplexDataType):
   """The definition of a schema."""
@@ -467,13 +468,14 @@ class Schema(data_types.ComplexDataType):
     super(Schema, self).__init__(default_name, def_dict, api, parent=parent)
 
     name = def_dict.get('id', default_name)
-    Trace('Schema(%s)' % name)
+    _LOGGER.debug('Schema(%s)', name)
 
     # Protect against malicious discovery
     template_objects.CodeObject.ValidateName(name)
     self.SetTemplateValue('wireName', name)
     class_name = api.ToClassName(name, self, element_type='schema')
     self.SetTemplateValue('className', class_name)
+    self.SetTemplateValue('isSchema', True)
     self.SetTemplateValue('properties', [])
     self._module = (template_objects.Module.ModuleFromDictionary(self.values)
                     or api.model_module)
@@ -512,8 +514,8 @@ class Schema(data_types.ComplexDataType):
       name = default_name
     class_name = api.ToClassName(name, None, element_type='schema')
 
-    Trace('Create: %s, parent=%s' % (
-        name, parent.values.get('wireName', '<anon>') if parent else 'None'))
+    _LOGGER.debug('Create: %s, parent=%s', name,
+                  parent.values.get('wireName', '<anon>') if parent else 'None')
 
     # Schema objects come in several patterns.
     #
@@ -532,7 +534,7 @@ class Schema(data_types.ComplexDataType):
     #
     #    Same kind of issue as the map, but with List<{inner_schema}>
     #
-    # 4. Primative data types, described by type and format.
+    # 4. Primitive data types, described by type and format.
     #    { type: string, format: int32 }
     #
     # 5. Refs to another schema.
@@ -551,74 +553,26 @@ class Schema(data_types.ComplexDataType):
         props = def_dict.get('properties')
         if props:
           # This case 1 from above
-          properties = []
-          schema = cls(api, name, def_dict, parent=parent)
-          if wire_name:
-            schema.SetTemplateValue('wireName', wire_name)
-          for prop_name in sorted(props):
-            prop_dict = props[prop_name]
-            Trace('  adding prop: %s to %s' % (prop_name, name))
-            properties.append(Property(api, schema, prop_name, prop_dict))
-          schema.SetTemplateValue('properties', properties)
-          return schema
+          return cls._CreateObjectWithProperties(props, api, name,
+                                                 def_dict, wire_name, parent)
 
         # Look for case 2
         additional_props = def_dict.get(_ADDITIONAL_PROPERTIES)
         if additional_props:
-          Trace('Have only additionalProps for %s, dict=%s' % (
-              name, str(additional_props)))
-          # TODO(user): Remove this hack at the next large breaking change
-          # The "Items" added to the end is unneeded and ugly. This is for
-          # temporary backwards compatibility.  And in case 3 too.
-          if additional_props.get('type') == 'array':
-            name = '%sItem' % name
-          # Note, since this is an interim, non class just to hold the map
-          # make the parent schema the parent passed in, not myself.
-          Trace('name:%s, wire_name:%s' % (name, wire_name))
-          base_type = api.DataTypeFromJson(additional_props, name or 'Item',
-                                           parent=parent, wire_name=wire_name)
-          map_type = data_types.MapDataType(name, base_type, parent=parent)
-          Trace('  %s is MapOf<string, %s>' % (
-              class_name, base_type.class_name))
-          return map_type
+          return cls._CreateMapType(additional_props, api, name, wire_name,
+                                    class_name, parent)
 
         # no properties
-        if parent:
-          lname = '%s.%s' % (parent.name, name)
-        else:
-          lname = name
-        logging.warning('object without properties %s: %s', lname, def_dict)
-        schema = cls(api, name, def_dict, parent=parent)
-        if wire_name:
-          schema.SetTemplateValue('wireName', wire_name)
-        return schema
+        return cls._CreateSchemaWithoutProperties(api, name, def_dict,
+                                                  wire_name, parent)
 
       elif json_type == 'array':
         # Case 3: Look for array definition
-        items = def_dict.get('items')
-        if not items:
-          raise ApiException('array without items in: %s' % def_dict)
-        tentative_class_name = class_name
-        # TODO(user): THIS IS STUPID. We should not rename things items.
-        # if we have an anonymous type within a map or array, it should be
-        # called 'Item', and let the namespacing sort it out.
-        if schema_id:
-          Trace('Top level schema %s is an array' % class_name)
-          tentative_class_name += 'Items'
-        base_type = api.DataTypeFromJson(items, tentative_class_name,
-                                         parent=parent, wire_name=wire_name)
-        Trace('  %s is ArrayOf<%s>' % (class_name, base_type.class_name))
-        array_type = data_types.ArrayDataType(tentative_class_name, base_type,
-                                              wire_name=wire_name,
-                                              parent=parent)
-        if schema_id:
-          array_type.SetTemplateValue('className', schema_id)
-        return array_type
-
+        return cls._CreateArrayType(api, def_dict, wire_name, class_name,
+                                    schema_id, parent)
       else:
         # Case 4: This must be a basic type.  Create a DataType for it.
-        base_type = data_types.PrimitiveDataType(def_dict, api, parent=parent)
-        return base_type
+        return data_types.PrimitiveDataType(def_dict, api, parent=parent)
 
     referenced_schema = def_dict.get('$ref')
     if referenced_schema:
@@ -642,36 +596,181 @@ class Schema(data_types.ComplexDataType):
       # The stored "schema" may not be an instance of Schema, but rather a
       # data_types.PrimitiveDataType, which has no 'wireName' value.
       if schema:
-        Trace('Schema.Create: %s => %s' %
-              (default_name, schema.values.get('wireName', '<unknown>')))
+        _LOGGER.debug('Schema.Create: %s => %s',
+                      default_name, schema.values.get('wireName', '<unknown>'))
         return schema
       return data_types.SchemaReference(referenced_schema, api)
 
     raise ApiException('Cannot decode JSON Schema for: %s' % def_dict)
+
+  @classmethod
+  def _CreateObjectWithProperties(cls, props, api, name, def_dict,
+                                  wire_name, parent):
+
+    properties = []
+    schema = cls(api, name, def_dict, parent=parent)
+    if wire_name:
+      schema.SetTemplateValue('wireName', wire_name)
+    for prop_name in sorted(props):
+      prop_dict = props[prop_name]
+      _LOGGER.debug('  adding prop: %s to %s', prop_name, name)
+      properties.append(Property(api, schema, prop_name, prop_dict))
+      # Some APIs express etag directly in the response, others don't.
+      # Knowing that we have it explicitly makes special case code generation
+      # easier
+      if prop_name == 'etag':
+        schema.SetTemplateValue('hasEtagProperty', True)
+    schema.SetTemplateValue('properties', properties)
+    return schema
+
+  @classmethod
+  def _CreateMapType(cls, additional_props, api, name, wire_name,
+                     class_name, parent):
+    _LOGGER.debug('Have only additionalProps for %s, dict=%s',
+                  name, additional_props)
+    # TODO(user): Remove this hack at the next large breaking change
+    # The "Items" added to the end is unneeded and ugly. This is for
+    # temporary backwards compatibility.  Same for _CreateArrayType().
+    if additional_props.get('type') == 'array':
+      name = '%sItem' % name
+    subtype_name = additional_props.get('id', name + 'Element')
+    # Note, since this is an interim, non class just to hold the map
+    # make the parent schema the parent passed in, not myself.
+    _LOGGER.debug('name:%s, wire_name:%s, subtype name %s', name, wire_name,
+                  subtype_name)
+    # When there is a parent, we synthesize a wirename when none exists.
+    # Purpose is to avoid generating an extremely long class name, since we
+    # don't do so for other nested classes.
+    if parent and wire_name:
+      base_wire_name = wire_name + 'Element'
+    else:
+      base_wire_name = None
+
+    base_type = api.DataTypeFromJson(
+        additional_props, subtype_name, parent=parent,
+        wire_name=base_wire_name)
+    map_type = data_types.MapDataType(name, base_type, parent=parent,
+                                      wire_name=wire_name)
+    _LOGGER.debug('  %s is MapOf<string, %s>',
+                  class_name, base_type.class_name)
+    return map_type
+
+  @classmethod
+  def _CreateSchemaWithoutProperties(cls, api, name, def_dict, wire_name,
+                                     parent):
+    if parent:
+      # code objects have __getitem__(), but not .get()
+      try:
+        pname = parent['id']
+      except KeyError:
+        pname = '<unknown>'
+      name_to_log = '%s.%s' % (pname, name)
+    else:
+      name_to_log = name
+    logging.warning('object without properties %s: %s',
+                    name_to_log, def_dict)
+    schema = cls(api, name, def_dict, parent=parent)
+    if wire_name:
+      schema.SetTemplateValue('wireName', wire_name)
+    return schema
+
+  @classmethod
+  def _CreateArrayType(cls, api, def_dict, wire_name,
+                       class_name, schema_id, parent):
+    items = def_dict.get('items')
+    if not items:
+      raise ApiException('array without items in: %s' % def_dict)
+    tentative_class_name = class_name
+    # TODO(user): THIS IS STUPID. We should not rename things items.
+    # if we have an anonymous type within a map or array, it should be
+    # called 'Item', and let the namespacing sort it out.
+    if schema_id:
+      _LOGGER.debug('Top level schema %s is an array', class_name)
+      tentative_class_name += 'Items'
+    base_type = api.DataTypeFromJson(items, tentative_class_name,
+                                     parent=parent, wire_name=wire_name)
+    _LOGGER.debug('  %s is ArrayOf<%s>', class_name, base_type.class_name)
+    array_type = data_types.ArrayDataType(tentative_class_name, base_type,
+                                          wire_name=wire_name,
+                                          parent=parent)
+    if schema_id:
+      array_type.SetTemplateValue('className', schema_id)
+    return array_type
 
   @property
   def class_name(self):
     return self.values['className']
 
 
+class Property(template_objects.CodeObject):
+  """The definition of a schema property.
+
+  Example property in the discovery schema:
+      "id": {"type": "string"}
+  """
+
+  def __init__(self, api, schema, name, def_dict):
+    """Construct a Property.
+
+    A Property requires several elements in its template value dictionary which
+    are set here:
+      wireName: the string which labels this Property in the JSON serialization.
+      dataType: the DataType of this property.
+
+    Args:
+      api: (Api) The Api which owns this Property
+      schema: (Schema) the schema this Property is part of
+      name: (string) the name for this Property
+      def_dict: (dict) the JSON schema dictionary
+
+    Raises:
+      ApiException: If we have an array type without object definitions.
+    """
+    super(Property, self).__init__(def_dict, api, wire_name=name)
+    self.ValidateName(name)
+    self.schema = schema
+    # If the schema value for this property defines a new object directly,
+    # rather than refering to another schema, we will have to create a class
+    # name for it.   We create a unique name by prepending the schema we are
+    # in to the object name.
+    tentative_class_name = '%s%s' % (schema.class_name,
+                                     utilities.CamelCase(name))
+    self._data_type = api.DataTypeFromJson(def_dict, tentative_class_name,
+                                           parent=schema, wire_name=name)
+
+  @property
+  def code_type(self):
+    if self._language_model:
+      self._data_type.SetLanguageModel(self._language_model)
+    return self._data_type.code_type
+
+  @property
+  def safe_code_type(self):
+    if self._language_model:
+      self._data_type.SetLanguageModel(self._language_model)
+    return self._data_type.safe_code_type
+
+  @property
+  def data_type(self):
+    return self._data_type
+
+
 class Resource(template_objects.CodeObject):
-  """The definition of a resource."""
 
   def __init__(self, api, name, def_dict, parent=None):
     """Creates a Resource.
 
     Args:
-      api: (Api) The Api which owns this Method.
-      name: (string) The discovery name of the method.
-      def_dict: (dict) The discovery dictionary for this method.
-      parent: (CodeObject) The resource containing this method, if any.
+      api: (Api) The Api which owns this Resource.
+      name: (string) The discovery name of the Resource.
+      def_dict: (dict) The discovery dictionary for this Resource.
+      parent: (CodeObject) The resource containing this method, if any. Top
+         level resources have the API as a parent.
     """
-    super(Resource, self).__init__(def_dict, api, parent=parent)
+    super(Resource, self).__init__(def_dict, api, parent=parent, wire_name=name)
     self.ValidateName(name)
-    self._raw_def_dict = copy.deepcopy(def_dict)
     class_name = api.ToClassName(name, self, element_type='resource')
     self.SetTemplateValue('className', class_name)
-    self.SetTemplateValue('wireName', name)
     # Replace methods dict with Methods
     self._methods = []
     method_dict = self.values.get('methods') or {}
@@ -717,25 +816,39 @@ class Method(template_objects.CodeObject):
   def __init__(self, api, name, def_dict, parent=None):
     """Construct a method.
 
+    Methods in REST discovery are inside of a resource. Note that the method
+    name and id are calculable from each other. id will always be equal to
+    api_name.resource_name[.sub_resource...].method_name.  At least it should
+    be, as that is the transformation Discovery makes from the API definition,
+    which is essentially a flat list of methods, into a hierarchy of resources.
+
     Args:
       api: (Api) The Api which owns this Method.
-      name: (string) The discovery name of the method.
-      def_dict: (dict) The discovery dictionary for this method.
-      parent: (CodeObject) The resource containing this method, if any.
+      name: (string) The discovery name of the Method.
+      def_dict: (dict) The discovery dictionary for this Method.
+      parent: (CodeObject) The resource containing this Method, if any.
 
     Raises:
       ApiException: If the httpMethod type is not one we know how to
           handle.
     """
     super(Method, self).__init__(def_dict, api, parent=parent)
+    # TODO(user): Fix java templates to name vs. wireName correctly. Then
+    # change the __init__ to have wire_name=def_dict.get('id') or name
+    # then eliminate this line.
+    self.SetTemplateValue('wireName', name)
     self.ValidateName(name)
     class_name = api.ToClassName(name, self, element_type='method')
     if parent and class_name == parent.values['className']:
       # Some languages complain when the collection name is the same as the
       # method name.
       class_name = '%sRequest' % class_name
-    # TODO(user): wireName should be set from the id.
-    self.SetTemplateValue('wireName', name)
+    # The name is the key of the dict defining use. The id field is what you
+    # have to use to call the method via RPC. That is unique, name might not be.
+    self.SetTemplateValue('name', name)
+    # Fix up very old discovery, which does not have an id.
+    if 'id' not in self.values:
+      self.values['id'] = name
     self.SetTemplateValue('className', class_name)
     http_method = def_dict.get('httpMethod', 'POST').upper()
     self.SetTemplateValue('httpMethod', http_method)
@@ -765,7 +878,7 @@ class Method(template_objects.CodeObject):
     else:
       self.SetTemplateValue('responseType', api.void_type)
     # Make sure we can handle this method type and do any fixups.
-    if not http_method in ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT',
+    if http_method not in ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT',
                            'PROPFIND', 'PROPPATCH', 'REPORT']:
       raise ApiException('Unknown HTTP method: %s' % http_method, def_dict)
     if http_method == 'GET':
@@ -793,7 +906,7 @@ class Method(template_objects.CodeObject):
       else:
         # optional parameters are appended in the order they're declared.
         opt_parameters.append(param)
-    # pylint: disable-msg=C6402
+    # pylint: disable=g-long-lambda
     req_parameters.sort(lambda x, y: cmp(order.index(x.values['wireName']),
                                          order.index(y.values['wireName'])))
     req_parameters.extend(opt_parameters)
@@ -801,6 +914,7 @@ class Method(template_objects.CodeObject):
 
     self._InitMediaUpload(parent)
     self._InitPageable(api)
+    api.AddMethod(self)
 
   def _InitMediaUpload(self, parent):
     media_upload = self.values.get('mediaUpload')
@@ -909,16 +1023,16 @@ class Method(template_objects.CodeObject):
   #
   # Expose some properties with the naming convention we use in templates
   #
-  def optionalParameters(self):  # pylint: disable-msg=C6409
+  def optionalParameters(self):  # pylint: disable=g-bad-name
     return self.optional_parameters
 
-  def requiredParameters(self):  # pylint: disable-msg=C6409
+  def requiredParameters(self):  # pylint: disable=g-bad-name
     return self.required_parameters
 
-  def pathParameters(self):  # pylint: disable-msg=C6409
+  def pathParameters(self):  # pylint: disable=g-bad-name
     return self.path_parameters
 
-  def queryParameters(self):  # pylint: disable-msg=C6409
+  def queryParameters(self):  # pylint: disable=g-bad-name
     return self.query_parameters
 
 
@@ -926,10 +1040,10 @@ class Parameter(template_objects.CodeObject):
   """The definition of a method parameter."""
 
   def __init__(self, api, name, def_dict, method):
-    super(Parameter, self).__init__(def_dict, api, parent=method)
+    super(Parameter, self).__init__(def_dict, api, parent=method,
+                                    wire_name=name)
     self.ValidateName(name)
     self.schema = api
-    self.SetTemplateValue('wireName', name)
 
     # TODO(user): Deal with dots in names better. What we should do is:
     # For x.y, x.z create a little class X, with members y and z. Then
@@ -937,20 +1051,21 @@ class Parameter(template_objects.CodeObject):
 
     self._repeated = self.values.get('repeated', False)
     self._required = self.values.get('required', False)
-    self._location = self.values.get('restParameterType',
-                                     self.values.get('location', 'query'))
+    self._location = (self.values.get('location')
+                      or self.values.get('restParameterType')
+                      or 'query')
     self._data_type = data_types.PrimitiveDataType(def_dict, api, parent=self)
     if self._repeated:
       self._data_type = data_types.ArrayDataType(name, self._data_type,
                                                  parent=self)
 
     if self.values.get('enum'):
-      enum = Enum(api,
-                  name,
-                  self._data_type,
-                  self.values.get('enum'),
-                  self.values.get('enumDescriptions'),
-                  parent=method)
+      enum = data_types.Enum(api,
+                             name,
+                             self._data_type,
+                             self.values.get('enum'),
+                             self.values.get('enumDescriptions'),
+                             parent=method)
       self.SetTemplateValue('enumType', enum)
 
   @property
@@ -972,116 +1087,3 @@ class Parameter(template_objects.CodeObject):
   @property
   def data_type(self):
     return self._data_type
-
-
-class Property(template_objects.CodeObject):
-  """The definition of a schema property.
-
-  Example property in the discovery schema:
-      "id": {"type": "string"}
-  """
-
-  def __init__(self, api, schema, name, def_dict):
-    """Construct a Property.
-
-    A Property requires several elements in its template value dictionary which
-    all computed here:
-      wireName: the string which labels this Property in the wire protocol
-      dataType: the DataType of this property
-
-    Args:
-      api: (Api) The Api which owns this Property
-      schema: (Schema) the schema this Property is part of
-      name: (string) the name for this Property
-      def_dict: (dict) the JSON schema dictionary
-
-    Raises:
-      ApiException: If we have an array type without object definitions.
-    """
-    super(Property, self).__init__(def_dict, api)
-    self.ValidateName(name)
-    self.schema = schema
-    self.SetTemplateValue('wireName', name)
-    # If the schema value for this property defines a new object directly,
-    # rather than refering to another schema, we will have to create a class
-    # name for it.   We create a unique name by prepending the schema we are
-    # in to the object name.
-    tentative_class_name = '%s%s' % (schema.class_name,
-                                     utilities.CamelCase(name))
-    self._data_type = api.DataTypeFromJson(def_dict, tentative_class_name,
-                                           parent=schema, wire_name=name)
-
-  @property
-  def code_type(self):
-    if self._language_model:
-      self._data_type.SetLanguageModel(self._language_model)
-    return self._data_type.code_type
-
-  @property
-  def safe_code_type(self):
-    if self._language_model:
-      self._data_type.SetLanguageModel(self._language_model)
-    return self._data_type.safe_code_type
-
-  @property
-  def data_type(self):
-    return self._data_type
-
-
-class Enum(data_types.DataType):
-  """The definition of an Enum.
-
-  Example enum in discovery.
-    "enum": [
-        "@comments",
-        "@consumption",
-        "@liked",
-        "@public",
-        "@self"
-       ],
-    "enumDescriptions": [
-        "Limit to activities commented on by the user.",
-        "Limit to activities to be consumed by the user.",
-        "Limit to activities liked by the user.",
-        "Limit to public activities posted by the user.",
-        "Limit to activities posted by the user."
-       ]
-  """
-
-  def __init__(self, api, name, base_type, values, descriptions, parent):
-    """Create an enum.
-
-    Args:
-      api: (Api) The Api which owns this Property
-      name: (str) The name for this enum.
-      base_type: (str) The underlying (language specific) type of the values.
-      values: ([str]) List of possible values.
-      descriptions: ([str]) List of value descriptions
-      parent: (Method) The method owning this enum.
-    """
-    super(Enum, self).__init__({}, api, parent=parent)
-    self.ValidateName(name)
-    self._base_type = base_type
-    self.SetTemplateValue('wireName', name)
-    self.SetTemplateValue('className',
-                          api.ToClassName(name, self, element_type='enum'))
-    names = [s.lstrip('@').upper().replace('-', '_') for s in values]
-    clean_descriptions = []
-    for desc in descriptions:
-      clean_desc = self.ValidateAndSanitizeComment(self.StripHTML(desc))
-      clean_descriptions.append(clean_desc)
-      self.SetTemplateValue('pairs', zip(names, values, clean_descriptions))
-    self.SetTemplateValue('pairs', zip(names, values, descriptions))
-
-  @property
-  def codeType(self):  # pylint: disable-msg=C6409
-    # Enums want to use their path to the class name because they are
-    # heavily scoped to methods.
-    return self.fullClassName()
-
-
-def Trace(unused_s):
-  """Logic tracer for debugging."""
-  # Only turn on when really debugging. Too much noise when running in GAE
-  # logging.debug('>>> %s', unused_s)
-  pass

@@ -124,12 +124,12 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
     super({{ api.className }}.this, "{{ method.httpMethod }}", REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
   {% for param in method.requiredParameters %}
     this.{{ param.codeName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
-    {% call_template _pattern_check_def param param %}
+    {% call_template _pattern_check_def param=param %}
   {% endfor %}
   {% if method.requestType and method.responseType.properties %}
-    {% call_template _required_param_def properties method.responseType.properties %}
+    {% call_template _required_param_def properties=method.responseType.properties %}
   {% endif %}
-  {% call_template _alt_def method method %}
+  {% call_template _alt_def method=method %}
   {% if method.supportsMediaDownload %}
     initializeMediaDownload();
   {% endif %}
@@ -177,7 +177,7 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
     this.{{ param.codeName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
   {% endfor %}
     initializeMediaUpload(mediaContent);
-  {% call_template _alt_def method method %}
+  {% call_template _alt_def method=method %}
   }
 {% endif %}
 {% endfilter %}
@@ -232,13 +232,13 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
 {% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
   public {{ method.className }} set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
 {% filter noblanklines %}
-    {% call_template _pattern_check_def param param %}
+    {% call_template _pattern_check_def param=param %}
     this.{{ param.codeName }} = {{ param.codeName }};
     return this;
 {% endfilter %}
   }
 {% ifequal param.codeType "java.lang.Boolean" %}{% ifnotequal param.default null %}
-{% call_template _bool_getter_content_def property param %}
+{% call_template _bool_getter_content_def property=param %}
 {% endifnotequal %}{% endifequal %}{% endfor %}
 
   @Override

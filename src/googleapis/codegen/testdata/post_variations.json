@@ -126,7 +126,7 @@
      "description": "No request object, no response object",
      "parameters": {
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -143,13 +143,13 @@
      "description": "Deletes the specified task from the task list.",
      "parameters": {
       "task": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task identifier.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -167,13 +167,13 @@
      "description": "Returns the specified task.",
      "parameters": {
       "task": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task identifier.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -194,12 +194,12 @@
      "description": "Creates a new task on the specified task list.",
      "parameters": {
       "parent": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Parent task identifier. If the task is created at the top level, this parameter is omitted. Optional.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -222,29 +222,29 @@
      "description": "Returns all tasks in the specified task list.",
      "parameters": {
       "completedMax": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.",
        "type": "string"
       },
       "completedMin": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.",
        "type": "string"
       },
       "maxResults": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of task lists returned on one page. Optional. The default is 100.",
        "type": "integer",
        "minimum": "-9223372036854775808",
        "maximum": "9223372036854775807"
       },
       "showCompleted": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Flag indicating whether completed tasks are returned in the result. Optional. The default is True.",
        "type": "boolean"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -264,18 +264,18 @@
      "description": "Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.",
      "parameters": {
       "parent": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "New parent task identifier. If the task is moved to the top level, this parameter is omitted. Optional.",
        "type": "string"
       },
       "task": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task identifier.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -296,13 +296,13 @@
      "description": "Updates the specified task.",
      "parameters": {
       "task": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task identifier.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -326,13 +326,13 @@
      "description": "Updates the specified task.",
      "parameters": {
       "task": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task identifier.",
        "type": "string"
       },
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"
@@ -356,7 +356,7 @@
      "description": "Artificial PUT operation with no response",
      "parameters": {
       "tasklist": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "Task list identifier.",
        "type": "string"

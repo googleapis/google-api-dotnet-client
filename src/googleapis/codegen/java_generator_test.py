@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +17,10 @@
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
-
 from google.apputils import basetest
 from googleapis.codegen import data_types
+from googleapis.codegen import data_value
 from googleapis.codegen import java_generator
-from googleapis.codegen import template_objects
 
 
 class JavaApiTest(basetest.TestCase):
@@ -96,32 +95,6 @@ class JavaApiTest(basetest.TestCase):
           language_model.GetCodeTypeFromDictionary(test_case[1]))
 
 
-class Java14GeneratorTest(basetest.TestCase):
-
-  def testDefaultPath(self):
-    def MakeGen(host):
-      gen = java_generator.Java14Generator({
-          'name': 'fake',
-          'version': 'v1',
-          'rootUrl': 'https://%s/' % host,
-          'servicePath': 'fake/v1',
-          'ownerDomain': host,
-          })
-      gen.AnnotateApiForLanguage(gen.api)
-      return gen
-
-    gen = MakeGen('google.com')
-    self.assertEquals('com/google/api/services/fake', gen.api.module.path)
-    self.assertEquals('com/google/api/services/fake/model',
-                      gen.api.model_module.path)
-
-    gen = MakeGen('my-custom_app.appspot.com')
-    self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
-
-    gen = MakeGen('localhost')
-    self.assertEquals('localhost/fake', gen.api.module.path)
-
-
 class JavaGeneratorTest(basetest.TestCase):
 
   def testImportsForArray(self):
@@ -130,7 +103,7 @@ class JavaGeneratorTest(basetest.TestCase):
     The goal is to see that an array of a primative type which requires an
     import really works.
     """
-    gen = java_generator.Java12Generator({
+    gen = java_generator.BaseJavaGenerator({
         'name': 'dummy',
         'version': 'v1',
         'resources': {},
@@ -175,9 +148,15 @@ class JavaGeneratorTest(basetest.TestCase):
     self.assertTrue(found_big_integer)
     self.assertTrue(found_date_time)
 
+
+class JavaLanguageModelTest(basetest.TestCase):
+  """Tests for features implemented in the language model."""
+
+
   def testDefaultPath(self):
+    """Test the package path generation."""
     def MakeGen(host):
-      gen = java_generator.Java12Generator({
+      gen = java_generator.BaseJavaGenerator({
           'name': 'fake',
           'version': 'v1',
           'rootUrl': 'https://%s/' % host,
@@ -192,14 +171,16 @@ class JavaGeneratorTest(basetest.TestCase):
     self.assertEquals('com/google/api/services/fake/model',
                       gen.api.model_module.path)
 
+    gen = MakeGen('not-google.com')
+    self.assertEquals('com/not_google/fake', gen.api.module.path)
+    self.assertEquals('com.not_google.fake', gen.api.module.name)
     gen = MakeGen('my-custom_app.appspot.com')
     self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
 
-    gen = MakeGen('localhost')
-    self.assertEquals('localhost/fake', gen.api.module.path)
 
+class JavaLanguageModelDataValueTest(basetest.TestCase):
+  """Tests for DataValue integration."""
 
-class JavaLanguageModelTest(basetest.TestCase):
   def setUp(self):
     self.language_model = java_generator.JavaLanguageModel()
 
@@ -210,7 +191,7 @@ class JavaLanguageModelTest(basetest.TestCase):
         }
     prototype = data_types.DataType(
         def_dict, None, language_model=self.language_model)
-    dv = template_objects.DataValue(value, prototype)
+    dv = data_value.DataValue(value, prototype)
     return dv
 
   def testRenderBoolean(self):
@@ -231,6 +212,7 @@ class JavaLanguageModelTest(basetest.TestCase):
 
 
 class Java14LanguageModelTest(basetest.TestCase):
+
   def setUp(self):
     self.language_model = java_generator.Java14LanguageModel()
 
@@ -241,7 +223,7 @@ class Java14LanguageModelTest(basetest.TestCase):
         }
     prototype = data_types.DataType(
         def_dict, None, language_model=self.language_model)
-    dv = template_objects.DataValue(value, prototype)
+    dv = data_value.DataValue(value, prototype)
     return dv
 
   def testRenderBoolean(self):

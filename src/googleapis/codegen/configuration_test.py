@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2012 Google Inc. All Rights Reserved.
 
 """Tests validity of the apiserving/libgen/gen configuration files.
@@ -13,9 +13,9 @@ import os
 import re
 
 from google.apputils import basetest
-from googleapis.codegen import json_with_comments
 from googleapis.codegen import platforms
-from googleapis.codegen.json_expander import ExpandJsonTemplate
+from googleapis.codegen.utilities import json_expander
+from googleapis.codegen.utilities import json_with_comments
 
 
 class ConfigurationTest(basetest.TestCase):
@@ -62,11 +62,11 @@ class ConfigurationTest(basetest.TestCase):
         self.fail('%s: %s' % (path, err))
       return None
     if expand:
-      json_data = ExpandJsonTemplate(json_data)
+      json_data = json_expander.ExpandJsonTemplate(json_data)
     return json_data
 
   def testCheckAllJsonFiles(self):
-    for path in self.WalkFileTree('.*\.json$'):
+    for path in self.WalkFileTree(r'.*\.json$'):
       json_data = self.LoadJsonFile(path)
       if json_data:
         self.assertTrue(isinstance(json_data, dict))
@@ -97,7 +97,7 @@ class ConfigurationTest(basetest.TestCase):
         HasRequiresElement(r, 'environments')
         environments = r['environments']
         for e in environments:
-          if not e in possible_environments:
+          if e not in possible_environments:
             self.fail('%s: bad environment list: %s in %s'
                       % (path, environments, r))
         for f in r.get('files', []):
@@ -105,47 +105,41 @@ class ConfigurationTest(basetest.TestCase):
           if file_type not in platforms.FILE_TYPES[platforms.ALL]:
             self.fail('%s: unknown file type %s in %s' % (path, file_type, r))
 
-    for path in self.WalkFileTree('features\.json$'):
+    for path in self.WalkFileTree(r'features\.json$'):
       json_data = self.LoadJsonFile(path, True)
       if json_data:
         CheckFileContent(path, json_data)
 
   def testCheckDependenciesExist(self):
-    # Test that the file actually exist.
-    targets = self.LoadJsonFile(os.path.join(self._SRC_DATA_DIR,
-                                             'targets.json'))
+    # Test that the files in requires actually exist.
+    nonexistent = {}
+    for path in self.WalkFileTree(r'features\.json$'):
+      # Skip this check for 'default' versions of language surface. Those don't
+      # get used in the service, so they don't need dependencies
+      if 'default' in path:
+        continue
 
-    def VariantNameForFeaturePath(path):
-      lang_name, variant_path = path.split('/')[-3:-1]
-      variants = targets['languages'][lang_name]['variations']
-      for varname, variant in variants.iteritems():
-        if variant['path'] == variant_path:
-          return varname
-
-    for path in self.WalkFileTree('features\.json$'):
       # Skip this check for test files.
       if path.find('/testdata/') >= 0:
         continue
       json_data = self.LoadJsonFile(path, True)
       if not json_data:
-        continue
-      language = json_data.get('language')
-      if not language:
-        continue
-      # Skip this check for 'default' versions of language surface. Those don't
-      # get used in the service, so they don't need dependencies
-      if VariantNameForFeaturePath(path) == 'default':
-        continue
-      if path.find('%s/default' % language) >= 0:
-        continue
+        raise Exception('cannot parse json: %s' % path)
 
       features_dir = os.path.dirname(path)
+      paths = []
       for r in json_data.get('requires', []):
         for f in r.get('files', []):
           file_path = f.get('path')
           if file_path:
             p = os.path.join(features_dir, 'dependencies', file_path)
-            self.assertTrue(os.path.exists(p), '%s not found' % p)
+            paths.append(p)
+
+      missing = [p for p in paths if not os.path.exists(p)]
+      if missing:
+        nonexistent[path] = missing
+
+    self.assertTrue(not nonexistent, 'paths not found: %s' % nonexistent)
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -246,18 +246,20 @@ class LanguageModel(object):
           (type_str, type(self).__name__))
 
   # pylint: disable-msg=unused-argument
-  def DefaultContainerPathForOwner(self, owner_name, owner_domain):
+  def DefaultContainerPathForOwner(self, module):
     """Computes the default path to a module for the given owner information.
 
-    Subclasses almost certainly want to overrride this.
+    For a given module, compute the portions of the path which are determined
+    by the owner of the module - excluding the module path itself.
+
+    Subclasses almost certainly want to override this.
 
     Args:
-      owner_name: The canonical name of the API owner. E.g. "YouTube"
-      owner_domain: The domain name of the owner.
+      module: (template_objects.Module) The module.
     Returns:
       (str) The path to use for the namespace of this API.
     """
-    return '/'.join(utilities.ReversedDomainComponents(owner_domain))
+    return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
 
 
 class DocumentingLanguageModel(LanguageModel):

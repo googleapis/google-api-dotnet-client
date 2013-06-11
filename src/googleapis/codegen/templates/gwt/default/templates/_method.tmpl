@@ -28,4 +28,4 @@ public interface {{ method.className }} extends Request<{{ method.responseType.f
   {{ method.className }} set{{ param.codeName|capfirst }}(@PropertyName("{{ param.wireName }}") {{ param.codeType }} {{ param.codeName }});
 {% if param.enumType %}
   /** Possible values for {@link #set{{ param.codeName|capfirst }}({{ param.codeName|capfirst }})}. */
-{% call_template _enum enum param.enumType %}{% endif %}{% endfor %}}
+{% call_template _enum enum=param.enumType %}{% endif %}{% endfor %}}

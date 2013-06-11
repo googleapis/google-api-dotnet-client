@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,11 @@
 
 __author__ = 'akesling@google.com (Alex Kesling)'
 
-
 from google.apputils import basetest
 
 from googleapis.codegen import data_types
+from googleapis.codegen import data_value
 from googleapis.codegen import language_model
-from googleapis.codegen import template_objects
 
 
 class LanguageModelTest(basetest.TestCase):
@@ -36,7 +35,7 @@ class LanguageModelTest(basetest.TestCase):
         }
     prototype = data_types.DataType(
         def_dict, None, language_model=self.language_model)
-    dv = template_objects.DataValue(value, prototype)
+    dv = data_value.DataValue(value, prototype)
     return dv
 
   def testConstructor(self):

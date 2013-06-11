@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2010 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,15 +19,15 @@ __author__ = 'akesling@google.com (Alex Kesling)'
 
 import json
 
-
 from google.apputils import basetest
 
 from googleapis.codegen import data_types
+from googleapis.codegen import data_value
 from googleapis.codegen import python_generator
-from googleapis.codegen import template_objects
 
 
-class PythonLanguageModelTest(basetest.TestCase):
+class PythonLanguageModelDataValueTest(basetest.TestCase):
+
   def setUp(self):
     self.language_model = python_generator.PythonLanguageModel()
 
@@ -38,7 +38,7 @@ class PythonLanguageModelTest(basetest.TestCase):
         }
     prototype = data_types.DataType(
         def_dict, None, language_model=self.language_model)
-    dv = template_objects.DataValue(value, prototype)
+    dv = data_value.DataValue(value, prototype)
     return dv
 
   def testRenderBoolean(self):

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,8 @@ class GwtGenerator(java_generator.BaseJavaGenerator):
   """The GWT code generator."""
 
   def __init__(self, discovery, options=None):
-    super(GwtGenerator, self).__init__(discovery, 'gwt', GwtLanguageModel(),
+    super(GwtGenerator, self).__init__(discovery, 'gwt',
+                                       GwtLanguageModel(options=options),
                                        options=options)
     self.api.module.SetPath('%s/shared' % self.api.values['name'])
 
@@ -57,13 +58,6 @@ class GwtGenerator(java_generator.BaseJavaGenerator):
     super(GwtGenerator, self).AnnotateParameter(method, parameter)
     enum_type = parameter.values.get('enumType')
     if enum_type:
-
-      def Fix(pair):
-        if pair[0].isdigit():
-          pair = tuple(['VALUE_' + pair[0]] + list(pair[1:]))
-        return pair
-      pairs = enum_type.GetTemplateValue('pairs')
-      enum_type.SetTemplateValue('pairs', map(Fix, pairs))
       # For generated enums, we need to qualify the parent class of the enum so
       # that two methods that take a similarly-named enum parameter don't get
       # confused.
@@ -116,8 +110,8 @@ class GwtLanguageModel(java_generator.JavaLanguageModel):
                              ImportDefinition(['java.math.BigInteger'])),
       }
 
-  def __init__(self):
-    super(GwtLanguageModel, self).__init__()
+  def __init__(self, options=None):
+    super(GwtLanguageModel, self).__init__(options=options)
     self._type_map = GwtLanguageModel.TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS
 
   def CodeTypeForVoid(self):
@@ -133,7 +127,7 @@ class GwtLanguageModel(java_generator.JavaLanguageModel):
     # response is required, and handle that in the templates.
     return 'EmptyResponse'
 
-  def DefaultContainerPathForOwner(self, unused_owner_name, owner_domain):
+  def DefaultContainerPathForOwner(self, module):
     """Overrides the default implementation."""
     return '%s/api/gwt/services' % '/'.join(
-        utilities.ReversedDomainComponents(owner_domain))
+        utilities.ReversedDomainComponents(module.owner_domain))

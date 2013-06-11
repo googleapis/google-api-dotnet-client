@@ -17,7 +17,7 @@ package {{ model.module.name }};
 @SuppressWarnings("javadoc")
 public final class {{ model.className }} extends com.google.api.client.json.GenericJson {
 
-{% call_template _model_content_def current_model model %}
+{% call_template _model_content_def current_model=model %}
 
-{% for child in model.children %}{% indent %}{% call_template _model_def model child %}{% endindent %}
+{% for child in model.children %}{% indent %}{% call_template _model_def model=child %}{% endindent %}
 {% endfor %}}{% endcollapsenewlines %}

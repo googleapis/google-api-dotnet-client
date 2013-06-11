@@ -1560,12 +1560,12 @@
      "description": "Get a count of link shares",
      "parameters": {
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "url": {
-       "restParameterType": "query",
+       "location": "query",
        "repeated": true,
        "description": "URLs for which to get share counts.",
        "type": "string"
@@ -1586,7 +1586,7 @@
      "description": "Delete an activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1600,18 +1600,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity to delete.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection to which the activity belongs.",
        "type": "string",
@@ -1627,7 +1627,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user whose post to delete.",
        "type": "string"
@@ -1649,7 +1649,7 @@
      "description": "Search for people by topic",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1663,7 +1663,7 @@
        "default": "atom"
       },
       "bbox": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Bounding box to use in a geographic location query.",
        "type": "string",
        "pattern": "[a-zA-Z_]+"
@@ -1683,27 +1683,27 @@
        "location": "query"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "lat": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Latitude to use in a geographic location query.",
        "type": "string"
       },
       "lon": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Longitude to use in a geographic location query.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -1711,17 +1711,17 @@
        "default": "20"
       },
       "pid": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "ID of a place to use in a geographic location query.",
        "type": "string"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Full-text search query string.",
        "type": "string"
       },
       "radius": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Radius to use in a geographic location query.",
        "type": "string"
       }
@@ -1744,7 +1744,7 @@
      "description": "Get an activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1758,19 +1758,19 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-comments": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of comments to include.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "max-liked": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of likes to include.",
        "type": "integer",
        "minimum": "0",
@@ -1778,18 +1778,18 @@
        "default": "0"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user to get.",
        "type": "string"
       },
       "truncateAtom": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Truncate the value of the atom:content element.",
        "type": "boolean"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user whose post to get.",
        "type": "string"
@@ -1814,7 +1814,7 @@
      "description": "Create a new activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1828,18 +1828,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "preview": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "If true, only preview the action.",
        "type": "boolean",
        "default": "false"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -1865,7 +1865,7 @@
      "description": "List activities",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1879,24 +1879,24 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-comments": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of comments to include.",
        "type": "integer",
        "minimum": "0",
        "maximum": "4294967295"
       },
       "max-liked": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of likes to include.",
        "type": "integer",
        "minimum": "0",
@@ -1904,7 +1904,7 @@
        "default": "0"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -1912,7 +1912,7 @@
        "default": "20"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection of activities to list.",
        "type": "string",
@@ -1932,28 +1932,28 @@
        ]
       },
       "truncateAtom": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Truncate the value of the atom:content element.",
        "type": "boolean"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string",
        "pattern": "@me|[0-9]+"
       },
       "boolParamNoDefault": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "boolean"
       },
       "boolParamTrueDefault": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "boolean",
        "default": "true"
       },
       "boolParamFalseDefault": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "boolean",
        "default": "false"
       }
@@ -1977,7 +1977,7 @@
      "description": "Search for activities",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -1991,32 +1991,32 @@
        "default": "atom"
       },
       "bbox": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Bounding box to use in a geographic location query.",
        "type": "string"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "lat": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Latitude to use in a geographic location query.",
        "type": "string"
       },
       "lon": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Longitude to use in a geographic location query.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2024,22 +2024,22 @@
        "default": "20"
       },
       "pid": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "ID of a place to use in a geographic location query.",
        "type": "string"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Full-text search query string.",
        "type": "string"
       },
       "radius": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Radius to use in a geographic location query.",
        "type": "string"
       },
       "truncateAtom": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Truncate the value of the atom:content element.",
        "type": "boolean"
       }
@@ -2059,7 +2059,7 @@
      "description": "Get real-time activity tracking information",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2073,32 +2073,32 @@
        "default": "atom"
       },
       "bbox": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Bounding box to use in a geographic location query.",
        "type": "string"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "lat": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Latitude to use in a geographic location query.",
        "type": "string"
       },
       "lon": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Longitude to use in a geographic location query.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2106,17 +2106,17 @@
        "default": "20"
       },
       "pid": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "ID of a place to use in a geographic location query.",
        "type": "string"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Full-text search query string.",
        "type": "string"
       },
       "radius": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Radius to use in a geographic location query.",
        "type": "string"
       }
@@ -2136,11 +2136,11 @@
      "description": "Update an activity",
      "parameters": {
       "abuseType": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2154,18 +2154,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity to update.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection to which the activity belongs.",
        "type": "string",
@@ -2183,7 +2183,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user whose post to update.",
        "type": "string"
@@ -2215,7 +2215,7 @@
      "description": "Delete a comment",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2229,24 +2229,24 @@
        "default": "atom"
       },
       "commentId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the comment being referenced.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity for which to delete the comment.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2265,7 +2265,7 @@
      "description": "Get a comment",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2279,24 +2279,24 @@
        "default": "atom"
       },
       "commentId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the comment being referenced.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity for which to get comments.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2318,7 +2318,7 @@
      "description": "Create a comment",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2332,18 +2332,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity on which to comment.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user on whose behalf to comment.",
        "type": "string"
@@ -2367,7 +2367,7 @@
      "description": "List comments",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2381,17 +2381,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2399,13 +2399,13 @@
        "default": "20"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity for which to get comments.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection to which the activity belongs.",
        "type": "string",
@@ -2417,7 +2417,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user for whose post to get comments.",
        "type": "string"
@@ -2439,11 +2439,11 @@
      "description": "Update a comment",
      "parameters": {
       "abuseType": {
-       "restParameterType": "query",
+       "location": "query",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2457,24 +2457,24 @@
        "default": "atom"
       },
       "commentId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the comment being referenced.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity for which to update the comment.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection to which the activity belongs.",
        "type": "string",
@@ -2488,7 +2488,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2518,7 +2518,7 @@
      "description": "Delete a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2532,18 +2532,18 @@
        "default": "atom"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group to delete.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2561,7 +2561,7 @@
      "description": "Get a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2575,18 +2575,18 @@
        "default": "atom"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group to get.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2607,7 +2607,7 @@
      "description": "Create a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2621,12 +2621,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2649,7 +2649,7 @@
      "description": "Get a user's groups",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2663,17 +2663,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2681,7 +2681,7 @@
        "default": "20"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2701,7 +2701,7 @@
      "description": "Update a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2715,18 +2715,18 @@
        "default": "atom"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group to update.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2754,7 +2754,7 @@
      "description": "Remove a person from a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2768,24 +2768,24 @@
        "default": "atom"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group from which to remove the person.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "personId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the person to remove from the group.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the owner of the group.",
        "type": "string"
@@ -2804,7 +2804,7 @@
      "description": "Get a user profile",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2818,12 +2818,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2843,7 +2843,7 @@
      "description": "Get people who liked an activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2857,12 +2857,12 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "type": "string",
        "enum": [
@@ -2873,12 +2873,12 @@
        ]
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2886,18 +2886,18 @@
        "default": "20"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity that was liked.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2920,7 +2920,7 @@
      "description": "Get people in a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2934,23 +2934,23 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group for which to list users.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -2958,7 +2958,7 @@
        "default": "20"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -2979,7 +2979,7 @@
      "description": "Get people who reshared an activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -2993,12 +2993,12 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "type": "string",
        "enum": [
@@ -3009,12 +3009,12 @@
        ]
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -3022,18 +3022,18 @@
        "default": "20"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity that was reshared.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3056,7 +3056,7 @@
      "description": "Search for people",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3070,17 +3070,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -3088,7 +3088,7 @@
        "default": "20"
       },
       "q": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Full-text search query string.",
        "type": "string"
       }
@@ -3104,7 +3104,7 @@
      "description": "Add a person to a group",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3118,24 +3118,24 @@
        "default": "atom"
       },
       "groupId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the group to which to add the person.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "personId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the person to add to the group.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the owner of the group.",
        "type": "string"
@@ -3164,13 +3164,13 @@
      "description": "Delete a photo album",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album to delete.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3184,12 +3184,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3207,13 +3207,13 @@
      "description": "Get a photo album",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album to get.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3227,12 +3227,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3253,7 +3253,7 @@
      "description": "Create a photo album",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3267,12 +3267,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3295,7 +3295,7 @@
      "description": "List a user's photo albums",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3309,17 +3309,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -3327,7 +3327,7 @@
        "default": "20"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection of albums to list.",
        "type": "string",
@@ -3339,7 +3339,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3364,13 +3364,13 @@
      "description": "Delete a photo",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album to which to photo belongs.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3384,18 +3384,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "photoId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the photo to delete.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3414,13 +3414,13 @@
      "description": "Get photo metadata",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the photo for which to get metadata.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3434,18 +3434,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "photoId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album containing the photo.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3467,13 +3467,13 @@
      "description": "Upload a photo to an album",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album to which to upload.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3487,12 +3487,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3516,13 +3516,13 @@
      "description": "Upload a photo to an album",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album to which to upload.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3536,12 +3536,12 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3565,13 +3565,13 @@
      "description": "List photos in an album",
      "parameters": {
       "albumId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the album for which to list photos.",
        "type": "string"
       },
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3585,17 +3585,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -3603,7 +3603,7 @@
        "default": "20"
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3624,7 +3624,7 @@
      "description": "Get a user's photos",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3638,17 +3638,17 @@
        "default": "atom"
       },
       "c": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "max-results": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Maximum number of results to include.",
        "type": "integer",
        "minimum": "0",
@@ -3656,7 +3656,7 @@
        "default": "20"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection of photos to list.",
        "type": "string",
@@ -3668,7 +3668,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"
@@ -3693,7 +3693,7 @@
      "description": "Get related links for an activity",
      "parameters": {
       "alt": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Specifies an alternative representation type.",
        "type": "string",
        "enum": [
@@ -3707,18 +3707,18 @@
        "default": "atom"
       },
       "hl": {
-       "restParameterType": "query",
+       "location": "query",
        "description": "Language code to limit language results.",
        "type": "string"
       },
       "postId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the activity to which to get related links.",
        "type": "string"
       },
       "scope": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "The collection to which the activity belongs.",
        "type": "string",
@@ -3730,7 +3730,7 @@
        ]
       },
       "userId": {
-       "restParameterType": "path",
+       "location": "path",
        "required": true,
        "description": "ID of the user being referenced.",
        "type": "string"

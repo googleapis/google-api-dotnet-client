@@ -5,7 +5,7 @@
     checkRequiredParameter(content, "content");
     checkRequiredParameter(content{% param_getter_chain property %}, "{{ method.requestType.class_name }}{% param_getter_chain property %}");
         {% if property.data_type.properties %}
-          {% call_template _required_param_def properties property.data_type.properties %}
+          {% call_template _required_param_def properties=property.data_type.properties %}
         {% endif %}
       {% endifequal %}
     {% endfor %}

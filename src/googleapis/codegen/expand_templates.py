@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,8 @@ from googleapis.codegen import generator
 from googleapis.codegen import generator_lookup
 from googleapis.codegen import language_model
 from googleapis.codegen.api import Api
-from googleapis.codegen.filesystem_library_package import FilesystemLibraryPackage
+from googleapis.codegen.filesys import package_writer_foundry
 from googleapis.codegen.targets import Targets
-from googleapis.codegen.zip_library_package import ZipLibraryPackage
 
 FLAGS = flags.FLAGS
 
@@ -55,7 +54,13 @@ flags.DEFINE_string(
 flags.DEFINE_string(
     'output_file',
     None,
-    'An output file path to contain the .zip archive for the generated code.')
+    'An output file path to contain the archive for the generated library.'
+    ' The contents of the file are determined by the output_format parameter')
+flags.DEFINE_enum(
+    'output_format',
+    'zip',
+    ['zip', 'tgz', 'tar'],
+    'What format to use for --output_file.')
 flags.DEFINE_enum(
     'output_type',
     'plain',
@@ -76,6 +81,7 @@ flags.DECLARE_key_flag('language')
 flags.DECLARE_key_flag('language_variant')
 flags.DECLARE_key_flag('output_dir')
 flags.DECLARE_key_flag('output_file')
+flags.DECLARE_key_flag('output_format')
 flags.DECLARE_key_flag('output_type')
 flags.DECLARE_key_flag('templates')
 flags.DECLARE_key_flag('version_package')
@@ -112,45 +118,49 @@ def main(unused_argv):
     template_dir = features.template_dir
     generator_name = features.get('generator', FLAGS.language)
   else:
-    template_dir = os.path.join(template_dir, FLAGS.languages)
+    # Not described by targets.json. The template dir should just be down
+    # in the language specific folder
+    template_dir = os.path.join(os.path.dirname(__file__), 'templates',
+                                FLAGS.language)
     features = None
     generator_name = FLAGS.language
 
   # Instantiate the right code generator
+  lang_model = None
   try:
     if FLAGS.language == 'any':
       api = Api(discovery_doc)
       # TODO(user): A default language model should be built in to the
       #   templates
-      lm = language_model.DocumentingLanguageModel()
-      api.VisitAll(lambda o: o.SetLanguageModel(lm))
+      lang_model = language_model.DocumentingLanguageModel()
     else:
       generator_class = generator_lookup.GetGeneratorByLanguage(generator_name)
-      api = generator_class(discovery_doc).api
+      generator_instance = generator_class(discovery_doc)
+      api = generator_instance.api
+      lang_model = generator_instance.language_model
 
   except ValueError:
     raise app.UsageError('Unsupported language option: %s' % FLAGS.language)
 
+  api.VisitAll(lambda o: o.SetLanguageModel(lang_model))
   gen = TemplateExpander(api, options=options)
 
   if features:
     gen.SetFeatures(features)
 
   template_dir = os.path.join(template_dir, FLAGS.templates)
+  if not os.path.isdir(template_dir):
+    raise app.UsageError('Can not find template tree at: %s' % template_dir)
   gen.SetTemplateDir(template_dir)
 
   # Get an output writer
-  if FLAGS.output_dir:
-    package_writer = FilesystemLibraryPackage(FLAGS.output_dir)
-  else:
-    out = open(FLAGS.output_file, 'w')
-    package_writer = ZipLibraryPackage(out)
+  package_writer = package_writer_foundry.GetPackageWriter(
+      output_dir=FLAGS.output_dir, output_file=FLAGS.output_file,
+      output_format=FLAGS.output_format)
 
   # do it
   gen.GeneratePackage(package_writer)
   package_writer.DoneWritingArchive()
-  if FLAGS.output_file:
-    out.close()
   return 0
 
 
@@ -168,11 +178,14 @@ class TemplateExpander(generator.TemplateGenerator):
     Args:
       package_writer: (LibraryPackage) output package
     """
+    path_replacements = {
+        '___package___': self._api.module.path
+        }
     variables = {
         'api': self._api,
         'options': self._options,
         }
-    self.WalkTemplateTree('.', {}, {}, variables, package_writer)
+    self.WalkTemplateTree('.', path_replacements, {}, variables, package_writer)
 
 
 if __name__ == '__main__':

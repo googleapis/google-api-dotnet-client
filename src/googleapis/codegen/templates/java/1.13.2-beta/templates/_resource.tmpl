@@ -18,7 +18,7 @@ public {{ resource.className }} {{ resource.codeName }}() {
  */
 public class {{ resource.className }} {{% indent %}
 {% for method in resource.methods %}
-{% emit_method_def method %}{% endfor %}
+{% call_template _method method method %}{% endfor %}
 {% for subr in resource.resources %}
-{% emit_resource_def subr %}{% endfor %}
+{% call_template _resource resource subr %}{% endfor %}
 {% endindent %}}

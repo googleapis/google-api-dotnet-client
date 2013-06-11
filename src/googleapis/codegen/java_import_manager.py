@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 #
 # Copyright 2010 Google Inc. All Rights Reserved.
 #

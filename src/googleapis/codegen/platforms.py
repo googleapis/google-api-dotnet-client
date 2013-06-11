@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python2.7
 # Copyright 2012 Google Inc. All Rights Reserved.
 
 """List of platforms we can target libraries for.
