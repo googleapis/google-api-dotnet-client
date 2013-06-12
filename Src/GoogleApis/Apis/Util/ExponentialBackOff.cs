@@ -32,14 +32,14 @@ namespace Google.Apis.Util
         /// <summary> 
         /// Gets the delta time span used to generate a random milliseconds to add to the next back-off. 
         /// If it equals to <seealso cref="System.TimeSpan.Zero"/> then the generated back-off will be exactly 1, 2, 4,
-        /// 8, 16, etc. seconds. A valid value is between zero and one second.
+        /// 8, 16, etc. seconds. A valid value is between zero and one second. The default value is 250ms.
         /// </summary>
         public TimeSpan DeltaBackOff
         {
             get { return deltaBackOff; }
         }
 
-        private readonly int maxNumOfRetries = 10;
+        private readonly int maxNumOfRetries;
         /// <summary> Gets the maximum number of retries. Default value is <c>10</c>.</summary>
         public int MaxNumOfRetries
         {
@@ -51,6 +51,7 @@ namespace Google.Apis.Util
 
         /// <summary> Constructs a new exponential back-off with default values.</summary>
         public ExponentialBackOff()
+            : this(TimeSpan.FromMilliseconds(250))
         {
         }
 
