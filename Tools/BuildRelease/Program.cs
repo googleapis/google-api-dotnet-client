@@ -343,6 +343,9 @@ namespace BuildRelease
             var projects = new List<Project>();
             Project baseApi = new Project(Default.Combine("Src", "GoogleApis", "GoogleApis.csproj"));
 
+            Project fullProfileApi = new Project(Default.Combine("Src", "GoogleApis.FullProfile",
+                "GoogleApis.FullProfile.csproj"));
+
             Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen",
                 "GoogleApis.Tools.CodeGen.csproj"));
             Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2",
@@ -350,7 +353,7 @@ namespace BuildRelease
             Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator",
                 "GoogleApis.Tools.ServiceGenerator.csproj"));
 
-            var releaseProjects = new[] { baseApi, codegen, oauth2, generator };
+            var releaseProjects = new[] { baseApi, fullProfileApi, codegen, oauth2, generator };
             projects.AddRange(releaseProjects);
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests.Utility",
                 "GoogleApis.Tests.Utility.csproj")));
