@@ -103,8 +103,11 @@
     <Compile Include="Apis\Services\BaseClientService.cs" />
     <Compile Include="Apis\Services\IClientService.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
-    <Compile Include="Apis\Upload\IUploadProgress.cs" />
-    <Compile Include="Apis\Upload\ResumableUpload.cs" />
+    <Compile Include="Apis\[Media]\Download\IDownloadProgress.cs" />
+    <Compile Include="Apis\[Media]\Download\IMediaDownloaded.cs" />
+    <Compile Include="Apis\[Media]\Download\MediaDownloader.cs" />
+    <Compile Include="Apis\[Media]\Upload\IUploadProgress.cs" />
+    <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
     <Compile Include="Apis\Utilities.cs" />
     <Compile Include="Apis\Util\ExponentialBackOff.cs" />
     <Compile Include="Apis\Util\IBackOff.cs" />

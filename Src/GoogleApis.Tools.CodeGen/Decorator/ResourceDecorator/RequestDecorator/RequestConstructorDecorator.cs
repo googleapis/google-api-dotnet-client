@@ -15,8 +15,8 @@ limitations under the License.
 */
 
 using System.CodeDom;
-
 using Google.Apis.Discovery;
+using Google.Apis.Download;
 using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Tools.CodeGen.Generator;
@@ -84,6 +84,18 @@ namespace Google.Apis.Tools.CodeGen.Decorator.ResourceDecorator.RequestDecorator
             // Add all required arguments to the constructor.
             AddBodyParameter(constructor, request);
             AddRequestParameters(resourceClass, request, constructor, addOptionalParameters);
+
+            // media download
+            if (request.SupportMediaDownload)
+            {
+                // Generates: _mediaDownloader = new MediaDownloader(service);
+                var assign = new CodeAssignStatement();
+                assign.Left = new CodePropertyReferenceExpression(new CodeThisReferenceExpression(),
+                    "_mediaDownloader");
+                assign.Right = new CodeObjectCreateExpression(typeof(MediaDownloader),
+                    new CodeVariableReferenceExpression("service"));
+                constructor.Statements.Add(assign);
+            }
 
             // generate: initParameters()
             constructor.Statements.Add(new CodeMethodInvokeExpression(

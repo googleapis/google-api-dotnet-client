@@ -22,6 +22,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Apis.Http;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
@@ -191,6 +192,8 @@ namespace Google.Apis.Upload
 
         #endregion //Events
 
+        #region Error handling (Expcetion and 5xx)
+
         /// <summary>
         /// Callback class that is invoked on abnormal response or an exception.
         /// This class changes the request to query the current status of the upload in order to find how many bytes  
@@ -251,6 +254,8 @@ namespace Google.Apis.Upload
                 Owner.Service.HttpClient.MessageHandler.ExceptionHandlers.Remove(this);
             }
         }
+
+        #endregion
 
         #region Progress Monitoring
 
@@ -344,7 +349,7 @@ namespace Google.Apis.Upload
 
                 using (var callback = new ServerErrorCallback(this))
                 {
-                    while (!await SendNextChunk(ContentStream, cancellationToken))
+                    while (!await SendNextChunk(ContentStream, cancellationToken).ConfigureAwait(false))
                     {
                         UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesSent));
                     }
@@ -409,7 +414,7 @@ namespace Google.Apis.Upload
         private async Task<Uri> InitializeUpload(CancellationToken cancellationToken)
         {
             HttpRequestMessage request = CreateInitializeRequest();
-            var response = await Service.HttpClient.SendAsync(request, cancellationToken);
+            var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
             return response.EnsureSuccessStatusCode().Headers.Location;
         }
 
@@ -447,8 +452,8 @@ namespace Google.Apis.Upload
                 PrepareNextChunkUnknownSize(request, stream, cancellationToken);
             }
 
-            HttpResponseMessage response = await Service.HttpClient.SendAsync(request, cancellationToken).
-                ConfigureAwait(false);
+            HttpResponseMessage response = await Service.HttpClient.SendAsync(
+                request, cancellationToken).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 MediaCompleted(response);
