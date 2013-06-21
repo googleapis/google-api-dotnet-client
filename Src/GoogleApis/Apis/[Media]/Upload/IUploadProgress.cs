@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace Google.Apis.Upload
         /// Gets the current status of the upload
         /// </summary>
         UploadStatus Status { get; }
-        
+
         /// <summary>
         /// Gets the approximate number of bytes sent to the server.
         /// </summary>

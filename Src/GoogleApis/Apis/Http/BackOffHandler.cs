@@ -62,10 +62,12 @@ namespace Google.Apis.Http
 
             /// <summary> 
             /// Default function which handles exception which aren't 
-            /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/>.
+            /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> or 
+            /// <seealso cref="System.OperationCanceledException"/>. Those exceptions represent a task or an operation
+            /// which was canceled and we shouldn't retry.
             /// </summary>
             public static readonly Func<Exception, bool> DefaultHandleExceptionFunc =
-                (r) => !(r is TaskCanceledException);
+                (ex) => !(ex is TaskCanceledException || ex is OperationCanceledException);
 
             /// <summary> Constructs a new initializer by the given back-off. </summary>
             public Initializer(IBackOff backOff)

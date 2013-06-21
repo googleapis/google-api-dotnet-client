@@ -21,9 +21,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-
+using System.Threading.Tasks;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
+
 using Newtonsoft.Json;
 using NUnit.Framework;
 
@@ -50,13 +51,16 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
             var compilerParameters = new CompilerParameters();
 
             // Add all referenced assemblies of the CodeGen to this lib.
-            foreach (Type type in new[] { typeof(IService), typeof(JsonConverter) })
+            foreach (Type type in new[] { 
+                typeof(IService), 
+                typeof(JsonConverter),
+                typeof(Task),
+                typeof(System.Runtime.CompilerServices.INotifyCompletion)})
             {
                 compilerParameters.ReferencedAssemblies.Add(GetReferencePathToAssembly(type.Assembly));
             }
 
             compilerParameters.ReferencedAssemblies.Add("System.dll");
-            compilerParameters.ReferencedAssemblies.Add("System.Web.dll");
             compilerParameters.ReferencedAssemblies.AddRange(furtherReferences);
 
             // Run the compiler.
@@ -105,7 +109,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
                         commands.SelectMany(str => str.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
                     foreach (var line in lines)
                     {
-                        env.AppendLine("   "+line);
+                        env.AppendLine("   " + line);
                     }
                 }
                 env.AppendLine("  }");
@@ -130,7 +134,7 @@ namespace Google.Apis.Tools.CodeGen.IntegrationTests
 
             // Run the code.
             MethodInfo genMethod = generatedAssembly.GetType("GeneratedClass").GetMethod("GeneratedMethod");
-            return (T) genMethod.Invoke(null, BindingFlags.Static, null, null, null);
+            return (T)genMethod.Invoke(null, BindingFlags.Static, null, null, null);
         }
 
         /// <summary>

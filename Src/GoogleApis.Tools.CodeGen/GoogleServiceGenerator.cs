@@ -88,6 +88,7 @@ namespace Google.Apis.Tools.CodeGen
                             new RequestConstructorDecorator(typeProvider) { CreateOptionalConstructor = false },
                             new ServiceRequestFieldDecorator(),
                             new InitRequestParametersDecorator(),
+                            new MediaDownloaderDecorator(),
                         }).AsReadOnly();
         }
 

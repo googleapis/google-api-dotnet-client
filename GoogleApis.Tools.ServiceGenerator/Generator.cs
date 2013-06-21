@@ -20,6 +20,9 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+
 using Google;
 using Google.Apis.Discovery;
 using Google.Apis.Discovery.v1.Data;
@@ -209,7 +212,12 @@ namespace GoogleApis.Tools.ServiceGenerator
             cp.CompilerOptions = "/doc:" + xmlDocFile;
 
             // Add the (third party) references required by the generated code.
-            foreach (Type type in new[] { typeof(Newtonsoft.Json.JsonConvert), typeof(GoogleApiException) })
+            // Task and INotifyCompletion are required for the generated media download code - 
+            // "Task<IDownloadProgress> DownloadAsync(... CancellationToken)".
+            foreach (Type type in new[] { 
+                typeof(Newtonsoft.Json.JsonConvert), typeof(GoogleApiException), 
+                typeof(Task),
+                typeof( System.Runtime.CompilerServices.INotifyCompletion) })
             {
                 cp.ReferencedAssemblies.Add(new Uri(type.Assembly.CodeBase).LocalPath);
             }

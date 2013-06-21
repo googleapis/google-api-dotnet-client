@@ -107,7 +107,7 @@ namespace Google.Apis.Requests
 
         public async Task<TResponse> ExecuteAsync()
         {
-            return await ExecuteAsync(CancellationToken.None);
+            return await ExecuteAsync(CancellationToken.None).ConfigureAwait(false);
         }
 
         public async Task<TResponse> ExecuteAsync(CancellationToken cancellationToken)
@@ -121,7 +121,7 @@ namespace Google.Apis.Requests
 
         public async Task<Stream> ExecuteAsStreamAsync()
         {
-            return await ExecuteAsStreamAsync(CancellationToken.None);
+            return await ExecuteAsStreamAsync(CancellationToken.None).ConfigureAwait(false);
         }
 
         public async Task<Stream> ExecuteAsStreamAsync(CancellationToken cancellationToken)
@@ -181,9 +181,13 @@ namespace Google.Apis.Requests
 
         #endregion
 
-        /// <summary> Creates an Http request message with all class parameters, developer-key, ETag, etc. </summary>
-        [VisibleForTestOnly]
-        internal HttpRequestMessage CreateRequest()
+        /// <summary>
+        /// Creates the <seealso cref="Google.Apis.Requests.RequestBuilder"/> which is used to generate a request.
+        /// </summary>
+        /// <returns>
+        /// A new builder instance which contains the Http method and the right Uri with its path and query parameters.
+        /// </returns>
+        private RequestBuilder CreateBuilder()
         {
             var builder = new RequestBuilder()
             {
@@ -195,7 +199,20 @@ namespace Google.Apis.Requests
             // init parameters
             builder.AddParameter(RequestParameterType.Query, "key", service.ApiKey);
             AddParameters(builder, ParameterCollection.FromDictionary(CreateParameterDictionary()));
+            return builder;
+        }
 
+        /// <summary>Generates the right Url for this request.</summary>
+        protected string GenerateRequestUri()
+        {
+            return CreateBuilder().BuildUri().ToString();
+        }
+
+        /// <summary>Creates an Http request message with all class parameters, developer-key, ETag, etc.</summary>
+        [VisibleForTestOnly]
+        internal HttpRequestMessage CreateRequest()
+        {
+            var builder = CreateBuilder();
             var request = builder.CreateRequest();
             object body = GetBody();
             if (body != null)
