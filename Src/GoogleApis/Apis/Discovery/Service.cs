@@ -51,7 +51,12 @@ namespace Google.Apis.Discovery
 
             // Set required properties
             Version = discoveryDoc.GetMandatoryValue<string>("version");
-            Name = discoveryDoc.GetMandatoryValue<string>("name");
+            Name = discoveryDoc.GetMandatoryValue<string>("name").Replace(" ", "");
+            CanonicalName = discoveryDoc.GetValueAsNull("canonicalName") as string;
+            if (!string.IsNullOrEmpty(CanonicalName))
+            {
+                CanonicalName = CanonicalName.Replace(" ", "");
+            }
 
             // Set optional properties
             Id = discoveryDoc.GetValueAsNull("id") as string;
@@ -90,6 +95,7 @@ namespace Google.Apis.Discovery
 
         public string BasePath { get; set; }
         public string Name { get; private set; }
+        public string CanonicalName { get; private set; }
         public string Version { get; private set; }
         public string Description { get; private set; }
         public string Title { get; private set; }

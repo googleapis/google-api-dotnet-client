@@ -55,9 +55,10 @@ namespace Google.Apis.Tools.CodeGen.Generator
         /// </summary>
         public CodeTypeDeclaration CreateServiceClass()
         {
+            var name = string.IsNullOrEmpty(service.CanonicalName) ? service.Name : service.CanonicalName;
             string serviceClassName = GeneratorUtils.GetSafeMemberName(
-                Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, service.Name + "Service",
-                service.Name + "Cls");
+                Enumerable.Empty<string>(), GeneratorUtils.TargetCase.ToUpper, name + "Service",
+                name + "Cls");
             logger.Debug("Starting Generation of Class {0}", serviceClassName);
             var serviceClass = new CodeTypeDeclaration(serviceClassName);
             serviceClass.IsPartial = true;
