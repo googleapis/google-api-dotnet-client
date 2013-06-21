@@ -52,6 +52,7 @@ namespace Google.Apis.Testing
         #region IService Members
 
         public string Name { get; set; }
+        public string CanonicalName { get; set; }
         public string Title { get; set; }
         public IDictionary<string, IResource> Resources { get; set; }
         public string Version { get; set; }

@@ -68,13 +68,10 @@ namespace Google.Apis.Tools.CodeGen
         public CodeNamespace GenerateSchemaClasses(IService service)
         {
             service.ThrowIfNull("service");
-            
+
             logger.Debug("Starting to generate schemas for {1} in namespace {0}", schemaNamespace, service.Name);
             LogDecorators();
             var codeNamespace = new CodeNamespace(schemaNamespace);
-            codeNamespace.Imports.Add(new CodeNamespaceImport("System"));
-            codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections"));
-            codeNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             SchemaGenerator generator = new SchemaGenerator(decorators);
 
             // Generate implementation details
@@ -85,7 +82,7 @@ namespace Google.Apis.Tools.CodeGen
             foreach (var schemaPair in service.Schemas)
             {
                 logger.Debug("Generating Schema {0}", schemaPair.Key);
-                
+
                 // Create schema
                 codeNamespace.Types.Add(
                     generator.CreateClass(schemaPair.Value, implementationDetails, service.Schemas.Keys));
