@@ -18,19 +18,18 @@
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
-from django import template as django_template
 
+from django import template as django_template  # pylint:disable=g-bad-import-order
 from google.apputils import basetest
-
+from googleapis.codegen import language_model
 from googleapis.codegen import template_objects
-from googleapis.codegen.language_model import LanguageModel
 
 
 class TemplateObjectsTest(basetest.TestCase):
 
   def setUp(self):
     super(TemplateObjectsTest, self).setUp()
-    self.language_model = LanguageModel(class_name_delimiter='|')
+    self.language_model = language_model.LanguageModel(class_name_delimiter='|')
 
   def testFullyQualifiedClassName(self):
     foo = template_objects.CodeObject({'className': 'Foo'}, None,
@@ -119,6 +118,56 @@ class TemplateObjectsTest(basetest.TestCase):
     useable = SubUseable(d)
     t = '{{o.neverCalled}}'
     self._TestRender(t, {'o': useable}, 'here I am')
+
+
+class ConstantTest(basetest.TestCase):
+
+  def setUp(self):
+    super(ConstantTest, self).setUp()
+
+    self.language_model = language_model.LanguageModel()
+    self.language_model.constant_separator = '|'
+    self.language_model.constant_transform = language_model.UPPER_CAMEL_CASE
+
+  def testConstantNameFixer(self):
+    c = template_objects.Constant('hello_world',
+                                  language_model=self.language_model)
+    self.assertEquals('hello_world', c.value)
+    self.assertEquals('hello_world', c.name)
+    self.assertEquals('Hello|World', c.constantName)
+    self.assertIsNone(c.description)
+
+    c = template_objects.Constant('42', language_model=self.language_model)
+    self.assertEquals('42', c.value)
+    self.assertEquals('value_42', c.name)
+    self.assertEquals('Value|42', c.constantName)
+
+    c = template_objects.Constant(42, language_model=self.language_model)
+    self.assertEquals('42', c.value)
+    self.assertEquals('value_42', c.name)
+    self.assertEquals('Value|42', c.constantName)
+
+    c = template_objects.Constant(42, name='answer',
+                                  language_model=self.language_model)
+    self.assertEquals('42', c.value)
+    self.assertEquals('answer', c.name)
+    self.assertEquals('Answer', c.constantName)
+
+    c = template_objects.Constant('@me', language_model=self.language_model)
+    self.assertEquals('@me', c.value)
+    self.assertEquals('me', c.name)
+    self.assertEquals('Me', c.constantName)
+
+    c = template_objects.Constant('_foo', language_model=self.language_model)
+    self.assertEquals('_foo', c.value)
+    self.assertEquals('foo', c.name)
+    self.assertEquals('Foo', c.constantName)
+
+    c = template_objects.Constant('_&@', language_model=self.language_model)
+    self.assertEquals('_&@', c.value)
+    self.assertEquals('value__&@', c.name)
+    self.assertEquals('Value', c.constantName)
+
 
 if __name__ == '__main__':
   basetest.main()

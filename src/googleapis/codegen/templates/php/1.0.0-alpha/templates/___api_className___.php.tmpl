@@ -15,7 +15,8 @@
  *
  * @author Google, Inc.
  */
-class {{ api.owner }}_Service_{{ api.className }} extends Google_Service {
+class {{ api.owner }}_Service_{{ api.className }} extends Google_Service
+{
 {% call_template _resource_var resource=api %}
   /**{% filter block_comment %}
    * Constructs the internal representation of the {{ api.className }} service.
@@ -23,12 +24,22 @@ class {{ api.owner }}_Service_{{ api.className }} extends Google_Service {
    *
    * @param Google_Client $client
    */
-  public function __construct(Google_Client $client) {
+  public function __construct(Google_Client $client)
+  {
+    parent::__construct($client);
     $this->servicePath = {% literal api.servicePath %};
     $this->version = {% literal api.version %};
+    {% if api.auth.oauth2.scopes %}
+    $this->availableScopes = array(
+      {% spaceless %}
+        {% for scope in api.auth.oauth2.scopes %}
+      "{{ scope }}"{% if not forloop.last %}, {% endif %}{% endfor %}{% endspaceless %}
+    );
+    {% endif %}
     $this->serviceName = {% literal api.name %};
 
-    $client->addService($this->serviceName, $this->version);
+    $client->addService($this->serviceName, $this->version,
+        $this->availableScopes);
 {% call_template _resource_decl resource=api %}
 {% for r in api.methods %}
 {% call_template _resource_decl resource=r %}{% endfor %}
@@ -36,7 +47,7 @@ class {{ api.owner }}_Service_{{ api.className }} extends Google_Service {
 }
 
 {% for resource in api.resources %}
-{% indent %}{% call_template _resource resource=resource %}{% endindent %}
+{% call_template _resource resource=resource %}
 {% endfor %}
 
 {% for model in api.models %}

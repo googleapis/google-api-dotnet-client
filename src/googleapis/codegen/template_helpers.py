@@ -26,7 +26,7 @@ import string
 import textwrap
 
 
-import django.template as django_template  # pylint: disable-msg=C6203
+import django.template as django_template  # pylint: disable=g-bad-import-order
 
 from googleapis.codegen import utilities
 from googleapis.codegen.filesys import files
@@ -375,7 +375,7 @@ def _ExtractCommentPrefix(line):
 # We disable the bad function name warning because we use Django style names
 # rather than Google style names
 @register.filter
-def java_comment_fragment(value, indent):  # pylint: disable-msg=C6409
+def java_comment_fragment(value, indent):  # pylint: disable=g-bad-name
   """Template filter to wrap lines into Java comment style.
 
   Take a single long string and break it so that subsequent lines are prefixed
@@ -409,7 +409,7 @@ def java_comment_fragment(value, indent):  # pylint: disable-msg=C6409
 
 
 @register.filter
-def java_parameter_wrap(value):  # pylint: disable-msg=C6409
+def java_parameter_wrap(value):  # pylint: disable=g-bad-name
   """Templatefilter to wrap lines of parameter documentation.
 
   Take a single long string and breaks it up so that subsequent lines are
@@ -435,7 +435,7 @@ def java_parameter_wrap(value):  # pylint: disable-msg=C6409
 # We disable the bad function name warning because we use Django style names
 # rather than Google style names (disable-msg=C6409)
 @register.filter
-def block_comment(value):  # pylint: disable-msg=C6409
+def block_comment(value):  # pylint: disable=g-bad-name
   """Template filter to line wrap a typical block comment.
 
   Take a block of text where each line has a common comment prefix, divide it
@@ -483,13 +483,13 @@ def block_comment(value):  # pylint: disable-msg=C6409
 
 
 @register.filter
-def noblanklines(value):  # pylint: disable-msg=C6409
+def noblanklines(value):  # pylint: disable=g-bad-name
   """Template filter to remove blank lines."""
   return '\n'.join([line for line in value.split('\n') if line.strip()])
 
 
 @register.filter
-def collapse_blanklines(value):  # pylint: disable-msg=C6409
+def collapse_blanklines(value):  # pylint: disable=g-bad-name
   """Template filter to collapse successive blank lines into a single one."""
   lines = []
   previous_blank = False
@@ -512,7 +512,7 @@ class Halt(Exception):
 
 
 @register.simple_tag
-def halt():  # pylint: disable-msg=C6409
+def halt():  # pylint: disable=g-bad-name
   """A tag which raises a Halt exception.
 
   Usage:
@@ -535,7 +535,7 @@ class LanguageNode(django_template.Node):
   def __init__(self, language):
     self._language = language
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the 'language' tag.
 
     For the language setting we render nothing, but we take advantage of being
@@ -586,7 +586,7 @@ class IndentNode(django_template.Node):
     self._nodelist = nodelist
     self._levels = int(levels)
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Reindent the block inside the tag scope."""
     current_indent = context.get(_CURRENT_INDENT, 0)
     current_indent_level = context.get(_CURRENT_LEVEL, 0)
@@ -642,7 +642,7 @@ class CollapsedNewLinesNode(django_template.Node):
   def __init__(self, nodelist):
     self._nodelist = nodelist
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Collapses newline inside the tag scope."""
     lines = self._nodelist.render(context)
     ret = re.sub(r'\n(\n)+', '\n\n', lines)
@@ -795,14 +795,14 @@ class DocCommentNode(django_template.Node):
     self._comment_type = comment_type
     self._wrap_blocks = wrap_blocks
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     the_text = self._text
     if self._nodelist:
       the_text = self._nodelist.render(context)
     return self.RenderText(the_text, context)
 
-  def RenderText(self, text, context):  # pylint: disable-msg=C6409
+  def RenderText(self, text, context):  # pylint: disable=g-bad-name
     """Format text according to the context.
 
     The strategy is to divide the text into blocks (on blank lines), then
@@ -903,7 +903,7 @@ class CommentIfNode(DocCommentNode):
     super(CommentIfNode, self).__init__(comment_type=comment_type)
     self._variable_name = variable_name
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     try:
       text = django_template.resolve_variable(self._variable_name, context)
@@ -974,7 +974,7 @@ class CamelCaseNode(django_template.Node):
     super(CamelCaseNode, self).__init__()
     self._variable_name = variable_name
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     try:
       text = django_template.resolve_variable(self._variable_name, context)
       if text:
@@ -1003,7 +1003,7 @@ class ParameterGetterChainNode(django_template.Node):
     super(ParameterGetterChainNode, self).__init__()
     self._variable_name = variable_name
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     try:
       prop = django_template.resolve_variable(self._variable_name, context)
@@ -1043,7 +1043,7 @@ class ImportsNode(django_template.Node):
     self._nodelist = nodelist
     self._element = element
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
 
     explicit_import_text = self._nodelist.render(context)
@@ -1097,7 +1097,7 @@ class ParameterListNode(django_template.Node):
     self._nodelist = nodelist
     self._separator = separator
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     blocks = []
     # Split apart on paramater boundaries, getting rid of white space between
@@ -1120,7 +1120,7 @@ class ParameterNode(django_template.Node):
     super(ParameterNode, self).__init__()
     self._nodelist = nodelist
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     # Attach markers so the enclosing parameter_list can find me
     return self.BEGIN + self._nodelist.render(context).strip() + self.END
@@ -1209,7 +1209,7 @@ class TemplateNode(django_template.Node):
     self._template_name = template_name
     self._bindings = bindings
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     template_path = os.path.join(context['template_dir'], self._template_name)
     # Add new bindings, backing up old values
@@ -1358,7 +1358,7 @@ class LiteralStringNode(django_template.Node):
     """
     self._variables = text
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     resolve = django_template.resolve_variable
     texts = []
@@ -1402,7 +1402,7 @@ class DataContextNode(django_template.Node):
   def __init__(self, variable):
     self._variable = variable
 
-  def render(self, context):  # pylint: disable-msg=C6409
+  def render(self, context):  # pylint: disable=g-bad-name
     """Make sure this is actually a Node and render it."""
     resolve = django_template.resolve_variable
 

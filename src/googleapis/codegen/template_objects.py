@@ -23,10 +23,10 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 import copy
 
-from googleapis.codegen import name_validator
 from googleapis.codegen import utilities
 from googleapis.codegen.django_helpers import MarkSafe
 from googleapis.codegen.utilities import html_stripper
+from googleapis.codegen.utilities import name_validator
 
 
 class UseableInTemplates(object):
@@ -141,7 +141,6 @@ class CodeObject(UseableInTemplates):
     Returns:
       (str) The comment with HTML-unsafe constructions removed.
     """
-    comment = comment.encode('ASCII', 'ignore')
     return MarkSafe(cls._validator.ValidateAndSanitizeComment(comment))
 
   @staticmethod
@@ -182,6 +181,8 @@ class CodeObject(UseableInTemplates):
       return self._module
     if self.parent:
       return self.parent.module
+    if self.api:
+      return self.api.module
     raise ValueError('Asked for module of CodeObject without any: %s, %s' %
                      (self.values.get('wireName', '<unnamed>'), self))
 
@@ -357,6 +358,16 @@ class CodeObject(UseableInTemplates):
     """
     return MarkSafe(self.safe_code_type)
 
+  @property
+  def constantName(self):  # pylint: disable=g-bad-name
+    """Returns a name for this object when used as an constant."""
+    return self.language_model.ToConstantName(self, self.values['wireName'])
+
+  @property
+  def memberName(self):  # pylint: disable=g-bad-name
+    """Returns a name for this object when used as an class member."""
+    return self.language_model.ToClassMemberName(self, self.values['wireName'])
+
 
 class Module(CodeObject):
   """A code object which represents the concept of a module.
@@ -479,3 +490,85 @@ class Module(CodeObject):
     else:
       base_path = self.language_model.DefaultContainerPathForOwner(self)
     return '/'.join(x for x in (base_path, self._package_path) if x)
+
+
+class Constant(CodeObject):
+  """A code object which represents a constant value.
+
+  Constants have a value and, optionally, a name and description.  The name of
+  a constant is the identifier we would use in a program..  We typically use
+  constants to represent the possible values of an Enum data type.
+  """
+
+  def __init__(self, value, name=None, description=None,
+               parent=None, language_model=None):
+    """Construct a Module.
+
+    Args:
+      value: (str|int) The string value of the constant.
+      name: (str) The name for this value. If not specified, the value will be
+        used as the base for the name, but numbers will be prefixed with the
+        string "value_" to turn them into a valid identifier.
+      description: (str) A description of the meaning of this constant.
+      parent: (CodeObject) The parent of this element.
+      language_model: (LanguageModel) The language we are targetting.
+        Dynamically defaults to the parent's language model.
+    """
+    super(Constant, self).__init__({}, None, parent=parent,
+                                   language_model=language_model)
+    self._value = str(value)
+    self.SetTemplateValue('wireName', self._value)
+    if description:
+      self._description = self.ValidateAndSanitizeComment(
+          self.StripHTML(description))
+    else:
+      self._description = None
+    self._name = name
+
+  @property
+  def description(self):
+    return self._description
+
+  @property
+  def name(self):
+    if not self._name:
+      # No name, we have to make one.
+      self._name = self._NameFromValue(self.value)
+    return self._name
+
+  @property
+  def value(self):
+    return self._value
+
+  @property
+  def constantName(self):  # pylint: disable=g-bad-name
+    """Override."""
+    return self.language_model.ToConstantName(self, self.name)
+
+  @classmethod
+  def _NameFromValue(cls, value):
+    """Construct a safe name for a constant from a value.
+
+    Constants might be numbers or strings with symbols that cannot be used in
+    identifiers. We want to do the minimal transform we can to make a name
+    that could be turned into an identifier.
+
+    Args:
+      value: (str) The value to derive a name from.
+
+    Returns:
+      (str): A name which could
+    """
+    # Many string constants begin with punctuation or symbols like '@'. Remove
+    # those.
+    name = value
+    while not name[0].isalnum():
+      name = name[1:]
+      if not name:
+        # we ran out? Just revert
+        name = value
+        break
+    # If we are left with a number, we have to turn it into an alphanumeric.
+    if not name[0].isalpha():
+      name = 'value_' + name
+    return name

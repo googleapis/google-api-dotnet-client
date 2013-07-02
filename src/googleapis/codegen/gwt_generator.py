@@ -48,8 +48,7 @@ class GwtGenerator(java_generator.BaseJavaGenerator):
   def AnnotateParameter(self, method, parameter):
     """Add GWT-specific annotations to parameter declaration.
 
-    If the parameter is an enum, and any enum values have numeric names,
-    then replace the name X with VALUE_X.
+    Qualify our enum class names by method so they do not clash.
 
     Args:
       method: (Method) The method this parameter belongs to.
@@ -61,9 +60,11 @@ class GwtGenerator(java_generator.BaseJavaGenerator):
       # For generated enums, we need to qualify the parent class of the enum so
       # that two methods that take a similarly-named enum parameter don't get
       # confused.
-      parameter.SetTemplateValue('codeType', '%s.%s' %
-                                 (method.values['className'],
-                                  enum_type.values['className']))
+      # TODO(user): This will fail when enums can be $refs. Get rid of all
+      # special purpuse enum annotations and checks.
+      name = '%s.%s' % (method.values['className'],
+                        enum_type.values['className'])
+      enum_type.SetTemplateValue('codeType', name)
 
   def AnnotateResource(self, api, resource):
     """Add GWT-specific annotations and naming schemes."""

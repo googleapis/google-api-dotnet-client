@@ -22,7 +22,7 @@ from googleapis.codegen import api
 from googleapis.codegen import data_types
 from googleapis.codegen import data_value
 from googleapis.codegen import language_model
-from django import template as django_template  # pylint: disable-msg=C6203
+from django import template as django_template  # pylint: disable=g-bad-import-order
 
 
 class DataValueTest(basetest.TestCase):
@@ -85,15 +85,15 @@ class DataValueTest(basetest.TestCase):
       def SetSchemaRef(self, schema_ref):
         self.schema_ref = schema_ref
 
-      # pylint: disable-msg=W0613
+      # pylint: disable=unused-argument
       def ToClassName(self, name, element, element_type):
         return name
 
-      # pylint: disable-msg=W0613
+      # pylint: disable=unused-argument
       def SchemaByName(self, schema_name):
         return self.schema
 
-      # pylint: disable-msg=W0613
+      # pylint: disable=unused-argument
       def DataTypeFromJson(self, unused_def_dict, tentative_class_name,
                            parent=None, wire_name=None):
         return self.schema_ref

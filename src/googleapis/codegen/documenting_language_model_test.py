@@ -13,7 +13,7 @@ class DocumentingLanguageModelTest(basetest.TestCase):
 
   def testDocumentingLanguageModel(self):
     dlm = language_model.DocumentingLanguageModel()
-    self.assertEquals('Array<foo>', dlm.CodeTypeForArrayOf('foo'))
+    self.assertEquals('Array<foo>', dlm.ArrayOf(None, 'foo'))
     self.assertEquals('Map<string, foo>', dlm.CodeTypeForMapOf('foo'))
     self.assertEquals('foo', dlm.GetCodeTypeFromDictionary({'type': 'foo'}))
     self.assertEquals('foo (int)', dlm.GetCodeTypeFromDictionary({

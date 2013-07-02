@@ -21,7 +21,7 @@
 __author__ = 'wclarkso@google.com (Will Clarkson)'
 
 from google.apputils import basetest
-from googleapis.codegen import name_validator
+from googleapis.codegen.utilities import name_validator
 
 
 class NameValidatorTest(basetest.TestCase):
@@ -90,9 +90,12 @@ class NameValidatorTest(basetest.TestCase):
 
   def testUtf8InComment(self):
     comment = 'Base64-encoded (RFC 4648 §5) data.'
-    self.assertRaises(name_validator.ValidationError,
-                      name_validator.ValidateAndSanitizeComment,
-                      comment)
+    unicode_comment = comment.decode('utf-8')
+    self.assertEqual(unicode_comment,
+                     name_validator.ValidateAndSanitizeComment(comment))
+    self.assertEqual(
+        unicode_comment,
+        name_validator.ValidateAndSanitizeComment(unicode_comment))
 
 
 if __name__ == '__main__':

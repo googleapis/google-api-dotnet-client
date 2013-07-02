@@ -88,7 +88,7 @@ class DataType(template_objects.CodeObject):
     return self.GetTemplateValue('className')
 
   @property
-  def safeClassName(self):  # pylint: disable-msg=C6409
+  def safeClassName(self):  # pylint: disable=g-bad-name
     """Returns a language appropriate name for this object.
 
     This property should only be used during template expansion. It is computed
@@ -135,13 +135,16 @@ class PrimitiveDataType(DataType):
     return self.code_type
 
   @property
-  def fullClassName(self):  # pylint: disable-msg=C6409
+  def fullClassName(self):  # pylint: disable=g-bad-name
     """Override the TemplateObject path chaining."""
     return self.code_type
 
   @property
   def code_type(self):
     """Returns the language specific type representing this datatype."""
+    user_override = self.values.get('codeType')
+    if user_override:
+      return user_override
     if self.language_model:
       s = self.language_model.GetCodeTypeFromDictionary(self._def_dict)
       return s
@@ -204,7 +207,7 @@ class ComplexDataType(DataType):
     return self.values.get('className')
 
   @property
-  def className(self):  # pylint: disable-msg=C6409
+  def className(self):  # pylint: disable=g-bad-name
     return self.class_name or self.safeClassName
 
 
@@ -221,7 +224,7 @@ class ContainerDataType(ComplexDataType):
       parent: (TemplateObject) The parent of this object.
       wire_name: (str) The identifier used in the wire protocol for this object.
     """
-    # Access to protected _language_model OK here. pylint: disable-msg=W0212
+    # Access to protected _language_model OK here. pylint: disable=protected-access
     super(ContainerDataType, self).__init__(
         name, {}, base_type.api, parent=parent,
         language_model=base_type._language_model,
@@ -263,7 +266,8 @@ class ArrayDataType(ContainerDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    return self.language_model.CodeTypeForArrayOf(self._base_type.code_type)
+    return self.language_model.ArrayOf(self._base_type,
+                                       self._base_type.code_type)
 
   @property
   def safe_code_type(self):
@@ -347,7 +351,7 @@ class SchemaReference(DataType):
     """Returns the concrete schema being referenced by this instance."""
     data_type = self
     while isinstance(data_type, SchemaReference):
-      # pylint: disable-msg=protected-access
+      # pylint: disable=protected-access
       data_type = data_type.api.SchemaByName(data_type._referenced_schema_name)
 
     return data_type
@@ -380,7 +384,7 @@ class SchemaReference(DataType):
     return self._def_dict.get('codeType') or self._def_dict.get('className')
 
   @property
-  def safe_code_type(self):  # pylint: disable-msg=C6409
+  def safe_code_type(self):  # pylint: disable=g-bad-name
     return self.referenced_schema.safe_code_type
 
   @property
@@ -424,7 +428,7 @@ class Void(PrimitiveDataType):
     return 'void'
 
 
-class Enum(DataType):
+class Enum(PrimitiveDataType):
   """The definition of an Enum.
 
   Example enum in discovery.
@@ -444,37 +448,37 @@ class Enum(DataType):
        ]
   """
 
-  def __init__(self, api, name, base_type, values, descriptions, parent):
+  def __init__(self, def_dict, api, name, values, descriptions, parent):
     """Create an enum.
 
     Args:
+      def_dict: (dict) The discovery dictionary for this element.
       api: (Api) The Api which owns this Property
       name: (str) The name for this enum.
-      base_type: (str) The underlying (language specific) type of the values.
       values: ([str]) List of possible values.
       descriptions: ([str]) List of value descriptions
       parent: (Method) The method owning this enum.
     """
-    super(Enum, self).__init__({}, api, parent=parent)
+    super(Enum, self).__init__(def_dict, api, parent=parent)
     self.ValidateName(name)
-    self._base_type = base_type
     self.SetTemplateValue('wireName', name)
     self.SetTemplateValue('className',
                           api.ToClassName(name, self, element_type='enum'))
+    self._elements = [template_objects.Constant(values[i],
+                                                description=descriptions[i],
+                                                parent=self)
+                      for i in range(len(values))]
+    self.SetTemplateValue(
+        'elements', self._elements,
+        meaning='The individual possible values of an Enum data type.')
+
+    # TODO(user): Migrate users away from the enum pairs to 'elements' and
+    # delete this
     def FixName(name):
       name = name[0].isdigit() and 'VALUE_' + name or name.lstrip('@')
       return name.upper().replace('-', '_')
     names = [FixName(s) for s in values]
     def FixDescription(desc):
       return self.ValidateAndSanitizeComment(self.StripHTML(desc))
-    # TODO(user): Not really a "pair". Maybe either give this a better
-    # name than pairs (i.e. tuples, items, name_val_desc, etc),
-    # and/or create a class that encapsulates those properties.
     pairs = zip(names, values, map(FixDescription, descriptions))
     self.SetTemplateValue('pairs', pairs)
-
-  @property
-  def codeType(self):  # pylint: disable-msg=C6409
-    # Enums want to use their path to the class name because they are
-    # heavily scoped to methods.
-    return self.fullClassName()

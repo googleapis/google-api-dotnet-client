@@ -1729,24 +1729,24 @@
      ]
     },
     "extractPeopleFromSearch": {
-     "restPath": "activities/search/@people",
+     "restPath": "activities/search/{evalue}@people",
      "rpcMethod": "chili.activities.extractPeopleFromSearch",
      "httpMethod": "GET",
      "description": "Search for people by topic",
      "parameters": {
-      "alt": {
-       "location": "query",
+      "evalue": {
+       "location": "path",
        "description": "Specifies an alternative representation type.",
-       "type": "string",
+       "type": "integer",
        "enum": [
-        "atom",
-        "json"
+        "0",
+        "1"
        ],
        "enumDescriptions": [
-        "Use Atom XML format",
-        "Use JSON format"
+        "The number 0",
+        "The number 1"
        ],
-       "default": "atom"
+       "default": "0"
       },
       "bbox": {
        "location": "query",
@@ -1806,9 +1806,9 @@
        "description": "Full-text search query string.",
        "type": "string"
       },
-      "radius": {
+      "min_radius": {
        "location": "query",
-       "description": "Radius to use in a geographic location query.",
+       "description": "A parameter with an _ in the name.",
        "type": "string"
       }
      },
@@ -1990,13 +1990,19 @@
        "maximum": "4294967295",
        "default": "0"
       },
-      "max-results": {
+      "options": {
+       "description": "A repeated enum.",
        "location": "query",
-       "description": "Maximum number of results to include.",
-       "type": "integer",
-       "minimum": "0",
-       "maximum": "4294967295",
-       "default": "20"
+       "repeated": true,
+       "type": "string",
+       "enum": [
+        "@a",
+        "@b"
+       ],
+       "enumDescriptions": [
+        "a",
+        "b"
+       ]
       },
       "scope": {
        "location": "path",

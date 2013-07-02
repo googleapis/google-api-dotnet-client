@@ -22,10 +22,10 @@ import os
 import textwrap
 
 from google.apputils import basetest
-# pylint: disable-msg=unused-import
+# pylint: disable=unused-import
 from googleapis.codegen import django_helpers
 from googleapis.codegen import template_helpers
-from django import template as django_template  # pylint: disable-msg=C6203
+from django import template as django_template  # pylint: disable=g-bad-import-order
 
 
 class TemplateHelpersTest(basetest.TestCase):
@@ -109,7 +109,7 @@ class TemplateHelpersTest(basetest.TestCase):
       def __init__(self, ret):
         self._ret = ret
 
-      def render(self, unused_context):  # pylint: disable-msg=C6409
+      def render(self, unused_context):  # pylint: disable=g-bad-name
         return self._ret
 
     collapse_node = template_helpers.CollapsedNewLinesNode(NodesList('ab'))

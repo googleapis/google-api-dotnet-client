@@ -320,7 +320,7 @@ class Api(template_objects.CodeObject):
   def AddMethod(self, method):
     """Add a new method to the set of all methods."""
     self._all_methods.append(method)
-    self._methods_by_name[method.values['id']] = method
+    self._methods_by_name[method.values['rpcMethod']] = method
 
   def MethodByName(self, method_name):
     """Find a method by name.
@@ -364,8 +364,11 @@ class Api(template_objects.CodeObject):
       self._VisitMethod(method, func)
     for parameter in self.values['parameters']:
       func(parameter)
+      func(parameter.data_type)
     for schema in self._schemas.values():
       self._VisitSchema(schema, func)
+    for scope in self.GetTemplateValue('authscopes') or []:
+      func(scope)
 
   def _VisitMethod(self, method, func):
     """Visit a method, calling a function on every child.
@@ -801,13 +804,21 @@ class AuthScope(template_objects.CodeObject):
       value: (string) The unique identifier of this scope, often a URL
       def_dict: (dict) The discovery dictionary for this auth scope.
     """
-    super(AuthScope, self).__init__(def_dict, api)
+    super(AuthScope, self).__init__(def_dict, api, wire_name=value)
+    self._module = api.module
     # Strip the common prefix to get a unique identifying name
     prefix_len = len('https://www.googleapis.com/auth/')
-    self.SetTemplateValue('name', value[prefix_len:].upper()
+    last_part = value[prefix_len:]
+    self.SetTemplateValue('lastPart', last_part)
+    self.SetTemplateValue('name', last_part.upper()
                           .replace('.', '_')
                           .replace('-', '_'))
     self.SetTemplateValue('value', value)
+
+  @property
+  def constantName(self):  # pylint: disable=g-bad-name
+    """Overrides default behavior of wireName."""
+    return self._language_model.ToConstantName(self, self.values['lastPart'])
 
 
 class Method(template_objects.CodeObject):
@@ -1054,19 +1065,19 @@ class Parameter(template_objects.CodeObject):
     self._location = (self.values.get('location')
                       or self.values.get('restParameterType')
                       or 'query')
-    self._data_type = data_types.PrimitiveDataType(def_dict, api, parent=self)
+    if self.values.get('enum'):
+      self._data_type = data_types.Enum(def_dict,
+                                        api,
+                                        name,
+                                        self.values.get('enum'),
+                                        self.values.get('enumDescriptions'),
+                                        parent=method)
+      self.SetTemplateValue('enumType', self._data_type)
+    else:
+      self._data_type = data_types.PrimitiveDataType(def_dict, api, parent=self)
     if self._repeated:
       self._data_type = data_types.ArrayDataType(name, self._data_type,
                                                  parent=self)
-
-    if self.values.get('enum'):
-      enum = data_types.Enum(api,
-                             name,
-                             self._data_type,
-                             self.values.get('enum'),
-                             self.values.get('enumDescriptions'),
-                             parent=method)
-      self.SetTemplateValue('enumType', enum)
 
   @property
   def repeated(self):

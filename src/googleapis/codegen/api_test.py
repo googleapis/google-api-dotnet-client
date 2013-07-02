@@ -139,13 +139,12 @@ class ApiTest(basetest.TestCase):
             self.assertEquals(method.values['parameterOrder'], required_names)
             tests_executed += 1
 
-          if method.values['wireName'] == 'get':
-            optional_names = set(p.values['wireName']
-                                 for p in method.optional_parameters)
-            self.assertEquals(set(['truncateAtom', 'max-comments', 'hl',
-                                   'max-liked']),
-                              optional_names)
-            tests_executed += 1
+    method = api.MethodByName('chili.activities.get')
+    optional_names = set(p.values['wireName']
+                         for p in method.optional_parameters)
+    self.assertEquals(set(['truncateAtom', 'max-comments', 'hl', 'max-liked']),
+                      optional_names)
+    tests_executed += 1
     self.assertEquals(7, tests_executed)
 
   def testSchemaLoadingAsString(self):
@@ -417,8 +416,7 @@ class ApiTest(basetest.TestCase):
 
   def testParameters(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
-    activities = FindByWireName(api.values['resources'], 'activities')
-    delete = FindByWireName(activities.values['methods'], 'delete')
+    delete = api.MethodByName('chili.activities.delete')
     self.assertEquals(1, len(delete.query_parameters))
     self.assertEquals(3, len(delete.path_parameters))
     hl = FindByWireName(delete.values['parameters'], 'hl')
@@ -429,11 +427,8 @@ class ApiTest(basetest.TestCase):
   def testEnums(self):
     gen = self.ApiFromDiscoveryDoc('enums.json')
     # Find the method with the enums
-    r1 = FindByWireName(gen.values['resources'], 'r1')
-    methods = r1.values['methods']
-    m1 = FindByWireName(methods, 'm1')
-    language = [p for p in m1.values['parameters']
-                if p.values['wireName'] == 'language'][0]
+    m1 = gen.MethodByName('language.translations.list')
+    language = FindByWireName(m1.values['parameters'], 'language')
     e = language.values['enumType']
     self.assertEquals(m1, e.parent)
     for name, value, desc in e.values['pairs']:
@@ -443,13 +438,23 @@ class ApiTest(basetest.TestCase):
                                 'lang_zh-TW'])
       self.assertTrue(desc in ['English (US)', 'Italian',
                                'Chinese (Simplified)', 'Chinese (Traditional)'])
-    accuracies = [p for p in m1.values['parameters']
-                  if p.values['wireName'] == 'accuracy'][0]
-    e = accuracies.values['enumType']
+    accuracy = FindByWireName(m1.values['parameters'], 'accuracy')
+    e = accuracy.values['enumType']
     self.assertEquals(m1, e.parent)
     for name, value, desc in e.values['pairs']:
       self.assertTrue(name in ['VALUE_1', 'VALUE_2', 'VALUE_3'])
       self.assertTrue(value in ['1', '2', '3'])
+
+  def testRepeatedEnum(self):
+    api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+    activities = FindByWireName(api.values['resources'], 'activities')
+    list_method = FindByWireName(activities.values['methods'], 'list')
+    options = [p for p in list_method.values['parameters']
+               if p.values['wireName'] == 'options'][0]
+    # Should be an array of enums of type string
+    self.assertTrue(isinstance(options.data_type, data_types.ArrayDataType))
+    self.assertTrue(isinstance(options.data_type._base_type, data_types.Enum))
+    self.assertEquals('string', options.data_type._base_type.values['type'])
 
   def testScopes(self):
     gen = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)

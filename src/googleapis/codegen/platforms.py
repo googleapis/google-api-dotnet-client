@@ -19,6 +19,7 @@ PLATFORMS = {
     # TODO(user): Remove android2 and android3 for 1.12 launch.
     'java': ['android', 'android2', 'android3', 'appengine', 'servlet',
              'generic'],
+    'javaproto': ['android', 'appengine', 'servlet', 'generic'],
     }
 
 # Definitions:
@@ -28,5 +29,5 @@ PLATFORMS = {
 # Type of files applicable to that platform
 FILE_TYPES = {
     ALL: ['binary', 'bundle', 'documentation', 'source', 'license',
-          'android-properties', 'proguard-config']
+          'android-properties', 'proguard-config', 'other']
     }

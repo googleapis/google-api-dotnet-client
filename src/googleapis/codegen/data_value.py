@@ -58,7 +58,7 @@ class DataValue(template_objects.CodeObject):
     self.data_type.SetLanguageModel(language_model)
 
   def GetLanguageModel(self):
-    # pylint: disable-msg=W0212
+    # pylint: disable=protected-access
     return self.data_type.language_model
 
   @property

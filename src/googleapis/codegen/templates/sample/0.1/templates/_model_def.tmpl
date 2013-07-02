@@ -14,14 +14,14 @@ class {{ model.className }} extends SomeBaseModelClass {
 {% for property in model.properties %}
   // {{ property.description }}
   // JSON name: {% literal property.wireName %}
-  {{ property.codeType }} _{{ property.codeName }};
+  {{ property.codeType }} {{ property.memberName }};
 {% endfor %}
 
 {% filter noblanklines %}
   // Getters and setters might go here
   {% for property in model.properties %}
   {{ property.codeType }} get_{{ property.codeName }}() {
-    return _{{ property.codeName }};
+    return {{ property.memberName }};
   }
   {% endfor %}
 {% endfilter %}

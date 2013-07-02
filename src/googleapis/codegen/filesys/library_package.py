@@ -21,6 +21,7 @@ The two intended implementations are Zip files and direct to the file system.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
+import contextlib
 import os
 
 from googleapis.codegen.filesys import files
@@ -108,9 +109,29 @@ class LibraryPackage(object):
 
   def SetFilePathPrefix(self, path):
     """Set a prefix to be prepended to any file names."""
-    if not path.endswith('/'):
+    if path and not path.endswith('/'):
       path = '%s/' % path
     self._file_path_prefix = path
+
+  @contextlib.contextmanager
+  def FilePathPrefix(self, path):
+    """A context manager that sets and restores a file path prefix.
+
+    Example usage:
+
+       with myPackageWriter.FilePathPrefix(path):
+         myPackageWriter.WriteDataAsFile(content, 'foo')
+    Args:
+      path: (str) A top level path.
+    Yields:
+      (nothing)
+    """
+    old_prefix = self._file_path_prefix
+    self.SetFilePathPrefix(path)
+    try:
+      yield
+    finally:
+      self._file_path_prefix = old_prefix
 
   def WriteDataAsFile(self, content, file_name):
     """Write a blob of content to the package as the given file name.

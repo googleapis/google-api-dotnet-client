@@ -90,19 +90,21 @@ class Targets(object):
   def Platforms(self):
     return self._targets_dict.get('platforms', {})
 
-  @classmethod
-  def SetDefaultTemplateRoot(cls, path):
+  @staticmethod
+  def SetDefaultTemplateRoot(path):
     """Sets a new default full path to the templates directory.
 
     Args:
       path: (str) full path to templates directory.
     """
+    # This is not a classmethod because we don't want subclasses
+    # to shadow this value.
     logging.info('setting default template root to %s', path)
-    cls._default_template_root = path
+    Targets._default_template_root = path
 
-  @classmethod
-  def GetDefaultTemplateRoot(cls):
-    return cls._default_template_root
+  @staticmethod
+  def GetDefaultTemplateRoot():
+    return Targets._default_template_root
 
 
   # Set the initial default file.
@@ -117,10 +119,12 @@ class Targets(object):
   # Whether to use variation release versions when calculating template paths.
   use_versioned_paths = False
 
-  @classmethod
-  def SetUseVersionedPaths(cls, use_versioned_paths):
+  @staticmethod
+  def SetUseVersionedPaths(use_versioned_paths):
     """Sets whether versions are used in the template path."""
-    cls.use_versioned_paths = use_versioned_paths
+    # This is not a classmethod because we don't want subclasses
+    # to shadow this value.
+    Targets.use_versioned_paths = use_versioned_paths
 
 
 class Variations(dict):
@@ -156,7 +160,7 @@ class Variations(dict):
       path = self.get(variation, {}).get('path') or variation
     return os.path.join(self._language, path)
 
-  def _AbsoluteTemplateDir(self, variation):
+  def AbsoluteTemplateDir(self, variation):
     """Returns the path to template dir for the selected variation.
 
     Args:
@@ -187,7 +191,7 @@ class Variations(dict):
     """
     if not variation:
       return None
-    template_dir = self._AbsoluteTemplateDir(variation)
+    template_dir = self.AbsoluteTemplateDir(variation)
     features = Features(template_dir, self.get(variation), variation)
     json_path = os.path.join(template_dir, 'features.json')
 

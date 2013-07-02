@@ -95,5 +95,73 @@ class LanguageModelTest(basetest.TestCase):
     float_dv = self._CreateDataValue(4.2, 'I\'m a valid type!')
     self.assertRaises(ValueError, render_method, float_dv)
 
+  def testTransform(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      allowed_characters = '#'
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+    # An identifier with several bad characters, including one at the end
+    # which we expect to strip off.
+    s = 'I-am -a_tesT@'
+    self.assertEquals(
+        'iamatest',
+        m.TransformString(None, s, language_model.LOWER_CASE, None))
+    self.assertEquals(
+        'I_am_a_tesT',
+        m.TransformString(None, s, language_model.PRESERVE_CASE, '_'))
+    self.assertEquals(
+        'I_AM_A_TEST',
+        m.TransformString(None, s, language_model.UPPER_CASE, '_'))
+    self.assertEquals(
+        'i_am_a_test',
+        m.TransformString(None, s, language_model.LOWER_CASE, '_'))
+    self.assertEquals(
+        'IAmATesT',
+        m.TransformString(None, s, language_model.UPPER_CAMEL_CASE, None))
+    self.assertEquals(
+        'iAmATesT',
+        m.TransformString(None, s, language_model.LOWER_CAMEL_CASE, None))
+    s = 'allow#this'
+    self.assertEquals(
+        'Allow#this',
+        m.TransformString(None, s, language_model.UPPER_CAMEL_CASE, None))
+
+  def testFormat(self):
+    # TODO(user): Add tests here when we expand the format options
+    pass
+
+  def testPoliciesGetUsedInTheRightMethods(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      class_name_transform = language_model.UPPER_CAMEL_CASE
+      class_name_separator = '!CLASS!'
+      class_name_format = 'C {name}'
+
+      member_transform = language_model.LOWER_CAMEL_CASE
+      member_separator = '!MEMBER!'
+      member_format = 'M {name}'
+
+      constant_transform = language_model.LOWER_CASE
+      constant_separator = '!CONSTANT!'
+      constant_format = 'K {name}'
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+    max_results = 'max-results'
+
+    self.assertEquals('C Max!CLASS!Results',
+                      m.ToClassName(None, max_results))
+    self.assertEquals('M max!MEMBER!Results',
+                      m.ToClassMemberName(None, max_results))
+    self.assertEquals('K max!CONSTANT!results',
+                      m.ToConstantName(None, max_results))
+
+
 if __name__ == '__main__':
   basetest.main()

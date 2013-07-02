@@ -144,30 +144,6 @@ class DartGenerator(api_library_generator.ApiLibraryGenerator):
     method.SetTemplateValue('contextCodeType', '.'.join(parent_classes))
     super(DartGenerator, self).AnnotateMethod(the_api, method, None)
 
-  def AnnotateParameter(self, method, parameter):
-    """Override default implementation.
-
-    If the parameter is an enum, and any enum values names start with
-    a digit, then replace the name X with VALUE_X.
-
-    Args:
-      method: (Method) The method this parameter belongs to.
-      parameter: (Parameter) The parameter to annotate.
-    """
-    enum_type = parameter.GetTemplateValue('enumType')
-    if enum_type:
-      # Crazy Dart naming
-      # TODO(user): Figure out better naming for top level parameters.
-      # The logic below removes the API from resource method parameters, but
-      # leaves them on API level method parameters.
-      ancestors = parameter.ancestors
-      if len(ancestors) > 1:
-        ancestors = ancestors[1:]
-      ancestors.append(enum_type)
-      parent_classes = [p.values.get('className') for p in ancestors]
-      enum_type.SetTemplateValue('codeType', ''.join(parent_classes))
-    super(DartGenerator, self).AnnotateParameter(method, parameter)
-
 
 class DartApi(api.Api):
   """An Api with Dart annotations."""

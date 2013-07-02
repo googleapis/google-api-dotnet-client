@@ -1,5 +1,4 @@
 #!/usr/bin/python2.7
-#
 # Copyright 2011 Google Inc. All Rights Reserved.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,15 +31,6 @@ import re
 # variable name in some APIs.
 _VARNAME_REGEX = re.compile(
     r'^[a-zA-Z]$|([a-zA-Z_/$][a-zA-Z0-9_./-]+)$')
-
-# Valid comments may only contain dash ('-'), a-z, A-Z, 0-9, comma (','),
-# apostrophe forward slash bracket opening/closing '[' or ']', colons (':')
-# or whitespace.
-# We also do not permit comment terminators terminators (e.g. */)
-# TODO(user): Make a per-language validator. Allow non-dangerous symbols
-#                 depending on language. e.g. */ is OK for Python but not PHP
-_COMMENT_REGEX = re.compile(
-    r'[-\s!"#$%&\'`()*+,./0-9:;<=>?@A-Z\[\\\]^_`a-z{|}~]*$')
 
 _API_NAME_REGEX = re.compile(r'[a-z][a-zA-Z0-9_]*$')
 _API_VERSION_REGEX = re.compile(r'[a-z0-9][a-zA-Z0-9._]*$')
@@ -111,41 +101,40 @@ def ValidateApiVersion(api_version):
 def ValidateAndSanitizeComment(comment_string):
   """Validates a comment string.
 
-  We do not allow non-ascii characters, raising an error if one is present.
+  Remove comment terminators (e.g. */) from a string.
+
+  TODO(user): Make a per-language validator. Allow non-dangerous symbols
+  depending on language. e.g. */ is OK for Python but not PHP
+
   Args:
-    comment_string: (str) input comment string
+    comment_string: (str|unicode) input comment string
   Returns:
-    (str) ASCII-Only string with invalid characters removed
-
-  Raises:
-    ValidationError: An Error if vomment does not conform to style
+    (unicode) String with invalid character sequences removed
   """
-  # Disallow non-ASCII (Error if present)
-  if _COMMENT_REGEX.match(comment_string) is None:
-    raise ValidationError(
-        'Comment %s does not conform to style guide' % comment_string)
-  else:
-    # Strip anything which is known to be a comment terminator in any
-    # supported language.
-    invalid_strings = ['/*',    # C-style Multi-line start
-                       '*/',    # C-style Multi-line end
-                       '\"""',  # Python Multiline string
-                       '///',   # Escaped comment begin
-                       '\\*',   # Escaped Multiline begin
-                      ]
-    change_made = True
-    while change_made:
-      change_made = False
-      # Save original length for easy comparision later
-      beginning_length = len(comment_string)
+  # Strip anything which is known to be a comment terminator in any
+  # supported language.
+  invalid_strings = [u'/*',    # C-style Multi-line start
+                     u'*/',    # C-style Multi-line end
+                     u'\"""',  # Python Multiline string
+                     u'///',   # Escaped comment begin
+                     u'\\*',   # Escaped Multiline begin
+                    ]
 
-      for substring in invalid_strings:
-        # Replace all intances of substring with empty string
-        comment_string = comment_string.replace(substring, '')
+  if isinstance(comment_string, str):
+    comment_string = comment_string.decode('utf-8')
+  change_made = True
+  while change_made:
+    change_made = False
+    # Save original length for easy comparision later
+    beginning_length = len(comment_string)
 
-      # If the length of the string changed, then a replacement occured.
-      # We need to repeat the process until no changes occur
-      if len(comment_string) != beginning_length:
-        change_made = True
+    for substring in invalid_strings:
+      # Replace all instances of substring with empty string
+      comment_string = comment_string.replace(substring, '')
+
+    # If the length of the string changed, then a replacement occurred.
+    # We need to repeat the process until no changes occur
+    if len(comment_string) != beginning_length:
+      change_made = True
 
   return comment_string

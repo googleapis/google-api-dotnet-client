@@ -27,6 +27,17 @@ from googleapis.codegen import utilities
 class SampleLanguageModel(language_model.LanguageModel):
   """A LanguageModel for a sample language."""
 
+  # Set up variable naming policy
+  allowed_characters = '_'
+  array_of_format = '{module}::Array<{name}>'
+  class_name_transform = language_model.LOWER_CASE
+  class_name_separator = '_'
+  constant_transform = language_model.UPPER_CASE
+  constant_separator = '_'
+  member_transform = None
+  member_separator = '_'
+  member_format = '_{name}'
+
   _SCHEMA_TYPE_TO_LANGUAGE_TYPE = {
       'any': 'object',
       'array': 'array',
@@ -41,7 +52,7 @@ class SampleLanguageModel(language_model.LanguageModel):
   RESERVED_CLASS_NAMES = ['class', 'import', 'return']  # ...
 
   def __init__(self):
-    super(SampleLanguageModel, self).__init__(class_name_delimiter='.')
+    super(SampleLanguageModel, self).__init__(module_name_delimiter='::')
 
     self._SUPPORTED_TYPES['array'] = self._List
     self._SUPPORTED_TYPES['boolean'] = self._Boolean
@@ -84,18 +95,6 @@ class SampleLanguageModel(language_model.LanguageModel):
                    self._SCHEMA_TYPE_TO_LANGUAGE_TYPE.get('string'))
     return native_type
 
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A string meaning "an array of type_name".
-    """
-    return 'Array<%s>' % type_name
-
   def CodeTypeForMapOf(self, type_name):
     """Take a type name and return the syntax for an array of them.
 
@@ -108,7 +107,6 @@ class SampleLanguageModel(language_model.LanguageModel):
     """
     return 'Map<string, %s>' % type_name
 
-  # xylint: disable-msg=W0613
   def ToMemberName(self, s, unused_api):
     """Convert a wire format name into a suitable variable name."""
     return s.replace('-', '_')

@@ -128,6 +128,8 @@ class TemplateGenerator(object):
     """
     try:
       content = self.RenderTemplate(template_path, context_dict)
+      if isinstance(content, unicode):
+        content = content.encode('utf-8', errors='ignore')
       out = package.StartFile(output_path)
       out.write(content)
       package.EndFile()
