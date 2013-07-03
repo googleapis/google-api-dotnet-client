@@ -39,8 +39,8 @@ from googleapis.codegen.filesys import files
 # into templates.
 _GENERATOR_INFORMATION = {
     'name': 'google-apis-code-generator',
-    'version': '1.4.0',
-    'buildDate': '2013-06-11',
+    'version': '1.4.1',
+    'buildDate': '2013-07-04',
     }
 
 # app.yaml and other names that app engine refuses to open.
