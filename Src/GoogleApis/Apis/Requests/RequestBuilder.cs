@@ -95,7 +95,7 @@ namespace Google.Apis.Requests
                 restPath.Append("?");
                 // If parameter value is empty - just add the "name", otherwise "name=value"
                 restPath.Append(String.Join("&", QueryParameters.Select(
-                    x => x.Value.IsNullOrEmpty() ?
+                    x => string.IsNullOrEmpty(x.Value) ?
                         Uri.EscapeDataString(x.Key) :
                         String.Format("{0}={1}", Uri.EscapeDataString(x.Key), Uri.EscapeDataString(x.Value)))
                     .ToArray()));

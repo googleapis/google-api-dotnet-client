@@ -34,122 +34,6 @@ namespace Google.Apis.Tests.Apis.Util
     [TestFixture]
     public class UtilitiesTest
     {
-        /// <summary>
-        /// Tests that the GetValueAsNull method works
-        /// </summary>
-        [Test]
-        public void GetValueAsNullObjectTest()
-        {
-            var dict = new Dictionary<int, string>();
-            dict[0] = "0";
-            dict[1] = "1";
-            dict[2] = "2";
-            Assert.AreEqual("0", dict.GetValueAsNull(0));
-            Assert.AreEqual("1", dict.GetValueAsNull(1));
-            Assert.AreEqual("2", dict.GetValueAsNull(2));
-
-            Assert.IsNull(dict.GetValueAsNull(-1));
-            Assert.IsNull(dict.GetValueAsNull(3));
-        }
-
-        [Test]
-        public void NullOrEmptyEnumerableTest()
-        {
-            // null enumerable
-            IList<string> obj = null;
-            var result = obj.NullToEmpty();
-            Assert.NotNull(result);
-            Assert.AreEqual(0, result.Count());
-
-            // not null enumerable
-            obj = new List<string>() { "one" };
-            result = obj.NullToEmpty();
-            Assert.NotNull(result);
-            Assert.AreEqual(1, result.Count());
-            Assert.AreEqual("one", result.FirstOrDefault());
-        }
-
-
-        [Test]
-        public void NullOrEmptyDictionaryTest()
-        {
-            // null dictionary
-            IDictionary<string, int> dic = null;
-            var result = dic.NullToEmpty();
-            Assert.NotNull(result);
-            Assert.AreEqual(0, result.Count());
-
-            // not null dictionary
-            var dic2 = new Dictionary<int, string>();
-            dic2[1] = "one";
-            IDictionary<int, string> result2 = dic2.NullToEmpty();
-            Assert.NotNull(result2);
-            Assert.AreEqual(1, result2.Count());
-            Assert.AreEqual("one", result2[1]);
-        }
-
-        /// <summary>
-        /// Tests the GetvalueAsNull method with primitive types.
-        /// </summary>
-        [Test]
-        public void GetValueAsNullPrimitiveTest()
-        {
-            var dict = new Dictionary<int, int>();
-            dict[0] = 0;
-            dict[1] = 1;
-            dict[2] = 2;
-            Assert.AreEqual(0, dict.GetValueAsNull(0));
-            Assert.AreEqual(1, dict.GetValueAsNull(1));
-            Assert.AreEqual(2, dict.GetValueAsNull(2));
-
-            Assert.AreEqual(0, dict.GetValueAsNull(-1));
-            Assert.AreEqual(0, dict.GetValueAsNull(3));
-        }
-
-        /// <summary>
-        /// Tests the GetValueAsStringListOrEmpty method.
-        /// </summary>
-        [Test]
-        public void GetValueAsStringListOrEmpty()
-        {
-            IDictionary<string, object> dict = null;
-
-            dict = new Dictionary<string, object>();
-            var result = dict.GetValueAsStringListOrEmpty("Fish");
-            Assert.IsNotNull(result);
-            MoreAsserts.IsEmpty(result);
-
-            dict.Add("Number", 1);
-            dict.Add("String", "abc");
-            dict.Add("Anon", new { A = "A", B = "B" });
-
-            var list = new List<object>();
-            list.Add("string");
-            list.Add(123);
-            list.Add(null);
-            list.Add(new StringBuilder("StringBuilder"));
-            dict.Add("List", list);
-
-            result = dict.GetValueAsStringListOrEmpty("Number");
-            Assert.IsNotNull(result);
-            MoreAsserts.IsEmpty(result);
-
-            result = dict.GetValueAsStringListOrEmpty("String");
-            Assert.IsNotNull(result);
-
-            result = dict.GetValueAsStringListOrEmpty("Number");
-            Assert.IsNotNull(result);
-            MoreAsserts.IsEmpty(result);
-
-            result = dict.GetValueAsStringListOrEmpty("Anon");
-            Assert.IsNotNull(result);
-            MoreAsserts.IsEmpty(result);
-
-            List<string> resultAsList = dict.GetValueAsStringListOrEmpty("List").ToList();
-            Assert.IsNotNull(resultAsList);
-            MoreAsserts.ContentsEqualAndInOrder(
-                new List<string> { "string", "123", null, "StringBuilder" }, resultAsList);
-        }
 
         /// <summary>
         /// Tests that the AsReadOnly method will fail when provided invalid arguments.
@@ -223,37 +107,6 @@ namespace Google.Apis.Tests.Apis.Util
             str.ThrowIfNull("Not throwen");
         }
 
-        /// <summary>
-        /// Tests the "FormatString" method.
-        /// </summary>
-        [Test]
-        public void FormatStringTest()
-        {
-            // Test that a null string won't throw an exception.
-            Assert.IsNull(((string)null).FormatString());
-            Assert.IsNull(((string)null).FormatString("123"));
-
-            // Test that a normal (non-argument) call to the Format method will not format the string.
-            Assert.AreEqual("{0}", "{0}".FormatString());
-
-            // Test that the string is formatted when arguments are passed.
-            Assert.AreEqual("123", "{0}".FormatString("123"));
-        }
-
-        /// <summary>
-        /// Tests the "Replace" string extension method.
-        /// </summary>
-        [Test]
-        public void ReplaceTest()
-        {
-            Assert.That("test".Replace("_", '"', '!', '$'), Is.EqualTo("test"));
-            Assert.That("/te/st/".Replace("", '/', '!', '$'), Is.EqualTo("test"));
-            Assert.That("/te/st/".Replace("_", '/', '!', '$'), Is.EqualTo("_te_st_"));
-            Assert.That("/te/st/".Replace("//", '/', '!', '$'), Is.EqualTo("//te//st//"));
-            Assert.That("123!@#".Replace("", '!', '@', '#'), Is.EqualTo("123"));
-            Assert.Throws<ArgumentException>(() => "test".Replace("_"));
-        }
-
         private enum MockEnum
         {
             [StringValue("Test")]
@@ -273,19 +126,6 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.That(MockEnum.EntryWithSecondStringValue.GetStringValue(), Is.EqualTo("3.14159265358979323846"));
             Assert.Throws<ArgumentException>(() => MockEnum.EntryWithoutStringValue.GetStringValue());
             Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
-        }
-
-        /// <summary>
-        /// Tests the "GetNonNullableType" method.
-        /// </summary>
-        [Test]
-        public void GetNonNullableTypeTest()
-        {
-            Assert.AreEqual(typeof(string), Google.Apis.Util.Utilities.GetNonNullableType(typeof(string)));
-            Assert.AreEqual(typeof(int), Google.Apis.Util.Utilities.GetNonNullableType(typeof(int)));
-
-            Assert.AreEqual(typeof(int), Google.Apis.Util.Utilities.GetNonNullableType(typeof(int?)));
-            Assert.AreEqual(typeof(MockEnum), Google.Apis.Util.Utilities.GetNonNullableType(typeof(MockEnum?)));
         }
 
         /// <summary>
@@ -312,34 +152,6 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(nullable));
             MockEnum? nullEnum = null;
             Assert.AreEqual(null, Google.Apis.Util.Utilities.ConvertToString(nullEnum));
-        }
-
-        /// <summary>
-        /// Tests the ICollection implementation of IsNullOrEmpty
-        /// </summary>
-        [Test]
-        public void IsNullOrEmptyCollectionTest()
-        {
-            ICollection<int> col = null;
-            Assert.IsTrue(col.IsNullOrEmpty());
-
-            col = new List<int>();
-            Assert.IsTrue(col.IsNullOrEmpty());
-
-            col = new List<int>() { 42 };
-            Assert.IsFalse(col.IsNullOrEmpty());
-        }
-
-        /// <summary>
-        /// Test the Concat extension method.
-        /// </summary>
-        [Test]
-        public void ConcatTest()
-        {
-            CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, new[] { 1, 2, 3 }.Concat(4));
-            CollectionAssert.AreEqual(new[] { 1, 4 }, new[] { 1 }.Concat(4));
-            CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, new[] { 1 }.Concat(2).Concat(3).Concat(4));
-            CollectionAssert.AreEqual(new[] { 1 }, new int[0].Concat(1));
         }
     }
 }

@@ -60,9 +60,6 @@ namespace Google.Apis.Services
         /// <summary> Gets the supported features by this service. </summary>
         IList<string> Features { get; }
 
-        /// <summary> Gets the common parameters information for this service. </summary>
-        IDictionary<string, IParameter> ServiceParameters { get; }
-
         /// <summary> Gets or sets whether this service supports GZip. </summary>
         bool GZipEnabled { get; }
 

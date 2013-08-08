@@ -36,14 +36,6 @@ namespace Google.Apis
             return string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue);
         }
 
-        /// <summary> Validates a parameter value against those enumeration values allowed by the method. </summary>
-        [VisibleForTestOnly]
-        internal static bool ValidateEnum(IParameter param, string paramValue)
-        {
-            // Confirm that the parameter value is contained within the enumeration
-            return param.EnumValues.IsNullOrEmpty() || param.EnumValues.Contains(paramValue);
-        }
-
         /// <summary> Validates if a parameter is valid. </summary>
         public static bool ValidateParameter(IParameter parameter, string value)
         {
@@ -53,14 +45,8 @@ namespace Google.Apis
                 return !parameter.IsRequired;
             }
 
-            // The parameter is present, validate the regex
-            bool isValidData = ValidateRegex(parameter, value) && ValidateEnum(parameter, value);
-            if (isValidData == false)
-            {
-                return false;
-            }
-
-            return true;
+            // The parameter has value so validate the regex
+            return ValidateRegex(parameter, value);
         }
     }
 }

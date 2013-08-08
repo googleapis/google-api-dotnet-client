@@ -39,12 +39,6 @@ namespace Google.Apis.Testing
         public override IList<string> Features { get { return _features; } }
         public void SetFeatures(IList<string> features) { _features = features; }
 
-        private IDictionary<string, IParameter> _serviceParameters = new Dictionary<string, IParameter>();
-        public override IDictionary<string, IParameter> ServiceParameters
-        {
-            get { return _serviceParameters; }
-        }
-
         public MockClientService(string baseUri = @"https://testexample.google.com")
             : this(new Initializer(), baseUri)
         {

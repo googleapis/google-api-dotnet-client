@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 
 using Google.Apis.Logging;
+using Google.Apis.Testing;
 
 namespace Google
 {
@@ -26,7 +27,8 @@ namespace Google
     /// </summary>
     public static class ApplicationContext
     {
-        private static ILogger logger;
+        [VisibleForTestOnly]
+        internal static ILogger logger;
 
         /// <summary>
         /// Returns the logger used within this ApplicationContext.
