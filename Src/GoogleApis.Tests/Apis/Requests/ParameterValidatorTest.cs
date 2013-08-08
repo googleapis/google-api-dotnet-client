@@ -43,37 +43,5 @@ namespace Google.Apis.Tests.Apis.Requests
             var parameter = new MockParameter() { Pattern = ".+", Name = "test" };
             Assert.IsTrue(ParameterValidator.ValidateRegex(parameter, "Test"));
         }
-
-        /// <summary> Tests validate enum a non-enum parameter. </summary>
-        [Test]
-        public void ValidateEnumNullTest()
-        {
-            var p = new MockParameter() { Name = "test" };
-
-            // Confirm that the method validates enumerations correctly.
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "one"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "two"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "three"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "One"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, ""));
-        }
-
-        /// <summary> Tests validate enum method. </summary>
-        [Test]
-        public void ValidateEnumTest()
-        {
-            var p = new MockParameter
-                {
-                    Name = "test",
-                    EnumValues = new string[] { "one", "two", "three" }
-                };
-            // Confirm that the method validates enumerations correctly.
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "one"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "two"));
-            Assert.IsTrue(ParameterValidator.ValidateEnum(p, "three"));
-            Assert.IsFalse(ParameterValidator.ValidateEnum(p, "One"));
-            Assert.IsFalse(ParameterValidator.ValidateEnum(p, ""));
-            Assert.IsFalse(ParameterValidator.ValidateEnum(p, "FooBar"));
-        }
     }
 }

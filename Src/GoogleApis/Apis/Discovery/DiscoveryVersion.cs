@@ -16,14 +16,10 @@ limitations under the License.
 
 namespace Google.Apis.Discovery
 {
-    /// <summary>
-    /// An enumeration of all supported discovery versions
-    /// </summary>
+    /// <summary> An enumeration of all supported discovery versions.</summary>
     public enum DiscoveryVersion
     {
-        /// <summary>Version 0.3</summary>
-        Version_0_3,
-        /// <summary>Version 1.0</summary>
         Version_1_0,
+        Version_0_3,
     }
 }

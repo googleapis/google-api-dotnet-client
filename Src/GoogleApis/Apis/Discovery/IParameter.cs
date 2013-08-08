@@ -18,77 +18,22 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Discovery
 {
-    /// <summary>
-    /// Represents a parameter for a method. 
-    /// This interface is used by both Discovery and Runtime compoenents.
-    /// </summary>
+    /// <summary> Represents a parameter for a method.</summary>
     public interface IParameter
     {
-        /// <summary>
-        /// Name of the parameter.
-        /// </summary>
+        /// <summary> Gets the name of the parameter.</summary>
         string Name { get; }
 
-        /// <summary>
-        /// The pattern in which this parameter has to be defined.
-        /// </summary>
+        /// <summary> Gets the pattern that this parameter must follow.</summary>
         string Pattern { get; }
 
-        /// <summary>
-        /// Defines whether this parameter is optional or required.
-        /// </summary>
+        /// <summary> Gets an indication whether this parameter is optional or required.</summary>
         bool IsRequired { get; }
 
-        /// <summary>
-        /// The default value of this parameter.
-        /// </summary>
+        /// <summary> Gets the default value of this parameter.</summary>
         string DefaultValue { get; }
 
-        /// <summary>
-        /// A list of valid enum values. (Only for enum values)
-        /// </summary>
-        IEnumerable<string> EnumValues { get; }
-
-        /// <summary>
-        /// The type of the parameter.
-        /// </summary>
+        /// <summary> Gets the type of the parameter.</summary>
         string ParameterType { get; }
-    }
-
-    /// <summary>
-    /// Represents a parameter for a method and includes all the meta data of a parameter, including properties
-    /// which the runtime component doesn't need to be aware of (e.g. Description).
-    /// </summary>
-    public interface IDiscoveryParameter : IParameter
-    {
-        /// <summary>
-        /// Defines whether this parameter can be repeated multiple times.
-        /// </summary>
-        bool IsRepeatable { get; }
-
-        /// <summary>
-        /// The type of the value.
-        /// </summary>
-        string ValueType { get; }
-
-        /// <summary>
-        /// Description of this parameter.
-        /// </summary>
-        string Description { get; }
-
-        /// <summary>
-        /// The maximum valid value. (Only for numeric values)
-        /// </summary>
-        string Maximum { get; }
-
-        /// <summary>
-        /// The minimum valid value. (Only for numeric values)
-        /// </summary>
-        string Minimum { get; }
-
-        /// <summary>
-        /// A list of valid enum value descriptions. (Only for enum values)
-        /// </summary>
-        IEnumerable<string> EnumValueDescriptions { get; }
     }
 }

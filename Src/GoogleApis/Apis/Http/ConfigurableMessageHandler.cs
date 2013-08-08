@@ -45,7 +45,7 @@ namespace Google.Apis.Http
         internal const int MaxAllowedNumTries = 20;
 
         /// <summary> The current API version of this client library. </summary>
-        private static readonly string ApiVersion = Utilities.GetLibraryVersion();
+        private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
         /// <summary> The User-Agent suffix header which contains the <seealso cref="ApiVersion"/>. </summary>
         private static readonly string UserAgentSuffix = "google-api-dotnet-client/" + ApiVersion + " (gzip)";

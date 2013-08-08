@@ -106,8 +106,7 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 this.httpMethod = httpMethod;
                 this.body = body;
-
-                _requestParameters = new Dictionary<string, IParameter>();
+                InitParameters();
             }
 
             public override string MethodName
@@ -679,7 +678,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> tests async execution of multiple request simultaneously. </summary>
+        /// <summary> Tests async execution of multiple request simultaneously. </summary>
         [Test]
         public void ExecuteAsync_Simultaneously()
         {
@@ -816,41 +815,41 @@ namespace Google.Apis.Tests.Apis.Requests
             public ClientServiceRequestWithQueryParameters(IClientService service, string method, object body)
                 : base(service, method, body)
             {
-                _requestParameters.Add("required", new MockParameter
+                RequestParameters.Add("required", new MockParameter
                     {
                         Name = "required",
                         IsRequired = true,
                         ParameterType = "query"
                     });
-                _requestParameters.Add("optionalWithValue", new MockParameter
+                RequestParameters.Add("optionalWithValue", new MockParameter
                     {
                         Name = "optionalWithValue",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
-                _requestParameters.Add("optionalWithValue2", new MockParameter
+                RequestParameters.Add("optionalWithValue2", new MockParameter
                     {
                         Name = "optionalWithValue",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
-                _requestParameters.Add("optionalWithNull", new MockParameter
+                RequestParameters.Add("optionalWithNull", new MockParameter
                     {
                         Name = "optionalWithNull",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "c"
                     });
-                _requestParameters.Add("optionalEmpty", new MockParameter
+                RequestParameters.Add("optionalEmpty", new MockParameter
                     {
                         Name = "optionalEmpty",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "d"
                     });
-                _requestParameters.Add("optionalNotPressent", new MockParameter
+                RequestParameters.Add("optionalNotPressent", new MockParameter
                     {
                         Name = "optionalNotPressent",
                         IsRequired = false,
@@ -917,13 +916,12 @@ namespace Google.Apis.Tests.Apis.Requests
             public ClientServiceRequestWithPathParameters(IClientService service, string method, object body)
                 : base(service, method, body)
             {
-                _requestParameters = new Dictionary<string, IParameter>();
-                _requestParameters.Add("path1", new MockParameter
+                RequestParameters.Add("path1", new MockParameter
                 {
                     Name = "path1",
                     ParameterType = "path"
                 });
-                _requestParameters.Add("path2", new MockParameter
+                RequestParameters.Add("path2", new MockParameter
                 {
                     Name = "path2",
                     ParameterType = "path",

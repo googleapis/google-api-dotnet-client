@@ -161,18 +161,17 @@ namespace BuildRelease
             FileVersionInfo apiVersion;
             Project[] allProjects;
             Project[] baseLibraries = BuildProjects(out apiVersion, out allProjects);
-            Project servicegen = baseLibraries.Where(proj => proj.Name == "GoogleApis.Tools.ServiceGenerator").Single();
 
             // Create tag
             string tag = GetTagName(apiVersion);
 
             // Update samples
-            UpdateSamples(baseLibraries, servicegen);
+            UpdateSamples(baseLibraries);
 
             // Update contrib
             string notes = CreateChangelog(tag);
             string zipDir;
-            notes = BuildContribRelease(tag, notes, baseLibraries, allProjects, servicegen, out zipDir);
+            notes = BuildContribRelease(tag, notes, baseLibraries, allProjects, out zipDir);
 
             // Update wiki
             UpdateWiki(notes, zipDir);
@@ -190,7 +189,7 @@ namespace BuildRelease
 
             // Ask the user whether he wants to continue the release.
             string res = "no";
-            CommandLine.WriteLine("   {{gray}}In the next step all changes will be commited, tagged and pushed.");
+            CommandLine.WriteLine("   {{gray}}In the next step all changes will be committed, tagged and pushed.");
             CommandLine.WriteLine("   {{gray}}Only continue when you are sure that you don't have to make " +
                 "any new changes.");
             CommandLine.RequestUserInput("Do you want to continue with the release? Type YES.", ref res);
@@ -198,7 +197,7 @@ namespace BuildRelease
 
             if (res != "YES")
             {
-                Console.WriteLine("Done - NO CODE was commited, tagged or pushed");
+                Console.WriteLine("Done - NO CODE was committed, tagged or pushed");
                 CommandLine.PressAnyKeyToExit();
                 return;
             }
@@ -346,24 +345,16 @@ namespace BuildRelease
             Project fullProfileApi = new Project(Default.Combine("Src", "GoogleApis.FullProfile",
                 "GoogleApis.FullProfile.csproj"));
 
-            Project codegen = new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen",
-                "GoogleApis.Tools.CodeGen.csproj"));
             Project oauth2 = new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2",
                 "GoogleApis.Authentication.OAuth2.csproj"));
-            Project generator = new Project(Default.Combine("GoogleApis.Tools.ServiceGenerator",
-                "GoogleApis.Tools.ServiceGenerator.csproj"));
 
-            var releaseProjects = new[] { baseApi, fullProfileApi, codegen, oauth2, generator };
+            var releaseProjects = new[] { baseApi, fullProfileApi, oauth2 };
             projects.AddRange(releaseProjects);
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests.Utility",
                 "GoogleApis.Tests.Utility.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tests", "GoogleApis.Tests.csproj")));
-            projects.Add(new Project(Default.Combine("Src", "GoogleApis.Tools.CodeGen.Tests",
-                "GoogleApis.Tools.CodeGen.Tests.csproj")));
             projects.Add(new Project(Default.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests",
                 "GoogleApis.Authentication.OAuth2.Tests.csproj")));
-            projects.Add(new Project(Default.Combine("GoogleApis.Tools.CodeGen.IntegrationTests",
-                "GoogleApis.Tools.CodeGen.IntegrationTests.csproj")));
 
             foreach (Project proj in projects)
             {
@@ -445,7 +436,7 @@ namespace BuildRelease
         }
 
         /// <summary> Udates the samples repository. </summary>
-        private static void UpdateSamples(IEnumerable<Project> releaseProjects, Project serviceGenerator)
+        private static void UpdateSamples(IEnumerable<Project> releaseProjects)
         {
             CommandLine.WriteLine("{{white}} =======================================");
             CommandLine.WriteLine("{{white}} Updating Samples");
@@ -467,12 +458,13 @@ namespace BuildRelease
                 DirUtils.CopyFile(file, thirdpartyDir);
             }
 
-            // Generate all strongly typed services.
             DirUtils.ClearDir(ServiceDir);
-            var runner = new Runner(
-                serviceGenerator.BinaryFile, "--google", "--output", ServiceDir, "repository");
-            runner.WorkingDirectory = Path.GetDirectoryName(serviceGenerator.BinaryFile);
-            runner.Run();
+
+            // Generate all strongly typed services.
+            Console.WriteLine("Update the samples repository Services library \"{0}\" with the new generated services",
+                ServiceDir);
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
 
             // Build all the samples projects.
             CommandLine.WriteAction("Building samples...");
@@ -498,7 +490,6 @@ namespace BuildRelease
                                                   string changelog,
                                                   IEnumerable<Project> baseLibrary,
                                                   IEnumerable<Project> allProjects,
-                                                  Project serviceGenerator,
                                                   out string zipDir)
         {
             CommandLine.WriteLine("{{white}} =======================================");

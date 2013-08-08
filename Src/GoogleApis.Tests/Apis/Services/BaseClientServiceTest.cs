@@ -84,7 +84,7 @@ namespace Google.Apis.Tests.Apis.Services
             return client;
         }
 
-        /// <summary> This tests the v0.3 Deserialization of the BaseService. </summary>
+        /// <summary> This tests the v0.3 deserialization of the BaseService. </summary>
         [Test]
         public void TestDeserializationV0_3()
         {

@@ -82,13 +82,9 @@
     <Compile Include="MockHttpClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MockClientService.cs" />
-    <Compile Include="MockDecorators.cs" />
-    <Compile Include="MockMethod.cs" />
     <Compile Include="MockParameter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MockServer.cs" />
-    <Compile Include="MockService.cs" />
     <Compile Include="MoreAsserts.cs" />
   </ItemGroup>
   <ItemGroup>

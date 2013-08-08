@@ -55,8 +55,7 @@ namespace Google.Apis.Requests
         public abstract string RestPath { get; }
         public abstract string HttpMethod { get; }
 
-        protected IDictionary<string, IParameter> _requestParameters;
-        public IDictionary<string, IParameter> RequestParameters { get { return _requestParameters; } }
+        public IDictionary<string, IParameter> RequestParameters { get; private set; }
 
         public IClientService Service
         {
@@ -69,6 +68,15 @@ namespace Google.Apis.Requests
         protected ClientServiceRequest(IClientService service)
         {
             this.service = service;
+        }
+
+        /// <summary>
+        /// Initializes request's parameters. Inherited classes MUST override this method to add parameters to the
+        /// <see cref="RequestParameters"/> dictionary.
+        /// </summary>
+        protected virtual void InitParameters()
+        {
+            RequestParameters = new Dictionary<string, IParameter>();
         }
 
         #region Execution
@@ -287,8 +295,7 @@ namespace Google.Apis.Requests
             {
                 IParameter parameterDefinition;
 
-                if (!(RequestParameters.TryGetValue(parameter.Key, out parameterDefinition)
-                    || Service.ServiceParameters.TryGetValue(parameter.Key, out parameterDefinition)))
+                if (!RequestParameters.TryGetValue(parameter.Key, out parameterDefinition))
                 {
                     throw new GoogleApiException(Service.Name,
                         String.Format("Invalid parameter \"{0}\" was specified", parameter.Key));
@@ -326,7 +333,7 @@ namespace Google.Apis.Requests
             }
 
             // check if there is a required parameter which wasn't set
-            foreach (var parameter in Service.ServiceParameters.Values.Union(RequestParameters.Values))
+            foreach (var parameter in RequestParameters.Values)
             {
                 if (parameter.IsRequired && !inputParameters.ContainsKey(parameter.Name))
                 {
