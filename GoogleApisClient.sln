@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2", "Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj", "{76106493-68EF-4E44-AF2E-971ABF29B300}"
