@@ -19,7 +19,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,6 +26,7 @@ using Google.Apis.Http;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Services;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Upload
@@ -101,8 +101,8 @@ namespace Google.Apis.Upload
         /// completed.
         /// Caller is responsible for closing the <paramref name="contentStream"/>.
         /// </remarks>
-        protected ResumableUpload(IClientService service, string path, string httpMethod,
-            Stream contentStream, string contentType)
+        protected ResumableUpload(IClientService service, string path, string httpMethod, Stream contentStream,
+            string contentType)
         {
             service.ThrowIfNull("service");
             path.ThrowIfNull("path");
@@ -115,73 +115,82 @@ namespace Google.Apis.Upload
             this.HttpMethod = httpMethod;
             this.ContentStream = contentStream;
             this.ContentType = contentType;
-
-            ChunkSize = DefaultChunkSize;
         }
 
         #endregion // Construction
 
         #region Properties
 
-        /// <summary> Gets and sets the service. </summary>
+        /// <summary> Gets or sets the service. </summary>
         public IClientService Service { get; private set; }
 
         /// <summary> 
-        /// Gets and sets the path of the method (combined with <see cref="Service.BaseUri"/>) to produce absolute Uri. 
+        /// Gets or sets the path of the method (combined with <see cref="Service.BaseUri"/>) to produce absolute Uri. 
         /// </summary>
         public string Path { get; private set; }
 
-        /// <summary> Gets and sets the Http method of this upload (used to initialize the upload). </summary>
+        /// <summary> Gets or sets the Http method of this upload (used to initialize the upload). </summary>
         public string HttpMethod { get; private set; }
 
-        /// <summary> Gets and sets the stream to upload. </summary>
+        /// <summary> Gets or sets the stream to upload. </summary>
         public Stream ContentStream { get; private set; }
 
-        /// <summary> Gets and sets the stream's Content-Type. </summary>
+        /// <summary> Gets or sets the stream's Content-Type. </summary>
         public string ContentType { get; private set; }
 
         /// <summary>
-        /// Gets and sets the length of the steam. Will be <see cref="UnknownSize" /> if the media content length is 
+        /// Gets or sets the length of the steam. Will be <see cref="UnknownSize" /> if the media content length is 
         /// unknown. 
         /// </summary>
         private long StreamLength { get; set; }
 
         /// <summary>
-        /// Gets and sets the content of the last buffer request or <c>null</c> for none. It is used when the media 
-        /// content length is unknown, for resending it in case of server error.
+        /// Gets or sets the content of the last buffer request to the server or <c>null</c> for none. It is used when 
+        /// the media content length is unknown, for resending it in case of server error.
         /// </summary>
         private byte[] LastMediaRequest { get; set; }
 
-        /// <summary> Gets and sets a cached byte which indicates if end of stream has been reached. </summary>
+        /// <summary> Gets or sets cached byte which indicates if end of stream has been reached. </summary>
         private byte[] CachedByte { get; set; }
 
-        /// <summary>
-        /// Gets and sets the last request start index or <c>0</c> for none. It is used when the media content length 
-        /// is unknown.
-        /// </summary>
-        private long LastMediaStartIndex { get; set; }
-
-        /// <summary> Gets and sets The last request length. </summary>
+        /// <summary> Gets or sets the last request length. </summary>
         private int LastMediaLength { get; set; }
 
         /// <summary> 
-        /// Gets and sets the resumable session Uri. 
+        /// Gets or sets the resumable session Uri. 
         /// See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
         /// </summary>
         private Uri UploadUri { get; set; }
 
-        /// <summary> Gets and sets the amount of bytes sent so far. </summary>
-        private long BytesSent { get; set; }
+        /// <summary> Gets or sets the amount of bytes the server had received so far. </summary>
+        private long BytesServerReceived { get; set; }
 
-        /// <summary> Gets and sets the body of this request. </summary>
+        /// <summary> Gets or sets the amount of bytes the client had sent so far. </summary>
+        private long BytesClientSent { get; set; }
+
+        /// <summary> Gets or sets the body of this request. </summary>
         public TRequest Body { get; set; }
 
+        [VisibleForTestOnly]
+        internal int chunkSize = DefaultChunkSize;
+
         /// <summary> 
-        /// Gets and sets the size of each chunk sent to the server.
+        /// Gets or sets the size of each chunk sent to the server.
         /// Chunks (except the last chunk) must be a multiple of <see cref="MinimumChunkSize"/> to be compatible with 
         /// Google upload servers.
         /// </summary>
-        public int ChunkSize { get; set; }
+        public int ChunkSize
+        {
+            get { return chunkSize; }
+            set
+            {
+                if (value < MinimumChunkSize)
+                {
+                    throw new ArgumentOutOfRangeException("ChunkSize");
+                }
+                chunkSize = value;
+            }
+        }
 
         #endregion // Properties
 
@@ -339,7 +348,7 @@ namespace Google.Apis.Upload
         {
             try
             {
-                BytesSent = 0;
+                BytesServerReceived = 0;
                 UpdateProgress(new ResumableUploadProgress(UploadStatus.Starting, 0));
                 // check if the stream length is known
                 StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
@@ -351,15 +360,15 @@ namespace Google.Apis.Upload
                 {
                     while (!await SendNextChunk(ContentStream, cancellationToken).ConfigureAwait(false))
                     {
-                        UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesSent));
+                        UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesServerReceived));
                     }
-                    UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesSent));
+                    UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesServerReceived));
                 }
             }
             catch (Exception ex)
             {
                 logger.Error(ex, "MediaUpload[{0}] - Exception occurred while uploading media", UploadUri);
-                UpdateProgress(new ResumableUploadProgress(ex, BytesSent));
+                UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
             }
 
             return Progress;
@@ -451,6 +460,10 @@ namespace Google.Apis.Upload
             {
                 PrepareNextChunkUnknownSize(request, stream, cancellationToken);
             }
+            BytesClientSent = BytesServerReceived + LastMediaLength;
+
+            logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
+                BytesClientSent - 1);
 
             HttpResponseMessage response = await Service.HttpClient.SendAsync(
                 request, cancellationToken).ConfigureAwait(false);
@@ -462,8 +475,8 @@ namespace Google.Apis.Upload
             else if (response.StatusCode == (HttpStatusCode)308)
             {
                 // The upload protocol uses 308 to indicate that there is more data expected from the server.
-                BytesSent = GetNextByte(response.Headers.GetValues("Range").First());
-                logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesSent);
+                BytesServerReceived = GetNextByte(response.Headers.GetValues("Range").First());
+                logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
             }
 
@@ -476,7 +489,7 @@ namespace Google.Apis.Upload
         {
             logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
             ProcessResponse(response);
-            BytesSent += LastMediaLength;
+            BytesServerReceived += LastMediaLength;
 
             // clear the last request byte array
             LastMediaRequest = null;
@@ -492,18 +505,15 @@ namespace Google.Apis.Upload
                 LastMediaRequest = new byte[ChunkSize];
             }
 
-            // if the number of bytes received by the sever isn't equal to the sum of saved start index plus 
-            // length, it means that we need to resend bytes from the last request
-            if (BytesSent != LastMediaStartIndex + LastMediaLength)
+            LastMediaLength = 0;
+
+            // if the number of bytes received by the server isn't equal to the amount of bytes the client sent, copy
+            // the required bytes from the last request and resend them to the server.
+            if (BytesClientSent != BytesServerReceived)
             {
-                int delta = (int)(BytesSent - LastMediaStartIndex);
-                Buffer.BlockCopy(LastMediaRequest, delta, LastMediaRequest, 0, ChunkSize - delta);
-                LastMediaLength = ChunkSize - delta;
-            }
-            else
-            {
-                LastMediaStartIndex = BytesSent;
-                LastMediaLength = 0;
+                int copyBytes = (int)(BytesClientSent - BytesServerReceived);
+                Buffer.BlockCopy(LastMediaRequest, ChunkSize - copyBytes, LastMediaRequest, 0, copyBytes);
+                LastMediaLength = copyBytes;
             }
 
             bool shouldRead = true;
@@ -515,8 +525,7 @@ namespace Google.Apis.Upload
             else if (LastMediaLength != ChunkSize)
             {
                 // read the last cached byte, and add it to the current request
-                LastMediaRequest[LastMediaLength] = CachedByte[0];
-                LastMediaLength++;
+                LastMediaRequest[LastMediaLength++] = CachedByte[0];
             }
             else
             {
@@ -535,22 +544,22 @@ namespace Google.Apis.Upload
 
                     len = stream.Read(LastMediaRequest, LastMediaLength,
                         (int)Math.Min(BufferSize, ChunkSize - LastMediaLength));
-                    LastMediaLength += len;
                     if (len == 0) break;
+                    LastMediaLength += len;
                 }
 
                 // check if there is still data to read from stream, and cache the first byte in catchedByte
                 if (0 == stream.Read(CachedByte, 0, 1))
                 {
                     // EOF - now we know the stream's length
-                    StreamLength = LastMediaLength + BytesSent;
+                    StreamLength = LastMediaLength + BytesServerReceived;
                     CachedByte = null;
                 }
             }
 
             // set Content-Length and Content-Range
             var byteArrayContent = new ByteArrayContent(LastMediaRequest, 0, LastMediaLength);
-            byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesSent, LastMediaLength));
+            byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, LastMediaLength));
             request.Content = byteArrayContent;
         }
 
@@ -558,12 +567,18 @@ namespace Google.Apis.Upload
         private void PrepareNextChunkKnownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
-            int chunkSize = (int)Math.Min(StreamLength - BytesSent, (long)ChunkSize);
+            int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
 
             // stream length is known and it supports seek and position operations.
             // We can change the stream position and read bytes from the last point
             byte[] buffer = new byte[Math.Min(chunkSize, BufferSize)];
-            stream.Position = BytesSent;
+
+            // if the number of bytes received by the server isn't equal to the amount of bytes the client sent, we 
+            // need to change the position of the input stream, otherwise we can continue from the current position
+            if (BytesClientSent != BytesServerReceived)
+            {
+                stream.Position = BytesServerReceived;
+            }
 
             MemoryStream ms = new MemoryStream(chunkSize);
             int bytesRead = 0;
@@ -582,7 +597,7 @@ namespace Google.Apis.Upload
             // set the stream position to beginning and wrap it with stream content
             ms.Position = 0;
             request.Content = new StreamContent(ms);
-            request.Content.Headers.Add("Content-Range", GetContentRangeHeader(BytesSent, chunkSize));
+            request.Content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkSize));
 
             LastMediaLength = chunkSize;
         }

@@ -69,20 +69,20 @@ namespace Google.Apis.Services
         public class Initializer
         {
             /// <summary> 
-            /// A factory for creating <see cref="System.Net.Http.HttpClient"/> instance. If this property is not set
-            /// the service uses a new <see cref="Google.Apis.Http.HttpClientFactory"/> instance.
+            /// Gets or sets the factory for creating <see cref="System.Net.Http.HttpClient"/> instance. If this 
+            /// property is not set the service uses a new <see cref="Google.Apis.Http.HttpClientFactory"/> instance.
             /// </summary>
             public IHttpClientFactory HttpClientFactory { get; set; }
 
             /// <summary>
-            /// An Http client initializer which is able to customize properties on 
+            /// Gets or sets an Http client initializer which is able to customize properties on 
             /// <see cref="Google.Apis.Http.ConfigurableHttpClient"/> and 
             /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
             /// </summary>
             public IConfigurableHttpClientInitializer HttpClientInitializer { get; set; }
 
             /// <summary>
-            /// Get or sets the exponential back-off policy used by the service. Default value is <c>Exception</c> |
+            /// Gets or sets the exponential back-off policy used by the service. Default value is <c>Exception</c> |
             /// <c>UnsuccessfulResponse5xx</c>, which means that exponential back-off is used on any 5xx abnormal Http
             /// response and on any exception whose thrown when sending a request (except task canceled exception).
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
@@ -92,7 +92,7 @@ namespace Google.Apis.Services
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
-            /// <summary> Gets and Sets whether this service supports GZip. Default value is <c>true</c>. </summary>
+            /// <summary> Gets or sets whether this service supports GZip. Default value is <c>true</c>. </summary>
             public bool GZipEnabled { get; set; }
 
             /// <summary>
@@ -100,17 +100,17 @@ namespace Google.Apis.Services
             /// </summary>
             public ISerializer Serializer { get; set; }
 
-            /// <summary> Gets and Sets the API Key. Default value is <c>null</c>. </summary>
+            /// <summary> Gets or sets the API Key. Default value is <c>null</c>. </summary>
             public string ApiKey { get; set; }
 
             /// <summary> 
-            /// Gets and Sets the Authenticator. Default value is 
+            /// Gets or sets the Authenticator. Default value is 
             /// <see cref="Google.Apis.Authentication.NullAuthenticator.Instance"/>.
             /// </summary>
             public IAuthenticator Authenticator { get; set; }
 
             /// <summary> 
-            /// Gets and sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
+            /// Gets or sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
             /// </summary>
             public string ApplicationName { get; set; }
 

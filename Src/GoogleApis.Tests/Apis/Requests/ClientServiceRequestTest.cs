@@ -30,7 +30,6 @@ using NUnit.Framework;
 
 using Google.Apis.Discovery;
 using Google.Apis.Http;
-using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -47,7 +46,7 @@ namespace Google.Apis.Tests.Apis.Requests
         public void SetUp()
         {
             // Uncomment to enable logging during tests
-            // ApplicationContext.RegisterLogger(new Log4NetLogger());
+            // ApplicationContext.RegisterLogger(new Google.Apis.Logging.Log4NetLogger());
         }
 
         /// <summary> Helper method to get a string from the stream. </summary>

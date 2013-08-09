@@ -48,6 +48,21 @@ nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
 eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
 anim id est laborum.";
 
+        [TestFixtureSetUp]
+        public void SetUp()
+        {
+            // change the false parameter to true if you want to enable logging during tests
+            SetUp(false);
+        }
+
+        private void SetUp(bool useLogger)
+        {
+            if (useLogger)
+            {
+                ApplicationContext.RegisterLogger(new Google.Apis.Logging.Log4NetLogger());
+            }
+        }
+
         #region Handlers
 
         /// <summary> Base mock handler which contains the upload Uri. </summary>
@@ -57,7 +72,7 @@ anim id est laborum.";
             protected static Uri uploadUri = new Uri("http://upload.com");
         }
 
-        /// <summary> An handler which handles uploading an empty file. </summary>
+        /// <summary> A handler which handles uploading an empty file. </summary>
         private class EmptyFileMessageHandler : BaseMockMessageHandler
         {
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -88,7 +103,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> An handler which handles a request object on the initialization request. </summary>
+        /// <summary> A handler which handles a request object on the initialization request. </summary>
         private class RequestResponseMessageHandler<TRequest> : BaseMockMessageHandler
         {
             /// <summary> 
@@ -145,7 +160,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> An handler which handles a request for single chunk. </summary>
+        /// <summary> A handler which handles a request for single chunk. </summary>
         private class SingleChunkMessageHandler : BaseMockMessageHandler
         {
             /// <summary> Gets or sets the expected stream length. </summary>
@@ -196,7 +211,7 @@ anim id est laborum.";
         }
 
         /// <summary> 
-        /// An handler which demonstrate a server which reads partial data (e.g. on the first upload request the client
+        /// A handler which demonstrate a server which reads partial data (e.g. on the first upload request the client
         /// sends X bytes, but the server actually read only Y of them)
         /// </summary>
         private class ReadPartialMessageHandler : BaseMockMessageHandler
@@ -282,7 +297,7 @@ anim id est laborum.";
             NotFound
         }
 
-        /// <summary> An handler which demonstrate a client upload which contains multiple chunks. </summary>
+        /// <summary> A handler which demonstrate a client upload which contains multiple chunks. </summary>
         private class MultipleChunksMessageHandler : BaseMockMessageHandler
         {
             public MemoryStream ReceivedData = new MemoryStream();
@@ -297,6 +312,12 @@ anim id est laborum.";
             // on the 5th request - server returns 308 with "Range" header is "bytes 0-299" (depends on supportedError)
             internal const int ErrorOnCall = 4;
 
+            /// <summary> 
+            /// Gets or sets the number of bytes the server reads when error occurred. The default value is <c>0</c>,
+            /// meaning that on server error it won't read any bytes from the stream.
+            /// </summary>
+            public int ReadBytesOnError { get; set; }
+
             private ServerError supportedError;
 
             private bool knownSize;
@@ -306,6 +327,8 @@ anim id est laborum.";
 
             private int bytesRecieved = 0;
 
+            private string uploadSize;
+
             public MultipleChunksMessageHandler(bool knownSize, ServerError supportedError, int len, int chunkSize,
                 bool alwaysFailFromFirstError = false)
             {
@@ -314,6 +337,7 @@ anim id est laborum.";
                 this.len = len;
                 this.chunkSize = chunkSize;
                 this.alwaysFailFromFirstError = alwaysFailFromFirstError;
+                uploadSize = knownSize ? UploadTestData.Length.ToString() : "*";
             }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -347,8 +371,12 @@ anim id est laborum.";
                     Assert.That(request.RequestUri, Is.EqualTo(uploadUri));
 
                     var chunkEnd = Math.Min(len, bytesRecieved + chunkSize) - 1;
+                    if (chunkEnd == len - 1)
+                    {
+                        uploadSize = UploadTestData.Length.ToString();
+                    }
                     var range = String.Format("bytes {0}-{1}/{2}", bytesRecieved, chunkEnd,
-                    chunkEnd + 1 == len || knownSize ? UploadTestData.Length.ToString() : "*");
+                        chunkEnd + 1 == len || knownSize ? UploadTestData.Length.ToString() : uploadSize);
 
                     if (Calls == ErrorOnCall && supportedError != ServerError.None)
                     {
@@ -381,6 +409,11 @@ anim id est laborum.";
                         {
                             throw new Exception("ERROR");
                         }
+
+                        var bytes = await request.Content.ReadAsByteArrayAsync();
+                        var read = Math.Min(ReadBytesOnError, bytes.Length);
+                        ReceivedData.Write(bytes, 0, read);
+                        bytesRecieved += read;
                     }
                     else if (Calls >= ErrorOnCall && alwaysFailFromFirstError)
                     {
@@ -389,28 +422,32 @@ anim id est laborum.";
                             throw new Exception("ERROR");
                         }
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
-                            string.Format(@"bytes */{0}", knownSize ? UploadTestData.Length.ToString() : "*")));
+                            string.Format(@"bytes */{0}", uploadSize)));
                         response.StatusCode = HttpStatusCode.ServiceUnavailable;
                     }
                     else if (Calls == ErrorOnCall + 1 && supportedError != ServerError.None)
                     {
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
-                            string.Format(@"bytes */{0}", knownSize ? UploadTestData.Length.ToString() : "*")));
-                        response.StatusCode = (HttpStatusCode)308;
+                            string.Format(@"bytes */{0}", uploadSize)));
+                        if (bytesRecieved != len)
+                        {
+                            response.StatusCode = (HttpStatusCode)308;
+                        }
                         response.Headers.Add("Range", "bytes 0-" + (bytesRecieved - 1));
                     }
                     else
                     {
                         var bytes = await request.Content.ReadAsByteArrayAsync();
                         ReceivedData.Write(bytes, 0, bytes.Length);
+                        bytesRecieved += bytes.Length;
 
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(range));
-                        if (chunkEnd != len - 1)
+                        if (bytesRecieved != len)
                         {
                             response.StatusCode = (HttpStatusCode)308;
                             response.Headers.Add("Range", string.Format("bytes {0}-{1}", bytesRecieved, chunkEnd));
                         }
-                        bytesRecieved += bytes.Length;
+
                     }
                 }
                 return response;
@@ -535,7 +572,7 @@ anim id est laborum.";
 
                 var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
                 // chunk size is bigger than the data we are sending
-                upload.ChunkSize = UploadTestData.Length + 10;
+                upload.chunkSize = UploadTestData.Length + 10;
                 upload.Upload();
             }
 
@@ -558,7 +595,7 @@ anim id est laborum.";
             {
                 var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
                 // chunk size is the exact size we are sending
-                upload.ChunkSize = UploadTestData.Length;
+                upload.chunkSize = UploadTestData.Length;
                 upload.Upload();
             }
 
@@ -589,7 +626,8 @@ anim id est laborum.";
         [Test]
         public void TestChunkUpload_KnownSize()
         {
-            SubtestTestChunkUpload(true);
+            // we expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453)
+            SubtestTestChunkUpload(true, 6);
         }
 
         /// <summary> 
@@ -598,27 +636,68 @@ anim id est laborum.";
         [Test]
         public void TestChunkUpload_UnknownSize()
         {
-            SubtestTestChunkUpload(false);
+            // we expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453)
+            SubtestTestChunkUpload(false, 6);
         }
 
         /// <summary> 
-        /// Tests that the upload client accepts 308 and 503 responses when uploading chunks on a stream with known 
-        /// size. 
+        /// Tests that client accepts 308 and 503 responses when uploading chunks when the stream size is known.
         /// </summary>
         [Test]
         public void TestChunkUpload_ServerUnavailable_KnownSize()
         {
-            SubtestTestChunkUpload(true, ServerError.ServerUnavailable);
+            SubtestChunkUpload_ServerUnavailable(true);
         }
 
         /// <summary> 
-        /// Tests that the upload client accepts 308 and 503 responses when uploading chunks on a stream with unknown
-        /// size.
+        /// Tests that client accepts 308 and 503 responses when uploading chunks when the stream size is unknown.
         /// </summary>
         [Test]
         public void TestChunkUpload_ServerUnavailable_UnknownSize()
         {
-            SubtestTestChunkUpload(false, ServerError.ServerUnavailable);
+            SubtestChunkUpload_ServerUnavailable(false);
+        }
+
+        /// <summary> 
+        /// A helper test which tests that the client accepts 308 and 503 responses when uploading chunks. This test
+        /// contains sub tests which check the different possibilities:
+        /// <list type="number">
+        /// <item><description>Server didn't read any bytes when it sends back 503</description></item>
+        /// <item><description>Server read partial bytes from stream when it sends back 503</description></item>
+        /// <item><description>Server read all bytes from stream when it sends back 503</description></item>
+        /// </list>
+        /// </summary>
+        private void SubtestChunkUpload_ServerUnavailable(bool knownSize)
+        {
+            // Server didn't receive any bytes from chunk 4
+            // we expect 6 calls: 1 initial request + 1 call to query the range + 6 chunks (0-99, 100-199, 200-299, 
+            // 200-299, 300-399, 400-453)
+            SubtestTestChunkUpload(knownSize, 8, ServerError.ServerUnavailable);
+
+            // Server received all bytes from chunk 4
+            // we expect 7 calls: 1 initial request + 1 call to query the range + 5 chunks (0-99, 100-199, 200-299, 
+            // 300-399, 400-453)
+            SubtestTestChunkUpload(knownSize, 7, ServerError.ServerUnavailable, 100, 100);
+
+            // Server received partial bytes from chunk 4
+            // we expect 12 calls: 1 initial request + 1 call to query the range + 10 chunks (0-49, 50-99, 100-149, 
+            // 110-159, 160-209, 210-259, 260-309, 310-359, 360-409, 410-453
+            SubtestTestChunkUpload(knownSize, 12, ServerError.ServerUnavailable, 50, 10);
+
+            // Server received partial bytes from chunk 4
+            // we expect 12 calls: 1 initial request + 1 call to query the range + 11 chunks (0-49, 50-99, 100-149, 
+            // 101-150, 151-200, 201-250, 251-300, 301-350, 351-400, 401-450, 451-453
+            SubtestTestChunkUpload(knownSize, 13, ServerError.ServerUnavailable, 50, 1);
+
+            // Server received partial bytes from chunk 4 (the final chunk the client sent)
+            // we expect 6 calls: 1 initial request + 1 call to query the range + 4 chunks (0-199, 200-399, 400-453, 
+            // 410-453)
+            SubtestTestChunkUpload(knownSize, 6, ServerError.ServerUnavailable, 200, 10);
+
+            // Server received partial bytes from chunk 4 (the final chunk the client sent)
+            // we expect 5 calls: 1 initial request + 1 call to query the range + 3 chunks (0-199, 200-399, 400-453). 
+            // In the final chunk, although the client received 503, the server read all the bytes.
+            SubtestTestChunkUpload(knownSize, 5, ServerError.ServerUnavailable, 200, 54);
         }
 
         /// <summary> 
@@ -628,7 +707,9 @@ anim id est laborum.";
         [Test]
         public void TestChunkUpload_Exception_UnknownSize()
         {
-            SubtestTestChunkUpload(false, ServerError.Exception);
+            // we expect 6 calls: 1 initial request + 1 call to query the range + 6 chunks (0-99, 100-199, 200-299, 
+            // 200-299, 300-399, 400-453)
+            SubtestTestChunkUpload(false, 8, ServerError.Exception);
         }
 
         /// <summary> 
@@ -637,23 +718,32 @@ anim id est laborum.";
         [Test]
         public void TestChunkUpload_NotFound_KnownSize()
         {
-            SubtestTestChunkUpload(true, ServerError.NotFound);
+            // we expect 4 calls: 1 initial request + 3 chunks (0-99, 100-199, 200-299) [on the 3rd chunk, the client 
+            // receives 4xx error. The client can't recover from it, so the upload stops
+            SubtestTestChunkUpload(true, 4, ServerError.NotFound);
         }
 
-        private void SubtestTestChunkUpload(bool knownSize, ServerError error = ServerError.None)
+        /// <summary>
+        /// Tests a single upload request
+        /// </summary>
+        /// <param name="knownSize">Defines if the stream size is known</param>
+        /// <param name="expectedCalls">How many HTTP calls should be made to the server</param>
+        /// <param name="error">Defines the type of error this test tests. The default value is none</param>
+        /// <param name="chunkSize">Defines the size of a chunk</param>
+        /// <param name="readBytesOnError">How many bytes the server reads when it returns 5xx</param>
+        private void SubtestTestChunkUpload(bool knownSize, int expectedCalls, ServerError error = ServerError.None,
+            int chunkSize = 100, int readBytesOnError = 0)
         {
-            // -If error is none - there isn't any error, so there should be 6 calls (1 to initialize and 5 successful
-            // upload requests.
-            // -If error isn't supported by the media upload (4xx) - the upload fails.
+            // If an error isn't supported by the media upload (4xx) - the upload fails.
             // Otherwise, we simulate server 503 error or exception, as following:
-            // On the 4th chunk (when server received bytes 300-399), we mimic an error. 
+            // On the 3th chunk (4th chunk including the initial request), we mimic an error. 
             // In the next request we expect the client to send the content range header with "bytes */[size]", and 
-            // server return that the upload was interrupted after 299 bytes. From that point the server works as 
-            // expected, and received the last chunks successfully
-            int chunkSize = 100;
+            // server return that the upload was interrupted after x bytes. 
+            // From that point the server works as expected, and received the last chunks successfully
             var payload = Encoding.UTF8.GetBytes(UploadTestData);
 
             var handler = new MultipleChunksMessageHandler(knownSize, error, payload.Length, chunkSize);
+            handler.ReadBytesOnError = readBytesOnError;
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
@@ -661,7 +751,7 @@ anim id est laborum.";
             {
                 var stream = knownSize ? new MemoryStream(payload) : new UnknownSizeMemoryStream(payload);
                 var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.ChunkSize = chunkSize;
+                upload.chunkSize = chunkSize;
 
                 IUploadProgress lastProgress = null;
                 upload.ProgressChanged += (p) => lastProgress = p;
@@ -673,7 +763,6 @@ anim id est laborum.";
                 {
                     // upload fails
                     Assert.That(lastProgress.Status, Is.EqualTo(UploadStatus.Failed));
-                    Assert.That(handler.Calls, Is.EqualTo(MultipleChunksMessageHandler.ErrorOnCall));
                     Assert.True(lastProgress.Exception.Message.Contains(
                          @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]"),
                          "Error message is invalid");
@@ -682,12 +771,8 @@ anim id est laborum.";
                 {
                     Assert.That(lastProgress.Status, Is.EqualTo(UploadStatus.Completed));
                     Assert.That(payload, Is.EqualTo(handler.ReceivedData.ToArray()));
-                    // if server doesn't supports errors there should be 6 request - 1 initialize request and 5 
-                    // requests to upload data (the whole data send is divided to 5 chunks). 
-                    // if server supports errors, there should be an additional 2 requests (1 to query where the upload 
-                    // was interrupted and 1 to resend the data)
-                    Assert.That(handler.Calls, error != ServerError.None ? Is.EqualTo(8) : Is.EqualTo(6));
                 }
+                Assert.That(handler.Calls, Is.EqualTo(expectedCalls));
             }
         }
 
@@ -724,7 +809,7 @@ anim id est laborum.";
             {
                 var stream = knownSize ? new MemoryStream(payload) : new UnknownSizeMemoryStream(payload);
                 var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.ChunkSize = chunkSize;
+                upload.chunkSize = chunkSize;
                 upload.Upload();
 
                 Assert.That(payload, Is.EqualTo(handler.ReceivedData.ToArray()));
@@ -748,7 +833,7 @@ anim id est laborum.";
             {
                 var stream = new MemoryStream(payload);
                 var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.ChunkSize = chunkSize;
+                upload.chunkSize = chunkSize;
 
                 IUploadProgress lastProgressStatus = null;
                 upload.ProgressChanged += (p) =>
@@ -810,7 +895,7 @@ anim id est laborum.";
             {
                 var stream = new MemoryStream(payload);
                 var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.ChunkSize = chunkSize;
+                upload.chunkSize = chunkSize;
 
                 try
                 {
@@ -841,7 +926,7 @@ anim id est laborum.";
             {
                 var stream = new MemoryStream(payload);
                 var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.ChunkSize = chunkSize;
+                upload.chunkSize = chunkSize;
 
                 var progressEvents = new List<IUploadProgress>();
                 upload.ProgressChanged += (progress) =>
@@ -935,6 +1020,44 @@ anim id est laborum.";
                 Assert.That(upload.ResponseBody, Is.EqualTo(handler.ExpectedResponse));
                 Assert.That(reponseReceivedCount, Is.EqualTo(1));
                 Assert.That(handler.Calls, Is.EqualTo(2));
+            }
+        }
+
+        /// <summary> Tests chunk size setter. </summary>
+        [Test]
+        public void TestChunkSize()
+        {
+            using (var service = new MockClientService(new BaseClientService.Initializer()))
+            {
+                var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
+                var upload = new MockResumableUploadWithResponse<TestRequest, TestResponse>
+                    (service, stream, "text/plain");
+
+                // negative chunk size
+                try
+                {
+                    upload.ChunkSize = -1;
+                    Assert.Fail();
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    // expected
+                }
+
+                // less than the minimum
+                try
+                {
+                    upload.ChunkSize = MockResumableUpload.MinimumChunkSize - 1;
+                    Assert.Fail();
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    // expected
+                }
+
+                // valid chunk size
+                upload.ChunkSize = MockResumableUpload.MinimumChunkSize;
+                upload.ChunkSize = MockResumableUpload.MinimumChunkSize * 2;
             }
         }
     }
