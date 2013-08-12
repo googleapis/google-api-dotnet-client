@@ -224,22 +224,30 @@ namespace Google.Apis.Tests.Apis.Services
             internal static string FirstToken = "invalid";
             internal static string SecondToken = "valid";
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
                 switch (Calls)
                 {
                     case 1:
                         Assert.That(request.Headers.GetValues("Authorization").Count(), Is.EqualTo(1));
                         Assert.That(request.Headers.GetValues("Authorization").First(), Is.EqualTo(FirstToken));
-                        return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.Unauthorized };
+                        tcs.SetResult(new HttpResponseMessage
+                            {
+                                StatusCode = System.Net.HttpStatusCode.Unauthorized
+                            });
+                        break;
                     case 2:
                         Assert.That(request.Headers.GetValues("Authorization").Count(), Is.EqualTo(1));
                         Assert.That(request.Headers.GetValues("Authorization").First(), Is.EqualTo(SecondToken));
-                        return new HttpResponseMessage();
+                        tcs.SetResult(new HttpResponseMessage());
+                        break;
                     default:
                         throw new Exception("There should be only two calls");
                 }
+
+                return tcs.Task;
             }
         }
 

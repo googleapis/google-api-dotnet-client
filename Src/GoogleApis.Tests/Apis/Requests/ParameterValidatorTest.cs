@@ -32,7 +32,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateRegexEmptyNeedsDataTest()
         {
-            var parameter = new MockParameter() { Pattern = ".+", Name = "test" };
+            var parameter = new Parameter { Pattern = ".+", Name = "test" };
             Assert.IsFalse(ParameterValidator.ValidateRegex(parameter, ""));
         }
 
@@ -40,7 +40,7 @@ namespace Google.Apis.Tests.Apis.Requests
         [Test]
         public void ValidateRegexTest()
         {
-            var parameter = new MockParameter() { Pattern = ".+", Name = "test" };
+            var parameter = new Parameter { Pattern = ".+", Name = "test" };
             Assert.IsTrue(ParameterValidator.ValidateRegex(parameter, "Test"));
         }
     }

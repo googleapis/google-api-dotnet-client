@@ -75,7 +75,7 @@ anim id est laborum.";
         /// <summary> A handler which handles uploading an empty file. </summary>
         private class EmptyFileMessageHandler : BaseMockMessageHandler
         {
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 var response = new HttpResponseMessage();
@@ -99,7 +99,9 @@ anim id est laborum.";
                         break;
                 }
 
-                return response;
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 
@@ -172,7 +174,7 @@ anim id est laborum.";
             /// <summary> Gets or sets the path parameters which should be part of the initialize request. </summary>
             public string PathParameters { get; set; }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 var response = new HttpResponseMessage();
@@ -206,7 +208,9 @@ anim id est laborum.";
                         break;
                 }
 
-                return response;
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 
@@ -1039,7 +1043,7 @@ anim id est laborum.";
                     upload.ChunkSize = -1;
                     Assert.Fail();
                 }
-                catch (ArgumentOutOfRangeException ex)
+                catch (ArgumentOutOfRangeException)
                 {
                     // expected
                 }
@@ -1050,7 +1054,7 @@ anim id est laborum.";
                     upload.ChunkSize = MockResumableUpload.MinimumChunkSize - 1;
                     Assert.Fail();
                 }
-                catch (ArgumentOutOfRangeException ex)
+                catch (ArgumentOutOfRangeException)
                 {
                     // expected
                 }

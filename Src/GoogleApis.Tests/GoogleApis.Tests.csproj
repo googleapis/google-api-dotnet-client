@@ -118,6 +118,9 @@
     <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
     <Compile Include="Apis\Download\MediaDownloaderTest.cs" />
     <Compile Include="Apis\Http\ConfigurableMessageHandlerTest.cs" />
+    <Compile Include="Apis\Json\JsonReaderTests.cs" />
+    <Compile Include="Apis\Json\JsonTokenTests.cs" />
+    <Compile Include="Apis\Json\TokenStreamTest.cs" />
     <Compile Include="Apis\Requests\RequestBuilderTest.cs" />
     <Compile Include="Apis\Services\BaseClientServiceTest.cs" />
     <Compile Include="Apis\Logging\NullLoggerTests.cs" />
@@ -130,21 +133,17 @@
     <Compile Include="ApplicationContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GoogleApiExceptionTests.cs" />
-    <Compile Include="JSON\TokenStreamTest.cs" />
-    <Compile Include="JSON\JsonTokenTests.cs" />
-    <Compile Include="JSON\JsonReaderTests.cs" />
     <Compile Include="Apis\Requests\ParameterValidatorTest.cs" />
     <Compile Include="Apis\Utils\UtilitiesTest.cs" />
-    <Compile Include="Apis\Testing\MoreAssertsTests.cs" />
+    <Compile Include="[Mock]\CountableMessageHandler.cs" />
+    <Compile Include="[Mock]\MockBackOffHandler.cs" />
+    <Compile Include="[Mock]\MockClientService.cs" />
+    <Compile Include="[Mock]\MockHttpClientFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj">
       <Project>{c4da0abe-2c2e-4bb8-9881-5ff80b0c1afd}</Project>
       <Name>GoogleApis.FullProfile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj">
-      <Project>{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}</Project>
-      <Name>GoogleApis.Tests.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
@@ -183,5 +182,5 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.8\tools\Microsoft.Bcl.Build.targets" />
 </Project>

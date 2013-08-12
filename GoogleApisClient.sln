@@ -1,13 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2", "Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj", "{76106493-68EF-4E44-AF2E-971ABF29B300}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2.Tests", "Src\GoogleApis.Authentication.OAuth2.Tests\GoogleApis.Authentication.OAuth2.Tests.csproj", "{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests.Utility", "Src\GoogleApis.Tests.Utility\GoogleApis.Tests.Utility.csproj", "{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "Src\GoogleApis\GoogleApis.csproj", "{826CF988-EEE8-4B75-8F53-B7E851A17BAA}"
 EndProject
@@ -60,16 +58,6 @@ Global
 		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Win32.ActiveCfg = Release|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F3A416DF-6268-47AD-9D6B-08EA2C8FFF95}.Release|Win32.ActiveCfg = Release|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

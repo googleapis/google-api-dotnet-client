@@ -90,10 +90,14 @@ namespace Google.Apis.Requests
                     return ParseResponse(response).Result;
                 }
             }
-            catch (AggregateException ex)
+            catch (AggregateException aex)
             {
                 // if an exception was thrown during the tasks, unwrap and throw it
-                throw ex.InnerException;
+                throw aex.InnerException;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -106,10 +110,14 @@ namespace Google.Apis.Requests
                 var response = ExecuteUnparsed(CancellationToken.None).Result;
                 return response.Content.ReadAsStreamAsync().Result;
             }
-            catch (AggregateException ex)
+            catch (AggregateException aex)
             {
                 // if an exception was thrown during the tasks, unwrap and throw it
-                throw ex.InnerException;
+                throw aex.InnerException;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -155,6 +163,9 @@ namespace Google.Apis.Requests
         /// <summary> Async executes the request without parsing the result. </summary>
         private Task<HttpResponseMessage> ExecuteAsyncUnparsed(CancellationToken cancellationToken)
         {
+            // TODO(peleyal): remove the creation of a new Task (it's not necessary).
+            // It should also be removed from ResumableMediaUpload and MediaDownloader!
+
             // create a new task completion source and return its task. In additional task we actually send the request
             // using ExecuteUnparsed and setting the result or the exception on the completion source
             TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
