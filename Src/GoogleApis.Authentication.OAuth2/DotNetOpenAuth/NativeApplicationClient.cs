@@ -42,21 +42,21 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         public NativeApplicationClient(AuthorizationServerDescription authorizationServer,
                                        string clientIdentifier,
                                        string clientSecret)
-            : base(authorizationServer, clientIdentifier, clientSecret) {}
-        
+            : base(authorizationServer, clientIdentifier, clientSecret) { }
+
         // <summary>
         /// Initializes a new instance of the <see cref="UserAgentClient"/> class.
         /// </summary>
         /// <param name="authorizationServer">The token issuer.</param>
         public NativeApplicationClient(AuthorizationServerDescription authorizationServer)
-            : this(authorizationServer, null, null) {}
+            : this(authorizationServer, null, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAgentClient"/> class.
         /// </summary>
         /// <param name="authorizationEndpoint">The authorization endpoint.</param>
         public NativeApplicationClient(Uri authorizationEndpoint)
-            : base(new AuthorizationServerDescription { AuthorizationEndpoint = authorizationEndpoint }) {}
+            : base(new AuthorizationServerDescription { AuthorizationEndpoint = authorizationEndpoint }) { }
 
         /// <summary>
         /// Creates the URL which should be used by the user to request the initial authorization.
@@ -70,13 +70,13 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             state.Callback = new Uri(OutOfBandCallbackUrl);
             return RequestUserAuthorization(state);
         }
-        
+
         /// <summary>
         /// Creates the URL which should be used by the user to request the initial authorization.
         /// Uses the default Out-of-band-URI as a callback.
         /// </summary>
         /// <returns>URI pointing to the authorization server</returns>
-        public new Uri RequestUserAuthorization()
+        public Uri RequestUserAuthorization()
         {
             return RequestUserAuthorization((IEnumerable<string>)null);
         }
@@ -101,7 +101,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             string url = "http://example.com/?code=" + authCode;
             return ProcessUserAuthorization(new Uri(url), authorizationState);
         }
-        
+
         /// <summary>
         /// Uses the provided authorization code to create an authorization state.
         /// </summary>

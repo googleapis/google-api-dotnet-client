@@ -75,9 +75,10 @@ namespace Google.Apis.Tests.Apis.Download
             /// <summary>The number of bytes this "server" has sent so far.</summary>
             private long bytesRead;
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
                 ThreadId = Thread.CurrentThread.ManagedThreadId;
 
                 if (Calls == CancelRequestNum && CancellationTokenSource != null)
@@ -105,7 +106,9 @@ namespace Google.Apis.Tests.Apis.Download
                     bytesRead + currentRead - 1, contentLength);
 
                 bytesRead += currentRead;
-                return response;
+
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 

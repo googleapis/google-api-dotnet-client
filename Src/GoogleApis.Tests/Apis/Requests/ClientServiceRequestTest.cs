@@ -74,6 +74,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 var other = obj as MockResponse;
                 return (other != null && other.ETag == ETag && other.Name == Name && other.Id == Id);
             }
+
+            public override int GetHashCode()
+            {
+                return (ETag ?? string.Empty).GetHashCode() ^ (Name ?? string.Empty).GetHashCode() + Id;
+            }
         }
 
         /// <summary> A mock request class. </summary>
@@ -89,6 +94,11 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 var other = obj as MockRequest;
                 return (other != null && other.ETag == ETag && other.Name == Name);
+            }
+
+            public override int GetHashCode()
+            {
+                return (ETag ?? string.Empty).GetHashCode() ^ (Name ?? string.Empty).GetHashCode();
             }
         }
 
@@ -135,10 +145,9 @@ namespace Google.Apis.Tests.Apis.Requests
             public string ExpectedError =
                 @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]";
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
-                var response = new HttpResponseMessage();
                 var error = @"{
                     ""error"": {
                         ""errors"": [
@@ -154,9 +163,16 @@ namespace Google.Apis.Tests.Apis.Requests
                         ""message"": ""Login Required""
                     }
                 }";
-                response.Content = new StringContent(error);
-                response.StatusCode = System.Net.HttpStatusCode.Unauthorized;
-                return response;
+
+                var response = new HttpResponseMessage
+                    {
+                        Content = new StringContent(error),
+                        StatusCode = System.Net.HttpStatusCode.Unauthorized
+                    };
+
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 
@@ -244,14 +260,17 @@ namespace Google.Apis.Tests.Apis.Requests
                 ThrowException = throwException;
             }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 if (ThrowException)
                 {
                     throw new InvalidOperationMockException("INVALID");
                 }
-                return new HttpResponseMessage();
+
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(new HttpResponseMessage());
+                return tcs.Task;
             }
         }
 
@@ -264,7 +283,7 @@ namespace Google.Apis.Tests.Apis.Requests
             /// <summary> The request index we are going to cancel.</summary>
             public int CancelRequestNum { get; set; }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 if (Calls == CancelRequestNum)
@@ -277,7 +296,10 @@ namespace Google.Apis.Tests.Apis.Requests
                         RequestMessage = request
                     };
                 response.Headers.Location = new Uri("http://www.test.com");
-                return response;
+
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 
@@ -290,7 +312,7 @@ namespace Google.Apis.Tests.Apis.Requests
             /// <summary> Gets or sets the Serializer which is used to serialize and deserialize messages. </summary>
             public ISerializer Serializer { get; set; }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 var response = new HttpResponseMessage();
@@ -307,7 +329,10 @@ namespace Google.Apis.Tests.Apis.Requests
                     var serializedObject = Serializer.Serialize(mockObject);
                     response.Content = new StringContent(serializedObject, Encoding.UTF8, "application/json");
                 }
-                return response;
+
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
 
             /// <summary> Unsuccessful response handler which "handles" service unavailable responses. </summary>
@@ -814,41 +839,41 @@ namespace Google.Apis.Tests.Apis.Requests
             public ClientServiceRequestWithQueryParameters(IClientService service, string method, object body)
                 : base(service, method, body)
             {
-                RequestParameters.Add("required", new MockParameter
+                RequestParameters.Add("required", new Parameter
                     {
                         Name = "required",
                         IsRequired = true,
                         ParameterType = "query"
                     });
-                RequestParameters.Add("optionalWithValue", new MockParameter
+                RequestParameters.Add("optionalWithValue", new Parameter
                     {
                         Name = "optionalWithValue",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
-                RequestParameters.Add("optionalWithValue2", new MockParameter
+                RequestParameters.Add("optionalWithValue2", new Parameter
                     {
                         Name = "optionalWithValue",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "DoesNotDisplay"
                     });
-                RequestParameters.Add("optionalWithNull", new MockParameter
+                RequestParameters.Add("optionalWithNull", new Parameter
                     {
                         Name = "optionalWithNull",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "c"
                     });
-                RequestParameters.Add("optionalEmpty", new MockParameter
+                RequestParameters.Add("optionalEmpty", new Parameter
                     {
                         Name = "optionalEmpty",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "d"
                     });
-                RequestParameters.Add("optionalNotPressent", new MockParameter
+                RequestParameters.Add("optionalNotPressent", new Parameter
                     {
                         Name = "optionalNotPressent",
                         IsRequired = false,
@@ -915,12 +940,12 @@ namespace Google.Apis.Tests.Apis.Requests
             public ClientServiceRequestWithPathParameters(IClientService service, string method, object body)
                 : base(service, method, body)
             {
-                RequestParameters.Add("path1", new MockParameter
+                RequestParameters.Add("path1", new Parameter
                 {
                     Name = "path1",
                     ParameterType = "path"
                 });
-                RequestParameters.Add("path2", new MockParameter
+                RequestParameters.Add("path2", new Parameter
                 {
                     Name = "path2",
                     ParameterType = "path",

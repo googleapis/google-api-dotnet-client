@@ -51,10 +51,12 @@ namespace Google.Apis.Tests.Apis.Http
         /// <summary> Message handler which returns a new successful (and empty) response. </summary>
         private class MockMessageHandler : HttpMessageHandler
         {
-            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
-                return new HttpResponseMessage();
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(new HttpResponseMessage());
+                return tcs.Task;
             }
         }
 
@@ -180,11 +182,14 @@ namespace Google.Apis.Tests.Apis.Http
             const string InjectedHeader = "Some-Header";
             const string InjectedValue = "123";
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 Assert.That(request.Headers.GetValues(InjectedHeader).First(), Is.EqualTo(InjectedValue));
-                return InjectedResponseMessage;
+
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(InjectedResponseMessage);
+                return tcs.Task;
             }
 
             /// <summary> A mock interceptor which inject a header to a request. </summary>
@@ -288,7 +293,7 @@ namespace Google.Apis.Tests.Apis.Http
             /// </summary>
             public int CancelRequestNum { get; set; }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 if (Calls == CancelRequestNum)
@@ -296,7 +301,9 @@ namespace Google.Apis.Tests.Apis.Http
                     CancellationTokenSource.Cancel();
                 }
 
-                return new HttpResponseMessage { StatusCode = ResponseStatusCode };
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(new HttpResponseMessage { StatusCode = ResponseStatusCode });
+                return tcs.Task;
             }
 
             /// <summary> Unsuccessful response handler which "handles" only service unavailable responses. </summary>
@@ -416,7 +423,7 @@ namespace Google.Apis.Tests.Apis.Http
             /// </summary>
             public const string ExceptionMessage = "Exception from execute";
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 if (ThrowException)
@@ -424,7 +431,9 @@ namespace Google.Apis.Tests.Apis.Http
                     throw Exception;
                 }
 
-                return new HttpResponseMessage();
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(new HttpResponseMessage());
+                return tcs.Task;
             }
 
             /// <summary> Mock Exception handler which "handles" the exception. </summary>
