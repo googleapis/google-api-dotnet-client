@@ -40,3 +40,5 @@ packages/**
 *.dotCover
 *.orig
 *.userprefs
+
+Google.Apis.*xml
