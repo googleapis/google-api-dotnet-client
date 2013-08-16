@@ -63,7 +63,7 @@ namespace Google.Apis.Tests.Apis.Utils
 
         }
 
-        /// <summary> An helper subtest to test invalid value given to the constructor. </summary>
+        /// <summary> A helper subtest to test invalid value given to the constructor. </summary>
         private void SubtestConstructor_InvalidValue(TimeSpan ts, int max = 10)
         {
             try
@@ -113,7 +113,6 @@ namespace Google.Apis.Tests.Apis.Utils
             Assert.That(avarage, Is.InRange(expectedMiliis - epsilon, expectedMiliis + epsilon));
         }
 
-
         /// <summary> Tests next back-off time span with specific maximum of retries. </summary>
         [Test]
         public void GetNextBackOff_MaxNumRetries()
@@ -123,7 +122,8 @@ namespace Google.Apis.Tests.Apis.Utils
             SubtestGetNextBackOff_MaxNumRetries(11);
         }
 
-        public void SubtestGetNextBackOff_MaxNumRetries(int max)
+        /// <summary> A helper test for testing the <c>GetNextBackOff</c> logic. </summary>
+        private void SubtestGetNextBackOff_MaxNumRetries(int max)
         {
             ExponentialBackOff backOff = new ExponentialBackOff(TimeSpan.Zero, max);
 

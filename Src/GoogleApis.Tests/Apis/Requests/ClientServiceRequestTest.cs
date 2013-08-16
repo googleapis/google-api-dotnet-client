@@ -538,8 +538,9 @@ namespace Google.Apis.Tests.Apis.Requests
 
         /// <summary> 
         /// A subtest for testing execute when an exception is thrown during sending the request, with or without 
-        /// back-off. If back-off handler is attached to the service's message handler, there are going to be several 
-        /// retries (up to 2 minutes).
+        /// back-off. If back-off handler is attached to the service's message handler, there are going to be 3 tries 
+        /// (3 is the default value of <seealso cref="ConfigurableMessageHandler.NumTries" />) before the operation 
+        /// fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
         private void SubtestExecute_ThrowException(bool backOff)
@@ -550,20 +551,17 @@ namespace Google.Apis.Tests.Apis.Requests
                     HttpClientFactory = new MockHttpClientFactory(handler)
                 };
 
-            // by default back-off is used, so disable it in case backOff is false
-            if (!backOff)
-            {
-                initializer.DefaultExponentialBackOffPolicy = BaseClientService.ExponentialBackOffPolicy.None;
-            }
+            // sets the default exponential back-off policy by the input
+            initializer.DefaultExponentialBackOffPolicy = backOff ?
+                BaseClientService.ExponentialBackOffPolicy.Exception :
+                BaseClientService.ExponentialBackOffPolicy.None;
 
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
                 Assert.Throws<InvalidOperationMockException>(() => request.Execute());
 
-                // if back-off is enabled, we use 2 minutes maximum wait time for a request, so we should make lg(120)
-                // + 1 calls
-                int calls = backOff ? (int)Math.Ceiling(Math.Log(120, 2) + 1) : 1;
+                int calls = backOff ? service.HttpClient.MessageHandler.NumTries : 1;
                 Assert.That(handler.Calls, Is.EqualTo(calls));
             }
         }
@@ -588,8 +586,9 @@ namespace Google.Apis.Tests.Apis.Requests
 
         /// <summary> 
         /// A subtest for testing async execute when an exception is thrown during sending the request, with or without 
-        /// back-off handler. If back-off handler is attached to the service's message handler, there are going to be 
-        /// several retries (up to 2 minutes).
+        /// back-off handler. If back-off handler is attached to the service's message handler, there are going to be 3
+        /// tries (3 is the default value of <seealso cref="ConfigurableMessageHandler.NumTries" />) before the 
+        /// operation fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
         private void SubtestExecuteAsync_ThrowException(bool backOff)
@@ -600,11 +599,10 @@ namespace Google.Apis.Tests.Apis.Requests
                 HttpClientFactory = new MockHttpClientFactory(handler)
             };
 
-            // by default back-off is used, so disable it in case backOff is false
-            if (!backOff)
-            {
-                initializer.DefaultExponentialBackOffPolicy = BaseClientService.ExponentialBackOffPolicy.None;
-            }
+            // configure the back-off behavior by the input
+            initializer.DefaultExponentialBackOffPolicy = backOff ?
+                BaseClientService.ExponentialBackOffPolicy.Exception :
+                BaseClientService.ExponentialBackOffPolicy.None;
 
             using (var service = new MockClientService(initializer))
             {
@@ -620,9 +618,7 @@ namespace Google.Apis.Tests.Apis.Requests
                     Assert.That(ex.InnerException, Is.AssignableFrom(typeof(InvalidOperationMockException)));
                 }
 
-                // if back-off is enabled, we use 2 minutes maximum wait time for a request, so we should make lg(120)
-                // + 1 calls
-                int calls = backOff ? (int)Math.Ceiling(Math.Log(120, 2) + 1) : 1;
+                int calls = backOff ? service.HttpClient.MessageHandler.NumTries : 1;
                 Assert.That(handler.Calls, Is.EqualTo(calls));
             }
         }

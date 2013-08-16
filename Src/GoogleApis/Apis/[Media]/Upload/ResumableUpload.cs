@@ -125,7 +125,8 @@ namespace Google.Apis.Upload
         public IClientService Service { get; private set; }
 
         /// <summary> 
-        /// Gets or sets the path of the method (combined with <see cref="Service.BaseUri"/>) to produce absolute Uri. 
+        /// Gets or sets the path of the method (combined with <see cref="IClientService.BaseUri"/>) to produce 
+        /// absolute Uri. 
         /// </summary>
         public string Path { get; private set; }
 

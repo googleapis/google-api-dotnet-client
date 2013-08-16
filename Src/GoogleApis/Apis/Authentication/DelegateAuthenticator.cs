@@ -35,7 +35,7 @@ namespace Google.Apis.Authentication
         /// </summary>
         /// <param name="webRequest">The request needing authentication.</param>
         public delegate void RequestModifier(HttpWebRequest webRequest);
-        
+
         /// <summary>
         /// Creates a new DelegateAuthenticator.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Google.Apis.Authentication
         /// Apply authentication to the request. Calls the RequestModifier delegate
         /// modify the request by adding authentication information.
         /// </summary>
-        /// <param name="webRequest">The request needing authentication.</param>
+        /// <param name="request">The request needing authentication.</param>
         public virtual void ApplyAuthenticationToRequest(HttpWebRequest request)
         {
             modifyRequestDelegate(request);
