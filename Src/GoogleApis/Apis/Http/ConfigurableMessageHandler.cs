@@ -84,14 +84,14 @@ namespace Google.Apis.Http
 
         #endregion
 
-        /// <summary> Number of tries. Default is <c>10</c>. </summary>
-        private int numTries = 10;
+        /// <summary> Number of tries. Default is <c>3</c>. </summary>
+        private int numTries = 3;
 
         /// <summary> 
         /// Gets or sets the number of tries that will be allowed to execute. Retries occur as a result of either
         /// <see cref="IHttpUnsuccessfulResponseHandler"/> or <see cref="IHttpExceptionHandler"/> which handles the
         /// abnormal Http response or exception, before being terminated. 
-        /// Set <c>1</c> for not retrying requests. The default value is <c>10</c>".
+        /// Set <c>1</c> for not retrying requests. The default value is <c>3</c>".
         /// </summary>
         public int NumTries
         {
@@ -100,7 +100,7 @@ namespace Google.Apis.Http
             {
                 if (value > MaxAllowedNumTries || value < 1)
                 {
-                    throw new ArgumentOutOfRangeException("NumRetries");
+                    throw new ArgumentOutOfRangeException("NumTries");
                 }
                 numTries = value;
             }

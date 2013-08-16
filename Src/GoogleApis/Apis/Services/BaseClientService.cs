@@ -54,7 +54,7 @@ namespace Google.Apis.Services
         #region Initializer
 
         /// <summary> 
-        /// Indicates if exponential back-off is used automatically on exception in a service request and\or when 5xx 
+        /// Indicates if exponential back-off is used automatically on exception in a service request and\or when 503 
         /// response is returned form the server.
         /// </summary>
         [Flags]
@@ -62,7 +62,7 @@ namespace Google.Apis.Services
         {
             None = 0,
             Exception = 1,
-            UnsuccessfulResponse5xx = 2
+            UnsuccessfulResponse503 = 2
         }
 
         /// <summary> An initializer class for the client service. </summary>
@@ -82,9 +82,9 @@ namespace Google.Apis.Services
             public IConfigurableHttpClientInitializer HttpClientInitializer { get; set; }
 
             /// <summary>
-            /// Gets or sets the exponential back-off policy used by the service. Default value is <c>Exception</c> |
-            /// <c>UnsuccessfulResponse5xx</c>, which means that exponential back-off is used on any 5xx abnormal Http
-            /// response and on any exception whose thrown when sending a request (except task canceled exception).
+            /// Get or sets the exponential back-off policy used by the service. Default value is 
+            /// <c>UnsuccessfulResponse503</c>, which means that exponential back-off is used on 503 abnormal HTTP
+            /// response.
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
             /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
             /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
@@ -120,8 +120,7 @@ namespace Google.Apis.Services
                 GZipEnabled = true;
                 Serializer = new NewtonsoftJsonSerializer();
                 Authenticator = NullAuthenticator.Instance;
-                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception |
-                    ExponentialBackOffPolicy.UnsuccessfulResponse5xx;
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
             }
         }
 
@@ -153,8 +152,8 @@ namespace Google.Apis.Services
                     httpClient.MessageHandler.ExceptionHandlers.Add(backOff);
                 }
 
-                if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse5xx) ==
-                    ExponentialBackOffPolicy.UnsuccessfulResponse5xx)
+                if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse503) ==
+                    ExponentialBackOffPolicy.UnsuccessfulResponse503)
                 {
                     httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(backOff);
                 }
@@ -182,9 +181,7 @@ namespace Google.Apis.Services
             HttpClient = CreateHttpClient(initializer);
         }
 
-        /// <summary>
-        /// Return true if this service contains the specified feature.
-        /// </summary>
+        /// <summary> Return <c>true</c> if this service contains the specified feature. </summary>
         private bool HasFeature(Features feature)
         {
             return Features.Contains(feature.GetStringValue());

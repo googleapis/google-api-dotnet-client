@@ -349,12 +349,9 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(service.Authenticator, Is.EqualTo(NullAuthenticator.Instance));
             Assert.True(service.GZipEnabled);
 
-            // back-off handlers are added by default
+            // back-off handler for unsuccessful response (503) is added by default
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
-                Is.InstanceOf<BackOffHandler>());
-            Assert.That(service.HttpClient.MessageHandler.ExceptionHandlers.Count, Is.EqualTo(1));
-            Assert.That(service.HttpClient.MessageHandler.ExceptionHandlers[0],
                 Is.InstanceOf<BackOffHandler>());
 
             // one execute interceptor (for adding the "Authenticate" header

@@ -708,9 +708,9 @@ namespace Google.Apis.Tests.Apis.Http
         public void SendAsync_BackOffUnsuccessfulResponseHandler_ServiceUnavailable_Max10Hours()
         {
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
-            {
-                MaxTimeSpan = TimeSpan.FromHours(10)
-            };
+                {
+                    MaxTimeSpan = TimeSpan.FromHours(10)
+                };
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer);
         }
 
@@ -728,7 +728,11 @@ namespace Google.Apis.Tests.Apis.Http
         [Test]
         public void SendAsync_BackOffUnsuccessfulResponseHandler_Cancel()
         {
-            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            // test back-off with maximum 30 minutes per single request
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+                {
+                    MaxTimeSpan = TimeSpan.FromMinutes(30)
+                };
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 2);
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 6);
         }
@@ -739,7 +743,7 @@ namespace Google.Apis.Tests.Apis.Http
         /// parameter to the index of the request you want to cancel.
         /// </summary>
         private void SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode statusCode,
-            BackOffHandler.Initializer initializer, int cancelRequestNum = 0)
+            BackOffHandler.Initializer initializer, int cancelRequestNum = 0, int numTries = 10)
         {
             var handler = new UnsuccessfulResponseMessageHandler { ResponseStatusCode = statusCode };
 
@@ -754,7 +758,10 @@ namespace Google.Apis.Tests.Apis.Http
                 cancellationToken = tcs.Token;
             }
 
-            var configurableHanlder = new ConfigurableMessageHandler(handler);
+            var configurableHanlder = new ConfigurableMessageHandler(handler)
+                {
+                    NumTries = numTries
+                };
             var boHandler = new MockBackOffHandler(initializer);
             configurableHanlder.UnsuccessfulResponseHandlers.Add(boHandler);
 
@@ -840,7 +847,10 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var content = "test-content";
             var contentHandler = new ContentMessageHandler();
-            var configurableHanlder = new ConfigurableMessageHandler(contentHandler);
+            var configurableHanlder = new ConfigurableMessageHandler(contentHandler)
+                {
+                    NumTries = 10
+                };
             configurableHanlder.UnsuccessfulResponseHandlers.Add(new TrueUnsuccessfulResponseHandler());
             using (var client = new HttpClient(configurableHanlder))
             {
@@ -900,10 +910,11 @@ namespace Google.Apis.Tests.Apis.Http
         public void NumTries_Setter()
         {
             var configurableHanlder = new ConfigurableMessageHandler(new HttpClientHandler());
+
             // valid values
-            configurableHanlder.NumTries = 5;
-            configurableHanlder.NumTries = 1;
             configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries;
+            configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries - 1;
+            configurableHanlder.NumTries = 1;
 
             // test invalid values
             try
@@ -913,7 +924,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumRetries"));
+                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
             }
             try
             {
@@ -922,7 +933,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumRetries"));
+                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
             }
             try
             {
@@ -931,7 +942,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumRetries"));
+                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
             }
         }
 

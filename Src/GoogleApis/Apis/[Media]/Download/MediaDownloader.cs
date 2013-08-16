@@ -78,7 +78,7 @@ namespace Google.Apis.Download
 
             /// <summary>Constructs a new progress instance.</summary>
             /// <param name="exception">An exception which occurred during the download.</param>
-            /// <param name="bytesSent">The number of bytes received before the exception occurred.</param>
+            /// <param name="bytes">The number of bytes received before the exception occurred.</param>
             public DownloadProgress(Exception exception, long bytes)
             {
                 Status = DownloadStatus.Failed;
