@@ -12,7 +12,7 @@
  * @param array $optParams Optional parameters.
 {% if method.optional_parameters %}
  *{% for param in method.optional_parameters %}
- * @opt_param {{ param.codeType }} {{ param.wireName }}
+ * @opt_param {{ param.codeType }} {{ param.codeName }}
  * {% filter java_comment_fragment:1 %}{{ param.description }}{% endfilter %}{% endfor %}
 {% endif %}
 {% if method.response %}
@@ -33,7 +33,7 @@ public function {{ method.name }}({% call_template _func_params method=method %}
   {% end_parameter_list %});
   $params = array_merge($params, $optParams);
 {% if method.response %}
-  return $this->call('{{ method.wireName }}', array($params), "{{ api.owner }}_Service_{{ api.className }}_{{ method.responseType.className }}");
+  return $this->{% if baseMethod %}base_methods->{% endif %}call('{{ method.wireName }}', array($params), "{{ api.owner }}_Service_{{ api.className }}_{{ method.responseType.className }}");
 {% else %}
   return $this->call('{{ method.wireName }}', array($params));
 {% endif %}

@@ -43,6 +43,9 @@ class UseableInTemplates(object):
       def_dict: The discovery dictionary for this element. All the values in it
           are exposed to the template expander.
     """
+    # TODO(user): Do we really need both of these?  Can def_dict
+    # simply be a deep copy? Or can we store mutations separately and
+    # thus not change the underlying dictionary?
     self._def_dict = dict(def_dict)
     self._raw_def_dict = dict(copy.deepcopy(def_dict))
 
@@ -80,6 +83,9 @@ class UseableInTemplates(object):
   @property
   def raw(self):
     return self._raw_def_dict
+
+  def get(self, key, default=None):  # pylint:disable=g-bad-name
+    return self._def_dict.get(key, default)
 
 
 class CodeObject(UseableInTemplates):
@@ -367,6 +373,16 @@ class CodeObject(UseableInTemplates):
   def memberName(self):  # pylint: disable=g-bad-name
     """Returns a name for this object when used as an class member."""
     return self.language_model.ToClassMemberName(self, self.values['wireName'])
+
+  @property
+  def getterName(self):  # pylint: disable=g-bad-name
+    """Returns a name for the getter of memberName."""
+    return self.language_model.ToGetterName(self, self.values['wireName'])
+
+  @property
+  def setterName(self):  # pylint: disable=g-bad-name
+    """Returns a name for the setter of memberName."""
+    return self.language_model.ToSetterName(self, self.values['wireName'])
 
 
 class Module(CodeObject):

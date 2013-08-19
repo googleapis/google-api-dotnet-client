@@ -27,6 +27,8 @@ from googleapis.codegen import utilities
 class SampleLanguageModel(language_model.LanguageModel):
   """A LanguageModel for a sample language."""
 
+  language = 'sample'
+
   # Set up variable naming policy
   allowed_characters = '_'
   array_of_format = '{module}::Array<{name}>'
@@ -37,6 +39,12 @@ class SampleLanguageModel(language_model.LanguageModel):
   member_transform = None
   member_separator = '_'
   member_format = '_{name}'
+  getter_transform = language_model.UPPER_CAMEL_CASE
+  getter_separator = None
+  getter_format = 'get{name}'
+  setter_transform = language_model.UPPER_CAMEL_CASE
+  setter_separator = None
+  setter_format = 'set{name}'
 
   _SCHEMA_TYPE_TO_LANGUAGE_TYPE = {
       'any': 'object',

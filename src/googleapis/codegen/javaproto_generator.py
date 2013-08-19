@@ -19,6 +19,7 @@
 __author__ = 'yanivi@google.com (Yaniv Inbar)'
 
 from googleapis.codegen import api_library_generator
+from googleapis.codegen import data_types
 from googleapis.codegen.java_generator import Java14LanguageModel
 from googleapis.codegen.java_generator import JavaApi
 
@@ -36,4 +37,25 @@ class JavaProtoGenerator(api_library_generator.ApiLibraryGenerator):
   @classmethod
   def _GetDefaultLanguageModel(cls, options=None):
     return Java14LanguageModel(options=options)
+
+  def AnnotateMethod(self, unused_the_api, method, unused_resource):
+    """Annotate a Method with Java Proto specific elements.
+
+    Args:
+      unused_the_api: (Api) The API tree which owns this method.
+      method: (Method) The method to annotate.
+      unused_resource: (Resource) The resource which owns this method.
+
+    Raises:
+      ValueError: if missing externalTypeName
+    """
+    for attr in ('requestType', 'responseType'):
+      schema = method.get(attr)
+      if schema and not isinstance(schema, data_types.Void):
+        name = schema.get('externalTypeName')
+        if not name:
+          raise ValueError('missing externalTypeName for %s (%s of method %s)'
+                           % (schema['id'], attr, method['rpcMethod']))
+        proto_name = 'TO_BE_COMPUTED.' + name[name.rfind('.')+1:]
+        schema.SetTemplateValue('protoFullClassName', proto_name)
 

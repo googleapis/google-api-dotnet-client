@@ -98,8 +98,17 @@ class ApiLibraryGenerator(TemplateGenerator):
     """
     self._path_replacements = {
         '___package___': self._api.module.path,
+        '___package_name___': self._api.module.name,
         '___language___': self._language,
+        # language version will in practice be set, because it
+        # comes from features, but may not be in some unit tests.
+        '___language_version___': self.language_version or '',
         }
+
+    for key, value in self.features.iteritems():
+      if isinstance(value, (unicode, str)):
+        self._path_replacements['___features_%s___' % key] = value
+
     if not isinstance(self._api.values['revision'], (unicode, str)):
         # Make sure revision is a string
       self._path_replacements['___api_revision___'] = str(

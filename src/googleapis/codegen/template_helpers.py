@@ -20,10 +20,14 @@ These are Django template filters for reformatting blocks of code.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
+import contextlib
+import hashlib
+import logging
 import os
 import re
 import string
 import textwrap
+import threading
 
 
 import django.template as django_template  # pylint: disable=g-bad-import-order
@@ -77,6 +81,11 @@ _CURRENT_LEVEL = '_CURRENT_LEVEL'  # The current indent level we are at
 _PARAMETER_DOC_INDENT = '_PARAMETER_DOC_INDENT'
 _IMPORT_REGEX = '_IMPORT_REGEX'
 _IMPORT_TEMPLATE = '_IMPORT_TEMPLATE'
+_BOOLEAN_LITERALS = '_BOOLEAN_LITERALS'
+
+# The name of the context variable holding a file writer for the 'write' tag to
+# use. The file writer is a method with the signature func(path, content).
+FILE_WRITER = '_FILE_WRITER'
 
 _defaults = {
     _LINE_BREAK_INDENT: 2,
@@ -105,6 +114,7 @@ _defaults = {
         ('\f', '\\f'),
         ],
     _LITERAL_FLOAT_SUFFIX: '',
+    _BOOLEAN_LITERALS: ('false', 'true')
     }
 
 _language_defaults = {
@@ -166,6 +176,13 @@ _language_defaults = {
         _IMPORT_REGEX: r'^\s*import\s+(?P<import>[a-zA-Z0-9.]+);',
         _IMPORT_TEMPLATE: 'import %s;'
         },
+    'javascript': {
+        _LINE_WIDTH: 80,
+        _COMMENT_START: '/* ',
+        _COMMENT_CONTINUE: ' * ',
+        _COMMENT_END: ' */',
+        _DOC_COMMENT_START: '/** ',
+        },
     'objc': {
         _LINE_WIDTH: 80,
         _COMMENT_START: '/* ',
@@ -174,6 +191,7 @@ _language_defaults = {
         _DOC_COMMENT_START: '// ',
         _DOC_COMMENT_CONTINUE: '// ',
         _LITERAL_QUOTE_START: '@"',
+        _BOOLEAN_LITERALS: ('NO', 'YES'),
         },
     'php': {
         _LINE_WIDTH: 80,
@@ -197,8 +215,39 @@ _language_defaults = {
         _DOC_COMMENT_CONTINUE: '"""',
         _LITERAL_QUOTE_START: '\'',
         _LITERAL_QUOTE_END: '\'',
+        _BOOLEAN_LITERALS: ('False', 'True'),
         },
     }
+
+_TEMPLATE_GLOBALS = threading.local()
+_TEMPLATE_GLOBALS.current_context = None
+
+
+def GetCurrentContext():
+  return _TEMPLATE_GLOBALS.current_context
+
+
+@contextlib.contextmanager
+def SetCurrentContext(ctxt):
+  _TEMPLATE_GLOBALS.current_context = ctxt
+  try:
+    yield
+  finally:
+    _TEMPLATE_GLOBALS.current_context = None
+
+
+def _GetCurrentLanguage(ctxt=None, default=None):
+  if ctxt is None:
+    ctxt = GetCurrentContext() or {}
+  try:
+    # respect the language set by the language node, if any
+    return ctxt[_LANGUAGE]
+  except KeyError:
+    language_model = ctxt.get('language_model')
+    if language_model and language_model.language:
+      return language_model.language
+  logging.debug('no language set in context or language model')
+  return default
 
 
 class CachingTemplateLoader(object):
@@ -264,28 +313,33 @@ def _RenderToString(template_path, context):
   return t.render(context)
 
 
-def _GetFromContext(context, *variable):
+def _GetFromContext(context, *variables):
   """Safely get something from the context.
 
-  Look for a variable (or an alternate variable) in the context. If it is not
-  in the context, look in _defaults.
+  Look for a variable (or an alternate variable) in the context. If it is not in
+  the context, look in language-specific or overall defaults.
 
   Args:
-    context: (Context) The Django render context
-    *variable: (str) varargs list of variable names
-
+    context: (Context|None) The Django render context
+    *variables: (str) varargs list of variable names
   Returns:
     The requested value from the context or the defaults.
   """
-  for v in variable:
-    ret = context.get(v)
-    if ret:
-      return ret
-  for v in variable:
-    ret = _defaults.get(v)
-    if ret:
-      return ret
-  return ''
+  if context is None:
+    context = GetCurrentContext()
+  containers = [context]
+  current_language = _GetCurrentLanguage(context)
+  if current_language and current_language in _language_defaults:
+    containers.append(_language_defaults[current_language])
+  containers.append(_defaults)
+  # Use a non-reproducible default value to allow real non-truthy values.
+  default = object()
+  for c in containers:
+    for v in variables:
+      value = c.get(v, default)
+      if value is not default:
+        return value
+  return None
 
 
 def _GetArgFromToken(token):
@@ -469,7 +523,11 @@ def block_comment(value):  # pylint: disable=g-bad-name
     comment_prefix = _ExtractCommentPrefix(lines[1])
   else:
     comment_prefix = _ExtractCommentPrefix(lines[0])
-  wrapper = textwrap.TextWrapper(width=_language_defaults['java'][_LINE_WIDTH],
+  # TODO(user): Default is for backwards-compatibility; remove when safe to
+  # do so.
+  language = _GetCurrentLanguage(default='java')
+  line_width = _language_defaults[language][_LINE_WIDTH]
+  wrapper = textwrap.TextWrapper(width=line_width,
                                  replace_whitespace=False,
                                  initial_indent=('%s ' % comment_prefix),
                                  subsequent_indent=('%s ' % comment_prefix))
@@ -1428,3 +1486,104 @@ class DataContextNode(django_template.Node):
 def GetValueOf(unused_parser, token):
   """Appropriately wrap DataValue objects for eventual rendering."""
   return DataContextNode(_GetArgFromToken(token))
+
+
+class BoolNode(django_template.Node):
+  """A node for outputting bool values."""
+
+  def __init__(self, variable):
+    self._variable = variable
+
+  def render(self, context):  # pylint:disable=g-bad-name
+    data = bool(django_template.resolve_variable(self._variable, context))
+    return _GetFromContext(context, _BOOLEAN_LITERALS)[data]
+
+
+@register.tag(name='bool')
+def DoBoolTag(unused_parser, token):
+  return BoolNode(_GetArgFromToken(token))
+
+
+class DivChecksumNode(django_template.Node):
+  """A node for calculating a sha-1 checksum for HTML contents."""
+
+  def __init__(self, id_nodes, body_nodes):
+    self._id_nodes = id_nodes
+    self._body_nodes = body_nodes
+
+  def render(self, context):  # pylint:disable=g-bad-name
+    body = self._body_nodes.render(context)
+    element_id = self._id_nodes.render(context)
+    checksum = hashlib.sha1(body).hexdigest()
+    return ('<div id="%s" checksum="%s">%s</div>' %
+            (element_id, checksum, body))
+
+
+@register.tag(name='checksummed_div')
+def DoDivChecksumTag(parser, unused_token):
+  """Wraps HTML in a div with its checksum as an attribute."""
+
+  id_nodes = parser.parse(('divbody',))
+  parser.delete_first_token()
+  body_nodes = parser.parse(('endchecksummed_div',))
+  parser.delete_first_token()
+  return DivChecksumNode(id_nodes, body_nodes)
+
+
+class WriteNode(django_template.Node):
+  """A node which writes its contents to a file.
+
+  A Node which evaluates its children and writes that result to a file rather
+  than into the current output document. This node does not open files directly.
+  Instead, it requires that a file writing method is passed to us via the
+  evaluation context. It must be under the key template_objects.FILE_WRITER,
+  and be a method with the signature func(path, content).
+  """
+
+  def __init__(self, nodelist, path_variable):
+    self._nodelist = nodelist
+    self._path_variable = path_variable
+
+  def render(self, context):  # pylint: disable=g-bad-name
+    """Render the 'write' tag.
+
+    Evaluate the file name, evaluate the content, find the writer, ship it.
+
+    Args:
+      context: (Context) the render context.
+    Returns:
+      An empty string.
+    Raises:
+      ValueError: If the file writer method can not be found.
+    """
+    path = django_template.resolve_variable(self._path_variable, context)
+    content = self._nodelist.render(context)
+    file_writer = _GetFromContext(context, FILE_WRITER)
+    if not file_writer:
+      raise ValueError('"write" called in a context where "%s" is not defined.',
+                       FILE_WRITER)
+    file_writer(path, content)
+    return ''
+
+
+@register.tag(name='write')
+def DoWrite(parser, token):
+  """Construct a WriteNode.
+
+  write is a block tag which diverts the rendered content to a file rather than
+  into the current output document.
+
+  Usage:
+    {% write file_path_variable %} ... {% endwrite %}
+
+  Args:
+    parser: (parser) the Django parser context.
+    token: (django.template.Token) the token holding this tag
+
+  Returns:
+    a WriteNode
+  """
+  unused_tag_name, path = token.split_contents()
+  nodelist = parser.parse(('endwrite',))
+  parser.delete_first_token()
+  return WriteNode(nodelist, path)

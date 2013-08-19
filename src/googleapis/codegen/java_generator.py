@@ -28,6 +28,7 @@ from googleapis.codegen import utilities
 from googleapis.codegen.import_definition import ImportDefinition
 from googleapis.codegen.java_import_manager import JavaImportManager
 from googleapis.codegen.language_model import LanguageModel
+from googleapis.codegen.utilities import maven_utils
 
 
 class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
@@ -52,7 +53,10 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
 
   def AnnotateApi(self, the_api):
     """Annotate the Api dictionary with Java specifics."""
-    pass
+    the_api.SetTemplateValue(
+        'maven',
+        maven_utils.GetMavenMetadata(the_api, self.language_version),
+        'maven metadata')
 
   def AnnotateMethod(self, the_api, method, resource):
     """Annotate a Method with Java specific elements.
@@ -177,6 +181,8 @@ class Java14Generator(BaseJavaGenerator):
 
 class JavaLanguageModel(LanguageModel):
   """A LanguageModel tuned for Java."""
+
+  language = 'java'
 
   _JSON_STRING_IMPORT = 'com.google.api.client.json.JsonString'
   _JSON_STRING_TEMPLATE_VALUE = 'requiresJsonString'

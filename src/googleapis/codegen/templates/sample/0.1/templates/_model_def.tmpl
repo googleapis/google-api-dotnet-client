@@ -20,8 +20,12 @@ class {{ model.className }} extends SomeBaseModelClass {
 {% filter noblanklines %}
   // Getters and setters might go here
   {% for property in model.properties %}
-  {{ property.codeType }} get_{{ property.codeName }}() {
+  {{ property.codeType }} {{ property.getterName }}() {
     return {{ property.memberName }};
+  }
+  {% comment %}We used 'v' as the variable. What if codeTYpe was 'v'?{% endcomment %}
+  void {{ property.setterName }}({{ property.codeType }} v) {
+    {{ property.memberName }} = v;
   }
   {% endfor %}
 {% endfilter %}

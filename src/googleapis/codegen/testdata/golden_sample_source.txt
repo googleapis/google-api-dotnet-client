@@ -1517,74 +1517,143 @@ class Activity extends SomeBaseModelClass {
   ActivityVisibility _visibility;
 
   // Getters and setters might go here
-  ActivityActor get_actor() {
+  ActivityActor getActor() {
     return _actor;
   }
-  object get_address() {
+  void setActor(ActivityActor v) {
+    _actor = v;
+  }
+  object getAddress() {
     return _address;
   }
-  object get_annotation() {
+  void setAddress(object v) {
+    _address = v;
+  }
+  object getAnnotation() {
     return _annotation;
   }
-  com::google::myservice::Array<ActivityCategories> get_categories() {
+  void setAnnotation(object v) {
+    _annotation = v;
+  }
+  com::google::myservice::Array<ActivityCategories> getCategories() {
     return _categories;
   }
-  object get_crosspostSource() {
+  void setCategories(com::google::myservice::Array<ActivityCategories> v) {
+    _categories = v;
+  }
+  object getCrosspostSource() {
     return _crosspostSource;
   }
-  object get_detectedlLang() {
+  void setCrosspostSource(object v) {
+    _crosspostSource = v;
+  }
+  object getDetectedlLang() {
     return _detectedlLang;
   }
-  object get_geocode() {
+  void setDetectedlLang(object v) {
+    _detectedlLang = v;
+  }
+  object getGeocode() {
     return _geocode;
   }
-  object get_id() {
+  void setGeocode(object v) {
+    _geocode = v;
+  }
+  object getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  ActivityLinks get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  ActivityLinks getLinks() {
     return _links;
   }
-  ActivityObject get_object() {
+  void setLinks(ActivityLinks v) {
+    _links = v;
+  }
+  ActivityObject getObject() {
     return _object;
   }
-  object get_placeId() {
+  void setObject(ActivityObject v) {
+    _object = v;
+  }
+  object getPlaceId() {
     return _placeId;
   }
-  object get_placeName() {
+  void setPlaceId(object v) {
+    _placeId = v;
+  }
+  object getPlaceName() {
     return _placeName;
   }
-  object get_placeholder() {
+  void setPlaceName(object v) {
+    _placeName = v;
+  }
+  object getPlaceholder() {
     return _placeholder;
   }
-  str get_published() {
+  void setPlaceholder(object v) {
+    _placeholder = v;
+  }
+  str getPublished() {
     return _published;
   }
-  object get_radius() {
+  void setPublished(str v) {
+    _published = v;
+  }
+  object getRadius() {
     return _radius;
   }
-  ActivitySource get_source() {
+  void setRadius(object v) {
+    _radius = v;
+  }
+  ActivitySource getSource() {
     return _source;
   }
-  object get_targetLang() {
+  void setSource(ActivitySource v) {
+    _source = v;
+  }
+  object getTargetLang() {
     return _targetLang;
   }
-  object get_title() {
+  void setTargetLang(object v) {
+    _targetLang = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_untranslatedTitle() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getUntranslatedTitle() {
     return _untranslatedTitle;
   }
-  str get_updated() {
+  void setUntranslatedTitle(object v) {
+    _untranslatedTitle = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  com::google::myservice::Array<str> get_verbs() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  com::google::myservice::Array<str> getVerbs() {
     return _verbs;
   }
-  ActivityVisibility get_visibility() {
+  void setVerbs(com::google::myservice::Array<str> v) {
+    _verbs = v;
+  }
+  ActivityVisibility getVisibility() {
     return _visibility;
+  }
+  void setVisibility(ActivityVisibility v) {
+    _visibility = v;
   }
 
   """Schema Activity.ActivityActor { model.description }} <p> Your explanation
@@ -1613,20 +1682,35 @@ class Activity extends SomeBaseModelClass {
     object _thumbnailUrl;
 
     // Getters and setters might go here
-    object get_/freebase/object_profile/linkcount() {
+    object getFreebaseObject_profileLinkcount() {
       return _freebase_object_profile_linkcount;
     }
-    object get_id() {
+    void setFreebaseObject_profileLinkcount(object v) {
+      _freebase_object_profile_linkcount = v;
+    }
+    object getId() {
       return _id;
     }
-    object get_name() {
+    void setId(object v) {
+      _id = v;
+    }
+    object getName() {
       return _name;
     }
-    object get_profileUrl() {
+    void setName(object v) {
+      _name = v;
+    }
+    object getProfileUrl() {
       return _profileUrl;
     }
-    object get_thumbnailUrl() {
+    void setProfileUrl(object v) {
+      _profileUrl = v;
+    }
+    object getThumbnailUrl() {
       return _thumbnailUrl;
+    }
+    void setThumbnailUrl(object v) {
+      _thumbnailUrl = v;
     }
 
   }
@@ -1649,14 +1733,23 @@ class Activity extends SomeBaseModelClass {
     object _term;
 
     // Getters and setters might go here
-    object get_label() {
+    object getLabel() {
       return _label;
     }
-    object get_schema() {
+    void setLabel(object v) {
+      _label = v;
+    }
+    object getSchema() {
       return _schema;
     }
-    object get_term() {
+    void setSchema(object v) {
+      _schema = v;
+    }
+    object getTerm() {
       return _term;
+    }
+    void setTerm(object v) {
+      _term = v;
     }
 
   }
@@ -1671,8 +1764,11 @@ class Activity extends SomeBaseModelClass {
     com::google::myservice::Array<ActivityLinksLiked> _liked;
 
     // Getters and setters might go here
-    com::google::myservice::Array<ActivityLinksLiked> get_liked() {
+    com::google::myservice::Array<ActivityLinksLiked> getLiked() {
       return _liked;
+    }
+    void setLiked(com::google::myservice::Array<ActivityLinksLiked> v) {
+      _liked = v;
     }
 
     """Schema Activity.ActivityLinks.ActivityLinksLiked { model.description }}
@@ -1693,14 +1789,23 @@ class Activity extends SomeBaseModelClass {
       object _type;
 
       // Getters and setters might go here
-      long get_count() {
+      long getCount() {
         return _count;
       }
-      object get_href() {
+      void setCount(long v) {
+        _count = v;
+      }
+      object getHref() {
         return _href;
       }
-      object get_type() {
+      void setHref(object v) {
+        _href = v;
+      }
+      object getType() {
         return _type;
+      }
+      void setType(object v) {
+        _type = v;
       }
 
     }
@@ -1765,44 +1870,83 @@ class Activity extends SomeBaseModelClass {
     object _untranslatedContent;
 
     // Getters and setters might go here
-    ActivityObjectActor get_actor() {
+    ActivityObjectActor getActor() {
       return _actor;
     }
-    com::google::myservice::Array<ActivityObjectAttachments> get_attachments() {
+    void setActor(ActivityObjectActor v) {
+      _actor = v;
+    }
+    com::google::myservice::Array<ActivityObjectAttachments> getAttachments() {
       return _attachments;
     }
-    com::google::myservice::Array<Comment> get_comments() {
+    void setAttachments(com::google::myservice::Array<ActivityObjectAttachments> v) {
+      _attachments = v;
+    }
+    com::google::myservice::Array<Comment> getComments() {
       return _comments;
     }
-    object get_content() {
+    void setComments(com::google::myservice::Array<Comment> v) {
+      _comments = v;
+    }
+    object getContent() {
       return _content;
     }
-    object get_detectedlLang() {
+    void setContent(object v) {
+      _content = v;
+    }
+    object getDetectedlLang() {
       return _detectedlLang;
     }
-    object get_id() {
+    void setDetectedlLang(object v) {
+      _detectedlLang = v;
+    }
+    object getId() {
       return _id;
     }
-    com::google::myservice::Array<Person> get_liked() {
+    void setId(object v) {
+      _id = v;
+    }
+    com::google::myservice::Array<Person> getLiked() {
       return _liked;
     }
-    Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> get_links() {
+    void setLiked(com::google::myservice::Array<Person> v) {
+      _liked = v;
+    }
+    Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> getLinks() {
       return _links;
     }
-    object get_originalContent() {
+    void setLinks(Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> v) {
+      _links = v;
+    }
+    object getOriginalContent() {
       return _originalContent;
     }
-    Activity get_shareOriginal() {
+    void setOriginalContent(object v) {
+      _originalContent = v;
+    }
+    Activity getShareOriginal() {
       return _shareOriginal;
     }
-    object get_targetLang() {
+    void setShareOriginal(Activity v) {
+      _shareOriginal = v;
+    }
+    object getTargetLang() {
       return _targetLang;
     }
-    str get_type() {
+    void setTargetLang(object v) {
+      _targetLang = v;
+    }
+    str getType() {
       return _type;
     }
-    object get_untranslatedContent() {
+    void setType(str v) {
+      _type = v;
+    }
+    object getUntranslatedContent() {
       return _untranslatedContent;
+    }
+    void setUntranslatedContent(object v) {
+      _untranslatedContent = v;
     }
 
     """Schema Activity.ActivityObject.ActivityObjectActor { model.description }}
@@ -1827,17 +1971,29 @@ class Activity extends SomeBaseModelClass {
       object _thumbnailUrl;
 
       // Getters and setters might go here
-      object get_id() {
+      object getId() {
         return _id;
       }
-      object get_name() {
+      void setId(object v) {
+        _id = v;
+      }
+      object getName() {
         return _name;
       }
-      object get_profileUrl() {
+      void setName(object v) {
+        _name = v;
+      }
+      object getProfileUrl() {
         return _profileUrl;
       }
-      object get_thumbnailUrl() {
+      void setProfileUrl(object v) {
+        _profileUrl = v;
+      }
+      object getThumbnailUrl() {
         return _thumbnailUrl;
+      }
+      void setThumbnailUrl(object v) {
+        _thumbnailUrl = v;
       }
 
     }
@@ -1868,20 +2024,35 @@ class Activity extends SomeBaseModelClass {
       str _type;
 
       // Getters and setters might go here
-      object get_content() {
+      object getContent() {
         return _content;
       }
-      object get_id() {
+      void setContent(object v) {
+        _content = v;
+      }
+      object getId() {
         return _id;
       }
-      Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> get_links() {
+      void setId(object v) {
+        _id = v;
+      }
+      Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> getLinks() {
         return _links;
       }
-      object get_title() {
+      void setLinks(Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> v) {
+        _links = v;
+      }
+      object getTitle() {
         return _title;
       }
-      str get_type() {
+      void setTitle(object v) {
+        _title = v;
+      }
+      str getType() {
         return _type;
+      }
+      void setType(str v) {
+        _type = v;
       }
 
       """Schema Activity.ActivityObject.ActivityObjectAttachments.ActivityObject
@@ -1919,26 +2090,47 @@ class Activity extends SomeBaseModelClass {
         object _width;
 
         // Getters and setters might go here
-        object get_count() {
+        object getCount() {
           return _count;
         }
-        object get_height() {
+        void setCount(object v) {
+          _count = v;
+        }
+        object getHeight() {
           return _height;
         }
-        object get_href() {
+        void setHeight(object v) {
+          _height = v;
+        }
+        object getHref() {
           return _href;
         }
-        object get_title() {
+        void setHref(object v) {
+          _href = v;
+        }
+        object getTitle() {
           return _title;
         }
-        object get_type() {
+        void setTitle(object v) {
+          _title = v;
+        }
+        object getType() {
           return _type;
         }
-        str get_updated() {
+        void setType(object v) {
+          _type = v;
+        }
+        str getUpdated() {
           return _updated;
         }
-        object get_width() {
+        void setUpdated(str v) {
+          _updated = v;
+        }
+        object getWidth() {
           return _width;
+        }
+        void setWidth(object v) {
+          _width = v;
         }
 
       }
@@ -1959,11 +2151,17 @@ class Activity extends SomeBaseModelClass {
       object _type;
 
       // Getters and setters might go here
-      object get_href() {
+      object getHref() {
         return _href;
       }
-      object get_type() {
+      void setHref(object v) {
+        _href = v;
+      }
+      object getType() {
         return _type;
+      }
+      void setType(object v) {
+        _type = v;
       }
 
     }
@@ -1980,8 +2178,11 @@ class Activity extends SomeBaseModelClass {
     object _title;
 
     // Getters and setters might go here
-    object get_title() {
+    object getTitle() {
       return _title;
+    }
+    void setTitle(object v) {
+      _title = v;
     }
 
   }
@@ -1996,8 +2197,11 @@ class Activity extends SomeBaseModelClass {
     com::google::myservice::Array<ActivityVisibilityEntries> _entries;
 
     // Getters and setters might go here
-    com::google::myservice::Array<ActivityVisibilityEntries> get_entries() {
+    com::google::myservice::Array<ActivityVisibilityEntries> getEntries() {
       return _entries;
+    }
+    void setEntries(com::google::myservice::Array<ActivityVisibilityEntries> v) {
+      _entries = v;
     }
 
     """Schema Activity.ActivityVisibility.ActivityVisibilityEntries {
@@ -2014,11 +2218,17 @@ class Activity extends SomeBaseModelClass {
       object _title;
 
       // Getters and setters might go here
-      object get_id() {
+      object getId() {
         return _id;
       }
-      object get_title() {
+      void setId(object v) {
+        _id = v;
+      }
+      object getTitle() {
         return _title;
+      }
+      void setTitle(object v) {
+        _title = v;
       }
 
     }
@@ -2055,20 +2265,35 @@ class ActivityActor extends SomeBaseModelClass {
   object _thumbnailUrl;
 
   // Getters and setters might go here
-  object get_/freebase/object_profile/linkcount() {
+  object getFreebaseObject_profileLinkcount() {
     return _freebase_object_profile_linkcount;
   }
-  object get_id() {
+  void setFreebaseObject_profileLinkcount(object v) {
+    _freebase_object_profile_linkcount = v;
+  }
+  object getId() {
     return _id;
   }
-  object get_name() {
+  void setId(object v) {
+    _id = v;
+  }
+  object getName() {
     return _name;
   }
-  object get_profileUrl() {
+  void setName(object v) {
+    _name = v;
+  }
+  object getProfileUrl() {
     return _profileUrl;
   }
-  object get_thumbnailUrl() {
+  void setProfileUrl(object v) {
+    _profileUrl = v;
+  }
+  object getThumbnailUrl() {
     return _thumbnailUrl;
+  }
+  void setThumbnailUrl(object v) {
+    _thumbnailUrl = v;
   }
 
 }
@@ -2093,14 +2318,23 @@ class ActivityCategories extends SomeBaseModelClass {
   object _term;
 
   // Getters and setters might go here
-  object get_label() {
+  object getLabel() {
     return _label;
   }
-  object get_schema() {
+  void setLabel(object v) {
+    _label = v;
+  }
+  object getSchema() {
     return _schema;
   }
-  object get_term() {
+  void setSchema(object v) {
+    _schema = v;
+  }
+  object getTerm() {
     return _term;
+  }
+  void setTerm(object v) {
+    _term = v;
   }
 
 }
@@ -2136,23 +2370,41 @@ class ActivityFeed extends SomeBaseModelClass {
   str _updated;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  com::google::myservice::Array<Activity> get_items() {
+  void setId(object v) {
+    _id = v;
+  }
+  com::google::myservice::Array<Activity> getItems() {
     return _items;
   }
-  str get_kind() {
+  void setItems(com::google::myservice::Array<Activity> v) {
+    _items = v;
+  }
+  str getKind() {
     return _kind;
   }
-  Map<string, com::google::myservice::Array<ActivityFeedLinksItemElement>> get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  Map<string, com::google::myservice::Array<ActivityFeedLinksItemElement>> getLinks() {
     return _links;
   }
-  object get_title() {
+  void setLinks(Map<string, com::google::myservice::Array<ActivityFeedLinksItemElement>> v) {
+    _links = v;
+  }
+  object getTitle() {
     return _title;
   }
-  str get_updated() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  str getUpdated() {
     return _updated;
+  }
+  void setUpdated(str v) {
+    _updated = v;
   }
 
   """Schema ActivityFeed.ActivityFeedLinksItemElement { model.description }} <p>
@@ -2189,26 +2441,47 @@ class ActivityFeed extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    object get_height() {
+    void setCount(object v) {
+      _count = v;
+    }
+    object getHeight() {
       return _height;
     }
-    object get_href() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_title() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
     }
-    str get_updated() {
+    void setType(object v) {
+      _type = v;
+    }
+    str getUpdated() {
       return _updated;
     }
-    object get_width() {
+    void setUpdated(str v) {
+      _updated = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -2251,26 +2524,47 @@ class ActivityFeedLinksItemElement extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  object get_height() {
+  void setCount(object v) {
+    _count = v;
+  }
+  object getHeight() {
     return _height;
   }
-  object get_href() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_title() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
   }
-  str get_updated() {
+  void setType(object v) {
+    _type = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  object get_width() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -2287,8 +2581,11 @@ class ActivityLinks extends SomeBaseModelClass {
   com::google::myservice::Array<ActivityLinksLiked> _liked;
 
   // Getters and setters might go here
-  com::google::myservice::Array<ActivityLinksLiked> get_liked() {
+  com::google::myservice::Array<ActivityLinksLiked> getLiked() {
     return _liked;
+  }
+  void setLiked(com::google::myservice::Array<ActivityLinksLiked> v) {
+    _liked = v;
   }
 
   """Schema Activity.ActivityLinks.ActivityLinksLiked { model.description }} <p>
@@ -2309,14 +2606,23 @@ class ActivityLinks extends SomeBaseModelClass {
     object _type;
 
     // Getters and setters might go here
-    long get_count() {
+    long getCount() {
       return _count;
     }
-    object get_href() {
+    void setCount(long v) {
+      _count = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_type() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getType() {
       return _type;
+    }
+    void setType(object v) {
+      _type = v;
     }
 
   }
@@ -2343,14 +2649,23 @@ class ActivityLinksLiked extends SomeBaseModelClass {
   object _type;
 
   // Getters and setters might go here
-  long get_count() {
+  long getCount() {
     return _count;
   }
-  object get_href() {
+  void setCount(long v) {
+    _count = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_type() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getType() {
     return _type;
+  }
+  void setType(object v) {
+    _type = v;
   }
 
 }
@@ -2415,44 +2730,83 @@ class ActivityObject extends SomeBaseModelClass {
   object _untranslatedContent;
 
   // Getters and setters might go here
-  ActivityObjectActor get_actor() {
+  ActivityObjectActor getActor() {
     return _actor;
   }
-  com::google::myservice::Array<ActivityObjectAttachments> get_attachments() {
+  void setActor(ActivityObjectActor v) {
+    _actor = v;
+  }
+  com::google::myservice::Array<ActivityObjectAttachments> getAttachments() {
     return _attachments;
   }
-  com::google::myservice::Array<Comment> get_comments() {
+  void setAttachments(com::google::myservice::Array<ActivityObjectAttachments> v) {
+    _attachments = v;
+  }
+  com::google::myservice::Array<Comment> getComments() {
     return _comments;
   }
-  object get_content() {
+  void setComments(com::google::myservice::Array<Comment> v) {
+    _comments = v;
+  }
+  object getContent() {
     return _content;
   }
-  object get_detectedlLang() {
+  void setContent(object v) {
+    _content = v;
+  }
+  object getDetectedlLang() {
     return _detectedlLang;
   }
-  object get_id() {
+  void setDetectedlLang(object v) {
+    _detectedlLang = v;
+  }
+  object getId() {
     return _id;
   }
-  com::google::myservice::Array<Person> get_liked() {
+  void setId(object v) {
+    _id = v;
+  }
+  com::google::myservice::Array<Person> getLiked() {
     return _liked;
   }
-  Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> get_links() {
+  void setLiked(com::google::myservice::Array<Person> v) {
+    _liked = v;
+  }
+  Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> getLinks() {
     return _links;
   }
-  object get_originalContent() {
+  void setLinks(Map<string, com::google::myservice::Array<ActivityObjectLinksItemElement>> v) {
+    _links = v;
+  }
+  object getOriginalContent() {
     return _originalContent;
   }
-  Activity get_shareOriginal() {
+  void setOriginalContent(object v) {
+    _originalContent = v;
+  }
+  Activity getShareOriginal() {
     return _shareOriginal;
   }
-  object get_targetLang() {
+  void setShareOriginal(Activity v) {
+    _shareOriginal = v;
+  }
+  object getTargetLang() {
     return _targetLang;
   }
-  str get_type() {
+  void setTargetLang(object v) {
+    _targetLang = v;
+  }
+  str getType() {
     return _type;
   }
-  object get_untranslatedContent() {
+  void setType(str v) {
+    _type = v;
+  }
+  object getUntranslatedContent() {
     return _untranslatedContent;
+  }
+  void setUntranslatedContent(object v) {
+    _untranslatedContent = v;
   }
 
   """Schema Activity.ActivityObject.ActivityObjectActor { model.description }}
@@ -2477,17 +2831,29 @@ class ActivityObject extends SomeBaseModelClass {
     object _thumbnailUrl;
 
     // Getters and setters might go here
-    object get_id() {
+    object getId() {
       return _id;
     }
-    object get_name() {
+    void setId(object v) {
+      _id = v;
+    }
+    object getName() {
       return _name;
     }
-    object get_profileUrl() {
+    void setName(object v) {
+      _name = v;
+    }
+    object getProfileUrl() {
       return _profileUrl;
     }
-    object get_thumbnailUrl() {
+    void setProfileUrl(object v) {
+      _profileUrl = v;
+    }
+    object getThumbnailUrl() {
       return _thumbnailUrl;
+    }
+    void setThumbnailUrl(object v) {
+      _thumbnailUrl = v;
     }
 
   }
@@ -2518,20 +2884,35 @@ class ActivityObject extends SomeBaseModelClass {
     str _type;
 
     // Getters and setters might go here
-    object get_content() {
+    object getContent() {
       return _content;
     }
-    object get_id() {
+    void setContent(object v) {
+      _content = v;
+    }
+    object getId() {
       return _id;
     }
-    Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> get_links() {
+    void setId(object v) {
+      _id = v;
+    }
+    Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> getLinks() {
       return _links;
     }
-    object get_title() {
+    void setLinks(Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> v) {
+      _links = v;
+    }
+    object getTitle() {
       return _title;
     }
-    str get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    str getType() {
       return _type;
+    }
+    void setType(str v) {
+      _type = v;
     }
 
     """Schema Activity.ActivityObject.ActivityObjectAttachments.ActivityObjectAt
@@ -2569,26 +2950,47 @@ class ActivityObject extends SomeBaseModelClass {
       object _width;
 
       // Getters and setters might go here
-      object get_count() {
+      object getCount() {
         return _count;
       }
-      object get_height() {
+      void setCount(object v) {
+        _count = v;
+      }
+      object getHeight() {
         return _height;
       }
-      object get_href() {
+      void setHeight(object v) {
+        _height = v;
+      }
+      object getHref() {
         return _href;
       }
-      object get_title() {
+      void setHref(object v) {
+        _href = v;
+      }
+      object getTitle() {
         return _title;
       }
-      object get_type() {
+      void setTitle(object v) {
+        _title = v;
+      }
+      object getType() {
         return _type;
       }
-      str get_updated() {
+      void setType(object v) {
+        _type = v;
+      }
+      str getUpdated() {
         return _updated;
       }
-      object get_width() {
+      void setUpdated(str v) {
+        _updated = v;
+      }
+      object getWidth() {
         return _width;
+      }
+      void setWidth(object v) {
+        _width = v;
       }
 
     }
@@ -2609,11 +3011,17 @@ class ActivityObject extends SomeBaseModelClass {
     object _type;
 
     // Getters and setters might go here
-    object get_href() {
+    object getHref() {
       return _href;
     }
-    object get_type() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getType() {
       return _type;
+    }
+    void setType(object v) {
+      _type = v;
     }
 
   }
@@ -2644,17 +3052,29 @@ class ActivityObjectActor extends SomeBaseModelClass {
   object _thumbnailUrl;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  object get_name() {
+  void setId(object v) {
+    _id = v;
+  }
+  object getName() {
     return _name;
   }
-  object get_profileUrl() {
+  void setName(object v) {
+    _name = v;
+  }
+  object getProfileUrl() {
     return _profileUrl;
   }
-  object get_thumbnailUrl() {
+  void setProfileUrl(object v) {
+    _profileUrl = v;
+  }
+  object getThumbnailUrl() {
     return _thumbnailUrl;
+  }
+  void setThumbnailUrl(object v) {
+    _thumbnailUrl = v;
   }
 
 }
@@ -2687,20 +3107,35 @@ class ActivityObjectAttachments extends SomeBaseModelClass {
   str _type;
 
   // Getters and setters might go here
-  object get_content() {
+  object getContent() {
     return _content;
   }
-  object get_id() {
+  void setContent(object v) {
+    _content = v;
+  }
+  object getId() {
     return _id;
   }
-  Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> get_links() {
+  void setId(object v) {
+    _id = v;
+  }
+  Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> getLinks() {
     return _links;
   }
-  object get_title() {
+  void setLinks(Map<string, com::google::myservice::Array<ActivityObjectAttachmentsLinksItemElement>> v) {
+    _links = v;
+  }
+  object getTitle() {
     return _title;
   }
-  str get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  str getType() {
     return _type;
+  }
+  void setType(str v) {
+    _type = v;
   }
 
   """Schema Activity.ActivityObject.ActivityObjectAttachments.ActivityObjectAtta
@@ -2737,26 +3172,47 @@ class ActivityObjectAttachments extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    object get_height() {
+    void setCount(object v) {
+      _count = v;
+    }
+    object getHeight() {
       return _height;
     }
-    object get_href() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_title() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
     }
-    str get_updated() {
+    void setType(object v) {
+      _type = v;
+    }
+    str getUpdated() {
       return _updated;
     }
-    object get_width() {
+    void setUpdated(str v) {
+      _updated = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -2799,26 +3255,47 @@ class ActivityObjectAttachmentsLinksItemElement extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  object get_height() {
+  void setCount(object v) {
+    _count = v;
+  }
+  object getHeight() {
     return _height;
   }
-  object get_href() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_title() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
   }
-  str get_updated() {
+  void setType(object v) {
+    _type = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  object get_width() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -2839,11 +3316,17 @@ class ActivityObjectLinksItemElement extends SomeBaseModelClass {
   object _type;
 
   // Getters and setters might go here
-  object get_href() {
+  object getHref() {
     return _href;
   }
-  object get_type() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getType() {
     return _type;
+  }
+  void setType(object v) {
+    _type = v;
   }
 
 }
@@ -2860,8 +3343,11 @@ class ActivitySource extends SomeBaseModelClass {
   object _title;
 
   // Getters and setters might go here
-  object get_title() {
+  object getTitle() {
     return _title;
+  }
+  void setTitle(object v) {
+    _title = v;
   }
 
 }
@@ -2878,8 +3364,11 @@ class ActivityVisibility extends SomeBaseModelClass {
   com::google::myservice::Array<ActivityVisibilityEntries> _entries;
 
   // Getters and setters might go here
-  com::google::myservice::Array<ActivityVisibilityEntries> get_entries() {
+  com::google::myservice::Array<ActivityVisibilityEntries> getEntries() {
     return _entries;
+  }
+  void setEntries(com::google::myservice::Array<ActivityVisibilityEntries> v) {
+    _entries = v;
   }
 
   """Schema Activity.ActivityVisibility.ActivityVisibilityEntries {
@@ -2896,11 +3385,17 @@ class ActivityVisibility extends SomeBaseModelClass {
     object _title;
 
     // Getters and setters might go here
-    object get_id() {
+    object getId() {
       return _id;
     }
-    object get_title() {
+    void setId(object v) {
+      _id = v;
+    }
+    object getTitle() {
       return _title;
+    }
+    void setTitle(object v) {
+      _title = v;
     }
 
   }
@@ -2923,11 +3418,17 @@ class ActivityVisibilityEntries extends SomeBaseModelClass {
   object _title;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  object get_title() {
+  void setId(object v) {
+    _id = v;
+  }
+  object getTitle() {
     return _title;
+  }
+  void setTitle(object v) {
+    _title = v;
   }
 
 }
@@ -2983,38 +3484,71 @@ class Album extends SomeBaseModelClass {
   long _version;
 
   // Getters and setters might go here
-  str get_created() {
+  str getCreated() {
     return _created;
   }
-  str get_description() {
+  void setCreated(str v) {
+    _created = v;
+  }
+  str getDescription() {
     return _description;
   }
-  long get_firstPhotoId() {
+  void setDescription(str v) {
+    _description = v;
+  }
+  long getFirstPhotoId() {
     return _firstPhotoId;
   }
-  long get_id() {
+  void setFirstPhotoId(long v) {
+    _firstPhotoId = v;
+  }
+  long getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(long v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  str get_lastModified() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getLastModified() {
     return _lastModified;
   }
-  AlbumLinks get_links() {
+  void setLastModified(str v) {
+    _lastModified = v;
+  }
+  AlbumLinks getLinks() {
     return _links;
   }
-  AlbumOwner get_owner() {
+  void setLinks(AlbumLinks v) {
+    _links = v;
+  }
+  AlbumOwner getOwner() {
     return _owner;
   }
-  com::google::myservice::Array<str> get_tags() {
+  void setOwner(AlbumOwner v) {
+    _owner = v;
+  }
+  com::google::myservice::Array<str> getTags() {
     return _tags;
   }
-  str get_title() {
+  void setTags(com::google::myservice::Array<str> v) {
+    _tags = v;
+  }
+  str getTitle() {
     return _title;
   }
-  long get_version() {
+  void setTitle(str v) {
+    _title = v;
+  }
+  long getVersion() {
     return _version;
+  }
+  void setVersion(long v) {
+    _version = v;
   }
 
   """Schema Album.AlbumLinks { model.description }} <p> Your explanation here.
@@ -3030,11 +3564,17 @@ class Album extends SomeBaseModelClass {
     Link _enclosure;
 
     // Getters and setters might go here
-    Link get_alternate() {
+    Link getAlternate() {
       return _alternate;
     }
-    Link get_enclosure() {
+    void setAlternate(Link v) {
+      _alternate = v;
+    }
+    Link getEnclosure() {
       return _enclosure;
+    }
+    void setEnclosure(Link v) {
+      _enclosure = v;
     }
 
   }
@@ -3060,17 +3600,29 @@ class Album extends SomeBaseModelClass {
     str _thumbnailUrl;
 
     // Getters and setters might go here
-    str get_id() {
+    str getId() {
       return _id;
     }
-    str get_name() {
+    void setId(str v) {
+      _id = v;
+    }
+    str getName() {
       return _name;
     }
-    str get_profileUrl() {
+    void setName(str v) {
+      _name = v;
+    }
+    str getProfileUrl() {
       return _profileUrl;
     }
-    str get_thumbnailUrl() {
+    void setProfileUrl(str v) {
+      _profileUrl = v;
+    }
+    str getThumbnailUrl() {
       return _thumbnailUrl;
+    }
+    void setThumbnailUrl(str v) {
+      _thumbnailUrl = v;
     }
 
   }
@@ -3092,11 +3644,17 @@ class AlbumLinks extends SomeBaseModelClass {
   Link _enclosure;
 
   // Getters and setters might go here
-  Link get_alternate() {
+  Link getAlternate() {
     return _alternate;
   }
-  Link get_enclosure() {
+  void setAlternate(Link v) {
+    _alternate = v;
+  }
+  Link getEnclosure() {
     return _enclosure;
+  }
+  void setEnclosure(Link v) {
+    _enclosure = v;
   }
 
 }
@@ -3124,17 +3682,29 @@ class AlbumOwner extends SomeBaseModelClass {
   str _thumbnailUrl;
 
   // Getters and setters might go here
-  str get_id() {
+  str getId() {
     return _id;
   }
-  str get_name() {
+  void setId(str v) {
+    _id = v;
+  }
+  str getName() {
     return _name;
   }
-  str get_profileUrl() {
+  void setName(str v) {
+    _name = v;
+  }
+  str getProfileUrl() {
     return _profileUrl;
   }
-  str get_thumbnailUrl() {
+  void setProfileUrl(str v) {
+    _profileUrl = v;
+  }
+  str getThumbnailUrl() {
     return _thumbnailUrl;
+  }
+  void setThumbnailUrl(str v) {
+    _thumbnailUrl = v;
   }
 
 }
@@ -3154,11 +3724,17 @@ class AlbumsFeed extends SomeBaseModelClass {
   str _kind;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Album> get_items() {
+  com::google::myservice::Array<Album> getItems() {
     return _items;
   }
-  str get_kind() {
+  void setItems(com::google::myservice::Array<Album> v) {
+    _items = v;
+  }
+  str getKind() {
     return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
   }
 
 }
@@ -3230,50 +3806,95 @@ class AllTypes extends SomeBaseModelClass {
   com::google::myservice::Array<str> _uint64array;
 
   // Getters and setters might go here
-  object get_any() {
+  object getAny() {
     return _any;
   }
-  bool get_boolean() {
+  void setAny(object v) {
+    _any = v;
+  }
+  bool getBoolean() {
     return _boolean;
   }
-  str get_bytes() {
+  void setBoolean(bool v) {
+    _boolean = v;
+  }
+  str getBytes() {
     return _bytes;
   }
-  str get_date() {
+  void setBytes(str v) {
+    _bytes = v;
+  }
+  str getDate() {
     return _date;
   }
-  str get_datetime() {
+  void setDate(str v) {
+    _date = v;
+  }
+  str getDatetime() {
     return _datetime;
   }
-  float get_double() {
+  void setDatetime(str v) {
+    _datetime = v;
+  }
+  float getDouble() {
     return _double;
   }
-  float get_float() {
+  void setDouble(float v) {
+    _double = v;
+  }
+  float getFloat() {
     return _float;
   }
-  long get_int16() {
+  void setFloat(float v) {
+    _float = v;
+  }
+  long getInt16() {
     return _int16;
   }
-  long get_int32() {
+  void setInt16(long v) {
+    _int16 = v;
+  }
+  long getInt32() {
     return _int32;
   }
-  str get_int64() {
+  void setInt32(long v) {
+    _int32 = v;
+  }
+  str getInt64() {
     return _int64;
   }
-  AllTypesObject get_object() {
+  void setInt64(str v) {
+    _int64 = v;
+  }
+  AllTypesObject getObject() {
     return _object;
   }
-  str get_string() {
+  void setObject(AllTypesObject v) {
+    _object = v;
+  }
+  str getString() {
     return _string;
   }
-  long get_uint32() {
+  void setString(str v) {
+    _string = v;
+  }
+  long getUint32() {
     return _uint32;
   }
-  str get_uint64() {
+  void setUint32(long v) {
+    _uint32 = v;
+  }
+  str getUint64() {
     return _uint64;
   }
-  com::google::myservice::Array<str> get_uint64array() {
+  void setUint64(str v) {
+    _uint64 = v;
+  }
+  com::google::myservice::Array<str> getUint64array() {
     return _uint64array;
+  }
+  void setUint64array(com::google::myservice::Array<str> v) {
+    _uint64array = v;
   }
 
   """Schema AllTypes.AllTypesObject { model.description }} <p> Your explanation
@@ -3286,8 +3907,11 @@ class AllTypes extends SomeBaseModelClass {
     str _id;
 
     // Getters and setters might go here
-    str get_id() {
+    str getId() {
       return _id;
+    }
+    void setId(str v) {
+      _id = v;
     }
 
   }
@@ -3306,8 +3930,11 @@ class AllTypesObject extends SomeBaseModelClass {
   str _id;
 
   // Getters and setters might go here
-  str get_id() {
+  str getId() {
     return _id;
+  }
+  void setId(str v) {
+    _id = v;
   }
 
 }
@@ -3368,41 +3995,77 @@ class ChiliPhotosResourceJson extends SomeBaseModelClass {
   long _version;
 
   // Getters and setters might go here
-  ChiliPhotosResourceJsonAlbum get_album() {
+  ChiliPhotosResourceJsonAlbum getAlbum() {
     return _album;
   }
-  str get_created() {
+  void setAlbum(ChiliPhotosResourceJsonAlbum v) {
+    _album = v;
+  }
+  str getCreated() {
     return _created;
   }
-  str get_description() {
+  void setCreated(str v) {
+    _created = v;
+  }
+  str getDescription() {
     return _description;
   }
-  long get_fileSize() {
+  void setDescription(str v) {
+    _description = v;
+  }
+  long getFileSize() {
     return _fileSize;
   }
-  long get_id() {
+  void setFileSize(long v) {
+    _fileSize = v;
+  }
+  long getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(long v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  str get_lastModified() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getLastModified() {
     return _lastModified;
   }
-  ChiliPhotosResourceJsonLinks get_links() {
+  void setLastModified(str v) {
+    _lastModified = v;
+  }
+  ChiliPhotosResourceJsonLinks getLinks() {
     return _links;
   }
-  ChiliPhotosResourceJsonOwner get_owner() {
+  void setLinks(ChiliPhotosResourceJsonLinks v) {
+    _links = v;
+  }
+  ChiliPhotosResourceJsonOwner getOwner() {
     return _owner;
   }
-  float get_timestamp() {
+  void setOwner(ChiliPhotosResourceJsonOwner v) {
+    _owner = v;
+  }
+  float getTimestamp() {
     return _timestamp;
   }
-  str get_title() {
+  void setTimestamp(float v) {
+    _timestamp = v;
+  }
+  str getTitle() {
     return _title;
   }
-  long get_version() {
+  void setTitle(str v) {
+    _title = v;
+  }
+  long getVersion() {
     return _version;
+  }
+  void setVersion(long v) {
+    _version = v;
   }
 
   """Schema ChiliPhotosResourceJson.ChiliPhotosResourceJsonAlbum {
@@ -3419,11 +4082,17 @@ class ChiliPhotosResourceJson extends SomeBaseModelClass {
     Link _page_link;
 
     // Getters and setters might go here
-    long get_id() {
+    long getId() {
       return _id;
     }
-    Link get_page_link() {
+    void setId(long v) {
+      _id = v;
+    }
+    Link getPage_link() {
       return _page_link;
+    }
+    void setPage_link(Link v) {
+      _page_link = v;
     }
 
   }
@@ -3438,8 +4107,11 @@ class ChiliPhotosResourceJson extends SomeBaseModelClass {
     com::google::myservice::Array<Link> _alternate;
 
     // Getters and setters might go here
-    com::google::myservice::Array<Link> get_alternate() {
+    com::google::myservice::Array<Link> getAlternate() {
       return _alternate;
+    }
+    void setAlternate(com::google::myservice::Array<Link> v) {
+      _alternate = v;
     }
 
   }
@@ -3466,17 +4138,29 @@ class ChiliPhotosResourceJson extends SomeBaseModelClass {
     str _thumbnailUrl;
 
     // Getters and setters might go here
-    str get_id() {
+    str getId() {
       return _id;
     }
-    str get_name() {
+    void setId(str v) {
+      _id = v;
+    }
+    str getName() {
       return _name;
     }
-    str get_profileUrl() {
+    void setName(str v) {
+      _name = v;
+    }
+    str getProfileUrl() {
       return _profileUrl;
     }
-    str get_thumbnailUrl() {
+    void setProfileUrl(str v) {
+      _profileUrl = v;
+    }
+    str getThumbnailUrl() {
       return _thumbnailUrl;
+    }
+    void setThumbnailUrl(str v) {
+      _thumbnailUrl = v;
     }
 
   }
@@ -3499,11 +4183,17 @@ class ChiliPhotosResourceJsonAlbum extends SomeBaseModelClass {
   Link _page_link;
 
   // Getters and setters might go here
-  long get_id() {
+  long getId() {
     return _id;
   }
-  Link get_page_link() {
+  void setId(long v) {
+    _id = v;
+  }
+  Link getPage_link() {
     return _page_link;
+  }
+  void setPage_link(Link v) {
+    _page_link = v;
   }
 
 }
@@ -3520,8 +4210,11 @@ class ChiliPhotosResourceJsonLinks extends SomeBaseModelClass {
   com::google::myservice::Array<Link> _alternate;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Link> get_alternate() {
+  com::google::myservice::Array<Link> getAlternate() {
     return _alternate;
+  }
+  void setAlternate(com::google::myservice::Array<Link> v) {
+    _alternate = v;
   }
 
 }
@@ -3550,17 +4243,29 @@ class ChiliPhotosResourceJsonOwner extends SomeBaseModelClass {
   str _thumbnailUrl;
 
   // Getters and setters might go here
-  str get_id() {
+  str getId() {
     return _id;
   }
-  str get_name() {
+  void setId(str v) {
+    _id = v;
+  }
+  str getName() {
     return _name;
   }
-  str get_profileUrl() {
+  void setName(str v) {
+    _name = v;
+  }
+  str getProfileUrl() {
     return _profileUrl;
   }
-  str get_thumbnailUrl() {
+  void setProfileUrl(str v) {
+    _profileUrl = v;
+  }
+  str getThumbnailUrl() {
     return _thumbnailUrl;
+  }
+  void setThumbnailUrl(str v) {
+    _thumbnailUrl = v;
   }
 
 }
@@ -3620,41 +4325,77 @@ class Comment extends SomeBaseModelClass {
   str _updated;
 
   // Getters and setters might go here
-  CommentActor get_actor() {
+  CommentActor getActor() {
     return _actor;
   }
-  object get_content() {
+  void setActor(CommentActor v) {
+    _actor = v;
+  }
+  object getContent() {
     return _content;
   }
-  object get_detectedLang() {
+  void setContent(object v) {
+    _content = v;
+  }
+  object getDetectedLang() {
     return _detectedLang;
   }
-  object get_id() {
+  void setDetectedLang(object v) {
+    _detectedLang = v;
+  }
+  object getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  CommentLinks get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  CommentLinks getLinks() {
     return _links;
   }
-  object get_originalContent() {
+  void setLinks(CommentLinks v) {
+    _links = v;
+  }
+  object getOriginalContent() {
     return _originalContent;
   }
-  object get_placeholder() {
+  void setOriginalContent(object v) {
+    _originalContent = v;
+  }
+  object getPlaceholder() {
     return _placeholder;
   }
-  str get_published() {
+  void setPlaceholder(object v) {
+    _placeholder = v;
+  }
+  str getPublished() {
     return _published;
   }
-  object get_targetLang() {
+  void setPublished(str v) {
+    _published = v;
+  }
+  object getTargetLang() {
     return _targetLang;
   }
-  object get_untranslatedContent() {
+  void setTargetLang(object v) {
+    _targetLang = v;
+  }
+  object getUntranslatedContent() {
     return _untranslatedContent;
   }
-  str get_updated() {
+  void setUntranslatedContent(object v) {
+    _untranslatedContent = v;
+  }
+  str getUpdated() {
     return _updated;
+  }
+  void setUpdated(str v) {
+    _updated = v;
   }
 
   """Schema Comment.CommentActor { model.description }} <p> Your explanation
@@ -3679,17 +4420,29 @@ class Comment extends SomeBaseModelClass {
     object _thumbnailUrl;
 
     // Getters and setters might go here
-    object get_id() {
+    object getId() {
       return _id;
     }
-    object get_name() {
+    void setId(object v) {
+      _id = v;
+    }
+    object getName() {
       return _name;
     }
-    object get_profileUrl() {
+    void setName(object v) {
+      _name = v;
+    }
+    object getProfileUrl() {
       return _profileUrl;
     }
-    object get_thumbnailUrl() {
+    void setProfileUrl(object v) {
+      _profileUrl = v;
+    }
+    object getThumbnailUrl() {
       return _thumbnailUrl;
+    }
+    void setThumbnailUrl(object v) {
+      _thumbnailUrl = v;
     }
 
   }
@@ -3704,8 +4457,11 @@ class Comment extends SomeBaseModelClass {
     com::google::myservice::Array<CommentLinksInReplyTo> _inReplyTo;
 
     // Getters and setters might go here
-    com::google::myservice::Array<CommentLinksInReplyTo> get_inReplyTo() {
+    com::google::myservice::Array<CommentLinksInReplyTo> getInReplyTo() {
       return _inReplyTo;
+    }
+    void setInReplyTo(com::google::myservice::Array<CommentLinksInReplyTo> v) {
+      _inReplyTo = v;
     }
 
     """Schema Comment.CommentLinks.CommentLinksInReplyTo { model.description }}
@@ -3726,14 +4482,23 @@ class Comment extends SomeBaseModelClass {
       object _source;
 
       // Getters and setters might go here
-      object get_href() {
+      object getHref() {
         return _href;
       }
-      object get_ref() {
+      void setHref(object v) {
+        _href = v;
+      }
+      object getRef() {
         return _ref;
       }
-      object get_source() {
+      void setRef(object v) {
+        _ref = v;
+      }
+      object getSource() {
         return _source;
+      }
+      void setSource(object v) {
+        _source = v;
       }
 
     }
@@ -3765,17 +4530,29 @@ class CommentActor extends SomeBaseModelClass {
   object _thumbnailUrl;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  object get_name() {
+  void setId(object v) {
+    _id = v;
+  }
+  object getName() {
     return _name;
   }
-  object get_profileUrl() {
+  void setName(object v) {
+    _name = v;
+  }
+  object getProfileUrl() {
     return _profileUrl;
   }
-  object get_thumbnailUrl() {
+  void setProfileUrl(object v) {
+    _profileUrl = v;
+  }
+  object getThumbnailUrl() {
     return _thumbnailUrl;
+  }
+  void setThumbnailUrl(object v) {
+    _thumbnailUrl = v;
   }
 
 }
@@ -3811,23 +4588,41 @@ class CommentFeed extends SomeBaseModelClass {
   str _updated;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  com::google::myservice::Array<Comment> get_items() {
+  void setId(object v) {
+    _id = v;
+  }
+  com::google::myservice::Array<Comment> getItems() {
     return _items;
   }
-  str get_kind() {
+  void setItems(com::google::myservice::Array<Comment> v) {
+    _items = v;
+  }
+  str getKind() {
     return _kind;
   }
-  Map<string, com::google::myservice::Array<CommentFeedLinksItemElement>> get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  Map<string, com::google::myservice::Array<CommentFeedLinksItemElement>> getLinks() {
     return _links;
   }
-  object get_title() {
+  void setLinks(Map<string, com::google::myservice::Array<CommentFeedLinksItemElement>> v) {
+    _links = v;
+  }
+  object getTitle() {
     return _title;
   }
-  str get_updated() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  str getUpdated() {
     return _updated;
+  }
+  void setUpdated(str v) {
+    _updated = v;
   }
 
   """Schema CommentFeed.CommentFeedLinksItemElement { model.description }} <p>
@@ -3864,26 +4659,47 @@ class CommentFeed extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    object get_height() {
+    void setCount(object v) {
+      _count = v;
+    }
+    object getHeight() {
       return _height;
     }
-    object get_href() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_title() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
     }
-    str get_updated() {
+    void setType(object v) {
+      _type = v;
+    }
+    str getUpdated() {
       return _updated;
     }
-    object get_width() {
+    void setUpdated(str v) {
+      _updated = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -3926,26 +4742,47 @@ class CommentFeedLinksItemElement extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  object get_height() {
+  void setCount(object v) {
+    _count = v;
+  }
+  object getHeight() {
     return _height;
   }
-  object get_href() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_title() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
   }
-  str get_updated() {
+  void setType(object v) {
+    _type = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  object get_width() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -3961,8 +4798,11 @@ class CommentLinks extends SomeBaseModelClass {
   com::google::myservice::Array<CommentLinksInReplyTo> _inReplyTo;
 
   // Getters and setters might go here
-  com::google::myservice::Array<CommentLinksInReplyTo> get_inReplyTo() {
+  com::google::myservice::Array<CommentLinksInReplyTo> getInReplyTo() {
     return _inReplyTo;
+  }
+  void setInReplyTo(com::google::myservice::Array<CommentLinksInReplyTo> v) {
+    _inReplyTo = v;
   }
 
   """Schema Comment.CommentLinks.CommentLinksInReplyTo { model.description }}
@@ -3983,14 +4823,23 @@ class CommentLinks extends SomeBaseModelClass {
     object _source;
 
     // Getters and setters might go here
-    object get_href() {
+    object getHref() {
       return _href;
     }
-    object get_ref() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getRef() {
       return _ref;
     }
-    object get_source() {
+    void setRef(object v) {
+      _ref = v;
+    }
+    object getSource() {
       return _source;
+    }
+    void setSource(object v) {
+      _source = v;
     }
 
   }
@@ -4017,14 +4866,23 @@ class CommentLinksInReplyTo extends SomeBaseModelClass {
   object _source;
 
   // Getters and setters might go here
-  object get_href() {
+  object getHref() {
     return _href;
   }
-  object get_ref() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getRef() {
     return _ref;
   }
-  object get_source() {
+  void setRef(object v) {
+    _ref = v;
+  }
+  object getSource() {
     return _source;
+  }
+  void setSource(object v) {
+    _source = v;
   }
 
 }
@@ -4044,11 +4902,17 @@ class CountFeed extends SomeBaseModelClass {
   str _kind;
 
   // Getters and setters might go here
-  Map<string, com::google::myservice::Array<CountFeedCountsItemElement>> get_counts() {
+  Map<string, com::google::myservice::Array<CountFeedCountsItemElement>> getCounts() {
     return _counts;
   }
-  str get_kind() {
+  void setCounts(Map<string, com::google::myservice::Array<CountFeedCountsItemElement>> v) {
+    _counts = v;
+  }
+  str getKind() {
     return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
   }
 
   """Schema CountFeed.CountFeedCountsItemElement { model.description }} <p> Your
@@ -4065,11 +4929,17 @@ class CountFeed extends SomeBaseModelClass {
     str _timestamp;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    str get_timestamp() {
+    void setCount(object v) {
+      _count = v;
+    }
+    str getTimestamp() {
       return _timestamp;
+    }
+    void setTimestamp(str v) {
+      _timestamp = v;
     }
 
   }
@@ -4092,11 +4962,17 @@ class CountFeedCountsItemElement extends SomeBaseModelClass {
   str _timestamp;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  str get_timestamp() {
+  void setCount(object v) {
+    _count = v;
+  }
+  str getTimestamp() {
     return _timestamp;
+  }
+  void setTimestamp(str v) {
+    _timestamp = v;
   }
 
 }
@@ -4148,35 +5024,65 @@ class Entity extends SomeBaseModelClass {
   com::google::myservice::Array<EntityViewerStarAcl> _viewerStarAcl;
 
   // Getters and setters might go here
-  object get_chipsUiAcl() {
+  object getChipsUiAcl() {
     return _chipsUiAcl;
   }
-  object get_comment() {
+  void setChipsUiAcl(object v) {
+    _chipsUiAcl = v;
+  }
+  object getComment() {
     return _comment;
   }
-  object get_id() {
+  void setComment(object v) {
+    _comment = v;
+  }
+  object getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  com::google::myservice::Array<Person> get_starredBy() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  com::google::myservice::Array<Person> getStarredBy() {
     return _starredBy;
   }
-  object get_starredByViewer() {
+  void setStarredBy(com::google::myservice::Array<Person> v) {
+    _starredBy = v;
+  }
+  object getStarredByViewer() {
     return _starredByViewer;
   }
-  object get_summary() {
+  void setStarredByViewer(object v) {
+    _starredByViewer = v;
+  }
+  object getSummary() {
     return _summary;
   }
-  object get_title() {
+  void setSummary(object v) {
+    _summary = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_totalNumStars() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getTotalNumStars() {
     return _totalNumStars;
   }
-  com::google::myservice::Array<EntityViewerStarAcl> get_viewerStarAcl() {
+  void setTotalNumStars(object v) {
+    _totalNumStars = v;
+  }
+  com::google::myservice::Array<EntityViewerStarAcl> getViewerStarAcl() {
     return _viewerStarAcl;
+  }
+  void setViewerStarAcl(com::google::myservice::Array<EntityViewerStarAcl> v) {
+    _viewerStarAcl = v;
   }
 
   """Schema Entity.EntityViewerStarAcl { model.description }} <p> Your
@@ -4201,17 +5107,29 @@ class Entity extends SomeBaseModelClass {
     com::google::myservice::Array<object> _tags;
 
     // Getters and setters might go here
-    object get_displayName() {
+    object getDisplayName() {
       return _displayName;
     }
-    object get_id() {
+    void setDisplayName(object v) {
+      _displayName = v;
+    }
+    object getId() {
       return _id;
     }
-    object get_kind() {
+    void setId(object v) {
+      _id = v;
+    }
+    object getKind() {
       return _kind;
     }
-    com::google::myservice::Array<object> get_tags() {
+    void setKind(object v) {
+      _kind = v;
+    }
+    com::google::myservice::Array<object> getTags() {
       return _tags;
+    }
+    void setTags(com::google::myservice::Array<object> v) {
+      _tags = v;
     }
 
   }
@@ -4237,14 +5155,23 @@ class EntityAcl extends SomeBaseModelClass {
   com::google::myservice::Array<EntityAclViewerStarAcl> _viewerStarAcl;
 
   // Getters and setters might go here
-  str get_chipsUiAcl() {
+  str getChipsUiAcl() {
     return _chipsUiAcl;
   }
-  str get_kind() {
+  void setChipsUiAcl(str v) {
+    _chipsUiAcl = v;
+  }
+  str getKind() {
     return _kind;
   }
-  com::google::myservice::Array<EntityAclViewerStarAcl> get_viewerStarAcl() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  com::google::myservice::Array<EntityAclViewerStarAcl> getViewerStarAcl() {
     return _viewerStarAcl;
+  }
+  void setViewerStarAcl(com::google::myservice::Array<EntityAclViewerStarAcl> v) {
+    _viewerStarAcl = v;
   }
 
   """Schema EntityAcl.EntityAclViewerStarAcl { model.description }} <p> Your
@@ -4269,17 +5196,29 @@ class EntityAcl extends SomeBaseModelClass {
     com::google::myservice::Array<str> _tags;
 
     // Getters and setters might go here
-    str get_displayName() {
+    str getDisplayName() {
       return _displayName;
     }
-    str get_id() {
+    void setDisplayName(str v) {
+      _displayName = v;
+    }
+    str getId() {
       return _id;
     }
-    str get_kind() {
+    void setId(str v) {
+      _id = v;
+    }
+    str getKind() {
       return _kind;
     }
-    com::google::myservice::Array<str> get_tags() {
+    void setKind(str v) {
+      _kind = v;
+    }
+    com::google::myservice::Array<str> getTags() {
       return _tags;
+    }
+    void setTags(com::google::myservice::Array<str> v) {
+      _tags = v;
     }
 
   }
@@ -4310,17 +5249,29 @@ class EntityAclViewerStarAcl extends SomeBaseModelClass {
   com::google::myservice::Array<str> _tags;
 
   // Getters and setters might go here
-  str get_displayName() {
+  str getDisplayName() {
     return _displayName;
   }
-  str get_id() {
+  void setDisplayName(str v) {
+    _displayName = v;
+  }
+  str getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(str v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  com::google::myservice::Array<str> get_tags() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  com::google::myservice::Array<str> getTags() {
     return _tags;
+  }
+  void setTags(com::google::myservice::Array<str> v) {
+    _tags = v;
   }
 
 }
@@ -4349,17 +5300,29 @@ class EntityViewerStarAcl extends SomeBaseModelClass {
   com::google::myservice::Array<object> _tags;
 
   // Getters and setters might go here
-  object get_displayName() {
+  object getDisplayName() {
     return _displayName;
   }
-  object get_id() {
+  void setDisplayName(object v) {
+    _displayName = v;
+  }
+  object getId() {
     return _id;
   }
-  object get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  object getKind() {
     return _kind;
   }
-  com::google::myservice::Array<object> get_tags() {
+  void setKind(object v) {
+    _kind = v;
+  }
+  com::google::myservice::Array<object> getTags() {
     return _tags;
+  }
+  void setTags(com::google::myservice::Array<object> v) {
+    _tags = v;
   }
 
 }
@@ -4391,20 +5354,35 @@ class Group extends SomeBaseModelClass {
   object _title;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  GroupLinks get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  GroupLinks getLinks() {
     return _links;
   }
-  object get_memberCount() {
+  void setLinks(GroupLinks v) {
+    _links = v;
+  }
+  object getMemberCount() {
     return _memberCount;
   }
-  object get_title() {
+  void setMemberCount(object v) {
+    _memberCount = v;
+  }
+  object getTitle() {
     return _title;
+  }
+  void setTitle(object v) {
+    _title = v;
   }
 
   """Schema Group.GroupLinks { model.description }} <p> Your explanation here.
@@ -4416,8 +5394,11 @@ class Group extends SomeBaseModelClass {
     com::google::myservice::Array<GroupLinksSelf> _self;
 
     // Getters and setters might go here
-    com::google::myservice::Array<GroupLinksSelf> get_self() {
+    com::google::myservice::Array<GroupLinksSelf> getSelf() {
       return _self;
+    }
+    void setSelf(com::google::myservice::Array<GroupLinksSelf> v) {
+      _self = v;
     }
 
     """Schema Group.GroupLinks.GroupLinksSelf { model.description }} <p> Your
@@ -4434,11 +5415,17 @@ class Group extends SomeBaseModelClass {
       str _type;
 
       // Getters and setters might go here
-      object get_href() {
+      object getHref() {
         return _href;
       }
-      str get_type() {
+      void setHref(object v) {
+        _href = v;
+      }
+      str getType() {
         return _type;
+      }
+      void setType(str v) {
+        _type = v;
       }
 
     }
@@ -4466,14 +5453,23 @@ class GroupFeed extends SomeBaseModelClass {
   Map<string, com::google::myservice::Array<GroupFeedLinksItemElement>> _links;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Group> get_items() {
+  com::google::myservice::Array<Group> getItems() {
     return _items;
   }
-  str get_kind() {
+  void setItems(com::google::myservice::Array<Group> v) {
+    _items = v;
+  }
+  str getKind() {
     return _kind;
   }
-  Map<string, com::google::myservice::Array<GroupFeedLinksItemElement>> get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  Map<string, com::google::myservice::Array<GroupFeedLinksItemElement>> getLinks() {
     return _links;
+  }
+  void setLinks(Map<string, com::google::myservice::Array<GroupFeedLinksItemElement>> v) {
+    _links = v;
   }
 
   """Schema GroupFeed.GroupFeedLinksItemElement { model.description }} <p> Your
@@ -4510,26 +5506,47 @@ class GroupFeed extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    object get_height() {
+    void setCount(object v) {
+      _count = v;
+    }
+    object getHeight() {
       return _height;
     }
-    object get_href() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_title() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
     }
-    str get_updated() {
+    void setType(object v) {
+      _type = v;
+    }
+    str getUpdated() {
       return _updated;
     }
-    object get_width() {
+    void setUpdated(str v) {
+      _updated = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -4572,26 +5589,47 @@ class GroupFeedLinksItemElement extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  object get_height() {
+  void setCount(object v) {
+    _count = v;
+  }
+  object getHeight() {
     return _height;
   }
-  object get_href() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_title() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
   }
-  str get_updated() {
+  void setType(object v) {
+    _type = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  object get_width() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -4607,8 +5645,11 @@ class GroupLinks extends SomeBaseModelClass {
   com::google::myservice::Array<GroupLinksSelf> _self;
 
   // Getters and setters might go here
-  com::google::myservice::Array<GroupLinksSelf> get_self() {
+  com::google::myservice::Array<GroupLinksSelf> getSelf() {
     return _self;
+  }
+  void setSelf(com::google::myservice::Array<GroupLinksSelf> v) {
+    _self = v;
   }
 
   """Schema Group.GroupLinks.GroupLinksSelf { model.description }} <p> Your
@@ -4625,11 +5666,17 @@ class GroupLinks extends SomeBaseModelClass {
     str _type;
 
     // Getters and setters might go here
-    object get_href() {
+    object getHref() {
       return _href;
     }
-    str get_type() {
+    void setHref(object v) {
+      _href = v;
+    }
+    str getType() {
       return _type;
+    }
+    void setType(str v) {
+      _type = v;
     }
 
   }
@@ -4652,11 +5699,17 @@ class GroupLinksSelf extends SomeBaseModelClass {
   str _type;
 
   // Getters and setters might go here
-  object get_href() {
+  object getHref() {
     return _href;
   }
-  str get_type() {
+  void setHref(object v) {
+    _href = v;
+  }
+  str getType() {
     return _type;
+  }
+  void setType(str v) {
+    _type = v;
   }
 
 }
@@ -4676,11 +5729,17 @@ class Link extends SomeBaseModelClass {
   str _href;
 
   // Getters and setters might go here
-  long get_count() {
+  long getCount() {
     return _count;
   }
-  str get_href() {
+  void setCount(long v) {
+    _count = v;
+  }
+  str getHref() {
     return _href;
+  }
+  void setHref(str v) {
+    _href = v;
   }
 
 }
@@ -4712,20 +5771,35 @@ class PeopleFeed extends SomeBaseModelClass {
   object _totalResults;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Person> get_entry() {
+  com::google::myservice::Array<Person> getEntry() {
     return _entry;
   }
-  object get_itemsPerPage() {
+  void setEntry(com::google::myservice::Array<Person> v) {
+    _entry = v;
+  }
+  object getItemsPerPage() {
     return _itemsPerPage;
   }
-  str get_kind() {
+  void setItemsPerPage(object v) {
+    _itemsPerPage = v;
+  }
+  str getKind() {
     return _kind;
   }
-  object get_startIndex() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  object getStartIndex() {
     return _startIndex;
   }
-  object get_totalResults() {
+  void setStartIndex(object v) {
+    _startIndex = v;
+  }
+  object getTotalResults() {
     return _totalResults;
+  }
+  void setTotalResults(object v) {
+    _totalResults = v;
   }
 
 }
@@ -4997,200 +6071,395 @@ class Person extends SomeBaseModelClass {
   object _utcOffset;
 
   // Getters and setters might go here
-  object get_aboutMe() {
+  object getAboutMe() {
     return _aboutMe;
   }
-  com::google::myservice::Array<PersonAccounts> get_accounts() {
+  void setAboutMe(object v) {
+    _aboutMe = v;
+  }
+  com::google::myservice::Array<PersonAccounts> getAccounts() {
     return _accounts;
   }
-  com::google::myservice::Array<object> get_activities() {
+  void setAccounts(com::google::myservice::Array<PersonAccounts> v) {
+    _accounts = v;
+  }
+  com::google::myservice::Array<object> getActivities() {
     return _activities;
   }
-  com::google::myservice::Array<PersonAddresses> get_addresses() {
+  void setActivities(com::google::myservice::Array<object> v) {
+    _activities = v;
+  }
+  com::google::myservice::Array<PersonAddresses> getAddresses() {
     return _addresses;
   }
-  object get_anniversary() {
+  void setAddresses(com::google::myservice::Array<PersonAddresses> v) {
+    _addresses = v;
+  }
+  object getAnniversary() {
     return _anniversary;
   }
-  object get_birthday() {
+  void setAnniversary(object v) {
+    _anniversary = v;
+  }
+  object getBirthday() {
     return _birthday;
   }
-  object get_bodyType() {
+  void setBirthday(object v) {
+    _birthday = v;
+  }
+  object getBodyType() {
     return _bodyType;
   }
-  com::google::myservice::Array<object> get_books() {
+  void setBodyType(object v) {
+    _bodyType = v;
+  }
+  com::google::myservice::Array<object> getBooks() {
     return _books;
   }
-  com::google::myservice::Array<object> get_cars() {
+  void setBooks(com::google::myservice::Array<object> v) {
+    _books = v;
+  }
+  com::google::myservice::Array<object> getCars() {
     return _cars;
   }
-  com::google::myservice::Array<object> get_children() {
+  void setCars(com::google::myservice::Array<object> v) {
+    _cars = v;
+  }
+  com::google::myservice::Array<object> getChildren() {
     return _children;
   }
-  object get_connected() {
+  void setChildren(com::google::myservice::Array<object> v) {
+    _children = v;
+  }
+  object getConnected() {
     return _connected;
   }
-  object get_currentLocation() {
+  void setConnected(object v) {
+    _connected = v;
+  }
+  object getCurrentLocation() {
     return _currentLocation;
   }
-  object get_displayName() {
+  void setCurrentLocation(object v) {
+    _currentLocation = v;
+  }
+  object getDisplayName() {
     return _displayName;
   }
-  object get_drinker() {
+  void setDisplayName(object v) {
+    _displayName = v;
+  }
+  object getDrinker() {
     return _drinker;
   }
-  com::google::myservice::Array<PersonEmails> get_emails() {
+  void setDrinker(object v) {
+    _drinker = v;
+  }
+  com::google::myservice::Array<PersonEmails> getEmails() {
     return _emails;
   }
-  object get_ethnicity() {
+  void setEmails(com::google::myservice::Array<PersonEmails> v) {
+    _emails = v;
+  }
+  object getEthnicity() {
     return _ethnicity;
   }
-  object get_fashion() {
+  void setEthnicity(object v) {
+    _ethnicity = v;
+  }
+  object getFashion() {
     return _fashion;
   }
-  com::google::myservice::Array<object> get_food() {
+  void setFashion(object v) {
+    _fashion = v;
+  }
+  com::google::myservice::Array<object> getFood() {
     return _food;
   }
-  object get_gender() {
+  void setFood(com::google::myservice::Array<object> v) {
+    _food = v;
+  }
+  object getGender() {
     return _gender;
   }
-  object get_happiestWhen() {
+  void setGender(object v) {
+    _gender = v;
+  }
+  object getHappiestWhen() {
     return _happiestWhen;
   }
-  object get_hasApp() {
+  void setHappiestWhen(object v) {
+    _happiestWhen = v;
+  }
+  object getHasApp() {
     return _hasApp;
   }
-  com::google::myservice::Array<object> get_heroes() {
+  void setHasApp(object v) {
+    _hasApp = v;
+  }
+  com::google::myservice::Array<object> getHeroes() {
     return _heroes;
   }
-  object get_humor() {
+  void setHeroes(com::google::myservice::Array<object> v) {
+    _heroes = v;
+  }
+  object getHumor() {
     return _humor;
   }
-  object get_id() {
+  void setHumor(object v) {
+    _humor = v;
+  }
+  object getId() {
     return _id;
   }
-  com::google::myservice::Array<PersonIms> get_ims() {
+  void setId(object v) {
+    _id = v;
+  }
+  com::google::myservice::Array<PersonIms> getIms() {
     return _ims;
   }
-  com::google::myservice::Array<object> get_interests() {
+  void setIms(com::google::myservice::Array<PersonIms> v) {
+    _ims = v;
+  }
+  com::google::myservice::Array<object> getInterests() {
     return _interests;
   }
-  com::google::myservice::Array<object> get_jobInterests() {
+  void setInterests(com::google::myservice::Array<object> v) {
+    _interests = v;
+  }
+  com::google::myservice::Array<object> getJobInterests() {
     return _jobInterests;
   }
-  str get_kind() {
+  void setJobInterests(com::google::myservice::Array<object> v) {
+    _jobInterests = v;
+  }
+  str getKind() {
     return _kind;
   }
-  com::google::myservice::Array<object> get_languages() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  com::google::myservice::Array<object> getLanguages() {
     return _languages;
   }
-  com::google::myservice::Array<object> get_languagesSpoken() {
+  void setLanguages(com::google::myservice::Array<object> v) {
+    _languages = v;
+  }
+  com::google::myservice::Array<object> getLanguagesSpoken() {
     return _languagesSpoken;
   }
-  object get_livingArrangement() {
+  void setLanguagesSpoken(com::google::myservice::Array<object> v) {
+    _languagesSpoken = v;
+  }
+  object getLivingArrangement() {
     return _livingArrangement;
   }
-  object get_lookingFor() {
+  void setLivingArrangement(object v) {
+    _livingArrangement = v;
+  }
+  object getLookingFor() {
     return _lookingFor;
   }
-  com::google::myservice::Array<object> get_movies() {
+  void setLookingFor(object v) {
+    _lookingFor = v;
+  }
+  com::google::myservice::Array<object> getMovies() {
     return _movies;
   }
-  com::google::myservice::Array<object> get_music() {
+  void setMovies(com::google::myservice::Array<object> v) {
+    _movies = v;
+  }
+  com::google::myservice::Array<object> getMusic() {
     return _music;
   }
-  PersonName get_name() {
+  void setMusic(com::google::myservice::Array<object> v) {
+    _music = v;
+  }
+  PersonName getName() {
     return _name;
   }
-  object get_nickname() {
+  void setName(PersonName v) {
+    _name = v;
+  }
+  object getNickname() {
     return _nickname;
   }
-  object get_note() {
+  void setNickname(object v) {
+    _nickname = v;
+  }
+  object getNote() {
     return _note;
   }
-  com::google::myservice::Array<PersonOrganizations> get_organizations() {
+  void setNote(object v) {
+    _note = v;
+  }
+  com::google::myservice::Array<PersonOrganizations> getOrganizations() {
     return _organizations;
   }
-  com::google::myservice::Array<object> get_pets() {
+  void setOrganizations(com::google::myservice::Array<PersonOrganizations> v) {
+    _organizations = v;
+  }
+  com::google::myservice::Array<object> getPets() {
     return _pets;
   }
-  com::google::myservice::Array<PersonPhoneNumbers> get_phoneNumbers() {
+  void setPets(com::google::myservice::Array<object> v) {
+    _pets = v;
+  }
+  com::google::myservice::Array<PersonPhoneNumbers> getPhoneNumbers() {
     return _phoneNumbers;
   }
-  com::google::myservice::Array<PersonPhotos> get_photos() {
+  void setPhoneNumbers(com::google::myservice::Array<PersonPhoneNumbers> v) {
+    _phoneNumbers = v;
+  }
+  com::google::myservice::Array<PersonPhotos> getPhotos() {
     return _photos;
   }
-  com::google::myservice::Array<object> get_politicalViews() {
+  void setPhotos(com::google::myservice::Array<PersonPhotos> v) {
+    _photos = v;
+  }
+  com::google::myservice::Array<object> getPoliticalViews() {
     return _politicalViews;
   }
-  object get_preferredUsername() {
+  void setPoliticalViews(com::google::myservice::Array<object> v) {
+    _politicalViews = v;
+  }
+  object getPreferredUsername() {
     return _preferredUsername;
   }
-  object get_profileSong() {
+  void setPreferredUsername(object v) {
+    _preferredUsername = v;
+  }
+  object getProfileSong() {
     return _profileSong;
   }
-  object get_profileUrl() {
+  void setProfileSong(object v) {
+    _profileSong = v;
+  }
+  object getProfileUrl() {
     return _profileUrl;
   }
-  object get_profileVideo() {
+  void setProfileUrl(object v) {
+    _profileUrl = v;
+  }
+  object getProfileVideo() {
     return _profileVideo;
   }
-  str get_published() {
+  void setProfileVideo(object v) {
+    _profileVideo = v;
+  }
+  str getPublished() {
     return _published;
   }
-  com::google::myservice::Array<object> get_quotes() {
+  void setPublished(str v) {
+    _published = v;
+  }
+  com::google::myservice::Array<object> getQuotes() {
     return _quotes;
   }
-  object get_relationshipStatus() {
+  void setQuotes(com::google::myservice::Array<object> v) {
+    _quotes = v;
+  }
+  object getRelationshipStatus() {
     return _relationshipStatus;
   }
-  com::google::myservice::Array<object> get_relationships() {
+  void setRelationshipStatus(object v) {
+    _relationshipStatus = v;
+  }
+  com::google::myservice::Array<object> getRelationships() {
     return _relationships;
   }
-  object get_religion() {
+  void setRelationships(com::google::myservice::Array<object> v) {
+    _relationships = v;
+  }
+  object getReligion() {
     return _religion;
   }
-  object get_romance() {
+  void setReligion(object v) {
+    _religion = v;
+  }
+  object getRomance() {
     return _romance;
   }
-  object get_scaredOf() {
+  void setRomance(object v) {
+    _romance = v;
+  }
+  object getScaredOf() {
     return _scaredOf;
   }
-  object get_sexualOrientation() {
+  void setScaredOf(object v) {
+    _scaredOf = v;
+  }
+  object getSexualOrientation() {
     return _sexualOrientation;
   }
-  object get_smoker() {
+  void setSexualOrientation(object v) {
+    _sexualOrientation = v;
+  }
+  object getSmoker() {
     return _smoker;
   }
-  com::google::myservice::Array<object> get_sports() {
+  void setSmoker(object v) {
+    _smoker = v;
+  }
+  com::google::myservice::Array<object> getSports() {
     return _sports;
   }
-  object get_status() {
+  void setSports(com::google::myservice::Array<object> v) {
+    _sports = v;
+  }
+  object getStatus() {
     return _status;
   }
-  com::google::myservice::Array<object> get_tags() {
+  void setStatus(object v) {
+    _status = v;
+  }
+  com::google::myservice::Array<object> getTags() {
     return _tags;
   }
-  object get_thumbnailUrl() {
+  void setTags(com::google::myservice::Array<object> v) {
+    _tags = v;
+  }
+  object getThumbnailUrl() {
     return _thumbnailUrl;
   }
-  com::google::myservice::Array<object> get_turnOffs() {
+  void setThumbnailUrl(object v) {
+    _thumbnailUrl = v;
+  }
+  com::google::myservice::Array<object> getTurnOffs() {
     return _turnOffs;
   }
-  com::google::myservice::Array<object> get_turnOns() {
+  void setTurnOffs(com::google::myservice::Array<object> v) {
+    _turnOffs = v;
+  }
+  com::google::myservice::Array<object> getTurnOns() {
     return _turnOns;
   }
-  com::google::myservice::Array<object> get_tvShows() {
+  void setTurnOns(com::google::myservice::Array<object> v) {
+    _turnOns = v;
+  }
+  com::google::myservice::Array<object> getTvShows() {
     return _tvShows;
   }
-  str get_updated() {
+  void setTvShows(com::google::myservice::Array<object> v) {
+    _tvShows = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  com::google::myservice::Array<PersonUrls> get_urls() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  com::google::myservice::Array<PersonUrls> getUrls() {
     return _urls;
   }
-  object get_utcOffset() {
+  void setUrls(com::google::myservice::Array<PersonUrls> v) {
+    _urls = v;
+  }
+  object getUtcOffset() {
     return _utcOffset;
+  }
+  void setUtcOffset(object v) {
+    _utcOffset = v;
   }
 
   """Schema Person.PersonAccounts { model.description }} <p> Your explanation
@@ -5211,14 +6480,23 @@ class Person extends SomeBaseModelClass {
     object _username;
 
     // Getters and setters might go here
-    object get_domain() {
+    object getDomain() {
       return _domain;
     }
-    object get_userid() {
+    void setDomain(object v) {
+      _domain = v;
+    }
+    object getUserid() {
       return _userid;
     }
-    object get_username() {
+    void setUserid(object v) {
+      _userid = v;
+    }
+    object getUsername() {
       return _username;
+    }
+    void setUsername(object v) {
+      _username = v;
     }
 
   }
@@ -5261,29 +6539,53 @@ class Person extends SomeBaseModelClass {
     object _type;
 
     // Getters and setters might go here
-    object get_country() {
+    object getCountry() {
       return _country;
     }
-    object get_formatted() {
+    void setCountry(object v) {
+      _country = v;
+    }
+    object getFormatted() {
       return _formatted;
     }
-    object get_locality() {
+    void setFormatted(object v) {
+      _formatted = v;
+    }
+    object getLocality() {
       return _locality;
     }
-    object get_postalCode() {
+    void setLocality(object v) {
+      _locality = v;
+    }
+    object getPostalCode() {
       return _postalCode;
     }
-    object get_primary() {
+    void setPostalCode(object v) {
+      _postalCode = v;
+    }
+    object getPrimary() {
       return _primary;
     }
-    object get_region() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getRegion() {
       return _region;
     }
-    object get_streetAddress() {
+    void setRegion(object v) {
+      _region = v;
+    }
+    object getStreetAddress() {
       return _streetAddress;
     }
-    object get_type() {
+    void setStreetAddress(object v) {
+      _streetAddress = v;
+    }
+    object getType() {
       return _type;
+    }
+    void setType(object v) {
+      _type = v;
     }
 
   }
@@ -5306,14 +6608,23 @@ class Person extends SomeBaseModelClass {
     object _value;
 
     // Getters and setters might go here
-    object get_primary() {
+    object getPrimary() {
       return _primary;
     }
-    object get_type() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getType() {
       return _type;
     }
-    object get_value() {
+    void setType(object v) {
+      _type = v;
+    }
+    object getValue() {
       return _value;
+    }
+    void setValue(object v) {
+      _value = v;
     }
 
   }
@@ -5335,14 +6646,23 @@ class Person extends SomeBaseModelClass {
     object _value;
 
     // Getters and setters might go here
-    object get_primary() {
+    object getPrimary() {
       return _primary;
     }
-    object get_type() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getType() {
       return _type;
     }
-    object get_value() {
+    void setType(object v) {
+      _type = v;
+    }
+    object getValue() {
       return _value;
+    }
+    void setValue(object v) {
+      _value = v;
     }
 
   }
@@ -5376,23 +6696,41 @@ class Person extends SomeBaseModelClass {
     object _middleName;
 
     // Getters and setters might go here
-    object get_familyName() {
+    object getFamilyName() {
       return _familyName;
     }
-    object get_formatted() {
+    void setFamilyName(object v) {
+      _familyName = v;
+    }
+    object getFormatted() {
       return _formatted;
     }
-    object get_givenName() {
+    void setFormatted(object v) {
+      _formatted = v;
+    }
+    object getGivenName() {
       return _givenName;
     }
-    object get_honorificPrefix() {
+    void setGivenName(object v) {
+      _givenName = v;
+    }
+    object getHonorificPrefix() {
       return _honorificPrefix;
     }
-    object get_honorificSuffix() {
+    void setHonorificPrefix(object v) {
+      _honorificPrefix = v;
+    }
+    object getHonorificSuffix() {
       return _honorificSuffix;
     }
-    object get_middleName() {
+    void setHonorificSuffix(object v) {
+      _honorificSuffix = v;
+    }
+    object getMiddleName() {
       return _middleName;
+    }
+    void setMiddleName(object v) {
+      _middleName = v;
     }
 
   }
@@ -5439,32 +6777,59 @@ class Person extends SomeBaseModelClass {
     object _type;
 
     // Getters and setters might go here
-    object get_department() {
+    object getDepartment() {
       return _department;
     }
-    object get_description() {
+    void setDepartment(object v) {
+      _department = v;
+    }
+    object getDescription() {
       return _description;
     }
-    object get_endDate() {
+    void setDescription(object v) {
+      _description = v;
+    }
+    object getEndDate() {
       return _endDate;
     }
-    object get_location() {
+    void setEndDate(object v) {
+      _endDate = v;
+    }
+    object getLocation() {
       return _location;
     }
-    object get_name() {
+    void setLocation(object v) {
+      _location = v;
+    }
+    object getName() {
       return _name;
     }
-    object get_primary() {
+    void setName(object v) {
+      _name = v;
+    }
+    object getPrimary() {
       return _primary;
     }
-    object get_startDate() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getStartDate() {
       return _startDate;
     }
-    object get_title() {
+    void setStartDate(object v) {
+      _startDate = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
+    }
+    void setType(object v) {
+      _type = v;
     }
 
   }
@@ -5487,14 +6852,23 @@ class Person extends SomeBaseModelClass {
     object _value;
 
     // Getters and setters might go here
-    object get_primary() {
+    object getPrimary() {
       return _primary;
     }
-    object get_type() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getType() {
       return _type;
     }
-    object get_value() {
+    void setType(object v) {
+      _type = v;
+    }
+    object getValue() {
       return _value;
+    }
+    void setValue(object v) {
+      _value = v;
     }
 
   }
@@ -5525,20 +6899,35 @@ class Person extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_height() {
+    object getHeight() {
       return _height;
     }
-    object get_primary() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getPrimary() {
       return _primary;
     }
-    object get_type() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getType() {
       return _type;
     }
-    object get_value() {
+    void setType(object v) {
+      _type = v;
+    }
+    object getValue() {
       return _value;
     }
-    object get_width() {
+    void setValue(object v) {
+      _value = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -5560,14 +6949,23 @@ class Person extends SomeBaseModelClass {
     object _value;
 
     // Getters and setters might go here
-    object get_primary() {
+    object getPrimary() {
       return _primary;
     }
-    object get_type() {
+    void setPrimary(object v) {
+      _primary = v;
+    }
+    object getType() {
       return _type;
     }
-    object get_value() {
+    void setType(object v) {
+      _type = v;
+    }
+    object getValue() {
       return _value;
+    }
+    void setValue(object v) {
+      _value = v;
     }
 
   }
@@ -5594,14 +6992,23 @@ class PersonAccounts extends SomeBaseModelClass {
   object _username;
 
   // Getters and setters might go here
-  object get_domain() {
+  object getDomain() {
     return _domain;
   }
-  object get_userid() {
+  void setDomain(object v) {
+    _domain = v;
+  }
+  object getUserid() {
     return _userid;
   }
-  object get_username() {
+  void setUserid(object v) {
+    _userid = v;
+  }
+  object getUsername() {
     return _username;
+  }
+  void setUsername(object v) {
+    _username = v;
   }
 
 }
@@ -5646,29 +7053,53 @@ class PersonAddresses extends SomeBaseModelClass {
   object _type;
 
   // Getters and setters might go here
-  object get_country() {
+  object getCountry() {
     return _country;
   }
-  object get_formatted() {
+  void setCountry(object v) {
+    _country = v;
+  }
+  object getFormatted() {
     return _formatted;
   }
-  object get_locality() {
+  void setFormatted(object v) {
+    _formatted = v;
+  }
+  object getLocality() {
     return _locality;
   }
-  object get_postalCode() {
+  void setLocality(object v) {
+    _locality = v;
+  }
+  object getPostalCode() {
     return _postalCode;
   }
-  object get_primary() {
+  void setPostalCode(object v) {
+    _postalCode = v;
+  }
+  object getPrimary() {
     return _primary;
   }
-  object get_region() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getRegion() {
     return _region;
   }
-  object get_streetAddress() {
+  void setRegion(object v) {
+    _region = v;
+  }
+  object getStreetAddress() {
     return _streetAddress;
   }
-  object get_type() {
+  void setStreetAddress(object v) {
+    _streetAddress = v;
+  }
+  object getType() {
     return _type;
+  }
+  void setType(object v) {
+    _type = v;
   }
 
 }
@@ -5692,14 +7123,23 @@ class PersonEmails extends SomeBaseModelClass {
   object _value;
 
   // Getters and setters might go here
-  object get_primary() {
+  object getPrimary() {
     return _primary;
   }
-  object get_type() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getType() {
     return _type;
   }
-  object get_value() {
+  void setType(object v) {
+    _type = v;
+  }
+  object getValue() {
     return _value;
+  }
+  void setValue(object v) {
+    _value = v;
   }
 
 }
@@ -5723,14 +7163,23 @@ class PersonIms extends SomeBaseModelClass {
   object _value;
 
   // Getters and setters might go here
-  object get_primary() {
+  object getPrimary() {
     return _primary;
   }
-  object get_type() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getType() {
     return _type;
   }
-  object get_value() {
+  void setType(object v) {
+    _type = v;
+  }
+  object getValue() {
     return _value;
+  }
+  void setValue(object v) {
+    _value = v;
   }
 
 }
@@ -5766,23 +7215,41 @@ class PersonName extends SomeBaseModelClass {
   object _middleName;
 
   // Getters and setters might go here
-  object get_familyName() {
+  object getFamilyName() {
     return _familyName;
   }
-  object get_formatted() {
+  void setFamilyName(object v) {
+    _familyName = v;
+  }
+  object getFormatted() {
     return _formatted;
   }
-  object get_givenName() {
+  void setFormatted(object v) {
+    _formatted = v;
+  }
+  object getGivenName() {
     return _givenName;
   }
-  object get_honorificPrefix() {
+  void setGivenName(object v) {
+    _givenName = v;
+  }
+  object getHonorificPrefix() {
     return _honorificPrefix;
   }
-  object get_honorificSuffix() {
+  void setHonorificPrefix(object v) {
+    _honorificPrefix = v;
+  }
+  object getHonorificSuffix() {
     return _honorificSuffix;
   }
-  object get_middleName() {
+  void setHonorificSuffix(object v) {
+    _honorificSuffix = v;
+  }
+  object getMiddleName() {
     return _middleName;
+  }
+  void setMiddleName(object v) {
+    _middleName = v;
   }
 
 }
@@ -5831,32 +7298,59 @@ class PersonOrganizations extends SomeBaseModelClass {
   object _type;
 
   // Getters and setters might go here
-  object get_department() {
+  object getDepartment() {
     return _department;
   }
-  object get_description() {
+  void setDepartment(object v) {
+    _department = v;
+  }
+  object getDescription() {
     return _description;
   }
-  object get_endDate() {
+  void setDescription(object v) {
+    _description = v;
+  }
+  object getEndDate() {
     return _endDate;
   }
-  object get_location() {
+  void setEndDate(object v) {
+    _endDate = v;
+  }
+  object getLocation() {
     return _location;
   }
-  object get_name() {
+  void setLocation(object v) {
+    _location = v;
+  }
+  object getName() {
     return _name;
   }
-  object get_primary() {
+  void setName(object v) {
+    _name = v;
+  }
+  object getPrimary() {
     return _primary;
   }
-  object get_startDate() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getStartDate() {
     return _startDate;
   }
-  object get_title() {
+  void setStartDate(object v) {
+    _startDate = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
+  }
+  void setType(object v) {
+    _type = v;
   }
 
 }
@@ -5881,14 +7375,23 @@ class PersonPhoneNumbers extends SomeBaseModelClass {
   object _value;
 
   // Getters and setters might go here
-  object get_primary() {
+  object getPrimary() {
     return _primary;
   }
-  object get_type() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getType() {
     return _type;
   }
-  object get_value() {
+  void setType(object v) {
+    _type = v;
+  }
+  object getValue() {
     return _value;
+  }
+  void setValue(object v) {
+    _value = v;
   }
 
 }
@@ -5920,20 +7423,35 @@ class PersonPhotos extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_height() {
+  object getHeight() {
     return _height;
   }
-  object get_primary() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getPrimary() {
     return _primary;
   }
-  object get_type() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getType() {
     return _type;
   }
-  object get_value() {
+  void setType(object v) {
+    _type = v;
+  }
+  object getValue() {
     return _value;
   }
-  object get_width() {
+  void setValue(object v) {
+    _value = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -5957,14 +7475,23 @@ class PersonUrls extends SomeBaseModelClass {
   object _value;
 
   // Getters and setters might go here
-  object get_primary() {
+  object getPrimary() {
     return _primary;
   }
-  object get_type() {
+  void setPrimary(object v) {
+    _primary = v;
+  }
+  object getType() {
     return _type;
   }
-  object get_value() {
+  void setType(object v) {
+    _type = v;
+  }
+  object getValue() {
     return _value;
+  }
+  void setValue(object v) {
+    _value = v;
   }
 
 }
@@ -5984,11 +7511,17 @@ class PhotosFeed extends SomeBaseModelClass {
   str _kind;
 
   // Getters and setters might go here
-  com::google::myservice::Array<ChiliPhotosResourceJson> get_items() {
+  com::google::myservice::Array<ChiliPhotosResourceJson> getItems() {
     return _items;
   }
-  str get_kind() {
+  void setItems(com::google::myservice::Array<ChiliPhotosResourceJson> v) {
+    _items = v;
+  }
+  str getKind() {
     return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
   }
 
 }
@@ -6020,20 +7553,35 @@ class RelatedFeed extends SomeBaseModelClass {
   str _updated;
 
   // Getters and setters might go here
-  object get_id() {
+  object getId() {
     return _id;
   }
-  str get_kind() {
+  void setId(object v) {
+    _id = v;
+  }
+  str getKind() {
     return _kind;
   }
-  Map<string, com::google::myservice::Array<RelatedFeedLinksItemElement>> get_links() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  Map<string, com::google::myservice::Array<RelatedFeedLinksItemElement>> getLinks() {
     return _links;
   }
-  object get_title() {
+  void setLinks(Map<string, com::google::myservice::Array<RelatedFeedLinksItemElement>> v) {
+    _links = v;
+  }
+  object getTitle() {
     return _title;
   }
-  str get_updated() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  str getUpdated() {
     return _updated;
+  }
+  void setUpdated(str v) {
+    _updated = v;
   }
 
   """Schema RelatedFeed.RelatedFeedLinksItemElement { model.description }} <p>
@@ -6070,26 +7618,47 @@ class RelatedFeed extends SomeBaseModelClass {
     object _width;
 
     // Getters and setters might go here
-    object get_count() {
+    object getCount() {
       return _count;
     }
-    object get_height() {
+    void setCount(object v) {
+      _count = v;
+    }
+    object getHeight() {
       return _height;
     }
-    object get_href() {
+    void setHeight(object v) {
+      _height = v;
+    }
+    object getHref() {
       return _href;
     }
-    object get_title() {
+    void setHref(object v) {
+      _href = v;
+    }
+    object getTitle() {
       return _title;
     }
-    object get_type() {
+    void setTitle(object v) {
+      _title = v;
+    }
+    object getType() {
       return _type;
     }
-    str get_updated() {
+    void setType(object v) {
+      _type = v;
+    }
+    str getUpdated() {
       return _updated;
     }
-    object get_width() {
+    void setUpdated(str v) {
+      _updated = v;
+    }
+    object getWidth() {
       return _width;
+    }
+    void setWidth(object v) {
+      _width = v;
     }
 
   }
@@ -6132,26 +7701,47 @@ class RelatedFeedLinksItemElement extends SomeBaseModelClass {
   object _width;
 
   // Getters and setters might go here
-  object get_count() {
+  object getCount() {
     return _count;
   }
-  object get_height() {
+  void setCount(object v) {
+    _count = v;
+  }
+  object getHeight() {
     return _height;
   }
-  object get_href() {
+  void setHeight(object v) {
+    _height = v;
+  }
+  object getHref() {
     return _href;
   }
-  object get_title() {
+  void setHref(object v) {
+    _href = v;
+  }
+  object getTitle() {
     return _title;
   }
-  object get_type() {
+  void setTitle(object v) {
+    _title = v;
+  }
+  object getType() {
     return _type;
   }
-  str get_updated() {
+  void setType(object v) {
+    _type = v;
+  }
+  str getUpdated() {
     return _updated;
   }
-  object get_width() {
+  void setUpdated(str v) {
+    _updated = v;
+  }
+  object getWidth() {
     return _width;
+  }
+  void setWidth(object v) {
+    _width = v;
   }
 
 }
@@ -6171,11 +7761,17 @@ class StarredEntityFeed extends SomeBaseModelClass {
   str _kind;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Entity> get_entry() {
+  com::google::myservice::Array<Entity> getEntry() {
     return _entry;
   }
-  str get_kind() {
+  void setEntry(com::google::myservice::Array<Entity> v) {
+    _entry = v;
+  }
+  str getKind() {
     return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
   }
 
 }
@@ -6208,20 +7804,35 @@ class StarredEntityFeedForUser extends SomeBaseModelClass {
   object _totalResults;
 
   // Getters and setters might go here
-  com::google::myservice::Array<Entity> get_entry() {
+  com::google::myservice::Array<Entity> getEntry() {
     return _entry;
   }
-  object get_itemsPerPage() {
+  void setEntry(com::google::myservice::Array<Entity> v) {
+    _entry = v;
+  }
+  object getItemsPerPage() {
     return _itemsPerPage;
   }
-  str get_kind() {
+  void setItemsPerPage(object v) {
+    _itemsPerPage = v;
+  }
+  str getKind() {
     return _kind;
   }
-  object get_startIndex() {
+  void setKind(str v) {
+    _kind = v;
+  }
+  object getStartIndex() {
     return _startIndex;
   }
-  object get_totalResults() {
+  void setStartIndex(object v) {
+    _startIndex = v;
+  }
+  object getTotalResults() {
     return _totalResults;
+  }
+  void setTotalResults(object v) {
+    _totalResults = v;
   }
 
 }

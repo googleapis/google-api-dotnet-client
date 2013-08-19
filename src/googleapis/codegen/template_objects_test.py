@@ -18,7 +18,6 @@
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
-
 from django import template as django_template  # pylint:disable=g-bad-import-order
 from google.apputils import basetest
 from googleapis.codegen import language_model

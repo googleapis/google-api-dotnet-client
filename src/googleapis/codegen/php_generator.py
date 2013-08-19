@@ -138,7 +138,11 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     code_type = prop.code_type
     if code_type and code_type.lower() in PhpLanguageModel.PHP_TYPES:
       prop.values['typeHint'] = ''
+      prop.values['typeHintOld'] = ''
     else:
+      prop.values['typeHintOld'] = ('%s_%s' %
+                                    (self._api.values['owner'].title(),
+                                     code_type))
       prop.values['typeHint'] = ('%s_Service_%s_%s' %
                                  (self._api.values['owner'].title(),
                                   self._api.values['className'], code_type))
@@ -146,6 +150,8 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
 
 class PhpLanguageModel(language_model.LanguageModel):
   """A LanguageModel tunded for PHP."""
+
+  language = 'php'
 
   _SCHEMA_TYPE_TO_PHP_TYPE = {
       'any': 'object',
@@ -245,7 +251,7 @@ class PhpLanguageModel(language_model.LanguageModel):
     Returns:
       A name suitable for use as a member in PHP.
     """
-    return s.replace('-', '_').replace('.', '_')
+    return s.replace('-', '_').replace('.', '_').replace('/', '__')
 
 
 class PHPApi(api.Api):

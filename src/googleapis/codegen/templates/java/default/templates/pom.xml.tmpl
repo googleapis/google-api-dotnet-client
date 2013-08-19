@@ -6,17 +6,17 @@
     <version>7</version>
   </parent>
 
-  <groupId>com.google.apis</groupId>
-  <artifactId>google-api-services-{{ api.name }}</artifactId>
-  <version>{{ api.version }}-rev{{ api.revision }}-{{ features.releaseVersion }}</version>
-  <name>{{ api.title }} {{ api.version }} (revision {{ api.revision }})</name>
+  <groupId>{{ api.maven.group_id }}</groupId>
+  <artifactId>{{ api.maven.artifact_id }}</artifactId>
+  <version>{{ api.maven.version }}</version>
+  <name>{{ api.title }} {{ api.version }} ({% if api.revision_is_build_date %}build date{% else %}revision{% endif %} {{ api.revision }})</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>
 
   <organization>
-    <name>Google</name>
-    <url>http://www.google.com/</url>
+    <name>{{ api.ownerName }}</name>
+    {% if api.ownerDomain == "google.com" %}<url>http://www.google.com/</url>{% endif %}
   </organization>
 
   <licenses>

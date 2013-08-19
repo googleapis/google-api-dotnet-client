@@ -1,0 +1,14 @@
+///<summary>A base abstract class for {{ api.className }} requests.</summary>
+public abstract class {{ api.className }}BaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+{
+    ///<summary>Constructs a new {{ api.className }}BaseServiceRequest instance.</summary>
+    protected {{ api.className }}BaseServiceRequest(Google.Apis.Services.IClientService service)
+        : base(service)
+    {
+    }
+{% indent %}{% for parameter in api.parameters %}
+{% call_template _parameter parameter=parameter %}
+{% endfor %}{% endindent %}
+{% indent %}/// <summary>Initializes {{ api.className }} parameter list.</summary>
+{% call_template _init_parameters parameters=api.parameters %}{% endindent %}
+}

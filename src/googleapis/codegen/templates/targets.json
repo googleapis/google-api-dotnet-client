@@ -1,5 +1,14 @@
 {
   "languages": {
+    "csharp": {
+      "displayName": "CSharp",
+      "description": "CSharp libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        }
+      }
+    },
     "dart": {
       "displayName": "Dart",
       "description": "Dart libraries for Google APIS.",

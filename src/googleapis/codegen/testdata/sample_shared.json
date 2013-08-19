@@ -6,6 +6,8 @@
  "rootUrl": "https://www.googleapis.com/",
  "servicePath" : "buzz/v1/",
  "rpcPath": "/rpc",
+ "ownerName": "Google",
+ "ownerDomain": "google.com",
  "features": [
   "dataWrapper"
  ],

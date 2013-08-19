@@ -397,6 +397,9 @@ class SchemaReference(DataType):
     """Returns the module of the schema I reference."""
     return self.referenced_schema.module
 
+  def __str__(self):
+    return '<SchemaReference to %s>' % self.code_type
+
 
 class Void(PrimitiveDataType):
   """DataType which represents a 'void'.

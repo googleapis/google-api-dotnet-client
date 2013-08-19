@@ -29,6 +29,8 @@ from googleapis.codegen import utilities
 class DartLanguageModel(language_model.LanguageModel):
   """A LanguageModel for Dart."""
 
+  language = 'dart'
+
   _SCHEMA_TYPE_TO_DART_TYPE = {
       'any': 'core.Object',
       'boolean': 'core.bool',

@@ -45,6 +45,12 @@ _DEFAULT_SERVICE_HOST = 'www.googleapis.com'
 _DEFAULT_OWNER_DOMAIN = 'google.com'
 _DEFAULT_OWNER_NAME = 'Google'
 
+_RECOGNIZED_GOOGLE_DOMAINS = (
+    'google.com',
+    'googleapis.com',
+    'googleplex.com'
+)
+
 
 _LOGGER = logging.getLogger('codegen')
 
@@ -211,10 +217,28 @@ class Api(template_objects.CodeObject):
 
   def _NormalizeOwnerInformation(self):
     """Ensure that owner and ownerDomain are set to sane values."""
-    self.SetTemplateValue('owner',
-                          self.values.get('owner') or _DEFAULT_OWNER_NAME)
-    domain = self.values.get('ownerDomain', _DEFAULT_OWNER_DOMAIN)
-    self.SetTemplateValue('ownerDomain', utilities.SanitizeDomain(domain))
+    owner_domain = self.get('ownerDomain', '')
+    if not owner_domain:
+      root_url = self.get('rootUrl')
+      if root_url:
+        owner_domain = urlparse.urlparse(root_url).hostname
+        # Normalize google domains.
+        if any(owner_domain.endswith(d) for d in _RECOGNIZED_GOOGLE_DOMAINS):
+          owner_domain = 'google.com'
+    if owner_domain:
+      owner_domain = utilities.SanitizeDomain(owner_domain)
+    else:
+      owner_domain = _DEFAULT_OWNER_DOMAIN
+
+    self.SetTemplateValue('ownerDomain', owner_domain)
+    if not self.get('ownerName'):
+      if owner_domain == _DEFAULT_OWNER_DOMAIN:
+        owner_name = _DEFAULT_OWNER_NAME
+      else:
+        owner_name = owner_domain.replace('.', '_')
+      self.SetTemplateValue('ownerName', owner_name)
+    if not self.get('owner'):
+      self.SetTemplateValue('owner', self['ownerName'])
 
   def _NormalizeUrlComponents(self):
     """Sets template values concerning the path to the service.
@@ -429,6 +453,14 @@ class Api(template_objects.CodeObject):
     """
     return utilities.CamelCase(s).replace(' ', '')
 
+  def NestedClassNameForProperty(self, name, schema):
+    """Returns the class name of an object nested in a property."""
+    # TODO(user): This functionality belongs in the language model, but
+    # because of the way the api is bootstrapped, that isn't available when we
+    # need it.  When language model is available from the start, this should be
+    # moved.
+    return '%s%s' % (schema.class_name, utilities.CamelCase(name))
+
   @property
   def class_name(self):
     return self.values['className']
@@ -609,7 +641,6 @@ class Schema(data_types.ComplexDataType):
   @classmethod
   def _CreateObjectWithProperties(cls, props, api, name, def_dict,
                                   wire_name, parent):
-
     properties = []
     schema = cls(api, name, def_dict, parent=parent)
     if wire_name:
@@ -704,6 +735,13 @@ class Schema(data_types.ComplexDataType):
   def class_name(self):
     return self.values['className']
 
+  @property
+  def anonymous(self):
+    return 'id' not in self.raw
+
+  def __str__(self):
+    return '<%s Schema>' % self.values['wireName']
+
 
 class Property(template_objects.CodeObject):
   """The definition of a schema property.
@@ -736,8 +774,7 @@ class Property(template_objects.CodeObject):
     # rather than refering to another schema, we will have to create a class
     # name for it.   We create a unique name by prepending the schema we are
     # in to the object name.
-    tentative_class_name = '%s%s' % (schema.class_name,
-                                     utilities.CamelCase(name))
+    tentative_class_name = api.NestedClassNameForProperty(name, schema)
     self._data_type = api.DataTypeFromJson(def_dict, tentative_class_name,
                                            parent=schema, wire_name=name)
 

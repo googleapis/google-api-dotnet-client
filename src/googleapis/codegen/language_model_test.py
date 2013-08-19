@@ -134,18 +134,14 @@ class LanguageModelTest(basetest.TestCase):
     # TODO(user): Add tests here when we expand the format options
     pass
 
-  def testPoliciesGetUsedInTheRightMethods(self):
+  def testPoliciesGetUsedInTheRightMethods1(self):
 
     class TestLanguageModel(language_model.LanguageModel):
       class_name_transform = language_model.UPPER_CAMEL_CASE
       class_name_separator = '!CLASS!'
       class_name_format = 'C {name}'
 
-      member_transform = language_model.LOWER_CAMEL_CASE
-      member_separator = '!MEMBER!'
-      member_format = 'M {name}'
-
-      constant_transform = language_model.LOWER_CASE
+      constant_transform = language_model.UPPER_CASE
       constant_separator = '!CONSTANT!'
       constant_format = 'K {name}'
 
@@ -157,10 +153,36 @@ class LanguageModelTest(basetest.TestCase):
 
     self.assertEquals('C Max!CLASS!Results',
                       m.ToClassName(None, max_results))
-    self.assertEquals('M max!MEMBER!Results',
-                      m.ToClassMemberName(None, max_results))
-    self.assertEquals('K max!CONSTANT!results',
+    self.assertEquals('K MAX!CONSTANT!RESULTS',
                       m.ToConstantName(None, max_results))
+
+  def testPoliciesGetUsedInTheRightMethods2(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      member_transform = language_model.LOWER_CASE
+      member_separator = '!MEMBER!'
+      member_format = 'M {name}'
+
+      getter_transform = language_model.LOWER_CAMEL_CASE
+      getter_separator = '!GETTER!'
+      getter_format = 'G {name}'
+
+      setter_transform = language_model.UPPER_CAMEL_CASE
+      setter_separator = '!SETTER!'
+      setter_format = 'S {name}'
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+    max_results = 'max-results'
+
+    self.assertEquals('M max!MEMBER!results',
+                      m.ToClassMemberName(None, max_results))
+    self.assertEquals('G max!GETTER!Results',
+                      m.ToGetterName(None, max_results))
+    self.assertEquals('S Max!SETTER!Results',
+                      m.ToSetterName(None, max_results))
 
 
 if __name__ == '__main__':

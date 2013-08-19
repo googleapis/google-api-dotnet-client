@@ -1,6 +1,11 @@
 {% filter noblanklines %}
 {% if resource.json %}
-    $this->{{ resource.phpPropName }} = new {{ api.owner }}_Service_{{ api.className }}_{{ resource.className }}_Resource($this, $this->serviceName, '{{ resource.codeName }}', json_decode('{{ resource.json|safe }}', true));
+    $this->{{ resource.phpPropName }} = new {{ api.owner }}_Service_{{ api.className }}_{{ resource.className }}_Resource(
+        $this,
+        $this->serviceName,
+        '{{ resource.codeName }}',
+        {% call_template _methods_decl methods=resource.methods %}
+    );
 {% endif %}
 
 {% for r in resource.resources %}

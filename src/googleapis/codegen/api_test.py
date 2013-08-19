@@ -149,7 +149,7 @@ class ApiTest(basetest.TestCase):
 
   def testSchemaLoadingAsString(self):
     """Test for the "schema as strings" representation."""
-    api = self.ApiFromDiscoveryDoc('latitude.v1.json')
+    api = self.ApiFromDiscoveryDoc('foo.v1.json')
     self.assertEquals(4, len(api._schemas))
 
   def testSubResources(self):
@@ -611,21 +611,50 @@ class ApiTest(basetest.TestCase):
     self.assertEquals('MyAPI', api._class_name)
 
   def testNormalizeOwnerInformation(self):
-    d = {'name': 'fake', 'version': 'v1'}
-    api = Api(d)
+
+    def LoadApi(**kwargs):
+      d = {'name': 'fake', 'version': 'v1'}
+      d.update(kwargs)
+      return Api(d)
+
+    api = LoadApi()
     self.assertEquals('Google', api.values['owner'])
     self.assertEquals('google.com', api.values['ownerDomain'])
 
-    d = {'name': 'fake', 'version': 'v1', 'ownerDomain': 'youtube.com'}
-    api = Api(d)
+    api = LoadApi(ownerName='Google', ownerDomain='youtube.com')
     self.assertEquals('Google', api.values['owner'])
     self.assertEquals('youtube.com', api.values['ownerDomain'])
 
-    d = {'name': 'fake', 'version': 'v1',
-         'owner': 'You Tube', 'ownerDomain': 'youtube.com'}
-    api = Api(d)
+    api = LoadApi(ownerDomain='youtube.com')
+    self.assertEquals('youtube_com', api.values['owner'])
+    self.assertEquals('youtube.com', api.values['ownerDomain'])
+
+    api = LoadApi(owner='You Tube', ownerDomain='youtube.com')
     self.assertEquals('You Tube', api.values['owner'])
     self.assertEquals('youtube.com', api.values['ownerDomain'])
+
+    api = LoadApi(servicePath='/fake',
+                  rootUrl='https://www.foobar.co.uk:8080/root')
+    self.assertEquals('www.foobar.co.uk', api['ownerDomain'])
+    self.assertEquals('www_foobar_co_uk', api['owner'])
+
+    api = LoadApi(servicePath='/fake',
+                  rootUrl='https://whathaveyou.googleplex.com')
+    self.assertEquals('google.com', api['ownerDomain'])
+    self.assertEquals('Google', api['ownerName'])
+    self.assertEquals('Google', api['owner'])
+
+    api = LoadApi(servicePath='/fake',
+                  rootUrl='https://whathaveyou.googleapis.com')
+    self.assertEquals('google.com', api['ownerDomain'])
+    self.assertEquals('Google', api['ownerName'])
+    self.assertEquals('Google', api['owner'])
+
+    api = LoadApi(servicePath='/fake',
+                  rootUrl='https://whathaveyou.google.com')
+    self.assertEquals('google.com', api['ownerDomain'])
+    self.assertEquals('Google', api['ownerName'])
+    self.assertEquals('Google', api['owner'])
 
   def testSharedTypes(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_SHARED_TYPES_DOC)

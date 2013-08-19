@@ -36,7 +36,9 @@ try:
 except RuntimeError:
   pass
 
+from googleapis.codegen import template_helpers
 from googleapis.codegen.filesys import files
+
 
 # COV_NF_END
 
@@ -58,9 +60,24 @@ def DjangoRenderTemplate(template_path, context_dict):
   Returns:
     (str) The expanded template.
   """
+
   source = files.GetFileContents(template_path).decode('utf-8')
-  t = django_template.Template(source)
-  return t.render(django_template.Context(context_dict))
+  return _DjangoRenderTemplateSource(source, context_dict)
+
+
+def _DjangoRenderTemplateSource(template_source, context_dict):
+  """Renders the given template source with the given values dict.
+
+  Args:
+    template_source: (str) The source of a django template.
+    context_dict: (dict) The dictionary to use for template evaluation.
+  Returns:
+    (str) The expanded template.
+  """
+  t = django_template.Template(template_source)
+  ctxt = django_template.Context(context_dict)
+  with template_helpers.SetCurrentContext(ctxt):
+    return t.render(ctxt)
 
 
 def MarkSafe(s):

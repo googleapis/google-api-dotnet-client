@@ -1,0 +1,88 @@
+{% language csharp %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+namespace {{ api.module.name }}.Data
+{{% noblank recurse %}
+{% for model in api.models %}{% if not model.parent %}{% indent %}{% call_template _model model=model %}{% endindent %}{% endif %}{% endfor %}
+{% endnoblank %}
+}
+
+namespace {{ api.module.name }}
+{{% indent %}
+/// <summary>The {{ api.className }} Service.</summary>
+public class {{ api.className }}Service : Google.Apis.Services.BaseClientService
+{
+{% indent %}/// <summary>The API version.</summary>
+public const string Version = {% literal api.version %};
+
+/// <summary>The discovery version used to generate this service.</summary>
+public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
+    Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+
+/// <summary>Constructs a new service.</summary>
+public {{ api.className }}Service() :
+    this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+
+/// <summary>Constructs a new service.</summary>
+/// <param name="initializer">The service initializer.</param>
+public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initializer initializer)
+    : base(initializer)
+{
+{% filter noblanklines %}
+{% for resource in api.resources %}
+{% indent %}{{ resource.codeName }} = new {{ resource.className }}Resource(this);{% endindent %}
+{% endfor %}
+{% endfilter %}
+}
+
+/// <summary>Gets the service supported features.</summary>
+public override System.Collections.Generic.IList<string> Features
+{
+    get { return {% noeol %}
+
+        {% if api.features %}
+
+new string[] {{% parameter_list %}
+{% for feature in api.features %}
+{% parameter %}"{{ feature }}"{% end_parameter %}
+{% endfor %}{% end_parameter_list %}};
+
+        {% else %}
+
+new string[0];
+
+        {% endif %} }
+        {% endnoeol %}
+}
+
+/// <summary>Gets the service name.</summary>
+public override string Name
+{
+    get { return {% literal api.name %}; }
+}
+
+/// <summary>Gets the service base URI.</summary>
+public override string BaseUri
+{
+    get { return "{{ api.rootUrl }}{{ api.servicePath }}"; }
+}
+
+/// <summary>Gets the service base path.</summary>
+public override string BasePath
+{
+    get { return "{{ api.servicePath }}"; }
+}
+
+{% if api.authscopes %}/// <summary>Available OAuth 2.0 scopes for use with the {{ api.title }}.</summary>
+public enum Scopes
+{
+{% indent %}{% for authscope in api.authscopes %}{% doc_comment_if authscope.description %}
+[Google.Apis.Util.StringValueAttribute("{{ authscope.value }}")]
+{{ authscope.constantName }},{% endfor %}{% endindent %}
+}{% endif %}
+{% for method in api.methods %}{% call_template _method method=method service='this' %}{% endfor %}
+{% for resource in api.resources %}{% eol %}{% eol %}{% call_template _get_resource resource=resource %}{% endfor %}{% endindent %}
+}
+
+{% call_template _base_request %}
+{% for resource in api.resources %}{% eol %}{% call_template _resource resource=resource %}{% eol %}{% endfor %}{% endindent %}}

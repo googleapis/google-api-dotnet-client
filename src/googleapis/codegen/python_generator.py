@@ -35,6 +35,8 @@ from googleapis.codegen import utilities
 class PythonLanguageModel(language_model.LanguageModel):
   """A LanguageModel for Python."""
 
+  language = 'python'
+
   _SCHEMA_TYPE_TO_PYTHON_TYPE = {
       'any': 'object',
       'array': 'list',

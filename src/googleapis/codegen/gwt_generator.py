@@ -84,6 +84,8 @@ class GwtGenerator(java_generator.BaseJavaGenerator):
 class GwtLanguageModel(java_generator.JavaLanguageModel):
   """A LanguageModel for GWT."""
 
+  language = 'java'
+
   # Dictionary of json type and format to its corresponding import definition.
   # The first import in the imports list is the primary import.
   TYPE_FORMAT_TO_DATATYPE_AND_IMPORTS = {

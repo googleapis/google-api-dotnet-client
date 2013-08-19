@@ -1,0 +1,21 @@
+protected override void InitParameters()
+{
+{% indent %}base.InitParameters();
+{% for parameter in parameters %}
+RequestParameters.Add(
+{% indent %}{% parameter_list %}
+{% parameter %}
+    "{{ parameter.wireName }}"
+{% end_parameter %}
+{% parameter %}
+    new Google.Apis.Discovery.Parameter
+{
+    Name = "{{ parameter.wireName }}",
+    IsRequired = {% if parameter.required %}true{% else %}false{% endif %},
+    ParameterType = "{{parameter.location}}",
+    DefaultValue = {% if parameter.default %}"{{parameter.default}}"{% else %}null{% endif %},
+    Pattern = {% if parameter.pattern %}@"{{parameter.pattern}}"{% else %}null{% endif %},
+}
+{% end_parameter %}
+{% end_parameter_list %}{% endindent %});{% endfor %}{% endindent %}
+}

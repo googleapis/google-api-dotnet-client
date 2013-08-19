@@ -39,8 +39,8 @@ from googleapis.codegen.filesys import files
 # into templates.
 _GENERATOR_INFORMATION = {
     'name': 'google-apis-code-generator',
-    'version': '1.4.1',
-    'buildDate': '2013-07-04',
+    'version': '1.4.2',
+    'buildDate': '2013-08-19',
     }
 
 # app.yaml and other names that app engine refuses to open.
@@ -107,6 +107,7 @@ class TemplateGenerator(object):
         'options': self._options,  # Options for this invocation
         'template_dir': self._template_dir,  # path to the template tree
         'features': self._surface_features,  # sub language options
+        'language_model': self._language_model
         }
     if context_dict:
       variables_dict.update(context_dict)
@@ -126,15 +127,23 @@ class TemplateGenerator(object):
     Returns:
       None
     """
-    try:
-      content = self.RenderTemplate(template_path, context_dict)
+    output_dir, file_name = os.path.split(output_path)
+
+    def WriteFileInPackage(path, content):
+      """Writes content to a path in our current package writer."""
       if isinstance(content, unicode):
         content = content.encode('utf-8', errors='ignore')
-      out = package.StartFile(output_path)
+      out = package.StartFile(os.path.join(output_dir, path))
       out.write(content)
       package.EndFile()
+
+    try:
+      context_dict[template_helpers.FILE_WRITER] = WriteFileInPackage
+      content = self.RenderTemplate(template_path, context_dict)
+      WriteFileInPackage(file_name, content)
     except template_helpers.Halt:
       pass
+    del context_dict[template_helpers.FILE_WRITER]
 
   def WalkTemplateTree(self, path_to_tree, path_replacements, list_replacements,
                        variables, package, file_filter=None):
@@ -265,6 +274,19 @@ class TemplateGenerator(object):
   def SetFeatures(self, surface_features):
     """Sets the dict to be used for the 'features' variable in templates."""
     self._surface_features = surface_features
+
+  @property
+  def features(self):
+    return self._surface_features
+
+  @features.setter
+  def features(self, surface_features):
+    self._surface_features = surface_features
+
+  @property
+  def language_version(self):
+    if self._surface_features:
+      return self._surface_features.get('releaseVersion')
 
   def SetTemplateDir(self, template_dir):
     """Sets the template directory tree to use for WalkTemplateTree.

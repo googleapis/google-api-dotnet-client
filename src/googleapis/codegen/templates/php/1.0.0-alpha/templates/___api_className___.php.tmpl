@@ -9,8 +9,8 @@
  * </p>
  *
  * <p>
- * For more information about this service, see the
- * <a href="{{ api.documentationLink }}" target="_blank">API Documentation</a>
+ * For more information about this service, see the API
+ * <a href="{{ api.documentationLink }}" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -18,6 +18,8 @@
 class {{ api.owner }}_Service_{{ api.className }} extends Google_Service
 {
 {% call_template _resource_var resource=api %}
+  {% if api.methods %}private $base_methods;{% endif %}
+
   /**{% filter block_comment %}
    * Constructs the internal representation of the {{ api.className }} service.
    * {% endfilter %}
@@ -33,17 +35,37 @@ class {{ api.owner }}_Service_{{ api.className }} extends Google_Service
     $this->availableScopes = array(
       {% spaceless %}
         {% for scope in api.auth.oauth2.scopes %}
-      "{{ scope }}"{% if not forloop.last %}, {% endif %}{% endfor %}{% endspaceless %}
+      "{{ scope }}"{% if not forloop.last %},{% endif %}{% endfor %}{% endspaceless %}
     );
     {% endif %}
     $this->serviceName = {% literal api.name %};
 
-    $client->addService($this->serviceName, $this->version,
-        $this->availableScopes);
+    $client->addService(
+        $this->serviceName,
+        $this->version,
+        $this->availableScopes
+    );
+
+{% filter noblanklines %}
 {% call_template _resource_decl resource=api %}
-{% for r in api.methods %}
-{% call_template _resource_decl resource=r %}{% endfor %}
+{% indent %}
+{% indent %}
+{% if api.methods %}
+$this->base_methods = new {{ api.owner }}_Service_Resource(
+    $this,
+    $this->serviceName,
+    '{{ resource.codeName }}',
+    {% call_template _methods_decl methods=api.methods %}
+);
+{% endif %}
+{% endindent %}
+{% endindent %}
   }
+{% indent %}
+{% for m in api.methods %}
+{% call_template _method baseMethod=1 method=m %}{% endfor %}
+{% endindent %}
+{% endfilter %}
 }
 
 {% for resource in api.resources %}

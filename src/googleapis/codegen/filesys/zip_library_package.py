@@ -23,7 +23,6 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 import os
 import StringIO
-import time
 import zipfile
 
 from googleapis.codegen.filesys.library_package import LibraryPackage
@@ -83,7 +82,7 @@ class ZipLibraryPackage(LibraryPackage):
       # Create the directory entry.  File and directory names must be
       # ascii.
       info = zipfile.ZipInfo((directory + '/').encode('ascii'),
-                             date_time=time.localtime(time.time())[:6])
+                             date_time=self.ZipTimestamp())
       # Notes from the web and zipfile sources:
       # external_attr is 32 in size, with the unix permissions in the
       # high order 16 bit, and the MS-DOS FAT attributes in the lower 16.
@@ -96,7 +95,7 @@ class ZipLibraryPackage(LibraryPackage):
     """Flush the current output file to the ZIP container."""
     if self._current_file_data:
       info = zipfile.ZipInfo(self._current_file_name,
-                             date_time=time.localtime(time.time())[:6])
+                             date_time=self.ZipTimestamp())
       # This is a chmod 0644, but you have to read the zipfile sources to know
       info.external_attr = 0644 << 16
       data = self._current_file_data.getvalue()
@@ -106,6 +105,10 @@ class ZipLibraryPackage(LibraryPackage):
       self._zip.writestr(info, data)
       self._current_file_data.close()
       self._current_file_data = None
+
+  def ZipTimestamp(self):
+    # Use a constant timestamp to avoid non-deterministic build-time output.
+    return (1980, 1, 1, 0, 0, 1)
 
   def DoneWritingArchive(self):
     """Signal that we are done writing the entire package.

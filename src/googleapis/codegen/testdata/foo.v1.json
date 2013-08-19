@@ -1,29 +1,29 @@
 {
- "name": "latitude",
+ "name": "foo",
  "version": "v1",
- "description": "Google Latitude API",
- "restBasePath": "/latitude/v1/",
+ "description": "Google Foo API",
+ "restBasePath": "/foo/v1/",
  "rpcPath": "/rpc",
  "features": [
   "dataWrapper"
  ],
  "schemas": {
-  "LatitudeCurrentlocationGetResponseJson": "{\"id\":\"LatitudeCurrentlocationGetResponseJson\",\"$ref\":\"LatitudeLocationResourceJson\"}",
-  "LatitudeCurrentlocationResourceJson": "{\"id\":\"LatitudeCurrentlocationResourceJson\",\"$ref\":\"LatitudeLocationResourceJson\"}",
-  "LatitudeLocationListResponse": "{\"id\":\"LatitudeLocationListResponse\",\"properties\":{\"items\":{\"items\":{\"$ref\":\"LatitudeLocationResourceJson\"},\"type\":\"array\"},\"kind\":{\"default\":\"latitude#locationFeed\",\"type\":\"string\"}},\"type\":\"object\"}",
-  "LatitudeLocationResourceJson": "{\"id\":\"LatitudeLocationResourceJson\",\"properties\":{\"placeid\":{\"type\":\"any\"},\"speed\":{\"type\":\"any\"},\"timestampMs\":{\"type\":\"any\"},\"altitude\":{\"type\":\"any\"},\"longitude\":{\"type\":\"any\"},\"latitude\":{\"type\":\"any\"},\"accuracy\":{\"type\":\"any\"},\"altitudeAccuracy\":{\"type\":\"any\"},\"heading\":{\"type\":\"any\"},\"kind\":{\"default\":\"latitude#location\",\"type\":\"string\"}},\"type\":\"object\"}"
+  "FooCurrentlocationGetResponseJson": "{\"id\":\"FooCurrentlocationGetResponseJson\",\"$ref\":\"FooLocationResourceJson\"}",
+  "FooCurrentlocationResourceJson": "{\"id\":\"FooCurrentlocationResourceJson\",\"$ref\":\"FooLocationResourceJson\"}",
+  "FooLocationListResponse": "{\"id\":\"FooLocationListResponse\",\"properties\":{\"items\":{\"items\":{\"$ref\":\"FooLocationResourceJson\"},\"type\":\"array\"},\"kind\":{\"default\":\"foo#locationFeed\",\"type\":\"string\"}},\"type\":\"object\"}",
+  "FooLocationResourceJson": "{\"id\":\"FooLocationResourceJson\",\"properties\":{\"placeid\":{\"type\":\"any\"},\"speed\":{\"type\":\"any\"},\"timestampMs\":{\"type\":\"any\"},\"altitude\":{\"type\":\"any\"},\"longitude\":{\"type\":\"any\"},\"foo\":{\"type\":\"any\"},\"accuracy\":{\"type\":\"any\"},\"altitudeAccuracy\":{\"type\":\"any\"},\"heading\":{\"type\":\"any\"},\"kind\":{\"default\":\"foo#location\",\"type\":\"string\"}},\"type\":\"object\"}"
  },
  "resources": {
   "currentLocation": {
    "methods": {
     "delete": {
      "restPath": "currentLocation",
-     "rpcMethod": "latitude.currentLocation.delete",
+     "rpcMethod": "foo.currentLocation.delete",
      "httpMethod": "DELETE"
     },
     "get": {
      "restPath": "currentLocation",
-     "rpcMethod": "latitude.currentLocation.get",
+     "rpcMethod": "foo.currentLocation.get",
      "httpMethod": "GET",
      "parameters": {
       "granularity": {
@@ -33,18 +33,18 @@
       }
      },
      "response": {
-      "$ref": "LatitudeCurrentlocationResourceJson"
+      "$ref": "FooCurrentlocationResourceJson"
      }
     },
     "insert": {
      "restPath": "currentLocation",
-     "rpcMethod": "latitude.currentLocation.insert",
+     "rpcMethod": "foo.currentLocation.insert",
      "httpMethod": "POST",
      "request": {
-      "$ref": "LatitudeCurrentlocationResourceJson"
+      "$ref": "FooCurrentlocationResourceJson"
      },
      "response": {
-      "$ref": "LatitudeCurrentlocationResourceJson"
+      "$ref": "FooCurrentlocationResourceJson"
      }
     }
    }
@@ -53,7 +53,7 @@
    "methods": {
     "delete": {
      "restPath": "location/{locationId}",
-     "rpcMethod": "latitude.location.delete",
+     "rpcMethod": "foo.location.delete",
      "httpMethod": "DELETE",
      "parameters": {
       "locationId": {
@@ -66,7 +66,7 @@
     },
     "get": {
      "restPath": "location/{locationId}",
-     "rpcMethod": "latitude.location.get",
+     "rpcMethod": "foo.location.get",
      "httpMethod": "GET",
      "parameters": {
       "granularity": {
@@ -82,23 +82,23 @@
       }
      },
      "response": {
-      "$ref": "LatitudeLocationResourceJson"
+      "$ref": "FooLocationResourceJson"
      }
     },
     "insert": {
      "restPath": "location",
-     "rpcMethod": "latitude.location.insert",
+     "rpcMethod": "foo.location.insert",
      "httpMethod": "POST",
      "request": {
-      "$ref": "LatitudeLocationResourceJson"
+      "$ref": "FooLocationResourceJson"
      },
      "response": {
-      "$ref": "LatitudeLocationResourceJson"
+      "$ref": "FooLocationResourceJson"
      }
     },
     "list": {
      "restPath": "location",
-     "rpcMethod": "latitude.location.list",
+     "rpcMethod": "foo.location.list",
      "httpMethod": "GET",
      "parameters": {
       "granularity": {
@@ -123,7 +123,7 @@
       }
      },
      "response": {
-      "$ref": "LatitudeLocationListResponse"
+      "$ref": "FooLocationListResponse"
      }
     }
    }

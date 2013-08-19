@@ -2,8 +2,8 @@
 {% filter noblanklines %}
 class {{ api.owner }}_{{ model.className }} extends Google_Model {
 {% for property in model.properties %}
-  {% if property.typeHint %}
-  protected $__{{ property.codeName }}Type = '{{ property.typeHint|cut:" " }}';
+  {% if property.typeHintOld %}
+  protected $__{{ property.codeName }}Type = '{{ property.typeHintOld|cut:" " }}';
   protected $__{{ property.codeName }}DataType = '{{ property.dataType }}';
   {% endif %}
   public ${{ property.codeName }};
@@ -15,7 +15,7 @@ class {{ api.owner }}_{{ model.className }} extends Google_Model {
     $this->{{ property.codeName }} = ${{ property.codeName }};
   }
   {% else %}
-  public function set{{ property.codeName|capfirst }}({{ property.typeHint }}${{ property.codeName }}) {
+  public function set{{ property.codeName|capfirst }}({{ property.typeHintOld }} ${{ property.codeName }}) {
     $this->{{ property.codeName }} = ${{ property.codeName }};
   }
   {% endifequal %}

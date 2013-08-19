@@ -1,6 +1,8 @@
 {
  "name": "myservice",
  "version": "v1",
+ "ownerName": "Google",
+ "ownerDomain": "google.com",
  "description": "A sample service remarkably similar to Buzz.",
  "restBasePath": "/buzz/v1/",
  "rootUrl": "https://www.googleapis.com/",

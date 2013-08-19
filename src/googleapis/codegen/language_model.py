@@ -58,6 +58,8 @@ class LanguageModel(object):
      constant: For making a name for a constant.
      member: For making a class member name.
   """
+  # What language this model is for.
+  language = ''
 
   # Characters in addition to alphanumerics which can be in an identifier.
   allowed_characters = ''
@@ -72,9 +74,19 @@ class LanguageModel(object):
   constant_transform = None
   constant_separator = None
   constant_format = None
+
+  # The member, getter, and setter options are a related set. Typically the
+  # transforms will all be identical, but the getter/setter will have a format
+  # like 'get_{name}'
   member_transform = None
   member_separator = None
   member_format = None
+  getter_transform = None
+  getter_separator = None
+  getter_format = None
+  setter_transform = None
+  setter_separator = None
+  setter_format = None
 
   def __init__(self, class_name_delimiter='.', module_name_delimiter=None):
     """Create a LanguageModel.
@@ -263,7 +275,7 @@ class LanguageModel(object):
                                 self.constant_format)
 
   def ToClassName(self, variable, name):
-    """Convert a string to a well formmated class name.
+    """Convert a string to a well formatted class name.
 
     Args:
       variable: (CodeObject) an element which may appear in the templates,
@@ -277,10 +289,10 @@ class LanguageModel(object):
                                 self.class_name_format)
 
   def ToClassMemberName(self, variable, name):
-    """Convert a string to a well formated class member name.
+    """Convert a string to a well formatted class member name.
 
     Class member names are the names used within data member classes. The
-    external name would be the Getter name.
+    external name would be the Getter name. See ToGetterName.
 
     Args:
       variable: (CodeObject) an element which may appear in the templates,
@@ -291,6 +303,38 @@ class LanguageModel(object):
     """
     return self.TransformString(variable, name, self.member_transform,
                                 self.member_separator, self.member_format)
+
+  def ToGetterName(self, variable, name):
+    """Convert a string to the name of a getter for a class member.
+
+    The Getter is the name of the method which would return a member from an
+    object instance.
+
+    Args:
+      variable: (CodeObject) an element which may appear in the templates,
+          but typically a Property.
+      name: (str) The Discovery name of the variable.
+    Returns:
+      (str)
+    """
+    return self.TransformString(variable, name, self.getter_transform,
+                                self.getter_separator, self.getter_format)
+
+  def ToSetterName(self, variable, name):
+    """Convert a string to the name of a setter for a class member.
+
+    The Setter is the name of the method which would set a member in an
+    object instance.
+
+    Args:
+      variable: (CodeObject) an element which may appear in the templates,
+          but typically a Property.
+      name: (str) The Discovery name of the variable.
+    Returns:
+      (str)
+    """
+    return self.TransformString(variable, name, self.setter_transform,
+                                self.setter_separator, self.setter_format)
 
   def ToMemberName(self, s, api):  # pylint: disable=unused-argument
     """Convert a name to a suitable member name in the target language.
@@ -451,7 +495,7 @@ class LanguageModel(object):
     # execution, even though django catches the error and siliently ignores it.
     # OR... maybe just fix the tests to always pass in the complete kind of
     # object we need.
-    if variable:
+    if variable and hasattr(variable, 'module'):
       expansions['module'] = variable.module.name
     # TODO(user): Expand the range of things available.
     return format_string.format(**expansions)

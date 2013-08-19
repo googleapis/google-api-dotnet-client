@@ -18,6 +18,7 @@
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 
+import hashlib
 import os
 import textwrap
 
@@ -92,6 +93,35 @@ class TemplateHelpersTest(basetest.TestCase):
     value = '// %s %s %s %s' % ((alphabet,) * 4)
     expected = '// %s %s %s\n// %s' % ((alphabet,) * 4)
     self.assertEquals(expected, template_helpers.block_comment(value))
+
+  def testCommentBlockPerLanguage(self):
+    text = ('Confectis bellis quinquiens triumphavit, post devictum '
+            'Scipionem quater eodem mense, sed interiectis diebus, et '
+            'rursus semel post superatos Pompei liberos.')
+
+    tmpl_tmpl = textwrap.dedent("""
+    {%% language %s %%}
+
+    {%% filter block_comment %%}
+    %s {{ text }}
+    {%% endfilter %%}
+    """)
+
+    def TestLanguage(language):
+      lang_defaults = template_helpers._language_defaults[language]
+      comment_start = lang_defaults[template_helpers._COMMENT_START]
+      line_width = lang_defaults[template_helpers._LINE_WIDTH]
+      source = tmpl_tmpl % (language, comment_start)
+      result = django_helpers._DjangoRenderTemplateSource(
+          source, {'text': text})
+      for line in result.splitlines():
+        len_line = len(line)
+        self.assertTrue(len_line <= line_width,
+                        '%d should be less than %d for %s' % (
+                            len_line, line_width, language))
+
+    for language in sorted(template_helpers._language_defaults):
+      TestLanguage(language)
 
   def testNoblanklines(self):
     self.assertEquals('a\nb', template_helpers.noblanklines('a\nb'))
@@ -271,6 +301,14 @@ class TemplateHelpersTest(basetest.TestCase):
         'bar': 'baz'
         }))
     self.assertEquals('abc 1baz1 2yyy2 3yyy3 def', rendered)
+
+  def testCallTemplateOutOfDirectory(self):
+    source = 'abc {% call_template ../_out_of_dir %} def'
+    template = django_template.Template(source)
+    rendered = template.render(self._GetContext({
+        'template_dir': os.path.join(self._TEST_DATA_DIR, 'templates'),
+        }))
+    self.assertEquals('abc OUT OF DIR def', rendered)
 
   def testCallTemplateWithEqualsSyntax(self):
     source = 'abc {% call_template _call_test foo=bar qux=api.xxx %} def'
@@ -563,6 +601,68 @@ class TemplateHelpersTest(basetest.TestCase):
     context = self._GetContext({})
     self.assertEquals('OK', template.render(context))
 
+  def testBool(self):
+    source = '{% bool x %}|{% bool y %}'
+
+    def Test(language, x):
+      ctxt = self._GetContext({'_LANGUAGE': language, 'x': x, 'y': not x})
+      template = django_template.Template(source)
+      key = template_helpers._BOOLEAN_LITERALS
+      vals = template_helpers._language_defaults[language].get(
+          key, template_helpers._defaults[key])
+      if x:
+        # If x, true precedes false in the output.
+        vals = vals[::-1]
+      expected = '|'.join(vals)
+      self.assertEquals(expected, template.render(ctxt))
+
+    for language in template_helpers._language_defaults:
+      for value in (True, False, 'truthy string', ''):
+        Test(language, value)
+
+  def testDivChecksum(self):
+    source = '<p>This is some test text.</p>'
+    context = self._GetContext()
+    template = django_template.Template(
+        '{% checksummed_div %}'
+        'someId'
+        '{% divbody %}' + source + '{% endchecksummed_div %}')
+    checksum = hashlib.sha1(source).hexdigest()
+    expected = ('<div id="someId" checksum="%s">' % checksum +
+                source +
+                '</div>')
+    self.assertEquals(expected, template.render(context))
+
+  def testWrite(self):
+    self.name_to_content = {}
+
+    def MyWriter(name, content):
+      """Capture the write event."""
+      self.name_to_content[name] = content
+
+    template = django_template.Template(
+        'a{% write file1 %}foo{% endwrite %}'
+        'b{% write file2 %}bar{% endwrite %}')
+    context = self._GetContext({
+        template_helpers.FILE_WRITER: MyWriter,
+        'file1': 'x',
+        'file2': 'y',
+        })
+    self.assertEquals('ab', template.render(context))
+    self.assertEquals('foo', self.name_to_content['x'])
+    self.assertEquals('bar', self.name_to_content['y'])
+
+
+class TemplateGlobalsTest(basetest.TestCase):
+
+  def testSetContext(self):
+    self.assertIsNone(template_helpers.GetCurrentContext())
+    data = {'key': 'value'}
+    with template_helpers.SetCurrentContext(data):
+      ctxt = template_helpers.GetCurrentContext()
+      self.assertIsNotNone(ctxt)
+      self.assertEquals('value', ctxt['key'])
+    self.assertIsNone(template_helpers.GetCurrentContext())
 
 if __name__ == '__main__':
   basetest.main()

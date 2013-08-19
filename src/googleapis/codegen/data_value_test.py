@@ -98,6 +98,9 @@ class DataValueTest(basetest.TestCase):
                            parent=None, wire_name=None):
         return self.schema_ref
 
+      def NestedClassNameForProperty(self, name, schema):
+        return '%s%s' % (schema.class_name, name)
+
     mock_api = MockApi()
     schema = api.Schema(mock_api, 'Bar', bar_def_dict)
     mock_api.SetSchema(schema)

@@ -1,5 +1,11 @@
 Change Summary
 
+2013-08-19 / Version 1.4.2
+* Added support for C#.
+* Line length in the block_comment filter now varies according to language.
+* Django 1.4 is now supported.
+
+
 2013-07-04 / Version 1.4.1
 * Started migration to LanguageModel based on setting policy rather than
   implementing naming methods.

@@ -7,6 +7,7 @@
 __author__ = 'akesling@google.com (Alex Kesling)'
 
 
+from googleapis.codegen import csharp_generator
 from googleapis.codegen import dart_generator
 from googleapis.codegen import gwt_generator
 from googleapis.codegen import java_generator
@@ -21,6 +22,7 @@ from googleapis.codegen import sample_generator
 # to a key in these dictionaries.  If a template tree does not
 # include this specification, the language name is used as a key.
 _GENERATORS_BY_LANGUAGE = {
+    'csharp': csharp_generator.CSharpGenerator,
     'dart': dart_generator.DartGenerator,
     'gwt': gwt_generator.GwtGenerator,
     'java': java_generator.Java14Generator,
