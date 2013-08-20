@@ -51,7 +51,7 @@ class MavenUtilsTest(basetest.TestCase):
 
   def testGetMavenGroupId(self):
     self.assertEquals('com.foo.bar', maven_utils.GetMavenGroupId('bar.foo.com'))
-    self.assertEquals('google-api-services',
+    self.assertEquals('com.google.apis',
                       maven_utils.GetMavenGroupId('google.com'))
 
   def testGetMavenVersion(self):

@@ -829,6 +829,10 @@ class Resource(template_objects.CodeObject):
   def methods(self):
     return self._methods
 
+  @property
+  def methods_dict(self):
+    return {method['wireName']: method for method in self._methods}
+
 
 class AuthScope(template_objects.CodeObject):
   """The definition of an auth scope."""

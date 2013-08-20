@@ -508,6 +508,7 @@ class DocumentingLanguageModel(LanguageModel):
   """
 
   array_of_format = 'Array<{name}>'
+  class_name_transform = UPPER_CAMEL_CASE
 
   def CodeTypeForMapOf(self, type_name):
     """Take a type name and return the syntax for a map of strings of them.

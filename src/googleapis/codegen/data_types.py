@@ -422,6 +422,7 @@ class Void(PrimitiveDataType):
       Void
     """
     super(Void, self).__init__({}, api, parent=api)
+    self.SetTemplateValue('isVoid', True)
 
   @property
   def code_type(self):
