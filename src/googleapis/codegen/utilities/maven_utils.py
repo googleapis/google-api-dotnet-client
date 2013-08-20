@@ -42,7 +42,7 @@ def GetMavenGroupId(owner_domain):
     (str) The group id.
   """
   if owner_domain == 'google.com':
-    return 'google-api-services'
+    return 'com.google.apis'
   else:
     return '.'.join(reversed(owner_domain.split('.')))
 
