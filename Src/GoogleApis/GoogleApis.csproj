@@ -85,7 +85,7 @@
     <Compile Include="Apis\Services\IClientService.cs" />
     <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\[Media]\Download\IDownloadProgress.cs" />
-    <Compile Include="Apis\[Media]\Download\IMediaDownloaded.cs" />
+    <Compile Include="Apis\[Media]\Download\IMediaDownloader.cs" />
     <Compile Include="Apis\[Media]\Download\MediaDownloader.cs" />
     <Compile Include="Apis\[Media]\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
