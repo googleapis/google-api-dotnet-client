@@ -147,9 +147,9 @@ namespace Google.Apis.NuGet.Publisher
         Program(Options options)
         {
             this.options = options;
-            // remove "Google.Apis.NuGet.Publisher\\bin\\{Debug|Release}\\Google.Apis.NuGet.Publisher.exe"
+            // remove "bin\\{Debug|Release}\\Google.Apis.NuGet.Publisher.exe"
             var fileInfo = new FileInfo(Assembly.GetEntryAssembly().Location);
-            TemplateDirectory = Path.Combine(fileInfo.Directory.Parent.Parent.Parent.FullName, "Template");
+            TemplateDirectory = Path.Combine(fileInfo.Directory.Parent.Parent.FullName, "Template");
         }
 
         Task Run()
