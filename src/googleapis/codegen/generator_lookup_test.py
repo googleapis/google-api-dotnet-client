@@ -31,8 +31,6 @@ class GeneratorLookupTest(basetest.TestCase):
     self.assertNotIn('java-head', languages)
 
   def testVersion(self):
-    gen = generator_lookup.GetGeneratorByLanguage('java1_8')
-    self.assertEquals(java_generator.Java8Generator, gen)
     gen = generator_lookup.GetGeneratorByLanguage('java1_12')
     self.assertEquals(java_generator.Java12Generator, gen)
     gen = generator_lookup.GetGeneratorByLanguage('java1_13')
@@ -49,7 +47,7 @@ class GeneratorLookupTest(basetest.TestCase):
     raw_features = json.load(open(features_path))
     generator_name = raw_features['generator']
     gen = generator_lookup.GetGeneratorByLanguage(generator_name)
-    self.assertEquals(java_generator.Java8Generator, gen)
+    self.assertEquals(java_generator.Java12Generator, gen)
 
 
 if __name__ == '__main__':

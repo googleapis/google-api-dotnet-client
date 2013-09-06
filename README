@@ -26,10 +26,10 @@ Introduction
   language X to write templates for code in X, without having to learn much
   Python.
 
-  The generator currently has templates for Java, CSharp, GWT, PHP and Dart.
-  There may be multiple variations of each language. For each, the variant used
-  by default (typically also named "default") matches the head of the respective
-  base client libraries.
+  The generator currently has templates for Java, C++, CSharp, GWT, PHP
+  and Dart.  There may be multiple variations of each language. For each,
+  the variant used by default (typically also named "default") matches the
+  head of the respective base client libraries.
 
 
 Installation

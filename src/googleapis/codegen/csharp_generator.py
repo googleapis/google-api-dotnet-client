@@ -36,13 +36,14 @@ class CSharpLanguageModel(language_model.LanguageModel):
   allowed_characters = '<>,'
 
   # Set up variable naming policy
-  array_of_format = 'System.Collections.Generic.IList<{name}>'
-  array_of_separator = '.'
-  constant_transform = language_model.UPPER_CAMEL_CASE
-  constant_separator = None
-  class_name_separator = '.'
-  class_name_transform = language_model.UPPER_CAMEL_CASE
-  member_transform = language_model.UPPER_CAMEL_CASE
+  array_of_policy = language_model.NamingPolicy(
+      format_string='System.Collections.Generic.IList<{name}>', separator='.')
+  constant_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE)
+  class_name_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE, separator='.')
+  member_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE)
 
   # TODO(user): Fix these 3 tables
   _SCHEMA_TYPE_TO_CSHARP_TYPE = {

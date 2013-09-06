@@ -34,8 +34,6 @@ from googleapis.codegen.utilities import maven_utils
 class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
   """Base for Java code generators."""
 
-  _support_prop_methods = True
-
   def __init__(self, discovery, language='java', language_model=None,
                options=None):
     if not language_model:
@@ -57,34 +55,6 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
         'maven',
         maven_utils.GetMavenMetadata(the_api, self.language_version),
         'maven metadata')
-
-  def AnnotateMethod(self, the_api, method, resource):
-    """Annotate a Method with Java specific elements.
-
-    We add a few things:
-    * Annotate our parameters
-    * Constructor declaration lists.  We do it here rather than in a template
-      mainly because it is much easier to do the join around the ','
-    * Add a 'content' member for PUT/POST methods which take an object as input.
-
-    Args:
-      the_api: (Api) The API tree which owns this method.
-      method: (Method) The method to annotate.
-      resource: (Resource) The resource which owns this method.
-    """
-    # Chain up so our parameters are annotated first.
-    super(BaseJavaGenerator, self).AnnotateMethod(the_api, method, resource)
-    if not self._support_prop_methods:
-      # TODO(user): This is a hack until the Java client supports the
-      # PROP methods
-      http_method = method.values.get('httpMethod')
-      if (http_method == 'PROPFIND' or http_method == 'OPTIONS'
-          or http_method == 'REPORT'):
-        method.SetTemplateValue('httpMethodOverride', http_method)
-        method.SetTemplateValue('httpMethod', 'GET')
-      if method == 'PROPPATCH':
-        method.SetTemplateValue('httpMethodOverride', http_method)
-        method.SetTemplateValue('httpMethod', 'PATCH')
 
   def AnnotateParameter(self, unused_method, parameter):
     """Annotate a Parameter with Java specific elements."""
@@ -129,15 +99,6 @@ class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
       # Set all template values, if specified.
       for template_value in import_definition.template_values:
         element.SetTemplateValue(template_value, True)
-
-
-class Java8Generator(BaseJavaGenerator):
-  """A Java generator for language version 1.8."""
-  _support_prop_methods = False
-
-  @classmethod
-  def _GetDefaultLanguageModel(cls, options=None):
-    return Java8LanguageModel(options=options)
 
 
 class Java12Generator(BaseJavaGenerator):
@@ -376,20 +337,6 @@ class JavaLanguageModel(LanguageModel):
   def DefaultContainerPathForOwner(self, module):
     """Overrides the default."""
     return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
-
-
-class Java8LanguageModel(JavaLanguageModel):
-  """Language model for the Java 1.8 template version."""
-
-  def CodeTypeForVoid(self):
-    """Return the Java 1.8 type name for a void.
-
-    Overrides the default.
-
-    Returns:
-      (str) 'EmptyResponse'
-    """
-    return 'void'
 
 
 class Java14LanguageModel(JavaLanguageModel):

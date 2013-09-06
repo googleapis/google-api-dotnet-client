@@ -65,7 +65,7 @@ class MavenUtilsTest(basetest.TestCase):
     endpoints_api = {'name': 'api',
                      'version': 'v1',
                      'ownerDomain': 'bestbuy.com'}
-    self.assertEquals('v1-SNAPSHOT',
+    self.assertEquals('v1-1.5-SNAPSHOT',
                       maven_utils.GetMavenVersion(endpoints_api, lv))
 
 

@@ -1,0 +1,34 @@
+{% doc_comment noblock %}
+Creates a new {{ method.className }} instance.{% if method.deprecated %}
+@deprecated{% endif %}
+
+@param[in] _credential_  Can be NULL.
+           NULL credentials will not authorize the request.{% for p in method.requiredParameters %}
+@param[in] {{ p.codeName }} {{ p.description }}{% endfor %}{% if method.requestType and not method.mediaUpload %}
+@param[in] _content_ The data object to {{ method.name }}.{% endif %}
+
+@returns  The caller should <code>Execute</code> the method instance,
+          then destroy it when they are finished.
+{% enddoc_comment %}
+{{ method.className }}* New{{ method.undecoratedClassName }}(
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.codeName }}{% endfor %}{% if method.requestType and not method.mediaUpload %},
+    const {{ method.requestType.fullClassName }}& _content_{% endif %}) const;
+
+{% if method.isPageable %}{% doc_comment noblock %}
+Creates a pager for iterating over incremental result pages.{% if method.deprecated %}
+@deprecated{% endif %}
+@param[in] _credential_  NULL credentials will not authorize the request.{% for p in method.requiredParameters %}
+@param[in] {{ p.codeName }} {{ p.description }}
+{% endfor %}{% if method.requestType and not method.mediaUpload %}
+@param[in] _content_ The data object to {{ method.name }}.
+{% endif %}
+
+@see {{ api.global_namespace }}{% if api.global_namespace != '' %}::{% endif %}{{ api.global_namespace }}::ServiceRequestPager
+{% enddoc_comment %}
+{{ method.className }}Pager* New{{ method.undecoratedClassName }}Pager(
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.codeName }}{% endfor %}{% if method.requestType and not method.mediaUpload %},
+    const {{ method.requestType.fullClassName }}& _content_{% endif %}) const;
+{% endif %}
+

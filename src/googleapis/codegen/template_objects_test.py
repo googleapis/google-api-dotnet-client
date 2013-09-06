@@ -125,8 +125,9 @@ class ConstantTest(basetest.TestCase):
     super(ConstantTest, self).setUp()
 
     self.language_model = language_model.LanguageModel()
-    self.language_model.constant_separator = '|'
-    self.language_model.constant_transform = language_model.UPPER_CAMEL_CASE
+    self.language_model.constant_policy = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE,
+        separator='|')
 
   def testConstantNameFixer(self):
     c = template_objects.Constant('hello_world',

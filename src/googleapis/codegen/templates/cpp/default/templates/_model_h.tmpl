@@ -1,0 +1,2 @@
+{% if not guarded_model.isSchema %}{% for child in guarded_model.children %}{% call_template _model_h guarded_model=child %}{% endfor %}{% else %}
+{% call_template _model_h_impl current_model=guarded_model %}{% endif %}

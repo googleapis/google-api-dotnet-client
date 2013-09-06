@@ -124,6 +124,7 @@ class Api(template_objects.CodeObject):
                           self.values['version'].replace('-', '_'))
     self.SetTemplateValue('dataWrapper',
                           'dataWrapper' in discovery_doc.get('features', []))
+    self.values.setdefault('title', name)
     if not self.values.get('revision'):
       self.values['revision'] = 'snapshot'
 
@@ -238,7 +239,7 @@ class Api(template_objects.CodeObject):
         owner_name = owner_domain.replace('.', '_')
       self.SetTemplateValue('ownerName', owner_name)
     if not self.get('owner'):
-      self.SetTemplateValue('owner', self['ownerName'])
+      self.SetTemplateValue('owner', self['ownerName'].lower())
 
   def _NormalizeUrlComponents(self):
     """Sets template values concerning the path to the service.
@@ -770,6 +771,14 @@ class Property(template_objects.CodeObject):
     super(Property, self).__init__(def_dict, api, wire_name=name)
     self.ValidateName(name)
     self.schema = schema
+
+    # TODO(user): find a better way to mark a schema as an array type
+    # so we can display schemas like BlogList in method responses
+    try:
+      if self.values['wireName'] == 'items' and self.values['type'] == 'array':
+        self.schema.values['isList'] = True
+    except KeyError:
+      pass
     # If the schema value for this property defines a new object directly,
     # rather than refering to another schema, we will have to create a class
     # name for it.   We create a unique name by prepending the schema we are
@@ -926,6 +935,8 @@ class Method(template_objects.CodeObject):
       response_schema = api.DataTypeFromJson(expected_response,
                                              '%sResponse' % name,
                                              parent=self)
+      if self.values['wireName'] == 'get':
+        response_schema.values['associatedResource'] = parent
       self.SetTemplateValue('responseType', response_schema)
     else:
       self.SetTemplateValue('responseType', api.void_type)

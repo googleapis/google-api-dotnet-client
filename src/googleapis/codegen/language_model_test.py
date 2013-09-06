@@ -95,6 +95,9 @@ class LanguageModelTest(basetest.TestCase):
     float_dv = self._CreateDataValue(4.2, 'I\'m a valid type!')
     self.assertRaises(ValueError, render_method, float_dv)
 
+
+class LanguagePolicyTest(basetest.TestCase):
+
   def testTransform(self):
 
     class TestLanguageModel(language_model.LanguageModel):
@@ -107,28 +110,30 @@ class LanguageModelTest(basetest.TestCase):
     # An identifier with several bad characters, including one at the end
     # which we expect to strip off.
     s = 'I-am -a_tesT@'
-    self.assertEquals(
-        'iamatest',
-        m.TransformString(None, s, language_model.LOWER_CASE, None))
-    self.assertEquals(
-        'I_am_a_tesT',
-        m.TransformString(None, s, language_model.PRESERVE_CASE, '_'))
-    self.assertEquals(
-        'I_AM_A_TEST',
-        m.TransformString(None, s, language_model.UPPER_CASE, '_'))
-    self.assertEquals(
-        'i_am_a_test',
-        m.TransformString(None, s, language_model.LOWER_CASE, '_'))
-    self.assertEquals(
-        'IAmATesT',
-        m.TransformString(None, s, language_model.UPPER_CAMEL_CASE, None))
-    self.assertEquals(
-        'iAmATesT',
-        m.TransformString(None, s, language_model.LOWER_CAMEL_CASE, None))
+    p = language_model.NamingPolicy(case_transform=language_model.LOWER_CASE)
+    self.assertEquals('iamatest', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.PRESERVE_CASE,
+        separator='_')
+    self.assertEquals('I_am_a_tesT', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CASE,
+        separator='_')
+    self.assertEquals('I_AM_A_TEST', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.LOWER_CASE,
+        separator='_')
+    self.assertEquals('i_am_a_test', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE)
+    self.assertEquals('IAmATesT', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.LOWER_CAMEL_CASE)
+    self.assertEquals('iAmATesT', m.TransformString(None, s, p))
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE)
     s = 'allow#this'
-    self.assertEquals(
-        'Allow#this',
-        m.TransformString(None, s, language_model.UPPER_CAMEL_CASE, None))
+    self.assertEquals('Allow#this', m.TransformString(None, s, p))
 
   def testFormat(self):
     # TODO(user): Add tests here when we expand the format options
@@ -137,13 +142,15 @@ class LanguageModelTest(basetest.TestCase):
   def testPoliciesGetUsedInTheRightMethods1(self):
 
     class TestLanguageModel(language_model.LanguageModel):
-      class_name_transform = language_model.UPPER_CAMEL_CASE
-      class_name_separator = '!CLASS!'
-      class_name_format = 'C {name}'
+      class_name_policy = language_model.NamingPolicy(
+          case_transform=language_model.UPPER_CAMEL_CASE,
+          separator='!CLASS!',
+          format_string='C {name}')
 
-      constant_transform = language_model.UPPER_CASE
-      constant_separator = '!CONSTANT!'
-      constant_format = 'K {name}'
+      constant_policy = language_model.NamingPolicy(
+          case_transform=language_model.UPPER_CASE,
+          separator='!CONSTANT!',
+          format_string='K {name}')
 
       def __init__(self, **kwargs):
         super(TestLanguageModel, self).__init__(**kwargs)
@@ -159,17 +166,20 @@ class LanguageModelTest(basetest.TestCase):
   def testPoliciesGetUsedInTheRightMethods2(self):
 
     class TestLanguageModel(language_model.LanguageModel):
-      member_transform = language_model.LOWER_CASE
-      member_separator = '!MEMBER!'
-      member_format = 'M {name}'
+      member_policy = language_model.NamingPolicy(
+          case_transform=language_model.LOWER_CASE,
+          separator='!MEMBER!',
+          format_string='M {name}')
 
-      getter_transform = language_model.LOWER_CAMEL_CASE
-      getter_separator = '!GETTER!'
-      getter_format = 'G {name}'
+      getter_policy = language_model.NamingPolicy(
+          case_transform=language_model.LOWER_CAMEL_CASE,
+          separator='!GETTER!',
+          format_string='G {name}')
 
-      setter_transform = language_model.UPPER_CAMEL_CASE
-      setter_separator = '!SETTER!'
-      setter_format = 'S {name}'
+      setter_policy = language_model.NamingPolicy(
+          case_transform=language_model.UPPER_CAMEL_CASE,
+          separator='!SETTER!',
+          format_string='S {name}')
 
       def __init__(self, **kwargs):
         super(TestLanguageModel, self).__init__(**kwargs)

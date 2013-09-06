@@ -50,7 +50,7 @@ body
 {% noeol %}
 public class {{ method.className }}Request : {{ api.className }}
 BaseServiceRequest<
-{% if method.responseType.fullClassName == 'void' %}
+{% if method.responseType.isVoid %}
 string
 {% else %}
 {{ method.responseType.fullClassName }}

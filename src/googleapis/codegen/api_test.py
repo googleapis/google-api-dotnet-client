@@ -618,17 +618,20 @@ class ApiTest(basetest.TestCase):
       return Api(d)
 
     api = LoadApi()
-    self.assertEquals('Google', api.values['owner'])
+    self.assertEquals('Google', api.values['ownerName'])
+    self.assertEquals('google', api.values['owner'])
     self.assertEquals('google.com', api.values['ownerDomain'])
 
     api = LoadApi(ownerName='Google', ownerDomain='youtube.com')
-    self.assertEquals('Google', api.values['owner'])
+    self.assertEquals('Google', api.values['ownerName'])
+    self.assertEquals('google', api.values['owner'])
     self.assertEquals('youtube.com', api.values['ownerDomain'])
 
     api = LoadApi(ownerDomain='youtube.com')
     self.assertEquals('youtube_com', api.values['owner'])
     self.assertEquals('youtube.com', api.values['ownerDomain'])
 
+    # owner is explicitly declared
     api = LoadApi(owner='You Tube', ownerDomain='youtube.com')
     self.assertEquals('You Tube', api.values['owner'])
     self.assertEquals('youtube.com', api.values['ownerDomain'])
@@ -642,19 +645,19 @@ class ApiTest(basetest.TestCase):
                   rootUrl='https://whathaveyou.googleplex.com')
     self.assertEquals('google.com', api['ownerDomain'])
     self.assertEquals('Google', api['ownerName'])
-    self.assertEquals('Google', api['owner'])
+    self.assertEquals('google', api['owner'])
 
     api = LoadApi(servicePath='/fake',
                   rootUrl='https://whathaveyou.googleapis.com')
     self.assertEquals('google.com', api['ownerDomain'])
     self.assertEquals('Google', api['ownerName'])
-    self.assertEquals('Google', api['owner'])
+    self.assertEquals('google', api['owner'])
 
     api = LoadApi(servicePath='/fake',
                   rootUrl='https://whathaveyou.google.com')
     self.assertEquals('google.com', api['ownerDomain'])
     self.assertEquals('Google', api['ownerName'])
-    self.assertEquals('Google', api['owner'])
+    self.assertEquals('google', api['owner'])
 
   def testSharedTypes(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_SHARED_TYPES_DOC)
@@ -674,6 +677,14 @@ class ApiTest(basetest.TestCase):
     api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
     self.assertLess(25, len(api.all_methods))
     self.assertLess(0, len(api.top_level_methods))
+
+  def testApiHasTitle(self):
+    api_def = {'name': 'fake',
+               'version': 'v1',
+               'schemas': {},
+               'resources': {}}
+    api = Api(api_def)
+    self.assertEquals('fake', api['title'])
 
 
 class ApiExceptionTest(basetest.TestCase):

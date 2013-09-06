@@ -31,20 +31,20 @@ class SampleLanguageModel(language_model.LanguageModel):
 
   # Set up variable naming policy
   allowed_characters = '_'
-  array_of_format = '{module}::Array<{name}>'
-  class_name_transform = language_model.LOWER_CASE
-  class_name_separator = '_'
-  constant_transform = language_model.UPPER_CASE
-  constant_separator = '_'
-  member_transform = None
-  member_separator = '_'
-  member_format = '_{name}'
-  getter_transform = language_model.UPPER_CAMEL_CASE
-  getter_separator = None
-  getter_format = 'get{name}'
-  setter_transform = language_model.UPPER_CAMEL_CASE
-  setter_separator = None
-  setter_format = 'set{name}'
+  array_of_policy = language_model.NamingPolicy(
+      format_string='{module}::Array<{name}>')
+  class_name_policy = language_model.NamingPolicy(
+      case_transform=language_model.LOWER_CASE, separator='_')
+  constant_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CASE, separator='_')
+  member_policy = language_model.NamingPolicy(
+      format_string='_{name}', separator='_')
+  getter_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE,
+      format_string='get{name}')
+  setter_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE,
+      format_string='set{name}')
 
   _SCHEMA_TYPE_TO_LANGUAGE_TYPE = {
       'any': 'object',

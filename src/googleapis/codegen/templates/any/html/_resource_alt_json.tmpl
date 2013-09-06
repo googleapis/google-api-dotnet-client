@@ -1,0 +1,13 @@
+{
+{% indent %}{% for prop in schema.properties %}{% noeol %}
+
+<span class="str">"{{ prop.wireName }}"</span>
+<span class="pun">:</span>
+<span class="pln"> </span>
+
+{% endnoeol %}{% if prop.data_type.isSchema and prop.data_type.anonymous %}{% call_template _resource_alt_json schema=prop.data_type %}{% else %}<var class="apiparam"><span class="pln">{{ prop.type }}</span></var>{% endif %}{% noeol %}
+
+{% if not forloop.last %}<span class="pun">,</span>{% endif %}
+{% eol %}
+
+{% endnoeol %}{% endfor %}{% endindent %}}

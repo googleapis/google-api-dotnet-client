@@ -384,6 +384,11 @@ class CodeObject(UseableInTemplates):
     """Returns a name for the setter of memberName."""
     return self.language_model.ToSetterName(self, self.values['wireName'])
 
+  @property
+  def hasName(self):  # pylint: disable=g-bad-name
+    """Returns a name for the has check of memberName."""
+    return self.language_model.ToHasName(self, self.values['wireName'])
+
 
 class Module(CodeObject):
   """A code object which represents the concept of a module.

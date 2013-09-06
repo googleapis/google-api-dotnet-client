@@ -2,22 +2,20 @@
   "language": "java",
   "description": "Java libraries for Google APIs.",
   "generator": "java1_15",
-  "releaseVersion": "1.17.0-rc-SNAPSHOT",
-  "baseClientLibrary": "1.17.0-rc-SNAPSHOT",
-  "oauthClientLibrary": "1.17.0-rc-SNAPSHOT",
-  "httpClientLibrary": "1.17.0-rc-SNAPSHOT",
+  "releaseVersion": "1.18.0-rc-SNAPSHOT",
+  "baseClientLibrary": "1.18.0-rc-SNAPSHOT",
+  "oauthClientLibrary": "1.18.0-rc-SNAPSHOT",
+  "httpClientLibrary": "1.18.0-rc-SNAPSHOT",
   "commonsLoggingVersion": "1.1.1",
   "gsonVersion": "2.1",
   "httpClientVersion": "4.0.1",
   "httpCoreVersion": "4.0.1",
-  "jacksonCoreAslVersion": "1.9.11",
   "jackson2CoreVersion": "2.1.3",
   "jdo2ApiVersion": "2.3-eb",
   "jettyVersion": "6.1.26",
   "jettyUtilVersion": "6.1.26",
   "jsr305Version": "1.3.9",
   "transactionApiVersion": "1.1",
-  "xpp3Version": "1.1.4c",
   "descriptor_additions": {
     "proguard-config": "proguard-google-api-client.txt",
     "files": [
@@ -92,6 +90,38 @@
         },{
           "type": "source",
           "path": "libs-sources/google-api-client-appengine-${baseClientLibrary}-sources.jar"
+        },{
+          "type": "license",
+          "path": "dependencies/APACHE-LICENSE.txt"
+        }
+      ]
+    },{
+      "name": "GSON extensions to the Google APIs Client Library",
+      "environments": ["generic"],
+      "version": "${baseClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/google-api-client-gson-${baseClientLibrary}.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/google-api-client-gson-${baseClientLibrary}-sources.jar"
+        },{
+          "type": "license",
+          "path": "dependencies/APACHE-LICENSE.txt"
+        }
+      ]
+    },{
+      "name": "Jackson 2 extensions to the Google APIs Client Library",
+      "environments": ["generic"],
+      "version": "${baseClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/google-api-client-jackson2-${baseClientLibrary}.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/google-api-client-jackson2-${baseClientLibrary}-sources.jar"
         },{
           "type": "license",
           "path": "dependencies/APACHE-LICENSE.txt"
@@ -175,22 +205,6 @@
         },{
           "type": "source",
           "path": "libs-sources/google-oauth-client-java6-${oauthClientLibrary}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/APACHE-LICENSE.txt"
-        }
-      ]
-    },{
-      "name": "Java 7 (and higher) extensions to the Google OAuth Client Library",
-      "environments": ["generic"],
-      "version": "${oauthClientLibrary}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/google-oauth-client-java7-${oauthClientLibrary}.jar"
-        },{
-          "type": "source",
-          "path": "libs-sources/google-oauth-client-java7-${oauthClientLibrary}-sources.jar"
         },{
           "type": "license",
           "path": "dependencies/APACHE-LICENSE.txt"
@@ -302,25 +316,6 @@
         }
       ]
     },{
-      "name": "Jackson extensions to the Google HTTP Client Library",
-      "environments": ["*"],
-      "version": "${httpClientLibrary}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/google-http-client-jackson-${httpClientLibrary}.jar"
-        },{
-          "type": "source",
-          "path": "libs-sources/google-http-client-jackson-${httpClientLibrary}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/APACHE-LICENSE.txt"
-        },{
-          "type": "android-properties",
-          "path": "libs/google-http-client-jackson-${httpClientLibrary}.jar.properties"
-        }
-      ]
-    },{
       "name": "Jackson 2 extensions to the Google HTTP Client Library",
       "environments": ["*"],
       "version": "${httpClientLibrary}",
@@ -337,6 +332,25 @@
         },{
           "type": "android-properties",
           "path": "libs/google-http-client-jackson2-${httpClientLibrary}.jar.properties"
+        }
+      ]
+    },{
+      "name": "JDO extensions to the Google HTTP Client Library",
+      "environments": ["*"],
+      "version": "${httpClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "libs/google-http-client-jdo-${httpClientLibrary}.jar"
+        },{
+          "type": "source",
+          "path": "libs-sources/google-http-client-jdo-${httpClientLibrary}-sources.jar"
+        },{
+          "type": "license",
+          "path": "dependencies/APACHE-LICENSE.txt"
+        },{
+          "type": "android-properties",
+          "path": "libs/google-http-client-jdo-${httpClientLibrary}.jar.properties"
         }
       ]
     },{
@@ -404,25 +418,6 @@
         },{
           "type": "license",
           "path": "dependencies/APACHE-LICENSE.txt"
-        }
-      ]
-    },{
-      "name": "Jackson Core ASL",
-      "environments": ["*"],
-      "version": "${jacksonCoreAslVersion}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/jackson-core-asl-${jacksonCoreAslVersion}.jar"
-        },{
-          "type": "source",
-          "path": "libs-sources/jackson-core-asl-${jacksonCoreAslVersion}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/APACHE-LICENSE.txt"
-        },{
-          "type": "android-properties",
-          "path": "libs/jackson-core-asl-${jacksonCoreAslVersion}.jar.properties"
         }
       ]
     },{
@@ -519,22 +514,6 @@
         },{
           "type": "license",
           "path": "dependencies/CDDL-LICENSE.txt"
-        }
-      ]
-    },{
-      "name": "XPP3",
-      "environments": ["appengine", "servlet", "generic"],
-      "version": "${xpp3Version}",
-      "files": [
-        {
-          "type": "binary",
-          "path": "libs/xpp3-${xpp3Version}.jar"
-        },{
-          "type": "source",
-          "path": "libs-sources/xpp3-${xpp3Version}-sources.jar"
-        },{
-          "type": "license",
-          "path": "dependencies/xpp3_LICENSE.txt"
         }
       ]
     }

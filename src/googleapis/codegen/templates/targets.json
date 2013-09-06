@@ -1,5 +1,14 @@
 {
   "languages": {
+    "cpp": {
+      "displayName": "C++",
+      "description": "C++ libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        }
+      }
+    },
     "csharp": {
       "displayName": "CSharp",
       "description": "CSharp libraries for Google APIs.",

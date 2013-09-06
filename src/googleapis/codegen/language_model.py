@@ -24,12 +24,44 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 
 from googleapis.codegen import utilities
 
-# Types of variable name case transforms.
-PRESERVE_CASE = 0  # hello worlD
+# Types of variable name case transforms. E.g. "hello worLd"
+PRESERVE_CASE = 0  # hello worLd
 LOWER_CASE = 1  # hello world
 UPPER_CASE = 2  # HELLO WORLD
-LOWER_CAMEL_CASE = 3  # hello WorlD
-UPPER_CAMEL_CASE = 4  # Hello WorlD
+LOWER_CAMEL_CASE = 3  # hello WorLd
+UPPER_CAMEL_CASE = 4  # Hello WorLd
+LOWER_UNCAMEL_CASE = 5  # hello wor ld
+UPPER_UNCAMEL_CASE = 6  # HELLO WOR LD
+
+
+class NamingPolicy(object):
+  """The policy for transforming a wireName into a language suitable format.
+
+  A naming policy consists of 3 parameters which define the transformation
+  of a wireName into a particular type of programming language construct. For
+  example, in C++, we might want max-results to be set_max_results when used as
+  a setter and _max_results when used as the name of a member variable. The
+  parameters are
+
+  case_transform: (enum) The case transform for use for building a name. For
+      the input 'hello worlD', the choices yield:
+          language_model.PRESERVE_CASE => hello worlD
+          language_model.LOWER_CASE => hello world
+          language_model.UPPER_CASE => HELLO WORLD
+          language_model.LOWER_CAMEL_CASE => hello WorlD
+          language_model.UPPER_CAMEL_CASE => Hello WorlD
+          language_model.LOWER_UNCAMEL_CASE => hello wor ld
+          language_model.UPPER_UNCAMEL_CASE => HELLO WOR LD
+  format_string: (str) The format string which wraps the transformed, separated
+      name we are building. May be None for the identity format.
+  separator: (char) The character which will be used to separate the
+      parts of a name. May be None to indicate no separator.
+  """
+
+  def __init__(self, case_transform=None, format_string=None, separator=None):
+    self.case_transform = case_transform
+    self.format_string = format_string
+    self.separator = separator
 
 
 class LanguageModel(object):
@@ -40,17 +72,6 @@ class LanguageModel(object):
   specifies the case transformation, separator or format. The meaning of
   these three options are:
 
-  transform: (enum) The case transform for use for building a name. For the
-      input 'hello worlD', the choices yield:
-          language_model.PRESERVE_CASE => hello worlD
-          language_model.LOWER_CASE => hello world
-          language_model.UPPER_CASE => HELLO WORLD
-          language_model.LOWER_CAMEL_CASE => hello WorlD
-          language_model.UPPER_CAMEL_CASE => Hello WorlD
-  separator: (char) The character which will be used to separate the
-      parts of a name. May be None to indicate no separator.
-  format: (str) The format string which wraps the transformed, separated
-      name we are building. May be None for the identity format.
 
   The nametypes we define are
      array_of: For making a declaration of an array of some data type.
@@ -65,28 +86,17 @@ class LanguageModel(object):
   allowed_characters = ''
 
   # The defaults for each of (TypeOfName x Option)
-  array_of_transform = None
-  array_of_separator = None
-  array_of_format = None
-  class_name_transform = None
-  class_name_separator = None
-  class_name_format = None
-  constant_transform = None
-  constant_separator = None
-  constant_format = None
+  array_of_policy = None  # Note usage in CodeTypeForArrayOf
+  class_name_policy = NamingPolicy()
+  constant_policy = NamingPolicy()
 
   # The member, getter, and setter options are a related set. Typically the
   # transforms will all be identical, but the getter/setter will have a format
   # like 'get_{name}'
-  member_transform = None
-  member_separator = None
-  member_format = None
-  getter_transform = None
-  getter_separator = None
-  getter_format = None
-  setter_transform = None
-  setter_separator = None
-  setter_format = None
+  member_policy = NamingPolicy()
+  getter_policy = NamingPolicy()
+  setter_policy = NamingPolicy()
+  has_policy = NamingPolicy()
 
   def __init__(self, class_name_delimiter='.', module_name_delimiter=None):
     """Create a LanguageModel.
@@ -208,11 +218,8 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    if (self.array_of_transform or self.array_of_separator
-        or self.array_of_format):
-      return self.TransformString(variable, type_name, self.array_of_transform,
-                                  self.array_of_separator,
-                                  self.array_of_format)
+    if self.array_of_policy:
+      return self.TransformString(variable, type_name, self.array_of_policy)
     # fall back to older implementation
     return self.CodeTypeForArrayOf(type_name)
 
@@ -270,9 +277,7 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    return self.TransformString(variable, name, self.constant_transform,
-                                self.constant_separator,
-                                self.constant_format)
+    return self.TransformString(variable, name, self.constant_policy)
 
   def ToClassName(self, variable, name):
     """Convert a string to a well formatted class name.
@@ -284,9 +289,7 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    return self.TransformString(variable, name, self.class_name_transform,
-                                self.class_name_separator,
-                                self.class_name_format)
+    return self.TransformString(variable, name, self.class_name_policy)
 
   def ToClassMemberName(self, variable, name):
     """Convert a string to a well formatted class member name.
@@ -301,8 +304,7 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    return self.TransformString(variable, name, self.member_transform,
-                                self.member_separator, self.member_format)
+    return self.TransformString(variable, name, self.member_policy)
 
   def ToGetterName(self, variable, name):
     """Convert a string to the name of a getter for a class member.
@@ -317,8 +319,7 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    return self.TransformString(variable, name, self.getter_transform,
-                                self.getter_separator, self.getter_format)
+    return self.TransformString(variable, name, self.getter_policy)
 
   def ToSetterName(self, variable, name):
     """Convert a string to the name of a setter for a class member.
@@ -333,8 +334,22 @@ class LanguageModel(object):
     Returns:
       (str)
     """
-    return self.TransformString(variable, name, self.setter_transform,
-                                self.setter_separator, self.setter_format)
+    return self.TransformString(variable, name, self.setter_policy)
+
+  def ToHasName(self, variable, name):
+    """Convert a string to the name of a 'has' method for a class member.
+
+    HasName is the name of the method which would check to see if the member is
+    set to a value in the object instance.
+
+    Args:
+      variable: (CodeObject) an element which may appear in the templates,
+          but typically a Property.
+      name: (str) The Discovery name of the variable.
+    Returns:
+      (str)
+    """
+    return self.TransformString(variable, name, self.has_policy)
 
   def ToMemberName(self, s, api):  # pylint: disable=unused-argument
     """Convert a name to a suitable member name in the target language.
@@ -420,10 +435,8 @@ class LanguageModel(object):
     """
     return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
 
-  def TransformString(self, variable, s, case_transformation,
-                      reserved_character_replacement,
-                      format_string=None):
-    """Applies case and separator transforms to a string.
+  def TransformString(self, variable, s, policy):
+    """Applies the transforms of a naming policy to a string.
 
     Takes a string (usually a wireName) which might be in any case and have
     reserved characters in it and transforms by the rules specified. The string
@@ -445,25 +458,26 @@ class LanguageModel(object):
           is used to extract details about the variable which may be useful in
           building a name, such as the module it belongs to.
       s: (str) A string to transform.
-      case_transformation: (enum) How to change case.
-      reserved_character_replacement: (char) What to join parts with.
-      format_string: (str) Format string to use to wrap the value after
-          performing the case and separator transformations.
+      policy: (NamingPolicy) The naming policy to use for the transform.
     Returns:
       Transformed string.
     """
     # Pick the right transformer method
-    if case_transformation == LOWER_CASE:
+    if policy.case_transform == LOWER_CASE:
       transform = lambda s, _: ''.join(s).lower()
-    elif case_transformation == UPPER_CASE:
+    elif policy.case_transform == UPPER_CASE:
       transform = lambda s, _: ''.join(s).upper()
-    elif case_transformation == UPPER_CAMEL_CASE:
+    elif policy.case_transform == UPPER_CAMEL_CASE:
       transform = lambda s, _: ''.join([s[0].upper()] + s[1:])
-    elif case_transformation == LOWER_CAMEL_CASE:
+    elif policy.case_transform == LOWER_CAMEL_CASE:
       # pylint: disable=g-long-lambda
       transform = (
           lambda s, first_word:
           ''.join([s[0].lower() if first_word else s[0].upper()] + s[1:]))
+    elif policy.case_transform == LOWER_UNCAMEL_CASE:
+      transform = lambda s, _: utilities.UnCamelCase(''.join(s))
+    elif policy.case_transform == UPPER_UNCAMEL_CASE:
+      transform = lambda s, _: utilities.UnCamelCase(''.join(s)).upper()
     else:
       transform = lambda s, _: ''.join(s)
 
@@ -482,10 +496,10 @@ class LanguageModel(object):
     if curpart:
       parts.append(transform(curpart, not parts))
 
-    join_char = reserved_character_replacement or ''
+    join_char = policy.separator or ''
     name = join_char.join(parts)
 
-    if not format_string:
+    if not policy.format_string:
       return name
 
     expansions = dict(name=name)
@@ -498,7 +512,7 @@ class LanguageModel(object):
     if variable and hasattr(variable, 'module'):
       expansions['module'] = variable.module.name
     # TODO(user): Expand the range of things available.
-    return format_string.format(**expansions)
+    return policy.format_string.format(**expansions)
 
 
 class DocumentingLanguageModel(LanguageModel):
@@ -506,9 +520,8 @@ class DocumentingLanguageModel(LanguageModel):
 
   This model is useful for language neutral expression of an Api.
   """
-
-  array_of_format = 'Array<{name}>'
-  class_name_transform = UPPER_CAMEL_CASE
+  array_of_policy = NamingPolicy(format_string='Array<{name}>')
+  class_name_policy = NamingPolicy(case_transform=UPPER_CAMEL_CASE)
 
   def CodeTypeForMapOf(self, type_name):
     """Take a type name and return the syntax for a map of strings of them.

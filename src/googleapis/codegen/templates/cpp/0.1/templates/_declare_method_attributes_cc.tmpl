@@ -1,0 +1,5 @@
+{% for p in parameters %}{% if p.required %},
+  {{ p.codeName }}_({{ p.codeName }}{% if p.parameterCodeType == 'StringPiece' %}.as_string(){% endif %}){% else %}{% if p.default %},
+  {{ p.codeName }}_({% if p.data_type.json_type == 'string' and not p.isPrimitive %}"{{ p.default }}"{% else %}{{ p.default }}{% endif %}){% else %}{% if p.isPrimitive %},
+  {{ p.codeName }}_(0){% endif %}{% endif %}{% endif %}{% endfor %}{% for p in parameters %}{% if not p.required %},
+  _have_{{ p.codeName }}_(false){% endif %}{% endfor %}

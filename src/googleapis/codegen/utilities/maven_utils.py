@@ -53,7 +53,7 @@ def GetMavenVersion(api, language_version):
     return '%s-rev%s-%s' %(api['version'],
                            api['revision'],
                            language_version)
-  return '%s-SNAPSHOT' % api['version']
+  return '%s-%s-SNAPSHOT' % (api['version'], language_version)
 
 
 def GetMavenMetadata(api, language_version):

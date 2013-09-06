@@ -77,7 +77,7 @@ contentType
 public class {{ method.className }}MediaUpload : Google.Apis.Upload.ResumableUpload
 <
 {% if method.requestType %}{{ method.requestType.fullClassName }}{% else %}string{% endif %}
-{% if method.responseType.fullClassName != 'void'%}, {{ method.responseType.fullClassName }}{% endif %}
+{% if not method.responseType.isVoid %}, {{ method.responseType.fullClassName }}{% endif %}
 >{% endnoeol %}
 {
 {% indent %}{% for parameter in api.parameters %}

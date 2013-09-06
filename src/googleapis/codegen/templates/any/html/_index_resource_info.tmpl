@@ -1,0 +1,24 @@
+<section>
+<h2>{{ resource.className }}</h2>
+<p>For {{ resource.className }} Resource details, see the resource representation page.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>REST URI</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>{% for m in resource.methods %}
+    <tr>
+      <td>{{ m.wireName }}</td>
+      <td><code>{{ m.httpMethod }} {{ m.path }}</code></td>
+      <td>{{ m.description }}</td>
+    </tr>{% endfor %}
+  </tbody>
+</table>
+</section>
+
+{% for subres in resource.resources %}
+{% call_template _index_resource_info resource=subres %}
+{% endfor %}
