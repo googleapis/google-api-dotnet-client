@@ -96,7 +96,6 @@
     <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
     <Compile Include="Apis\Util\ExponentialBackOff.cs" />
     <Compile Include="Apis\Util\IBackOff.cs" />
-    <Compile Include="Apis\Util\ReadOnlyDictionary.cs" />
     <Compile Include="Apis\Util\Repeatable.cs" />
     <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
     <Compile Include="Apis\Util\StandardResponse.cs" />

@@ -22,7 +22,7 @@ using Google.Apis.Requests.Parameters;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary>Tests <see cref="Google.Api.Requests.ParameterValidator"/>.</summary>
+    /// <summary>Tests <see cref="Google.Apis.Requests.ParameterValidator"/>.</summary>
     [TestFixture]
     public class ParameterValidatorTest
     {
