@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Google.Apis.Services.BaseClientService">
+    <Position X="4.5" Y="4.75" Width="2.5" />
+    <Members>
+      <Property Name="ApiKey" Hidden="true" />
+      <Property Name="ApplicationName" Hidden="true" />
+      <Property Name="Authenticator" Hidden="true" />
+      <Method Name="BaseClientService" Hidden="true" />
+      <Property Name="BasePath" Hidden="true" />
+      <Property Name="BaseUri" Hidden="true" />
+      <Method Name="CreateHttpClient" Hidden="true" />
+      <Method Name="DeserializeError" Hidden="true" />
+      <Method Name="DeserializeResponse" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Property Name="Features" Hidden="true" />
+      <Property Name="GZipEnabled" Hidden="true" />
+      <Method Name="HasFeature" Hidden="true" />
+      <Field Name="Logger" Hidden="true" />
+      <Property Name="Name" Hidden="true" />
+      <Method Name="SerializeObject" Hidden="true" />
+      <Property Name="Serializer" Hidden="true" />
+      <Property Name="ServiceParameters" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Google.Apis.Services.BaseClientService.Initializer">
+        <TypeIdentifier>
+          <NewMemberFileName>Apis\Services\BaseClientService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAIAAAQAAOoEICAAAAARgAQACAAAAAAAAUAAAAAAAAA=</HashCode>
+      <FileName>Apis\Services\BaseClientService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Google.Apis.Requests.ClientServiceRequest&lt;TResponse&gt;" Collapsed="true">
+    <Position X="8" Y="3.5" Width="2.25" />
+    <Members>
+      <Field Name="_requestParameters" Hidden="true" />
+      <Field Name="Logger" Hidden="true" />
+      <Field Name="service" Hidden="true" />
+      <Property Name="Service" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAABBAAAIEgAQgUIAAAGCAAAAAQAAAAEACBAAAAUA=</HashCode>
+      <FileName>Apis\Requests\ClientServiceRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Service" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Google.Apis.Http.ConfigurableHttpClient">
+    <Position X="0.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\ConfigurableHttpClient.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MessageHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Google.Apis.Http.ConfigurableMessageHandler" Collapsed="true">
+    <Position X="0.75" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAhACAAAAAMEAAAEAIAgAAQAAAAAAAAIAIAAUAAAEBA=</HashCode>
+      <FileName>Apis\Http\ConfigurableMessageHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Google.Apis.Http.HttpClientFactory">
+    <Position X="0.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\HttpClientFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Google.Apis.Services.IClientService">
+    <Position X="4.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAMgEICAAAAARgAQACAAAAAAAAUAAAAAAAAA=</HashCode>
+      <FileName>Apis\Services\IClientService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="HttpClient" />
+      <Property Name="HttpClientInitializer" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="Google.Apis.Requests.IClientServiceRequest&lt;TResponse&gt;">
+    <Position X="8" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAQAEIAAACAAAAAAQAAAAAACAAAAAEA=</HashCode>
+      <FileName>Apis\Requests\IClientServiceRequest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Service" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="Google.Apis.Http.IConfigurableHttpClientInitializer">
+    <Position X="0.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apis\Http\IConfigurableHttpClientInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
