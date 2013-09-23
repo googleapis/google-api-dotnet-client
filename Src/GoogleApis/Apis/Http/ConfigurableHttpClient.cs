@@ -14,24 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 
 namespace Google.Apis.Http
 {
     /// <summary> 
-    /// Configurable Http client inherits from <see cref="System.Net.Http.HttpClient"/> and contains a reference to 
+    /// Configurable HTTP client inherits from <see cref="System.Net.Http.HttpClient"/> and contains a reference to 
     /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
     /// </summary>
     public class ConfigurableHttpClient : HttpClient
     {
-        /// <summary> Gets the configurable message handler. </summary>
+        /// <summary>Gets the configurable message handler.</summary>
         public ConfigurableMessageHandler MessageHandler { get; private set; }
 
-        /// <summary> Constructs a new Http client. </summary>
+        /// <summary>Constructs a new HTTP client.</summary>
         public ConfigurableHttpClient(ConfigurableMessageHandler handler)
             : base(handler)
         {

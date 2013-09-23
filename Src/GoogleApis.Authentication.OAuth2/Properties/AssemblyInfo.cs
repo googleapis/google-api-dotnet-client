@@ -20,7 +20,7 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("GoogleApis.Authentication.OAuth2")]
+[assembly: AssemblyTitle("Google.Apis.Authentication.OAuth2")]
 [assembly: AssemblyDescription("OAuth2 Authentication Library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Google Inc")]

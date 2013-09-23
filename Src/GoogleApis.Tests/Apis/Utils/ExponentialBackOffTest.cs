@@ -25,11 +25,11 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Utils
 {
-    /// <summary> Tests for <see cref="Google.Apis.Util.ExponentialBackOff"/>. </summary>
+    /// <summary>Tests for <see cref="Google.Apis.Util.ExponentialBackOff"/>.</summary>
     [TestFixture]
     public class ExponentialBackOffTest
     {
-        /// <summary> Tests setting invalid value as <c>currentRetry</c> parameter. </summary>
+        /// <summary>Tests setting invalid value as <c>currentRetry</c> parameter.</summary>
         [Test]
         public void GetNextBackOff_InvalidValue()
         {
@@ -49,21 +49,21 @@ namespace Google.Apis.Tests.Apis.Utils
             catch (ArgumentOutOfRangeException) { }
         }
 
-        /// <summary> Tests constructor with invalid time span object (<0 or >1sec). </summary>
+        /// <summary>Tests constructor with invalid time span object (less then 0 or greater than 1sec).</summary>
         [Test]
         public void Constructor_InvalidValue()
         {
-            // invalid delta
+            // Invalid delta.
             SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(-1));
             SubtestConstructor_InvalidValue(TimeSpan.FromDays(-1));
             SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(1001));
-            // invalid max
+            // Invalid max.
             SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(500), -1);
             SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(500), 21);
 
         }
 
-        /// <summary> A helper subtest to test invalid value given to the constructor. </summary>
+        /// <summary>A helper subtest to test invalid value given to the constructor.</summary>
         private void SubtestConstructor_InvalidValue(TimeSpan ts, int max = 10)
         {
             try
@@ -74,7 +74,7 @@ namespace Google.Apis.Tests.Apis.Utils
             catch (ArgumentOutOfRangeException) { }
         }
 
-        /// <summary> Tests next back-off time span maximum, minimum and average values for tries 1 to 15. </summary>
+        /// <summary>Tests next back-off time span maximum, minimum and average values for tries 1 to 15.</summary>
         [Test]
         public void GetNextBackOff_Retry1To15()
         {
@@ -86,10 +86,10 @@ namespace Google.Apis.Tests.Apis.Utils
             }
         }
 
-        /// <summary> Test helper for testing retrying using exponential back-off.</summary>
+        /// <summary>Test helper for testing retrying using exponential back-off.</summary>
         /// <param name="retry">Index of current retry.</param>
         /// <param name="delta">The delta the exponential back-off uses. 
-        /// <seealso cref="ExponentialBack.DeltaBackOff"/> for more details.
+        /// <seealso cref="ExponentialBackOff.DeltaBackOff"/> for more details.
         /// </param>
         /// <param name="epsilon">Used for checking the average result of the input retry [In milliseconds].</param>
         private void SubtestGetNextBackOff(int retry, Nullable<TimeSpan> delta = null, int epsilon = 20)
@@ -113,7 +113,7 @@ namespace Google.Apis.Tests.Apis.Utils
             Assert.That(avarage, Is.InRange(expectedMiliis - epsilon, expectedMiliis + epsilon));
         }
 
-        /// <summary> Tests next back-off time span with specific maximum of retries. </summary>
+        /// <summary>Tests next back-off time span with specific maximum of retries.</summary>
         [Test]
         public void GetNextBackOff_MaxNumRetries()
         {
@@ -122,7 +122,7 @@ namespace Google.Apis.Tests.Apis.Utils
             SubtestGetNextBackOff_MaxNumRetries(11);
         }
 
-        /// <summary> A helper test for testing the <c>GetNextBackOff</c> logic. </summary>
+        /// <summary>A helper test for testing the <c>GetNextBackOff</c> logic.</summary>
         private void SubtestGetNextBackOff_MaxNumRetries(int max)
         {
             ExponentialBackOff backOff = new ExponentialBackOff(TimeSpan.Zero, max);

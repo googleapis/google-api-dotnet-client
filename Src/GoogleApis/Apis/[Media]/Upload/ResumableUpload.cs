@@ -45,16 +45,16 @@ namespace Google.Apis.Upload
     {
         #region Constants
 
-        /// <summary> The class logger. </summary>
+        /// <summary>The class logger.</summary>
         private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>();
 
         private const int KB = 0x400;
         private const int MB = 0x100000;
 
-        /// <summary> Minimum chunk size (except the last one). Default value is 256*KB. </summary>
+        /// <summary>Minimum chunk size (except the last one). Default value is 256*KB.</summary>
         public const int MinimumChunkSize = 256 * KB;
 
-        /// <summary> Default chunk size. Default value is 10*MB. </summary>
+        /// <summary>Default chunk size. Default value is 10*MB.</summary>
         public const int DefaultChunkSize = 10 * MB;
 
         /// <summary>
@@ -63,25 +63,25 @@ namespace Google.Apis.Upload
         /// </summary>
         internal int BufferSize = 4 * KB;
 
-        /// <summary> Indicates the stream's size is unknown. </summary>
+        /// <summary>Indicates the stream's size is unknown.</summary>
         private const int UnknownSize = -1;
 
-        /// <summary> The mime type for the encoded JSON body. </summary>
+        /// <summary>The mime type for the encoded JSON body.</summary>
         private const string JsonMimeType = "application/json; charset=UTF-8";
 
-        /// <summary> Payload description headers, describing the content itself. </summary>
+        /// <summary>Payload description headers, describing the content itself.</summary>
         private const string PayloadContentTypeHeader = "X-Upload-Content-Type";
 
-        /// <summary> Payload description headers, describing the content itself. </summary>
+        /// <summary>Payload description headers, describing the content itself.</summary>
         private const string PayloadContentLengthHeader = "X-Upload-Content-Length";
 
-        /// <summary> Specify the type of this upload (this class supports resumable only). </summary>
+        /// <summary>Specify the type of this upload (this class supports resumable only).</summary>
         private const string UploadType = "uploadType";
 
-        /// <summary> The uploadType parameter value for resumable uploads. </summary>
+        /// <summary>The uploadType parameter value for resumable uploads.</summary>
         private const string Resumable = "resumable";
 
-        /// <summary> Content-Range header value for the body upload of zero length files. </summary>
+        /// <summary>Content-Range header value for the body upload of zero length files.</summary>
         private const string ZeroByteContentRangeHeader = "bytes */0";
 
         #endregion // Constants
@@ -93,7 +93,7 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <param name="service">The client service.</param>
         /// <param name="path">The path for this media upload method.</param>
-        /// <param name="httpMethod">The Http method to start this upload.</param>
+        /// <param name="httpMethod">The HTTP method to start this upload.</param>
         /// <param name="contentStream">The stream containing the content to upload.</param>
         /// <param name="contentType">Content type of the content to be uploaded.</param>
         /// <remarks>
@@ -121,22 +121,22 @@ namespace Google.Apis.Upload
 
         #region Properties
 
-        /// <summary> Gets or sets the service. </summary>
+        /// <summary>Gets or sets the service.</summary>
         public IClientService Service { get; private set; }
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the path of the method (combined with <see cref="IClientService.BaseUri"/>) to produce 
         /// absolute Uri. 
         /// </summary>
         public string Path { get; private set; }
 
-        /// <summary> Gets or sets the Http method of this upload (used to initialize the upload). </summary>
+        /// <summary>Gets or sets the HTTP method of this upload (used to initialize the upload).</summary>
         public string HttpMethod { get; private set; }
 
-        /// <summary> Gets or sets the stream to upload. </summary>
+        /// <summary>Gets or sets the stream to upload.</summary>
         public Stream ContentStream { get; private set; }
 
-        /// <summary> Gets or sets the stream's Content-Type. </summary>
+        /// <summary>Gets or sets the stream's Content-Type.</summary>
         public string ContentType { get; private set; }
 
         /// <summary>
@@ -151,31 +151,31 @@ namespace Google.Apis.Upload
         /// </summary>
         private byte[] LastMediaRequest { get; set; }
 
-        /// <summary> Gets or sets cached byte which indicates if end of stream has been reached. </summary>
+        /// <summary>Gets or sets cached byte which indicates if end of stream has been reached.</summary>
         private byte[] CachedByte { get; set; }
 
-        /// <summary> Gets or sets the last request length. </summary>
+        /// <summary>Gets or sets the last request length.</summary>
         private int LastMediaLength { get; set; }
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the resumable session Uri. 
         /// See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
         /// </summary>
         private Uri UploadUri { get; set; }
 
-        /// <summary> Gets or sets the amount of bytes the server had received so far. </summary>
+        /// <summary>Gets or sets the amount of bytes the server had received so far.</summary>
         private long BytesServerReceived { get; set; }
 
-        /// <summary> Gets or sets the amount of bytes the client had sent so far. </summary>
+        /// <summary>Gets or sets the amount of bytes the client had sent so far.</summary>
         private long BytesClientSent { get; set; }
 
-        /// <summary> Gets or sets the body of this request. </summary>
+        /// <summary>Gets or sets the body of this request.</summary>
         public TRequest Body { get; set; }
 
         [VisibleForTestOnly]
         internal int chunkSize = DefaultChunkSize;
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the size of each chunk sent to the server.
         /// Chunks (except the last chunk) must be a multiple of <see cref="MinimumChunkSize"/> to be compatible with 
         /// Google upload servers.
@@ -197,12 +197,12 @@ namespace Google.Apis.Upload
 
         #region Events
 
-        /// <summary> Event called whenever the progress of the upload changes. </summary>
+        /// <summary>Event called whenever the progress of the upload changes.</summary>
         public event Action<IUploadProgress> ProgressChanged;
 
         #endregion //Events
 
-        #region Error handling (Expcetion and 5xx)
+        #region Error handling (Exception and 5xx)
 
         /// <summary>
         /// Callback class that is invoked on abnormal response or an exception.
@@ -214,7 +214,7 @@ namespace Google.Apis.Upload
         {
             private ResumableUpload<TRequest> Owner { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Constructs a new callback and register it as unsuccessful response handler and exception handler on the 
             /// configurable message handler.
             /// </summary>
@@ -225,8 +225,9 @@ namespace Google.Apis.Upload
                 Owner.Service.HttpClient.MessageHandler.ExceptionHandlers.Add(this);
             }
 
-            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
+                var result = false;
                 var statusCode = (int)args.Response.StatusCode;
                 // handle the error if and only if all the following conditions occur:
                 // - there is going to be an actual retry
@@ -236,18 +237,25 @@ namespace Google.Apis.Upload
                 // - we got a 5xx server error.
                 if (args.SupportsRetry && args.Request.RequestUri.Equals(Owner.UploadUri) && statusCode / 100 == 5)
                 {
-                    return OnServerError(args.Request);
+                    result = OnServerError(args.Request);
                 }
-                return false;
+
+                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                tcs.SetResult(result);
+                return tcs.Task;
             }
 
-            public bool HandleException(HandleExceptionArgs args)
+            public Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
             {
-                return args.SupportsRetry && !args.CancellationToken.IsCancellationRequested &&
+                var result = args.SupportsRetry && !args.CancellationToken.IsCancellationRequested &&
                     args.Request.RequestUri.Equals(Owner.UploadUri) ? OnServerError(args.Request) : false;
+
+                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                tcs.SetResult(result);
+                return tcs.Task;
             }
 
-            /// <summary> Changes the request in order to resume the interrupted upload. </summary>
+            /// <summary>Changes the request in order to resume the interrupted upload.</summary>
             private bool OnServerError(HttpRequestMessage request)
             {
                 // clear all headers and set Content-Range and Content-Length headers
@@ -269,7 +277,7 @@ namespace Google.Apis.Upload
 
         #region Progress Monitoring
 
-        /// <summary> Class that communicates the progress of resumable uploads to a container. </summary>
+        /// <summary>Class that communicates the progress of resumable uploads to a container.</summary>
         private class ResumableUploadProgress : IUploadProgress
         {
             /// <summary>
@@ -375,7 +383,7 @@ namespace Google.Apis.Upload
             return Progress;
         }
 
-        /// <summary> Uploads the content asynchronously to the server.</summary>
+        /// <summary>Uploads the content asynchronously to the server.</summary>
         /// <remarks>
         /// In case the upload fails the task will not be completed. In that case the task's 
         /// <seealso cref="System.Threading.Tasks.Task.Exception"/> property will bet set, or its 
@@ -386,7 +394,7 @@ namespace Google.Apis.Upload
             return UploadAsync(CancellationToken.None);
         }
 
-        /// <summary> Uploads the content asynchronously to the server.</summary>
+        /// <summary>Uploads the content asynchronously to the server.</summary>
         /// <param name="cancellationToken">The cancellation token to cancel a request in the middle.</param>
         public Task<IUploadProgress> UploadAsync(CancellationToken cancellationToken)
         {
@@ -436,7 +444,7 @@ namespace Google.Apis.Upload
         {
         }
 
-        /// <summary> 
+        /// <summary>
         /// Uploads the next chunk of data to the server.
         /// </summary>
         /// <returns> 
@@ -485,7 +493,7 @@ namespace Google.Apis.Upload
             throw new GoogleApiException(Service.Name, error.ToString());
         }
 
-        /// <summary> A callback when the media was uploaded successfully. </summary>
+        /// <summary>A callback when the media was uploaded successfully.</summary>
         private void MediaCompleted(HttpResponseMessage response)
         {
             logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
@@ -496,7 +504,7 @@ namespace Google.Apis.Upload
             LastMediaRequest = null;
         }
 
-        /// <summary> Prepares the given request with the next chunk in case the steam length is unknown. </summary>
+        /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
         private void PrepareNextChunkUnknownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
@@ -564,7 +572,7 @@ namespace Google.Apis.Upload
             request.Content = byteArrayContent;
         }
 
-        /// <summary> Prepares the given request with the next chunk in case the steam length is known. </summary>
+        /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
         private void PrepareNextChunkKnownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
@@ -603,7 +611,7 @@ namespace Google.Apis.Upload
             LastMediaLength = chunkSize;
         }
 
-        /// <summary> Returns the next byte index need to be sent. </summary>
+        /// <summary>Returns the next byte index need to be sent.</summary>
         private long GetNextByte(string range)
         {
             return long.Parse(range.Substring(range.IndexOf('-') + 1)) + 1;
@@ -642,7 +650,7 @@ namespace Google.Apis.Upload
             }
         }
 
-        /// <summary> Creates a request to initialize a request. </summary>
+        /// <summary>Creates a request to initialize a request.</summary>
         private HttpRequestMessage CreateInitializeRequest()
         {
             var builder = new RequestBuilder()
@@ -722,7 +730,7 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <param name="service">The client service.</param>
         /// <param name="path">The path for this media upload method.</param>
-        /// <param name="httpMethod">The Http method to start this upload.</param>
+        /// <param name="httpMethod">The HTTP method to start this upload.</param>
         /// <param name="contentStream">The stream containing the content to upload.</param>
         /// <param name="contentType">Content type of the content to be uploaded.</param>
         /// <remarks>
@@ -752,14 +760,14 @@ namespace Google.Apis.Upload
 
         #region Events
 
-        /// <summary> Event which is called when the response metadata is processed. </summary>
+        /// <summary>Event which is called when the response metadata is processed.</summary>
         public event Action<TResponse> ResponseReceived;
 
         #endregion // Events
 
         #region Overrides
 
-        /// <summary> Process the response body </summary>
+        /// <summary>Process the response body </summary>
         protected override void ProcessResponse(HttpResponseMessage response)
         {
             base.ProcessResponse(response);

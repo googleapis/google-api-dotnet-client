@@ -17,9 +17,10 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Google.Apis.Util;
 
-namespace Google.Apis.Requests
+namespace Google.Apis.Requests.Parameters
 {
     /// <summary>
     /// A collection of parameters (key value pairs). May contain duplicate keys.

@@ -19,13 +19,13 @@ using System.Net.Http;
 
 namespace Google.Apis.Http
 {
-    /// <summary> 
+    /// <summary>
     /// Extension methods to <see cref="System.Net.Http.HttpRequestMessage"/> and 
     /// <see cref="System.Net.Http.HttpResponseMessage"/>.
     /// </summary>
     static class HttpExtenstions
     {
-        /// <summary> Returns <c>true</c> if the response contains one of the redirect status codes. </summary>
+        /// <summary>Returns <c>true</c> if the response contains one of the redirect status codes.</summary>
         public static bool IsRedirectStatusCode(this HttpResponseMessage message)
         {
             switch (message.StatusCode)
@@ -40,7 +40,7 @@ namespace Google.Apis.Http
             }
         }
 
-        /// <summary> Sets an empty Http content. </summary>
+        /// <summary>Sets an empty HTTP content.</summary>
         public static HttpContent SetEmptyContent(this HttpRequestMessage request)
         {
             request.Content = new ByteArrayContent(new byte[0]);

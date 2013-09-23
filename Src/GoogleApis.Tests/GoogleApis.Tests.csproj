@@ -121,6 +121,8 @@
     <Compile Include="Apis\Json\JsonReaderTests.cs" />
     <Compile Include="Apis\Json\JsonTokenTests.cs" />
     <Compile Include="Apis\Json\TokenStreamTest.cs" />
+    <Compile Include="Apis\Requests\Parameters\ParameterCollectionTest.cs" />
+    <Compile Include="Apis\Requests\Parameters\ParameterValidatorTest.cs" />
     <Compile Include="Apis\Requests\RequestBuilderTest.cs" />
     <Compile Include="Apis\Services\BaseClientServiceTest.cs" />
     <Compile Include="Apis\Logging\NullLoggerTests.cs" />
@@ -128,12 +130,10 @@
     <Compile Include="Apis\Upload\ResumableUploadTest.cs" />
     <Compile Include="Apis\Utils\ExponentialBackOffTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
-    <Compile Include="Apis\Requests\ParameterCollectionTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
     <Compile Include="ApplicationContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GoogleApiExceptionTests.cs" />
-    <Compile Include="Apis\Requests\ParameterValidatorTest.cs" />
     <Compile Include="Apis\Utils\UtilitiesTest.cs" />
     <Compile Include="[Mock]\CountableMessageHandler.cs" />
     <Compile Include="[Mock]\MockBackOffHandler.cs" />
@@ -143,7 +143,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj">
       <Project>{c4da0abe-2c2e-4bb8-9881-5ff80b0c1afd}</Project>
-      <Name>GoogleApis.FullProfile</Name>
+      <Name>GoogleApis.DotNet4</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
@@ -182,5 +182,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.8\tools\Microsoft.Bcl.Build.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

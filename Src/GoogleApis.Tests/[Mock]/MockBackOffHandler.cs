@@ -17,35 +17,37 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 using Google.Apis.Http;
 using Google.Apis.Util;
 
 namespace Google.Apis.Testing
 {
-    /// <summary> Base mock back-off handler which contains a list of all waited time spans. </summary>
+    /// <summary>Base mock back-off handler which contains a list of all waited time spans.</summary>
     public class MockBackOffHandler : BackOffHandler
     {
-        /// <summary> A list of all the waited time spans. </summary>
+        /// <summary>A list of all the waited time spans.</summary>
         public List<TimeSpan> Waits { get; set; }
 
-        /// <summary> Constructs a new back-off handler by the given back-off. </summary>
+        /// <summary>Constructs a new back-off handler by the given back-off.</summary>
         public MockBackOffHandler(IBackOff backOff)
             : base(backOff)
         {
             Waits = new List<TimeSpan>();
         }
 
-        /// <summary> Constructs a new back-off handler by the given initializer. </summary>
+        /// <summary>Constructs a new back-off handler by the given initializer.</summary>
         public MockBackOffHandler(BackOffHandler.Initializer initializer)
             : base(initializer)
         {
             Waits = new List<TimeSpan>();
         }
 
-        protected override void Wait(TimeSpan ts, CancellationToken cancellationToken)
+        protected override Task Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
             Waits.Add(ts);
+            return TaskEx.Delay(0);
         }
     }
 }

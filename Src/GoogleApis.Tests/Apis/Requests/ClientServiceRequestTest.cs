@@ -38,7 +38,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary> Tests for the <see cref="Google.Apis.Requests.ClientServiceRequest"/>. </summary>
+    /// <summary>Tests for the <see cref="Google.Apis.Requests.ClientServiceRequest"/>.</summary>
     [TestFixture]
     public class ClientServiceRequestTest
     {
@@ -49,7 +49,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // ApplicationContext.RegisterLogger(new Google.Apis.Logging.Log4NetLogger());
         }
 
-        /// <summary> Helper method to get a string from the stream. </summary>
+        /// <summary>Helper method to get a string from the stream.</summary>
         private static string ExtractStringFromStream(Stream stream)
         {
             var buffer = new byte[1000];
@@ -57,7 +57,7 @@ namespace Google.Apis.Tests.Apis.Requests
             return Encoding.UTF8.GetString(buffer, 0, len);
         }
 
-        /// <summary> A mock response class. </summary>
+        /// <summary>A mock response class.</summary>
         class MockResponse : IDirectResponseSchema
         {
             [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -81,7 +81,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> A mock request class. </summary>
+        /// <summary>A mock request class.</summary>
         class MockRequest : IDirectResponseSchema
         {
             [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -102,10 +102,10 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> A mock service request which returns <see cref="MockResponse"/>. </summary>
+        /// <summary>A mock service request which returns <see cref="MockResponse"/>.</summary>
         class TestClientServiceRequest : ClientServiceRequest<MockResponse>
         {
-            /// <summary> Gets or sets a request number. It's used on concurrent tests. </summary>
+            /// <summary>Gets or sets a request number. It's used on concurrent tests.</summary>
             public int CallNum { get; set; }
             private string httpMethod;
             private object body;
@@ -139,7 +139,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> A mock message handler which returns an error. </summary>
+        /// <summary>A mock message handler which returns an error.</summary>
         class ErrorMessageHanlder : CountableMessageHandler
         {
             public string ExpectedError =
@@ -176,22 +176,22 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests message handler which tests the content on the request and the response. </summary>
-        class TestBodyMessageHnalder : CountableMessageHandler
+        /// <summary>Tests message handler which tests the content on the request and the response.</summary>
+        class TestBodyMessageHandler : CountableMessageHandler
         {
-            /// <summary> Gets or sets indication is GZip is eanbled. </summary>
+            /// <summary>Gets or sets indication is GZip is eanbled.</summary>
             public bool GZipEnabled { get; set; }
 
-            /// <summary> Gets or sets the expected request object. </summary>
+            /// <summary>Gets or sets the expected request object.</summary>
             public MockRequest ExpectedRequestObject { get; set; }
 
-            /// <summary> Gets or sets the returned response object </summary>
+            /// <summary>Gets or sets the returned response object </summary>
             public MockResponse ResponseObject { get; set; }
 
-            /// <summary> Gets or sets the Serializer which is used to serialize and deserialize messages. </summary>
+            /// <summary>Gets or sets the Serializer which is used to serialize and deserialize messages.</summary>
             public ISerializer Serializer { get; set; }
 
-            /// <summary> Gets the thread id in which this handler was invoked. </summary>
+            /// <summary>Gets the thread id in which this handler was invoked.</summary>
             public int ThreadId { get; private set; }
 
             public string ResponseETag = "\"some-etag-here\"";
@@ -203,7 +203,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 var mediaType = "application/json";
                 string strObject = null;
 
-                // if gzip enabled the request content is a gzip stream, otherwise it's a string content
+                // If gzip enabled the request content is a gzip stream, otherwise it's a string content.
                 if (GZipEnabled)
                 {
                     Assert.That(request.Content, Is.AssignableFrom<StreamContent>());
@@ -227,11 +227,11 @@ namespace Google.Apis.Tests.Apis.Requests
                         CharSet = Encoding.UTF8.WebName
                     }));
 
-                // deserialize the requested object and check it's equal to the expected object
+                // Deserialize the requested object and check it's equal to the expected object.
                 var obj = Serializer.Deserialize<MockRequest>(strObject);
                 Assert.That(obj, Is.EqualTo(ExpectedRequestObject));
 
-                // return the response (with ETag)
+                // Return the response (with ETag).
                 var response = new HttpResponseMessage();
                 var serializedObject = Serializer.Serialize(ResponseObject);
                 response.Content = new StringContent(serializedObject, Encoding.UTF8, mediaType);
@@ -240,7 +240,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// A mock exception which is thrown from a mock message handler in case it is configured to throw exceptions. 
         /// </summary>
         class InvalidOperationMockException : Exception
@@ -251,7 +251,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> A message handler which returns an Http response message or throw an exception. </summary>
+        /// <summary>A message handler which returns a HTTP response message or throw an exception.</summary>
         class MockMessageHandler : CountableMessageHandler
         {
             private bool ThrowException { get; set; }
@@ -274,13 +274,13 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> A message handler which is used to cancel an Http request in the middle.</summary>
+        /// <summary>A message handler which is used to cancel a HTTP request in the middle.</summary>
         class CancelRedirectMessageHandler : CountableMessageHandler
         {
-            /// <summary> The cancellation token we are going to use to cancel a request.</summary>
+            /// <summary>The cancellation token we are going to use to cancel a request.</summary>
             public CancellationTokenSource CancellationTokenSource { get; set; }
 
-            /// <summary> The request index we are going to cancel.</summary>
+            /// <summary>The request index we are going to cancel.</summary>
             public int CancelRequestNum { get; set; }
 
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -303,13 +303,13 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// A message handler which checks concurrent calls (each odd request will succeeded, and even request will 
         /// fail on the first try and will succeeded in the second try.
         /// </summary>
         class ConcurrentCallsHandler : CountableMessageHandler
         {
-            /// <summary> Gets or sets the Serializer which is used to serialize and deserialize messages. </summary>
+            /// <summary>Gets or sets the Serializer which is used to serialize and deserialize messages.</summary>
             public ISerializer Serializer { get; set; }
 
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -335,16 +335,18 @@ namespace Google.Apis.Tests.Apis.Requests
                 return tcs.Task;
             }
 
-            /// <summary> Unsuccessful response handler which "handles" service unavailable responses. </summary>
+            /// <summary>Unsuccessful response handler which "handles" service unavailable responses.</summary>
             internal class ServiceUnavailableUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
             {
-                public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+                public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
                 {
-                    return args.Response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable;
+                    TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                    tcs.SetResult(args.Response.StatusCode.Equals(HttpStatusCode.ServiceUnavailable));
+                    return tcs.Task;
                 }
             }
 
-            /// <summary> 
+            /// <summary>
             /// Adds service unavailable unsuccessful response handler to the configurable message handler.
             /// </summary>
             internal class Initializer : IConfigurableHttpClientInitializer
@@ -359,7 +361,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region Execute (and ExecuteAsync)
 
-        /// <summary> Tests that canceling a outgoing request to the server works as expected.</summary>
+        /// <summary>Tests that canceling a outgoing request to the server works as expected.</summary>
         [Test]
         public void ExecuteAsync_Cancel()
         {
@@ -399,13 +401,14 @@ namespace Google.Apis.Tests.Apis.Requests
                 {
                     if (ex.InnerException is TaskCanceledException)
                     {
-                        // we expect a task canceled exception in case the canceled request is less or equal total
-                        // number of retries
+                        // We expect a task canceled exception in case the canceled request is less or equal total
+                        // number of retries.
                         Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
                     }
                     else
                     {
-                        // exception should be thrown as a result of casting to MockResponse object
+                        // Canceled exception wasn't thrown, in that case the cancel request number is bigger than
+                        // the actual number of tries.
                         Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
                     }
                 }
@@ -415,6 +418,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
+        /// <summary>Tests the execute method in case the service was disposed.</summary>
         [Test]
         public void Execute_DisposeService()
         {
@@ -435,20 +439,24 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.Throws<ObjectDisposedException>(() => request.Execute());
         }
 
-        /// <summary> A subtest for testing GZip and sync-async calls. </summary>
+        /// <summary>A subtest for testing GZip and sync-async calls.</summary>
+        /// <param name="gzip">Defines if GZip is enabled</param>
+        /// <param name="async">Defines which method is going to be called (Execute or ExecuteAsync)</param>
         private void SubtestExecute_GZip(bool gzip, bool async)
         {
-            var handler = new TestBodyMessageHnalder()
-                {
-                    GZipEnabled = gzip,
-                    ResponseObject = new MockResponse { Id = 100, Name = "sample name" },
-                    ExpectedRequestObject = new MockRequest { Name = "long long name" }
-                };
+            var handler = new TestBodyMessageHandler()
+            {
+                GZipEnabled = gzip,
+                ResponseObject = new MockResponse { Id = 100, Name = "sample name" },
+                ExpectedRequestObject = new MockRequest { Name = "long long name" }
+            };
+
             var initializer = new BaseClientService.Initializer()
-                {
-                    GZipEnabled = gzip,
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                GZipEnabled = gzip,
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
             using (var service = new MockClientService(initializer))
             {
                 handler.Serializer = service.Serializer;
@@ -467,61 +475,63 @@ namespace Google.Apis.Tests.Apis.Requests
                     Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
 
-                // NOTICE: even if GZipEnabled is true, we don't need to extract the real string from the GZip stream,
+                // Note: Even if GZipEnabled is true, we don't need to extract the real string from the GZip stream,
                 // because in a real request we use HttpClientHandler which its AutomaticDecompression is set to 
                 // System.Net.DecompressionMethods.GZip.
 
                 Assert.That(handler.Calls, Is.EqualTo(1));
-                // the returned response should contain ETag, check that the service add the right ETag property on 
-                // the response
+                // The returned response should contain ETag, check that the service adds the right ETag property on 
+                // the response.
                 handler.ResponseObject.ETag = handler.ResponseETag;
                 Assert.That(response, Is.EqualTo(handler.ResponseObject));
             }
         }
 
-        /// <summary> Tests execute when GZip is enabled. </summary>
+        /// <summary>Tests execute when GZip is enabled.</summary>
         [Test]
         public void Execute_GZipEnabled()
         {
             SubtestExecute_GZip(true, false);
         }
 
-        /// <summary> Tests execute when GZip is disabled. </summary>
+        /// <summary>Tests execute when GZip is disabled.</summary>
         [Test]
         public void Execute_GZipDisabled()
         {
             SubtestExecute_GZip(false, false);
         }
 
-        /// <summary> Tests async execute when GZip is enabled. </summary>
+        /// <summary>Tests async execute when GZip is enabled.</summary>
         [Test]
         public void ExecuteAsync_GZipEnabled()
         {
             SubtestExecute_GZip(true, true);
         }
 
-        /// <summary> Tests async execute when GZip is disabled. </summary>
+        /// <summary>Tests async execute when GZip is disabled.</summary>
         [Test]
         public void ExecuteAsync_GZipDisabled()
         {
             SubtestExecute_GZip(false, true);
         }
 
-        /// <summary> Tests execute with unicode characters. </summary>
+        /// <summary>Tests execute with unicode characters.</summary>
         [Test]
         public void Execute_UnicodeCharacters()
         {
-            var handler = new TestBodyMessageHnalder()
-                {
-                    GZipEnabled = false,
-                    ResponseObject = new MockResponse { Id = 100, Name = @"مرحبا العالم" },
-                    ExpectedRequestObject = new MockRequest { Name = @"مرحبا العالم! 您好，世界！" }
-                };
+            var handler = new TestBodyMessageHandler()
+            {
+                GZipEnabled = false,
+                ResponseObject = new MockResponse { Id = 100, Name = @"مرحبا العالم" },
+                ExpectedRequestObject = new MockRequest { Name = @"مرحبا العالم! 您好，世界！" }
+            };
+
             var initializer = new BaseClientService.Initializer()
-                {
-                    GZipEnabled = false,
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                GZipEnabled = false,
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
             using (var service = new MockClientService(initializer))
             {
                 handler.Serializer = service.Serializer;
@@ -529,17 +539,17 @@ namespace Google.Apis.Tests.Apis.Requests
                 var request = new TestClientServiceRequest(service, "GET", handler.ExpectedRequestObject);
                 var response = request.Execute();
                 Assert.That(handler.Calls, Is.EqualTo(1));
-                // the returned response should contain ETag, check that the service add the right ETag property on 
-                // the response
+                // The returned response should contain ETag, check that the service add the right ETag property on 
+                // the response.
                 handler.ResponseObject.ETag = handler.ResponseETag;
                 Assert.That(response, Is.EqualTo(handler.ResponseObject));
             }
         }
 
-        /// <summary> 
-        /// A subtest for testing execute when an exception is thrown during sending the request, with or without 
-        /// back-off. If back-off handler is attached to the service's message handler, there are going to be 3 tries 
-        /// (3 is the default value of <seealso cref="ConfigurableMessageHandler.NumTries" />) before the operation 
+        /// <summary>
+        /// A subtest for testing Execute when an exception is thrown while sending the request. This is tested with
+        /// and without back-off. If back-off handler is attached to the service's message handler, there should be 3
+        /// tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the operation 
         /// fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
@@ -547,14 +557,13 @@ namespace Google.Apis.Tests.Apis.Requests
         {
             var handler = new MockMessageHandler(true);
             var initializer = new BaseClientService.Initializer()
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
 
-            // sets the default exponential back-off policy by the input
+            // Set the default exponential back-off policy by the input.
             initializer.DefaultExponentialBackOffPolicy = backOff ?
-                BaseClientService.ExponentialBackOffPolicy.Exception :
-                BaseClientService.ExponentialBackOffPolicy.None;
+                ExponentialBackOffPolicy.Exception : ExponentialBackOffPolicy.None;
 
             using (var service = new MockClientService(initializer))
             {
@@ -566,7 +575,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests execute when an exception is thrown during a request and exponential back-off is enabled.
         /// </summary>
         [Test]
@@ -575,7 +584,7 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestExecute_ThrowException(true);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests execute when an exception is thrown during a request and exponential back-off is disabled.
         /// </summary>
         [Test]
@@ -584,10 +593,10 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestExecute_ThrowException(false);
         }
 
-        /// <summary> 
-        /// A subtest for testing async execute when an exception is thrown during sending the request, with or without 
-        /// back-off handler. If back-off handler is attached to the service's message handler, there are going to be 3
-        /// tries (3 is the default value of <seealso cref="ConfigurableMessageHandler.NumTries" />) before the 
+        /// <summary>
+        /// A subtest for testing ExecuteAsync  when an exception is thrown while sending the request. This is tested 
+        /// with and without back-off. If back-off handler is attached to the service's message handler, there should 
+        /// be 3 tries (the default value of <seealso cref="ConfigurableMessageHandler.NumTries"/>) before the 
         /// operation fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
@@ -599,10 +608,9 @@ namespace Google.Apis.Tests.Apis.Requests
                 HttpClientFactory = new MockHttpClientFactory(handler)
             };
 
-            // configure the back-off behavior by the input
+            // Configure the back-off behavior by the input.
             initializer.DefaultExponentialBackOffPolicy = backOff ?
-                BaseClientService.ExponentialBackOffPolicy.Exception :
-                BaseClientService.ExponentialBackOffPolicy.None;
+                ExponentialBackOffPolicy.Exception : ExponentialBackOffPolicy.None;
 
             using (var service = new MockClientService(initializer))
             {
@@ -623,7 +631,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests async execute when an exception is thrown during a request and exponential back-off is enabled.
         /// </summary>
         [Test]
@@ -632,7 +640,7 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestExecuteAsync_ThrowException(true);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests async execute when an exception is thrown during a request and exponential back-off is disabled.
         /// </summary>
         [Test]
@@ -641,15 +649,16 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestExecuteAsync_ThrowException(false);
         }
 
-        /// <summary> Tests execute when server returned an error. </summary>
+        /// <summary>Tests execute when server returned an error.</summary>
         [Test]
         public void Execute_Error()
         {
             var handler = new ErrorMessageHanlder();
             var initializer = new BaseClientService.Initializer()
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
@@ -666,15 +675,16 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests execute when server returned an error. </summary>
+        /// <summary>Tests execute when server returned an error.</summary>
         [Test]
         public void ExecuteAsync_Error()
         {
             var handler = new ErrorMessageHanlder();
             var initializer = new BaseClientService.Initializer
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
@@ -698,17 +708,17 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests async execution of multiple request simultaneously. </summary>
+        /// <summary>Tests async execution of multiple request simultaneously.</summary>
         [Test]
         public void ExecuteAsync_Simultaneously()
         {
             var tasks = new List<Task<MockResponse>>();
             var handler = new ConcurrentCallsHandler();
             var initializer = new BaseClientService.Initializer()
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler),
-                    HttpClientInitializer = new ConcurrentCallsHandler.Initializer()
-                };
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler),
+                HttpClientInitializer = new ConcurrentCallsHandler.Initializer()
+            };
 
             using (var service = new MockClientService(initializer))
             {
@@ -746,20 +756,22 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region ExecuteStream (and ExecuteAsStreamAsync)
 
-        /// <summary> A subtest for testing execute as stream (async and sync). </summary>
+        /// <summary>A subtest for testing execute as stream (async and sync).</summary>
         private void SubtestExecuteAsStream(bool async)
         {
-            var handler = new TestBodyMessageHnalder
-                {
-                    GZipEnabled = false,
-                    ResponseObject = new MockResponse { Id = 100, Name = "sample name" },
-                    ExpectedRequestObject = new MockRequest { Name = "long long name" }
-                };
+            var handler = new TestBodyMessageHandler
+            {
+                GZipEnabled = false,
+                ResponseObject = new MockResponse { Id = 100, Name = "sample name" },
+                ExpectedRequestObject = new MockRequest { Name = "long long name" }
+            };
+
             var initializer = new BaseClientService.Initializer
-                {
-                    GZipEnabled = false,
-                    HttpClientFactory = new MockHttpClientFactory(handler)
-                };
+            {
+                GZipEnabled = false,
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
             using (var service = new MockClientService(initializer))
             {
                 handler.Serializer = service.Serializer;
@@ -782,7 +794,7 @@ namespace Google.Apis.Tests.Apis.Requests
                     Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
 
-                // read the object
+                // Read the object.
                 var str = ExtractStringFromStream(stream);
                 response = service.Serializer.Deserialize<MockResponse>(str);
 
@@ -791,14 +803,14 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests execute stream. </summary>
+        /// <summary>Tests execute stream.</summary>
         [Test]
         public void ExecuteAsStream()
         {
             SubtestExecuteAsStream(false);
         }
 
-        /// <summary> Tests execute stream (async). </summary>
+        /// <summary>Tests execute stream (async).</summary>
         [Test]
         public void ExecuteAsStreamAsync()
         {
@@ -811,7 +823,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region Query Parameters
 
-        /// <summary> Client request which contains query parameters. </summary>
+        /// <summary>Client request which contains query parameters.</summary>
         class ClientServiceRequestWithQueryParameters : TestClientServiceRequest
         {
             [RequestParameterAttribute("required", Google.Apis.Util.RequestParameterType.Query)]
@@ -836,50 +848,50 @@ namespace Google.Apis.Tests.Apis.Requests
                 : base(service, method, body)
             {
                 RequestParameters.Add("required", new Parameter
-                    {
-                        Name = "required",
-                        IsRequired = true,
-                        ParameterType = "query"
-                    });
+                {
+                    Name = "required",
+                    IsRequired = true,
+                    ParameterType = "query"
+                });
                 RequestParameters.Add("optionalWithValue", new Parameter
-                    {
-                        Name = "optionalWithValue",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DoesNotDisplay"
-                    });
+                {
+                    Name = "optionalWithValue",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DoesNotDisplay"
+                });
                 RequestParameters.Add("optionalWithValue2", new Parameter
-                    {
-                        Name = "optionalWithValue",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DoesNotDisplay"
-                    });
+                {
+                    Name = "optionalWithValue",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DoesNotDisplay"
+                });
                 RequestParameters.Add("optionalWithNull", new Parameter
-                    {
-                        Name = "optionalWithNull",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "c"
-                    });
+                {
+                    Name = "optionalWithNull",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "c"
+                });
                 RequestParameters.Add("optionalEmpty", new Parameter
-                    {
-                        Name = "optionalEmpty",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "d"
-                    });
+                {
+                    Name = "optionalEmpty",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "d"
+                });
                 RequestParameters.Add("optionalNotPressent", new Parameter
-                    {
-                        Name = "optionalNotPressent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DoesNotDisplay"
-                    });
+                {
+                    Name = "optionalNotPressent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DoesNotDisplay"
+                });
             }
         }
 
-        /// <summary> Tests build request with query parameters. </summary>
+        /// <summary>Tests build request with query parameters.</summary>
         [Test]
         public void CreateRequest_QueryParameters()
         {
@@ -897,7 +909,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests build request with missing required query parameter. </summary>
+        /// <summary>Tests build request with missing required query parameter.</summary>
         [Test]
         public void CreateRequest_QueryParameterIsMissing()
         {
@@ -922,7 +934,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region Path Parameters
 
-        /// <summary> Client request which contains path parameters. </summary>
+        /// <summary>Client request which contains path parameters.</summary>
         class ClientServiceRequestWithPathParameters : TestClientServiceRequest
         {
             [RequestParameter("path1", RequestParameterType.Path)]
@@ -954,7 +966,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests build request with path parameters. </summary>
+        /// <summary>Tests build request with path parameters.</summary>
         [Test]
         public void CreateRequest_PathParameters()
         {
@@ -977,14 +989,15 @@ namespace Google.Apis.Tests.Apis.Requests
         private const string SimpleDeveloperKey = "ABC123";
         private const string ComplexDeveloperKey = "?&^%  ABC123";
 
-        /// <summary> Tests build request with simple developer key. </summary>
+        /// <summary>Tests build request with simple developer key.</summary>
         [Test]
         public void CreateRequest_DeveloperKey()
         {
             var initializer = new BaseClientService.Initializer
-                {
-                    ApiKey = SimpleDeveloperKey
-                };
+            {
+                ApiKey = SimpleDeveloperKey
+            };
+
             using (var service = new MockClientService(initializer, "https://build_request_params"))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
@@ -994,14 +1007,15 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests build request with complex developer key. </summary>
+        /// <summary>Tests build request with complex developer key.</summary>
         [Test]
         public void CreateRequest_DeveloperKey_RequiresEscape()
         {
             var initializer = new BaseClientService.Initializer
-                {
-                    ApiKey = ComplexDeveloperKey
-                };
+            {
+                ApiKey = ComplexDeveloperKey
+            };
+
             using (var service = new MockClientService(initializer, "https://build_request_params"))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
@@ -1017,7 +1031,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region Supported Methods
 
-        /// <summary> Tests if invalid method throws an exception. </summary>
+        /// <summary>Tests if invalid method throws an exception.</summary>
         [Test]
         public void CreateRequest_UnsupportedMethods()
         {
@@ -1028,7 +1042,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests that valid method doesn't throw an exception. </summary>
+        /// <summary>Tests that valid method doesn't throw an exception.</summary>
         [Test]
         public void CreateRequest_SupportedMethods()
         {
@@ -1052,20 +1066,20 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #region ETag
 
-        /// <summary> Tests the create request method with different ETags. </summary>
+        /// <summary>Tests the create request method with different ETags.</summary>
         [Test]
         public void CreateRequest_ETag()
         {
             var body = new MockRequest { Name = "long long name" };
             using (var service = new MockClientService())
             {
-                // no ETag (ETag = null)
+                // No ETag (ETag = null).
                 var request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 var httpRequest = request.CreateRequest();
                 Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(0));
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(0));
 
-                // ETag has a value, but ETag action is ignored
+                // ETag has a value, but ETag action is ignored.
                 body.ETag = "\"ETAG_HERE\"";
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 request.ETagAction = ETagAction.Ignore;
@@ -1073,21 +1087,21 @@ namespace Google.Apis.Tests.Apis.Requests
                 Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(0));
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(0));
 
-                // ETag has a value, so use default action (Get -> If-None-Match)
+                // ETag has a value, so use default action (Get -> If-None-Match).
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 httpRequest = request.CreateRequest();
                 Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(0));
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(1));
                 Assert.That(httpRequest.Headers.IfNoneMatch.First(), Is.EqualTo(new EntityTagHeaderValue(body.ETag)));
 
-                // ETag has a value, so use default action (Post -> If-Match)
+                // ETag has a value, so use default action (Post -> If-Match).
                 request = new TestClientServiceRequest(service, HttpConsts.Post, body);
                 httpRequest = request.CreateRequest();
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(0));
                 Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(1));
                 Assert.That(httpRequest.Headers.IfMatch.First(), Is.EqualTo(new EntityTagHeaderValue(body.ETag)));
 
-                // ETag has a value, default is override, use the specified ETag action
+                // ETag has a value, default is override, use the specified ETag action.
                 request = new TestClientServiceRequest(service, HttpConsts.Post, body);
                 request.ETagAction = ETagAction.IfNoneMatch;
                 httpRequest = request.CreateRequest();
@@ -1095,7 +1109,7 @@ namespace Google.Apis.Tests.Apis.Requests
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(1));
                 Assert.That(httpRequest.Headers.IfNoneMatch.First(), Is.EqualTo(new EntityTagHeaderValue(body.ETag)));
 
-                // ETag has a value, default is override, use the specified ETag action
+                // ETag has a value, default is override, use the specified ETag action.
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 request.ETagAction = ETagAction.IfMatch;
                 httpRequest = request.CreateRequest();
@@ -1105,7 +1119,7 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        /// <summary> Tests that get default ETag action works as expected. </summary>
+        /// <summary>Tests that get default ETag action works as expected.</summary>
         [Test]
         public void GetDefaultETagActionTest()
         {

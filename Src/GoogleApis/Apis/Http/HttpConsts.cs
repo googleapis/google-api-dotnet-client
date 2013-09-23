@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Google.Apis.Http
 {
-    /// <summary> Http constants. </summary>
+    /// <summary>HTTP constants.</summary>
     public static class HttpConsts
     {
         public const string Get = "GET";

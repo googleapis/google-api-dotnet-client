@@ -14,21 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// Http request execute interceptor to intercept a <see cref="System.Net.Http.HttpRequestMessage"/> before it has
+    /// HTTP request execute interceptor to intercept a <see cref="System.Net.Http.HttpRequestMessage"/> before it has
     /// been sent. Sample usage is attaching "Authorization" header to a request.
     /// </summary>
     public interface IHttpExecuteInterceptor
     {
-        /// <summary> Invoked before the request is being sent. </summary>
-        void Intercept(HttpRequestMessage request);
+        /// <summary>
+        /// <summary>Invoked before the request is being sent.</summary>
+        /// </summary>
+        /// <param name="request">The HTTP request message</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the operation</param>
+        Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken);
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GoogleApis.Authentication.OAuth2.Tests")]
+[assembly: AssemblyTitle("Google.Apis.Authentication.OAuth2.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Google")]
-[assembly: AssemblyProduct("GoogleApis.Authentication.OAuth2.Tests")]
+[assembly: AssemblyCompany("Google Inc")]
+[assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

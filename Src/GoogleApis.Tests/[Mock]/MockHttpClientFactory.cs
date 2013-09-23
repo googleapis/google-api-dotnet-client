@@ -21,7 +21,7 @@ using Google.Apis.Http;
 namespace Google.Apis.Testing
 {
     /// <summary>
-    /// Mock Http client factory which gets a specific message handler (for mocking) and use for creating the Http 
+    /// Mock HTTP client factory which gets a specific message handler (for mocking) and use for creating the HTTP
     /// client.
     /// </summary>
     public class MockHttpClientFactory : HttpClientFactory

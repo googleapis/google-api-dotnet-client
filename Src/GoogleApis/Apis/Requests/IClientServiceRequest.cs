@@ -31,41 +31,41 @@ namespace Google.Apis.Requests
     /// </summary>
     public interface IClientServiceRequest<TResponse>
     {
-        /// <summary> Gets the service which is related to this request.</summary>
+        /// <summary>Gets the service which is related to this request.</summary>
         IClientService Service { get; }
 
-        /// <summary> Gets the name of the method to which this request belongs.</summary>
+        /// <summary>Gets the name of the method to which this request belongs.</summary>
         string MethodName { get; }
 
-        /// <summary> Gets the rest path of this request.</summary>
+        /// <summary>Gets the rest path of this request.</summary>
         string RestPath { get; }
 
-        /// <summary> Gets the Http method of this request.</summary>
+        /// <summary>Gets the HTTP method of this request.</summary>
         string HttpMethod { get; }
 
-        /// <summary> Gets the parameters information for this specific request.</summary>
+        /// <summary>Gets the parameters information for this specific request.</summary>
         IDictionary<string, IParameter> RequestParameters { get; }
 
-        /// <summary> Executes the request asynchronously and returns the result stream.</summary>
+        /// <summary>Executes the request asynchronously and returns the result stream.</summary>
         Task<Stream> ExecuteAsStreamAsync();
 
-        /// <summary> Executes the request asynchronously and returns the result stream.</summary>
-        /// <param name="cencellationToken">A cancellation token for cancelling the request in the middle of the 
+        /// <summary>Executes the request asynchronously and returns the result stream.</summary>
+        /// <param name="cencellationToken">A cancellation token for canceling the request in the middle of the 
         /// execution. operation.</param>
         Task<Stream> ExecuteAsStreamAsync(CancellationToken cencellationToken);
 
-        /// <summary> Executes the request and returns the result stream.</summary>
+        /// <summary>Executes the request and returns the result stream.</summary>
         Stream ExecuteAsStream();
 
-        /// <summary> Executes the request asynchronously and returns the result object.</summary>
+        /// <summary>Executes the request asynchronously and returns the result object.</summary>
         Task<TResponse> ExecuteAsync();
 
-        /// <summary> Executes the request asynchronously and returns the result object.</summary>
+        /// <summary>Executes the request asynchronously and returns the result object.</summary>
         /// <param name="cencellationToken">A cancellation token for cancelling the request in the middle of execution.
         /// </param>
         Task<TResponse> ExecuteAsync(CancellationToken cencellationToken);
 
-        /// <summary> Executes the request and returns the result object.</summary>
+        /// <summary>Executes the request and returns the result object.</summary>
         TResponse Execute();
     }
 }

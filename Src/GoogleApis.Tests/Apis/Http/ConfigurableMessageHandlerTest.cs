@@ -33,22 +33,24 @@ using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Http
 {
-    /// <summary> Tests for <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>. </summary>
+    /// <summary>Tests for <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.</summary>
     [TestFixture]
     public class ConfigurableMessageHandlerTest
     {
         #region Handlers
 
-        /// <summary> Unsuccessful handler which always returns <c>true</c>. </summary>
+        /// <summary>Unsuccessful handler which always returns <c>true</c>.</summary>
         private class TrueUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
         {
-            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
-                return true;
+                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                tcs.SetResult(true);
+                return tcs.Task;
             }
         }
 
-        /// <summary> Message handler which returns a new successful (and empty) response. </summary>
+        /// <summary>Message handler which returns a new successful (and empty) response.</summary>
         private class MockMessageHandler : HttpMessageHandler
         {
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
@@ -64,13 +66,13 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Redirect
 
-        /// <summary> Redirect message handler which return redirect response. </summary>
+        /// <summary>Redirect message handler which return redirect response.</summary>
         private class RedirectMessageHandler : CountableMessageHandler
         {
-            /// <summary> Gets or sets the redirect location Uri string. </summary>
+            /// <summary>Gets or sets the redirect location Uri string.</summary>
             private string Location { get; set; }
 
-            /// <summary> Constructs a new redirect message handler with the given location. </summary>
+            /// <summary>Constructs a new redirect message handler with the given location.</summary>
             public RedirectMessageHandler(string location)
             {
                 Location = location;
@@ -110,7 +112,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> Tests that the message handler handles redirect messages successfully. </summary>
+        /// <summary>Tests that the message handler handles redirect messages successfully.</summary>
         [Test]
         public void SendAsync_Redirect()
         {
@@ -136,7 +138,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the message handler doesn't handle redirect messages when follow redirect is <c>false</c>. 
         /// </summary>
         [Test]
@@ -171,12 +173,12 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Execute interceptor
 
-        /// <summary> 
+        /// <summary>
         /// Mock interceptor handler which verifies that an interceptor is being called on a request. 
         /// </summary>
         private class InterceptorMessageHandler : CountableMessageHandler
         {
-            /// <summary> Gets or sets an injected response message which will be returned on send. </summary>
+            /// <summary>Gets or sets an injected response message which will be returned on send.</summary>
             public HttpResponseMessage InjectedResponseMessage { get; set; }
 
             const string InjectedHeader = "Some-Header";
@@ -192,27 +194,28 @@ namespace Google.Apis.Tests.Apis.Http
                 return tcs.Task;
             }
 
-            /// <summary> A mock interceptor which inject a header to a request. </summary>
+            /// <summary>A mock interceptor which inject a header to a request.</summary>
             internal class Interceptor : IHttpExecuteInterceptor
             {
                 public int Calls { get; set; }
 
-                public void Intercept(HttpRequestMessage request)
+                public Task InterceptAsync(HttpRequestMessage request, CancellationToken token)
                 {
                     ++Calls;
                     request.Headers.Add(InjectedHeader, InjectedValue);
+                    return TaskEx.Delay(0);
                 }
             }
         }
 
-        /// <summary> Tests that execute interceptor is called on successful response. </summary>
+        /// <summary>Tests that execute interceptor is called on successful response.</summary>
         [Test]
         public void SendAsync_ExecuteInterceptor()
         {
             SubtestSendAsyncExecuteInterceptor(HttpStatusCode.OK);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that execute interceptor is called once on unsuccessful request. In this test unsuccessful response 
         /// handler isn't plugged to the handler. 
         /// </summary>
@@ -222,7 +225,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsyncExecuteInterceptor(HttpStatusCode.BadRequest);
         }
 
-        /// <summary> Tests that execute interceptor is called. </summary>
+        /// <summary>Tests that execute interceptor is called.</summary>
         private void SubtestSendAsyncExecuteInterceptor(HttpStatusCode code)
         {
             var handler = new InterceptorMessageHandler();
@@ -245,7 +248,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that execute interceptor is called for each request. In this case an unsuccessful response handler is 
         /// plugged to the handler
         /// </summary>
@@ -277,18 +280,18 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Unsuccessful reponse handler
 
-        /// <summary> 
+        /// <summary>
         /// Mock unsuccessful response handler which verifies that unsuccessful response handler is being called.
         /// </summary>
         private class UnsuccessfulResponseMessageHandler : CountableMessageHandler
         {
-            /// <summary> Gets or sets the status code to return on the response.</summary>
+            /// <summary>Gets or sets the status code to return on the response.</summary>
             public HttpStatusCode ResponseStatusCode { get; set; }
 
-            /// <summary> Gets or sets the cancellation token source.</summary>
+            /// <summary>Gets or sets the cancellation token source.</summary>
             public CancellationTokenSource CancellationTokenSource { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the request number to invoke the Cancel method on <see cref="CancellationTokenSource"/>.
             /// </summary>
             public int CancelRequestNum { get; set; }
@@ -306,20 +309,22 @@ namespace Google.Apis.Tests.Apis.Http
                 return tcs.Task;
             }
 
-            /// <summary> Unsuccessful response handler which "handles" only service unavailable responses. </summary>
+            /// <summary>Unsuccessful response handler which "handles" only service unavailable responses.</summary>
             internal class ServiceUnavailableResponseHandler : IHttpUnsuccessfulResponseHandler
             {
                 public int Calls { get; set; }
 
-                public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+                public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
                 {
                     ++Calls;
-                    return args.Response.StatusCode.Equals(HttpStatusCode.ServiceUnavailable);
+                    TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                    tcs.SetResult(args.Response.StatusCode.Equals(HttpStatusCode.ServiceUnavailable));
+                    return tcs.Task;
                 }
             }
         }
 
-        /// <summary> Test helper for testing unsuccessful response handlers. </summary>
+        /// <summary>Test helper for testing unsuccessful response handlers.</summary>
         private void SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode code)
         {
             var handler = new UnsuccessfulResponseMessageHandler { ResponseStatusCode = code };
@@ -351,14 +356,14 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> Tests that unsuccessful response handler isn't called when the response is successful. </summary>
+        /// <summary>Tests that unsuccessful response handler isn't called when the response is successful.</summary>
         [Test]
         public void SendAsync_UnsuccessfulReponseHanlder_SuccessfulReponse()
         {
             SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.OK);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that unsuccessful response handler is called when the response is unsuccessful, but the handler can't
         /// handle the abnormal response (e.g. different status code).
         /// </summary>
@@ -368,7 +373,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.BadGateway);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that unsuccessful response handler is called when the response is unsuccessful and the handler can 
         /// handle the abnormal response (e.g. same status code).
         /// </summary>
@@ -378,7 +383,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsyncUnsuccessfulReponseHanlder(HttpStatusCode.ServiceUnavailable);
         }
 
-        /// <summary> Tests abnormal response when unsuccessful response handler isn't plugged. </summary>
+        /// <summary>Tests abnormal response when unsuccessful response handler isn't plugged.</summary>
         [Test]
         public void SendAsync_AbnormalResponse_WithoutUnsuccessfulReponseHandler()
         {
@@ -402,7 +407,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Exception Handler
 
-        /// <summary> Mock exception message handler which verifies that exception handler is being called. </summary>
+        /// <summary>Mock exception message handler which verifies that exception handler is being called.</summary>
         private class ExceptionMessageHandler : CountableMessageHandler
         {
             public ExceptionMessageHandler()
@@ -410,15 +415,15 @@ namespace Google.Apis.Tests.Apis.Http
                 Exception = new Exception(ExceptionMessage);
             }
 
-            /// <summary> Gets or sets indication if exception should be thrown. </summary>
+            /// <summary>Gets or sets indication if exception should be thrown.</summary>
             public bool ThrowException { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets a specific exception to throw. Default value is <seealso cref="System.Exception"/> 
-            /// with <see cref="ExceptionMessage"/>. </summary>
+            /// with <see cref="ExceptionMessage"/>.</summary>
             public Exception Exception { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// The exception message which is thrown in case <see cref="ThrowException"/> is <c>true</c>. 
             /// </summary>
             public const string ExceptionMessage = "Exception from execute";
@@ -436,7 +441,7 @@ namespace Google.Apis.Tests.Apis.Http
                 return tcs.Task;
             }
 
-            /// <summary> Mock Exception handler which "handles" the exception. </summary>
+            /// <summary>Mock Exception handler which "handles" the exception.</summary>
             internal class ExceptionHandler : IHttpExceptionHandler
             {
                 public int Calls { get; set; }
@@ -447,15 +452,17 @@ namespace Google.Apis.Tests.Apis.Http
                     Handle = handle;
                 }
 
-                public bool HandleException(HandleExceptionArgs args)
+                public Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
                 {
                     ++Calls;
-                    return Handle;
+                    TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                    tcs.SetResult(Handle);
+                    return tcs.Task;
                 }
             }
         }
 
-        /// <summary> Subtest for exception handler which tests that exception handler is invoked. </summary>
+        /// <summary>Subtest for exception handler which tests that exception handler is invoked.</summary>
         private void SubtestSendAsyncExceptionHandler(bool throwException, bool handle)
         {
             var handler = new ExceptionMessageHandler { ThrowException = throwException };
@@ -497,14 +504,14 @@ namespace Google.Apis.Tests.Apis.Http
         }
 
 
-        /// <summary> Tests that the exception handler isn't called on successful response. </summary>
+        /// <summary>Tests that the exception handler isn't called on successful response.</summary>
         [Test]
         public void SendAsync_ExceptionHandler_SuccessReponse()
         {
             SubtestSendAsyncExceptionHandler(false, true);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the exception handler is called when exception is thrown on execute, but it can't handle the 
         /// exception. 
         /// </summary>
@@ -514,7 +521,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsyncExceptionHandler(true, false);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the exception handler is called when exception is thrown on execute, and it handles the 
         /// exception. 
         /// </summary>
@@ -524,7 +531,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsyncExceptionHandler(true, true);
         }
 
-        /// <summary> Tests an exception is thrown on execute and there is no exception handler. </summary>
+        /// <summary>Tests an exception is thrown on execute and there is no exception handler.</summary>
         [Test]
         public void SendAsync_ThrowException_WithoutExceptionHandler()
         {
@@ -558,7 +565,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Exception
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Use default max time span (2 minutes).
         /// </summary>
@@ -570,7 +577,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffExceptionHandler(true, initializer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Max time span is set to 200 milliseconds (as a result the back-off handler can't handle the exception).
         /// </summary>
@@ -584,7 +591,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffExceptionHandler(true, initializer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when exception is thrown. 
         /// Max time span is set to 1 hour.
         /// </summary>
@@ -598,7 +605,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffExceptionHandler(true, initializer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when 
         /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/>> is thrown. 
         /// </summary>
@@ -623,7 +630,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffExceptionHandler(true, initializer, new InvalidCastException());
         }
 
-        /// <summary> Tests that back-off handler works as expected when exception isn't thrown. </summary>
+        /// <summary>Tests that back-off handler works as expected when exception isn't thrown.</summary>
         [Test]
         public void SendAsync_BackOffExceptionHandler_DontThrow()
         {
@@ -631,7 +638,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffExceptionHandler(false, initializer);
         }
 
-        /// <summary> Subtest that back-off handler works as expected when exception is or isn't thrown. </summary>
+        /// <summary>Subtest that back-off handler works as expected when exception is or isn't thrown.</summary>
         private void SubtestSendAsync_BackOffExceptionHandler(bool throwException,
             BackOffHandler.Initializer initializer, Exception exceptionToThrow = null)
         {
@@ -686,7 +693,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Unsuccessful Response Handler
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when the server returns 5xx and the maximum time span is set
         /// to 5 seconds.
         /// </summary>
@@ -700,7 +707,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler works as expected when the server returns 5xx and the maximum time span is set
         /// to 10 hours.
         /// </summary>
@@ -714,7 +721,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that back-off handler isn't be called when the server returns a successful response.
         /// </summary>
         [Test]
@@ -724,7 +731,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.OK, initializer);
         }
 
-        /// <summary> Tests that back-off handler is canceled when cancellation token is used.</summary>
+        /// <summary>Tests that back-off handler is canceled when cancellation token is used.</summary>
         [Test]
         public void SendAsync_BackOffUnsuccessfulResponseHandler_Cancel()
         {
@@ -737,7 +744,7 @@ namespace Google.Apis.Tests.Apis.Http
             SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 6);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Subtest that back-off handler works as expected when a successful or abnormal response is returned.
         /// For testing the back-off handler in case of a canceled request, set the <code>cancelRequestNum</code>
         /// parameter to the index of the request you want to cancel.
@@ -813,7 +820,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         #region Content
 
-        /// <summary> Mock message handler which verifies that the content is correct on retry. </summary>
+        /// <summary>Mock message handler which verifies that the content is correct on retry.</summary>
         private class ContentMessageHandler : CountableMessageHandler
         {
             public const int NumFails = 4;
@@ -832,7 +839,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Defines the different content types we test in <see cref="SubtestSendAsyncRetryContent"/>.
         /// </summary>
         private enum ContentType
@@ -842,7 +849,7 @@ namespace Google.Apis.Tests.Apis.Http
             ByteArray
         }
 
-        /// <summary> Tests that retry works with different kind of contents (String, Stream and ByteArray). </summary>
+        /// <summary>Tests that retry works with different kind of contents (String, Stream and ByteArray).</summary>
         private void SubtestSendAsyncRetryContent(ContentType type)
         {
             var content = "test-content";
@@ -882,21 +889,21 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> Tests that a string content works as expected on retry. </summary>
+        /// <summary>Tests that a string content works as expected on retry.</summary>
         [Test]
         public void SendAsync_Retry_CorrectStringContent()
         {
             SubtestSendAsyncRetryContent(ContentType.String);
         }
 
-        /// <summary> Tests that a stream content works as expected on retry. </summary>
+        /// <summary>Tests that a stream content works as expected on retry.</summary>
         [Test]
         public void SendAsync_Retry_CorrectStreamContent()
         {
             SubtestSendAsyncRetryContent(ContentType.Stream);
         }
 
-        /// <summary> Tests that a byte array content works as expected on retry. </summary>
+        /// <summary>Tests that a byte array content works as expected on retry.</summary>
         [Test]
         public void SendAsync_Retry_CorrectByteArrayContent()
         {
@@ -905,7 +912,7 @@ namespace Google.Apis.Tests.Apis.Http
 
         #endregion
 
-        /// <summary> Tests setting number of tries. </summary>
+        /// <summary>Tests setting number of tries.</summary>
         [Test]
         public void NumTries_Setter()
         {
@@ -946,7 +953,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests the number of tries in case of unsuccessful response when unsuccessful response handler is plugged to 
         /// the message handler. 
         /// </summary>
@@ -990,7 +997,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
 
-        /// <summary> Tests that the configurable message handler sets the User-Agent header. </summary>
+        /// <summary>Tests that the configurable message handler sets the User-Agent header.</summary>
         [Test]
         public void SendAsync_UserAgent()
         {

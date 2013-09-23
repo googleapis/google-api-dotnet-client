@@ -29,54 +29,54 @@ using Google.Apis.Testing;
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// This message handler contains the main logic of our Http requests. It contains a list of 
+    /// This message handler contains the main logic of our HTTP requests. It contains a list of 
     /// <see cref="IHttpUnsuccessfulResponseHandler"/>s for handling abnormal responses, a list of 
     /// <see cref="IHttpExceptionHandler"/>s for handling exception in a request and a list of 
     /// <see cref="IHttpExecuteInterceptor"/>s for intercepting a request before it has been sent to the server.
-    /// It also contains important properties like num of retires, follow redirect, etc.
+    /// It also contains important properties like number of tries, follow redirect, etc.
     /// </summary>
     public class ConfigurableMessageHandler : DelegatingHandler
     {
-        /// <summary> The class logger. </summary>
+        /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ConfigurableMessageHandler>();
 
-        /// <summary> Maximum allowed number of tries. </summary>
+        /// <summary>Maximum allowed number of tries.</summary>
         [VisibleForTestOnly]
         internal const int MaxAllowedNumTries = 20;
 
-        /// <summary> The current API version of this client library. </summary>
+        /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
-        /// <summary> The User-Agent suffix header which contains the <seealso cref="ApiVersion"/>. </summary>
+        /// <summary>The User-Agent suffix header which contains the <seealso cref="ApiVersion"/>.</summary>
         private static readonly string UserAgentSuffix = "google-api-dotnet-client/" + ApiVersion + " (gzip)";
 
         #region IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler and IHttpExecuteInterceptor lists
 
-        /// <summary> A list of <see cref="IHttpUnsuccessfulResponseHandler"/>. </summary>
+        /// <summary>A list of <see cref="IHttpUnsuccessfulResponseHandler"/>.</summary>
         private readonly IList<IHttpUnsuccessfulResponseHandler> unsuccessfulResponseHandlers =
             new List<IHttpUnsuccessfulResponseHandler>();
 
-        /// <summary> A list of <see cref="IHttpExceptionHandler"/>. </summary>
+        /// <summary>A list of <see cref="IHttpExceptionHandler"/>.</summary>
         private readonly IList<IHttpExceptionHandler> exceptionHandlers =
             new List<IHttpExceptionHandler>();
 
-        /// <summary> A list of <see cref="IHttpExecuteInterceptor"/>. </summary>
+        /// <summary>A list of <see cref="IHttpExecuteInterceptor"/>.</summary>
         private readonly IList<IHttpExecuteInterceptor> executeInterceptors =
             new List<IHttpExecuteInterceptor>();
 
-        /// <summary> Gets a list of <see cref="IHttpUnsuccessfulResponseHandler"/>. </summary>
+        /// <summary>Gets a list of <see cref="IHttpUnsuccessfulResponseHandler"/>.</summary>
         public IList<IHttpUnsuccessfulResponseHandler> UnsuccessfulResponseHandlers
         {
             get { return unsuccessfulResponseHandlers; }
         }
 
-        /// <summary> Gets a list of <see cref="IHttpExceptionHandler"/>. </summary>
+        /// <summary>Gets a list of <see cref="IHttpExceptionHandler"/>.</summary>
         public IList<IHttpExceptionHandler> ExceptionHandlers
         {
             get { return exceptionHandlers; }
         }
 
-        /// <summary> Gets a list of <see cref="IHttpExecuteInterceptor"/>. </summary>
+        /// <summary>Gets a list of <see cref="IHttpExecuteInterceptor"/>.</summary>
         public IList<IHttpExecuteInterceptor> ExecuteInterceptors
         {
             get { return executeInterceptors; }
@@ -84,13 +84,13 @@ namespace Google.Apis.Http
 
         #endregion
 
-        /// <summary> Number of tries. Default is <c>3</c>. </summary>
+        /// <summary>Number of tries. Default is <c>3</c>.</summary>
         private int numTries = 3;
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the number of tries that will be allowed to execute. Retries occur as a result of either
         /// <see cref="IHttpUnsuccessfulResponseHandler"/> or <see cref="IHttpExceptionHandler"/> which handles the
-        /// abnormal Http response or exception, before being terminated. 
+        /// abnormal HTTP response or exception, before being terminated. 
         /// Set <c>1</c> for not retrying requests. The default value is <c>3</c>".
         /// </summary>
         public int NumTries
@@ -106,19 +106,19 @@ namespace Google.Apis.Http
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Gets or sets whether the handler should follow a redirect when a redirect response is received. Default 
         /// value is <c>true</c>.
         /// </summary>
         public bool FollowRedirect { get; set; }
 
-        /// <summary> Gets or sets whether logging is enabled. Default value is <c>true</c>. </summary>
+        /// <summary>Gets or sets whether logging is enabled. Default value is <c>true</c>.</summary>
         public bool IsLoggingEnabled { get; set; }
 
-        /// <summary> Gets or sets the application name which will be used on the User-Agent header. </summary>
+        /// <summary>Gets or sets the application name which will be used on the User-Agent header.</summary>
         public string ApplicationName { get; set; }
 
-        /// <summary> Constructs a new configurable message handler </summary>
+        /// <summary>Constructs a new configurable message handler </summary>
         public ConfigurableMessageHandler(HttpMessageHandler httpMessageHandler)
             : base(httpMessageHandler)
         {
@@ -140,14 +140,14 @@ namespace Google.Apis.Http
             int triesRemaining = NumTries;
             Exception lastException = null;
 
-            // set User-Agent header
+            // Set User-Agent header.
             var userAgent = (ApplicationName == null ? "" : ApplicationName + " ") + UserAgentSuffix;
             // TODO: setting the User-Agent won't work on Silverlight. We may need to create a special callback here to 
-            // set it correctly. Also check what happen in WP?
+            // set it correctly.
             request.Headers.Add("User-Agent", userAgent);
 
             HttpResponseMessage response = null;
-            do // while (triesRemaining > 0)
+            do // While (triesRemaining > 0)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
@@ -158,17 +158,15 @@ namespace Google.Apis.Http
                 }
                 lastException = null;
 
-                // intercept the request
-                // TODO(peleyal): rethink if each execute interceptor should be implemented as DelegateHandler, and 
-                // then remove this execute interceptor!
+                // Intercept the request.
                 foreach (var interceptor in executeInterceptors)
                 {
-                    interceptor.Intercept(request);
+                    await interceptor.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
                 }
 
                 try
                 {
-                    // send the request!
+                    // Send the request!
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                 }
                 catch (Exception ex)
@@ -176,31 +174,31 @@ namespace Google.Apis.Http
                     lastException = ex;
                 }
 
-                // decrease the number of retries
+                // Decrease the number of retries.
                 triesRemaining--;
 
-                // exception was thrown , try to handle it
+                // Exception was thrown, try to handle it.
                 if (response == null)
                 {
                     var exceptionHandled = false;
 
-                    // try to handle the exception with each handler
+                    // Try to handle the exception with each handler.
                     foreach (var handler in exceptionHandlers)
                     {
-                        exceptionHandled |= handler.HandleException(new HandleExceptionArgs
+                        exceptionHandled |= await handler.HandleExceptionAsync(new HandleExceptionArgs
                             {
                                 Request = request,
                                 Exception = lastException,
                                 TotalTries = NumTries,
                                 CurrentFailedTry = NumTries - triesRemaining,
                                 CancellationToken = cancellationToken
-                            });
+                            }).ConfigureAwait(false);
                     }
 
                     if (!exceptionHandled)
                     {
                         Logger.Error(lastException,
-                            "Exception was thrown while executing an Http request and it wasn't handled");
+                            "Exception was thrown while executing a HTTP request and it wasn't handled");
                         throw lastException;
                     }
                     else if (loggable)
@@ -213,24 +211,24 @@ namespace Google.Apis.Http
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        // no need to retry, the response was successful
+                        // No need to retry, the response was successful.
                         triesRemaining = 0;
                     }
                     else
                     {
                         bool errorHandled = false;
 
-                        // try to handle the abnormal Http response with each handler
+                        // Try to handle the abnormal HTTP response with each handler.
                         foreach (var handler in unsuccessfulResponseHandlers)
                         {
-                            errorHandled |= handler.HandleResponse(new HandleUnsuccessfulResponseArgs
+                            errorHandled |= await handler.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
                                 {
                                     Request = request,
                                     Response = response,
                                     TotalTries = NumTries,
                                     CurrentFailedTry = NumTries - triesRemaining,
                                     CancellationToken = cancellationToken
-                                });
+                                }).ConfigureAwait(false);
                         }
 
                         if (!errorHandled)
@@ -252,7 +250,7 @@ namespace Google.Apis.Http
                                         response.StatusCode);
                                 }
 
-                                // no need to retry, because no handler handled the abnormal response
+                                // No need to retry, because no handler handled the abnormal response.
                                 triesRemaining = 0;
                             }
                         }
@@ -263,12 +261,12 @@ namespace Google.Apis.Http
                         }
                     }
                 }
-            } while (triesRemaining > 0); // not a success status code but it was handled
+            } while (triesRemaining > 0); // Not a successful status code but it was handled.
 
-            // if the response is null, we should throw the last exception
+            // If the response is null, we should throw the last exception.
             if (response == null)
             {
-                Logger.Error(lastException, "Exception was thrown while executing an Http request");
+                Logger.Error(lastException, "Exception was thrown while executing a HTTP request");
                 throw lastException;
             }
             else if (!response.IsSuccessStatusCode)
@@ -302,7 +300,7 @@ namespace Google.Apis.Http
             {
                 request.Method = HttpMethod.Get;
             }
-            // clear Authorization and If-* headers
+            // Clear Authorization and If-* headers.
             request.Headers.Remove("Authorization");
             request.Headers.IfMatch.Clear();
             request.Headers.IfNoneMatch.Clear();

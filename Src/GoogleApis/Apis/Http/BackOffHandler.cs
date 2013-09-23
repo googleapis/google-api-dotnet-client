@@ -18,49 +18,50 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Apis.Logging;
 using Google.Apis.Util;
 
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// A thread-safe back-off handler which handles an abnormal Http response or an exception with 
+    /// A thread-safe back-off handler which handles an abnormal HTTP response or an exception with 
     /// <see cref="IBackOff"/>.
     /// </summary>
     public class BackOffHandler : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<BackOffHandler>();
 
-        /// <summary> An initializer class to initialize a back-off handler. </summary>
+        /// <summary>An initializer class to initialize a back-off handler.</summary>
         public class Initializer
         {
-            /// <summary> Gets the back-off policy used by this back-off handler. </summary>
+            /// <summary>Gets the back-off policy used by this back-off handler.</summary>
             public IBackOff BackOff { get; private set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the maximum time span to wait. If the back-off instance returns a greater time span then 
-            /// this value, this handler returns <c>false</c> to both <see cref="HandleException"/> and 
-            /// <see cref="HandleResponse"/>. Default value is 5 seconds per a retry request.
+            /// this value, this handler returns <c>false</c> to both <see cref="HandleExceptionAsync"/> and 
+            /// <see cref="HandleResponseAsync"/>. Default value is 5 seconds per a retry request.
             /// </summary>
             public TimeSpan MaxTimeSpan { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets a delegate function which indicates if this back-off handler should handle an abnormal 
-            /// Http response. The default is <see cref="DefaultHandleUnsuccessfulResponse"/>. 
+            /// HTTP response. The default is <see cref="DefaultHandleUnsuccessfulResponseFunc"/>. 
             /// </summary>
             public Func<HttpResponseMessage, bool> HandleUnsuccessfulResponseFunc { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets a delegate function which indicates if this back-off handler should handle an exception. 
-            /// The  default is <see cref="DefaultHandleException"/>. 
+            /// The default is <see cref="DefaultHandleExceptionFunc"/>. 
             /// </summary>
             public Func<Exception, bool> HandleExceptionFunc { get; set; }
 
-            /// <summary> Default function which handles server errors (503). </summary>
+            /// <summary>Default function which handles server errors (503).</summary>
             public static readonly Func<HttpResponseMessage, bool> DefaultHandleUnsuccessfulResponseFunc =
                 (r) => (int)r.StatusCode == 503;
 
-            /// <summary> 
+            /// <summary>
             /// Default function which handles exception which aren't 
             /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> or 
             /// <seealso cref="System.OperationCanceledException"/>. Those exceptions represent a task or an operation
@@ -69,7 +70,7 @@ namespace Google.Apis.Http
             public static readonly Func<Exception, bool> DefaultHandleExceptionFunc =
                 (ex) => !(ex is TaskCanceledException || ex is OperationCanceledException);
 
-            /// <summary> Constructs a new initializer by the given back-off. </summary>
+            /// <summary>Constructs a new initializer by the given back-off.</summary>
             public Initializer(IBackOff backOff)
             {
                 BackOff = backOff;
@@ -79,34 +80,35 @@ namespace Google.Apis.Http
             }
         }
 
-        /// <summary> Gets the back-off policy used by this back-off handler. </summary>
+        /// <summary>Gets the back-off policy used by this back-off handler.</summary>
         public IBackOff BackOff { get; private set; }
 
-        /// <summary> 
+        /// <summary>
         /// Gets the maximum time span to wait. If the back-off instance returns a greater time span, the handle method
         /// returns <c>false</c>. Default value is 5 seconds per a retry request.
         /// </summary>
         public TimeSpan MaxTimeSpan { get; private set; }
 
-        /// <summary> 
-        /// Gets a delegate function which indicates if this back-off handler should handle an abnormal Http response. 
-        /// The default is <see cref="DefaultHandleUnsuccessfulResponse"/>. 
+        /// <summary>
+        /// Gets a delegate function which indicates if this back-off handler should handle an abnormal HTTP response. 
+        /// The default is <see cref="DefaultHandleUnsuccessfulResponseFunc"/>. 
         /// </summary>
         public Func<HttpResponseMessage, bool> HandleUnsuccessfulResponseFunc { get; private set; }
 
-        /// <summary> 
+        /// <summary>
         /// Gets a delegate function which indicates if this back-off handler should handle an exception. The 
-        /// default is <see cref="DefaultHandleException"/>. 
+        /// default is <see cref="DefaultHandleExceptionFunc"/>. 
         /// </summary>
         public Func<Exception, bool> HandleExceptionFunc { get; private set; }
 
-        /// <summary> Constructs a new back-off handler with the given back-off. </summary>
+        /// <summary>Constructs a new back-off handler with the given back-off.</summary>
+        /// <param name="backOff">The back-off policy</param>
         public BackOffHandler(IBackOff backOff)
             : this(new Initializer(backOff))
         {
         }
 
-        /// <summary> Constructs a new back-off handler with the given initializer. </summary>
+        /// <summary>Constructs a new back-off handler with the given initializer.</summary>
         public BackOffHandler(Initializer initializer)
         {
             BackOff = initializer.BackOff;
@@ -117,22 +119,22 @@ namespace Google.Apis.Http
 
         #region IHttpUnsuccessfulResponseHandler
 
-        public virtual bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+        public virtual async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
             // if the func returns true try to handle this current failed try
             return HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response) &&
-                Handle(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
+                await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
         }
 
         #endregion
 
         #region IHttpExceptionHandler
 
-        public virtual bool HandleException(HandleExceptionArgs args)
+        public virtual async Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
         {
             // if the func returns true try to handle this current failed try
             return HandleExceptionFunc != null && HandleExceptionFunc(args.Exception) &&
-                Handle(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
+                await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
         }
 
         #endregion
@@ -143,7 +145,8 @@ namespace Google.Apis.Http
         /// block for x milliseconds (x is defined by the <see cref="BackOff"/> instance), and this handler returns 
         /// <c>true</c>.
         /// </summary>
-        private bool Handle(bool supportsRetry, int currentFailedTry, CancellationToken cancellationToken)
+        private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry,
+            CancellationToken cancellationToken)
         {
             if (!supportsRetry || BackOff.MaxNumOfRetries < currentFailedTry)
             {
@@ -156,22 +159,18 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            Wait(ts, cancellationToken);
+            await Wait(ts, cancellationToken);
             Logger.Debug("Back-Off handled the error. Waited {0}ms before next retry...", ts.TotalMilliseconds);
             return true;
         }
 
-        /// <summary> Waits the given time span. Override this method is recommended for mocking purposes.</summary>
+        /// <summary>Waits the given time span. Override this method is recommended for mocking purposes.</summary>
         /// <param name="ts">TimeSpan to wait (and block the current thread)</param>
         /// <param name="cancellationToken">The cancellation token in case the user wants to cancel the operation in 
         /// the middle</param>
-        protected virtual void Wait(TimeSpan ts, CancellationToken cancellationToken)
+        protected virtual async Task Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
-            try
-            {
-                TaskEx.Delay(ts, cancellationToken).Wait();
-            }
-            catch (Exception) { }
+            await TaskEx.Delay(ts, cancellationToken);
         }
     }
 }

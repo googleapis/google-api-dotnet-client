@@ -42,40 +42,28 @@ namespace Google.Apis.Services
     /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> execute interceptor list, which uses the given 
     /// Authenticator. It calls to its applying authentication method, and injects the "Authorization" header in the 
     /// request.
-    /// If the given Authenticator implements <see cref="Google.Apis.Http.IUnsuccessfulReponseHandler"/>, this class
-    /// adds the Authenticator to the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>'s unsuccessful response
-    /// handler list.
+    /// If the given Authenticator implements <see cref="Google.Apis.Http.IHttpUnsuccessfulResponseHandler"/>, this 
+    /// class adds the Authenticator to the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>'s unsuccessful 
+    /// response handler list.
     /// </summary>
     public abstract class BaseClientService : IClientService
     {
-        /// <summary> The class logger. </summary>
+        /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<BaseClientService>();
 
         #region Initializer
 
-        /// <summary> 
-        /// Indicates if exponential back-off is used automatically on exception in a service request and\or when 503 
-        /// response is returned form the server.
-        /// </summary>
-        [Flags]
-        public enum ExponentialBackOffPolicy
-        {
-            None = 0,
-            Exception = 1,
-            UnsuccessfulResponse503 = 2
-        }
-
-        /// <summary> An initializer class for the client service. </summary>
+        /// <summary>An initializer class for the client service.</summary>
         public class Initializer
         {
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the factory for creating <see cref="System.Net.Http.HttpClient"/> instance. If this 
             /// property is not set the service uses a new <see cref="Google.Apis.Http.HttpClientFactory"/> instance.
             /// </summary>
             public IHttpClientFactory HttpClientFactory { get; set; }
 
             /// <summary>
-            /// Gets or sets an Http client initializer which is able to customize properties on 
+            /// Gets or sets a HTTP client initializer which is able to customize properties on 
             /// <see cref="Google.Apis.Http.ConfigurableHttpClient"/> and 
             /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
             /// </summary>
@@ -88,33 +76,33 @@ namespace Google.Apis.Services
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
             /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
             /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
-            /// implementation (using <seealso cref="Google.Api.Http.BackOffHandler"/>).
+            /// implementation (using <seealso cref="Google.Apis.Http.BackOffHandler"/>).
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
-            /// <summary> Gets or sets whether this service supports GZip. Default value is <c>true</c>. </summary>
+            /// <summary>Gets or sets whether this service supports GZip. Default value is <c>true</c>.</summary>
             public bool GZipEnabled { get; set; }
 
             /// <summary>
-            /// Gets and Sets the Serializer. Default value is <see cref="Google.Apis.Json.NewtonsoftJsonSerializer"/>.
+            /// Gets and Sets the serializer. Default value is <see cref="Google.Apis.Json.NewtonsoftJsonSerializer"/>.
             /// </summary>
             public ISerializer Serializer { get; set; }
 
-            /// <summary> Gets or sets the API Key. Default value is <c>null</c>. </summary>
+            /// <summary>Gets or sets the API Key. Default value is <c>null</c>.</summary>
             public string ApiKey { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the Authenticator. Default value is 
             /// <see cref="Google.Apis.Authentication.NullAuthenticator.Instance"/>.
             /// </summary>
             public IAuthenticator Authenticator { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
             /// </summary>
             public string ApplicationName { get; set; }
 
-            /// <summary> Constructs a new initializer with default values. </summary>
+            /// <summary>Constructs a new initializer with default values.</summary>
             public Initializer()
             {
                 GZipEnabled = true;
@@ -124,48 +112,12 @@ namespace Google.Apis.Services
             }
         }
 
-        /// <summary>
-        /// An initializer which adds exponential back-off as exception handler and\or unsuccessful response handler by
-        /// the given <seealso cref="BaseClientService.ExponentialBackOffPolicy"/>.
-        /// </summary>
-        private class ExponentialBackOffInitializer : IConfigurableHttpClientInitializer
-        {
-            private ExponentialBackOffPolicy Policy { get; set; }
-            private Func<BackOffHandler> CreateBackOff { get; set; }
-
-            /// <summary>
-            /// Constructs a new back-off initializer with the given policy and back-off handler create function.
-            /// </summary>
-            public ExponentialBackOffInitializer(ExponentialBackOffPolicy policy, Func<BackOffHandler> createBackOff)
-            {
-                Policy = policy;
-                CreateBackOff = createBackOff;
-            }
-
-            public void Initialize(ConfigurableHttpClient httpClient)
-            {
-                var backOff = CreateBackOff();
-
-                // add exception handler and\or unsuccessful response handler
-                if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception)
-                {
-                    httpClient.MessageHandler.ExceptionHandlers.Add(backOff);
-                }
-
-                if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse503) ==
-                    ExponentialBackOffPolicy.UnsuccessfulResponse503)
-                {
-                    httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(backOff);
-                }
-            }
-        }
-
         #endregion
 
-        /// <summary> Constructs a new base client with the specified initializer. </summary>
+        /// <summary>Constructs a new base client with the specified initializer.</summary>
         protected BaseClientService(Initializer initializer)
         {
-            // sets the right properties by the initializer's properties
+            // Set the right properties by the initializer's properties.
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;
             ApiKey = initializer.ApiKey;
@@ -177,11 +129,11 @@ namespace Google.Apis.Services
             }
             HttpClientInitializer = initializer.HttpClientInitializer;
 
-            // create an Http client for this service
+            // Create a HTTP client for this service.
             HttpClient = CreateHttpClient(initializer);
         }
 
-        /// <summary> Return <c>true</c> if this service contains the specified feature. </summary>
+        /// <summary>Returns <c>true</c> if this service contains the specified feature.</summary>
         private bool HasFeature(Features feature)
         {
             return Features.Contains(feature.GetStringValue());
@@ -189,7 +141,7 @@ namespace Google.Apis.Services
 
         private ConfigurableHttpClient CreateHttpClient(Initializer initializer)
         {
-            // if factory wasn't set use the default Http client factory
+            // If factory wasn't set use the default HTTP client factory.
             var factory = initializer.HttpClientFactory ?? new HttpClientFactory();
             var args = new CreateHttpClientArgs
                 {
@@ -197,20 +149,20 @@ namespace Google.Apis.Services
                     ApplicationName = ApplicationName,
                 };
 
-            // add the user's input initializer
+            // Add the user's input initializer.
             if (HttpClientInitializer != null)
             {
                 args.Initializers.Add(HttpClientInitializer);
             }
 
-            // add exponential back-off initializer if necessary
+            // Add exponential back-off initializer if necessary.
             if (initializer.DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
             {
                 args.Initializers.Add(new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
                     CreateBackOffHandler));
             }
 
-            // add authenticator initializer to intercept a request and add the "Authorization" header and also handle
+            // Add authenticator initializer to intercept a request and add the "Authorization" header and also handle
             // abnormal 401 responses in case the authenticator is an instance of unsuccessful response handler.
             args.Initializers.Add(new AuthenticatorMessageHandlerInitializer(Authenticator));
 
@@ -284,8 +236,6 @@ namespace Google.Apis.Services
                 var request = new StandardResponse<object> { Data = obj };
                 return Serializer.Serialize(request);
             }
-
-            // New v1.0 path
             return Serializer.Serialize(obj);
         }
 
@@ -374,7 +324,7 @@ namespace Google.Apis.Services
 
         #endregion
 
-        #region Abstract Memebrs
+        #region Abstract Members
 
         public abstract string Name { get; }
         public abstract string BaseUri { get; }
@@ -386,7 +336,7 @@ namespace Google.Apis.Services
 
         #endregion
 
-        /// <summary> Creates a GZip stream by the given serialized object. </summary>
+        /// <summary>Creates a GZip stream by the given serialized object.</summary>
         private static Stream CreateGZipStream(string serializedObject)
         {
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(serializedObject);

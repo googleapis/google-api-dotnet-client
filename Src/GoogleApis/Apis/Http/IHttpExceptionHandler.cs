@@ -15,46 +15,44 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Http
 {
-    /// <summary> Argument class to <see cref="IHttpExceptionHandler.HandleException"/>.</summary>
+    /// <summary>Argument class to <see cref="IHttpExceptionHandler.HandleExceptionAsync"/>.</summary>
     public class HandleExceptionArgs
     {
-        /// <summary> Gets or sets the sent request.</summary>
+        /// <summary>Gets or sets the sent request.</summary>
         public HttpRequestMessage Request { get; set; }
 
-        /// <summary> Gets or sets the exception which occurred during sending the request.</summary>
+        /// <summary>Gets or sets the exception which occurred during sending the request.</summary>
         public Exception Exception { get; set; }
 
-        /// <summary> Gets or sets the total number of tries to send the request.</summary>
+        /// <summary>Gets or sets the total number of tries to send the request.</summary>
         public int TotalTries { get; set; }
 
-        /// <summary> Gets or sets the current failed try.</summary>
+        /// <summary>Gets or sets the current failed try.</summary>
         public int CurrentFailedTry { get; set; }
 
-        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c>.</summary>
+        /// <summary>Gets whether there will actually be a retry if the handler returns <c>true</c>.</summary>
         public bool SupportsRetry
         {
             get { return TotalTries - CurrentFailedTry > 0; }
         }
 
-        /// <summary> Gets and sets the cancellation token which belongs to the request.</summary>
+        /// <summary>Gets and sets the cancellation token which belongs to the request.</summary>
         public CancellationToken CancellationToken { get; set; }
     }
 
-    /// <summary> 
-    /// Exception handler which is invoked when an exception is thrown during an Http request.
+    /// <summary>
+    /// Exception handler which is invoked when an exception is thrown during a HTTP request.
     /// </summary>
     public interface IHttpExceptionHandler
     {
         /// <summary>
-        /// Handles an exception thrown when sending an Http request. 
+        /// Handles an exception thrown when sending a HTTP request. 
         /// A simple rule must be followed, if you modify the request object in a way that the exception can be 
         /// resolved, you must return <c>true</c>.
         /// </summary>
@@ -62,6 +60,6 @@ namespace Google.Apis.Http
         /// Handle exception argument which contains properties like the request, the exception, current failed try.
         /// </param>
         /// <returns>Whether or not this handler has made a change that will require the request to be resent</returns>
-        bool HandleException(HandleExceptionArgs args);
+        Task<bool> HandleExceptionAsync(HandleExceptionArgs args);
     }
 }

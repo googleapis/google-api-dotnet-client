@@ -29,21 +29,32 @@ namespace Google.Apis.Util
         private readonly string name;
         private readonly RequestParameterType type;
 
-        /// <summary>
-        /// Name/key of this attribute
-        /// </summary>
-        public string Name { get { return name; }}
+        /// <summary>Gets the name of the parameter.</summary>
+        public string Name { get { return name; } }
 
+        /// <summary>Gets the type of the parameter, Path or Query.</summary>
         public RequestParameterType Type { get { return type; } }
 
         /// <summary>
-        /// Attribute a property to be a part of a REST URI.
+        /// Constructs a new property attribute to be a part of a REST URI. 
+        /// This constructor uses <seealso cref="RequestParameterType.Query"/> as the parameter's type.
         /// </summary>
         /// <param name="name">
-        /// The name of the parameter. If the parameter is a path parameter this name
-        /// will be used to substitute the string value into the path, replacing {name}.
-        /// If the parameter is a query parameter, this parameter will be added to the
-        /// query string, in the format "name=value".
+        /// The name of the parameter. If the parameter is a path parameter this name will be used to substitute the 
+        /// string value into the path, replacing {name}. If the parameter is a query parameter, this parameter will be
+        /// added to the query string, in the format "name=value".
+        /// </param>
+        public RequestParameterAttribute(string name)
+            : this(name, RequestParameterType.Query)
+        {
+
+        }
+
+        /// <summary>Constructs a new property attribute to be a part of a REST URI.</summary>
+        /// <param name="name">
+        /// The name of the parameter. If the parameter is a path parameter this name will be used to substitute the 
+        /// string value into the path, replacing {name}. If the parameter is a query parameter, this parameter will be
+        /// added to the query string, in the format "name=value".
         /// </param>
         /// <param name="type">The type of the parameter, either Path or Query.</param>
         public RequestParameterAttribute(string name, RequestParameterType type)
@@ -52,22 +63,14 @@ namespace Google.Apis.Util
             this.type = type;
         }
     }
-    
-    /// <summary>
-    /// Describe the type of this parameter (Path or Query).
-    /// </summary>
+
+    /// <summary>Describe the type of this parameter (Path or Query).</summary>
     public enum RequestParameterType
     {
-        /// <summary>
-        /// The parameter is a path parameter and will be inserted into the path portion of the
-        /// request URI.
-        /// </summary>
+        /// <summary>A path parameter which is inserted into the path portion of the request URI.</summary>
         Path,
 
-        /// <summary>
-        /// The parameter is a query parameter and will be inserted into the query portion of the
-        /// request URI.
-        /// </summary>
+        /// <summary>A query parameter which is inserted into the query portion of the request URI.</summary>
         Query
     }
 }

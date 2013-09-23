@@ -22,24 +22,18 @@ using Google.Apis.Util;
 
 namespace Google
 {
-    /// <summary>
-    /// Represents an exception thrown by an API Service.
-    /// </summary>
+    /// <summary>Represents an exception thrown by an API Service.</summary>
     public class GoogleApiException : Exception
     {
         private readonly string serviceName;
 
-        /// <summary>
-        /// Gets the service name which related to this exception.
-        /// </summary>
+        /// <summary>Gets the service name which related to this exception.</summary>
         public string ServiceName
         {
             get { return serviceName; }
         }
 
-        /// <summary>
-        /// Creates an API Service exception.
-        /// </summary>
+        /// <summary>Creates an API Service exception.</summary>
         public GoogleApiException(string serviceName, string message, Exception inner)
             : base(message, inner)
         {
@@ -47,15 +41,10 @@ namespace Google
             this.serviceName = serviceName;
         }
 
-        /// <summary>
-        /// Creates an API Service exception
-        /// </summary>
+        /// <summary>Creates an API Service exception.</summary>
         public GoogleApiException(string serviceName, string message) : this(serviceName, message, null) { }
 
-        /// <summary>
-        /// The http status code which was returned along with this error,
-        /// or 0 if unavailable.
-        /// </summary>
+        /// <summary>The HTTP status code which was returned along with this error, or 0 if unavailable.</summary>
         public HttpStatusCode HttpStatusCode { get; set; }
 
         public override string ToString()

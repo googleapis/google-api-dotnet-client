@@ -25,10 +25,11 @@ using Google.Apis.Http;
 
 namespace Google.Apis.Requests
 {
-    /// <summary> Utility class used to build a request from the various parts of a REST Method call. </summary>
-    internal class RequestBuilder
+    /// <summary>Utility class for building a URI using <see cref="BuildUri"/> or a HTTP request using 
+    /// <see cref="CreateRequest"/> from the query and path parameters of a REST call.</summary>
+    public class RequestBuilder
     {
-        /// <summary> Supported Http methods. </summary>
+        /// <summary>Supported HTTP methods.</summary> 
         private static IEnumerable<string> SupportedMethods = new List<string> 
             { 
                 HttpConsts.Get, HttpConsts.Post, HttpConsts.Put, HttpConsts.Delete, HttpConsts.Patch 
@@ -59,10 +60,10 @@ namespace Google.Apis.Requests
         /// </summary>
         public string Path { get; set; }
 
-        /// <summary> The Http method used for this request. </summary>
+        /// <summary>The HTTP method used for this request.</summary> 
         private string method;
 
-        /// <summary> The Http method used for this request (such as GET, PUT, POST, etc...) </summary>
+        /// <summary>The HTTP method used for this request (such as GET, PUT, POST, etc...) </summary>
         /// <remarks> Default Value is <see cref="Google.Apis.Http.HttpConsts.Get"/>. </remarks>
         public string Method
         {
@@ -75,7 +76,7 @@ namespace Google.Apis.Requests
             }
         }
 
-        /// <summary> Construct a new request builder. </summary>
+        /// <summary>Construct a new request builder.</summary> 
         public RequestBuilder()
         {
             this.PathParameters = new Dictionary<string, string>();
@@ -83,7 +84,7 @@ namespace Google.Apis.Requests
             this.Method = HttpConsts.Get;
         }
 
-        /// <summary> Constructs a Uri as defined by the parts of this request builder. </summary>
+        /// <summary>Constructs a Uri as defined by the parts of this request builder.</summary> 
         public Uri BuildUri()
         {
             var restPath = new StringBuilder(PathParameters
@@ -104,7 +105,7 @@ namespace Google.Apis.Requests
             return new Uri(this.BaseUri, restPath.ToString());
         }
 
-        /// <summary> Adds a parameter value. </summary>
+        /// <summary>Adds a parameter value.</summary> 
         /// <param name="type">Type of the parameter (must be Path or Query).</param>
         /// <param name="name">Parameter name.</param>
         /// <param name="value">Parameter value.</param>
@@ -131,7 +132,7 @@ namespace Google.Apis.Requests
             }
         }
 
-        /// <summary> Creates a new Http request message. </summary>
+        /// <summary>Creates a new HTTP request message.</summary> 
         public HttpRequestMessage CreateRequest()
         {
             return new HttpRequestMessage(new HttpMethod(Method), BuildUri());

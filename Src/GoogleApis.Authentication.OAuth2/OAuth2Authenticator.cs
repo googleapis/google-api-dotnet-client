@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 using DotNetOpenAuth.OAuth2;
 
@@ -34,9 +35,7 @@ namespace Google.Apis.Authentication.OAuth2
         private readonly TClient tokenProvider;
         private bool noCaching;
 
-        /// <summary>
-        /// Creates a new OAuth2 authenticator.
-        /// </summary>
+        /// <summary>Creates a new OAuth2 authenticator.</summary>
         /// <param name="tokenProvider">The client which is used for requesting access and refresh tokens.</param>
         /// <param name="authProvider">The method which provides the initial authorization for the provider.</param>
         public OAuth2Authenticator(TClient tokenProvider,
@@ -49,9 +48,7 @@ namespace Google.Apis.Authentication.OAuth2
             this.authProvider = authProvider;
         }
 
-        /// <summary>
-        /// The current state of this authenticator
-        /// </summary>
+        /// <summary>The current state of this authenticator.</summary>
         public IAuthorizationState State { get; private set; }
 
         /// <summary>
@@ -125,11 +122,16 @@ namespace Google.Apis.Authentication.OAuth2
         }
 
         /// <summary> 
-        /// Override handle response to refresh the token when Unauthorized status code is received. 
+        /// Overrides handle response to refresh the token when Unauthorized status code is received. 
         /// </summary>
-        public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+        public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
-            return args.Response.StatusCode == HttpStatusCode.Unauthorized && tokenProvider.RefreshToken(State, null);
+            var result = args.Response.StatusCode == HttpStatusCode.Unauthorized &&
+                tokenProvider.RefreshToken(State, null);
+
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            tcs.SetResult(result);
+            return tcs.Task;
         }
     }
 }

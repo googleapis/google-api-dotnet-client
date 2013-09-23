@@ -24,22 +24,22 @@ using Google.Apis.Logging;
 
 namespace Google.Apis.Http
 {
-    /// <summary> The default implementation of the Http client factory. </summary>
+    /// <summary> The default implementation of the HTTP client factory. </summary>
     public class HttpClientFactory : IHttpClientFactory
     {
-        /// <summary> The class logger. </summary>
+        /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<HttpClientFactory>();
 
         public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
         {
-            // create the handler
+            // Create the handler.
             var handler = CreateHandler(args);
             var configurableHandler = new ConfigurableMessageHandler(handler)
                 {
                     ApplicationName = args.ApplicationName
                 };
 
-            // create the client
+            // Create the client.
             var client = new ConfigurableHttpClient(configurableHandler);
             foreach (var initializer in args.Initializers)
             {
@@ -50,20 +50,20 @@ namespace Google.Apis.Http
         }
 
         /// <summary> 
-        /// Creates an Http message handler by the given arguments. Override this method to mock a message handler.
+        /// Creates a HTTP message handler by the given arguments. Override this method to mock a message handler.
         /// </summary>
         protected virtual HttpMessageHandler CreateHandler(CreateHttpClientArgs args)
         {
             var handler = new HttpClientHandler();
 
-            // if the framework supports redirect configuration, set it to false, because ConfigurableMessageHnalder 
-            // handles redirect
+            // If the framework supports redirect configuration, set it to false, because ConfigurableMessageHnalder 
+            // handles redirect.
             if (handler.SupportsRedirectConfiguration)
             {
                 handler.AllowAutoRedirect = false;
             }
 
-            // if the framework supports automatic decompression and GZip is enabled, set automatic decompression
+            // If the framework supports automatic decompression and GZip is enabled, set automatic decompression.
             if (handler.SupportsAutomaticDecompression && args.GZipEnabled)
             {
                 handler.AutomaticDecompression = System.Net.DecompressionMethods.GZip |

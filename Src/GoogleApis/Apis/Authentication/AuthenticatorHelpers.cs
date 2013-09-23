@@ -20,6 +20,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Google.Apis.Http;
 using Google.Apis.Testing;
@@ -39,7 +41,7 @@ namespace Google.Apis.Authentication
             Authenticator = authenticator;
         }
 
-        public void Intercept(HttpRequestMessage request)
+        public Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // we create a regular WebHttpRequest because our Authenticator (and DotNetOpenAuth) implementation
             // works with it only. 
@@ -52,6 +54,8 @@ namespace Google.Apis.Authentication
                 request.Headers.Remove(authorization);
                 request.Headers.Add(authorization, request2.Headers[authorization]);
             }
+
+            return TaskEx.Delay(0);
         }
     }
 

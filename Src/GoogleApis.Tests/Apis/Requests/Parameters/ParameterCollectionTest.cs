@@ -19,29 +19,23 @@ using System.Collections.Generic;
 
 using NUnit.Framework;
 
-using Google.Apis.Requests;
+using Google.Apis.Requests.Parameters;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary>
-    /// Tests for the ParameterCollection class.
-    /// </summary>
+    /// <summary>Tests for the ParameterCollection class.</summary>
     [TestFixture]
     public class ParameterCollectionTest
     {
-        /// <summary>
-        /// Tests the constructors.
-        /// </summary>
+        /// <summary>Tests the constructors.</summary>
         [Test]
         public void ConstructTest()
         {
             Assert.DoesNotThrow(() => new ParameterCollection());
         }
 
-        /// <summary>
-        /// Confirm that different counts of items can be added to the collection.
-        /// </summary>
+        /// <summary>Confirm that different count of items can be added to the collection.</summary>
         [Test]
         public void MultipleAddTest()
         {
@@ -63,9 +57,7 @@ namespace Google.Apis.Tests.Apis.Requests
             CollectionAssert.AreEqual(new[] { "dwarf" }, col.GetAllMatches("white"));
         }
 
-        /// <summary>
-        /// Checks that duplicates are supported.
-        /// </summary>
+        /// <summary>Checks that duplicates are supported.</summary>
         [Test]
         public void DuplicateTest()
         {
@@ -77,7 +69,7 @@ namespace Google.Apis.Tests.Apis.Requests
             CollectionAssert.AreEqual(new[] { "cookie", "bar", "pudding" }, col.GetAllMatches("chocolate"));
         }
 
-        /// <summary> Tests the FromQueryString method and confirms that duplicates are possible. </summary>
+        /// <summary>Tests the FromQueryString method and confirms that duplicates are possible.</summary>
         [Test]
         public void FromQueryStringTest()
         {
@@ -88,7 +80,7 @@ namespace Google.Apis.Tests.Apis.Requests
             CollectionAssert.AreEqual(new[] { "bar" }, collection.GetAllMatches("chocolate"));
         }
 
-        /// <summary> Tests the FromQueryString method throws exception on invalid input. </summary>
+        /// <summary>Tests the FromQueryString method throws exception on invalid input.</summary>
         [Test]
         public void FromQueryStringTest_Invalid()
         {
@@ -96,9 +88,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.Throws<ArgumentException>(() => ParameterCollection.FromQueryString(query));
         }
 
-        /// <summary>
-        /// Tests the FromQueryString method.
-        /// </summary>
+        /// <summary>Tests the FromQueryString method.</summary>
         [Test]
         public void FromDictionaryTest()
         {

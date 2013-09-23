@@ -14,48 +14,45 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Http
 {
-    /// <summary> Argument class to <see cref="IHttpUnsuccessfulResponseHandler.HandleResponse"/>.</summary>
+    /// <summary>Argument class to <see cref="IHttpUnsuccessfulResponseHandler.HandleResponseAsync"/>.</summary>
     public class HandleUnsuccessfulResponseArgs
     {
-        /// <summary> Gets or sets the sent request.</summary>
+        /// <summary>Gets or sets the sent request.</summary>
         public HttpRequestMessage Request { get; set; }
 
-        /// <summary> Gets or sets the abnormal response.</summary>
+        /// <summary>Gets or sets the abnormal response.</summary>
         public HttpResponseMessage Response { get; set; }
 
-        /// <summary> Gets or sets the total number of tries to send the request.</summary>
+        /// <summary>Gets or sets the total number of tries to send the request.</summary>
         public int TotalTries { get; set; }
 
-        /// <summary> Gets or sets the current failed try.</summary>
+        /// <summary>Gets or sets the current failed try.</summary>
         public int CurrentFailedTry { get; set; }
 
-        /// <summary> Gets whether there will actually be a retry if the handler returns <c>true</c>.</summary>
+        /// <summary>Gets whether there will actually be a retry if the handler returns <c>true</c>.</summary>
         public bool SupportsRetry
         {
             get { return TotalTries - CurrentFailedTry > 0; }
         }
 
-        /// <summary> Gets and sets the cancellation token which belongs to the request.</summary>
+        /// <summary>Gets and sets the cancellation token which belongs to the request.</summary>
         public CancellationToken CancellationToken { get; set; }
     }
 
-    /// <summary> 
-    /// Unsuccessful response handler which is invoked when an abnormal Http response is returned when sending an Http 
+    /// <summary>
+    /// Unsuccessful response handler which is invoked when an abnormal HTTP response is returned when sending a HTTP
     /// request.
     /// </summary>
     public interface IHttpUnsuccessfulResponseHandler
     {
         /// <summary>
-        /// Handles an abnormal response when sending an Http request. 
+        /// Handles an abnormal response when sending a HTTP request. 
         /// A simple rule must be followed, if you modify the request object in a way that the abnormal response can 
         /// be resolved, you must return <c>true</c>.
         /// </summary>
@@ -63,6 +60,6 @@ namespace Google.Apis.Http
         /// Handle response argument which contains properties like the request, the response, current failed try.
         /// </param>
         /// <returns>Whether or not this handler has made a change that will require the request to be resent</returns>
-        bool HandleResponse(HandleUnsuccessfulResponseArgs args);
+        Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args);
     }
 }

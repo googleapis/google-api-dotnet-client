@@ -37,11 +37,11 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Services
 {
-    /// <summary> Test for the BaseClientService class. </summary>
+    /// <summary>Test for the BaseClientService class.</summary>
     [TestFixture]
     public class BaseClientServiceTest
     {
-        /// <summary> A Json schema for testing serialization/deserialization. </summary>
+        /// <summary>A Json schema for testing serialization/deserialization.</summary>
         internal class MockJsonSchema : IDirectResponseSchema
         {
             [JsonProperty("kind")]
@@ -58,7 +58,8 @@ namespace Google.Apis.Tests.Apis.Services
             public string ETag { get; set; }
         }
 
-        private void CheckDeserializationResults(MockJsonSchema result)
+        /// <summary>Validates the deserialization result.</summary>
+        private void CheckDeserializationResult(MockJsonSchema result)
         {
             Assert.NotNull(result);
             Assert.That(result.Kind, Is.EqualTo("urlshortener#url"));
@@ -66,29 +67,23 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(result.Status, Is.Null);
         }
 
-        private IClientService CreateClientServiceV_03()
-        {
-            return CreateClientService(DiscoveryVersion.Version_0_3);
-        }
-
-        private IClientService CreateClientServiceV_1()
-        {
-            return CreateClientService(DiscoveryVersion.Version_1_0);
-        }
-
-        private IClientService CreateClientService(DiscoveryVersion version)
+        /// <summary>Creates a client service for the given features.</summary>
+        private IClientService CreateClientService(Features? features = null)
         {
             var client = new MockClientService();
-            if (version == DiscoveryVersion.Version_0_3)
-                client.SetFeatures(new[] { Features.LegacyDataResponse.GetStringValue() });
+            if (features.HasValue)
+            {
+                client.SetFeatures(new[] { features.Value.GetStringValue() });
+            }
+
             return client;
         }
 
-        /// <summary> This tests the v0.3 deserialization of the BaseService. </summary>
+        /// <summary>This tests deserialization with data wrapping.</summary>
         [Test]
-        public void TestDeserializationV0_3()
+        public void TestDeserialization_WithDataWrapping()
         {
-            const string ResponseV0_3 =
+            const string Response =
                 @"{ ""data"" : 
                      {
                         ""kind"": ""urlshortener#url"",
@@ -96,70 +91,70 @@ namespace Google.Apis.Tests.Apis.Services
                      } 
                   }";
 
-            var client = CreateClientServiceV_03();
+            var client = CreateClientService(Features.LegacyDataResponse);
 
             // Check that the default serializer is set.
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(client.Serializer);
 
             // Check that the response is decoded correctly.
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV0_3));
+            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
-            CheckDeserializationResults(client.DeserializeResponse<MockJsonSchema>(response).Result);
+            CheckDeserializationResult(client.DeserializeResponse<MockJsonSchema>(response).Result);
         }
 
 
-        /// <summary> This tests the v1 Deserialization of the BaseService. </summary>
+        /// <summary>This tests Deserialization without data wrapping.</summary>
         [Test]
-        public void TestDeserializationV1()
+        public void TestDeserialization_WithoutDataWrapping()
         {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+            const string Response = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
 
             // by default the request provider doesn't contain the LegacyDataResponse
-            var client = CreateClientServiceV_1();
+            var client = CreateClientService();
 
             // Check that the default serializer is set
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(client.Serializer);
 
             // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
+            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
-            CheckDeserializationResults(
+            CheckDeserializationResult(
                 client.DeserializeResponse<MockJsonSchema>(response).Result);
         }
 
-        /// <summary> Tests if serialization works. </summary>
+        /// <summary>Tests serialization with data wrapping.</summary>
         [Test]
-        public void TestSerializationV0_3()
+        public void TestSerialization_WithDataWrapping()
         {
-            const string ResponseV0_3 =
+            const string Response =
                 "{\"data\":{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}}";
 
             MockJsonSchema schema = new MockJsonSchema();
             schema.Kind = "urlshortener#url";
             schema.LongURL = "http://google.com/";
 
-            var client = CreateClientServiceV_03();
+            var client = CreateClientService(Features.LegacyDataResponse);
 
             // Check if a response is serialized correctly
             string result = client.SerializeObject(schema);
-            Assert.AreEqual(ResponseV0_3, result);
+            Assert.AreEqual(Response, result);
         }
 
-        /// <summary> Tests if serialization works. </summary>
+        /// <summary>Tests serialization without data wrapping.</summary>
         [Test]
-        public void TestSerializationV1()
+        public void TestSerialization_WithoutDataWrapping()
         {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+            const string Response = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
 
             MockJsonSchema schema = new MockJsonSchema();
             schema.Kind = "urlshortener#url";
             schema.LongURL = "http://google.com/";
 
-            var client = CreateClientServiceV_1();
+            var client = CreateClientService();
 
-            // Check if a response is serialized correctly
+            // Check if a response is serialized correctly.
             string result = client.SerializeObject(schema);
-            Assert.AreEqual(ResponseV1, result);
+            Assert.AreEqual(Response, result);
         }
 
         /// <summary>
@@ -168,21 +163,21 @@ namespace Google.Apis.Tests.Apis.Services
         [Test]
         public void TestDeserializationString()
         {
-            const string ResponseV1 = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
+            const string Response = @"{""kind"":""urlshortener#url"",""longUrl"":""http://google.com/""}";
 
             MockClientService client = new MockClientService();
 
             // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(ResponseV1));
+            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
             string result = client.DeserializeResponse<string>(response).Result;
-            Assert.AreEqual(ResponseV1, result);
+            Assert.AreEqual(Response, result);
         }
 
-        /// <summary> Tests the deserialization for server error responses. </summary>
+        /// <summary>Tests deserialization for server error response.</summary>
         [Test]
         public void TestErrorDeserialization(
-          [Values(DiscoveryVersion.Version_0_3, DiscoveryVersion.Version_1_0)] DiscoveryVersion version)
+          [Values(Features.LegacyDataResponse, null)] Features? features)
         {
             const string ErrorResponse =
                 @"{
@@ -201,7 +196,7 @@ namespace Google.Apis.Tests.Apis.Services
                     }
                 }";
 
-            var client = CreateClientService(version);
+            var client = CreateClientService(features);
 
             using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
             {
@@ -215,9 +210,9 @@ namespace Google.Apis.Tests.Apis.Services
 
         #region Authentication
 
-        /// <summary> 
-        /// Mock authentication message handler which returns unauthorized response in the first call, and in the 
-        /// second call it returns a successful response.
+        /// <summary>
+        /// A mock authentication message handler which returns an unauthorized response in the first call, and a 
+        /// successful response in the second.
         /// </summary>
         class MockAuthenticationMessageHandler : CountableMessageHandler
         {
@@ -251,12 +246,13 @@ namespace Google.Apis.Tests.Apis.Services
             }
         }
 
-        /// <summary> Mock Authenticator which adds Authorization header to a request on the second call. </summary>
+        /// <summary>A mock Authenticator which adds Authorization header to a request on the second call.</summary>
         class Authenticator : IAuthenticator
         {
+            /// <summary>Gets ot set the number of calls to <see cref="ApplyAuthenticationToRequest"/>.</summary>
             public int ApplyCalls { get; set; }
 
-            public void ApplyAuthenticationToRequest(System.Net.HttpWebRequest request)
+            public void ApplyAuthenticationToRequest(HttpWebRequest request)
             {
                 ApplyCalls++;
                 switch (ApplyCalls)
@@ -273,38 +269,43 @@ namespace Google.Apis.Tests.Apis.Services
             }
         }
 
-        /// <summary> Mock Authenticator which handles unsuccessful response by "refreshing" the token. </summary>
+        /// <summary>Mock Authenticator which handles unsuccessful response by "refreshing" the token.</summary>
         class AuthenticatorUnsuccessfulHandler : Authenticator, IHttpUnsuccessfulResponseHandler
         {
+            /// <summary>Gets or sets the number of calls to <see cref="HandleResponseAsync"/>.</summary>
             public int HandleCalls { get; set; }
 
-            public bool HandleResponse(HandleUnsuccessfulResponseArgs args)
+            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
                 HandleCalls++;
-                // Mock a refresh token process here... (second apply will attach SecondToken authorization)
-                return true;
+                // Mock a refresh token process here... (second apply will attach SecondToken authorization).
+                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+                tcs.SetResult(true);
+                return tcs.Task;
             }
         }
 
-        /// <summary> 
-        /// Tests that authenticator helpers invokes both apply authentication and handle response methods on the 
-        /// authentication instance.
+        /// <summary>
+        /// Tests that the authenticator helpers, when invoked, both apply authentication and handle response methods 
+        /// on the authentication instance.
         /// </summary>
         [Test]
         public void Test_Authentication_UnsuccessfulHandler()
         {
             var handler = new MockAuthenticationMessageHandler();
             var authenticator = new AuthenticatorUnsuccessfulHandler();
-            using (var service = new MockClientService(new BaseClientService.Initializer()
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler),
-                    Authenticator = authenticator
-                }))
+            var initializer = new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler),
+                Authenticator = authenticator
+            };
+
+            using (var service = new MockClientService(initializer))
             {
                 var response = service.HttpClient.SendAsync(
                     new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
-                // the authenticator handles unsuccessful response handler by "refreshing" the token, so the request
-                // will success
+                // The authenticator handles unsuccessful response handler by "refreshing" the token, so the request
+                // will success.
                 Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
                 Assert.That(handler.Calls, Is.EqualTo(2));
                 Assert.That(authenticator.ApplyCalls, Is.EqualTo(2));
@@ -312,24 +313,26 @@ namespace Google.Apis.Tests.Apis.Services
             }
         }
 
-        /// <summary> 
-        /// Tests an authenticator which doesn't implement unsuccessful response handler, and as a result the request
-        /// fails (when the token is invalid).
+        /// <summary>
+        /// Tests an authenticator which doesn't implement an unsuccessful response handler. The request should fail 
+        /// when the token is invalid.
         /// </summary>
         [Test]
         public void Test_Authentication()
         {
             var handler = new MockAuthenticationMessageHandler();
             var authenticator = new Authenticator();
-            using (var service = new MockClientService(new BaseClientService.Initializer()
-                {
-                    HttpClientFactory = new MockHttpClientFactory(handler),
-                    Authenticator = authenticator
-                }))
+            var initializer = new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler),
+                Authenticator = authenticator
+            };
+
+            using (var service = new MockClientService(initializer))
             {
                 var response = service.HttpClient.SendAsync(
                     new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
-                // the authenticator doesn't implement unsuccessful response handler, so the request fails
+                // The authenticator doesn't implement unsuccessful response handler, so the request fails.
                 Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
                 Assert.That(handler.Calls, Is.EqualTo(1));
                 Assert.That(authenticator.ApplyCalls, Is.EqualTo(1));
@@ -340,6 +343,9 @@ namespace Google.Apis.Tests.Apis.Services
 
         #region Constructor
 
+        /// <summary>
+        /// Tests the default values of <seealso cref="Google.Apis.Services.BaseClientService"/>
+        /// </summary>
         [Test]
         public void Constructor_DefaultValues()
         {
@@ -349,12 +355,12 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(service.Authenticator, Is.EqualTo(NullAuthenticator.Instance));
             Assert.True(service.GZipEnabled);
 
-            // back-off handler for unsuccessful response (503) is added by default
+            // Back-off handler for unsuccessful response (503) is added by default.
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
                 Is.InstanceOf<BackOffHandler>());
 
-            // one execute interceptor (for adding the "Authenticate" header
+            // One execute interceptor (for adding the "Authenticate" header,
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[0],
                 Is.InstanceOf<AuthenticatorInterceptor>());

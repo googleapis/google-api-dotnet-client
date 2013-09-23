@@ -17,10 +17,8 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,6 +28,7 @@ using Google.Apis.Logging;
 using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using Google.Apis.Requests.Parameters;
 
 namespace Google.Apis.Requests
 {
@@ -40,13 +39,13 @@ namespace Google.Apis.Requests
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ClientServiceRequest<TResponse> : IClientServiceRequest<TResponse>
     {
-        /// <summary> The class logger </summary>
+        /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
 
-        /// <summary> The service on which this request will be executed. </summary>
+        /// <summary>The service on which this request will be executed.</summary>
         private readonly IClientService service;
 
-        /// <summary> Defines whether the E-Tag will be used in a specified way or be ignored. </summary>
+        /// <summary>Defines whether the E-Tag will be used in a specified way or be ignored.</summary>
         public ETagAction ETagAction { get; set; }
 
         #region IClientServiceRequest Properties
@@ -64,7 +63,7 @@ namespace Google.Apis.Requests
 
         #endregion
 
-        /// <summary> Creates a new service request. </summary>
+        /// <summary>Creates a new service request.</summary>
         protected ClientServiceRequest(IClientService service)
         {
             this.service = service;
@@ -92,7 +91,7 @@ namespace Google.Apis.Requests
             }
             catch (AggregateException aex)
             {
-                // if an exception was thrown during the tasks, unwrap and throw it
+                // If an exception was thrown during the tasks, unwrap and throw it.
                 throw aex.InnerException;
             }
             catch (Exception ex)
@@ -106,13 +105,13 @@ namespace Google.Apis.Requests
             // TODO(peleyal): should we copy the stream, and dispose the response?
             try
             {
-                // sync call
+                // Sync call.
                 var response = ExecuteUnparsed(CancellationToken.None).Result;
                 return response.Content.ReadAsStreamAsync().Result;
             }
             catch (AggregateException aex)
             {
-                // if an exception was thrown during the tasks, unwrap and throw it
+                // If an exception was thrown during the tasks, unwrap and throw it.
                 throw aex.InnerException;
             }
             catch (Exception ex)
@@ -151,7 +150,7 @@ namespace Google.Apis.Requests
 
         #region Helpers
 
-        /// <summary> Sync executes the request without parsing the result. </summary>
+        /// <summary>Sync executes the request without parsing the result. </summary>
         private async Task<HttpResponseMessage> ExecuteUnparsed(CancellationToken cancellationToken)
         {
             using (var request = CreateRequest())
@@ -160,12 +159,11 @@ namespace Google.Apis.Requests
             }
         }
 
-        /// <summary> Async executes the request without parsing the result. </summary>
+        /// <summary>Async executes the request without parsing the result. </summary>
         private Task<HttpResponseMessage> ExecuteAsyncUnparsed(CancellationToken cancellationToken)
         {
             // TODO(peleyal): remove the creation of a new Task (it's not necessary).
             // It should also be removed from ResumableMediaUpload and MediaDownloader!
-
             // create a new task completion source and return its task. In additional task we actually send the request
             // using ExecuteUnparsed and setting the result or the exception on the completion source
             TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
@@ -178,14 +176,14 @@ namespace Google.Apis.Requests
                     }
                     catch (Exception ex)
                     {
-                        // exception was thrown - it must be set on the task completion source
+                        // Exception was thrown - it must be set on the task completion source.
                         tcs.SetException(ex);
                     }
                 }).ConfigureAwait(false);
             return tcs.Task;
         }
 
-        /// <summary> Parses the response and deserialize the content into the requested response object. </summary>
+        /// <summary>Parses the response and deserialize the content into the requested response object. </summary>
         private async Task<TResponse> ParseResponse(HttpResponseMessage response)
         {
             if (response.IsSuccessStatusCode)
@@ -204,7 +202,7 @@ namespace Google.Apis.Requests
         /// Creates the <seealso cref="Google.Apis.Requests.RequestBuilder"/> which is used to generate a request.
         /// </summary>
         /// <returns>
-        /// A new builder instance which contains the Http method and the right Uri with its path and query parameters.
+        /// A new builder instance which contains the HTTP method and the right Uri with its path and query parameters.
         /// </returns>
         private RequestBuilder CreateBuilder()
         {
@@ -215,19 +213,20 @@ namespace Google.Apis.Requests
                 Method = HttpMethod,
             };
 
-            // init parameters
+            // Init parameters.
             builder.AddParameter(RequestParameterType.Query, "key", service.ApiKey);
-            AddParameters(builder, ParameterCollection.FromDictionary(CreateParameterDictionary()));
+            var parameters = ParameterUtils.CreateParameterDictionary(this);
+            AddParameters(builder, ParameterCollection.FromDictionary(parameters));
             return builder;
         }
 
-        /// <summary>Generates the right Url for this request.</summary>
+        /// <summary>Generates the right URL for this request.</summary>
         protected string GenerateRequestUri()
         {
             return CreateBuilder().BuildUri().ToString();
         }
 
-        /// <summary>Creates an Http request message with all class parameters, developer-key, ETag, etc.</summary>
+        /// <summary>Creates a HTTP request message with all class parameters, developer-key, ETag, etc.</summary>
         [VisibleForTestOnly]
         internal HttpRequestMessage CreateRequest()
         {
@@ -250,7 +249,7 @@ namespace Google.Apis.Requests
 
         #region ETag
 
-        /// <summary> 
+        /// <summary>
         /// Adds the right ETag action (e.g. If-Match) header to the given HTTP request if the body contains ETag.
         /// </summary>
         private void AddETag(HttpRequestMessage request)
@@ -271,9 +270,7 @@ namespace Google.Apis.Requests
             }
         }
 
-        /// <summary>
-        /// Returns the default ETagAction for a specific http verb.
-        /// </summary>
+        /// <summary>Returns the default ETagAction for a specific HTTP verb.</summary>
         [VisibleForTestOnly]
         internal static ETagAction GetDefaultETagAction(string httpMethod)
         {
@@ -299,7 +296,7 @@ namespace Google.Apis.Requests
 
         #region Parameters
 
-        /// <summary> Adds path and query parameters to the given <c>requestBuilder</c>. </summary>
+        /// <summary>Adds path and query parameters to the given <c>requestBuilder</c>.</summary>
         private void AddParameters(RequestBuilder requestBuilder, ParameterCollection inputParameters)
         {
             foreach (var parameter in inputParameters)
@@ -343,7 +340,7 @@ namespace Google.Apis.Requests
                 }
             }
 
-            // check if there is a required parameter which wasn't set
+            // Check if there is a required parameter which wasn't set.
             foreach (var parameter in RequestParameters.Values)
             {
                 if (parameter.IsRequired && !inputParameters.ContainsKey(parameter.Name))
@@ -352,42 +349,6 @@ namespace Google.Apis.Requests
                         string.Format("Parameter \"{0}\" is missing", parameter.Name));
                 }
             }
-        }
-
-        /// <summary>
-        /// Creates a parameter dictionary by using reflection to look at all properties marked with a KeyAttribute.
-        /// </summary>
-        [VisibleForTestOnly]
-        internal IDictionary<string, object> CreateParameterDictionary()
-        {
-            var dict = new Dictionary<string, object>();
-
-            // Use reflection to build the parameter dictionary.
-            foreach (PropertyInfo property in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
-            {
-                // Retrieve the attribute.
-                RequestParameterAttribute requestParameterAttribute =
-                    property.GetCustomAttributes(typeof(RequestParameterAttribute), false).FirstOrDefault() as
-                    RequestParameterAttribute;
-                if (requestParameterAttribute == null)
-                {
-                    continue;
-                }
-
-                // Get the discovery name of this parameter by looking at the attribute, or taking a lower-case
-                // variant of the property name if no special name was set.
-                string name = requestParameterAttribute.Name ?? property.Name.ToLower();
-
-                // Set the value in the dictionary.
-                var propertyType = property.PropertyType;
-                var value = property.GetValue(this, null);
-                if (propertyType.IsValueType || value != null)
-                {
-                    dict.Add(name, value);
-                }
-            }
-
-            return dict;
         }
 
         #endregion

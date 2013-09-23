@@ -22,30 +22,28 @@ using Google.Apis.Discovery;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
-namespace Google.Apis
+namespace Google.Apis.Requests.Parameters
 {
-    /// <summary>
-    /// Logic for validating a parameter
-    /// </summary>
+    /// <summary>Logic for validating a parameter.</summary>
     public static class ParameterValidator
     {
-        /// <summary> Validates a parameter value against the methods regex. </summary>
+        /// <summary>Validates a parameter value against the methods regex.</summary>
         [VisibleForTestOnly]
         internal static bool ValidateRegex(IParameter param, string paramValue)
         {
             return string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue);
         }
 
-        /// <summary> Validates if a parameter is valid. </summary>
+        /// <summary>Validates if a parameter is valid.</summary>
         public static bool ValidateParameter(IParameter parameter, string value)
         {
-            // If a required parameter is not present, fail
+            // Fail if a required parameter is not present.
             if (String.IsNullOrEmpty(value))
             {
                 return !parameter.IsRequired;
             }
 
-            // The parameter has value so validate the regex
+            // The parameter has value so validate the regex.
             return ValidateRegex(parameter, value);
         }
     }

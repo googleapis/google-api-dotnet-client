@@ -14,39 +14,35 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 
 namespace Google.Apis.Http
 {
-    /// <summary> Arguments for creating an Http client. </summary>
+    /// <summary>Arguments for creating a HTTP client.</summary>
     public class CreateHttpClientArgs
     {
-        /// <summary> Gets or sets whether GZip is enabled. </summary>
+        /// <summary>Gets or sets whether GZip is enabled.</summary>
         public bool GZipEnabled { get; set; }
 
-        /// <summary> Gets or sets the application name (It's used on the User-Agent header). </summary>
+        /// <summary>Gets or sets the application name (It's used on the User-Agent header).</summary>
         public string ApplicationName { get; set; }
 
-        /// <summary> Gets a list of initializers to initialize the Http client instance. </summary>
+        /// <summary>Gets a list of initializers to initialize the HTTP client instance.</summary>
         public IList<IConfigurableHttpClientInitializer> Initializers { get; private set; }
 
-        /// <summary> Constructs a new argument instance. </summary>
+        /// <summary>Constructs a new argument instance.</summary>
         public CreateHttpClientArgs()
         {
             Initializers = new List<IConfigurableHttpClientInitializer>();
         }
     }
 
-    /// <summary> 
-    /// Http client factory creates configurable Http clients. A unique Http client should be created for each service.
+    /// <summary>
+    /// HTTP client factory creates configurable HTTP clients. A unique HTTP client should be created for each service.
     /// </summary>
     public interface IHttpClientFactory
     {
-        /// <summary> Creates a new configurable Http client by the given arguments. </summary>
+        /// <summary>Creates a new configurable HTTP client by the given arguments.</summary>
         ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args);
     }
 }

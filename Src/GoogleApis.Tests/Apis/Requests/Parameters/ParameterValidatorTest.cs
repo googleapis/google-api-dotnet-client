@@ -14,21 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Collections.Generic;
 
 using NUnit.Framework;
 
 using Google.Apis.Discovery;
-using Google.Apis.Requests;
-using Google.Apis.Testing;
+using Google.Apis.Requests.Parameters;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary> Tests <see cref="Google.Api.Requests.ParameterValidator"/>. </summary>
+    /// <summary>Tests <see cref="Google.Api.Requests.ParameterValidator"/>.</summary>
     [TestFixture]
     public class ParameterValidatorTest
     {
-        /// <summary> Tests that validate regex returns <c>false</c> on empty parameter sets. </summary>
+        /// <summary>Tests that validate regex returns <c>false</c> on empty parameter sets.</summary>
         [Test]
         public void ValidateRegexEmptyNeedsDataTest()
         {
@@ -36,7 +34,7 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.IsFalse(ParameterValidator.ValidateRegex(parameter, ""));
         }
 
-        /// <summary> Tests validate regex. </summary>
+        /// <summary>Tests validate regex.</summary>
         [Test]
         public void ValidateRegexTest()
         {
