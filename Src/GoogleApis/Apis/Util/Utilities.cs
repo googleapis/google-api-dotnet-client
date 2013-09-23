@@ -16,26 +16,23 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Google.Apis.Util
 {
-    /// <summary>
-    /// A class containing utility methods.
-    /// </summary>
+    /// <summary>A utility class which contains helper methods and extension methods.</summary>
     public static class Utilities
     {
-        /// <summary> Returns the version of the Core library.</summary>
-        public static string GetLibraryVersion()
+        /// <summary>Returns the version of the core library.</summary>
+        internal static string GetLibraryVersion()
         {
             return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
         }
 
-        /// <summary> Throws an <c>ArgumentNullException</c> if the object is null.</summary>
-        public static void ThrowIfNull(this object obj, string paramName)
+        /// <summary>Throws an <seealso cref="System.ArgumentNullException"/> if the object is null.</summary>
+        internal static void ThrowIfNull(this object obj, string paramName)
         {
             if (obj == null)
             {
@@ -43,8 +40,10 @@ namespace Google.Apis.Util
             }
         }
 
-        /// <summary> Throws an <c>ArgumentException</c> if the string is <c>null</c> or empty.</summary>
-        public static void ThrowIfNullOrEmpty(this string str, string paramName)
+        /// <summary>
+        /// Throws an <seealso cref="System.ArgumentNullException"/> if the string is <c>null</c> or empty.
+        /// </summary>
+        internal static void ThrowIfNullOrEmpty(this string str, string paramName)
         {
             if (string.IsNullOrEmpty(str))
             {
@@ -52,34 +51,20 @@ namespace Google.Apis.Util
             }
         }
 
-        /// <summary> Returns a read-only variant of the given dictionary. </summary>
-        public static IDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dict)
-        {
-            dict.ThrowIfNull("dict");
-            return new ReadOnlyDictionary<TKey, TValue>(dict);
-        }
-
-        /// <summary> Returns a read-only variant of the given list. </summary>
-        public static ReadOnlyCollection<T> AsReadOnly<T>(this IList<T> list)
-        {
-            list.ThrowIfNull("list");
-            return new ReadOnlyCollection<T>(list);
-        }
-
-        /// <summary> Returns <c>true</c> when the enumerable is <c>null</c> or empty. </summary>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
+        /// <summary>Returns <c>true</c> in case the enumerable is <c>null</c> or empty. </summary>
+        internal static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
         {
             return coll == null || coll.Count() == 0;
         }
 
-        /// <summary> Returns the first matching custom attribute (or <c>null</c>) of the specified member. </summary>
-        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
+        /// <summary>Returns the first matching custom attribute (or <c>null</c>) of the specified member. </summary>
+        internal static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
             object[] results = info.GetCustomAttributes(typeof(T), false);
             return results.Length == 0 ? null : (T)results[0];
         }
 
-        /// <summary> Returns the defined string value of an enum value. </summary>
+        /// <summary>Returns the defined string value of an Enum. </summary>
         public static string GetStringValue(this Enum value)
         {
             FieldInfo entry = value.GetType().GetField(value.ToString());
@@ -101,7 +86,7 @@ namespace Google.Apis.Util
         /// Tries to convert the specified object to a string. Uses custom type converters if available.
         /// Returns null for a null object.
         /// </summary>
-        public static string ConvertToString(object o)
+        internal static string ConvertToString(object o)
         {
             if (o == null)
             {

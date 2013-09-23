@@ -28,76 +28,11 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Util
 {
-    /// <summary>
-    /// Tests for the "Utilities"-class.
-    /// </summary>
+    /// <summary>Tests for <seealso cref="Google.Apis.Util.Utilities"/>.</summary>
     [TestFixture]
     public class UtilitiesTest
     {
-
-        /// <summary>
-        /// Tests that the AsReadOnly method will fail when provided invalid arguments.
-        /// </summary>
-        [Test]
-        public void IDictionaryAsReadOnlyNullTest()
-        {
-            IDictionary<string, int> dict = null;
-            Assert.Throws(typeof(ArgumentNullException), () => dict.AsReadOnly());
-        }
-
-        /// <summary>
-        /// Tests whether the AsReadonly method returns a readonly copy of the dictionary.
-        /// </summary>
-        [Test]
-        public void IDictionaryAsReadOnlyReadTest()
-        {
-            var dict = new Dictionary<int, string>();
-
-            foreach (int i in Enumerable.Range(0, 10))
-            {
-                dict.Add(i, "" + i);
-            }
-            var readOnly = dict.AsReadOnly();
-
-            foreach (int i in Enumerable.Range(0, 10))
-            {
-                Assert.AreEqual(i.ToString(), readOnly[i]);
-            }
-
-            foreach (int i in dict.Keys)
-            {
-                Assert.AreEqual(dict[i], readOnly[i]);
-            }
-        }
-
-        /// <summary>
-        /// Tests that a readonly dictionary is actually readonly.
-        /// </summary>
-        [Test]
-        public void IDictionaryAsReadOnlyWriteTest()
-        {
-            var dict = new Dictionary<int, string>();
-
-            foreach (int i in Enumerable.Range(0, 10))
-            {
-                dict.Add(i, "" + i);
-            }
-            var readOnly = dict.AsReadOnly();
-
-            Assert.Throws(typeof(NotSupportedException), () => readOnly[0] = "fish");
-            Assert.Throws(typeof(NotSupportedException), () => readOnly[0] = "0");
-            Assert.Throws(typeof(NotSupportedException), () => readOnly[1] = "1");
-            Assert.Throws(typeof(NotSupportedException), () => readOnly[500] = "NintySeven");
-            Assert.Throws(typeof(NotSupportedException), () => readOnly.Clear());
-            Assert.Throws(typeof(NotSupportedException), () => readOnly.Keys.Clear());
-            Assert.Throws(typeof(NotSupportedException), () => readOnly.Values.Clear());
-            Assert.Throws(typeof(NotSupportedException), () => readOnly.Add(15, "House"));
-            Assert.Throws(typeof(NotSupportedException), () => readOnly.Remove(5));
-        }
-
-        /// <summary>
-        /// Tests the "ThrowIfNull" method.
-        /// </summary>
+        /// <summary>Tests the "ThrowIfNull" method.</summary>
         [Test]
         public void ThrowIfNullTest()
         {
@@ -116,9 +51,7 @@ namespace Google.Apis.Tests.Apis.Util
             EntryWithoutStringValue
         }
 
-        /// <summary>
-        /// Tests the "GetStringValue" extension method of enums.
-        /// </summary>
+        /// <summary>Tests the "GetStringValue" extension method of Enums.</summary>
         [Test]
         public void StringValueTest()
         {
@@ -128,16 +61,14 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.Throws<ArgumentNullException>(() => ((MockEnum)123456).GetStringValue());
         }
 
-        /// <summary>
-        /// Tests the "ConvertToString" method.
-        /// </summary>
+        /// <summary>Tests the "ConvertToString" method.</summary>
         [Test]
         public void ConvertToStringTest()
         {
             Assert.AreEqual("FooBar", Google.Apis.Util.Utilities.ConvertToString("FooBar"));
             Assert.AreEqual("123", Google.Apis.Util.Utilities.ConvertToString(123));
 
-            // check Enums work with and without StringValueAttribute
+            // Check Enums work with and without StringValueAttribute.
             Assert.AreEqual("Test", Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithStringValue));
             Assert.AreEqual("3.14159265358979323846",
                 Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithSecondStringValue));
