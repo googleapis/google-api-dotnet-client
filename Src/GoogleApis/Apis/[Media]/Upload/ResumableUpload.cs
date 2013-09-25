@@ -146,8 +146,8 @@ namespace Google.Apis.Upload
         private long StreamLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the content of the last buffer request to the server or <c>null</c> for none. It is used when 
-        /// the media content length is unknown, for resending it in case of server error.
+        /// Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
+        /// content length is unknown, for resending it in case of server error.
         /// </summary>
         private byte[] LastMediaRequest { get; set; }
 
