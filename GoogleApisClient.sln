@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D962DE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.DotNet4", "Src\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj", "{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth", "Src\GoogleApis.Auth\GoogleApis.Auth.csproj", "{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.DotNet4", "Src\GoogleApis.Auth.DotNet4\GoogleApis.Auth.DotNet4.csproj", "{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +82,26 @@ Global
 		{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}.Release|Win32.ActiveCfg = Release|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}.Release|Win32.ActiveCfg = Release|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

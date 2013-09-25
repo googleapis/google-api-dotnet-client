@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using Google.Apis.Util.Store;
 using Google.Apis.Json;
 
-namespace Google.Apis.Apis.Util.Store
+namespace Google.Apis.Util.Store
 {
     /// <summary>
     /// File data store that implements <seealso cref="IDataStore"/>. This store creates a different file for each 

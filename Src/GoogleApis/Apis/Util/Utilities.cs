@@ -43,12 +43,14 @@ namespace Google.Apis.Util
         /// <summary>
         /// Throws an <seealso cref="System.ArgumentNullException"/> if the string is <c>null</c> or empty.
         /// </summary>
-        internal static void ThrowIfNullOrEmpty(this string str, string paramName)
+        /// <returns>The original string</returns>
+        internal static string ThrowIfNullOrEmpty(this string str, string paramName)
         {
             if (string.IsNullOrEmpty(str))
             {
                 throw new ArgumentException("Parameter was empty", paramName);
             }
+            return str;
         }
 
         /// <summary>Returns <c>true</c> in case the enumerable is <c>null</c> or empty. </summary>
