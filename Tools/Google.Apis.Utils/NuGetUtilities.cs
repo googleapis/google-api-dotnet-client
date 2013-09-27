@@ -21,6 +21,8 @@ using System.Linq;
 
 using NuGet;
 
+using Google.Apis.Utils.Trace;
+
 namespace Google.Apis.Utils
 {
     /// <summary>

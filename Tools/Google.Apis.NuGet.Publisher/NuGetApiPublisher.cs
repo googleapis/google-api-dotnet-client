@@ -29,6 +29,7 @@ using NuGet;
 
 using Google.Apis.NuGet.Publisher.Discovery;
 using Google.Apis.Utils;
+using Google.Apis.Utils.Trace;
 
 namespace Google.Apis.NuGet.Publisher
 {
