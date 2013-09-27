@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A6E792C8-D5E7-40DD-9483-3901E70BF93F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{68A9F685-4B3D-4DFA-8CB1-F2F15B17A8AB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Build.Utils</RootNamespace>
-    <AssemblyName>Google.Build.Utils</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Google.Apis.Release</RootNamespace>
+    <AssemblyName>Google.Apis.Release</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,40 +34,52 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Apis.Samples.Helper">
-      <HintPath>..\Lib\Google.Apis.Samples.Helper.dll</HintPath>
+    <Reference Include="CommandLine">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\Lib\Ionic.Zip.dll</HintPath>
+      <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build" />
-    <Reference Include="Microsoft.Build.Engine" />
     <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="nunit.core">
-      <HintPath>..\Lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\Lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Build\Project.cs" />
-    <Compile Include="DirUtils.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectExtenstions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Hg.cs" />
-    <Compile Include="Runner.cs" />
-    <Compile Include="Text\Template.cs" />
-    <Compile Include="Text\TextUtils.cs" />
-    <Compile Include="Zip.cs" />
+    <Compile Include="Wiki\DownloadsPageUpdater.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\Google.Apis.Authentication.VERSION.nuspec">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Google.Apis.VERSION.nuspec">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Google.Apis.Utils\Google.Apis.Utils.csproj">
+      <Project>{cbc99a4a-e3d0-4609-b704-7b2bf583fc30}</Project>
+      <Name>Google.Apis.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

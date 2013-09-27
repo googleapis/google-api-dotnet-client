@@ -18,6 +18,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
+using Google.Apis.Utils.Trace;
+
 namespace Google.Apis.Utils
 {
     /// <summary>Directory utilities which support copying, clearing and other operations on directories.</summary>
@@ -28,7 +30,7 @@ namespace Google.Apis.Utils
         /// <summary>Copies a directory recursively to a new one.</summary>
         /// <param name="sourceDir">Source directory</param>
         /// <param name="destDir">Destination directory</param>
-        internal static void CopyDirectory(string sourceDir, string destDir)
+        public static void CopyDirectory(string sourceDir, string destDir)
         {
             DirectoryInfo dir = new DirectoryInfo(sourceDir);
             if (!dir.Exists)

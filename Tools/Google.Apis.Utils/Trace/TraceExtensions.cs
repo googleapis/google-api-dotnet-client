@@ -14,18 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Diagnostics;
-using System.IO;
 using System.Threading;
 
-namespace Google.Apis.Utils
+namespace Google.Apis.Utils.Trace
 {
     /// <summary>Extension methods to <seealso cref="System.Diagnostics.TraceSource"/>.</summary>
-    public static class TraceExtensions
+    public static class Extensions
     {
         /// <summary>Traces the event using the current thread id.</summary>
-        internal static void TraceEvent(this TraceSource trace, TraceEventType type, string msg, params object[] args)
+        public static void TraceEvent(this TraceSource trace, TraceEventType type, string msg, params object[] args)
         {
             trace.TraceEvent(type, Thread.CurrentThread.ManagedThreadId, msg, args);
         }

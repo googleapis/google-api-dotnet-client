@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Authentication</id>
+        <version>VERSION</version>
+        <title>Google APIs OAuth2 Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>peleyal</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+            The Google APIs Client Library is a runtime client for working with Google Services.
+            This pakcage includes component for making authenticated calls using the OAuth2 spec.
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+            <dependency id="Google.Apis" version="VERSION" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="default\ThirdParty\DotNetOpenAuth.dll" target="lib\net40\DotNetOpenAuth.dll" />
+        <file src="default\ThirdParty\DotNetOpenAuth.LICENSE" target="DotNetOpenAuth.LICENSE" />
+        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.dll" target="lib\net40\Google.Apis.Authentication.OAuth2.dll" />
+        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.pdb" target="lib\net40\Google.Apis.Authentication.OAuth2.pdb" />
+        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.xml" target="lib\net40\Google.Apis.Authentication.OAuth2.xml" />
+        <file src="Resources\License.txt" target="License.txt" />
+    </files>
+</package>
