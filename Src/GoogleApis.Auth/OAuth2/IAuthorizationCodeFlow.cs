@@ -37,34 +37,35 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Gets the data store used to store the credentials.</summary>
         IDataStore DataStore { get; }
 
-        /// <summary>Loads the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
+        /// <summary>Asynchronously loads the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
         /// <returns>Token response</returns>
-        Task<TokenResponse> LoadToken(string userId, CancellationToken taskCancellationToken);
+        Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken);
 
-        /// <summary>Deletes the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
+        /// <summary>Asynchronously deletes the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
-        Task DeleteToken(string userId, CancellationToken taskCancellationToken);
+        Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken);
 
         /// <summary>Creates an authorization code request with the specified redirect URI.</summary>
         AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri);
 
-        /// <summary>Exchanges code with a token.</summary>
+        /// <summary>Asynchronously exchanges code with a token.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="code">Authorization code received from the authorization server</param>
         /// <param name="redirectUri">Redirect URI which is used in the token request</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
         /// <returns>Token response which contains the access token</returns>
-        Task<TokenResponse> ExchangeCodeForToken(string userId, string code, string redirectUri,
+        Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri,
             CancellationToken taskCancellationToken);
 
-        /// <summary>Refreshes an access token using a refresh token.</summary>
+        /// <summary>Asynchronously refreshes an access token using a refresh token.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="refreshToken">Refresh token which is used to get a new access token</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
         /// <returns>Token response which contains the access token and the input refresh token</returns>
-        Task<TokenResponse> RefreshToken(string userId, string refreshToken, CancellationToken taskCancellationToken);
+        Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken,
+            CancellationToken taskCancellationToken);
     }
 }

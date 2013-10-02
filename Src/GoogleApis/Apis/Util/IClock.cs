@@ -26,6 +26,12 @@ namespace Google.Apis.Util
         /// expressed as the local time.
         /// </summary>
         DateTime Now { get; }
+
+        /// <summary>
+        /// Gets a <seealso cref="DateTime"/> object that is set to the current date and time on this computer, 
+        /// expressed as UTC time.
+        /// </summary>
+        DateTime UtcNow { get; }
     }
 
     /// <summary>A default clock implementation that wraps the <seealso cref="DateTime.Now"/> property.</summary>
@@ -40,6 +46,11 @@ namespace Google.Apis.Util
         public DateTime Now
         {
             get { return DateTime.Now; }
+        }
+
+        public DateTime UtcNow
+        {
+            get { return DateTime.UtcNow; }
         }
     }
 }

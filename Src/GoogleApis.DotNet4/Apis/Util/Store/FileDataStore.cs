@@ -54,7 +54,7 @@ namespace Google.Apis.Util.Store
         /// <typeparam name="T">The type to store in the data store</typeparam>
         /// <param name="key">The key</param>
         /// <param name="value">The value to store in the data store</param>
-        public Task Store<T>(string key, T value)
+        public Task StoreAsync<T>(string key, T value)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -71,7 +71,7 @@ namespace Google.Apis.Util.Store
         /// Deletes the given key. It deletes the <see cref="GetStoredKey"/> named file in <see cref="FolderPath"/>.
         /// </summary>
         /// <param name="key">The key to delete from the data store</param>
-        public Task Delete<T>(string key)
+        public Task DeleteAsync<T>(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -93,7 +93,7 @@ namespace Google.Apis.Util.Store
         /// <typeparam name="T">The type to retrieve</typeparam>
         /// <param name="key">The key to retrieve from the data store</param>
         /// <returns>The stored object</returns>
-        public Task<T> Get<T>(string key)
+        public Task<T> GetAsync<T>(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -124,7 +124,7 @@ namespace Google.Apis.Util.Store
         /// <summary>
         /// Clears all values in the data store. This method deletes all files in <see cref="FolderPath"/>.
         /// </summary>
-        public Task Clear()
+        public Task ClearAsync()
         {
             if (Directory.Exists(folderPath))
             {

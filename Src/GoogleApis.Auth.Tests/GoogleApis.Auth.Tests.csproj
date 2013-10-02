@@ -2,18 +2,15 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}</ProjectGuid>
+    <ProjectGuid>{548D6C9B-A97B-4316-91AC-9AAD35202884}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Google.Apis.Auth</RootNamespace>
-    <AssemblyName>Google.Apis.Auth</AssemblyName>
+    <AssemblyName>Google.Apis.Auth.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile88</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -33,77 +30,84 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="JsonWebSignature.cs" />
-    <Compile Include="JsonWebToken.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeWebApp.cs" />
-    <Compile Include="GoogleJsonWebSignature.cs" />
-    <Compile Include="OAuth2\IAuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeInstalledApp.cs" />
-    <Compile Include="OAuth2\BearerToken.cs" />
-    <Compile Include="OAuth2\TokenRequestExtenstions.cs" />
-    <Compile Include="OAuth2\UserCredential.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\ClientSecrets.cs" />
-    <Compile Include="OAuth2\GoogleAuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\IAccessMethod.cs" />
-    <Compile Include="OAuth2\IAuthorizationCodeInstalledApp.cs" />
-    <Compile Include="OAuth2\ICodeReceiver.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrl.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationCodeTokenRequest.cs" />
-    <Compile Include="OAuth2\Requests\GoogleAssertionTokenRequest.cs" />
-    <Compile Include="OAuth2\Requests\GoogleAuthorizationCodeRequestUrl.cs" />
-    <Compile Include="OAuth2\Responses\AuthorizationCodeResponseUrl.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationRequestUrl.cs" />
-    <Compile Include="OAuth2\GoogleClientSecrets.cs" />
-    <Compile Include="OAuth2\GoogleConsts.cs" />
-    <Compile Include="OAuth2\Requests\RefreshTokenRequest.cs" />
-    <Compile Include="OAuth2\Responses\TokenErrorResponse.cs" />
-    <Compile Include="OAuth2\Requests\TokenRequest.cs" />
-    <Compile Include="OAuth2\Responses\TokenResponse.cs" />
-    <Compile Include="OAuth2\Responses\TokenResponseException.cs" />
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.1.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OAuth2\AuthorizationCodeFlowTests.cs" />
+    <Compile Include="OAuth2\BearerTokenTests.cs" />
+    <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrlTests.cs" />
+    <Compile Include="OAuth2\Requests\AuthorizationCodeTokenRequestTests.cs" />
+    <Compile Include="OAuth2\Requests\GoogleAuthorizationCodeRequestUrlTest.cs" />
+    <Compile Include="OAuth2\Requests\RefreshTokenRequestTests.cs" />
+    <Compile Include="OAuth2\Responses\AuthorizationCodeResponseUrlTests.cs" />
+    <Compile Include="OAuth2\Responses\TokenResponseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.16\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.16\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.6\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\portable-net40+sl4+win8+wp71\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.1.10\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>..\..\packages\Microsoft.Bcl.1.0.19\lib\portable-net40+sl4+win8+wp71\System.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>..\..\packages\Microsoft.Bcl.1.0.19\lib\portable-net40+sl4+win8+wp71\System.Threading.Tasks.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Auth\GoogleApis.Auth.csproj">
+      <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
+      <Name>GoogleApis.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tests\GoogleApis.Tests.csproj">
+      <Project>{9a8aa9ef-6904-43d8-8a26-0ab62069c2dc}</Project>
+      <Name>GoogleApis.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
       <Name>GoogleApis</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

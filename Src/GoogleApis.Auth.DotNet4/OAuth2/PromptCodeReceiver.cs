@@ -35,7 +35,8 @@ namespace Google.Apis.Auth.OAuth2
             get { return GoogleAuthConsts.InstalledAppRedirectUri; }
         }
 
-        public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url, CancellationToken taskCancellationToken)
+        public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
+            CancellationToken taskCancellationToken)
         {
             var tcs = new TaskCompletionSource<AuthorizationCodeResponseUrl>();
 

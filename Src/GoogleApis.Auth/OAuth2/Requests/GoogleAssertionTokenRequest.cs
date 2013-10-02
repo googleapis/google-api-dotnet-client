@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// </summary>
         public GoogleAssertionTokenRequest()
         {
-            GrantType = @"urn:ietf:params:oauth:grant-type:jwt-bearer";
+            GrantType = "urn:ietf:params:oauth:grant-type:jwt-bearer";
         }
     }
 }
