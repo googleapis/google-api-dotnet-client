@@ -118,6 +118,7 @@
     <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
     <Compile Include="Apis\Download\MediaDownloaderTest.cs" />
     <Compile Include="Apis\Http\ConfigurableMessageHandlerTest.cs" />
+    <Compile Include="Apis\Http\MaxUrlLengthInterceptorTest.cs" />
     <Compile Include="Apis\Json\JsonReaderTests.cs" />
     <Compile Include="Apis\Json\JsonTokenTests.cs" />
     <Compile Include="Apis\Json\TokenStreamTest.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="[Mock]\MockBackOffHandler.cs" />
     <Compile Include="[Mock]\MockClientService.cs" />
     <Compile Include="[Mock]\MockHttpClientFactory.cs" />
+    <Compile Include="[Mock]\MockMessageHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj">

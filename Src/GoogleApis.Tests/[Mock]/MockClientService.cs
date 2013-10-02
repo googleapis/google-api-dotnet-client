@@ -22,7 +22,7 @@ using Google.Apis.Http;
 using Google.Apis.Services;
 using Google.Apis.Util;
 
-namespace Google.Apis.Testing
+namespace Google.Apis.Tests
 {
     /// <summary>
     /// Mock-Response for testing purposes.

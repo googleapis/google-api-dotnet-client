@@ -28,7 +28,6 @@ using NUnit.Framework;
 
 using Google.Apis.Json;
 using Google.Apis.Services;
-using Google.Apis.Testing;
 using Google.Apis.Upload;
 using Google.Apis.Util;
 

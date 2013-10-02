@@ -15,15 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.CodeDom;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 using NUnit.Framework;
 
-using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Util

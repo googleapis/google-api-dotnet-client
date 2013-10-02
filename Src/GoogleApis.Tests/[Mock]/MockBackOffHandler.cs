@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using Google.Apis.Http;
 using Google.Apis.Util;
 
-namespace Google.Apis.Testing
+namespace Google.Apis.Tests
 {
     /// <summary>Base mock back-off handler which contains a list of all waited time spans.</summary>
     public class MockBackOffHandler : BackOffHandler

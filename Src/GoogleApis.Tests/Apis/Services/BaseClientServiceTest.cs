@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Services;
-using Google.Apis.Testing;
+using Google.Apis.Tests;
 using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Services
@@ -360,12 +361,77 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
                 Is.InstanceOf<BackOffHandler>());
 
-            // One execute interceptor (for adding the "Authenticate" header,
-            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
+            // two execute interceptors (for adding the "Authenticate" header and handling GET requests with URLs that
+            // are too long)
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(2));
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[0],
                 Is.InstanceOf<AuthenticatorInterceptor>());
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[1],
+                Is.InstanceOf<MaxUrlLengthInterceptor>());
         }
 
         #endregion
+
+        private const uint DefaultMaxUrlLength = BaseClientService.DefaultMaxUrlLength;
+
+        /// <summary>
+        /// Verifies that URLs over 2K characters on GET requests are correctly translated to a POST request.
+        /// </summary>
+        [Test]
+        public void TestGetWithUrlTooLongByDefault()
+        {
+            // Build a query string such that the whole URI adds up to 2049 characters
+            var query = "q=" + new String('x', 1020) + "&x=" + new String('y', 1000);
+            var uri = "http://www.example.com/";
+            var requestUri = uri + "?" + query;
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            var messageHandler = new MockMessageHandler();
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(messageHandler)
+                }))
+            {
+                service.HttpClient.SendAsync(request);
+                // Confirm the test URI is one character too long.
+                Assert.That(requestUri.Length, Is.EqualTo(DefaultMaxUrlLength + 1));
+                // Confirm the request was modified correctly:
+                Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
+                Assert.That(request.Headers.GetValues("X-HTTP-Method-Override").Single(), Is.EqualTo("GET"));
+                Assert.That(request.Content.Headers.ContentType,
+                    Is.EqualTo(new MediaTypeHeaderValue("application/x-www-form-urlencoded")));
+                Assert.That(request.RequestUri, Is.EqualTo(new Uri(uri)));
+                Assert.That(messageHandler.RequestContent, Is.EqualTo(query));
+             }
+        }
+
+        /// <summary>
+        /// Verifies that URLs of great lengths on GET requests are NOT translated to a POST request when the user
+        /// sets the <c>maxUrlLength = 0</c>.
+        /// </summary>
+        [Test]
+        public void TestGetWithUrlMaxLengthDisabled()
+        {
+            var query = "q=" + new String('x', 5000) + "&x=" + new String('y', 6000);
+            var uri = "http://www.example.com/";
+            var requestUri = uri + "?" + query;
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            var messageHandler = new MockMessageHandler();
+            var initializer = (new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                MaxUrlLength = 0
+            });
+
+            using (var service = new MockClientService(initializer))
+            {
+                service.HttpClient.SendAsync(request);
+                // Confirm the request was not modified.
+                Assert.That(request.RequestUri.ToString().Length, Is.EqualTo(requestUri.Length));
+                Assert.That(request.Method, Is.EqualTo(HttpMethod.Get));
+                Assert.That(request.Headers.Contains("X-HTTP-Method-Override"), Is.False);
+                Assert.That(request.Content, Is.Null);
+                Assert.That(request.RequestUri, Is.EqualTo(new Uri(requestUri)));
+            }
+        }
     }
 }
