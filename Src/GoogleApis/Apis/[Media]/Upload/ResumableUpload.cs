@@ -46,7 +46,7 @@ namespace Google.Apis.Upload
         #region Constants
 
         /// <summary>The class logger.</summary>
-        private static readonly ILogger logger = ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>();
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>();
 
         private const int KB = 0x400;
         private const int MB = 0x100000;
@@ -229,7 +229,7 @@ namespace Google.Apis.Upload
             {
                 var result = false;
                 var statusCode = (int)args.Response.StatusCode;
-                // handle the error if and only if all the following conditions occur:
+                // Handle the error if and only if all the following conditions occur:
                 // - there is going to be an actual retry
                 // - the message request is for media upload with the current Uri (remember that the message handler
                 //   can be invoked from other threads \ messages, so we should call server error callback only if the
@@ -258,7 +258,7 @@ namespace Google.Apis.Upload
             /// <summary>Changes the request in order to resume the interrupted upload.</summary>
             private bool OnServerError(HttpRequestMessage request)
             {
-                // clear all headers and set Content-Range and Content-Length headers
+                // Clear all headers and set Content-Range and Content-Length headers.
                 var range = String.Format("bytes */{0}", Owner.StreamLength < 0 ? "*" : Owner.StreamLength.ToString());
                 request.Headers.Clear();
                 request.Method = System.Net.Http.HttpMethod.Put;
@@ -343,40 +343,49 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <remarks>
         /// In case the upload fails the <seealso cref="IUploadProgress.Exception "/> will contain the exception that
-        /// cause the failure.</remarks>
+        /// cause the failure.
+        /// </remarks>
         public IUploadProgress Upload()
         {
-            return Upload(CancellationToken.None).Result;
+            return UploadAsync(CancellationToken.None).Result;
         }
 
-        /// <summary>
-        /// Uploads the content to the server using the given cancellation token. This method is used for both async 
-        /// and sync operation.
-        /// </summary>
-        private async Task<IUploadProgress> Upload(CancellationToken cancellationToken)
+        /// <summary>Uploads the content to the server using the given cancellation token.</summary>
+        /// <remarks>
+        /// In case the upload fails <seealso cref="IUploadProgress.Exception "/> will contain the exception that
+        /// cause the failure. The only exception which will be thrown is 
+        /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
+        /// </remarks>
+        public async Task<IUploadProgress> UploadAsync(CancellationToken cancellationToken)
         {
             try
             {
                 BytesServerReceived = 0;
                 UpdateProgress(new ResumableUploadProgress(UploadStatus.Starting, 0));
-                // check if the stream length is known
+                // Check if the stream length is known.
                 StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
                 UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
 
-                logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
+                Logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
 
                 using (var callback = new ServerErrorCallback(this))
                 {
-                    while (!await SendNextChunk(ContentStream, cancellationToken).ConfigureAwait(false))
+                    while (!await SendNextChunkAsync(ContentStream, cancellationToken).ConfigureAwait(false))
                     {
                         UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesServerReceived));
                     }
                     UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesServerReceived));
                 }
             }
+            catch (TaskCanceledException ex)
+            {
+                Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
+                UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
+                throw ex;
+            }
             catch (Exception ex)
             {
-                logger.Error(ex, "MediaUpload[{0}] - Exception occurred while uploading media", UploadUri);
+                Logger.Error(ex, "MediaUpload[{0}] - Exception occurred while uploading media", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
             }
 
@@ -384,42 +393,9 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>Uploads the content asynchronously to the server.</summary>
-        /// <remarks>
-        /// In case the upload fails the task will not be completed. In that case the task's 
-        /// <seealso cref="System.Threading.Tasks.Task.Exception"/> property will bet set, or its 
-        /// <seealso cref="System.Threading.Tasks.Task.IsCanceled"/> property will be true.
-        /// </remarks>
         public Task<IUploadProgress> UploadAsync()
         {
             return UploadAsync(CancellationToken.None);
-        }
-
-        /// <summary>Uploads the content asynchronously to the server.</summary>
-        /// <param name="cancellationToken">The cancellation token to cancel a request in the middle.</param>
-        public Task<IUploadProgress> UploadAsync(CancellationToken cancellationToken)
-        {
-            TaskCompletionSource<IUploadProgress> tcs = new TaskCompletionSource<IUploadProgress>();
-            Task.Factory.StartNew(async () =>
-            {
-                try
-                {
-                    var response = await Upload(cancellationToken).ConfigureAwait(false);
-                    if (response.Exception != null)
-                    {
-                        tcs.SetException(response.Exception);
-                    }
-                    else
-                    {
-                        tcs.SetResult(response);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // exception was thrown - it must be set on the task completion source
-                    tcs.SetException(ex);
-                }
-            }).ConfigureAwait(false);
-            return tcs.Task;
         }
 
         /// <summary>
@@ -444,13 +420,9 @@ namespace Google.Apis.Upload
         {
         }
 
-        /// <summary>
-        /// Uploads the next chunk of data to the server.
-        /// </summary>
-        /// <returns> 
-        /// <c>True</c> if the entire media has been completely uploaded.
-        /// </returns>
-        protected async Task<bool> SendNextChunk(Stream stream, CancellationToken cancellationToken)
+        /// <summary>Uploads the next chunk of data to the server.</summary>
+        /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
+        protected async Task<bool> SendNextChunkAsync(Stream stream, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -460,7 +432,7 @@ namespace Google.Apis.Upload
                     Method = HttpConsts.Put
                 }.CreateRequest();
 
-            // prepare next chunk to send
+            // Prepare next chunk to send.
             if (StreamLength != UnknownSize)
             {
                 PrepareNextChunkKnownSize(request, stream, cancellationToken);
@@ -471,7 +443,7 @@ namespace Google.Apis.Upload
             }
             BytesClientSent = BytesServerReceived + LastMediaLength;
 
-            logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
+            Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
             HttpResponseMessage response = await Service.HttpClient.SendAsync(
@@ -485,7 +457,7 @@ namespace Google.Apis.Upload
             {
                 // The upload protocol uses 308 to indicate that there is more data expected from the server.
                 BytesServerReceived = GetNextByte(response.Headers.GetValues("Range").First());
-                logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
+                Logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
             }
 
@@ -496,7 +468,7 @@ namespace Google.Apis.Upload
         /// <summary>A callback when the media was uploaded successfully.</summary>
         private void MediaCompleted(HttpResponseMessage response)
         {
-            logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
+            Logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
             ProcessResponse(response);
             BytesServerReceived += LastMediaLength;
 
@@ -508,7 +480,7 @@ namespace Google.Apis.Upload
         private void PrepareNextChunkUnknownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
-            // We save the current request, so we would be able to resend those bytes in case of a server error
+            // We save the current request, so we would be able to resend those bytes in case of a server error.
             if (LastMediaRequest == null)
             {
                 LastMediaRequest = new byte[ChunkSize];
@@ -516,7 +488,7 @@ namespace Google.Apis.Upload
 
             LastMediaLength = 0;
 
-            // if the number of bytes received by the server isn't equal to the amount of bytes the client sent, copy
+            // If the number of bytes received by the server isn't equal to the amount of bytes the client sent, copy
             // the required bytes from the last request and resend them to the server.
             if (BytesClientSent != BytesServerReceived)
             {
@@ -528,18 +500,18 @@ namespace Google.Apis.Upload
             bool shouldRead = true;
             if (CachedByte == null)
             {
-                // create a new cached byte which will be used to verify if we reached the end of stream
+                // Create a new cached byte which will be used to verify if we reached the end of stream.
                 CachedByte = new byte[1];
             }
             else if (LastMediaLength != ChunkSize)
             {
-                // read the last cached byte, and add it to the current request
+                // Read the last cached byte, and add it to the current request.
                 LastMediaRequest[LastMediaLength++] = CachedByte[0];
             }
             else
             {
-                // the whole bytes from last request should be resent, no need to read data from stream in this request
-                // and no need to update the cached byte
+                // The whole bytes from last request should be resent, no need to read data from stream in this request
+                // and no need to update the cached byte.
                 shouldRead = false;
             }
 

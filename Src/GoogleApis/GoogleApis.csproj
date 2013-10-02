@@ -41,7 +41,6 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="Apis\Http\ClassDiagram.cd" />
     <None Include="Apis\ServiceRequests.cd" />
-    <None Include="Apis\[Media]\ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

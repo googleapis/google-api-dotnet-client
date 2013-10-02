@@ -41,7 +41,7 @@ namespace Google.Apis.Http
             /// <summary>
             /// Gets or sets the maximum time span to wait. If the back-off instance returns a greater time span then 
             /// this value, this handler returns <c>false</c> to both <see cref="HandleExceptionAsync"/> and 
-            /// <see cref="HandleResponseAsync"/>. Default value is 5 seconds per a retry request.
+            /// <see cref="HandleResponseAsync"/>. Default value is 16 seconds per a retry request.
             /// </summary>
             public TimeSpan MaxTimeSpan { get; set; }
 
@@ -76,7 +76,7 @@ namespace Google.Apis.Http
                 BackOff = backOff;
                 HandleExceptionFunc = DefaultHandleExceptionFunc;
                 HandleUnsuccessfulResponseFunc = DefaultHandleUnsuccessfulResponseFunc;
-                MaxTimeSpan = TimeSpan.FromSeconds(5);
+                MaxTimeSpan = TimeSpan.FromSeconds(16);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Google.Apis.Http
 
         /// <summary>
         /// Gets the maximum time span to wait. If the back-off instance returns a greater time span, the handle method
-        /// returns <c>false</c>. Default value is 5 seconds per a retry request.
+        /// returns <c>false</c>. Default value is 16 seconds per a retry request.
         /// </summary>
         public TimeSpan MaxTimeSpan { get; private set; }
 

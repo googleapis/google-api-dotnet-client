@@ -191,15 +191,11 @@ namespace Google.Apis.Tests.Apis.Requests
             /// <summary>Gets or sets the Serializer which is used to serialize and deserialize messages.</summary>
             public ISerializer Serializer { get; set; }
 
-            /// <summary>Gets the thread id in which this handler was invoked.</summary>
-            public int ThreadId { get; private set; }
-
             public string ResponseETag = "\"some-etag-here\"";
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
-                ThreadId = Thread.CurrentThread.ManagedThreadId;
                 var mediaType = "application/json";
                 string strObject = null;
 
@@ -467,12 +463,10 @@ namespace Google.Apis.Tests.Apis.Requests
                 {
                     var task = request.ExecuteAsync();
                     response = task.Result;
-                    Assert.AreNotEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
                 else
                 {
                     response = request.Execute();
-                    Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
 
                 // Note: Even if GZipEnabled is true, we don't need to extract the real string from the GZip stream,
@@ -786,12 +780,10 @@ namespace Google.Apis.Tests.Apis.Requests
                     {
                         stream = t.Result;
                     }, TaskContinuationOptions.OnlyOnRanToCompletion).Wait();
-                    Assert.AreNotEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
                 else
                 {
                     stream = request.ExecuteAsStream();
-                    Assert.AreEqual(Thread.CurrentThread.ManagedThreadId, handler.ThreadId);
                 }
 
                 // Read the object.

@@ -20,6 +20,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Util;
@@ -32,6 +33,8 @@ namespace Google.Apis.Download
     /// </summary>
     public class MediaDownloader : IMediaDownloader
     {
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<MediaDownloader>();
+
         /// <summary>The service which this downloader belongs to.</summary>
         private readonly IClientService service;
 
@@ -124,7 +127,7 @@ namespace Google.Apis.Download
 
         public IDownloadProgress Download(string url, Stream stream)
         {
-            return DownloadCore(url, stream, CancellationToken.None).Result;
+            return DownloadCoreAsync(url, stream, CancellationToken.None).Result;
         }
 
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream)
@@ -135,39 +138,12 @@ namespace Google.Apis.Download
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream,
             CancellationToken cancellationToken)
         {
-            return await DownloadAsyncCore(url, stream, cancellationToken);
+            return await DownloadCoreAsync(url, stream, cancellationToken).ConfigureAwait(false);
         }
 
         #endregion
 
         #endregion
-
-        private Task<IDownloadProgress> DownloadAsyncCore(string url, Stream stream,
-            CancellationToken cancellationToken)
-        {
-            TaskCompletionSource<IDownloadProgress> tcs = new TaskCompletionSource<IDownloadProgress>();
-            Task.Factory.StartNew(async () =>
-            {
-                try
-                {
-                    var progress = await DownloadCore(url, stream, cancellationToken).ConfigureAwait(false);
-                    if (progress.Exception != null)
-                    {
-                        tcs.SetException(progress.Exception);
-                    }
-                    else
-                    {
-                        tcs.SetResult(progress);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // exception was thrown - it must be set on the task completion source
-                    tcs.SetException(ex);
-                }
-            }).ConfigureAwait(false);
-            return tcs.Task;
-        }
 
         /// <summary>
         /// The core download logic. It downloads the media in parts, where each part's size is defined by 
@@ -178,10 +154,9 @@ namespace Google.Apis.Download
         /// <param name="cancellationToken">A cancellation token to cancel this download in the middle.</param>
         /// <returns>A task with the download progress object. If an exception occurred during the download, its 
         /// <seealso cref="IDownloadProgress.Exception "/> property will contain the exception.</returns>
-        private async Task<IDownloadProgress> DownloadCore(string url, Stream stream,
+        private async Task<IDownloadProgress> DownloadCoreAsync(string url, Stream stream,
             CancellationToken cancellationToken)
         {
-            // validate the parameters
             url.ThrowIfNull("url");
             stream.ThrowIfNull("stream");
             if (!stream.CanWrite)
@@ -196,16 +171,14 @@ namespace Google.Apis.Download
 
             try
             {
-                // this "infinite" loop stops when the "to" byte position in the "Content-Range" header is the last
+                // This "infinite" loop stops when the "to" byte position in the "Content-Range" header is the last
                 // byte of the media ("length"-1 in the "Content-Range" header).
                 // e.g. "Content-Range: 200-299/300" - "to"(299) = "length"(300) - 1.
                 while (true)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-
                     var currentRequestLastBytePos = currentRequestFirstBytePos + ChunkSize - 1;
 
-                    // create the request and set the Range header
+                    // Create the request and set the Range header.
                     var request = builder.CreateRequest();
                     request.Headers.Range = new RangeHeaderValue(currentRequestFirstBytePos,
                         currentRequestLastBytePos);
@@ -213,11 +186,11 @@ namespace Google.Apis.Download
                     using (var response = await service.HttpClient.SendAsync(request, cancellationToken).
                         ConfigureAwait(false))
                     {
-                        // read the content and copy to the parameter's stream
+                        // Read the content and copy to the parameter's stream.
                         var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                         responseStream.CopyTo(stream);
 
-                        // read the headers and check if all the media content was already downloaded
+                        // Read the headers and check if all the media content was already downloaded.
                         var contentRange = response.Content.Headers.ContentRange;
                         currentRequestFirstBytePos = contentRange.To.Value + 1;
                         long mediaContentLength = contentRange.Length.Value;
@@ -233,8 +206,15 @@ namespace Google.Apis.Download
                     UpdateProgress(new DownloadProgress(DownloadStatus.Downloading, currentRequestFirstBytePos));
                 }
             }
+            catch (TaskCanceledException ex)
+            {
+                Logger.Error(ex, "Download media was canceled");
+                UpdateProgress(new DownloadProgress(ex, currentRequestFirstBytePos));
+                throw ex;
+            }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Exception occurred while downloading media");
                 var progress = new DownloadProgress(ex, currentRequestFirstBytePos);
                 UpdateProgress(progress);
                 return progress;
