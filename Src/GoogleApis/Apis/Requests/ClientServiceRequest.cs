@@ -84,7 +84,7 @@ namespace Google.Apis.Requests
         {
             try
             {
-                using (var response = ExecuteUnparsed(CancellationToken.None).Result)
+                using (var response = ExecuteUnparsedAsync(CancellationToken.None).Result)
                 {
                     return ParseResponse(response).Result;
                 }
@@ -106,7 +106,7 @@ namespace Google.Apis.Requests
             try
             {
                 // Sync call.
-                var response = ExecuteUnparsed(CancellationToken.None).Result;
+                var response = ExecuteUnparsedAsync(CancellationToken.None).Result;
                 return response.Content.ReadAsStreamAsync().Result;
             }
             catch (AggregateException aex)
@@ -127,7 +127,7 @@ namespace Google.Apis.Requests
 
         public async Task<TResponse> ExecuteAsync(CancellationToken cancellationToken)
         {
-            using (var response = await ExecuteAsyncUnparsed(cancellationToken).ConfigureAwait(false))
+            using (var response = await ExecuteUnparsedAsync(cancellationToken).ConfigureAwait(false))
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 return await ParseResponse(response).ConfigureAwait(false);
@@ -142,7 +142,7 @@ namespace Google.Apis.Requests
         public async Task<Stream> ExecuteAsStreamAsync(CancellationToken cancellationToken)
         {
             // TODO(peleyal): should we copy the stream, and dispose the response?
-            var response = await ExecuteAsyncUnparsed(cancellationToken).ConfigureAwait(false);
+            var response = await ExecuteUnparsedAsync(cancellationToken).ConfigureAwait(false);
 
             cancellationToken.ThrowIfCancellationRequested();
             return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
@@ -151,36 +151,12 @@ namespace Google.Apis.Requests
         #region Helpers
 
         /// <summary>Sync executes the request without parsing the result. </summary>
-        private async Task<HttpResponseMessage> ExecuteUnparsed(CancellationToken cancellationToken)
+        private async Task<HttpResponseMessage> ExecuteUnparsedAsync(CancellationToken cancellationToken)
         {
             using (var request = CreateRequest())
             {
                 return await service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
             }
-        }
-
-        /// <summary>Async executes the request without parsing the result. </summary>
-        private Task<HttpResponseMessage> ExecuteAsyncUnparsed(CancellationToken cancellationToken)
-        {
-            // TODO(peleyal): remove the creation of a new Task (it's not necessary).
-            // It should also be removed from ResumableMediaUpload and MediaDownloader!
-            // create a new task completion source and return its task. In additional task we actually send the request
-            // using ExecuteUnparsed and setting the result or the exception on the completion source
-            TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-            Task.Factory.StartNew(async () =>
-                {
-                    try
-                    {
-                        var response = await ExecuteUnparsed(cancellationToken).ConfigureAwait(false);
-                        tcs.SetResult(response);
-                    }
-                    catch (Exception ex)
-                    {
-                        // Exception was thrown - it must be set on the task completion source.
-                        tcs.SetException(ex);
-                    }
-                }).ConfigureAwait(false);
-            return tcs.Task;
         }
 
         /// <summary>Parses the response and deserialize the content into the requested response object. </summary>

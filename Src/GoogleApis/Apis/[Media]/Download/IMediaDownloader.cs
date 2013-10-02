@@ -40,6 +40,11 @@ namespace Google.Apis.Download
         /// Downloads asynchronously the given URL to the given stream. This download method supports a cancellation 
         /// token to cancel a request before it was completed.
         /// </summary>
+        /// <remarks>
+        /// In case the download fails <seealso cref="IDownloadProgress.Exception "/> will contain the exception that
+        /// cause the failure. The only exception which will be thrown is 
+        /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
+        /// </remarks>
         Task<IDownloadProgress> DownloadAsync(string url, Stream stream, CancellationToken cancellationToken);
     }
 }

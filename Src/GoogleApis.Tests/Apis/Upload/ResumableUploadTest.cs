@@ -26,7 +26,6 @@ using System.Threading.Tasks;
 
 using NUnit.Framework;
 
-using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -38,7 +37,7 @@ namespace Google.Apis.Tests.Apis.Upload
     [TestFixture]
     class ResumableUploadTest
     {
-        /// <summary> 
+        /// <summary>
         /// Mock string to upload to the media server. It contains 453 bytes, and in most cases we will use a chunk 
         /// size of 100. 
         /// </summary>
@@ -51,7 +50,7 @@ anim id est laborum.";
         [TestFixtureSetUp]
         public void SetUp()
         {
-            // change the false parameter to true if you want to enable logging during tests
+            // Change the false parameter to true if you want to enable logging during tests.
             SetUp(false);
         }
 
@@ -65,14 +64,14 @@ anim id est laborum.";
 
         #region Handlers
 
-        /// <summary> Base mock handler which contains the upload Uri. </summary>
+        /// <summary>Base mock handler which contains the upload Uri.</summary>
         private abstract class BaseMockMessageHandler : CountableMessageHandler
         {
-            /// <summary> The upload Uri for uploading the media. </summary>
+            /// <summary>The upload Uri for uploading the media.</summary>
             protected static Uri uploadUri = new Uri("http://upload.com");
         }
 
-        /// <summary> A handler which handles uploading an empty file. </summary>
+        /// <summary>A handler which handles uploading an empty file.</summary>
         private class EmptyFileMessageHandler : BaseMockMessageHandler
         {
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -82,7 +81,7 @@ anim id est laborum.";
                 switch (Calls)
                 {
                     case 1:
-                        // First call is initialization
+                        // First call is initialization.
                         Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable"));
                         Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(),
                             Is.EqualTo("text/plain"));
@@ -91,7 +90,7 @@ anim id est laborum.";
                         response.Headers.Location = uploadUri;
                         break;
                     case 2:
-                        // Receiving an empty stream
+                        // Receiving an empty stream.
                         Assert.That(request.RequestUri, Is.EqualTo(uploadUri));
                         var range = String.Format("bytes */0");
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(range));
@@ -105,10 +104,10 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> A handler which handles a request object on the initialization request. </summary>
+        /// <summary>A handler which handles a request object on the initialization request.</summary>
         private class RequestResponseMessageHandler<TRequest> : BaseMockMessageHandler
         {
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the expected request object. Server checks that the initialization request contains that 
             /// object in the request.
             /// </summary>
@@ -119,7 +118,7 @@ anim id est laborum.";
             /// </summary>
             public object ExpectedResponse { get; set; }
 
-            /// <summary> Gets or sets the Serializer which is used to serialize and deserialize objects. </summary>
+            /// <summary>Gets or sets the Serializer which is used to serialize and deserialize objects.</summary>
             public ISerializer Serializer { get; set; }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -130,7 +129,7 @@ anim id est laborum.";
                 {
                     case 1:
                         {
-                            // initialization and receiving the request object
+                            // Initialization and receiving the request object.
                             Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable"));
                             Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(),
                                 Is.EqualTo("text/plain"));
@@ -145,13 +144,13 @@ anim id est laborum.";
                         }
                     case 2:
                         {
-                            // check that the server received the media
+                            // Check that the server received the media.
                             Assert.That(request.RequestUri, Is.EqualTo(uploadUri));
                             var range = String.Format("bytes 0-{0}/{1}", UploadTestData.Length - 1,
                                 UploadTestData.Length);
                             Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(range));
 
-                            // Send the response-body
+                            // Send the response-body.
                             var responseObject = Serializer.Serialize(ExpectedResponse);
                             response.Content = new StringContent(responseObject, Encoding.UTF8, "application/json");
                             break;
@@ -162,16 +161,16 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> A handler which handles a request for single chunk. </summary>
+        /// <summary>A handler which handles a request for single chunk.</summary>
         private class SingleChunkMessageHandler : BaseMockMessageHandler
         {
-            /// <summary> Gets or sets the expected stream length. </summary>
+            /// <summary>Gets or sets the expected stream length.</summary>
             public long StreamLength { get; set; }
 
-            /// <summary> Gets or sets the query parameters which should be part of the initialize request. </summary>
+            /// <summary>Gets or sets the query parameters which should be part of the initialize request.</summary>
             public string QueryParameters { get; set; }
 
-            /// <summary> Gets or sets the path parameters which should be part of the initialize request. </summary>
+            /// <summary>Gets or sets the path parameters which should be part of the initialize request.</summary>
             public string PathParameters { get; set; }
 
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -214,13 +213,13 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// A handler which demonstrate a server which reads partial data (e.g. on the first upload request the client
         /// sends X bytes, but the server actually read only Y of them)
         /// </summary>
         private class ReadPartialMessageHandler : BaseMockMessageHandler
         {
-            /// <summary> Received stream which contains the data that the server reads. </summary>
+            /// <summary>Received stream which contains the data that the server reads.</summary>
             public MemoryStream ReceivedData = new MemoryStream();
 
             private bool knownSize;
@@ -249,7 +248,7 @@ anim id est laborum.";
                 switch (Calls)
                 {
                     case 1:
-                        // initialization request
+                        // Initialization request.
                         Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable"));
                         Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(),
                             Is.EqualTo("text/plain"));
@@ -265,8 +264,8 @@ anim id est laborum.";
                         response.Headers.Location = uploadUri;
                         break;
                     case 2:
-                        // first client upload request. server reads only <c>readInFirstRequest</c> bytes and returns 
-                        // a response with Range header - "bytes 0-readInFirstRequest"
+                        // First client upload request. server reads only <c>readInFirstRequest</c> bytes and returns 
+                        // a response with Range header - "bytes 0-readInFirstRequest".
                         Assert.That(request.RequestUri, Is.EqualTo(uploadUri));
                         var range = String.Format("bytes {0}-{1}/{2}", 0, chunkSize - 1,
                             knownSize ? len.ToString() : "*");
@@ -279,7 +278,7 @@ anim id est laborum.";
                         ReceivedData.Write(bytes, 0, readInFirstRequest);
                         break;
                     case 3:
-                        // server reads the rest of bytes
+                        // Server reads the rest of bytes.
                         Assert.That(request.RequestUri, Is.EqualTo(uploadUri));
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
                             string.Format("bytes {0}-{1}/{2}", readInFirstRequest, len - 1, len)));
@@ -301,22 +300,22 @@ anim id est laborum.";
             NotFound
         }
 
-        /// <summary> A handler which demonstrate a client upload which contains multiple chunks. </summary>
+        /// <summary>A handler which demonstrate a client upload which contains multiple chunks.</summary>
         private class MultipleChunksMessageHandler : BaseMockMessageHandler
         {
             public MemoryStream ReceivedData = new MemoryStream();
 
-            /// <summary> The cancellation token we are going to use to cancel a request.</summary>
+            /// <summary>The cancellation token we are going to use to cancel a request.</summary>
             public CancellationTokenSource CancellationTokenSource { get; set; }
 
-            /// <summary> The request index we are going to cancel.</summary>
+            /// <summary>The request index we are going to cancel.</summary>
             public int CancelRequestNum { get; set; }
 
             // on the 4th request - server returns error (if supportedError isn't none)
             // on the 5th request - server returns 308 with "Range" header is "bytes 0-299" (depends on supportedError)
             internal const int ErrorOnCall = 4;
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the number of bytes the server reads when error occurred. The default value is <c>0</c>,
             /// meaning that on server error it won't read any bytes from the stream.
             /// </summary>
@@ -355,7 +354,7 @@ anim id est laborum.";
                 var response = new HttpResponseMessage();
                 if (Calls == 1)
                 {
-                    // initialization request
+                    // Initialization request.
                     Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable"));
                     Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(), Is.EqualTo("text/plain"));
                     if (knownSize)
@@ -490,7 +489,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> A resumable upload class which contains query and path parameters. </summary>
+        /// <summary>A resumable upload class which contains query and path parameters.</summary>
         private class MockResumableWithParameters : ResumableUpload<object>
         {
             public MockResumableWithParameters(IClientService service, string path, string method,
@@ -511,7 +510,7 @@ anim id est laborum.";
 
         #endregion
 
-        /// <summary> Mimics a stream whose size is unknown. </summary>
+        /// <summary>Mimics a stream whose size is unknown.</summary>
         private class UnknownSizeMemoryStream : MemoryStream
         {
             public UnknownSizeMemoryStream(byte[] buffer) : base(buffer) { }
@@ -523,7 +522,7 @@ anim id est laborum.";
 
         #region Request and Response objects
 
-        /// <summary> A mock request object. </summary>
+        /// <summary>A mock request object.</summary>
         public class TestRequest : IEquatable<TestRequest>
         {
             public string Name { get; set; }
@@ -539,7 +538,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> A mock response object. </summary>
+        /// <summary>A mock response object.</summary>
         public class TestResponse : IEquatable<TestResponse>
         {
             public int Id { get; set; }
@@ -559,7 +558,7 @@ anim id est laborum.";
 
         #endregion
 
-        /// <summary> Tests uploading a single chunk. </summary>
+        /// <summary>Tests uploading a single chunk.</summary>
         [Test]
         public void TestUploadSingleChunk()
         {
@@ -575,7 +574,7 @@ anim id est laborum.";
             {
 
                 var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
-                // chunk size is bigger than the data we are sending
+                // Chunk size is bigger than the data we are sending.
                 upload.chunkSize = UploadTestData.Length + 10;
                 upload.Upload();
             }
@@ -583,7 +582,7 @@ anim id est laborum.";
             Assert.That(handler.Calls, Is.EqualTo(2));
         }
 
-        /// <summary> Tests uploading a single chunk. </summary>
+        /// <summary>Tests uploading a single chunk.</summary>
         [Test]
         public void TestUploadSingleChunk_ExactChunkSize()
         {
@@ -598,7 +597,7 @@ anim id est laborum.";
                 }))
             {
                 var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
-                // chunk size is the exact size we are sending
+                // Chunk size is the exact size we are sending.
                 upload.chunkSize = UploadTestData.Length;
                 upload.Upload();
             }
@@ -606,7 +605,7 @@ anim id est laborum.";
             Assert.That(handler.Calls, Is.EqualTo(2));
         }
 
-        /// <summary> Tests uploading empty file. </summary>
+        /// <summary>Tests uploading empty file.</summary>
         [Test]
         public void TestUploadEmptyFile()
         {
@@ -624,27 +623,27 @@ anim id est laborum.";
             Assert.That(handler.Calls, Is.EqualTo(2));
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the upload client accepts 308 responses when uploading chunks on a stream with known size. 
         /// </summary>
         [Test]
         public void TestChunkUpload_KnownSize()
         {
-            // we expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453)
+            // We expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453).
             SubtestTestChunkUpload(true, 6);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the upload client accepts 308 responses when uploading chunks on a stream with unknown size. 
         /// </summary>
         [Test]
         public void TestChunkUpload_UnknownSize()
         {
-            // we expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453)
+            // We expect 6 calls: 1 initial request + 5 chunks (0-99, 100-199, 200-299, 300-399, 400-453).
             SubtestTestChunkUpload(false, 6);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that client accepts 308 and 503 responses when uploading chunks when the stream size is known.
         /// </summary>
         [Test]
@@ -653,7 +652,7 @@ anim id est laborum.";
             SubtestChunkUpload_ServerUnavailable(true);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that client accepts 308 and 503 responses when uploading chunks when the stream size is unknown.
         /// </summary>
         [Test]
@@ -662,7 +661,7 @@ anim id est laborum.";
             SubtestChunkUpload_ServerUnavailable(false);
         }
 
-        /// <summary> 
+        /// <summary>
         /// A helper test which tests that the client accepts 308 and 503 responses when uploading chunks. This test
         /// contains sub tests which check the different possibilities:
         /// <list type="number">
@@ -704,7 +703,7 @@ anim id est laborum.";
             SubtestTestChunkUpload(knownSize, 5, ServerError.ServerUnavailable, 200, 54);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the upload client accepts 308 and exception on a request when uploading chunks on a stream with 
         /// unknown size.
         /// </summary>
@@ -716,7 +715,7 @@ anim id est laborum.";
             SubtestTestChunkUpload(false, 8, ServerError.Exception);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that upload fails when server returns an error which the client can't handle (not 5xx).
         /// </summary>
         [Test]
@@ -765,7 +764,7 @@ anim id est laborum.";
 
                 if (error == ServerError.NotFound)
                 {
-                    // upload fails
+                    // Upload fails.
                     Assert.That(lastProgress.Status, Is.EqualTo(UploadStatus.Failed));
                     Assert.True(lastProgress.Exception.Message.Contains(
                          @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]"),
@@ -780,7 +779,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the upload client accepts 308 responses and reads the "Range" header to know from which point to
         /// continue (stream size is known). 
         /// </summary>
@@ -790,7 +789,7 @@ anim id est laborum.";
             SubtestTestChunkUpload_ServerRecievedPartOfRequest(true);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests that the upload client accepts 308 responses and reads the "Range" header to know from which point to
         /// continue (stream size is unknown). 
         /// </summary>
@@ -822,7 +821,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> Test helper to test a fail uploading by with the given server error.</summary>
+        /// <summary>Test helper to test a fail uploading by with the given server error.</summary>
         private void SubtestChunkUploadFail(ServerError error)
         {
             int chunkSize = 100;
@@ -855,7 +854,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests failed uploading media (server returns 5xx responses all the time from some request).
         /// </summary>
         [Test]
@@ -864,7 +863,7 @@ anim id est laborum.";
             SubtestChunkUploadFail(ServerError.ServerUnavailable);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Tests failed uploading media (exception is thrown all the time from some request).
         /// </summary>
         [Test]
@@ -873,16 +872,16 @@ anim id est laborum.";
             SubtestChunkUploadFail(ServerError.Exception);
         }
 
-        /// <summary> Tests uploading media when cancelling a request in the middle.</summary>
+        /// <summary>Tests uploading media when canceling a request in the middle.</summary>
         [Test]
         public void TestChunkUploadFail_Cancel()
         {
-            TestChunkUploadFail_Cancel(1); // cancel the request initialization
-            TestChunkUploadFail_Cancel(2); // cancel the first media upload data
-            TestChunkUploadFail_Cancel(5); // cancel a request in the middle of the upload
+            TestChunkUploadFail_Cancel(1); // Cancel the request initialization
+            TestChunkUploadFail_Cancel(2); // Cancel the first media upload data
+            TestChunkUploadFail_Cancel(5); // Cancel a request in the middle of the upload
         }
 
-        /// <summary> Helper test to test canceling media upload in the middle.</summary>
+        /// <summary>Helper test to test canceling media upload in the middle.</summary>
         /// <param name="cancelRequest">The request index to cancel.</param>
         private void TestChunkUploadFail_Cancel(int cancelRequest)
         {
@@ -904,18 +903,18 @@ anim id est laborum.";
                 try
                 {
                     var result = upload.UploadAsync(handler.CancellationTokenSource.Token).Result;
-                    Assert.Fail();
+                    Assert.Fail("Upload should be canceled");
                 }
-                catch (AggregateException ae)
+                catch (AggregateException ex)
                 {
-                    Assert.IsInstanceOf<TaskCanceledException>(ae.InnerException);
+                    Assert.IsInstanceOf<TaskCanceledException>(ex.InnerException);
                 }
 
                 Assert.That(handler.Calls, Is.EqualTo(cancelRequest));
             }
         }
 
-        /// <summary> Tests that upload function fires progress events as expected. </summary>
+        /// <summary>Tests that upload function fires progress events as expected.</summary>
         [Test]
         public void TestUploadProgress()
         {
@@ -940,7 +939,7 @@ anim id est laborum.";
 
                 upload.Upload();
 
-                // Starting (1) + Uploading (2) + Completed (1)
+                // Starting (1) + Uploading (2) + Completed (1).
                 Assert.That(progressEvents.Count, Is.EqualTo(4));
                 Assert.That(progressEvents[0].Status, Is.EqualTo(UploadStatus.Starting));
                 Assert.That(progressEvents[1].Status, Is.EqualTo(UploadStatus.Uploading));
@@ -949,7 +948,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> Tests uploading media with query and path parameters on the initialization request. </summary>
+        /// <summary>Tests uploading media with query and path parameters on the initialization request.</summary>
         [Test]
         public void TestUploadWithQueryAndPathParameters()
         {
@@ -980,7 +979,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> Tests an upload with JSON request and response body. </summary>
+        /// <summary>Tests an upload with JSON request and response body.</summary>
         [Test]
         public void TestUploadWithRequestAndResponseBody()
         {
@@ -1027,7 +1026,7 @@ anim id est laborum.";
             }
         }
 
-        /// <summary> Tests chunk size setter. </summary>
+        /// <summary>Tests chunk size setter.</summary>
         [Test]
         public void TestChunkSize()
         {
@@ -1037,7 +1036,7 @@ anim id est laborum.";
                 var upload = new MockResumableUploadWithResponse<TestRequest, TestResponse>
                     (service, stream, "text/plain");
 
-                // negative chunk size
+                // Negative chunk size.
                 try
                 {
                     upload.ChunkSize = -1;
@@ -1045,10 +1044,10 @@ anim id est laborum.";
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    // expected
+                    // Expected.
                 }
 
-                // less than the minimum
+                // Less than the minimum.
                 try
                 {
                     upload.ChunkSize = MockResumableUpload.MinimumChunkSize - 1;
@@ -1056,10 +1055,10 @@ anim id est laborum.";
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    // expected
+                    // Expected.
                 }
 
-                // valid chunk size
+                // Valid chunk size.
                 upload.ChunkSize = MockResumableUpload.MinimumChunkSize;
                 upload.ChunkSize = MockResumableUpload.MinimumChunkSize * 2;
             }

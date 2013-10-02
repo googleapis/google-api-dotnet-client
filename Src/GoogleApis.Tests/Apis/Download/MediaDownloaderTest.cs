@@ -69,9 +69,6 @@ namespace Google.Apis.Tests.Apis.Download
             /// <summary>Gets or sets the download Uri.</summary>
             public Uri DownloadUri { get; set; }
 
-            /// <summary>Gets the thread Id.</summary>
-            public int ThreadId { get; private set; }
-
             /// <summary>The number of bytes this "server" has sent so far.</summary>
             private long bytesRead;
 
@@ -79,7 +76,6 @@ namespace Google.Apis.Tests.Apis.Download
                 CancellationToken cancellationToken)
             {
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                ThreadId = Thread.CurrentThread.ManagedThreadId;
 
                 if (Calls == CancelRequestNum && CancellationTokenSource != null)
                 {
@@ -200,23 +196,19 @@ namespace Google.Apis.Tests.Apis.Download
                 if (sync)
                 {
                     downloader.Download(downloadUri, outputStream);
-                    Assert.AreEqual(handler.ThreadId, Thread.CurrentThread.ManagedThreadId);
                 }
                 else
                 {
-                    var task = downloader.DownloadAsync(downloadUri, outputStream,
-                        handler.CancellationTokenSource.Token);
                     try
                     {
-                        task.Wait();
-                        Assert.AreEqual(cancelRequest, 0);
+                        var result = downloader.DownloadAsync(downloadUri, outputStream,
+                        handler.CancellationTokenSource.Token).Result;
+                        Assert.AreEqual(0, handler.CancelRequestNum);
                     }
                     catch (AggregateException ex)
                     {
-                        Assert.That(ex.InnerException, Is.InstanceOf<TaskCanceledException>());
-                        Assert.AreNotEqual(cancelRequest, 0);
+                        Assert.IsInstanceOf<TaskCanceledException>(ex.InnerException);
                     }
-                    Assert.AreNotEqual(handler.ThreadId, Thread.CurrentThread.ManagedThreadId);
                 }
 
                 var lastProgress = progressList.LastOrDefault();
@@ -224,7 +216,7 @@ namespace Google.Apis.Tests.Apis.Download
                 {
                     // the download was interrupted in the middle
                     Assert.That(handler.Calls, Is.EqualTo(cancelRequest));
-                    // last request should be failed
+                    // last request should fail
                     Assert.NotNull(lastProgress);
                     Assert.NotNull(lastProgress.Exception);
                     Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
