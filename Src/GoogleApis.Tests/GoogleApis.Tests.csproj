@@ -139,6 +139,7 @@
     <Compile Include="[Mock]\CountableMessageHandler.cs" />
     <Compile Include="[Mock]\MockBackOffHandler.cs" />
     <Compile Include="[Mock]\MockClientService.cs" />
+    <Compile Include="[Mock]\MockClock.cs" />
     <Compile Include="[Mock]\MockHttpClientFactory.cs" />
     <Compile Include="[Mock]\MockMessageHandler.cs" />
   </ItemGroup>

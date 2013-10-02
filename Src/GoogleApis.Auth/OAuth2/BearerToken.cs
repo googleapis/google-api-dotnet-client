@@ -60,8 +60,8 @@ namespace Google.Apis.Auth.OAuth2
             public void Intercept(HttpRequestMessage request, string accessToken)
             {
                 var uri = request.RequestUri;
-                request.RequestUri = new Uri(string.Format("{0}&{1}{2}{3}",
-                    uri.ToString(), AccessTokenKey, string.IsNullOrEmpty(uri.Query) ? "?" : "&",
+                request.RequestUri = new Uri(string.Format("{0}{1}{2}={3}",
+                    uri.ToString(), string.IsNullOrEmpty(uri.Query) ? "?" : "&", AccessTokenKey,
                     Uri.EscapeDataString(accessToken)));
             }
 

@@ -34,6 +34,6 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
         /// <returns>The user's credential</returns>
-        Task<Credential> Authorize(string userId, CancellationToken taskCancellationToken);
+        Task<UserCredential> Authorize(string userId, CancellationToken taskCancellationToken);
     }
 }

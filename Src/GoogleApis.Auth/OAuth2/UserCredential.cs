@@ -30,10 +30,10 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class Credential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
+    public class UserCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
         IConfigurableHttpClientInitializer
     {
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<Credential>();
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
         private TokenResponse token;
         private object lockObject = new object();
@@ -63,7 +63,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="flow">Authorization code flow</param>
         /// <param name="userId">User identifier</param>
         /// <param name="token">An initial token for the user</param>
-        public Credential(IAuthorizationCodeFlow flow, string userId, TokenResponse token)
+        public UserCredential(IAuthorizationCodeFlow flow, string userId, TokenResponse token)
         {
             this.flow = flow;
             this.userId = userId;
@@ -79,9 +79,10 @@ namespace Google.Apis.Auth.OAuth2
         {
             if (Token.IsExpired(flow.Clock))
             {
+                Logger.Debug("Token has expired, trying to refresh it.");
                 if (!await RefreshTokenAsync(taskCancellationToken).ConfigureAwait(false))
                 {
-                    throw new InvalidOperationException("The access token is expired but we can't refresh it");
+                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
                 }
             }
 
@@ -107,7 +108,7 @@ namespace Google.Apis.Auth.OAuth2
             var newToken = await flow.RefreshTokenAsync(userId, Token.RefreshToken, taskCancellationToken)
                 .ConfigureAwait(false);
 
-            Logger.Info("Access token was refreshed");
+            Logger.Info("Access token was refreshed successfully");
 
             if (newToken.RefreshToken == null)
             {

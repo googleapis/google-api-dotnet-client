@@ -65,29 +65,12 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// </summary>
         public bool IsExpired(IClock clock)
         {
-            //TODO(peleyal): consider move it to an extension method
-            if (!ExpiresInSeconds.HasValue)
+            if (AccessToken == null || !ExpiresInSeconds.HasValue)
             {
                 return true;
             }
 
             return Issued.AddSeconds(ExpiresInSeconds.Value + 60) <= clock.Now;
-        }
-
-        /// <summary>
-        /// Copies all properties from the other token, except the other's refresh token property in case it's null.
-        /// </summary>
-        internal void CopyFrom(TokenResponse other)
-        {
-            AccessToken = other.AccessToken;
-            TokenType = other.TokenType;
-            ExpiresInSeconds = other.ExpiresInSeconds;
-            if (other.RefreshToken != null)
-            {
-                RefreshToken = other.RefreshToken;
-            }
-            Scope = other.Scope;
-            Issued = other.Issued;
         }
     }
 }

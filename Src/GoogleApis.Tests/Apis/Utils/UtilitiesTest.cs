@@ -22,7 +22,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Util
 {
-    /// <summary>Tests for <seealso cref="Google.Apis.Util.Utilities"/>.</summary>
+    /// <summary>Tests for <seealso cref="Google.Apis.Util.Utilities"/> class.</summary>
     [TestFixture]
     public class UtilitiesTest
     {

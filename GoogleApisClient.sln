@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth", "Src\Goog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.DotNet4", "Src\GoogleApis.Auth.DotNet4\GoogleApis.Auth.DotNet4.csproj", "{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.Tests", "Src\GoogleApis.Auth.Tests\GoogleApis.Auth.Tests.csproj", "{548D6C9B-A97B-4316-91AC-9AAD35202884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,16 @@ Global
 		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}.Release|Win32.ActiveCfg = Release|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{548D6C9B-A97B-4316-91AC-9AAD35202884}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

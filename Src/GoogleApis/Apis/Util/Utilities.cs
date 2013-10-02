@@ -32,12 +32,14 @@ namespace Google.Apis.Util
         }
 
         /// <summary>Throws an <seealso cref="System.ArgumentNullException"/> if the object is null.</summary>
-        internal static void ThrowIfNull(this object obj, string paramName)
+        internal static T ThrowIfNull<T>(this T obj, string paramName)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException(paramName);
             }
+
+            return obj;
         }
 
         /// <summary>
