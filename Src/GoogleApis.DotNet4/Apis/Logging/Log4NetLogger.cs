@@ -19,7 +19,6 @@ using System.Reflection;
 
 using log4net;
 
-using Google.Apis.Testing;
 using Google.Apis.Util;
 
 namespace Google.Apis.Logging

@@ -52,6 +52,7 @@
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
     <Compile Include="Apis\Discovery\Parameter.cs" />
+    <Compile Include="Apis\Http\MaxUrlLengthInterceptor.cs" />
     <Compile Include="Apis\Http\ConfigurableHttpClient.cs" />
     <Compile Include="Apis\Http\ConfigurableMessageHandler.cs" />
     <Compile Include="Apis\Http\BackOffHandler.cs" />

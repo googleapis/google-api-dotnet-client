@@ -15,27 +15,21 @@ limitations under the License.
 */
 
 using System.Net.Http;
-
-using Google.Apis.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Tests
 {
-    /// <summary>
-    /// Mock HTTP client factory which gets a specific message handler (for mocking) and use for creating the HTTP
-    /// client.
-    /// </summary>
-    public class MockHttpClientFactory : HttpClientFactory
+    /// <summary>A mock of <see cref="HttpMessageHandler"/> that records the content of an incoming request.</summary>
+    class MockMessageHandler : HttpMessageHandler
     {
-        private HttpMessageHandler Handler { get; set; }
+        public string RequestContent { get; set; }
 
-        public MockHttpClientFactory(HttpMessageHandler handler)
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+            CancellationToken cancellationToken)
         {
-            Handler = handler;
-        }
-
-        protected override HttpMessageHandler CreateHandler(CreateHttpClientArgs args)
-        {
-            return Handler;
+            RequestContent = request.Content.ReadAsStringAsync().Result;
+            return null;
         }
     }
 }

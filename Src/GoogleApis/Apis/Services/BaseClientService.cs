@@ -32,6 +32,7 @@ using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Util;
+using Google.Apis.Testing;
 
 namespace Google.Apis.Services
 {
@@ -50,6 +51,10 @@ namespace Google.Apis.Services
     {
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<BaseClientService>();
+
+        /// <summary>The default maximum allowed length of a URL string for GET requests.</summary>
+        [VisibleForTestOnly]
+        internal const uint DefaultMaxUrlLength = 2048;
 
         #region Initializer
 
@@ -102,6 +107,12 @@ namespace Google.Apis.Services
             /// </summary>
             public string ApplicationName { get; set; }
 
+            /// <summary>
+            /// Maximum allowed length of a URL string for GET requests. Default value is <c>2048</c>. If the value is
+            /// set to <c>0</c>, requests will never be modified due to URL string length.
+            /// </summary>
+            public uint MaxUrlLength { get; set; }
+
             /// <summary>Constructs a new initializer with default values.</summary>
             public Initializer()
             {
@@ -109,6 +120,7 @@ namespace Google.Apis.Services
                 Serializer = new NewtonsoftJsonSerializer();
                 Authenticator = NullAuthenticator.Instance;
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
+                MaxUrlLength = DefaultMaxUrlLength;
             }
         }
 
@@ -165,8 +177,14 @@ namespace Google.Apis.Services
             // Add authenticator initializer to intercept a request and add the "Authorization" header and also handle
             // abnormal 401 responses in case the authenticator is an instance of unsuccessful response handler.
             args.Initializers.Add(new AuthenticatorMessageHandlerInitializer(Authenticator));
-
-            return factory.CreateHttpClient(args);
+            
+            var httpClient =  factory.CreateHttpClient(args);
+            if (initializer.MaxUrlLength > 0)
+            {
+                httpClient.MessageHandler.ExecuteInterceptors.Add(
+                    new MaxUrlLengthInterceptor(initializer.MaxUrlLength));
+            }
+            return httpClient;
         }
 
         /// <summary>

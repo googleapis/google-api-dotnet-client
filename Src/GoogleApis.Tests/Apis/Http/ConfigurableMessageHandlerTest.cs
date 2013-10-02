@@ -29,7 +29,6 @@ using NUnit.Framework;
 
 using Google.Apis.Http;
 using Google.Apis.Util;
-using Google.Apis.Testing;
 
 namespace Google.Apis.Tests.Apis.Http
 {

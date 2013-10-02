@@ -32,7 +32,6 @@ using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Requests;
 using Google.Apis.Services;
-using Google.Apis.Testing;
 using Google.Apis.Util;
 
 
