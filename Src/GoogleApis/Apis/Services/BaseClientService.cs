@@ -78,7 +78,7 @@ namespace Google.Apis.Services
             /// Get or sets the exponential back-off policy used by the service. Default value is 
             /// <c>UnsuccessfulResponse503</c>, which means that exponential back-off is used on 503 abnormal HTTP
             /// response.
-            /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
+            /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
             /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
             /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
             /// implementation (using <seealso cref="Google.Apis.Http.BackOffHandler"/>).
@@ -177,8 +177,8 @@ namespace Google.Apis.Services
             // Add authenticator initializer to intercept a request and add the "Authorization" header and also handle
             // abnormal 401 responses in case the authenticator is an instance of unsuccessful response handler.
             args.Initializers.Add(new AuthenticatorMessageHandlerInitializer(Authenticator));
-            
-            var httpClient =  factory.CreateHttpClient(args);
+
+            var httpClient = factory.CreateHttpClient(args);
             if (initializer.MaxUrlLength > 0)
             {
                 httpClient.MessageHandler.ExecuteInterceptors.Add(

@@ -78,6 +78,7 @@
     <Compile Include="OAuth2\GoogleWebAuthenticationBroker.cs" />
     <Compile Include="OAuth2\LocalServerCodeReceiver.cs" />
     <Compile Include="OAuth2\PromptCodeReceiver.cs" />
+    <Compile Include="OAuth2\ServiceAccountCredential.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

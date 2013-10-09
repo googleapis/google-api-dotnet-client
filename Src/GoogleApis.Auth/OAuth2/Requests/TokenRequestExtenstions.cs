@@ -18,13 +18,12 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Requests.Parameters;
 using Google.Apis.Util;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Requests
 {
     /// <summary>
     /// Extension methods to <seealso cref="Google.Apis.Auth.OAuth2.Requests.ToeknRequest"/>.
@@ -42,7 +41,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <param name="clock">The clock which is used to set the <seealso cref="Clock.Issued"/> property.</param>
         /// <returns>Token response with the new access token.</returns>
-        public static async Task<TokenResponse> Execute(this TokenRequest request, HttpClient httpClient,
+        public static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
             string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock)
         {
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, tokenServerUrl);

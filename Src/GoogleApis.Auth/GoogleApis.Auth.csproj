@@ -38,16 +38,17 @@
   <ItemGroup>
     <Compile Include="JsonWebSignature.cs" />
     <Compile Include="JsonWebToken.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeWebApp.cs" />
+    <Compile Include="OAuth2\Web\AuthorizationCodeWebApp.cs" />
     <Compile Include="GoogleJsonWebSignature.cs" />
-    <Compile Include="OAuth2\IAuthorizationCodeFlow.cs" />
+    <Compile Include="OAuth2\Web\AuthWebUtility.cs" />
+    <Compile Include="OAuth2\Flows\IAuthorizationCodeFlow.cs" />
     <Compile Include="OAuth2\AuthorizationCodeInstalledApp.cs" />
     <Compile Include="OAuth2\BearerToken.cs" />
-    <Compile Include="OAuth2\TokenRequestExtenstions.cs" />
+    <Compile Include="OAuth2\Requests\TokenRequestExtenstions.cs" />
     <Compile Include="OAuth2\UserCredential.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeFlow.cs" />
+    <Compile Include="OAuth2\Flows\AuthorizationCodeFlow.cs" />
     <Compile Include="OAuth2\ClientSecrets.cs" />
-    <Compile Include="OAuth2\GoogleAuthorizationCodeFlow.cs" />
+    <Compile Include="OAuth2\Flows\GoogleAuthorizationCodeFlow.cs" />
     <Compile Include="OAuth2\IAccessMethod.cs" />
     <Compile Include="OAuth2\IAuthorizationCodeInstalledApp.cs" />
     <Compile Include="OAuth2\ICodeReceiver.cs" />

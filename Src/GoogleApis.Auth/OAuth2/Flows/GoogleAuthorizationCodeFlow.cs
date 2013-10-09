@@ -18,7 +18,7 @@ using System;
 
 using Google.Apis.Auth.OAuth2.Requests;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>
     /// Google specific authorization code flow which inherits from <seealso cref="AuthorizationCodeFlow"/>.
