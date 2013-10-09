@@ -17,6 +17,8 @@ limitations under the License.
 using System.Threading;
 using System.Threading.Tasks;
 
+using Google.Apis.Auth.OAuth2.Flows;
+
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
@@ -34,6 +36,6 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
         /// <returns>The user's credential</returns>
-        Task<UserCredential> Authorize(string userId, CancellationToken taskCancellationToken);
+        Task<UserCredential> AuthorizeAsync(string userId, CancellationToken taskCancellationToken);
     }
 }

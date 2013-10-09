@@ -48,7 +48,7 @@ namespace Google.Apis.Util.Store
         }
 
         /// <summary>
-        /// Stores the given value for the given key. It creates a new file (named <see cref="GetStoredKey"/>) in 
+        /// Stores the given value for the given key. It creates a new file (named <see cref="GenerateStoredKey"/>) in 
         /// <see cref="FolderPath"/>.
         /// </summary>
         /// <typeparam name="T">The type to store in the data store</typeparam>
@@ -62,13 +62,13 @@ namespace Google.Apis.Util.Store
             }
 
             var serialized = NewtonsoftJsonSerializer.Instance.Serialize(value);
-            var filePath = Path.Combine(folderPath, GetStoredKey(key, typeof(T)));
+            var filePath = Path.Combine(folderPath, GenerateStoredKey(key, typeof(T)));
             File.WriteAllText(filePath, serialized);
             return TaskEx.Delay(0);
         }
 
         /// <summary>
-        /// Deletes the given key. It deletes the <see cref="GetStoredKey"/> named file in <see cref="FolderPath"/>.
+        /// Deletes the given key. It deletes the <see cref="GenerateStoredKey"/> named file in <see cref="FolderPath"/>.
         /// </summary>
         /// <param name="key">The key to delete from the data store</param>
         public Task DeleteAsync<T>(string key)
@@ -78,7 +78,7 @@ namespace Google.Apis.Util.Store
                 throw new ArgumentException("Key MUST have a value");
             }
 
-            var filePath = Path.Combine(folderPath, GetStoredKey(key, typeof(T)));
+            var filePath = Path.Combine(folderPath, GenerateStoredKey(key, typeof(T)));
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -87,7 +87,7 @@ namespace Google.Apis.Util.Store
         }
 
         /// <summary>
-        /// Returns the stored value for the given key or <c>null</c> if the matching file (<see cref="GetStoredKey"/>
+        /// Returns the stored value for the given key or <c>null</c> if the matching file (<see cref="GenerateStoredKey"/>
         /// in <see cref="FolderPath"/> doesn't exist.
         /// </summary>
         /// <typeparam name="T">The type to retrieve</typeparam>
@@ -101,7 +101,7 @@ namespace Google.Apis.Util.Store
             }
 
             TaskCompletionSource<T> tcs = new TaskCompletionSource<T>();
-            var filePath = Path.Combine(folderPath, GetStoredKey(key, typeof(T)));
+            var filePath = Path.Combine(folderPath, GenerateStoredKey(key, typeof(T)));
             if (File.Exists(filePath))
             {
                 try
@@ -138,7 +138,7 @@ namespace Google.Apis.Util.Store
         /// <summary>Creates a unique stored key based on the key and the class type.</summary>
         /// <param name="key">The object key</param>
         /// <param name="t">The type to store or retrieve</param>
-        public static string GetStoredKey(string key, Type t)
+        public static string GenerateStoredKey(string key, Type t)
         {
             return string.Format("{0}-{1}", t.FullName, key);
         }

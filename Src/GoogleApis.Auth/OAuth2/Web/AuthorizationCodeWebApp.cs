@@ -18,9 +18,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Web
 {
     /// <summary>
     /// Thread safe OAuth 2.0 authorization code flow for a web application that persists end-user credentials.
@@ -82,19 +83,19 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public AuthorizationCodeWebApp(IAuthorizationCodeFlow flow, string redirectUri, string state)
         {
-            // TODO(peleyal): should we provide a way to disable to random number in the end of the state parameter?
+            // TODO(peleyal): Provide a way to disable to random number in the end of the state parameter.
             this.flow = flow;
             this.redirectUri = redirectUri;
             this.state = state;
         }
 
-        /// <summary>Authorizes the web application to access user's protected data.</summary>
+        /// <summary>Asynchronously authorizes the web application to access user's protected data.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
         /// <returns>
         /// Auth result object which contains the user's credential or redirect URI for the authorization server
         /// </returns>
-        public async Task<AuthResult> Authorize(string userId, CancellationToken taskCancellationToken)
+        public async Task<AuthResult> AuthorizeAsync(string userId, CancellationToken taskCancellationToken)
         {
             // Try to load a token from the data store.
             var token = await Flow.LoadTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);

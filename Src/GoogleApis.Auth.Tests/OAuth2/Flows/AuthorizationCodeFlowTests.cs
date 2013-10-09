@@ -34,7 +34,7 @@ using Google.Apis.Tests;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.AuthorizationCodeFlow"/>.</summary>
     [TestFixture]

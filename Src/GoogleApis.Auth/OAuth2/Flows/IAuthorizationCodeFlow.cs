@@ -23,7 +23,7 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>OAuth 2.0 authorization code flow that manages and persists end-user credentials.</summary>
     public interface IAuthorizationCodeFlow : IDisposable

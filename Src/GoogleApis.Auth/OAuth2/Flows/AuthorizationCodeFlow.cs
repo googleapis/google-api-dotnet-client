@@ -29,7 +29,7 @@ using Google.Apis.Util;
 using Google.Apis.Util.Store;
 using Google.Apis.Testing;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>
     /// Thread-safe OAuth 2.0 authorization code flow that manages and persists end-user credentials.
@@ -290,7 +290,8 @@ namespace Google.Apis.Auth.OAuth2
             TokenResponseException tokenException = null;
             try
             {
-                var tokenResponse = await request.Execute(httpClient, TokenServerUrl, taskCancellationToken, Clock);
+                var tokenResponse = await request.ExecuteAsync
+                    (httpClient, TokenServerUrl, taskCancellationToken, Clock).ConfigureAwait(false);
                 return tokenResponse;
             }
             catch (TokenResponseException ex)
@@ -299,7 +300,7 @@ namespace Google.Apis.Auth.OAuth2
                 // the data store.
                 tokenException = ex;
             }
-            await DeleteTokenAsync(userId, taskCancellationToken);
+            await DeleteTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);
             throw tokenException;
         }
 

@@ -19,6 +19,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Util.Store;
 
 namespace Google.Apis.Auth.OAuth2
@@ -97,7 +98,7 @@ namespace Google.Apis.Auth.OAuth2
             var flow = new GoogleAuthorizationCodeFlow(initializer);
 
             // Create authorization code installed app instance and authorize the user.
-            return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver()).Authorize
+            return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver()).AuthorizeAsync
                 (user, taskCancellationToken);
         }
     }
