@@ -91,13 +91,13 @@ namespace Google.Apis.Http
 
         /// <summary>
         /// Gets a delegate function which indicates if this back-off handler should handle an abnormal HTTP response. 
-        /// The default is <see cref="DefaultHandleUnsuccessfulResponseFunc"/>. 
+        /// The default is <see cref="Initializer.DefaultHandleUnsuccessfulResponseFunc"/>. 
         /// </summary>
         public Func<HttpResponseMessage, bool> HandleUnsuccessfulResponseFunc { get; private set; }
 
         /// <summary>
         /// Gets a delegate function which indicates if this back-off handler should handle an exception. The 
-        /// default is <see cref="DefaultHandleExceptionFunc"/>. 
+        /// default is <see cref="Initializer.DefaultHandleExceptionFunc"/>. 
         /// </summary>
         public Func<Exception, bool> HandleExceptionFunc { get; private set; }
 

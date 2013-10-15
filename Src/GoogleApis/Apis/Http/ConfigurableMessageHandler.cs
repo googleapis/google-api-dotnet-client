@@ -92,6 +92,12 @@ namespace Google.Apis.Http
         /// <see cref="IHttpUnsuccessfulResponseHandler"/> or <see cref="IHttpExceptionHandler"/> which handles the
         /// abnormal HTTP response or exception, before being terminated. 
         /// Set <c>1</c> for not retrying requests. The default value is <c>3</c>".
+        /// <remarks>
+        /// The number of allowed redirects (3xx) is defined by <seealso cref="NumRedirects"/>. This property defines
+        /// only the allowed tries for >=400 responses, or when an exception is thrown. For example if you set 
+        /// <see cref="NumTries"/> to 1 and <see cref="NumRedirects"/> to 5, the library will send up to five redirect
+        /// requests, but will not send any retry requests due to an error HTTP status code.
+        /// </remarks>
         /// </summary>
         public int NumTries
         {
@@ -103,6 +109,26 @@ namespace Google.Apis.Http
                     throw new ArgumentOutOfRangeException("NumTries");
                 }
                 numTries = value;
+            }
+        }
+
+        /// <summary> Number of redirects allowed. Default is <c>10</c>. </summary>
+        private int numRedirects = 10;
+
+        /// <summary> 
+        /// Gets or sets the number of redirects that will be allowed to execute. The default value is <c>10</c>.
+        /// See <see cref="NumTries"/> for more information.
+        /// </summary>
+        public int NumRedirects
+        {
+            get { return numRedirects; }
+            set
+            {
+                if (value > MaxAllowedNumTries || value < 1)
+                {
+                    throw new ArgumentOutOfRangeException("NumRedirects");
+                }
+                numRedirects = value;
             }
         }
 
@@ -138,6 +164,8 @@ namespace Google.Apis.Http
             var loggable = IsLoggingEnabled && Logger.IsDebugEnabled;
 
             int triesRemaining = NumTries;
+            int redirectRemaining = NumRedirects;
+
             Exception lastException = null;
 
             // Set User-Agent header.
@@ -175,7 +203,10 @@ namespace Google.Apis.Http
                 }
 
                 // Decrease the number of retries.
-                triesRemaining--;
+                if (response == null || (int)response.StatusCode >= 400)
+                {
+                    triesRemaining--;
+                }
 
                 // Exception was thrown, try to handle it.
                 if (response == null)
@@ -233,8 +264,13 @@ namespace Google.Apis.Http
 
                         if (!errorHandled)
                         {
-                            if (HandleRedirect(response))
+                            if (FollowRedirect && HandleRedirect(response))
                             {
+                                if (redirectRemaining-- == 0)
+                                {
+                                    triesRemaining = 0;
+                                }
+
                                 errorHandled = true;
                                 if (loggable)
                                 {
@@ -288,7 +324,7 @@ namespace Google.Apis.Http
         {
             // TODO(peleyal): think if it's better to move that code to RedirectUnsucessfulResponseHandler
             var uri = message.Headers.Location;
-            if (!message.IsRedirectStatusCode() || !FollowRedirect || uri == null)
+            if (!message.IsRedirectStatusCode() || uri == null)
             {
                 return false;
             }

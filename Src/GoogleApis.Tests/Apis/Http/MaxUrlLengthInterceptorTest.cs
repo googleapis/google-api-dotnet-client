@@ -32,7 +32,8 @@ namespace Google.Apis.Tests.Apis.Http
 {
     /// <summary>
     /// Tests for <seealso cref="MaxUrlLengthInterceptor"/>. 
-    /// For the default case, <see cref="BaseClientServiceTest.TestGetWithUrlTooLongByDefault"/>.
+    /// For the default case, 
+    /// <seealso cref="Google.Apis.Tests.Apis.Services.BaseClientServiceTest.TestGetWithUrlTooLongByDefault"/>.
     /// </summary>
     class MaxUrlLengthInterceptorTest
     {
