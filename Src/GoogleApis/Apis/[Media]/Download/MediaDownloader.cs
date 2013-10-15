@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Linq;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -164,7 +165,26 @@ namespace Google.Apis.Download
                 throw new ArgumentException("stream doesn't support write operations");
             }
 
-            var builder = new RequestBuilder() { BaseUri = new Uri(url) };
+            RequestBuilder builder = null;
+
+            var uri = new Uri(url);
+            if (string.IsNullOrEmpty(uri.Query))
+            {
+                builder = new RequestBuilder() { BaseUri = new Uri(url) };
+            }
+            else
+            {
+                builder = new RequestBuilder() { BaseUri = new Uri(url.Substring(0, url.IndexOf("?"))) };
+                // Remove '?' at the beginning.
+                var query = uri.Query.Substring(1);
+                var pairs = from parameter in query.Split('&')
+                            select parameter.Split('=');
+                // Add each query parameter. each pair contains the key [0] and then its value [1].
+                foreach (var p in pairs)
+                {
+                    builder.AddParameter(RequestParameterType.Query, p[0], p[1]);
+                }
+            }
             builder.AddParameter(RequestParameterType.Query, "alt", "media");
 
             long currentRequestFirstBytePos = 0;
@@ -192,8 +212,20 @@ namespace Google.Apis.Download
 
                         // Read the headers and check if all the media content was already downloaded.
                         var contentRange = response.Content.Headers.ContentRange;
-                        currentRequestFirstBytePos = contentRange.To.Value + 1;
-                        long mediaContentLength = contentRange.Length.Value;
+                        long mediaContentLength;
+
+                        if (contentRange == null)
+                        {
+                            // Content range is null when the server doesn't adhere the media download protocol, in 
+                            // that case we got all the media in one chunk.
+                            currentRequestFirstBytePos = mediaContentLength =
+                                response.Content.Headers.ContentLength.Value;
+                        }
+                        else
+                        {
+                            currentRequestFirstBytePos = contentRange.To.Value + 1;
+                            mediaContentLength = contentRange.Length.Value;
+                        }
 
                         if (currentRequestFirstBytePos == mediaContentLength)
                         {

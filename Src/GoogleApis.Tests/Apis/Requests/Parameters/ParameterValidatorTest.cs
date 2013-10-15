@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 using NUnit.Framework;
 
 using Google.Apis.Discovery;
@@ -22,7 +21,7 @@ using Google.Apis.Requests.Parameters;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary>Tests <see cref="Google.Apis.Requests.ParameterValidator"/>.</summary>
+    /// <summary>Tests <seealso cref="Google.Apis.Requests.Parameters.ParameterValidator"/>.</summary>
     [TestFixture]
     public class ParameterValidatorTest
     {

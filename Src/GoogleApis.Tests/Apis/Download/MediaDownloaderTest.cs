@@ -124,6 +124,13 @@ namespace Google.Apis.Tests.Apis.Download
             Subtest_Download_Chunks(100);
         }
 
+        /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
+        [Test]
+        public void Download_SingleChunk_UriContainsQueryParameters()
+        {
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a=1&b=2");
+        }
+
         /// <summary>
         /// Tests that download asynchronously works in case the server returns multiple chunks to the client.
         /// </summary>
@@ -145,7 +152,6 @@ namespace Google.Apis.Tests.Apis.Download
             Subtest_Download_Chunks(100, false);
         }
 
-
         /// <summary>
         /// Tests that download asynchronously doesn't succeeded in case a download was cancelled "in the middle".
         /// </summary>
@@ -160,15 +166,17 @@ namespace Google.Apis.Tests.Apis.Download
         /// <param name="chunkSize">The chunk size for each part.</param>
         /// <param name="sync">Indicates if this download should be synchronously or asynchronously.</param>
         /// <param name="cancelRequest">Defines the request index to cancel the download request.</param>
-        private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelRequest = 0)
+        /// <param name="downloadUri">The URI which contains the media to download.</param>
+        private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelRequest = 0,
+            string downloadUri = "http://www.sample.com")
         {
             // reset the steam
             StreamContent.Position = 0;
 
-            string downloadUri = "http://www.sample.com";
             var handler = new MultipleChunksMessageHandler();
             handler.ChunkSize = chunkSize;
-            handler.DownloadUri = new Uri(downloadUri + "?alt=media");
+            handler.DownloadUri = new Uri(downloadUri +
+                (downloadUri.Contains("?") ? "&" : "?") + "alt=media");
 
             // support cancellation
             if (cancelRequest > 0)

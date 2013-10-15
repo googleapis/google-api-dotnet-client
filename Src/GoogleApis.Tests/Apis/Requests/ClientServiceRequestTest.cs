@@ -37,7 +37,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
-    /// <summary>Tests for the <see cref="Google.Apis.Requests.ClientServiceRequest"/>.</summary>
+    /// <summary>Tests for the <seealso cref="Google.Apis.Requests.ClientServiceRequest"/>.</summary>
     [TestFixture]
     public class ClientServiceRequestTest
     {
@@ -398,17 +398,17 @@ namespace Google.Apis.Tests.Apis.Requests
                     {
                         // We expect a task canceled exception in case the canceled request is less or equal total
                         // number of retries.
-                        Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
+                        Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumRedirects + 1);
                     }
                     else
                     {
                         // Canceled exception wasn't thrown, in that case the cancel request number is bigger than
                         // the actual number of tries.
-                        Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries);
+                        Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries + 1);
                     }
                 }
 
-                var expectedCalls = Math.Min(service.HttpClient.MessageHandler.NumTries, cancelRequestNum);
+                var expectedCalls = Math.Min(service.HttpClient.MessageHandler.NumRedirects + 1, cancelRequestNum);
                 Assert.That(handler.Calls, Is.EqualTo(expectedCalls));
             }
         }

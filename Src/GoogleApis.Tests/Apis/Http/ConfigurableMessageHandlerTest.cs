@@ -118,9 +118,10 @@ namespace Google.Apis.Tests.Apis.Http
             var location = "https://google.com";
             var redirectHandler = new RedirectMessageHandler(location);
             var configurableHanlder = new ConfigurableMessageHandler(redirectHandler)
-                {
-                    NumTries = 8
-                };
+            {
+                NumRedirects = 5
+            };
+
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, location);
@@ -132,8 +133,9 @@ namespace Google.Apis.Tests.Apis.Http
                 HttpResponseMessage response = client.SendAsync(request).Result;
 
                 Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Redirect));
-                Assert.That(response.Headers.Location, Is.EqualTo(new Uri(location + configurableHanlder.NumTries)));
-                Assert.That(redirectHandler.Calls, Is.EqualTo(configurableHanlder.NumTries));
+                Assert.That(response.Headers.Location, Is.EqualTo(
+                    new Uri(location + (configurableHanlder.NumRedirects + 1))));
+                Assert.That(redirectHandler.Calls, Is.EqualTo(configurableHanlder.NumRedirects + 1));
             }
         }
 
@@ -147,10 +149,11 @@ namespace Google.Apis.Tests.Apis.Http
             var location = "https://google.com";
             var redirectHandler = new RedirectMessageHandler(location);
             var configurableHanlder = new ConfigurableMessageHandler(redirectHandler)
-                {
-                    NumTries = tries,
-                    FollowRedirect = false
-                };
+            {
+                NumRedirects = tries,
+                FollowRedirect = false
+            };
+
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, location);
