@@ -162,6 +162,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
                     clientSecrets = GoogleClientSecrets.Load(initializer.ClientSecretsStream).Secrets;
                 }
             }
+            else if (initializer.ClientSecretsStream != null)
+            {
+                throw new ArgumentException(
+                    "You CAN'T set both ClientSecrets AND ClientSecretStream on the initializer");
+            }
 
             accessMethod = initializer.AccessMethod.ThrowIfNull("Initializer.AccessMethod");
             clock = initializer.Clock.ThrowIfNull("Initializer.Clock");

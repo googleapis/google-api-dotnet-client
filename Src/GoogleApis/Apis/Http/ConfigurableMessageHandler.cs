@@ -112,7 +112,7 @@ namespace Google.Apis.Http
             }
         }
 
-        /// <summary> Number of redirects allowed. Default is <c>10</c>. </summary>
+        /// <summary>Number of redirects allowed. Default is <c>10</c>.</summary>
         private int numRedirects = 10;
 
         /// <summary> 
@@ -203,7 +203,7 @@ namespace Google.Apis.Http
                 }
 
                 // Decrease the number of retries.
-                if (response == null || (int)response.StatusCode >= 400)
+                if (response == null || ((int)response.StatusCode >= 400 || (int)response.StatusCode < 200))
                 {
                     triesRemaining--;
                 }

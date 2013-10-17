@@ -15,20 +15,19 @@ limitations under the License.
 */
 
 using System.IO;
+
 using Newtonsoft.Json;
 
 namespace Google.Apis.Json
 {
-    /// <summary>
-    /// Class for serialization and deserialization of Json documents using the Newtonsoft Library.
-    /// </summary>
+    /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
         private static readonly JsonSerializer newtonsoftSerializer;
 
         private static NewtonsoftJsonSerializer instance;
 
-        /// <summary> A singleton instance of the Newtonsoft Json Serializer. </summary>
+        /// <summary>A singleton instance of the Newtonsoft JSON Serializer.</summary>
         public static NewtonsoftJsonSerializer Instance
         {
             get
@@ -39,7 +38,7 @@ namespace Google.Apis.Json
 
         static NewtonsoftJsonSerializer()
         {
-            // Initialize the Newtonsoft serializer
+            // Initialize the Newtonsoft serializer.
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
             newtonsoftSerializer = JsonSerializer.Create(settings);
@@ -54,6 +53,10 @@ namespace Google.Apis.Json
         {
             using (var writer = new StreamWriter(target))
             {
+                if (obj == null)
+                {
+                    obj = string.Empty;
+                }
                 newtonsoftSerializer.Serialize(writer, obj);
             }
         }
@@ -62,6 +65,10 @@ namespace Google.Apis.Json
         {
             using (TextWriter tw = new StringWriter())
             {
+                if (obj == null)
+                {
+                    obj = string.Empty;
+                }
                 newtonsoftSerializer.Serialize(tw, obj);
                 return tw.ToString();
             }
@@ -69,12 +76,16 @@ namespace Google.Apis.Json
 
         public T Deserialize<T>(string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return default(T);
+            }
             return JsonConvert.DeserializeObject<T>(input);
         }
 
         public T Deserialize<T>(Stream input)
         {
-            // Convert the json document into an objct
+            // Convert the JSON document into an object.
             using (StreamReader streamReader = new StreamReader(input))
             {
                 return (T)newtonsoftSerializer.Deserialize(streamReader, typeof(T));

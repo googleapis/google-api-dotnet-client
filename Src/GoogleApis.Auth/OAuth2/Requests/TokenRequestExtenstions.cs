@@ -25,9 +25,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
-    /// <summary>
-    /// Extension methods to <seealso cref="Google.Apis.Auth.OAuth2.Requests.ToeknRequest"/>.
-    /// </summary>
+    /// <summary>Extension methods to <seealso cref="TokenRequest"/>.</summary>
     internal static class TokenRequestExtenstions
     {
         /// <summary>
@@ -39,7 +37,9 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <param name="httpClient">The HTTP client used to create an HTTP request.</param>
         /// <param name="tokenServerUrl">The token server URL.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
-        /// <param name="clock">The clock which is used to set the <seealso cref="Clock.Issued"/> property.</param>
+        /// <param name="clock">
+        /// The clock which is used to set the <seealso cref="TokenResponse.Issued"/> property.
+        /// </param>
         /// <returns>Token response with the new access token.</returns>
         public static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,
             string tokenServerUrl, CancellationToken taskCancellationToken, IClock clock)

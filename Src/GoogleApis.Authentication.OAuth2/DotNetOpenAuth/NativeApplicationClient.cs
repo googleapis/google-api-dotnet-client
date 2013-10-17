@@ -24,6 +24,9 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// The OAuth2 client for use by native applications. This is a partial implementation which 
     /// should be used until the feature has been fully implemented in DotNetOpenAuth.
     /// </summary>
+    [Obsolete("NativeApplicationClient is not supported any more and it's going to be removed in 1.7.0-beta. " +
+            "Consider using the new Google.Apis.Auth NuGet package which supports .NET 4, .NET for Windows" +
+            "Store apps, Windows Phone 7.5 and 8 and Portable Class Libraries as well")]
     public class NativeApplicationClient : UserAgentClient
     {
         /// <summary>
@@ -44,7 +47,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
                                        string clientSecret)
             : base(authorizationServer, clientIdentifier, clientSecret) { }
 
-        // <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="UserAgentClient"/> class.
         /// </summary>
         /// <param name="authorizationServer">The token issuer.</param>
