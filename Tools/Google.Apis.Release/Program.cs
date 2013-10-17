@@ -127,7 +127,7 @@ namespace Google.Apis.Release
                     "Google.Apis.VERSION.nuspec", 
                     "Google.Apis.Authentication.VERSION.nuspec", 
                     "Google.Apis.Auth.VERSION.nuspec", 
-                    "Google.Apis.Auth.Mvc4.VERSION.nuspec"
+                    "Google.Apis.Auth.Mvc.VERSION.nuspec"
                 };
             }
         }
