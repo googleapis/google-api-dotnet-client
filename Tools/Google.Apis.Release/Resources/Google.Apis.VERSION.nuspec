@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis</id>
@@ -10,18 +10,18 @@
         <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-            The Google APIs Client Library is a runtime client for working with Google Services.
-            The library supports service requests, media upload and download, etc.
+          The Google APIs Client Library is a runtime client for working with Google Services.
+          The library supports service requests, media upload and download, etc.
 
-            Supported Platforms:
+          Supported Platforms:
+          
+          - .NET Framework 4
 
-            - Windows Store apps
+          - Windows Store apps
 
-            - Windows Phone 7.5 and 8
+          - Windows Phone 7.5 and 8
 
-            - Silverlight 4 and 5
-
-            - Portable Class Libraries
+          - Portable Class Libraries
         </description>
         <tags>Google</tags>
         <dependencies>
@@ -45,15 +45,31 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\net40\Google.Apis.dll" />
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\net40\Google.Apis.pdb" />
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\net40\Google.Apis.xml" />
-        <file src="default\Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.dll" target="lib\net40\Google.Apis.PlatformServices.dll" />
-        <file src="default\Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\net40\Google.Apis.PlatformServices.pdb" />
-        <file src="default\Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.xml" target="lib\net40\Google.Apis.PlatformServices.xml" />
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.dll" />
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.pdb" />
-        <file src="default\Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.xml" />
-        <file src="Resources\License.txt" target="License.txt" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\net40\Google.Apis.dll" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\net40\Google.Apis.pdb" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\net40\Google.Apis.xml" />
+      <file src="Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.dll" target="lib\net40\Google.Apis.PlatformServices.dll" />
+      <file src="Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\net40\Google.Apis.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.DotNet4\bin\Release\Google.Apis.PlatformServices.xml" target="lib\net40\Google.Apis.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\netcore45\Google.Apis.dll" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\netcore45\Google.Apis.pdb" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\netcore45\Google.Apis.xml" />
+      <file src="Src\GoogleApis.WinRT\bin\Release\Google.Apis.PlatformServices.dll" target="lib\netcore45\Google.Apis.PlatformServices.dll" />
+      <file src="Src\GoogleApis.WinRT\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\netcore45\Google.Apis.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.WinRT\bin\Release\Google.Apis.PlatformServices.xml" target="lib\netcore45\Google.Apis.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\wp8\Google.Apis.dll" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\wp8\Google.Apis.pdb" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\wp8\Google.Apis.xml" />
+      <file src="Src\GoogleApis.WP\bin\Release\Google.Apis.PlatformServices.dll" target="lib\wp8\Google.Apis.PlatformServices.dll" />
+      <file src="Src\GoogleApis.WP\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\wp8\Google.Apis.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.WP\bin\Release\Google.Apis.PlatformServices.xml" target="lib\wp8\Google.Apis.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.dll" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.pdb" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.xml" />
+      
+      <file src="Resources\License.txt" target="License.txt" />
     </files>
 </package>

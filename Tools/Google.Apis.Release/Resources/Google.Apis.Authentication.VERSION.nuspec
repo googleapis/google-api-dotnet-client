@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Authentication</id>
@@ -10,8 +10,9 @@
         <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-            The Google APIs Client Library is a runtime client for working with Google Services.
-            This pakcage includes component for making authenticated calls using the OAuth2 spec.
+          [OBSOLETE] Please install Google.Apis.Auth instead.
+          The Google APIs Client Library is a runtime client for working with Google Services.
+          This package includes component for making authenticated calls using the OAuth2 spec.
         </description>
         <tags>Google</tags>
         <dependencies>
@@ -19,11 +20,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="default\ThirdParty\DotNetOpenAuth.dll" target="lib\net40\DotNetOpenAuth.dll" />
-        <file src="default\ThirdParty\DotNetOpenAuth.LICENSE" target="DotNetOpenAuth.LICENSE" />
-        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.dll" target="lib\net40\Google.Apis.Authentication.OAuth2.dll" />
-        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.pdb" target="lib\net40\Google.Apis.Authentication.OAuth2.pdb" />
-        <file src="default\Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.xml" target="lib\net40\Google.Apis.Authentication.OAuth2.xml" />
+        <file src="ThirdParty\DotNetOpenAuth.dll" target="lib\net40\DotNetOpenAuth.dll" />
+        <file src="ThirdParty\DotNetOpenAuth.LICENSE" target="DotNetOpenAuth.LICENSE" />
+        <file src="Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.dll" target="lib\net40\Google.Apis.Authentication.OAuth2.dll" />
+        <file src="Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.pdb" target="lib\net40\Google.Apis.Authentication.OAuth2.pdb" />
+        <file src="Src\GoogleApis.Authentication.OAuth2\bin\Release\Google.Apis.Authentication.OAuth2.xml" target="lib\net40\Google.Apis.Authentication.OAuth2.xml" />
+      
         <file src="Resources\License.txt" target="License.txt" />
     </files>
 </package>

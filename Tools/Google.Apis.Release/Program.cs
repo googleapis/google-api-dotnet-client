@@ -53,6 +53,7 @@ namespace Google.Apis.Release
                 "'2' for compiling samples, updating wiki and push to contrib the new version.";
             const string IsBetaHelpText = "Is this release beta?";
             const string NuGetApiKeyHelpText = "Define the NuGet API key to publish to NuGet main repository.";
+            const string IsLocalHelpText = "Define if current default repository will be used.";
 
             [HelpOption]
             public string GetHelp()
@@ -65,8 +66,11 @@ namespace Google.Apis.Release
             [Option('v', "version", Required = true, HelpText = VersionHelpText)]
             public string Version { get; set; }
 
-            [Option('d', "dir", Required = true, HelpText = OutputHelpText)]
+            [Option('d', "dir", HelpText = OutputHelpText)]
             public string OutputDirectory { get; set; }
+
+            [Option('l', "local", DefaultValue = false, HelpText = IsLocalHelpText)]
+            public bool IsLocal { get; set; }
 
             [Option('s', "step", Required = true, HelpText = StepHelpText)]
             public int Step { get; set; }
@@ -82,6 +86,9 @@ namespace Google.Apis.Release
 
         /// <summary>Command line arguments.</summary>
         private readonly Options options;
+
+        /// <summary>The current repository (default) relative path.</summary>
+        private readonly string LocalRepositoryRelativePath = "..\\..\\..\\..\\";
 
         private int MajorVersion { get; set; }
         private int MinorVersion { get; set; }
@@ -132,6 +139,24 @@ namespace Google.Apis.Release
                 TraceSource.TraceEvent(TraceEventType.Error, "Invalid Step. Valid step is '1' or '2'.");
                 valid = false;
             }
+            if (options.IsLocal)
+            {
+                if (options.Step == 2)
+                {
+                    TraceSource.TraceEvent(TraceEventType.Error, "You can run step 2 using your local folder only.");
+                    valid = false;
+                }
+                else
+                {
+                    TraceSource.TraceEvent(TraceEventType.Information, "Working locally!");
+                }
+            }
+            else if (string.IsNullOrEmpty(options.OutputDirectory))
+            {
+                TraceSource.TraceEvent(TraceEventType.Error, "Please specify output directory (using -d option), " +
+                    "or run locally (using -l option).");
+                valid = false;
+            }
 
             var match = Regex.Match(options.Version, @"^(\d+)\.(\d+)\.(\d)+$");
             if (!match.Success)
@@ -168,7 +193,7 @@ namespace Google.Apis.Release
         /// <summary>The main release logic for creating a new release of Google.Apis.</summary>
         private void Run()
         {
-            DefaultRepository = new Hg(new Uri(string.Format(CloneUrlFormat, "")), "default");
+            DefaultRepository = new Hg(new Uri(string.Format(CloneUrlFormat, "")), options.IsLocal ? null : "default");
 
             // Step 1 is only for creating Google.Apis and Google.Apis.Authentication packages
             if (options.Step == 1)
@@ -551,23 +576,21 @@ namespace Google.Apis.Release
 
             var newVersion = options.Version + "-beta";
 
-            // get the Google.Apis and Google.Apis.Authentication nuspec files and replace the version in it
-            var apiNuspec = Path.Combine(destDirectory, "Google.Apis.VERSION.nuspec");
-            var newApiNuspec = apiNuspec.Replace("VERSION", newVersion);
-            var authenticationNuspec = Path.Combine(destDirectory, "Google.Apis.Authentication.VERSION.nuspec");
-            var newAuthenticationNuspec = authenticationNuspec.Replace("VERSION", newVersion);
+            foreach (var nuspec in new[] { 
+                "Google.Apis.VERSION.nuspec", 
+                "Google.Apis.Authentication.VERSION.nuspec", 
+                "Google.Apis.Auth.VERSION.nuspec", 
+                "Google.Apis.Auth.Mvc4.VERSION.nuspec" })
+            {
+                var pathNuspec = Path.Combine(destDirectory, nuspec);
+                var newNuspec = pathNuspec.Replace("VERSION", newVersion);
+                File.Move(pathNuspec, newNuspec);
 
-            File.Move(apiNuspec, newApiNuspec);
-            File.Move(authenticationNuspec, newAuthenticationNuspec);
+                var allLines = File.ReadAllText(newNuspec).Replace("VERSION", newVersion);
+                File.WriteAllText(newNuspec, allLines);
 
-            var allLines = File.ReadAllText(newApiNuspec).Replace("VERSION", newVersion);
-            File.WriteAllText(newApiNuspec, allLines);
-
-            allLines = File.ReadAllText(newAuthenticationNuspec).Replace("VERSION", newVersion);
-            File.WriteAllText(newAuthenticationNuspec, allLines);
-
-            NuGetUtilities.CreateLocalNupkgFile(newApiNuspec, Environment.CurrentDirectory);
-            NuGetUtilities.CreateLocalNupkgFile(newAuthenticationNuspec, Environment.CurrentDirectory);
+                NuGetUtilities.CreateLocalNupkgFile(newNuspec, Environment.CurrentDirectory);
+            }
         }
 
         private IEnumerable<Project> releaseProjects;
@@ -584,7 +607,17 @@ namespace Google.Apis.Release
                 var releasePaths = new[] 
                 {
                     DefaultRepository.Combine("Src", "GoogleApis", "GoogleApis.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth", "GoogleApis.Auth.csproj"),
+
                     DefaultRepository.Combine("Src", "GoogleApis.DotNet4", "GoogleApis.DotNet4.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.WinRT", "GoogleApis.WinRT.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.WP", "GoogleApis.WP.csproj"),
+
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth.DotNet4", "GoogleApis.Auth.DotNet4.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth.Mvc4", "GoogleApis.Auth.Mvc4.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth.WinRT", "GoogleApis.Auth.WinRT.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth.WP", "GoogleApis.Auth.WP.csproj"),
+
                     DefaultRepository.Combine("Src", "GoogleApis.Authentication.OAuth2", 
                         "GoogleApis.Authentication.OAuth2.csproj")
                 };
@@ -605,6 +638,8 @@ namespace Google.Apis.Release
                 "GoogleApis.Tests.csproj")));
             allProjects.Add(new Project(DefaultRepository.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests",
                 "GoogleApis.Authentication.OAuth2.Tests.csproj")));
+            allProjects.Add(new Project(DefaultRepository.Combine("Src", "GoogleApis.Auth.Tests",
+                "GoogleApis.Auth.Tests.csproj")));
 
             foreach (var project in allProjects)
             {
@@ -639,7 +674,9 @@ namespace Google.Apis.Release
         {
             this.options = options;
 
-            string path = Path.GetFullPath(options.OutputDirectory);
+            string path = !string.IsNullOrEmpty(options.OutputDirectory) ? Path.GetFullPath(options.OutputDirectory) :
+                  Path.Combine(Environment.CurrentDirectory, LocalRepositoryRelativePath);
+
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
