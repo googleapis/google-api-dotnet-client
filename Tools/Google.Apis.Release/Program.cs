@@ -117,6 +117,21 @@ namespace Google.Apis.Release
             get { return new List<Hg> { DefaultRepository, SamplesRepository, WikiRepository, ContribRepository }; }
         }
 
+        /// <summary>Gets all Nuspec packages.</summary>
+        private IEnumerable<string> NuspecPackages
+        {
+            get
+            {
+                return new[] 
+                {
+                    "Google.Apis.VERSION.nuspec", 
+                    "Google.Apis.Authentication.VERSION.nuspec", 
+                    "Google.Apis.Auth.VERSION.nuspec", 
+                    "Google.Apis.Auth.Mvc4.VERSION.nuspec"
+                };
+            }
+        }
+
         /// <summary>
         /// Clone URL format which expects one parameter of the repository name (the default repository should be 
         /// empty).
@@ -195,7 +210,7 @@ namespace Google.Apis.Release
         {
             DefaultRepository = new Hg(new Uri(string.Format(CloneUrlFormat, "")), options.IsLocal ? null : "default");
 
-            // Step 1 is only for creating Google.Apis and Google.Apis.Authentication packages
+            // Step 1 is only for creating the core Google.Apis packages.
             if (options.Step == 1)
             {
                 DoStep1();
@@ -208,7 +223,7 @@ namespace Google.Apis.Release
             }
         }
 
-        /// <summary>Creates Google.Apis and Google.Apis.Authentication packages.</summary>
+        /// <summary>Creates the core Google.Apis packages.</summary>
         private void DoStep1()
         {
             if (BuildVersion != 0)
@@ -220,7 +235,7 @@ namespace Google.Apis.Release
             if (!HasIncomingChanges(new List<Hg> { DefaultRepository }))
             {
                 // in case build fails the method will print its failures
-                if (BuildDefaultRepository())
+                //if (BuildDefaultRepository())
                 {
                     CreateCoreNuGetPackages();
                     // TODO(peleyal): release notes should be part of the package
@@ -325,13 +340,13 @@ namespace Google.Apis.Release
         /// <summary>Publishes the core packages to NuGet main repository.</summary>
         private void PublishPackagesToNuGet()
         {
-            var apiNupkgPath = Path.Combine(NuGetUtilities.LocalNuGetPackageFolder,
-                string.Format("Google.Apis.{0}.nupkg", Tag));
-            NuGetUtilities.PublishToNuget(apiNupkgPath, options.NuGetApiKey);
-
-            var authenticationNupkgPath = Path.Combine(NuGetUtilities.LocalNuGetPackageFolder,
-                string.Format("Google.Apis.Authentication.{0}.nupkg", Tag));
-            NuGetUtilities.PublishToNuget(authenticationNupkgPath, options.NuGetApiKey);
+            var pacakges = from nuspec in NuspecPackages
+                           select nuspec.Replace("VERSION", Tag).Replace("nuspec", "nupkg");
+            foreach (var nupkg in pacakges)
+            {
+                var nupkgPath = Path.Combine(NuGetUtilities.LocalNuGetPackageFolder, nupkg);
+                NuGetUtilities.PublishToNuget(nupkgPath, options.NuGetApiKey);
+            }
         }
 
         /// <summary>
@@ -576,11 +591,7 @@ namespace Google.Apis.Release
 
             var newVersion = options.Version + "-beta";
 
-            foreach (var nuspec in new[] { 
-                "Google.Apis.VERSION.nuspec", 
-                "Google.Apis.Authentication.VERSION.nuspec", 
-                "Google.Apis.Auth.VERSION.nuspec", 
-                "Google.Apis.Auth.Mvc4.VERSION.nuspec" })
+            foreach (var nuspec in NuspecPackages)
             {
                 var pathNuspec = Path.Combine(destDirectory, nuspec);
                 var newNuspec = pathNuspec.Replace("VERSION", newVersion);
