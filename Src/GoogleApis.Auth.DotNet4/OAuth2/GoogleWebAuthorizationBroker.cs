@@ -25,12 +25,12 @@ using Google.Apis.Util.Store;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>A helper utility to manage the authorization code flow.</summary>
-    public class GoogleWebAuthenticationBroker
+    public class GoogleWebAuthorizationBroker
     {
         /// <summary>The folder which is used by the <seealso cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
         public static string Folder = "Google.Apis.Auth";
 
-        /// <summary>Asynchronously authenticates the specified user.</summary>
+        /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
         /// In case no data store is specified, <seealso cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
@@ -39,11 +39,11 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="scopes">
         /// The scopes which indicate the Google API access your application is requesting.
         /// </param>
-        /// <param name="user">The user to authenticate.</param>
+        /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        public static async Task<UserCredential> AuthenticateAsync(ClientSecrets clientSecrets,
+        public static async Task<UserCredential> AuthorizeAsync(ClientSecrets clientSecrets,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
             IDataStore dataStore = null)
         {
@@ -51,25 +51,25 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecrets = clientSecrets,
             };
-            return await AuthenticateAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
         }
 
-        /// <summary>Asynchronously authenticates the specified user.</summary>
+        /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
         /// In case no data store is specified, <seealso cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
         /// </remarks>
         /// <param name="clientSecretsStream">
         /// The client secrets stream. The authorization code flow constructor is responsible for disposing the stream.
-        /// </remarks>
+        /// </param>
         /// <param name="scopes">
         /// The scopes which indicate the Google API access your application is requesting.
         /// </param>
-        /// <param name="user">The user to authenticate.</param>
+        /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        public static async Task<UserCredential> AuthenticateAsync(Stream clientSecretsStream,
+        public static async Task<UserCredential> AuthorizeAsync(Stream clientSecretsStream,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
             IDataStore dataStore = null)
         {
@@ -77,19 +77,19 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecretsStream = clientSecretsStream,
             };
-            return await AuthenticateAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
         }
 
-        /// <summary>The core logic for asynchronously authenticating the specified user.</summary>
+        /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
         /// <param name="initializer">The authorization code initializer.</param>
         /// <param name="scopes">
         /// The scopes which indicate the Google API access your application is requesting.
         /// </param>
-        /// <param name="user">The user to authenticate.</param>
+        /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthenticateAsyncCore(AuthorizationCodeFlow.Initializer initializer,
+        private static async Task<UserCredential> AuthorizeAsyncCore(AuthorizationCodeFlow.Initializer initializer,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
             IDataStore dataStore = null)
         {

@@ -100,7 +100,7 @@ namespace Google.Apis.Download
             public Exception Exception { get; private set; }
         }
 
-        /// <summary
+        /// <summary>
         /// Updates the current progress and call the <see cref="ProgressChanged"/> event to notify listeners.
         /// </summary>
         private void UpdateProgress(IDownloadProgress progress)

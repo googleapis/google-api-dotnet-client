@@ -23,6 +23,10 @@ namespace Google.Apis.Authentication
     /// Classes that implement this interface will know how 
     /// a WebRequest with the approreate authentication embed in the request.
     /// </summary>
+    [Obsolete("IAuthenticator is not supported any more and it's going to be removed in 1.7.0-beta. " +
+            "Consider using UserCredential or ServiceAccountCredential from the new Google.Apis.Auth NuGet package " +
+            "which supports .NET 4, .NET for Windows, Store apps, Windows Phone 7.5 and 8 and Portable Class " +
+            "Libraries as well")]
     public interface IAuthenticator
     {
         /// <summary>

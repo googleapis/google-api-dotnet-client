@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Gets the code receiver.</summary>
         ICodeReceiver CodeReceiver { get; }
 
-        /// <summary>Authorizes the installed application to access user's protected data.</summary>
+        /// <summary>Asynchronously authorizes the installed application to access user's protected data.</summary>
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
         /// <returns>The user's credential</returns>

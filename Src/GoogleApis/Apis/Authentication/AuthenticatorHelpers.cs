@@ -31,6 +31,10 @@ namespace Google.Apis.Authentication
     // TODO(peleyal): this class should be removed when implementing our OAuth2 library. Our future credential
     // object will implement both IHttpExecuteInterceptor and IHttpUnsuccessfulResponseHandler
     [VisibleForTestOnly]
+    [Obsolete("AuthenticatorInterceptor is not supported any more and it's going to be removed in 1.7.0-beta. " +
+            "Consider using UserCredential or ServiceAccountCredential from the new Google.Apis.Auth NuGet package " +
+            "which supports .NET 4, .NET for Windows, Store apps, Windows Phone 7.5 and 8 and Portable Class " +
+            "Libraries as well")]
     internal class AuthenticatorInterceptor : IHttpExecuteInterceptor
     {
         private IAuthenticator Authenticator { get; set; }
@@ -61,6 +65,11 @@ namespace Google.Apis.Authentication
 
     // TODO(peleyal): this class should be removed when implementing our OAuth2 library. Our future credential
     // object will implement both IHttpExecuteInterceptor and IHttpUnsuccessfulResponseHandler
+    [Obsolete("AuthenticatorMessageHandlerInitializer is not supported any more and it's going to be removed in " +
+            "1.7.0-beta. " +
+            "Consider using UserCredential or ServiceAccountCredential from the new Google.Apis.Auth NuGet package " +
+            "which supports .NET 4, .NET for Windows, Store apps, Windows Phone 7.5 and 8 and Portable Class " +
+            "Libraries as well")]
     internal class AuthenticatorMessageHandlerInitializer : IConfigurableHttpClientInitializer
     {
         private IAuthenticator Authenticator { get; set; }

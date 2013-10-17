@@ -37,7 +37,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// <summary>
     /// Assertion flow header used to generate the assertion flow message header.
     /// </summary>
-    public class AssertionFlowHeader {
+    public class AssertionFlowHeader
+    {
 
         /// <summary>
         /// Gets or sets the encryption algorithm used by the assertion flow message.
@@ -62,7 +63,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// <summary>
     /// Google assertion flow header holding Google supported values.
     /// </summary>
-    public class GoogleAssertionFlowHeader : AssertionFlowHeader {
+    public class GoogleAssertionFlowHeader : AssertionFlowHeader
+    {
 
         /// <summary>
         /// The google signing algorithm, currently RSA-SHA256
@@ -75,7 +77,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// </summary>
         public const string GoogleAssertionType = "JWT";
 
-        public GoogleAssertionFlowHeader() {
+        public GoogleAssertionFlowHeader()
+        {
             Algorithm = GoogleSigningAlgorithm;
             Type = GoogleAssertionType;
         }
@@ -85,14 +88,16 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// <summary>
     /// Assertion flow claim used to generate the assertion flow message claim.
     /// </summary>
-    public class AssertionFlowClaim {
+    public class AssertionFlowClaim
+    {
 
         /// <summary>
         /// Initializes a new instance of the
         /// <see cref="Google.Apis.Authentication.OAuth2.DotNetOpenAuth.AssertionFlowClaim"/> class.
         /// </summary>
-        public AssertionFlowClaim() {
-            IssuedAt = (long) (DateTime.UtcNow - new DateTime(1970, 01, 01, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+        public AssertionFlowClaim()
+        {
+            IssuedAt = (long)(DateTime.UtcNow - new DateTime(1970, 01, 01, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
             ExpiresAt = IssuedAt + 3600;
         }
 
@@ -103,7 +108,9 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// <param name='authorizationServer'>
         /// Authorization server description.
         /// </param>
-        public AssertionFlowClaim(AuthorizationServerDescription authorizationServer) : this() {
+        public AssertionFlowClaim(AuthorizationServerDescription authorizationServer)
+            : this()
+        {
             Audience = authorizationServer.TokenEndpoint.ToString();
         }
 
@@ -167,7 +174,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// <summary>
     /// Assertion flow message to be sent to the token endpoint.
     /// </summary>
-    public class AssertionFlowMessage : MessageBase {
+    public class AssertionFlowMessage : MessageBase
+    {
 
         /// <summary>
         /// Google supported assertion type 
@@ -183,7 +191,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// Authorization server description.
         /// </param>
         public AssertionFlowMessage(AuthorizationServerDescription authorizationServer) :
-                base(new Version(2, 0), MessageTransport.Direct, authorizationServer.TokenEndpoint) {
+            base(new Version(2, 0), MessageTransport.Direct, authorizationServer.TokenEndpoint)
+        {
             GrantType = "assertion";
             AssertionType = GoogleAssertionType;
             this.HttpMethods = HttpDeliveryMethods.PostRequest;
@@ -196,7 +205,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// The type of the grant.
         /// </value>
         [MessagePart("grant_type", IsRequired = true)]
-        public String GrantType { get; set ;}
+        public String GrantType { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the assertion (defaults to "http://oauth.net/grant_type/jwt/1.0/bearer").
@@ -205,7 +214,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// The type of the assertion.
         /// </value>
         [MessagePart("assertion_type", IsRequired = true)]
-        public String AssertionType { get; set ;}
+        public String AssertionType { get; set; }
 
         /// <summary>
         /// Gets or sets the assertion message.
@@ -214,7 +223,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// The assertion.
         /// </value>
         [MessagePart("assertion", IsRequired = true)]
-        public String Assertion { get; set ;}
+        public String Assertion { get; set; }
 
     }
     #endregion
@@ -224,6 +233,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
     /// The OAuth2 client for use by applications using Service Accounts or other implementation of the OAuth 2.0
     /// Assertion Flow.
     /// </summary>
+    [Obsolete("AssertionFlowClient is not supported any more and it's going to be removed in 1.7.0-beta. " +
+            "Consider using ServiceAccountCredential from the new Google.Apis.Auth NuGet package.")]
     public class AssertionFlowClient : ClientBase
     {
 
@@ -238,7 +249,9 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// Certificate to use to sign the assertion flow messages.
         /// </param>
         public AssertionFlowClient(AuthorizationServerDescription authorizationServer,
-                                   X509Certificate2 certificate) : base(authorizationServer, null, null) {
+                                   X509Certificate2 certificate)
+            : base(authorizationServer, null, null)
+        {
             certificate.ThrowIfNull("certificate");
             certificate.PrivateKey.ThrowIfNull("certificate.PrivateKey");
 
@@ -246,7 +259,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             Certificate = certificate;
 
             // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24
-            RSACryptoServiceProvider rsa = (RSACryptoServiceProvider) certificate.PrivateKey;
+            RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
             byte[] privateKeyBlob = rsa.ExportCspBlob(true);
 
             Key = new RSACryptoServiceProvider();
@@ -310,9 +323,12 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             provider.Scope.ThrowIfNull("Scope");
             IAuthorizationState state = new AuthorizationState(provider.Scope.Split(' '));
 
-            if (provider.RefreshToken(state, null)) {
+            if (provider.RefreshToken(state, null))
+            {
                 return state;
-            } else {
+            }
+            else
+            {
                 return null;
             }
         }
@@ -335,7 +351,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         }
 
         public bool RefreshToken(IAuthorizationState authorization, TimeSpan? skipIfUsefulLifeExceeds,
-                                 Func<IDirectedProtocolMessage, IProtocolMessage> requestProvider) {
+                                 Func<IDirectedProtocolMessage, IProtocolMessage> requestProvider)
+        {
             authorization.ThrowIfNull("authorization");
             Certificate.ThrowIfNull("certificate");
             bool result = false;
@@ -356,15 +373,18 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             // Response is not strongly-typed to an AccessTokenSuccessResponse because DotNetOpenAuth can't infer the
             // type from the request message type. The only way to get access to the result data is through the
             // resulting Dictionary.
-            if (response.ExtraData.ContainsKey("access_token") && response.ExtraData.ContainsKey("expires_in")) {
+            if (response.ExtraData.ContainsKey("access_token") && response.ExtraData.ContainsKey("expires_in"))
+            {
                 result = true;
                 authorization.AccessToken = response.ExtraData["access_token"];
                 long expiresIn = long.Parse(response.ExtraData["expires_in"]);
                 DateTime utcNow = DateTime.UtcNow;
-                authorization.AccessTokenExpirationUtc = new DateTime? (utcNow.AddSeconds(expiresIn));
-                authorization.AccessTokenIssueDateUtc = new DateTime? (utcNow);
+                authorization.AccessTokenExpirationUtc = new DateTime?(utcNow.AddSeconds(expiresIn));
+                authorization.AccessTokenIssueDateUtc = new DateTime?(utcNow);
                 authorization.SaveChanges();
-            } else {
+            }
+            else
+            {
                 result = false;
             }
             return result;
@@ -376,9 +396,11 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// <returns>
         /// The assertion flow message.
         /// </returns>
-        private AssertionFlowMessage GenerateMessage() {
+        private AssertionFlowMessage GenerateMessage()
+        {
             String header = NewtonsoftJsonSerializer.Instance.Serialize(Header);
-            String claim = NewtonsoftJsonSerializer.Instance.Serialize(new AssertionFlowClaim(AuthorizationServer) {
+            String claim = NewtonsoftJsonSerializer.Instance.Serialize(new AssertionFlowClaim(AuthorizationServer)
+            {
                 Issuer = this.ServiceAccountId,
                 Principal = this.ServiceAccountUser,
                 Scope = this.Scope
@@ -395,7 +417,7 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
             assertion.Append(".");
             assertion.Append(signature);
 
-            return new AssertionFlowMessage (this.AuthorizationServer)
+            return new AssertionFlowMessage(this.AuthorizationServer)
             {
                 Assertion = assertion.ToString()
             };
@@ -410,7 +432,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// <param name='value'>
         /// String to encode.
         /// </param>
-        private String UnpaddedUrlSafeBase64Encode(String value) {
+        private String UnpaddedUrlSafeBase64Encode(String value)
+        {
             return UnpaddedUrlSafeBase64Encode(Encoding.UTF8.GetBytes(value));
         }
 
@@ -423,7 +446,8 @@ namespace Google.Apis.Authentication.OAuth2.DotNetOpenAuth
         /// <param name='bytes'>
         /// Bytes to encode.
         /// </param>
-        private String UnpaddedUrlSafeBase64Encode(Byte[] bytes) {
+        private String UnpaddedUrlSafeBase64Encode(Byte[] bytes)
+        {
             return Convert.ToBase64String(bytes).Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
         }
 

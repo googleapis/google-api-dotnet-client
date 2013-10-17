@@ -28,6 +28,9 @@ using Google.Apis.Util;
 namespace Google.Apis.Authentication.OAuth2
 {
     /// <summary> Implements an OAuth2 authenticator using the DotNetOpenAuth library. </summary>
+    [Obsolete("OAuth2Authenticator is not supported any more and it's going to be removed in 1.7.0-beta. " +
+            "Consider using the new Google.Apis.Auth NuGet package which supports .NET 4, .NET for Windows Store " +
+            "apps, Windows Phone 7.5 and 8 and Portable Class Libraries as well")]
     public class OAuth2Authenticator<TClient> : IAuthenticator, IHttpUnsuccessfulResponseHandler
         where TClient : ClientBase
     {
