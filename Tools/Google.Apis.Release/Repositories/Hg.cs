@@ -97,7 +97,8 @@ namespace Google.Apis.Release.Repositories
         public Hg(Uri repositoryUri, string localDir)
         {
             RepositoryUri = repositoryUri;
-            WorkingDirectory = Path.GetFullPath(localDir);
+            WorkingDirectory = string.IsNullOrEmpty(localDir) ? Environment.CurrentDirectory :
+                Path.GetFullPath(localDir);
             Name = repositoryUri.Segments.Last();
 
             if (!Directory.Exists(WorkingDirectory))

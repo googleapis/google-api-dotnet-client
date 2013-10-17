@@ -110,7 +110,7 @@ namespace Google.Apis.NuGet.Publisher
         {
             TraceSource.TraceEvent(TraceEventType.Verbose, "{0}\t start working on ...", item);
 
-            var sourceFolder = directory + item;
+            var sourceFolder = Path.Combine(directory, item.ToString());
             if (!string.IsNullOrEmpty(sourceFolder))
             {
                 var buildDirectory = await Build(sourceFolder);

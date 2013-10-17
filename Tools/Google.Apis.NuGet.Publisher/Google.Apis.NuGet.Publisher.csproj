@@ -76,7 +76,7 @@
     <None Include="packages.config" />
     <None Include="Template\.nuget\NuGet.Config" />
     <None Include="Template\.nuget\NuGet.targets" />
-    <None Include="Template\packages\Microsoft.Bcl.Build.1.0.8\tools\Microsoft.Bcl.Build.targets" />
+    <None Include="Template\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Template\.nuget\NuGet.exe" />
