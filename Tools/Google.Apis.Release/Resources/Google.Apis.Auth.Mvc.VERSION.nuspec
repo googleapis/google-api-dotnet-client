@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Auth.Mvc4</id>
+        <id>Google.Apis.Auth.Mvc</id>
         <version>VERSION</version>
         <title>Google APIs Auth MVC Extensions</title>
         <authors>Google Inc.</authors>
