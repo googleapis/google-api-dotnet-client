@@ -60,7 +60,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\Google.Apis.Auth.Mvc4.VERSION.nuspec">
+    <None Include="Resources\Google.Apis.Auth.Mvc.VERSION.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Google.Apis.Auth.VERSION.nuspec">
