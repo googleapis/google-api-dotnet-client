@@ -45,7 +45,23 @@ namespace Google.Apis.Auth.OAuth2
             string user, CancellationToken taskCancellationToken)
         {
             var clientSecrets = await LoadClientSecrets(clientSecretsUri);
+            return await AuthorizeAsync(clientSecrets, scopes, user, taskCancellationToken);
+        }
 
+        /// <summary>Asynchronously authorizes the specified user.</summary>
+        /// <remarks>
+        /// It uses <seealso cref="Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
+        /// </remarks>
+        /// <param name="clientSecrets">The client secrets URI.</param>
+        /// <param name="scopes">
+        /// The scopes which indicate the Google API access your application is requesting.
+        /// </param>
+        /// <param name="user">The user to authorize.</param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        /// <returns>User credential.</returns>
+        private static async Task<UserCredential> AuthorizeAsync(ClientSecrets clientSecrets,
+            IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken)
+        {
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = clientSecrets,
@@ -57,7 +73,7 @@ namespace Google.Apis.Auth.OAuth2
             return await installedApp.AuthorizeAsync(user, taskCancellationToken);
         }
 
-        /// <summary>Loads the client secret from the given URI.</summary>
+        /// <summary>Loads the client secrets from the given URI.</summary>
         /// <param name="clientSecretsUri">The client secrets URI.</param>
         /// <returns>Client secrets.</returns>
         private static async Task<ClientSecrets> LoadClientSecrets(Uri clientSecretsUri)
