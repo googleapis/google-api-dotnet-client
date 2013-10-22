@@ -16,6 +16,7 @@ limitations under the License.
 
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,16 +25,9 @@ using Google.Apis.Services;
 
 namespace Google.Apis.Requests
 {
-    /// <summary>
-    /// Client service request represents a specific service request with the given response type. The request supports
-    /// both sync and async execution to get the response type and also sync and async methods to return only the 
-    /// stream.
-    /// </summary>
-    public interface IClientServiceRequest<TResponse>
+    /// <summary>A client service request which supports both sync and async execution to get the stream.</summary>
+    public interface IClientServiceRequest
     {
-        /// <summary>Gets the service which is related to this request.</summary>
-        IClientService Service { get; }
-
         /// <summary>Gets the name of the method to which this request belongs.</summary>
         string MethodName { get; }
 
@@ -46,6 +40,12 @@ namespace Google.Apis.Requests
         /// <summary>Gets the parameters information for this specific request.</summary>
         IDictionary<string, IParameter> RequestParameters { get; }
 
+        /// <summary>Gets the service which is related to this request.</summary>
+        IClientService Service { get; }
+
+        /// <summary>Creates a HTTP request message with all path and query parameters, ETag, etc.</summary>
+        HttpRequestMessage CreateRequest();
+
         /// <summary>Executes the request asynchronously and returns the result stream.</summary>
         Task<Stream> ExecuteAsStreamAsync();
 
@@ -56,12 +56,19 @@ namespace Google.Apis.Requests
 
         /// <summary>Executes the request and returns the result stream.</summary>
         Stream ExecuteAsStream();
+    }
 
+    /// <summary>
+    /// A client service request which inherits from <seealso cref="IClientServiceRequest"/> and represents a specific 
+    /// service request with the given response type. It supports both sync and async execution to get the response.
+    /// </summary>
+    public interface IClientServiceRequest<TResponse> : IClientServiceRequest
+    {
         /// <summary>Executes the request asynchronously and returns the result object.</summary>
         Task<TResponse> ExecuteAsync();
 
         /// <summary>Executes the request asynchronously and returns the result object.</summary>
-        /// <param name="cencellationToken">A cancellation token for cancelling the request in the middle of execution.
+        /// <param name="cencellationToken">A cancellation token for canceling the request in the middle of execution.
         /// </param>
         Task<TResponse> ExecuteAsync(CancellationToken cencellationToken);
 
