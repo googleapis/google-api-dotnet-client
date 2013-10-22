@@ -235,7 +235,7 @@ namespace Google.Apis.Release
             if (!HasIncomingChanges(new List<Hg> { DefaultRepository }))
             {
                 // in case build fails the method will print its failures
-                //if (BuildDefaultRepository())
+                if (BuildDefaultRepository())
                 {
                     CreateCoreNuGetPackages();
                     // TODO(peleyal): release notes should be part of the package
