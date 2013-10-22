@@ -174,6 +174,20 @@ namespace Google.Apis.Requests
 
         #endregion
 
+        public HttpRequestMessage CreateRequest()
+        {
+            var builder = CreateBuilder();
+            var request = builder.CreateRequest();
+            object body = GetBody();
+            if (body != null)
+            {
+                service.SetRequestSerailizedContent(request, body);
+            }
+
+            AddETag(request);
+            return request;
+        }
+
         /// <summary>
         /// Creates the <seealso cref="Google.Apis.Requests.RequestBuilder"/> which is used to generate a request.
         /// </summary>
@@ -200,22 +214,6 @@ namespace Google.Apis.Requests
         protected string GenerateRequestUri()
         {
             return CreateBuilder().BuildUri().ToString();
-        }
-
-        /// <summary>Creates a HTTP request message with all class parameters, developer-key, ETag, etc.</summary>
-        [VisibleForTestOnly]
-        internal HttpRequestMessage CreateRequest()
-        {
-            var builder = CreateBuilder();
-            var request = builder.CreateRequest();
-            object body = GetBody();
-            if (body != null)
-            {
-                service.SetRequestSerailizedContent(request, body);
-            }
-
-            AddETag(request);
-            return request;
         }
 
         protected virtual object GetBody()
