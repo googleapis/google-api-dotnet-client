@@ -579,8 +579,12 @@ namespace Google.Apis.Release
         /// <summary>Creates the Google.Apis and Google.Apis.Authentication NuGet packages.</summary>
         private void CreateCoreNuGetPackages()
         {
-            // create a resource dir in the working folder
-            var destDirectory = Path.Combine(Environment.CurrentDirectory, "Resources");
+            var currentDir = options.IsLocal
+                    ? Environment.CurrentDirectory
+                    : Path.Combine(Environment.CurrentDirectory, "default");
+
+            // Create a resource dir in the working folder.
+            var destDirectory = Path.Combine(currentDir, "Resources");
             if (Directory.Exists(destDirectory))
             {
                 Directory.Delete(destDirectory, true);
@@ -600,8 +604,10 @@ namespace Google.Apis.Release
                 var allLines = File.ReadAllText(newNuspec).Replace("VERSION", newVersion);
                 File.WriteAllText(newNuspec, allLines);
 
-                NuGetUtilities.CreateLocalNupkgFile(newNuspec, Environment.CurrentDirectory);
+                NuGetUtilities.CreateLocalNupkgFile(newNuspec, currentDir);
             }
+
+            Directory.Delete(destDirectory, true);
         }
 
         private IEnumerable<Project> releaseProjects;
