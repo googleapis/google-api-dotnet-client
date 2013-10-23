@@ -10,8 +10,8 @@
         <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-          The Google APIs Client Library is a runtime client for working with Google Services.
-          This package includes component for making authenticated calls using the OAuth2 spec.
+          The Google APIs Client Library is a runtime client for working with Google services.
+          This package includes auth components like user-credential, authorization code flow, etc. for making authenticated calls using the OAuth2 spec.
 
           Supported Platforms:
           

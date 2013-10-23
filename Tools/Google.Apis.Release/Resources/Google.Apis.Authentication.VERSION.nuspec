@@ -12,7 +12,7 @@
         <description>
           [OBSOLETE] Please install Google.Apis.Auth instead.
           The Google APIs Client Library is a runtime client for working with Google Services.
-          This package includes component for making authenticated calls using the OAuth2 spec.
+          This package includes components for making authenticated calls using the OAuth2 spec.
         </description>
         <tags>Google</tags>
         <dependencies>
