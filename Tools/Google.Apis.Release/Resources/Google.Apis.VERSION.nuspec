@@ -10,7 +10,7 @@
         <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-          The Google APIs Client Library is a runtime client for working with Google Services.
+          The Google APIs Client Library is a runtime client for working with Google services.
           The library supports service requests, media upload and download, etc.
 
           Supported Platforms:
