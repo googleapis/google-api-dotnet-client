@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Requests;
@@ -53,9 +52,6 @@ namespace Google.Apis.Services
 
         /// <summary>Gets the BasePath of the service.</summary>
         string BasePath { get; }
-
-        /// <summary>Gets the Authenticator for this service.</summary>
-        IAuthenticator Authenticator { get; }
 
         /// <summary>Gets the supported features by this service.</summary>
         IList<string> Features { get; }

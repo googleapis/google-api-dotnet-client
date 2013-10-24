@@ -69,7 +69,7 @@ namespace Google.Apis.Util
         }
 
         /// <summary>Returns the defined string value of an Enum. </summary>
-        public static string GetStringValue(this Enum value)
+        internal static string GetStringValue(this Enum value)
         {
             FieldInfo entry = value.GetType().GetField(value.ToString());
             entry.ThrowIfNull("value");

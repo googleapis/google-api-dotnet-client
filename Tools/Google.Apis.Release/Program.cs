@@ -125,7 +125,6 @@ namespace Google.Apis.Release
                 return new[] 
                 {
                     "Google.Apis.VERSION.nuspec", 
-                    "Google.Apis.Authentication.VERSION.nuspec", 
                     "Google.Apis.Auth.VERSION.nuspec", 
                     "Google.Apis.Auth.Mvc.VERSION.nuspec"
                 };
@@ -430,13 +429,29 @@ namespace Google.Apis.Release
                 DirectoryUtilities.GetRelativePath(binDir, ContribRepository.WorkingDirectory));
 
             Directory.CreateDirectory(binDir);
+            Directory.CreateDirectory(Path.Combine(binDir, "WP"));
+            Directory.CreateDirectory(Path.Combine(binDir, "WinRT"));
+
             foreach (var project in ReleaseProjects)
             {
+                var outputDir = binDir;
+                // Add Google.Apis.WP and Google.Apis.Auth.WP assemblies to a WP folder.
+                if (project.GetName().Contains("WP"))
+                {
+                    outputDir = Path.Combine(outputDir, "WP");
+                }
+                // Add Google.Apis.WinRT and Google.Apis.Auth.WinRT assemblies to a WinRT folder.
+                else if (project.GetName().Contains("WinRT"))
+                {
+                    outputDir = Path.Combine(outputDir, "WinRT");
+                }
+
                 var releasePath = Path.Combine(project.DirectoryPath, "Bin", "Release");
                 foreach (var filePath in Directory.GetFiles(releasePath, "Google.Apis.*"))
                 {
                     File.Copy(filePath,
-                        Path.Combine(binDir, filePath.Substring(filePath.LastIndexOf("\\") + 1)), true);
+                        Path.Combine(outputDir,
+                                     filePath.Substring(filePath.LastIndexOf(Path.DirectorySeparatorChar) + 1)), true);
                 }
             }
 
@@ -576,7 +591,7 @@ namespace Google.Apis.Release
             return false;
         }
 
-        /// <summary>Creates the Google.Apis and Google.Apis.Authentication NuGet packages.</summary>
+        /// <summary>Creates the core Google.Apis NuGet packages.</summary>
         private void CreateCoreNuGetPackages()
         {
             var currentDir = options.IsLocal
@@ -634,9 +649,6 @@ namespace Google.Apis.Release
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.Mvc4", "GoogleApis.Auth.Mvc4.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.WinRT", "GoogleApis.Auth.WinRT.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.WP", "GoogleApis.Auth.WP.csproj"),
-
-                    DefaultRepository.Combine("Src", "GoogleApis.Authentication.OAuth2", 
-                        "GoogleApis.Authentication.OAuth2.csproj")
                 };
                 return releaseProjects = (from path in releasePaths
                                           select new Project(path)).ToList();
@@ -653,8 +665,6 @@ namespace Google.Apis.Release
             allProjects.AddRange(ReleaseProjects);
             allProjects.Add(new Project(DefaultRepository.Combine("Src", "GoogleApis.Tests",
                 "GoogleApis.Tests.csproj")));
-            allProjects.Add(new Project(DefaultRepository.Combine("Src", "GoogleApis.Authentication.OAuth2.Tests",
-                "GoogleApis.Authentication.OAuth2.Tests.csproj")));
             allProjects.Add(new Project(DefaultRepository.Combine("Src", "GoogleApis.Auth.Tests",
                 "GoogleApis.Auth.Tests.csproj")));
 
