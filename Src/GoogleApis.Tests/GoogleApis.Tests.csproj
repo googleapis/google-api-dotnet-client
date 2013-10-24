@@ -116,7 +116,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apis\Authentication\DelegateAuthenticatorTest.cs" />
     <Compile Include="Apis\Download\MediaDownloaderTest.cs" />
     <Compile Include="Apis\Http\ConfigurableMessageHandlerTest.cs" />
     <Compile Include="Apis\Http\MaxUrlLengthInterceptorTest.cs" />

@@ -25,7 +25,6 @@ using System.Threading.Tasks;
 using Ionic.Zlib;
 using Newtonsoft.Json;
 
-using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Json;
@@ -97,12 +96,6 @@ namespace Google.Apis.Services
             public string ApiKey { get; set; }
 
             /// <summary>
-            /// Gets or sets the Authenticator. Default value is 
-            /// <see cref="Google.Apis.Authentication.NullAuthenticator.Instance"/>.
-            /// </summary>
-            public IAuthenticator Authenticator { get; set; }
-
-            /// <summary>
             /// Gets or sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
             /// </summary>
             public string ApplicationName { get; set; }
@@ -118,7 +111,6 @@ namespace Google.Apis.Services
             {
                 GZipEnabled = true;
                 Serializer = new NewtonsoftJsonSerializer();
-                Authenticator = NullAuthenticator.Instance;
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 MaxUrlLength = DefaultMaxUrlLength;
             }
@@ -133,7 +125,6 @@ namespace Google.Apis.Services
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;
             ApiKey = initializer.ApiKey;
-            Authenticator = initializer.Authenticator;
             ApplicationName = initializer.ApplicationName;
             if (ApplicationName == null)
             {
@@ -174,10 +165,6 @@ namespace Google.Apis.Services
                     CreateBackOffHandler));
             }
 
-            // Add authenticator initializer to intercept a request and add the "Authorization" header and also handle
-            // abnormal 401 responses in case the authenticator is an instance of unsuccessful response handler.
-            args.Initializers.Add(new AuthenticatorMessageHandlerInitializer(Authenticator));
-
             var httpClient = factory.CreateHttpClient(args);
             if (initializer.MaxUrlLength > 0)
             {
@@ -208,8 +195,6 @@ namespace Google.Apis.Services
         public bool GZipEnabled { get; private set; }
 
         public string ApiKey { get; private set; }
-
-        public IAuthenticator Authenticator { get; private set; }
 
         public string ApplicationName { get; private set; }
 

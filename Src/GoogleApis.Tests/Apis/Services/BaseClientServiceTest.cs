@@ -27,7 +27,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-using Google.Apis.Authentication;
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Json;
@@ -247,99 +246,6 @@ namespace Google.Apis.Tests.Apis.Services
             }
         }
 
-        /// <summary>A mock Authenticator which adds Authorization header to a request on the second call.</summary>
-        class Authenticator : IAuthenticator
-        {
-            /// <summary>Gets ot set the number of calls to <see cref="ApplyAuthenticationToRequest"/>.</summary>
-            public int ApplyCalls { get; set; }
-
-            public void ApplyAuthenticationToRequest(HttpWebRequest request)
-            {
-                ApplyCalls++;
-                switch (ApplyCalls)
-                {
-                    case 1:
-                        request.Headers["Authorization"] = MockAuthenticationMessageHandler.FirstToken;
-                        break;
-                    case 2:
-                        request.Headers["Authorization"] = MockAuthenticationMessageHandler.SecondToken;
-                        break;
-                    default:
-                        throw new Exception("There should be only two calls");
-                }
-            }
-        }
-
-        /// <summary>Mock Authenticator which handles unsuccessful response by "refreshing" the token.</summary>
-        class AuthenticatorUnsuccessfulHandler : Authenticator, IHttpUnsuccessfulResponseHandler
-        {
-            /// <summary>Gets or sets the number of calls to <see cref="HandleResponseAsync"/>.</summary>
-            public int HandleCalls { get; set; }
-
-            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
-            {
-                HandleCalls++;
-                // Mock a refresh token process here... (second apply will attach SecondToken authorization).
-                TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-                tcs.SetResult(true);
-                return tcs.Task;
-            }
-        }
-
-        /// <summary>
-        /// Tests that the authenticator helpers, when invoked, both apply authentication and handle response methods 
-        /// on the authentication instance.
-        /// </summary>
-        [Test]
-        public void Test_Authentication_UnsuccessfulHandler()
-        {
-            var handler = new MockAuthenticationMessageHandler();
-            var authenticator = new AuthenticatorUnsuccessfulHandler();
-            var initializer = new BaseClientService.Initializer()
-            {
-                HttpClientFactory = new MockHttpClientFactory(handler),
-                Authenticator = authenticator
-            };
-
-            using (var service = new MockClientService(initializer))
-            {
-                var response = service.HttpClient.SendAsync(
-                    new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
-                // The authenticator handles unsuccessful response handler by "refreshing" the token, so the request
-                // will success.
-                Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-                Assert.That(handler.Calls, Is.EqualTo(2));
-                Assert.That(authenticator.ApplyCalls, Is.EqualTo(2));
-                Assert.That(authenticator.HandleCalls, Is.EqualTo(1));
-            }
-        }
-
-        /// <summary>
-        /// Tests an authenticator which doesn't implement an unsuccessful response handler. The request should fail 
-        /// when the token is invalid.
-        /// </summary>
-        [Test]
-        public void Test_Authentication()
-        {
-            var handler = new MockAuthenticationMessageHandler();
-            var authenticator = new Authenticator();
-            var initializer = new BaseClientService.Initializer()
-            {
-                HttpClientFactory = new MockHttpClientFactory(handler),
-                Authenticator = authenticator
-            };
-
-            using (var service = new MockClientService(initializer))
-            {
-                var response = service.HttpClient.SendAsync(
-                    new HttpRequestMessage(HttpMethod.Get, "https://test")).Result;
-                // The authenticator doesn't implement unsuccessful response handler, so the request fails.
-                Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
-                Assert.That(handler.Calls, Is.EqualTo(1));
-                Assert.That(authenticator.ApplyCalls, Is.EqualTo(1));
-            }
-        }
-
         #endregion
 
         #region Constructor
@@ -353,7 +259,6 @@ namespace Google.Apis.Tests.Apis.Services
             var service = new MockClientService(new BaseClientService.Initializer());
             Assert.NotNull(service.HttpClient);
             Assert.Null(service.HttpClientInitializer);
-            Assert.That(service.Authenticator, Is.EqualTo(NullAuthenticator.Instance));
             Assert.True(service.GZipEnabled);
 
             // Back-off handler for unsuccessful response (503) is added by default.
@@ -361,12 +266,9 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
                 Is.InstanceOf<BackOffHandler>());
 
-            // two execute interceptors (for adding the "Authenticate" header and handling GET requests with URLs that
-            // are too long)
-            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(2));
+            // An execute interceptors is expected (for handling GET requests with URLs that are too long)
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[0],
-                Is.InstanceOf<AuthenticatorInterceptor>());
-            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[1],
                 Is.InstanceOf<MaxUrlLengthInterceptor>());
         }
 
@@ -401,7 +303,7 @@ namespace Google.Apis.Tests.Apis.Services
                     Is.EqualTo(new MediaTypeHeaderValue("application/x-www-form-urlencoded")));
                 Assert.That(request.RequestUri, Is.EqualTo(new Uri(uri)));
                 Assert.That(messageHandler.RequestContent, Is.EqualTo(query));
-             }
+            }
         }
 
         /// <summary>

@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Tests", "Src\GoogleApis.Tests\GoogleApis.Tests.csproj", "{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2", "Src\GoogleApis.Authentication.OAuth2\GoogleApis.Authentication.OAuth2.csproj", "{76106493-68EF-4E44-AF2E-971ABF29B300}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Authentication.OAuth2.Tests", "Src\GoogleApis.Authentication.OAuth2.Tests\GoogleApis.Authentication.OAuth2.Tests.csproj", "{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis", "Src\GoogleApis\GoogleApis.csproj", "{826CF988-EEE8-4B75-8F53-B7E851A17BAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D962DE0D-98E4-4E01-88BF-CEE63DF67585}"
@@ -66,38 +62,6 @@ Global
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|Win32.ActiveCfg = Release|Any CPU
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|x64.ActiveCfg = Release|Any CPU
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}.Release|x86.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|ARM.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|Win32.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|x64.ActiveCfg = Release|Any CPU
-		{76106493-68EF-4E44-AF2E-971ABF29B300}.Release|x86.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|ARM.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|Win32.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|x64.ActiveCfg = Release|Any CPU
-		{E0B6A4D3-FDBD-4A1F-B592-4CEDB8001FB5}.Release|x86.ActiveCfg = Release|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{826CF988-EEE8-4B75-8F53-B7E851A17BAA}.Debug|ARM.ActiveCfg = Debug|Any CPU

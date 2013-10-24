@@ -41,13 +41,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="Apis\Http\ClassDiagram.cd" />
     <None Include="Apis\ServiceRequests.cd" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apis\Authentication\AuthenticatorHelpers.cs" />
-    <Compile Include="Apis\Authentication\DelegateAuthenticator.cs" />
-    <Compile Include="Apis\Authentication\IAuthenticator.cs" />
-    <Compile Include="Apis\Authentication\NullAuthenticator.cs" />
     <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
     <Compile Include="Apis\Discovery\Features.cs" />
     <Compile Include="Apis\Discovery\IParameter.cs" />
