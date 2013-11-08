@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Auth</id>
+        <version>1.6.1-beta</version>
+        <title>Google APIs Auth Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>peleyal</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          The Google APIs Client Library is a runtime client for working with Google services.
+          This package includes auth components like user-credential, authorization code flow, etc. for making authenticated calls using the OAuth2 spec.
+
+          Supported Platforms:
+          
+          - .NET Framework 4
+
+          - Windows Store apps
+
+          - Windows Phone 7.5 and 8
+
+          - Portable Class Libraries
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+            <dependency id="Google.Apis" version="1.6.0-beta" />
+        </dependencies>
+    </metadata>
+    <files>
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\net40\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\net40\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\net40\Google.Apis.Auth.xml" />
+      <file src="Src\GoogleApis.Auth.DotNet4\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\net40\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\GoogleApis.Auth.DotNet4\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\net40\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.Auth.DotNet4\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\net40\Google.Apis.Auth.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\netcore45\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\netcore45\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\netcore45\Google.Apis.Auth.xml" />
+      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\netcore45\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\netcore45\Google.Apis.Auth.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\wp8\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\wp8\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\wp8\Google.Apis.Auth.xml" />
+      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\wp8\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\wp8\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\wp8\Google.Apis.Auth.PlatformServices.xml" />
+
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.xml" />
+      
+      <file src="Tools\Google.Apis.Release\Resources\License.txt" target="License.txt" />
+      <file src="Tools\Google.Apis.Release\Resources\Google.Apis.Auth.ReleaseNotes.txt" target="ReleaseNotes.txt" />
+    </files>
+</package>

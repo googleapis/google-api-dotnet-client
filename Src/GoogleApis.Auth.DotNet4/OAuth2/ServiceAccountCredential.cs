@@ -229,7 +229,7 @@ namespace Google.Apis.Auth.OAuth2
             if (Token == null || Token.IsExpired(Clock))
             {
                 Logger.Debug("Token has expired, trying to get a new one.");
-                if (!await RequestAccessToken(cancellationToken))
+                if (!await RequestAccessToken(cancellationToken).ConfigureAwait(false))
                 {
                     throw new InvalidOperationException("The access token has expired but we can't refresh it");
                 }
@@ -279,7 +279,8 @@ namespace Google.Apis.Auth.OAuth2
 
             Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
 
-            var newToken = await request.ExecuteAsync(httpClient, tokenServerUrl, taskCancellationToken, Clock);
+            var newToken = await request.ExecuteAsync(httpClient, tokenServerUrl, taskCancellationToken, Clock)
+                .ConfigureAwait(false);
             Token = newToken;
             return true;
         }

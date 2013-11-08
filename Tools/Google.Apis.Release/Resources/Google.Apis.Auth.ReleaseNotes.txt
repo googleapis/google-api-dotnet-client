@@ -1,0 +1,3 @@
+Changes in 1.6.1-beta
+  Fixed:
+    Issue 412: Making request through ServiceAccountCredential never returns in ISS/ASP.NET
