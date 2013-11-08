@@ -36,19 +36,20 @@
       <file src="Src\GoogleApis.Auth.DotNet4\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\net40\Google.Apis.Auth.PlatformServices.pdb" />
       <file src="Src\GoogleApis.Auth.DotNet4\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\net40\Google.Apis.Auth.PlatformServices.xml" />
 
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\netcore45\Google.Apis.Auth.dll" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\netcore45\Google.Apis.Auth.pdb" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\netcore45\Google.Apis.Auth.xml" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\netcore45\Google.Apis.Auth.PlatformServices.dll" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\netcore45\Google.Apis.Auth.PlatformServices.xml" />
-
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\wp8\Google.Apis.Auth.dll" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\wp8\Google.Apis.Auth.pdb" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\wp8\Google.Apis.Auth.xml" />
-      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\wp8\Google.Apis.Auth.PlatformServices.dll" />
-      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\wp8\Google.Apis.Auth.PlatformServices.pdb" />
-      <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\wp8\Google.Apis.Auth.PlatformServices.xml" />
+      <!-- I had some conflicts in generating WP and WinRT new Auth library, so I'm using the 1.6.0-beta for WP and WinRT while the new Auth library is available for PCL and .NET 4.
+           It was tested with WP, Windows Store applications, ASP.NET MVC, ASP.NET with Service Account and command line applications. -->
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.dll" target="lib\netcore45\Google.Apis.Auth.dll" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.pdb" target="lib\netcore45\Google.Apis.Auth.pdb" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.xml" target="lib\netcore45\Google.Apis.Auth.xml" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.PlatformServices.dll" target="lib\netcore45\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" target="lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\netcore45\Google.Apis.Auth.PlatformServices.xml" target="lib\netcore45\Google.Apis.Auth.PlatformServices.xml" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.dll" target="lib\wp8\Google.Apis.Auth.dll" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.pdb" target="lib\wp8\Google.Apis.Auth.pdb" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.xml" target="lib\wp8\Google.Apis.Auth.xml" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.PlatformServices.dll" target="lib\wp8\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.PlatformServices.pdb" target="lib\wp8\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="C:\code\google.com\google-api-dotnet-client\samples\packages\Google.Apis.Auth.1.6.0-beta\lib\wp8\Google.Apis.Auth.PlatformServices.xml" target="lib\wp8\Google.Apis.Auth.PlatformServices.xml" />
 
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.dll" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.pdb" />
