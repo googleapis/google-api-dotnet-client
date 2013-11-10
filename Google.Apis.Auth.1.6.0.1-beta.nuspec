@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Auth</id>
-        <version>1.6.1-beta</version>
+        <version>1.6.0.1-beta</version>
         <title>Google APIs Auth Client Library</title>
         <authors>Google Inc.</authors>
         <owners>peleyal</owners>

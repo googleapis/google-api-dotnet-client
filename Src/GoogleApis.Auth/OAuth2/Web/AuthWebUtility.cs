@@ -42,7 +42,7 @@ namespace Google.Apis.Auth.OAuth2.Web
             if (dataStore != null)
             {
                 var userKey = AuthorizationCodeWebApp.StateKey + userId;
-                var expectedState = await dataStore.GetAsync<string>(userKey);
+                var expectedState = await dataStore.GetAsync<string>(userKey).ConfigureAwait(false);
 
                 // Verify that the stored state is equal to the one we got back from the authorization server.
                 if (!Object.Equals(oauthState, expectedState))
@@ -52,7 +52,7 @@ namespace Google.Apis.Auth.OAuth2.Web
                         Error = "State is invalid"
                     });
                 }
-                await dataStore.DeleteAsync<string>(userKey);
+                await dataStore.DeleteAsync<string>(userKey).ConfigureAwait(false);
                 oauthState = oauthState.Substring(0, oauthState.Length - AuthorizationCodeWebApp.StateRandomLength);
             }
 

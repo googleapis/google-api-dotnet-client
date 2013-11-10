@@ -90,11 +90,11 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Controllers
             returnUrl = returnUrl.Substring(0, returnUrl.IndexOf("?"));
 
             var token = await Flow.ExchangeCodeForTokenAsync(UserId, authorizationCode.Code, returnUrl,
-                taskCancellationToken).ConfigureAwait(false);
+                taskCancellationToken);
 
             // Extract the right state.
             var oauthState = await AuthWebUtility.ExtracRedirectFromState(
-                Flow.DataStore, UserId, authorizationCode.State).ConfigureAwait(false);
+                Flow.DataStore, UserId, authorizationCode.State);
 
             return new RedirectResult(oauthState);
         }

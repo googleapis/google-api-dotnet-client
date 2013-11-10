@@ -115,7 +115,7 @@ namespace Google.Apis.Auth.OAuth2.Web
                     var rndString = new string('9', StateRandomLength);
                     var random = new Random().Next(int.Parse(rndString)).ToString("D" + StateRandomLength);
                     oauthState += random;
-                    await Flow.DataStore.StoreAsync(StateKey + userId, oauthState);
+                    await Flow.DataStore.StoreAsync(StateKey + userId, oauthState).ConfigureAwait(false);
                 }
                 codeRequest.State = oauthState;
 
