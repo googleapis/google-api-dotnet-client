@@ -151,7 +151,7 @@ namespace Google.Apis.Upload
         /// </summary>
         private byte[] LastMediaRequest { get; set; }
 
-        /// <summary>Gets or sets cached byte which indicates if end of stream has been reached.</summary>
+        /// <summary>Gets or sets cached byte which indicates whether the end of stream has been reached.</summary>
         private byte[] CachedByte { get; set; }
 
         /// <summary>Gets or sets the last request length.</summary>

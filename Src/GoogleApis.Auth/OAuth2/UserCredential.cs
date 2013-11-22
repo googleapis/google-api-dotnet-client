@@ -61,9 +61,9 @@ namespace Google.Apis.Auth.OAuth2
         private readonly string userId;
 
         /// <summary>Constructs a new credential instance.</summary>
-        /// <param name="flow">Authorization code flow</param>
-        /// <param name="userId">User identifier</param>
-        /// <param name="token">An initial token for the user</param>
+        /// <param name="flow">Authorization code flow.</param>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="token">An initial token for the user.</param>
         public UserCredential(IAuthorizationCodeFlow flow, string userId, TokenResponse token)
         {
             this.flow = flow;
@@ -94,8 +94,8 @@ namespace Google.Apis.Auth.OAuth2
         /// Refreshes the token by calling to <seealso cref="IAuthorizationCodeFlow.RefreshTokenAsync"/>. Then it 
         /// updates the <see cref="TokenResponse"/> with the new token instance.
         /// </summary>
-        /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
-        /// <returns><c>true</c> if the token was refreshed</returns>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        /// <returns><c>true</c> if the token was refreshed.</returns>
         private async Task<bool> RefreshTokenAsync(CancellationToken taskCancellationToken)
         {
             if (Token.RefreshToken == null)
@@ -122,7 +122,7 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
-            // TODO(peleyal): check WWW-Authenticate header
+            // TODO(peleyal): check WWW-Authenticate header.
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return !Object.Equals(Token.AccessToken, flow.AccessMethod.GetAccessToken(args.Request))

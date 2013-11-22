@@ -37,7 +37,7 @@ namespace Google.Apis.Util.Store
         /// Constructs a new file data store with the specified folder. This folder is created (if it doesn't exist 
         /// yet) under <seealso cref="Environment.SpecialFolder.ApplicationData"/>.
         /// </summary>
-        /// <param name="folder">Folder name</param>
+        /// <param name="folder">Folder name.</param>
         public FileDataStore(string folder)
         {
             folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), folder);
@@ -51,9 +51,9 @@ namespace Google.Apis.Util.Store
         /// Stores the given value for the given key. It creates a new file (named <see cref="GenerateStoredKey"/>) in 
         /// <see cref="FolderPath"/>.
         /// </summary>
-        /// <typeparam name="T">The type to store in the data store</typeparam>
-        /// <param name="key">The key</param>
-        /// <param name="value">The value to store in the data store</param>
+        /// <typeparam name="T">The type to store in the data store.</typeparam>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value to store in the data store.</param>
         public Task StoreAsync<T>(string key, T value)
         {
             if (string.IsNullOrEmpty(key))
@@ -68,9 +68,10 @@ namespace Google.Apis.Util.Store
         }
 
         /// <summary>
-        /// Deletes the given key. It deletes the <see cref="GenerateStoredKey"/> named file in <see cref="FolderPath"/>.
+        /// Deletes the given key. It deletes the <see cref="GenerateStoredKey"/> named file in 
+        /// <see cref="FolderPath"/>.
         /// </summary>
-        /// <param name="key">The key to delete from the data store</param>
+        /// <param name="key">The key to delete from the data store.</param>
         public Task DeleteAsync<T>(string key)
         {
             if (string.IsNullOrEmpty(key))
@@ -90,9 +91,9 @@ namespace Google.Apis.Util.Store
         /// Returns the stored value for the given key or <c>null</c> if the matching file (<see cref="GenerateStoredKey"/>
         /// in <see cref="FolderPath"/> doesn't exist.
         /// </summary>
-        /// <typeparam name="T">The type to retrieve</typeparam>
-        /// <param name="key">The key to retrieve from the data store</param>
-        /// <returns>The stored object</returns>
+        /// <typeparam name="T">The type to retrieve.</typeparam>
+        /// <param name="key">The key to retrieve from the data store.</param>
+        /// <returns>The stored object.</returns>
         public Task<T> GetAsync<T>(string key)
         {
             if (string.IsNullOrEmpty(key))
@@ -136,8 +137,8 @@ namespace Google.Apis.Util.Store
         }
 
         /// <summary>Creates a unique stored key based on the key and the class type.</summary>
-        /// <param name="key">The object key</param>
-        /// <param name="t">The type to store or retrieve</param>
+        /// <param name="key">The object key.</param>
+        /// <param name="t">The type to store or retrieve.</param>
         public static string GenerateStoredKey(string key, Type t)
         {
             return string.Format("{0}-{1}", t.FullName, key);

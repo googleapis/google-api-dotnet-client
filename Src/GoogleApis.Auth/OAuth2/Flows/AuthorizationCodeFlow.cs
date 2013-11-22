@@ -77,7 +77,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// </summary>
             public IEnumerable<string> Scopes { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the factory for creating <see cref="System.Net.Http.HttpClient"/> instance.
             /// </summary>
             public IHttpClientFactory HttpClientFactory { get; set; }
@@ -267,9 +267,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         #endregion
 
         /// <summary>Stores the token in the <see cref="DataStore"/>.</summary>
-        /// <param name="userId">User identifier</param>
-        /// <param name="token">Token to store</param>
-        /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="token">Token to store.</param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         private async Task StoreTokenAsync(string userId, TokenResponse token, CancellationToken taskCancellationToken)
         {
             taskCancellationToken.ThrowIfCancellationRequested();
@@ -280,10 +280,10 @@ namespace Google.Apis.Auth.OAuth2.Flows
         }
 
         /// <summary>Retrieve a new token from the server using the specified request.</summary>
-        /// <param name="userId">User identifier</param>
-        /// <param name="request">Token request</param>
-        /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
-        /// <returns>Token response with the new access token</returns>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="request">Token request.</param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+        /// <returns>Token response with the new access token.</returns>
         [VisibleForTestOnly]
         internal async Task<TokenResponse> FetchTokenAsync(string userId, TokenRequest request,
             CancellationToken taskCancellationToken)

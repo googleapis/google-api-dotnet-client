@@ -24,25 +24,15 @@
           - Portable Class Libraries
         </description>
         <tags>Google</tags>
-        <dependencies>
-            <group>
-                <dependency id="Newtonsoft.Json" version="5.0.5" />
-                <dependency id="Microsoft.Bcl" version="1.0.19" />
-                <dependency id="Microsoft.Bcl.Async" version="1.0.16" />
-                <dependency id="Microsoft.Bcl.Build" version="1.0.7" />
-                <dependency id="Microsoft.Net.Http" version="2.1.10" />
-                <dependency id="Zlib.Portable" version="1.9.2" />
-            </group>
-            <group targetFramework=".NETFramework4.0">
-                <dependency id="Newtonsoft.Json" version="5.0.5" />
-                <dependency id="Microsoft.Bcl" version="1.0.19" />
-                <dependency id="Microsoft.Bcl.Async" version="1.0.16" />
-                <dependency id="Microsoft.Bcl.Build" version="1.0.7" />
-                <dependency id="Microsoft.Net.Http" version="2.1.10" />
-                <dependency id="Zlib.Portable" version="1.9.2" />
-                <dependency id="log4net" version="2.0.0" />
-            </group>
-        </dependencies>
+      <dependencies>
+        <group>
+          <dependency id="Google.Apis.Core" version="VERSION" />
+        </group>
+        <group targetFramework=".NETFramework4.0">
+          <dependency id="Google.Apis.Core" version="VERSION" />
+          <dependency id="log4net" version="2.0.0" />
+        </group>
+      </dependencies>
     </metadata>
     <files>
       <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\net40\Google.Apis.dll" />

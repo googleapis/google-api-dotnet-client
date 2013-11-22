@@ -144,6 +144,10 @@
     <Compile Include="[Mock]\MockMessageHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj">
       <Project>{c4da0abe-2c2e-4bb8-9881-5ff80b0c1afd}</Project>
       <Name>GoogleApis.DotNet4</Name>

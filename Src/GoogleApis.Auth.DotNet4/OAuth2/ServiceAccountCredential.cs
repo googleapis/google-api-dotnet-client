@@ -83,7 +83,7 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public IAccessMethod AccessMethod { get; set; }
 
-            /// <summary> 
+            /// <summary>
             /// Gets or sets the factory for creating a <see cref="System.Net.Http.HttpClient"/> instance.
             /// </summary>
             public IHttpClientFactory HttpClientFactory { get; set; }
@@ -241,7 +241,7 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
-            // TODO(peleyal): check WWW-Authenticate header
+            // TODO(peleyal): check WWW-Authenticate header.
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return !Object.Equals(Token.AccessToken, AccessMethod.GetAccessToken(args.Request))
@@ -255,8 +255,8 @@ namespace Google.Apis.Auth.OAuth2
         /// Requests a new token as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#makingrequest.
         /// </summary>
-        /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
-        /// <returns><c>true</c> if a new token was received successfully</returns>
+        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+        /// <returns><c>true</c> if a new token was received successfully.</returns>
         private async Task<bool> RequestAccessToken(CancellationToken taskCancellationToken)
         {
             string serializedHeader = CreateSerializedHeader();
@@ -301,7 +301,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Creates a serialized claim set as specified in 
-        /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset
+        /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset.
         /// </summary>
         private string GetSerializedPayload()
         {
@@ -320,16 +320,16 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Encodes the provided UTF8 string into an URL safe base64 string.</summary>
-        /// <param name="value">Value to encode</param>
-        /// <returns>The URL safe base64 string</returns>
+        /// <param name="value">Value to encode.</param>
+        /// <returns>The URL safe base64 string.</returns>
         private string UrlSafeBase64Encode(string value)
         {
             return UrlSafeBase64Encode(Encoding.UTF8.GetBytes(value));
         }
 
         /// <summary>Encodes the byte array into an URL safe base64 string.</summary>
-        /// <param name="bytes">Byte array to encode</param>
-        /// <returns>The URL safe base64 string</returns>
+        /// <param name="bytes">Byte array to encode.</param>
+        /// <returns>The URL safe base64 string.</returns>
         private string UrlSafeBase64Encode(byte[] bytes)
         {
             return Convert.ToBase64String(bytes).Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
