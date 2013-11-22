@@ -44,9 +44,9 @@ namespace Google.Apis.Util.Store
 
             var content = NewtonsoftJsonSerializer.Instance.Serialize(value);
             byte[] protectedContent = DataProtection.Protect(content);
-            using (var stream = await file.OpenStreamForWriteAsync())
+            using (var stream = await file.OpenStreamForWriteAsync().ConfigureAwait(false))
             {
-                await stream.WriteAsync(protectedContent, 0, protectedContent.Length);
+                await stream.WriteAsync(protectedContent, 0, protectedContent.Length).ConfigureAwait(false);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Google.Apis.Util.Store
 
         public async Task<T> GetAsync<T>(string key)
         {
-            byte[] content = await ReadFileContentAsync(GenerateStoredKey(key, typeof(T)));
+            byte[] content = await ReadFileContentAsync(GenerateStoredKey(key, typeof(T))).ConfigureAwait(false);
             TaskCompletionSource<T> tcs = new TaskCompletionSource<T>();
             if (content.Length == 0)
             {
@@ -87,7 +87,7 @@ namespace Google.Apis.Util.Store
                 using (Stream reader = new StreamReader(stream).BaseStream)
                 {
                     byte[] data = new byte[reader.Length];
-                    await reader.ReadAsync(data, 0, data.Length);
+                    await reader.ReadAsync(data, 0, data.Length).ConfigureAwait(false);
                     return data;
                 }
             }

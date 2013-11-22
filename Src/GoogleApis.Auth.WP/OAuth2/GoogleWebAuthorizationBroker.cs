@@ -46,7 +46,7 @@ namespace Google.Apis.Auth.OAuth2
                 ClientSecrets = clientSecrets,
             };
 
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
@@ -72,7 +72,7 @@ namespace Google.Apis.Auth.OAuth2
                 ClientSecretsStream = clientSecretsStream,
             };
 
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
@@ -90,7 +90,7 @@ namespace Google.Apis.Auth.OAuth2
             initializer.DataStore = new StorageDataStore();
 
             var installedApp = new AuthorizationCodeWPInstalledApp(initializer);
-            return await installedApp.AuthorizeAsync(user, taskCancellationToken);
+            return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
         }
     }
 }

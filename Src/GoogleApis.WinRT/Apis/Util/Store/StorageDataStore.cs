@@ -44,9 +44,9 @@ namespace Google.Apis.Util.Store
                 CreationCollisionOption.ReplaceExisting);
 
             var content = Encoding.UTF8.GetBytes(NewtonsoftJsonSerializer.Instance.Serialize(value));
-            using (var stream = await file.OpenStreamForWriteAsync())
+            using (var stream = await file.OpenStreamForWriteAsync().ConfigureAwait(false))
             {
-                await stream.WriteAsync(content, 0, content.Length);
+                await stream.WriteAsync(content, 0, content.Length).ConfigureAwait(false);
             }
         }
 

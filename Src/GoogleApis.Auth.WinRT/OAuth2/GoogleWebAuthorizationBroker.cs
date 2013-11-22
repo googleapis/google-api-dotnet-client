@@ -44,8 +44,8 @@ namespace Google.Apis.Auth.OAuth2
         public static async Task<UserCredential> AuthorizeAsync(Uri clientSecretsUri, IEnumerable<string> scopes,
             string user, CancellationToken taskCancellationToken)
         {
-            var clientSecrets = await LoadClientSecrets(clientSecretsUri);
-            return await AuthorizeAsync(clientSecrets, scopes, user, taskCancellationToken);
+            var clientSecrets = await LoadClientSecrets(clientSecretsUri).ConfigureAwait(false);
+            return await AuthorizeAsync(clientSecrets, scopes, user, taskCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
@@ -70,7 +70,7 @@ namespace Google.Apis.Auth.OAuth2
             };
 
             var installedApp = new AuthorizationCodeWinRTInstalledApp(initializer);
-            return await installedApp.AuthorizeAsync(user, taskCancellationToken);
+            return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Loads the client secrets from the given URI.</summary>

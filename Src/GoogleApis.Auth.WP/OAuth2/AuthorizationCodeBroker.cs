@@ -44,7 +44,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             // TODO(peleyal): try to avoid await to await.
             return await (await Deployment.Current.Dispatcher.InvokeAsync(new Func<Task<AuthorizationCodeResponseUrl>>(
-                () => ReceivedCodeCoreAsync(url, taskCancellationToken))));
+                () => ReceivedCodeCoreAsync(url, taskCancellationToken)))).ConfigureAwait(false);
         }
 
         #endregion

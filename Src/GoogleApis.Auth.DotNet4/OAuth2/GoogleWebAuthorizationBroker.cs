@@ -51,7 +51,8 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecrets = clientSecrets,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore)
+                .ConfigureAwait(false);
         }
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
@@ -77,7 +78,8 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecretsStream = clientSecretsStream,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore);
+            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore)
+                .ConfigureAwait(false);
         }
 
         /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
@@ -99,7 +101,7 @@ namespace Google.Apis.Auth.OAuth2
 
             // Create authorization code installed app instance and authorize the user.
             return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver()).AuthorizeAsync
-                (user, taskCancellationToken);
+                (user, taskCancellationToken).ConfigureAwait(false);
         }
     }
 }
