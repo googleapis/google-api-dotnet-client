@@ -122,8 +122,12 @@ namespace Google.Apis.Http
         public virtual async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
             // if the func returns true try to handle this current failed try
-            return HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response) &&
-                await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
+            if (HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response))
+            {
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                    .ConfigureAwait(false);
+            }
+            return false;
         }
 
         #endregion
@@ -133,8 +137,12 @@ namespace Google.Apis.Http
         public virtual async Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
         {
             // if the func returns true try to handle this current failed try
-            return HandleExceptionFunc != null && HandleExceptionFunc(args.Exception) &&
-                await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken);
+            if (HandleExceptionFunc != null && HandleExceptionFunc(args.Exception))
+            {
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                    .ConfigureAwait(false);
+            }
+            return false;
         }
 
         #endregion
@@ -159,7 +167,7 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            await Wait(ts, cancellationToken);
+            await Wait(ts, cancellationToken).ConfigureAwait(false);
             Logger.Debug("Back-Off handled the error. Waited {0}ms before next retry...", ts.TotalMilliseconds);
             return true;
         }
@@ -170,7 +178,7 @@ namespace Google.Apis.Http
         /// the middle.</param>
         protected virtual async Task Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
-            await TaskEx.Delay(ts, cancellationToken);
+            await TaskEx.Delay(ts, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Google.Apis.Auth.OAuth2
                     new AuthorizationCodeFlow(authorizationCodeFlowInitializer), new AuthorizationCodeBroker());
             }
 
-            return await innerInstallApp.AuthorizeAsync(userId, taskCancellationToken);
+            return await innerInstallApp.AuthorizeAsync(userId, taskCancellationToken).ConfigureAwait(false);
         }
 
         #endregion

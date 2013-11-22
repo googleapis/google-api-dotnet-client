@@ -133,7 +133,7 @@ namespace Google.Apis.Download
 
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream)
         {
-            return await DownloadAsync(url, stream, CancellationToken.None);
+            return await DownloadAsync(url, stream, CancellationToken.None).ConfigureAwait(false);
         }
 
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream,
