@@ -39,68 +39,23 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="Apis\Http\ClassDiagram.cd" />
     <None Include="Apis\ServiceRequests.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apis\Discovery\DiscoveryVersion.cs" />
-    <Compile Include="Apis\Discovery\Features.cs" />
-    <Compile Include="Apis\Discovery\IParameter.cs" />
-    <Compile Include="Apis\Discovery\Parameter.cs" />
-    <Compile Include="Apis\Http\MaxUrlLengthInterceptor.cs" />
-    <Compile Include="Apis\Http\ConfigurableHttpClient.cs" />
-    <Compile Include="Apis\Http\ConfigurableMessageHandler.cs" />
-    <Compile Include="Apis\Http\BackOffHandler.cs" />
-    <Compile Include="Apis\Http\ExponentialBackOffInitializer.cs" />
-    <Compile Include="Apis\Http\HttpClientFactory.cs" />
-    <Compile Include="Apis\Http\HttpConsts.cs" />
-    <Compile Include="Apis\Http\HttpExtenstions.cs" />
-    <Compile Include="Apis\Http\IConfigurableHttpClientInitializer.cs" />
-    <Compile Include="Apis\Http\IHttpClientFactory.cs" />
-    <Compile Include="Apis\Http\IHttpExceptionHandler.cs" />
-    <Compile Include="Apis\Http\IHttpExecuteInterceptor.cs" />
-    <Compile Include="Apis\Http\IHttpUnsuccessfulResponseHandler.cs" />
-    <Compile Include="Apis\ISerializer.cs" />
-    <Compile Include="Apis\Json\IJsonSerializer.cs" />
-    <Compile Include="Apis\Json\JsonDictionary.cs" />
-    <Compile Include="Apis\Json\JsonReader.cs" />
-    <Compile Include="Apis\Json\JsonToken.cs" />
-    <Compile Include="Apis\Json\NewtonsoftJsonSerializer.cs" />
-    <Compile Include="Apis\Json\TokenStream.cs" />
-    <Compile Include="Apis\Logging\ILogger.cs" />
-    <Compile Include="Apis\Logging\NullLogger.cs" />
     <Compile Include="Apis\Requests\ClientServiceRequest.cs" />
     <Compile Include="Apis\Requests\ETagAction.cs" />
     <Compile Include="Apis\Requests\IClientServiceRequest.cs" />
     <Compile Include="Apis\Requests\IDirectResponseSchema.cs" />
-    <Compile Include="Apis\Requests\Parameters\ParameterCollection.cs" />
-    <Compile Include="Apis\Requests\Parameters\ParameterUtils.cs" />
-    <Compile Include="Apis\Requests\Parameters\ParameterValidator.cs" />
-    <Compile Include="Apis\Requests\RequestBuilder.cs" />
-    <Compile Include="Apis\Requests\RequestError.cs" />
-    <Compile Include="Apis\Requests\SingleError.cs" />
     <Compile Include="Apis\Services\BaseClientService.cs" />
     <Compile Include="Apis\Services\IClientService.cs" />
-    <Compile Include="Apis\Util\IClock.cs" />
-    <Compile Include="Apis\Util\Store\IDataStore.cs" />
-    <Compile Include="Apis\Testing\VisibleForTestOnly.cs" />
     <Compile Include="Apis\[Media]\Download\IDownloadProgress.cs" />
     <Compile Include="Apis\[Media]\Download\IMediaDownloader.cs" />
     <Compile Include="Apis\[Media]\Download\MediaDownloader.cs" />
     <Compile Include="Apis\[Media]\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
-    <Compile Include="Apis\Util\ExponentialBackOff.cs" />
-    <Compile Include="Apis\Util\IBackOff.cs" />
-    <Compile Include="Apis\Util\Repeatable.cs" />
-    <Compile Include="Apis\Util\RequestParameterAttribute.cs" />
-    <Compile Include="Apis\Util\StandardResponse.cs" />
-    <Compile Include="Apis\Util\StringValueAttribute.cs" />
-    <Compile Include="Apis\Util\Utilities.cs" />
-    <Compile Include="ApplicationContext.cs" />
-    <Compile Include="GoogleApiException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +87,12 @@
       <HintPath>..\..\packages\Zlib.Portable.1.9.2\lib\portable-net4+sl4+wp71+win8\Zlib.Portable.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />

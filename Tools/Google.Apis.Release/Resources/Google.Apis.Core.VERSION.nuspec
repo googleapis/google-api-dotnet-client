@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Core</id>
+        <version>VERSION</version>
+        <title>Google APIs Core Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>peleyal</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, Data-store, logging and so on.
+
+          Supported Platforms:
+          
+          - .NET Framework 4
+
+          - Windows Store apps
+
+          - Windows Phone 7.5 and 8
+
+          - Portable Class Libraries
+        </description>
+        <tags>Google</tags>
+      <dependencies>
+        <dependency id="Newtonsoft.Json" version="5.0.5" />
+        <dependency id="Microsoft.Bcl" version="1.0.19" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.16" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.7" />
+        <dependency id="Microsoft.Net.Http" version="2.1.10" />
+        <dependency id="Zlib.Portable" version="1.9.2" />
+      </dependencies>
+    </metadata>
+    <files>
+      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.dll" />
+      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.pdb" />
+      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.xml" />
+      
+      <file src="Resources\License.txt" target="License.txt" />
+    </files>
+</package>

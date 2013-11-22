@@ -45,7 +45,7 @@ namespace Google.Apis.Download
         public const int MaximumChunkSize = 10 * MB;
 
         private int chunkSize = MaximumChunkSize;
-        /// <summary> 
+        /// <summary>
         /// Gets or sets the size of each chunk to download from the server.
         /// Chunks can't be set to be a value bigger than <see cref="MaximumChunkSize"/>. Default value is 
         /// <see cref="MaximumChunkSize"/>.

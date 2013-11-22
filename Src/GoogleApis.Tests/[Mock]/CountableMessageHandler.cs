@@ -19,12 +19,12 @@ using System.Threading;
 
 namespace Google.Apis.Tests
 {
-    /// <summary> Base mock message handler which counts the number of calls. </summary>
+    /// <summary>Base mock message handler which counts the number of calls.</summary>
     public abstract class CountableMessageHandler : HttpMessageHandler
     {
         private int calls;
 
-        /// <summary> Gets or sets the calls counter. </summary>
+        /// <summary>Gets or sets the calls counter.</summary>
         public int Calls
         {
             get { return calls; }
@@ -38,7 +38,7 @@ namespace Google.Apis.Tests
             return SendAsyncCore(request, cancellationToken);
         }
 
-        /// <summary> The core implementation of send async that a derived class must implement. </summary>
+        /// <summary>The core implementation of send async that a derived class must implement.</summary>
         protected abstract System.Threading.Tasks.Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage
             request, CancellationToken cancellationToken);
     }

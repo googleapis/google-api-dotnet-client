@@ -88,7 +88,7 @@ namespace Google.Apis.Services
             public bool GZipEnabled { get; set; }
 
             /// <summary>
-            /// Gets and Sets the serializer. Default value is <see cref="Google.Apis.Json.NewtonsoftJsonSerializer"/>.
+            /// Gets or sets the serializer. Default value is <see cref="Google.Apis.Json.NewtonsoftJsonSerializer"/>.
             /// </summary>
             public ISerializer Serializer { get; set; }
 

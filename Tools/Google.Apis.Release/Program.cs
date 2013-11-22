@@ -124,6 +124,7 @@ namespace Google.Apis.Release
             {
                 return new[] 
                 {
+                    "Google.Apis.Core.VERSION.nuspec", 
                     "Google.Apis.VERSION.nuspec", 
                     "Google.Apis.Auth.VERSION.nuspec", 
                     "Google.Apis.Auth.Mvc.VERSION.nuspec"
@@ -638,6 +639,7 @@ namespace Google.Apis.Release
 
                 var releasePaths = new[] 
                 {
+                    DefaultRepository.Combine("Src", "GoogleApis.Core", "GoogleApis.Core.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis", "GoogleApis.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth", "GoogleApis.Auth.csproj"),
 

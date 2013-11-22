@@ -100,13 +100,13 @@
       <Project>{0AAAF32E-2BF0-49C5-BC2D-90874CFB5510}</Project>
       <Name>GoogleApis.Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{DB18F3A6-B16A-477B-A7B1-C2B116D1BFB0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.WP\GoogleApis.WP.csproj">
       <Project>{39E1EC7C-3C05-44E4-A19F-A61BF6EA9B11}</Project>
       <Name>GoogleApis.WP</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
-      <Project>{826CF988-EEE8-4B75-8F53-B7E851A17BAA}</Project>
-      <Name>GoogleApis</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

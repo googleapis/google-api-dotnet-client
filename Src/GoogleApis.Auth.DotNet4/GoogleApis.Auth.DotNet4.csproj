@@ -90,13 +90,13 @@
       <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
       <Name>GoogleApis.Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.DotNet4.csproj">
       <Project>{c4da0abe-2c2e-4bb8-9881-5ff80b0c1afd}</Project>
       <Name>GoogleApis.DotNet4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
-      <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
-      <Name>GoogleApis</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

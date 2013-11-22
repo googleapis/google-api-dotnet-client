@@ -136,13 +136,13 @@
       <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
       <Name>GoogleApis.Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.WinRT\GoogleApis.WinRT.csproj">
       <Project>{9cbb9ec3-c678-4fb7-889b-ded6de1f06b6}</Project>
       <Name>GoogleApis.WinRT</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
-      <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
-      <Name>GoogleApis</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">

@@ -23,7 +23,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Logging
 {
-    /// <summary> A logger implementation which makes use of the log4net library. </summary>
+    /// <summary>A logger implementation which makes use of the log4net library.</summary>
     public sealed class Log4NetLogger : ILogger
     {
         private readonly ILog log;
@@ -38,10 +38,10 @@ namespace Google.Apis.Logging
             log = LogManager.GetLogger(name);
         }
 
-        /// <summary> Creates a new default log4net logger. </summary>
+        /// <summary>Creates a new default log4net logger.</summary>
         public Log4NetLogger() : this("google-api-dotnet-client") { }
 
-        /// <summary> Creates a new log4net logger and associates it with the specified type. </summary>
+        /// <summary>Creates a new log4net logger and associates it with the specified type.</summary>
         public Log4NetLogger(Type t) : this(t.FullName) { }
 
         public bool IsDebugEnabled

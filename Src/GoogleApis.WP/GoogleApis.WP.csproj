@@ -94,6 +94,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+      <Project>{DB18F3A6-B16A-477B-A7B1-C2B116D1BFB0}</Project>
+      <Name>GoogleApis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
       <Project>{826CF988-EEE8-4B75-8F53-B7E851A17BAA}</Project>
       <Name>GoogleApis</Name>
