@@ -229,7 +229,7 @@ namespace Google.Apis.Auth.OAuth2
             if (Token == null || Token.IsExpired(Clock))
             {
                 Logger.Debug("Token has expired, trying to get a new one.");
-                if (!await RequestAccessToken(cancellationToken).ConfigureAwait(false))
+                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
                 {
                     throw new InvalidOperationException("The access token has expired but we can't refresh it");
                 }
@@ -245,7 +245,7 @@ namespace Google.Apis.Auth.OAuth2
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return !Object.Equals(Token.AccessToken, AccessMethod.GetAccessToken(args.Request))
-                    || await RequestAccessToken(args.CancellationToken).ConfigureAwait(false);
+                    || await RequestAccessTokenAsync(args.CancellationToken).ConfigureAwait(false);
             }
 
             return false;
@@ -257,7 +257,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns><c>true</c> if a new token was received successfully.</returns>
-        private async Task<bool> RequestAccessToken(CancellationToken taskCancellationToken)
+        public async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
             string serializedHeader = CreateSerializedHeader();
             string serializedPayload = GetSerializedPayload();
