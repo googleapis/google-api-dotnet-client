@@ -39,6 +39,7 @@ namespace Google.Apis.Auth.OAuth2
         private TokenResponse token;
         private object lockObject = new object();
 
+        /// <summary>Gets the token response which contains the access token.</summary>
         public TokenResponse Token
         {
             get
@@ -96,7 +97,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <returns><c>true</c> if the token was refreshed.</returns>
-        private async Task<bool> RefreshTokenAsync(CancellationToken taskCancellationToken)
+        public async Task<bool> RefreshTokenAsync(CancellationToken taskCancellationToken)
         {
             if (Token.RefreshToken == null)
             {

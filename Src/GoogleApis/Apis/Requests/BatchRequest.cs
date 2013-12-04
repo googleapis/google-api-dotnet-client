@@ -22,6 +22,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Http;
@@ -151,7 +152,14 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>Asynchronously executes the batch request.</summary>
-        public async Task ExecuteAsync()
+        public Task ExecuteAsync()
+        {
+            return ExecuteAsync(CancellationToken.None);
+        }
+
+        /// <summary>Asynchronously executes the batch request.</summary>
+        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+        public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             if (Count < 1)
                 return;
@@ -161,7 +169,8 @@ namespace Google.Apis.Requests
             var requests = from r in allRequests
                            select r.ClientRequest;
             HttpContent outerContent = await CreateOuterRequestContent(requests).ConfigureAwait(false);
-            var result = await httpClient.PostAsync(new Uri(batchUrl), outerContent).ConfigureAwait(false);
+            var result = await httpClient.PostAsync(new Uri(batchUrl), outerContent, cancellationToken)
+                .ConfigureAwait(false);
 
             result.EnsureSuccessStatusCode();
 
@@ -175,6 +184,8 @@ namespace Google.Apis.Requests
             // While there is still content to read, parse the current HTTP response.
             while (true)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var startIndex = fullContent.IndexOf("--" + boundary);
                 if (startIndex == -1)
                 {
