@@ -26,7 +26,7 @@ namespace Google.Apis.Http
     static class HttpExtenstions
     {
         /// <summary>Returns <c>true</c> if the response contains one of the redirect status codes.</summary>
-        public static bool IsRedirectStatusCode(this HttpResponseMessage message)
+        internal static bool IsRedirectStatusCode(this HttpResponseMessage message)
         {
             switch (message.StatusCode)
             {
@@ -41,7 +41,7 @@ namespace Google.Apis.Http
         }
 
         /// <summary>Sets an empty HTTP content.</summary>
-        public static HttpContent SetEmptyContent(this HttpRequestMessage request)
+        internal static HttpContent SetEmptyContent(this HttpRequestMessage request)
         {
             request.Content = new ByteArrayContent(new byte[0]);
             request.Content.Headers.ContentLength = 0;

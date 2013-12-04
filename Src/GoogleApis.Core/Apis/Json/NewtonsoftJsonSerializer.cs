@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.IO;
 
 using Newtonsoft.Json;
@@ -81,6 +82,15 @@ namespace Google.Apis.Json
                 return default(T);
             }
             return JsonConvert.DeserializeObject<T>(input);
+        }
+
+        public object Deserialize(string input, Type type)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return null;
+            }
+            return JsonConvert.DeserializeObject(input, type);
         }
 
         public T Deserialize<T>(Stream input)

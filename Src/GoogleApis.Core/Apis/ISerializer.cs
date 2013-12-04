@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.IO;
 
 namespace Google.Apis
@@ -32,6 +33,9 @@ namespace Google.Apis
 
         /// <summary>Deserializes the string into an object.</summary>
         T Deserialize<T>(string input);
+
+        /// <summary>Deserializes the string into an object.</summary>
+        object Deserialize(string input, Type type);
 
         /// <summary>Deserializes the stream into an object.</summary>
         T Deserialize<T>(Stream input);

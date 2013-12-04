@@ -122,6 +122,7 @@
     <Compile Include="Apis\Json\JsonReaderTests.cs" />
     <Compile Include="Apis\Json\JsonTokenTests.cs" />
     <Compile Include="Apis\Json\TokenStreamTest.cs" />
+    <Compile Include="Apis\Requests\BatchRequestTest.cs" />
     <Compile Include="Apis\Requests\Parameters\ParameterCollectionTest.cs" />
     <Compile Include="Apis\Requests\Parameters\ParameterValidatorTest.cs" />
     <Compile Include="Apis\Requests\RequestBuilderTest.cs" />

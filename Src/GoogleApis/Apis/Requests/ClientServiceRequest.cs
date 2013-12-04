@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -174,15 +175,13 @@ namespace Google.Apis.Requests
 
         #endregion
 
-        public HttpRequestMessage CreateRequest()
+        public HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null)
         {
             var builder = CreateBuilder();
             var request = builder.CreateRequest();
             object body = GetBody();
-            if (body != null)
-            {
-                service.SetRequestSerailizedContent(request, body);
-            }
+            request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
+                ? overrideGZipEnabled.Value : service.GZipEnabled);
 
             AddETag(request);
             return request;

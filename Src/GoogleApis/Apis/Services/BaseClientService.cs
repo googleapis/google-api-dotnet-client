@@ -200,31 +200,7 @@ namespace Google.Apis.Services
 
         public void SetRequestSerailizedContent(HttpRequestMessage request, object body)
         {
-            if (body == null)
-            {
-                return;
-            }
-
-            HttpContent content = null;
-
-            var mediaType = "application/" + Serializer.Format;
-            var serializedObject = SerializeObject(body);
-            if (GZipEnabled)
-            {
-                var stream = CreateGZipStream(serializedObject);
-                content = new StreamContent(stream);
-                content.Headers.ContentEncoding.Add("gzip");
-                content.Headers.ContentType = new MediaTypeHeaderValue(mediaType)
-                    {
-                        CharSet = Encoding.UTF8.WebName
-                    };
-            }
-            else
-            {
-                content = new StringContent(serializedObject, Encoding.UTF8, mediaType);
-            }
-
-            request.Content = content;
+            request.SetRequestSerailizedContent(this, body, GZipEnabled);
         }
 
         #region Serialization
@@ -338,25 +314,6 @@ namespace Google.Apis.Services
         #endregion
 
         #endregion
-
-        /// <summary>Creates a GZip stream by the given serialized object.</summary>
-        private static Stream CreateGZipStream(string serializedObject)
-        {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(serializedObject);
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                using (GZipStream gzip = new GZipStream(ms, CompressionMode.Compress, true))
-                {
-                    gzip.Write(bytes, 0, bytes.Length);
-                }
-
-                // reset the stream to the beginning. It doesn't work otherwise!
-                ms.Position = 0;
-                byte[] compressed = new byte[ms.Length];
-                ms.Read(compressed, 0, compressed.Length);
-                return new MemoryStream(compressed);
-            }
-        }
 
         public virtual void Dispose()
         {
