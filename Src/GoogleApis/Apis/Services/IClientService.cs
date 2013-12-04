@@ -67,8 +67,8 @@ namespace Google.Apis.Services
 
         /// <summary>
         /// Sets the content of the request by the given body and the this service's configuration. 
-        /// First the body object is serialized by the Serializer and then, if the GZip is enabled, the content will be
-        /// wrapped in a GZip stream.
+        /// First the body object is serialized by the Serializer and then, if GZip is enabled, the content will be
+        /// wrapped in a GZip stream, otherwise a regular string stream will be used.
         /// </summary>
         void SetRequestSerailizedContent(HttpRequestMessage request, object body);
 

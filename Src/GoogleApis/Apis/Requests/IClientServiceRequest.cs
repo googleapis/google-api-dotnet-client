@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -44,7 +45,10 @@ namespace Google.Apis.Requests
         IClientService Service { get; }
 
         /// <summary>Creates a HTTP request message with all path and query parameters, ETag, etc.</summary>
-        HttpRequestMessage CreateRequest();
+        /// <param name="overrideGZipEnabled">
+        /// If <c>null</c> use the service default GZip behavior. Otherwise indicates if GZip is enabled or disabled.
+        /// </param>
+        HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null);
 
         /// <summary>Executes the request asynchronously and returns the result stream.</summary>
         Task<Stream> ExecuteAsStreamAsync();
