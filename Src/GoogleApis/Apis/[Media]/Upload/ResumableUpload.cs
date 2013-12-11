@@ -462,7 +462,10 @@ namespace Google.Apis.Upload
             }
 
             var error = await Service.DeserializeError(response).ConfigureAwait(false);
-            throw new GoogleApiException(Service.Name, error.ToString());
+            throw new GoogleApiException(Service.Name, error.ToString())
+            {
+                HttpStatusCode = response.StatusCode
+            };
         }
 
         /// <summary>A callback when the media was uploaded successfully.</summary>

@@ -286,8 +286,7 @@ namespace Google.Apis.Services
                 errorResponse = Serializer.Deserialize<StandardResponse<object>>(str);
                 if (errorResponse.Error == null)
                 {
-                    throw new GoogleApiException(Name,
-                        "An Error occurred, but the error response could not be deserialized");
+                    throw new GoogleApiException(Name, "error response is null");
                 }
             }
             catch (Exception ex)
