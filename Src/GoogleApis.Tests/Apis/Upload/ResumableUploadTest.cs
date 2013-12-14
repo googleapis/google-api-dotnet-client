@@ -498,13 +498,16 @@ anim id est laborum.";
             }
 
             [Google.Apis.Util.RequestParameter("id", RequestParameterType.Path)]
-            public int id { get; set; }
+            public int Id { get; set; }
 
             [Google.Apis.Util.RequestParameter("queryA", RequestParameterType.Query)]
-            public string querya { get; set; }
+            public string QueryA { get; set; }
 
             [Google.Apis.Util.RequestParameter("queryB", RequestParameterType.Query)]
-            public string queryb { get; set; }
+            public string QueryB { get; set; }
+
+            [Google.Apis.Util.RequestParameter("time", RequestParameterType.Query)]
+            public DateTime? MinTime { get; set; }
         }
 
         #endregion
@@ -957,7 +960,7 @@ anim id est laborum.";
             var handler = new SingleChunkMessageHandler()
                 {
                     PathParameters = "testPath/" + id.ToString(),
-                    QueryParameters = "&queryA=valuea&queryB=VALUEB",
+                    QueryParameters = "&queryA=valuea&queryB=VALUEB&time=2002-02-25T12%3A57%3A32.777Z",
                     StreamLength = stream.Length
                 };
 
@@ -968,9 +971,10 @@ anim id est laborum.";
             {
                 var upload = new MockResumableWithParameters(service, "testPath/{id}", "POST", stream, "text/plain")
                 {
-                    id = id,
-                    querya = "valuea",
-                    queryb = "VALUEB",
+                    Id = id,
+                    QueryA = "valuea",
+                    QueryB = "VALUEB",
+                    MinTime = new DateTime(2002, 2, 25, 12, 57, 32, 777, DateTimeKind.Utc)
                 };
                 upload.Upload();
 
