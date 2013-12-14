@@ -921,6 +921,43 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
+        /// <summary>Client request which contains date query parameter.</summary>
+        class ClientServiceRequestWithDateQueryParameter : TestClientServiceRequest
+        {
+            [RequestParameterAttribute("min_time", Google.Apis.Util.RequestParameterType.Query)]
+            public DateTime? Min { get; set; }
+
+            public ClientServiceRequestWithDateQueryParameter(IClientService service, string method, object body)
+                : base(service, method, body)
+            {
+                RequestParameters.Add("min_time", new Parameter
+                {
+                    Name = "min_time",
+                    ParameterType = "query"
+                });
+            }
+        }
+
+        /// <summary>Tests build request with date query parameter.</summary>
+        [Test]
+        public void CreateRequest_QueryDateParameter()
+        {
+            using (var service = new MockClientService("https://build_request_params"))
+            {
+                // Request without the date parameter.
+                var request = new ClientServiceRequestWithDateQueryParameter(service, "GET", null);
+                var httpRequest = request.CreateRequest();
+                Assert.That(httpRequest.RequestUri, Is.EqualTo(new Uri("https://build_request_params/restPath0")));
+
+                // Request with the date parameter.
+                DateTime date = new DateTime(2002, 2, 25, 12, 57, 32, 777, DateTimeKind.Utc);
+                request.Min = date;
+                httpRequest = request.CreateRequest();
+                Assert.That(httpRequest.RequestUri, Is.EqualTo(
+                    new Uri("https://build_request_params/restPath0?min_time=2002-02-25T12:57:32.777Z")));
+            }
+        }
+
         #endregion
 
         #region Path Parameters

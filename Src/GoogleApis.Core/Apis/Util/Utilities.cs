@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace Google.Apis.Util
 {
@@ -45,7 +46,7 @@ namespace Google.Apis.Util
         /// <summary>
         /// Throws an <seealso cref="System.ArgumentNullException"/> if the string is <c>null</c> or empty.
         /// </summary>
-        /// <returns>The original string</returns>
+        /// <returns>The original string.</returns>
         internal static string ThrowIfNullOrEmpty(this string str, string paramName)
         {
             if (string.IsNullOrEmpty(str))
@@ -55,33 +56,33 @@ namespace Google.Apis.Util
             return str;
         }
 
-        /// <summary>Returns <c>true</c> in case the enumerable is <c>null</c> or empty. </summary>
+        /// <summary>Returns <c>true</c> in case the enumerable is <c>null</c> or empty.</summary>
         internal static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
         {
             return coll == null || coll.Count() == 0;
         }
 
-        /// <summary>Returns the first matching custom attribute (or <c>null</c>) of the specified member. </summary>
+        /// <summary>Returns the first matching custom attribute (or <c>null</c>) of the specified member.</summary>
         internal static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
             object[] results = info.GetCustomAttributes(typeof(T), false);
             return results.Length == 0 ? null : (T)results[0];
         }
 
-        /// <summary>Returns the defined string value of an Enum. </summary>
+        /// <summary>Returns the defined string value of an Enum.</summary>
         internal static string GetStringValue(this Enum value)
         {
             FieldInfo entry = value.GetType().GetField(value.ToString());
             entry.ThrowIfNull("value");
 
-            // If set, return the value
+            // If set, return the value.
             var attribute = entry.GetCustomAttribute<StringValueAttribute>();
             if (attribute != null)
             {
                 return attribute.Text;
             }
 
-            // Otherwise throw an exception
+            // Otherwise, throw an exception.
             throw new ArgumentException(
                 string.Format("Enum value '{0}' does not contain a StringValue attribute", entry), "value");
         }
@@ -99,11 +100,18 @@ namespace Google.Apis.Util
 
             if (o.GetType().IsEnum)
             {
-                // try to convert the Enum value using the StringValue attribute
+                // Try to convert the Enum value using the StringValue attribute.
                 var enumType = o.GetType();
                 FieldInfo field = enumType.GetField(o.ToString());
                 StringValueAttribute attribute = field.GetCustomAttribute<StringValueAttribute>();
                 return attribute != null ? attribute.Text : o.ToString();
+            }
+
+            if (o is DateTime)
+            {
+                // Honor RFC3339.
+                var result = XmlConvert.ToString(((DateTime)o));
+                return result;
             }
 
             return o.ToString();

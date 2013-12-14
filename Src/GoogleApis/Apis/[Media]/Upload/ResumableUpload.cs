@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -664,15 +665,27 @@ namespace Google.Apis.Upload
 
             foreach (var property in properties)
             {
-                var attribute = property.GetCustomAttribute<Google.Apis.Util.RequestParameterAttribute>();
+                var attribute = property.GetCustomAttribute<RequestParameterAttribute>();
 
                 if (attribute != null)
                 {
                     string name = attribute.Name ?? property.Name.ToLower();
-                    object value = property.GetValue(this, new object[] { });
+                    object value = property.GetValue(this, null);
                     if (value != null)
                     {
-                        requestBuilder.AddParameter(attribute.Type, name, value.ToString());
+                        var valueAsEnumerable = value as IEnumerable;
+                        if (!(value is string) && valueAsEnumerable != null)
+                        {
+                            foreach (var elem in valueAsEnumerable)
+                            {
+                                requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(elem));
+                            }
+                        }
+                        else
+                        {
+                            // Otherwise just convert it to a string.
+                            requestBuilder.AddParameter(attribute.Type, name, Utilities.ConvertToString(value));
+                        }
                     }
                 }
             }
