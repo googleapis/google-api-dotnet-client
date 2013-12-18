@@ -60,11 +60,7 @@
     <Compile Include="Apis\Http\MaxUrlLengthInterceptor.cs" />
     <Compile Include="Apis\ISerializer.cs" />
     <Compile Include="Apis\Json\IJsonSerializer.cs" />
-    <Compile Include="Apis\Json\JsonDictionary.cs" />
-    <Compile Include="Apis\Json\JsonReader.cs" />
-    <Compile Include="Apis\Json\JsonToken.cs" />
     <Compile Include="Apis\Json\NewtonsoftJsonSerializer.cs" />
-    <Compile Include="Apis\Json\TokenStream.cs" />
     <Compile Include="Apis\Logging\ILogger.cs" />
     <Compile Include="Apis\Logging\NullLogger.cs" />
     <Compile Include="Apis\Requests\Parameters\ParameterCollection.cs" />

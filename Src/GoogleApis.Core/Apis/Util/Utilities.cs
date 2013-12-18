@@ -16,10 +16,10 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace Google.Apis.Util
 {
@@ -110,11 +110,20 @@ namespace Google.Apis.Util
             if (o is DateTime)
             {
                 // Honor RFC3339.
-                var result = XmlConvert.ToString(((DateTime)o));
-                return result;
+                return ConvertToRFC3339((DateTime)o);
             }
 
             return o.ToString();
+        }
+
+        /// <summary>Converts the input date into a RFC3339 string (http://www.ietf.org/rfc/rfc3339.txt).</summary>
+        internal static string ConvertToRFC3339(DateTime date)
+        {
+            if (date.Kind == DateTimeKind.Unspecified)
+            {
+                date = date.ToUniversalTime();
+            }
+            return date.ToString("yyyy-MM-dd'T'HH:mm:ss.fffK", DateTimeFormatInfo.InvariantInfo);
         }
     }
 }
