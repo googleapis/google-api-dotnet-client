@@ -15,12 +15,47 @@ limitations under the License.
 */
 
 using System;
+using System.Globalization;
 using System.IO;
 
 using Newtonsoft.Json;
 
+using Google.Apis.Util;
+
 namespace Google.Apis.Json
 {
+    /// <summary>
+    /// A JSON converter which honers RFC 3339 and the serialized date is accepted by Google services.
+    /// </summary>
+    public class RFC3339DateTimeConverter : JsonConverter
+    {
+        public override bool CanRead
+        {
+            get { return false; }
+        }
+
+        public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
+        {
+            throw new NotImplementedException("Unnecessary because CanRead is false.");
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            // Convert DateTime only.
+            return objectType == typeof(DateTime) || objectType == typeof(Nullable<DateTime>);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value != null)
+            {
+                DateTime date = (DateTime)value;
+                serializer.Serialize(writer, Utilities.ConvertToRFC3339(date));
+            }
+        }
+    }
+
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
@@ -42,6 +77,7 @@ namespace Google.Apis.Json
             // Initialize the Newtonsoft serializer.
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.Converters.Add(new RFC3339DateTimeConverter());
             newtonsoftSerializer = JsonSerializer.Create(settings);
         }
 
