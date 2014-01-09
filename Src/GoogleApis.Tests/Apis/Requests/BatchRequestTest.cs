@@ -211,7 +211,7 @@ Content-Length: 202
                 this.successful2ndResponse = successful2ndReponse;
             }
 
-            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 #region Verify Request Message
@@ -237,7 +237,9 @@ Content-Length: 202
                     Encoding.UTF8, "multipart/mixed");
                 response.Content.Headers.ContentType.Parameters.Add(new NameValueHeaderValue("boundary", boundary));
 
-                return response;
+                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                tcs.SetResult(response);
+                return tcs.Task;
             }
         }
 
@@ -319,6 +321,35 @@ Content-Length: 202
                 httpMessage = tuple.Item3; // HTTP message
                 Assert.That(httpMessage.Content.Headers.ContentType.MediaType, Is.EqualTo("application/json"));
                 Assert.That(httpMessage.Content.Headers.ContentLength, Is.EqualTo(202));
+            }
+        }
+
+        [Test]
+        public void ExecuteAsync_NoCallback_Test()
+        {
+            var handler = new BatchMessageHandler(true);
+            var initializer = new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
+            using (var service = new MockClientService(initializer, "http://sample.com"))
+            {
+                var responses = new List<Tuple<MockResponse, RequestError, HttpResponseMessage>>();
+                var batch = new BatchRequest(service);
+                var request1 = new TestClientServiceRequest(service, new MockRequest
+                {
+                    ETag = "\"100\"",
+                    Name = "Name1"
+                });
+                var request2 = new TestClientServiceRequest(service, new MockRequest
+                {
+                    ETag = "\"200\"",
+                    Name = "Name1-1"
+                });
+                batch.Queue<MockResponse>(request1, null);
+                batch.Queue<MockResponse>(request2, null);
+                batch.ExecuteAsync().Wait();
             }
         }
 

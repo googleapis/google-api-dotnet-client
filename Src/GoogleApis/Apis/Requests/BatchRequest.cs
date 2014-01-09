@@ -101,6 +101,9 @@ namespace Google.Apis.Requests
                 HttpResponseMessage message)
             {
                 base.OnResponse(content, error, index, message);
+                if (OnResponseCallback == null)
+                    return;
+
                 OnResponseCallback(content as TResponse, error, index, message);
             }
         }
@@ -158,7 +161,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>Asynchronously executes the batch request.</summary>
-        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel operation.</param>
         public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             if (Count < 1)
