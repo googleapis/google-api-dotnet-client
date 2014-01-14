@@ -36,6 +36,10 @@ namespace Google.Apis.Auth.OAuth2
         public WebAuthenticationBrokerUserControl()
         {
             InitializeComponent();
+
+            PhoneApplicationFrame rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
+            PhoneApplicationPage rootPage = rootFrame.Content as PhoneApplicationPage;
+            rootPage.BackKeyPress += RootPage_BackKeyPress;
         }
 
         /// <summary>Displays the loading animation.</summary>
@@ -66,7 +70,16 @@ namespace Google.Apis.Auth.OAuth2
         {
             if (!tcsAuthorizationCodeResponse.Task.IsCompleted)
             {
-                tcsAuthorizationCodeResponse.SetException(e.Exception);
+                // See https://code.google.com/p/google-api-dotnet-client/issues/detail?id=431.
+                // If we encounter a null exception, cancel the task because the WP app crashed.
+                if (e.Exception != null)
+                {
+                    tcsAuthorizationCodeResponse.SetException(e.Exception);
+                }
+                else
+                {
+                    tcsAuthorizationCodeResponse.SetCanceled();
+                }
             }
         }
 
@@ -85,6 +98,18 @@ namespace Google.Apis.Auth.OAuth2
             StartLoading();
             browser.Navigate(uri);
             return tcsAuthorizationCodeResponse.Task;
+        }
+
+        /// <summary>A callback handler for when the user presses the back key.</summary>
+        void RootPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Remove this callback.
+            PhoneApplicationFrame rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
+            PhoneApplicationPage rootPage = rootFrame.Content as PhoneApplicationPage;
+            rootPage.BackKeyPress -= RootPage_BackKeyPress;
+
+            e.Cancel = true;
+            tcsAuthorizationCodeResponse.SetCanceled();
         }
     }
 }
