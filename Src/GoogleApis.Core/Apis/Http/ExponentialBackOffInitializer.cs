@@ -22,7 +22,7 @@ using System.Text;
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// Indicates if exponential back-off is used automatically on exceptions in a service requests and\or when 503 
+    /// Indicates if exponential back-off is used automatically on exceptions in a service requests and \ or when 503 
     /// responses is returned form the server.
     /// </summary>
     [Flags]
@@ -37,7 +37,7 @@ namespace Google.Apis.Http
     }
 
     /// <summary>
-    /// An initializer which adds exponential back-off as exception handler and\or unsuccessful response handler by
+    /// An initializer which adds exponential back-off as exception handler and \ or unsuccessful response handler by
     /// the given <seealso cref="ExponentialBackOffPolicy"/>.
     /// </summary>
     public class ExponentialBackOffInitializer : IConfigurableHttpClientInitializer
@@ -61,7 +61,7 @@ namespace Google.Apis.Http
         {
             var backOff = CreateBackOff();
 
-            // Add exception handler and\or unsuccessful response handler.
+            // Add exception handler and \ or unsuccessful response handler.
             if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception)
             {
                 httpClient.MessageHandler.ExceptionHandlers.Add(backOff);
