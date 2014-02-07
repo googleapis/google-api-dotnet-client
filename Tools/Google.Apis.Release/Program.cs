@@ -52,6 +52,7 @@ namespace Google.Apis.Release
                 "'1' for building the core library. \n" +
                 "'2' for compiling samples, updating wiki and push to contrib the new version.";
             const string IsBetaHelpText = "Is this release beta?";
+            const string IsRCHelpText = "Is this release RC?";
             const string NuGetApiKeyHelpText = "Define the NuGet API key to publish to NuGet main repository.";
             const string IsLocalHelpText = "Define if current default repository will be used.";
 
@@ -75,8 +76,11 @@ namespace Google.Apis.Release
             [Option('s', "step", Required = true, HelpText = StepHelpText)]
             public int Step { get; set; }
 
-            [Option('b', "beta", DefaultValue = true, HelpText = IsBetaHelpText)]
+            [Option('b', "beta", DefaultValue = false, HelpText = IsBetaHelpText)]
             public bool IsBeta { get; set; }
+
+            [Option('r', "rc", DefaultValue = false, HelpText = IsRCHelpText)]
+            public bool IsRC { get; set; }
 
             [Option('k', "nuget_key", HelpText = NuGetApiKeyHelpText)]
             public string NuGetApiKey { get; set; }
@@ -96,7 +100,7 @@ namespace Google.Apis.Release
 
         private string Tag
         {
-            get { return options.Version + (options.IsBeta ? "-beta" : ""); }
+            get { return options.Version + (options.IsBeta ? "-beta" : (options.IsRC ? "-rc" : "")); }
         }
 
         /// <summary>Gets or sets the "default" repository.</summary>
@@ -146,6 +150,8 @@ namespace Google.Apis.Release
             if (!CommandLine.Parser.Default.ParseArguments(args, options))
             {
                 TraceSource.TraceEvent(TraceEventType.Error, "Error in reading arguments");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
                 return;
             }
 
@@ -609,7 +615,7 @@ namespace Google.Apis.Release
             FileInfo info = new FileInfo(Assembly.GetEntryAssembly().Location);
             DirectoryUtilities.CopyDirectory(Path.Combine(info.Directory.FullName, "Resources"), destDirectory);
 
-            var newVersion = options.Version + "-beta";
+            var newVersion = Tag;
 
             foreach (var nuspec in NuspecPackages)
             {
