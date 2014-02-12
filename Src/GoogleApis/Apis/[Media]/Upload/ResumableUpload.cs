@@ -351,24 +351,108 @@ namespace Google.Apis.Upload
             return UploadAsync(CancellationToken.None).Result;
         }
 
+        /// <summary>Uploads the content asynchronously to the server.</summary>
+        public Task<IUploadProgress> UploadAsync()
+        {
+            return UploadAsync(CancellationToken.None);
+        }
+
         /// <summary>Uploads the content to the server using the given cancellation token.</summary>
         /// <remarks>
         /// In case the upload fails <seealso cref="IUploadProgress.Exception "/> will contain the exception that
         /// cause the failure. The only exception which will be thrown is 
         /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
         /// </remarks>
+        /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
         public async Task<IUploadProgress> UploadAsync(CancellationToken cancellationToken)
+        {
+            BytesServerReceived = 0;
+            UpdateProgress(new ResumableUploadProgress(UploadStatus.Starting, 0));
+            // Check if the stream length is known.
+            StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
+
+            try
+            {
+                UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
+                Logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "MediaUpload - Exception occurred while initializing the upload");
+                UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
+            }
+
+            return await UploadCoreAsync(cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>Resumes the upload form the last point it was interrupted.</summary>
+        public IUploadProgress Resume()
+        {
+            return ResumeAsync(CancellationToken.None).Result;
+        }
+
+        /// <summary>Asynchronously resumes the upload form the last point it was interrupted.</summary>
+        public Task<IUploadProgress> ResumeAsync()
+        {
+            return ResumeAsync(CancellationToken.None);
+        }
+
+        /// <summary>Asynchronously resumes the upload form the last point it was interrupted.</summary>
+        /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
+        public async Task<IUploadProgress> ResumeAsync(CancellationToken cancellationToken)
+        {
+            if (UploadUri == null)
+            {
+                Logger.Info("There isn't any upload in progress, so starting to upload again");
+                return await UploadAsync(cancellationToken).ConfigureAwait(false);
+            }
+            // The first "resuming" request is to query the server in which point the upload was interrupted.
+            var range = String.Format("bytes */{0}", StreamLength < 0 ? "*" : StreamLength.ToString());
+            HttpRequestMessage request = new RequestBuilder()
+            {
+                BaseUri = UploadUri,
+                Method = HttpConsts.Put
+            }.CreateRequest();
+            request.SetEmptyContent().Headers.Add("Content-Range", range);
+
+            try
+            {
+                HttpResponseMessage response;
+                using (var callback = new ServerErrorCallback(this))
+                {
+                    response = await Service.HttpClient.SendAsync(request, cancellationToken)
+                      .ConfigureAwait(false);
+                }
+
+                if (await HandleResponse(response).ConfigureAwait(false))
+                {
+                    // All the media was successfully upload.
+                    UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesServerReceived));
+                    return Progress;
+                }
+            }
+            catch (TaskCanceledException ex)
+            {
+                Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
+                UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "MediaUpload[{0}] - Exception occurred while resuming uploading media", UploadUri);
+                UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
+                return Progress;
+            }
+
+            // Continue to upload the media stream.
+            return await UploadCoreAsync(cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>The core logic for uploading a stream. It is used by the upload and resume methods.</summary>
+        private async Task<IUploadProgress> UploadCoreAsync(CancellationToken cancellationToken)
         {
             try
             {
-                BytesServerReceived = 0;
-                UpdateProgress(new ResumableUploadProgress(UploadStatus.Starting, 0));
-                // Check if the stream length is known.
-                StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
-                UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
-
-                Logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
-
                 using (var callback = new ServerErrorCallback(this))
                 {
                     while (!await SendNextChunkAsync(ContentStream, cancellationToken).ConfigureAwait(false))
@@ -391,12 +475,6 @@ namespace Google.Apis.Upload
             }
 
             return Progress;
-        }
-
-        /// <summary>Uploads the content asynchronously to the server.</summary>
-        public Task<IUploadProgress> UploadAsync()
-        {
-            return UploadAsync(CancellationToken.None);
         }
 
         /// <summary>
@@ -447,8 +525,15 @@ namespace Google.Apis.Upload
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
-            HttpResponseMessage response = await Service.HttpClient.SendAsync(
-                request, cancellationToken).ConfigureAwait(false);
+            HttpResponseMessage response = await Service.HttpClient.SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+            return await HandleResponse(response).ConfigureAwait(false);
+        }
+
+        /// <summary>Handles a media upload HTTP response.</summary>
+        /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
+        private async Task<bool> HandleResponse(HttpResponseMessage response)
+        {
             if (response.IsSuccessStatusCode)
             {
                 MediaCompleted(response);
@@ -474,9 +559,9 @@ namespace Google.Apis.Upload
         {
             Logger.Debug("MediaUpload[{0}] - media was uploaded successfully", UploadUri);
             ProcessResponse(response);
-            BytesServerReceived += LastMediaLength;
+            BytesServerReceived = StreamLength;
 
-            // clear the last request byte array
+            // Clear the last request byte array.
             LastMediaRequest = null;
         }
 
@@ -522,7 +607,7 @@ namespace Google.Apis.Upload
             if (shouldRead)
             {
                 int len = 0;
-                // read bytes form the stream to lastMediaRequest byte array
+                // Read bytes form the stream to lastMediaRequest byte array.
                 while (true)
                 {
                     cancellationToken.ThrowIfCancellationRequested();
@@ -533,16 +618,16 @@ namespace Google.Apis.Upload
                     LastMediaLength += len;
                 }
 
-                // check if there is still data to read from stream, and cache the first byte in catchedByte
+                // Check if there is still data to read from stream, and cache the first byte in catchedByte.
                 if (0 == stream.Read(CachedByte, 0, 1))
                 {
-                    // EOF - now we know the stream's length
+                    // EOF - now we know the stream's length.
                     StreamLength = LastMediaLength + BytesServerReceived;
                     CachedByte = null;
                 }
             }
 
-            // set Content-Length and Content-Range
+            // Set Content-Length and Content-Range.
             var byteArrayContent = new ByteArrayContent(LastMediaRequest, 0, LastMediaLength);
             byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, LastMediaLength));
             request.Content = byteArrayContent;
@@ -554,12 +639,12 @@ namespace Google.Apis.Upload
         {
             int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
 
-            // stream length is known and it supports seek and position operations.
-            // We can change the stream position and read bytes from the last point
+            // Stream length is known and it supports seek and position operations.
+            // We can change the stream position and read bytes from the last point.
             byte[] buffer = new byte[Math.Min(chunkSize, BufferSize)];
 
-            // if the number of bytes received by the server isn't equal to the amount of bytes the client sent, we 
-            // need to change the position of the input stream, otherwise we can continue from the current position
+            // If the number of bytes received by the server isn't equal to the amount of bytes the client sent, we 
+            // need to change the position of the input stream, otherwise we can continue from the current position.
             if (BytesClientSent != BytesServerReceived)
             {
                 stream.Position = BytesServerReceived;
@@ -571,15 +656,15 @@ namespace Google.Apis.Upload
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                // read from input stream and write to output stream
-                // TODO(peleyal): write a utility similar to (.NET 4 Stream.CopyTo method)
+                // Read from input stream and write to output stream.
+                // TODO(peleyal): write a utility similar to (.NET 4 Stream.CopyTo method).
                 int len = stream.Read(buffer, 0, (int)Math.Min(buffer.Length, chunkSize - bytesRead));
                 if (len == 0) break;
                 ms.Write(buffer, 0, len);
                 bytesRead += len;
             }
 
-            // set the stream position to beginning and wrap it with stream content
+            // Set the stream position to beginning and wrap it with stream content.
             ms.Position = 0;
             request.Content = new StreamContent(ms);
             request.Content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkSize));

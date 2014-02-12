@@ -80,6 +80,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>Construct a new request builder.</summary> 
+        /// TODO(peleyal): Consider using the Factory pattern here.
         public RequestBuilder()
         {
             PathParameters = new Dictionary<string, IList<string>>();

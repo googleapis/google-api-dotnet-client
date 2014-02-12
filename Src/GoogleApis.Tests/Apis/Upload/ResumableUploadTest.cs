@@ -117,7 +117,7 @@ anim id est laborum.";
             /// </summary>
             public object ExpectedResponse { get; set; }
 
-            /// <summary>Gets or sets the Serializer which is used to serialize and deserialize objects.</summary>
+            /// <summary>Gets or sets the serializer which is used to serialize and deserialize objects.</summary>
             public ISerializer Serializer { get; set; }
 
             protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
@@ -310,9 +310,13 @@ anim id est laborum.";
             /// <summary>The request index we are going to cancel.</summary>
             public int CancelRequestNum { get; set; }
 
-            // on the 4th request - server returns error (if supportedError isn't none)
-            // on the 5th request - server returns 308 with "Range" header is "bytes 0-299" (depends on supportedError)
+            // On the 4th request - server returns error (if supportedError isn't none)
+            // On the 5th request - server returns 308 with "Range" header is "bytes 0-299" (depends on supportedError)
             internal const int ErrorOnCall = 4;
+
+            // When we resuming an upload, there should be 3 more calls after the failures.
+            // Uploading 3 more chunks: 200-299, 300-399, 400-453.
+            internal const int CallAfterResume = 3;
 
             /// <summary>
             /// Gets or sets the number of bytes the server reads when error occurred. The default value is <c>0</c>,
@@ -330,6 +334,12 @@ anim id est laborum.";
             private int bytesRecieved = 0;
 
             private string uploadSize;
+
+            /// <summary>Gets or sets the call number after resuming.</summary>
+            public int ResumeFromCall { get; set; }
+
+            /// <summary>Get or sets indication if the first call after resuming should fail or not.</summary>
+            public bool ErrorOnResume { get; set; }
 
             public MultipleChunksMessageHandler(bool knownSize, ServerError supportedError, int len, int chunkSize,
                 bool alwaysFailFromFirstError = false)
@@ -417,17 +427,21 @@ anim id est laborum.";
                         ReceivedData.Write(bytes, 0, read);
                         bytesRecieved += read;
                     }
-                    else if (Calls >= ErrorOnCall && alwaysFailFromFirstError)
+                    else if ((Calls >= ErrorOnCall && alwaysFailFromFirstError && ResumeFromCall == 0) ||
+                        (Calls == ResumeFromCall && ErrorOnResume))
                     {
                         if (supportedError == ServerError.Exception)
                         {
                             throw new Exception("ERROR");
                         }
+
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
                             string.Format(@"bytes */{0}", uploadSize)));
                         response.StatusCode = HttpStatusCode.ServiceUnavailable;
                     }
-                    else if (Calls == ErrorOnCall + 1 && supportedError != ServerError.None)
+                    else if ((Calls == ErrorOnCall + 1 && supportedError != ServerError.None) ||
+                        (Calls == ResumeFromCall && !ErrorOnResume) ||
+                        (Calls == ResumeFromCall + 1 && ErrorOnResume))
                     {
                         Assert.That(request.Content.Headers.GetValues("Content-Range").First(), Is.EqualTo(
                             string.Format(@"bytes */{0}", uploadSize)));
@@ -463,15 +477,11 @@ anim id est laborum.";
         private class MockResumableUpload : ResumableUpload<object>
         {
             public MockResumableUpload(IClientService service, Stream stream, string contentType)
-                : this(service, "path", "PUT", stream, contentType)
-            {
-            }
+                : this(service, "path", "PUT", stream, contentType) { }
 
             public MockResumableUpload(IClientService service, string path, string method, Stream stream,
                 string contentType)
-                : base(service, path, method, stream, contentType)
-            {
-            }
+                : base(service, path, method, stream, contentType) { }
         }
 
         /// <summary>
@@ -483,9 +493,7 @@ anim id est laborum.";
         {
             public MockResumableUploadWithResponse(IClientService service,
                 Stream stream, string contentType)
-                : base(service, "path", "POST", stream, contentType)
-            {
-            }
+                : base(service, "path", "POST", stream, contentType) { }
         }
 
         /// <summary>A resumable upload class which contains query and path parameters.</summary>
@@ -566,9 +574,9 @@ anim id est laborum.";
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
             var handler = new SingleChunkMessageHandler()
-                {
-                    StreamLength = stream.Length
-                };
+            {
+                StreamLength = stream.Length
+            };
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
@@ -590,9 +598,9 @@ anim id est laborum.";
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
             var handler = new SingleChunkMessageHandler()
-                {
-                    StreamLength = stream.Length
-                };
+            {
+                StreamLength = stream.Length
+            };
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
@@ -728,9 +736,7 @@ anim id est laborum.";
             SubtestTestChunkUpload(true, 4, ServerError.NotFound);
         }
 
-        /// <summary>
-        /// Tests a single upload request
-        /// </summary>
+        /// <summary>Tests a single upload request.</summary>
         /// <param name="knownSize">Defines if the stream size is known</param>
         /// <param name="expectedCalls">How many HTTP calls should be made to the server</param>
         /// <param name="error">Defines the type of error this test tests. The default value is none</param>
@@ -824,13 +830,15 @@ anim id est laborum.";
         }
 
         /// <summary>Test helper to test a fail uploading by with the given server error.</summary>
-        private void SubtestChunkUploadFail(ServerError error)
+        /// <param name="error">The error kind.</param>
+        /// <param name="resume">Whether we should resume uploading the stream after the failure.</param>
+        /// <param name="errorOnResume">Whether the first call after resuming should fail.</param>
+        private void SubtestChunkUploadFail(ServerError error, bool resume = false, bool errorOnResume = false)
         {
             int chunkSize = 100;
             var payload = Encoding.UTF8.GetBytes(UploadTestData);
 
-            var handler = new MultipleChunksMessageHandler(true, error, payload.Length,
-                chunkSize, true);
+            var handler = new MultipleChunksMessageHandler(true, error, payload.Length, chunkSize, true);
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
@@ -847,12 +855,31 @@ anim id est laborum.";
                 };
                 upload.Upload();
 
+                // Upload should fail.
                 var exepctedCalls = MultipleChunksMessageHandler.ErrorOnCall +
                     service.HttpClient.MessageHandler.NumTries - 1;
                 Assert.That(handler.Calls, Is.EqualTo(exepctedCalls));
                 Assert.NotNull(lastProgressStatus);
                 Assert.NotNull(lastProgressStatus.Exception);
                 Assert.That(lastProgressStatus.Status, Is.EqualTo(UploadStatus.Failed));
+
+                if (resume)
+                {
+                    // Hack the handler, so when calling the resume method the upload should succeeded.
+                    handler.ResumeFromCall = exepctedCalls + 1;
+                    handler.ErrorOnResume = errorOnResume;
+
+                    upload.Resume();
+
+                    // The first request after resuming is to query the server where the media upload was interrupted.
+                    // If errorOnResume is true, the server's first response will be 503.
+                    exepctedCalls += MultipleChunksMessageHandler.CallAfterResume + 1 + (errorOnResume ? 1 : 0);
+                    Assert.That(handler.Calls, Is.EqualTo(exepctedCalls));
+                    Assert.NotNull(lastProgressStatus);
+                    Assert.Null(lastProgressStatus.Exception);
+                    Assert.That(lastProgressStatus.Status, Is.EqualTo(UploadStatus.Completed));
+                    Assert.That(payload, Is.EqualTo(handler.ReceivedData.ToArray()));
+                }
             }
         }
 
@@ -865,9 +892,21 @@ anim id est laborum.";
             SubtestChunkUploadFail(ServerError.ServerUnavailable);
         }
 
-        /// <summary>
-        /// Tests failed uploading media (exception is thrown all the time from some request).
-        /// </summary>
+        /// <summary>Tests the resume method.</summary>
+        [Test]
+        public void TestResumeAfterFail()
+        {
+            SubtestChunkUploadFail(ServerError.ServerUnavailable, true);
+        }
+
+        /// <summary>Tests the resume method. The first call after resuming returns server unavailable.</summary>
+        [Test]
+        public void TestResumeAfterFail_FirstCallAfterResumeIsServerUnavailable()
+        {
+            SubtestChunkUploadFail(ServerError.ServerUnavailable, true, true);
+        }
+
+        /// <summary>Tests failed uploading media (exception is thrown all the time from some request).</summary>
         [Test]
         public void TestChunkUploadFail_Exception()
         {
@@ -958,11 +997,11 @@ anim id est laborum.";
 
             const int id = 123;
             var handler = new SingleChunkMessageHandler()
-                {
-                    PathParameters = "testPath/" + id.ToString(),
-                    QueryParameters = "&queryA=valuea&queryB=VALUEB&time=2002-02-25T12%3A57%3A32.777Z",
-                    StreamLength = stream.Length
-                };
+            {
+                PathParameters = "testPath/" + id.ToString(),
+                QueryParameters = "&queryA=valuea&queryB=VALUEB&time=2002-02-25T12%3A57%3A32.777Z",
+                StreamLength = stream.Length
+            };
 
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
@@ -987,22 +1026,22 @@ anim id est laborum.";
         public void TestUploadWithRequestAndResponseBody()
         {
             var body = new TestRequest()
-                {
-                    Name = "test object",
-                    Description = "the description",
-                };
+            {
+                Name = "test object",
+                Description = "the description",
+            };
 
             var handler = new RequestResponseMessageHandler<TestRequest>()
-                {
-                    ExpectedRequest = body,
-                    ExpectedResponse = new TestResponse
-                        {
-                            Name = "foo",
-                            Id = 100,
-                            Description = "bar",
-                        },
-                    Serializer = new NewtonsoftJsonSerializer()
-                };
+            {
+                ExpectedRequest = body,
+                ExpectedResponse = new TestResponse
+                    {
+                        Name = "foo",
+                        Id = 100,
+                        Description = "bar",
+                    },
+                Serializer = new NewtonsoftJsonSerializer()
+            };
 
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {

@@ -54,9 +54,8 @@ namespace Google.Apis.Requests
         Task<Stream> ExecuteAsStreamAsync();
 
         /// <summary>Executes the request asynchronously and returns the result stream.</summary>
-        /// <param name="cencellationToken">A cancellation token for canceling the request in the middle of the 
-        /// execution. operation.</param>
-        Task<Stream> ExecuteAsStreamAsync(CancellationToken cencellationToken);
+        /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
+        Task<Stream> ExecuteAsStreamAsync(CancellationToken cancellationToken);
 
         /// <summary>Executes the request and returns the result stream.</summary>
         Stream ExecuteAsStream();
@@ -72,9 +71,8 @@ namespace Google.Apis.Requests
         Task<TResponse> ExecuteAsync();
 
         /// <summary>Executes the request asynchronously and returns the result object.</summary>
-        /// <param name="cencellationToken">A cancellation token for canceling the request in the middle of execution.
-        /// </param>
-        Task<TResponse> ExecuteAsync(CancellationToken cencellationToken);
+        /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
+        Task<TResponse> ExecuteAsync(CancellationToken cancellationToken);
 
         /// <summary>Executes the request and returns the result object.</summary>
         TResponse Execute();
