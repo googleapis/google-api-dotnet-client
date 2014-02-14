@@ -110,7 +110,7 @@ namespace Google.Apis.Requests.Parameters
         /// <summary>
         /// Creates a parameter collection from the specified URL encoded query string.
         /// Example: 
-        ///     The query string "foo=bar&chocolate=cookie" would result in two parameters (foo and bar)
+        ///     The query string "foo=bar&amp;chocolate=cookie" would result in two parameters (foo and bar)
         ///     with the values "bar" and "cookie" set.
         /// </summary>
         public static ParameterCollection FromQueryString(string qs)

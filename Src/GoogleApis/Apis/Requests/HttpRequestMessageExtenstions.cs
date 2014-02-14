@@ -31,6 +31,7 @@ namespace Google.Apis.Requests
         /// <summary>
         /// Sets the content of the request by the given body and the the required GZip configuration.
         /// </summary>
+        /// <param name="request">The request.</param>
         /// <param name="service">The service.</param>
         /// <param name="body">The body of the future request. If <c>null</c> do nothing.</param>
         /// <param name="gzipEnabled">
@@ -49,7 +50,7 @@ namespace Google.Apis.Requests
             var serializedObject = service.SerializeObject(body);
             if (gzipEnabled)
             {
-                content =   CreateZipContent(serializedObject);
+                content = CreateZipContent(serializedObject);
                 content.Headers.ContentType = new MediaTypeHeaderValue(mediaType)
                 {
                     CharSet = Encoding.UTF8.WebName

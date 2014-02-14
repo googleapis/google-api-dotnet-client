@@ -52,7 +52,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc
 
         /// <summary>
         /// Asynchronously authorizes the installed application to access user's protected data. It gets the user 
-        /// identifier by calling to <seealso cref="FlowData.GetUserId"/> and then calls to
+        /// identifier by calling to <seealso cref="FlowMetadata.GetUserId"/> and then calls to
         /// <seealso cref="AuthorizationCodeWebApp.AuthorizeAsync"/>.
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
