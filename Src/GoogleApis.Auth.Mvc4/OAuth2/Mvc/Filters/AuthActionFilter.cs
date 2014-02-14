@@ -27,7 +27,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Filters
     public class AuthorizationCodeActionFilter : ActionFilterAttribute, IActionFilter
     {
         /// <summary>
-        /// Parses the request into <seealso cref="Google.Apis.Auth.OAuth2.Filters.AuthorizationCodeResponseUrl"/>
+        /// Parses the request into <seealso cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>
         /// </summary>
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {

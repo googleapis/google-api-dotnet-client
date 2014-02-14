@@ -34,7 +34,7 @@ namespace Google.Apis.Requests
     /// <summary>
     /// A batch request which represents individual requests to Google servers. You should add a single service 
     /// request using the <see cref="Queue"/> method and execute all individual requests using 
-    /// <see cref="ExecuteAsync"/>. More information about the batch protocol is available in 
+    /// <see cref="ExecuteAsync()"/>. More information about the batch protocol is available in 
     /// https://developers.google.com/storage/docs/json_api/v1/how-tos/batch.
     /// <remarks>
     /// Current implementation doesn't retry on unsuccessful individual response and doesn't support requests with 
