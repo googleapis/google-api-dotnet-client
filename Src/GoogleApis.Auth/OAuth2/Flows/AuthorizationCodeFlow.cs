@@ -50,7 +50,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             /// <summary>
             /// Gets or sets the method for presenting the access token to the resource server.
-            /// The default value is <seealso cref="BearerToken.AuthorizationHeaderAccessMethod"/>.
+            /// The default value is
+            /// <see cref="Google.Apis.Auth.OAuth2.BearerToken.AuthorizationHeaderAccessMethod"/>.
             /// </summary>
             public IAccessMethod AccessMethod { get; set; }
 
@@ -86,15 +87,15 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// Get or sets the exponential back-off policy. Default value is  <c>UnsuccessfulResponse503</c>, which 
             /// means that exponential back-off is used on 503 abnormal HTTP responses.
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to user to
-            /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
-            /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
-            /// implementation (using <seealso cref="Google.Apis.Http.BackOffHandler"/>).
+            /// configure the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
+            /// <see cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
+            /// implementation (using <see cref="Google.Apis.Http.BackOffHandler"/>).
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
             /// <summary>
             /// Gets or sets the clock. The clock is used to determine if the token has expired, if so we will try to
-            /// refresh it. The default value is <seealso cref="SystemClock.Default"/>.
+            /// refresh it. The default value is <see cref="Google.Apis.Util.SystemClock.Default"/>.
             /// </summary>
             public IClock Clock { get; set; }
 

@@ -75,7 +75,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Default implementation is to try to refresh the access token if there is no access token or if we are 1 
         /// minute away from expiration. If token server is unavailable, it will try to use the access token even if 
-        /// has expired. If successful, it will call <seealso cref="IAccessMethod.Intercept"/>.
+        /// has expired. If successful, it will call <see cref="IAccessMethod.Intercept"/>.
         /// </summary>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
@@ -92,7 +92,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Refreshes the token by calling to <seealso cref="IAuthorizationCodeFlow.RefreshTokenAsync"/>. Then it 
+        /// Refreshes the token by calling to <see cref="IAuthorizationCodeFlow.RefreshTokenAsync"/>. Then it 
         /// updates the <see cref="TokenResponse"/> with the new token instance.
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
