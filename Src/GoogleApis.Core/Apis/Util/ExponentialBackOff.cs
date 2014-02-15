@@ -31,7 +31,7 @@ namespace Google.Apis.Util
         private readonly TimeSpan deltaBackOff;
         /// <summary>
         /// Gets the delta time span used to generate a random milliseconds to add to the next back-off.
-        /// If the value is <seealso cref="System.TimeSpan.Zero"/> then the generated back-off will be exactly 1, 2, 4,
+        /// If the value is <see cref="System.TimeSpan.Zero"/> then the generated back-off will be exactly 1, 2, 4,
         /// 8, 16, etc. seconds. A valid value is between zero and one second. The default value is 250ms, which means
         /// that the generated back-off will be [0.75-1.25]sec, [1.75-2.25]sec, [3.75-4.25]sec, and so on.
         /// </summary>

@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <seealso cref="Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecretsUri">The client secrets URI.</param>
         /// <param name="scopes">
@@ -50,7 +50,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <seealso cref="Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecrets">The client secrets URI.</param>
         /// <param name="scopes">

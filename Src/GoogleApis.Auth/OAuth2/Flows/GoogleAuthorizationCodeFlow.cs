@@ -21,7 +21,7 @@ using Google.Apis.Auth.OAuth2.Requests;
 namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>
-    /// Google specific authorization code flow which inherits from <seealso cref="AuthorizationCodeFlow"/>.
+    /// Google specific authorization code flow which inherits from <see cref="AuthorizationCodeFlow"/>.
     /// </summary>
     public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow
     {
@@ -46,8 +46,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
-            /// <seealso cref="GoogleAuthConsts.AuthorizationUrl"/>, and Token server URL to 
-            /// <seealso cref="GoogleAuthConsts.TokenUrl"/>.
+            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.AuthorizationUrl"/>, and Token server URL to 
+            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.TokenUrl"/>.
             /// </summary>
             public Initializer()
                 : base(GoogleAuthConsts.AuthorizationUrl, GoogleAuthConsts.TokenUrl)

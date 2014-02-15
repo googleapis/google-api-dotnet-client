@@ -30,8 +30,8 @@ namespace Google.Apis.Auth.OAuth2
     /// credentials.
     /// <remarks>
     /// The <see cref="AuthorizeAsync"/> method MUST be called from the dispatcher thread!
-    /// This installed app class uses an internal <seealso cref="AuthorizationCodeInstalledApp"/> with a
-    /// <seealso cref="Google.Apis.Auth.OAuth2.AuthorizationCodeBroker"/> for retrieving the authorization code. 
+    /// This installed app class uses an internal <see cref="AuthorizationCodeInstalledApp"/> with a
+    /// <see cref="Google.Apis.Auth.OAuth2.AuthorizationCodeBroker"/> for retrieving the authorization code. 
     /// </remarks>
     /// </summary>
     public sealed class AuthorizationCodeWPInstalledApp : IAuthorizationCodeInstalledApp

@@ -191,7 +191,7 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
-        /// Creates the <seealso cref="Google.Apis.Requests.RequestBuilder"/> which is used to generate a request.
+        /// Creates the <see cref="Google.Apis.Requests.RequestBuilder"/> which is used to generate a request.
         /// </summary>
         /// <returns>
         /// A new builder instance which contains the HTTP method and the right Uri with its path and query parameters.

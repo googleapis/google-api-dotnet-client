@@ -78,9 +78,9 @@ namespace Google.Apis.Services
             /// <c>UnsuccessfulResponse503</c>, which means that exponential back-off is used on 503 abnormal HTTP
             /// response.
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
-            /// configure the <seealso cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
-            /// <seealso cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
-            /// implementation (using <seealso cref="Google.Apis.Http.BackOffHandler"/>).
+            /// configure the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
+            /// <see cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
+            /// implementation (using <see cref="Google.Apis.Http.BackOffHandler"/>).
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
@@ -175,10 +175,10 @@ namespace Google.Apis.Services
         }
 
         /// <summary>
-        /// Creates the back-off handler with <seealso cref="Google.Apis.Util.ExponentialBackOff"/>. 
+        /// Creates the back-off handler with <see cref="Google.Apis.Util.ExponentialBackOff"/>. 
         /// Overrides this method to change the default behavior of back-off handler (e.g. you can change the maximum
         /// waited request's time span, or create a back-off handler with you own implementation of 
-        /// <seealso cref="Google.Apis.Util.IBackOff"/>).
+        /// <see cref="Google.Apis.Util.IBackOff"/>).
         /// </summary>
         protected virtual BackOffHandler CreateBackOffHandler()
         {

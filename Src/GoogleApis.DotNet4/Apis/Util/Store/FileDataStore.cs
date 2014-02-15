@@ -24,7 +24,7 @@ using Google.Apis.Json;
 namespace Google.Apis.Util.Store
 {
     /// <summary>
-    /// File data store that implements <seealso cref="IDataStore"/>. This store creates a different file for each 
+    /// File data store that implements <see cref="IDataStore"/>. This store creates a different file for each 
     /// combination of type and key. This file data store stores a JSON format of the specified object.
     /// </summary>
     public class FileDataStore : IDataStore
@@ -35,7 +35,7 @@ namespace Google.Apis.Util.Store
 
         /// <summary>
         /// Constructs a new file data store with the specified folder. This folder is created (if it doesn't exist 
-        /// yet) under <seealso cref="Environment.SpecialFolder.ApplicationData"/>.
+        /// yet) under <see cref="Environment.SpecialFolder.ApplicationData"/>.
         /// </summary>
         /// <param name="folder">Folder name.</param>
         public FileDataStore(string folder)

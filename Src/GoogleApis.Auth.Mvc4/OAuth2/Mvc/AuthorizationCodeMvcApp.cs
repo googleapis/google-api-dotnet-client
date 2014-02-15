@@ -36,7 +36,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc
         /// <summary>Gets the controller which is the owner of this authorization code MVC app instance.</summary>
         public Controller Controller { get { return controller; } }
 
-        /// <summary>Gets the <seealso cref="Google.Apis.Auth.OAuth2.Mvc.FlowMetadata"/> object.</summary>
+        /// <summary>Gets the <see cref="Google.Apis.Auth.OAuth2.Mvc.FlowMetadata"/> object.</summary>
         public FlowMetadata FlowData { get { return flowData; } }
 
         /// <summary>Constructs a new authorization code MVC app using the given controller and flow data.</summary>
@@ -52,8 +52,8 @@ namespace Google.Apis.Auth.OAuth2.Mvc
 
         /// <summary>
         /// Asynchronously authorizes the installed application to access user's protected data. It gets the user 
-        /// identifier by calling to <seealso cref="FlowMetadata.GetUserId"/> and then calls to
-        /// <seealso cref="AuthorizationCodeWebApp.AuthorizeAsync"/>.
+        /// identifier by calling to <see cref="Google.Apis.Auth.OAuth2.Mvc.FlowMetadata.GetUserId"/> and then calls to
+        /// <see cref="Google.Apis.Auth.OAuth2.AuthorizationCodeWebApp.AuthorizeAsync"/>.
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation</param>
         /// <returns>

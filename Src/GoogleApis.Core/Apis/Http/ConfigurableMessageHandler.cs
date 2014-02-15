@@ -47,7 +47,7 @@ namespace Google.Apis.Http
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
-        /// <summary>The User-Agent suffix header which contains the <seealso cref="ApiVersion"/>.</summary>
+        /// <summary>The User-Agent suffix header which contains the <see cref="ApiVersion"/>.</summary>
         private static readonly string UserAgentSuffix = "google-api-dotnet-client/" + ApiVersion + " (gzip)";
 
         #region IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler and IHttpExecuteInterceptor lists
@@ -93,7 +93,7 @@ namespace Google.Apis.Http
         /// abnormal HTTP response or exception before being terminated. 
         /// Set <c>1</c> for not retrying requests. The default value is <c>3</c>.
         /// <remarks>
-        /// The number of allowed redirects (3xx) is defined by <seealso cref="NumRedirects"/>. This property defines
+        /// The number of allowed redirects (3xx) is defined by <see cref="NumRedirects"/>. This property defines
         /// only the allowed tries for >=400 responses, or when an exception is thrown. For example if you set 
         /// <see cref="NumTries"/> to 1 and <see cref="NumRedirects"/> to 5, the library will send up to five redirect
         /// requests, but will not send any retry requests due to an error HTTP status code.

@@ -40,7 +40,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
             ResponseType = "code";
         }
 
-        /// <summary>Creates a <seealso cref="System.Uri"/> which is used to request the authorization code.</summary>
+        /// <summary>Creates a <see cref="System.Uri"/> which is used to request the authorization code.</summary>
         public Uri Build()
         {
             var builder = new RequestBuilder()

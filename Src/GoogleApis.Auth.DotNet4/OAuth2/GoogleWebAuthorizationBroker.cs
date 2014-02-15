@@ -27,12 +27,12 @@ namespace Google.Apis.Auth.OAuth2
     /// <summary>A helper utility to manage the authorization code flow.</summary>
     public class GoogleWebAuthorizationBroker
     {
-        /// <summary>The folder which is used by the <seealso cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
+        /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
         public static string Folder = "Google.Apis.Auth";
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// In case no data store is specified, <seealso cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
+        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
         /// </remarks>
         /// <param name="clientSecrets">The client secrets.</param>
@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// In case no data store is specified, <seealso cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
+        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
         /// </remarks>
         /// <param name="clientSecretsStream">

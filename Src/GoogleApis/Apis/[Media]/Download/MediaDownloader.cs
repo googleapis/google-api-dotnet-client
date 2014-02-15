@@ -154,7 +154,7 @@ namespace Google.Apis.Download
         /// <param name="stream">The download will download the resource into this stream.</param>
         /// <param name="cancellationToken">A cancellation token to cancel this download in the middle.</param>
         /// <returns>A task with the download progress object. If an exception occurred during the download, its 
-        /// <seealso cref="IDownloadProgress.Exception "/> property will contain the exception.</returns>
+        /// <see cref="IDownloadProgress.Exception "/> property will contain the exception.</returns>
         private async Task<IDownloadProgress> DownloadCoreAsync(string url, Stream stream,
             CancellationToken cancellationToken)
         {

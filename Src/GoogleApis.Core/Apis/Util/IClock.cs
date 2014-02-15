@@ -22,19 +22,19 @@ namespace Google.Apis.Util
     public interface IClock
     {
         /// <summary>
-        /// Gets a <seealso cref="DateTime"/> object that is set to the current date and time on this computer, 
+        /// Gets a <see cref="System.DateTime"/> object that is set to the current date and time on this computer, 
         /// expressed as the local time.
         /// </summary>
         DateTime Now { get; }
 
         /// <summary>
-        /// Gets a <seealso cref="DateTime"/> object that is set to the current date and time on this computer, 
+        /// Gets a <see cref="System.DateTime"/> object that is set to the current date and time on this computer, 
         /// expressed as UTC time.
         /// </summary>
         DateTime UtcNow { get; }
     }
 
-    /// <summary>A default clock implementation that wraps the <seealso cref="DateTime.Now"/> property.</summary>
+    /// <summary>A default clock implementation that wraps the <see cref="System.DateTime.Now"/> property.</summary>
     public class SystemClock : IClock
     {
         /// <summary>Constructs a new system clock.</summary>

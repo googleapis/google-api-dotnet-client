@@ -25,20 +25,21 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
-    /// <summary>Extension methods to <seealso cref="TokenRequest"/>.</summary>
+    /// <summary>Extension methods to <see cref="TokenRequest"/>.</summary>
     internal static class TokenRequestExtenstions
     {
         /// <summary>
         /// Executes the token request in order to receive a 
-        /// <seealso cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse"/>. In case the token server returns an 
-        /// error, a <seealso cref="Google.Apis.Auth.OAuth2.Responses.TokenResponseException"/> is thrown.
+        /// <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse"/>. In case the token server returns an 
+        /// error, a <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponseException"/> is thrown.
         /// </summary>
         /// <param name="request">The token request.</param>
         /// <param name="httpClient">The HTTP client used to create an HTTP request.</param>
         /// <param name="tokenServerUrl">The token server URL.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <param name="clock">
-        /// The clock which is used to set the <seealso cref="TokenResponse.Issued"/> property.
+        /// The clock which is used to set the
+        /// <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponse.Issued"/> property.
         /// </param>
         /// <returns>Token response with the new access token.</returns>
         public static async Task<TokenResponse> ExecuteAsync(this TokenRequest request, HttpClient httpClient,

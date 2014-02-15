@@ -29,7 +29,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <seealso cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecrets">The client secrets.</param>
         /// <param name="scopes">
@@ -51,11 +51,11 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <seealso cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecretsStream">
         /// The client secrets stream. The AuthorizationCodeFlow constructor is responsible for disposing the stream.
-        /// Note that it's more secured to use the authenticate method which gets <seealso cref="ClientSecrets"/>, and
+        /// Note that it's more secured to use the authenticate method which gets <see cref="ClientSecrets"/>, and
         /// hard code your secrets in your app rather than storing the secrets in a separate unsecured file.
         /// </param>
         /// <param name="scopes">

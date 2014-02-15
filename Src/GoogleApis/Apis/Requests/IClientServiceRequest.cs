@@ -62,7 +62,7 @@ namespace Google.Apis.Requests
     }
 
     /// <summary>
-    /// A client service request which inherits from <seealso cref="IClientServiceRequest"/> and represents a specific 
+    /// A client service request which inherits from <see cref="IClientServiceRequest"/> and represents a specific 
     /// service request with the given response type. It supports both sync and async execution to get the response.
     /// </summary>
     public interface IClientServiceRequest<TResponse> : IClientServiceRequest

@@ -23,12 +23,12 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Filters
 {
     /// <summary>
     /// An action filter which parses the query parameters into
-    ///  <seealso cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>.
+    /// <see cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>.
     /// </summary>
     public class AuthorizationCodeActionFilter : ActionFilterAttribute, IActionFilter
     {
         /// <summary>
-        /// Parses the request into <seealso cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>.
+        /// Parses the request into <see cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>.
         /// </summary>
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {

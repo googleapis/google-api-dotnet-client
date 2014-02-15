@@ -26,7 +26,7 @@ namespace Google.Apis.Http
 {
     /// <summary>
     /// A thread-safe back-off handler which handles an abnormal HTTP response or an exception with 
-    /// <see cref="IBackOff"/>.
+    /// <see cref="Google.Apis.Util.IBackOff"/>.
     /// </summary>
     public class BackOffHandler : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler
     {
@@ -40,8 +40,8 @@ namespace Google.Apis.Http
 
             /// <summary>
             /// Gets or sets the maximum time span to wait. If the back-off instance returns a greater time span than
-            /// this value, this handler returns <c>false</c> to both <see cref="HandleExceptionAsync"/> and 
-            /// <see cref="HandleResponseAsync"/>. Default value is 16 seconds per a retry request.
+            /// this value, this handler returns <c>false</c> to both <c>HandleExceptionAsync</c> and 
+            /// <c>HandleResponseAsync</c>. Default value is 16 seconds per a retry request.
             /// </summary>
             public TimeSpan MaxTimeSpan { get; set; }
 
@@ -63,8 +63,8 @@ namespace Google.Apis.Http
 
             /// <summary>
             /// Default function which handles exception which aren't 
-            /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> or 
-            /// <seealso cref="System.OperationCanceledException"/>. Those exceptions represent a task or an operation
+            /// <see cref="System.Threading.Tasks.TaskCanceledException"/> or 
+            /// <see cref="System.OperationCanceledException"/>. Those exceptions represent a task or an operation
             /// which was canceled and shouldn't be retried.
             /// </summary>
             public static readonly Func<Exception, bool> DefaultHandleExceptionFunc =
