@@ -37,13 +37,19 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the data store used to store the credentials.</summary>
         IDataStore DataStore { get; }
 
-        /// <summary>Asynchronously loads the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
+        /// <summary>
+        /// Asynchronously loads the user's token using the flow's
+        /// <see cref="Google.Apis.Util.Store.IDataStore"/>.
+        /// </summary>
         /// <param name="userId">User identifier</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation</param>
         /// <returns>Token response</returns>
         Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken);
 
-        /// <summary>Asynchronously deletes the user's token using the flow's <seealso cref="IDataStore"/>.</summary>
+        /// <summary>
+        /// Asynchronously deletes the user's token using the flow's
+        /// <see cref="Google.Apis.Util.Store.IDataStore"/>.
+        /// </summary>
         /// <param name="userId">User identifier.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken);

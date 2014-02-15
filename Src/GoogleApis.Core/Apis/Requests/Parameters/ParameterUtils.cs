@@ -25,22 +25,22 @@ using Google.Apis.Util;
 namespace Google.Apis.Requests.Parameters
 {
     /// <summary>
-    /// Utility class for iterating on <seealso cref="RequestParameterAttribute"/> properties in a request object.
+    /// Utility class for iterating on <see cref="RequestParameterAttribute"/> properties in a request object.
     /// </summary>
     public static class ParameterUtils
     {
         /// <summary>
-        /// Creates a <seealso cref="System.Net.Http.FormUrlEncodedContent"/> with all the specified parameters in 
+        /// Creates a <see cref="System.Net.Http.FormUrlEncodedContent"/> with all the specified parameters in 
         /// the input request. It uses reflection to iterate over all properties with
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
         /// </summary>
         /// <param name="request">
         /// A request object which contains properties with 
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be serialized
-        /// to the returned <seealso cref="System.Net.Http.FormUrlEncodedContent"/>.
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be serialized
+        /// to the returned <see cref="System.Net.Http.FormUrlEncodedContent"/>.
         /// </param>
         /// <returns>
-        /// A <seealso cref="System.Net.Http.FormUrlEncodedContent"/> which contains the all the given object required 
+        /// A <see cref="System.Net.Http.FormUrlEncodedContent"/> which contains the all the given object required 
         /// values.
         /// </returns>
         public static FormUrlEncodedContent CreateFormUrlEncodedContent(object request)
@@ -55,11 +55,11 @@ namespace Google.Apis.Requests.Parameters
 
         /// <summary>
         /// Creates a parameter dictionary by using reflection to iterate over all properties with
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
         /// </summary>
         /// <param name="request">
         /// A request object which contains properties with 
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set
         /// in the output dictionary.
         /// </param>
         public static IDictionary<string, object> CreateParameterDictionary(object request)
@@ -74,12 +74,12 @@ namespace Google.Apis.Requests.Parameters
 
         /// <summary>
         /// Sets query parameters in the given builder with all all properties with the
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute.
         /// </summary>
         /// <param name="builder">The request builder</param>
         /// <param name="request">
         /// A request object which contains properties with 
-        /// <seealso cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the 
+        /// <see cref="Google.Apis.Util.RequestParameterAttribute"/> attribute. Those properties will be set in the 
         /// given request builder object
         /// </param>
         public static void InitParameters(RequestBuilder builder, object request)
@@ -91,8 +91,8 @@ namespace Google.Apis.Requests.Parameters
         }
 
         /// <summary>
-        /// Iterates over all <seealso cref="RequestParameterAttribute"/> properties in the request object and invokes
-        /// the specified action for each of them.
+        /// Iterates over all <see cref="Google.Apis.Util.RequestParameterAttribute"/> properties in the request
+        /// object and invokes the specified action for each of them.
         /// </summary>
         /// <param name="request">A request object</param>
         /// <param name="action">An action to invoke which gets the parameter type, name and its value</param>
