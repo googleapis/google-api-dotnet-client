@@ -126,7 +126,8 @@ namespace Google.Apis.Upload
         public IClientService Service { get; private set; }
 
         /// <summary>
-        /// Gets or sets the path of the method (combined with <see cref="IClientService.BaseUri"/>) to produce 
+        /// Gets or sets the path of the method (combined with
+        /// <see cref="Google.Apis.Services.IClientService.BaseUri"/>) to produce 
         /// absolute Uri. 
         /// </summary>
         public string Path { get; private set; }
@@ -343,7 +344,7 @@ namespace Google.Apis.Upload
         /// Uploads the content to the server. This method is synchronous and will block until the upload is completed.
         /// </summary>
         /// <remarks>
-        /// In case the upload fails the <seealso cref="IUploadProgress.Exception "/> will contain the exception that
+        /// In case the upload fails the <see cref="IUploadProgress.Exception"/> will contain the exception that
         /// cause the failure.
         /// </remarks>
         public IUploadProgress Upload()
@@ -359,9 +360,9 @@ namespace Google.Apis.Upload
 
         /// <summary>Uploads the content to the server using the given cancellation token.</summary>
         /// <remarks>
-        /// In case the upload fails <seealso cref="IUploadProgress.Exception "/> will contain the exception that
+        /// In case the upload fails <see cref="IUploadProgress.Exception"/> will contain the exception that
         /// cause the failure. The only exception which will be thrown is 
-        /// <seealso cref="System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
+        /// <see cref="System.Threading.Tasks.TaskCanceledException"/> which indicates that the task was canceled.
         /// </remarks>
         /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
         public async Task<IUploadProgress> UploadAsync(CancellationToken cancellationToken)

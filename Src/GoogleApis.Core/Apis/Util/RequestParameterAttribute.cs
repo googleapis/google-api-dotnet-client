@@ -37,7 +37,7 @@ namespace Google.Apis.Util
 
         /// <summary>
         /// Constructs a new property attribute to be a part of a REST URI. 
-        /// This constructor uses <seealso cref="RequestParameterType.Query"/> as the parameter's type.
+        /// This constructor uses <see cref="RequestParameterType.Query"/> as the parameter's type.
         /// </summary>
         /// <param name="name">
         /// The name of the parameter. If the parameter is a path parameter this name will be used to substitute the 

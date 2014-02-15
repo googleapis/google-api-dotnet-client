@@ -21,17 +21,14 @@ using Google.Apis.Auth.OAuth2.Flows;
 namespace Google.Apis.Auth.OAuth2.Mvc
 {
     /// <summary>
-    /// Flow metadata abstract class which contains the reference to the <seealso cref="IAuthorizationCodeFlow"/> and
+    /// Flow metadata abstract class which contains the reference to the
+    /// <see cref="Google.Apis.Auth.OAuth2.FlowsIAuthorizationCodeFlow"/> and
     /// method to get the user identifier.
     /// </summary>
     public abstract class FlowMetadata
     {
         /// <summary>
         /// Gets the user identifier.
-        /// <para>
-        /// An example implementation may get the user identifier by retrieving the 
-        /// <seealso cref="System.Web.HttpSessionStateBase"/> (from <seealso cref="Controller.Session"/>).
-        /// </para>
         /// </summary>
         /// <param name="controller">The controller</param>
         /// <returns>User identifier</returns>

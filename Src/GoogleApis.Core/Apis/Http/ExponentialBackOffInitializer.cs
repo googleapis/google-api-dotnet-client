@@ -38,7 +38,7 @@ namespace Google.Apis.Http
 
     /// <summary>
     /// An initializer which adds exponential back-off as exception handler and \ or unsuccessful response handler by
-    /// the given <seealso cref="ExponentialBackOffPolicy"/>.
+    /// the given <see cref="ExponentialBackOffPolicy"/>.
     /// </summary>
     public class ExponentialBackOffInitializer : IConfigurableHttpClientInitializer
     {

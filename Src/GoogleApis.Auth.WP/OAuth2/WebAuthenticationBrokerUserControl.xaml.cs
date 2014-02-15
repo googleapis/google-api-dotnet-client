@@ -26,7 +26,8 @@ using Google.Apis.Auth.OAuth2.Responses;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// Web authentication broker user control for retrieving <seealso cref="AuthorizationCodeResponseUrl"/>
+    /// Web authentication broker user control for retrieving
+    /// <see cref="Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl"/>
     /// </summary>
     internal partial class WebAuthenticationBrokerUserControl : UserControl
     {

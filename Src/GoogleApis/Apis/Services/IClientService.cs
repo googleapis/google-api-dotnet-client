@@ -27,7 +27,7 @@ namespace Google.Apis.Services
 {
     /// <summary>
     /// Client service contains all the necessary information a Google service requires. 
-    /// Each concrete <seealso cref="Google.Apis.Requests.IClientServiceRequest"/> has a reference to a service for 
+    /// Each concrete <see cref="Google.Apis.Requests.IClientServiceRequest"/> has a reference to a service for 
     /// important properties like API key, application name, base Uri, etc.
     /// This service interface also contains serialization methods to serialize an object to stream and deserialize a 
     /// stream into an object.

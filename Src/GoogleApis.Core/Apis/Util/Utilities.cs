@@ -32,7 +32,7 @@ namespace Google.Apis.Util
             return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
         }
 
-        /// <summary>Throws an <seealso cref="System.ArgumentNullException"/> if the object is null.</summary>
+        /// <summary>Throws an <see cref="System.ArgumentNullException"/> if the object is null.</summary>
         internal static T ThrowIfNull<T>(this T obj, string paramName)
         {
             if (obj == null)
@@ -44,7 +44,7 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Throws an <seealso cref="System.ArgumentNullException"/> if the string is <c>null</c> or empty.
+        /// Throws an <see cref="System.ArgumentNullException"/> if the string is <c>null</c> or empty.
         /// </summary>
         /// <returns>The original string.</returns>
         internal static string ThrowIfNullOrEmpty(this string str, string paramName)
@@ -127,7 +127,7 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Parses the input string and returns <seealso cref="System.DateTime"/> if the input is a valid 
+        /// Parses the input string and returns <see cref="System.DateTime"/> if the input is a valid 
         /// representation of a date. Otherwise it returns <c>null</c>.
         /// </summary>
         public static DateTime? GetDateTimeFromString(string raw)
@@ -140,7 +140,7 @@ namespace Google.Apis.Util
             return result;
         }
 
-        /// <summary>Returns a string (by RFC3339) form the input <seealso cref="DateTime"/> instance.</summary>
+        /// <summary>Returns a string (by RFC3339) form the input <see cref="DateTime"/> instance.</summary>
         public static string GetStringFromDateTime(DateTime? date)
         {
             if (!date.HasValue)

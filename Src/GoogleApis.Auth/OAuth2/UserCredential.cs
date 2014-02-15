@@ -92,8 +92,9 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Refreshes the token by calling to <see cref="IAuthorizationCodeFlow.RefreshTokenAsync"/>. Then it 
-        /// updates the <see cref="TokenResponse"/> with the new token instance.
+        /// Refreshes the token by calling to
+        /// <see cref="Google.Apis.Auth.OAuth2.Flows.IAuthorizationCodeFlow.RefreshTokenAsync"/>.
+        /// Then it updates the <see cref="TokenResponse"/> with the new token instance.
         /// </summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <returns><c>true</c> if the token was refreshed.</returns>

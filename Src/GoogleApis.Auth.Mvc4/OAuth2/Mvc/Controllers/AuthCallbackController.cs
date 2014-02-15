@@ -51,7 +51,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Controllers
 
         /// <summary>
         /// A callback which gets the error when this controller didn't receive an authorization code. The default 
-        /// implementation throws a <seealso cref="TokenResponseException"/>.
+        /// implementation throws a <see cref="Google.Apis.Auth.OAuth2.Responses.TokenResponseException"/>.
         /// </summary>
         protected virtual ActionResult OnTokenError(TokenErrorResponse errorResponse)
         {
@@ -64,13 +64,13 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Controllers
         /// page which initialized the auth process (using the state parameter).
         /// <para>
         /// The current timeout is set to 10 seconds. You can change the default behavior by setting 
-        /// <seealso cref="System.Web.Mvc.AsyncTimeoutAttribute"/> with a different value on your controller.
+        /// <see cref="System.Web.Mvc.AsyncTimeoutAttribute"/> with a different value on your controller.
         /// </para>
         /// </summary>
         /// <param name="authorizationCode">Authorization code response which contains the code or an error.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns>
-        /// Redirect action to the state parameter or <seealso cref="OnTokenError"/> in case of an error.
+        /// Redirect action to the state parameter or <see cref="OnTokenError"/> in case of an error.
         /// </returns>
         [AsyncTimeout(10000)]
         public async virtual Task<ActionResult> IndexAsync(AuthorizationCodeResponseUrl authorizationCode,

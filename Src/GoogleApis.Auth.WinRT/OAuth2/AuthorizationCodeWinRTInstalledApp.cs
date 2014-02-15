@@ -25,8 +25,8 @@ namespace Google.Apis.Auth.OAuth2
     /// <summary>
     /// OAuth 2.0 authorization code flow for a Windows 8 installed applications that persists end-user credentials.
     /// <remarks>
-    /// This installed app class uses an internal <seealso cref="AuthorizationCodeInstalledApp"/> with a
-    /// <seealso cref="Google.Apis.Auth.OAuth2.AuthorizationCodeBroker"/> for retrieving the authorization code. 
+    /// This installed app class uses an internal <see cref="AuthorizationCodeInstalledApp"/> with a
+    /// <see cref="Google.Apis.Auth.OAuth2.AuthorizationCodeBroker"/> for retrieving the authorization code. 
     /// </remarks>
     /// </summary>
     public sealed class AuthorizationCodeWinRTInstalledApp : IAuthorizationCodeInstalledApp
