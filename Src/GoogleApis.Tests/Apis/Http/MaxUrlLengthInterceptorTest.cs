@@ -89,6 +89,33 @@ namespace Google.Apis.Tests.Apis.Http
         }
 
         /// <summary>
+        /// Reproducing bug in version 1.8.1. We were deleting by mistake the last letter in the URL. 
+        /// So when we were expected to send a new POST query to the following URL
+        /// http://www.googleapis.com/language/translate/v2, we actually created
+        /// a new query to http://www.googleapis.com/language/translate/v (2 is missing).
+        /// See https://code.google.com/p/google-api-dotnet-client/issues/detail?id=455
+        /// </summary>
+        [Test]
+        public void TestGetPathQueryWithUrlOkayLengthByDefault()
+        {
+            uint maxUrlLength = 1000;
+            var query = "q=" + new String('x', 1000);
+            var uri = "http://www.googleapis.com/language/translate/v2";
+            var requestUri = uri + "?" + query;
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            var mockHandler = new MockMessageHandler();
+            var handler = new ConfigurableMessageHandler(mockHandler);
+            handler.ExecuteInterceptors.Add(new MaxUrlLengthInterceptor(maxUrlLength));
+            using (var httpClient = new HttpClient(handler))
+            {
+                httpClient.SendAsync(request);
+                // Confirm the request was modified correctly, and the uri was set correctly.
+                Assert.That(request.RequestUri, Is.EqualTo(new Uri(uri)));
+                Assert.That(mockHandler.RequestContent, Is.EqualTo(query));
+            }
+        }
+
+        /// <summary>
         /// Verifies that URLs over user-specified max number of characters (see the value of maxUrlLength) on GET 
         /// requests are correctly translated to a POST request.
         /// </summary>
@@ -106,7 +133,7 @@ namespace Google.Apis.Tests.Apis.Http
             using (var httpClient = new HttpClient(handler))
             {
                 httpClient.SendAsync(request);
-                // Confirm the test URI is one character too long
+                // Confirm the test URI is one character too long.
                 Assert.That(requestUri.Length, Is.EqualTo(maxUrlLength + 1));
                 // Confirm the request was modified correctly:
                 Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
