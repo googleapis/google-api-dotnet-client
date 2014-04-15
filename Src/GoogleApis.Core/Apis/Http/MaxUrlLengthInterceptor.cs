@@ -62,7 +62,7 @@ namespace Google.Apis.Http
                 var requestString = request.RequestUri.ToString();
                 // The new request URI is the old one minus the "?" and everything that follows, since we moved the
                 // query params to the body. For example: "www.example.com/?q=foo" => "www.example.com/".
-                request.RequestUri = new Uri(requestString.Remove(requestString.IndexOf("?") - 1));
+                request.RequestUri = new Uri(requestString.Remove(requestString.IndexOf("?")));
             }
             request.Headers.Add("X-HTTP-Method-Override", "GET");
             return TaskEx.Delay(0);
