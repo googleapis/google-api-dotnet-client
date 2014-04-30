@@ -132,7 +132,7 @@ namespace Google.Apis.NuGet.Publisher
             {
                 TraceSource.TraceEvent(TraceEventType.Verbose, "{0}\t Downloading \"{1}\"", item, BundleUri);
                 await client.DownloadFileTaskAsync(BundleUri, outputFile);
-                TraceSource.TraceEvent(TraceEventType.Information, "{0}\t \"{1}\" was downloaded successfully", item,
+                TraceSource.TraceEvent(TraceEventType.Verbose, "{0}\t \"{1}\" was downloaded successfully", item,
                     BundleUri);
 
                 return outputFile;

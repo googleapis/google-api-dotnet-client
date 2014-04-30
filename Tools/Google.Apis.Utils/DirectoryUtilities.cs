@@ -55,12 +55,12 @@ namespace Google.Apis.Utils
         {
             if (Directory.Exists(dir))
             {
-                TraceSource.TraceEvent(TraceEventType.Information, "Clearing '{0}'", dir);
+                TraceSource.TraceEvent(TraceEventType.Verbose, "Clearing '{0}'", dir);
                 Directory.Delete(dir, true);
             }
 
             Directory.CreateDirectory(dir);
-            TraceSource.TraceEvent(TraceEventType.Information, "Creating '{0}'", dir);
+            TraceSource.TraceEvent(TraceEventType.Verbose, "Creating '{0}'", dir);
         }
 
         /// <summary>Retrieves the relative path from the parent to the child.</summary>

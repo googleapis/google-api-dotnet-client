@@ -39,7 +39,7 @@ namespace Google.Apis.Utils
         private static readonly IPackageRepository MainNuGetRepository =
             new PackageRepositoryFactory().CreateRepository("https://nuget.org/api/v2/");
 
-        private const int NuGetPushTimeoutMills = 10000;
+        private const int NuGetPushTimeoutMills = 20000;
 
         static NuGetUtilities()
         {
@@ -70,7 +70,7 @@ namespace Google.Apis.Utils
                 {
                     builder.Save(nupkgStream);
                 }
-                TraceSource.TraceEvent(TraceEventType.Information, "{0} was created", nupkg);
+                TraceSource.TraceEvent(TraceEventType.Verbose, "{0} was created", nupkg);
             }
             return nupkg;
         }
