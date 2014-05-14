@@ -37,10 +37,12 @@ namespace Google.Apis.Util.Store
         /// Constructs a new file data store with the specified folder. This folder is created (if it doesn't exist 
         /// yet) under <see cref="Environment.SpecialFolder.ApplicationData"/>.
         /// </summary>
-        /// <param name="folder">Folder name.</param>
-        public FileDataStore(string folder)
+        /// <param name="folderPath">
+        /// Folder path. From version 1.8.2 this string contains the full path and not just a relative folder.
+        /// </param>
+        public FileDataStore(string folderPath)
         {
-            folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), folder);
+            folderPath = folderPath;
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);

@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -28,7 +29,13 @@ namespace Google.Apis.Auth.OAuth2
     public class GoogleWebAuthorizationBroker
     {
         /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
-        public static string Folder = "Google.Apis.Auth";
+        /// <remarks>
+        /// From version 1.8.2 this string contains the full path and not just a relative folder.
+        /// The reason that this is not 'private const' is that a user can change it and store the credentials in a
+        /// different location.
+        /// </remarks>
+        public static string Folder = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Google.Apis.Auth");
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
