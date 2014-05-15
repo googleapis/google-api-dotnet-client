@@ -28,6 +28,9 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The authorization token server URL</summary>
         public const string TokenUrl = "https://accounts.google.com/o/oauth2/token";
 
+        /// <summary>The path to the Google revocation endpoint.</summary>
+        public const string RevokeTokenUrl = "https://accounts.google.com/o/oauth2/revoke";
+
         /// <summary>Installed application redirect URI.</summary>
         public const string InstalledAppRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
 

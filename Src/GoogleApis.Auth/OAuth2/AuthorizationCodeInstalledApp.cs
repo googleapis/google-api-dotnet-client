@@ -66,7 +66,7 @@ namespace Google.Apis.Auth.OAuth2
             // to retrieve a new authorization code.
             if (token == null || (token.RefreshToken == null && token.IsExpired(flow.Clock)))
             {
-                // Create a authorization code request.
+                // Create an authorization code request.
                 var redirectUri = CodeReceiver.RedirectUri;
                 AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(redirectUri);
 

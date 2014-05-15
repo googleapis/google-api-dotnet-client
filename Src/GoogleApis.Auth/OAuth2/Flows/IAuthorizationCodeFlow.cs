@@ -73,5 +73,18 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <returns>Token response which contains the access token and the input refresh token.</returns>
         Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken,
             CancellationToken taskCancellationToken);
+
+        /// <summary>
+        /// Asynchronously revokes the specified token. This method disconnects the user's account from the OAuth 2.0
+        /// application. It should be called upon removing the user account from the site.</summary>
+        /// <remarks>
+        /// If revoking the token succeeds, the user's credential is removed from the data store and the user MUST
+        /// authorize the application again before the application can access the user's private resources.
+        /// </remarks>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="token">Access token to be revoked.</param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+        /// <returns><c>true</c> if the token was revoked successfully.</returns>        
+        Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken);
     }
 }

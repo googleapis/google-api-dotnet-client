@@ -72,7 +72,7 @@ namespace Google.Apis.Auth.OAuth2
             if (!tcsAuthorizationCodeResponse.Task.IsCompleted)
             {
                 // See https://code.google.com/p/google-api-dotnet-client/issues/detail?id=431.
-                // If we encounter a null exception, cancel the task because the WP app crashed.
+                // If we encounter a null exception, cancel the task because the Windows Phone app crashed.
                 if (e.Exception != null)
                 {
                     tcsAuthorizationCodeResponse.SetException(e.Exception);

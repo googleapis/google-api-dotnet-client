@@ -38,11 +38,22 @@ namespace Google.Apis.Auth.OAuth2
     {
         private readonly IAuthorizationCodeInstalledApp innerInstallApp;
 
-        /// <summary>Constructs a new authorization code installed application for WP.</summary>
-        /// <param name="authorizationCodeFlowInitializer">A authorization code flow initializer.</param>
+        /// <summary>
+        /// Constructs a new authorization code for Windows Phone targeting an installed application flow.
+        /// </summary>
+        /// <param name="authorizationCodeFlowInitializer">An authorization code flow initializer.</param>
         public AuthorizationCodeWPInstalledApp(AuthorizationCodeFlow.Initializer authorizationCodeFlowInitializer)
         {
             var flow = new AuthorizationCodeFlow(authorizationCodeFlowInitializer);
+            innerInstallApp = new AuthorizationCodeInstalledApp(flow, new AuthorizationCodeBroker());
+        }
+
+        /// <summary>
+        /// Constructs a new authorization code for Windows Phone targeting an installed application flow.
+        /// </summary>
+        /// <param name="flow">An authorization code flow.</param>
+        public AuthorizationCodeWPInstalledApp(IAuthorizationCodeFlow flow)
+        {
             innerInstallApp = new AuthorizationCodeInstalledApp(flow, new AuthorizationCodeBroker());
         }
 

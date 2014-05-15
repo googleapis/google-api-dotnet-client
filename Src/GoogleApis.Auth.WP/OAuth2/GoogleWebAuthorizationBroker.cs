@@ -75,6 +75,23 @@ namespace Google.Apis.Auth.OAuth2
             return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
+        /// they revoked the token.
+        /// </summary>
+        /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
+        /// updated. </param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        public static async Task ReauthorizeAsync(UserCredential userCredential,
+            CancellationToken taskCancellationToken)
+        {
+            var installedApp = new AuthorizationCodeWPInstalledApp(userCredential.Flow);
+            // Create an authorization code installed app instance and authorize the user.
+            UserCredential newUserCredential = await installedApp.AuthorizeAsync(userCredential.UderId,
+                taskCancellationToken).ConfigureAwait(false);
+            userCredential.Token = newUserCredential.Token;
+        }
+
         /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
         /// <param name="initializer">The authorization code initializer.</param>
         /// <param name="scopes">
@@ -83,13 +100,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="user">The user to authenticate.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthorizeAsyncCore(AuthorizationCodeFlow.Initializer initializer,
-            IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken)
+        private static async Task<UserCredential> AuthorizeAsyncCore(
+            GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
+            CancellationToken taskCancellationToken)
         {
             initializer.Scopes = scopes;
             initializer.DataStore = new StorageDataStore();
 
-            var installedApp = new AuthorizationCodeWPInstalledApp(initializer);
+            var installedApp = new AuthorizationCodeWPInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
             return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
         }
     }
