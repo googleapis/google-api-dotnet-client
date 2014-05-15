@@ -1144,6 +1144,14 @@ namespace Google.Apis.Tests.Apis.Requests
                 Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(0));
                 Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(1));
                 Assert.That(httpRequest.Headers.IfMatch.First(), Is.EqualTo(new EntityTagHeaderValue(body.ETag)));
+
+                // Fixing bug https://code.google.com/p/google-api-dotnet-client/issues/detail?id=464.
+                // If etag doesn't contain quotas - catch the format exception and log.
+                body.ETag = "ETAG";
+                request = new TestClientServiceRequest(service, HttpConsts.Post, body);
+                httpRequest = request.CreateRequest();
+                Assert.That(httpRequest.Headers.IfNoneMatch.Count, Is.EqualTo(0));
+                Assert.That(httpRequest.Headers.IfMatch.Count, Is.EqualTo(0));
             }
         }
 
