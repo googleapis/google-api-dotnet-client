@@ -185,7 +185,6 @@ namespace Google.Apis.Requests
             object body = GetBody();
             request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
                 ? overrideGZipEnabled.Value : service.GZipEnabled);
-
             AddETag(request);
             return request;
         }
@@ -233,15 +232,25 @@ namespace Google.Apis.Requests
             IDirectResponseSchema body = GetBody() as IDirectResponseSchema;
             if (body != null && !string.IsNullOrEmpty(body.ETag))
             {
+                var etag = body.ETag;
                 ETagAction action = ETagAction == ETagAction.Default ? GetDefaultETagAction(HttpMethod) : ETagAction;
-                switch (action)
+                try
                 {
-                    case ETagAction.IfMatch:
-                        request.Headers.IfMatch.Add(new EntityTagHeaderValue(body.ETag));
-                        break;
-                    case ETagAction.IfNoneMatch:
-                        request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(body.ETag));
-                        break;
+                    switch (action)
+                    {
+                        case ETagAction.IfMatch:
+                            request.Headers.IfMatch.Add(new EntityTagHeaderValue(etag));
+                            break;
+                        case ETagAction.IfNoneMatch:
+                            request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(etag));
+                            break;
+                    }
+                }
+                // When ETag is invalid we are going to create a request anyway.
+                // See https://code.google.com/p/google-api-dotnet-client/issues/detail?id=464 for more details.
+                catch (FormatException ex)
+                {
+                    Logger.Error(ex, "Can't set {0}. Etag is: {1}.", action, etag);
                 }
             }
         }
