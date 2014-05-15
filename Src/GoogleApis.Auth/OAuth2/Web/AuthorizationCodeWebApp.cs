@@ -104,7 +104,7 @@ namespace Google.Apis.Auth.OAuth2.Web
             // to retrieve a new access token.
             if (token == null || (token.RefreshToken == null && token.IsExpired(flow.Clock)))
             {
-                // Create a authorization code request.
+                // Create an authorization code request.
                 AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(redirectUri);
 
                 // Add a random number to the end of the state so we can indicate the original request was made by this

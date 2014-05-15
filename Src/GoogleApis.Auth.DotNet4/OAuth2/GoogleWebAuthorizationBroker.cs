@@ -89,6 +89,23 @@ namespace Google.Apis.Auth.OAuth2
                 .ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
+        /// they revoked the token.
+        /// </summary>
+        /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
+        /// updated. </param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        public static async Task ReauthorizeAsync(UserCredential userCredential,
+            CancellationToken taskCancellationToken)
+        {
+            // Create an authorization code installed app instance and authorize the user.
+            UserCredential newUserCredential = await new AuthorizationCodeInstalledApp(userCredential.Flow,
+                new LocalServerCodeReceiver()).AuthorizeAsync
+                (userCredential.UderId, taskCancellationToken).ConfigureAwait(false);
+            userCredential.Token = newUserCredential.Token;
+        }
+
         /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
         /// <param name="initializer">The authorization code initializer.</param>
         /// <param name="scopes">
@@ -98,15 +115,15 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthorizeAsyncCore(AuthorizationCodeFlow.Initializer initializer,
-            IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
-            IDataStore dataStore = null)
+        private static async Task<UserCredential> AuthorizeAsyncCore(
+            GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
+            CancellationToken taskCancellationToken, IDataStore dataStore = null)
         {
             initializer.Scopes = scopes;
             initializer.DataStore = dataStore ?? new FileDataStore(Folder);
             var flow = new GoogleAuthorizationCodeFlow(initializer);
 
-            // Create authorization code installed app instance and authorize the user.
+            // Create an authorization code installed app instance and authorize the user.
             return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver()).AuthorizeAsync
                 (user, taskCancellationToken).ConfigureAwait(false);
         }

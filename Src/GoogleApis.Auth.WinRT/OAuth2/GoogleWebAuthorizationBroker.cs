@@ -69,8 +69,25 @@ namespace Google.Apis.Auth.OAuth2
                 DataStore = new StroageDataStore()
             };
 
-            var installedApp = new AuthorizationCodeWinRTInstalledApp(initializer);
+            var installedApp = new AuthorizationCodeWinRTInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
             return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
+        /// they revoked the token.
+        /// </summary>
+        /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
+        /// updated. </param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        public static async Task ReauthorizeAsync(UserCredential userCredential,
+            CancellationToken taskCancellationToken)
+        {
+            var installedApp = new AuthorizationCodeWinRTInstalledApp(userCredential.Flow);
+            // Create an authorization code installed app instance and authorize the user.
+            UserCredential newUserCredential = await installedApp.AuthorizeAsync(
+                userCredential.UderId, taskCancellationToken).ConfigureAwait(false);
+            userCredential.Token = newUserCredential.Token;
         }
 
         /// <summary>Loads the client secrets from the given URI.</summary>

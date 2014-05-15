@@ -27,8 +27,8 @@ using Google.Apis.Auth.OAuth2.Responses;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// OAuth 2.0 verification code receiver for WP that opens an embedded Google account form to enter the user's
-    /// credentials and accepts the application access to its token.
+    /// OAuth 2.0 verification code receiver for Windows Phone that opens an embedded Google account form to enter the
+    /// user's credentials and accepts the application access to its token.
     /// </summary>
     public class AuthorizationCodeBroker : ICodeReceiver
     {

@@ -15,8 +15,13 @@ limitations under the License.
 */
 
 using System;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Requests;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2.Flows
 {
@@ -25,10 +30,16 @@ namespace Google.Apis.Auth.OAuth2.Flows
     /// </summary>
     public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow
     {
+        private readonly string revokeTokenUrl;
+
+        /// <summary>Gets the token revocation URL.</summary>
+        public string RevokeTokenUrl { get { return revokeTokenUrl; } }
+
         /// <summary>Constructs a new Google authorization code flow.</summary>
-        public GoogleAuthorizationCodeFlow(AuthorizationCodeFlow.Initializer initializer)
+        public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
+            revokeTokenUrl = initializer.RevokeTokenUrl;
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -41,9 +52,32 @@ namespace Google.Apis.Auth.OAuth2.Flows
             };
         }
 
+        public override async Task RevokeTokenAsync(string userId, string token,
+            CancellationToken taskCancellationToken)
+        {
+            GoogleRevokeTokenRequest request = new GoogleRevokeTokenRequest(new Uri(RevokeTokenUrl))
+            {
+                Token = token
+            };
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, request.Build());
+
+            var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
+                throw new TokenResponseException(error);
+            }
+
+            await DeleteTokenAsync(userId, taskCancellationToken);
+        }
+
         /// <summary>An initializer class for Google authorization code flow. </summary>
         public new class Initializer : AuthorizationCodeFlow.Initializer
         {
+            /// <summary>Gets or sets the token revocation URL.</summary>
+            public string RevokeTokenUrl { get; set; }
+
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
             /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.AuthorizationUrl"/>, and Token server URL to 
@@ -52,6 +86,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             public Initializer()
                 : base(GoogleAuthConsts.AuthorizationUrl, GoogleAuthConsts.TokenUrl)
             {
+                RevokeTokenUrl = GoogleAuthConsts.RevokeTokenUrl;
             }
         }
     }

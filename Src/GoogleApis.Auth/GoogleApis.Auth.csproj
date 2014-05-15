@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="JsonWebSignature.cs" />
     <Compile Include="JsonWebToken.cs" />
+    <Compile Include="OAuth2\Requests\GoogleRevokeTokenRequest.cs" />
     <Compile Include="OAuth2\Web\AuthorizationCodeWebApp.cs" />
     <Compile Include="GoogleJsonWebSignature.cs" />
     <Compile Include="OAuth2\Web\AuthWebUtility.cs" />

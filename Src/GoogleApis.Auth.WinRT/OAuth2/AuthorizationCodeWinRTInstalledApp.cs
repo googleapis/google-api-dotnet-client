@@ -31,15 +31,25 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public sealed class AuthorizationCodeWinRTInstalledApp : IAuthorizationCodeInstalledApp
     {
-        private IAuthorizationCodeInstalledApp innerInstallApp;
+        private readonly IAuthorizationCodeInstalledApp innerInstallApp;
 
-        private readonly AuthorizationCodeFlow.Initializer authorizationCodeFlowInitializer;
-
-        /// <summary>Constructs a new authorization code installed application for Windows Store.</summary>
-        /// <param name="authorizationCodeFlowInitializer">A authorization code flow initializer</param>
+        /// <summary>
+        /// Constructs a new authorization code for Windows Store application targeting an installed application flow.
+        /// </summary>
+        /// <param name="authorizationCodeFlowInitializer">An authorization code flow initializer.</param>
         public AuthorizationCodeWinRTInstalledApp(AuthorizationCodeFlow.Initializer authorizationCodeFlowInitializer)
         {
-            this.authorizationCodeFlowInitializer = authorizationCodeFlowInitializer;
+            innerInstallApp = new AuthorizationCodeInstalledApp(
+                new AuthorizationCodeFlow(authorizationCodeFlowInitializer), new AuthorizationCodeBroker());
+        }
+
+        /// <summary>
+        /// Constructs a new authorization code for Windows Store application targeting an installed application flow.
+        /// </summary>
+        /// <param name="flow">An authorization code flow.</param>
+        public AuthorizationCodeWinRTInstalledApp(IAuthorizationCodeFlow flow)
+        {
+            innerInstallApp = new AuthorizationCodeInstalledApp(flow, new AuthorizationCodeBroker());
         }
 
         #region IAuthorizationCodeInstalledApp Members
@@ -56,12 +66,6 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task<UserCredential> AuthorizeAsync(string userId, CancellationToken taskCancellationToken)
         {
-            if (innerInstallApp == null)
-            {
-                innerInstallApp = new AuthorizationCodeInstalledApp(
-                    new AuthorizationCodeFlow(authorizationCodeFlowInitializer), new AuthorizationCodeBroker());
-            }
-
             return await innerInstallApp.AuthorizeAsync(userId, taskCancellationToken).ConfigureAwait(false);
         }
 

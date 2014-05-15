@@ -34,12 +34,12 @@ namespace Google.Apis.Auth.OAuth2
     public class UserCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
         IConfigurableHttpClientInitializer
     {
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
+        protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
         private TokenResponse token;
         private object lockObject = new object();
 
-        /// <summary>Gets the token response which contains the access token.</summary>
+        /// <summary>Gets or sets the token response which contains the access token.</summary>
         public TokenResponse Token
         {
             get
@@ -49,13 +49,25 @@ namespace Google.Apis.Auth.OAuth2
                     return token;
                 }
             }
-            private set
+            set
             {
                 lock (lockObject)
                 {
                     token = value;
                 }
             }
+        }
+
+        /// <summary>Gets the authorization code flow.</summary>
+        public IAuthorizationCodeFlow Flow
+        {
+            get { return flow; }
+        }
+
+        /// <summary>Gets the user identity.</summary>
+        public string UderId
+        {
+            get { return userId; }
         }
 
         private readonly IAuthorizationCodeFlow flow;
@@ -71,6 +83,8 @@ namespace Google.Apis.Auth.OAuth2
             this.userId = userId;
             this.token = token;
         }
+
+        #region IHttpExecuteInterceptor
 
         /// <summary>
         /// Default implementation is to try to refresh the access token if there is no access token or if we are 1 
@@ -90,6 +104,34 @@ namespace Google.Apis.Auth.OAuth2
 
             flow.AccessMethod.Intercept(request, Token.AccessToken);
         }
+
+        #endregion
+
+        #region IHttpUnsuccessfulResponseHandler
+
+        public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+        {
+            // TODO(peleyal): check WWW-Authenticate header.
+            if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return !Object.Equals(Token.AccessToken, flow.AccessMethod.GetAccessToken(args.Request))
+                    || await RefreshTokenAsync(args.CancellationToken).ConfigureAwait(false);
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region IConfigurableHttpClientInitializer
+
+        public void Initialize(ConfigurableHttpClient httpClient)
+        {
+            httpClient.MessageHandler.ExecuteInterceptors.Add(this);
+            httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(this);
+        }
+
+        #endregion
 
         /// <summary>
         /// Refreshes the token by calling to
@@ -122,22 +164,24 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
-        public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+        /// <summary>
+        /// Asynchronously revokes the token by calling
+        /// <see cref="Google.Apis.Auth.OAuth2.Flows.IAuthorizationCodeFlow.RevokeTokenAsync"/>.
+        /// </summary>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        /// <returns><c>true</c> if the token was revoked successfully.</returns>
+        public async Task<bool> RevokeTokenAsync(CancellationToken taskCancellationToken)
         {
-            // TODO(peleyal): check WWW-Authenticate header.
-            if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
+            if (Token == null)
             {
-                return !Object.Equals(Token.AccessToken, flow.AccessMethod.GetAccessToken(args.Request))
-                    || await RefreshTokenAsync(args.CancellationToken).ConfigureAwait(false);
+                Logger.Warning("Token is already null, no need to revoke it.");
+                return false;
             }
 
-            return false;
-        }
-
-        public void Initialize(ConfigurableHttpClient httpClient)
-        {
-            httpClient.MessageHandler.ExecuteInterceptors.Add(this);
-            httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(this);
+            await flow.RevokeTokenAsync(userId, Token.AccessToken, taskCancellationToken).ConfigureAwait(false);
+            Logger.Info("Access token was revoked successfully");
+            // We don't set the token to null, cause we want that the next request (without reauthorizing) will fail).
+            return true;
         }
     }
 }

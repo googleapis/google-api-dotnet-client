@@ -265,6 +265,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
             return token;
         }
 
+        public virtual Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken)
+        {
+            throw new NotImplementedException("The OAuth 2.0 protocol does not support token revocation.");
+        }
+
         #endregion
 
         /// <summary>Stores the token in the <see cref="DataStore"/>.</summary>
