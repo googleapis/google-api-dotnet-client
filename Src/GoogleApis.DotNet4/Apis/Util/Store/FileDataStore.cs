@@ -34,15 +34,21 @@ namespace Google.Apis.Util.Store
         public string FolderPath { get { return folderPath; } }
 
         /// <summary>
-        /// Constructs a new file data store with the specified folder. This folder is created (if it doesn't exist 
-        /// yet) under <see cref="Environment.SpecialFolder.ApplicationData"/>.
+        /// Constructs a new file data store. If <c>fullPath</c> is <c>false</c> the path will be used as relative to 
+        /// <see cref="Environment.SpecialFolder.ApplicationData"/>, otherwise the input folder will be treated as
+        /// absolute.
+        /// The folder is created if it doesn't exist yet.
         /// </summary>
-        /// <param name="folderPath">
-        /// Folder path. From version 1.8.2 this string contains the full path and not just a relative folder.
+        /// <param name="folder">Folder path.</param>
+        /// <param name="fullPath">
+        /// Defines weather the folder parameter is absolute or relative to
+        /// <see cref="Environment.SpecialFolder.ApplicationData"/>.
         /// </param>
-        public FileDataStore(string folderPath)
+        public FileDataStore(string folder, bool fullPath = false)
         {
-            folderPath = folderPath;
+            folderPath = fullPath
+                ? folder
+                : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), folder);
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
