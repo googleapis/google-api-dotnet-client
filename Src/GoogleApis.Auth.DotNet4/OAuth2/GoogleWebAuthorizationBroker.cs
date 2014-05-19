@@ -30,12 +30,10 @@ namespace Google.Apis.Auth.OAuth2
     {
         /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
         /// <remarks>
-        /// From version 1.8.2 this string contains the full path and not just a relative folder.
         /// The reason that this is not 'private const' is that a user can change it and store the credentials in a
         /// different location.
         /// </remarks>
-        public static string Folder = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Google.Apis.Auth");
+        public static string Folder = "Google.Apis.Auth";
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
