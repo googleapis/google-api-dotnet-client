@@ -41,4 +41,7 @@ packages/**
 *.orig
 *.userprefs
 
+Backup*
+UpgradeLog*
+
 Google.Apis.*xml
