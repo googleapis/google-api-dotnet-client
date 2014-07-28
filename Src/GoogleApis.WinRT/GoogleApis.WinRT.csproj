@@ -127,6 +127,9 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions">
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.22\lib\win8\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
