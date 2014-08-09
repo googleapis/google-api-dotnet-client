@@ -96,6 +96,10 @@ namespace Google.Apis.Auth.OAuth2
         public Task<AuthorizationCodeResponseUrl> Launch(Uri uri)
         {
             tcsAuthorizationCodeResponse = new TaskCompletionSource<AuthorizationCodeResponseUrl>();
+            tcsAuthorizationCodeResponse.Task.ContinueWith(t =>
+                {
+                    RemoveBackKeyPressCallback();
+                }, TaskScheduler.FromCurrentSynchronizationContext());
             StartLoading();
             browser.Navigate(uri);
             return tcsAuthorizationCodeResponse.Task;
@@ -104,13 +108,16 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>A callback handler for when the user presses the back key.</summary>
         void RootPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // Remove this callback.
+            e.Cancel = true;
+            tcsAuthorizationCodeResponse.SetCanceled();
+        }
+
+        /// <summary>Removes <see cref="RootPage_BackKeyPress" as the root page callback./></summary>
+        void RemoveBackKeyPressCallback()
+        {
             PhoneApplicationFrame rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             PhoneApplicationPage rootPage = rootFrame.Content as PhoneApplicationPage;
             rootPage.BackKeyPress -= RootPage_BackKeyPress;
-
-            e.Cancel = true;
-            tcsAuthorizationCodeResponse.SetCanceled();
         }
     }
 }
