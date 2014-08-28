@@ -69,7 +69,7 @@ namespace Google.Apis.Auth.OAuth2
                 DataStore = new StroageDataStore()
             };
 
-            var installedApp = new AuthorizationCodeWinRTInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
+            var installedApp = new AuthorizationCodeWindowsInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
             return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
         }
 
@@ -83,7 +83,7 @@ namespace Google.Apis.Auth.OAuth2
         public static async Task ReauthorizeAsync(UserCredential userCredential,
             CancellationToken taskCancellationToken)
         {
-            var installedApp = new AuthorizationCodeWinRTInstalledApp(userCredential.Flow);
+            var installedApp = new AuthorizationCodeWindowsInstalledApp(userCredential.Flow);
             // Create an authorization code installed app instance and authorize the user.
             UserCredential newUserCredential = await installedApp.AuthorizeAsync(
                 userCredential.UderId, taskCancellationToken).ConfigureAwait(false);
