@@ -22,7 +22,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The authorization code server URL.</summary>
         public const string AuthorizationUrl = "https://accounts.google.com/o/oauth2/auth";
 
-        /// <summary>The approval URL (used in the WinRT solution as a callback).</summary>
+        /// <summary>The approval URL (used in the Windows solution as a callback).</summary>
         public const string ApprovalUrl = "https://accounts.google.com/o/oauth2/approval";
 
         /// <summary>The authorization token server URL</summary>

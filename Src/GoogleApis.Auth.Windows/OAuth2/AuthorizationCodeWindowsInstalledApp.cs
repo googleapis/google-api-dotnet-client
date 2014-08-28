@@ -23,13 +23,13 @@ using Google.Apis.Auth.OAuth2.Flows;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// OAuth 2.0 authorization code flow for a Windows 8 installed applications that persists end-user credentials.
+    /// OAuth 2.0 authorization code flow for a Windows 8.1 installed application that persists end-user credentials.
     /// <remarks>
     /// This installed app class uses an internal <see cref="AuthorizationCodeInstalledApp"/> with a
     /// <see cref="Google.Apis.Auth.OAuth2.AuthorizationCodeBroker"/> for retrieving the authorization code. 
     /// </remarks>
     /// </summary>
-    public sealed class AuthorizationCodeWinRTInstalledApp : IAuthorizationCodeInstalledApp
+    public sealed class AuthorizationCodeWindowsInstalledApp : IAuthorizationCodeInstalledApp
     {
         private readonly IAuthorizationCodeInstalledApp innerInstallApp;
 
@@ -37,7 +37,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Constructs a new authorization code for Windows Store application targeting an installed application flow.
         /// </summary>
         /// <param name="authorizationCodeFlowInitializer">An authorization code flow initializer.</param>
-        public AuthorizationCodeWinRTInstalledApp(AuthorizationCodeFlow.Initializer authorizationCodeFlowInitializer)
+        public AuthorizationCodeWindowsInstalledApp(AuthorizationCodeFlow.Initializer authorizationCodeFlowInitializer)
         {
             innerInstallApp = new AuthorizationCodeInstalledApp(
                 new AuthorizationCodeFlow(authorizationCodeFlowInitializer), new AuthorizationCodeBroker());
@@ -47,7 +47,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Constructs a new authorization code for Windows Store application targeting an installed application flow.
         /// </summary>
         /// <param name="flow">An authorization code flow.</param>
-        public AuthorizationCodeWinRTInstalledApp(IAuthorizationCodeFlow flow)
+        public AuthorizationCodeWindowsInstalledApp(IAuthorizationCodeFlow flow)
         {
             innerInstallApp = new AuthorizationCodeInstalledApp(flow, new AuthorizationCodeBroker());
         }

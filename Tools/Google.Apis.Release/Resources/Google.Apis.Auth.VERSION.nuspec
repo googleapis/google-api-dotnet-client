@@ -14,12 +14,12 @@
           This package includes auth components like user-credential, authorization code flow, etc. for making authenticated calls using the OAuth2 spec.
 
           Supported Platforms:
-          
+
           - .NET Framework 4
 
           - Windows Store apps
 
-          - Windows Phone 7.5 and 8
+          - Windows Phone 8 and 8.1
 
           - Portable Class Libraries
         </description>
@@ -39,9 +39,9 @@
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\netcore45\Google.Apis.Auth.dll" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\netcore45\Google.Apis.Auth.pdb" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\netcore45\Google.Apis.Auth.xml" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\netcore45\Google.Apis.Auth.PlatformServices.dll" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" />
-      <file src="Src\GoogleApis.Auth.WinRT\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\netcore45\Google.Apis.Auth.PlatformServices.xml" />
+      <file src="Src\GoogleApis.Auth.Windows\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\netcore45\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\GoogleApis.Auth.Windows\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\netcore45\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.Auth.Windows\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\netcore45\Google.Apis.Auth.PlatformServices.xml" />
 
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\wp8\Google.Apis.Auth.dll" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\wp8\Google.Apis.Auth.pdb" />
@@ -50,9 +50,9 @@
       <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\wp8\Google.Apis.Auth.PlatformServices.pdb" />
       <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\wp8\Google.Apis.Auth.PlatformServices.xml" />
 
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.dll" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.pdb" />
-      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\portable-net4+sl4+wp71+win8\Google.Apis.Auth.xml" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.xml" />
       
       <file src="Resources\License.txt" target="License.txt" />
     </files>
