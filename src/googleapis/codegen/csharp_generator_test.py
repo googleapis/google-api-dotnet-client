@@ -225,6 +225,22 @@ class PackagePathTest(basetest.TestCase):
     self.assertEquals('Google.Apis.Nougat.Foo.v1.Data', api.model_module.name)
 
 
+class VersionWithDashTest(basetest.TestCase):
+
+  def testVersionWithDash(self):
+    discovery = {
+        'name': 'foo',
+        'version': 'v1-dash',
+        'schemas': {},
+        'resources': {},
+        }
+    gen = csharp_generator.CSharpGenerator(discovery)
+    gen.AnnotateApiForLanguage(gen.api)
+    api = gen.api
+    self.assertEquals('Google.Apis.Foo.v1dash', api.module.name)
+    self.assertEquals('Google.Apis.Foo.v1dash.Data', api.model_module.name)
+
+
 class MemberNameTest(basetest.TestCase):
 
   def testMemberNameConflictWithParentClass(self):
@@ -248,6 +264,28 @@ class MemberNameTest(basetest.TestCase):
     groups_schema = gen.api._schemas['Groups']
     groups_prop = groups_schema['properties'][0]
     self.assertEquals('GroupsValue', groups_prop.memberName)
+
+  def testMemberNameConflictWithParentClassWithUnderscores(self):
+    api = {
+        'name': 'groups',
+        'version': 'v1',
+        'schemas': {
+            'GroupsThing': {
+                'id': 'groups_thing',
+                'type': 'object',
+                'properties': {
+                    'groups_thing': {
+                        'type': 'string'
+                        }
+                    }
+                }
+            }
+        }
+    gen = csharp_generator.CSharpGenerator(discovery=api)
+    gen.AnnotateApiForLanguage(gen.api)
+    groups_schema = gen.api._schemas['GroupsThing']
+    groups_prop = groups_schema['properties'][0]
+    self.assertEquals('GroupsThingValue', groups_prop.memberName)
 
 
 class MapTest(basetest.TestCase):

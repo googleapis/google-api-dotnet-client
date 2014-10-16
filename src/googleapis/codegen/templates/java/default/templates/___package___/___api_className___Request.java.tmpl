@@ -34,22 +34,23 @@ public abstract class {{ api.className }}Request<T> extends com.google.api.clien
 {% for param in api.parameters %}
 
 {% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
-  @com.google.api.client.util.Key{% ifnotequal param.wireName param.codeName %}("{{ param.wireName }}"){% endifnotequal %}
-  private {{ param.codeType }} {{ param.codeName }};
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.memberName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.memberName }};
 
   /**{% filter block_comment %}
-   * {% filter noblanklines %}{{ param.description }}
-  {% if param.default %} [default: {{ param.default }}]{% endif %}
-  {% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
-  {% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %} {% endfilter %} {% endfilter %}
+   * {{ param.description }}
+   * {% if param.default %} [default: {{ param.default }}]{% endif %}
+   * {% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
+   * {% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %}
+   * {% endfilter %}
    */
-  public {{ param.codeType }} get{% camel_case param.wireName %}() {
-    return {{ param.codeName }};
+  public {{ param.codeType }} {{ param.getterName }}() {
+    return {{ param.memberName }};
   }
 
 {% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
-  public {{ api.className }}Request<T> set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
-    this.{{ param.codeName }} = {{ param.codeName }};
+  public {{ api.className }}Request<T> {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
+    this.{{ param.memberName }} = {{ param.memberName }};
     return this;
   }{% endfor %}
 

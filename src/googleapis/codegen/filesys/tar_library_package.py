@@ -92,3 +92,9 @@ class TarLibraryPackage(LibraryPackage):
       return 'tgz'
     else:
       return 'tar'
+
+  def MimeType(self):
+    """Returns the MIME type for this archive."""
+    if self._compress:
+      return 'application/x-gtar-compressed'
+    return 'application/x-gtar'

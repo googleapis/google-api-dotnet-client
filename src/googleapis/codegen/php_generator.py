@@ -95,10 +95,6 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
       method: (Method) The Method to annotate.
       resource: (Resource) The Resource which owns this Method.
     """
-    method.json = json.dumps(_StripResource(method.raw))
-    # Escape stray quotes since it will be used in a PHP function call.
-    method.json = method.json.replace('\'', '\\\'')
-
     for param in method.parameters:
       self._SetTypeHint(param)
 
@@ -119,6 +115,8 @@ class PHPGenerator(api_library_generator.ApiLibraryGenerator):
     if isinstance(prop.data_type, data_types.ArrayDataType):
       prop.SetTemplateValue('dataType', 'array')
       schema.SetTemplateValue('dataType', 'array')
+      collection = self.language_model.ToMemberName(prop['wireName'], 0)
+      schema.SetTemplateValue('collectionKey', collection)
     elif not schema.GetTemplateValue('dataType'):
       schema.SetTemplateValue('dataType', 'object')
 
@@ -179,7 +177,7 @@ class PhpLanguageModel(language_model.LanguageModel):
       'if', 'implements', 'interface', 'instanceof', 'list',
       'namespace', 'new', 'old_function', 'or', 'private',
       'protected', 'public', 'static', 'switch', 'throw',
-      'try', 'use', 'var', 'while', 'xor',
+      'try', 'unset', 'use', 'var', 'while', 'xor',
       ))
 
   PHP_TYPES = frozenset((
@@ -190,6 +188,17 @@ class PhpLanguageModel(language_model.LanguageModel):
 
   # We can not create classes which match a PHP keyword or built in object type.
   RESERVED_CLASS_NAMES = PHP_KEYWORDS | PHP_TYPES
+
+  array_of_policy = language_model.NamingPolicy(format_string='{name}')
+  map_of_policy = language_model.NamingPolicy(format_string='{name}')
+  member_policy = language_model.NamingPolicy(
+      case_transform=language_model.LOWER_CAMEL_CASE)
+  getter_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE,
+      format_string='get{name}')
+  setter_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_CAMEL_CASE,
+      format_string='set{name}')
 
   def __init__(self):
     super(PhpLanguageModel, self).__init__(class_name_delimiter='.')
@@ -216,30 +225,6 @@ class PhpLanguageModel(language_model.LanguageModel):
     php_type = (self._SCHEMA_TYPE_TO_PHP_TYPE.get(json_format)
                 or self._SCHEMA_TYPE_TO_PHP_TYPE.get(json_type, json_type))
     return php_type
-
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Override default implementation as a noop. PHP isn't strongly typed.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      A language specific string meaning "an array of type_name".
-    """
-    return type_name
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for a map of strings of them.
-
-    Override default implementation as a noop. PHP isn't strongly typed.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      The PHP specific string meaning of "a map of type_name".
-    """
-    return type_name
 
   def ToMemberName(self, s, unused_api):
     """Convert a wire format name into a suitable PHP variable name.

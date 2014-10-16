@@ -1,10 +1,10 @@
 {% parameter_list %}
   {% for p in method.requiredParameters %}
-    {% parameter %}{{ p.typeHint }} ${{p.codeName}}{% end_parameter %}
+    {% parameter %}{{ p.typeHint }} ${{p.memberName}}{% end_parameter %}
   {% endfor %}
   {% if method.requestType %}
     {% parameter %}
-      {{ api.owner }}_Service_{{ api.className }}_{{ method.requestType.className }} $postBody
+      {{ api.ownerName }}_Service_{{ api.className }}_{{ method.requestType.className }} $postBody
     {% end_parameter %}
   {% endif %}
   {% parameter %}$optParams = array(){% end_parameter %}

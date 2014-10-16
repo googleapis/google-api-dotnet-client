@@ -150,3 +150,10 @@ class LibraryPackage(object):
     Subclasses should implement this if they produce an archive file.
     """
     return None
+
+  def MimeType(self):
+    """Return the MIME type for this type of library.
+
+    Subclasses should implement this if they produce an archive file.
+    """
+    return None

@@ -29,8 +29,9 @@ class NameValidatorTest(basetest.TestCase):
   def testVariableNameValidator(self):
     good_names = ['$ref', '_a', '_private', 'a_var.name', 't1', 'max-results',
                   'slashes/are/allowed', '/even/at/the/start/and/end/',
-                  'now_valid.']
-    bad_names = ['$', '1st_result', '^test', '.variable', '1', '_', 'no spaces']
+                  'now_valid.', '@foo']
+    bad_names = ['$', '1st_result', '^test', '.variable', '1', '_', 'no spaces',
+                 'foo@']
 
     for varname in good_names:
       name_validator.Validate(varname)
@@ -52,9 +53,8 @@ class NameValidatorTest(basetest.TestCase):
                         name_validator.ValidateApiName, varname)
 
   def testApiVersionValidator(self):
-    good_names = ['v1', 'v1_us', 'v1.2', '1.2']
-    bad_names = ['.1', '1 2', 'no-dash', 'no spaces', 'no/slash',
-                 'no:colon']
+    good_names = ['v1', 'v1_us', 'v1.2', '1.2', 'with-dash']
+    bad_names = ['.1', '1 2', 'no spaces', 'no/slash', 'no:colon']
 
     for varname in good_names:
       name_validator.ValidateApiVersion(varname)

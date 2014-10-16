@@ -63,6 +63,15 @@ class {{ api.className }}BaseRequest
    */
   virtual {{ api.status_type }} AppendOptionalQueryParameters(string* target);
 {% endif %}
+
+ protected:
+  /**
+   * Prepares the method's HTTP request to send body content as JSON.
+   *
+   * Only to be used for method constructors.
+   */
+  void AddJsonContentToRequest(const {{ api.client_namespace }}::JsonCppData *content);
+
  private:
 {% call_template _declare_method_attributes_h parameters=api.parameters %}
 

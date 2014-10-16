@@ -95,8 +95,8 @@ class JavaImportManagerTest(basetest.TestCase):
         self.import_manager._class_name_to_qualified_name['DateTime'])
 
   def testGetClassName(self):
-    self.assertTrue('Boolean',
-                    self.import_manager.GetClassName('java.lang.Boolean'))
+    self.assertEqual('Boolean',
+                     self.import_manager.GetClassName('java.lang.Boolean'))
 
 
 if __name__ == '__main__':

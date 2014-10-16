@@ -149,11 +149,14 @@ class TarLibraryPackageTest(basetest.TestCase):
                       files,
                       os.path.join(self._TEST_DATA_DIR, 'tree/'))
 
-  def testFileExtension(self):
+  def testFileProperties(self):
     self.assertEquals('tgz', self._package.FileExtension())
+    self.assertEquals('application/x-gtar-compressed', self._package.MimeType())
     uncompressed = tar_library_package.TarLibraryPackage(
         BytesIO(), compress=False)
     self.assertEquals('tar', uncompressed.FileExtension())
+    self.assertEquals('application/x-gtar', uncompressed.MimeType())
+
 
 if __name__ == '__main__':
   basetest.main()

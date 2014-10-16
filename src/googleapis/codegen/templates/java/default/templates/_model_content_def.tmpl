@@ -7,8 +7,15 @@
    * {{ property.description }}{% endfilter %}
    * The value may be {@code null}.
    */
-  @com.google.api.client.util.Key{% ifnotequal property.wireName property.codeName %}("{{ property.wireName }}"){% endifnotequal %}{% if property.requiresJsonString %} @com.google.api.client.json.JsonString{% endif %}{% endfilter %}
-  {% if features.thin_models %}public{% else %}private{% endif %} {{ property.safeCodeType }} {{ property.codeName }};
+  @com.google.api.client.util.Key{% ifnotequal property.wireName property.memberName %}("{{ property.wireName }}"){% endifnotequal %}{% if property.requiresJsonString %} @com.google.api.client.json.JsonString{% endif %}
+  {% if property.is_variant_key %}
+  @com.google.api.client.json.JsonPolymorphicTypeMap(typeDefinitions={
+  {% for key, ref in property.variant_map.items %}
+    @com.google.api.client.json.JsonPolymorphicTypeMap.TypeDef(key = {% literal key %}, ref = {{ ref.safe_code_type }}.class),
+  {% endfor %}})
+  {% endif %}
+  {% if features.thin_models %}public{% else %}private{% endif %} {{ property.safeCodeType }} {{ property.memberName }};
+{% endfilter %}
 
 {% filter noblanklines %}
   {% if property.data_type.isContainer %}
@@ -21,43 +28,43 @@
   /**{% filter block_comment %}
    * {{ property.description }}{% endfilter %}
 {% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
-   * @see #decode{% camel_case property.wireName %}()
+   * @see #decode{{ property.memberName|capfirst }}()
 {% endifequal %}{% endifequal %}
    * @return value or {@code null} for none
    */
 {% endfilter %}
-  public {{ property.safeCodeType }} get{% camel_case property.wireName %}() {
-    return {{ property.codeName }};
+  public {{ property.safeCodeType }} {{ property.getterName }}() {
+    return {{ property.memberName }};
   }
 {% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
   /**{% filter block_comment %}
    * {{ property.description }}{% endfilter %}
-   * @see #get{% camel_case property.wireName %}()
+   * @see #{{ property.getterName }}()
    * @return Base64 decoded value or {@code null} for none
    *
    * @since 1.14
    */
-  public byte[] decode{% camel_case property.wireName %}() {
-    return com.google.api.client.util.Base64.decodeBase64({{ property.codeName }});
+  public byte[] decode{{ property.memberName|capfirst }}() {
+    return com.google.api.client.util.Base64.decodeBase64({{ property.memberName }});
   }
 {% endifequal %}{% endifequal %}
 {% filter noblanklines %}
   /**{% filter block_comment %}
    * {{ property.description }}{% endfilter %}
 {% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
-   * @see #encode{% camel_case property.wireName %}()
+   * @see #encode{{ property.memberName|capfirst }}()
 {% endifequal %}{% endifequal %}
-   * @param {{property.codeName }} {{property.codeName }} or {@code null} for none
+   * @param {{property.memberName }} {{property.memberName }} or {@code null} for none
    */
 {% endfilter %}
-  public {{ current_model.safeClassName }} set{% camel_case property.wireName %}({{ property.safeCodeType }} {{property.codeName }}) {
-    this.{{ property.codeName }} = {{ property.codeName }};
+  public {{ current_model.safeClassName }} {{ property.setterName }}({{ property.safeCodeType }} {{property.memberName }}) {
+    this.{{ property.memberName }} = {{ property.memberName }};
     return this;
   }
 {% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
   /**{% filter block_comment %}
    * {{ property.description }}{% endfilter %}
-   * @see #set{% camel_case property.wireName %}()
+   * @see #{{ property.setterName }}()
    *
    * <p>
    * The value is encoded Base64 or {@code null} for none.
@@ -65,8 +72,8 @@
    *
    * @since 1.14
    */
-  public {{ current_model.safeClassName }} encode{% camel_case property.wireName %}(byte[] {{property.codeName}}) {
-    this.{{ property.codeName }} = com.google.api.client.util.Base64.encodeBase64URLSafeString({{ property.codeName }});
+  public {{ current_model.safeClassName }} encode{{ property.memberName|capfirst }}(byte[] {{property.memberName}}) {
+    this.{{ property.memberName }} = com.google.api.client.util.Base64.encodeBase64URLSafeString({{ property.memberName }});
     return this;
   }
 {% endifequal %}{% endifequal %}

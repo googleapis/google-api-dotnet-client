@@ -115,7 +115,7 @@ class Myservice extends SomeApiBaseClass  {
    *
    */
   Future<CountFeed> foo() {
-    string path = '';
+    string path = 'foo';
     string url = new UrlPattern(_service.rootUrl + "/" + path)
         .expand(pathParams, queryParams);
     request = new http.Request($url, 'GET')
@@ -159,7 +159,7 @@ class Activities extends SomeRootClass {
             }) {
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/count';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -174,16 +174,14 @@ class Activities extends SomeRootClass {
      * [userId] ID of the user whose post to delete.
      * [scope] The collection to which the activity belongs.
      * [postId] ID of the activity to delete.
-     * [hl] Language code to limit language results.
+     * [required_parameter] A required query parameter
      */
-    Future delete(str userId, str scope, str postId, {
-            str hl
-            }) {
+    Future delete(str userId, str scope, str postId, str required_parameter) {
       pathParams['userId'] = userId;
       pathParams['scope'] = scope;
       pathParams['postId'] = postId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -227,7 +225,7 @@ class Activities extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/search/{evalue}@people';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -261,7 +259,7 @@ class Activities extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/@self/{postId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -285,7 +283,7 @@ class Activities extends SomeRootClass {
       pathParams['userId'] = userId;
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/@self';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -331,7 +329,7 @@ class Activities extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -370,7 +368,7 @@ class Activities extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/search';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -407,7 +405,7 @@ class Activities extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/track';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -434,7 +432,7 @@ class Activities extends SomeRootClass {
       pathParams['postId'] = postId;
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'PUT')
@@ -554,7 +552,7 @@ class Comments extends SomeRootClass {
       pathParams['postId'] = postId;
       pathParams['commentId'] = commentId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/@self/{postId}/@comments/{commentId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -578,7 +576,7 @@ class Comments extends SomeRootClass {
       pathParams['postId'] = postId;
       pathParams['commentId'] = commentId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/@self/{postId}/@comments/{commentId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -601,7 +599,7 @@ class Comments extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['postId'] = postId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/@self/{postId}/@comments';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -632,7 +630,7 @@ class Comments extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}/@comments';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -661,7 +659,7 @@ class Comments extends SomeRootClass {
       pathParams['commentId'] = commentId;
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}/@comments/{commentId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'PUT')
@@ -722,7 +720,7 @@ class Groups extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['groupId'] = groupId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -744,7 +742,7 @@ class Groups extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['groupId'] = groupId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}/@self';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -765,7 +763,7 @@ class Groups extends SomeRootClass {
             }) {
       pathParams['userId'] = userId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -792,7 +790,7 @@ class Groups extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -815,7 +813,7 @@ class Groups extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['groupId'] = groupId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}/@self';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'PUT')
@@ -857,7 +855,7 @@ class People extends SomeRootClass {
       pathParams['groupId'] = groupId;
       pathParams['personId'] = personId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}/{personId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -877,7 +875,7 @@ class People extends SomeRootClass {
             }) {
       pathParams['userId'] = userId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@self';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -910,7 +908,7 @@ class People extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}/{groupId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -939,7 +937,7 @@ class People extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -972,7 +970,7 @@ class People extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}/{groupId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -999,7 +997,7 @@ class People extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/search';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1024,7 +1022,7 @@ class People extends SomeRootClass {
       pathParams['groupId'] = groupId;
       pathParams['personId'] = personId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'people/{userId}/@groups/{groupId}/{personId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'PUT')
@@ -1082,7 +1080,7 @@ class PhotoAlbums extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['albumId'] = albumId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self/{albumId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -1104,7 +1102,7 @@ class PhotoAlbums extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['albumId'] = albumId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self/{albumId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1125,7 +1123,7 @@ class PhotoAlbums extends SomeRootClass {
             }) {
       pathParams['userId'] = userId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -1154,7 +1152,7 @@ class PhotoAlbums extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/{scope}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1205,7 +1203,7 @@ class Photos extends SomeRootClass {
       pathParams['albumId'] = albumId;
       pathParams['photoId'] = photoId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self/{albumId}/@photos/{photoId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'DELETE')
@@ -1229,7 +1227,7 @@ class Photos extends SomeRootClass {
       pathParams['albumId'] = albumId;
       pathParams['photoId'] = photoId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self/{albumId}/@photos/{photoId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1252,7 +1250,7 @@ class Photos extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['albumId'] = albumId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/{albumId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -1275,7 +1273,7 @@ class Photos extends SomeRootClass {
       pathParams['userId'] = userId;
       pathParams['albumId'] = albumId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/@self/{albumId}/@photos';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'POST')
@@ -1304,7 +1302,7 @@ class Photos extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/album/{albumId}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1333,7 +1331,7 @@ class Photos extends SomeRootClass {
       // do something different with queryParameters
       // do something different with queryParameters
       // do something different with queryParameters
-      string path = '';
+      string path = 'photos/{userId}/scope/{+scope}';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1377,14 +1375,14 @@ class Related extends SomeRootClass {
      * [postId] ID of the activity to which to get related links.
      * [hl] Language code to limit language results.
      */
-    Future<RelatedFeed> list(str userId, str scope, str postId, {
+    Future<RelatedFeed> list(str userId, str scope, long postId, {
             str hl
             }) {
       pathParams['userId'] = userId;
       pathParams['scope'] = scope;
       pathParams['postId'] = postId;
       // do something different with queryParameters
-      string path = '';
+      string path = 'activities/{userId}/{scope}/{postId}/@related';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1451,6 +1449,10 @@ class Activity extends SomeBaseModelClass {
   // 
   // JSON name: 'geocode'
   object _geocode;
+
+  // 
+  // JSON name: 'geometry'
+  Geometry _geometry;
 
   // 
   // JSON name: 'id'
@@ -1559,6 +1561,12 @@ class Activity extends SomeBaseModelClass {
   void setGeocode(object v) {
     _geocode = v;
   }
+  Geometry getGeometry() {
+    return _geometry;
+  }
+  void setGeometry(Geometry v) {
+    _geometry = v;
+  }
   object getId() {
     return _id;
   }
@@ -1662,10 +1670,6 @@ class Activity extends SomeBaseModelClass {
   class ActivityActor extends SomeBaseModelClass {
 
     //
-    // JSON name: '/freebase/object_profile/linkcount'
-    object _freebase_object_profile_linkcount;
-
-    //
     // JSON name: 'id'
     object _id;
 
@@ -1682,12 +1686,6 @@ class Activity extends SomeBaseModelClass {
     object _thumbnailUrl;
 
     // Getters and setters might go here
-    object getFreebaseObject_profileLinkcount() {
-      return _freebase_object_profile_linkcount;
-    }
-    void setFreebaseObject_profileLinkcount(object v) {
-      _freebase_object_profile_linkcount = v;
-    }
     object getId() {
       return _id;
     }
@@ -2245,10 +2243,6 @@ class Activity extends SomeBaseModelClass {
 class ActivityActor extends SomeBaseModelClass {
 
   // 
-  // JSON name: '/freebase/object_profile/linkcount'
-  object _freebase_object_profile_linkcount;
-
-  // 
   // JSON name: 'id'
   object _id;
 
@@ -2265,12 +2259,6 @@ class ActivityActor extends SomeBaseModelClass {
   object _thumbnailUrl;
 
   // Getters and setters might go here
-  object getFreebaseObject_profileLinkcount() {
-    return _freebase_object_profile_linkcount;
-  }
-  void setFreebaseObject_profileLinkcount(object v) {
-    _freebase_object_profile_linkcount = v;
-  }
   object getId() {
     return _id;
   }
@@ -2487,6 +2475,8 @@ class ActivityFeed extends SomeBaseModelClass {
   }
 
 }
+
+
 
 
 
@@ -3221,6 +3211,8 @@ class ActivityObjectAttachments extends SomeBaseModelClass {
 
 
 
+
+
 """Schema Activity.ActivityObject.ActivityObjectAttachments.ActivityObjectAttach
 """mentsLinksItemElement { model.description }} <p> Your explanation here.
 # 
@@ -3299,6 +3291,8 @@ class ActivityObjectAttachmentsLinksItemElement extends SomeBaseModelClass {
   }
 
 }
+
+
 
 
 
@@ -4708,6 +4702,8 @@ class CommentFeed extends SomeBaseModelClass {
 
 
 
+
+
 """Schema CommentFeed.CommentFeedLinksItemElement { model.description }} <p>
 """Your explanation here.
 # 
@@ -4945,6 +4941,8 @@ class CountFeed extends SomeBaseModelClass {
   }
 
 }
+
+
 
 
 
@@ -5329,6 +5327,66 @@ class EntityViewerStarAcl extends SomeBaseModelClass {
 
 
 
+"""Schema .Geometry { model.description }} <p> Your explanation here.
+# 
+class Geometry extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'type'
+  str _type;
+
+  // Getters and setters might go here
+  str getType() {
+    return _type;
+  }
+  void setType(str v) {
+    _type = v;
+  }
+
+}
+
+
+
+"""Schema .GeometryCollection { model.description }} <p> Your explanation here.
+# 
+class GeometryCollection extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'geometries'
+  com::google::myservice::Array<Geometry> _geometries;
+
+  // Getters and setters might go here
+  com::google::myservice::Array<Geometry> getGeometries() {
+    return _geometries;
+  }
+  void setGeometries(com::google::myservice::Array<Geometry> v) {
+    _geometries = v;
+  }
+
+}
+
+
+
+"""Schema .GeometryPolygon { model.description }} <p> Your explanation here.
+# 
+class GeometryPolygon extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'coordinates'
+  str _coordinates;
+
+  // Getters and setters might go here
+  str getCoordinates() {
+    return _coordinates;
+  }
+  void setCoordinates(str v) {
+    _coordinates = v;
+  }
+
+}
+
+
+
 """Schema .Group { model.description }} <p> Your explanation here.
 # 
 class Group extends SomeBaseModelClass {
@@ -5552,6 +5610,8 @@ class GroupFeed extends SomeBaseModelClass {
   }
 
 }
+
+
 
 
 
@@ -7664,6 +7724,8 @@ class RelatedFeed extends SomeBaseModelClass {
   }
 
 }
+
+
 
 
 

@@ -4,7 +4,9 @@
 {# method constructor. In addition it injects the service_ as the first      #}
 {# argument into the constructor.                                            #}
 {#---------------------------------------------------------------------------#}
-{% endfilter %}
+{% endfilter %}{% if method.requestType and method.mediaUpload %}
+// This factory method is deprecated in favor of the newer variation that
+// also takes the media upload parameters.
 {{ method.className }}* {{ api.className }}{% if resource %}::{{ resource.className }}{% endif %}::New{{ method.undecoratedClassName }}({% parameter_list %}
   {% parameter %}
     {{ api.client_namespace }}::AuthorizationCredential* _credential_
@@ -19,8 +21,42 @@
   {% endif %}
   {% end_parameter_list %}) const {
   return new {{ method.className }}({% if resource %}service_, {% else %}this, {% endif %}_credential_{% for p in method.requiredParameters %}, {{ p.codeName }}{% endfor %}{% if method.requestType and not method.mediaUpload %}, _content_{% endif %});
-} {% if method.isPageable %}
+}
 
+{% endif %}{{ method.className }}* {{ api.className }}{% if resource %}::{{ resource.className }}{% endif %}::New{{ method.undecoratedClassName }}({% parameter_list %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.codeName }}
+  {% end_parameter %}{% endfor %}
+  {% if method.requestType %}{% if method.mediaUpload %}
+    {% parameter %}
+      const {{ method.requestType.fullClassName }}* _metadata_
+    {% end_parameter %}
+    {% parameter %}
+      const StringPiece& _media_content_type_
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}
+  {% else %}
+    {% parameter %}
+      const {{ method.requestType.fullClassName }}& _content_
+    {% end_parameter %}
+  {% endif %}{% elif method.mediaUpload %}
+    {% parameter %}
+      const StringPiece& _media_content_type_
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}
+  {% endif %}
+  {% end_parameter_list %}) const {
+  return new {{ method.className }}({% if resource %}service_, {% else %}this, {% endif %}_credential_{% for p in method.requiredParameters %}, {{ p.codeName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %}, _metadata_, _media_content_type_, _media_content_reader_{% else %}, _content_{% endif %}{% elif method.mediaUpload %}, _media_content_type_, _media_content_reader_{% endif %});
+}
+
+{% if method.isPageable %}
 {{ method.className }}Pager* {{ api.className }}::{{ resource.className }}::New{{ method.undecoratedClassName }}Pager({% parameter_list %}
   {% parameter %}
     {{ api.client_namespace }}::AuthorizationCredential* _credential_
@@ -28,11 +64,21 @@
   {% for p in method.requiredParameters %}{% parameter %}
     const {{ p.parameterCodeType }}& {{ p.codeName }}
   {% end_parameter %}{% endfor %}
-  {% if method.requestType and not method.mediaUpload %}
+  {% if method.requestType %}{% if method.mediaUpload %}
+    {% parameter %}
+      const {{ method.requestType.fullClassName }}& _metadata_
+    {% end_parameter %}
+    {% parameter %}
+      const StringPiece& _media_content_type_,
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_reader_
+    {% end_parameter %}
+  {% else %}
     {% parameter %}
       const {{ method.requestType.fullClassName }}& _content_
     {% end_parameter %}
-  {% endif %}
+  {% endif %}{% endif %}
   {% end_parameter_list %}) const {
-  return new {{ api.client_namespace }}::EncapsulatedServiceRequestPager<{{ method.className }}, {{ method.responseType.className }}>(new {{ method.className }}(service_, _credential_{% for p in method.requiredParameters %}, {{ p.codeName }}{% endfor %}{% if method.requestType and not method.mediaUpload %}, _content_{% endif %}));
+  return new {{ api.client_namespace }}::EncapsulatedServiceRequestPager<{{ method.className }}, {{ method.responseType.className }}>(new {{ method.className }}(service_, _credential_{% for p in method.requiredParameters %}, {{ p.codeName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %}, _metadata_, _media_content_type_, _media_reader_{% else %}, _content_{% endif %}{% endif %}));
 }{% endif %}

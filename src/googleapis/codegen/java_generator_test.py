@@ -177,6 +177,17 @@ class JavaLanguageModelTest(basetest.TestCase):
     gen = MakeGen('my-custom_app.appspot.com')
     self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
 
+  def testAllowedCharacters(self):
+    # make sure $ is allowed in a name and that @ is not
+
+    model = java_generator.JavaLanguageModel()
+    self.assertEquals('$ref',
+                      model.TransformString(None, '$ref', model.member_policy))
+    self.assertEquals('set$ref',
+                      model.TransformString(None, '$ref', model.setter_policy))
+    self.assertEquals('getId',
+                      model.TransformString(None, '@id', model.getter_policy))
+
 
 class JavaLanguageModelDataValueTest(basetest.TestCase):
   """Tests for DataValue integration."""

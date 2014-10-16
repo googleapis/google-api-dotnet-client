@@ -14,7 +14,11 @@ class MavenUtilsTest(basetest.TestCase):
         ({'api_name': 'adsense', 'owner_domain': 'snorg.com'}, 'adsense'),
         ({'api_name': 'adsense', 'owner_domain': 'snorg.com',
           'package_path': 'snorg.foobar'},
-         'snorg-foobar-adsense')]
+         'snorg-foobar-adsense'),
+        ({'api_name': 'admin', 'package_path': 'admin',
+          'canonical_name': 'reports'},
+         'google-api-services-admin-reports'),
+        ]
     for kwargs, artifact_id in args:
       self.assertEquals(artifact_id, maven_utils.GetMavenArtifactId(**kwargs))
 

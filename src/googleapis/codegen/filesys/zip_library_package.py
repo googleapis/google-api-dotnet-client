@@ -124,3 +124,7 @@ class ZipLibraryPackage(LibraryPackage):
   def FileExtension(self):
     """Returns the file extension for this archive, which is zip."""
     return 'zip'
+
+  def MimeType(self):
+    """Returns the MIME type for this archive."""
+    return 'application/zip'

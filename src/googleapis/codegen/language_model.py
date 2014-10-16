@@ -32,6 +32,11 @@ LOWER_CAMEL_CASE = 3  # hello WorLd
 UPPER_CAMEL_CASE = 4  # Hello WorLd
 LOWER_UNCAMEL_CASE = 5  # hello wor ld
 UPPER_UNCAMEL_CASE = 6  # HELLO WOR LD
+CAP_FIRST = 7  # Hello worLd
+
+# AtSignPolicy - policies for replacing '@' in names
+ATSIGN_STRIP = 0  # Strip @
+ATSIGN_BREAK = 1  # Treat @ as a word break
 
 
 class NamingPolicy(object):
@@ -56,12 +61,22 @@ class NamingPolicy(object):
       name we are building. May be None for the identity format.
   separator: (char) The character which will be used to separate the
       parts of a name. May be None to indicate no separator.
+  conflict_policy: (NamingPolicy) If the result of the name is a reserved word
+      then try this policy as a fallback (and so on). It is the responsiblity
+      of the LanguageModel sub-classer to provide a conflict_policy which
+      will always result in a safe name. Note that the conflict_policy may, in
+      turn, provide it's own conflict_policy. That allows one to construct a
+      chain of formats to try.
+  atsign_policy: (enum AtSignPolicy) The policy for handling '@' in names.
   """
 
-  def __init__(self, case_transform=None, format_string=None, separator=None):
+  def __init__(self, case_transform=None, format_string=None, separator=None,
+               conflict_policy=None, atsign_policy=ATSIGN_STRIP):
     self.case_transform = case_transform
     self.format_string = format_string
     self.separator = separator
+    self.conflict_policy = conflict_policy
+    self.atsign_policy = atsign_policy
 
 
 class LanguageModel(object):
@@ -86,17 +101,24 @@ class LanguageModel(object):
   allowed_characters = ''
 
   # The defaults for each of (TypeOfName x Option)
-  array_of_policy = None  # Note usage in CodeTypeForArrayOf
+  array_of_policy = None  # Note usage in ArrayOf
+  map_of_policy = None  # Note usage in MapOf
   class_name_policy = NamingPolicy()
   constant_policy = NamingPolicy()
 
-  # The member, getter, and setter options are a related set. Typically the
+  # The member, getter, etc... options are a related set. Typically the
   # transforms will all be identical, but the getter/setter will have a format
   # like 'get_{name}'
-  member_policy = NamingPolicy()
+  member_policy = NamingPolicy()  # the name for inside a class definition
+  parameter_name_policy = NamingPolicy()  # the public facing name
   getter_policy = NamingPolicy()
   setter_policy = NamingPolicy()
-  has_policy = NamingPolicy()
+  unset_policy = NamingPolicy()  # clear the element in the object
+  has_policy = NamingPolicy()  # is the element set in the object?
+
+  # The list of reserved words in this language. ToXxxName methods must never
+  # return one of these.
+  reserved_words = []
 
   def __init__(self, class_name_delimiter='.', module_name_delimiter=None):
     """Create a LanguageModel.
@@ -119,6 +141,16 @@ class LanguageModel(object):
         'integer': self._Integer,
         'number': self._Float,
         'string': self._String,
+        }
+    self._policies_by_name = {
+        'class_name': self.class_name_policy,
+        'constant': self.constant_policy,
+        'getter': self.getter_policy,
+        'has': self.has_policy,
+        'member': self.member_policy,
+        'parameter_name': self.parameter_name_policy,
+        'setter': self.setter_policy,
+        'unset': self.unset_policy,
         }
 
   def _Integer(self, data_value):
@@ -219,43 +251,29 @@ class LanguageModel(object):
       (str)
     """
     if self.array_of_policy:
-      return self.TransformString(variable, type_name, self.array_of_policy)
-    # fall back to older implementation
-    return self.CodeTypeForArrayOf(type_name)
-
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Deprecated. use array_of transformation options in the lanaguge_model
-    constructor.
-
-    Subclasses must override as appropriate. The base definition is only OK for
-    debugging.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      A language specific string meaning "an array of type_name".
-    """
+      return self.ApplyFormat(variable, type_name, self.array_of_policy)
     # COV_NF_START
-    raise NotImplementedError(  # COV_NF_LINE
-        'Subclasses of LanguageModel must implement CodeTypeForArrayOf')
+    raise NotImplementedError(
+        'Subclasses of LanguageModel must implement ArrayOf or provide'
+        ' array_of_policy')
     # COV_NF_END
 
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for a map of strings of them.
-
-    Subclasses must override as appropriate. The base definition is only OK for
-    debugging.
+  def MapOf(self, variable, type_name):
+    """Produce the string declaring a map of string to a data type.
 
     Args:
-      type_name: (str) A type name.
+      variable: (DataType) the data we want an array of.
+      type_name: (str) the printable name of that data type. Usually
+          variable.codeType.
     Returns:
-      A language specific string meaning "an array of type_name".
+      (str)
     """
+    if self.map_of_policy:
+      return self.ApplyFormat(variable, type_name, self.map_of_policy)
     # COV_NF_START
-    raise NotImplementedError(  # COV_NF_LINE
-        'Subclasses of LanguageModel must implement CodeTypeForMapOf')
+    raise NotImplementedError(
+        'Subclasses of LanguageModel must implement MapOf or provide'
+        ' map_of_policy')
     # COV_NF_END
 
   def CodeTypeForVoid(self):
@@ -268,88 +286,21 @@ class LanguageModel(object):
     """
     return 'void'
 
-  def ToConstantName(self, variable, name):
-    """Convert a string to well formatted constant name.
+  def ApplyPolicy(self, policy_name, variable, name):
+    """Apply a naming policy to a string.
+
+    Maps the policy name to the tranformation class and applies it.
 
     Args:
-      variable: (CodeObject) an element which may appear in the templates.
-      name: (str) The Discovery name of the variable.
-    Returns:
-      (str)
-    """
-    return self.TransformString(variable, name, self.constant_policy)
-
-  def ToClassName(self, variable, name):
-    """Convert a string to a well formatted class name.
-
-    Args:
-      variable: (CodeObject) an element which may appear in the templates,
-         but typically an Api, Resource, Method or Schema.
-      name: (str) The Discovery name of the variable.
-    Returns:
-      (str)
-    """
-    return self.TransformString(variable, name, self.class_name_policy)
-
-  def ToClassMemberName(self, variable, name):
-    """Convert a string to a well formatted class member name.
-
-    Class member names are the names used within data member classes. The
-    external name would be the Getter name. See ToGetterName.
-
-    Args:
+      policy_name: (str) The name of a policy.
       variable: (CodeObject) an element which may appear in the templates,
           but typically a Property.
       name: (str) The Discovery name of the variable.
     Returns:
-      (str)
+      (str) The input string transformed as specified by the policy.
     """
-    return self.TransformString(variable, name, self.member_policy)
-
-  def ToGetterName(self, variable, name):
-    """Convert a string to the name of a getter for a class member.
-
-    The Getter is the name of the method which would return a member from an
-    object instance.
-
-    Args:
-      variable: (CodeObject) an element which may appear in the templates,
-          but typically a Property.
-      name: (str) The Discovery name of the variable.
-    Returns:
-      (str)
-    """
-    return self.TransformString(variable, name, self.getter_policy)
-
-  def ToSetterName(self, variable, name):
-    """Convert a string to the name of a setter for a class member.
-
-    The Setter is the name of the method which would set a member in an
-    object instance.
-
-    Args:
-      variable: (CodeObject) an element which may appear in the templates,
-          but typically a Property.
-      name: (str) The Discovery name of the variable.
-    Returns:
-      (str)
-    """
-    return self.TransformString(variable, name, self.setter_policy)
-
-  def ToHasName(self, variable, name):
-    """Convert a string to the name of a 'has' method for a class member.
-
-    HasName is the name of the method which would check to see if the member is
-    set to a value in the object instance.
-
-    Args:
-      variable: (CodeObject) an element which may appear in the templates,
-          but typically a Property.
-      name: (str) The Discovery name of the variable.
-    Returns:
-      (str)
-    """
-    return self.TransformString(variable, name, self.has_policy)
+    policy = self._policies_by_name[policy_name]
+    return self.TransformString(variable, name, policy)
 
   def ToMemberName(self, s, api):  # pylint: disable=unused-argument
     """Convert a name to a suitable member name in the target language.
@@ -478,8 +429,19 @@ class LanguageModel(object):
       transform = lambda s, _: utilities.UnCamelCase(''.join(s))
     elif policy.case_transform == UPPER_UNCAMEL_CASE:
       transform = lambda s, _: utilities.UnCamelCase(''.join(s)).upper()
+    elif policy.case_transform == CAP_FIRST:
+      # pylint: disable=g-long-lambda
+      transform = (
+          lambda s, first_word:
+          ''.join([s[0].upper() if first_word else s[0]] + s[1:]))
     else:
       transform = lambda s, _: ''.join(s)
+
+    if policy.atsign_policy == ATSIGN_STRIP:
+      s = s.replace('@', '')
+    if policy.atsign_policy == ATSIGN_BREAK:
+      # chr(1) is always going to not be in allowed_characters.
+      s = s.replace('@', policy.separator or chr(1))
 
     # Split into words at characters which can not be part of an identifier.
     parts = []
@@ -499,9 +461,28 @@ class LanguageModel(object):
     join_char = policy.separator or ''
     name = join_char.join(parts)
 
-    if not policy.format_string:
-      return name
+    if policy.format_string:
+      name = self.ApplyFormat(variable, name, policy)
 
+    if name in self.reserved_words:
+      if policy.conflict_policy:
+        return self.TransformString(variable, s, policy.conflict_policy)
+      else:
+        return s + '__'  # Ugly, but works everywhere.
+    return name
+
+  def ApplyFormat(self, variable, name, policy):
+    """Applies the format of a naming policy to a string.
+
+    Args:
+      variable: (CodeObject) The template variable this string came from. This
+          is used to extract details about the variable which may be useful in
+          building a name, such as the module it belongs to.
+      name: (str) A name to transform.
+      policy: (NamingPolicy) The naming policy to use for the transform.
+    Returns:
+      Transformed string.
+    """
     expansions = dict(name=name)
     # The variable should always be present in normal execution. We allow
     # it to be None solely for testing.
@@ -521,19 +502,8 @@ class DocumentingLanguageModel(LanguageModel):
   This model is useful for language neutral expression of an Api.
   """
   array_of_policy = NamingPolicy(format_string='Array<{name}>')
+  map_of_policy = NamingPolicy(format_string='Map<string, {name}>')
   class_name_policy = NamingPolicy(case_transform=UPPER_CAMEL_CASE)
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for a map of strings of them.
-
-    Override the default
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      The string Map<string, inner data type>
-    """
-    return 'Map<string, %s>' % type_name
 
   def GetCodeTypeFromDictionary(self, json_schema):
     """Convert a json schema primitive type into the most suitable class name.

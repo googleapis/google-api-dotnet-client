@@ -1,7 +1,7 @@
 {
   "language": "csharp",
   "description": "C# libraries for Google APIs.",
-  "releaseVersion": "1.6.0-beta",
-  "baseClientLibrary": "1.6.0-beta",
-  "nugetVersion": "1.6.0"
+  "releaseVersion": "1.9.0",
+  "baseClientLibrary": "1.9.0",
+  "nugetVersion": "1.9.0"
 }

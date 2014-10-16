@@ -19,9 +19,9 @@
    *{% filter block_comment %}{{ property.description }}{% endfilter %}
    * </p>
    */
-  public boolean is{% camel_case property.wireName %}() {
-    if ({{ property.codeName }} == null || {{ property.codeName }} == com.google.api.client.util.Data.NULL_BOOLEAN) {
+  public boolean is{{ property.memberName|capfirst }}() {
+    if ({{ property.memberName }} == null || {{ property.memberName }} == com.google.api.client.util.Data.NULL_BOOLEAN) {
       return {{ property.default }};
     }
-    return {{ property.codeName }};
+    return {{ property.memberName }};
   }{% endfilter %}

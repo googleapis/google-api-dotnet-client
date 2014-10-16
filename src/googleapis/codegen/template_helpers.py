@@ -1270,29 +1270,26 @@ class TemplateNode(django_template.Node):
   def render(self, context):  # pylint: disable=g-bad-name
     """Render the node."""
     template_path = os.path.join(context['template_dir'], self._template_name)
-    # Add new bindings, backing up old values
-    old_values = {}
-    for target, source in self._bindings.items():
+    # Collect new additions to the context
+    newvars = {}
+    for target, source in self._bindings.iteritems():
       try:
-        old_values[target] = django_template.resolve_variable(target, context)
-      except django_template.VariableDoesNotExist:
-        old_values[target] = None
-      try:
-        context[target] = django_template.resolve_variable(source, context)
+        newvars[target] = django_template.resolve_variable(source, context)
       except django_template.VariableDoesNotExist:
         raise django_template.TemplateSyntaxError(
             'can not resolve %s when calling template %s' % (
                 source, self._template_name))
+    # Push new variables onto the context stack
+    context.update(newvars)
     # Render the result
     try:
-      s = _RenderToString(template_path, context).rstrip()
+      return _RenderToString(template_path, context).rstrip()
     except django_template.TemplateDoesNotExist:
       # replace with full path
       raise django_template.TemplateDoesNotExist(template_path)
-    # Restore previous context
-    for key, value in old_values.items():
-      context[key] = value
-    return s
+    finally:
+      # Pop the context stack
+      context.pop()
 
   @classmethod
   def CreateTemplateNode(cls, token, template, bound_variable):

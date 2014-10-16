@@ -159,9 +159,9 @@ class LanguagePolicyTest(basetest.TestCase):
     max_results = 'max-results'
 
     self.assertEquals('C Max!CLASS!Results',
-                      m.ToClassName(None, max_results))
+                      m.ApplyPolicy('class_name', None, max_results))
     self.assertEquals('K MAX!CONSTANT!RESULTS',
-                      m.ToConstantName(None, max_results))
+                      m.ApplyPolicy('constant', None, max_results))
 
   def testPoliciesGetUsedInTheRightMethods2(self):
 
@@ -188,11 +188,55 @@ class LanguagePolicyTest(basetest.TestCase):
     max_results = 'max-results'
 
     self.assertEquals('M max!MEMBER!results',
-                      m.ToClassMemberName(None, max_results))
+                      m.ApplyPolicy('member', None, max_results))
     self.assertEquals('G max!GETTER!Results',
-                      m.ToGetterName(None, max_results))
+                      m.ApplyPolicy('getter', None, max_results))
     self.assertEquals('S Max!SETTER!Results',
-                      m.ToSetterName(None, max_results))
+                      m.ApplyPolicy('setter', None, max_results))
+
+  def testArrayOf(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      # transform and separator are not used for array of
+      array_of_policy = language_model.NamingPolicy(
+          case_transform=language_model.UPPER_CAMEL_CASE,
+          separator='will not be used',
+          format_string='Array[{name}]')
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+    self.assertEquals('Array[foo-bar]', m.ArrayOf(None, 'foo-bar'))
+
+  def testAtSignPolicy(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      allowed_characters = '#'
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+
+    # An identifier with several bad characters, including one at the end
+    # which we expect to strip off.
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE)
+    self.assertEquals('Myname', m.TransformString(None, 'my@name', p))
+    self.assertEquals('Name', m.TransformString(None, '@name', p))
+
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE,
+        atsign_policy=language_model.ATSIGN_STRIP)
+    self.assertEquals('Myname', m.TransformString(None, 'my@name', p))
+    self.assertEquals('Name', m.TransformString(None, '@name', p))
+
+    p = language_model.NamingPolicy(
+        case_transform=language_model.UPPER_CAMEL_CASE,
+        atsign_policy=language_model.ATSIGN_BREAK)
+    self.assertEquals('MyName', m.TransformString(None, 'my@name', p))
+    self.assertEquals('Name', m.TransformString(None, '@name', p))
 
 
 if __name__ == '__main__':

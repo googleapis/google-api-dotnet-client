@@ -37,7 +37,9 @@ class CSharpLanguageModel(language_model.LanguageModel):
 
   # Set up variable naming policy
   array_of_policy = language_model.NamingPolicy(
-      format_string='System.Collections.Generic.IList<{name}>', separator='.')
+      format_string='System.Collections.Generic.IList<{name}>')
+  map_of_policy = language_model.NamingPolicy(
+      format_string='System.Collections.Generic.IDictionary<string,{name}>')
   constant_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE)
   class_name_policy = language_model.NamingPolicy(
@@ -47,13 +49,22 @@ class CSharpLanguageModel(language_model.LanguageModel):
 
   # TODO(user): Fix these 3 tables
   _SCHEMA_TYPE_TO_CSHARP_TYPE = {
-      'any': 'object',
-      'boolean': 'System.Nullable<bool>',
-      'integer': 'System.Nullable<int>',
-      'long': 'System.Nullable<long>',
-      'number': 'System.Nullable<double>',
-      'string': 'string',
-      'object': 'object',
+      ('any', None): 'object',
+      ('boolean', None): 'System.Nullable<bool>',
+      ('integer', None): 'System.Nullable<int>',
+      ('number', None): 'System.Nullable<double>',
+      ('integer', 'int16'): 'System.Nullable<short>',
+      ('integer', 'int32'): 'System.Nullable<int>',
+      ('integer', 'uint32'): 'System.Nullable<long>',
+      ('number', 'double'): 'System.Nullable<double>',
+      ('number', 'float'): 'System.Nullable<float>',
+      ('string', None): 'string',
+      ('string', 'byte'): 'string',
+      ('string', 'date'): 'string',  # Date only in 'yyyy-mm-dd' format
+      ('string', 'date-time'): 'System.Nullable<System.DateTime>',
+      ('string', 'int64'): 'System.Nullable<long>',
+      ('string', 'uint64'): 'System.Nullable<ulong>',
+      ('object', None): 'object',
       }
 
   _CSHARP_KEYWORDS = [
@@ -71,6 +82,7 @@ class CSharpLanguageModel(language_model.LanguageModel):
       ]
 
   RESERVED_CLASS_NAMES = _CSHARP_KEYWORDS
+  reserved_words = RESERVED_CLASS_NAMES
 
   def __init__(self):
     super(CSharpLanguageModel, self).__init__(class_name_delimiter='.')
@@ -86,40 +98,30 @@ class CSharpLanguageModel(language_model.LanguageModel):
       A name suitable for use as a C# data type
     """
     json_type = def_dict.get('type', 'string')
-    native_type = self._SCHEMA_TYPE_TO_CSHARP_TYPE.get(json_type)
-    # TODO(user): Handle JsonString style for string/int64, which should
-    # be a Long.
+    json_format = def_dict.get('format')
+    native_type = self._SCHEMA_TYPE_TO_CSHARP_TYPE.get((json_type, json_format))
+    if not native_type:
+      native_type = 'object'
     return native_type
 
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
+  def ApplyPolicy(self, policy_name, variable, value):
+    """Override the default policy applier so we can do special things."""
 
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A C# specific string meaning "an array of type_name".
-    """
-    return 'System.Collections.Generic.IList<%s>' % type_name
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A C# specific string meaning "a Map of string to type_name".
-    """
-    return 'System.Collections.Generic.IDictionary<string,%s>' % type_name
+    # We need to look for class members clashing with the name of the container.
+    # TODO(user): This begs for having a more extensible conflict policy
+    # mechanism in LanguageModel.
+    if policy_name == 'member':
+      return self.ToClassMemberName(variable, value)
+    return super(CSharpLanguageModel, self).ApplyPolicy(policy_name, variable,
+                                                        value)
 
   def ToClassMemberName(self, variable, name):
+    formatted = super(CSharpLanguageModel, self).ApplyPolicy('member', variable,
+                                                             name)
     if isinstance(variable, api.Property):
-      if variable.schema.values.get('wireName').lower() == name.lower():
-        name += '_value'
-    return super(CSharpLanguageModel, self).ToClassMemberName(variable, name)
+      if variable.schema.values.get('className') == formatted:
+        formatted += 'Value'
+    return formatted
 
   def ToMemberName(self, s, the_api):
     """CamelCase a wire format name into a suitable C# variable name."""
@@ -154,9 +156,13 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
       'object': 'object',
       'string': 'string',
       'System.Nullable<bool>': 'bool',
+      'System.Nullable<short>': 'short',
       'System.Nullable<int>': 'int',
       'System.Nullable<long>': 'long',
+      'System.Nullable<ulong>': 'ulong',
       'System.Nullable<double>': 'double',
+      'System.Nullable<float>': 'float',
+      'System.Nullable<System.DateTime>': 'System.DateTime',
       }
 
   def __init__(self, discovery, options=None):
@@ -179,11 +185,11 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
         options=options)
 
   def AnnotateParameter(self, unused_method, parameter):
-    """Annotate a Parameter with Java specific elements."""
+    """Annotate a Parameter with C# specific elements."""
     self._Annotate(parameter)
 
   def AnnotateProperty(self, unused_api, prop, unused_schema):
-    """Annotate a Property with Java specific elements."""
+    """Annotate a Property with C# specific elements."""
     self._Annotate(prop)
 
   def _Annotate(self, element):
@@ -196,6 +202,29 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
     element.SetTemplateValue('requiredType', self._NULLABLE_TYPE_TO_REQUIRED.
                              get(element.codeType))
 
+  def AnnotateApi(self, the_api):
+    """Annotate a Api with C# specific elements."""
+    the_api.values['revision'] = self._GetValidRevision(
+        the_api.values['revision'])
+    super(CSharpGenerator, self).AnnotateApi(the_api)
+
+  def _GetValidRevision(self, rev):
+    """Get a valid revision (non negative numeric and less or equal than 65535).
+
+    Args:
+      rev: revision number
+    Returns:
+      A valid revision number.
+    """
+
+    try:
+      valid_rev = int(rev)
+      if valid_rev > 65535 or valid_rev < 0:
+        return 0
+      return valid_rev
+    except ValueError:
+      return 0
+
 
 class CSharpApi(api.Api):
   """An Api with C# annotations."""
@@ -203,7 +232,8 @@ class CSharpApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(CSharpApi, self).__init__(discovery_doc)
     self.module.SetPath(
-        '%s/%s' % (self.values['className'], self.values['versionNoDots']))
+        '%s/%s' % (self.values['className'],
+                   self.values['versionNoDots'].replace('-', '')))
     self.model_module.SetPath('Data')
 
   def NestedClassNameForProperty(self, name, schema):

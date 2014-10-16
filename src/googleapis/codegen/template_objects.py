@@ -367,27 +367,43 @@ class CodeObject(UseableInTemplates):
   @property
   def constantName(self):  # pylint: disable=g-bad-name
     """Returns a name for this object when used as an constant."""
-    return self.language_model.ToConstantName(self, self.values['wireName'])
+    return self.language_model.ApplyPolicy('constant', self,
+                                           self.values['wireName'])
 
   @property
   def memberName(self):  # pylint: disable=g-bad-name
     """Returns a name for this object when used as an class member."""
-    return self.language_model.ToClassMemberName(self, self.values['wireName'])
+    return self.language_model.ApplyPolicy('member', self,
+                                           self.values['wireName'])
 
   @property
   def getterName(self):  # pylint: disable=g-bad-name
     """Returns a name for the getter of memberName."""
-    return self.language_model.ToGetterName(self, self.values['wireName'])
+    return self.language_model.ApplyPolicy('getter', self,
+                                           self.values['wireName'])
 
   @property
   def setterName(self):  # pylint: disable=g-bad-name
     """Returns a name for the setter of memberName."""
-    return self.language_model.ToSetterName(self, self.values['wireName'])
+    return self.language_model.ApplyPolicy('setter', self,
+                                           self.values['wireName'])
 
   @property
   def hasName(self):  # pylint: disable=g-bad-name
     """Returns a name for the has check of memberName."""
-    return self.language_model.ToHasName(self, self.values['wireName'])
+    return self.language_model.ApplyPolicy('has', self, self.values['wireName'])
+
+  @property
+  def unsetName(self):  # pylint: disable=g-bad-name
+    """Returns a name for the unset method of memberName."""
+    return self.language_model.ApplyPolicy('unset', self,
+                                           self.values['wireName'])
+
+  @property
+  def parameterName(self):  # pylint: disable=g-bad-name
+    """Returns a name for this object when used as the parameter to a method."""
+    return self.language_model.ApplyPolicy('parameter_name', self,
+                                           self.values['wireName'])
 
 
 class Module(CodeObject):
@@ -564,7 +580,7 @@ class Constant(CodeObject):
   @property
   def constantName(self):  # pylint: disable=g-bad-name
     """Override."""
-    return self.language_model.ToConstantName(self, self.name)
+    return self.language_model.ApplyPolicy('constant', self, self.name)
 
   @classmethod
   def _NameFromValue(cls, value):

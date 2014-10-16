@@ -24,16 +24,16 @@ __author__ = 'wclarkso@google.com (Will Clarkson)'
 import re
 
 
-# The first character must alpha (a-zA-Z), a slash (/), or an
+# The first character must alpha (a-zA-Z), a slash (/), a '@', or an
 # underscore (no single digits).  Subsequent characters can be alpha
 # numeric. We also permit them to have a slash(/), underscore (_), dot
 # (.) or dash (-).  NOTE: the '$' character is to get around $ref
 # variable name in some APIs.
 _VARNAME_REGEX = re.compile(
-    r'^[a-zA-Z]$|([a-zA-Z_/$][a-zA-Z0-9_./-]+)$')
+    r'^[a-zA-Z]$|([a-zA-Z_/$@][a-zA-Z0-9_./-]+)$')
 
 _API_NAME_REGEX = re.compile(r'[a-z][a-zA-Z0-9_]*$')
-_API_VERSION_REGEX = re.compile(r'[a-z0-9][a-zA-Z0-9._]*$')
+_API_VERSION_REGEX = re.compile(r'[a-z0-9][a-zA-Z0-9._-]*$')
 
 
 class ValidationError(ValueError):

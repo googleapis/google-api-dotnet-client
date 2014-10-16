@@ -157,9 +157,6 @@
       },
       "thumbnailUrl": {
        "type": "any"
-      },
-      "/freebase/object_profile/linkcount": {
-       "type": "any"
       }
      }
     },
@@ -199,6 +196,9 @@
     },
     "geocode": {
      "type": "any"
+    },
+    "geometry": {
+     "$ref": "Geometry"
     },
     "id": {
      "type": "any",
@@ -449,6 +449,56 @@
        }
       }
      }
+    }
+   }
+  },
+  "Geometry": {
+   "id": "Geometry",
+   "type": "object",
+   "variant": {
+    "discriminant": "type",
+    "map": [
+     {
+      "type_value": "Collection",
+      "$ref": "GeometryCollection"
+     },
+     {
+      "type_value": "Polygon",
+      "$ref": "GeometryPolygon"
+     }
+    ]
+   }
+  },
+  "GeometryCollection": {
+   "id": "GeometryCollection",
+   "type": "object",
+   "properties": {
+    "geometries": {
+     "type": "array",
+     "items": {
+      "$ref": "Geometry"
+     }
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "Collection"
+     ]
+    }
+   }
+  },
+  "GeometryPolygon": {
+   "id": "GeometryPolygon",
+   "type": "object",
+   "properties": {
+    "coordinates": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "Polygon"
+     ]
     }
    }
   },
@@ -1629,7 +1679,7 @@
  "methods": {
   "foo": {
    "id": "myservice.foo",
-   "restPath": "foo",
+   "path": "foo",
    "rpcMethod": "myservice.foo",
    "httpMethod": "GET",
    "description": "Get related links for an activity",
@@ -1642,7 +1692,7 @@
   "activities": {
    "methods": {
     "count": {
-     "restPath": "activities/count",
+     "path": "activities/count",
      "rpcMethod": "chili.activities.count",
      "httpMethod": "GET",
      "description": "Get a count of link shares",
@@ -1668,7 +1718,7 @@
      ]
     },
     "delete": {
-     "restPath": "activities/{userId}/{scope}/{postId}",
+     "path": "activities/{userId}/{scope}/{postId}",
      "rpcMethod": "chili.activities.delete",
      "httpMethod": "DELETE",
      "description": "Delete an activity",
@@ -1687,9 +1737,10 @@
        ],
        "default": "atom"
       },
-      "hl": {
+      "required_parameter": {
        "location": "query",
-       "description": "Language code to limit language results.",
+       "description": "A required query parameter",
+       "required": true,
        "type": "string"
       },
       "postId": {
@@ -1718,20 +1769,22 @@
        "location": "path",
        "required": true,
        "description": "ID of the user whose post to delete.",
-       "type": "string"
+       "type": "string",
+       "format": "uint64"
       }
      },
      "parameterOrder": [
       "userId",
       "scope",
-      "postId"
+      "postId",
+      "required_parameter"
      ],
      "scopes": [
       "https://www.googleapis.com/auth/buzz"
      ]
     },
     "extractPeopleFromSearch": {
-     "restPath": "activities/search/{evalue}@people",
+     "path": "activities/search/{evalue}@people",
      "rpcMethod": "chili.activities.extractPeopleFromSearch",
      "httpMethod": "GET",
      "description": "Search for people by topic",
@@ -1826,7 +1879,7 @@
      ]
     },
     "get": {
-     "restPath": "activities/{userId}/@self/{postId}",
+     "path": "activities/{userId}/@self/{postId}",
      "rpcMethod": "chili.activities.get",
      "httpMethod": "GET",
      "description": "Get an activity",
@@ -1897,7 +1950,7 @@
     },
     "insert": {
      "id": "activities.insert",
-     "restPath": "activities/{userId}/@self",
+     "path": "activities/{userId}/@self",
      "rpcMethod": "chili.activities.insert",
      "httpMethod": "POST",
      "description": "Create a new activity",
@@ -1948,7 +2001,7 @@
      ]
     },
     "list": {
-     "restPath": "activities/{userId}/{scope}",
+     "path": "activities/{userId}/{scope}",
      "rpcMethod": "chili.activities.list",
      "httpMethod": "GET",
      "description": "List activities",
@@ -2066,7 +2119,7 @@
      ]
     },
     "search": {
-     "restPath": "activities/search",
+     "path": "activities/search",
      "rpcMethod": "chili.activities.search",
      "httpMethod": "GET",
      "description": "Search for activities",
@@ -2148,7 +2201,7 @@
      ]
     },
     "track": {
-     "restPath": "activities/track",
+     "path": "activities/track",
      "rpcMethod": "chili.activities.track",
      "httpMethod": "GET",
      "description": "Get real-time activity tracking information",
@@ -2225,7 +2278,7 @@
      ]
     },
     "update": {
-     "restPath": "activities/{userId}/{scope}/{postId}",
+     "path": "activities/{userId}/{scope}/{postId}",
      "rpcMethod": "chili.activities.update",
      "httpMethod": "PUT",
      "description": "Update an activity",
@@ -2304,7 +2357,7 @@
   "comments": {
    "methods": {
     "delete": {
-     "restPath": "activities/{userId}/@self/{postId}/@comments/{commentId}",
+     "path": "activities/{userId}/@self/{postId}/@comments/{commentId}",
      "rpcMethod": "chili.comments.delete",
      "httpMethod": "DELETE",
      "description": "Delete a comment",
@@ -2354,7 +2407,7 @@
      ]
     },
     "get": {
-     "restPath": "activities/{userId}/@self/{postId}/@comments/{commentId}",
+     "path": "activities/{userId}/@self/{postId}/@comments/{commentId}",
      "rpcMethod": "chili.comments.get",
      "httpMethod": "GET",
      "description": "Get a comment",
@@ -2407,7 +2460,7 @@
      }
     },
     "insert": {
-     "restPath": "activities/{userId}/@self/{postId}/@comments",
+     "path": "activities/{userId}/@self/{postId}/@comments",
      "rpcMethod": "chili.comments.insert",
      "httpMethod": "POST",
      "description": "Create a comment",
@@ -2456,7 +2509,7 @@
      }
     },
     "list": {
-     "restPath": "activities/{userId}/{scope}/{postId}/@comments",
+     "path": "activities/{userId}/{scope}/{postId}/@comments",
      "rpcMethod": "chili.comments.list",
      "httpMethod": "GET",
      "description": "List comments",
@@ -2528,7 +2581,7 @@
      }
     },
     "update": {
-     "restPath": "activities/{userId}/{scope}/{postId}/@comments/{commentId}",
+     "path": "activities/{userId}/{scope}/{postId}/@comments/{commentId}",
      "rpcMethod": "chili.comments.update",
      "httpMethod": "PUT",
      "description": "Update a comment",
@@ -2607,7 +2660,7 @@
   "groups": {
    "methods": {
     "delete": {
-     "restPath": "people/{userId}/@groups/{groupId}",
+     "path": "people/{userId}/@groups/{groupId}",
      "rpcMethod": "chili.groups.delete",
      "httpMethod": "DELETE",
      "description": "Delete a group",
@@ -2650,7 +2703,7 @@
      ]
     },
     "get": {
-     "restPath": "people/{userId}/@groups/{groupId}/@self",
+     "path": "people/{userId}/@groups/{groupId}/@self",
      "rpcMethod": "chili.groups.get",
      "httpMethod": "GET",
      "description": "Get a group",
@@ -2696,7 +2749,7 @@
      }
     },
     "insert": {
-     "restPath": "people/{userId}/@groups",
+     "path": "people/{userId}/@groups",
      "rpcMethod": "chili.groups.insert",
      "httpMethod": "POST",
      "description": "Create a group",
@@ -2738,7 +2791,7 @@
      }
     },
     "list": {
-     "restPath": "people/{userId}/@groups",
+     "path": "people/{userId}/@groups",
      "rpcMethod": "chili.groups.list",
      "httpMethod": "GET",
      "description": "Get a user's groups",
@@ -2790,7 +2843,7 @@
      }
     },
     "update": {
-     "restPath": "people/{userId}/@groups/{groupId}/@self",
+     "path": "people/{userId}/@groups/{groupId}/@self",
      "rpcMethod": "chili.groups.update",
      "httpMethod": "PUT",
      "description": "Update a group",
@@ -2843,7 +2896,7 @@
   "people": {
    "methods": {
     "delete": {
-     "restPath": "people/{userId}/@groups/{groupId}/{personId}",
+     "path": "people/{userId}/@groups/{groupId}/{personId}",
      "rpcMethod": "chili.people.delete",
      "httpMethod": "DELETE",
      "description": "Remove a person from a group",
@@ -2893,7 +2946,7 @@
      ]
     },
     "get": {
-     "restPath": "people/{userId}/@self",
+     "path": "people/{userId}/@self",
      "rpcMethod": "chili.people.get",
      "httpMethod": "GET",
      "description": "Get a user profile",
@@ -2932,7 +2985,7 @@
      }
     },
     "liked": {
-     "restPath": "activities/{userId}/{scope}/{postId}/{groupId}",
+     "path": "activities/{userId}/{scope}/{postId}/{groupId}",
      "rpcMethod": "chili.people.liked",
      "httpMethod": "GET",
      "description": "Get people who liked an activity",
@@ -3009,7 +3062,7 @@
      }
     },
     "list": {
-     "restPath": "people/{userId}/@groups/{groupId}",
+     "path": "people/{userId}/@groups/{groupId}",
      "rpcMethod": "chili.people.list",
      "httpMethod": "GET",
      "description": "Get people in a group",
@@ -3068,7 +3121,7 @@
      }
     },
     "reshared": {
-     "restPath": "activities/{userId}/{scope}/{postId}/{groupId}",
+     "path": "activities/{userId}/{scope}/{postId}/{groupId}",
      "rpcMethod": "chili.people.reshared",
      "httpMethod": "GET",
      "description": "Get people who reshared an activity",
@@ -3145,7 +3198,7 @@
      }
     },
     "search": {
-     "restPath": "people/search",
+     "path": "people/search",
      "rpcMethod": "chili.people.search",
      "httpMethod": "GET",
      "description": "Search for people",
@@ -3193,7 +3246,7 @@
      }
     },
     "update": {
-     "restPath": "people/{userId}/@groups/{groupId}/{personId}",
+     "path": "people/{userId}/@groups/{groupId}/{personId}",
      "rpcMethod": "chili.people.update",
      "httpMethod": "PUT",
      "description": "Add a person to a group",
@@ -3253,7 +3306,7 @@
   "photoAlbums": {
    "methods": {
     "delete": {
-     "restPath": "photos/{userId}/@self/{albumId}",
+     "path": "photos/{userId}/@self/{albumId}",
      "rpcMethod": "chili.photoAlbums.delete",
      "httpMethod": "DELETE",
      "description": "Delete a photo album",
@@ -3296,7 +3349,7 @@
      ]
     },
     "get": {
-     "restPath": "photos/{userId}/@self/{albumId}",
+     "path": "photos/{userId}/@self/{albumId}",
      "rpcMethod": "chili.photoAlbums.get",
      "httpMethod": "GET",
      "description": "Get a photo album",
@@ -3342,7 +3395,7 @@
      }
     },
     "insert": {
-     "restPath": "photos/{userId}/@self",
+     "path": "photos/{userId}/@self",
      "rpcMethod": "chili.photoAlbums.insert",
      "httpMethod": "POST",
      "description": "Create a photo album",
@@ -3384,7 +3437,7 @@
      }
     },
     "list": {
-     "restPath": "photos/{userId}/{scope}",
+     "path": "photos/{userId}/{scope}",
      "rpcMethod": "chili.photoAlbums.list",
      "httpMethod": "GET",
      "description": "List a user's photo albums",
@@ -3453,7 +3506,7 @@
   "photos": {
    "methods": {
     "delete": {
-     "restPath": "photos/{userId}/@self/{albumId}/@photos/{photoId}",
+     "path": "photos/{userId}/@self/{albumId}/@photos/{photoId}",
      "rpcMethod": "chili.photos.delete",
      "httpMethod": "DELETE",
      "description": "Delete a photo",
@@ -3503,7 +3556,7 @@
      ]
     },
     "get": {
-     "restPath": "photos/{userId}/@self/{albumId}/@photos/{photoId}",
+     "path": "photos/{userId}/@self/{albumId}/@photos/{photoId}",
      "rpcMethod": "chili.photos.get",
      "httpMethod": "GET",
      "description": "Get photo metadata",
@@ -3556,7 +3609,7 @@
      }
     },
     "insert": {
-     "restPath": "photos/{userId}/{albumId}",
+     "path": "photos/{userId}/{albumId}",
      "rpcMethod": "chili.photos.insert",
      "httpMethod": "POST",
      "description": "Upload a photo to an album",
@@ -3605,7 +3658,7 @@
      }
     },
     "insert2": {
-     "restPath": "photos/{userId}/@self/{albumId}/@photos",
+     "path": "photos/{userId}/@self/{albumId}/@photos",
      "rpcMethod": "chili.photos.insert2",
      "httpMethod": "POST",
      "description": "Upload a photo to an album",
@@ -3654,7 +3707,7 @@
      }
     },
     "listByAlbum": {
-     "restPath": "photos/{userId}/@self/{albumId}/@photos",
+     "path": "photos/{userId}/album/{albumId}",
      "rpcMethod": "chili.photos.listByAlbum",
      "httpMethod": "GET",
      "description": "List photos in an album",
@@ -3713,7 +3766,7 @@
      }
     },
     "listByScope": {
-     "restPath": "photos/{userId}/@self/{scope}/@photos",
+     "path": "photos/{userId}/scope/{+scope}",
      "rpcMethod": "chili.photos.listByScope",
      "httpMethod": "GET",
      "description": "Get a user's photos",
@@ -3782,7 +3835,7 @@
   "related": {
    "methods": {
     "list": {
-     "restPath": "activities/{userId}/{scope}/{postId}/@related",
+     "path": "activities/{userId}/{scope}/{postId}/@related",
      "rpcMethod": "chili.related.list",
      "httpMethod": "GET",
      "description": "Get related links for an activity",
@@ -3810,7 +3863,8 @@
        "location": "path",
        "required": true,
        "description": "ID of the activity to which to get related links.",
-       "type": "string"
+       "type": "integer",
+       "format": "int32"
       },
       "scope": {
        "location": "path",

@@ -206,8 +206,10 @@ class ZipLibraryPackageTest(basetest.TestCase):
     index += 1
     self.assertEquals(index, len(info_list))
 
-  def testFileExtension(self):
+  def testFileProperties(self):
     self.assertEquals('zip', self._package.FileExtension())
+    self.assertEquals('application/zip', self._package.MimeType())
+
 
 if __name__ == '__main__':
   basetest.main()

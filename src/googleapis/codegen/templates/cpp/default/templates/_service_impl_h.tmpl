@@ -47,26 +47,25 @@ class {{ api.className }};
  */
 class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
  public:
-   /**
-    * The name of the API that this was generated from.
-    */
-   static const StringPiece googleapis_API_NAME;
+  /**
+   * The name of the API that this was generated from.
+   */
+  static const StringPiece googleapis_API_NAME;
 
-   /**
-    * The version of the API that this interface was generated from.
-    */
-   static const StringPiece googleapis_API_VERSION;
+  /**
+   * The version of the API that this interface was generated from.
+   */
+  static const StringPiece googleapis_API_VERSION;
 
-   /**
-    * The code generator used to generate this API.
-    */
-   static const StringPiece googleapis_API_GENERATOR;
+  /**
+   * The code generator used to generate this API.
+   */
+  static const StringPiece googleapis_API_GENERATOR;
 
-{% indent %}{% for resource in api.resources %}
+{% for resource in api.resources %}
 {% indent %}{% call_template _resource_h resource=resource %}{% endindent %}
 {% endfor %}
 {% for method in api.methods %}{% call_template _method_factory_h method=method %}{% endfor %}
-{% endindent %}
 
   /**
    * Standard constructor.
@@ -86,14 +85,14 @@ class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
    *
    * @return {{ resource.className }} for creating methods.
    */
-  const {{ resource.className }}& get_{{ resource.codeName }}() const {
-    return {{ resource.codeName }}_;
+  const {{ resource.className }}& {{ resource.getterName }}() const {
+    return {{ resource.memberName }};
   }
 
 {% endfor %}{% indent %}{% call_template _service_scopes_h api=api %}
 {% endindent %}
  private:
-{% indent %}{% for resource in api.resources %}{{ resource.className }} {{ resource.codeName }}_;
+{% indent %}{% for resource in api.resources %}{{ resource.className }} {{ resource.memberName }};
 {% endfor %}{% endindent %}
   DISALLOW_COPY_AND_ASSIGN({{ api.className }});
 };

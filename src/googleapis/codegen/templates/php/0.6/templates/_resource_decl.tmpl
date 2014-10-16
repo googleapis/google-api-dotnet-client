@@ -1,9 +1,0 @@
-{% filter noblanklines %}
-{% if resource.json %}
-    $this->{{ resource.phpPropName }} = new {{ api.owner }}_{{ resource.className }}ServiceResource($this, $this->serviceName, '{{ resource.codeName }}', json_decode('{{ resource.json|safe }}', true));
-{% endif %}
-
-{% for r in resource.resources %}
-{% call_template _resource_decl resource=r %}
-{% endfor %}
-{% endfilter %}

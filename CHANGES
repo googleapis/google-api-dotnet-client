@@ -1,5 +1,21 @@
 Change Summary
 
+2014-10-14 / Version 1.5.0
+* Add NamingPolicy concept to define how to assemble names. Use extensively in
+  C++ & C# templates.  E.g: from:
+    {{ property.codeType }} get_{{ property.wireName }}() const {
+  to:
+    {{ property.codeType }} {{ property.getterName }}() const {
+* Add sample template tree to generate HTML docs for an API.
+* Stop writing time stamps into .zip files so output is deterministic
+* New template tags: bool, write.
+* Support for variant data types (E.g. GeoJSON). Only used in Java so far.
+* Allow @ as the leading character in property & parameter names.
+* Support for more scope patterns.
+* Improved ExecuteAsync and media support in C++.
+* Numerous C++, C# and PHP fixes.
+
+
 2013-08-19 / Version 1.4.2
 * Added support for C#.
 * Line length in the block_comment filter now varies according to language.

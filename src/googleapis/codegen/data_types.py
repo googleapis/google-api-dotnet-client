@@ -271,8 +271,8 @@ class ArrayDataType(ContainerDataType):
 
   @property
   def safe_code_type(self):
-    return self.language_model.CodeTypeForArrayOf(
-        self._base_type.safe_code_type)
+    return self.language_model.ArrayOf(self._base_type,
+                                       self._base_type.safe_code_type)
 
 
 class MapDataType(ContainerDataType):
@@ -305,7 +305,7 @@ class MapDataType(ContainerDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    return self.language_model.CodeTypeForMapOf(self._base_type.code_type)
+    return self.language_model.MapOf(self._base_type, self._base_type.code_type)
 
   @property
   def safe_code_type(self):
@@ -316,7 +316,8 @@ class MapDataType(ContainerDataType):
     Returns:
       (str) A printable representation of this data type.
     """
-    return self.language_model.CodeTypeForMapOf(self._base_type.safe_code_type)
+    return self.language_model.MapOf(self._base_type,
+                                     self._base_type.safe_code_type)
 
 
 class SchemaReference(DataType):

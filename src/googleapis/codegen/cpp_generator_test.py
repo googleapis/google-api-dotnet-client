@@ -35,11 +35,20 @@ class CppApiTest(basetest.TestCase):
                 'methods': {
                     'bar': {
                         'id': 'bar',
+                    }
+                },
+                'resources': {
+                    'baz': {
+                        'methods': {
+                            'qux': {
+                                'id': 'qux'
+                            }
                         }
                     }
                 }
             }
-        })
+        }
+    })
     self.assertEquals('DummyService', api._class_name)
     self.assertEquals('dummy', api.values['name'])
 
@@ -81,6 +90,13 @@ class CppApiTest(basetest.TestCase):
                       api.ToClassName('amethod', bar))
     self.assertEquals('FooResource_AMethodMethod',
                       api.ToClassName('aMethod', bar))
+
+    baz = foo._resources[0]
+    self.assertEquals('DummyResource', api.ToClassName('dummy', baz))
+
+    qux = baz._methods[0]
+    self.assertEquals('FooResource_BazResource_DummyMethod',
+                      api.ToClassName('dummy', qux))
 
 
 
@@ -324,6 +340,66 @@ class CppLanguageModelTest(basetest.TestCase):
         'Text before:\n<dl>\n<dt>A\n<dd>description A.\n'
         '<dt>B\n<dd>description B.\n</dl>\n %s' % blurb)
 
+
+  def testReservedWords(self):
+    gen = cpp_generator.CppGenerator({
+        'name': 'dummy',
+        'version': 'v1',
+        'schemas': {
+            'Bar': {
+                'id': 'Bar',
+                'type': 'object',
+                'properties': {
+                    'n32': {
+                        'type': 'integer',
+                        'format': 'int32',
+                        },
+                    'class': {
+                        'type': 'string',
+                        },
+                    }
+                }
+            },
+        'resources': {
+            'foo': {
+                'methods': {
+                    'bar': {
+                        'id': 'foo.bar',
+                        'parameters': {
+                            'aJavaStyleName': {
+                                'location': 'path',
+                                'required': True,
+                                'type': 'int',
+                                },
+                            'namespace': {
+                                'location': 'path',
+                                'required': True,
+                                'type': 'int',
+                                },
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    gen.AnnotateApiForLanguage(gen.api)
+    bar_schema = gen.api.SchemaByName('Bar')
+    for p in bar_schema.values['properties']:
+      wire_name = p.GetTemplateValue('wireName')
+      if wire_name == 'class':
+        self.assertEquals('class_', p.memberName)
+        self.assertEquals('class__', p.parameterName)
+
+    bar_method = gen.api.MethodByName('foo.bar')
+    self.assertEquals(2, len(bar_method.required_parameters))
+    for p in bar_method.required_parameters:
+      wire_name = p.GetTemplateValue('wireName')
+      if wire_name == 'aJavaStyleName':
+        self.assertEquals('a_java_style_name_', p.memberName)
+        self.assertEquals('a_java_style_name', p.parameterName)
+      if wire_name == 'namespace':
+        self.assertEquals('namespace_', p.memberName)
+        self.assertEquals('namespace__', p.parameterName)
 
 
 if __name__ == '__main__':

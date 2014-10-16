@@ -15,8 +15,14 @@
  *
  * @author Google, Inc.
  */
-class {{ api.owner }}_Service_{{ api.className }} extends Google_Service
+class {{ api.ownerName }}_Service_{{ api.className }} extends Google_Service
 {
+{% if api.auth.oauth2.scopes %}{% filter noblanklines %}{% indent %}
+{% for authscope in api.authscopes %}
+/** {{ authscope.description }}. */
+const {{ authscope.name }} = "{{ authscope.value }}";
+{% endfor %}{% endindent %}{% endfilter %}{% endif %}
+
 {% call_template _resource_var resource=api %}
   {% if api.methods %}private $base_methods;{% endif %}
 
@@ -31,31 +37,18 @@ class {{ api.owner }}_Service_{{ api.className }} extends Google_Service
     parent::__construct($client);
     $this->servicePath = {% literal api.servicePath %};
     $this->version = {% literal api.version %};
-    {% if api.auth.oauth2.scopes %}
-    $this->availableScopes = array(
-      {% spaceless %}
-        {% for scope in api.auth.oauth2.scopes %}
-      "{{ scope }}"{% if not forloop.last %},{% endif %}{% endfor %}{% endspaceless %}
-    );
-    {% endif %}
     $this->serviceName = {% literal api.name %};
-
-    $client->addService(
-        $this->serviceName,
-        $this->version,
-        $this->availableScopes
-    );
 
 {% filter noblanklines %}
 {% call_template _resource_decl resource=api %}
 {% indent %}
 {% indent %}
 {% if api.methods %}
-$this->base_methods = new {{ api.owner }}_Service_Resource(
+$this->base_methods = new Google_Service_Resource(
     $this,
     $this->serviceName,
     '{{ resource.codeName }}',
-    {% call_template _methods_decl methods=api.methods %}
+{% indent 2 %}{% call_template _methods_decl methods=api.methods %}{% endindent %}
 );
 {% endif %}
 {% endindent %}

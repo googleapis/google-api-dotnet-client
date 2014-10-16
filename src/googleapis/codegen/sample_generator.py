@@ -33,6 +33,8 @@ class SampleLanguageModel(language_model.LanguageModel):
   allowed_characters = '_'
   array_of_policy = language_model.NamingPolicy(
       format_string='{module}::Array<{name}>')
+  map_of_policy = language_model.NamingPolicy(
+      format_string='Map<string, {name}>')
   class_name_policy = language_model.NamingPolicy(
       case_transform=language_model.LOWER_CASE, separator='_')
   constant_policy = language_model.NamingPolicy(
@@ -102,18 +104,6 @@ class SampleLanguageModel(language_model.LanguageModel):
     native_type = (self._SCHEMA_TYPE_TO_LANGUAGE_TYPE.get(json_type) or
                    self._SCHEMA_TYPE_TO_LANGUAGE_TYPE.get('string'))
     return native_type
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A string meaning "a Map of string to type_name".
-    """
-    return 'Map<string, %s>' % type_name
 
   def ToMemberName(self, s, unused_api):
     """Convert a wire format name into a suitable variable name."""

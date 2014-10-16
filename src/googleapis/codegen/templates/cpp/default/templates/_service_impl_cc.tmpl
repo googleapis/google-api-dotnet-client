@@ -13,11 +13,15 @@ const StringPiece {{ api.className}}::googleapis_API_GENERATOR(
 {% for method in api.methods %}{% call_template _method_cc method=method %}{% endfor %}
 
 {{ api.className }}::{{ api.className }}({{ api.client_namespace }}::HttpTransport* transport)
-  : ClientService("{{ api.rootUrl }}", "{{ api.servicePath }}", transport){% for resource in api.resources %}, {{ resource.codeName }}_(this){% endfor %} {
+  : ClientService("{{ api.rootUrl }}", "{{ api.servicePath }}", transport){% for resource in api.resources %}, {{ resource.memberName }}(this){% endfor %} {
 }
 
 {{ api.className }}::~{{ api.className }}() {
 }
 
-{% for resource in api.resources %}{% call_template _resource_cc resource=resource %}{% endfor %}
-{% for method in api.methods %}{% call_template _method_factory_cc method=method %}{% endfor %}
+{% for resource in api.resources %}
+{% call_template _resource_cc resource=resource %}
+{% endfor %}
+{% for method in api.methods %}
+{% call_template _method_factory_cc method=method %}
+{% endfor %}

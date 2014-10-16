@@ -15,4 +15,4 @@ namespace {{ api.module.name }} {
 {% for m in api.models %}{% if not m.parent %}
 {% call_template _model_cc_impl current_model=m %}{% endif %}{% endfor %}
 
-}  // namespace {{ api.module.name }} {
+}  // namespace {{ api.module.name }}

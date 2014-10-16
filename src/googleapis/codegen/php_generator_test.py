@@ -31,6 +31,9 @@ class PHPApiTest(basetest.TestCase):
     self.api = php_generator.PHPApi(gen_params)
     self.generator = php_generator.PHPGenerator(gen_params)
     self.language_model = php_generator.PhpLanguageModel()
+    # TODO(user): Do what we did for template_helpers and allow language
+    # model to come from global state. Then we don't need this stuff.
+    self.api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
 
   def tearDown(self):
     self.api = None

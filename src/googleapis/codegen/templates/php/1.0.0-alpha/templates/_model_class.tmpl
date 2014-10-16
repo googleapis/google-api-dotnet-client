@@ -1,31 +1,30 @@
 
-class {{ api.owner }}_Service_{{ api.className }}_{{ model.className }} {% if model.dataType == "array" %}extends Google_Collection{% else %}extends Google_Model{% endif %}
+class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% if model.dataType == "array" %}extends Google_Collection{% else %}extends Google_Model{% endif %}
 {
 {% filter noblanklines %}
 {% for property in model.properties %}
   {% if property.typeHint %}
-  protected ${{ property.codeName }}Type = '{{ property.typeHint|cut:" " }}';
-  protected ${{ property.codeName }}DataType = '{{ property.dataType }}';
+  protected ${{ property.memberName }}Type = '{{ property.typeHint|cut:" " }}';
+  protected ${{ property.memberName }}DataType = '{{ property.dataType }}';
   {% else %}
-  public ${{ property.codeName }};
+  public ${{ property.memberName }};
   {% endif %}
 {% endfor %}
-{% endfilter %}
-{% for property in model.properties %}
+{% endfilter %}{% for property in model.properties %}
+
 {% filter noblanklines %}
   {% if property.type == "array" or property.dataType == "map" or not property.typeHint %}
-  public function set{{ property.codeName|capfirst }}(${{ property.codeName }})
+  public function {{ property.setterName }}(${{ property.memberName }})
   {% else %}
-  public function set{{ property.codeName|capfirst }}({{ property.typeHint }} ${{ property.codeName }})
+  public function {{ property.setterName }}({{ property.typeHint }} ${{ property.memberName }})
   {% endif %}
   {
-    $this->{{ property.codeName }} = ${{ property.codeName }};
+    $this->{{ property.memberName }} = ${{ property.memberName }};
   }
 {% endfilter %}
 
-  public function get{{ property.codeName|capfirst }}()
+  public function {{ property.getterName }}()
   {
-    return $this->{{ property.codeName }};
-  }
-  {% endfor %}
+    return $this->{{ property.memberName }};
+  }{% endfor %}
 }

@@ -5,8 +5,7 @@ No description provided.{% endif %}
 @ingroup DataObject
 {% enddoc_comment %}
 class {{ current_model.className }} : public {{ api.client_namespace }}::JsonCppData {
- public:{% indent %}
-{% if current_model.children %}{% for child in current_model.children %}{% call_template _model_h guarded_model=child %}{% endfor %}{% endif %}
+ public:{% indent %}{% if current_model.children %}{% for child in current_model.children %}{% call_template _model_h guarded_model=child %}{% endfor %}{% endif %}
 {% doc_comment noblock %}
 Creates a new default instance.
 
@@ -49,20 +48,12 @@ Determine if the '<code>{{ property.wireName }}</code>' attribute was set.
 {% enddoc_comment %}
 bool {{ property.hasName }}() const {
   return Storage().isMember("{{ property.wireName }}");
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.getterName}}
- */
-bool has_{{ property.wireName }}() const {
-  return {{ property.hasName }}();
-}{% endif %}
+}
 
 {% doc_comment noblock %}
 Clears the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-void clear_{{ property.wireName }}() {
+void {{ property.unsetName }}() {
   MutableStorage()->removeMember("{{ property.wireName }}");
 }
 
@@ -73,15 +64,7 @@ Get the value of the '<code>{{ property.wireName }}</code>' attribute.
 {{ property.codeType }} {{ property.getterName }}() const {
   const Json::Value& storage = Storage("{{ property.wireName }}");
   return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.getterName}}
- */
-{{ property.codeType }} get_{{property.wireName}}() const {
-  return {{ property.getterName }}();
-}{% endif %}
+}
 
 {% doc_comment noblock %}
 Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.deprecated %}
@@ -95,15 +78,7 @@ Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.depre
 void {{ property.setterName }}({{ property.codeType }} value) {
   {{ api.client_namespace }}::SetJsonValueFromCppValueHelper<{{ property.codeType }} >(
     value, MutableStorage("{{ property.wireName }}"));
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.setterName}}
- */
-void set_{{ property.wireName }}({{ property.codeType }} value) {
-  {{ property.setterName }}(value);
-}{% endif %}
+}
 {% else %}{% if property.data_type.json_type == 'string' %}
 {% doc_comment noblock %}
 Get the value of the '<code>{{ property.wireName }}</code>' attribute.
@@ -112,15 +87,7 @@ const StringPiece {{ property.getterName }}() const {
   const Json::Value& v = Storage("{{ property.wireName }}");
   if (v == Json::Value::null) return StringPiece("");
   return StringPiece(v.asCString());
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.getterName}}
- */
-const StringPiece get_{{property.wireName}}() const {
-  return {{ property.getterName }}();
-}{% endif %}
+}
 
 {% doc_comment noblock %}
 Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.deprecated %}
@@ -133,32 +100,17 @@ Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.depre
 {% enddoc_comment %}
 void {{ property.setterName }}(const StringPiece& value) {
   *MutableStorage("{{ property.wireName }}") = value.data();
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.setterName}}
- */
-void set_{{ property.wireName }}(const StringPiece& value) {
-  {{ property.setterName }}(value);
-}{% endif %}
+}
 {% else %}
 {% doc_comment noblock %}
 Get a reference to the value of the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-const {{ property.codeType }} {{ property.getterName }}() const {
+const {{ property.codeType }} {{ property.getterName }}() const{% if property.useSplitAccessor %};
+{% else %} {
    const Json::Value& storage = Storage("{{ property.wireName }}");
   return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
-}{% if property.wireName|lower != property.wireName %}
-
-/**
- * @deprecated
- * @see {{property.getterName}}
- */
-const {{ property.codeType }} get_{{property.wireName}}() const {
-  return {{ property.getterName }}();
-}{% endif %}
-
+}
+{% endif %}
 {% doc_comment noblock %}
 Gets a reference to a mutable value of the '<code>{{ property.wireName }}</code>' property.{% if property.deprecated %}
 @deprecated
@@ -168,11 +120,12 @@ Gets a reference to a mutable value of the '<code>{{ property.wireName }}</code>
 {% endif %}
 @return The result can be modified to change the attribute value.
 {% enddoc_comment %}
-{{ property.codeType }} mutable_{{ property.wireName }}() {
+{{ property.codeType }} mutable_{{ property.wireName }}(){% if property.useSplitAccessor %};
+{% else %} {
   Json::Value* storage = MutableStorage("{{ property.wireName }}");
   return {{ api.client_namespace }}::JsonValueToMutableCppValueHelper<{{ property.codeType }} >(storage);
 }
-{% endif %}{% endif %}{% endfor %}{% endindent %}
+{% endif %}{% endif %}{% endif %}{% endfor %}{% endindent %}
  private:
   void operator=(const {{ current_model.className }}&);
 };  // {{ current_model.className }}

@@ -27,7 +27,7 @@ from googleapis.codegen import language_model
 from googleapis.codegen import utilities
 
 
-#NOTE(user): This was originally copied from another generator...
+# NOTE(user): This was originally copied from another generator...
 #   so if there is any weirdness from a Python perspective, put it in that
 #   context when thinking about it.
 
@@ -52,6 +52,9 @@ class PythonLanguageModel(language_model.LanguageModel):
   # We can not create classes which match a Python keyword or built in object
   # type.
   RESERVED_CLASS_NAMES = _PYTHON_KEYWORDS
+
+  array_of_policy = language_model.NamingPolicy(format_string='list')
+  map_of_policy = language_model.NamingPolicy(format_string='dict')
 
   def __init__(self):
     super(PythonLanguageModel, self).__init__(class_name_delimiter='.')
@@ -96,30 +99,6 @@ class PythonLanguageModel(language_model.LanguageModel):
     native_type = (self._SCHEMA_TYPE_TO_PYTHON_TYPE.get(json_type) or
                    self._SCHEMA_TYPE_TO_PYTHON_TYPE.get('string'))
     return native_type
-
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A Python specific string meaning "an array of type_name".
-    """
-    return 'list'
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A Python specific string meaning "a Map of string to type_name".
-    """
-    return 'dict'
 
   # pylint: disable=unused-argument
   def ToMemberName(self, s, the_api):

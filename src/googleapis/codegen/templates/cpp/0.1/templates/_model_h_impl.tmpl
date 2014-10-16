@@ -47,9 +47,17 @@ Determine if the '<code>{{ property.wireName }}</code>' attribute was set.
 
 @return true if the '<code>{{ property.wireName }}</code>' attribute was set.
 {% enddoc_comment %}
-bool has_{{ property.wireName }}() const {
+bool {{ property.hasName }}() const {
   return Storage().isMember("{{ property.wireName }}");
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.getterName}}
+ */
+bool has_{{ property.wireName }}() const {
+  return {{ property.hasName }}();
+}{% endif %}
 
 {% doc_comment noblock %}
 Clears the '<code>{{ property.wireName }}</code>' attribute.
@@ -62,10 +70,18 @@ void clear_{{ property.wireName }}() {
 {% doc_comment noblock %}
 Get the value of the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-{{ property.codeType }} get_{{ property.wireName }}() const {
+{{ property.codeType }} {{ property.getterName }}() const {
   const Json::Value& storage = Storage("{{ property.wireName }}");
   return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.getterName}}
+ */
+{{ property.codeType }} get_{{property.wireName}}() const {
+  return {{ property.getterName }}();
+}{% endif %}
 
 {% doc_comment noblock %}
 Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.deprecated %}
@@ -76,19 +92,35 @@ Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.depre
 {% endif %}
 @param[in] value The new value.
 {% enddoc_comment %}
-void set_{{ property.wireName }}({{ property.codeType }} value) {
+void {{ property.setterName }}({{ property.codeType }} value) {
   {{ api.client_namespace }}::SetJsonValueFromCppValueHelper<{{ property.codeType }} >(
     value, MutableStorage("{{ property.wireName }}"));
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.setterName}}
+ */
+void set_{{ property.wireName }}({{ property.codeType }} value) {
+  {{ property.setterName }}(value);
+}{% endif %}
 {% else %}{% if property.data_type.json_type == 'string' %}
 {% doc_comment noblock %}
 Get the value of the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-const StringPiece get_{{ property.wireName }}() const {
+const StringPiece {{ property.getterName }}() const {
   const Json::Value& v = Storage("{{ property.wireName }}");
   if (v == Json::Value::null) return StringPiece("");
   return StringPiece(v.asCString());
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.getterName}}
+ */
+const StringPiece get_{{property.wireName}}() const {
+  return {{ property.getterName }}();
+}{% endif %}
 
 {% doc_comment noblock %}
 Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.deprecated %}
@@ -99,17 +131,33 @@ Change the '<code>{{ property.wireName }}</code>' attribute.{% if property.depre
 {% endif %}
 @param[in] value The new value.
 {% enddoc_comment %}
-void set_{{ property.wireName }}(const StringPiece& value) {
+void {{ property.setterName }}(const StringPiece& value) {
   *MutableStorage("{{ property.wireName }}") = value.data();
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.setterName}}
+ */
+void set_{{ property.wireName }}(const StringPiece& value) {
+  {{ property.setterName }}(value);
+}{% endif %}
 {% else %}
 {% doc_comment noblock %}
 Get a reference to the value of the '<code>{{ property.wireName }}</code>' attribute.
 {% enddoc_comment %}
-const {{ property.codeType }} get_{{ property.wireName }}() const {
+const {{ property.codeType }} {{ property.getterName }}() const {
    const Json::Value& storage = Storage("{{ property.wireName }}");
   return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
-}
+}{% if property.wireName|lower != property.wireName %}
+
+/**
+ * @deprecated
+ * @see {{property.getterName}}
+ */
+const {{ property.codeType }} get_{{property.wireName}}() const {
+  return {{ property.getterName }}();
+}{% endif %}
 
 {% doc_comment noblock %}
 Gets a reference to a mutable value of the '<code>{{ property.wireName }}</code>' property.{% if property.deprecated %}

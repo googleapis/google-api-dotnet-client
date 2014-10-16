@@ -80,13 +80,21 @@ class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
    * Standard destructor.
    */
   virtual ~{{ api.className }}();
-{% for resource in api.resources %}
+{% for resource in api.resources %}{% if resource.wireName|lower != resource.wireName %}
+  /**
+   * @deprecated
+   * @see {{ resource.getterName }}
+   */
+  const {{ resource.className }}& get_{{ resource.codeName }}() const {
+    return {{ resource.codeName }}_;
+  }
+{% endif %}
   /**
    * Gets the {{ resource.name }} resource method factory.
    *
    * @return {{ resource.className }} for creating methods.
    */
-  const {{ resource.className }}& get_{{ resource.codeName }}() const {
+  const {{ resource.className }}& {{ resource.getterName }}() const {
     return {{ resource.codeName }}_;
   }
 

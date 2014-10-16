@@ -19,6 +19,37 @@ const {{ api.client_namespace }}::MediaUploadSpec
 }
 {% endif %}
 {% filter noblanklines %}
+
+{% if method.requestType and method.mediaUpload %}
+// Deprecated constructor did not take media upload arguments.
+{{ method.className }}::{{ method.className }}({% indent 1 %}
+  {% parameter_list %}
+  {% parameter %}
+    const {{ api.className }}* _service_
+  {% end_parameter %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.codeName }}
+  {% end_parameter %}{% endfor %}
+{% end_parameter_list %}){% endindent %}
+    : {{ api.className }}BaseRequest({% indent 2 %}
+{#-------------------------------------------------------------------------#}
+{# The base class constructor takes service, credential, HttpMethod, and   #}
+{# a url template.                                                         #}
+{#-------------------------------------------------------------------------#}
+  _service_, _credential_,
+  {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
+  StrCat(_service_->service_url(), "{{ method.path }}")){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}
+  _uploader_.reset(new {{ api.client_namespace }}::MediaUploader(
+      &SIMPLE_MEDIA_UPLOAD,
+      _service_->url_root(),
+      {{ api.client_namespace }}::JoinPath(
+          _service_->url_path(), "{{ method.path }}")));
+}
+{% endif %}
+
 // Standard constructor.
 {{ method.className }}::{{ method.className }}({% indent 1 %}
   {% parameter_list %}
@@ -41,10 +72,19 @@ const {{ api.client_namespace }}::MediaUploadSpec
   {# FINALLY add the content parameter if the request will be posting a  #}
   {# json object                                                         #}
   {#---------------------------------------------------------------------#}
-  {% if method.requestType and not method.mediaUpload %}{% parameter %}
+  {% if method.requestType %}{% if method.mediaUpload %}{% parameter %}
+      const {{ method.requestType.fullClassName }}* _metadata_
+    {% end_parameter %}{% parameter %}
+    const StringPiece& _media_content_type_
+    {% end_parameter %}{% parameter %}
+    {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}{% else %}{% parameter %}
       const {{ method.requestType.fullClassName }}& _content_
-    {% end_parameter %}
-  {% endif %}
+    {% end_parameter %}{% endif %}{% elif method.mediaUpload %}{% parameter %}
+      const StringPiece& _media_content_type_
+    {% end_parameter %}{% parameter %}
+    {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}{% endif %}
 {% end_parameter_list %}){% endindent %}
     : {{ api.className }}BaseRequest({% indent 2 %}
 {#-------------------------------------------------------------------------#}
@@ -61,15 +101,22 @@ const {{ api.client_namespace }}::MediaUploadSpec
       &SIMPLE_MEDIA_UPLOAD,
       _service_->url_root(),
       {{ api.client_namespace }}::JoinPath(
-          _service_->url_path(), "{{ method.path }}")));
-{% else %}{% if method.requestType  %}
+          _service_->url_path(), "{{ method.path }}")));{% if method.requestType %}
+  if (_metadata_) {
+    _uploader_->set_metadata(*_metadata_);
+  }{% endif %}
+  if (_media_content_reader_) {
+    _uploader_->set_media_content_reader(
+        _media_content_type_.as_string(), _media_content_reader_);
+  }
+{% elif method.requestType  %}
   {{ api.client_namespace }}::HttpRequest* _http_request_ = mutable_http_request();
   _http_request_->set_content_type(
       {{ api.client_namespace }}::HttpRequest::ContentType_JSON);
   _http_request_->set_content_reader(_content_.MakeJsonReader());
-{% endif %}{% endif %}
-{% endfilter %}
+{% endif %}
 }
+{% endfilter %}
 
 // Standard destructor.
 {{ method.className }}::~{{ method.className }}() {

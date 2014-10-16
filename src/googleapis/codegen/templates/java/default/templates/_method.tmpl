@@ -10,13 +10,13 @@
  * method to invoke the remote operation.
  * {% endfilter %}
  * {% for param in method.requiredParameters %}
- * @param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * @param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
  * @param content the {@link {{ method.requestType.fullClassName }}}{% endif %}
  * @return the request
  */
 public {{ method.className }} {{ method.codeName }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}
@@ -26,7 +26,7 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
   {% end_parameter_list %}) throws java.io.IOException {
   {{ method.className }} result = new {{ method.className }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}content{% end_parameter %}
@@ -52,7 +52,7 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
  * This method should be used for uploading media content.
  * </p>
  *
- * {% for param in method.requiredParameters %}@param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * {% for param in method.requiredParameters %}@param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
  * @param content the {@link {{ method.requestType.fullClassName }}} media metadata or {@code null} if none{% endif %}
  * @param mediaContent The media HTTP content or {@code null} if none.
  * @return the request
@@ -60,7 +60,7 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
  */
 public {{ method.className }} {{ method.codeName }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}
@@ -71,7 +71,7 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
     com.google.api.client.http.AbstractInputStreamContent mediaContent) throws java.io.IOException {
   {{ method.className }} result = new {{ method.className }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}content{% end_parameter %}
@@ -87,7 +87,7 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
 
   {% for param in method.parameters %}
     {% if param.pattern %}
-  private final java.util.regex.Pattern {{ param.codeName|upper }}_PATTERN =
+  private final java.util.regex.Pattern {{ param.constantName }}_PATTERN =
       java.util.regex.Pattern.compile({% literal param.pattern %});
     {% endif %}
   {% endfor %}
@@ -109,13 +109,13 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
    * </p>
    * {% endfilter %}
    * {% for param in method.requiredParameters %}
-   * @param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+   * @param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
    * @param content the {@link {{ method.requestType.fullClassName }}}{% endif %}
    * @since 1.13
    */
   protected {{ method.className }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
@@ -123,7 +123,7 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
     {% end_parameter_list %}) {
     super({{ api.className }}.this, "{{ method.httpMethod }}", REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
   {% for param in method.requiredParameters %}
-    this.{{ param.codeName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
+    this.{{ param.memberName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.memberName }}, "Required parameter {{ param.memberName }} must be specified.");
     {% call_template _pattern_check_def param=param %}
   {% endfor %}
   {% if method.requestType and method.responseType.properties %}
@@ -158,14 +158,14 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
    * This constructor should be used for uploading media content.
    * </p>
    *
-   * {% for param in method.requiredParameters %}@param {{ param.codeName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+   * {% for param in method.requiredParameters %}@param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
    * @param content the {@link {{ method.requestType.fullClassName }}} media metadata or {@code null} if none{% endif %}
    * @param mediaContent The media HTTP content or {@code null} if none.
    * @since 1.13
    */
   protected {{ method.className }}({% parameter_list %}
     {% for p in method.requiredParameters %}
-      {% parameter %}{{ p.codeType }} {{ p.codeName }}{% end_parameter %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
       {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
@@ -174,7 +174,7 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
       com.google.api.client.http.AbstractInputStreamContent mediaContent) {
     super({{ api.className }}.this, "{{ method.httpMethod }}", "/upload/" + getServicePath() + REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
   {% for param in method.requiredParameters %}
-    this.{{ param.codeName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.codeName }}, "Required parameter {{ param.codeName }} must be specified.");
+    this.{{ param.memberName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.memberName }}, "Required parameter {{ param.memberName }} must be specified.");
   {% endfor %}
     initializeMediaUpload(mediaContent);
   {% call_template _alt_def method=method %}
@@ -212,28 +212,28 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
 {% for param in api.parameters %}
 
   @Override
-  public {{ method.className }} set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
-    return ({{ method.className }}) super.set{% camel_case param.wireName %}({{ param.codeName }});
+  public {{ method.className }} {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
+    return ({{ method.className }}) super.{{ param.setterName }}({{ param.memberName }});
   }{% endfor %}
 {% for param in method.parameters %}
 {% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
-  @com.google.api.client.util.Key{% ifnotequal param.wireName param.codeName %}("{{ param.wireName }}"){% endifnotequal %}
-  private {{ param.codeType }} {{ param.codeName }};
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.memberName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.memberName }};
 
   /**{% filter block_comment %}{{ param.description }}
 {% if param.default %} [default: {{ param.default }}]{% endif %}
 {% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
 {% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %} {% endfilter %}
    */
-  public {{ param.codeType }} get{% camel_case param.wireName %}() {
-    return {{ param.codeName }};
+  public {{ param.codeType }} {{ param.getterName }}() {
+    return {{ param.memberName }};
   }
 
 {% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
-  public {{ method.className }} set{% camel_case param.wireName %}({{ param.codeType }} {{ param.codeName }}) {
+  public {{ method.className }} {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
 {% filter noblanklines %}
     {% call_template _pattern_check_def param=param %}
-    this.{{ param.codeName }} = {{ param.codeName }};
+    this.{{ param.memberName }} = {{ param.memberName }};
     return this;
 {% endfilter %}
   }

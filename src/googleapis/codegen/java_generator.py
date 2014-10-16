@@ -24,16 +24,17 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 from googleapis.codegen import api
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import data_types
+from googleapis.codegen import language_model
 from googleapis.codegen import utilities
 from googleapis.codegen.import_definition import ImportDefinition
 from googleapis.codegen.java_import_manager import JavaImportManager
-from googleapis.codegen.language_model import LanguageModel
 from googleapis.codegen.utilities import maven_utils
 
 
 class BaseJavaGenerator(api_library_generator.ApiLibraryGenerator):
   """Base for Java code generators."""
 
+  # pylint: disable=redefined-outer-name
   def __init__(self, discovery, language='java', language_model=None,
                options=None):
     if not language_model:
@@ -140,13 +141,25 @@ class Java14Generator(BaseJavaGenerator):
       element.SetTemplateValue('requiresJsonString', True)
 
 
-class JavaLanguageModel(LanguageModel):
+class JavaLanguageModel(language_model.LanguageModel):
   """A LanguageModel tuned for Java."""
 
   language = 'java'
 
   _JSON_STRING_IMPORT = 'com.google.api.client.json.JsonString'
   _JSON_STRING_TEMPLATE_VALUE = 'requiresJsonString'
+  member_policy = language_model.NamingPolicy(language_model.LOWER_CAMEL_CASE)
+  getter_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE, 'get{name}')
+  setter_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE, 'set{name}')
+  array_of_policy = language_model.NamingPolicy(
+      format_string='java.util.List<{name}>')
+  map_of_policy = language_model.NamingPolicy(
+      format_string='java.util.Map<String, {name}>')
+  constant_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_UNCAMEL_CASE,
+      separator='_')
 
   # Dictionary of json type and format to its corresponding data type and
   # import definition. The first import in the imports list is the primary
@@ -199,6 +212,9 @@ class JavaLanguageModel(LanguageModel):
   RESERVED_CLASS_NAMES = _JAVA_KEYWORDS + _SPECIAL_CLASS_NAMES + [
       'float', 'integer', 'object', 'string', 'true', 'false',
       ]
+
+  allowed_characters = '$'
+  reserved_words = RESERVED_CLASS_NAMES
 
   def __init__(self, options=None):
     super(JavaLanguageModel, self).__init__(class_name_delimiter='.')
@@ -254,30 +270,6 @@ class JavaLanguageModel(LanguageModel):
       # Could not find it in the dictionary, set it to the json type.
       native_format = utilities.CamelCase(json_type)
     return native_format
-
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      A language specific string meaning "an array of type_name".
-    """
-    return 'java.util.List<%s>' % type_name
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for a map of String to them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      A language specific string meaning "an array of type_name".
-    """
-    return 'java.util.Map<String, %s>' % type_name
 
   def ToMemberName(self, s, the_api):
     """CamelCase a wire format name into a suitable Java variable name."""

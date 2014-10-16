@@ -13,7 +13,14 @@ Gets the optional '<code>{{ p.wireName }}</code>' attribute.
 
 If the value is not set then the default value will be returned.
 {% enddoc_comment %}
+{{ p.codeType }} {{ p.getterName }}() const { return {{ p.codeName }}_; }
+{% if p.wireName|lower != p.wireName %}
+/**
+ * @deprecated
+ * @see {{p.getterName}}
+ */
 {{ p.codeType }} get_{{ p.codeName }}() const { return {{ p.codeName }}_; }
+{% endif %}
 
 {% doc_comment noblock %}
 Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
@@ -21,10 +28,20 @@ Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
 
 @param[in] value {{ p.description }}
 {% enddoc_comment %}
+void {{ p.setterName }}({{ p.codeType }} value) {
+  _have_{{p.codeName }}_ = true;
+  {{ p.codeName }}_ = value;
+}
+{% if p.wireName|lower != p.wireName %}
+/**
+ * @deprecated
+ * @see {{p.setterName}}
+ */
 void set_{{ p.codeName }}({{ p.codeType }} value) {
   _have_{{p.codeName }}_ = true;
   {{ p.codeName }}_ = value;
 }
+{% endif %}
 {% else %}
 
 {% doc_comment noblock %}
@@ -32,7 +49,15 @@ Gets the optional '<code>{{ p.wireName }}</code>' attribute.
 
 If the value is not set then the default value will be returned.
 {% enddoc_comment %}
+const {{ p.codeType }}& {{ p.getterName }}() const { return {{ p.codeName }}_; }
+
+{% if p.wireName|lower != p.wireName %}
+/**
+ * @deprecated
+ * @see {{p.getterName}}
+ */
 const {{ p.codeType }}& get_{{ p.codeName }}() const { return {{ p.codeName }}_; }
+{% endif %}
 
 {% doc_comment noblock %}
 Gets a modifiable pointer to the optional <code>{{ p.wireName }}</code>' attribute.
@@ -43,6 +68,7 @@ Gets a modifiable pointer to the optional <code>{{ p.wireName }}</code>' attribu
   _have_{{p.codeName }}_ = true;
   return &{{ p.codeName }}_;
 }
+
 {% if p.codeType == 'string' %}
 {% doc_comment noblock %}
 Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
@@ -50,10 +76,21 @@ Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
 
 @param[in] value {{ p.description }}
 {% enddoc_comment %}
+void {{ p.setterName }}(const {{ p.codeType }}& value) {
+  _have_{{p.codeName }}_ = true;
+  {{ p.codeName }}_ = value;
+}
+{% if p.wireName|lower != p.wireName %}
+/**
+ * @deprecated
+ * @see {{p.setterName}}
+ */
 void set_{{ p.codeName }}(const {{ p.codeType }}& value) {
   _have_{{p.codeName }}_ = true;
   {{ p.codeName }}_ = value;
 }
+{% endif %}
+
 {% endif %}
 {% endif %}{% endif %}{% endfor %}
 {% endindent %}

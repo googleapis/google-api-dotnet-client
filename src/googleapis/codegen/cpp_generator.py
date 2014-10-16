@@ -107,7 +107,6 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
       language_model = CppLanguageModel(options)
     super(CppGenerator, self).__init__(CppApi, discovery, language,
                                        language_model, options=options)
-    self._import_manager_cache = cpp_import_manager.CppImportManagerCache()
     if FLAGS.cpp_singular_source_name:
       options['useSingleSourceFile'] = True
 
@@ -231,11 +230,15 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
     """Annotate a Api with C++ specific elements."""
     super(CppGenerator, self).AnnotateApi(the_api)
     for schema in the_api.TopLevelModelClasses():
-      schema.SetTemplateValue(
-          'filename', utilities.UnCamelCase(schema.class_name))
+      filename = utilities.UnCamelCase(schema.class_name)
+      schema.SetTemplateValue('filename', filename)
       schema.SetTemplateValue(
           'include_path',
           self._HeaderFileName(schema.module.path, schema.values['filename']))
+      include_guard = '%s_%s_H_' % (the_api.module.name.upper(),
+                                    filename.upper())
+      schema.SetTemplateValue('include_guard', include_guard)
+
     the_api.SetTemplateValue('filename',
                              utilities.UnCamelCase(the_api.class_name))
     the_api.SetTemplateValue(
@@ -260,7 +263,7 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
   def _AddDependencies(self, the_api, model, have, dep_list):
     if model not in have:
       have.add(model)
-      import_manager = self._import_manager_cache.GetCachedImportManager(model)
+      import_manager = cpp_import_manager.CppImportManager.ForElement(model)
       for dependent in import_manager.type_dependencies:
         schema = the_api.SchemaByName(dependent.values['className'])
         self._AddDependencies(the_api, schema, have, dep_list)
@@ -269,7 +272,7 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
   def AnnotateMethod(self, the_api, method, unused_rsrc):
     """Override the default."""
     super(CppGenerator, self).AnnotateMethod(the_api, method, unused_rsrc)
-    import_manager = self._import_manager_cache.GetCachedImportManager(the_api)
+    import_manager = cpp_import_manager.CppImportManager.ForElement(the_api)
     request_type = method.values.get('requestType')
     response_type = method.values.get('responseType')
     if request_type:
@@ -307,6 +310,32 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
     """Annotate a Property with C++ specific elements."""
     super(CppGenerator, self).AnnotateProperty(unused_api, prop, unused_schema)
     prop.SetTemplateValue('isPrimitive', self._IsPrimitiveType(prop.data_type))
+    base_type = prop.data_type
+    if base_type.GetTemplateValue('isContainer'):
+      base_type = base_type.GetTemplateValue('baseType')
+
+    try:
+      has_parent = base_type.parent
+    except AttributeError:
+      has_parent = False
+
+    if not base_type.GetTemplateValue('builtIn') and not has_parent:
+      # Since the property's base type doesn't have a parent, the
+      # base type may be safely used by a split accessor definition
+      # at the top-level scope.
+      #
+      # Since the property's base type is not a built-in type, it
+      # might be part of a set of mutually recursive types, which
+      # can *only* be safely used by a split accessor definition at
+      # the top-level scope, after all of the potentially recursive
+      # class definitions have been emitted.
+      #
+      # So: we set the useSplitAccessor template value, causing C++
+      # template expansion to declare the accessor methods for this
+      # property as part of the object, but to define them separately
+      # at the top-level scope.
+      prop.SetTemplateValue('useSplitAccessor', True)
+
     self._HandleImports(prop)
     self.AnnotateDocumentation(prop)
 
@@ -348,7 +377,7 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
     element = getattr(element, 'referenced_schema', element)
 
     # Get the parent of this Property/Parameter.
-    if isinstance(element, api.Schema):
+    if isinstance(element, data_types.ComplexDataType):
       parent = element
       data_type = element
     else:
@@ -364,7 +393,7 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
         # imports for.
         while parent.parent:
           parent = parent.parent
-      import_manager = self._import_manager_cache.GetCachedImportManager(parent)
+      import_manager = cpp_import_manager.CppImportManager.ForElement(parent)
 
     # For collections, we have to get the imports for the first non-collection
     # up the base_type chain.
@@ -373,6 +402,11 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
       data_type = data_type._base_type  # pylint: disable=protected-access
       # TODO(user): This should be handled within the core.
       data_type = getattr(data_type, 'referenced_schema', data_type)
+
+    # If we are a reference to a schema that does not resolve, do not fail.
+    # Our kitchen sink test API does this. Well formed APIs should not.
+    if not data_type:
+      return
 
     json_type = data_type.json_type
     json_format = data_type.values.get('format')
@@ -402,12 +436,21 @@ class CppLanguageModel(language_model.LanguageModel):
   """A LanguageModel tuned for C++."""
 
   language = 'cpp'
+  member_policy = language_model.NamingPolicy(
+      language_model.LOWER_UNCAMEL_CASE, '{name}_', '_')
   getter_policy = language_model.NamingPolicy(
       language_model.LOWER_UNCAMEL_CASE, 'get_{name}', '_')
   setter_policy = language_model.NamingPolicy(
       language_model.LOWER_UNCAMEL_CASE, 'set_{name}', '_')
   has_policy = language_model.NamingPolicy(
       language_model.LOWER_UNCAMEL_CASE, 'has_{name}', '_')
+  unset_policy = language_model.NamingPolicy(
+      language_model.LOWER_UNCAMEL_CASE, 'clear_{name}', '_')
+
+  parameter_name_policy = language_model.NamingPolicy(
+      language_model.LOWER_UNCAMEL_CASE, '{name}', '_',
+      conflict_policy=language_model.NamingPolicy(
+          language_model.LOWER_UNCAMEL_CASE, '{name}__', '_'))
 
   # From http://en.cppreference.com/w/cpp/keyword
   _CPP_KEYWORDS = [
@@ -440,6 +483,8 @@ class CppLanguageModel(language_model.LanguageModel):
   # namespace. But we will for convenience and since it's probably rare.
   RESERVED_CLASS_NAMES = _SPECIAL_CLASS_NAMES
 
+  reserved_words = RESERVED_CLASS_NAMES + _CPP_KEYWORDS
+
   def __init__(self, options=None):
     super(CppLanguageModel, self).__init__(class_name_delimiter='::',
                                            module_name_delimiter='_')
@@ -458,11 +503,15 @@ class CppLanguageModel(language_model.LanguageModel):
       map of (discovery type, format) keys to (C++ type, import value)
       values where the import value is header file name to include.
     """
+    self.global_namespace_ = ''
     self.client_namespace_ = 'client'
     builtin_type_h = None
     integral_type_h = '"googleapis/base/integral_types.h"'
     json_type_h = '"googleapis/client/data/jsoncpp_data.h"'
+    # TODO(user): Implement open-source date.h
     date_time_h = '"googleapis/client/util/date_time.h"'
+    date_h = date_time_h
+    self.date_namespace_ = self.client_namespace_
 
     # Dictionary of json type and format to its corresponding data type and
     # import definition. The first import in the imports list is the primary
@@ -483,8 +532,8 @@ class CppLanguageModel(language_model.LanguageModel):
                            ImportDefinition([json_type_h])),
         ('string', None): ('string', ImportDefinition(['<string>'])),
         ('string', 'byte'): ('string', ImportDefinition(['<string>'])),
-        ('string', 'date'): (self.client_namespace_ + '::DateTime',
-                             ImportDefinition([date_time_h])),
+        ('string', 'date'): (self.date_namespace_ + '::Date',
+                             ImportDefinition([date_h])),
         ('string', 'date-time'): (self.client_namespace_ + '::DateTime',
                                   ImportDefinition([date_time_h])),
         ('string', 'int64'): ('int64', ImportDefinition([integral_type_h])),
@@ -537,12 +586,13 @@ class CppLanguageModel(language_model.LanguageModel):
       native_format = utilities.CamelCase(json_type)
     return native_format
 
-  def CodeTypeForArrayOf(self, type_name):
+  def ArrayOf(self, unused_variable, type_name):
     """Take a type name and return the syntax for an array of them.
 
     Overrides the default.
 
     Args:
+      unused_variable: (DataType) the data we want an array of.
       type_name: (str) A type name.
     Returns:
       A language specific string meaning "an array of type_name".
@@ -552,12 +602,13 @@ class CppLanguageModel(language_model.LanguageModel):
     # return appropriate array type (data, string or primitive).
     return '%s::JsonCppArray<%s >' % (self.client_namespace_, type_name)
 
-  def CodeTypeForMapOf(self, type_name):
+  def MapOf(self, unused_variable, type_name):
     """Take a type name and return the syntax for a map of String to them.
 
     Overrides the default.
 
     Args:
+      unused_variable: (DataType) the data we want an array of.
       type_name: (str) A type name.
     Returns:
       A language specific string meaning "an array of type_name".
@@ -665,8 +716,9 @@ class CppApi(api.Api):
     decorator = ''
     if isinstance(element, api.Method):
       resource = element.parent
-      if resource:
+      while isinstance(resource, api.Resource):
         s = '%s_%s' % (resource.values['className'], s)
+        resource = resource.parent
       decorator = 'Method'
     elif isinstance(element, api.Resource):
       decorator = 'Resource'

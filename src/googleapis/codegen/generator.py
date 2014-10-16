@@ -31,7 +31,7 @@ import zipfile
 from googleapis.codegen.django_helpers import DjangoRenderTemplate
 from googleapis.codegen.language_model import LanguageModel
 from googleapis.codegen.template_objects import UseableInTemplates
-# Has to be after django_helpers pylint: disable-msg=g-bad-import-order
+# Has to be after django_helpers pylint: disable=g-bad-import-order
 from googleapis.codegen import template_helpers
 from googleapis.codegen.filesys import files
 
@@ -39,8 +39,8 @@ from googleapis.codegen.filesys import files
 # into templates.
 _GENERATOR_INFORMATION = {
     'name': 'google-apis-code-generator',
-    'version': '1.4.2',
-    'buildDate': '2013-08-19',
+    'version': '1.5.0',
+    'buildDate': '2014-10-14',
     }
 
 # app.yaml and other names that app engine refuses to open.

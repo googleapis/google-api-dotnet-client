@@ -52,6 +52,11 @@ class DartLanguageModel(language_model.LanguageModel):
   # type.
   RESERVED_CLASS_NAMES = _DART_KEYWORDS + _SCHEMA_TYPE_TO_DART_TYPE.values()
 
+  array_of_policy = language_model.NamingPolicy(
+      format_string='core.List<{name}>')
+  map_of_policy = language_model.NamingPolicy(
+      format_string='core.Map<core.String, {name}>')
+
   def __init__(self):
     super(DartLanguageModel, self).__init__(class_name_delimiter='')
 
@@ -68,30 +73,6 @@ class DartLanguageModel(language_model.LanguageModel):
     json_type = def_dict.get('type', 'String')
     native_type = self._SCHEMA_TYPE_TO_DART_TYPE.get(json_type)
     return native_type
-
-  def CodeTypeForArrayOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A Dart specific string meaning "an array of type_name".
-    """
-    return 'core.List<%s>' % type_name
-
-  def CodeTypeForMapOf(self, type_name):
-    """Take a type name and return the syntax for an array of them.
-
-    Overrides the default.
-
-    Args:
-      type_name: (str) A type name.
-    Returns:
-      (str) A Dart specific string meaning "a Map of string to type_name".
-    """
-    return 'core.Map<core.String, %s>' % type_name
 
   def ToMemberName(self, s, unused_the_api):
     """CamelCase a wire format name into a suitable Dart variable name."""

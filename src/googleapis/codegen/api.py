@@ -30,6 +30,7 @@ TODO(user): Refactor this so that the API can be loaded first, then annotated.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
+import collections
 import json
 import logging
 import operator
@@ -39,6 +40,7 @@ import urlparse
 from googleapis.codegen import data_types
 from googleapis.codegen import template_objects
 from googleapis.codegen import utilities
+from googleapis.codegen.utilities import convert_size
 
 _ADDITIONAL_PROPERTIES = 'additionalProperties'
 _DEFAULT_SERVICE_HOST = 'www.googleapis.com'
@@ -130,6 +132,23 @@ class Api(template_objects.CodeObject):
 
     self._NormalizeUrlComponents()
 
+    # Information for variant subtypes, a dictionary of the format:
+    #
+    #  { 'wireName': {'discriminant': discriminant, 'value': value,
+    #                 'schema': schema},
+    #    ... }
+    #
+    # ... where wireName is the name of variant subtypes, discriminant
+    # the field name of the discriminant, value the discriminant value
+    # for this variant, and schema the base schema.
+    #
+    # This information cannot be stored in the referred schema at
+    # reading time because at the time we read it from the base
+    # schema, the referenced variant schemas may not yet be loaded. So
+    # we first store it here, and after all schemas have been loaded,
+    # update the schema template properties.
+    self._variant_info = {}
+
     # Build data types and methods
     self._SetupModules()
     self.void_type = data_types.Void(self)
@@ -216,6 +235,33 @@ class Api(template_objects.CodeObject):
           def_dict = json.loads(def_dict)
         self._schemas[name] = self.DataTypeFromJson(def_dict, name)
 
+      # Late bind info for variant types, and mark the discriminant
+      # field and value.
+      for name, info in self._variant_info.iteritems():
+        if name not in self._schemas:
+          # The error will be reported elsewhere
+          continue
+        schema = self._schemas[name]
+        for prop in schema.values.get('properties'):
+          if prop.values['wireName'] == info['discriminant']:
+            # Filter out the discriminant property as it is already
+            # contained in the base type.
+            schema.SetTemplateValue(
+                'properties',
+                [p for p in schema.values.get('properties') if p != prop])
+            break
+        else:
+          logging.warn("Variant schema '%s' for base schema '%s' "
+                       "has not the expected discriminant property '%s'.",
+                       name, info['schema'].values['wireName'],
+                       info['discriminant'])
+        schema.SetTemplateValue('superClass', info['schema'].class_name)
+        # TODO(user): baseType is for backwards compatability only. It should
+        # have always been a different name. When the old Java generators roll
+        # off, remove it.
+        schema.SetTemplateValue('baseType', info['schema'].class_name)
+        schema.SetTemplateValue('discriminantValue', info['value'])
+
   def _NormalizeOwnerInformation(self):
     """Ensure that owner and ownerDomain are set to sane values."""
     owner_domain = self.get('ownerDomain', '')
@@ -298,7 +344,9 @@ class Api(template_objects.CodeObject):
 
   def ModelClasses(self):
     """Return all the model classes."""
-    ret = set(s for s in self._schemas.itervalues() if isinstance(s, Schema))
+    ret = set(
+        s for s in self._schemas.itervalues()
+        if isinstance(s, Schema) or isinstance(s, data_types.MapDataType))
     return sorted(ret, key=operator.attrgetter('class_name'))
 
   def TopLevelModelClasses(self):
@@ -332,7 +380,7 @@ class Api(template_objects.CodeObject):
     schema = Schema.Create(self, default_name, type_dict or {}, wire_name,
                            parent)
     # Only put it in our by-name list if it is a real object
-    if isinstance(schema, Schema):
+    if isinstance(schema, Schema) or isinstance(schema, data_types.MapDataType):
       # Use the path to the schema as a key. This means that an anonymous class
       # for the 'person' property under the schema 'Activity' will have the
       # unique name 'Activity.person', rather than 'ActivityPerson'.
@@ -368,6 +416,17 @@ class Api(template_objects.CodeObject):
       Schema object or None if not found.
     """
     return self._schemas.get(schema_name, None)
+
+  def SetVariantInfo(self, ref, discriminant, value, schema):
+    """Sets variant info for the given reference."""
+    if ref in self._variant_info:
+      logging.warning("Base type of '%s' changed from '%s' to '%s'. "
+                      "This is an indication that a variant schema is used "
+                      "from multiple base schemas and may result in an "
+                      "inconsistent model.",
+                      ref, self._base_type[ref].wireName, schema.wireName)
+    self._variant_info[ref] = {'discriminant': discriminant, 'value': value,
+                               'schema': schema}
 
   def VisitAll(self, func):
     """Visit all nodes of an API tree and apply a function to each.
@@ -575,12 +634,30 @@ class Schema(data_types.ComplexDataType):
     #
     # 5. Refs to another schema.
     #    { $ref: name }
+    #
+    # 6. Variant schemas
+    #    { type: object, variant: { discriminant: "prop", map:
+    #             [ { 'type_value': value, '$ref': wireName }, ... ] } }
+    #
+    #    What we do is map the variant schema to a schema with a single
+    #    property for the discriminant. To that property, we attach
+    #    the variant map which specifies which discriminator values map
+    #    to which schema references. We also collect variant information
+    #    in the api so we can later associate discriminator value and
+    #    base type with the generated variant subtypes.
 
     if 'type' in def_dict:
       # The 'type' field of the schema can either be 'array', 'object', or a
       # base json type.
       json_type = def_dict['type']
       if json_type == 'object':
+
+        # Look for variants
+        variant = def_dict.get('variant')
+        if variant:
+          return cls._CreateVariantType(variant, api, name,
+                                        def_dict, wire_name, parent)
+
         # Look for full object definition.  You can have properties or
         # additionalProperties, but it does not  do anything useful to have
         # both.
@@ -656,6 +733,46 @@ class Schema(data_types.ComplexDataType):
       if prop_name == 'etag':
         schema.SetTemplateValue('hasEtagProperty', True)
     schema.SetTemplateValue('properties', properties)
+
+    # check for @ clashing. E.g. No 'foo' and '@foo' in the same object.
+    names = set()
+    for p in properties:
+      wire_name = p.GetTemplateValue('wireName')
+      no_at_sign = wire_name.replace('@', '')
+      if no_at_sign in names:
+        raise ApiException(
+            'Property name clash in schema %s:'
+            ' %s conflicts with another property' % (name, wire_name))
+      names.add(no_at_sign)
+
+    return schema
+
+  @classmethod
+  def _CreateVariantType(cls, variant, api, name, def_dict,
+                         wire_name, parent):
+    """Creates a variant type."""
+    variants = collections.OrderedDict()
+    schema = cls(api, name, def_dict, parent=parent)
+    if wire_name:
+      schema.SetTemplateValue('wireName', wire_name)
+    discriminant = variant['discriminant']
+
+    # Walk over variants building the variant map and register
+    # variant info on the api.
+    for variant_entry in variant['map']:
+      discriminant_value = variant_entry['type_value']
+      variant_schema = api.DataTypeFromJson(variant_entry, name, parent=parent)
+      variants[discriminant_value] = variant_schema
+      # Set variant info. We get the original wire name from the JSON properties
+      # via '$ref' it is not currently accessible via variant_schema.
+      api.SetVariantInfo(variant_entry.get('$ref'), discriminant,
+                         discriminant_value, schema)
+
+    prop = Property(api, schema, discriminant, {'type': 'string'},
+                    key_for_variants=variants)
+    schema.SetTemplateValue('is_variant_base', True)
+    schema.SetTemplateValue('discriminant', prop)
+    schema.SetTemplateValue('properties', [prop])
     return schema
 
   @classmethod
@@ -686,6 +803,7 @@ class Schema(data_types.ComplexDataType):
         wire_name=base_wire_name)
     map_type = data_types.MapDataType(name, base_type, parent=parent,
                                       wire_name=wire_name)
+    map_type.SetTemplateValue('className', class_name)
     _LOGGER.debug('  %s is MapOf<string, %s>',
                   class_name, base_type.class_name)
     return map_type
@@ -740,8 +858,49 @@ class Schema(data_types.ComplexDataType):
   def anonymous(self):
     return 'id' not in self.raw
 
+  @property
+  def properties(self):
+    return self.values['properties']
+
+  @property
+  def isContainerWrapper(self):
+    """Is this schema just a simple wrapper around another container.
+
+    A schema is just a wrapper for another datatype if it is an object that
+    contains just a single container datatype and (optionally) a kind and
+    etag field. This may be used by language generators to create iterators
+    directly on the schema. E.g. You could have
+        SeriesList ret = api.GetSomeSeriesMethod(args).Execute();
+        for (series in ret) { ... }
+    rather than
+        for (series in ret->items) { ... }
+
+    Returns:
+      None or ContainerDataType
+    """
+    return self._GetPropertyWhichWeWrap() is not None
+
+  @property
+  def containerProperty(self):
+    """If isContainerWrapper, returns the propery which holds the container."""
+    return self._GetPropertyWhichWeWrap()
+
+  def _GetPropertyWhichWeWrap(self):
+    """Returns the property which is the type we are wrapping."""
+    container_property = None
+    for p in self.values['properties']:
+      if p.values['wireName'] == 'kind' or p.values['wireName'] == 'etag':
+        continue
+      if p.data_type.GetTemplateValue('isContainer'):
+        if container_property:
+          return None
+        container_property = p
+      else:
+        return None
+    return container_property
+
   def __str__(self):
-    return '<%s Schema>' % self.values['wireName']
+    return '<%s Schema {%s}>' % (self.values['wireName'], self.values)
 
 
 class Property(template_objects.CodeObject):
@@ -751,7 +910,7 @@ class Property(template_objects.CodeObject):
       "id": {"type": "string"}
   """
 
-  def __init__(self, api, schema, name, def_dict):
+  def __init__(self, api, schema, name, def_dict, key_for_variants=None):
     """Construct a Property.
 
     A Property requires several elements in its template value dictionary which
@@ -764,6 +923,8 @@ class Property(template_objects.CodeObject):
       schema: (Schema) the schema this Property is part of
       name: (string) the name for this Property
       def_dict: (dict) the JSON schema dictionary
+      key_for_variants: (dict) if given, maps discriminator values to
+                        variant schemas.
 
     Raises:
       ApiException: If we have an array type without object definitions.
@@ -771,6 +932,7 @@ class Property(template_objects.CodeObject):
     super(Property, self).__init__(def_dict, api, wire_name=name)
     self.ValidateName(name)
     self.schema = schema
+    self._key_for_variants = key_for_variants
 
     # TODO(user): find a better way to mark a schema as an array type
     # so we can display schemas like BlogList in method responses
@@ -802,6 +964,14 @@ class Property(template_objects.CodeObject):
   @property
   def data_type(self):
     return self._data_type
+
+  @property
+  def is_variant_key(self):
+    return self._key_for_variants
+
+  @property
+  def variant_map(self):
+    return self._key_for_variants
 
 
 class Resource(template_objects.CodeObject):
@@ -844,7 +1014,21 @@ class Resource(template_objects.CodeObject):
 
 
 class AuthScope(template_objects.CodeObject):
-  """The definition of an auth scope."""
+  """The definition of an auth scope.
+
+  An AuthScope defines these template values
+    value: The scope url
+    name: a sanitized version of the value, transformed so it generally can
+          be used as an indentifier in code. Deprecated, use constantName
+    description: the description of the scope.
+  It also provides a template property which can be used after a language
+  binding is set.
+    constantName: A transformation of the value so it is suitable as a constant
+                  name in the specific language.
+  """
+
+  GOOGLE_PREFIX = 'https://www.googleapis.com/auth/'
+  HTTPS_PREFIX = 'https://'
 
   def __init__(self, api, value, def_dict):
     """Construct an auth scope.
@@ -856,19 +1040,33 @@ class AuthScope(template_objects.CodeObject):
     """
     super(AuthScope, self).__init__(def_dict, api, wire_name=value)
     self._module = api.module
-    # Strip the common prefix to get a unique identifying name
-    prefix_len = len('https://www.googleapis.com/auth/')
-    last_part = value[prefix_len:]
-    self.SetTemplateValue('lastPart', last_part)
-    self.SetTemplateValue('name', last_part.upper()
-                          .replace('.', '_')
-                          .replace('-', '_'))
+    while value.endswith('/'):
+      value = value[:-1]
     self.SetTemplateValue('value', value)
+    if 'description' not in self.values:
+      self.SetTemplateValue('description', value)
+
+    # Strip the common prefix to get a unique identifying name
+    if value.startswith(AuthScope.GOOGLE_PREFIX):
+      scope_id = value[len(AuthScope.GOOGLE_PREFIX):]
+    elif value.startswith(AuthScope.HTTPS_PREFIX):
+      # some comon scopes are are just a URL
+      scope_id = value[len(AuthScope.HTTPS_PREFIX):]
+    else:
+      scope_id = value
+    # We preserve the value stripped of the most common prefixes so we can
+    # use it for building constantName in templates.
+    self.SetTemplateValue('lastPart', scope_id)
+
+    # replace all non alphanumeric with '_' to form 'name'
+    name = ''.join([(c if c.isalnum() else '_') for c in scope_id.upper()])
+    self.SetTemplateValue('name', name)
 
   @property
   def constantName(self):  # pylint: disable=g-bad-name
-    """Overrides default behavior of wireName."""
-    return self._language_model.ToConstantName(self, self.values['lastPart'])
+    """Overrides default behavior of constantName."""
+    return self._language_model.ApplyPolicy('constant', self,
+                                            self.values['lastPart'])
 
 
 class Method(template_objects.CodeObject):
@@ -893,7 +1091,7 @@ class Method(template_objects.CodeObject):
       ApiException: If the httpMethod type is not one we know how to
           handle.
     """
-    super(Method, self).__init__(def_dict, api, parent=parent)
+    super(Method, self).__init__(def_dict, api, parent=(parent or api))
     # TODO(user): Fix java templates to name vs. wireName correctly. Then
     # change the __init__ to have wire_name=def_dict.get('id') or name
     # then eliminate this line.
@@ -991,7 +1189,7 @@ class Method(template_objects.CodeObject):
       max_size = media_upload.get('maxSize')
       self.SetTemplateValue('max_size', max_size)
       self.SetTemplateValue('max_size_bytes',
-                            self._ConvertUploadSize(max_size))
+                            convert_size.ConvertSize(max_size))
       # Find which upload protocols are supported.
       upload_protocols = media_upload['protocols']
       for upload_protocol in upload_protocols:
@@ -1006,26 +1204,6 @@ class Method(template_objects.CodeObject):
         and self.FindCodeObjectWithWireName(
             self.optional_parameters, 'pageToken')):
       self.SetTemplateValue('isPageable', True)
-
-  @staticmethod
-  def _ConvertUploadSize(size):
-    """Convert a size like 10G/K/M/B to a number."""
-    # See Java implementation at:
-    if not size:
-      return None
-    units = [('GB', 2 ** 30),
-             ('MB', 2 ** 20),
-             ('KB', 2 ** 10),
-             ('B', 1)]
-    size = size.upper()
-    for suffix, multiplier in units:
-      if size.endswith(suffix):
-        num_units = size[:-len(suffix)]
-        try:
-          return int(num_units) * multiplier
-        except (ValueError, KeyError):
-          break
-    return None
 
   def _SetUploadTemplateValues(self, upload_protocol, protocol_dict):
     """Sets upload specific template values.

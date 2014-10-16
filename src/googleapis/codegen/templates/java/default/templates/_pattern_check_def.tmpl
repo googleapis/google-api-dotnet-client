@@ -1,14 +1,14 @@
   {% if param.pattern %}
     if (!getSuppressPatternChecks()) {
     {% if param.repeated %}
-      for (String {{ param.codeName }}Elem : {{ param.codeName }}) {
-        com.google.api.client.util.Preconditions.checkArgument({{param.codeName|upper}}_PATTERN.matcher({{ param.codeName }}Elem).matches(),
-            "Parameter {{ param.codeName }} elements must conform to the pattern " +
+      for (String {{ param.memberName }}Elem : {{ param.memberName }}) {
+        com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}Elem).matches(),
+            "Parameter {{ param.memberName }} elements must conform to the pattern " +
             {% literal param.pattern %});
       }
     {% else %}
-      com.google.api.client.util.Preconditions.checkArgument({{param.codeName|upper}}_PATTERN.matcher({{ param.codeName }}).matches(),
-          "Parameter {{ param.codeName }} must conform to the pattern " +
+      com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}).matches(),
+          "Parameter {{ param.memberName }} must conform to the pattern " +
           {% literal param.pattern %});
     {% endif %}
     }

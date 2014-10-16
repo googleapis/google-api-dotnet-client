@@ -15,6 +15,24 @@ public class {{ model.safeClassName }}
 {% for property in model.properties %}
 
 {% doc_comment_if property.description %}
+{% if property.codeType == 'System.Nullable<System.DateTime>' %}
+[Newtonsoft.Json.JsonPropertyAttribute({% literal property.wireName %})]
+public virtual string {{ property.memberName }}Raw { get; set; }{% eol %}
+
+/// <summary><seealso cref="System.DateTime"/> representation of <see cref="{{ property.memberName }}Raw"/>.</summary>
+[Newtonsoft.Json.JsonIgnore]
+public virtual {{ property.codeType }} {{ property.memberName }}
+{
+    get
+    {
+        return Google.Apis.Util.Utilities.GetDateTimeFromString({{ property.memberName }}Raw);
+    }
+    set
+    {
+        {{ property.memberName }}Raw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+    }
+}{% eol %}
+{% else %}
 [Newtonsoft.Json.JsonPropertyAttribute({% literal property.wireName %})]
 
 {% noeol %}
@@ -27,6 +45,7 @@ public virtual {{ property.codeType }}
 {% endif %} { get; set; } {% eol %}
 
 {% endnoeol %}
+{% endif %}
 
 {% endfor %}
 

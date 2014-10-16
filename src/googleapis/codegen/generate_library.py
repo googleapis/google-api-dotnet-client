@@ -26,12 +26,14 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 import collections
 import json
 import logging
+import os
 
 
 import httplib2
 
 from google.apputils import app
 import gflags as flags
+from google.apputils import resources
 from googleapis.codegen import generator_lookup
 from googleapis.codegen.filesys import package_writer_foundry
 from googleapis.codegen.targets import Targets
@@ -129,6 +131,7 @@ def main(unused_argv):
 
   if FLAGS.verbose:
     logging.basicConfig(level=logging.DEBUG)
+
 
   # Get the discovery document
   if FLAGS.api_name:

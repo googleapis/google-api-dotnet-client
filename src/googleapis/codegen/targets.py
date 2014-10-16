@@ -59,8 +59,9 @@ class Targets(object):
     Raises:
       ValueError: if the targets file does not contain the required sections.
     """
-    self.targets_path = targets_path or Targets._default_targets_path
     self.template_root = template_root or Targets._default_template_root
+    self.targets_path = targets_path or os.path.join(self.template_root,
+                                                     'targets.json')
     if targets_dict:
       self._targets_dict = targets_dict
     else:
@@ -106,11 +107,6 @@ class Targets(object):
   def GetDefaultTemplateRoot():
     return Targets._default_template_root
 
-
-  # Set the initial default file.
-  _default_targets_path = os.path.join(os.path.dirname(__file__),
-                                       'templates',
-                                       'targets.json')
 
   # Set the initial template root.
   _default_template_root = os.path.join(os.path.dirname(__file__),

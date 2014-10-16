@@ -28,6 +28,7 @@ from googleapis.codegen import data_types
 from googleapis.codegen import language_model
 from googleapis.codegen.api import Api
 from googleapis.codegen.api import ApiException
+from googleapis.codegen.api import AuthScope
 from googleapis.codegen.api import Method
 from googleapis.codegen.api import Resource
 from googleapis.codegen.api import Schema
@@ -41,7 +42,7 @@ class FakeLanguageModel(language_model.LanguageModel):
   def GetCodeTypeFromDictionary(self, def_dict):
     return def_dict.get('type')
 
-  def CodeTypeForArrayOf(self, s):
+  def ArrayOf(self, unused_var, s):
     return 'Array[%s]' % s
 
 
@@ -186,241 +187,14 @@ class ApiTest(basetest.TestCase):
     # And, of course, 2 should have both sub resources and methods
     self.assertEquals(2, have_sub_resources_and_methods)
 
-  def testArrayOfArray(self):
-    discovery_doc = {
-        'name': 'fake',
-        'version': 'v1',
-        'schemas': {
-            'AdsenseReportsGenerateResponse': {
-                'id': 'AdsenseReportsGenerateResponse',
-                'type': 'object',
-                'properties': {
-                    'basic': {
-                        'type': 'string'
-                        },
-                    'simple_array': {
-                        'type': 'array',
-                        'items': {'type': 'string'}
-                        },
-                    'array_of_arrays': {
-                        'type': 'array',
-                        'items': {'type': 'array', 'items': {'type': 'string'}}
-                        }
-                    }
-                }
-            },
-        'resources': {}
-        }
-    api = Api(discovery_doc)
-    self.language_model = FakeLanguageModel()
-    api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
-    response_schema = api._schemas.get('AdsenseReportsGenerateResponse')
-    self.assertTrue(response_schema)
-    prop = [prop for prop in response_schema.values['properties']
-            if prop.values['wireName'] == 'array_of_arrays']
-    self.assertTrue(len(prop) == 1)
-    prop = prop[0]
-    self.assertEquals('Array[Array[string]]', prop.codeType)
-
-  def testDetectInvalidSchema(self):
-    bad_discovery = {
-        'name': 'fake',
-        'version': 'v1',
-        'resources': {},
-        'schemas': {
-            'NoItemsInArray': {'id': 'noitems', 'type': 'array'}
-            }
-        }
-    self.assertRaises(ApiException, Api, bad_discovery)
-
-  def testSchemaWithoutProperties(self):
-    fake_discovery = {
-        'name': 'fake',
-        'version': 'v1',
-        'resources': {},
-        'schemas': {
-            'NoProperties': {'id': 'NoProperties', 'type': 'object'}
-            }
-        }
-    api = Api(fake_discovery)
-    for name, schema in api._schemas.items():
-      if name == 'NoProperties':
-        self.assertEquals(0, len(schema.values.get('properties')))
-        return
-    self.fail('Did not find NoProperties')
-
-  def testSchemaWithAdditionalPropertiesWithoutId(self):
-    fake_discovery = {
-        'name': 'fake',
-        'version': 'v1',
-        'resources': {},
-        'schemas': {
-            'Snorg': {
-                'id': 'Snorg',
-                'type': 'object',
-                'additionalProperties': {
-                    'type': 'object',
-                    'properties': {
-                        'thing': {
-                            'type': 'boolean'
-                            }
-                        }
-                    }
-                },
-            'SnorgFresser': {
-                'id': 'SnorgFresser',
-                'type': 'object',
-                'properties': {
-                    'snacks': {
-                        'type': 'array',
-                        'items': {
-                            '$ref': 'Snorg'
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    api = Api(fake_discovery)
-    schemas = api._schemas
-    self.assertTrue('SnorgFresser' in schemas)
-    self.assertTrue('Snorg' in schemas)
-    self.assertTrue('SnorgElement' in schemas)
-    snorg = api.SchemaByName('Snorg')
-    self.assertTrue(snorg)
-    self.assertFalse('Snorg' in api.ModelClasses())
-    snorg_element = api.SchemaByName('SnorgElement')
-    self.assertTrue(snorg_element)
-    self.assertTrue(snorg_element in api.ModelClasses())
-
-  def testNestedSchemaWithAdditionalProperties(self):
-    fake_discovery = {
-        'name': 'fake',
-        'version': 'v1',
-        'resources': {},
-        'schemas': {
-            'RestDescription': {
-                'id': 'RestDescription',
-                'type': 'object',
-                'properties': {
-                    'auth': {
-                        'type': 'object',
-                        'properties': {
-                            'oauth2': {
-                                'type': 'object',
-                                'properties': {
-                                    'scopes': {
-                                        'type': 'object',
-                                        'additionalProperties': {
-                                            'type': 'object',
-                                            'properties': {
-                                                'description': {
-                                                    'type': 'string',
-
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                    }
-                }
-            }
-        }
-    api = Api(fake_discovery)
-    expected_names = {'RestDescription',
-                      'RestDescriptionAuth',
-                      'RestDescriptionAuthOauth2',
-                      'RestDescriptionAuthOauth2ScopesElement'}
-    schema_names = set(x.values.get('className') for x
-                       in api._schemas.itervalues())
-    self.assertEquals(expected_names, schema_names)
-    scopes_elem = api._schemas['RestDescription.auth.oauth2.scopesElement']
-    self.assertEquals('scopesElement', scopes_elem.safe_code_type)
-    self.assertEquals('RestDescriptionAuthOauth2ScopesElement',
-                      scopes_elem.code_type)
-    oauth2_elem = api._schemas['RestDescription.auth.oauth2']
-    self.assertEquals('oauth2', oauth2_elem.safe_code_type)
-    self.assertEquals('RestDescriptionAuthOauth2', oauth2_elem.code_type)
-
-  def testSchemaWithAdditionalPropertiesWithId(self):
-    fake_discovery = {
-        'name': 'fake',
-        'version': 'v1',
-        'resources': {},
-        'schemas': {
-            'Snorg': {
-                'id': 'Snorg',
-                'type': 'object',
-                'additionalProperties': {
-                    'id': 'Skrimpkin',
-                    'type': 'object',
-                    'properties': {
-                        'thing': {
-                            'type': 'boolean'
-                            }
-                        }
-                    }
-                },
-            'SnorgFresser': {
-                'id': 'SnorgFresser',
-                'type': 'object',
-                'properties': {
-                    'snacks': {
-                        'type': 'array',
-                        'items': {
-                            '$ref': 'Snorg'
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    api = Api(fake_discovery)
-    schemas = api._schemas
-    self.assertTrue('SnorgFresser' in schemas)
-    self.assertTrue('Snorg' in schemas)
-    self.assertTrue('Skrimpkin' in schemas)
-    snorg = api.SchemaByName('Snorg')
-    self.assertTrue(snorg)
-    self.assertFalse('Snorg' in api.ModelClasses())
-    skrimpkin = api.SchemaByName('Skrimpkin')
-    self.assertTrue(skrimpkin)
-    self.assertTrue(skrimpkin in api.ModelClasses())
-
-  def testUndefinedSchema(self):
-    # This should generated an empty "Bar" class.
-    discovery_doc = {
-        'name': 'fake',
-        'version': 'v1',
-        'schemas': {
-            'foo': {
-                'id': 'foo',
-                'type': 'object',
-                'properties': {'basic': {'$ref': 'bar'}}
-                }
-            },
-        'resources': {}
-        }
-    gen = Api(discovery_doc)
-    # We expect foo to be in the list because the id is 'foo'
-    self.assertTrue('foo' in gen._schemas.keys())
-    # We expect 'Foo' to be in the list because that is the class name we would
-    # create for foo
-    self.assertTrue('foo' in gen._schemas.keys())
-    # We do not expect Bar to be in the list because we only have a ref to it
-    # but no definition.
-    self.assertFalse('Bar' in gen._schemas.keys())
-
   def testParameters(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
     delete = api.MethodByName('chili.activities.delete')
     self.assertEquals(1, len(delete.query_parameters))
     self.assertEquals(3, len(delete.path_parameters))
-    hl = FindByWireName(delete.values['parameters'], 'hl')
-    self.assertEquals('query', hl.location)
+    required_p = FindByWireName(delete.values['parameters'],
+                                'required_parameter')
+    self.assertEquals('query', required_p.location)
     post_id = FindByWireName(delete.values['parameters'], 'postId')
     self.assertEquals('path', post_id.location)
 
@@ -468,6 +242,46 @@ class ApiTest(basetest.TestCase):
                       scopes[1].GetTemplateValue('value'))
     self.assertEquals('BUZZ_READ_ONLY',
                       scopes[1].GetTemplateValue('name'))
+
+  def testAuthScope(self):
+    api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+    scope = AuthScope(api,
+                      'https://www.googleapis.com/auth/userinfo.email',
+                      {'description': 'A typical scope'})
+    self.assertEquals('USERINFO_EMAIL', scope.GetTemplateValue('name'))
+    self.assertEquals('userinfo.email', scope.GetTemplateValue('lastPart'))
+    self.assertEquals('A typical scope', scope.GetTemplateValue('description'))
+    scope = AuthScope(api,
+                      'https://www.googleapis.com/auth/no.description', {})
+    self.assertEquals('NO_DESCRIPTION', scope.GetTemplateValue('name'))
+    self.assertEquals('https://www.googleapis.com/auth/no.description',
+                      scope.GetTemplateValue('description'))
+    scope = AuthScope(api, 'https://www.googleapis.com/auth/trim.slashes//', {})
+    self.assertEquals('TRIM_SLASHES', scope.GetTemplateValue('name'))
+    self.assertEquals('https://www.googleapis.com/auth/trim.slashes',
+                      scope.GetTemplateValue('value'))
+    scope = AuthScope(api,
+                      'https://www.googleapis.com/auth/product',
+                      {'description': 'A product level scope'})
+    self.assertEquals('PRODUCT', scope.GetTemplateValue('name'))
+    scope = AuthScope(api,
+                      'https://mail.google.com/',
+                      {'description': 'A non-googleapis.com scope'})
+    self.assertEquals('MAIL_GOOGLE_COM', scope.GetTemplateValue('name'))
+    self.assertEquals('mail.google.com', scope.GetTemplateValue('lastPart'))
+    scope = AuthScope(api,
+                      'https://mail.google.com/abc',
+                      {'description': 'A non-googleapis.com scope'})
+    self.assertEquals('MAIL_GOOGLE_COM_ABC', scope.GetTemplateValue('name'))
+    scope = AuthScope(api,
+                      'http://mail.google.com/',
+                      {'description': 'A non-https scope'})
+    self.assertEquals('HTTP___MAIL_GOOGLE_COM', scope.GetTemplateValue('name'))
+    scope = AuthScope(api, 'tag:google.com,2010:auth/groups2#email', {})
+    self.assertEquals('TAG_GOOGLE_COM_2010_AUTH_GROUPS2_EMAIL',
+                      scope.GetTemplateValue('name'))
+    scope = AuthScope(api, 'email', {})
+    self.assertEquals('EMAIL', scope.GetTemplateValue('name'))
 
   def testPostVariations(self):
     gen = self.ApiFromDiscoveryDoc('post_variations.json')
@@ -675,6 +489,7 @@ class ApiTest(basetest.TestCase):
 
   def testMethods(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+    self.assertEquals(api, api.top_level_methods[0].parent)
     self.assertLess(25, len(api.all_methods))
     self.assertLess(0, len(api.top_level_methods))
 
@@ -750,18 +565,317 @@ def FindByWireName(list_of_resource_or_method, wire_name):
   return None
 
 
-class UnitConvertionTest(basetest.TestCase):
-  """Test for unit conversion."""
+class SchemaTest(basetest.TestCase):
+  """Tests for the Schema class."""
 
-  def testConvertUploadSize(self):
-    m = Method._ConvertUploadSize
-    self.assertEquals(None, m(None))
-    self.assertEquals(None, m('4'))
-    self.assertEquals(None, m('4C'))
-    self.assertEquals(4, m('4B'))
-    self.assertEquals(4 * 2 ** 10, m('4KB'))
-    self.assertEquals(12 * 2 ** 20, m('12MB'))
-    self.assertEquals(10 * 2 ** 30, m('10GB'))
+  def testArrayOfArray(self):
+    discovery_doc = {
+        'name': 'fake',
+        'version': 'v1',
+        'schemas': {
+            'AdsenseReportsGenerateResponse': {
+                'id': 'AdsenseReportsGenerateResponse',
+                'type': 'object',
+                'properties': {
+                    'basic': {
+                        'type': 'string'
+                        },
+                    'simple_array': {
+                        'type': 'array',
+                        'items': {'type': 'string'}
+                        },
+                    'array_of_arrays': {
+                        'type': 'array',
+                        'items': {'type': 'array', 'items': {'type': 'string'}}
+                        }
+                    }
+                }
+            },
+        'resources': {}
+        }
+    api = Api(discovery_doc)
+    self.language_model = FakeLanguageModel()
+    api.VisitAll(lambda o: o.SetLanguageModel(self.language_model))
+    response_schema = api._schemas.get('AdsenseReportsGenerateResponse')
+    self.assertTrue(response_schema)
+    prop = [prop for prop in response_schema.values['properties']
+            if prop.values['wireName'] == 'array_of_arrays']
+    self.assertTrue(len(prop) == 1)
+    prop = prop[0]
+    self.assertEquals('Array[Array[string]]', prop.codeType)
+
+  def testDetectInvalidSchema(self):
+    bad_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'NoItemsInArray': {'id': 'noitems', 'type': 'array'}
+            }
+        }
+    self.assertRaises(ApiException, Api, bad_discovery)
+
+  def testSchemaWithoutProperties(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'NoProperties': {'id': 'NoProperties', 'type': 'object'}
+            }
+        }
+    api = Api(fake_discovery)
+    for name, schema in api._schemas.items():
+      if name == 'NoProperties':
+        self.assertEquals(0, len(schema.values.get('properties')))
+        return
+    self.fail('Did not find NoProperties')
+
+  def testSchemaWithAdditionalPropertiesWithoutId(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'Snorg': {
+                'id': 'Snorg',
+                'type': 'object',
+                'additionalProperties': {
+                    'type': 'object',
+                    'properties': {
+                        'thing': {
+                            'type': 'boolean'
+                            }
+                        }
+                    }
+                },
+            'SnorgFresser': {
+                'id': 'SnorgFresser',
+                'type': 'object',
+                'properties': {
+                    'snacks': {
+                        'type': 'array',
+                        'items': {
+                            '$ref': 'Snorg'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    schemas = api._schemas
+    self.assertTrue('SnorgFresser' in schemas)
+    self.assertTrue('Snorg' in schemas)
+    self.assertTrue('SnorgElement' in schemas)
+    snorg = api.SchemaByName('Snorg')
+    self.assertTrue(snorg)
+    self.assertFalse('Snorg' in api.ModelClasses())
+    snorg_element = api.SchemaByName('SnorgElement')
+    self.assertTrue(snorg_element)
+    self.assertTrue(snorg_element in api.ModelClasses())
+
+  def testNestedSchemaWithAdditionalProperties(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'RestDescription': {
+                'id': 'RestDescription',
+                'type': 'object',
+                'properties': {
+                    'auth': {
+                        'type': 'object',
+                        'properties': {
+                            'oauth2': {
+                                'type': 'object',
+                                'properties': {
+                                    'scopes': {
+                                        'type': 'object',
+                                        'additionalProperties': {
+                                            'type': 'object',
+                                            'properties': {
+                                                'description': {
+                                                    'type': 'string',
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    expected_names = {'RestDescription',
+                      'RestDescriptionAuth',
+                      'RestDescriptionAuthOauth2',
+                      'RestDescriptionAuthOauth2Scopes',
+                      'RestDescriptionAuthOauth2ScopesElement'}
+    schema_names = set(x.values.get('className') for x
+                       in api._schemas.itervalues())
+    self.assertEquals(expected_names, schema_names)
+    scopes_elem = api._schemas['RestDescription.auth.oauth2.scopesElement']
+    self.assertEquals('scopesElement', scopes_elem.safe_code_type)
+    self.assertEquals('RestDescriptionAuthOauth2ScopesElement',
+                      scopes_elem.code_type)
+    oauth2_elem = api._schemas['RestDescription.auth.oauth2']
+    self.assertEquals('oauth2', oauth2_elem.safe_code_type)
+    self.assertEquals('RestDescriptionAuthOauth2', oauth2_elem.code_type)
+
+  def testSchemaWithAdditionalPropertiesWithId(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'Snorg': {
+                'id': 'Snorg',
+                'type': 'object',
+                'additionalProperties': {
+                    'id': 'Skrimpkin',
+                    'type': 'object',
+                    'properties': {
+                        'thing': {
+                            'type': 'boolean'
+                            }
+                        }
+                    }
+                },
+            'SnorgFresser': {
+                'id': 'SnorgFresser',
+                'type': 'object',
+                'properties': {
+                    'snacks': {
+                        'type': 'array',
+                        'items': {
+                            '$ref': 'Snorg'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    api = Api(fake_discovery)
+    schemas = api._schemas
+    self.assertTrue('SnorgFresser' in schemas)
+    self.assertTrue('Snorg' in schemas)
+    self.assertTrue('Skrimpkin' in schemas)
+    snorg = api.SchemaByName('Snorg')
+    self.assertTrue(snorg)
+    self.assertFalse('Snorg' in api.ModelClasses())
+    skrimpkin = api.SchemaByName('Skrimpkin')
+    self.assertTrue(skrimpkin)
+    self.assertTrue(skrimpkin in api.ModelClasses())
+
+  def testUndefinedSchema(self):
+    # This should generated an empty "Bar" class.
+    discovery_doc = {
+        'name': 'fake',
+        'version': 'v1',
+        'schemas': {
+            'foo': {
+                'id': 'foo',
+                'type': 'object',
+                'properties': {'basic': {'$ref': 'bar'}}
+                }
+            },
+        'resources': {}
+        }
+    gen = Api(discovery_doc)
+    # We expect foo to be in the list because the id is 'foo'
+    self.assertTrue('foo' in gen._schemas.keys())
+    # We expect 'Foo' to be in the list because that is the class name we would
+    # create for foo
+    self.assertTrue('foo' in gen._schemas.keys())
+    # We do not expect Bar to be in the list because we only have a ref to it
+    # but no definition.
+    self.assertFalse('Bar' in gen._schemas.keys())
+
+  def testSchemaWithNameClash(self):
+    fake_discovery = {
+        'name': 'fake',
+        'version': 'v1',
+        'resources': {},
+        'schemas': {
+            'Snorg': {
+                'id': 'Snorg',
+                'type': 'object',
+                'properties': {
+                    'thing': {
+                        'type': 'boolean'
+                    },
+                    '@thing': {
+                        'type': 'boolean'
+                    }
+                }
+            }
+        }
+        }
+    self.assertRaises(ApiException, Api, fake_discovery)
+
+  def testWrappedContainer(self):
+    discovery_doc = {
+        'name': 'fake',
+        'version': 'v1',
+        }
+    api = Api(discovery_doc)
+    wrapped_container_def = {
+        'id': 'SeriesList',
+        'type': 'object',
+        'properties': {
+            'items': {
+                'type': 'array',
+                'items': {
+                    '$ref': 'Snorg'
+                    }
+                },
+            }
+        }
+    schema = Schema.Create(api, 'foo', wrapped_container_def, 'foo', None)
+    self.assertEquals(1, len(schema.properties))
+    self.assertIsNotNone(schema.isContainerWrapper)
+    container_property = schema.containerProperty
+    self.assertIsNotNone(container_property)
+    array_of = container_property.data_type.GetTemplateValue('arrayOf')
+    self.assertIsNotNone(array_of)
+    self.assertEquals('Snorg', array_of.values['wireName'])
+
+    # Add a kind
+    wrapped_container_def['properties'].update({'kind': {'type': 'string'}})
+    schema = Schema.Create(api, 'foo', wrapped_container_def, 'foo', None)
+    self.assertEquals(2, len(schema.properties))
+    self.assertTrue(schema.isContainerWrapper)
+
+    # Add an etag
+    wrapped_container_def['properties'].update({'etag': {'type': 'string'}})
+    schema = Schema.Create(api, 'foo', wrapped_container_def, 'foo', None)
+    self.assertEquals(3, len(schema.properties))
+    self.assertTrue(schema.isContainerWrapper)
+
+    # Add a field which disqualifies
+    wrapped_container_def['properties'].update({'foo': {'type': 'string'}})
+    schema = Schema.Create(api, 'foo', wrapped_container_def, 'foo', None)
+    self.assertEquals(4, len(schema.properties))
+    self.assertFalse(schema.isContainerWrapper)
+
+    # Make the main property not a container
+    not_wrapped_container_def = {
+        'id': 'SeriesList',
+        'type': 'object',
+        'properties': {
+            'items': {'type': 'string'},
+            'kind': {'type': 'string'}
+            }
+        }
+    schema = Schema.Create(api, 'foo', not_wrapped_container_def, 'foo', None)
+    self.assertEquals(2, len(schema.properties))
+    self.assertFalse(schema.isContainerWrapper)
 
 
 if __name__ == '__main__':
