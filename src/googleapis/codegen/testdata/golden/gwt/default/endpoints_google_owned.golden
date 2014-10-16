@@ -1,0 +1,371 @@
+=== begin: ./build.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="jar" name="gwt-helloworld-v1">
+  <property environment="env" />
+
+  <property name="gwtdir" value="${env.GWT_HOME}" />
+  <property name="baselibdir" value="${env.BASE_LIB_DIR}" />
+
+  <property name="src.dir" value="${basedir}/src" />
+  <property name="build.dir" value="${basedir}/build" />
+  <property name="build.classes.dir" value="${build.dir}/classes" />
+  <property name="build.dist.dir" value="${build.dir}/dist" />
+  <property name="build.javadoc.dir" value="${build.dir}/javadoc" />
+
+  <property name="release" value="0.4-alpha" />
+  <property name="debuglevel" value="source,lines,vars" />
+
+  <target name="verify" description="Check that necessary dependencies are found">
+    <available file="${gwtdir}/gwt-user.jar" property="foundgwtuserjar" />
+    <fail unless="foundgwtuserjar" message="Cannot find gwt-user.jar" />
+  </target>
+
+  <target name="build-base" description="Compiles base lib with javac">
+    <copy includeemptydirs="true" todir="${build.classes.dir}/com/google/api/gwt">
+      <fileset dir="${baselibdir}" excludes="**/oauth2/**,**/samples/**,**/opensource/**,package-info.class" />
+    </copy>
+
+    <javac srcdir="${baselibdir}" excludes="**/oauth2/**,**/samples/**" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}"/>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar-base" depends="build-base" description="Generates a JAR of the base library">
+    <mkdir dir="${build.dist.dir}/gwt-base-${release}" />
+    <jar jarfile="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar">
+      <fileset dir="${build.classes.dir}" />
+    </jar>
+  </target>
+
+  <target name="javac" depends="jar-base" description="Compiles the source files using javac">
+    <javac srcdir="${src.dir}" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}" />
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="javac" description="Generates a jar of the generated source files">
+    <mkdir dir="${build.dist.dir}" />
+
+    <jar jarfile="${build.dist.dir}/gwt-helloworld-v1-${release}.jar">
+      <zipfileset src="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar" />
+      <fileset dir="${build.classes.dir}" />
+      <fileset dir="${src.dir}" />
+    </jar>
+  </target>
+
+  <target name="javadoc" depends="clean" description="Generates JavaDoc for the generated source files">
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.javadoc.dir}" />
+
+    <javadoc packagenames="com.google.api.gwt.services.*"
+        destdir="${build.javadoc.dir}"
+        encoding="UTF-8"
+        docencoding="UTF-8"
+        charset="UTF-8"
+        use="true"
+        author="true"
+        protected="true"
+        linksource="true"
+        additionalparam="-notimestamp"
+        windowtitle="Google API Client Library for GWT - helloworld v1">
+      <sourcepath>
+        <pathelement location="${src.dir}" />
+      </sourcepath>
+      <classpath>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+      <link href="http://google-web-toolkit.googlecode.com/svn/javadoc/latest/" />
+      <link href="http://docs.oracle.com/javase/6/docs/api" />
+    </javadoc>
+  </target>
+
+  <target name="clean" description="Remove generated files">
+    <delete dir="${build.dir}" />
+    <delete dir="${src.dir}" />
+
+    <mkdir dir="${src.dir}" />
+    <copy includeemptydirs="true" todir="${src.dir}">
+      <fileset dir="${basedir}" excludes="build.xml" />
+    </copy>
+  </target>
+</project>
+=== end: ./build.xml
+=== begin: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/EccoDomaniIeri.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+
+ */
+
+package com.google.api.gwt.services.cloud.platform.helloworld.shared;
+
+import com.google.api.gwt.shared.AuthScope;
+import com.google.api.gwt.shared.EmptyResponse;
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.requestfactory.shared.JsonRpcContent;
+import com.google.web.bindery.requestfactory.shared.JsonRpcService;
+import com.google.web.bindery.requestfactory.shared.JsonRpcWireName;
+import com.google.web.bindery.requestfactory.shared.Request;
+import com.google.web.bindery.requestfactory.shared.RequestContext;
+import com.google.web.bindery.requestfactory.shared.RequestFactory;
+
+/**
+ * Service definition for EccoDomaniIeri (v1).
+ *
+ * <p>
+ * helloworld API v1.
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="http://developers.google.com/appengine" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+public interface EccoDomaniIeri extends RequestFactory {
+  /** Available authentiation scopes for use with this service. */
+  public enum EccoDomaniIeriAuthScope implements AuthScope {
+
+    /** View your email address */
+    USERINFO_EMAIL("https://www.googleapis.com/auth/userinfo.email"),
+    ;
+    private final String scope;
+    private EccoDomaniIeriAuthScope(String scope) {
+      this.scope = scope;
+    }
+
+    /** The String value of this scope. */
+    @Override
+    public String getScope() {
+      return scope;
+    }
+  }
+
+  /**
+   * The {@link RequestContext} used to call methods on the "greetings" collection.
+   */
+  @JsonRpcService
+  public interface GreetingsContext extends RequestContext {
+
+    /**
+
+     *
+     *
+     */
+    AuthedRequest authed();
+
+    /**
+     * Request object to call the "helloworld.greetings.authed" method.
+     */
+    @JsonRpcWireName(value="helloworld.greetings.authed", version="v1")
+    public interface AuthedRequest extends Request<com.google.api.gwt.services.cloud.platform.helloworld.shared.model.HelloGreeting> {
+    }
+    /**
+
+     *
+     *
+     * @param id
+     */
+    GetGreetingRequest getGreeting(@PropertyName("id") Integer id);
+
+    /**
+     * Request object to call the "helloworld.greetings.getGreeting" method.
+     */
+    @JsonRpcWireName(value="helloworld.greetings.getGreeting", version="v1")
+    public interface GetGreetingRequest extends Request<com.google.api.gwt.services.cloud.platform.helloworld.shared.model.HelloGreeting> {
+
+
+      @PropertyName("id")
+      GetGreetingRequest setId(@PropertyName("id") Integer id);
+    }
+    /**
+
+     *
+     *
+     */
+    ListGreetingRequest listGreeting();
+
+    /**
+     * Request object to call the "helloworld.greetings.listGreeting" method.
+     */
+    @JsonRpcWireName(value="helloworld.greetings.listGreeting", version="v1")
+    public interface ListGreetingRequest extends Request<com.google.api.gwt.services.cloud.platform.helloworld.shared.model.HelloGreetingCollection> {
+    }
+    /**
+
+     *
+     *
+     * @param times
+     * @param content Request body content.
+     */
+    MultiplyRequest multiply(@PropertyName("times") Integer times, @JsonRpcContent com.google.api.gwt.services.cloud.platform.helloworld.shared.model.HelloGreeting content);
+
+    /**
+     * Request object to call the "helloworld.greetings.multiply" method.
+     */
+    @JsonRpcWireName(value="helloworld.greetings.multiply", version="v1")
+    public interface MultiplyRequest extends Request<com.google.api.gwt.services.cloud.platform.helloworld.shared.model.HelloGreeting> {
+
+
+      @PropertyName("times")
+      MultiplyRequest setTimes(@PropertyName("times") Integer times);
+    }
+  }
+
+
+  /** Returns the {@link #GreetingsContext} context. */
+  GreetingsContext greetings();
+
+
+
+}
+=== end: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/EccoDomaniIeri.java
+=== begin: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/model/HelloGreetingCollection.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.cloud.platform.helloworld.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for EccoDomaniIeri.HelloGreetingCollection.
+ *
+ * Collection of Greetings.
+ *
+ * This class models an object which will be transmitted to or from the EccoDomaniIeri service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface HelloGreetingCollection extends ValueProxy {
+
+  /** Greeting that stores a message. */
+  @PropertyName("items")
+  java.util.List<HelloGreeting> getItems();
+
+  @PropertyName("items")
+  HelloGreetingCollection setItems(java.util.List<HelloGreeting> items);
+}
+=== end: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/model/HelloGreetingCollection.java
+=== begin: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/model/HelloGreeting.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.cloud.platform.helloworld.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for EccoDomaniIeri.HelloGreeting.
+ *
+ * Greeting that stores a message.
+ *
+ * This class models an object which will be transmitted to or from the EccoDomaniIeri service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface HelloGreeting extends ValueProxy {
+
+  
+  @PropertyName("message")
+  String getMessage();
+
+  @PropertyName("message")
+  HelloGreeting setMessage(String message);
+}
+=== end: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/model/HelloGreeting.java
+=== begin: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/package-info.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * Support classes to facilitate interaction with v1 of the helloworld service.
+ *
+ * <p>
+ * helloworld API v1.
+ * </p>
+ *
+ * <p>
+ * To get started in your code, call {@code GWT.create(EccoDomaniIeri.class)}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="http://developers.google.com/appengine" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+package com.google.api.gwt.services.cloud.platform.helloworld.shared;
+=== end: ./com/google/api/gwt/services/cloud/platform/helloworld/shared/package-info.java
+=== begin: ./com/google/api/gwt/services/EccoDomaniIeri.gwt.xml
+<module>
+  <inherits name="com.google.web.bindery.requestfactory.RequestFactory"/>
+  <inherits name="com.google.api.gwt.ApiCore" />
+
+  <source path="helloworld" includes="shared/**"/>
+</module>
+=== end: ./com/google/api/gwt/services/EccoDomaniIeri.gwt.xml

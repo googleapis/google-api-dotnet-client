@@ -1,0 +1,9 @@
+{% if not model.isSchema %}{% for child in model.children %}{% call_template _model_def model=child %}{% endfor %}{% else %}
+/**{% filter block_comment %}
+ * {% if model.description %}{{ model.description }}{% else %}Model definition for {{ model.className }}.{% endif %}{% endfilter %}
+ */
+public static final class {{ model.safeClassName }} extends com.google.api.client.json.GenericJson {
+
+{% call_template _model_content_def current_model=child %}
+{% for child in model.children %}{% indent %}{% call_template _model_def model=child %}{% endindent %}{% endfor %}
+}{% endif %}

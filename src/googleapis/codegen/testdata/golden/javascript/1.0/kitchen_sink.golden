@@ -1,0 +1,712 @@
+=== begin: ./KitchSink.js
+
+
+// Generated surface for the kitch_sink.
+
+gapi.client.kitch_sink.API_ = {
+  'servicePath': 'sink/v1/',
+  'parameters': {
+  'alt': {
+    'location': 'query',
+    'required': false
+  },
+  'oauth_token': {
+    'location': 'query',
+    'required': false
+  },
+  'prettyPrint': {
+    'location': 'query',
+    'required': false
+  }
+}
+};
+
+// Register each method
+
+
+
+
+gapi.client.moderator.featured.series.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/featured',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+
+
+
+gapi.client.moderator.global.series.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'search',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'max-results': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+
+
+
+gapi.client.moderator.my.series.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/@me/mine',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+
+
+
+gapi.client.moderator.myrecent.private.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/@me/recent',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.profiles.get = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'profiles/@me',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.profiles.update = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'profiles/@me',
+        'httpMethod': 'PUT',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.responses.insert = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'topicId': {
+            'location': 'path',
+            'required': true
+          },
+          'parentSubmissionId': {
+            'location': 'path',
+            'required': true
+          },
+          'anonymous': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.responses.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/responses',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          },
+          'author': {
+            'location': 'query',
+            'required': false
+          },
+          'hasAttachedVideo': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'sort': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.series.get = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.media.without.request = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.series.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'max-results': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.series.update = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}',
+        'httpMethod': 'PUT',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+
+
+gapi.client.moderator.series.responses.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/responses',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'author': {
+            'location': 'query',
+            'required': false
+          },
+          'hasAttachedVideo': {
+            'location': 'query',
+            'required': false
+          },
+          'max-results': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': true
+          },
+          'sort': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.series.submissions.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'author': {
+            'location': 'query',
+            'required': false
+          },
+          'hasAttachedVideo': {
+            'location': 'query',
+            'required': false
+          },
+          'lang': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'sort': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.submissions.get = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          },
+          'lang': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.submissions.insert = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics/{topicId}/submissions',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'topicId': {
+            'location': 'path',
+            'required': true
+          },
+          'anonymous': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.tags.delete = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/tags/{tagId}',
+        'httpMethod': 'DELETE',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          },
+          'tagId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.tags.insert = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/tags',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.tags.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/tags',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.topics.get = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics/{topicId}',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'topicId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.topics.insert = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.topics.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'max-results': {
+            'location': 'query',
+            'required': false
+          },
+          'mode': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.topics.update = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics/{topicId}',
+        'httpMethod': 'PUT',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'topicId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+
+
+gapi.client.moderator.topics.submissions.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/topics/{topicId}/submissions',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'topicId': {
+            'location': 'path',
+            'required': true
+          },
+          'author': {
+            'location': 'query',
+            'required': false
+          },
+          'hasAttachedVideo': {
+            'location': 'query',
+            'required': false
+          },
+          'q': {
+            'location': 'query',
+            'required': false
+          },
+          'sort': {
+            'location': 'query',
+            'required': false
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+gapi.client.moderator.votes.get = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/votes/@me',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          },
+          'userId': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.votes.insert = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submissionId}/votes/@me',
+        'httpMethod': 'POST',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submissionId': {
+            'location': 'path',
+            'required': true
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.votes.list = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/votes/@me',
+        'httpMethod': 'GET',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'start-index': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+gapi.client.moderator.votes.update = function(opt_params, opt_body) {
+  gapi.client.makeRequest(
+      {
+        'path': 'series/{seriesId}/submissions/{submission_id}/votes/@me',
+        'httpMethod': 'PUT',
+        'parameters':
+                {
+          'seriesId': {
+            'location': 'path',
+            'required': true
+          },
+          'submission_id': {
+            'location': 'path',
+            'required': true
+          },
+          'userId': {
+            'location': 'query',
+            'required': false
+          }
+        },
+        'parameterName': ''
+      },
+      gapi.client.kitch_sink.API_,
+      opt_params, opt_body);
+};
+
+=== end: ./KitchSink.js

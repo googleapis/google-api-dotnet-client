@@ -1,0 +1,57 @@
+{% if not model.builtIn %}{% eol %}
+{% doc_comment_if model.description %}
+{% noeol %}
+public class {{ model.safeClassName }}
+{%if not model.parent %}
+ : Google.Apis.Requests.IDirectResponseSchema
+{% endif %}
+
+{% endnoeol %}
+
+{
+
+{% indent %}
+
+{% for property in model.properties %}
+
+{% doc_comment_if property.description %}
+{% if property.codeType == 'System.Nullable<System.DateTime>' %}
+[Newtonsoft.Json.JsonPropertyAttribute({% literal property.wireName %})]
+public virtual string {{ property.memberName }}Raw { get; set; }{% eol %}
+
+/// <summary><seealso cref="System.DateTime"/> representation of <see cref="{{ property.memberName }}Raw"/>.</summary>
+[Newtonsoft.Json.JsonIgnore]
+public virtual {{ property.codeType }} {{ property.memberName }}
+{
+    get
+    {
+        return Google.Apis.Util.Utilities.GetDateTimeFromString({{ property.memberName }}Raw);
+    }
+    set
+    {
+        {{ property.memberName }}Raw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+    }
+}{% eol %}
+{% else %}
+[Newtonsoft.Json.JsonPropertyAttribute({% literal property.wireName %})]
+
+{% noeol %}
+
+public virtual {{ property.codeType }}
+{% if property.wireName == 'etag' and not model.parent %}
+ ETag
+{% else %}
+ {{ property.memberName }}
+{% endif %} { get; set; } {% eol %}
+
+{% endnoeol %}
+{% endif %}
+
+{% endfor %}
+
+{%if not model.hasEtagProperty and not model.parent %}/// <summary>The ETag of the item.</summary>
+public virtual string ETag { get; set; }
+{% endif %}
+{% endindent %}
+{% for child in model.children %}{% indent %}{% call_template _model model=child %}{% endindent %}{% endfor %}
+}{% endif %}

@@ -1,0 +1,111 @@
+{% filter noblanklines %}
+{#---------------------------------------------------------------------------#}
+{# The factory method just passes its arguments through to the corresponding #}
+{# method constructor. In addition it injects the service_ as the first      #}
+{# argument into the constructor.                                            #}
+{#---------------------------------------------------------------------------#}
+{% endfilter %}{% if method.requestType and method.mediaUpload %}
+// This factory method is deprecated in favor of the newer variation that
+// also takes the media upload parameters.
+{{ method.className }}* {{ method.parent.packageRelativeClassName }}::New{{ method.undecoratedClassName }}({% parameter_list %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+  {% if method.requestType and not method.mediaUpload %}
+    {% parameter %}
+      const {{ method.requestType.packageRelativeClassName }}& __request_content__
+    {% end_parameter %}
+  {% endif %}
+  {% end_parameter_list %}) const {
+  return new {{ method.className }}({% parameter_list %}
+    {% parameter %}{% if resource %}service_{% else %}this{% endif %}{% end_parameter %}
+    {% parameter %}_credential_{% end_parameter %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.parameterName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType and not method.mediaUpload %}
+      {% parameter %}__request_content__{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %});
+}
+
+{% endif %}{{ method.className }}* {{ method.parent.packageRelativeClassName }}::New{{ method.undecoratedClassName }}({% parameter_list %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+  {% if method.requestType %}{% if method.mediaUpload %}
+    {% parameter %}
+      const {{ method.requestType.packageRelativeClassName }}* _metadata_
+    {% end_parameter %}
+    {% parameter %}
+      const StringPiece& _media_content_type_
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}
+  {% else %}
+    {% parameter %}
+      const {{ method.requestType.packageRelativeClassName }}& __request_content__
+    {% end_parameter %}
+  {% endif %}{% elif method.mediaUpload %}
+    {% parameter %}
+      const StringPiece& _media_content_type_
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_content_reader_
+    {% end_parameter %}
+  {% endif %}
+  {% end_parameter_list %}) const {
+  return new {{ method.className }}({% parameter_list %}
+    {% parameter %}{% if resource %}service_{% else %}this{% endif %}{% end_parameter %}
+    {% parameter %}_credential_{% end_parameter %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.parameterName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% if method.mediaUpload %}
+        {% parameter %}_metadata_{% end_parameter %}
+        {% parameter %}_media_content_type_{% end_parameter %}
+        {% parameter %}_media_content_reader_{% end_parameter %}
+      {% else %}
+        {% parameter %}__request_content__{% end_parameter %}
+      {% endif %}
+    {% elif method.mediaUpload %}
+        {% parameter %}_media_content_type_{% end_parameter %}
+        {% parameter %}_media_content_reader_{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %});
+}
+
+{% if method.isPageable %}
+{{ method.className }}Pager* {{ method.parent.packageRelativeClassName }}::New{{ method.undecoratedClassName }}Pager({% parameter_list %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+  {% if method.requestType %}{% if method.mediaUpload %}
+    {% parameter %}
+      const {{ method.requestType.packageRelativeClassName }}& _metadata_
+    {% end_parameter %}
+    {% parameter %}
+      const StringPiece& _media_content_type_,
+    {% end_parameter %}
+    {% parameter %}
+      {{ api.client_namespace }}::DataReader* _media_reader_
+    {% end_parameter %}
+  {% else %}
+    {% parameter %}
+      const {{ method.requestType.packageRelativeClassName }}& __request_content__
+    {% end_parameter %}
+  {% endif %}{% endif %}
+  {% end_parameter_list %}) const {
+  return new {{ api.client_namespace }}::EncapsulatedServiceRequestPager<{{ method.className }}, {{ method.responseType.className }}>(new {{ method.className }}(service_, _credential_{% for p in method.requiredParameters %}, {{ p.parameterName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %}, _metadata_, _media_content_type_, _media_reader_{% else %}, __request_content__{% endif %}{% endif %}));
+}{% endif %}

@@ -1,0 +1,7 @@
+{
+  "language": "csharp",
+  "description": "C# libraries for Google APIs.",
+  "releaseVersion": "1.8.1",
+  "baseClientLibrary": "1.8.1",
+  "nugetVersion": "1.8.1"
+}

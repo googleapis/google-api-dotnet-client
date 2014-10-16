@@ -1,0 +1,69 @@
+<?php
+{% language php %}{% copyright_block %}
+
+/**
+ * Service definition for {{ api.className }} ({{ api.version }}).
+ *
+ * <p>
+ * {{ api.description }}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the API
+ * <a href="{{ api.documentationLink }}" target="_blank">Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+class {{ api.ownerName }}_Service_{{ api.className }} extends Google_Service
+{
+{% if api.auth.oauth2.scopes %}{% filter noblanklines %}{% indent %}
+{% for authscope in api.authscopes %}
+/** {{ authscope.description }}. */
+const {{ authscope.name }} = "{{ authscope.value }}";
+{% endfor %}{% endindent %}{% endfilter %}{% endif %}
+
+{% call_template _resource_var resource=api %}
+  {% if api.methods %}private $base_methods;{% endif %}
+
+  /**{% filter block_comment %}
+   * Constructs the internal representation of the {{ api.className }} service.
+   * {% endfilter %}
+   *
+   * @param Google_Client $client
+   */
+  public function __construct(Google_Client $client)
+  {
+    parent::__construct($client);
+    $this->servicePath = {% literal api.servicePath %};
+    $this->version = {% literal api.version %};
+    $this->serviceName = {% literal api.name %};
+
+{% filter noblanklines %}
+{% call_template _resource_decl resource=api %}
+{% indent %}
+{% indent %}
+{% if api.methods %}
+$this->base_methods = new Google_Service_Resource(
+    $this,
+    $this->serviceName,
+    '{{ resource.codeName }}',
+{% indent 2 %}{% call_template _methods_decl methods=api.methods %}{% endindent %}
+);
+{% endif %}
+{% endindent %}
+{% endindent %}
+  }
+{% indent %}
+{% for m in api.methods %}
+{% call_template _method baseMethod=1 method=m %}{% endfor %}
+{% endindent %}
+{% endfilter %}
+}
+
+{% for resource in api.resources %}
+{% call_template _resource resource=resource %}
+{% endfor %}
+
+{% for model in api.models %}
+{% call_template _model_class model=model api=api %}{% endfor %}

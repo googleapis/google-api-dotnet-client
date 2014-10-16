@@ -1,0 +1,22 @@
+=== begin: ./externs.js
+// Externs for helloworld/v1
+
+/** @interface */
+gapi.client.helloworld;
+
+
+/** @interface */
+gapi.client.helloworld.HelloGreeting;
+
+
+/** @type {?string} */
+gapi.client.helloworld.HelloGreeting.prototype.message;
+
+/** @interface */
+gapi.client.helloworld.HelloGreetingCollection;
+
+
+/** @type {?Array.<gapi.client.helloworld.HelloGreeting>} */
+gapi.client.helloworld.HelloGreetingCollection.prototype.items;
+
+=== end: ./externs.js

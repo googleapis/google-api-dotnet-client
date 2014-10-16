@@ -1,0 +1,3046 @@
+=== begin: ./KitchSink.php
+<?php
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * Service definition for KitchSink (v1).
+ *
+ * <p>
+ * An API with every strange thing in it
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the API
+ * <a href="" target="_blank">Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+class Google_Service_KitchSink extends Google_Service
+{
+  /** A non googleapis.com scope. */
+  const MAIL_GOOGLE_COM = "https://mail.google.com";
+  /** a product level scope. */
+  const PRODUCT = "https://www.googleapis.com/auth/product";
+  /** A typical scope. */
+  const USERINFO_EMAIL = "https://www.googleapis.com/auth/userinfo.email";
+
+  public $featured_series;
+  public $global_series;
+  public $my_series;
+  public $myrecent_private;
+  public $profiles;
+  public $responses;
+  public $series;
+  public $series_responses;
+  public $series_submissions;
+  public $submissions;
+  public $tags;
+  public $topics;
+  public $topics_submissions;
+  public $votes;
+  
+
+  /**
+   * Constructs the internal representation of the KitchSink service.
+   *
+   * @param Google_Client $client
+   */
+  public function __construct(Google_Client $client)
+  {
+    parent::__construct($client);
+    $this->servicePath = 'sink/v1/';
+    $this->version = 'v1';
+    $this->serviceName = 'kitch_sink';
+
+    $this->featured_series = new Google_Service_KitchSink_FeaturedSeries_Resource(
+        $this,
+        $this->serviceName,
+        'series',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/featured',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->global_series = new Google_Service_KitchSink_KitchSinkGlobalSeries_Resource(
+        $this,
+        $this->serviceName,
+        'series',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'search',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'max-results' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->my_series = new Google_Service_KitchSink_MySeries_Resource(
+        $this,
+        $this->serviceName,
+        'series',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/@me/mine',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->myrecent_private = new Google_Service_KitchSink_MyrecentKitchSinkPrivate_Resource(
+        $this,
+        $this->serviceName,
+        'private',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/@me/recent',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->profiles = new Google_Service_KitchSink_Profiles_Resource(
+        $this,
+        $this->serviceName,
+        'profiles',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'profiles/@me',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
+            ),'update' => array(
+              'path' => 'profiles/@me',
+              'httpMethod' => 'PUT',
+              'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->responses = new Google_Service_KitchSink_Responses_Resource(
+        $this,
+        $this->serviceName,
+        'responses',
+        array(
+          'methods' => array(
+            'insert' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'parentSubmissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'anonymous' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/responses',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'author' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hasAttachedVideo' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->series = new Google_Service_KitchSink_Series_Resource(
+        $this,
+        $this->serviceName,
+        'series',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'series/{seriesId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'series',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'list' => array(
+              'path' => 'series',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'max-results' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'series/{seriesId}',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->series_responses = new Google_Service_KitchSink_SeriesResponses_Resource(
+        $this,
+        $this->serviceName,
+        'responses',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/{seriesId}/responses',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'author' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hasAttachedVideo' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'max-results' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->series_submissions = new Google_Service_KitchSink_SeriesSubmissions_Resource(
+        $this,
+        $this->serviceName,
+        'submissions',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/{seriesId}/submissions',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'author' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hasAttachedVideo' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'lang' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->submissions = new Google_Service_KitchSink_Submissions_Resource(
+        $this,
+        $this->serviceName,
+        'submissions',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'lang' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}/submissions',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'anonymous' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->tags = new Google_Service_KitchSink_Tags_Resource(
+        $this,
+        $this->serviceName,
+        'tags',
+        array(
+          'methods' => array(
+            'delete' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/tags/{tagId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'tagId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/tags',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/tags',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->topics = new Google_Service_KitchSink_Topics_Resource(
+        $this,
+        $this->serviceName,
+        'topics',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'series/{seriesId}/topics',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'series/{seriesId}/topics',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'max-results' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'mode' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->topics_submissions = new Google_Service_KitchSink_TopicsSubmissions_Resource(
+        $this,
+        $this->serviceName,
+        'submissions',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'series/{seriesId}/topics/{topicId}/submissions',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'topicId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'author' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hasAttachedVideo' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'q' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->votes = new Google_Service_KitchSink_Votes_Resource(
+        $this,
+        $this->serviceName,
+        'votes',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/votes/@me',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'series/{seriesId}/submissions/{submissionId}/votes/@me',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submissionId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'series/{seriesId}/votes/@me',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'start-index' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'series/{seriesId}/submissions/{submission_id}/votes/@me',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'seriesId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'submission_id' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+  }
+}
+
+
+/**
+ * The "featured" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $featured = $kitch_sinkService->featured;
+ *  </code>
+ */
+class Google_Service_KitchSink_Featured_Resource extends Google_Service_Resource
+{
+
+}
+
+/**
+ * The "series" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $series = $kitch_sinkService->series;
+ *  </code>
+ */
+class Google_Service_KitchSink_FeaturedSeries_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Lists the featured series. (series.listFeaturedSeries)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listFeaturedSeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+
+/**
+ * The "global" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $global = $kitch_sinkService->global;
+ *  </code>
+ */
+class Google_Service_KitchSink_KitchSinkGlobal_Resource extends Google_Service_Resource
+{
+
+}
+
+/**
+ * The "series" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $series = $kitch_sinkService->series;
+ *  </code>
+ */
+class Google_Service_KitchSink_KitchSinkGlobalSeries_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Searches the public series and returns the search results.
+   * (series.listKitchSinkGlobalSeries)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int max-results
+   * Maximum number of results to return.
+   * @opt_param string q
+   * Search query.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listKitchSinkGlobalSeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+
+/**
+ * The "my" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $my = $kitch_sinkService->my;
+ *  </code>
+ */
+class Google_Service_KitchSink_My_Resource extends Google_Service_Resource
+{
+
+}
+
+/**
+ * The "series" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $series = $kitch_sinkService->series;
+ *  </code>
+ */
+class Google_Service_KitchSink_MySeries_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Lists all series created by the authenticated user. (series.listMySeries)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listMySeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+
+/**
+ * The "myrecent" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $myrecent = $kitch_sinkService->myrecent;
+ *  </code>
+ */
+class Google_Service_KitchSink_Myrecent_Resource extends Google_Service_Resource
+{
+
+}
+
+/**
+ * The "private" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $private = $kitch_sinkService->private;
+ *  </code>
+ */
+class Google_Service_KitchSink_MyrecentKitchSinkPrivate_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Resource using a name which is a keyword in many languages, to check their
+   * handling. (private.listMyrecentKitchSinkPrivate)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listMyrecentKitchSinkPrivate($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+
+/**
+ * The "profiles" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $profiles = $kitch_sinkService->profiles;
+ *  </code>
+ */
+class Google_Service_KitchSink_Profiles_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the profile information for the authenticated user. (profiles.get)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Profile
+   */
+  public function get($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_KitchSink_Profile");
+  }
+  /**
+   * Updates the profile information for the authenticated user. (profiles.update)
+   *
+   * @param Google_Profile $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Profile
+   */
+  public function update(Google_Service_KitchSink_Profile $postBody, $optParams = array())
+  {
+    $params = array('postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_KitchSink_Profile");
+  }
+}
+
+/**
+ * The "responses" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $responses = $kitch_sinkService->responses;
+ *  </code>
+ */
+class Google_Service_KitchSink_Responses_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Inserts a response for the specified submission in the specified topic within
+   * the specified series. (responses.insert)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param int $parentSubmissionId
+   * The decimal ID of the parent Submission within the Series.
+   * @param Google_Submission $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool anonymous
+   * Set to true to mark the new submission as anonymous.
+   * @return Google_Service_KitchSink_Submission
+   */
+  public function insert($seriesId, $topicId, $parentSubmissionId, Google_Service_KitchSink_Submission $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId, 'parentSubmissionId' => $parentSubmissionId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Submission");
+  }
+  /**
+   * Lists or searches the responses for the specified submission within the
+   * specified series and returns the search results. (responses.listResponses)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string author
+   * Restricts the results to submissions by a specific author.
+   * @opt_param bool hasAttachedVideo
+   * Specifies whether to restrict to submissions that have videos attached.
+   * @opt_param string q
+   * Search query.
+   * @opt_param string sort
+   * Sort order.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SubmissionList
+   */
+  public function listResponses($seriesId, $submissionId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
+  }
+}
+
+/**
+ * The "series" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $series = $kitch_sinkService->series;
+ *  </code>
+ */
+class Google_Service_KitchSink_Series_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the specified series. (series.get)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Series
+   */
+  public function get($seriesId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_KitchSink_Series");
+  }
+  /**
+   * Media method without request data. (series.insert)
+   *
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Series
+   */
+  public function insert($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Series");
+  }
+  /**
+   * Searches the series and returns the search results. (series.listSeries)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int max-results
+   * Maximum number of results to return.
+   * @opt_param string q
+   * Search query.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listSeries($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+  /**
+   * Updates the specified series. (series.update)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param Google_Series $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Series
+   */
+  public function update($seriesId, Google_Service_KitchSink_Series $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_KitchSink_Series");
+  }
+}
+
+/**
+ * The "responses" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $responses = $kitch_sinkService->responses;
+ *  </code>
+ */
+class Google_Service_KitchSink_SeriesResponses_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Searches the responses for the specified series and returns the search
+   * results. (responses.listSeriesResponses)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param string $q
+   * Search query - a required query parameter.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string author
+   * Restricts the results to submissions by a specific author.
+   * @opt_param bool hasAttachedVideo
+   * Specifies whether to restrict to submissions that have videos attached.
+   * @opt_param int max-results
+   * Maximum number of results to return.
+   * @opt_param string sort
+   * Sort order.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SeriesList
+   */
+  public function listSeriesResponses($seriesId, $q, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'q' => $q);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
+  }
+}
+/**
+ * The "submissions" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $submissions = $kitch_sinkService->submissions;
+ *  </code>
+ */
+class Google_Service_KitchSink_SeriesSubmissions_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Searches the submissions for the specified series and returns the search
+   * results. (submissions.listSeriesSubmissions)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string author
+   * Restricts the results to submissions by a specific author.
+   * @opt_param bool hasAttachedVideo
+   * Specifies whether to restrict to submissions that have videos attached.
+   * @opt_param string lang
+   * The language code for the language the client prefers resuls in.
+   * @opt_param string q
+   * Search query.
+   * @opt_param string sort
+   * Sort order.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SubmissionList
+   */
+  public function listSeriesSubmissions($seriesId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
+  }
+}
+
+/**
+ * The "submissions" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $submissions = $kitch_sinkService->submissions;
+ *  </code>
+ */
+class Google_Service_KitchSink_Submissions_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the specified submission within the specified series.
+   * (submissions.get)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string lang
+   * The language code for the language the client prefers resuls in.
+   * @return Google_Service_KitchSink_Submission
+   */
+  public function get($seriesId, $submissionId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_KitchSink_Submission");
+  }
+  /**
+   * Inserts a new submission in the specified topic within the specified series.
+   * (submissions.insert)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param Google_Submission $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool anonymous
+   * Set to true to mark the new submission as anonymous.
+   * @return Google_Service_KitchSink_Submission
+   */
+  public function insert($seriesId, $topicId, Google_Service_KitchSink_Submission $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Submission");
+  }
+}
+
+/**
+ * The "tags" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $tags = $kitch_sinkService->tags;
+ *  </code>
+ */
+class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Deletes the specified tag from the specified submission within the specified
+   * series. (tags.delete)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param string $tagId
+   *
+   * @param array $optParams Optional parameters.
+   */
+  public function delete($seriesId, $submissionId, $tagId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId, 'tagId' => $tagId);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params));
+  }
+  /**
+   * Inserts a new tag for the specified submission within the specified series.
+   * (tags.insert)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param Google_Tag $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Tag
+   */
+  public function insert($seriesId, $submissionId, Google_Service_KitchSink_Tag $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Tag");
+  }
+  /**
+   * Lists all tags for the specified submission within the specified series.
+   * (tags.listTags)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_TagList
+   */
+  public function listTags($seriesId, $submissionId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_TagList");
+  }
+}
+
+/**
+ * The "topics" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $topics = $kitch_sinkService->topics;
+ *  </code>
+ */
+class Google_Service_KitchSink_Topics_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the specified topic from the specified series. (topics.get)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Topic2
+   */
+  public function get($seriesId, $topicId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_KitchSink_Topic2");
+  }
+  /**
+   * Inserts a new topic into the specified series. (topics.insert)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param Google_Topic $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Topic
+   */
+  public function insert($seriesId, Google_Service_KitchSink_Topic $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Topic");
+  }
+  /**
+   * Searches the topics within the specified series and returns the search
+   * results. (topics.listTopics)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int max-results
+   * Maximum number of results to return.
+   * @opt_param string mode
+   *
+   * @opt_param string q
+   * Search query.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_TopicList
+   */
+  public function listTopics($seriesId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_TopicList");
+  }
+  /**
+   * Updates the specified topic within the specified series. (topics.update)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param Google_Topic $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Topic
+   */
+  public function update($seriesId, $topicId, Google_Service_KitchSink_Topic $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_KitchSink_Topic");
+  }
+}
+
+/**
+ * The "submissions" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $submissions = $kitch_sinkService->submissions;
+ *  </code>
+ */
+class Google_Service_KitchSink_TopicsSubmissions_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Searches the submissions for the specified topic within the specified series
+   * and returns the search results. (submissions.listTopicsSubmissions)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $topicId
+   * The decimal ID of the Topic within the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string author
+   * Restricts the results to submissions by a specific author.
+   * @opt_param bool hasAttachedVideo
+   * Specifies whether to restrict to submissions that have videos attached.
+   * @opt_param string q
+   * Search query.
+   * @opt_param string sort
+   * Sort order.
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_SubmissionList
+   */
+  public function listTopicsSubmissions($seriesId, $topicId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'topicId' => $topicId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_SubmissionList");
+  }
+}
+
+/**
+ * The "votes" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $kitch_sinkService = new Google_Service_KitchSink(...);
+ *   $votes = $kitch_sinkService->votes;
+ *  </code>
+ */
+class Google_Service_KitchSink_Votes_Resource extends Google_Service_Resource
+{
+
+  /**
+   * Returns the votes by the authenticated user for the specified submission
+   * within the specified series. (votes.get)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string userId
+   *
+   * @return Google_Service_KitchSink_Vote
+   */
+  public function get($seriesId, $submissionId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_KitchSink_Vote");
+  }
+  /**
+   * Inserts a new vote by the authenticated user for the specified submission
+   * within the specified series. (votes.insert)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param Google_Vote $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_KitchSink_Vote
+   */
+  public function insert($seriesId, $submissionId, Google_Service_KitchSink_Vote $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_KitchSink_Vote");
+  }
+  /**
+   * Lists the votes by the authenticated user for the given series.
+   * (votes.listVotes)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int start-index
+   * Index of the first result to be retrieved.
+   * @return Google_Service_KitchSink_VoteList
+   */
+  public function listVotes($seriesId, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_KitchSink_VoteList");
+  }
+  /**
+   * Updates the votes by the authenticated user for the specified submission
+   * within the specified series. (votes.update)
+   *
+   * @param int $seriesId
+   * The decimal ID of the Series.
+   * @param int $submissionId
+   * The decimal ID of the Submission within the Series.
+   * @param Google_Vote $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string userId
+   *
+   * @return Google_Service_KitchSink_Vote
+   */
+  public function update($seriesId, $submissionId, Google_Service_KitchSink_Vote $postBody, $optParams = array())
+  {
+    $params = array('seriesId' => $seriesId, 'submission_id' => $submissionId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_KitchSink_Vote");
+  }
+}
+
+
+
+
+class Google_Service_KitchSink_Geometry extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $type;
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
+  }
+
+}
+
+class Google_Service_KitchSink_GeometryCollection extends Google_Service_KitchSink_Geometry
+{
+  protected $collection_key = 'geometries';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $geometriesType = 'Google_Service_KitchSink_Geometry';
+  protected $geometriesDataType = 'array';
+  protected function gapiInit() {
+    $this->type = 'Collection';
+  }
+  public function setGeometries($geometries)
+  {
+    $this->geometries = $geometries;
+  }
+
+  public function getGeometries()
+  {
+    return $this->geometries;
+  }
+
+}
+
+class Google_Service_KitchSink_GeometryPolygon extends Google_Service_KitchSink_Geometry
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $coordinates;
+  protected function gapiInit() {
+    $this->type = 'Polygon';
+  }
+  public function setCoordinates($coordinates)
+  {
+    $this->coordinates = $coordinates;
+  }
+
+  public function getCoordinates()
+  {
+    return $this->coordinates;
+  }
+
+}
+
+class Google_Service_KitchSink_GeometryReference extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $coordinates;
+  public $type;
+
+  public function setCoordinates($coordinates)
+  {
+    $this->coordinates = $coordinates;
+  }
+
+  public function getCoordinates()
+  {
+    return $this->coordinates;
+  }
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
+  }
+
+}
+
+class Google_Service_KitchSink_LatLong extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $latitude;
+  public $location;
+  public $longitude;
+
+  public function setLatitude($latitude)
+  {
+    $this->latitude = $latitude;
+  }
+
+  public function getLatitude()
+  {
+    return $this->latitude;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+
+  public function getLocation()
+  {
+    return $this->location;
+  }
+  public function setLongitude($longitude)
+  {
+    $this->longitude = $longitude;
+  }
+
+  public function getLongitude()
+  {
+    return $this->longitude;
+  }
+
+}
+
+class Google_Service_KitchSink_ModeratorTopicsResourcePartial extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $idType = 'Google_Service_KitchSink_ModeratorTopicsResourcePartialId';
+  protected $idDataType = '';
+
+  public function setId(Google_Service_KitchSink_ModeratorTopicsResourcePartialId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+}
+
+class Google_Service_KitchSink_ModeratorTopicsResourcePartialId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $topicId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setTopicId($topicId)
+  {
+    $this->topicId = $topicId;
+  }
+
+  public function getTopicId()
+  {
+    return $this->topicId;
+  }
+
+}
+
+class Google_Service_KitchSink_Profile extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $attributionType = 'Google_Service_KitchSink_ProfileAttribution';
+  protected $attributionDataType = '';
+  protected $idType = 'Google_Service_KitchSink_ProfileId';
+  protected $idDataType = '';
+  public $kind;
+
+  public function setAttribution(Google_Service_KitchSink_ProfileAttribution $attribution)
+  {
+    $this->attribution = $attribution;
+  }
+
+  public function getAttribution()
+  {
+    return $this->attribution;
+  }
+  public function setId(Google_Service_KitchSink_ProfileId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+}
+
+class Google_Service_KitchSink_ProfileAttribution extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $avatarUrl;
+  public $displayName;
+  protected $geoType = 'Google_Service_KitchSink_LatLong';
+  protected $geoDataType = '';
+  public $location;
+
+  public function setAvatarUrl($avatarUrl)
+  {
+    $this->avatarUrl = $avatarUrl;
+  }
+
+  public function getAvatarUrl()
+  {
+    return $this->avatarUrl;
+  }
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+
+  public function getDisplayName()
+  {
+    return $this->displayName;
+  }
+  public function setGeo(Google_Service_KitchSink_LatLong $geo)
+  {
+    $this->geo = $geo;
+  }
+
+  public function getGeo()
+  {
+    return $this->geo;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+
+  public function getLocation()
+  {
+    return $this->location;
+  }
+
+}
+
+class Google_Service_KitchSink_ProfileId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $user;
+
+  public function setUser($user)
+  {
+    $this->user = $user;
+  }
+
+  public function getUser()
+  {
+    return $this->user;
+  }
+
+}
+
+class Google_Service_KitchSink_Rule extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $submissionsType = 'Google_Service_KitchSink_RuleSubmissions';
+  protected $submissionsDataType = '';
+
+  public function setSubmissions(Google_Service_KitchSink_RuleSubmissions $submissions)
+  {
+    $this->submissions = $submissions;
+  }
+
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+
+}
+
+class Google_Service_KitchSink_RuleSubmissions extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $close;
+  public $open;
+
+  public function setClose($close)
+  {
+    $this->close = $close;
+  }
+
+  public function getClose()
+  {
+    return $this->close;
+  }
+  public function setOpen($open)
+  {
+    $this->open = $open;
+  }
+
+  public function getOpen()
+  {
+    return $this->open;
+  }
+
+}
+
+class Google_Service_KitchSink_Series extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $anonymousSubmissionAllowed;
+  protected $countersType = 'Google_Service_KitchSink_SeriesCounters';
+  protected $countersDataType = '';
+  public $description;
+  protected $idType = 'Google_Service_KitchSink_SeriesId';
+  protected $idDataType = '';
+  public $kind;
+  public $name;
+  public $numTopics;
+  public $videoSubmissionAllowed;
+
+  public function setAnonymousSubmissionAllowed($anonymousSubmissionAllowed)
+  {
+    $this->anonymousSubmissionAllowed = $anonymousSubmissionAllowed;
+  }
+
+  public function getAnonymousSubmissionAllowed()
+  {
+    return $this->anonymousSubmissionAllowed;
+  }
+  public function setCounters(Google_Service_KitchSink_SeriesCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+  public function setId(Google_Service_KitchSink_SeriesId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setNumTopics($numTopics)
+  {
+    $this->numTopics = $numTopics;
+  }
+
+  public function getNumTopics()
+  {
+    return $this->numTopics;
+  }
+  public function setVideoSubmissionAllowed($videoSubmissionAllowed)
+  {
+    $this->videoSubmissionAllowed = $videoSubmissionAllowed;
+  }
+
+  public function getVideoSubmissionAllowed()
+  {
+    return $this->videoSubmissionAllowed;
+  }
+
+}
+
+class Google_Service_KitchSink_SeriesCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $anonymousSubmissions;
+  protected $countersType = 'Google_Service_KitchSink_SeriesCountersCounters';
+  protected $countersDataType = '';
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+  public $submissions;
+  public $users;
+  public $videoSubmissions;
+
+  public function setAnonymousSubmissions($anonymousSubmissions)
+  {
+    $this->anonymousSubmissions = $anonymousSubmissions;
+  }
+
+  public function getAnonymousSubmissions()
+  {
+    return $this->anonymousSubmissions;
+  }
+  public function setCounters(Google_Service_KitchSink_SeriesCountersCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+  public function setSubmissions($submissions)
+  {
+    $this->submissions = $submissions;
+  }
+
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setUsers($users)
+  {
+    $this->users = $users;
+  }
+
+  public function getUsers()
+  {
+    return $this->users;
+  }
+  public function setVideoSubmissions($videoSubmissions)
+  {
+    $this->videoSubmissions = $videoSubmissions;
+  }
+
+  public function getVideoSubmissions()
+  {
+    return $this->videoSubmissions;
+  }
+
+}
+
+class Google_Service_KitchSink_SeriesCountersCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "allVotes" => "all-votes",
+  );
+  public $allVotes;
+
+  public function setAllVotes($allVotes)
+  {
+    $this->allVotes = $allVotes;
+  }
+
+  public function getAllVotes()
+  {
+    return $this->allVotes;
+  }
+
+}
+
+class Google_Service_KitchSink_SeriesId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+
+}
+
+class Google_Service_KitchSink_SeriesList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemsType = 'Google_Service_KitchSink_Series';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+}
+
+class Google_Service_KitchSink_Submission extends Google_Collection
+{
+  protected $collection_key = 'topics';
+  protected $internal_gapi_mappings = array(
+        "attachmentUrl" => "@attachmentUrl",
+  );
+  public $attachmentUrl;
+  protected $attributionType = 'Google_Service_KitchSink_SubmissionAttribution';
+  protected $attributionDataType = '';
+  public $author;
+  protected $countersType = 'Google_Service_KitchSink_SubmissionCounters';
+  protected $countersDataType = '';
+  public $created;
+  protected $geoType = 'Google_Service_KitchSink_LatLong';
+  protected $geoDataType = 'array';
+  protected $idType = 'Google_Service_KitchSink_SubmissionId';
+  protected $idDataType = '';
+  public $kind;
+  protected $parentSubmissionIdType = 'Google_Service_KitchSink_SubmissionParentSubmissionId';
+  protected $parentSubmissionIdDataType = '';
+  public $text;
+  protected $topicsType = 'Google_Service_KitchSink_ModeratorTopicsResourcePartial';
+  protected $topicsDataType = 'array';
+  protected $translationsType = 'Google_Service_KitchSink_Translations';
+  protected $translationsDataType = 'map';
+
+  public function setAttachmentUrl($attachmentUrl)
+  {
+    $this->attachmentUrl = $attachmentUrl;
+  }
+
+  public function getAttachmentUrl()
+  {
+    return $this->attachmentUrl;
+  }
+  public function setAttribution(Google_Service_KitchSink_SubmissionAttribution $attribution)
+  {
+    $this->attribution = $attribution;
+  }
+
+  public function getAttribution()
+  {
+    return $this->attribution;
+  }
+  public function setAuthor($author)
+  {
+    $this->author = $author;
+  }
+
+  public function getAuthor()
+  {
+    return $this->author;
+  }
+  public function setCounters(Google_Service_KitchSink_SubmissionCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setCreated($created)
+  {
+    $this->created = $created;
+  }
+
+  public function getCreated()
+  {
+    return $this->created;
+  }
+  public function setGeo($geo)
+  {
+    $this->geo = $geo;
+  }
+
+  public function getGeo()
+  {
+    return $this->geo;
+  }
+  public function setId(Google_Service_KitchSink_SubmissionId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setParentSubmissionId(Google_Service_KitchSink_SubmissionParentSubmissionId $parentSubmissionId)
+  {
+    $this->parentSubmissionId = $parentSubmissionId;
+  }
+
+  public function getParentSubmissionId()
+  {
+    return $this->parentSubmissionId;
+  }
+  public function setText($text)
+  {
+    $this->text = $text;
+  }
+
+  public function getText()
+  {
+    return $this->text;
+  }
+  public function setTopics($topics)
+  {
+    $this->topics = $topics;
+  }
+
+  public function getTopics()
+  {
+    return $this->topics;
+  }
+  public function setTranslations($translations)
+  {
+    $this->translations = $translations;
+  }
+
+  public function getTranslations()
+  {
+    return $this->translations;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "avatarUrl" => "$avatarUrl",
+  );
+  public $avatarUrl;
+  public $displayName;
+  public $location;
+
+  public function setAvatarUrl($avatarUrl)
+  {
+    $this->avatarUrl = $avatarUrl;
+  }
+
+  public function getAvatarUrl()
+  {
+    return $this->avatarUrl;
+  }
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+
+  public function getDisplayName()
+  {
+    return $this->displayName;
+  }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+
+  public function getLocation()
+  {
+    return $this->location;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $submissionId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setSubmissionId($submissionId)
+  {
+    $this->submissionId = $submissionId;
+  }
+
+  public function getSubmissionId()
+  {
+    return $this->submissionId;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemsType = 'Google_Service_KitchSink_Submission';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $submissionId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setSubmissionId($submissionId)
+  {
+    $this->submissionId = $submissionId;
+  }
+
+  public function getSubmissionId()
+  {
+    return $this->submissionId;
+  }
+
+}
+
+class Google_Service_KitchSink_SubmissionTranslations extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+
+
+}
+
+class Google_Service_KitchSink_Tag extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $geometryType = 'Google_Service_KitchSink_Geometry';
+  protected $geometryDataType = '';
+  protected $idType = 'Google_Service_KitchSink_TagId';
+  protected $idDataType = '';
+  public $kind;
+  public $text;
+
+  public function setGeometry(Google_Service_KitchSink_Geometry $geometry)
+  {
+    $this->geometry = $geometry;
+  }
+
+  public function getGeometry()
+  {
+    return $this->geometry;
+  }
+  public function setId(Google_Service_KitchSink_TagId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setText($text)
+  {
+    $this->text = $text;
+  }
+
+  public function getText()
+  {
+    return $this->text;
+  }
+
+}
+
+class Google_Service_KitchSink_TagId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $submissionId;
+  public $tag;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setSubmissionId($submissionId)
+  {
+    $this->submissionId = $submissionId;
+  }
+
+  public function getSubmissionId()
+  {
+    return $this->submissionId;
+  }
+  public function setTag($tag)
+  {
+    $this->tag = $tag;
+  }
+
+  public function getTag()
+  {
+    return $this->tag;
+  }
+
+}
+
+class Google_Service_KitchSink_TagList extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+
+
+}
+
+class Google_Service_KitchSink_Topic extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $countersType = 'Google_Service_KitchSink_TopicCounters';
+  protected $countersDataType = '';
+  public $description;
+  protected $idType = 'Google_Service_KitchSink_TopicId';
+  protected $idDataType = '';
+  public $kind;
+  public $name;
+  public $presenter;
+  protected $rulesType = 'Google_Service_KitchSink_TopicRules';
+  protected $rulesDataType = '';
+
+  public function setCounters(Google_Service_KitchSink_TopicCounters $counters)
+  {
+    $this->counters = $counters;
+  }
+
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+  public function setId(Google_Service_KitchSink_TopicId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setPresenter($presenter)
+  {
+    $this->presenter = $presenter;
+  }
+
+  public function getPresenter()
+  {
+    return $this->presenter;
+  }
+  public function setRules(Google_Service_KitchSink_TopicRules $rules)
+  {
+    $this->rules = $rules;
+  }
+
+  public function getRules()
+  {
+    return $this->rules;
+  }
+
+}
+
+class Google_Service_KitchSink_Topic2 extends Google_Collection
+{
+  protected $collection_key = 'rules';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $countersType = 'Google_Service_KitchSink_Topic2Counters';
+  protected $countersDataType = '';
+  public $description;
+  protected $featuredSubmissionType = 'Google_Service_KitchSink_Submission';
+  protected $featuredSubmissionDataType = '';
+  protected $idType = 'Google_Service_KitchSink_Topic2Id';
+  protected $idDataType = '';
+  public $kind;
+  public $name;
+  public $presenter;
+  protected $rulesType = 'Google_Service_KitchSink_Rule';
+  protected $rulesDataType = 'array';
+
+  public function setCounters(Google_Service_KitchSink_Topic2Counters $counters)
+  {
+    $this->counters = $counters;
+  }
+
+  public function getCounters()
+  {
+    return $this->counters;
+  }
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+  public function setFeaturedSubmission(Google_Service_KitchSink_Submission $featuredSubmission)
+  {
+    $this->featuredSubmission = $featuredSubmission;
+  }
+
+  public function getFeaturedSubmission()
+  {
+    return $this->featuredSubmission;
+  }
+  public function setId(Google_Service_KitchSink_Topic2Id $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setPresenter($presenter)
+  {
+    $this->presenter = $presenter;
+  }
+
+  public function getPresenter()
+  {
+    return $this->presenter;
+  }
+  public function setRules($rules)
+  {
+    $this->rules = $rules;
+  }
+
+  public function getRules()
+  {
+    return $this->rules;
+  }
+
+}
+
+class Google_Service_KitchSink_Topic2Counters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+  public $submissions;
+  public $users;
+  public $videoSubmissions;
+
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+  public function setSubmissions($submissions)
+  {
+    $this->submissions = $submissions;
+  }
+
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setUsers($users)
+  {
+    $this->users = $users;
+  }
+
+  public function getUsers()
+  {
+    return $this->users;
+  }
+  public function setVideoSubmissions($videoSubmissions)
+  {
+    $this->videoSubmissions = $videoSubmissions;
+  }
+
+  public function getVideoSubmissions()
+  {
+    return $this->videoSubmissions;
+  }
+
+}
+
+class Google_Service_KitchSink_Topic2Id extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $topicId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setTopicId($topicId)
+  {
+    $this->topicId = $topicId;
+  }
+
+  public function getTopicId()
+  {
+    return $this->topicId;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicCounters extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+        "minusVotes" => "minus_votes",
+        "noneVotes" => "none_votes",
+        "plusVotes" => "plus_votes",
+  );
+  public $minusVotes;
+  public $noneVotes;
+  public $plusVotes;
+  public $submissions;
+  public $users;
+  public $videoSubmissions;
+
+  public function setMinusVotes($minusVotes)
+  {
+    $this->minusVotes = $minusVotes;
+  }
+
+  public function getMinusVotes()
+  {
+    return $this->minusVotes;
+  }
+  public function setNoneVotes($noneVotes)
+  {
+    $this->noneVotes = $noneVotes;
+  }
+
+  public function getNoneVotes()
+  {
+    return $this->noneVotes;
+  }
+  public function setPlusVotes($plusVotes)
+  {
+    $this->plusVotes = $plusVotes;
+  }
+
+  public function getPlusVotes()
+  {
+    return $this->plusVotes;
+  }
+  public function setSubmissions($submissions)
+  {
+    $this->submissions = $submissions;
+  }
+
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setUsers($users)
+  {
+    $this->users = $users;
+  }
+
+  public function getUsers()
+  {
+    return $this->users;
+  }
+  public function setVideoSubmissions($videoSubmissions)
+  {
+    $this->videoSubmissions = $videoSubmissions;
+  }
+
+  public function getVideoSubmissions()
+  {
+    return $this->videoSubmissions;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $topicId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setTopicId($topicId)
+  {
+    $this->topicId = $topicId;
+  }
+
+  public function getTopicId()
+  {
+    return $this->topicId;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemsType = 'Google_Service_KitchSink_Topic';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicRules extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  protected $submissionsType = 'Google_Service_KitchSink_TopicRulesSubmissions';
+  protected $submissionsDataType = '';
+  protected $votesType = 'Google_Service_KitchSink_TopicRulesVotes';
+  protected $votesDataType = '';
+
+  public function setSubmissions(Google_Service_KitchSink_TopicRulesSubmissions $submissions)
+  {
+    $this->submissions = $submissions;
+  }
+
+  public function getSubmissions()
+  {
+    return $this->submissions;
+  }
+  public function setVotes(Google_Service_KitchSink_TopicRulesVotes $votes)
+  {
+    $this->votes = $votes;
+  }
+
+  public function getVotes()
+  {
+    return $this->votes;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicRulesSubmissions extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $close;
+  public $open;
+
+  public function setClose($close)
+  {
+    $this->close = $close;
+  }
+
+  public function getClose()
+  {
+    return $this->close;
+  }
+  public function setOpen($open)
+  {
+    $this->open = $open;
+  }
+
+  public function getOpen()
+  {
+    return $this->open;
+  }
+
+}
+
+class Google_Service_KitchSink_TopicRulesVotes extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $close;
+  public $open;
+
+  public function setClose($close)
+  {
+    $this->close = $close;
+  }
+
+  public function getClose()
+  {
+    return $this->close;
+  }
+  public function setOpen($open)
+  {
+    $this->open = $open;
+  }
+
+  public function getOpen()
+  {
+    return $this->open;
+  }
+
+}
+
+class Google_Service_KitchSink_Translation extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $lang;
+  public $text;
+
+  public function setLang($lang)
+  {
+    $this->lang = $lang;
+  }
+
+  public function getLang()
+  {
+    return $this->lang;
+  }
+  public function setText($text)
+  {
+    $this->text = $text;
+  }
+
+  public function getText()
+  {
+    return $this->text;
+  }
+
+}
+
+class Google_Service_KitchSink_Vote extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $flag;
+  protected $idType = 'Google_Service_KitchSink_VoteId';
+  protected $idDataType = '';
+  public $kind;
+  public $vote;
+
+  public function setFlag($flag)
+  {
+    $this->flag = $flag;
+  }
+
+  public function getFlag()
+  {
+    return $this->flag;
+  }
+  public function setId(Google_Service_KitchSink_VoteId $id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+  public function setVote($vote)
+  {
+    $this->vote = $vote;
+  }
+
+  public function getVote()
+  {
+    return $this->vote;
+  }
+
+}
+
+class Google_Service_KitchSink_VoteId extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+  public $seriesId;
+  public $submissionId;
+
+  public function setSeriesId($seriesId)
+  {
+    $this->seriesId = $seriesId;
+  }
+
+  public function getSeriesId()
+  {
+    return $this->seriesId;
+  }
+  public function setSubmissionId($submissionId)
+  {
+    $this->submissionId = $submissionId;
+  }
+
+  public function getSubmissionId()
+  {
+    return $this->submissionId;
+  }
+
+}
+
+class Google_Service_KitchSink_VoteList extends Google_Collection
+{
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
+  protected $itemsType = 'Google_Service_KitchSink_Vote';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+}
+=== end: ./KitchSink.php
+=== begin: ./README.txt
+PHP library for kitch_sink v1
+
+
+
+Requirements:
+
+Google API PHP Client, version 1.1.0
+URL: https://github.com/google/google-api-php-client/releases
+
+=== end: ./README.txt

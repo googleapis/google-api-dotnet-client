@@ -1,0 +1,214 @@
+{% language java %}{% collapsenewlines %}{% call_template _file_header %}
+
+package {{ api.module.name }};
+
+/**
+ * Service definition for {{ api.className }} ({{ api.version }}).
+ *
+ * <p>
+ * {{ api.description }}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="{{ api.documentationLink }}" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * <p>
+ * This service uses {@link {{ api.className }}RequestInitializer} to initialize global parameters via its
+ * {@link Builder}.
+ * </p>
+ *
+ * @since 1.3
+ * @author Google, Inc.
+ */
+@SuppressWarnings("javadoc")
+public class {{ api.className }} extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient {
+
+  // Note: Leave this static initializer at the top of the file.
+  static {
+    com.google.api.client.util.Preconditions.checkState(
+        com.google.api.client.googleapis.GoogleUtils.MAJOR_VERSION == 1 &&
+        com.google.api.client.googleapis.GoogleUtils.MINOR_VERSION >= 15,
+        "You are currently running with version %s of google-api-client. " +
+        "You need at least version 1.15 of google-api-client to run version " +
+        "{{ features.releaseVersion }} of the {{ api.title }} library.", com.google.api.client.googleapis.GoogleUtils.VERSION);
+  }
+
+  /**
+   * The default encoded root URL of the service. This is determined when the library is generated
+   * and normally should not be changed.
+   *
+   * @since 1.7
+   */
+  public static final String DEFAULT_ROOT_URL = "{{ api.rootUrl }}";
+
+  /**
+   * The default encoded service path of the service. This is determined when the library is
+   * generated and normally should not be changed.
+   *
+   * @since 1.7
+   */
+  public static final String DEFAULT_SERVICE_PATH = "{{ api.servicePath }}";
+
+  /**
+   * The default encoded base URL of the service. This is determined when the library is generated
+   * and normally should not be changed.
+   */
+  public static final String DEFAULT_BASE_URL = DEFAULT_ROOT_URL + DEFAULT_SERVICE_PATH;
+
+  /**{% filter block_comment %}
+   * Constructor.
+   * {% endfilter %}
+   *
+   * <p>
+   * Use {@link Builder} if you need to specify any of the optional parameters.
+   * </p>
+   *
+   * @param transport HTTP transport, which should normally be:
+   *        <ul>
+   *        <li>Google App Engine:
+   *        {@code com.google.api.client.extensions.appengine.http.UrlFetchTransport}</li>
+   *        <li>Android: {@code newCompatibleTransport} from
+   *        {@code com.google.api.client.extensions.android.http.AndroidHttp}</li>
+   *        <li>Java: {@link com.google.api.client.googleapis.javanet.GoogleNetHttpTransport#newTrustedTransport()}
+   *        </li>
+   *        </ul>
+   * @param jsonFactory JSON factory, which may be:
+   *        <ul>
+   *        <li>Jackson: {@code com.google.api.client.json.jackson2.JacksonFactory}</li>
+   *        <li>Google GSON: {@code com.google.api.client.json.gson.GsonFactory}</li>
+   *        <li>Android Honeycomb or higher:
+   *        {@code com.google.api.client.extensions.android.json.AndroidJsonFactory}</li>
+   *        </ul>
+   * @param httpRequestInitializer HTTP request initializer or {@code null} for none
+   * @since 1.7
+   */
+  public {{ api.className }}(com.google.api.client.http.HttpTransport transport, com.google.api.client.json.JsonFactory jsonFactory,
+      com.google.api.client.http.HttpRequestInitializer httpRequestInitializer) {
+    this(new Builder(transport, jsonFactory, httpRequestInitializer));
+  }
+
+  /**
+   * @param builder builder
+   */
+  {{ api.className }}(Builder builder) {
+    super(builder);
+  }
+
+  @Override
+  protected void initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest<?> httpClientRequest) throws java.io.IOException {
+    super.initialize(httpClientRequest);
+  }
+
+{% for resource in api.resources %}
+{% indent %}{% call_template _resource resource=resource %}{% endindent %}
+{% endfor %}
+{% for method in api.methods %}
+{% indent %}{% call_template _method method=method %}{% endindent %}
+{% endfor %}
+
+  /**
+   * Builder for {@link {{ api.className }}}.
+   *
+   * <p>
+   * Implementation is not thread-safe.
+   * </p>
+   *
+   * @since 1.3.0
+   */
+  public static final class Builder extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient.Builder {
+
+    /**
+     * Returns an instance of a new builder.
+     *
+     * @param transport HTTP transport, which should normally be:
+     *        <ul>
+     *        <li>Google App Engine:
+     *        {@code com.google.api.client.extensions.appengine.http.UrlFetchTransport}</li>
+     *        <li>Android: {@code newCompatibleTransport} from
+     *        {@code com.google.api.client.extensions.android.http.AndroidHttp}</li>
+     *        <li>Java: {@link com.google.api.client.googleapis.javanet.GoogleNetHttpTransport#newTrustedTransport()}
+     *        </li>
+     *        </ul>
+     * @param jsonFactory JSON factory, which may be:
+     *        <ul>
+     *        <li>Jackson: {@code com.google.api.client.json.jackson2.JacksonFactory}</li>
+     *        <li>Google GSON: {@code com.google.api.client.json.gson.GsonFactory}</li>
+     *        <li>Android Honeycomb or higher:
+     *        {@code com.google.api.client.extensions.android.json.AndroidJsonFactory}</li>
+     *        </ul>
+     * @param httpRequestInitializer HTTP request initializer or {@code null} for none
+     * @since 1.7
+     */
+    public Builder(com.google.api.client.http.HttpTransport transport, com.google.api.client.json.JsonFactory jsonFactory,
+        com.google.api.client.http.HttpRequestInitializer httpRequestInitializer) {
+{% filter noblanklines %}
+      super(
+          transport,
+          jsonFactory,
+          DEFAULT_ROOT_URL,
+          DEFAULT_SERVICE_PATH,
+          httpRequestInitializer,
+          {% if api.dataWrapper %}true{% else %}false{% endif %});
+{% endfilter %}
+    }
+
+    /** Builds a new instance of {@link {{ api.className }}}. */
+    @Override
+    public {{ api.className }} build() {
+      return new {{ api.className }}(this);
+    }
+
+    @Override
+    public Builder setRootUrl(String rootUrl) {
+      return (Builder) super.setRootUrl(rootUrl);
+    }
+
+    @Override
+    public Builder setServicePath(String servicePath) {
+      return (Builder) super.setServicePath(servicePath);
+    }
+
+    @Override
+    public Builder setHttpRequestInitializer(com.google.api.client.http.HttpRequestInitializer httpRequestInitializer) {
+      return (Builder) super.setHttpRequestInitializer(httpRequestInitializer);
+    }
+
+    @Override
+    public Builder setApplicationName(String applicationName) {
+      return (Builder) super.setApplicationName(applicationName);
+    }
+
+    @Override
+    public Builder setSuppressPatternChecks(boolean suppressPatternChecks) {
+      return (Builder) super.setSuppressPatternChecks(suppressPatternChecks);
+    }
+
+    @Override
+    public Builder setSuppressRequiredParameterChecks(boolean suppressRequiredParameterChecks) {
+      return (Builder) super.setSuppressRequiredParameterChecks(suppressRequiredParameterChecks);
+    }
+
+    @Override
+    public Builder setSuppressAllChecks(boolean suppressAllChecks) {
+      return (Builder) super.setSuppressAllChecks(suppressAllChecks);
+    }
+
+    /**
+     * Set the {@link {{ api.className }}RequestInitializer}.
+     *
+     * @since 1.12
+     */
+    public Builder set{{ api.className }}RequestInitializer(
+        {{ api.className }}RequestInitializer {{ api.className|lower }}RequestInitializer) {
+      return (Builder) super.setGoogleClientRequestInitializer({{ api.className|lower }}RequestInitializer);
+    }
+
+    @Override
+    public Builder setGoogleClientRequestInitializer(
+        com.google.api.client.googleapis.services.GoogleClientRequestInitializer googleClientRequestInitializer) {
+      return (Builder) super.setGoogleClientRequestInitializer(googleClientRequestInitializer);
+    }
+  }
+}{% endcollapsenewlines %}

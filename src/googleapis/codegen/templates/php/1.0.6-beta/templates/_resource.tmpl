@@ -1,0 +1,16 @@
+/**
+ * The "{{ resource.wireName }}" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   ${{ api.name }}Service = new {{ api.ownerName }}_Service_{{ api.className }}(...);
+ *   ${{ resource.codeName }} = ${{ api.name }}Service->{{ resource.codeName }};
+ *  </code>
+ */
+class {{ api.ownerName }}_Service_{{ api.className }}_{{ resource.className }}_Resource extends Google_Service_Resource
+{{% indent %}
+{% for method in resource.methods %}
+{% call_template _method method=method %}{% endfor %}
+{% endindent %}}
+{% for subr in resource.resources %}
+{% call_template _resource resource=subr %}{% endfor %}
+
