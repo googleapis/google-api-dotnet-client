@@ -223,7 +223,7 @@ namespace Google.Apis.Services
             var text = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // If a string is request, don't parse the response.
-            if (typeof(T).Equals(typeof(string)))
+			if (Type.Equals(typeof(T), typeof(string)))
             {
                 return (T)(object)text;
             }
