@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2013 Google Inc
+Copyright 2014 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <see cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.PasswordVaultDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecretsUri">The client secrets URI.</param>
         /// <param name="scopes">
@@ -48,9 +48,26 @@ namespace Google.Apis.Auth.OAuth2
             return await AuthorizeAsync(clientSecrets, scopes, user, taskCancellationToken).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
+        /// they revoked the token.
+        /// </summary>
+        /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
+        /// updated. </param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        public static async Task ReauthorizeAsync(UserCredential userCredential,
+            CancellationToken taskCancellationToken)
+        {
+            var installedApp = new AuthorizationCodeWPInstalledApp(userCredential.Flow);
+            // Create an authorization code installed app instance and authorize the user.
+            UserCredential newUserCredential = await installedApp.AuthorizeAsync(
+                userCredential.UserId, taskCancellationToken).ConfigureAwait(false);
+            userCredential.Token = newUserCredential.Token;
+        }
+
         /// <summary>Asynchronously authorizes the specified user.</summary>
         /// <remarks>
-        /// It uses <see cref="Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
+        /// It uses <see cref="Google.Apis.Util.Store.PasswordVaultDataStore"/> as the flow's data store by default.
         /// </remarks>
         /// <param name="clientSecrets">The client secrets URI.</param>
         /// <param name="scopes">
@@ -66,28 +83,11 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecrets = clientSecrets,
                 Scopes = scopes,
-                DataStore = new StorageDataStore()
+                DataStore = new PasswordVaultDataStore()
             };
 
-            var installedApp = new AuthorizationCodeWindowsInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
+            var installedApp = new AuthorizationCodeWPInstalledApp(new GoogleAuthorizationCodeFlow(initializer));
             return await installedApp.AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
-        /// they revoked the token.
-        /// </summary>
-        /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
-        /// updated. </param>
-        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
-        public static async Task ReauthorizeAsync(UserCredential userCredential,
-            CancellationToken taskCancellationToken)
-        {
-            var installedApp = new AuthorizationCodeWindowsInstalledApp(userCredential.Flow);
-            // Create an authorization code installed app instance and authorize the user.
-            UserCredential newUserCredential = await installedApp.AuthorizeAsync(
-                userCredential.UserId, taskCancellationToken).ConfigureAwait(false);
-            userCredential.Token = newUserCredential.Token;
         }
 
         /// <summary>Loads the client secrets from the given URI.</summary>

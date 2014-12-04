@@ -50,6 +50,13 @@
       <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\wp8\Google.Apis.Auth.PlatformServices.pdb" />
       <file src="Src\GoogleApis.Auth.WP\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\wp8\Google.Apis.Auth.PlatformServices.xml" />
 
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\wpa81\Google.Apis.Auth.dll" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\wpa81\Google.Apis.Auth.pdb" />
+      <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\wpa81\Google.Apis.Auth.xml" />
+      <file src="Src\GoogleApis.Auth.WP81\bin\Release\Google.Apis.Auth.PlatformServices.dll" target="lib\wpa81\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\GoogleApis.Auth.WP81\bin\Release\Google.Apis.Auth.PlatformServices.pdb" target="lib\wpa81\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.Auth.WP81\bin\Release\Google.Apis.Auth.PlatformServices.xml" target="lib\wpa81\Google.Apis.Auth.PlatformServices.xml" />
+
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.dll" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.pdb" />
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.xml" />

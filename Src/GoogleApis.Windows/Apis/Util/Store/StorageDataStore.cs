@@ -29,12 +29,12 @@ namespace Google.Apis.Util.Store
     /// Windows Store data store that implements <see cref="IDataStore"/>. This store creates a different file for each 
     /// combination of type and key.
     /// </summary>
-    public class StroageDataStore : IDataStore
+    public class StorageDataStore : IDataStore
     {
         // TODO(peleyal): consider adding also PasswordValutDataStore
 
         private static readonly StorageFolder LocalFolder = ApplicationData.Current.LocalFolder;
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<StroageDataStore>();
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<StorageDataStore>();
 
         #region IDataStore Members
 

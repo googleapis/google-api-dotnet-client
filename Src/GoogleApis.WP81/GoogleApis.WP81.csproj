@@ -6,26 +6,26 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1D5B962-3E98-46D4-992E-C6491E4E8A02}</ProjectGuid>
+    <ProjectGuid>{176657CD-57F0-4358-B358-ED8B90D8AF39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Apis.Auth</RootNamespace>
-    <AssemblyName>Google.Apis.Auth.PlatformServices</AssemblyName>
+    <RootNamespace>Google</RootNamespace>
+    <AssemblyName>Google.Apis.PlatformServices</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
-    <TargetFrameworkVersion />
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>c5fe300c</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -33,15 +33,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Google.Apis.Auth.PlatformServices.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -51,7 +50,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -60,32 +59,10 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -95,7 +72,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -103,61 +80,57 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>Google.Apis.Auth.PlatformServices.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="OAuth2\AuthorizationCodeBroker.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeWindowsInstalledApp.cs" />
-    <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
+    <Compile Include="Apis\Util\Store\PasswordVaultDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApis.Auth\GoogleApis.Auth.csproj">
-      <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
-      <Name>GoogleApis.Auth</Name>
-    </ProjectReference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
       <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
       <Name>GoogleApis.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.Windows\GoogleApis.Windows.csproj">
-      <Project>{9cbb9ec3-c678-4fb7-889b-ded6de1f06b6}</Project>
-      <Name>GoogleApis.Windows</Name>
+    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+      <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
+      <Name>GoogleApis</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.dll</HintPath>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\win8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\win8\System.Net.Http.Extensions.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\wpa81\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\win8\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
