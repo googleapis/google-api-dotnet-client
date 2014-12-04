@@ -58,6 +58,13 @@
       <file src="Src\GoogleApis.WP\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\wp8\Google.Apis.PlatformServices.pdb" />
       <file src="Src\GoogleApis.WP\bin\Release\Google.Apis.PlatformServices.xml" target="lib\wp8\Google.Apis.PlatformServices.xml" />
 
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\wpa81\Google.Apis.dll" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\wpa81\Google.Apis.pdb" />
+      <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\wpa81\Google.Apis.xml" />
+      <file src="Src\GoogleApis.WP81\bin\Release\Google.Apis.PlatformServices.dll" target="lib\wpa81\Google.Apis.PlatformServices.dll" />
+      <file src="Src\GoogleApis.WP81\bin\Release\Google.Apis.PlatformServices.pdb" target="lib\wpa81\Google.Apis.PlatformServices.pdb" />
+      <file src="Src\GoogleApis.WP81\bin\Release\Google.Apis.PlatformServices.xml" target="lib\wpa81\Google.Apis.PlatformServices.xml" />
+
       <file src="Src\GoogleApis\bin\Release\Google.Apis.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.dll" />
       <file src="Src\GoogleApis\bin\Release\Google.Apis.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.pdb" />
       <file src="Src\GoogleApis\bin\Release\Google.Apis.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.xml" />

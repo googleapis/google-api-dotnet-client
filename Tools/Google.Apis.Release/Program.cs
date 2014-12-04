@@ -438,13 +438,19 @@ namespace Google.Apis.Release
 
             Directory.CreateDirectory(binDir);
             Directory.CreateDirectory(Path.Combine(binDir, "WP"));
+            Directory.CreateDirectory(Path.Combine(binDir, "WP81"));
             Directory.CreateDirectory(Path.Combine(binDir, "Windows"));
 
             foreach (var project in ReleaseProjects)
             {
                 var outputDir = binDir;
+                // Add Google.Apis.WP81 and Google.Apis.Auth.WP81 assemblies to a WP81 folder.
+                if (project.GetName().Contains("WP81"))
+                {
+                    outputDir = Path.Combine(outputDir, "WP81");
+                }
                 // Add Google.Apis.WP and Google.Apis.Auth.WP assemblies to a WP folder.
-                if (project.GetName().Contains("WP"))
+                else if (project.GetName().Contains("WP"))
                 {
                     outputDir = Path.Combine(outputDir, "WP");
                 }
@@ -653,11 +659,14 @@ namespace Google.Apis.Release
                     DefaultRepository.Combine("Src", "GoogleApis.DotNet4", "GoogleApis.DotNet4.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Windows", "GoogleApis.Windows.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.WP", "GoogleApis.WP.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.WP81", "GoogleApis.WP81.csproj"),
+
 
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.DotNet4", "GoogleApis.Auth.DotNet4.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.Mvc4", "GoogleApis.Auth.Mvc4.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.Windows", "GoogleApis.Auth.Windows.csproj"),
                     DefaultRepository.Combine("Src", "GoogleApis.Auth.WP", "GoogleApis.Auth.WP.csproj"),
+                    DefaultRepository.Combine("Src", "GoogleApis.Auth.WP81", "GoogleApis.Auth.WP81.csproj"),
                 };
                 return releaseProjects = (from path in releasePaths
                                           select new Project(path)).ToList();

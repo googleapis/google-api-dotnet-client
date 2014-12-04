@@ -65,7 +65,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Gets the user identity.</summary>
-        public string UderId
+        public string UserId
         {
             get { return userId; }
         }

@@ -87,7 +87,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             var installedApp = new AuthorizationCodeWPInstalledApp(userCredential.Flow);
             // Create an authorization code installed app instance and authorize the user.
-            UserCredential newUserCredential = await installedApp.AuthorizeAsync(userCredential.UderId,
+            UserCredential newUserCredential = await installedApp.AuthorizeAsync(userCredential.UserId,
                 taskCancellationToken).ConfigureAwait(false);
             userCredential.Token = newUserCredential.Token;
         }

@@ -100,7 +100,7 @@ namespace Google.Apis.Auth.OAuth2
             // Create an authorization code installed app instance and authorize the user.
             UserCredential newUserCredential = await new AuthorizationCodeInstalledApp(userCredential.Flow,
                 new LocalServerCodeReceiver()).AuthorizeAsync
-                (userCredential.UderId, taskCancellationToken).ConfigureAwait(false);
+                (userCredential.UserId, taskCancellationToken).ConfigureAwait(false);
             userCredential.Token = newUserCredential.Token;
         }
 
