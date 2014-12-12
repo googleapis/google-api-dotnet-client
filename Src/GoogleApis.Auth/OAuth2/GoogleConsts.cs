@@ -25,8 +25,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The approval URL (used in the Windows solution as a callback).</summary>
         public const string ApprovalUrl = "https://accounts.google.com/o/oauth2/approval";
 
-        /// <summary>The authorization token server URL</summary>
+        /// <summary>The authorization token server URL.</summary>
         public const string TokenUrl = "https://accounts.google.com/o/oauth2/token";
+
+        /// <summary>The Compute Engine authorization token server URL</summary>
+        public const string ComputeTokenUrl =
+            "http://metadata/computeMetadata/v1/instance/service-accounts/default/token";
 
         /// <summary>The path to the Google revocation endpoint.</summary>
         public const string RevokeTokenUrl = "https://accounts.google.com/o/oauth2/revoke";
