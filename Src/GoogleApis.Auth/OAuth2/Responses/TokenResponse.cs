@@ -70,7 +70,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 return true;
             }
 
-            return Issued.AddSeconds(ExpiresInSeconds.Value + 60) <= clock.Now;
+            return Issued.AddSeconds(ExpiresInSeconds.Value - 60) <= clock.Now;
         }
     }
 }
