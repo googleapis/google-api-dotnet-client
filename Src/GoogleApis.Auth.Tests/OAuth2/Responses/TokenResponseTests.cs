@@ -60,12 +60,12 @@ namespace Google.Apis.Auth.OAuth2.Responses
         }
 
         [Test]
-        public void IsExpired_True()
+        public void IsExpired()
         {
             var issued = DateTime.Now;
-            var newNow = DateTime.Now.AddSeconds(200);
+            var newNow = DateTime.Now.AddSeconds(100);
 
-            var mockClock = new MockClock()
+            var mockClock = new MockClock
             {
                 Now = newNow
             };
@@ -78,31 +78,25 @@ namespace Google.Apis.Auth.OAuth2.Responses
             response = new TokenResponse() { Issued = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { ExpiresInSeconds = 1, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 1, Issued = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { ExpiresInSeconds = 100, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100, Issued = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { ExpiresInSeconds = 140, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 158, Issued = issued };
             Assert.True(response.IsExpired(mockClock));
-        }
 
-        [Test]
-        public void IsExpired_False()
-        {
-            var issued = DateTime.Now;
-            var newNow = DateTime.Now.AddSeconds(200);
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 159, Issued = issued };
+            Assert.True(response.IsExpired(mockClock));
 
-            var mockClock = new MockClock()
-            {
-                Now = newNow
-            };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 160, Issued = issued };
+            Assert.True(response.IsExpired(mockClock));
 
-            var response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 141, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 161, Issued = issued };
             Assert.False(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 142, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 162, Issued = issued };
             Assert.False(response.IsExpired(mockClock));
         }
     }
