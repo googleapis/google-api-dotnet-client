@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -69,9 +70,25 @@ namespace Google.Apis.Auth.OAuth2
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
-                var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
-                // TODO(peleyal): Consider return false here.
-                throw new TokenResponseException(error);
+                try
+                {
+                    var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
+                    // TODO(peleyal): Consider return false here.
+                    throw new TokenResponseException(error);
+                }
+                // Json.NET deserilize object method doesn't include documentation about which exceptions can
+                // be thrown, that's why we just catch a general exception here.
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "Exception was caughted when deserializing TokenErrorResponse. Content is: {0}",
+                        content);
+                    var error = "Server response does not contain a JSON object. Status code is: "
+                        + response.StatusCode;
+                    throw new TokenResponseException(new TokenErrorResponse
+                        {
+                            Error = error
+                        });
+                }
             }
 
             // Gets the token and sets its issued time.
