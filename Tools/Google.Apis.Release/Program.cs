@@ -245,7 +245,6 @@ namespace Google.Apis.Release
                 if (BuildDefaultRepository())
                 {
                     CreateCoreNuGetPackages();
-                    // TODO(peleyal): release notes should be part of the package
                 }
             }
         }
