@@ -421,13 +421,11 @@ namespace Google.Apis.Release
         private string CreateContribNewRelease()
         {
             TraceSource.TraceEvent(TraceEventType.Information, "Building Contrib release");
-
             string releaseDir = ContribRepository.Combine(Tag);
 
-            // Clear existing directories.
-            DirectoryUtilities.ClearOrCreateDirectory(releaseDir);
+            // DO NOT clear releaseDir, it already contains documentation.
             string genDir = Path.Combine(releaseDir, "Generated");
-            Directory.CreateDirectory(genDir);
+            DirectoryUtilities.ClearOrCreateDirectory(genDir);
 
             #region [RELEASE_VERSION]/Generated/Bin
 
