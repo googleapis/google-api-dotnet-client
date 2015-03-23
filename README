@@ -13,7 +13,7 @@
 #  limitations under the License.
 
 Google APIs Code Generator
-https://code.google.com/p/google-apis-client-generator/
+https://github.com/google/apis-client-generator/
 
 August 20, 2013
 
@@ -43,9 +43,9 @@ Everything can be installed quickly with easy_install or pip. E.g.:
 The following dependencies will be installed:
 
   * django (for the templating package) - http://www.djangoproject.com/
-  * google-apputils - http://code.google.com/p/google-apputils-python/
-  * google-api-python-client - http://code.google.com/p/google-api-python-client
-  * python-gflags - http://code.google.com/p/python-gflags/
+  * google-apputils - http://github.com/google/google-apputils/
+  * google-api-python-client - http://github.com/google/google-api-python-client
+  * python-gflags - http://gitub.com/google/python-gflags/
   * httplib2 - http://code.google.com/p/httplib2/
 
 
