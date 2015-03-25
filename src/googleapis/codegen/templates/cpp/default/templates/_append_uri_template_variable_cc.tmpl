@@ -6,7 +6,7 @@
 {% if variable.data_type.json_type == 'array' %}
   {{ api.client_namespace }}::AppendIteratorToUrl(
     {{ variable.memberName }}.begin(), {{ variable.memberName }}.end(),
-    "{{ variable.codeName }}", target);
+    "{{ variable.wireName }}", target);
 {% else %}
   {{ api.client_namespace }}::UriTemplate::AppendValue(
       {{ variable.memberName }}, config, target);

@@ -68,7 +68,7 @@ class {{ api.className }} extends ConsoleClient {
 
 {% filter noblanklines %}
   {{ api.className }}([oauth2.OAuth2Console auth]) : super(auth) {
-    basePath = {% literal api.basePath %};
+    servicePath = {% literal api.servicePath %};
     rootUrl = {% literal api.rootUrl %};
 {% comment %} TODO(aiuto): This has to recurse to subresources.{% endcomment %}
 {% for r in api.resources %}

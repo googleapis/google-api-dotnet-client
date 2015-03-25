@@ -18,10 +18,10 @@
 
 from google.apputils import basetest
 
-from googleapis.codegen import api
 from googleapis.codegen import data_types
 from googleapis.codegen import data_value
 from googleapis.codegen import language_model
+from googleapis.codegen import schema
 from django import template as django_template  # pylint: disable=g-bad-import-order
 
 
@@ -79,8 +79,8 @@ class DataValueTest(basetest.TestCase):
       def __init__(self):
         self.model_module = None
 
-      def SetSchema(self, schema):
-        self.schema = schema
+      def SetSchema(self, s):
+        self.schema = s
 
       def SetSchemaRef(self, schema_ref):
         self.schema_ref = schema_ref
@@ -98,16 +98,16 @@ class DataValueTest(basetest.TestCase):
                            parent=None, wire_name=None):
         return self.schema_ref
 
-      def NestedClassNameForProperty(self, name, schema):
-        return '%s%s' % (schema.class_name, name)
+      def NestedClassNameForProperty(self, name, owning_schema):
+        return '%s%s' % (owning_schema.class_name, name)
 
     mock_api = MockApi()
-    schema = api.Schema(mock_api, 'Bar', bar_def_dict)
-    mock_api.SetSchema(schema)
+    bar_schema = schema.Schema(mock_api, 'Bar', bar_def_dict)
+    mock_api.SetSchema(bar_schema)
     schema_ref = data_types.SchemaReference('Bar', mock_api)
     mock_api.SetSchemaRef(schema_ref)
 
-    prototype = api.Property(mock_api, schema_ref, 'baz', foo_def_dict)
+    prototype = schema.Property(mock_api, schema_ref, 'baz', foo_def_dict)
     dv = data_value.DataValue('3', prototype)
     # Assure all the unwrapping gymnastics in the DataValue constructor did
     # their job correctly.

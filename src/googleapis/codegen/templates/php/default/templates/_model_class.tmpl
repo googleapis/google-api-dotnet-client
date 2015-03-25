@@ -1,13 +1,13 @@
 
 class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% if model.superClass %}extends {{ api.ownerName }}_Service_{{ api.className }}_{{ model.superClass }}{% else %}{% if model.dataType == "array" %}extends Google_Collection{% else %}extends Google_Model{% endif %}{% endif %}
-{
+{{% if model.properties %}
 {% filter noblanklines %}
 {% if not model.is_variant_base and model.collectionKey %}
   protected $collection_key = '{{ model.collectionKey }}';
 {% endif %}
   protected $internal_gapi_mappings = array(
     {% for property in model.properties %}
-      {% if property.memberName != property.wireName %}
+      {% if not property.member_name_is_json_name %}
         "{{ property.memberName }}" => "{{ property.wireName }}",
       {% endif %}
     {% endfor %}
@@ -23,12 +23,14 @@ class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% i
 {% endfilter %}
 {% filter noblanklines %}
  {% if model.discriminantValue %}
-  protected function gapiInit() {
+  protected function gapiInit()
+  {
     $this->type = {% literal model.discriminantValue %};
   }
  {% endif %}
 {% endfilter %}
-{% for property in model.properties %}{% filter noblanklines %}
+{% for property in model.properties %}
+{% filter noblanklines %}
   {% if property.type == "array" or property.dataType == "map" or not property.typeHint %}
   public function {{ property.setterName }}(${{ property.memberName }})
   {% else %}
@@ -37,11 +39,10 @@ class {{ api.ownerName }}_Service_{{ api.className }}_{{ model.className }} {% i
   {
     $this->{{ property.memberName }} = ${{ property.memberName }};
   }
-{% endfilter %}
 
   public function {{ property.getterName }}()
   {
     return $this->{{ property.memberName }};
   }
-{% endfor %}
+{% endfilter %}{% endfor %}{% endif %}
 }

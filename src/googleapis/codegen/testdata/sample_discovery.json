@@ -154,9 +154,6 @@
       },
       "profileUrl": {
        "type": "any"
-      },
-      "thumbnailUrl": {
-       "type": "any"
       }
      }
     },
@@ -277,9 +274,6 @@
         },
         "profileUrl": {
          "type": "any"
-        },
-        "thumbnailUrl": {
-         "type": "any"
         }
        }
       },
@@ -367,7 +361,7 @@
            "type": "any"
           },
           "type": {
-           "type": "any"
+           "$ref": "LinkType"
           }
          }
         }
@@ -390,13 +384,7 @@
       }
      }
     },
-    "placeId": {
-     "type": "any"
-    },
     "placeName": {
-     "type": "any"
-    },
-    "placeholder": {
      "type": "any"
     },
     "published": {
@@ -539,7 +527,7 @@
          "type": "any"
         },
         "type": {
-         "type": "any"
+         "$ref": "LinkType"
         },
         "updated": {
          "type": "string"
@@ -603,9 +591,6 @@
        "type": "string"
       },
       "profileUrl": {
-       "type": "string"
-      },
-      "thumbnailUrl": {
        "type": "string"
       }
      }
@@ -701,9 +686,6 @@
       },
       "profileUrl": {
        "type": "string"
-      },
-      "thumbnailUrl": {
-       "type": "string"
       }
      }
     },
@@ -732,9 +714,6 @@
        "type": "any"
       },
       "profileUrl": {
-       "type": "any"
-      },
-      "thumbnailUrl": {
        "type": "any"
       }
      }
@@ -806,9 +785,6 @@
     "originalContent": {
      "type": "any"
     },
-    "placeholder": {
-     "type": "any"
-    },
     "published": {
      "type": "string"
     },
@@ -860,7 +836,7 @@
          "type": "any"
         },
         "type": {
-         "type": "any"
+         "$ref": "LinkType"
         },
         "updated": {
          "type": "string"
@@ -1100,6 +1076,9 @@
     },
     "href": {
      "type": "string"
+    },
+    "type": {
+     "$ref": "LinkType"
     }
    }
   },
@@ -1518,9 +1497,6 @@
       "type": "any"
      }
     },
-    "thumbnailUrl": {
-     "type": "any"
-    },
     "turnOffs": {
      "type": "array",
      "items": {
@@ -1674,6 +1650,20 @@
      "type": "any"
     }
    }
+  },
+  "LinkType": {
+   "id": "LinkType",
+   "type": "string",
+   "enum": [
+    "DOWNLOAD",
+    "THUMBNAIL",
+    "PDF"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    ""
+   ]
   }
  },
  "methods": {
@@ -1828,11 +1818,6 @@
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
-      "hl": {
-       "location": "query",
-       "description": "Language code to limit language results.",
-       "type": "string"
-      },
       "lat": {
        "location": "query",
        "description": "Latitude to use in a geographic location query.",
@@ -1903,13 +1888,6 @@
        "description": "Language code to limit language results.",
        "type": "string"
       },
-      "max-comments": {
-       "location": "query",
-       "description": "Maximum number of comments to include.",
-       "type": "integer",
-       "minimum": "0",
-       "maximum": "4294967295"
-      },
       "max-liked": {
        "location": "query",
        "description": "Maximum number of likes to include.",
@@ -1917,6 +1895,13 @@
        "minimum": "0",
        "maximum": "4294967295",
        "default": "0"
+      },
+      "max-comments": {
+       "location": "query",
+       "description": "Maximum number of comments to include.",
+       "type": "integer",
+       "minimum": "0",
+       "maximum": "4294967295"
       },
       "postId": {
        "location": "path",
@@ -1955,20 +1940,6 @@
      "httpMethod": "POST",
      "description": "Create a new activity",
      "parameters": {
-      "alt": {
-       "location": "query",
-       "description": "Specifies an alternative representation type.",
-       "type": "string",
-       "enum": [
-        "atom",
-        "json"
-       ],
-       "enumDescriptions": [
-        "Use Atom XML format",
-        "Use JSON format"
-       ],
-       "default": "atom"
-      },
       "hl": {
        "location": "query",
        "description": "Language code to limit language results.",
@@ -2110,88 +2081,6 @@
       "userId",
       "scope"
      ],
-     "response": {
-      "$ref": "ActivityFeed"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/buzz.read-only",
-      "https://www.googleapis.com/auth/buzz"
-     ]
-    },
-    "search": {
-     "path": "activities/search",
-     "rpcMethod": "chili.activities.search",
-     "httpMethod": "GET",
-     "description": "Search for activities",
-     "parameters": {
-      "alt": {
-       "location": "query",
-       "description": "Specifies an alternative representation type.",
-       "type": "string",
-       "enum": [
-        "atom",
-        "json"
-       ],
-       "enumDescriptions": [
-        "Use Atom XML format",
-        "Use JSON format"
-       ],
-       "default": "atom"
-      },
-      "bbox": {
-       "location": "query",
-       "description": "Bounding box to use in a geographic location query.",
-       "type": "string"
-      },
-      "c": {
-       "location": "query",
-       "description": "A continuation token that allows pagination.",
-       "type": "string"
-      },
-      "hl": {
-       "location": "query",
-       "description": "Language code to limit language results.",
-       "type": "string"
-      },
-      "lat": {
-       "location": "query",
-       "description": "Latitude to use in a geographic location query.",
-       "type": "string"
-      },
-      "lon": {
-       "location": "query",
-       "description": "Longitude to use in a geographic location query.",
-       "type": "string"
-      },
-      "max-results": {
-       "location": "query",
-       "description": "Maximum number of results to include.",
-       "type": "integer",
-       "minimum": "0",
-       "maximum": "4294967295",
-       "default": "20"
-      },
-      "pid": {
-       "location": "query",
-       "description": "ID of a place to use in a geographic location query.",
-       "type": "string"
-      },
-      "q": {
-       "location": "query",
-       "description": "Full-text search query string.",
-       "type": "string"
-      },
-      "radius": {
-       "location": "query",
-       "description": "Radius to use in a geographic location query.",
-       "type": "string"
-      },
-      "truncateAtom": {
-       "location": "query",
-       "description": "Truncate the value of the atom:content element.",
-       "type": "boolean"
-      }
-     },
      "response": {
       "$ref": "ActivityFeed"
      },
@@ -2563,12 +2452,6 @@
        "enumDescriptions": [
         "Activities posted by the user."
        ]
-      },
-      "userId": {
-       "location": "path",
-       "required": true,
-       "description": "ID of the user for whose post to get comments.",
-       "type": "string"
       }
      },
      "parameterOrder": [
@@ -3737,11 +3620,6 @@
        "description": "A continuation token that allows pagination.",
        "type": "string"
       },
-      "hl": {
-       "location": "query",
-       "description": "Language code to limit language results.",
-       "type": "string"
-      },
       "max-results": {
        "location": "query",
        "description": "Maximum number of results to include.",
@@ -3828,6 +3706,49 @@
      ],
      "response": {
       "$ref": "PhotosFeed"
+     }
+    },
+    "match": {
+     "id": "myservice.photos.match",
+     "path": "matches",
+     "httpMethod": "POST",
+     "description": "A method with no required parameters and media upload.",
+     "parameters": {
+      "service_id": {
+       "type": "string",
+       "description": "Type of match.",
+       "enum": [
+        "exact",
+        "random",
+        "penguins"
+       ],
+       "enumDescriptions": [
+        "all the pixels match",
+        "return a random photo",
+        "detect penguins and only match on those"
+       ],
+       "location": "query"
+      }
+     },
+     "response": {
+      "$ref": "Album"
+     },
+     "supportsMediaUpload": true,
+     "mediaUpload": {
+      "accept": [
+       "*/*"
+      ],
+      "maxSize": "20GB",
+      "protocols": {
+       "simple": {
+        "multipart": true,
+        "path": "/upload/video/myservice/v1/match/matches"
+       },
+       "resumable": {
+        "multipart": true,
+        "path": "/resumable/upload/video/myservice/v1/match/matches"
+       }
+      }
      }
     }
    }

@@ -22,6 +22,7 @@ __author__ = 'chirags@google.com (Chirag Shah)'
 from google.apputils import basetest
 from googleapis.codegen import api
 from googleapis.codegen import php_generator
+from googleapis.codegen import schema
 
 
 class PHPApiTest(basetest.TestCase):
@@ -65,7 +66,7 @@ class PHPApiTest(basetest.TestCase):
          'Google_Service_Test_TestSchemaTest'),
         ]
     for type_dict, expected_hint in type_to_hint:
-      test_property = api.Property(self.api, test_schema, 'test', type_dict)
+      test_property = schema.Property(self.api, test_schema, 'test', type_dict)
       test_property.SetLanguageModel(self.language_model)
       self.generator._SetTypeHint(test_property)
       self.assertEquals(expected_hint, test_property.values['typeHint'])
@@ -135,9 +136,9 @@ class PHPApiTest(basetest.TestCase):
 
     for schema_obj in php_type_to_schema:
       php_type = schema_obj[0]
-      schema = schema_obj[1]
+      s = schema_obj[1]
       self.assertEquals(php_type,
-                        self.language_model.GetCodeTypeFromDictionary(schema))
+                        self.language_model.GetCodeTypeFromDictionary(s))
 
 if __name__ == '__main__':
   basetest.main()

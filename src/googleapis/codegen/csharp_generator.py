@@ -23,6 +23,7 @@ __author__ = 'aiuto@google.com (Tony Aiuto)'
 from googleapis.codegen import api
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import language_model
+from googleapis.codegen import schema
 from googleapis.codegen import utilities
 
 
@@ -118,7 +119,7 @@ class CSharpLanguageModel(language_model.LanguageModel):
   def ToClassMemberName(self, variable, name):
     formatted = super(CSharpLanguageModel, self).ApplyPolicy('member', variable,
                                                              name)
-    if isinstance(variable, api.Property):
+    if isinstance(variable, schema.Property):
       if variable.schema.values.get('className') == formatted:
         formatted += 'Value'
     return formatted
@@ -236,8 +237,8 @@ class CSharpApi(api.Api):
                    self.values['versionNoDots'].replace('-', '')))
     self.model_module.SetPath('Data')
 
-  def NestedClassNameForProperty(self, name, schema):
-    parent_name = schema.class_name.split('.')[-1]
+  def NestedClassNameForProperty(self, name, owning_schema):
+    parent_name = owning_schema.class_name.split('.')[-1]
     class_name = utilities.CamelCase(name) + 'Data'
     if parent_name == class_name:
       class_name += 'Schema'

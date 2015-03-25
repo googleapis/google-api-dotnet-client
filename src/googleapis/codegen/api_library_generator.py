@@ -204,6 +204,7 @@ class ApiLibraryGenerator(TemplateGenerator):
     Args:
       api: (Api) The Api.
     """
+    api.SetTemplateValue('topLevelModels', api.TopLevelModelClasses())
     for parameter in api.values.get('parameters') or []:
       self.AnnotateParameter(api, parameter)
 

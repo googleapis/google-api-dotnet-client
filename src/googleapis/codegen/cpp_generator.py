@@ -31,21 +31,10 @@ from googleapis.codegen import utilities
 from googleapis.codegen.import_definition import ImportDefinition
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string(
-    'cpp_singular_source_name',
-    '',
-    ('If non-empty then combine all the sources to this *.cc file '
-     ' and all the headers to this *.h file. Otherwise combine them all to '
-     ' the <defined service name>_api.h and <>_api.cc'))
-
 flags.DEFINE_boolean(
     'cpp_generator_add_owner_dir',
     True,
     'Adds owner subdirectory to --output_dir path.')
-flags.DEFINE_boolean(
-    'cpp_generator_add_api_name_dir',
-    True,
-    'Adds api_id subdirectory to --output_dir path.')
 
 
 # This pattern is used to extract the DT and DD text groups.
@@ -107,9 +96,6 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
       language_model = CppLanguageModel(options)
     super(CppGenerator, self).__init__(CppApi, discovery, language,
                                        language_model, options=options)
-    if FLAGS.cpp_singular_source_name:
-      options['useSingleSourceFile'] = True
-
 
   def _InnerModelClassesSupported(self):
     """Gets whether or not inner model classes are supported."""
@@ -245,13 +231,12 @@ class CppGenerator(api_library_generator.ApiLibraryGenerator):
         'include_path',
         self._HeaderFileName(the_api.module.path, the_api.values['filename']))
 
-    if FLAGS.cpp_singular_source_name:
-      the_api.SetTemplateValue(
-          'kitchensink', FLAGS.cpp_singular_source_name)
+    monolithic_source_name = the_api.GetTemplateValue('monolithicSourceName')
+    if monolithic_source_name:
+      the_api.SetTemplateValue('kitchensink', monolithic_source_name)
     else:
       plain_api_filename = utilities.UnCamelCase(the_api.values['name'])
-      the_api.SetTemplateValue(
-          'kitchensink', '%s_api' % plain_api_filename)
+      the_api.SetTemplateValue('kitchensink', '%s_api' % plain_api_filename)
 
     authscopes = the_api.values.get('authscopes')
     if authscopes:
@@ -663,17 +648,13 @@ class CppApi(api.Api):
   def __init__(self, discovery_doc, **unused_kwargs):
     super(CppApi, self).__init__(discovery_doc)
 
-    # We're always going to add a trailing '_api'.
+    # Build the module name from the API name with a trailing '_api'.
     # This guards against empty package names (which would be anonymous)
     # and also avoids some name clashes with built-in names or keywords.
-    base = ''
-    # TODO(user): Determine if this flag makes sense. aiuto believes it
-    # should always be true.
-    if FLAGS.cpp_generator_add_api_name_dir:
-      base = self.values['name']
-
-    # We're going to emit all lower-case files to be more C++-like.
+    # We emit only lower-case files to be more C++-like.
+    base = self.values['name']
     self.module.SetPath(base.lower() + '_api')
+
     self.SetTemplateValue('base_include_path', 'googleapis/base')
     self.SetTemplateValue('strings_include_path', 'googleapis/strings')
     self.SetTemplateValue('client_include_path', 'googleapis/client')

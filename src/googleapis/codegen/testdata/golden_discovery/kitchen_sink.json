@@ -64,21 +64,22 @@
    }
   },
   "ModeratorTopicsResourcePartial": {
-   "id": "ModeratorTopicsResourcePartial",
-   "type": "object",
-   "properties": {
-    "id": {
-     "type": "object",
-     "properties": {
-      "seriesId": {
-       "type": "integer"
-      },
-      "topicId": {
-       "type": "integer"
-      }
-     }
-    }
-   }
+   "note": "An object with no properties. See bug list",
+   "type": "object"
+  },
+  "LinkType": {
+   "id": "LinkType",
+   "type": "string",
+   "enum": [
+    "DOWNLOAD",
+    "THUMBNAIL",
+    "PDF"
+   ],
+   "enumDescriptions": [
+    "",
+    "",
+    ""
+   ]
   },
   "Profile": {
    "id": "Profile",
@@ -150,7 +151,7 @@
        "type": "integer"
       },
       "users": {
-       "type": "integer"
+       "$ref": "LinkType"
       },
       "videoSubmissions": {
        "type": "integer"
@@ -627,15 +628,8 @@
      "type": "string"
     },
     "id": {
-     "type": "object",
-     "properties": {
-      "seriesId": {
-       "type": "integer"
-      },
-      "submissionId": {
-       "type": "integer"
-      }
-     }
+     "note": "An anonymous object with no properties.",
+     "type": "object"
     },
     "kind": {
      "type": "string",
@@ -1390,7 +1384,17 @@
       },
       "mode": {
        "location": "query",
-       "type": "string"
+       "type": "string",
+       "enum": [
+         "@auto",
+         "Normal",
+         "mix_it_up"
+       ],
+       "enumDescriptions": [
+         "A value with a @, to show we make constant names the right way.",
+         "boring",
+         "this should be kMixItUp in some languages"
+       ]
       },
       "q": {
        "location": "query",

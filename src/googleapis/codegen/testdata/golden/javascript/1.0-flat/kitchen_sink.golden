@@ -33,16 +33,6 @@ gapi.client.kitch_sink.GapiClientKitchSinkGapiClientKitchSinkTopicRulesVotes.pro
 gapi.client.kitch_sink.GapiClientKitchSinkGapiClientKitchSinkTopicRulesVotes.prototype.open;
 
 /** @interface */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId;
-
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId.prototype.seriesId;
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId.prototype.topicId;
-
-/** @interface */
 gapi.client.kitch_sink.GapiClientKitchSinkProfileAttribution;
 
 
@@ -97,7 +87,7 @@ gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.plus_votes;
 /** @type {?number} */
 gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.submissions;
 
-/** @type {?number} */
+/** @type {?string} */
 gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.users;
 
 /** @type {?number} */
@@ -167,6 +157,7 @@ gapi.client.kitch_sink.GapiClientKitchSinkSubmissionParentSubmissionId.prototype
 
 /** @type {?number} */
 gapi.client.kitch_sink.GapiClientKitchSinkSubmissionParentSubmissionId.prototype.submissionId;
+
 
 /** @interface */
 gapi.client.kitch_sink.GapiClientKitchSinkTagId;
@@ -282,13 +273,6 @@ gapi.client.kitch_sink.GapiClientKitchSinkGapiClientKitchSinkTopicRulesVotes.pro
 /** @interface */
 gapi.client.kitch_sink.GapiClientKitchSinkVoteId;
 
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkVoteId.prototype.seriesId;
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkVoteId.prototype.submissionId;
-
 /** @interface */
 gapi.client.kitch_sink.Geometry;
 
@@ -335,24 +319,6 @@ gapi.client.kitch_sink.LatLong.prototype.longitude;
 
 /** @interface */
 gapi.client.kitch_sink.ModeratorTopicsResourcePartial;
-
-
-/** @type {?gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId} */
-gapi.client.kitch_sink.ModeratorTopicsResourcePartial.prototype.id;
-
-
-
-
-
-/** @interface */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId;
-
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId.prototype.seriesId;
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkModeratorTopicsResourcePartialId.prototype.topicId;
 
 /** @interface */
 gapi.client.kitch_sink.Profile;
@@ -470,7 +436,7 @@ gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.plus_votes;
 /** @type {?number} */
 gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.submissions;
 
-/** @type {?number} */
+/** @type {?string} */
 gapi.client.kitch_sink.GapiClientKitchSinkSeriesCounters.prototype.users;
 
 /** @type {?number} */
@@ -643,6 +609,7 @@ gapi.client.kitch_sink.GapiClientKitchSinkTagId.prototype.submissionId;
 
 /** @type {?string} */
 gapi.client.kitch_sink.GapiClientKitchSinkTagId.prototype.tag;
+
 
 /** @interface */
 gapi.client.kitch_sink.Topic;
@@ -851,13 +818,6 @@ gapi.client.kitch_sink.Vote.prototype.vote;
 
 /** @interface */
 gapi.client.kitch_sink.GapiClientKitchSinkVoteId;
-
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkVoteId.prototype.seriesId;
-
-/** @type {?number} */
-gapi.client.kitch_sink.GapiClientKitchSinkVoteId.prototype.submissionId;
 
 /** @interface */
 gapi.client.kitch_sink.VoteList;

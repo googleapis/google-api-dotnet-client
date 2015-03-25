@@ -824,8 +824,19 @@ public interface KitchSink extends RequestFactory {
 
 
       @PropertyName("mode")
-      ListRequest setMode(@PropertyName("mode") String mode);
+      ListRequest setMode(@PropertyName("mode") ListRequest.Mode mode);
 
+      /** Possible values for {@link #setMode(mode)}. */
+      public enum Mode {
+
+        /** A value with a @, to show we make constant names the right way. */
+        @PropertyName("@auto") AUTO,
+        /** boring */
+        @PropertyName("Normal") NORMAL,
+        /** this should be kMixItUp in some languages */
+        @PropertyName("mix_it_up") MIX_IT_UP,
+        ;
+      }
       /** Search query. */
       @PropertyName("q")
       ListRequest setQ(@PropertyName("q") String q);
@@ -1309,56 +1320,6 @@ public interface LatLong extends ValueProxy {
   LatLong setLongitude(Number longitude);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/LatLong.java
-=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartialId.java
-/*
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-/*
- * Warning! This file is generated. Modify at your own risk.
- */
-
-package com.google.api.gwt.services.kitch_sink.shared.model;
-
-
-import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
-import com.google.web.bindery.autobean.shared.Splittable;
-import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
-import com.google.web.bindery.requestfactory.shared.ValueProxy;
-
-
-/**
- * Model definition for KitchSink.ModeratorTopicsResourcePartialId.
- *
- * This class models an object which will be transmitted to or from the KitchSink service.
- *
- * @author Google, Inc.
- */
-@JsonRpcProxy
-public interface ModeratorTopicsResourcePartialId extends ValueProxy {
-
-  
-  @PropertyName("seriesId")
-  Integer getSeriesId();
-
-  @PropertyName("seriesId")
-  ModeratorTopicsResourcePartialId setSeriesId(Integer seriesId);
-
-  
-  @PropertyName("topicId")
-  Integer getTopicId();
-
-  @PropertyName("topicId")
-  ModeratorTopicsResourcePartialId setTopicId(Integer topicId);
-}
-=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartialId.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartial.java
 /*
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -1393,13 +1354,6 @@ import com.google.web.bindery.requestfactory.shared.ValueProxy;
  */
 @JsonRpcProxy
 public interface ModeratorTopicsResourcePartial extends ValueProxy {
-
-  
-  @PropertyName("id")
-  ModeratorTopicsResourcePartialId getId();
-
-  @PropertyName("id")
-  ModeratorTopicsResourcePartial setId(ModeratorTopicsResourcePartialId id);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartial.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ProfileAttribution.java
@@ -1781,10 +1735,10 @@ public interface SeriesCounters extends ValueProxy {
 
   
   @PropertyName("users")
-  Integer getUsers();
+  String getUsers();
 
   @PropertyName("users")
-  SeriesCounters setUsers(Integer users);
+  SeriesCounters setUsers(String users);
 
   
   @PropertyName("videoSubmissions")
@@ -2180,10 +2134,10 @@ public interface Submission extends ValueProxy {
 
   
   @PropertyName("@attachmentUrl")
-  String get@attachmentUrl();
+  String getAttachmentUrl();
 
   @PropertyName("@attachmentUrl")
-  Submission set@attachmentUrl(String @attachmentUrl);
+  Submission setAttachmentUrl(String attachmentUrl);
 
   
   @PropertyName("attribution")
@@ -3273,20 +3227,6 @@ import com.google.web.bindery.requestfactory.shared.ValueProxy;
  */
 @JsonRpcProxy
 public interface VoteId extends ValueProxy {
-
-  
-  @PropertyName("seriesId")
-  Integer getSeriesId();
-
-  @PropertyName("seriesId")
-  VoteId setSeriesId(Integer seriesId);
-
-  
-  @PropertyName("submissionId")
-  Integer getSubmissionId();
-
-  @PropertyName("submissionId")
-  VoteId setSubmissionId(Integer submissionId);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/VoteId.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Vote.java

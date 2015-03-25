@@ -1,5 +1,23 @@
 Change Summary
 
+2015-03-24 / Version 1.5.1
+* Update locations of repositories that have moved from code.google.com to
+  github.com.
+* Some fixes for Discovery using rpcPath rather than servicePath.
+* Split Schema code to schema.py.
+* Lift the monolithic source handling out of C++ and make it a general flag
+  so Objective-C can use it too.
+* C++ fixes & improvements:
+  - url parameters of the form startIndex -> start_index.
+  - scoped_ptr->std:unique_ptr
+* Java fixes for media handling methods.
+* Objective-C almost feature parity with existing generator.
+* Update GWT generator to use naming policies. Fixes bugs with enums that had
+  @ in their names.
+* Support for Schemas which are just enums.
+* Update PHP reserved word list.
+
+
 2014-10-14 / Version 1.5.0
 * Add NamingPolicy concept to define how to assemble names. Use extensively in
   C++ & C# templates.  E.g: from:

@@ -98,7 +98,7 @@ abstract class BrowserClient extends Client {
     if (requestUrl.substring(0,1) == "/") {
       path ="$rootUrl${requestUrl.substring(1)}";
     } else {
-      path ="$rootUrl${basePath.substring(1)}$requestUrl";
+      path ="$rootUrl$servicePath$requestUrl";
     }
     var url = new oauth.UrlPattern(path).generate(urlParams, queryParams);
 
@@ -112,7 +112,7 @@ abstract class BrowserClient extends Client {
             if (requestUrl.substring(0,1) == "/") {
               path = requestUrl;
             } else {
-              path ="$basePath$requestUrl";
+              path ="$servicePath$requestUrl";
             }
             url = new oauth.UrlPattern(path).generate(urlParams, {});
             _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)

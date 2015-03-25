@@ -3,13 +3,13 @@
  * {% endif %}{% endfilter %}
  *
  *{% for param in method.requiredParameters %}
- * @param {{ param.codeName }} {{ param.description }}{% endfor %}{% if method.requestType %}
+ * @param {{ param.memberName }} {{ param.description }}{% endfor %}{% if method.requestType %}
  * @param content Request body content.{% endif %}
  */
 {{ method.className }} {{ method.codeName }}({% parameter_list %}
   {% for p in method.requiredParameters %}
     {% parameter %}
-      @PropertyName("{{ p.wireName }}") {{ p.code_type }} {{ p.codeName }}
+      @PropertyName("{{ p.wireName }}") {{ p.codeType }} {{ p.memberName }}
     {% end_parameter %}
   {% endfor %}
   {% if method.requestType %}{% parameter %}
@@ -25,7 +25,6 @@ public interface {{ method.className }} extends Request<{{ method.responseType.f
 {% for param in method.parameters %}
   {% doc_comment_if param.description %}
   @PropertyName("{{ param.wireName }}")
-  {{ method.className }} set{{ param.codeName|capfirst }}(@PropertyName("{{ param.wireName }}") {{ param.code_type }} {{ param.codeName }});
+  {{ method.className }} {{ param.setterName }}(@PropertyName("{{ param.wireName }}") {{ param.codeType }} {{ param.memberName }});
 {% if param.enumType %}
-  /** Possible values for {@link #set{{ param.codeName|capfirst }}({{ param.codeName|capfirst }})}. */
-{% call_template _enum enum=param.enumType %}{% endif %}{% endfor %}}
+{% call_template _enum param=param enum=param.enumType %}{% endif %}{% endfor %}}

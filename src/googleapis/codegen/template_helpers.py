@@ -185,13 +185,15 @@ _language_defaults = {
         },
     'objc': {
         _LINE_WIDTH: 80,
-        _COMMENT_START: '/* ',
-        _COMMENT_CONTINUE: ' * ',
-        _COMMENT_END: ' */',
+        _COMMENT_START: '// ',
+        _COMMENT_CONTINUE: '// ',
+        _COMMENT_END: '',
         _DOC_COMMENT_START: '// ',
         _DOC_COMMENT_CONTINUE: '// ',
+        _DOC_COMMENT_END: '',
         _LITERAL_QUOTE_START: '@"',
         _BOOLEAN_LITERALS: ('NO', 'YES'),
+        _IMPORT_TEMPLATE: '#import %s',
         },
     'php': {
         _LINE_WIDTH: 80,

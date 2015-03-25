@@ -1538,44 +1538,7 @@ class Google_Service_KitchSink_LatLong extends Google_Model
 
 class Google_Service_KitchSink_ModeratorTopicsResourcePartial extends Google_Model
 {
-  protected $idType = 'Google_Service_KitchSink_ModeratorTopicsResourcePartialId';
-  protected $idDataType = '';
 
-  public function setId(Google_Service_KitchSink_ModeratorTopicsResourcePartialId $id)
-  {
-    $this->id = $id;
-  }
-
-  public function getId()
-  {
-    return $this->id;
-  }
-}
-
-class Google_Service_KitchSink_ModeratorTopicsResourcePartialId extends Google_Model
-{
-  public $seriesId;
-  public $topicId;
-
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-
-  public function setTopicId($topicId)
-  {
-    $this->topicId = $topicId;
-  }
-
-  public function getTopicId()
-  {
-    return $this->topicId;
-  }
 }
 
 class Google_Service_KitchSink_Profile extends Google_Model
@@ -2916,28 +2879,7 @@ class Google_Service_KitchSink_Vote extends Google_Model
 
 class Google_Service_KitchSink_VoteId extends Google_Model
 {
-  public $seriesId;
-  public $submissionId;
 
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-
-  public function setSubmissionId($submissionId)
-  {
-    $this->submissionId = $submissionId;
-  }
-
-  public function getSubmissionId()
-  {
-    return $this->submissionId;
-  }
 }
 
 class Google_Service_KitchSink_VoteList extends Google_Collection

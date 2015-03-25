@@ -12,6 +12,7 @@ from googleapis.codegen import csharp_generator
 from googleapis.codegen import dart_generator
 from googleapis.codegen import gwt_generator
 from googleapis.codegen import java_generator
+from googleapis.codegen import objc_generator
 from googleapis.codegen import php_generator
 from googleapis.codegen import python_generator
 from googleapis.codegen import sample_generator
@@ -28,6 +29,7 @@ _GENERATORS_BY_LANGUAGE = {
     'dart': dart_generator.DartGenerator,
     'gwt': gwt_generator.GwtGenerator,
     'java': java_generator.Java14Generator,
+    'objc': objc_generator.ObjCGenerator,
     'php': php_generator.PHPGenerator,
     'python': python_generator.PythonGenerator,
     'sample': sample_generator.SampleGenerator,

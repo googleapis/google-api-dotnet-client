@@ -75,6 +75,16 @@ flags.DEFINE_string(
     'default',
     'which variant of "language" to generate for. E.g. "stable" vs. "head".')
 flags.DEFINE_string(
+    'monolithic_source_name',
+    None,
+    ('If non-empty then combine all the sources to the single file'
+     ' <monolithic_source_name>.{extension} and all the headers to a single'
+     ' include file. Otherwise use the standard output file naming and produce'
+     ' a source file for the overall API and one for each schema. This option'
+     ' is only supported for C++ and Objective-C.'))
+# TODO(user): Remove this flag after all the customers are moved.
+flags.DEFINE_alias('cpp_singular_source_name', 'monolithic_source_name')
+flags.DEFINE_string(
     'output_dir',
     None,
     'A path to a directory where the generated files will be created.')
@@ -111,6 +121,7 @@ flags.DECLARE_key_flag('include_timestamp')
 flags.DECLARE_key_flag('input')
 flags.DECLARE_key_flag('language')
 flags.DECLARE_key_flag('language_variant')
+flags.DECLARE_key_flag('monolithic_source_name')
 flags.DECLARE_key_flag('output_dir')
 flags.DECLARE_key_flag('output_file')
 flags.DECLARE_key_flag('output_format')
@@ -178,6 +189,8 @@ def Generate(discovery_doc, package_writer,
       # Custom package name
       'package_path': package_path,
       }
+  if FLAGS.monolithic_source_name:
+    options['useSingleSourceFile'] = True
   if output_type == 'full':
     options['include_dependencies'] = True
 
@@ -199,6 +212,9 @@ def Generate(discovery_doc, package_writer,
     raise app.UsageError('Unsupported language: %s' % language)
 
   generator = generator_class(discovery_doc, options=options)
+  if FLAGS.monolithic_source_name:
+    generator.api.SetTemplateValue('monolithicSourceName',
+                                   FLAGS.monolithic_source_name)
   generator.SetTemplateDir(features.template_dir)
   generator.SetFeatures(features)
   generator.GeneratePackage(package_writer)

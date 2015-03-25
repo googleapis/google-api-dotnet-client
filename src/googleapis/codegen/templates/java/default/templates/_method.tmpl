@@ -67,8 +67,10 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
         {{ method.requestType.fullClassName }} content
       {% end_parameter %}
     {% endif %}
-  {% end_parameter_list %},
-    com.google.api.client.http.AbstractInputStreamContent mediaContent) throws java.io.IOException {
+    {% parameter %}
+      com.google.api.client.http.AbstractInputStreamContent mediaContent
+    {% end_parameter %}
+  {% end_parameter_list %}) throws java.io.IOException {
   {{ method.className }} result = new {{ method.className }}({% parameter_list %}
     {% for p in method.requiredParameters %}
       {% parameter %}{{ p.memberName }}{% end_parameter %}
@@ -76,7 +78,8 @@ public {{ method.className }} {{ method.codeName }}({% parameter_list %}
     {% if method.requestType %}
       {% parameter %}content{% end_parameter %}
     {% endif %}
-  {% end_parameter_list %}, mediaContent);
+      {% parameter %}mediaContent{% end_parameter %}
+  {% end_parameter_list %});
   initialize(result);
   return result;
 }{% endif %}
@@ -170,8 +173,10 @@ public class {{ method.className }} extends {{ api.className }}Request<{{ method
     {% if method.requestType %}
       {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
     {% endif %}
-    {% end_parameter_list %},
-      com.google.api.client.http.AbstractInputStreamContent mediaContent) {
+    {% parameter %}
+      com.google.api.client.http.AbstractInputStreamContent mediaContent
+    {% end_parameter %}
+    {% end_parameter_list %}) {
     super({{ api.className }}.this, "{{ method.httpMethod }}", "/upload/" + getServicePath() + REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
   {% for param in method.requiredParameters %}
     this.{{ param.memberName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.memberName }}, "Required parameter {{ param.memberName }} must be specified.");

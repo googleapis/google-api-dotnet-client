@@ -18,8 +18,7 @@
  * Service definition for KitchSink (v1).
  *
  * <p>
- * An API with every strange thing in it
- * </p>
+ * An API with every strange thing in it</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -31,11 +30,14 @@
 class Google_Service_KitchSink extends Google_Service
 {
   /** A non googleapis.com scope. */
-  const MAIL_GOOGLE_COM = "https://mail.google.com";
+  const MAIL_GOOGLE_COM =
+      "https://mail.google.com";
   /** a product level scope. */
-  const PRODUCT = "https://www.googleapis.com/auth/product";
+  const PRODUCT =
+      "https://www.googleapis.com/auth/product";
   /** A typical scope. */
-  const USERINFO_EMAIL = "https://www.googleapis.com/auth/userinfo.email";
+  const USERINFO_EMAIL =
+      "https://www.googleapis.com/auth/userinfo.email";
 
   public $featured_series;
   public $global_series;
@@ -681,7 +683,6 @@ class Google_Service_KitchSink extends Google_Service
  */
 class Google_Service_KitchSink_Featured_Resource extends Google_Service_Resource
 {
-
 }
 
 /**
@@ -719,7 +720,6 @@ class Google_Service_KitchSink_FeaturedSeries_Resource extends Google_Service_Re
  */
 class Google_Service_KitchSink_KitchSinkGlobal_Resource extends Google_Service_Resource
 {
-
 }
 
 /**
@@ -739,12 +739,9 @@ class Google_Service_KitchSink_KitchSinkGlobalSeries_Resource extends Google_Ser
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int max-results
-   * Maximum number of results to return.
-   * @opt_param string q
-   * Search query.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param int max-results Maximum number of results to return.
+   * @opt_param string q Search query.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SeriesList
    */
   public function listKitchSinkGlobalSeries($optParams = array())
@@ -765,7 +762,6 @@ class Google_Service_KitchSink_KitchSinkGlobalSeries_Resource extends Google_Ser
  */
 class Google_Service_KitchSink_My_Resource extends Google_Service_Resource
 {
-
 }
 
 /**
@@ -803,7 +799,6 @@ class Google_Service_KitchSink_MySeries_Resource extends Google_Service_Resource
  */
 class Google_Service_KitchSink_Myrecent_Resource extends Google_Service_Resource
 {
-
 }
 
 /**
@@ -855,6 +850,7 @@ class Google_Service_KitchSink_Profiles_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_KitchSink_Profile");
   }
+
   /**
    * Updates the profile information for the authenticated user. (profiles.update)
    *
@@ -885,17 +881,15 @@ class Google_Service_KitchSink_Responses_Resource extends Google_Service_Resourc
    * Inserts a response for the specified submission in the specified topic within
    * the specified series. (responses.insert)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $topicId
-   * The decimal ID of the Topic within the Series.
-   * @param int $parentSubmissionId
-   * The decimal ID of the parent Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
+   * @param int $parentSubmissionId The decimal ID of the parent Submission within
+   * the Series.
    * @param Google_Submission $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool anonymous
-   * Set to true to mark the new submission as anonymous.
+   * @opt_param bool anonymous Set to true to mark the new submission as
+   * anonymous.
    * @return Google_Service_KitchSink_Submission
    */
   public function insert($seriesId, $topicId, $parentSubmissionId, Google_Service_KitchSink_Submission $postBody, $optParams = array())
@@ -904,26 +898,22 @@ class Google_Service_KitchSink_Responses_Resource extends Google_Service_Resourc
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_KitchSink_Submission");
   }
+
   /**
    * Lists or searches the responses for the specified submission within the
    * specified series and returns the search results. (responses.listResponses)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string author
-   * Restricts the results to submissions by a specific author.
-   * @opt_param bool hasAttachedVideo
-   * Specifies whether to restrict to submissions that have videos attached.
-   * @opt_param string q
-   * Search query.
-   * @opt_param string sort
-   * Sort order.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param string author Restricts the results to submissions by a specific
+   * author.
+   * @opt_param bool hasAttachedVideo Specifies whether to restrict to submissions
+   * that have videos attached.
+   * @opt_param string q Search query.
+   * @opt_param string sort Sort order.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SubmissionList
    */
   public function listResponses($seriesId, $submissionId, $optParams = array())
@@ -948,8 +938,7 @@ class Google_Service_KitchSink_Series_Resource extends Google_Service_Resource
   /**
    * Returns the specified series. (series.get)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Series
    */
@@ -959,6 +948,7 @@ class Google_Service_KitchSink_Series_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_KitchSink_Series");
   }
+
   /**
    * Media method without request data. (series.insert)
    *
@@ -971,17 +961,15 @@ class Google_Service_KitchSink_Series_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_KitchSink_Series");
   }
+
   /**
    * Searches the series and returns the search results. (series.listSeries)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int max-results
-   * Maximum number of results to return.
-   * @opt_param string q
-   * Search query.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param int max-results Maximum number of results to return.
+   * @opt_param string q Search query.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SeriesList
    */
   public function listSeries($optParams = array())
@@ -990,11 +978,11 @@ class Google_Service_KitchSink_Series_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_SeriesList");
   }
+
   /**
    * Updates the specified series. (series.update)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param Google_Series $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Series
@@ -1022,22 +1010,17 @@ class Google_Service_KitchSink_SeriesResponses_Resource extends Google_Service_R
    * Searches the responses for the specified series and returns the search
    * results. (responses.listSeriesResponses)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param string $q
-   * Search query - a required query parameter.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param string $q Search query - a required query parameter.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string author
-   * Restricts the results to submissions by a specific author.
-   * @opt_param bool hasAttachedVideo
-   * Specifies whether to restrict to submissions that have videos attached.
-   * @opt_param int max-results
-   * Maximum number of results to return.
-   * @opt_param string sort
-   * Sort order.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param string author Restricts the results to submissions by a specific
+   * author.
+   * @opt_param bool hasAttachedVideo Specifies whether to restrict to submissions
+   * that have videos attached.
+   * @opt_param int max-results Maximum number of results to return.
+   * @opt_param string sort Sort order.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SeriesList
    */
   public function listSeriesResponses($seriesId, $q, $optParams = array())
@@ -1062,22 +1045,18 @@ class Google_Service_KitchSink_SeriesSubmissions_Resource extends Google_Service
    * Searches the submissions for the specified series and returns the search
    * results. (submissions.listSeriesSubmissions)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string author
-   * Restricts the results to submissions by a specific author.
-   * @opt_param bool hasAttachedVideo
-   * Specifies whether to restrict to submissions that have videos attached.
-   * @opt_param string lang
-   * The language code for the language the client prefers resuls in.
-   * @opt_param string q
-   * Search query.
-   * @opt_param string sort
-   * Sort order.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param string author Restricts the results to submissions by a specific
+   * author.
+   * @opt_param bool hasAttachedVideo Specifies whether to restrict to submissions
+   * that have videos attached.
+   * @opt_param string lang The language code for the language the client prefers
+   * resuls in.
+   * @opt_param string q Search query.
+   * @opt_param string sort Sort order.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SubmissionList
    */
   public function listSeriesSubmissions($seriesId, $optParams = array())
@@ -1103,14 +1082,12 @@ class Google_Service_KitchSink_Submissions_Resource extends Google_Service_Resou
    * Returns the specified submission within the specified series.
    * (submissions.get)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string lang
-   * The language code for the language the client prefers resuls in.
+   * @opt_param string lang The language code for the language the client prefers
+   * resuls in.
    * @return Google_Service_KitchSink_Submission
    */
   public function get($seriesId, $submissionId, $optParams = array())
@@ -1119,19 +1096,18 @@ class Google_Service_KitchSink_Submissions_Resource extends Google_Service_Resou
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_KitchSink_Submission");
   }
+
   /**
    * Inserts a new submission in the specified topic within the specified series.
    * (submissions.insert)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $topicId
-   * The decimal ID of the Topic within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
    * @param Google_Submission $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool anonymous
-   * Set to true to mark the new submission as anonymous.
+   * @opt_param bool anonymous Set to true to mark the new submission as
+   * anonymous.
    * @return Google_Service_KitchSink_Submission
    */
   public function insert($seriesId, $topicId, Google_Service_KitchSink_Submission $postBody, $optParams = array())
@@ -1157,12 +1133,9 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
    * Deletes the specified tag from the specified submission within the specified
    * series. (tags.delete)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param string $tagId
-   *
    * @param array $optParams Optional parameters.
    */
   public function delete($seriesId, $submissionId, $tagId, $optParams = array())
@@ -1171,14 +1144,13 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Inserts a new tag for the specified submission within the specified series.
    * (tags.insert)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param Google_Tag $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Tag
@@ -1189,14 +1161,13 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_KitchSink_Tag");
   }
+
   /**
    * Lists all tags for the specified submission within the specified series.
    * (tags.listTags)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_TagList
    */
@@ -1222,10 +1193,8 @@ class Google_Service_KitchSink_Topics_Resource extends Google_Service_Resource
   /**
    * Returns the specified topic from the specified series. (topics.get)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $topicId
-   * The decimal ID of the Topic within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Topic2
    */
@@ -1235,11 +1204,11 @@ class Google_Service_KitchSink_Topics_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_KitchSink_Topic2");
   }
+
   /**
    * Inserts a new topic into the specified series. (topics.insert)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param Google_Topic $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Topic
@@ -1250,22 +1219,18 @@ class Google_Service_KitchSink_Topics_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_KitchSink_Topic");
   }
+
   /**
    * Searches the topics within the specified series and returns the search
    * results. (topics.listTopics)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int max-results
-   * Maximum number of results to return.
+   * @opt_param int max-results Maximum number of results to return.
    * @opt_param string mode
-   *
-   * @opt_param string q
-   * Search query.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param string q Search query.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_TopicList
    */
   public function listTopics($seriesId, $optParams = array())
@@ -1274,13 +1239,12 @@ class Google_Service_KitchSink_Topics_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_TopicList");
   }
+
   /**
    * Updates the specified topic within the specified series. (topics.update)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $topicId
-   * The decimal ID of the Topic within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
    * @param Google_Topic $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Topic
@@ -1308,22 +1272,17 @@ class Google_Service_KitchSink_TopicsSubmissions_Resource extends Google_Service
    * Searches the submissions for the specified topic within the specified series
    * and returns the search results. (submissions.listTopicsSubmissions)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $topicId
-   * The decimal ID of the Topic within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $topicId The decimal ID of the Topic within the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string author
-   * Restricts the results to submissions by a specific author.
-   * @opt_param bool hasAttachedVideo
-   * Specifies whether to restrict to submissions that have videos attached.
-   * @opt_param string q
-   * Search query.
-   * @opt_param string sort
-   * Sort order.
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param string author Restricts the results to submissions by a specific
+   * author.
+   * @opt_param bool hasAttachedVideo Specifies whether to restrict to submissions
+   * that have videos attached.
+   * @opt_param string q Search query.
+   * @opt_param string sort Sort order.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_SubmissionList
    */
   public function listTopicsSubmissions($seriesId, $topicId, $optParams = array())
@@ -1349,14 +1308,11 @@ class Google_Service_KitchSink_Votes_Resource extends Google_Service_Resource
    * Returns the votes by the authenticated user for the specified submission
    * within the specified series. (votes.get)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string userId
-   *
    * @return Google_Service_KitchSink_Vote
    */
   public function get($seriesId, $submissionId, $optParams = array())
@@ -1365,14 +1321,13 @@ class Google_Service_KitchSink_Votes_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('get', array($params), "Google_Service_KitchSink_Vote");
   }
+
   /**
    * Inserts a new vote by the authenticated user for the specified submission
    * within the specified series. (votes.insert)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param Google_Vote $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_Vote
@@ -1383,16 +1338,15 @@ class Google_Service_KitchSink_Votes_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('insert', array($params), "Google_Service_KitchSink_Vote");
   }
+
   /**
    * Lists the votes by the authenticated user for the given series.
    * (votes.listVotes)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
+   * @param int $seriesId The decimal ID of the Series.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int start-index
-   * Index of the first result to be retrieved.
+   * @opt_param int start-index Index of the first result to be retrieved.
    * @return Google_Service_KitchSink_VoteList
    */
   public function listVotes($seriesId, $optParams = array())
@@ -1401,19 +1355,17 @@ class Google_Service_KitchSink_Votes_Resource extends Google_Service_Resource
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_VoteList");
   }
+
   /**
    * Updates the votes by the authenticated user for the specified submission
    * within the specified series. (votes.update)
    *
-   * @param int $seriesId
-   * The decimal ID of the Series.
-   * @param int $submissionId
-   * The decimal ID of the Submission within the Series.
+   * @param int $seriesId The decimal ID of the Series.
+   * @param int $submissionId The decimal ID of the Submission within the Series.
    * @param Google_Vote $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string userId
-   *
    * @return Google_Service_KitchSink_Vote
    */
   public function update($seriesId, $submissionId, Google_Service_KitchSink_Vote $postBody, $optParams = array())
@@ -1433,16 +1385,15 @@ class Google_Service_KitchSink_Geometry extends Google_Model
   );
   public $type;
 
+
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
-
 }
 
 class Google_Service_KitchSink_GeometryCollection extends Google_Service_KitchSink_Geometry
@@ -1452,19 +1403,19 @@ class Google_Service_KitchSink_GeometryCollection extends Google_Service_KitchSi
   );
   protected $geometriesType = 'Google_Service_KitchSink_Geometry';
   protected $geometriesDataType = 'array';
-  protected function gapiInit() {
+  protected function gapiInit()
+  {
     $this->type = 'Collection';
   }
+
   public function setGeometries($geometries)
   {
     $this->geometries = $geometries;
   }
-
   public function getGeometries()
   {
     return $this->geometries;
   }
-
 }
 
 class Google_Service_KitchSink_GeometryPolygon extends Google_Service_KitchSink_Geometry
@@ -1472,19 +1423,19 @@ class Google_Service_KitchSink_GeometryPolygon extends Google_Service_KitchSink_
   protected $internal_gapi_mappings = array(
   );
   public $coordinates;
-  protected function gapiInit() {
+  protected function gapiInit()
+  {
     $this->type = 'Polygon';
   }
+
   public function setCoordinates($coordinates)
   {
     $this->coordinates = $coordinates;
   }
-
   public function getCoordinates()
   {
     return $this->coordinates;
   }
-
 }
 
 class Google_Service_KitchSink_GeometryReference extends Google_Model
@@ -1494,11 +1445,11 @@ class Google_Service_KitchSink_GeometryReference extends Google_Model
   public $coordinates;
   public $type;
 
+
   public function setCoordinates($coordinates)
   {
     $this->coordinates = $coordinates;
   }
-
   public function getCoordinates()
   {
     return $this->coordinates;
@@ -1507,12 +1458,10 @@ class Google_Service_KitchSink_GeometryReference extends Google_Model
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
-
 }
 
 class Google_Service_KitchSink_LatLong extends Google_Model
@@ -1523,11 +1472,11 @@ class Google_Service_KitchSink_LatLong extends Google_Model
   public $location;
   public $longitude;
 
+
   public function setLatitude($latitude)
   {
     $this->latitude = $latitude;
   }
-
   public function getLatitude()
   {
     return $this->latitude;
@@ -1536,7 +1485,6 @@ class Google_Service_KitchSink_LatLong extends Google_Model
   {
     $this->location = $location;
   }
-
   public function getLocation()
   {
     return $this->location;
@@ -1545,59 +1493,14 @@ class Google_Service_KitchSink_LatLong extends Google_Model
   {
     $this->longitude = $longitude;
   }
-
   public function getLongitude()
   {
     return $this->longitude;
   }
-
 }
 
 class Google_Service_KitchSink_ModeratorTopicsResourcePartial extends Google_Model
 {
-  protected $internal_gapi_mappings = array(
-  );
-  protected $idType = 'Google_Service_KitchSink_ModeratorTopicsResourcePartialId';
-  protected $idDataType = '';
-
-  public function setId(Google_Service_KitchSink_ModeratorTopicsResourcePartialId $id)
-  {
-    $this->id = $id;
-  }
-
-  public function getId()
-  {
-    return $this->id;
-  }
-
-}
-
-class Google_Service_KitchSink_ModeratorTopicsResourcePartialId extends Google_Model
-{
-  protected $internal_gapi_mappings = array(
-  );
-  public $seriesId;
-  public $topicId;
-
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-  public function setTopicId($topicId)
-  {
-    $this->topicId = $topicId;
-  }
-
-  public function getTopicId()
-  {
-    return $this->topicId;
-  }
-
 }
 
 class Google_Service_KitchSink_Profile extends Google_Model
@@ -1610,11 +1513,11 @@ class Google_Service_KitchSink_Profile extends Google_Model
   protected $idDataType = '';
   public $kind;
 
+
   public function setAttribution(Google_Service_KitchSink_ProfileAttribution $attribution)
   {
     $this->attribution = $attribution;
   }
-
   public function getAttribution()
   {
     return $this->attribution;
@@ -1623,7 +1526,6 @@ class Google_Service_KitchSink_Profile extends Google_Model
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -1632,12 +1534,10 @@ class Google_Service_KitchSink_Profile extends Google_Model
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
   }
-
 }
 
 class Google_Service_KitchSink_ProfileAttribution extends Google_Model
@@ -1650,11 +1550,11 @@ class Google_Service_KitchSink_ProfileAttribution extends Google_Model
   protected $geoDataType = '';
   public $location;
 
+
   public function setAvatarUrl($avatarUrl)
   {
     $this->avatarUrl = $avatarUrl;
   }
-
   public function getAvatarUrl()
   {
     return $this->avatarUrl;
@@ -1663,7 +1563,6 @@ class Google_Service_KitchSink_ProfileAttribution extends Google_Model
   {
     $this->displayName = $displayName;
   }
-
   public function getDisplayName()
   {
     return $this->displayName;
@@ -1672,7 +1571,6 @@ class Google_Service_KitchSink_ProfileAttribution extends Google_Model
   {
     $this->geo = $geo;
   }
-
   public function getGeo()
   {
     return $this->geo;
@@ -1681,12 +1579,10 @@ class Google_Service_KitchSink_ProfileAttribution extends Google_Model
   {
     $this->location = $location;
   }
-
   public function getLocation()
   {
     return $this->location;
   }
-
 }
 
 class Google_Service_KitchSink_ProfileId extends Google_Model
@@ -1695,16 +1591,15 @@ class Google_Service_KitchSink_ProfileId extends Google_Model
   );
   public $user;
 
+
   public function setUser($user)
   {
     $this->user = $user;
   }
-
   public function getUser()
   {
     return $this->user;
   }
-
 }
 
 class Google_Service_KitchSink_Rule extends Google_Model
@@ -1714,16 +1609,15 @@ class Google_Service_KitchSink_Rule extends Google_Model
   protected $submissionsType = 'Google_Service_KitchSink_RuleSubmissions';
   protected $submissionsDataType = '';
 
+
   public function setSubmissions(Google_Service_KitchSink_RuleSubmissions $submissions)
   {
     $this->submissions = $submissions;
   }
-
   public function getSubmissions()
   {
     return $this->submissions;
   }
-
 }
 
 class Google_Service_KitchSink_RuleSubmissions extends Google_Model
@@ -1733,11 +1627,11 @@ class Google_Service_KitchSink_RuleSubmissions extends Google_Model
   public $close;
   public $open;
 
+
   public function setClose($close)
   {
     $this->close = $close;
   }
-
   public function getClose()
   {
     return $this->close;
@@ -1746,12 +1640,10 @@ class Google_Service_KitchSink_RuleSubmissions extends Google_Model
   {
     $this->open = $open;
   }
-
   public function getOpen()
   {
     return $this->open;
   }
-
 }
 
 class Google_Service_KitchSink_Series extends Google_Model
@@ -1769,11 +1661,11 @@ class Google_Service_KitchSink_Series extends Google_Model
   public $numTopics;
   public $videoSubmissionAllowed;
 
+
   public function setAnonymousSubmissionAllowed($anonymousSubmissionAllowed)
   {
     $this->anonymousSubmissionAllowed = $anonymousSubmissionAllowed;
   }
-
   public function getAnonymousSubmissionAllowed()
   {
     return $this->anonymousSubmissionAllowed;
@@ -1782,7 +1674,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->counters = $counters;
   }
-
   public function getCounters()
   {
     return $this->counters;
@@ -1791,7 +1682,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->description = $description;
   }
-
   public function getDescription()
   {
     return $this->description;
@@ -1800,7 +1690,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -1809,7 +1698,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -1818,7 +1706,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
@@ -1827,7 +1714,6 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->numTopics = $numTopics;
   }
-
   public function getNumTopics()
   {
     return $this->numTopics;
@@ -1836,12 +1722,10 @@ class Google_Service_KitchSink_Series extends Google_Model
   {
     $this->videoSubmissionAllowed = $videoSubmissionAllowed;
   }
-
   public function getVideoSubmissionAllowed()
   {
     return $this->videoSubmissionAllowed;
   }
-
 }
 
 class Google_Service_KitchSink_SeriesCounters extends Google_Model
@@ -1861,11 +1745,11 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   public $users;
   public $videoSubmissions;
 
+
   public function setAnonymousSubmissions($anonymousSubmissions)
   {
     $this->anonymousSubmissions = $anonymousSubmissions;
   }
-
   public function getAnonymousSubmissions()
   {
     return $this->anonymousSubmissions;
@@ -1874,7 +1758,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->counters = $counters;
   }
-
   public function getCounters()
   {
     return $this->counters;
@@ -1883,7 +1766,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->minusVotes = $minusVotes;
   }
-
   public function getMinusVotes()
   {
     return $this->minusVotes;
@@ -1892,7 +1774,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->noneVotes = $noneVotes;
   }
-
   public function getNoneVotes()
   {
     return $this->noneVotes;
@@ -1901,7 +1782,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->plusVotes = $plusVotes;
   }
-
   public function getPlusVotes()
   {
     return $this->plusVotes;
@@ -1910,7 +1790,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->submissions = $submissions;
   }
-
   public function getSubmissions()
   {
     return $this->submissions;
@@ -1919,7 +1798,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->users = $users;
   }
-
   public function getUsers()
   {
     return $this->users;
@@ -1928,12 +1806,10 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   {
     $this->videoSubmissions = $videoSubmissions;
   }
-
   public function getVideoSubmissions()
   {
     return $this->videoSubmissions;
   }
-
 }
 
 class Google_Service_KitchSink_SeriesCountersCounters extends Google_Model
@@ -1943,16 +1819,15 @@ class Google_Service_KitchSink_SeriesCountersCounters extends Google_Model
   );
   public $allVotes;
 
+
   public function setAllVotes($allVotes)
   {
     $this->allVotes = $allVotes;
   }
-
   public function getAllVotes()
   {
     return $this->allVotes;
   }
-
 }
 
 class Google_Service_KitchSink_SeriesId extends Google_Model
@@ -1961,16 +1836,15 @@ class Google_Service_KitchSink_SeriesId extends Google_Model
   );
   public $seriesId;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
   }
-
 }
 
 class Google_Service_KitchSink_SeriesList extends Google_Collection
@@ -1982,11 +1856,11 @@ class Google_Service_KitchSink_SeriesList extends Google_Collection
   protected $itemsDataType = 'array';
   public $kind;
 
+
   public function setItems($items)
   {
     $this->items = $items;
   }
-
   public function getItems()
   {
     return $this->items;
@@ -1995,12 +1869,10 @@ class Google_Service_KitchSink_SeriesList extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
   }
-
 }
 
 class Google_Service_KitchSink_Submission extends Google_Collection
@@ -2029,11 +1901,11 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   protected $translationsType = 'Google_Service_KitchSink_Translations';
   protected $translationsDataType = 'map';
 
+
   public function setAttachmentUrl($attachmentUrl)
   {
     $this->attachmentUrl = $attachmentUrl;
   }
-
   public function getAttachmentUrl()
   {
     return $this->attachmentUrl;
@@ -2042,7 +1914,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->attribution = $attribution;
   }
-
   public function getAttribution()
   {
     return $this->attribution;
@@ -2051,7 +1922,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->author = $author;
   }
-
   public function getAuthor()
   {
     return $this->author;
@@ -2060,7 +1930,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->counters = $counters;
   }
-
   public function getCounters()
   {
     return $this->counters;
@@ -2069,7 +1938,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->created = $created;
   }
-
   public function getCreated()
   {
     return $this->created;
@@ -2078,7 +1946,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->geo = $geo;
   }
-
   public function getGeo()
   {
     return $this->geo;
@@ -2087,7 +1954,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -2096,7 +1962,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -2105,7 +1970,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->parentSubmissionId = $parentSubmissionId;
   }
-
   public function getParentSubmissionId()
   {
     return $this->parentSubmissionId;
@@ -2114,7 +1978,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->text = $text;
   }
-
   public function getText()
   {
     return $this->text;
@@ -2123,7 +1986,6 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->topics = $topics;
   }
-
   public function getTopics()
   {
     return $this->topics;
@@ -2132,12 +1994,10 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   {
     $this->translations = $translations;
   }
-
   public function getTranslations()
   {
     return $this->translations;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
@@ -2149,11 +2009,11 @@ class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
   public $displayName;
   public $location;
 
+
   public function setAvatarUrl($avatarUrl)
   {
     $this->avatarUrl = $avatarUrl;
   }
-
   public function getAvatarUrl()
   {
     return $this->avatarUrl;
@@ -2162,7 +2022,6 @@ class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
   {
     $this->displayName = $displayName;
   }
-
   public function getDisplayName()
   {
     return $this->displayName;
@@ -2171,12 +2030,10 @@ class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
   {
     $this->location = $location;
   }
-
   public function getLocation()
   {
     return $this->location;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionCounters extends Google_Model
@@ -2190,11 +2047,11 @@ class Google_Service_KitchSink_SubmissionCounters extends Google_Model
   public $noneVotes;
   public $plusVotes;
 
+
   public function setMinusVotes($minusVotes)
   {
     $this->minusVotes = $minusVotes;
   }
-
   public function getMinusVotes()
   {
     return $this->minusVotes;
@@ -2203,7 +2060,6 @@ class Google_Service_KitchSink_SubmissionCounters extends Google_Model
   {
     $this->noneVotes = $noneVotes;
   }
-
   public function getNoneVotes()
   {
     return $this->noneVotes;
@@ -2212,12 +2068,10 @@ class Google_Service_KitchSink_SubmissionCounters extends Google_Model
   {
     $this->plusVotes = $plusVotes;
   }
-
   public function getPlusVotes()
   {
     return $this->plusVotes;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionId extends Google_Model
@@ -2227,11 +2081,11 @@ class Google_Service_KitchSink_SubmissionId extends Google_Model
   public $seriesId;
   public $submissionId;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
@@ -2240,12 +2094,10 @@ class Google_Service_KitchSink_SubmissionId extends Google_Model
   {
     $this->submissionId = $submissionId;
   }
-
   public function getSubmissionId()
   {
     return $this->submissionId;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionList extends Google_Collection
@@ -2257,11 +2109,11 @@ class Google_Service_KitchSink_SubmissionList extends Google_Collection
   protected $itemsDataType = 'array';
   public $kind;
 
+
   public function setItems($items)
   {
     $this->items = $items;
   }
-
   public function getItems()
   {
     return $this->items;
@@ -2270,12 +2122,10 @@ class Google_Service_KitchSink_SubmissionList extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
@@ -2285,11 +2135,11 @@ class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
   public $seriesId;
   public $submissionId;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
@@ -2298,20 +2148,14 @@ class Google_Service_KitchSink_SubmissionParentSubmissionId extends Google_Model
   {
     $this->submissionId = $submissionId;
   }
-
   public function getSubmissionId()
   {
     return $this->submissionId;
   }
-
 }
 
 class Google_Service_KitchSink_SubmissionTranslations extends Google_Model
 {
-  protected $internal_gapi_mappings = array(
-  );
-
-
 }
 
 class Google_Service_KitchSink_Tag extends Google_Model
@@ -2325,11 +2169,11 @@ class Google_Service_KitchSink_Tag extends Google_Model
   public $kind;
   public $text;
 
+
   public function setGeometry(Google_Service_KitchSink_Geometry $geometry)
   {
     $this->geometry = $geometry;
   }
-
   public function getGeometry()
   {
     return $this->geometry;
@@ -2338,7 +2182,6 @@ class Google_Service_KitchSink_Tag extends Google_Model
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -2347,7 +2190,6 @@ class Google_Service_KitchSink_Tag extends Google_Model
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -2356,12 +2198,10 @@ class Google_Service_KitchSink_Tag extends Google_Model
   {
     $this->text = $text;
   }
-
   public function getText()
   {
     return $this->text;
   }
-
 }
 
 class Google_Service_KitchSink_TagId extends Google_Model
@@ -2372,11 +2212,11 @@ class Google_Service_KitchSink_TagId extends Google_Model
   public $submissionId;
   public $tag;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
@@ -2385,7 +2225,6 @@ class Google_Service_KitchSink_TagId extends Google_Model
   {
     $this->submissionId = $submissionId;
   }
-
   public function getSubmissionId()
   {
     return $this->submissionId;
@@ -2394,20 +2233,14 @@ class Google_Service_KitchSink_TagId extends Google_Model
   {
     $this->tag = $tag;
   }
-
   public function getTag()
   {
     return $this->tag;
   }
-
 }
 
 class Google_Service_KitchSink_TagList extends Google_Model
 {
-  protected $internal_gapi_mappings = array(
-  );
-
-
 }
 
 class Google_Service_KitchSink_Topic extends Google_Model
@@ -2425,11 +2258,11 @@ class Google_Service_KitchSink_Topic extends Google_Model
   protected $rulesType = 'Google_Service_KitchSink_TopicRules';
   protected $rulesDataType = '';
 
+
   public function setCounters(Google_Service_KitchSink_TopicCounters $counters)
   {
     $this->counters = $counters;
   }
-
   public function getCounters()
   {
     return $this->counters;
@@ -2438,7 +2271,6 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->description = $description;
   }
-
   public function getDescription()
   {
     return $this->description;
@@ -2447,7 +2279,6 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -2456,7 +2287,6 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -2465,7 +2295,6 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
@@ -2474,7 +2303,6 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->presenter = $presenter;
   }
-
   public function getPresenter()
   {
     return $this->presenter;
@@ -2483,12 +2311,10 @@ class Google_Service_KitchSink_Topic extends Google_Model
   {
     $this->rules = $rules;
   }
-
   public function getRules()
   {
     return $this->rules;
   }
-
 }
 
 class Google_Service_KitchSink_Topic2 extends Google_Collection
@@ -2509,11 +2335,11 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   protected $rulesType = 'Google_Service_KitchSink_Rule';
   protected $rulesDataType = 'array';
 
+
   public function setCounters(Google_Service_KitchSink_Topic2Counters $counters)
   {
     $this->counters = $counters;
   }
-
   public function getCounters()
   {
     return $this->counters;
@@ -2522,7 +2348,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->description = $description;
   }
-
   public function getDescription()
   {
     return $this->description;
@@ -2531,7 +2356,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->featuredSubmission = $featuredSubmission;
   }
-
   public function getFeaturedSubmission()
   {
     return $this->featuredSubmission;
@@ -2540,7 +2364,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -2549,7 +2372,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -2558,7 +2380,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
@@ -2567,7 +2388,6 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->presenter = $presenter;
   }
-
   public function getPresenter()
   {
     return $this->presenter;
@@ -2576,12 +2396,10 @@ class Google_Service_KitchSink_Topic2 extends Google_Collection
   {
     $this->rules = $rules;
   }
-
   public function getRules()
   {
     return $this->rules;
   }
-
 }
 
 class Google_Service_KitchSink_Topic2Counters extends Google_Model
@@ -2598,11 +2416,11 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   public $users;
   public $videoSubmissions;
 
+
   public function setMinusVotes($minusVotes)
   {
     $this->minusVotes = $minusVotes;
   }
-
   public function getMinusVotes()
   {
     return $this->minusVotes;
@@ -2611,7 +2429,6 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   {
     $this->noneVotes = $noneVotes;
   }
-
   public function getNoneVotes()
   {
     return $this->noneVotes;
@@ -2620,7 +2437,6 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   {
     $this->plusVotes = $plusVotes;
   }
-
   public function getPlusVotes()
   {
     return $this->plusVotes;
@@ -2629,7 +2445,6 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   {
     $this->submissions = $submissions;
   }
-
   public function getSubmissions()
   {
     return $this->submissions;
@@ -2638,7 +2453,6 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   {
     $this->users = $users;
   }
-
   public function getUsers()
   {
     return $this->users;
@@ -2647,12 +2461,10 @@ class Google_Service_KitchSink_Topic2Counters extends Google_Model
   {
     $this->videoSubmissions = $videoSubmissions;
   }
-
   public function getVideoSubmissions()
   {
     return $this->videoSubmissions;
   }
-
 }
 
 class Google_Service_KitchSink_Topic2Id extends Google_Model
@@ -2662,11 +2474,11 @@ class Google_Service_KitchSink_Topic2Id extends Google_Model
   public $seriesId;
   public $topicId;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
@@ -2675,12 +2487,10 @@ class Google_Service_KitchSink_Topic2Id extends Google_Model
   {
     $this->topicId = $topicId;
   }
-
   public function getTopicId()
   {
     return $this->topicId;
   }
-
 }
 
 class Google_Service_KitchSink_TopicCounters extends Google_Model
@@ -2697,11 +2507,11 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   public $users;
   public $videoSubmissions;
 
+
   public function setMinusVotes($minusVotes)
   {
     $this->minusVotes = $minusVotes;
   }
-
   public function getMinusVotes()
   {
     return $this->minusVotes;
@@ -2710,7 +2520,6 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   {
     $this->noneVotes = $noneVotes;
   }
-
   public function getNoneVotes()
   {
     return $this->noneVotes;
@@ -2719,7 +2528,6 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   {
     $this->plusVotes = $plusVotes;
   }
-
   public function getPlusVotes()
   {
     return $this->plusVotes;
@@ -2728,7 +2536,6 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   {
     $this->submissions = $submissions;
   }
-
   public function getSubmissions()
   {
     return $this->submissions;
@@ -2737,7 +2544,6 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   {
     $this->users = $users;
   }
-
   public function getUsers()
   {
     return $this->users;
@@ -2746,12 +2552,10 @@ class Google_Service_KitchSink_TopicCounters extends Google_Model
   {
     $this->videoSubmissions = $videoSubmissions;
   }
-
   public function getVideoSubmissions()
   {
     return $this->videoSubmissions;
   }
-
 }
 
 class Google_Service_KitchSink_TopicId extends Google_Model
@@ -2761,11 +2565,11 @@ class Google_Service_KitchSink_TopicId extends Google_Model
   public $seriesId;
   public $topicId;
 
+
   public function setSeriesId($seriesId)
   {
     $this->seriesId = $seriesId;
   }
-
   public function getSeriesId()
   {
     return $this->seriesId;
@@ -2774,12 +2578,10 @@ class Google_Service_KitchSink_TopicId extends Google_Model
   {
     $this->topicId = $topicId;
   }
-
   public function getTopicId()
   {
     return $this->topicId;
   }
-
 }
 
 class Google_Service_KitchSink_TopicList extends Google_Collection
@@ -2791,11 +2593,11 @@ class Google_Service_KitchSink_TopicList extends Google_Collection
   protected $itemsDataType = 'array';
   public $kind;
 
+
   public function setItems($items)
   {
     $this->items = $items;
   }
-
   public function getItems()
   {
     return $this->items;
@@ -2804,12 +2606,10 @@ class Google_Service_KitchSink_TopicList extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
   }
-
 }
 
 class Google_Service_KitchSink_TopicRules extends Google_Model
@@ -2821,11 +2621,11 @@ class Google_Service_KitchSink_TopicRules extends Google_Model
   protected $votesType = 'Google_Service_KitchSink_TopicRulesVotes';
   protected $votesDataType = '';
 
+
   public function setSubmissions(Google_Service_KitchSink_TopicRulesSubmissions $submissions)
   {
     $this->submissions = $submissions;
   }
-
   public function getSubmissions()
   {
     return $this->submissions;
@@ -2834,12 +2634,10 @@ class Google_Service_KitchSink_TopicRules extends Google_Model
   {
     $this->votes = $votes;
   }
-
   public function getVotes()
   {
     return $this->votes;
   }
-
 }
 
 class Google_Service_KitchSink_TopicRulesSubmissions extends Google_Model
@@ -2849,11 +2647,11 @@ class Google_Service_KitchSink_TopicRulesSubmissions extends Google_Model
   public $close;
   public $open;
 
+
   public function setClose($close)
   {
     $this->close = $close;
   }
-
   public function getClose()
   {
     return $this->close;
@@ -2862,12 +2660,10 @@ class Google_Service_KitchSink_TopicRulesSubmissions extends Google_Model
   {
     $this->open = $open;
   }
-
   public function getOpen()
   {
     return $this->open;
   }
-
 }
 
 class Google_Service_KitchSink_TopicRulesVotes extends Google_Model
@@ -2877,11 +2673,11 @@ class Google_Service_KitchSink_TopicRulesVotes extends Google_Model
   public $close;
   public $open;
 
+
   public function setClose($close)
   {
     $this->close = $close;
   }
-
   public function getClose()
   {
     return $this->close;
@@ -2890,12 +2686,10 @@ class Google_Service_KitchSink_TopicRulesVotes extends Google_Model
   {
     $this->open = $open;
   }
-
   public function getOpen()
   {
     return $this->open;
   }
-
 }
 
 class Google_Service_KitchSink_Translation extends Google_Model
@@ -2905,11 +2699,11 @@ class Google_Service_KitchSink_Translation extends Google_Model
   public $lang;
   public $text;
 
+
   public function setLang($lang)
   {
     $this->lang = $lang;
   }
-
   public function getLang()
   {
     return $this->lang;
@@ -2918,12 +2712,10 @@ class Google_Service_KitchSink_Translation extends Google_Model
   {
     $this->text = $text;
   }
-
   public function getText()
   {
     return $this->text;
   }
-
 }
 
 class Google_Service_KitchSink_Vote extends Google_Model
@@ -2936,11 +2728,11 @@ class Google_Service_KitchSink_Vote extends Google_Model
   public $kind;
   public $vote;
 
+
   public function setFlag($flag)
   {
     $this->flag = $flag;
   }
-
   public function getFlag()
   {
     return $this->flag;
@@ -2949,7 +2741,6 @@ class Google_Service_KitchSink_Vote extends Google_Model
   {
     $this->id = $id;
   }
-
   public function getId()
   {
     return $this->id;
@@ -2958,7 +2749,6 @@ class Google_Service_KitchSink_Vote extends Google_Model
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
@@ -2967,40 +2757,14 @@ class Google_Service_KitchSink_Vote extends Google_Model
   {
     $this->vote = $vote;
   }
-
   public function getVote()
   {
     return $this->vote;
   }
-
 }
 
 class Google_Service_KitchSink_VoteId extends Google_Model
 {
-  protected $internal_gapi_mappings = array(
-  );
-  public $seriesId;
-  public $submissionId;
-
-  public function setSeriesId($seriesId)
-  {
-    $this->seriesId = $seriesId;
-  }
-
-  public function getSeriesId()
-  {
-    return $this->seriesId;
-  }
-  public function setSubmissionId($submissionId)
-  {
-    $this->submissionId = $submissionId;
-  }
-
-  public function getSubmissionId()
-  {
-    return $this->submissionId;
-  }
-
 }
 
 class Google_Service_KitchSink_VoteList extends Google_Collection
@@ -3012,11 +2776,11 @@ class Google_Service_KitchSink_VoteList extends Google_Collection
   protected $itemsDataType = 'array';
   public $kind;
 
+
   public function setItems($items)
   {
     $this->items = $items;
   }
-
   public function getItems()
   {
     return $this->items;
@@ -3025,12 +2789,10 @@ class Google_Service_KitchSink_VoteList extends Google_Collection
   {
     $this->kind = $kind;
   }
-
   public function getKind()
   {
     return $this->kind;
   }
-
 }
 === end: ./KitchSink.php
 === begin: ./README.txt
@@ -3040,7 +2802,7 @@ PHP library for kitch_sink v1
 
 Requirements:
 
-Google API PHP Client, version 1.1.0
-URL: https://github.com/google/google-api-php-client/archive/patch-1.zip
+Google API PHP Client, version 1.1.1
+URL: https://github.com/google/google-api-php-client/releases
 
 === end: ./README.txt

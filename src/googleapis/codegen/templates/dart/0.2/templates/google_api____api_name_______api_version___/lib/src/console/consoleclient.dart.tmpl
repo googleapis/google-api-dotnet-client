@@ -28,7 +28,7 @@ abstract class ConsoleClient extends Client {
     if (requestUrl.substring(0,1) == "/") {
       path ="$rootUrl${requestUrl.substring(1)}";
     } else {
-      path ="$rootUrl${basePath.substring(1)}$requestUrl";
+      path ="$rootUrl$servicePath$requestUrl";
     }
 
     var url = new oauth2.UrlPattern(path).generate(urlParams, queryParams);

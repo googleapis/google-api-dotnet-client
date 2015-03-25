@@ -168,16 +168,16 @@ class PhpLanguageModel(language_model.LanguageModel):
 
   # Populated from http://php.net/manual/en/reserved.keywords.php
   PHP_KEYWORDS = frozenset((
-      'abstract', 'and', 'array', 'as', 'break',
+      'abstract', 'and', 'array', 'as', 'break', 'call', 'callable',
       'case', 'catch', 'cfunction', 'class', 'clone',
       'const', 'continue', 'declare', 'default', 'do',
       'else', 'elseif', 'enddeclare', 'endfor', 'endforeach',
       'endif', 'endswitch', 'endwhile', 'extends', 'final',
-      'for', 'foreach', 'function', 'global', 'goto',
+      'finally', 'for', 'foreach', 'function', 'global', 'goto',
       'if', 'implements', 'interface', 'instanceof', 'list',
       'namespace', 'new', 'old_function', 'or', 'private',
-      'protected', 'public', 'static', 'switch', 'throw',
-      'try', 'unset', 'use', 'var', 'while', 'xor',
+      'protected', 'public', 'static', 'switch', 'throw', 'trait',
+      'try', 'unset', 'use', 'var', 'while', 'xor', 'yield',
       ))
 
   PHP_TYPES = frozenset((

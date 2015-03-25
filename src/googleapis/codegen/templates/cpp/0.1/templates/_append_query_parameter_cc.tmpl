@@ -3,11 +3,11 @@
     target->append(sep);
     {{ api.client_namespace }}::AppendIteratorToUrl(
       {{ variable.codeName }}_.begin(), {{ variable.codeName }}_.end(),
-      "{{ variable.codeName }}", target);
+      "{{ variable.wireName }}", target);
     sep = "&";
   }
 {% else %}
-  StrAppend(target, sep, "{{ variable.codeName }}=",
+  StrAppend(target, sep, "{{ variable.wireName }}=",
             {{ api.client_namespace }}::CppValueToEscapedUrlValue(
               {{ variable.codeName }}_));
   sep = "&";

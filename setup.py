@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-"""Setup script for google-apis-client-generator."""
+"""Setup script for Google APIs Client Generator."""
 
 from ez_setup import use_setuptools
 use_setuptools()
@@ -17,7 +17,7 @@ setup(
     author_email='aiuto@google.com',
     maintainer='Jacob Smullyan',
     maintainer_email='smulloni@google.com',
-    url='https://code.google.com/p/google-apis-client-generator/',
+    url='https://github.com/google/apis-client-generator/',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     entry_points={

@@ -18,8 +18,7 @@
  * Service definition for EccoDomaniIeri (v1).
  *
  * <p>
- * helloworld API v1.
- * </p>
+ * helloworld API v1.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -31,7 +30,8 @@
 class Google_Service_EccoDomaniIeri extends Google_Service
 {
   /** View your email address. */
-  const USERINFO_EMAIL = "https://www.googleapis.com/auth/userinfo.email";
+  const USERINFO_EMAIL =
+      "https://www.googleapis.com/auth/userinfo.email";
 
   public $greetings;
   
@@ -113,11 +113,11 @@ class Google_Service_EccoDomaniIeri_Greetings_Resource extends Google_Service_Re
     $params = array_merge($params, $optParams);
     return $this->call('authed', array($params), "Google_Service_EccoDomaniIeri_HelloGreeting");
   }
+
   /**
    * (greetings.getGreeting)
    *
    * @param int $id
-   *
    * @param array $optParams Optional parameters.
    * @return Google_Service_EccoDomaniIeri_HelloGreeting
    */
@@ -127,6 +127,7 @@ class Google_Service_EccoDomaniIeri_Greetings_Resource extends Google_Service_Re
     $params = array_merge($params, $optParams);
     return $this->call('getGreeting', array($params), "Google_Service_EccoDomaniIeri_HelloGreeting");
   }
+
   /**
    * (greetings.listGreeting)
    *
@@ -139,11 +140,11 @@ class Google_Service_EccoDomaniIeri_Greetings_Resource extends Google_Service_Re
     $params = array_merge($params, $optParams);
     return $this->call('listGreeting', array($params), "Google_Service_EccoDomaniIeri_HelloGreetingCollection");
   }
+
   /**
    * (greetings.multiply)
    *
    * @param int $times
-   *
    * @param Google_HelloGreeting $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_EccoDomaniIeri_HelloGreeting
@@ -165,11 +166,11 @@ class Google_Service_EccoDomaniIeri_HelloGreeting extends Google_Model
   );
   public $message;
 
+
   public function setMessage($message)
   {
     $this->message = $message;
   }
-
   public function getMessage()
   {
     return $this->message;
@@ -184,11 +185,11 @@ class Google_Service_EccoDomaniIeri_HelloGreetingCollection extends Google_Colle
   protected $itemsType = 'Google_Service_EccoDomaniIeri_HelloGreeting';
   protected $itemsDataType = 'array';
 
+
   public function setItems($items)
   {
     $this->items = $items;
   }
-
   public function getItems()
   {
     return $this->items;
@@ -202,7 +203,7 @@ PHP library for Schmecken Sie Gut v1
 
 Requirements:
 
-Google API PHP Client, version 1.1.0
-URL: https://github.com/google/google-api-php-client/archive/patch-1.zip
+Google API PHP Client, version 1.1.1
+URL: https://github.com/google/google-api-php-client/releases
 
 === end: ./README.txt

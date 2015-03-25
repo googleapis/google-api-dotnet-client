@@ -1171,6 +1171,21 @@ class Topics extends SomeRootClass {
     }
   }
 
+  // Enum KitchSink.Topics.List.Mode
+  //
+  class Mode {
+
+    // A value with a @, to show we make constant names the right way.
+    const str AUTO = '@auto';
+
+    // boring
+    const str NORMAL = 'Normal';
+
+    // this should be kMixItUp in some languages
+    const str MIX_IT_UP = 'mix_it_up';
+
+  }
+
     // subresources
 
     // Resource
@@ -1509,77 +1524,7 @@ class LatLong extends SomeBaseModelClass {
 # 
 class ModeratorTopicsResourcePartial extends SomeBaseModelClass {
 
-  // 
-  // JSON name: 'id'
-  ModeratorTopicsResourcePartialId _id;
-
   // Getters and setters might go here
-  ModeratorTopicsResourcePartialId getId() {
-    return _id;
-  }
-  void setId(ModeratorTopicsResourcePartialId v) {
-    _id = v;
-  }
-
-  """Schema ModeratorTopicsResourcePartial.ModeratorTopicsResourcePartialId {
-  """model.description }} <p> Your explanation here.
-  #
-  class ModeratorTopicsResourcePartialId extends SomeBaseModelClass {
-
-    //
-    // JSON name: 'seriesId'
-    long _seriesId;
-
-    //
-    // JSON name: 'topicId'
-    long _topicId;
-
-    // Getters and setters might go here
-    long getSeriesId() {
-      return _seriesId;
-    }
-    void setSeriesId(long v) {
-      _seriesId = v;
-    }
-    long getTopicId() {
-      return _topicId;
-    }
-    void setTopicId(long v) {
-      _topicId = v;
-    }
-
-  }
-
-}
-
-
-
-"""Schema ModeratorTopicsResourcePartial.ModeratorTopicsResourcePartialId {
-"""model.description }} <p> Your explanation here.
-# 
-class ModeratorTopicsResourcePartialId extends SomeBaseModelClass {
-
-  // 
-  // JSON name: 'seriesId'
-  long _seriesId;
-
-  // 
-  // JSON name: 'topicId'
-  long _topicId;
-
-  // Getters and setters might go here
-  long getSeriesId() {
-    return _seriesId;
-  }
-  void setSeriesId(long v) {
-    _seriesId = v;
-  }
-  long getTopicId() {
-    return _topicId;
-  }
-  void setTopicId(long v) {
-    _topicId = v;
-  }
 
 }
 
@@ -1959,7 +1904,7 @@ class Series extends SomeBaseModelClass {
 
     //
     // JSON name: 'users'
-    long _users;
+    str _users;
 
     //
     // JSON name: 'videoSubmissions'
@@ -2002,10 +1947,10 @@ class Series extends SomeBaseModelClass {
     void setSubmissions(long v) {
       _submissions = v;
     }
-    long getUsers() {
+    str getUsers() {
       return _users;
     }
-    void setUsers(long v) {
+    void setUsers(str v) {
       _users = v;
     }
     long getVideoSubmissions() {
@@ -2089,7 +2034,7 @@ class SeriesCounters extends SomeBaseModelClass {
 
   // 
   // JSON name: 'users'
-  long _users;
+  str _users;
 
   // 
   // JSON name: 'videoSubmissions'
@@ -2132,10 +2077,10 @@ class SeriesCounters extends SomeBaseModelClass {
   void setSubmissions(long v) {
     _submissions = v;
   }
-  long getUsers() {
+  str getUsers() {
     return _users;
   }
-  void setUsers(long v) {
+  void setUsers(str v) {
     _users = v;
   }
   long getVideoSubmissions() {
@@ -3722,27 +3667,7 @@ class Vote extends SomeBaseModelClass {
   #
   class VoteId extends SomeBaseModelClass {
 
-    //
-    // JSON name: 'seriesId'
-    long _seriesId;
-
-    //
-    // JSON name: 'submissionId'
-    long _submissionId;
-
     // Getters and setters might go here
-    long getSeriesId() {
-      return _seriesId;
-    }
-    void setSeriesId(long v) {
-      _seriesId = v;
-    }
-    long getSubmissionId() {
-      return _submissionId;
-    }
-    void setSubmissionId(long v) {
-      _submissionId = v;
-    }
 
   }
 
@@ -3754,27 +3679,7 @@ class Vote extends SomeBaseModelClass {
 # 
 class VoteId extends SomeBaseModelClass {
 
-  // 
-  // JSON name: 'seriesId'
-  long _seriesId;
-
-  // 
-  // JSON name: 'submissionId'
-  long _submissionId;
-
   // Getters and setters might go here
-  long getSeriesId() {
-    return _seriesId;
-  }
-  void setSeriesId(long v) {
-    _seriesId = v;
-  }
-  long getSubmissionId() {
-    return _submissionId;
-  }
-  void setSubmissionId(long v) {
-    _submissionId = v;
-  }
 
 }
 
@@ -3889,47 +3794,7 @@ package com::google::kitch_sink;
  */
 class ModeratorTopicsResourcePartial extends SomeBaseModelClass {
 
-  // 
-  // JSON name: "id"
-  ModeratorTopicsResourcePartialId _id;
-
   // Getters and setters might go here
-  ModeratorTopicsResourcePartialId getId() {
-    return _id;
-  }
-  void setId(ModeratorTopicsResourcePartialId v) {
-    _id = v;
-  }
-
-  /**
-   * Schema ModeratorTopicsResourcePartial.ModeratorTopicsResourcePartialId { model.description }}
-   * <p> Your explanation here.
-   */
-  class ModeratorTopicsResourcePartialId extends SomeBaseModelClass {
-
-    //
-    // JSON name: "seriesId"
-    long _seriesId;
-
-    //
-    // JSON name: "topicId"
-    long _topicId;
-
-    // Getters and setters might go here
-    long getSeriesId() {
-      return _seriesId;
-    }
-    void setSeriesId(long v) {
-      _seriesId = v;
-    }
-    long getTopicId() {
-      return _topicId;
-    }
-    void setTopicId(long v) {
-      _topicId = v;
-    }
-
-  }
 
 }
 
@@ -4311,7 +4176,7 @@ class Series extends SomeBaseModelClass {
 
     //
     // JSON name: "users"
-    long _users;
+    str _users;
 
     //
     // JSON name: "videoSubmissions"
@@ -4354,10 +4219,10 @@ class Series extends SomeBaseModelClass {
     void setSubmissions(long v) {
       _submissions = v;
     }
-    long getUsers() {
+    str getUsers() {
       return _users;
     }
-    void setUsers(long v) {
+    void setUsers(str v) {
       _users = v;
     }
     long getVideoSubmissions() {
@@ -5574,27 +5439,7 @@ class Vote extends SomeBaseModelClass {
    */
   class VoteId extends SomeBaseModelClass {
 
-    //
-    // JSON name: "seriesId"
-    long _seriesId;
-
-    //
-    // JSON name: "submissionId"
-    long _submissionId;
-
     // Getters and setters might go here
-    long getSeriesId() {
-      return _seriesId;
-    }
-    void setSeriesId(long v) {
-      _seriesId = v;
-    }
-    long getSubmissionId() {
-      return _submissionId;
-    }
-    void setSubmissionId(long v) {
-      _submissionId = v;
-    }
 
   }
 

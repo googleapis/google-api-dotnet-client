@@ -7,7 +7,7 @@
    * {{ property.description }}{% endfilter %}
    * The value may be {@code null}.
    */
-  @com.google.api.client.util.Key{% ifnotequal property.wireName property.memberName %}("{{ property.wireName }}"){% endifnotequal %}{% if property.requiresJsonString %} @com.google.api.client.json.JsonString{% endif %}
+  @com.google.api.client.util.Key{% if not property.member_name_is_json_name %}("{{ property.wireName }}"){% endif %}{% if property.requiresJsonString %} @com.google.api.client.json.JsonString{% endif %}
   {% if property.is_variant_key %}
   @com.google.api.client.json.JsonPolymorphicTypeMap(typeDefinitions={
   {% for key, ref in property.variant_map.items %}

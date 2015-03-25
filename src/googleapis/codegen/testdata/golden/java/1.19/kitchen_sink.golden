@@ -4767,27 +4767,6 @@ package com.google.api.services.kitch_sink.model;
 @SuppressWarnings("javadoc")
 public final class ModeratorTopicsResourcePartial extends com.google.api.client.json.GenericJson {
 
-  /**
-   * The value may be {@code null}.
-   */
-  @com.google.api.client.util.Key
-  private Id id;
-
-  /**
-   * @return value or {@code null} for none
-   */
-  public Id getId() {
-    return id;
-  }
-
-  /**
-   * @param id id or {@code null} for none
-   */
-  public ModeratorTopicsResourcePartial setId(Id id) {
-    this.id = id;
-    return this;
-  }
-
   @Override
   public ModeratorTopicsResourcePartial set(String fieldName, Object value) {
     return (ModeratorTopicsResourcePartial) super.set(fieldName, value);
@@ -4798,64 +4777,6 @@ public final class ModeratorTopicsResourcePartial extends com.google.api.client.
     return (ModeratorTopicsResourcePartial) super.clone();
   }
 
-  /**
-   * Model definition for ModeratorTopicsResourcePartialId.
-   */
-  public static final class Id extends com.google.api.client.json.GenericJson {
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private Integer seriesId;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private Integer topicId;
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public Integer getSeriesId() {
-      return seriesId;
-    }
-
-    /**
-     * @param seriesId seriesId or {@code null} for none
-     */
-    public Id setSeriesId(Integer seriesId) {
-      this.seriesId = seriesId;
-      return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public Integer getTopicId() {
-      return topicId;
-    }
-
-    /**
-     * @param topicId topicId or {@code null} for none
-     */
-    public Id setTopicId(Integer topicId) {
-      this.topicId = topicId;
-      return this;
-    }
-
-    @Override
-    public Id set(String fieldName, Object value) {
-      return (Id) super.set(fieldName, value);
-    }
-
-    @Override
-    public Id clone() {
-      return (Id) super.clone();
-    }
-
-  }
 }
 === end: ./com/google/api/services/kitch_sink/model/ModeratorTopicsResourcePartial.java
 === begin: ./com/google/api/services/kitch_sink/model/Profile.java
@@ -5482,7 +5403,7 @@ public final class Series extends com.google.api.client.json.GenericJson {
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Integer users;
+    private java.lang.String users;
 
     /**
      * The value may be {@code null}.
@@ -5583,14 +5504,14 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * @return value or {@code null} for none
      */
-    public Integer getUsers() {
+    public java.lang.String getUsers() {
       return users;
     }
 
     /**
      * @param users users or {@code null} for none
      */
-    public Counters setUsers(Integer users) {
+    public Counters setUsers(java.lang.String users) {
       this.users = users;
       return this;
     }
@@ -8010,48 +7931,6 @@ public final class Vote extends com.google.api.client.json.GenericJson {
    * Model definition for VoteId.
    */
   public static final class Id extends com.google.api.client.json.GenericJson {
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private Integer seriesId;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private Integer submissionId;
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public Integer getSeriesId() {
-      return seriesId;
-    }
-
-    /**
-     * @param seriesId seriesId or {@code null} for none
-     */
-    public Id setSeriesId(Integer seriesId) {
-      this.seriesId = seriesId;
-      return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public Integer getSubmissionId() {
-      return submissionId;
-    }
-
-    /**
-     * @param submissionId submissionId or {@code null} for none
-     */
-    public Id setSubmissionId(Integer submissionId) {
-      this.submissionId = submissionId;
-      return this;
-    }
 
     @Override
     public Id set(String fieldName, Object value) {

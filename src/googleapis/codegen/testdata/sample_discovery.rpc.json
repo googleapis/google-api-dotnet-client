@@ -14,6 +14,8 @@
   "labs"
  ],
  "protocol": "rpc",
+ "rootUrl": "https://www.googleapis.com/",
+ "rpcUrl": "https://www.googleapis.com/rpc",
  "rpcPath": "/rpc",
  "parameters": {
   "alt": {

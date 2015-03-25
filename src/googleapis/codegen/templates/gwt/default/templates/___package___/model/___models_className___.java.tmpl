@@ -36,8 +36,8 @@ public interface {{ model.className }} extends ValueProxy {
 {% endif %}{% for property in model.properties %}
   {% doc_comment_if property.description %}
   @PropertyName("{{ property.wireName }}")
-  {{ property.codeType }} get{{ property.codeName|capfirst }}();
+  {{ property.codeType }} {{ property.getterName }}();
 
   @PropertyName("{{ property.wireName }}")
-  {{ model.className }} set{{ property.codeName|capfirst }}({{ property.codeType }} {{ property.codeName }});
+  {{ model.className }} {{ property.setterName }}({{ property.codeType }} {{ property.memberName }});
 {% endfor %}}

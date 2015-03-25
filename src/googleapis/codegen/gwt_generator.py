@@ -18,6 +18,7 @@
 __author__ = 'robertvawter@google.com (Bob Vawter)'
 
 from googleapis.codegen import java_generator
+from googleapis.codegen import language_model
 from googleapis.codegen import utilities
 from googleapis.codegen.import_definition import ImportDefinition
 
@@ -85,6 +86,19 @@ class GwtLanguageModel(java_generator.JavaLanguageModel):
   """A LanguageModel for GWT."""
 
   language = 'java'
+
+  member_policy = language_model.NamingPolicy(language_model.LOWER_CAMEL_CASE)
+  getter_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE, 'get{name}')
+  setter_policy = language_model.NamingPolicy(
+      language_model.UPPER_CAMEL_CASE, 'set{name}')
+  constant_policy = language_model.NamingPolicy(
+      case_transform=language_model.UPPER_UNCAMEL_CASE,
+      separator='_')
+  array_of_policy = language_model.NamingPolicy(
+      format_string='java.util.List<{name}>')
+  map_of_policy = language_model.NamingPolicy(
+      format_string='java.util.Map<String, {name}>')
 
   # Dictionary of json type and format to its corresponding import definition.
   # The first import in the imports list is the primary import.

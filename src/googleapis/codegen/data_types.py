@@ -453,32 +453,43 @@ class Enum(PrimitiveDataType):
        ]
   """
 
-  def __init__(self, def_dict, api, name, values, descriptions, parent):
+  def __init__(self, def_dict, api, wire_name, values, descriptions, parent):
     """Create an enum.
 
     Args:
       def_dict: (dict) The discovery dictionary for this element.
       api: (Api) The Api which owns this Property
-      name: (str) The name for this enum.
-      values: ([str]) List of possible values.
-      descriptions: ([str]) List of value descriptions
-      parent: (Method) The method owning this enum.
+      wire_name: (str) The identifier used in the wire protocol for this enum.
+      values: ([str]) List of possible values. If not provided, use the 'enum'
+          element from def_dict.
+      descriptions: ([str]) List of value descriptions. If not provided, use
+          the 'enumDescriptions' element from def_dict.
+      parent: (Method) The object owning this enum.
     """
     super(Enum, self).__init__(def_dict, api, parent=parent)
+    name = def_dict.get('id') or wire_name
     self.ValidateName(name)
     self.SetTemplateValue('wireName', name)
     self.SetTemplateValue('className',
                           api.ToClassName(name, self, element_type='enum'))
-    self._elements = [template_objects.Constant(values[i],
-                                                description=descriptions[i],
-                                                parent=self)
-                      for i in range(len(values))]
+    if values is None:
+      values = def_dict.get('enum')
+    if descriptions is None:
+      descriptions = def_dict.get('enumDescriptions') or []
+
+    self._elements = []
+    for i in range(len(values)):
+      v = values[i]
+      # Sometimes the description list is too short.
+      d = descriptions[i] if (i < len(descriptions)) else None
+      self._elements.append(
+          template_objects.Constant(v, description=d, parent=self))
     self.SetTemplateValue(
         'elements', self._elements,
         meaning='The individual possible values of an Enum data type.')
 
     # TODO(user): Migrate users away from the enum pairs to 'elements' and
-    # delete this
+    # delete the rest of this method.
     def FixName(name):
       name = name[0].isdigit() and 'VALUE_' + name or name.lstrip('@')
       return name.upper().replace('-', '_')
@@ -487,3 +498,26 @@ class Enum(PrimitiveDataType):
       return self.ValidateAndSanitizeComment(self.StripHTML(desc))
     pairs = zip(names, values, map(FixDescription, descriptions))
     self.SetTemplateValue('pairs', pairs)
+
+
+def CreatePrimitiveDataType(def_dict, api, wire_name, parent=None):
+  """Creates a PrimitiveDataType from a JSON dictionary.
+
+  Creates a primitive built in type or an enum for a blob of json.
+
+  Args:
+    def_dict: (dict) The discovery dictionary for this element.
+    api: (Api) The Api instance which owns this element.
+    wire_name: (str) The identifier used in the wire protocol for this object.
+    parent: (TemplateObject) The parent of this object.
+  Returns:
+    (PrimitiveDataType) A data type.
+  """
+  if def_dict.get('enum'):
+    return Enum(def_dict,
+                api,
+                wire_name,
+                None,
+                None,
+                parent)
+  return PrimitiveDataType(def_dict, api, parent)

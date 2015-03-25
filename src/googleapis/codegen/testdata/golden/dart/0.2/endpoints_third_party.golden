@@ -146,7 +146,7 @@ abstract class BrowserClient extends Client {
     if (requestUrl.substring(0,1) == "/") {
       path ="$rootUrl${requestUrl.substring(1)}";
     } else {
-      path ="$rootUrl${basePath.substring(1)}$requestUrl";
+      path ="$rootUrl$servicePath$requestUrl";
     }
     var url = new oauth.UrlPattern(path).generate(urlParams, queryParams);
 
@@ -160,7 +160,7 @@ abstract class BrowserClient extends Client {
             if (requestUrl.substring(0,1) == "/") {
               path = requestUrl;
             } else {
-              path ="$basePath$requestUrl";
+              path ="$servicePath$requestUrl";
             }
             url = new oauth.UrlPattern(path).generate(urlParams, {});
             _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
@@ -272,7 +272,7 @@ class EccoDomaniIeriApi extends BrowserClient {
   set userIp(core.String value) => params["userIp"] = value;
 
   EccoDomaniIeriApi([oauth.OAuth2 auth]) : super(auth) {
-     basePath = "/_ah/api/helloworld/v1/";
+     servicePath = "helloworld/v1/";
      rootUrl = "https://peer-pontus.appspot.com/_ah/api/";
     _greetings = new GreetingsResource(this);
   }
@@ -285,7 +285,7 @@ part of helloworld_v1_api_client;
  * Base class for all API clients, offering generic methods for HTTP Requests to the API
  */
 abstract class Client {
-  core.String basePath;
+  core.String servicePath;
   core.String rootUrl;
   core.bool makeAuthRequests;
   core.Map params;
@@ -596,7 +596,7 @@ abstract class ConsoleClient extends Client {
     if (requestUrl.substring(0,1) == "/") {
       path ="$rootUrl${requestUrl.substring(1)}";
     } else {
-      path ="$rootUrl${basePath.substring(1)}$requestUrl";
+      path ="$rootUrl$servicePath$requestUrl";
     }
 
     var url = new oauth2.UrlPattern(path).generate(urlParams, queryParams);
@@ -746,7 +746,7 @@ class EccoDomaniIeriApi extends ConsoleClient {
   set userIp(core.String value) => params["userIp"] = value;
 
   EccoDomaniIeriApi([oauth2.OAuth2Console auth]) : super(auth) {
-    basePath = "/_ah/api/helloworld/v1/";
+    servicePath = "helloworld/v1/";
     rootUrl = "https://peer-pontus.appspot.com/_ah/api/";
     _greetings = new GreetingsResource(this);
   }

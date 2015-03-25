@@ -4,7 +4,7 @@ part of {{ api.name }}_{{ api.version }}_api_client;
  * Base class for all API clients, offering generic methods for HTTP Requests to the API
  */
 abstract class Client {
-  core.String basePath;
+  core.String servicePath;
   core.String rootUrl;
   core.bool makeAuthRequests;
   core.Map params;
