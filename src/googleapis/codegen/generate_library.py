@@ -82,8 +82,6 @@ flags.DEFINE_string(
      ' include file. Otherwise use the standard output file naming and produce'
      ' a source file for the overall API and one for each schema. This option'
      ' is only supported for C++ and Objective-C.'))
-# TODO(user): Remove this flag after all the customers are moved.
-flags.DEFINE_alias('cpp_singular_source_name', 'monolithic_source_name')
 flags.DEFINE_string(
     'output_dir',
     None,
