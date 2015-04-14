@@ -1,0 +1,1 @@
+The content has moved to https://developers.google.com/api-client-library/dotnet/release_notes
