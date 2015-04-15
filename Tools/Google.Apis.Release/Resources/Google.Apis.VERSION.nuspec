@@ -7,7 +7,7 @@
         <authors>Google Inc.</authors>
         <owners>peleyal</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-        <projectUrl>https://code.google.com/p/google-api-dotnet-client/wiki/ReleaseNotes#Version_VERSION</projectUrl>
+        <projectUrl>https://developers.google.com/api-client-library/dotnet</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
           The Google APIs Client Library is a runtime client for working with Google services.
