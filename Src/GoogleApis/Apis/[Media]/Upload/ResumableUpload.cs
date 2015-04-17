@@ -785,7 +785,7 @@ namespace Google.Apis.Upload
     /// The version with two types contains both a request object and a response object.
     /// </summary>
     /// <remarks>
-    /// See: http://code.google.com/apis/gdata/docs/resumable_upload.html for
+    /// See: https://developers.google.com/gdata/docs/resumable_upload for
     /// information on the protocol.
     /// </remarks>
     /// <typeparam name="TRequest">
