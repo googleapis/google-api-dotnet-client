@@ -4,6 +4,7 @@
 [Dd]ebug*/**
 [Rr]elease*/**
 
+Backup*
 *.suo
 *.user
 *.xml
