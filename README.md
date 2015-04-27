@@ -31,5 +31,5 @@ To make it easer for you to develop with the Google APIs using the Google API cl
 
 Support Forums
 =================================
-
-Questions regarding usage of the Client library should be posted to [stackoverflow.com](http://stackoverflow.com/)  using the tag [#google-api-dotnet-client](http://stackoverflow.com/questions/tagged/google-api-dotnet-client)
+If you find an issue with in the client library we would appricate you adding an issue in the [issue tracker](https://github.com/google/google-api-dotnet-client/issues).
+Questions regarding usage of the client library should be posted to [stackoverflow.com](http://stackoverflow.com/)  using the tag [#google-api-dotnet-client](http://stackoverflow.com/questions/tagged/google-api-dotnet-client)
