@@ -42,7 +42,7 @@ namespace Google.Apis.Http
 
         /// <summary>Maximum allowed number of tries.</summary>
         [VisibleForTestOnly]
-        internal const int MaxAllowedNumTries = 20;
+        public const int MaxAllowedNumTries = 20;
 
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();

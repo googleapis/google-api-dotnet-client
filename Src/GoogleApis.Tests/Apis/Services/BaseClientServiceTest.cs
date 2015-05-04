@@ -73,7 +73,7 @@ namespace Google.Apis.Tests.Apis.Services
             var client = new MockClientService();
             if (features.HasValue)
             {
-                client.SetFeatures(new[] { features.Value.GetStringValue() });
+                client.SetFeatures(new[] { Utilities.GetEnumStringValue(features.Value) });
             }
 
             return client;

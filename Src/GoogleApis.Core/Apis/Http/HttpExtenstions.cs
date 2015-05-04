@@ -23,7 +23,7 @@ namespace Google.Apis.Http
     /// Extension methods to <see cref="System.Net.Http.HttpRequestMessage"/> and 
     /// <see cref="System.Net.Http.HttpResponseMessage"/>.
     /// </summary>
-    static class HttpExtenstions
+    public static class HttpExtenstions
     {
         /// <summary>Returns <c>true</c> if the response contains one of the redirect status codes.</summary>
         internal static bool IsRedirectStatusCode(this HttpResponseMessage message)
@@ -40,8 +40,8 @@ namespace Google.Apis.Http
             }
         }
 
-        /// <summary>Sets an empty HTTP content.</summary>
-        internal static HttpContent SetEmptyContent(this HttpRequestMessage request)
+        /// <summary>A Google.Apis utility method for setting an empty HTTP content.</summary>
+        public static HttpContent SetEmptyContent(this HttpRequestMessage request)
         {
             request.Content = new ByteArrayContent(new byte[0]);
             request.Content.Headers.ContentLength = 0;

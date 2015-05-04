@@ -35,7 +35,7 @@ namespace Google.Apis.Http
     /// </list>
     /// </summary>
     [VisibleForTestOnly]
-    internal class MaxUrlLengthInterceptor : IHttpExecuteInterceptor
+    public class MaxUrlLengthInterceptor : IHttpExecuteInterceptor
     {
         private readonly uint maxUrlLength;
 

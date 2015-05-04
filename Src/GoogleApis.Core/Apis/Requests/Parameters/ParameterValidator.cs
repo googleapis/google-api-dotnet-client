@@ -29,7 +29,7 @@ namespace Google.Apis.Requests.Parameters
     {
         /// <summary>Validates a parameter value against the methods regex.</summary>
         [VisibleForTestOnly]
-        internal static bool ValidateRegex(IParameter param, string paramValue)
+        public static bool ValidateRegex(IParameter param, string paramValue)
         {
             return string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue);
         }

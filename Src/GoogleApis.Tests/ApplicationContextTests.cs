@@ -92,9 +92,6 @@ namespace Google.Apis.Tests
 
             // Fail test:
             Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
-
-            // change back to default logger
-            ApplicationContext.logger = null;
         }
     }
 }

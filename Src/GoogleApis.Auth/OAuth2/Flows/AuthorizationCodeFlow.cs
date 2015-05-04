@@ -291,7 +291,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns>Token response with the new access token.</returns>
         [VisibleForTestOnly]
-        internal async Task<TokenResponse> FetchTokenAsync(string userId, TokenRequest request,
+        public async Task<TokenResponse> FetchTokenAsync(string userId, TokenRequest request,
             CancellationToken taskCancellationToken)
         {
             // Add client id and client secret to requests.

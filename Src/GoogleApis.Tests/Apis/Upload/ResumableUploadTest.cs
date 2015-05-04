@@ -476,12 +476,16 @@ anim id est laborum.";
 
         private class MockResumableUpload : ResumableUpload<object>
         {
-            public MockResumableUpload(IClientService service, Stream stream, string contentType)
-                : this(service, "path", "PUT", stream, contentType) { }
+            public MockResumableUpload(IClientService service, Stream stream, string contentType, int chunkSize)
+                : this(service, "path", "PUT", stream, contentType, chunkSize) { }
 
             public MockResumableUpload(IClientService service, string path, string method, Stream stream,
-                string contentType)
-                : base(service, path, method, stream, contentType) { }
+                string contentType, int chunkSize)
+                : base(service, path, method, stream, contentType) 
+            {
+                this.chunkSize = chunkSize;
+            }
+
         }
 
         /// <summary>
@@ -583,9 +587,9 @@ anim id est laborum.";
                 }))
             {
 
-                var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
+                int chunkSize = UploadTestData.Length + 10;
+                var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain", chunkSize);
                 // Chunk size is bigger than the data we are sending.
-                upload.chunkSize = UploadTestData.Length + 10;
                 upload.Upload();
             }
 
@@ -606,9 +610,8 @@ anim id est laborum.";
                     HttpClientFactory = new MockHttpClientFactory(handler)
                 }))
             {
-                var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain");
                 // Chunk size is the exact size we are sending.
-                upload.chunkSize = UploadTestData.Length;
+                var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain", UploadTestData.Length);
                 upload.Upload();
             }
 
@@ -626,7 +629,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = new MemoryStream(new byte[0]);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
+                var upload = new MockResumableUpload(service, stream, "text/plain", 100 /* chunkSize */);
                 upload.Upload();
             }
 
@@ -761,8 +764,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = knownSize ? new MemoryStream(payload) : new UnknownSizeMemoryStream(payload);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.chunkSize = chunkSize;
+                var upload = new MockResumableUpload(service, stream, "text/plain", chunkSize);
 
                 IUploadProgress lastProgress = null;
                 upload.ProgressChanged += (p) => lastProgress = p;
@@ -819,8 +821,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = knownSize ? new MemoryStream(payload) : new UnknownSizeMemoryStream(payload);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.chunkSize = chunkSize;
+                var upload = new MockResumableUpload(service, stream, "text/plain", chunkSize);
                 upload.Upload();
 
                 Assert.That(payload, Is.EqualTo(handler.ReceivedData.ToArray()));
@@ -845,8 +846,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.chunkSize = chunkSize;
+                var upload = new MockResumableUpload(service, stream, "text/plain", chunkSize);
 
                 IUploadProgress lastProgressStatus = null;
                 upload.ProgressChanged += (p) =>
@@ -938,9 +938,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.chunkSize = chunkSize;
-
+                var upload = new MockResumableUpload(service, stream, "text/plain", chunkSize);
                 try
                 {
                     var result = upload.UploadAsync(handler.CancellationTokenSource.Token).Result;
@@ -969,9 +967,7 @@ anim id est laborum.";
                 }))
             {
                 var stream = new MemoryStream(payload);
-                var upload = new MockResumableUpload(service, stream, "text/plain");
-                upload.chunkSize = chunkSize;
-
+                var upload = new MockResumableUpload(service, stream, "text/plain", chunkSize);
                 var progressEvents = new List<IUploadProgress>();
                 upload.ProgressChanged += (progress) =>
                 {
