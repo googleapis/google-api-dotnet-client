@@ -257,7 +257,7 @@ namespace Google.Apis.Requests
 
         /// <summary>Returns the default ETagAction for a specific HTTP verb.</summary>
         [VisibleForTestOnly]
-        internal static ETagAction GetDefaultETagAction(string httpMethod)
+        public static ETagAction GetDefaultETagAction(string httpMethod)
         {
             switch (httpMethod)
             {

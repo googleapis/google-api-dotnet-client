@@ -19,8 +19,8 @@ using System;
 namespace Google.Apis.Testing
 {
     /// <summary>
-    /// Marker Attribute to indicate a Method/Class/Property has been made more visible for
-    /// purpose of testing. Mark as internal and makr the testing assembly as friend using
+    /// Marker Attribute to indicate a Method/Class/Property has been made more visible for purpose of testing.
+    /// Mark the method as public, without making the testing assembly as friend using
     /// <code>[assembly: InternalsVisibleTo("Full.Name.Of.Testing.Assembly")]</code>
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property |

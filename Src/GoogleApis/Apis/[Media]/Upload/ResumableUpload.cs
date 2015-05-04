@@ -174,8 +174,9 @@ namespace Google.Apis.Upload
         /// <summary>Gets or sets the body of this request.</summary>
         public TRequest Body { get; set; }
 
+        /// <summary>Change this value ONLY for testing purposes!</summary>
         [VisibleForTestOnly]
-        internal int chunkSize = DefaultChunkSize;
+        protected int chunkSize = DefaultChunkSize;
 
         /// <summary>
         /// Gets or sets the size of each chunk sent to the server.

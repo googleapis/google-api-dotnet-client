@@ -24,8 +24,7 @@ namespace Google
     /// <summary>Defines the context in which this library runs. It allows setting up custom loggers.</summary>
     public static class ApplicationContext
     {
-        [VisibleForTestOnly]
-        internal static ILogger logger;
+        private static ILogger logger;
 
         /// <summary>Returns the logger used within this application context.</summary>
         /// <remarks>It creates a <see cref="NullLogger"/> if no logger was registered previously</remarks>

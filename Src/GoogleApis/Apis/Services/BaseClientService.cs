@@ -53,7 +53,7 @@ namespace Google.Apis.Services
 
         /// <summary>The default maximum allowed length of a URL string for GET requests.</summary>
         [VisibleForTestOnly]
-        internal const uint DefaultMaxUrlLength = 2048;
+        public const uint DefaultMaxUrlLength = 2048;
 
         #region Initializer
 
@@ -139,7 +139,7 @@ namespace Google.Apis.Services
         /// <summary>Returns <c>true</c> if this service contains the specified feature.</summary>
         private bool HasFeature(Features feature)
         {
-            return Features.Contains(feature.GetStringValue());
+            return Features.Contains(Utilities.GetEnumStringValue(feature));
         }
 
         private ConfigurableHttpClient CreateHttpClient(Initializer initializer)

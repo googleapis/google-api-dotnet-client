@@ -29,9 +29,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Copyright © Google Inc 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("Google.Apis.Auth.Tests")]
-[assembly: InternalsVisibleTo("Google.Apis.Auth.PlatformServices")]
-
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
