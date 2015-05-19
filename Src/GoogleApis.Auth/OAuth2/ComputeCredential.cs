@@ -15,11 +15,13 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2
@@ -36,6 +38,9 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ComputeCredential : ServiceCredential
     {
+        /// <summary>The metadata server url.</summary>
+        public const string MetadataServerUrl = "http://metadata.google.internal";
+
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
@@ -44,11 +49,11 @@ namespace Google.Apis.Auth.OAuth2
         {
             /// <summary>Constructs a new initializer using the default compute token URL.</summary>
             public Initializer()
-                : this(GoogleAuthConsts.ComputeTokenUrl) {}
+                : this(GoogleAuthConsts.ComputeTokenUrl) { }
 
             /// <summary>Constructs a new initializer using the given token URL.</summary>
             public Initializer(string tokenUrl)
-                : base(tokenUrl) {}
+                : base(tokenUrl) { }
         }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
@@ -85,9 +90,9 @@ namespace Google.Apis.Auth.OAuth2
                     var error = "Server response does not contain a JSON object. Status code is: "
                         + response.StatusCode;
                     throw new TokenResponseException(new TokenErrorResponse
-                        {
-                            Error = error
-                        });
+                    {
+                        Error = error
+                    });
                 }
             }
 
@@ -99,5 +104,59 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+        /// <summary>
+        /// Return whether code is running on Google Compute Engine.
+        /// </summary>
+        public static async Task<bool> IsRunningOnComputeEngine()
+        {
+            try
+            {
+                Logger.Info("Checking connectivity to ComputeEngine metadata server.");
+                var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+
+                CancellationTokenSource cts = new CancellationTokenSource();
+                cts.CancelAfter(1000);
+
+                var httpClient = new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs());
+                var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+
+                IEnumerable<string> headerValues = null;
+                if (response.Headers.TryGetValues("Metadata-Flavor", out headerValues))
+                {
+                    foreach (var value in headerValues)
+                    {
+                        if (value == "Google")
+                            return true;
+                    }
+                }
+
+                Logger.Warning("Response came from a source other than the ComputeEngine metadata server.");
+                return false;
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+            }
+            catch (OperationCanceledException)
+            {
+                Logger.Warning("Could not reach the ComputeEngine Metadata service. Operation timed out.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// CreateScoped() does not need to be invoked for ComputeCredential. AccessTokens minted for 
+        /// ComputeCredential automatically use the scopes from the Compute instance you are running on.
+        /// Hence returning the same object. 
+        /// </summary>
+        public override ICredential CreateScoped(IEnumerable<string> scopes)
+        {
+            Logger.Info("ComputeCredential.CreateScoped() invoked. CreateScoped() does not need to be invoked for ComputeCredential."
+            + " AccessTokens minted for ComputeCredential automatically use the scopes from the Compute instance you are running on."
+            + " Please check the IsCreateScopedRequired prior to invoking CreateScoped().");
+
+            return this;
+        }
     }
 }

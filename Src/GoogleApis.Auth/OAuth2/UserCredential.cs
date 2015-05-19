@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -31,8 +32,7 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class UserCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
-        IConfigurableHttpClientInitializer
+    public class UserCredential : ICredential
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
@@ -133,6 +133,15 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
+        #region ICredential
+
+        public bool IsCreateScopedRequired
+        {
+            get { return false; }
+        }
+
+        #endregion
+
         /// <summary>
         /// Refreshes the token by calling to
         /// <see cref="Google.Apis.Auth.OAuth2.Flows.IAuthorizationCodeFlow.RefreshTokenAsync"/>.
@@ -182,6 +191,19 @@ namespace Google.Apis.Auth.OAuth2
             Logger.Info("Access token was revoked successfully");
             // We don't set the token to null, cause we want that the next request (without reauthorizing) will fail).
             return true;
+        }
+
+        /// <summary>
+        /// CreateScoped() does not need to be invoked for UserCredential. AccessTokens minted for 
+        /// UserCredential automatically use the scopes from the RefreshToken. Hence returning the same object. 
+        /// </summary>
+        public ICredential CreateScoped(IEnumerable<string> scopes)
+        {
+            Logger.Info("UserCredential.CreateScoped() invoked. CreateScoped() does not need to be invoked for UserCredential."
+            + " AccessTokens minted for UserCredential automatically use the scopes from the RefreshToken."
+            + " Please check the IsCreateScopedRequired prior to invoking CreateScoped().");
+
+            return this;
         }
     }
 }

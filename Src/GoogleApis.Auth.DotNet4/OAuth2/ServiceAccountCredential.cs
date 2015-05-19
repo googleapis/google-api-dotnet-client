@@ -22,6 +22,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
+
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Logging;
@@ -66,7 +69,8 @@ namespace Google.Apis.Auth.OAuth2
                 : this(id, GoogleAuthConsts.TokenUrl) { }
 
             /// <summary>Constructs a new initializer using the given id and the token server URL.</summary>
-            public Initializer(string id, string tokenServerUrl) : base(tokenServerUrl)
+            public Initializer(string id, string tokenServerUrl)
+                : base(tokenServerUrl)
             {
                 Id = id;
                 Scopes = new List<string>();
@@ -80,6 +84,19 @@ namespace Google.Apis.Auth.OAuth2
                 byte[] privateKeyBlob = rsa.ExportCspBlob(true);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportCspBlob(privateKeyBlob);
+                return this;
+            }
+
+            /// <summary>Extracts a <see cref="Key"/> from the PEM private key obtained json credentials file.</summary>
+            /// <param name="base64PrivateKey"></param>
+            /// <returns></returns>
+            public Initializer FromPrivateKey(string base64PrivateKey)
+            {
+                var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
+                RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+                RSAParameters rsaParameters = DotNetUtilities.ToRSAParameters(crtParameters);
+                Key = new RSACryptoServiceProvider();
+                Key.ImportParameters(rsaParameters);
                 return this;
             }
         }
@@ -113,7 +130,8 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         /// <param name="initializer"></param>
-        public ServiceAccountCredential(Initializer initializer) : base(initializer)
+        public ServiceAccountCredential(Initializer initializer)
+            : base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
             user = initializer.User;
@@ -140,10 +158,7 @@ namespace Google.Apis.Auth.OAuth2
                 .Append(UrlSafeBase64Encode(serializedPayload));
 
             // Sign the header and the payload.
-            var hashAlg = new SHA256CryptoServiceProvider();
-            byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
-
-            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
+            var signature = UrlSafeBase64Encode(key.SignData(Encoding.ASCII.GetBytes(assertion.ToString()), "SHA256"));
             assertion.Append(".").Append(signature);
 
             // Create the request.
@@ -158,6 +173,25 @@ namespace Google.Apis.Auth.OAuth2
                 .ConfigureAwait(false);
             Token = newToken;
             return true;
+        }
+
+        public override bool IsCreateScopedRequired
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Creates a copy of the credential with the specified scope
+        /// </summary>
+        /// <param name="scopes">Scope(s) requested</param>
+        /// <returns>New credential object with the specied scopes</returns>
+        public override ICredential CreateScoped(IEnumerable<string> scopes)
+        {
+            var initializer = new ServiceAccountCredential.Initializer(Id);
+            initializer.User = User;
+            initializer.Key = key;
+            initializer.Scopes = scopes;
+            return new ServiceAccountCredential(initializer);
         }
 
         #endregion
