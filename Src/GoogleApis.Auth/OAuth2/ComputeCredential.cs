@@ -42,6 +42,12 @@ namespace Google.Apis.Auth.OAuth2
         public const string MetadataServerUrl = "http://metadata.google.internal";
 
         /// <summary>
+        /// Experimentally, 200ms was found to be 99.9999% reliable. 
+        /// This is a conservative timeout to minimize hanging on some troublesome network. 
+        /// </summary>
+        private const int MetadataServerPingTimeoutInMilliseconds = 1000;
+
+        /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
         /// </summary>
@@ -90,9 +96,9 @@ namespace Google.Apis.Auth.OAuth2
                     var error = "Server response does not contain a JSON object. Status code is: "
                         + response.StatusCode;
                     throw new TokenResponseException(new TokenErrorResponse
-                    {
-                        Error = error
-                    });
+                        {
+                            Error = error
+                        });
                 }
             }
 
@@ -116,7 +122,7 @@ namespace Google.Apis.Auth.OAuth2
                 var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
 
                 CancellationTokenSource cts = new CancellationTokenSource();
-                cts.CancelAfter(1000);
+                cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
 
                 var httpClient = new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs());
                 var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);

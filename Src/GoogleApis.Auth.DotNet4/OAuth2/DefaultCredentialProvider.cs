@@ -30,6 +30,7 @@ using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Logging;
+using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -65,7 +66,7 @@ namespace Google.Apis.Auth.OAuth2
 
         private object lockObject = new object();
 
-        // These variables should only be accessed inside a synchronized block
+        // These variables should only be accessed inside a synchronized block.
         private ICredential cachedCredential = null;
         private bool checkedComputeEngine = false;
 
@@ -87,7 +88,9 @@ namespace Google.Apis.Auth.OAuth2
                 }
             }
             if (cachedCredential != null)
+            {
                 return cachedCredential;
+            }
 
             throw new IOException(String.Format("The Application Default Credentials are not available. They are available if running"
                 + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
@@ -111,10 +114,6 @@ namespace Google.Apis.Auth.OAuth2
                 {
                     return LoadCredentialFromFile(credentialPath);
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                // File is not present, eat the exception and move on to the next check.
             }
             catch (Exception e)
             {
@@ -173,7 +172,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal static ICredential LoadFromStream(Stream stream)
         {
-            JObject jsonObject = JsonConvert.DeserializeObject<JObject>( (new StreamReader(stream)).ReadToEnd());
+            JObject jsonObject = NewtonsoftJsonSerializer.Instance.Deserialize<JObject>(stream);
             string fileType = null;
 
             try

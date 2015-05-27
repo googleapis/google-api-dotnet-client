@@ -130,16 +130,16 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
             {
                 TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
                 credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, WellKnownCredentialFilePath);
-                
+
                 ICredential credential = credentialProvider.GetApplicationDefaultCredential();
 
                 Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
             }
             catch (IOException e)
             {
-                if (!e.Message.Contains("The Application Default Credentials are not available"))
+                if (!e.Message.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS"))
                 {
-                    Assert.Fail(String.Format("Expected IOException containing message 'The Application Default Credentials are not available'. Obtained {0} instead.", e.ToString()));
+                    Assert.Fail(String.Format("Expected IOException containing message 'Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS'. Obtained {0} instead.", e.ToString()));
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
                 credentialProvider.SetFileContents(credentialFilepath, "Invalid Credentials File Contents");
 
                 ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-                
+
                 Assert.Fail(string.Format("Invalid credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
             }
             catch (IOException e)
@@ -172,7 +172,7 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
         #endregion
     }
 
-    class TestDefaultCredentialProvider: DefaultCredentialProvider
+    class TestDefaultCredentialProvider : DefaultCredentialProvider
     {
         Dictionary<string, string> envVars = new Dictionary<string, string>();
         Dictionary<string, string> fileContents = new Dictionary<string, string>();

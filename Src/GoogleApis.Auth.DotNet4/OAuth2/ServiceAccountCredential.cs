@@ -130,8 +130,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         /// <param name="initializer"></param>
-        public ServiceAccountCredential(Initializer initializer)
-            : base(initializer)
+        public ServiceAccountCredential(Initializer initializer): base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
             user = initializer.User;
@@ -158,7 +157,9 @@ namespace Google.Apis.Auth.OAuth2
                 .Append(UrlSafeBase64Encode(serializedPayload));
 
             // Sign the header and the payload.
-            var signature = UrlSafeBase64Encode(key.SignData(Encoding.ASCII.GetBytes(assertion.ToString()), "SHA256"));
+            var hashAlg = new SHA256CryptoServiceProvider();
+            byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
+            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */));
             assertion.Append(".").Append(signature);
 
             // Create the request.

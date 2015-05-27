@@ -27,7 +27,7 @@ using Google.Apis.Http;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// Base type for credentials for authorizing calls using OAuth2.
+    /// Credential for authorizing calls using OAuth 2.0.
     /// </summary>
     public interface ICredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
         IConfigurableHttpClientInitializer
@@ -58,8 +58,21 @@ namespace Google.Apis.Auth.OAuth2
         TokenResponse Token { get; set; }
 
         /// <summary>
-        /// Only returns true if this credential type has no scopes by default and
-        /// requires a call to createScoped before use.
+        /// Only returns true if this credential type has no scopes by default and requires 
+        /// a call to createScoped before use. 
+        ///
+        /// Credentials need to have scopes in them before they can be used to access Google services. 
+        /// Some Credential types have scopes built-in, and some dont. This property indicates whether 
+        /// the Credential type has scopes built-in.
+        /// 
+        /// e.g. 
+        /// 1. ComputeCredential has scopes built-in. Nothing additional is required. 
+        /// 
+        /// 2. UserCredential has scopes built-in, as they were obtained during the consent 
+        /// screen. Nothing additional is requierd.
+        /// 
+        /// 3. ServiceAccountCredentials does not have scopes built-in by default. Caller should 
+        /// invoke CreateScoped to add scopes to the Credential.
         /// </summary>
         bool IsCreateScopedRequired { get; }
 
