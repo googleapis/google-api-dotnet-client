@@ -76,6 +76,20 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = new List<string>();
             }
 
+            /// <summary>Constructs a new initializer using the given id and the private key in the ClientCredentialParameters.</summary>
+            public Initializer(ClientCredentialParameters clientCredentialParameters)
+                : this(clientCredentialParameters.ClientEmail, GoogleAuthConsts.TokenUrl)
+            {
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.ClientEmail, "ClientId");
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.Base64PrivateKey, "ClientSecret");
+
+                var privateKeyBytes = Convert.FromBase64String(clientCredentialParameters.Base64PrivateKey);
+                RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+                RSAParameters rsaParameters = DotNetUtilities.ToRSAParameters(crtParameters);
+                Key = new RSACryptoServiceProvider();
+                Key.ImportParameters(rsaParameters);
+            }            
+
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
@@ -84,19 +98,6 @@ namespace Google.Apis.Auth.OAuth2
                 byte[] privateKeyBlob = rsa.ExportCspBlob(true);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportCspBlob(privateKeyBlob);
-                return this;
-            }
-
-            /// <summary>Extracts a <see cref="Key"/> from the PEM private key obtained json credentials file.</summary>
-            /// <param name="base64PrivateKey"></param>
-            /// <returns></returns>
-            public Initializer FromPrivateKey(string base64PrivateKey)
-            {
-                var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
-                RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
-                RSAParameters rsaParameters = DotNetUtilities.ToRSAParameters(crtParameters);
-                Key = new RSACryptoServiceProvider();
-                Key.ImportParameters(rsaParameters);
                 return this;
             }
         }

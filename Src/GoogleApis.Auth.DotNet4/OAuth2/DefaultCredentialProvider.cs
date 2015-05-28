@@ -92,7 +92,7 @@ namespace Google.Apis.Auth.OAuth2
                 return cachedCredential;
             }
 
-            throw new IOException(String.Format("The Application Default Credentials are not available. They are available if running"
+            throw new InvalidOperationException(String.Format("The Application Default Credentials are not available. They are available if running"
                 + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
                 + " pointing to a file defining the credentials. See {1} for more information.",
                 CREDENTIAL_ENV_VAR,
@@ -120,7 +120,7 @@ namespace Google.Apis.Auth.OAuth2
                 // Catching generic exception type because any corrupted file could manifest in different ways including 
                 // but not limited to the System.IO or from the Newtonsoft.Json namespace
 
-                throw new IOException(String.Format("Error reading credential file from location {0}: {1}"
+                throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
                                         + "\nPlease check the value of the Environment Variable {2}",
                                         credentialPath,
                                         e.Message,
@@ -145,7 +145,7 @@ namespace Google.Apis.Auth.OAuth2
                 // Catching generic exception type because any corrupted file could manifest in different ways including 
                 // but not limited to the System.IO or from the Newtonsoft.Json namespace
 
-                throw new IOException(String.Format("Error reading credential file from location {0}: {1}"
+                throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
                                         + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
                                         credentialPath,
                                         e.Message));
@@ -172,37 +172,21 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal static ICredential LoadFromStream(Stream stream)
         {
-            JObject jsonObject = NewtonsoftJsonSerializer.Instance.Deserialize<JObject>(stream);
-            string fileType = null;
-
-            try
+            ClientCredentialParameters clientCredentialParameters = ClientCredentialParameters.Load(stream);
+          
+            switch (clientCredentialParameters.CredentialType)
             {
-                fileType = ReadJsonValue(jsonObject, "type");
-            }
-            catch (IOException e)
-            {
-                throw new IOException("Error parsing stream contents.", e);
-            }
-
-            switch (fileType)
-            {
-                case USER_FILE_TYPE:
+                case ClientCredentialType.UserCredential:
                     try
                     {
-                        ClientSecrets clientSecrets = new ClientSecrets()
-                        {
-                            ClientId = ReadJsonValue(jsonObject, "client_id"),
-                            ClientSecret = ReadJsonValue(jsonObject, "client_secret")
-                        };
-
                         var initializer = new GoogleAuthorizationCodeFlow.Initializer
                         {
-                            ClientSecrets = clientSecrets
+                            ClientSecrets = clientCredentialParameters.ClientSecrets
                         };
 
                         TokenResponse token = new TokenResponse()
                         {
-                            RefreshToken = ReadJsonValue(jsonObject, "refresh_token")
+                            RefreshToken = clientCredentialParameters.RefreshToken
                         };
 
                         var flow = new GoogleAuthorizationCodeFlow(initializer);
@@ -210,25 +194,22 @@ namespace Google.Apis.Auth.OAuth2
                     }
                     catch (IOException e)
                     {
-                        throw new IOException("Error parsing stream contents.", e);
+                        throw new InvalidOperationException("Error parsing stream contents.", e);
                     }
 
-                case SERVICE_ACCOUNT_FILE_TYPE:
+                case ClientCredentialType.ServiceAccountCredential:
                     try
                     {
-                        var initializer = new ServiceAccountCredential.Initializer(ReadJsonValue(jsonObject, "client_email"));
-
-                        var base64PrivateKey = ReadJsonValue(jsonObject, "private_key");
-                        base64PrivateKey = base64PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");
-                        return new ServiceAccountCredential(initializer.FromPrivateKey(base64PrivateKey));
+                        var initializer = new ServiceAccountCredential.Initializer(clientCredentialParameters);
+                        return new ServiceAccountCredential(initializer);
                     }
                     catch (IOException e)
                     {
-                        throw new IOException("Error parsing stream contents.", e);
+                        throw new InvalidOperationException("Error parsing stream contents.", e);
                     }
 
                 default:
-                    throw new IOException("Error reading credentials from stream, 'type' field not specified.");
+                    throw new InvalidOperationException("Error reading credentials from stream, 'type' field not specified.");
             }
         }
 
@@ -253,18 +234,6 @@ namespace Google.Apis.Auth.OAuth2
             {
                 return LoadFromStream(fs);
             }
-        }
-
-        /// <summary>
-        /// Helper method to get a json field.
-        /// </summary>
-        private static string ReadJsonValue(JObject jsonObject, string key)
-        {
-            var value = jsonObject[key];
-            if (value != null)
-                return value.ToString();
-
-            throw new IOException(String.Format("Could not find property {0}.", key));
         }
 
         /// <summary>

@@ -113,11 +113,11 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
                 Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
             }
-            catch (IOException e)
+            catch (InvalidOperationException e)
             {
                 if (!e.Message.Contains("The Application Default Credentials are not available"))
                 {
-                    Assert.Fail(String.Format("Expected IOException containing message 'The Application Default Credentials are not available'. Obtained {0} instead.", e.ToString()));
+                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'The Application Default Credentials are not available'. Obtained {0} instead.", e.ToString()));
                 }
             }
         }
@@ -135,11 +135,11 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
                 Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
             }
-            catch (IOException e)
+            catch (InvalidOperationException e)
             {
                 if (!e.Message.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS"))
                 {
-                    Assert.Fail(String.Format("Expected IOException containing message 'Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS'. Obtained {0} instead.", e.ToString()));
+                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS'. Obtained {0} instead.", e.ToString()));
                 }
             }
         }
@@ -159,11 +159,11 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
                 Assert.Fail(string.Format("Invalid credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
             }
-            catch (IOException e)
+            catch (InvalidOperationException e)
             {
                 if (!e.Message.Contains("Error reading credential file from location"))
                 {
-                    Assert.Fail(String.Format("Expected IOException containing message 'Error reading credential file from location'. Obtained {0} instead.", e.ToString()));
+                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'Error reading credential file from location'. Obtained {0} instead.", e.ToString()));
                 }
             }
         }
