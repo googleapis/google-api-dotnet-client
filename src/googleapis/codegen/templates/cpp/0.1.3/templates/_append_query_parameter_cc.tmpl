@@ -1,0 +1,14 @@
+{% if variable.data_type.json_type == 'array' %}
+  if (!{{ variable.memberName }}.empty()) {
+    target->append(sep);
+    {{ api.client_namespace }}::AppendIteratorToUrl(
+      {{ variable.memberName }}.begin(), {{ variable.memberName }}.end(),
+      "{{ variable.wireName }}", target);
+    sep = "&";
+  }
+{% else %}
+  StrAppend(target, sep, "{{ variable.wireName }}=",
+            {{ api.client_namespace }}::CppValueToEscapedUrlValue(
+              {{ variable.memberName }}));
+  sep = "&";
+{% endif %}

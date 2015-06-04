@@ -1,0 +1,19 @@
+{% filter noblanklines %}
+{% if options.useSingleSourceFile %}{% if model.importManager %}
+{% for import in model.importManager.type_dependencies %}
+@class {{ import }};
+{% endfor %}
+{% endif %}{% endif %}
+{% endfilter %}
+//
+//   {{ model.className }}
+//
+
+{% doc_comment_if model.description %}
+
+@interface {{ model.className }} : {{ model.superClass }}
+{% if model.arrayOf %}@property (retain) {{ model.codeType }} items;{% endif %}{% for property in model.properties %}
+{% doc_comment_if property.description %}
+@property ({{ property.attributes }}) {{ property.codeType }} *{{ property.codeName }};{% if property.typeComment %}  // {{ property.typeComment }}{% endif %}
+{% endfor %}
+@end
