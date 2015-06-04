@@ -36,6 +36,7 @@ const {{ authscope.name }} =
   public function __construct(Google_Client $client)
   {
     parent::__construct($client);
+    $this->rootUrl = {% literal api.rootUrl %};
     $this->servicePath = {% literal api.servicePath %};
     $this->version = {% literal api.version %};
     $this->serviceName = {% literal api.name %};

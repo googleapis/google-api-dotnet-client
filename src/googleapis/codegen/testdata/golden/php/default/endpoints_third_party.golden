@@ -44,6 +44,7 @@ class NASA_Service_EccoDomaniIeri extends Google_Service
   public function __construct(Google_Client $client)
   {
     parent::__construct($client);
+    $this->rootUrl = 'https://peer-pontus.appspot.com/_ah/api/';
     $this->servicePath = 'helloworld/v1/';
     $this->version = 'v1';
     $this->serviceName = 'helloworld';

@@ -7,9 +7,9 @@
 public virtual
   {% if parameter.enumType %}
     {% if parameter.required %}
- {% camel_case parameter.codeName %}Enum
+ {% camel_case parameter.memberName %}Enum
     {% else %}
- System.Nullable<{% camel_case parameter.codeName %}Enum>
+ System.Nullable<{% camel_case parameter.memberName %}Enum>
     {% endif %}
   {% else %}
     {% if parameter.repeated %}
@@ -23,7 +23,7 @@ public virtual
     {% endif %}
   {% endif %}
 
-{% sp %} {% camel_case parameter.codeName %} { get;
+{% sp %} {% camel_case parameter.memberName %} { get;
  {% if parameter.required %}
  private
  {% endif %}
@@ -31,7 +31,7 @@ public virtual
 {% endnoeol %}
 {% if parameter.enumType %}
 {% doc_comment_if parameter.description %}
-public enum {% camel_case parameter.enumType.className %}Enum
+public enum {% camel_case parameter.memberName %}Enum
 {
 {% noblank %}{% for element in parameter.enumType.elements %}
 {% indent %}

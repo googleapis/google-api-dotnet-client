@@ -131,6 +131,9 @@ flags.DECLARE_key_flag('version_package')
 def main(unused_argv):
   if not (FLAGS.api_name or FLAGS.input):
     raise app.UsageError('You must specify one of --api_name or --input')
+  if FLAGS.api_name and FLAGS.input:
+    raise app.UsageError(
+        'You can only specify one of --api_name or --input')
   if not (FLAGS.output_dir or FLAGS.output_file):
     raise app.UsageError(
         'You must specify one of --output_dir or --output_file')
@@ -152,6 +155,7 @@ def main(unused_argv):
     content = f.read()
     f.close()
   discovery_doc = json.loads(content, object_pairs_hook=collections.OrderedDict)
+
 
   package_writer = package_writer_foundry.GetPackageWriter(
       output_dir=FLAGS.output_dir, output_file=FLAGS.output_file,
