@@ -45,7 +45,7 @@ The following dependencies will be installed:
   * django (for the templating package) - http://www.djangoproject.com/
   * google-apputils - http://github.com/google/google-apputils/
   * google-api-python-client - http://github.com/google/google-api-python-client
-  * python-gflags - http://gitub.com/google/python-gflags/
+  * python-gflags - http://github.com/google/python-gflags/
   * httplib2 - https://github.com/jcgregorio/httplib2
 
 
