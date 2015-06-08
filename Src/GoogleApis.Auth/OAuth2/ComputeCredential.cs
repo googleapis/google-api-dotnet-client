@@ -150,19 +150,5 @@ namespace Google.Apis.Auth.OAuth2
                 return false;
             }
         }
-
-        /// <summary>
-        /// CreateScoped() does not need to be invoked for ComputeCredential. AccessTokens minted for 
-        /// ComputeCredential automatically use the scopes from the Compute instance you are running on.
-        /// Hence returning the same object. 
-        /// </summary>
-        public override ICredential CreateScoped(IEnumerable<string> scopes)
-        {
-            Logger.Info("ComputeCredential.CreateScoped() invoked. CreateScoped() does not need to be invoked for ComputeCredential."
-            + " AccessTokens minted for ComputeCredential automatically use the scopes from the Compute instance you are running on."
-            + " Please check the IsCreateScopedRequired prior to invoking CreateScoped().");
-
-            return this;
-        }
     }
 }

@@ -92,6 +92,15 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
             ICredential credential = credentialProvider.GetApplicationDefaultCredential();
 
+            if (credential is IScopableCredential)
+            {
+                IScopableCredential scopableCredential = credential as IScopableCredential;
+                if (scopableCredential.IsCreateScopedRequired)
+                {
+                    credential = scopableCredential.CreateScoped(new[] { "https://www.googleapis.com/auth/cloud-platform" });
+                }
+            }            
+
             if (!(credential is ServiceAccountCredential))
             {
                 Assert.Fail(string.Format("Expected credential of type ServiceAccountCredential. Obtained {0} instead.", credential.GetType()));

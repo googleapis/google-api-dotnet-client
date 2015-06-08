@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -41,7 +42,7 @@ namespace Google.Apis.Auth.OAuth2
     /// Take a look in https://developers.google.com/accounts/docs/OAuth2ServiceAccount for more details.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential
+    public class ServiceAccountCredential : ServiceCredential, IScopableCredential
     {
         /// <summary>An initializer class for the service account credential. </summary>
         public class Initializer : ServiceCredential.Initializer
@@ -177,9 +178,23 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
-        public override bool IsCreateScopedRequired
+        /// <summary>
+        /// Returns true if scopes are empty, which means the caller needs to 
+        /// invoke CreateScoped() to add scopes.
+        /// </summary>
+        public bool IsCreateScopedRequired
         {
-            get { return true; }
+            get
+            {
+                if (scopes == null || scopes.Count() == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
@@ -187,7 +202,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         /// <param name="scopes">Scope(s) requested</param>
         /// <returns>New credential object with the specied scopes</returns>
-        public override ICredential CreateScoped(IEnumerable<string> scopes)
+        public ICredential CreateScoped(IEnumerable<string> scopes)
         {
             var initializer = new ServiceAccountCredential.Initializer(Id);
             initializer.User = User;

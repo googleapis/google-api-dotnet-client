@@ -133,15 +133,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        #region ICredential
-
-        public bool IsCreateScopedRequired
-        {
-            get { return false; }
-        }
-
-        #endregion
-
         /// <summary>
         /// Refreshes the token by calling to
         /// <see cref="Google.Apis.Auth.OAuth2.Flows.IAuthorizationCodeFlow.RefreshTokenAsync"/>.

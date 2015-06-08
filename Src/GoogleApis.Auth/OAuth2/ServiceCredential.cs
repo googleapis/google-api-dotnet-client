@@ -197,20 +197,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        #region ICredential
-
-        public virtual bool IsCreateScopedRequired
-        {
-            get { return false; }
-        }
-
-        public virtual ICredential CreateScoped(IEnumerable<string> scopes)
-        {
-            return this;
-        }
-
-        #endregion
-
         /// <summary>Requests a new token.</summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns><c>true</c> if a new token was received successfully.</returns>
