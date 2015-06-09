@@ -256,7 +256,7 @@ namespace Google.Apis.Requests
                     var separatorIndex = line.IndexOf(':');
                     var key = line.Substring(0, separatorIndex).Trim();
                     var value = line.Substring(separatorIndex + 1).Trim();
-                    // Check if the header already exists, and if so append it's value 
+                    // Check if the header already exists, and if so append its value 
                     // to the existing value. Fixes issue #548.
                     if (headersDic.ContainsKey(key)) {
                         headersDic[key] = headersDic[key] + ", " + value;
