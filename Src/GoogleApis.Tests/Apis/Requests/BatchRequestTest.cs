@@ -161,6 +161,8 @@ HTTP/1.1 200 OK
 ETag: ""\""10011\""""
 Content-Type: application/json; charset=UTF-8
 Content-Length: 505
+Vary: Accept-Encoding
+Vary: Referer
 
 {
  ""etag_key"": ""\""10011\"""",
@@ -301,6 +303,8 @@ Content-Length: 202
                 var httpMessage = tuple.Item3; // HTTP message
                 Assert.That(httpMessage.Content.Headers.ContentType.MediaType, Is.EqualTo("application/json"));
                 Assert.That(httpMessage.Content.Headers.ContentLength, Is.EqualTo(505));
+                Assert.True(httpMessage.Headers.Vary.Contains("Accept-Encoding"));
+                Assert.True(httpMessage.Headers.Vary.Contains("Referer"));
 
                 tuple = responses[1];
                 if (successful2ndReponse)
