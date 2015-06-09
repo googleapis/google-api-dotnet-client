@@ -254,8 +254,13 @@ namespace Google.Apis.Requests
                 while (!string.IsNullOrEmpty((line = reader.ReadLine())))
                 {
                     var separatorIndex = line.IndexOf(':');
-                    headersDic.Add(line.Substring(0, separatorIndex).Trim(),
-                        line.Substring(separatorIndex + 1).Trim());
+                    var key = line.Substring(0, separatorIndex).Trim();
+                    var value = line.Substring(separatorIndex + 1).Trim();
+                    if (headersDic.ContainsKey(key)) {
+                        headersDic[key] = headersDic[key] + ", " + value;
+                    } else {
+                        headersDic.Add(key, value);
+                    }
                 }
 
                 // Set the content.
