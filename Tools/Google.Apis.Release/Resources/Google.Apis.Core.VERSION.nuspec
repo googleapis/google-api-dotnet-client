@@ -32,9 +32,9 @@
       </dependencies>
     </metadata>
     <files>
-      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll" />
-      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.pdb" />
-      <file src="Src\GoogleApis.Core\bin\Release\Google.Apis.Core.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.xml" />
+      <file src="Src\GoogleApis.Core\bin\ReleaseSigned\Google.Apis.Core.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll" />
+      <file src="Src\GoogleApis.Core\bin\ReleaseSigned\Google.Apis.Core.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.pdb" />
+      <file src="Src\GoogleApis.Core\bin\ReleaseSigned\Google.Apis.Core.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.xml" />
       
       <file src="Resources\License.txt" target="License.txt" />
     </files>
