@@ -57,6 +57,18 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>Google.Apis.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseSigned|AnyCPU'">
+    <OutputPath>bin\ReleaseSigned\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Google.Apis.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>C:\code\google.apis.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="Apis\ServiceRequests.cd" />

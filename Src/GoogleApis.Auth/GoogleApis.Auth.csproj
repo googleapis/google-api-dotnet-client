@@ -55,6 +55,18 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseSigned|AnyCPU'">
+    <OutputPath>bin\ReleaseSigned\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>C:\code\google.apis.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonWebSignature.cs" />
     <Compile Include="JsonWebToken.cs" />
