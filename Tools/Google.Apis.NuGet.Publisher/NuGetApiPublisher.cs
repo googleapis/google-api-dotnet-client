@@ -203,7 +203,7 @@ namespace Google.Apis.NuGet.Publisher
 
             // create a MS project instance and configure it to build 'Release'
             Project project = new Project(projectFile);
-            project.SetProperty("Configuration", "Release");
+            project.SetProperty("Configuration", "ReleaseSigned");
 
             bool success = project.Build("Build", new[] { new ConsoleLogger(LoggerVerbosity.Quiet) });
             if (success)

@@ -28,6 +28,8 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Copyright © Google Inc 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// Google.Apis.Tests won't compile in "ReleaseSigned" configuration.
+[assembly: InternalsVisibleTo("Google.Apis.Tests")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

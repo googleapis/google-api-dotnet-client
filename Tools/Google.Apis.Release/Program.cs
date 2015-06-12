@@ -31,7 +31,6 @@ using CommandLine.Text;
 using Ionic.Zip;
 
 using Google.Apis.Release.Repositories;
-using Google.Apis.Release.Wiki;
 using Google.Apis.Utils;
 using Google.Apis.Utils.Trace;
 
@@ -50,7 +49,7 @@ namespace Google.Apis.Release
                 "Notice that it's relative to current directory.";
             const string StepHelpText = "Two options: " +
                 "'1' for building the core library. \n" +
-                "'2' for compiling samples, updating wiki and push to contrib the new version.";
+                "'2' for publishing the packages to NuGet and tagging the release.";
             const string IsBetaHelpText = "Is this release beta?";
             const string IsRCHelpText = "Is this release RC?";
             const string NuGetApiKeyHelpText = "Define the NuGet API key to publish to NuGet main repository.";
@@ -104,21 +103,15 @@ namespace Google.Apis.Release
         }
 
         /// <summary>Gets or sets the "default" repository.</summary>
-        private Hg DefaultRepository { get; set; }
+        private Git DefaultRepository { get; set; }
 
         /// <summary>Gets or sets the "samples" repository.</summary>
-        private Hg SamplesRepository { get; set; }
-
-        /// <summary>Gets or sets the "wiki" repository.</summary>
-        private Hg WikiRepository { get; set; }
-
-        /// <summary>Gets or sets the "contrib" repository.</summary>
-        private Hg ContribRepository { get; set; }
+        private Git SamplesRepository { get; set; }
 
         /// <summary>Gets all four repositories.</summary>
-        private IEnumerable<Hg> AllRepositories
+        private IEnumerable<Git> AllRepositories
         {
-            get { return new List<Hg> { DefaultRepository, SamplesRepository, WikiRepository, ContribRepository }; }
+            get { return new List<Git> { DefaultRepository, SamplesRepository }; }
         }
 
         /// <summary>Gets all Nuspec packages.</summary>
@@ -140,7 +133,7 @@ namespace Google.Apis.Release
         /// Clone URL format which expects one parameter of the repository name (the default repository should be 
         /// empty).
         /// </summary>
-        private const string CloneUrlFormat = "https://code.google.com/p/google-api-dotnet-client{0}/";
+        private const string CloneUrlFormat = "https://github.com/google/google-api-dotnet-client{0}";
 
         static void Main(string[] args)
         {
@@ -214,8 +207,8 @@ namespace Google.Apis.Release
         /// <summary>The main release logic for creating a new release of Google.Apis.</summary>
         private void Run()
         {
-            DefaultRepository = new Hg(new Uri(string.Format(CloneUrlFormat, "")), options.IsLocal ? null : "default");
-
+            DefaultRepository = new Git(new Uri(string.Format(CloneUrlFormat, "")), options.IsLocal ? null : "default");
+            
             // Step 1 is only for creating the core Google.Apis packages.
             if (options.Step == 1)
             {
@@ -232,17 +225,12 @@ namespace Google.Apis.Release
         /// <summary>Creates the core Google.Apis packages.</summary>
         private void DoStep1()
         {
-            if (BuildVersion != 0)
+            // If there are incoming changes those changes will be printed, otherwise we can continue in the process.
+            if (!HasIncomingChanges(new List<Git> { DefaultRepository }))
             {
-                DefaultRepository.Update(string.Format("{0}.{1}", MajorVersion, MinorVersion));
-            }
-
-            // if there are incoming changes those changes will be printed, otherwise we can continue in the process
-            if (!HasIncomingChanges(new List<Hg> { DefaultRepository }))
-            {
-                // in case build fails the method will print its failures
-                // TODO(peleyal): Currently a WP project can't be build. NEED TO INVESTIGATE MORE.
-                if (BuildDefaultRepository())
+                // TODO(peleyal): Currently some projects can't build. Build manually for now! That's why the following
+                // if statement is commented out. INVESTIGATE!
+                // if (BuildDefaultRepository())
                 {
                     CreateCoreNuGetPackages();
                 }
@@ -254,8 +242,6 @@ namespace Google.Apis.Release
         /// <list type="number">
         /// <item><description>Builds samples</description></item>
         /// <item><description>Creates a release notes</description></item>
-        /// <item><description>Update wiki download page</description></item>
-        /// <item><description>Create a new release in the contrib repository</description></item>
         /// <item><description>Commits, Tags and Pushes</description></item>
         /// </list>
         /// </summary>
@@ -274,17 +260,17 @@ namespace Google.Apis.Release
                 return;
             }
 
-            SamplesRepository = new Hg(new Uri(string.Format(CloneUrlFormat, ".samples")), "samples");
-            WikiRepository = new Hg(new Uri(string.Format(CloneUrlFormat, ".wiki")), "wiki");
-            ContribRepository = new Hg(new Uri(string.Format(CloneUrlFormat, ".contrib")), "contrib");
+            SamplesRepository = new Git(new Uri(string.Format(CloneUrlFormat, "-samples")), "samples");
 
             // if there are incoming changes those changes will be printed, otherwise we can continue in the 
             // process
             if (!HasIncomingChanges(AllRepositories))
             {
-                BuildSamples();
-                var notes = CreateContribNewRelease();
-                UpdateWiki(notes);
+                // TODO(peleyal): Currently samples don't compile, compile&build manually. INVESTIGATE!
+                // BuildSamples();
+                var notes = GetChangelog();
+                // TODO(peleyal): Save notes to some file, its content should be used by
+                // https://developers.google.com/api-client-library/dotnet/release_notes.
 
                 foreach (var repository in AllRepositories)
                 {
@@ -303,7 +289,7 @@ namespace Google.Apis.Release
                 CommitAndTag();
 
                 // push
-                foreach (Hg repository in AllRepositories)
+                foreach (Git repository in AllRepositories)
                 {
                     repository.Push();
                 }
@@ -366,13 +352,16 @@ namespace Google.Apis.Release
                 return;
             }
 
-            // TODO(peleyal): consider automate this as well
+            // TODO(peleyal): Consider automate this as well.
             Console.WriteLine("You should create a new branch for this release now:");
             Console.WriteLine("cd " + DefaultRepository.WorkingDirectory);
             var branchVersion = string.Format("{0}.{1}", MajorVersion, MinorVersion);
-            Console.WriteLine("hg branch " + branchVersion);
-            Console.WriteLine(string.Format("hg commit -m create {0} branch", branchVersion));
-            Console.WriteLine("hg push --new-branch");
+            // TODO(peleyal): Check how can we create a branch from head (without any changes).
+            // TODO(peleyal): Make sure that the following acutally create a new branch. After verifying it for the
+            // first time, delete this TODO.
+            Console.WriteLine("Git checkout -b " + branchVersion);
+            Console.WriteLine(string.Format("Git commit -m create {0} branch", branchVersion));
+            Console.WriteLine("Git push --new-branch");
         }
 
         /// <summary>Commits all changes in all repositories and tags the "default" repository.</summary>
@@ -383,13 +372,11 @@ namespace Google.Apis.Release
                 TraceSource.TraceEvent(TraceEventType.Information, "{0} - Committing", repository.Name);
 
                 bool committed = repository.Commit("Release " + Tag);
-
-                // TODO(peleyal): think to remove this if from this function. I don't like a if inside a loop statement
-                if (repository.Equals(DefaultRepository) && committed)
+                if (committed)
                 {
                     try
                     {
-                        repository.Tag(Tag, false);
+                        repository.Tag(Tag);
                         TraceSource.TraceEvent(TraceEventType.Information, "{0} - Was tagged \"{1}\"",
                             repository.Name, Tag);
                     }
@@ -402,147 +389,6 @@ namespace Google.Apis.Release
 
                 TraceSource.TraceEvent(TraceEventType.Information, "{0} - Committed", repository.Name);
             }
-        }
-
-        /// <summary>Updates the "Downloads" wiki page with the new release notes.</summary>
-        private void UpdateWiki(string notes)
-        {
-            TraceSource.TraceEvent(TraceEventType.Information, "Updating wiki downloads page");
-
-            // TODO(peleyal): improve. Currently we count on that old release of X.Y.Z is X.Y-1.0
-            var oldVersion = string.Format("{0}.{1}.{2}", MajorVersion, MinorVersion - 1, 0);
-            DownloadsPageUpdater.UpdateWiki(WikiRepository.WorkingDirectory, notes, oldVersion, options.Version);
-
-            TraceSource.TraceEvent(TraceEventType.Information, "wiki downloads page was updated");
-        }
-
-        /// <summary>Creates a new release in the "contrib" repository.</summary>
-        /// <returns>The release notes of this version</returns>
-        private string CreateContribNewRelease()
-        {
-            TraceSource.TraceEvent(TraceEventType.Information, "Building Contrib release");
-            string releaseDir = ContribRepository.Combine(Tag);
-
-            // DO NOT clear releaseDir, it already contains documentation.
-            string genDir = Path.Combine(releaseDir, "Generated");
-            DirectoryUtilities.ClearOrCreateDirectory(genDir);
-
-            #region [RELEASE_VERSION]/Generated/Bin
-
-            string binDir = Path.Combine(genDir, "Bin");
-            TraceSource.TraceEvent(TraceEventType.Information, "Generating \"{0}\" directory",
-                DirectoryUtilities.GetRelativePath(binDir, ContribRepository.WorkingDirectory));
-
-            Directory.CreateDirectory(binDir);
-            Directory.CreateDirectory(Path.Combine(binDir, "WP"));
-            Directory.CreateDirectory(Path.Combine(binDir, "WP81"));
-            Directory.CreateDirectory(Path.Combine(binDir, "Windows"));
-
-            foreach (var project in ReleaseProjects)
-            {
-                var outputDir = binDir;
-                // Add Google.Apis.WP81 and Google.Apis.Auth.WP81 assemblies to a WP81 folder.
-                if (project.GetName().Contains("WP81"))
-                {
-                    outputDir = Path.Combine(outputDir, "WP81");
-                }
-                // Add Google.Apis.WP and Google.Apis.Auth.WP assemblies to a WP folder.
-                else if (project.GetName().Contains("WP"))
-                {
-                    outputDir = Path.Combine(outputDir, "WP");
-                }
-                // Add Google.Apis.Windows and Google.Apis.Auth.Windows assemblies to a Windows folder.
-                else if (project.GetName().Contains("Windows"))
-                {
-                    outputDir = Path.Combine(outputDir, "Windows");
-                }
-
-                var releasePath = Path.Combine(project.DirectoryPath, "Bin", "Release");
-                foreach (var filePath in Directory.GetFiles(releasePath, "Google.Apis.*"))
-                {
-                    File.Copy(filePath,
-                        Path.Combine(outputDir,
-                                     filePath.Substring(filePath.LastIndexOf(Path.DirectorySeparatorChar) + 1)), true);
-                }
-            }
-
-            // TODO(peleyal): Put also the nuspec and nupkg
-
-            #endregion
-
-            #region [RELEASE_VERSION]/ZipFiles
-
-            string zipFilesDir = Path.Combine(genDir, "ZipFiles");
-            TraceSource.TraceEvent(TraceEventType.Information, "Generating \"{0}\" directory",
-                DirectoryUtilities.GetRelativePath(zipFilesDir, ContribRepository.WorkingDirectory));
-
-            Directory.CreateDirectory(zipFilesDir);
-            foreach (var project in ReleaseProjects)
-            {
-                project.Build("Clean");
-            }
-
-            TraceSource.TraceEvent(TraceEventType.Information, "Release projects were cleaned");
-
-            // source.zip
-            var fileNameFormat = "google-api-dotnet-client-{0}.{1}.zip";
-            var sourceZipName = string.Format(fileNameFormat, Tag, "source");
-            using (var zip = new ZipFile(Path.Combine(zipFilesDir, sourceZipName)))
-            {
-                zip.AddDirectory(Path.Combine(DefaultRepository.WorkingDirectory, "Src"), "Src");
-                zip.AddFile(Path.Combine(DefaultRepository.WorkingDirectory, "GoogleApisClient.sln"), "");
-                zip.AddFile(Path.Combine(DefaultRepository.WorkingDirectory, "LICENSE"), "");
-                zip.Save();
-            }
-            TraceSource.TraceEvent(TraceEventType.Information, "{0} was created", sourceZipName);
-
-            // binary.zip
-            var binaryZipName = string.Format(fileNameFormat, Tag, "binary");
-            using (var zip = new ZipFile(Path.Combine(zipFilesDir, binaryZipName)))
-            {
-                Directory.GetFiles(binDir).ToList().ForEach(f => zip.AddFile(Path.Combine(binDir, f), ""));
-                zip.Save();
-            }
-            TraceSource.TraceEvent(TraceEventType.Information, "{0} was created", binaryZipName);
-
-
-            // samples.zip
-            var samplesZipName = string.Format(fileNameFormat, Tag, "samples");
-            using (var zip = new ZipFile(Path.Combine(zipFilesDir, samplesZipName)))
-            {
-                foreach (var d in Directory.GetDirectories(SamplesRepository.WorkingDirectory))
-                {
-                    if (!d.EndsWith(".hg"))
-                    {
-                        var directoryName = d.Substring(d.LastIndexOf("\\") + 1);
-                        zip.AddDirectory(Path.Combine(SamplesRepository.WorkingDirectory, d), directoryName);
-                    }
-                }
-                foreach (var f in Directory.GetFiles(SamplesRepository.WorkingDirectory, "*.sln"))
-                {
-                    zip.AddFile(Path.Combine(SamplesRepository.WorkingDirectory, f), "");
-                }
-                zip.Save();
-            }
-
-            TraceSource.TraceEvent(TraceEventType.Information, "{0} was created", samplesZipName);
-
-            #endregion
-
-            #region [RELEASE_VERSION]/ReleaseNotes.txt
-
-            var notes = GetChangelog();
-            TraceSource.TraceEvent(TraceEventType.Information, "Creating ReleaseNotes file");
-            var noteFilePath = Path.Combine(genDir, "ReleaseNotes.txt");
-            File.WriteAllText(noteFilePath, notes);
-
-            #endregion
-
-            // open the created change-log and read again the notes (in case the user had modified the file)
-            Process.Start(noteFilePath).WaitForExit();
-            notes = File.ReadAllText(noteFilePath);
-
-            return notes;
         }
 
         /// <summary>
@@ -588,14 +434,14 @@ namespace Google.Apis.Release
         }
 
         /// <summary>Returns <c>true</c> if one of the repositories has incoming changes.</summary>
-        private bool HasIncomingChanges(IEnumerable<Hg> repositories)
+        private bool HasIncomingChanges(IEnumerable<Git> repositories)
         {
             foreach (var repository in repositories)
             {
                 if (repository.HasIncomingChanges)
                 {
                     TraceSource.TraceEvent(TraceEventType.Error,
-                        "[{0}] has incoming changes. Run hg pull & update first!", repository.Name);
+                        "[{0}] has incoming changes. Run Git pull & update first!", repository.Name);
                     return true;
                 }
             }
@@ -688,7 +534,7 @@ namespace Google.Apis.Release
                 var name = project.GetName();
                 TraceSource.TraceEvent(TraceEventType.Information, "Replacing version for {0}", name);
                 project.ReplaceVersion(options.Version);
-                project.SetProperty("Configuration", "Release");
+                project.SetProperty("Configuration", "ReleaseSigned");
                 TraceSource.TraceEvent(TraceEventType.Information, "Building {0}", name);
                 bool success = project.Build("Build", new[] { new ConsoleLogger(LoggerVerbosity.Quiet) });
 
