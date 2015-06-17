@@ -47,6 +47,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private const int MetadataServerPingTimeoutInMilliseconds = 1000;
 
+        /// <summary>The Metadata flavor header name.</summary>
+        private const string MetadataFlavor = "Metadata-Flavor";
+
+        /// <summary>The Metadata header response indicating Google</summary>
+        private const string Google = "Google";
+
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
@@ -55,11 +61,11 @@ namespace Google.Apis.Auth.OAuth2
         {
             /// <summary>Constructs a new initializer using the default compute token URL.</summary>
             public Initializer()
-                : this(GoogleAuthConsts.ComputeTokenUrl) { }
+                : this(GoogleAuthConsts.ComputeTokenUrl) {}
 
             /// <summary>Constructs a new initializer using the given token URL.</summary>
             public Initializer(string tokenUrl)
-                : base(tokenUrl) { }
+                : base(tokenUrl) {}
         }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
@@ -74,7 +80,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             // Create and send the HTTP request to compute server token URL.
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, TokenServerUrl);
-            httpRequest.Headers.Add("Metadata-Flavor", "Google");
+            httpRequest.Headers.Add(MetadataFlavor, Google);
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
 
             // Read the response.
@@ -124,20 +130,22 @@ namespace Google.Apis.Auth.OAuth2
                 CancellationTokenSource cts = new CancellationTokenSource();
                 cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
 
-                var httpClient = new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs());
+                // Using the built-in HttpClient, as we want bare bones functionality without any retries
+                var httpClient = new HttpClient();
                 var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
 
                 IEnumerable<string> headerValues = null;
-                if (response.Headers.TryGetValues("Metadata-Flavor", out headerValues))
+                if (response.Headers.TryGetValues(MetadataFlavor, out headerValues))
                 {
                     foreach (var value in headerValues)
                     {
-                        if (value == "Google")
+                        if (value == Google)
                             return true;
                     }
                 }
 
-                Logger.Warning("Response came from a source other than the ComputeEngine metadata server.");
+                // Response came from another source, possibly a proxy server in the caller's network.
+                Logger.Info("Response came from a source other than the ComputeEngine metadata server.");
                 return false;
             }
             catch (HttpRequestException)

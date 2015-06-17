@@ -36,33 +36,27 @@ namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
     /// Provides the Application Default Credential from the environment. 
-    /// An instance represents the per-process state used to get and cache the credential and
-    /// allows overriding the state and environment for testing purposes.
+    /// An instance of this class represents the per-process state used to get and cache 
+    /// the credential and allows overriding the state and environment for testing purposes.
     /// </summary>
     internal class DefaultCredentialProvider
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<DefaultCredentialProvider>();
 
         /// <summary>Well known file which stores the default application credentials.</summary>
-        private const string WELL_KNOWN_CREDENTIALS_FILE = "application_default_credentials.json";
+        private const string WellKnownCredentialsFile = "application_default_credentials.json";
 
         /// <summary>Environment variable override which stores the default application credentials file path.</summary>
-        private const string CREDENTIAL_ENV_VAR = "GOOGLE_APPLICATION_CREDENTIALS";
+        private const string CredentialEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
 
         /// <summary>Environment variable which contains the Application Data settings.</summary>
-        private const string APPDATA_ENV_VAR = "APPDATA";
+        private const string AppdataEnvironmentVariable = "APPDATA";
 
         /// <summary>GCloud configuration directory in Windows, relative to %APPDATA%.</summary>
-        private const string CLOUDSDK_CONFIG_DIRECTORY = "gcloud";
-
-        /// <summary>Type name value of credentials file - user credentials.</summary>
-        private const string USER_FILE_TYPE = "authorized_user";
-
-        /// <summary>Type name value of credentials file - service account.</summary>
-        private const string SERVICE_ACCOUNT_FILE_TYPE = "service_account";
+        private const string CloudSDKConfigDirectory = "gcloud";
 
         /// <summary>Help link to the application default credentials feature.</summary>
-        private const string HELP_PERMALINK = "https://developers.google.com/accounts/docs/application-default-credentials";
+        private const string HelpPermalink = "https://developers.google.com/accounts/docs/application-default-credentials";
 
         private object lockObject = new object();
 
@@ -95,8 +89,8 @@ namespace Google.Apis.Auth.OAuth2
             throw new InvalidOperationException(String.Format("The Application Default Credentials are not available. They are available if running"
                 + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
                 + " pointing to a file defining the credentials. See {1} for more information.",
-                CREDENTIAL_ENV_VAR,
-                HELP_PERMALINK));
+                CredentialEnvironmentVariable,
+                HelpPermalink));
         }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace Google.Apis.Auth.OAuth2
             // 1. First try the environment variable
             try
             {
-                credentialPath = GetEnvironmentVariable(CREDENTIAL_ENV_VAR);
+                credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
                 if (!String.IsNullOrWhiteSpace(credentialPath))
                 {
                     return LoadCredentialFromFile(credentialPath);
@@ -124,7 +118,7 @@ namespace Google.Apis.Auth.OAuth2
                                         + "\nPlease check the value of the Environment Variable {2}",
                                         credentialPath,
                                         e.Message,
-                                        CREDENTIAL_ENV_VAR));
+                                        CredentialEnvironmentVariable));
             }
 
             // 2. Then try the well known file
@@ -142,24 +136,21 @@ namespace Google.Apis.Auth.OAuth2
             }
             catch (IOException e)
             {
-                // Catching generic exception type because any corrupted file could manifest in different ways including 
-                // but not limited to the System.IO or from the Newtonsoft.Json namespace
-
                 throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
-                                        + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
-                                        credentialPath,
-                                        e.Message));
+                                  + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
+                                  credentialPath,
+                                  e.Message));
             }
 
             // 3. Then try the compute engine, if not already checked         
             if (!checkedComputeEngine)
             {
-                Logger.Info("Checking whether the application is running on ComputeEngine.");
+                Logger.Debug("Checking whether the application is running on ComputeEngine.");
                 bool isRunningOnComputeEngine = ComputeCredential.IsRunningOnComputeEngine().Result;
                 checkedComputeEngine = true;
                 if (isRunningOnComputeEngine)
                 {
-                    Logger.Info("ComputeEngine check passed. Loading ComputeEngine Credentials.");
+                    Logger.Debug("ComputeEngine check passed. Loading ComputeEngine Credentials.");
                     return new ComputeCredential();
                 }
             }
@@ -184,7 +175,7 @@ namespace Google.Apis.Auth.OAuth2
                             ClientSecrets = clientCredentialParameters.ClientSecrets
                         };
 
-                        TokenResponse token = new TokenResponse()
+                        var token = new TokenResponse()
                         {
                             RefreshToken = clientCredentialParameters.RefreshToken
                         };
@@ -214,13 +205,13 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary> 
-        /// Helper method to return well known credential file path. This file is created by 'gcloud auth login'.
+        /// Helper method to return well known credential file path. This file is created by 'gcloud auth login'
         /// </summary>
         private string GetWellKnownCredentialFilePath()
         {
-            return Path.Combine(System.Environment.GetEnvironmentVariable(APPDATA_ENV_VAR),
-                CLOUDSDK_CONFIG_DIRECTORY,
-                WELL_KNOWN_CREDENTIALS_FILE);
+            return Path.Combine(System.Environment.GetEnvironmentVariable(AppdataEnvironmentVariable),
+                CloudSDKConfigDirectory,
+                WellKnownCredentialsFile);
         }
 
         /// <summary>
@@ -228,11 +219,11 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal ICredential LoadCredentialFromFile(string credentialPath)
         {
-            Logger.Info(String.Format("Loading Credential from file {0}", credentialPath));
+            Logger.Debug(String.Format("Loading Credential from file {0}", credentialPath));
 
-            using (Stream fs = GetStream(credentialPath))
+            using (Stream stream = GetStream(credentialPath))
             {
-                return LoadFromStream(fs);
+                return LoadFromStream(stream);
             }
         }
 
@@ -249,7 +240,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal virtual string GetEnvironmentVariable(string variableName)
         {
-            return System.Environment.GetEnvironmentVariable(CREDENTIAL_ENV_VAR);
+            return System.Environment.GetEnvironmentVariable(CredentialEnvironmentVariable);
         }
     }
 }

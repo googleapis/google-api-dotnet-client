@@ -35,32 +35,19 @@ namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
     /// Provides the Application Default Credential from the environment. 
-    /// An instance represents the per-process state used to get and cache the credential and
-    /// allows overriding the state and environment for testing purposes.
     /// </summary>
     public static class GoogleAuth
     {
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
         /// <summary>
-        /// Returns the Application Default Credentials. Returns the Application Default Credentials which 
-        /// are credentials that identify and authorize the whole application. This is the built-in 
-        /// service account if running on Google Compute Engine or the credentials file from the path in the 
-        /// environment variable GOOGLE_APPLICATION_CREDENTIALS.
+        /// Returns the Application Default Credentials which are credentials that identify and authorize 
+        /// the whole application. This is the built-in service account if running on Google Compute Engine 
+        /// or the credentials file from the path in the environment variable GOOGLE_APPLICATION_CREDENTIALS.
         /// </summary>
         public static ICredential GetApplicationDefaultCredential()
         {
             return defaultCredentialProvider.GetApplicationDefaultCredential();
-        }
-
-        /// <summary>
-        /// Returns credentials defined by a JSON file stream. The stream can contain a Service Account 
-        /// key file in JSON format from the Google Developer Console or a stored user credential using 
-        /// the format supported by the Cloud SDK.
-        /// </summary>
-        public static ICredential LoadCredentialFromStream(Stream stream)
-        {
-            return DefaultCredentialProvider.LoadFromStream(stream);
         }
     }
 }

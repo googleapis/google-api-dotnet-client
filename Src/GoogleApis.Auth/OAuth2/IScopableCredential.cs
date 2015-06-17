@@ -32,21 +32,26 @@ namespace Google.Apis.Auth.OAuth2
     public interface IScopableCredential 
     {
         /// <summary>
-        /// Only returns true if this credential type has no scopes by default and requires 
-        /// a call to createScoped before use. 
+        /// <para>Returns true only if this credential type has no scopes by default and requires 
+        /// a call to createScoped before use.</para>
         ///
-        /// Credentials need to have scopes in them before they can be used to access Google services. 
+        /// <para>Credentials need to have scopes in them before they can be used to access Google services. 
         /// Some Credential types have scopes built-in, and some dont. This property indicates whether 
-        /// the Credential type has scopes built-in.
+        /// the Credential type has scopes built-in.</para>
         /// 
-        /// e.g. 
-        /// 1. ComputeCredential has scopes built-in. Nothing additional is required. 
-        /// 
-        /// 2. UserCredential has scopes built-in, as they were obtained during the consent 
-        /// screen. Nothing additional is requierd.
-        /// 
-        /// 3. ServiceAccountCredentials does not have scopes built-in by default. Caller should 
-        /// invoke CreateScoped to add scopes to the Credential.
+        /// <list type="number">
+        /// <item> 
+        /// <description>ComputeCredential has scopes built-in. Nothing additional is required.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>UserCredential has scopes built-in, as they were obtained during the consent 
+        /// screen. Nothing additional is required.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>ServiceAccountCredentials does not have scopes built-in by default. Caller should 
+        /// invoke <see cref="Google.Apis.Auth.OAuth2.IScopableCredential.CreateScoped"/> to add scopes to the Credential.</description> 
+        /// </item> 
+        /// </list>
         /// </summary>
         bool IsCreateScopedRequired { get; }
 
@@ -55,7 +60,6 @@ namespace Google.Apis.Auth.OAuth2
         /// otherwise return the same instance.
         /// </summary>
         /// <param name="scopes"></param>
-        /// <returns></returns>
         ICredential CreateScoped(IEnumerable<string> scopes);
     }
 }

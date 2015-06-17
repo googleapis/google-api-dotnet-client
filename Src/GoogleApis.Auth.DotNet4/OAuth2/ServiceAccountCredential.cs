@@ -81,8 +81,8 @@ namespace Google.Apis.Auth.OAuth2
             public Initializer(ClientCredentialParameters clientCredentialParameters)
                 : this(clientCredentialParameters.ClientEmail, GoogleAuthConsts.TokenUrl)
             {
-                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.ClientEmail, "ClientId");
-                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.Base64PrivateKey, "ClientSecret");
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.ClientEmail, "ClientEmail");
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.Base64PrivateKey, "PrivateKey");
 
                 var privateKeyBytes = Convert.FromBase64String(clientCredentialParameters.Base64PrivateKey);
                 RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
@@ -161,6 +161,7 @@ namespace Google.Apis.Auth.OAuth2
             // Sign the header and the payload.
             var hashAlg = new SHA256CryptoServiceProvider();
             byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
+
             var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */));
             assertion.Append(".").Append(signature);
 
@@ -180,7 +181,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Returns true if scopes are empty, which means the caller needs to 
-        /// invoke CreateScoped() to add scopes.
+        /// invoke  <see cref="Google.Apis.Auth.OAuth2.ServiceAccountCredential.CreateScoped"/> to add scopes.
         /// </summary>
         public bool IsCreateScopedRequired
         {
@@ -204,10 +205,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>New credential object with the specied scopes</returns>
         public ICredential CreateScoped(IEnumerable<string> scopes)
         {
-            var initializer = new ServiceAccountCredential.Initializer(Id);
-            initializer.User = User;
-            initializer.Key = key;
-            initializer.Scopes = scopes;
+            var initializer = new ServiceAccountCredential.Initializer(Id)
+            {
+                User = User,
+                Key = key,
+                Scopes = scopes
+            };
             return new ServiceAccountCredential(initializer);
         }
 

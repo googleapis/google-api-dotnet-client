@@ -123,7 +123,7 @@ namespace Google.Apis.Auth.OAuth2
                     return token;
                 }
             }
-            set
+            protected set
             {
                 lock (lockObject)
                 {

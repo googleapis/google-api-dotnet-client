@@ -183,18 +183,5 @@ namespace Google.Apis.Auth.OAuth2
             // We don't set the token to null, cause we want that the next request (without reauthorizing) will fail).
             return true;
         }
-
-        /// <summary>
-        /// CreateScoped() does not need to be invoked for UserCredential. AccessTokens minted for 
-        /// UserCredential automatically use the scopes from the RefreshToken. Hence returning the same object. 
-        /// </summary>
-        public ICredential CreateScoped(IEnumerable<string> scopes)
-        {
-            Logger.Info("UserCredential.CreateScoped() invoked. CreateScoped() does not need to be invoked for UserCredential."
-            + " AccessTokens minted for UserCredential automatically use the scopes from the RefreshToken."
-            + " Please check the IsCreateScopedRequired prior to invoking CreateScoped().");
-
-            return this;
-        }
     }
 }

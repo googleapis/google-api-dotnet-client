@@ -39,12 +39,36 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 {
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
     [TestFixture]
-    public class UserCredentialTests
+    public class DefaultCredentialProviderTests
     {
-        private string CredentialEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
-        private string WellKnownCredentialFilePath = Path.Combine(System.Environment.GetEnvironmentVariable("APPDATA"), "gcloud", "application_default_credentials.json");
-        private const string DummyUserCredentialFileContents = "{\"client_id\": \"CLIENT_ID\",\"client_secret\": \"CLIENT_SECRET\",\"refresh_token\": \"REFRESH_TOKEN\",\"type\": \"authorized_user\"}";
-        private const string DummyServiceAccountCredentialFileContents = "{\"private_key_id\": \"PRIVATE_KEY_ID\",\"private_key\": \"-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe\n2x4zrzrwSUtmtR37XTTi0sPARTDF8uzmXy8UnE5RcVJzEH5T2Ssz/ylX4Sl/CI4L\nno1l8j9GiHJb49LSRjWe4Yx936q0Xj9H0R1HTxvjUPqwAsTwy2fKBTog+q1frqc9\no8s2r6LYivUGDVbhuUzCaMJsf+x3AgMBAAECgYEAi0FTXsu/zRswAUGaViQiHjrL\nuU65BSHXNVjV/2fLNEKnGWGqpli68z1IXY+S2nwbUak7rnGsq9/0F6jtsW+hZbLk\nKXUOuuExpeC5Kd6ngWX/f2jqmhlUabiQijU9cVk7pMq8EHkRtvlosnMTUAEzempu\nQUPwn1PZHhmJkBvZ4lECQQDCErrxl+e3BwUDcS0yVEEmCNSG6xdXs2878b8rzbe7\n3Mmi6SuuOLi3PU92J+j+f/MOdtYrk13mEDdYmd5dhrt5AkEAwPvDEsDT/W4y4h5n\ngv1awGBA5aLFE1JNWM/Gwn4D1cGpEDHKFREaBtxMDCASpHJuw8r7zUywpKhmBZcf\nGS37bwJANdSAKfbafLfjuhqwUJ9yGpykZm/a36aTmerp/bpn1iHdg+RtCzwMcDb/\nTWSwibbvsflgWmHbz657y4WSWhq+8QJAWrpCNN/ZCk2zuGDo80lfUBAwkoVat8G6\nwWU1oZyS+vzIGef+hLb8kHsjeZPej9eIwZ39kcBbT54oELrCkRjwGwJAQ8V2A7lT\nZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8\n4Z5p2prkjWTLcA\u003d\u003d\n-----END PRIVATE KEY-----\n\",\"client_email\": \"CLIENT_EMAIL\",\"client_id\": \"CLIENT_ID\",\"type\": \"service_account\"}";
+        private const string CredentialEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
+        private readonly string WellKnownCredentialFilePath = Path.Combine(System.Environment.GetEnvironmentVariable("APPDATA"), "gcloud", "application_default_credentials.json");
+        private const string DummyUserCredentialFileContents = @"{
+""client_id"": ""CLIENT_ID"",
+""client_secret"": ""CLIENT_SECRET"",
+""refresh_token"": ""REFRESH_TOKEN"",
+""type"": ""authorized_user""}";
+        private const string DummyServiceAccountCredentialFileContents = @"{
+""private_key_id"": ""PRIVATE_KEY_ID"",
+""private_key"": ""-----BEGIN PRIVATE KEY-----
+MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
+2x4zrzrwSUtmtR37XTTi0sPARTDF8uzmXy8UnE5RcVJzEH5T2Ssz/ylX4Sl/CI4L
+no1l8j9GiHJb49LSRjWe4Yx936q0Xj9H0R1HTxvjUPqwAsTwy2fKBTog+q1frqc9
+o8s2r6LYivUGDVbhuUzCaMJsf+x3AgMBAAECgYEAi0FTXsu/zRswAUGaViQiHjrL
+uU65BSHXNVjV/2fLNEKnGWGqpli68z1IXY+S2nwbUak7rnGsq9/0F6jtsW+hZbLk
+KXUOuuExpeC5Kd6ngWX/f2jqmhlUabiQijU9cVk7pMq8EHkRtvlosnMTUAEzempu
+QUPwn1PZHhmJkBvZ4lECQQDCErrxl+e3BwUDcS0yVEEmCNSG6xdXs2878b8rzbe7
+3Mmi6SuuOLi3PU92J+j+f/MOdtYrk13mEDdYmd5dhrt5AkEAwPvDEsDT/W4y4h5n
+gv1awGBA5aLFE1JNWM/Gwn4D1cGpEDHKFREaBtxMDCASpHJuw8r7zUywpKhmBZcf
+GS37bwJANdSAKfbafLfjuhqwUJ9yGpykZm/a36aTmerp/bpn1iHdg+RtCzwMcDb/
+TWSwibbvsflgWmHbz657y4WSWhq+8QJAWrpCNN/ZCk2zuGDo80lfUBAwkoVat8G6
+wWU1oZyS+vzIGef+hLb8kHsjeZPej9eIwZ39kcBbT54oELrCkRjwGwJAQ8V2A7lT
+ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
+4Z5p2prkjWTLcA\u003d\u003d
+-----END PRIVATE KEY-----"",
+""client_email"": ""CLIENT_EMAIL"",
+""client_id"": ""CLIENT_ID"",
+""type"": ""service_account""}";
 
         #region UserCredential
 
@@ -52,7 +76,7 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
         public void TestGetApplicationDefaultCredentials_UserCredentials_FromEnvironmentVariable()
         {
             string credentialFilepath = "TempFilePath.json";
-            TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
+            var credentialProvider = new TestDefaultCredentialProvider();
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyUserCredentialFileContents);
 
@@ -60,21 +84,21 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
             if (!(credential is UserCredential))
             {
-                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType().Name));
             }
         }
 
         [Test]
         public void TestGetApplicationDefaultCredentials_UserCredentials_FromWellKnownFileLocation()
         {
-            TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
+            var credentialProvider = new TestDefaultCredentialProvider();
             credentialProvider.SetFileContents(WellKnownCredentialFilePath, DummyUserCredentialFileContents);
 
             ICredential credential = credentialProvider.GetApplicationDefaultCredential();
 
             if (!(credential is UserCredential))
             {
-                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType().Name));
             }
         }
 
@@ -86,24 +110,23 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
         public void TestGetApplicationDefaultCredentials_ServiceAccountCredentials_FromEnvironmentVariable()
         {
             string credentialFilepath = "TempFilePath.json";
-            TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
+            var credentialProvider = new TestDefaultCredentialProvider();
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyServiceAccountCredentialFileContents);
 
             ICredential credential = credentialProvider.GetApplicationDefaultCredential();
 
-            if (credential is IScopableCredential)
+            var serviceAccountCredential = credential as ServiceAccountCredential;
+            if (serviceAccountCredential != null)
             {
-                IScopableCredential scopableCredential = credential as IScopableCredential;
-                if (scopableCredential.IsCreateScopedRequired)
+                if (serviceAccountCredential.IsCreateScopedRequired)
                 {
-                    credential = scopableCredential.CreateScoped(new[] { "https://www.googleapis.com/auth/cloud-platform" });
+                    credential = serviceAccountCredential.CreateScoped(new[] { "https://www.googleapis.com/auth/cloud-platform" });
                 }
             }            
-
-            if (!(credential is ServiceAccountCredential))
+            else
             {
-                Assert.Fail(string.Format("Expected credential of type ServiceAccountCredential. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("Expected credential of type ServiceAccountCredential. Obtained {0} instead.", credential.GetType().Name));
             }
         }
 
@@ -111,16 +134,18 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 
         #region Invalid Cases
 
-        // No credential files or environment variable specified - like a fresh developer's machine. 
+        /// <summary>
+        /// No credential files or environment variable specified - like a fresh developer's machine. 
+        /// </summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_NoCredentialFiles()
         {
+            var credentialProvider = new TestDefaultCredentialProvider();
+             
             try
             {
-                TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
                 ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-
-                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
             }
             catch (InvalidOperationException e)
             {
@@ -131,18 +156,19 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
             }
         }
 
-        // Environment variable points to a non existant credential file
+        /// <summary>
+        /// Environment variable points to a non existant credential file
+        /// </summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_MissingCredentialFile()
         {
+            var credentialProvider = new TestDefaultCredentialProvider();
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, WellKnownCredentialFilePath);
+            
             try
             {
-                TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
-                credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, WellKnownCredentialFilePath);
-
                 ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-
-                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
             }
             catch (InvalidOperationException e)
             {
@@ -153,20 +179,21 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
             }
         }
 
-        // Credential file has invalid content format
+        /// <summary>
+        /// Credential file has invalid content format
+        /// </summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_InvalidCredentialFile()
         {
+            string credentialFilepath = "TempFilePath.json";
+            var credentialProvider = new TestDefaultCredentialProvider();
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, "Invalid Credentials File Contents");
+
             try
             {
-                string credentialFilepath = "TempFilePath.json";
-                TestDefaultCredentialProvider credentialProvider = new TestDefaultCredentialProvider();
-                credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
-                credentialProvider.SetFileContents(credentialFilepath, "Invalid Credentials File Contents");
-
                 ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-
-                Assert.Fail(string.Format("Invalid credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType()));
+                Assert.Fail(string.Format("Invalid credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
             }
             catch (InvalidOperationException e)
             {
@@ -176,7 +203,6 @@ namespace Google.Apis.Auth.OAuth2.DefaultCredentials
                 }
             }
         }
-
 
         #endregion
     }

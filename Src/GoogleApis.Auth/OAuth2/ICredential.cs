@@ -55,6 +55,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        TokenResponse Token { get; set; }
+        TokenResponse Token { get; }
     }
 }
