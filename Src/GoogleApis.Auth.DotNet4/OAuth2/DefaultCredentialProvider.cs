@@ -65,9 +65,27 @@ namespace Google.Apis.Auth.OAuth2
         private bool checkedComputeEngine = false;
 
         /// <summary>
-        /// Returns the Application Default Credentials which are credentials that identify and
-        /// authorize the whole application. This is the built-in service account if running on Google
-        /// Compute Engine or credentials specified by an environment variable or a file in a well-known location.
+        /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize 
+        /// the whole application.</para>
+        /// <para>The ambient credentials are determined as following order:</para>
+        /// <list type="number">
+        /// <item> 
+        /// <description>The environment variable GOOGLE_APPLICATION_CREDENTIALS is checked. If this variable is specified, it 
+        /// should point to a file that defines the credentials. The simplest way to get a credential for this purpose is to 
+        /// create a service account using the <a href="https://console.developers.google.com">Google Developers Console</a> in 
+        /// the section APIs & Auth, in the sub-section Credentials. Create a service account or choose an existing one and 
+        /// select Generate new JSON key. Set the environment variable to the path of the JSON file downloaded.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>If you have installed the Google Cloud SDK on your machine and have run the command 
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>, your identity can be used as 
+        /// a proxy to test code calling APIs from that machine.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>If you are running in Google Compute Engine production, the built-in service account associated with the 
+        /// virtual machine instance will be used.</description> 
+        /// </item> 
+        /// </list>
         /// </summary>
         internal ICredential GetApplicationDefaultCredential()
         {
@@ -93,14 +111,12 @@ namespace Google.Apis.Auth.OAuth2
                 HelpPermalink));
         }
 
-        /// <summary>
-        /// Unsynchronized helper method to obtain the Application Default Credentials.
-        /// </summary>
+        /// <summary>Unsynchronized helper method to obtain the Application Default Credentials.</summary>
         private ICredential GetDefaultCredentialUnsynchronized()
         {
             string credentialPath = null;
             
-            // 1. First try the environment variable
+            // 1. First try the environment variable.
             try
             {
                 credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
@@ -112,7 +128,7 @@ namespace Google.Apis.Auth.OAuth2
             catch (Exception e)
             {
                 // Catching generic exception type because any corrupted file could manifest in different ways including 
-                // but not limited to the System.IO or from the Newtonsoft.Json namespace
+                // but not limited to the System.IO or from the Newtonsoft.Json namespace.
 
                 throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
                                         + "\nPlease check the value of the Environment Variable {2}",
@@ -121,7 +137,7 @@ namespace Google.Apis.Auth.OAuth2
                                         CredentialEnvironmentVariable));
             }
 
-            // 2. Then try the well known file
+            // 2. Then try the well known file.
             try
             {
                 credentialPath = GetWellKnownCredentialFilePath();
@@ -142,7 +158,7 @@ namespace Google.Apis.Auth.OAuth2
                                   e.Message));
             }
 
-            // 3. Then try the compute engine, if not already checked         
+            // 3. Then try the compute engine, if not already checked.         
             if (!checkedComputeEngine)
             {
                 Logger.Debug("Checking whether the application is running on ComputeEngine.");
@@ -158,9 +174,7 @@ namespace Google.Apis.Auth.OAuth2
             return null;
         }
 
-        /// <summary>
-        /// Converts a stream to a credential object.
-        /// </summary>
+        /// <summary>Converts a stream to a credential object.</summary>
         internal static ICredential LoadFromStream(Stream stream)
         {
             ClientCredentialParameters clientCredentialParameters = ClientCredentialParameters.Load(stream);
@@ -205,7 +219,8 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary> 
-        /// Helper method to return well known credential file path. This file is created by 'gcloud auth login'
+        /// Helper method to return well known credential file path. This file is created by 
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>
         /// </summary>
         private string GetWellKnownCredentialFilePath()
         {
@@ -214,9 +229,7 @@ namespace Google.Apis.Auth.OAuth2
                 WellKnownCredentialsFile);
         }
 
-        /// <summary>
-        /// Helper method to load file stream.
-        /// </summary>
+        /// <summary>Helper method to load file stream.</summary>
         internal ICredential LoadCredentialFromFile(string credentialPath)
         {
             Logger.Debug(String.Format("Loading Credential from file {0}", credentialPath));
@@ -227,17 +240,13 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-        /// <summary>
-        /// Helper method to read the file stream.
-        /// </summary>
+        /// <summary>Helper method to read the file stream.</summary>
         internal virtual Stream GetStream(string filePath)
         {
             return new FileStream(filePath, FileMode.Open);
         }
 
-        /// <summary>
-        /// Helper method to get the environment variable.
-        /// </summary>
+        /// <summary>Helper method to get the environment variable.</summary>
         internal virtual string GetEnvironmentVariable(string variableName)
         {
             return System.Environment.GetEnvironmentVariable(CredentialEnvironmentVariable);

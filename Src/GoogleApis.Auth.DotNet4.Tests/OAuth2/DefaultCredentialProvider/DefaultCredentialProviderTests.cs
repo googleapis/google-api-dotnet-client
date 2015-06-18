@@ -207,6 +207,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         #endregion
     }
 
+    /// <summary>A mock for the <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
     class TestDefaultCredentialProvider : DefaultCredentialProvider
     {
         Dictionary<string, string> envVars = new Dictionary<string, string>();

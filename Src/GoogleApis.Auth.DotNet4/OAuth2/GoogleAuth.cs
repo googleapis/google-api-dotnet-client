@@ -33,17 +33,33 @@ using Google.Apis.Logging;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary>
-    /// Provides the Application Default Credential from the environment. 
-    /// </summary>
+    /// <summary>Provides the Application Default Credential from the environment.</summary>
     public static class GoogleAuth
     {
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
         /// <summary>
-        /// Returns the Application Default Credentials which are credentials that identify and authorize 
-        /// the whole application. This is the built-in service account if running on Google Compute Engine 
-        /// or the credentials file from the path in the environment variable GOOGLE_APPLICATION_CREDENTIALS.
+        /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize 
+        /// the whole application.</para>
+        /// <para>The ambient credentials are determined as following order:</para>
+        /// <list type="number">
+        /// <item> 
+        /// <description>The environment variable GOOGLE_APPLICATION_CREDENTIALS is checked. If this variable is specified, it 
+        /// should point to a file that defines the credentials. The simplest way to get a credential for this purpose is to 
+        /// create a service account using the <a href="https://console.developers.google.com">Google Developers Console</a> in 
+        /// the section APIs & Auth, in the sub-section Credentials. Create a service account or choose an existing one and 
+        /// select Generate new JSON key. Set the environment variable to the path of the JSON file downloaded.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>If you have installed the Google Cloud SDK on your machine and have run the command 
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>, your identity can be used as 
+        /// a proxy to test code calling APIs from that machine.</description> 
+        /// </item> 
+        /// <item> 
+        /// <description>If you are running in Google Compute Engine production, the built-in service account associated with the 
+        /// virtual machine instance will be used.</description> 
+        /// </item> 
+        /// </list>
         /// </summary>
         public static ICredential GetApplicationDefaultCredential()
         {

@@ -26,9 +26,7 @@ using Google.Apis.Http;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary>
-    /// Interface for credential types that support alerting scopes
-    /// </summary>
+    /// <summary>Interface for credential types that support alerting scopes</summary>
     public interface IScopableCredential 
     {
         /// <summary>
@@ -55,11 +53,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         bool IsCreateScopedRequired { get; }
 
-        /// <summary>
-        /// If the credential supports scopes, creates a copy with the specified scopes, 
-        /// otherwise return the same instance.
-        /// </summary>
-        /// <param name="scopes"></param>
+        /// <summary>If the credential supports scopes, creates a copy with the specified scopes, otherwise return the same instance.</summary>
         ICredential CreateScoped(IEnumerable<string> scopes);
     }
 }

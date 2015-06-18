@@ -23,21 +23,15 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary>
-    /// Indicates the type of Client Credential
-    /// </summary>
+    /// <summary>Indicates the type of Client Credential.</summary>
     public enum ClientCredentialType
     {
-        /// <summary>UserCredential is created by the gcloud sdk tool when the user runs 'gcloud auth login'.</summary>
+        /// <summary>UserCredential is created by the gcloud sdk tool when the user runs <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         UserCredential = 1,
-        /// <summary>ServiceAccountCredential is downloaded by the user from https://console.developers.google.com.</summary>
+        /// <summary>ServiceAccountCredential is downloaded by the user from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
         ServiceAccountCredential = 2
     }
 
-
-    /// <summary>
-    /// OAuth 2.0 client secrets model as specified in https://cloud.google.com/console/.
-    /// </summary>
     public sealed class ClientCredentialParameters
     {
         /// <summary>Indicates whether the credentials is of type ServiceAccountCredential or UserCredential.</summary>

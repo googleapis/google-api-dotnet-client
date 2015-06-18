@@ -50,7 +50,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The Metadata flavor header name.</summary>
         private const string MetadataFlavor = "Metadata-Flavor";
 
-        /// <summary>The Metadata header response indicating Google</summary>
+        /// <summary>The Metadata header response indicating Google.</summary>
         private const string Google = "Google";
 
         /// <summary>
@@ -117,9 +117,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        /// <summary>
-        /// Return whether code is running on Google Compute Engine.
-        /// </summary>
+        /// <summary>Return whether code is running on Google Compute Engine.</summary>
         public static async Task<bool> IsRunningOnComputeEngine()
         {
             try
@@ -130,7 +128,7 @@ namespace Google.Apis.Auth.OAuth2
                 CancellationTokenSource cts = new CancellationTokenSource();
                 cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
 
-                // Using the built-in HttpClient, as we want bare bones functionality without any retries
+                // Using the built-in HttpClient, as we want bare bones functionality without any retries.
                 var httpClient = new HttpClient();
                 var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
 
