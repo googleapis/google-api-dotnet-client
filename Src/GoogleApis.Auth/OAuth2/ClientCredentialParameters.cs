@@ -39,10 +39,6 @@ namespace Google.Apis.Auth.OAuth2
         [Newtonsoft.Json.JsonProperty("type")]
         private string Type { get; set; }
 
-        /// <summary>Private Key associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
-        [Newtonsoft.Json.JsonProperty("private_key")]
-        private string PrivateKey { get; set; }
-
         /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
         [Newtonsoft.Json.JsonProperty("client_email")]
         public string ClientEmail { get; set; }
@@ -54,6 +50,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Client Secret associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("client_secret")]
         private string ClientSecret { get; set; }
+
+        /// <summary>Private Key associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
+        [Newtonsoft.Json.JsonProperty("private_key")]
+        public string Pkcs8PrivateKey { get; set; }
 
         /// <summary>Refresh Token associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("refresh_token")]
@@ -93,16 +93,6 @@ namespace Google.Apis.Auth.OAuth2
                     ClientId = this.ClientId,
                     ClientSecret = this.ClientSecret
                 };
-            }
-        }
-
-        /// <summary>Gets the PKCS8 unencrypted private key portion of the credential parameters.</summary>
-        public string Pkcs8PrivateKey
-        {
-            get 
-            {
-                Utilities.ThrowIfNullOrEmpty(PrivateKey, "PrivateKey");
-                return PrivateKey;
             }
         }
 
