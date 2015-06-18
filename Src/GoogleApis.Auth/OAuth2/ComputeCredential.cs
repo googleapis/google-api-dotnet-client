@@ -15,11 +15,13 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2
@@ -36,6 +38,21 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ComputeCredential : ServiceCredential
     {
+        /// <summary>The metadata server url.</summary>
+        public const string MetadataServerUrl = "http://metadata.google.internal";
+
+        /// <summary>
+        /// Experimentally, 200ms was found to be 99.9999% reliable. 
+        /// This is a conservative timeout to minimize hanging on some troublesome network. 
+        /// </summary>
+        private const int MetadataServerPingTimeoutInMilliseconds = 1000;
+
+        /// <summary>The Metadata flavor header name.</summary>
+        private const string MetadataFlavor = "Metadata-Flavor";
+
+        /// <summary>The Metadata header response indicating Google.</summary>
+        private const string Google = "Google";
+
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
@@ -63,7 +80,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             // Create and send the HTTP request to compute server token URL.
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, TokenServerUrl);
-            httpRequest.Headers.Add("Metadata-Flavor", "Google");
+            httpRequest.Headers.Add(MetadataFlavor, Google);
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
 
             // Read the response.
@@ -99,5 +116,45 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+        /// <summary>Return whether code is running on Google Compute Engine.</summary>
+        public static async Task<bool> IsRunningOnComputeEngine()
+        {
+            try
+            {
+                Logger.Info("Checking connectivity to ComputeEngine metadata server.");
+                var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+
+                CancellationTokenSource cts = new CancellationTokenSource();
+                cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
+
+                // Using the built-in HttpClient, as we want bare bones functionality without any retries.
+                var httpClient = new HttpClient();
+                var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+
+                IEnumerable<string> headerValues = null;
+                if (response.Headers.TryGetValues(MetadataFlavor, out headerValues))
+                {
+                    foreach (var value in headerValues)
+                    {
+                        if (value == Google)
+                            return true;
+                    }
+                }
+
+                // Response came from another source, possibly a proxy server in the caller's network.
+                Logger.Info("Response came from a source other than the ComputeEngine metadata server.");
+                return false;
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+            }
+            catch (OperationCanceledException)
+            {
+                Logger.Warning("Could not reach the ComputeEngine Metadata service. Operation timed out.");
+                return false;
+            }
+        }
     }
 }

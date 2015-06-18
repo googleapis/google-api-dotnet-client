@@ -97,6 +97,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OAuth2\DefaultCredentialProvider.cs" />
+    <Compile Include="OAuth2\GoogleAuth.cs" />
     <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
     <Compile Include="OAuth2\LocalServerCodeReceiver.cs" />
     <Compile Include="OAuth2\PromptCodeReceiver.cs" />

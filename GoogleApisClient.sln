@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D962DE0D-98E4-4E01-88BF-CEE63DF67585}"
 	ProjectSection(SolutionItems) = preProject
@@ -47,6 +47,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.WP81", "Src\GoogleApis.WP81\GoogleApis.WP81.csproj", "{176657CD-57F0-4358-B358-ED8B90D8AF39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.WP81", "Src\GoogleApis.Auth.WP81\GoogleApis.Auth.WP81.csproj", "{90660B22-B933-44A6-B34D-E4F4352D4434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.DotNet4.Tests", "Src\GoogleApis.Auth.DotNet4.Tests\GoogleApis.Auth.DotNet4.Tests.csproj", "{5A731729-8E99-4930-AE77-FA3524673DA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -464,6 +466,28 @@ Global
 		{90660B22-B933-44A6-B34D-E4F4352D4434}.ReleaseSigned|x64.ActiveCfg = ReleaseSigned|Any CPU
 		{90660B22-B933-44A6-B34D-E4F4352D4434}.ReleaseSigned|x86.ActiveCfg = ReleaseSigned|x86
 		{90660B22-B933-44A6-B34D-E4F4352D4434}.ReleaseSigned|x86.Build.0 = ReleaseSigned|x86
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|x64.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|Any CPU.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|ARM.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|Win32.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|x64.ActiveCfg = Release|Any CPU
+		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseSigned|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -478,6 +502,7 @@ Global
 		{9CBB9EC3-C678-4FB7-889B-DED6DE1F06B6} = {B958FC48-7F21-4C26-BABB-7C5D2D6A0AAC}
 		{176657CD-57F0-4358-B358-ED8B90D8AF39} = {47D62839-79D1-4EE6-B47E-06678E37A3BC}
 		{90660B22-B933-44A6-B34D-E4F4352D4434} = {47D62839-79D1-4EE6-B47E-06678E37A3BC}
+		{5A731729-8E99-4930-AE77-FA3524673DA3} = {00A1D580-DF06-4C96-A4DA-EDDEF8584971}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Src\GoogleApis\GoogleApis.csproj
