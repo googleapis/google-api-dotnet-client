@@ -70,8 +70,7 @@ namespace Google.Apis.Auth.OAuth2
                 : this(id, GoogleAuthConsts.TokenUrl) { }
 
             /// <summary>Constructs a new initializer using the given id and the token server URL.</summary>
-            public Initializer(string id, string tokenServerUrl)
-                : base(tokenServerUrl)
+            public Initializer(string id, string tokenServerUrl) : base(tokenServerUrl)
             {
                 Id = id;
                 Scopes = new List<string>();
@@ -132,8 +131,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         /// <param name="initializer"></param>
-        public ServiceAccountCredential(Initializer initializer)
-            : base(initializer)
+        public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
             user = initializer.User;

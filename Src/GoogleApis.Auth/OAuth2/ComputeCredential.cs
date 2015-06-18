@@ -102,9 +102,9 @@ namespace Google.Apis.Auth.OAuth2
                     var error = "Server response does not contain a JSON object. Status code is: "
                         + response.StatusCode;
                     throw new TokenResponseException(new TokenErrorResponse
-                    {
-                        Error = error
-                    });
+                        {
+                            Error = error
+                        });
                 }
             }
 
