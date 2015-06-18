@@ -76,18 +76,14 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = new List<string>();
             }
 
-            /// <summary>Constructs a new initializer using the given id and the private key in the ClientCredentialParameters.</summary>
-            public Initializer(ClientCredentialParameters clientCredentialParameters)
-                : this(clientCredentialParameters.ClientEmail, GoogleAuthConsts.TokenUrl)
+            /// <summary>Extracts a <see cref="Key"/> from the clientCredentialParameters which is obtained from parsing the Json Key.</summary>
+            public Initializer FromJsonKey(ClientCredentialParameters clientCredentialParameters)
             {
-                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.ClientEmail, "ClientEmail");
-                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.Base64PrivateKey, "PrivateKey");
-
-                var privateKeyBytes = Convert.FromBase64String(clientCredentialParameters.Base64PrivateKey);
-                RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
-                RSAParameters rsaParameters = DotNetUtilities.ToRSAParameters(crtParameters);
+                RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(clientCredentialParameters.Pkcs8PrivateKey);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
+
+                return this;
             }
 
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
@@ -193,6 +189,16 @@ namespace Google.Apis.Auth.OAuth2
             };
 
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
+        }
+
+        /// <summary>Converts the PKCS8 PrivateKey to RSA Parameters. Uses the Bouncy Castle library.</summary>
+        private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
+        {
+            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "Pkcs8PrivateKey");
+            var base64PrivateKey = pkcs8PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");
+            var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
+            RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+            return DotNetUtilities.ToRSAParameters(crtParameters);
         }
 
         /// <summary>
