@@ -134,9 +134,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
         #region Invalid Cases
 
-        /// <summary>
-        /// No credential files or environment variable specified - like a fresh developer's machine. 
-        /// </summary>
+        /// <summary> No credential files or environment variable specified - like a fresh developer's machine.</summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_NoCredentialFiles()
         {
@@ -156,9 +154,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             }
         }
 
-        /// <summary>
-        /// Environment variable points to a non existant credential file
-        /// </summary>
+        /// <summary>Environment variable points to a non existant credential file.</summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_MissingCredentialFile()
         {
@@ -179,9 +175,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             }
         }
 
-        /// <summary>
-        /// Credential file has invalid content format
-        /// </summary>
+        /// <summary>Credential file has invalid content format.</summary>
         [Test]
         public void TestGetApplicationDefaultCredentials_InvalidCredentialFile()
         {

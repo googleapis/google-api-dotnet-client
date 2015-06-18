@@ -73,7 +73,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <description>The environment variable GOOGLE_APPLICATION_CREDENTIALS is checked. If this variable is specified, it 
         /// should point to a file that defines the credentials. The simplest way to get a credential for this purpose is to 
         /// create a service account using the <a href="https://console.developers.google.com">Google Developers Console</a> in 
-        /// the section APIs & Auth, in the sub-section Credentials. Create a service account or choose an existing one and 
+        /// the section APIs and Auth, in the sub-section Credentials. Create a service account or choose an existing one and 
         /// select Generate new JSON key. Set the environment variable to the path of the JSON file downloaded.</description> 
         /// </item> 
         /// <item> 
