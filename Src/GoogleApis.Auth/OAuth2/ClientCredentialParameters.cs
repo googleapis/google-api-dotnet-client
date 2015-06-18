@@ -43,7 +43,7 @@ namespace Google.Apis.Auth.OAuth2
         [Newtonsoft.Json.JsonProperty("private_key")]
         private string PrivateKey { get; set; }
 
-        /// <summary>Client Email assocaited with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
+        /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
         [Newtonsoft.Json.JsonProperty("client_email")]
         public string ClientEmail { get; set; }
 
