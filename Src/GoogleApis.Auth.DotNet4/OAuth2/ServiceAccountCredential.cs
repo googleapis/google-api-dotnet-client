@@ -16,11 +16,15 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
 
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
@@ -70,6 +74,20 @@ namespace Google.Apis.Auth.OAuth2
             {
                 Id = id;
                 Scopes = new List<string>();
+            }
+
+            /// <summary>Constructs a new initializer using the given id and the private key in the ClientCredentialParameters.</summary>
+            public Initializer(ClientCredentialParameters clientCredentialParameters)
+                : this(clientCredentialParameters.ClientEmail, GoogleAuthConsts.TokenUrl)
+            {
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.ClientEmail, "ClientEmail");
+                Utilities.ThrowIfNullOrEmpty(clientCredentialParameters.Base64PrivateKey, "PrivateKey");
+
+                var privateKeyBytes = Convert.FromBase64String(clientCredentialParameters.Base64PrivateKey);
+                RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+                RSAParameters rsaParameters = DotNetUtilities.ToRSAParameters(crtParameters);
+                Key = new RSACryptoServiceProvider();
+                Key.ImportParameters(rsaParameters);
             }
 
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
@@ -143,7 +161,7 @@ namespace Google.Apis.Auth.OAuth2
             var hashAlg = new SHA256CryptoServiceProvider();
             byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
 
-            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
+            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */));
             assertion.Append(".").Append(signature);
 
             // Create the request.
