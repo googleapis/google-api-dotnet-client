@@ -96,13 +96,13 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-        /// <summary>Gets the Base64 unencrypted private key portion of the credential parameters.</summary>
-        public string Base64PrivateKey
+        /// <summary>Gets the PKCS8 unencrypted private key portion of the credential parameters.</summary>
+        public string Pkcs8PrivateKey
         {
             get 
             {
                 Utilities.ThrowIfNullOrEmpty(PrivateKey, "PrivateKey");
-                return PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");   
+                return PrivateKey;
             }
         }
 
