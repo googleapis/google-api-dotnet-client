@@ -76,10 +76,10 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = new List<string>();
             }
 
-            /// <summary>Extracts a <see cref="Key"/> from the clientCredentialParameters which is obtained from parsing the Json Key.</summary>
-            public Initializer FromJsonKey(ClientCredentialParameters clientCredentialParameters)
+            /// <summary>Extracts a <see cref="Key"/> from the given PKCS8 private key.</summary>
+            public Initializer FromPrivateKey(string privateKey)
             {
-                RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(clientCredentialParameters.Pkcs8PrivateKey);
+                RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
 
@@ -229,7 +229,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Converts the PKCS8 PrivateKey to RSA Parameters. Uses the Bouncy Castle library.</summary>
         private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
         {
-            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "Pkcs8PrivateKey");
+            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
             var base64PrivateKey = pkcs8PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");
             var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
             RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
