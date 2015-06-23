@@ -27,11 +27,9 @@ namespace Google.Apis.Auth.OAuth2
     public enum ClientCredentialType
     {
         /// <summary>UserCredential is created by the gcloud sdk tool when the user runs <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
-        [StringValue("user_credential")]
         UserCredential = 1,
         
         /// <summary>ServiceAccountCredential is downloaded by the user from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
-        [StringValue("service_account")]
         ServiceAccountCredential = 2
     }
 
@@ -67,14 +65,18 @@ namespace Google.Apis.Auth.OAuth2
         {
             get
             {
-                try
+                Utilities.ThrowIfNullOrEmpty(Type, "Type");
+
+                switch (Type)
                 {
-                    return (ClientCredentialType)Enum.Parse(typeof(ClientCredentialType), Type, true);
-                }
-                // Catch all types of Enum parsing exception including System.ArgumentNullException and System.ArgumentException.
-                catch (Exception)
-                {
-                    throw new InvalidOperationException(String.Format("Error parsing stream contents. Unrecognized Credential Type {0}.", Type));
+                    case "authorized_user":
+                        return ClientCredentialType.UserCredential;
+
+                    case "service_account":
+                        return ClientCredentialType.ServiceAccountCredential;
+
+                    default:
+                        throw new InvalidOperationException(String.Format("Error parsing stream contents. Unrecognized Credential Type {0}.", Type));
                 }
             }
         }
