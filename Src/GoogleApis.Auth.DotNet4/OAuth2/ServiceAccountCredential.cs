@@ -16,11 +16,15 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
 
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
@@ -70,6 +74,16 @@ namespace Google.Apis.Auth.OAuth2
             {
                 Id = id;
                 Scopes = new List<string>();
+            }
+
+            /// <summary>Extracts a <see cref="Key"/> from the given PKCS8 private key.</summary>
+            public Initializer FromPrivateKey(string privateKey)
+            {
+                RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
+                Key = new RSACryptoServiceProvider();
+                Key.ImportParameters(rsaParameters);
+
+                return this;
             }
 
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
@@ -175,6 +189,16 @@ namespace Google.Apis.Auth.OAuth2
             };
 
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
+        }
+
+        /// <summary>Converts the PKCS8 PrivateKey to RSA Parameters. Uses the Bouncy Castle library.</summary>
+        private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
+        {
+            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
+            var base64PrivateKey = pkcs8PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");
+            var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
+            RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+            return DotNetUtilities.ToRSAParameters(crtParameters);
         }
 
         /// <summary>
