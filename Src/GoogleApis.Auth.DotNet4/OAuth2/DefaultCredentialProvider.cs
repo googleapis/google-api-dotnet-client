@@ -206,7 +206,7 @@ namespace Google.Apis.Auth.OAuth2
                     try
                     {
                         var initializer = new ServiceAccountCredential.Initializer(clientCredentialParameters.ClientEmail);
-                        return new ServiceAccountCredential(initializer.FromJsonKey(clientCredentialParameters));
+                        return new ServiceAccountCredential(initializer.FromPrivateKey(clientCredentialParameters.Pkcs8PrivateKey));
                     }
                     catch (IOException e)
                     {
