@@ -533,10 +533,10 @@ namespace Google.Apis.Release
                 TraceSource.TraceEvent(TraceEventType.Information, "Replacing version for {0}", name);
                 project.ReplaceVersion(options.Version);
                 project.SetProperty("Configuration", "ReleaseSigned");
-                TraceSource.TraceEvent(TraceEventType.Information, "Building {0}", name);
                 // TODO(peleyal): Currently some projects can't build. Build manually for now! That's why the following
                 // if statement is commented out. INVESTIGATE!
                 /*
+                TraceSource.TraceEvent(TraceEventType.Information, "Building {0}", name);
                 bool success = project.Build("Build", new[] { new ConsoleLogger(LoggerVerbosity.Quiet) });
 
                 if (success)
