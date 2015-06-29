@@ -27,12 +27,12 @@
       <dependencies>
         <group>
           <dependency id="Google.Apis.Core" version="VERSION" />
-          <dependency id="Zlib.Portable" version="1.10.0" />
+          <dependency id="Zlib.Portable.Signed" version="1.11.0" />
         </group>
         <group targetFramework=".NETFramework4.0">
           <dependency id="Google.Apis.Core" version="VERSION" />
           <dependency id="log4net" version="2.0.3" />
-          <dependency id="Zlib.Portable" version="1.11.0" />
+          <dependency id="Zlib.Portable.Signed" version="1.11.0" />
         </group>
       </dependencies>
     </metadata>

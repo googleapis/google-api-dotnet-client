@@ -29,7 +29,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // Google.Apis.Tests won't compile in "ReleaseSigned" configuration.
+#if DEBUG
 [assembly: InternalsVisibleTo("Google.Apis.Tests")]
+#endif
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
