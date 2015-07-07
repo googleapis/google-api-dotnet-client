@@ -1055,6 +1055,13 @@
    "description": "Search all public profiles.",
    "allowGet": true,
    "parameters": {
+    "filters": {
+     "type": "array",
+     "description": "Additional filters for the search",
+     "items": {
+      "type": "string"
+     }
+    },
     "language": {
      "type": "string",
      "description": "Specify the preferred language to search with. See search language codes for available values.",
