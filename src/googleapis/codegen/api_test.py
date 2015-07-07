@@ -219,6 +219,17 @@ class ApiTest(basetest.TestCase):
       self.assertTrue(name in ['VALUE_1', 'VALUE_2', 'VALUE_3'])
       self.assertTrue(value in ['1', '2', '3'])
 
+  def testArrayParameter(self):
+    api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
+    search = api.MethodByName('chili.people.search')
+    filter_param = FindByWireName(search.values['parameters'], 'filters')
+    self.assertTrue(isinstance(filter_param.data_type,
+                               data_types.ArrayDataType))
+    self.assertTrue(isinstance(filter_param.data_type._base_type,
+                               data_types.PrimitiveDataType))
+    self.assertEquals('string',
+                      filter_param.data_type._base_type.values['type'])
+
   def testRepeatedEnum(self):
     api = self.ApiFromDiscoveryDoc(self._TEST_DISCOVERY_DOC)
     activities = FindByWireName(api.values['resources'], 'activities')
@@ -483,6 +494,33 @@ class ApiTest(basetest.TestCase):
                'resources': {}}
     api = Api(api_def)
     self.assertEquals('fake', api['title'])
+
+  def testExponentialBackoffDefault(self):
+    # Make sure exponentialBackoffDefault defaults to False.
+    discovery_doc = json.loads(
+        """
+        {
+         "name": "fake",
+         "version": "v1",
+         "schemas": {},
+         "resources": {}
+        }
+        """)
+    api = Api(discovery_doc)
+    # Make sure exponentialBackoffDefault gets set to True.
+    self.assertFalse(api.values['exponentialBackoffDefault'])
+    discovery_doc2 = json.loads(
+        """
+        {
+         "name": "fake",
+         "version": "v1",
+         "schemas": {},
+         "resources": {},
+         "exponentialBackoffDefault": true
+        }
+        """)
+    api2 = Api(discovery_doc2)
+    self.assertTrue(api2.values['exponentialBackoffDefault'])
 
 
 class ApiModulesTest(basetest.TestCase):

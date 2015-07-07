@@ -109,6 +109,7 @@ class Api(template_objects.CodeObject):
     self.SetTemplateValue('dataWrapper',
                           'dataWrapper' in discovery_doc.get('features', []))
     self.values.setdefault('title', name)
+    self.values.setdefault('exponentialBackoffDefault', False)
     if not self.values.get('revision'):
       self.values['revision'] = 'snapshot'
 
@@ -849,11 +850,13 @@ class Parameter(template_objects.CodeObject):
     self._location = (self.values.get('location')
                       or self.values.get('restParameterType')
                       or 'query')
-    # TODO(user): Also handle arrays. (Why not just use Schema.Create here?)
+    # TODO(user): Why not just use Schema.Create here?
     referenced_schema = self.values.get('$ref')
     if referenced_schema:
       self._data_type = (api.SchemaByName(referenced_schema) or
                          data_types.SchemaReference(referenced_schema, api))
+    elif def_dict.get('type') == 'array':
+      self._data_type = Schema.Create(api, name, def_dict, name, method)
     elif self.values.get('enum'):
       self._data_type = data_types.Enum(def_dict,
                                         api,
