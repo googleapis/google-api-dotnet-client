@@ -208,7 +208,7 @@ namespace Google.Apis.Release
         private void Run()
         {
             DefaultRepository = new Git(new Uri(string.Format(CloneUrlFormat, "")), options.IsLocal ? null : "default");
-            
+
             // Step 1 is only for creating the core Google.Apis packages.
             if (options.Step == 1)
             {
