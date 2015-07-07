@@ -815,6 +815,7 @@ class GeometryReference : public googleapis_client::JsonCppData {
 #include "google/kitch_sink_api/rule.h"
 #include "google/kitch_sink_api/series.h"
 #include "google/kitch_sink_api/series_list.h"
+#include "google/kitch_sink_api/translation.h"
 #include "google/kitch_sink_api/submission.h"
 #include "google/kitch_sink_api/submission_list.h"
 #include "google/kitch_sink_api/tag.h"
@@ -822,7 +823,6 @@ class GeometryReference : public googleapis_client::JsonCppData {
 #include "google/kitch_sink_api/topic.h"
 #include "google/kitch_sink_api/topic2.h"
 #include "google/kitch_sink_api/topic_list.h"
-#include "google/kitch_sink_api/translation.h"
 #include "google/kitch_sink_api/vote.h"
 #include "google/kitch_sink_api/vote_list.h"
 
@@ -1717,13 +1717,13 @@ TagsResource_InsertMethod::~TagsResource_InsertMethod() {
 
 // Standard constructor.
 TagsResource_ListMethod::TagsResource_ListMethod(
-    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& submission_id)
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& object)
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/tags")),
-      series_id_(series_id),
-      submission_id_(submission_id) {
+        StrCat(_service_->service_url(), "series/{id}/submissions/{object}/tags")),
+      id_(id.as_string()),
+      object_(object.as_string()) {
 }
 
 // Standard destructor.
@@ -1735,14 +1735,14 @@ TagsResource_ListMethod::~TagsResource_ListMethod() {
         const StringPiece& variable_name,
         const googleapis_client::UriTemplateConfig& config,
         string* target) {
-  if (variable_name == "seriesId") {
+  if (variable_name == "id") {
     googleapis_client::UriTemplate::AppendValue(
-        series_id_, config, target);
+        id_, config, target);
     return googleapis_client::StatusOk();
   }
-  if (variable_name == "submissionId") {
+  if (variable_name == "object") {
     googleapis_client::UriTemplate::AppendValue(
-        submission_id_, config, target);
+        object_, config, target);
     return googleapis_client::StatusOk();
   }
   return KitchSinkServiceBaseRequest::AppendVariable(
@@ -2345,8 +2345,8 @@ TagsResource_InsertMethod* KitchSinkService::TagsResource::NewInsertMethod(googl
 }
 
 
-TagsResource_ListMethod* KitchSinkService::TagsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const int32& series_id, const int32& submission_id) const {
-  return new TagsResource_ListMethod(service_, _credential_, series_id, submission_id);
+TagsResource_ListMethod* KitchSinkService::TagsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& object) const {
+  return new TagsResource_ListMethod(service_, _credential_, id, object);
 }
 
 KitchSinkService::TopicsResource::TopicsResource(KitchSinkService* service)
@@ -4829,15 +4829,14 @@ class TagsResource_ListMethod : public KitchSinkServiceBaseRequest {
    * @param[in] _credential_  If not NULL, the credential to authorize with.
    *            In practice this is supplied by the user code that is
    *            creating the method instance.
-   * @param[in] series_id The decimal ID of the Series.
-   * @param[in] submission_id The decimal ID of the Submission within the
-   * Series.
+   * @param[in] id id is a reserved word in Objective-C.
+   * @param[in] object A parameter name Object.
    */
   TagsResource_ListMethod(
       const KitchSinkService* _service_,
       googleapis_client::AuthorizationCredential* _credential_,
-      const int32& series_id,
-      const int32& submission_id);
+      const StringPiece& id,
+      const StringPiece& object);
 
   /**
    * Standard destructor.
@@ -4876,8 +4875,8 @@ class TagsResource_ListMethod : public KitchSinkServiceBaseRequest {
   }
 
  private:
-  int32 series_id_;
-  int32 submission_id_;
+  string id_;
+  string object_;
   DISALLOW_COPY_AND_ASSIGN(TagsResource_ListMethod);
 };
 
@@ -6775,16 +6774,15 @@ class KitchSinkService : public googleapis_client::ClientService {
      *
      * @param[in] _credential_  Can be NULL.
      *            NULL credentials will not authorize the request.
-     * @param[in] series_id The decimal ID of the Series.
-     * @param[in] submission_id The decimal ID of the Submission within the
-     * Series.
+     * @param[in] id id is a reserved word in Objective-C.
+     * @param[in] object A parameter name Object.
      * @returns  The caller should <code>Execute</code> the method instance,
      *           then destroy it when they are finished.
      */
     TagsResource_ListMethod* NewListMethod(
         googleapis_client::AuthorizationCredential* _credential_,
-        const int32& series_id,
-        const int32& submission_id) const;
+        const StringPiece& id,
+        const StringPiece& object) const;
 
    private:
     KitchSinkService* service_;
@@ -9682,6 +9680,7 @@ class SeriesList : public googleapis_client::JsonCppData {
 
 #include "google/kitch_sink_api/lat_long.h"
 #include "google/kitch_sink_api/moderator_topics_resource_partial.h"
+#include "google/kitch_sink_api/translation.h"
 
 
 #include <string>
@@ -9822,6 +9821,7 @@ Submission::~Submission() {
 
 #include "google/kitch_sink_api/lat_long.h"
 #include "google/kitch_sink_api/moderator_topics_resource_partial.h"
+#include "google/kitch_sink_api/translation.h"
 
 namespace Json {
 class Value;
@@ -9907,6 +9907,9 @@ class Submission : public googleapis_client::JsonCppData {
 
     /**
      * Change the '<code>$avatarUrl</code>' attribute.
+     *
+     * A member with a $ in the name.
+     *
      * @param[in] value The new value.
      */
     void set_avatar_url(const StringPiece& value) {
@@ -9914,37 +9917,41 @@ class Submission : public googleapis_client::JsonCppData {
     }
 
     /**
-     * Determine if the '<code>displayName</code>' attribute was set.
+     * Determine if the '<code>$object</code>' attribute was set.
      *
-     * @return true if the '<code>displayName</code>' attribute was set.
+     * @return true if the '<code>$object</code>' attribute was set.
      */
-    bool has_display_name() const {
-      return Storage().isMember("displayName");
+    bool has_object() const {
+      return Storage().isMember("$object");
     }
 
     /**
-     * Clears the '<code>displayName</code>' attribute.
+     * Clears the '<code>$object</code>' attribute.
      */
-    void clear_display_name() {
-      MutableStorage()->removeMember("displayName");
+    void clear_object() {
+      MutableStorage()->removeMember("$object");
     }
 
 
     /**
-     * Get the value of the '<code>displayName</code>' attribute.
+     * Get the value of the '<code>$object</code>' attribute.
      */
-    const StringPiece get_display_name() const {
-      const Json::Value& v = Storage("displayName");
+    const StringPiece get_object() const {
+      const Json::Value& v = Storage("$object");
       if (v == Json::Value::null) return StringPiece("");
       return StringPiece(v.asCString());
     }
 
     /**
-     * Change the '<code>displayName</code>' attribute.
+     * Change the '<code>$object</code>' attribute.
+     *
+     * A member with a $ in the name, but if you strip it, you get a reserved
+     * word.
+     *
      * @param[in] value The new value.
      */
-    void set_display_name(const StringPiece& value) {
-      *MutableStorage("displayName") = value.data();
+    void set_object(const StringPiece& value) {
+      *MutableStorage("$object") = value.data();
     }
 
     /**
@@ -10778,14 +10785,14 @@ class Submission : public googleapis_client::JsonCppData {
   /**
    * Get a reference to the value of the '<code>translations</code>' attribute.
    */
-  const googleapis_client::JsonCppAssociativeArray<Translations > get_translations() const;
+  const googleapis_client::JsonCppAssociativeArray<Translation > get_translations() const;
 
   /**
    * Gets a reference to a mutable value of the '<code>translations</code>'
    * property.
    * @return The result can be modified to change the attribute value.
    */
-  googleapis_client::JsonCppAssociativeArray<Translations > mutable_translations();
+  googleapis_client::JsonCppAssociativeArray<Translation > mutable_translations();
 
  private:
   void operator=(const Submission&);

@@ -1022,21 +1022,15 @@ class Tags extends SomeRootClass {
 
     // Method
     /**
-     * Lists all tags for the specified submission within the specified series.
+     * A method with a parameters named |id| and |object|
      *
-     * [seriesId] The decimal ID of the Series.
-
-     Minimum: 0.
-     Maximum: 4294967295.
-     * [submissionId] The decimal ID of the Submission within the Series.
-
-     Minimum: 0.
-     Maximum: 4294967295.
+     * [id] id is a reserved word in Objective-C
+     * [object] A parameter name Object.
      */
-    Future<TagList> list(long seriesId, long submissionId) {
-      pathParams['seriesId'] = seriesId;
-      pathParams['submissionId'] = submissionId;
-      string path = 'series/{seriesId}/submissions/{submissionId}/tags';
+    Future<TagList> list(str id, str object) {
+      pathParams['id'] = id;
+      pathParams['object'] = object;
+      string path = 'series/{id}/submissions/{object}/tags';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -2234,7 +2228,7 @@ class Submission extends SomeBaseModelClass {
 
   // 
   // JSON name: 'translations'
-  Map<string, Translations> _translations;
+  Map<string, Translation> _translations;
 
   // Getters and setters might go here
   str getAttachmentUrl() {
@@ -2303,10 +2297,10 @@ class Submission extends SomeBaseModelClass {
   void setTopics(com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> v) {
     _topics = v;
   }
-  Map<string, Translations> getTranslations() {
+  Map<string, Translation> getTranslations() {
     return _translations;
   }
-  void setTranslations(Map<string, Translations> v) {
+  void setTranslations(Map<string, Translation> v) {
     _translations = v;
   }
 
@@ -2315,13 +2309,13 @@ class Submission extends SomeBaseModelClass {
   #
   class SubmissionAttribution extends SomeBaseModelClass {
 
-    //
+    // A member with a $ in the name
     // JSON name: '$avatarUrl'
     str _avatarUrl;
 
-    //
-    // JSON name: 'displayName'
-    str _displayName;
+    // A member with a $ in the name, but if you strip it, you get a reserved word
+    // JSON name: '$object'
+    str _object;
 
     //
     // JSON name: 'location'
@@ -2334,11 +2328,11 @@ class Submission extends SomeBaseModelClass {
     void setAvatarUrl(str v) {
       _avatarUrl = v;
     }
-    str getDisplayName() {
-      return _displayName;
+    str getObject() {
+      return _object;
     }
-    void setDisplayName(str v) {
-      _displayName = v;
+    void setObject(str v) {
+      _object = v;
     }
     str getLocation() {
       return _location;
@@ -2455,13 +2449,13 @@ class Submission extends SomeBaseModelClass {
 # 
 class SubmissionAttribution extends SomeBaseModelClass {
 
-  // 
+  // A member with a $ in the name
   // JSON name: '$avatarUrl'
   str _avatarUrl;
 
-  // 
-  // JSON name: 'displayName'
-  str _displayName;
+  // A member with a $ in the name, but if you strip it, you get a reserved word
+  // JSON name: '$object'
+  str _object;
 
   // 
   // JSON name: 'location'
@@ -2474,11 +2468,11 @@ class SubmissionAttribution extends SomeBaseModelClass {
   void setAvatarUrl(str v) {
     _avatarUrl = v;
   }
-  str getDisplayName() {
-    return _displayName;
+  str getObject() {
+    return _object;
   }
-  void setDisplayName(str v) {
-    _displayName = v;
+  void setObject(str v) {
+    _object = v;
   }
   str getLocation() {
     return _location;
@@ -4393,7 +4387,7 @@ class Submission extends SomeBaseModelClass {
 
   // 
   // JSON name: "translations"
-  Map<string, Translations> _translations;
+  Map<string, Translation> _translations;
 
   // Getters and setters might go here
   str getAttachmentUrl() {
@@ -4462,10 +4456,10 @@ class Submission extends SomeBaseModelClass {
   void setTopics(com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> v) {
     _topics = v;
   }
-  Map<string, Translations> getTranslations() {
+  Map<string, Translation> getTranslations() {
     return _translations;
   }
-  void setTranslations(Map<string, Translations> v) {
+  void setTranslations(Map<string, Translation> v) {
     _translations = v;
   }
 
@@ -4474,13 +4468,13 @@ class Submission extends SomeBaseModelClass {
    */
   class SubmissionAttribution extends SomeBaseModelClass {
 
-    //
+    // A member with a $ in the name
     // JSON name: "$avatarUrl"
     str _avatarUrl;
 
-    //
-    // JSON name: "displayName"
-    str _displayName;
+    // A member with a $ in the name, but if you strip it, you get a reserved word
+    // JSON name: "$object"
+    str _object;
 
     //
     // JSON name: "location"
@@ -4493,11 +4487,11 @@ class Submission extends SomeBaseModelClass {
     void setAvatarUrl(str v) {
       _avatarUrl = v;
     }
-    str getDisplayName() {
-      return _displayName;
+    str getObject() {
+      return _object;
     }
-    void setDisplayName(str v) {
-      _displayName = v;
+    void setObject(str v) {
+      _object = v;
     }
     str getLocation() {
       return _location;

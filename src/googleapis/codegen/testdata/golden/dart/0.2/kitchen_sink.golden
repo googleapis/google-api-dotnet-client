@@ -1304,26 +1304,25 @@ class TagsResource extends Resource {
 
   // Method TagsResource.List
   /**
-   * Lists all tags for the specified submission within the specified series.
+   * A method with a parameters named |id| and |object|
    *
-   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   * [id] - id is a reserved word in Objective-C
    *
-   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
-   * 4294967295)
+   * [object] - A parameter name Object.
    *
    * [optParams] - Additional query parameters.
    */
-  async.Future<TagList> list(core.int seriesId, core.int submissionId, {core.Map optParams}) {
+  async.Future<TagList> list(core.String id, core.String object, {core.Map optParams}) {
     var completer = new async.Completer();
-    var url = "series/{seriesId}/submissions/{submissionId}/tags";
+    var url = "series/{id}/submissions/{object}/tags";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
-    if (seriesId == null) paramErrors.add("seriesId is required");
-    if (seriesId != null) urlParams["seriesId"] = seriesId;
-    if (submissionId == null) paramErrors.add("submissionId is required");
-    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (id == null) paramErrors.add("id is required");
+    if (id != null) urlParams["id"] = id;
+    if (object == null) paramErrors.add("object is required");
+    if (object != null) urlParams["object"] = object;
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {
@@ -2454,7 +2453,7 @@ class Submission {
 
   core.List<ModeratorTopicsResourcePartial> topics;
 
-  core.Map<core.String, Translations> translations;
+  core.Map<core.String, Translation> translations;
 
   /** Create new Submission from JSON data. */
   Submission.fromJson(core.Map json) {
@@ -2559,9 +2558,11 @@ class Submission {
 
 class SubmissionAttribution {
 
+  /** A member with a $ in the name */
   core.String $avatarUrl;
 
-  core.String displayName;
+  /** A member with a $ in the name, but if you strip it, you get a reserved word */
+  core.String $object;
 
   core.String location;
 
@@ -2570,8 +2571,8 @@ class SubmissionAttribution {
     if (json.containsKey("\$avatarUrl")) {
       $avatarUrl = json["\$avatarUrl"];
     }
-    if (json.containsKey("displayName")) {
-      displayName = json["displayName"];
+    if (json.containsKey("\$object")) {
+      $object = json["\$object"];
     }
     if (json.containsKey("location")) {
       location = json["location"];
@@ -2585,8 +2586,8 @@ class SubmissionAttribution {
     if ($avatarUrl != null) {
       output["\$avatarUrl"] = $avatarUrl;
     }
-    if (displayName != null) {
-      output["displayName"] = displayName;
+    if ($object != null) {
+      output["\$object"] = $object;
     }
     if (location != null) {
       output["location"] = location;

@@ -454,17 +454,17 @@ class Google_Service_KitchSink extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'series/{seriesId}/submissions/{submissionId}/tags',
+              'path' => 'series/{id}/submissions/{object}/tags',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'seriesId' => array(
+                'id' => array(
                   'location' => 'path',
-                  'type' => 'integer',
+                  'type' => 'string',
                   'required' => true,
                 ),
-                'submissionId' => array(
+                'object' => array(
                   'location' => 'path',
-                  'type' => 'integer',
+                  'type' => 'string',
                   'required' => true,
                 ),
               ),
@@ -1164,17 +1164,16 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
   }
 
   /**
-   * Lists all tags for the specified submission within the specified series.
-   * (tags.listTags)
+   * A method with a parameters named |id| and |object| (tags.listTags)
    *
-   * @param int $seriesId The decimal ID of the Series.
-   * @param int $submissionId The decimal ID of the Submission within the Series.
+   * @param string $id id is a reserved word in Objective-C
+   * @param string $object A parameter name Object.
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_TagList
    */
-  public function listTags($seriesId, $submissionId, $optParams = array())
+  public function listTags($id, $object, $optParams = array())
   {
-    $params = array('seriesId' => $seriesId, 'submissionId' => $submissionId);
+    $params = array('id' => $id, 'object' => $object);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_TagList");
   }
@@ -1899,7 +1898,7 @@ class Google_Service_KitchSink_Submission extends Google_Collection
   public $text;
   protected $topicsType = 'Google_Service_KitchSink_ModeratorTopicsResourcePartial';
   protected $topicsDataType = 'array';
-  protected $translationsType = 'Google_Service_KitchSink_Translations';
+  protected $translationsType = 'Google_Service_KitchSink_Translation';
   protected $translationsDataType = 'map';
 
 
@@ -2005,9 +2004,10 @@ class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "avatarUrl" => "$avatarUrl",
+        "object" => "$object",
   );
   public $avatarUrl;
-  public $displayName;
+  public $object;
   public $location;
 
 
@@ -2019,13 +2019,13 @@ class Google_Service_KitchSink_SubmissionAttribution extends Google_Model
   {
     return $this->avatarUrl;
   }
-  public function setDisplayName($displayName)
+  public function setObject($object)
   {
-    $this->displayName = $displayName;
+    $this->object = $object;
   }
-  public function getDisplayName()
+  public function getObject()
   {
-    return $this->displayName;
+    return $this->object;
   }
   public function setLocation($location)
   {

@@ -211,10 +211,12 @@
      "type": "object",
      "properties": {
       "$avatarUrl": {
-       "type": "string"
+       "type": "string",
+       "description": "A member with a $ in the name"
       },
-      "displayName": {
-       "type": "string"
+      "$object": {
+       "type": "string",
+       "description": "A member with a $ in the name, but if you strip it, you get a reserved word"
       },
       "location": {
        "type": "string"
@@ -286,7 +288,7 @@
      "type": "object",
      "note": "translations is Map<string, Translation>",
      "additionalProperties": {
-       "$ref": "Translations"
+       "$ref": "Translation"
      }
     }
    }
@@ -1279,26 +1281,23 @@
      }
     },
     "list": {
-     "path": "series/{seriesId}/submissions/{submissionId}/tags",
+     "path": "series/{id}/submissions/{object}/tags",
      "id": "moderator.tags.list",
      "httpMethod": "GET",
-     "description": "Lists all tags for the specified submission within the specified series.",
+     "description": "A method with a parameters named |id| and |object|",
      "parameters": {
-      "seriesId": {
+      "id": {
+       "description": "id is a reserved word in Objective-C",
+       "type": "string",
        "location": "path",
-       "required": true,
-       "description": "The decimal ID of the Series.",
-       "type": "integer",
-       "minimum": "0",
-       "maximum": "4294967295"
+       "required": true
       },
-      "submissionId": {
+      "object": {
+       "description": "A parameter name Object.",
+       "note": "Reserved word in C#. See bug list",
+       "type": "string",
        "location": "path",
-       "required": true,
-       "description": "The decimal ID of the Submission within the Series.",
-       "type": "integer",
-       "minimum": "0",
-       "maximum": "4294967295"
+       "required": true
       }
      },
      "parameterOrder": [

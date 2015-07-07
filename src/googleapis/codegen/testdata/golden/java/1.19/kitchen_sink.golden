@@ -2582,33 +2582,29 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       }
     }
     /**
-     * Lists all tags for the specified submission within the specified series.
+     * A method with a parameters named |id| and |object|
      *
      * Create a request for the method "tags.list".
      *
      * This request holds the parameters needed by the kitch_sink server.  After setting any optional
      * parameters, call the {@link List#execute()} method to invoke the remote operation.
      *
-     * @param seriesId The decimal ID of the Series.
-    [minimum: 0]
-    [maximum: 4294967295]
-     * @param submissionId The decimal ID of the Submission within the Series.
-    [minimum: 0]
-    [maximum: 4294967295]
+     * @param id id is a reserved word in Objective-C
+     * @param object__ A parameter name Object.
      * @return the request
      */
-    public List list(Integer seriesId, Integer submissionId) throws java.io.IOException {
-      List result = new List(seriesId, submissionId);
+    public List list(java.lang.String id, java.lang.String object__) throws java.io.IOException {
+      List result = new List(id, object__);
       initialize(result);
       return result;
     }
 
     public class List extends KitchSinkRequest<com.google.api.services.kitch_sink.model.TagList> {
 
-      private static final String REST_PATH = "series/{seriesId}/submissions/{submissionId}/tags";
+      private static final String REST_PATH = "series/{id}/submissions/{object}/tags";
 
       /**
-       * Lists all tags for the specified submission within the specified series.
+       * A method with a parameters named |id| and |object|
        *
        * Create a request for the method "tags.list".
        *
@@ -2617,18 +2613,14 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * {@link List#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)}
        * must be called to initialize this instance immediately after invoking the constructor. </p>
        *
-       * @param seriesId The decimal ID of the Series.
-    [minimum: 0]
-    [maximum: 4294967295]
-       * @param submissionId The decimal ID of the Submission within the Series.
-    [minimum: 0]
-    [maximum: 4294967295]
+       * @param id id is a reserved word in Objective-C
+       * @param object__ A parameter name Object.
        * @since 1.13
        */
-      protected List(Integer seriesId, Integer submissionId) {
+      protected List(java.lang.String id, java.lang.String object__) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.TagList.class);
-        this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
-        this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
+        this.id = com.google.api.client.util.Preconditions.checkNotNull(id, "Required parameter id must be specified.");
+        this.object__ = com.google.api.client.util.Preconditions.checkNotNull(object__, "Required parameter object__ must be specified.");
       }
 
       @Override
@@ -2656,39 +2648,35 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
         return (List) super.setPrettyPrint(prettyPrint);
       }
 
-      /** The decimal ID of the Series. */
+      /** id is a reserved word in Objective-C */
       @com.google.api.client.util.Key
-      private Integer seriesId;
+      private java.lang.String id;
 
-      /** The decimal ID of the Series.
-
-     [minimum: 0] [maximum: 4294967295]
+      /** id is a reserved word in Objective-C
        */
-      public Integer getSeriesId() {
-        return seriesId;
+      public java.lang.String getId() {
+        return id;
       }
 
-      /** The decimal ID of the Series. */
-      public List setSeriesId(Integer seriesId) {
-        this.seriesId = seriesId;
+      /** id is a reserved word in Objective-C */
+      public List setId(java.lang.String id) {
+        this.id = id;
         return this;
       }
 
-      /** The decimal ID of the Submission within the Series. */
-      @com.google.api.client.util.Key
-      private Integer submissionId;
+      /** A parameter name Object. */
+      @com.google.api.client.util.Key("object")
+      private java.lang.String object__;
 
-      /** The decimal ID of the Submission within the Series.
-
-     [minimum: 0] [maximum: 4294967295]
+      /** A parameter name Object.
        */
-      public Integer getSubmissionId() {
-        return submissionId;
+      public java.lang.String getObject() {
+        return object__;
       }
 
-      /** The decimal ID of the Submission within the Series. */
-      public List setSubmissionId(Integer submissionId) {
-        this.submissionId = submissionId;
+      /** A parameter name Object. */
+      public List setObject(java.lang.String object__) {
+        this.object__ = object__;
         return this;
       }
 
@@ -5826,7 +5814,7 @@ public final class Submission extends com.google.api.client.json.GenericJson {
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private  translations;
+  private java.util.Map<String, Translation> translations;
 
   /**
    * @return value or {@code null} for none
@@ -5996,14 +5984,14 @@ public final class Submission extends com.google.api.client.json.GenericJson {
   /**
    * @return value or {@code null} for none
    */
-  public  getTranslations() {
+  public java.util.Map<String, Translation> getTranslations() {
     return translations;
   }
 
   /**
    * @param translations translations or {@code null} for none
    */
-  public Submission setTranslations( translations) {
+  public Submission setTranslations(java.util.Map<String, Translation> translations) {
     this.translations = translations;
     return this;
   }
@@ -6024,16 +6012,18 @@ public final class Submission extends com.google.api.client.json.GenericJson {
   public static final class Attribution extends com.google.api.client.json.GenericJson {
 
     /**
+     * A member with a $ in the name
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
     private java.lang.String $avatarUrl;
 
     /**
+     * A member with a $ in the name, but if you strip it, you get a reserved word
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String displayName;
+    private java.lang.String $object;
 
     /**
      * The value may be {@code null}.
@@ -6042,6 +6032,7 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     private java.lang.String location;
 
     /**
+     * A member with a $ in the name
      * @return value or {@code null} for none
      */
     public java.lang.String get$avatarUrl() {
@@ -6049,6 +6040,7 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     }
 
     /**
+     * A member with a $ in the name
      * @param $avatarUrl $avatarUrl or {@code null} for none
      */
     public Attribution set$avatarUrl(java.lang.String $avatarUrl) {
@@ -6057,17 +6049,19 @@ public final class Submission extends com.google.api.client.json.GenericJson {
     }
 
     /**
+     * A member with a $ in the name, but if you strip it, you get a reserved word
      * @return value or {@code null} for none
      */
-    public java.lang.String getDisplayName() {
-      return displayName;
+    public java.lang.String get$object() {
+      return $object;
     }
 
     /**
-     * @param displayName displayName or {@code null} for none
+     * A member with a $ in the name, but if you strip it, you get a reserved word
+     * @param $object $object or {@code null} for none
      */
-    public Attribution setDisplayName(java.lang.String displayName) {
-      this.displayName = displayName;
+    public Attribution set$object(java.lang.String $object) {
+      this.$object = $object;
       return this;
     }
 

@@ -729,13 +729,13 @@ public interface KitchSink extends RequestFactory {
       InsertRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
     }
     /**
-     * Lists all tags for the specified submission within the specified series.
+     * A method with a parameters named |id| and |object|
      *
      *
-     * @param seriesId The decimal ID of the Series.
-     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param id id is a reserved word in Objective-C
+     * @param object__ A parameter name Object.
      */
-    ListRequest list(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId);
+    ListRequest list(@PropertyName("id") String id, @PropertyName("object") String object__);
 
     /**
      * Request object to call the "moderator.tags.list" method.
@@ -743,13 +743,13 @@ public interface KitchSink extends RequestFactory {
     @JsonRpcWireName(value="moderator.tags.list", version="v1")
     public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.TagList> {
 
-      /** The decimal ID of the Series. */
-      @PropertyName("seriesId")
-      ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+      /** id is a reserved word in Objective-C */
+      @PropertyName("id")
+      ListRequest setId(@PropertyName("id") String id);
 
-      /** The decimal ID of the Submission within the Series. */
-      @PropertyName("submissionId")
-      ListRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+      /** A parameter name Object. */
+      @PropertyName("object")
+      ListRequest setObject(@PropertyName("object") String object__);
     }
   }
   /**
@@ -1968,19 +1968,19 @@ import com.google.web.bindery.requestfactory.shared.ValueProxy;
 @JsonRpcProxy
 public interface SubmissionAttribution extends ValueProxy {
 
-  
+  /** A member with a $ in the name */
   @PropertyName("$avatarUrl")
   String get$avatarUrl();
 
   @PropertyName("$avatarUrl")
   SubmissionAttribution set$avatarUrl(String $avatarUrl);
 
-  
-  @PropertyName("displayName")
-  String getDisplayName();
+  /** A member with a $ in the name, but if you strip it, you get a reserved word */
+  @PropertyName("$object")
+  String get$object();
 
-  @PropertyName("displayName")
-  SubmissionAttribution setDisplayName(String displayName);
+  @PropertyName("$object")
+  SubmissionAttribution set$object(String $object);
 
   
   @PropertyName("location")
@@ -2211,10 +2211,10 @@ public interface Submission extends ValueProxy {
 
   
   @PropertyName("translations")
-  java.util.Map<String, Translations> getTranslations();
+  java.util.Map<String, Translation> getTranslations();
 
   @PropertyName("translations")
-  Submission setTranslations(java.util.Map<String, Translations> translations);
+  Submission setTranslations(java.util.Map<String, Translation> translations);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/Submission.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionList.java
