@@ -19,9 +19,9 @@
         </dependencies>
     </metadata>
     <files>
-      <file src="Src\GoogleApis.Auth.Mvc4\bin\Release\Google.Apis.Auth.Mvc4.dll" target="lib\net40\Google.Apis.Auth.Mvc4.dll" />
-      <file src="Src\GoogleApis.Auth.Mvc4\bin\Release\Google.Apis.Auth.Mvc4.pdb" target="lib\net40\Google.Apis.Auth.Mvc4.pdb" />
-      <file src="Src\GoogleApis.Auth.Mvc4\bin\Release\Google.Apis.Auth.Mvc4.xml" target="lib\net40\Google.Apis.Auth.Mvc4.xml" />
+      <file src="Src\GoogleApis.Auth.Mvc4\bin\ReleaseSigned\Google.Apis.Auth.Mvc4.dll" target="lib\net40\Google.Apis.Auth.Mvc4.dll" />
+      <file src="Src\GoogleApis.Auth.Mvc4\bin\ReleaseSigned\Google.Apis.Auth.Mvc4.pdb" target="lib\net40\Google.Apis.Auth.Mvc4.pdb" />
+      <file src="Src\GoogleApis.Auth.Mvc4\bin\ReleaseSigned\Google.Apis.Auth.Mvc4.xml" target="lib\net40\Google.Apis.Auth.Mvc4.xml" />
       
       <file src="Resources\License.txt" target="License.txt" />
     </files>

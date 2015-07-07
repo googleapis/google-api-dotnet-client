@@ -55,8 +55,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="ProjectExtenstions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Git.cs" />
     <Compile Include="Repositories\Hg.cs" />
-    <Compile Include="Wiki\DownloadsPageUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

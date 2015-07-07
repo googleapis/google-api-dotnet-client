@@ -297,7 +297,7 @@ namespace Google.Apis.Requests
         /// Creates the batch outer request content which includes all the individual requests to Google servers.
         /// </summary>
         [VisibleForTestOnly]
-        public async static Task<HttpContent> CreateOuterRequestContent(IEnumerable<IClientServiceRequest> requests)
+        internal async static Task<HttpContent> CreateOuterRequestContent(IEnumerable<IClientServiceRequest> requests)
         {
             var mixedContent = new MultipartContent("mixed");
             foreach (var request in requests)
@@ -320,7 +320,7 @@ namespace Google.Apis.Requests
 
         /// <summary>Creates the individual server request.</summary>
         [VisibleForTestOnly]
-        public static async Task<HttpContent> CreateIndividualRequest(IClientServiceRequest request)
+        internal static async Task<HttpContent> CreateIndividualRequest(IClientServiceRequest request)
         {
             HttpRequestMessage requestMessage = request.CreateRequest(false);
             string requestContent = await CreateRequestContentString(requestMessage).ConfigureAwait(false);
@@ -335,7 +335,7 @@ namespace Google.Apis.Requests
         /// request message.
         /// </summary>
         [VisibleForTestOnly]
-        public static async Task<string> CreateRequestContentString(HttpRequestMessage requestMessage)
+        internal static async Task<string> CreateRequestContentString(HttpRequestMessage requestMessage)
         {
             var sb = new StringBuilder();
             sb.AppendFormat("{0} {1}", requestMessage.Method, requestMessage.RequestUri.AbsoluteUri);
