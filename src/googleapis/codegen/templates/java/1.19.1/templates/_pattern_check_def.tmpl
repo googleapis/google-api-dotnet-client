@@ -1,0 +1,15 @@
+  {% if param.pattern %}
+    if (!getSuppressPatternChecks()) {
+    {% if param.repeated %}
+      for (String {{ param.memberName }}Elem : {{ param.memberName }}) {
+        com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}Elem).matches(),
+            "Parameter {{ param.memberName }} elements must conform to the pattern " +
+            {% literal param.pattern %});
+      }
+    {% else %}
+      com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}).matches(),
+          "Parameter {{ param.memberName }} must conform to the pattern " +
+          {% literal param.pattern %});
+    {% endif %}
+    }
+  {% endif %}
