@@ -108,7 +108,7 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
               },
               existing_parameter.parent)
           merged_param.SetTemplateValue('codeType', 'id')
-          merged_param.SetTemplateValue('attributes', 'retain')
+          merged_param.SetTemplateValue('attributes', 'nonatomic, retain')
           merged_param.SetTemplateValue('noPointer', True)
           method_parameters[parameter.codeName] = merged_param
     api_object.SetTemplateValue(
@@ -166,9 +166,9 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
     """Common annotations that apply to both parameters and properties."""
     # Property attributes depend on type
     if prop.data_type.code_type == 'NSString':
-      prop.SetTemplateValue('attributes', 'copy')
+      prop.SetTemplateValue('attributes', 'nonatomic, copy')
     else:
-      prop.SetTemplateValue('attributes', 'retain')
+      prop.SetTemplateValue('attributes', 'nonatomic, retain')
 
     if isinstance(prop.data_type, data_types.ArrayDataType):
       # Add comment showing type of array elements
@@ -218,7 +218,7 @@ class ObjCLanguageModel(language_model.LanguageModel):
   """A LanguageModel for Objective-C."""
 
   array_of_policy = language_model.NamingPolicy(format_string='NSArray')
-  map_of_policy = language_model.NamingPolicy(format_string='NSMap<{name}>')
+  map_of_policy = language_model.NamingPolicy(format_string='NSDictionary')
   constant_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE,
       format_string='k{className}_{propertyName}_{name}')

@@ -20,34 +20,4 @@
 {% if api.importManager %}
 {% imports api %}{% endimports %}
 {% endif %}
-@implementation {{ api.query }}
-
-@dynamic {% for parameter in api.allParameters %}{% if not forloop.first %}, {% endif %}{{ parameter.codeName }}{% endfor %};
-{% if api.propertyToJSONKeyMap %}
-+ (NSDictionary *)parameterNameMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-{% for parameter in api.allParameters %}{% if parameter.wireName != parameter.codeName %}      {% literal parameter.wireName %}, {% literal parameter.codeName %},
-{% endif %}{% endfor %}      nil];
-  return map;
-}
-{% endif %}{% if api.arrayPropertyToClassMap %}
-+ (NSDictionary *)arrayPropertyToClassMap {
-  NSDictionary *map =
-    [NSDictionary dictionaryWithObjectsAndKeys:
-{% for parameter in api.allParameters %}{% if parameter.type == 'array' %}      [{{ parameter.elementCodeType }} class], {% literal parameter.wireName %},
-{% endif %}{% endfor %}      nil];
-  return map;
-}
-{% endif %}
-#pragma mark -
-// These create a GTLQueryProximityBeacon object.
-{% for method in api.methods %}
-+ (id){{method.queryCodeName}} {
-  NSString *methodName = {% literal method.wireName %};
-  GTLQueryProximityBeacon *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [{{ method.responseType.codeType }} class];
-  return query;
-}
-{% endfor %}
-@end
+{% call_template _query_m_impl %}

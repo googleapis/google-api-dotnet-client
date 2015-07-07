@@ -1,10 +1,11 @@
+{% if model.importManager %}
 {% filter noblanklines %}
-{% if options.useSingleSourceFile %}{% if model.importManager %}
 {% for import in model.importManager.type_dependencies %}
 @class {{ import }};
 {% endfor %}
-{% endif %}{% endif %}
 {% endfilter %}
+{% endif %}
+// ----------------------------------------------------------------------------
 //
 //   {{ model.className }}
 //

@@ -21,12 +21,4 @@
 #else
   #import "GTLObject.h"
 #endif
-{% if model.importManager %}
-{% filter noblanklines %}
-{% for import in model.importManager.type_dependencies %}
-@class {{ import }};
-{% endfor %}
-{% endfilter %}
-{% endif %}
-// ----------------------------------------------------------------------------
 {% call_template _model_h_impl model=model %}
