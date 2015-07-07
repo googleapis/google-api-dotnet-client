@@ -22,9 +22,11 @@ from google.apputils import basetest
 from googleapis.codegen import data_types
 from googleapis.codegen import data_value
 from googleapis.codegen import language_model
+from googleapis.codegen.template_objects import CodeObject
 
 
 class LanguageModelTest(basetest.TestCase):
+
   def setUp(self):
     self.language_model = language_model.LanguageModel()
 
@@ -98,7 +100,7 @@ class LanguageModelTest(basetest.TestCase):
 
 class LanguagePolicyTest(basetest.TestCase):
 
-  def testTransform(self):
+  def testApplyCaseTransform(self):
 
     class TestLanguageModel(language_model.LanguageModel):
       allowed_characters = '#'
@@ -111,33 +113,53 @@ class LanguagePolicyTest(basetest.TestCase):
     # which we expect to strip off.
     s = 'I-am -a_tesT@'
     p = language_model.NamingPolicy(case_transform=language_model.LOWER_CASE)
-    self.assertEquals('iamatest', m.TransformString(None, s, p))
+    self.assertEquals('iamatest', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.PRESERVE_CASE,
         separator='_')
-    self.assertEquals('I_am_a_tesT', m.TransformString(None, s, p))
+    self.assertEquals('I_am_a_tesT', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CASE,
         separator='_')
-    self.assertEquals('I_AM_A_TEST', m.TransformString(None, s, p))
+    self.assertEquals('I_AM_A_TEST', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.LOWER_CASE,
         separator='_')
-    self.assertEquals('i_am_a_test', m.TransformString(None, s, p))
+    self.assertEquals('i_am_a_test', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CAMEL_CASE)
-    self.assertEquals('IAmATesT', m.TransformString(None, s, p))
+    self.assertEquals('IAmATesT', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.LOWER_CAMEL_CASE)
-    self.assertEquals('iAmATesT', m.TransformString(None, s, p))
+    self.assertEquals('iAmATesT', m.ApplyCaseTransform(s, p))
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CAMEL_CASE)
     s = 'allow#this'
-    self.assertEquals('Allow#this', m.TransformString(None, s, p))
+    self.assertEquals('Allow#this', m.ApplyCaseTransform(s, p))
 
-  def testFormat(self):
-    # TODO(user): Add tests here when we expand the format options
-    pass
+  def testApplyFormat(self):
+
+    class TestLanguageModel(language_model.LanguageModel):
+      allowed_characters = '#'
+      member_policy = language_model.NamingPolicy(
+          case_transform=language_model.UPPER_CAMEL_CASE,
+          format_string='{api_name}!{parent_name}!{name}')
+
+      def __init__(self, **kwargs):
+        super(TestLanguageModel, self).__init__(**kwargs)
+
+    m = TestLanguageModel()
+    api = CodeObject({'name': 'my_api'}, None, wire_name='my_api')
+    schema = CodeObject({'name': 'my_schema'}, api, wire_name='my_schema',
+                        parent=api)
+    member = CodeObject({'name': 'object'}, api, parent=schema)
+    # Note: the transform will happen for the extra variables. The actual
+    # member name is not transformed in this case, because we are only calling
+    # ApplyFormat.
+    self.assertEquals('MyApi!MySchema!some_string',
+                      m.ApplyFormat(member, 'some_string', m.member_policy))
+    self.assertEquals('MyApi!MySchema!SomeString',
+                      m.ApplyPolicy('member', member, 'some_string'))
 
   def testPoliciesGetUsedInTheRightMethods1(self):
 
@@ -223,20 +245,20 @@ class LanguagePolicyTest(basetest.TestCase):
     # which we expect to strip off.
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CAMEL_CASE)
-    self.assertEquals('Myname', m.TransformString(None, 'my@name', p))
-    self.assertEquals('Name', m.TransformString(None, '@name', p))
+    self.assertEquals('Myname', m.ApplyCaseTransform('my@name', p))
+    self.assertEquals('Name', m.ApplyCaseTransform('@name', p))
 
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CAMEL_CASE,
         atsign_policy=language_model.ATSIGN_STRIP)
-    self.assertEquals('Myname', m.TransformString(None, 'my@name', p))
-    self.assertEquals('Name', m.TransformString(None, '@name', p))
+    self.assertEquals('Myname', m.ApplyCaseTransform('my@name', p))
+    self.assertEquals('Name', m.ApplyCaseTransform('@name', p))
 
     p = language_model.NamingPolicy(
         case_transform=language_model.UPPER_CAMEL_CASE,
         atsign_policy=language_model.ATSIGN_BREAK)
-    self.assertEquals('MyName', m.TransformString(None, 'my@name', p))
-    self.assertEquals('Name', m.TransformString(None, '@name', p))
+    self.assertEquals('MyName', m.ApplyCaseTransform('my@name', p))
+    self.assertEquals('Name', m.ApplyCaseTransform('@name', p))
 
 
 if __name__ == '__main__':

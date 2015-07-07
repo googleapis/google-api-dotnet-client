@@ -386,32 +386,14 @@ class LanguageModel(object):
     """
     return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
 
-  def TransformString(self, variable, s, policy):
-    """Applies the transforms of a naming policy to a string.
-
-    Takes a string (usually a wireName) which might be in any case and have
-    reserved characters in it and transforms by the rules specified. The string
-    is divided into parts at reserved characters, then each part is transformed
-    by the case rule and then the parts are joined by the reserved character
-    replacement.  Multiple reserved characters in a row are treated as one.
-
-    Note that the camel case transformations preserve existing case except for
-    the first character of each word. This provides good results for cases
-    where the use has provided a camel cased or proper name. E.g. maxResults,
-    YouTube, NASA.
-
-    Note: Do we need rule that transforms NASA to Nasa and nasa when in the
-    upper and lower camel variations?  That is, if you specify something in
-    ALL CAPS, we assume it is not a mixed case spelling.
+  def ApplyCaseTransform(self, s, policy):
+    """Applies a Policy's case transforms to a string.
 
     Args:
-      variable: (CodeObject) The template variable this string came from. This
-          is used to extract details about the variable which may be useful in
-          building a name, such as the module it belongs to.
       s: (str) A string to transform.
       policy: (NamingPolicy) The naming policy to use for the transform.
     Returns:
-      Transformed string.
+      Case transformed string.
     """
     # Pick the right transformer method
     if policy.case_transform == LOWER_CASE:
@@ -459,12 +441,40 @@ class LanguageModel(object):
       parts.append(transform(curpart, not parts))
 
     join_char = policy.separator or ''
-    name = join_char.join(parts)
+    return join_char.join(parts)
 
+  def TransformString(self, variable, s, policy):
+    """Applies the transforms of a naming policy to a string.
+
+    Takes a string (usually a wireName) which might be in any case and have
+    reserved characters in it and transforms by the rules specified. The string
+    is divided into parts at reserved characters, then each part is transformed
+    by the case rule and then the parts are joined by the reserved character
+    replacement.  Multiple reserved characters in a row are treated as one.
+
+    Note that the camel case transformations preserve existing case except for
+    the first character of each word. This provides good results for cases
+    where the use has provided a camel cased or proper name. E.g. maxResults,
+    YouTube, NASA.
+
+    Note: Do we need rule that transforms NASA to Nasa and nasa when in the
+    upper and lower camel variations?  That is, if you specify something in
+    ALL CAPS, we assume it is not a mixed case spelling.
+
+    Args:
+      variable: (CodeObject) The template variable this string came from. This
+          is used to extract details about the variable which may be useful in
+          building a name, such as the module it belongs to.
+      s: (str) A string to transform.
+      policy: (NamingPolicy) The naming policy to use for the transform.
+    Returns:
+      Transformed string.
+    """
+    name = self.ApplyCaseTransform(s, policy)
     if policy.format_string:
       name = self.ApplyFormat(variable, name, policy)
 
-    if name in self.reserved_words:
+    if name.lower() in self.reserved_words:
       if policy.conflict_policy:
         return self.TransformString(variable, s, policy.conflict_policy)
       else:
@@ -490,8 +500,21 @@ class LanguageModel(object):
     # execution, even though django catches the error and siliently ignores it.
     # OR... maybe just fix the tests to always pass in the complete kind of
     # object we need.
-    if variable and hasattr(variable, 'module'):
-      expansions['module'] = variable.module.name
+    parent_name = 'global'
+    if variable:
+      if hasattr(variable, 'module'):
+        expansions['module'] = variable.module.name
+      if hasattr(variable, 'api'):
+        api = variable.api
+        if api:
+          api_name = api.GetTemplateValue('wireName') or parent_name
+        expansions['api_name'] = self.ApplyCaseTransform(api_name, policy)
+      if hasattr(variable, 'parent'):
+        parent = variable.parent
+        if parent:
+          parent_name = parent.GetTemplateValue('wireName') or parent_name
+    expansions['parent_name'] = self.ApplyCaseTransform(parent_name,
+                                                        policy)
     # TODO(user): Expand the range of things available.
     return policy.format_string.format(**expansions)
 
