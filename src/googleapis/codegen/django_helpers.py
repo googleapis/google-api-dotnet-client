@@ -47,7 +47,7 @@ from googleapis.codegen.filesys import files
 # in a specific place and the Django web server finds them for you. We are a
 # standalone app, not running in their context, so we have to go under the hood
 # a little.
-django_template.add_to_builtins(
+django_template.base.add_to_builtins(
     'googleapis.codegen.template_helpers')
 
 

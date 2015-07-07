@@ -386,6 +386,8 @@ class SchemaReference(DataType):
 
   @property
   def safe_code_type(self):  # pylint: disable=g-bad-name
+    if not self.referenced_schema:
+      return '<bad $ref>'
     return self.referenced_schema.safe_code_type
 
   @property

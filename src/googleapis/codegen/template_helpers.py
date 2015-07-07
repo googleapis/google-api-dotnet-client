@@ -969,7 +969,7 @@ class CommentIfNode(DocCommentNode):
       text = django_template.resolve_variable(self._variable_name, context)
       if text:
         return self.RenderText(text, context)
-    except django_template.VariableDoesNotExist:
+    except django_template.base.VariableDoesNotExist:
       pass
     return ''
 
@@ -1039,7 +1039,7 @@ class CamelCaseNode(django_template.Node):
       text = django_template.resolve_variable(self._variable_name, context)
       if text:
         return utilities.CamelCase(text)
-    except django_template.VariableDoesNotExist:
+    except django_template.base.VariableDoesNotExist:
       pass
     return ''
 
@@ -1067,7 +1067,7 @@ class ParameterGetterChainNode(django_template.Node):
     """Render the node."""
     try:
       prop = django_template.resolve_variable(self._variable_name, context)
-    except django_template.VariableDoesNotExist:
+    except django_template.base.VariableDoesNotExist:
       return ''
 
     lang_model = prop.language_model
@@ -1122,7 +1122,7 @@ class ImportsNode(django_template.Node):
         if match_obj:
           import_manager.AddImport(match_obj.group('import'))
       import_lists = import_manager.ImportLists()
-    except django_template.VariableDoesNotExist:
+    except django_template.base.VariableDoesNotExist:
       pass
 
     import_template = _GetFromContext(context, _IMPORT_TEMPLATE)
@@ -1277,7 +1277,7 @@ class TemplateNode(django_template.Node):
     for target, source in self._bindings.iteritems():
       try:
         newvars[target] = django_template.resolve_variable(source, context)
-      except django_template.VariableDoesNotExist:
+      except django_template.base.VariableDoesNotExist:
         raise django_template.TemplateSyntaxError(
             'can not resolve %s when calling template %s' % (
                 source, self._template_name))
@@ -1398,9 +1398,9 @@ def DoCopyrightBlock(parser, unused_token):
     a DocCommentNode
   """
   return DocCommentNode(nodelist=django_template.NodeList([
-      django_template.VariableNode(parser.compile_filter('api.copyright')),
-      django_template.TextNode('\n'),
-      django_template.TextNode(_LICENSE_TEXT)
+      django_template.base.VariableNode(parser.compile_filter('api.copyright')),
+      django_template.base.TextNode('\n'),
+      django_template.base.TextNode(_LICENSE_TEXT)
       ]))
 
 
@@ -1422,7 +1422,7 @@ class LiteralStringNode(django_template.Node):
     for v in self._variables:
       try:
         texts.append(resolve(v, context))
-      except django_template.VariableDoesNotExist:
+      except django_template.base.VariableDoesNotExist:
         pass
     text = ''.join(texts)
     for special, replacement in _GetFromContext(context, _LITERAL_ESCAPE):
