@@ -91,7 +91,7 @@ public {{ method.className }}Request(
 {
 {% filter noblanklines %}{% indent %}
 {% for p in method.requiredParameters %}
-{% camel_case p.codeName %} = {{ p.codeName }};
+{% camel_case p.memberName %} = {{ p.codeName }};
 {% endfor %}
 {% if method.requestType %}Body = body;{% endif %}
 {% if method.supportsMediaDownload %}MediaDownloader = new Google.Apis.Download.MediaDownloader(service);{% endif %}
