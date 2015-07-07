@@ -2835,7 +2835,7 @@ namespace Google.Apis.KitchSink.v1
                 : base(service)
             {
                 Id = id;
-                KitchSinkObject = kitch_sinkObject;
+                Object = kitch_sinkObject;
                 InitParameters();
             }
 
