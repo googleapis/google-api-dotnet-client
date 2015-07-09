@@ -128,7 +128,7 @@ namespace Google.Apis.Auth.OAuth2
             catch (Exception e)
             {
                 // Catching generic exception type because any corrupted file could manifest in different ways including 
-                // but not limited to the System.IO or from the Newtonsoft.Json namespace.
+                // but not limited to the System, System.IO or from the Newtonsoft.Json namespace.
 
                 throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
                                         + "\nPlease check the value of the Environment Variable {2}",

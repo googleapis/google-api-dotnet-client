@@ -38,25 +38,22 @@ namespace Google.Apis.Auth.OAuth2
     {
         private const string AuthorizedUserCredentialTypeIdentifier = "authorized_user";
         private const string ServiceAccountCredentialTypeIdentifier = "service_account";
-        private const string ClientIdJsonPropertyName = "ClientId";
-        private const string ClientSecretJsonPropertyName = "ClientSecret";
-        private const string CredentialTypeJsonPropertyName = "CredentialType";
 
         /// <summary>Provides the credential type string read from the json Credential file.</summary>
         [Newtonsoft.Json.JsonProperty("type")]
-        private string CredentialTypeRaw { get; set; }
-
-        /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
-        [Newtonsoft.Json.JsonProperty("client_email")]
-        public string ClientEmail { get; set; }
+        private string credentialTypeRaw;
 
         /// <summary>Cliend Id associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("client_id")]
-        private string ClientId { get; set; }
+        private string clientId;
 
         /// <summary>Client Secret associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("client_secret")]
-        private string ClientSecret { get; set; }
+        private string clientSecret;
+        
+        /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
+        [Newtonsoft.Json.JsonProperty("client_email")]
+        public string ClientEmail { get; set; }
 
         /// <summary>Private Key associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
         [Newtonsoft.Json.JsonProperty("private_key")]
@@ -69,31 +66,31 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Gets the client secrets which contains the client identifier and client secret. </summary>
         public ClientCredentialType GetCredentialType()
         {
-            Utilities.ThrowIfNullOrEmpty(CredentialTypeRaw, CredentialTypeJsonPropertyName);
+            Utilities.ThrowIfNullOrEmpty(credentialTypeRaw, "credentialType");
 
-            switch (CredentialTypeRaw)
+            switch (credentialTypeRaw)
             {
                 case AuthorizedUserCredentialTypeIdentifier:
                     return ClientCredentialType.UserCredential;
-
+          
                 case ServiceAccountCredentialTypeIdentifier:
                     return ClientCredentialType.ServiceAccountCredential;
-
+           
                 default:
-                    throw new InvalidOperationException(String.Format("Error parsing stream contents. Unrecognized Credential Type {0}.", CredentialTypeRaw));
+                    throw new InvalidOperationException(String.Format("Error parsing stream contents. Unrecognized Credential Type {0}.", credentialTypeRaw));
             }
         }
 
         /// <summary>Gets the ClientSecrets portion of the credential parameters.</summary>
         public ClientSecrets GetClientSecrets()
         {
-            Utilities.ThrowIfNullOrEmpty(ClientId, ClientIdJsonPropertyName);
-            Utilities.ThrowIfNullOrEmpty(ClientSecret, ClientSecretJsonPropertyName);
+            Utilities.ThrowIfNullOrEmpty(clientId, "clientId");
+            Utilities.ThrowIfNullOrEmpty(clientSecret, "clientSecret");
 
             return new ClientSecrets()
             {
-                ClientId = this.ClientId,
-                ClientSecret = this.ClientSecret
+                ClientId = this.clientId,
+                ClientSecret = this.clientSecret
             };
         }
 
