@@ -179,14 +179,14 @@ namespace Google.Apis.Auth.OAuth2
         {
             ClientCredentialParameters clientCredentialParameters = ClientCredentialParameters.Load(stream);
           
-            switch (clientCredentialParameters.CredentialType)
+            switch (clientCredentialParameters.GetCredentialType())
             {
                 case ClientCredentialType.UserCredential:
                     try
                     {
                         var initializer = new GoogleAuthorizationCodeFlow.Initializer
                         {
-                            ClientSecrets = clientCredentialParameters.ClientSecrets
+                            ClientSecrets = clientCredentialParameters.GetClientSecrets()
                         };
 
                         var token = new TokenResponse()
