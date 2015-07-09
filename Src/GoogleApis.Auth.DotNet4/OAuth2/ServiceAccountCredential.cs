@@ -82,7 +82,6 @@ namespace Google.Apis.Auth.OAuth2
                 RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
-
                 return this;
             }
 
@@ -113,7 +112,7 @@ namespace Google.Apis.Auth.OAuth2
         private readonly RSACryptoServiceProvider key;
 
         #endregion
-        
+
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
         public string Id { get { return id; } }
 
