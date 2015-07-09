@@ -107,6 +107,9 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
+        private const string privateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
+        private const string privateKeySuffix = "-----END PRIVATE KEY-----";
+        
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
         public string Id { get { return id; } }
 
@@ -230,7 +233,7 @@ namespace Google.Apis.Auth.OAuth2
         private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
         {
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
-            var base64PrivateKey = pkcs8PrivateKey.Replace("-----BEGIN PRIVATE KEY-----", "").Replace("\n", "").Replace("-----END PRIVATE KEY-----", "");
+            var base64PrivateKey = pkcs8PrivateKey.Replace(privateKeyPrefix, "").Replace("\n", "").Replace(privateKeySuffix, "");
             var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
             RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
             return DotNetUtilities.ToRSAParameters(crtParameters);
