@@ -98,6 +98,13 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
+        #region Constants
+
+        private const string privateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
+        private const string privateKeySuffix = "-----END PRIVATE KEY-----";
+
+        #endregion 
+
         #region Readonly fields
 
         private readonly string id;
@@ -107,9 +114,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        private const string privateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
-        private const string privateKeySuffix = "-----END PRIVATE KEY-----";
-        
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
         public string Id { get { return id; } }
 
