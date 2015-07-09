@@ -76,7 +76,7 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = new List<string>();
             }
 
-            /// <summary>Extracts a <see cref="Key"/> from the given PKCS8 private key.</summary>
+            /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
             public Initializer FromPrivateKey(string privateKey)
             {
                 RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
@@ -191,7 +191,7 @@ namespace Google.Apis.Auth.OAuth2
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
         }
 
-        /// <summary>Converts the PKCS8 PrivateKey to RSA Parameters. Uses the Bouncy Castle library.</summary>
+        /// <summary>Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.</summary>
         private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
         {
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
