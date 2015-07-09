@@ -42,7 +42,7 @@ namespace Google.Apis.Auth.OAuth2
     /// Take a look in https://developers.google.com/accounts/docs/OAuth2ServiceAccount for more details.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential, IScopableCredential
+    public class ServiceAccountCredential : ServiceCredential
     {
         /// <summary>An initializer class for the service account credential. </summary>
         public class Initializer : ServiceCredential.Initializer
@@ -82,7 +82,6 @@ namespace Google.Apis.Auth.OAuth2
                 RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
-
                 return this;
             }
 
@@ -100,10 +99,10 @@ namespace Google.Apis.Auth.OAuth2
 
         #region Constants
 
-        private const string privateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
-        private const string privateKeySuffix = "-----END PRIVATE KEY-----";
+        private const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
+        private const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
 
-        #endregion 
+        #endregion
 
         #region Readonly fields
 
@@ -181,41 +180,6 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
-        /// <summary>
-        /// Returns true if scopes are empty, which means the caller needs to 
-        /// invoke  <see cref="Google.Apis.Auth.OAuth2.ServiceAccountCredential.CreateScoped"/> to add scopes.
-        /// </summary>
-        public bool IsCreateScopedRequired
-        {
-            get
-            {
-                if (scopes == null || scopes.Count() == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Creates a copy of the credential with the specified scope
-        /// </summary>
-        /// <param name="scopes">Scope(s) requested</param>
-        /// <returns>New credential object with the specied scopes</returns>
-        public ICredential CreateScoped(IEnumerable<string> scopes)
-        {
-            var initializer = new ServiceAccountCredential.Initializer(Id)
-            {
-                User = User,
-                Key = key,
-                Scopes = scopes
-            };
-            return new ServiceAccountCredential(initializer);
-        }
-
         #endregion
 
         /// <summary>
@@ -237,7 +201,7 @@ namespace Google.Apis.Auth.OAuth2
         private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
         {
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
-            var base64PrivateKey = pkcs8PrivateKey.Replace(privateKeyPrefix, "").Replace("\n", "").Replace(privateKeySuffix, "");
+            var base64PrivateKey = pkcs8PrivateKey.Replace(PrivateKeyPrefix, "").Replace("\n", "").Replace(PrivateKeySuffix, "");
             var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
             RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
             return DotNetUtilities.ToRSAParameters(crtParameters);
