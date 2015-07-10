@@ -25,9 +25,9 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-          <dependency id="BouncyCastle" version="1.7.0" />
-          <dependency id="Google.Apis.Core" version="VERSION" />
-        </dependencies>
+            <dependency id="BouncyCastle" version="1.7.0" />
+            <dependency id="Google.Apis.Core" version="VERSION" />
+       </dependencies>
     </metadata>
     <files>
       <file src="Src\GoogleApis.Auth\bin\Release\Google.Apis.Auth.dll" target="lib\net40\Google.Apis.Auth.dll" />
