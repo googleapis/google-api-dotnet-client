@@ -25,8 +25,8 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-          <dependency id="BouncyCastle" version="1.7.0" />
-          <dependency id="Google.Apis.Core" version="VERSION" />
+            <dependency id="BouncyCastle" version="1.7.0" />
+            <dependency id="Google.Apis.Core" version="VERSION" />
         </dependencies>
     </metadata>
     <files>
