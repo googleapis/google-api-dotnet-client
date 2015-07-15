@@ -96,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OAuth2\ComputeCredentialTests.cs" />
     <Compile Include="OAuth2\Flows\AuthorizationCodeFlowTests.cs" />
     <Compile Include="OAuth2\BearerTokenTests.cs" />
     <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrlTests.cs" />

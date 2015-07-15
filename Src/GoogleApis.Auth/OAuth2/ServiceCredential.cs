@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -41,7 +40,8 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public abstract class ServiceCredential : ICredential
+    public abstract class ServiceCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
+        IConfigurableHttpClientInitializer
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<ServiceCredential>();
 

@@ -18,38 +18,33 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary>Indicates the type of Client Credential.</summary>
-    public enum ClientCredentialType
+    /// <summary>Holder for credential parameters read from JSON credential file. Fields are union of parameters for all supported credential types.</summary>
+    internal class JsonCredentialParameters
     {
         /// <summary>UserCredential is created by the gcloud sdk tool when the user runs <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
-        UserCredential = 1,
-
+        public const string AuthorizedUserCredentialType = "authorized_user";
+        
         /// <summary>ServiceAccountCredential is downloaded by the user from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
-        ServiceAccountCredential = 2,
-    }
+        public const string ServiceAccountCredentialType = "service_account";
 
-    /// <summary>Container for the union of parameters/properties from all credential types.</summary>
-    public sealed class ClientCredentialParameters
-    {
-        private const string AuthorizedUserCredentialTypeIdentifier = "authorized_user";
-        private const string ServiceAccountCredentialTypeIdentifier = "service_account";
-
-        /// <summary>Provides the credential type string read from the json Credential file.</summary>
+        /// <summary>Type of the credential.</summary>
         [Newtonsoft.Json.JsonProperty("type")]
-        private string credentialTypeRaw;
+        public string Type { get; set; }
 
         /// <summary>Cliend Id associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("client_id")]
-        private string clientId;
+        public string ClientId { get; set; }
 
         /// <summary>Client Secret associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("client_secret")]
-        private string clientSecret;
+        public string ClientSecret { get; set; }
         
         /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
         [Newtonsoft.Json.JsonProperty("client_email")]
@@ -57,47 +52,10 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Private Key associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
         [Newtonsoft.Json.JsonProperty("private_key")]
-        public string Pkcs8PrivateKey { get; set; }
+        public string PrivateKey { get; set; }
 
         /// <summary>Refresh Token associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         [Newtonsoft.Json.JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
-
-        /// <summary>Gets the client secrets which contains the client identifier and client secret. </summary>
-        public ClientCredentialType GetCredentialType()
-        {
-            Utilities.ThrowIfNullOrEmpty(credentialTypeRaw, "credentialType");
-
-            switch (credentialTypeRaw)
-            {
-                case AuthorizedUserCredentialTypeIdentifier:
-                    return ClientCredentialType.UserCredential;
-          
-                case ServiceAccountCredentialTypeIdentifier:
-                    return ClientCredentialType.ServiceAccountCredential;
-           
-                default:
-                    throw new InvalidOperationException(String.Format("Error parsing stream contents. Unrecognized Credential Type {0}.", credentialTypeRaw));
-            }
-        }
-
-        /// <summary>Gets the ClientSecrets portion of the credential parameters.</summary>
-        public ClientSecrets GetClientSecrets()
-        {
-            Utilities.ThrowIfNullOrEmpty(clientId, "clientId");
-            Utilities.ThrowIfNullOrEmpty(clientSecret, "clientSecret");
-
-            return new ClientSecrets()
-            {
-                ClientId = this.clientId,
-                ClientSecret = this.clientSecret
-            };
-        }
-
-        /// <summary>Loads the Google client credentials from the input stream.</summary>
-        public static ClientCredentialParameters Load(Stream stream)
-        {
-            return NewtonsoftJsonSerializer.Instance.Deserialize<ClientCredentialParameters>(stream);
-        }
     }
 }

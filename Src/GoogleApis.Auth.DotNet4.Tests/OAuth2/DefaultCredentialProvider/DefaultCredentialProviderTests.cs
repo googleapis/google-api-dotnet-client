@@ -31,18 +31,56 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Testing;
-using Google.Apis.Tests;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
 namespace Google.Apis.Auth.OAuth2.DefaultCredentials
 {
+    /// <summary>A mock for the <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
+    class MockDefaultCredentialProvider : DefaultCredentialProvider
+    {
+        Dictionary<string, string> envVars = new Dictionary<string, string>();
+        Dictionary<string, string> fileContents = new Dictionary<string, string>();
+
+        protected override string GetEnvironmentVariable(string variableName)
+        {
+            if (!envVars.ContainsKey(variableName))
+                return null;
+
+            return envVars[variableName];
+        }
+
+        public void SetEnvironmentVariable(string variableName, string value)
+        {
+            envVars[variableName] = value;
+        }
+
+        protected override Stream GetStream(string filePath)
+        {
+            if (!fileContents.ContainsKey(filePath))
+            {
+                throw new System.IO.FileNotFoundException();
+            }
+
+            return new MemoryStream(Encoding.UTF8.GetBytes(fileContents[filePath]));
+        }
+
+        public void SetFileContents(string filePath, string contents)
+        {
+            fileContents[filePath] = contents;
+        }
+    }
+
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
     [TestFixture]
     public class DefaultCredentialProviderTests
     {
+        private static readonly string WellKnownCredentialFilePath = Path.Combine(AppDataValue, "gcloud", "application_default_credentials.json");
+        private static readonly string WellKnownCredentialFilePathUnix = Path.Combine(HomeValue, ".config", "gcloud", "application_default_credentials.json");
+
+        private const string AppDataValue = "AppDataEnvVarValue";
+        private const string HomeValue = "HomeEnvVarValue";
         private const string CredentialEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
-        private readonly string WellKnownCredentialFilePath = Path.Combine(System.Environment.GetEnvironmentVariable("APPDATA"), "gcloud", "application_default_credentials.json");
         private const string DummyUserCredentialFileContents = @"{
 ""client_id"": ""CLIENT_ID"",
 ""client_secret"": ""CLIENT_SECRET"",
@@ -69,37 +107,65 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 ""client_email"": ""CLIENT_EMAIL"",
 ""client_id"": ""CLIENT_ID"",
 ""type"": ""service_account""}";
+        private const string BrokenPkcs8KeyServiceAccountCredentialFileContents = @"{
+""private_key_id"": ""PRIVATE_KEY_ID"",
+""private_key"": ""-----BEGIN PRIVATE KEY-----
+MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
+-----END PRIVATE KEY-----"",
+""client_email"": ""CLIENT_EMAIL"",
+""client_id"": ""CLIENT_ID"",
+""type"": ""service_account""}";
+
+        private MockDefaultCredentialProvider credentialProvider;
+
+        [SetUp]
+        public void SetUp()
+        {
+            credentialProvider = new MockDefaultCredentialProvider();
+        }
 
         #region UserCredential
 
         [Test]
-        public void TestGetApplicationDefaultCredentials_UserCredentials_FromEnvironmentVariable()
+        public async Task GetDefaultCredential_UserCredential_FromEnvironmentVariable()
         {
-            string credentialFilepath = "TempFilePath.json";
-            var credentialProvider = new TestDefaultCredentialProvider();
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyUserCredentialFileContents);
 
-            ICredential credential = credentialProvider.GetApplicationDefaultCredential();
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            if (!(credential is UserCredential))
-            {
-                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType().Name));
-            }
+            Assert.IsInstanceOf(typeof(UserCredential), credential.UnderlyingCredential);
+            Assert.IsFalse(credential.IsCreateScopedRequired);
+            Assert.AreSame(credential, credential.CreateScoped(new [] { "SomeScope" }));
         }
 
         [Test]
-        public void TestGetApplicationDefaultCredentials_UserCredentials_FromWellKnownFileLocation()
+        public async Task GetDefaultCredential_UserCredential_FromWellKnownFileLocation()
         {
-            var credentialProvider = new TestDefaultCredentialProvider();
+            // Setup fake environment variables and credential file contents.
+            credentialProvider.SetEnvironmentVariable("APPDATA", AppDataValue);
             credentialProvider.SetFileContents(WellKnownCredentialFilePath, DummyUserCredentialFileContents);
 
-            ICredential credential = credentialProvider.GetApplicationDefaultCredential();
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+            
+            Assert.IsInstanceOf(typeof(UserCredential), credential.UnderlyingCredential);
+            Assert.IsFalse(credential.IsCreateScopedRequired);
+            Assert.AreSame(credential, credential.CreateScoped(new [] { "SomeScope" }));
+        }
 
-            if (!(credential is UserCredential))
-            {
-                Assert.Fail(string.Format("Expected credential of type UserCredential. Obtained {0} instead.", credential.GetType().Name));
-            }
+        [Test]
+        public async Task GetDefaultCredential_UserCredential_FromWellKnownFileLocationUnix()
+        {
+            // Setup fake environment variables and credential file contents.
+            credentialProvider.SetEnvironmentVariable("HOME", HomeValue);
+            credentialProvider.SetFileContents(WellKnownCredentialFilePathUnix, DummyUserCredentialFileContents);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            Assert.IsInstanceOf(typeof(UserCredential), credential.UnderlyingCredential);
+            Assert.IsFalse(credential.IsCreateScopedRequired);
         }
 
         #endregion
@@ -107,27 +173,25 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         #region ServiceAccountCredential
 
         [Test]
-        public void TestGetApplicationDefaultCredentials_ServiceAccountCredentials_FromEnvironmentVariable()
+        public async Task GetDefaultCredential_ServiceAccountCredential_FromEnvironmentVariable()
         {
-            string credentialFilepath = "TempFilePath.json";
-            var credentialProvider = new TestDefaultCredentialProvider();
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, DummyServiceAccountCredentialFileContents);
 
-            ICredential credential = credentialProvider.GetApplicationDefaultCredential();
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            var serviceAccountCredential = credential as ServiceAccountCredential;
-            if (serviceAccountCredential != null)
-            {
-                if (serviceAccountCredential.IsCreateScopedRequired)
-                {
-                    credential = serviceAccountCredential.CreateScoped(new[] { "https://www.googleapis.com/auth/cloud-platform" });
-                }
-            }            
-            else
-            {
-                Assert.Fail(string.Format("Expected credential of type ServiceAccountCredential. Obtained {0} instead.", credential.GetType().Name));
-            }
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
+            Assert.IsTrue(credential.IsCreateScopedRequired);
+
+            var scopes = new[] { "https://www.googleapis.com/auth/cloud-platform" };
+            var scopedCredential = credential.CreateScoped(scopes);
+            Assert.AreNotSame(credential, scopedCredential);
+
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), scopedCredential.UnderlyingCredential);
+            Assert.IsFalse(scopedCredential.IsCreateScopedRequired);
+            CollectionAssert.AreEqual(scopes, ((ServiceAccountCredential) scopedCredential.UnderlyingCredential).Scopes);
         }
 
         #endregion
@@ -136,103 +200,79 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
         /// <summary> No credential files or environment variable specified - like a fresh developer's machine.</summary>
         [Test]
-        public void TestGetApplicationDefaultCredentials_NoCredentialFiles()
-        {
-            var credentialProvider = new TestDefaultCredentialProvider();
-             
+        public async Task GetDefaultCredential_NoCredentialFiles()
+        { 
             try
             {
-                ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
+                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                Assert.Fail();
             }
             catch (InvalidOperationException e)
             {
-                if (!e.Message.Contains("The Application Default Credentials are not available"))
-                {
-                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'The Application Default Credentials are not available'. Obtained {0} instead.", e.ToString()));
-                }
+                Assert.IsTrue(e.Message.Contains("The Application Default Credentials are not available"));
             }
         }
 
         /// <summary>Environment variable points to a non existant credential file.</summary>
         [Test]
-        public void TestGetApplicationDefaultCredentials_MissingCredentialFile()
+        public async Task GetDefaultCredential_MissingCredentialFile()
         {
-            var credentialProvider = new TestDefaultCredentialProvider();
+            // Setup fake environment variable.
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, WellKnownCredentialFilePath);
             
             try
             {
-                ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-                Assert.Fail(string.Format("No credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
+                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                Assert.Fail();
             }
             catch (InvalidOperationException e)
             {
-                if (!e.Message.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS"))
-                {
-                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS'. Obtained {0} instead.", e.ToString()));
-                }
+                Assert.IsTrue(e.Message.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS"));
             }
         }
 
         /// <summary>Credential file has invalid content format.</summary>
         [Test]
-        public void TestGetApplicationDefaultCredentials_InvalidCredentialFile()
+        public async Task GetDefaultCredential_InvalidCredentialFile()
         {
-            string credentialFilepath = "TempFilePath.json";
-            var credentialProvider = new TestDefaultCredentialProvider();
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
             credentialProvider.SetFileContents(credentialFilepath, "Invalid Credentials File Contents");
 
             try
             {
-                ICredential credential = credentialProvider.GetApplicationDefaultCredential();
-                Assert.Fail(string.Format("Invalid credential file specified. Test expected to result in exception. Obtained {0} instead.", credential.GetType().Name));
+                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                Assert.Fail();
             }
             catch (InvalidOperationException e)
             {
-                if (!e.Message.Contains("Error reading credential file from location"))
-                {
-                    Assert.Fail(String.Format("Expected InvalidOperationException containing message 'Error reading credential file from location'. Obtained {0} instead.", e.ToString()));
-                }
+                Assert.IsTrue(e.Message.Contains("Error reading credential file from location"));
             }
         }
+
+        /// <summary>Credential file contains invalid PKCS8 key.</summary>
+        [Test]
+        public async Task GetDefaultCredential_BrokenPkcs8Key()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, BrokenPkcs8KeyServiceAccountCredentialFileContents);
+
+            try
+            {
+                var credential = await credentialProvider.GetDefaultCredentialAsync();
+                Assert.Fail();
+            }
+            catch (InvalidOperationException e)
+            {
+                Assert.IsTrue(e.Message.Contains("Error reading credential file from location"));
+            }
+        }
+
+        // TODO(jtattermusch): test compute engine credential.
 
         #endregion
-    }
-
-    /// <summary>A mock for the <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
-    class TestDefaultCredentialProvider : DefaultCredentialProvider
-    {
-        Dictionary<string, string> envVars = new Dictionary<string, string>();
-        Dictionary<string, string> fileContents = new Dictionary<string, string>();
-
-        internal override string GetEnvironmentVariable(string variableName)
-        {
-            if (!envVars.ContainsKey(variableName))
-                return null;
-
-            return envVars[variableName];
-        }
-
-        internal void SetEnvironmentVariable(string variableName, string value)
-        {
-            envVars[variableName] = value;
-        }
-
-        internal override Stream GetStream(string filePath)
-        {
-            if (!fileContents.ContainsKey(filePath))
-            {
-                throw new System.IO.FileNotFoundException();
-            }
-
-            return new MemoryStream(Encoding.UTF8.GetBytes(fileContents[filePath]));
-        }
-
-        internal void SetFileContents(string filePath, string contents)
-        {
-            fileContents[filePath] = contents;
-        }
     }
 }

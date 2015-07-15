@@ -28,7 +28,10 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Copyright © Google Inc 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// Google.Apis.Auth.DotNet4.Tests won't compile in "ReleaseSigned" configuration.
+#if DEBUG
 [assembly: InternalsVisibleTo("Google.Apis.Auth.DotNet4.Tests")]
+#endif
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
