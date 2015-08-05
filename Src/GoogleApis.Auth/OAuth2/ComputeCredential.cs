@@ -15,11 +15,13 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2
@@ -36,6 +38,25 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ComputeCredential : ServiceCredential
     {
+        /// <summary>The metadata server url.</summary>
+        public const string MetadataServerUrl = "http://metadata.google.internal";
+
+        /// <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
+        private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(
+            () => IsRunningOnComputeEngineNoCache());
+
+        /// <summary>
+        /// Experimentally, 200ms was found to be 99.9999% reliable. 
+        /// This is a conservative timeout to minimize hanging on some troublesome network. 
+        /// </summary>
+        private const int MetadataServerPingTimeoutInMilliseconds = 1000;
+
+        /// <summary>The Metadata flavor header name.</summary>
+        private const string MetadataFlavor = "Metadata-Flavor";
+
+        /// <summary>The Metadata header response indicating Google.</summary>
+        private const string GoogleMetadataHeader = "Google";
+
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
@@ -63,7 +84,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             // Create and send the HTTP request to compute server token URL.
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, TokenServerUrl);
-            httpRequest.Headers.Add("Metadata-Flavor", "Google");
+            httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
 
             // Read the response.
@@ -99,5 +120,54 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+        /// <summary>
+        /// Detects if application is running on Google Compute Engine. This is achieved by attempting to contact
+        /// GCE metadata server, that is only available on GCE. The check is only performed the first time you
+        /// call this method, subsequent invocations used cached result of the first call.
+        /// </summary>
+        public static Task<bool> IsRunningOnComputeEngine()
+        {
+            return isRunningOnComputeEngineCached.Value;
+        }
+
+        private static async Task<bool> IsRunningOnComputeEngineNoCache()
+        {
+            try
+            {
+                Logger.Info("Checking connectivity to ComputeEngine metadata server.");
+                var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+                var cts = new CancellationTokenSource();
+                cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
+                
+                // Using the built-in HttpClient, as we want bare bones functionality without any retries.
+                var httpClient = new HttpClient();
+                var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+
+                IEnumerable<string> headerValues = null;
+                if (response.Headers.TryGetValues(MetadataFlavor, out headerValues))
+                {
+                    foreach (var value in headerValues)
+                    {
+                        if (value == GoogleMetadataHeader)
+                            return true;
+                    }
+                }
+
+                // Response came from another source, possibly a proxy server in the caller's network.
+                Logger.Info("Response came from a source other than the Google Compute Engine metadata server.");
+                return false;
+            }
+            catch (HttpRequestException)
+            {
+                Logger.Debug("Could not reach the Google Compute Engine metadata service. That is alright if this application is not running on GCE.");
+                return false;
+            }
+            catch (OperationCanceledException)
+            {
+                Logger.Warning("Could not reach the Google Compute Engine metadata service. Operation timed out.");
+                return false;
+            }
+        }
     }
 }
