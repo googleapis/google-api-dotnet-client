@@ -153,25 +153,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns><c>true</c> if a new token was received successfully.</returns>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            string serializedHeader = CreateSerializedHeader();
-            string serializedPayload = GetSerializedPayload();
-
-            StringBuilder assertion = new StringBuilder();
-            assertion.Append(UrlSafeBase64Encode(serializedHeader))
-                .Append(".")
-                .Append(UrlSafeBase64Encode(serializedPayload));
-
-            // Sign the header and the payload.
-            var hashAlg = new SHA256CryptoServiceProvider();
-            byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
-
-            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
-            assertion.Append(".").Append(signature);
-
             // Create the request.
             var request = new GoogleAssertionTokenRequest()
             {
-                Assertion = assertion.ToString()
+                Assertion = CreateAssertionFromPayload(CreatePayload())
             };
 
             Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
@@ -184,6 +169,30 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
+        /// <summary>
+        /// Signs JWT token using the private key and returns the serialized assertion.
+        /// </summary>
+        /// <param name="payload">the JWT payload to sign.</param>
+        protected string CreateAssertionFromPayload(JsonWebSignature.Payload payload)
+        {
+            string serializedHeader = CreateSerializedHeader();
+            string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);
+
+            StringBuilder assertion = new StringBuilder();
+            assertion.Append(UrlSafeBase64Encode(serializedHeader))
+                .Append(".")
+                .Append(UrlSafeBase64Encode(serializedPayload));
+
+            // Sign the header and the payload.
+            var hashAlg = new SHA256CryptoServiceProvider();
+            byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
+
+            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
+            assertion.Append(".").Append(signature);
+            return assertion.ToString();
+        }
+
+        // TODO: fix stale link
         /// <summary>
         /// Creates a serialized header as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.
@@ -209,14 +218,15 @@ namespace Google.Apis.Auth.OAuth2
             return DotNetUtilities.ToRSAParameters(crtParameters);
         }
 
+        // TODO: fix stale link
         /// <summary>
-        /// Creates a serialized claim set as specified in 
+        /// Creates a claim set as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset.
         /// </summary>
-        private string GetSerializedPayload()
+        private GoogleJsonWebSignature.Payload CreatePayload()
         {
             var issued = (int)(Clock.UtcNow - UnixEpoch).TotalSeconds;
-            var payload = new GoogleJsonWebSignature.Payload()
+            return new GoogleJsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Audience = TokenServerUrl,
@@ -225,8 +235,6 @@ namespace Google.Apis.Auth.OAuth2
                 Subject = User,
                 Scope = String.Join(" ", Scopes)
             };
-
-            return NewtonsoftJsonSerializer.Instance.Serialize(payload);
         }
 
         /// <summary>Encodes the provided UTF8 string into an URL safe base64 string.</summary>
