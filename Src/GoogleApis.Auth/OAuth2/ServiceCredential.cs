@@ -193,7 +193,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets an access token that will be used for a request.
         /// If the existing token has expired, try to refresh it first.
         /// </summary>
-        /// <param name="authUri">The URI of the request.</param>
+        /// <param name="authUri">The URI of the request to be authorized.</param>
         /// <returns>the access token</returns>
         protected virtual async Task<string> GetTokenMaybeRefreshAsync(string authUri, CancellationToken cancellationToken)
         {

@@ -61,12 +61,13 @@ namespace Google.Apis.Auth.OAuth2
         /// will behave exactly the same as <see cref="ServiceAccountCredential."/>.
         /// Otherwise, it will construct a JWT access token for given <paramref name="authUri"/>.
         /// </summary>
-        /// <param name="authUri">The URI of the request.</param>
+        /// <param name="authUri">The URI of the request to be authorized.</param>
         /// <returns>the access token</returns>
         protected override async Task<string> GetTokenMaybeRefreshAsync(string authUri, CancellationToken cancellationToken)
         {
             if (HasScopes)
             {
+                // fall back to default ServiceAccount behavior.
                 return await base.GetTokenMaybeRefreshAsync(authUri, cancellationToken);
             }
 
