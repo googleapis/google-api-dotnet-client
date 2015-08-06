@@ -56,6 +56,26 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Gets an access token that will be used for a request.
+        /// If this service account has some scopes associated with it, this credential
+        /// will behave exactly the same as <see cref="ServiceAccountCredential."/>.
+        /// Otherwise, it will construct a JWT access token for given <paramref name="authUri"/>.
+        /// </summary>
+        /// <param name="authUri">The URI of the request.</param>
+        /// <returns>the access token</returns>
+        protected override async Task<string> GetTokenMaybeRefreshAsync(string authUri, CancellationToken cancellationToken)
+        {
+            if (HasScopes)
+            {
+                return await base.GetTokenMaybeRefreshAsync(authUri, cancellationToken);
+            }
+
+            // TODO(jtattermusch): support caching of JWT access tokens.
+            return CreateJwtAccessToken(authUri);
+        }
+
+        // TODO(jtattermusch): create a custom type to hold the access token.
+        /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
         /// This is achieved by signing a special JWT using this service account's private key.
         /// <param name="authUri">The URI for which the access token will be valid.</param>
