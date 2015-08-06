@@ -106,6 +106,9 @@ namespace Google.Apis.Auth.OAuth2
 
         #region Readonly fields
 
+        /// <summary>Unix epoch as a <c>DateTime</c></summary>
+        protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         private readonly string id;
         private readonly string user;
         private readonly IEnumerable<string> scopes;
@@ -132,7 +135,6 @@ namespace Google.Apis.Auth.OAuth2
         public RSACryptoServiceProvider Key { get { return key; } }
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
-        /// <param name="initializer"></param>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
@@ -213,7 +215,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private string GetSerializedPayload()
         {
-            var issued = (int)(Clock.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            var issued = (int)(Clock.UtcNow - UnixEpoch).TotalSeconds;
             var payload = new GoogleJsonWebSignature.Payload()
             {
                 Issuer = Id,
