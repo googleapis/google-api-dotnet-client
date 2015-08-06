@@ -229,7 +229,7 @@ namespace Google.Apis.Auth.OAuth2
 
             public override bool IsCreateScopedRequired
             {
-                get { return (credential.Scopes == null || credential.Scopes.Count() == 0); }
+                get { return !credential.HasScopes; }
             }
 
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)

@@ -166,17 +166,8 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (Token == null || Token.IsExpired(Clock))
-            {
-                Logger.Debug("Token has expired, trying to get a new one.");
-                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
-                }
-                Logger.Info("New access token was received successfully");
-            }
-
-            AccessMethod.Intercept(request, Token.AccessToken);
+            var accessToken = await GetTokenMaybeRefreshAsync(request.RequestUri.ToString(), cancellationToken);
+            AccessMethod.Intercept(request, accessToken);
         }
 
         #endregion
@@ -196,6 +187,27 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+
+        /// <summary>
+        /// Gets an access token that will be used for a request.
+        /// If the existing token has expired, try to refresh it first.
+        /// </summary>
+        /// <param name="authUri">The URI of the request.</param>
+        /// <returns>the access token</returns>
+        protected virtual async Task<string> GetTokenMaybeRefreshAsync(string authUri, CancellationToken cancellationToken)
+        {
+            if (Token == null || Token.IsExpired(Clock))
+            {
+                Logger.Debug("Token has expired, trying to get a new one.");
+                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
+                }
+                Logger.Info("New access token was received successfully");
+            }
+            return Token.AccessToken;
+        }
 
         /// <summary>Requests a new token.</summary>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>

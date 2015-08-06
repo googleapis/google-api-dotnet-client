@@ -134,6 +134,9 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public RSACryptoServiceProvider Key { get { return key; } }
 
+        /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
+        internal bool HasScopes { get { return scopes != null && scopes.Any(); } }
+
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
