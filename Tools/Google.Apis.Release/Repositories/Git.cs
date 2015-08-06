@@ -51,7 +51,7 @@ namespace Google.Apis.Release.Repositories
         {
             get 
             { 
-                return RunListeningGit("status").FirstOrDefault(s => s.Contains("Your branch is up-to-date")) != null; 
+                return !RunListeningGit("status").Contains("nothing to commit, working directory clean");
             }
         }
 
@@ -87,6 +87,7 @@ namespace Google.Apis.Release.Repositories
             else
             {
                 TraceSource.TraceEvent(TraceEventType.Information, "[{0}] Using an existing repository", Name);
+                RunGit("fetch");
                 RunGit("status");
             }
         }

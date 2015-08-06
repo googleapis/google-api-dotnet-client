@@ -230,6 +230,7 @@ namespace Google.Apis.Release
             {
                 if (BuildDefaultRepository())
                 {
+                    Console.WriteLine("Make sure you build the packages manually in 'ReleaseSigned' mode.");
                     CreateCoreNuGetPackages();
                 }
             }
@@ -298,10 +299,8 @@ namespace Google.Apis.Release
                 // publish core components to NuGet
                 if (!string.IsNullOrEmpty(options.NuGetApiKey))
                 {
-                    PublishPackagesToNuGet();
-                    Console.WriteLine("Now... you should run the NuGet publisher to publish a new PCL "
-                        + "for each generated Google API. Run: " +
-                        "Google.Apis.NuGet.Publisher --all_apis true -m publisher -k [NUGET_KEY]");
+                    PublishCorePackagesToNuGet();
+                    PublishGeneratedPackagesToNuGet();
                 }
                 else
                 {
@@ -328,7 +327,7 @@ namespace Google.Apis.Release
         }
 
         /// <summary>Publishes the core packages to NuGet main repository.</summary>
-        private void PublishPackagesToNuGet()
+        private void PublishCorePackagesToNuGet()
         {
             var pacakges = from nuspec in NuspecPackages
                            select nuspec.Replace("VERSION", Tag).Replace("nuspec", "nupkg");
@@ -340,26 +339,28 @@ namespace Google.Apis.Release
         }
 
         /// <summary>
-        /// Displays the user orders how to create a branch (only in case it's a new major or minor release.
+        /// Publishes the generated packages for this release to NuGet main repository. It publishes any generated
+        /// package in <see cref="NuGetUtilities.LocalNuGetPackageFolder"/> that contains the current version in its
+        /// package name (e.g. it looks for any nupkg file that contains "1.9.2").
         /// </summary>
+        private void PublishGeneratedPackagesToNuGet()
+        {
+            var corePacakges = from nuspec in NuspecPackages
+                               select Path.Combine(NuGetUtilities.LocalNuGetPackageFolder,
+                                                   nuspec.Replace("VERSION", Tag).Replace("nuspec", "nupkg"));
+            var generatedPackages = from nuspec in Directory.GetFiles(NuGetUtilities.LocalNuGetPackageFolder)
+                                    where nuspec.Contains(Tag) && !corePacakges.Contains(nuspec)
+                                    select nuspec;
+            foreach (var nupkg in generatedPackages)
+            {
+                NuGetUtilities.PublishToNuget(nupkg, options.NuGetApiKey);
+            }
+        }
+
+        /// <summary>Displays the user orders about creating a new branch for this release.</summary>
         private void PrintCreateBranch()
         {
-            if (BuildVersion != 0)
-            {
-                // No need to branch in that case
-                return;
-            }
-
-            // TODO(peleyal): Consider automate this as well.
-            Console.WriteLine("You should create a new branch for this release now:");
-            Console.WriteLine("cd " + DefaultRepository.WorkingDirectory);
-            var branchVersion = string.Format("{0}.{1}", MajorVersion, MinorVersion);
-            // TODO(peleyal): Check how can we create a branch from head (without any changes).
-            // TODO(peleyal): Make sure that the following acutally create a new branch. After verifying it for the
-            // first time, delete this TODO.
-            Console.WriteLine("Git checkout -b " + branchVersion);
-            Console.WriteLine(string.Format("Git commit -m create {0} branch", branchVersion));
-            Console.WriteLine("Git push --new-branch");
+            Console.WriteLine("Go the github repository and create a new branch for this version.");
         }
 
         /// <summary>Commits all changes in all repositories and tags the "default" repository.</summary>
@@ -532,10 +533,11 @@ namespace Google.Apis.Release
                 var name = project.GetName();
                 TraceSource.TraceEvent(TraceEventType.Information, "Replacing version for {0}", name);
                 project.ReplaceVersion(options.Version);
-                project.SetProperty("Configuration", "ReleaseSigned");
+                
                 // TODO(peleyal): Currently some projects can't build. Build manually for now! That's why the following
                 // if statement is commented out. INVESTIGATE!
                 /*
+                project.SetProperty("Configuration", "ReleaseSigned");
                 TraceSource.TraceEvent(TraceEventType.Information, "Building {0}", name);
                 bool success = project.Build("Build", new[] { new ConsoleLogger(LoggerVerbosity.Quiet) });
 
