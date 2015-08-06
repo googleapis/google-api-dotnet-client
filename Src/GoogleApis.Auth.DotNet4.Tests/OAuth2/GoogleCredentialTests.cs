@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 using NUnit.Framework;
 
-namespace Google.Apis.Auth.OAuth2.DefaultCredentials
+namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.GoogleCredential"/>.</summary>
     [TestFixture]

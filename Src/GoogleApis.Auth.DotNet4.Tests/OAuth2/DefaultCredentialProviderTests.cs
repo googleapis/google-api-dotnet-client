@@ -34,7 +34,7 @@ using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
-namespace Google.Apis.Auth.OAuth2.DefaultCredentials
+namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>A mock for the <see cref="Google.Apis.Auth.OAuth2.DefaultCredentialProvider"/>.</summary>
     class MockDefaultCredentialProvider : DefaultCredentialProvider
