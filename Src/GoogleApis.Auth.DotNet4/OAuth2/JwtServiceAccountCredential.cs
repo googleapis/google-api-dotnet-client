@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2013 Google Inc
+Copyright 2015 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetAccessTokenForRequestAsync"/> for explanation when JWT access token
     /// is used and when regular OAuth2 token is used.
     /// <seealso cref="ServiceAccountCredential"/>
-    /// </para>
     /// </summary>
     public class JwtServiceAccountCredential : ServiceAccountCredential
     {
@@ -90,9 +89,7 @@ namespace Google.Apis.Auth.OAuth2
             };
         }
 
-        /// <summary>
-        /// JWT access token
-        /// </summary>
+        /// <summary>JWT access token.</summary>
         internal class JwtAccessToken
         {
             /// <summary>The date and time that this token was issued.</summary>

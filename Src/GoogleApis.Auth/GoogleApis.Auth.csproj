@@ -73,6 +73,7 @@
     <Compile Include="JsonWebToken.cs" />
     <Compile Include="OAuth2\ComputeCredential.cs" />
     <Compile Include="OAuth2\ITokenAccess.cs" />
+    <Compile Include="OAuth2\JsonCredentialParameters.cs" />
     <Compile Include="OAuth2\Requests\GoogleRevokeTokenRequest.cs" />
     <Compile Include="OAuth2\ServiceCredential.cs" />
     <Compile Include="OAuth2\Web\AuthorizationCodeWebApp.cs" />

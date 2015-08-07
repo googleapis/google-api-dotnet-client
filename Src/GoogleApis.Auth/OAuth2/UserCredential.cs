@@ -91,9 +91,9 @@ namespace Google.Apis.Auth.OAuth2
         /// minute away from expiration. If token server is unavailable, it will try to use the access token even if 
         /// has expired. If successful, it will call <see cref="IAccessMethod.Intercept"/>.
         /// </summary>
-        public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
-            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken);
+            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), taskCancellationToken).ConfigureAwait(false);
             flow.AccessMethod.Intercept(request, Token.AccessToken);
         }
 
@@ -127,10 +127,6 @@ namespace Google.Apis.Auth.OAuth2
 
         #region ITokenAccess implementation
 
-        /// <summary>
-        /// Gets an access token to authorize a request. If the existing token has expired, try to refresh it first.
-        /// <seealso cref="ITokenAccess.GetAccessTokenForRequestAsync"/>
-        /// </summary>
         public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Token.IsExpired(flow.Clock))

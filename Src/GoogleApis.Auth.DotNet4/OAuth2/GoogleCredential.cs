@@ -40,9 +40,7 @@ namespace Google.Apis.Auth.OAuth2
         private readonly ITokenAccess tokenAccess;
         private readonly IConfigurableHttpClientInitializer clientInitializer;
 
-        /// <summary>
-        /// Creates a new <c>GoogleCredential</c>.
-        /// </summary>
+        /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
         protected GoogleCredential(object credential, ITokenAccess tokenAccess, IConfigurableHttpClientInitializer clientInitializer)
         {
             this.credential = credential;

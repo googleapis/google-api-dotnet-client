@@ -87,7 +87,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
             // Without adding scopes, the credential should be generating JWT scopes.
             string accessToken = await (credential as ITokenAccess).GetAccessTokenForRequestAsync(DummyAuthUri);
-            var parts = accessToken.Split(new[] {'.'}, 3);
+            var parts = accessToken.Split(new[] {'.'});
+            Assert.AreEqual(3, parts.Length);
 
             var header = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Header>(UrlSafeDecode64(parts[0]));
             Assert.AreEqual("JWT", header.Type);
