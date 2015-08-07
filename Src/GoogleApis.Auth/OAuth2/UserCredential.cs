@@ -31,8 +31,7 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class UserCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
-        IConfigurableHttpClientInitializer, ITokenAccess
+    public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 

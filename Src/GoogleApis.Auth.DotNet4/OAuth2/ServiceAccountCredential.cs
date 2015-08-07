@@ -41,6 +41,14 @@ namespace Google.Apis.Auth.OAuth2
     /// <para>
     /// Take a look in https://developers.google.com/accounts/docs/OAuth2ServiceAccount for more details.
     /// </para>
+    /// <para>
+    /// Service account credential also supports JSON Web Token access token scenario.
+    /// In this scenario, instead of sending a JWT to a token server and exchanging it for 
+    /// an access token, a slightly different JWT containing the request URI is constructed
+    /// and used as an access token.
+    /// See <see cref="GetAccessTokenForRequestAsync"/> for explanation when JWT access token
+    /// is used and when regular OAuth2 token is used.
+    /// </para>
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential
     {
@@ -170,13 +178,55 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
+        /// <summary>
+        /// Gets an access token to authorize a request.
+        /// If <paramref name="authUri"/> is set and this credential has no scopes associated
+        /// with it, a locally signed JWT access token for given <paramref name="authUri"/>
+        /// is returned. Otherwise, an OAuth2 access token obtained from token server will be returned.
+        /// A cached token is used if possible and the token is only refreshed once its close to its expiry.
+        /// </summary>
+        /// <param name="authUri">The URI the returned token will grant access to.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The access token.</returns>
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (!HasScopes && authUri != null)
+            {
+                // TODO(jtattermusch): support caching of JWT access tokens per authUri, currently a new 
+                // JWT access token is created each time, which can hurt performance.
+                return CreateJwtAccessToken(authUri);
+            }
+            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken);
+        }
+
         #endregion
+    
+        /// <summary>
+        /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
+        /// This is achieved by signing a special JWT using this service account's private key.
+        /// <param name="authUri">The URI for which the access token will be valid.</param>
+        /// </summary>
+        private string CreateJwtAccessToken(string authUri)
+        {
+            var issuedDateTime = Clock.UtcNow;
+            var issued = (int)(issuedDateTime - UnixEpoch).TotalSeconds;
+            var payload = new JsonWebSignature.Payload()
+            {
+                Issuer = Id,
+                Subject = Id,
+                Audience = authUri,
+                IssuedAtTimeSeconds = issued,
+                ExpirationTimeSeconds = issued + 3600,
+            };
+
+            return CreateAssertionFromPayload(payload);
+        }
 
         /// <summary>
         /// Signs JWT token using the private key and returns the serialized assertion.
         /// </summary>
         /// <param name="payload">the JWT payload to sign.</param>
-        protected string CreateAssertionFromPayload(JsonWebSignature.Payload payload)
+        private string CreateAssertionFromPayload(JsonWebSignature.Payload payload)
         {
             string serializedHeader = CreateSerializedHeader();
             string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);

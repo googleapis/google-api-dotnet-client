@@ -40,8 +40,7 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public abstract class ServiceCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
-        IConfigurableHttpClientInitializer, ITokenAccess
+    public abstract class ServiceCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<ServiceCredential>();
 

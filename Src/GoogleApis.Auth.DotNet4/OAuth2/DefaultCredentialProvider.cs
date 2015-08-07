@@ -132,7 +132,7 @@ namespace Google.Apis.Auth.OAuth2
             if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
             {
                 Logger.Debug("ComputeEngine check passed. Using ComputeEngine Credentials.");
-                return GoogleCredential.FromCredential(new ComputeCredential());
+                return new GoogleCredential(new ComputeCredential());
             }
 
             // If everything we tried has failed, throw an exception.
@@ -175,7 +175,7 @@ namespace Google.Apis.Auth.OAuth2
             switch (credentialParameters.Type)
             {
                 case JsonCredentialParameters.AuthorizedUserCredentialType:
-                    return GoogleCredential.FromCredential(CreateUserCredentialFromJson(credentialParameters));
+                    return new GoogleCredential(CreateUserCredentialFromJson(credentialParameters));
 
                 case JsonCredentialParameters.ServiceAccountCredentialType:
                     return GoogleCredential.FromCredential(CreateServiceAccountCredentialFromJson(credentialParameters));
@@ -212,8 +212,8 @@ namespace Google.Apis.Auth.OAuth2
             return new UserCredential(flow, "ApplicationDefaultCredentials", token);
         }
 
-        /// <summary>Creates a <see cref="JwtServiceAccountCredential"/> from JSON data.</summary>
-        private static JwtServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
+        /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
+        private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.ServiceAccountCredentialType ||
                 string.IsNullOrEmpty(credentialParameters.ClientEmail) ||
@@ -222,7 +222,7 @@ namespace Google.Apis.Auth.OAuth2
                 throw new InvalidOperationException("JSON data does not represent a valid service account credential.");
             }
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail);
-            return new JwtServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
+            return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }
 
         /// <summary> 

@@ -34,7 +34,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Implementations should handle automatic refreshes of the token
         /// if they are supported.
         /// The <paramref name="authUri"/> might be required by some credential types
-        /// (e.g. <see cref="JwtServiceAccountCredential"/>) while other credential types
+        /// (e.g. the JWT access token) while other credential types
         /// migth just ignore it.
         /// </summary>
         /// <param name="authUri">The URI the returned token will grant access to.</param>

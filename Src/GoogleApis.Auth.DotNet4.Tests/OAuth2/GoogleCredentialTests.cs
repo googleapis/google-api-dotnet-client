@@ -70,7 +70,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyServiceAccountCredentialFileContents));
             var credential = GoogleCredential.FromStream(stream);
-            Assert.IsInstanceOf(typeof(JwtServiceAccountCredential), credential.UnderlyingCredential);
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
             Assert.IsTrue(credential.IsCreateScopedRequired);
         }
 

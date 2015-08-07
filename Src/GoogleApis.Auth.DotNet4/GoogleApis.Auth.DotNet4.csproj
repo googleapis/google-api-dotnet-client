@@ -102,7 +102,6 @@
     <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
     <Compile Include="OAuth2\LocalServerCodeReceiver.cs" />
     <Compile Include="OAuth2\PromptCodeReceiver.cs" />
-    <Compile Include="OAuth2\JwtServiceAccountCredential.cs" />
     <Compile Include="OAuth2\ServiceAccountCredential.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -36,16 +36,12 @@ namespace Google.Apis.Auth.OAuth2
     {
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
-        private readonly object credential;
-        private readonly ITokenAccess tokenAccess;
-        private readonly IConfigurableHttpClientInitializer clientInitializer;
+        private readonly ICredential credential;
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
-        protected GoogleCredential(object credential, ITokenAccess tokenAccess, IConfigurableHttpClientInitializer clientInitializer)
+        internal GoogleCredential(ICredential credential)
         {
             this.credential = credential;
-            this.tokenAccess = tokenAccess;
-            this.clientInitializer = clientInitializer;
         }
 
         /// <summary>
@@ -128,7 +124,7 @@ namespace Google.Apis.Auth.OAuth2
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {
-            clientInitializer.Initialize(httpClient);
+            credential.Initialize(httpClient);
         }
 
         #endregion
@@ -137,43 +133,31 @@ namespace Google.Apis.Auth.OAuth2
 
         Task<string> ITokenAccess.GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken)
         {
-            return tokenAccess.GetAccessTokenForRequestAsync(authUri, cancellationToken);
+            return credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
         }
 
         #endregion
 
         /// <summary>Provides access to the underlying credential object</summary>
-        internal object UnderlyingCredential { get { return credential; } }
+        internal ICredential UnderlyingCredential { get { return credential; } }
 
         #region Factory methods
 
-        /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ComputeCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(ComputeCredential credential)
-        {
-            return new GoogleCredential(credential, credential, credential);
-        }
-
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(JwtServiceAccountCredential credential)
+        internal static GoogleCredential FromCredential(ServiceAccountCredential credential)
         {
-            return new JwtServiceAccountGoogleCredential(credential);
-        }
-
-        /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="UserCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(UserCredential credential)
-        {
-            return new GoogleCredential(credential, credential, credential);
+            return new ServiceAccountGoogleCredential(credential);
         }
 
         #endregion
 
-        /// <summary>Wraps <c>JwtServiceAccountCredential</c> as <c>GoogleCredential</c>.</summary>
-        internal class JwtServiceAccountGoogleCredential : GoogleCredential
+        /// <summary>Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.</summary>
+        internal class ServiceAccountGoogleCredential : GoogleCredential
         {
-            private readonly JwtServiceAccountCredential credential;
+            private readonly ServiceAccountCredential credential;
 
-            public JwtServiceAccountGoogleCredential(JwtServiceAccountCredential credential)
-                : base(credential, credential, credential)
+            public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
+                : base(credential)
             {
                 this.credential = credential;
             }
@@ -187,13 +171,13 @@ namespace Google.Apis.Auth.OAuth2
 
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
-                var initializer = new JwtServiceAccountCredential.Initializer(credential.Id)
+                var initializer = new ServiceAccountCredential.Initializer(credential.Id)
                 {
                     User = credential.User,
                     Key = credential.Key,
                     Scopes = scopes
                 };
-                return GoogleCredential.FromCredential(new JwtServiceAccountCredential(initializer));
+                return GoogleCredential.FromCredential(new ServiceAccountCredential(initializer));
             }
 
             #endregion
