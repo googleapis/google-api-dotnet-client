@@ -43,6 +43,9 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class JwtServiceAccountCredential : ServiceAccountCredential
     {
+        /// <summary>Default lifetime of 1 hour</summary>
+        private const int DefaultExpiresInSeconds = 3600;
+
         /// <summary>An initializer class for the JWT service account credential. </summary>
         public class Initializer : ServiceAccountCredential.Initializer
         {
@@ -56,43 +59,78 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Gets an access token that will be used for a request.
-        /// If this service account has some scopes associated with it, this credential
-        /// will behave exactly the same as <see cref="ServiceAccountCredential."/>.
-        /// Otherwise, it will construct a JWT access token for given <paramref name="authUri"/>.
+        /// Gets an access token to authorize a request.
+        /// If <paramref name="authUri"/> is set and this credential has no scopes associated
+        /// with it, a JWT access token for given <paramref name="authUri"/> is returned.
+        /// Otherwise, the access token will be obtained in exactly the same way as in
+        /// <see cref="ServiceAccountCredential"/>
         /// </summary>
-        /// <param name="authUri">The URI of the request to be authorized.</param>
-        /// <returns>the access token</returns>
-        protected override async Task<string> GetTokenMaybeRefreshAsync(string authUri, CancellationToken cancellationToken)
+        /// <param name="authUri">The URI the returned token will grant access to.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The access token.</returns>
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (HasScopes)
+            if (!HasScopes && authUri != null)
             {
-                // fall back to default ServiceAccount behavior.
-                return await base.GetTokenMaybeRefreshAsync(authUri, cancellationToken);
+                // TODO(jtattermusch): support caching of JWT access tokens per authUri, currently a new 
+                // JWT access token is created each time, which can hurt performance.
+                return CreateJwtAccessToken(authUri).AccessToken;
             }
-
-            // TODO(jtattermusch): support caching of JWT access tokens.
-            return CreateJwtAccessToken(authUri);
+            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken);
         }
 
-        // TODO(jtattermusch): create a custom type to hold the access token.
         /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
         /// This is achieved by signing a special JWT using this service account's private key.
         /// <param name="authUri">The URI for which the access token will be valid.</param>
         /// </summary>
-        private string CreateJwtAccessToken(string authUri)
+        private JwtAccessToken CreateJwtAccessToken(string authUri)
         {
-            var issued = (int)(Clock.UtcNow - UnixEpoch).TotalSeconds;
+            var issuedDateTime = Clock.UtcNow;
+            var issued = (int)(issuedDateTime - UnixEpoch).TotalSeconds;
             var payload = new JsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Subject = Id,
                 Audience = authUri,
                 IssuedAtTimeSeconds = issued,
-                ExpirationTimeSeconds = issued + 3600,
+                ExpirationTimeSeconds = issued + DefaultExpiresInSeconds,
             };
-            return CreateAssertionFromPayload(payload);
+
+            return new JwtAccessToken
+            {
+                Issued = issuedDateTime,
+                ExpiresInSeconds = DefaultExpiresInSeconds,
+                AccessToken = CreateAssertionFromPayload(payload)
+            };
+        }
+
+        /// <summary>
+        /// JWT access token
+        /// </summary>
+        internal class JwtAccessToken
+        {
+            /// <summary>The date and time that this token was issued.</summary>
+            public DateTime Issued { get; set; }
+
+            /// <summary>Gets or sets the lifetime in seconds of the access token.</summary>
+            public long ExpiresInSeconds { get; set; }
+
+            /// <summary>Gets or sets the access token.</summary>
+            public string AccessToken { get; set; }
+
+            /// <summary>
+            /// Returns <c>true</c> if the token is expired or it's going to be expired in the next minute.
+            /// </summary>
+            public bool IsExpired(IClock clock)
+            {
+                if (AccessToken == null)
+                {
+                    return true;
+                }
+
+                return Issued.AddSeconds(ExpiresInSeconds - 60) <= clock.Now;
+            }
         }
     }
 }

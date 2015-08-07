@@ -98,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OAuth2\JsonCredentialParameters.cs" />
-    <Compile Include="OAuth2\ITokenAccess.cs" />
     <Compile Include="OAuth2\GoogleCredential.cs" />
     <Compile Include="OAuth2\DefaultCredentialProvider.cs" />
     <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
