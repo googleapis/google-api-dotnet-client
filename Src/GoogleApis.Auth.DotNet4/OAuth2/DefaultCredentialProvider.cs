@@ -15,23 +15,13 @@ limitations under the License.
 */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {

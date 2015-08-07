@@ -15,20 +15,9 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
-
-using Google.Apis.Auth.OAuth2.Requests;
-using Google.Apis.Json;
-using Google.Apis.Logging;
 using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
