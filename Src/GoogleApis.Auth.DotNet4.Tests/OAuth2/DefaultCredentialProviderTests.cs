@@ -182,16 +182,16 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
-            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
+            Assert.IsInstanceOf(typeof(JwtServiceAccountCredential), credential.UnderlyingCredential);
             Assert.IsTrue(credential.IsCreateScopedRequired);
 
             var scopes = new[] { "https://www.googleapis.com/auth/cloud-platform" };
             var scopedCredential = credential.CreateScoped(scopes);
             Assert.AreNotSame(credential, scopedCredential);
 
-            Assert.IsInstanceOf(typeof(ServiceAccountCredential), scopedCredential.UnderlyingCredential);
+            Assert.IsInstanceOf(typeof(JwtServiceAccountCredential), scopedCredential.UnderlyingCredential);
             Assert.IsFalse(scopedCredential.IsCreateScopedRequired);
-            CollectionAssert.AreEqual(scopes, ((ServiceAccountCredential) scopedCredential.UnderlyingCredential).Scopes);
+            CollectionAssert.AreEqual(scopes, ((JwtServiceAccountCredential) scopedCredential.UnderlyingCredential).Scopes);
         }
 
         #endregion
