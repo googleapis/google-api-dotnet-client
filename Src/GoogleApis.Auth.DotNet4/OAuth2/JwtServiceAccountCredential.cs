@@ -38,6 +38,8 @@ namespace Google.Apis.Auth.OAuth2
     /// In this scenario, instead of sending a JWT to a token server and exchanging it for 
     /// an access token, a slightly different JWT containing the request URI is constructed
     /// and used as an access token.
+    /// See <see cref="GetAccessTokenForRequestAsync"/> for explanation when JWT access token
+    /// is used and when regular OAuth2 token is used.
     /// <seealso cref="ServiceAccountCredential"/>
     /// </para>
     /// </summary>
@@ -46,15 +48,9 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Default lifetime of 1 hour</summary>
         private const int DefaultExpiresInSeconds = 3600;
 
-        /// <summary>An initializer class for the JWT service account credential. </summary>
-        public class Initializer : ServiceAccountCredential.Initializer
-        {
-            /// <summary>Constructs a new initializer using the given id.</summary>
-            public Initializer(string id) : base(id) { }
-        }
-
         /// <summary>Constructs a new JWT service account credential using the given initializer.</summary>
-        public JwtServiceAccountCredential(Initializer initializer) : base(initializer)
+        public JwtServiceAccountCredential(ServiceAccountCredential.Initializer initializer)
+            : base(initializer)
         {
         }
 

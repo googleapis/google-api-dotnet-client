@@ -222,8 +222,8 @@ namespace Google.Apis.Auth.OAuth2
             return new UserCredential(flow, "ApplicationDefaultCredentials", token);
         }
 
-        /// <summary>Creates a service account credential from JSON data.</summary>
-        private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
+        /// <summary>Creates a <see cref="JwtServiceAccountCredential"/> from JSON data.</summary>
+        private static JwtServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.ServiceAccountCredentialType ||
                 string.IsNullOrEmpty(credentialParameters.ClientEmail) ||
@@ -232,7 +232,7 @@ namespace Google.Apis.Auth.OAuth2
                 throw new InvalidOperationException("JSON data does not represent a valid service account credential.");
             }
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail);
-            return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
+            return new JwtServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }
 
         /// <summary> 
