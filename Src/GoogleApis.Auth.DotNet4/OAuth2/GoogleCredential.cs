@@ -34,8 +34,10 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class GoogleCredential : IConfigurableHttpClientInitializer, ITokenAccess
     {
+        /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
+        /// <summary>The underlying credential being wrapped by this object.</summary>
         private readonly ICredential credential;
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
