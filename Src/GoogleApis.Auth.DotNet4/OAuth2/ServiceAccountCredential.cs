@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2015 Google Inc
+Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -42,10 +42,10 @@ namespace Google.Apis.Auth.OAuth2
     /// Take a look in https://developers.google.com/accounts/docs/OAuth2ServiceAccount for more details.
     /// </para>
     /// <para>
-    /// Service account credential also supports JSON Web Token access token scenario.
-    /// In this scenario, instead of sending a JWT to a token server and exchanging it for 
-    /// an access token, a slightly different JWT containing the request URI is constructed
-    /// and used as an access token.
+    /// Since version 1.9.3, service account credential also supports JSON Web Token access token scenario.
+    /// In this scenario, instead of sending a signed JWT claim to a token server and exchanging it for 
+    /// an access token, a locally signed JWT claim bound to an appropriate URI is used as an access token
+    /// directly.
     /// See <see cref="GetAccessTokenForRequestAsync"/> for explanation when JWT access token
     /// is used and when regular OAuth2 token is used.
     /// </para>
@@ -245,7 +245,6 @@ namespace Google.Apis.Auth.OAuth2
             return assertion.ToString();
         }
 
-        // TODO: fix stale link
         /// <summary>
         /// Creates a serialized header as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.
@@ -271,7 +270,6 @@ namespace Google.Apis.Auth.OAuth2
             return DotNetUtilities.ToRSAParameters(crtParameters);
         }
 
-        // TODO: fix stale link
         /// <summary>
         /// Creates a claim set as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset.
