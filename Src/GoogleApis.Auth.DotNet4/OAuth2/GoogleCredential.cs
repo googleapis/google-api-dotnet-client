@@ -38,7 +38,7 @@ namespace Google.Apis.Auth.OAuth2
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
 
         /// <summary>The underlying credential being wrapped by this object.</summary>
-        private readonly ICredential credential;
+        protected readonly ICredential credential;
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
         internal GoogleCredential(ICredential credential)
@@ -153,33 +153,35 @@ namespace Google.Apis.Auth.OAuth2
 
         #endregion
 
-        /// <summary>Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.</summary>
+        /// <summary>
+        /// Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.
+        /// We need this subclass because wrapping <c>ServiceAccountCredential</c> (unlike other wrapped credential types)
+        /// requires special handling for <c>IsCreateScopedRequired</c> and <c>CreateScoped</c> members.
+        /// </summary>
         internal class ServiceAccountGoogleCredential : GoogleCredential
         {
-            private readonly ServiceAccountCredential credential;
-
             public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
                 : base(credential)
             {
-                this.credential = credential;
             }
 
             #region GoogleCredential overrides
 
             public override bool IsCreateScopedRequired
             {
-                get { return !credential.HasScopes; }
+                get { return !(credential as ServiceAccountCredential).HasScopes; }
             }
 
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
-                var initializer = new ServiceAccountCredential.Initializer(credential.Id)
+                var serviceAccountCredential = credential as ServiceAccountCredential;
+                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential.Id)
                 {
-                    User = credential.User,
-                    Key = credential.Key,
+                    User = serviceAccountCredential.User,
+                    Key = serviceAccountCredential.Key,
                     Scopes = scopes
                 };
-                return GoogleCredential.FromCredential(new ServiceAccountCredential(initializer));
+                return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }
 
             #endregion
