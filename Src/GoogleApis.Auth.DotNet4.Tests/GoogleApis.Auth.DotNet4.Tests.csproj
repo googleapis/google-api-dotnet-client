@@ -96,8 +96,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OAuth2\DefaultCredentialProvider\GoogleCredentialTests.cs" />
-    <Compile Include="OAuth2\DefaultCredentialProvider\DefaultCredentialProviderTests.cs" />
+    <Compile Include="OAuth2\GoogleCredentialTests.cs" />
+    <Compile Include="OAuth2\DefaultCredentialProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

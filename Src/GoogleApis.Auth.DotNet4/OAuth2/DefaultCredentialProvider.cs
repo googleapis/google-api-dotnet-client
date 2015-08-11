@@ -15,23 +15,13 @@ limitations under the License.
 */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Logging;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -142,7 +132,7 @@ namespace Google.Apis.Auth.OAuth2
             if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
             {
                 Logger.Debug("ComputeEngine check passed. Using ComputeEngine Credentials.");
-                return GoogleCredential.FromCredential(new ComputeCredential());
+                return new GoogleCredential(new ComputeCredential());
             }
 
             // If everything we tried has failed, throw an exception.
@@ -185,7 +175,7 @@ namespace Google.Apis.Auth.OAuth2
             switch (credentialParameters.Type)
             {
                 case JsonCredentialParameters.AuthorizedUserCredentialType:
-                    return GoogleCredential.FromCredential(CreateUserCredentialFromJson(credentialParameters));
+                    return new GoogleCredential(CreateUserCredentialFromJson(credentialParameters));
 
                 case JsonCredentialParameters.ServiceAccountCredentialType:
                     return GoogleCredential.FromCredential(CreateServiceAccountCredentialFromJson(credentialParameters));
@@ -222,7 +212,7 @@ namespace Google.Apis.Auth.OAuth2
             return new UserCredential(flow, "ApplicationDefaultCredentials", token);
         }
 
-        /// <summary>Creates a service account credential from JSON data.</summary>
+        /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
         private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.ServiceAccountCredentialType ||

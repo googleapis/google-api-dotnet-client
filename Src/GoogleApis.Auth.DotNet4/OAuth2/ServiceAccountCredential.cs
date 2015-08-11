@@ -41,6 +41,14 @@ namespace Google.Apis.Auth.OAuth2
     /// <para>
     /// Take a look in https://developers.google.com/accounts/docs/OAuth2ServiceAccount for more details.
     /// </para>
+    /// <para>
+    /// Since version 1.9.3, service account credential also supports JSON Web Token access token scenario.
+    /// In this scenario, instead of sending a signed JWT claim to a token server and exchanging it for 
+    /// an access token, a locally signed JWT claim bound to an appropriate URI is used as an access token
+    /// directly.
+    /// See <see cref="GetAccessTokenForRequestAsync"/> for explanation when JWT access token
+    /// is used and when regular OAuth2 token is used.
+    /// </para>
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential
     {
@@ -106,6 +114,9 @@ namespace Google.Apis.Auth.OAuth2
 
         #region Readonly fields
 
+        /// <summary>Unix epoch as a <c>DateTime</c></summary>
+        protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         private readonly string id;
         private readonly string user;
         private readonly IEnumerable<string> scopes;
@@ -131,8 +142,10 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public RSACryptoServiceProvider Key { get { return key; } }
 
+        /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
+        internal bool HasScopes { get { return scopes != null && scopes.Any(); } }
+
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
-        /// <param name="initializer"></param>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
@@ -151,8 +164,72 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns><c>true</c> if a new token was received successfully.</returns>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
+            // Create the request.
+            var request = new GoogleAssertionTokenRequest()
+            {
+                Assertion = CreateAssertionFromPayload(CreatePayload())
+            };
+
+            Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
+
+            var newToken = await request.ExecuteAsync(HttpClient, TokenServerUrl, taskCancellationToken, Clock)
+                .ConfigureAwait(false);
+            Token = newToken;
+            return true;
+        }
+
+        /// <summary>
+        /// Gets an access token to authorize a request.
+        /// If <paramref name="authUri"/> is set and this credential has no scopes associated
+        /// with it, a locally signed JWT access token for given <paramref name="authUri"/>
+        /// is returned. Otherwise, an OAuth2 access token obtained from token server will be returned.
+        /// A cached token is used if possible and the token is only refreshed once its close to its expiry.
+        /// </summary>
+        /// <param name="authUri">The URI the returned token will grant access to.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The access token.</returns>
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (!HasScopes && authUri != null)
+            {
+                // TODO(jtattermusch): support caching of JWT access tokens per authUri, currently a new 
+                // JWT access token is created each time, which can hurt performance.
+                return CreateJwtAccessToken(authUri);
+            }
+            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken);
+        }
+
+        #endregion
+    
+        /// <summary>
+        /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
+        /// This is achieved by signing a special JWT using this service account's private key.
+        /// <param name="authUri">The URI for which the access token will be valid.</param>
+        /// </summary>
+        private string CreateJwtAccessToken(string authUri)
+        {
+            var issuedDateTime = Clock.UtcNow;
+            var issued = (int)(issuedDateTime - UnixEpoch).TotalSeconds;
+            var payload = new JsonWebSignature.Payload()
+            {
+                Issuer = Id,
+                Subject = Id,
+                Audience = authUri,
+                IssuedAtTimeSeconds = issued,
+                ExpirationTimeSeconds = issued + 3600,
+            };
+
+            return CreateAssertionFromPayload(payload);
+        }
+
+        /// <summary>
+        /// Signs JWT token using the private key and returns the serialized assertion.
+        /// </summary>
+        /// <param name="payload">the JWT payload to sign.</param>
+        private string CreateAssertionFromPayload(JsonWebSignature.Payload payload)
+        {
             string serializedHeader = CreateSerializedHeader();
-            string serializedPayload = GetSerializedPayload();
+            string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);
 
             StringBuilder assertion = new StringBuilder();
             assertion.Append(UrlSafeBase64Encode(serializedHeader))
@@ -165,22 +242,8 @@ namespace Google.Apis.Auth.OAuth2
 
             var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
             assertion.Append(".").Append(signature);
-
-            // Create the request.
-            var request = new GoogleAssertionTokenRequest()
-            {
-                Assertion = assertion.ToString()
-            };
-
-            Logger.Debug("Request a new access token. Assertion data is: " + request.Assertion);
-
-            var newToken = await request.ExecuteAsync(HttpClient, TokenServerUrl, taskCancellationToken, Clock)
-                .ConfigureAwait(false);
-            Token = newToken;
-            return true;
+            return assertion.ToString();
         }
-
-        #endregion
 
         /// <summary>
         /// Creates a serialized header as specified in 
@@ -208,13 +271,13 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Creates a serialized claim set as specified in 
+        /// Creates a claim set as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset.
         /// </summary>
-        private string GetSerializedPayload()
+        private GoogleJsonWebSignature.Payload CreatePayload()
         {
-            var issued = (int)(Clock.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-            var payload = new GoogleJsonWebSignature.Payload()
+            var issued = (int)(Clock.UtcNow - UnixEpoch).TotalSeconds;
+            return new GoogleJsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Audience = TokenServerUrl,
@@ -223,8 +286,6 @@ namespace Google.Apis.Auth.OAuth2
                 Subject = User,
                 Scope = String.Join(" ", Scopes)
             };
-
-            return NewtonsoftJsonSerializer.Instance.Serialize(payload);
         }
 
         /// <summary>Encodes the provided UTF8 string into an URL safe base64 string.</summary>

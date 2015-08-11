@@ -19,14 +19,17 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
+using Google.Apis.Json;
+
 using NUnit.Framework;
 
-namespace Google.Apis.Auth.OAuth2.DefaultCredentials
+namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.GoogleCredential"/>.</summary>
     [TestFixture]
     public class GoogleCredentialTests
     {
+        private const string DummyAuthUri = "https://www.googleapis.com/google.some_google_api";
         private const string DummyUserCredentialFileContents = @"{
 ""client_id"": ""CLIENT_ID"",
 ""client_secret"": ""CLIENT_SECRET"",
@@ -67,7 +70,41 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyServiceAccountCredentialFileContents));
             var credential = GoogleCredential.FromStream(stream);
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
             Assert.IsTrue(credential.IsCreateScopedRequired);
+        }
+
+        /// <summary>
+        /// Creates service account credential from stream, obtains a JWT token
+        /// from the credential and checks the access token is well-formed.
+        /// </summary>
+        /// <returns></returns>
+        [Test]
+        public async Task FromStream_ServiceAccountCredential_GetJwtAccessToken()
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyServiceAccountCredentialFileContents));
+            var credential = GoogleCredential.FromStream(stream);
+
+            // Without adding scopes, the credential should be generating JWT scopes.
+            string accessToken = await (credential as ITokenAccess).GetAccessTokenForRequestAsync(DummyAuthUri);
+            var parts = accessToken.Split(new[] {'.'});
+            Assert.AreEqual(3, parts.Length);
+
+            var header = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Header>(UrlSafeDecode64(parts[0]));
+            Assert.AreEqual("JWT", header.Type);
+            Assert.AreEqual("RS256", header.Algorithm);
+
+            var payload = NewtonsoftJsonSerializer.Instance.Deserialize<JsonWebSignature.Payload>(UrlSafeDecode64(parts[1]));
+
+            Assert.AreEqual("CLIENT_EMAIL", payload.Issuer);
+            Assert.AreEqual("CLIENT_EMAIL", payload.Subject);
+            Assert.AreEqual(DummyAuthUri, payload.Audience);
+            Assert.AreEqual(3600, payload.ExpirationTimeSeconds - payload.IssuedAtTimeSeconds);
+        }
+
+        private string UrlSafeDecode64(string urlSafeBase64)
+        {
+            return Encoding.UTF8.GetString(Convert.FromBase64String(urlSafeBase64));
         }
     }
 }

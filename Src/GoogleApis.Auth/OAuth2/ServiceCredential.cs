@@ -40,8 +40,7 @@ namespace Google.Apis.Auth.OAuth2
     /// https://cloud.google.com/compute/docs/authentication.
     /// </para>
     /// </summary>
-    public abstract class ServiceCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
-        IConfigurableHttpClientInitializer
+    public abstract class ServiceCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<ServiceCredential>();
 
@@ -166,17 +165,8 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (Token == null || Token.IsExpired(Clock))
-            {
-                Logger.Debug("Token has expired, trying to get a new one.");
-                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
-                }
-                Logger.Info("New access token was received successfully");
-            }
-
-            AccessMethod.Intercept(request, Token.AccessToken);
+            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken);
+            AccessMethod.Intercept(request, accessToken);
         }
 
         #endregion
@@ -193,6 +183,29 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             return false;
+        }
+
+        #endregion
+
+
+        #region ITokenAccess implementation
+
+        /// <summary>
+        /// Gets an access token to authorize a request. If the existing token has expired, try to refresh it first.
+        /// <seealso cref="ITokenAccess.GetAccessTokenForRequestAsync"/>
+        /// </summary>
+        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Token == null || Token.IsExpired(Clock))
+            {
+                Logger.Debug("Token has expired, trying to get a new one.");
+                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
+                }
+                Logger.Info("New access token was received successfully");
+            }
+            return Token.AccessToken;
         }
 
         #endregion

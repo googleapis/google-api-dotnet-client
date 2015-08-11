@@ -26,7 +26,7 @@ using Google.Apis.Util;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>Holder for credential parameters read from JSON credential file. Fields are union of parameters for all supported credential types.</summary>
-    internal class JsonCredentialParameters
+    public class JsonCredentialParameters
     {
         /// <summary>UserCredential is created by the gcloud sdk tool when the user runs <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
         public const string AuthorizedUserCredentialType = "authorized_user";

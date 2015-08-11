@@ -14,15 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 
 namespace Google.Apis.Auth.OAuth2
@@ -36,9 +32,19 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public abstract class GoogleCredential : IConfigurableHttpClientInitializer, ITokenAccess
+    public class GoogleCredential : IConfigurableHttpClientInitializer, ITokenAccess
     {
+        /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
+
+        /// <summary>The underlying credential being wrapped by this object.</summary>
+        protected readonly ICredential credential;
+
+        /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
+        internal GoogleCredential(ICredential credential)
+        {
+            this.credential = credential;
+        }
 
         /// <summary>
         /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize 
@@ -120,48 +126,24 @@ namespace Google.Apis.Auth.OAuth2
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {
-            Initialize(httpClient);
+            credential.Initialize(httpClient);
         }
 
         #endregion
 
         #region ITokenAccess
 
-        TokenResponse ITokenAccess.Token
+        Task<string> ITokenAccess.GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken)
         {
-            get { return Token; }
-        }
-
-        Task<bool> ITokenAccess.RequestAccessTokenAsync(CancellationToken taskCancellationToken)
-        {
-            return RequestAccessTokenAsync(taskCancellationToken);
+            return credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
         }
 
         #endregion
 
         /// <summary>Provides access to the underlying credential object</summary>
-        internal abstract object UnderlyingCredential { get; }
-
-        // We're explicitly implementing all the interfaces to only expose the members user actually
-        // needs to see. Because you cannot make explicit interface implementors abstract, they are redirecting
-        // to the following protected abstract members.
-
-        /// <summary>Initializes a HTTP client.</summary>
-        protected abstract void Initialize(ConfigurableHttpClient httpClient);
-
-        /// <summary>Gets the current access token.</summary>
-        protected abstract TokenResponse Token { get; }
-
-        /// <summary>Requests refreshing the access token.</summary>
-        protected abstract Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken);
+        internal ICredential UnderlyingCredential { get { return credential; } }
 
         #region Factory methods
-
-        /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ComputeCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(ComputeCredential credential)
-        {
-            return new ComputeGoogleCredential(credential);
-        }
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         internal static GoogleCredential FromCredential(ServiceAccountCredential credential)
@@ -169,133 +151,37 @@ namespace Google.Apis.Auth.OAuth2
             return new ServiceAccountGoogleCredential(credential);
         }
 
-        /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="UserCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(UserCredential credential)
-        {
-            return new UserGoogleCredential(credential);
-        }
-
         #endregion
 
-        // TODO(jtattermush): Look into adjusting the API of ServiceAccountCredential, ComputeCredential
-        // and UserCredential so that they implement ITokenAccess. Then the boilerplate below will go away.
-
-        /// <summary>Wraps <c>ComputeCredential</c> as <c>GoogleCredential</c>.</summary>
-        internal class ComputeGoogleCredential : GoogleCredential
-        {
-            private readonly ComputeCredential credential;
-
-            public ComputeGoogleCredential(ComputeCredential credential)
-            {
-                this.credential = credential;
-            }
-
-            #region GoogleCredential overrides
-
-            internal override object UnderlyingCredential
-            {
-                get { return credential; }
-            }
-
-            protected override void Initialize(ConfigurableHttpClient httpClient)
-            {
-                credential.Initialize(httpClient);
-            }
-
-            protected override TokenResponse Token
-            {
-                get { return credential.Token; }
-            }
-
-            protected override Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
-            {
-                return credential.RequestAccessTokenAsync(taskCancellationToken);
-            }
-
-            #endregion
-        }
-
-        /// <summary>Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.</summary>
+        /// <summary>
+        /// Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.
+        /// We need this subclass because wrapping <c>ServiceAccountCredential</c> (unlike other wrapped credential types)
+        /// requires special handling for <c>IsCreateScopedRequired</c> and <c>CreateScoped</c> members.
+        /// </summary>
         internal class ServiceAccountGoogleCredential : GoogleCredential
         {
-            private readonly ServiceAccountCredential credential;
-
             public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
+                : base(credential)
             {
-                this.credential = credential;
             }
 
             #region GoogleCredential overrides
 
             public override bool IsCreateScopedRequired
             {
-                get { return (credential.Scopes == null || credential.Scopes.Count() == 0); }
+                get { return !(credential as ServiceAccountCredential).HasScopes; }
             }
 
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
-                var initializer = new ServiceAccountCredential.Initializer(credential.Id)
+                var serviceAccountCredential = credential as ServiceAccountCredential;
+                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential.Id)
                 {
-                    User = credential.User,
-                    Key = credential.Key,
+                    User = serviceAccountCredential.User,
+                    Key = serviceAccountCredential.Key,
                     Scopes = scopes
                 };
-                return GoogleCredential.FromCredential(new ServiceAccountCredential(initializer));
-            }
-
-            internal override object UnderlyingCredential
-            {
-                get { return credential; }
-            }
-
-            protected override void Initialize(ConfigurableHttpClient httpClient)
-            {
-                credential.Initialize(httpClient);
-            }
-
-            protected override TokenResponse Token
-            {
-                get { return credential.Token; }
-            }
-
-            protected override Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
-            {
-                return credential.RequestAccessTokenAsync(taskCancellationToken);
-            }
-
-            #endregion
-        }
-
-        /// <summary>Wraps <c>UserCredential</c> as <c>GoogleCredential</c>.</summary>
-        internal class UserGoogleCredential : GoogleCredential
-        {
-            private readonly UserCredential credential;
-
-            public UserGoogleCredential(UserCredential credential)
-            {
-                this.credential = credential;
-            }
-
-            #region GoogleCredential overrides
-
-            internal override object UnderlyingCredential
-            {
-                get { return credential; }
-            }
-
-            protected override void Initialize(ConfigurableHttpClient httpClient)
-            {
-                credential.Initialize(httpClient);
-            }
-
-            protected override TokenResponse Token
-            {
-                get { return credential.Token; }
-            }
-
-            protected override Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
-            {
-                return credential.RefreshTokenAsync(taskCancellationToken);
+                return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }
 
             #endregion

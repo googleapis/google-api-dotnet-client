@@ -31,8 +31,7 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class UserCredential : IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler,
-        IConfigurableHttpClientInitializer
+    public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
@@ -93,15 +92,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
-            if (Token.IsExpired(flow.Clock))
-            {
-                Logger.Debug("Token has expired, trying to refresh it.");
-                if (!await RefreshTokenAsync(taskCancellationToken).ConfigureAwait(false))
-                {
-                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
-                }
-            }
-
+            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), taskCancellationToken).ConfigureAwait(false);
             flow.AccessMethod.Intercept(request, Token.AccessToken);
         }
 
@@ -129,6 +120,23 @@ namespace Google.Apis.Auth.OAuth2
         {
             httpClient.MessageHandler.ExecuteInterceptors.Add(this);
             httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(this);
+        }
+
+        #endregion
+
+        #region ITokenAccess implementation
+
+        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Token.IsExpired(flow.Clock))
+            {
+                Logger.Debug("Token has expired, trying to refresh it.");
+                if (!await RefreshTokenAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
+                }
+            }
+            return token.AccessToken;
         }
 
         #endregion
