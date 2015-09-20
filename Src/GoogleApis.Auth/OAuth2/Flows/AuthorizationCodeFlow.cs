@@ -249,11 +249,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
         public async Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken,
             CancellationToken taskCancellationToken)
         {
-            var refershTokenReq = new RefreshTokenRequest
+            var refreshTokenReq = new RefreshTokenRequest
             {
                 RefreshToken = refreshToken,
             };
-            var token = await FetchTokenAsync(userId, refershTokenReq, taskCancellationToken).ConfigureAwait(false);
+            var token = await FetchTokenAsync(userId, refreshTokenReq, taskCancellationToken).ConfigureAwait(false);
 
             // The new token may not contain a refresh token, so set it with the given refresh token.
             if (token.RefreshToken == null)
