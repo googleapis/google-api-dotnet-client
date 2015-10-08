@@ -32,14 +32,12 @@ To make it easer for you to develop with the Google APIs using the Google API cl
 Source for APIs
 =================================
 
-The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/).   Using the following formula, you can find the source for any of the API .dlls.
+The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/).  Using the following formula, you can find the source for any of the API .dlls.
 
-Replace APIName wth the name of the API.
+Replace APINAME wth the name of the API.
 Replace APIVERSION with the version of the api.
 
 https://developers.google.com/resources/api-libraries/download/APINAME/APIVERSION/csharp
-
-Note: The name of the API used in the Discovery API is not always the same as the common name the API is refered to. For instance we normaly refer to drive as the Google Drive API but its just drive, same with Google Analytics. 
 
 Example
 
