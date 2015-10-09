@@ -62,7 +62,7 @@ namespace Google.Apis.Auth.OAuth2
             if (e.Uri.Host == "localhost")
             {
                 var query = e.Uri.Query.Substring(1);
-                tcsAuthorizationCodeResponse.SetResult(new AuthorizationCodeResponseUrl(query));
+                tcsAuthorizationCodeResponse.TrySetResult(new AuthorizationCodeResponseUrl(query));
             }
         }
 
@@ -75,11 +75,11 @@ namespace Google.Apis.Auth.OAuth2
                 // If we encounter a null exception, cancel the task because the Windows Phone app crashed.
                 if (e.Exception != null)
                 {
-                    tcsAuthorizationCodeResponse.SetException(e.Exception);
+                    tcsAuthorizationCodeResponse.TrySetException(e.Exception);
                 }
                 else
                 {
-                    tcsAuthorizationCodeResponse.SetCanceled();
+                    tcsAuthorizationCodeResponse.TrySetCanceled();
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace Google.Apis.Auth.OAuth2
         void RootPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            tcsAuthorizationCodeResponse.SetCanceled();
+            tcsAuthorizationCodeResponse.TrySetCanceled();
         }
 
         /// <summary>Removes <see cref="RootPage_BackKeyPress" as the root page callback./></summary>
