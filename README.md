@@ -34,7 +34,7 @@ Source for APIs
 
 The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/).  Using the following formula, you can find the source for any of the API .dlls.
 
-Replace APINAME wth the name of the API.
+Replace APINAME with the name of the API.
 Replace APIVERSION with the version of the api.
 
 https://developers.google.com/resources/api-libraries/download/APINAME/APIVERSION/csharp
