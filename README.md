@@ -29,6 +29,23 @@ NuGet Packages
 
 To make it easer for you to develop with the Google APIs using the Google API client Library for .NET we have released a number of NuGet packages. A full list of all the packages avaliable can be found at [Google.APIs nuget](https://www.nuget.org/packages?q=google.apis&prerelease=true&sortOrder=relevance)
 
+Source for APIs
+=================================
+
+The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/).  Using the following formula, you can find the source for any of the API .dlls.
+
+Replace APINAME with the name of the API.
+Replace APIVERSION with the version of the api.
+
+https://developers.google.com/resources/api-libraries/download/APINAME/APIVERSION/csharp
+
+Example
+
+* [https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp](https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp)
+* [https://developers.google.com/resources/api-libraries/download/drive/v2/csharp](https://developers.google.com/resources/api-libraries/download/drive/v2/csharp)
+
+Tip: You can check the Discovery API at the bottom of this page  [Discovery directory.list](https://developers.google.com/discovery/v1/reference/apis/list) if you are unable or unsure of the version and discovery name of the API.
+
 Support Forums
 =================================
 If you find an issue with in the client library we would appricate you adding an issue in the [issue tracker](https://github.com/google/google-api-dotnet-client/issues).
