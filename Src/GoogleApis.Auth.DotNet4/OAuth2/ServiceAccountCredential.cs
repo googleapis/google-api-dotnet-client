@@ -196,7 +196,7 @@ namespace Google.Apis.Auth.OAuth2
                 // JWT access token is created each time, which can hurt performance.
                 return CreateJwtAccessToken(authUri);
             }
-            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken);
+            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
 
         #endregion
