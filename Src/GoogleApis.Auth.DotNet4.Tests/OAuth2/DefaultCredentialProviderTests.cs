@@ -192,6 +192,9 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             Assert.IsInstanceOf(typeof(ServiceAccountCredential), scopedCredential.UnderlyingCredential);
             Assert.IsFalse(scopedCredential.IsCreateScopedRequired);
             CollectionAssert.AreEqual(scopes, ((ServiceAccountCredential) scopedCredential.UnderlyingCredential).Scopes);
+
+            var scopedCredential2 = credential.CreateScoped("scope1", "scope2");
+            CollectionAssert.AreEqual(new[] { "scope1", "scope2" }, ((ServiceAccountCredential) scopedCredential2.UnderlyingCredential).Scopes);
         }
 
         #endregion
