@@ -139,4 +139,9 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="InjectAsyncDependencies" BeforeTargets="ExportWindowsMDFile">
+    <ItemGroup>
+      <ReferencePath Include="..\packages\Microsoft.Bcl.1.0.21\lib\sl4\System.Threading.Tasks.dll" />
+    </ItemGroup>
+  </Target>
 </Project>
