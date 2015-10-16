@@ -246,7 +246,7 @@ namespace Google.Apis.Services
 
                 if (sr.Error != null)
                 {
-                    throw new GoogleApiException(Name, "Server error - " + sr.Error);
+                    throw new GoogleApiException(Name, sr.Error, "Server error - " + sr.Error);
                 }
 
                 if (sr.Data == null)

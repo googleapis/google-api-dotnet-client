@@ -44,6 +44,20 @@ namespace Google
         /// <summary>Creates an API Service exception.</summary>
         public GoogleApiException(string serviceName, string message) : this(serviceName, message, null) { }
 
+        public GoogleApiException(string serviceName, RequestError error)
+            : this(serviceName, error.ToString(), null)
+        {
+            Error = error;
+        }
+        public GoogleApiException(string serviceName, RequestError error, string message)
+            : this(serviceName, message, null)
+        {
+            Error = error;
+        }
+
+        /// <summary> The Error which was returned from the server, or null if unavailable.</summary>
+        public RequestError Error { get; private set; }
+
         /// <summary>The HTTP status code which was returned along with this error, or 0 if unavailable.</summary>
         public HttpStatusCode HttpStatusCode { get; set; }
 
