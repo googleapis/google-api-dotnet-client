@@ -37,7 +37,7 @@ The source code for the individual Google APIs is programmatically generated usi
 https://developers.google.com/resources/api-libraries/download/API_NAME/API_VERSION/csharp <br/>
 
 Replace API_NAME with the name of the API. <br/>
-Replace API_VERSION with the version of the api.
+Replace API_VERSION with the version of the API.
 
 Examples:
 
