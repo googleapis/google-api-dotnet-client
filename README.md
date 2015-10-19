@@ -27,24 +27,24 @@ Developer Documentation
 NuGet Packages
 =================================
 
-To make it easer for you to develop with the Google APIs using the Google API client Library for .NET we have released a number of NuGet packages. A full list of all the packages avaliable can be found at [Google.APIs nuget](https://www.nuget.org/packages?q=google.apis&prerelease=true&sortOrder=relevance)
+To make it easer for you to develop with the Google APIs using the Google API client Library for .NET we have released a number of NuGet packages. A full list of all the avaliable packages can be found at the [Google.APIs NuGet](https://www.nuget.org/packages?q=google.apis&sortOrder=relevance) page.
 
 Source for APIs
 =================================
 
-The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/).  Using the following formula, you can find the source for any of the API .dlls.
+The source code for the individual Google APIs is programmatically generated using the [Discovery API](https://developers.google.com/discovery/). <br/> Using the following formula, you can find the source for any of the API dlls:
+<br/>
+https://developers.google.com/resources/api-libraries/download/API_NAME/API_VERSION/csharp <br/>
 
-Replace APINAME with the name of the API.
-Replace APIVERSION with the version of the api.
+Replace API_NAME with the name of the API. <br/>
+Replace API_VERSION with the version of the api.
 
-https://developers.google.com/resources/api-libraries/download/APINAME/APIVERSION/csharp
+Examples:
 
-Example
+* [https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp](https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp) for Analytics v3
+* [https://developers.google.com/resources/api-libraries/download/drive/v2/csharp](https://developers.google.com/resources/api-libraries/download/drive/v2/csharp) for Drive v2
 
-* [https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp](https://developers.google.com/resources/api-libraries/download/analytics/v3/csharp)
-* [https://developers.google.com/resources/api-libraries/download/drive/v2/csharp](https://developers.google.com/resources/api-libraries/download/drive/v2/csharp)
-
-Tip: You can check the Discovery API at the bottom of this page  [Discovery directory.list](https://developers.google.com/discovery/v1/reference/apis/list) if you are unable or unsure of the version and discovery name of the API.
+Tip: If you are unsure of the name and/or the version of the API, you can check it using the Discovery API at the bottom of the [Discovery list](https://developers.google.com/discovery/v1/reference/apis/list) page.
 
 Support Forums
 =================================
