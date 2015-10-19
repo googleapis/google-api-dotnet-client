@@ -550,8 +550,9 @@ namespace Google.Apis.Upload
             }
 
             var error = await Service.DeserializeError(response).ConfigureAwait(false);
-            throw new GoogleApiException(Service.Name, error)
+            throw new GoogleApiException(Service.Name, error.ToString())
             {
+                Error = error,
                 HttpStatusCode = response.StatusCode
             };
         }
