@@ -170,6 +170,7 @@ namespace Google.Apis.Requests
             var error = await service.DeserializeError(response).ConfigureAwait(false);
             throw new GoogleApiException(service.Name, error.ToString())
             {
+                Error = error,
                 HttpStatusCode = response.StatusCode
             };
         }
