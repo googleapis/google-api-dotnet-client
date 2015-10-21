@@ -118,8 +118,8 @@ namespace Google.Apis.Auth.OAuth2
 
         public void Initialize(ConfigurableHttpClient httpClient)
         {
-            httpClient.MessageHandler.ExecuteInterceptors.Add(this);
-            httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(this);
+            httpClient.MessageHandler.AddExecuteInterceptor(this);
+            httpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
         }
 
         #endregion

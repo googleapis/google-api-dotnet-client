@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -262,13 +263,15 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.True(service.GZipEnabled);
 
             // Back-off handler for unsuccessful response (503) is added by default.
-            Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count, Is.EqualTo(1));
-            Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers[0],
+            Assert.That(new List<IHttpUnsuccessfulResponseHandler>
+                (service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers).Count, Is.EqualTo(1));
+            Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.FirstOrDefault(),
                 Is.InstanceOf<BackOffHandler>());
 
             // An execute interceptors is expected (for handling GET requests with URLs that are too long)
-            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
-            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors[0],
+            Assert.That(new List<IHttpExecuteInterceptor>
+                (service.HttpClient.MessageHandler.ExecuteInterceptors).Count, Is.EqualTo(1));
+            Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.FirstOrDefault(),
                 Is.InstanceOf<MaxUrlLengthInterceptor>());
         }
 

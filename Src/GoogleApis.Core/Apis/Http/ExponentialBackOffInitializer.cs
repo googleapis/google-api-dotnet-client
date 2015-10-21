@@ -64,13 +64,13 @@ namespace Google.Apis.Http
             // Add exception handler and \ or unsuccessful response handler.
             if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception)
             {
-                httpClient.MessageHandler.ExceptionHandlers.Add(backOff);
+                httpClient.MessageHandler.AddExceptionHandler(backOff);
             }
 
             if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse503) ==
                 ExponentialBackOffPolicy.UnsuccessfulResponse503)
             {
-                httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(backOff);
+                httpClient.MessageHandler.AddUnsuccessfulResponseHandler(backOff);
             }
         }
     }

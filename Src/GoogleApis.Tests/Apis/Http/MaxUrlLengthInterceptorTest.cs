@@ -76,7 +76,7 @@ namespace Google.Apis.Tests.Apis.Http
             var request = new HttpRequestMessage(method, requestUri);
             var mockHandler = new MockMessageHandler();
             var handler = new ConfigurableMessageHandler(mockHandler);
-            handler.ExecuteInterceptors.Add(new MaxUrlLengthInterceptor(DefaultMaxUrlLength));
+            handler.AddExecuteInterceptor(new MaxUrlLengthInterceptor(DefaultMaxUrlLength));
             using (var httpClient = new HttpClient(handler))
             {
                 httpClient.SendAsync(request);
@@ -105,7 +105,7 @@ namespace Google.Apis.Tests.Apis.Http
             var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             var mockHandler = new MockMessageHandler();
             var handler = new ConfigurableMessageHandler(mockHandler);
-            handler.ExecuteInterceptors.Add(new MaxUrlLengthInterceptor(maxUrlLength));
+            handler.AddExecuteInterceptor(new MaxUrlLengthInterceptor(maxUrlLength));
             using (var httpClient = new HttpClient(handler))
             {
                 httpClient.SendAsync(request);
@@ -129,7 +129,7 @@ namespace Google.Apis.Tests.Apis.Http
             var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             var mockHandler = new MockMessageHandler();
             var handler = new ConfigurableMessageHandler(mockHandler);
-            handler.ExecuteInterceptors.Add(new MaxUrlLengthInterceptor(maxUrlLength));
+            handler.AddExecuteInterceptor(new MaxUrlLengthInterceptor(maxUrlLength));
             using (var httpClient = new HttpClient(handler))
             {
                 httpClient.SendAsync(request);

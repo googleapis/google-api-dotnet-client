@@ -168,8 +168,7 @@ namespace Google.Apis.Services
             var httpClient = factory.CreateHttpClient(args);
             if (initializer.MaxUrlLength > 0)
             {
-                httpClient.MessageHandler.ExecuteInterceptors.Add(
-                    new MaxUrlLengthInterceptor(initializer.MaxUrlLength));
+                httpClient.MessageHandler.AddExecuteInterceptor(new MaxUrlLengthInterceptor(initializer.MaxUrlLength));
             }
             return httpClient;
         }

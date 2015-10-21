@@ -224,8 +224,8 @@ namespace Google.Apis.Upload
             public ServerErrorCallback(ResumableUpload<TRequest> resumable)
             {
                 this.Owner = resumable;
-                Owner.Service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(this);
-                Owner.Service.HttpClient.MessageHandler.ExceptionHandlers.Add(this);
+                Owner.Service.HttpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
+                Owner.Service.HttpClient.MessageHandler.AddExceptionHandler(this);
             }
 
             public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
@@ -271,8 +271,8 @@ namespace Google.Apis.Upload
 
             public void Dispose()
             {
-                Owner.Service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Remove(this);
-                Owner.Service.HttpClient.MessageHandler.ExceptionHandlers.Remove(this);
+                Owner.Service.HttpClient.MessageHandler.RemoveUnsuccessfulResponseHandler(this);
+                Owner.Service.HttpClient.MessageHandler.RemoveExceptionHandler(this);
             }
         }
 

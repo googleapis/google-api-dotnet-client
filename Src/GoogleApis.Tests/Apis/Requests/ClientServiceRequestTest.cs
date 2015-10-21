@@ -348,7 +348,7 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 public void Initialize(ConfigurableHttpClient httpClient)
                 {
-                    httpClient.MessageHandler.UnsuccessfulResponseHandlers.Add(
+                    httpClient.MessageHandler.AddUnsuccessfulResponseHandler(
                         new ServiceUnavailableUnsuccessfulResponseHandler());
                 }
             }
