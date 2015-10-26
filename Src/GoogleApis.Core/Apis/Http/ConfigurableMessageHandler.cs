@@ -75,10 +75,10 @@ namespace Google.Apis.Http
             new List<IHttpExecuteInterceptor>();
 
         /// <summary>
-        /// Gets a copied list of <see cref="IHttpUnsuccessfulResponseHandler"/>.
+        /// Gets a snapshot of <see cref="IHttpUnsuccessfulResponseHandler"/>s associated with this instance's handlers.
         /// <remarks>
         /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned list is also a copied version of the handlers. More info is
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
         /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
         /// </remarks>
         /// </summary>
@@ -112,10 +112,10 @@ namespace Google.Apis.Http
         }
 
         /// <summary>
-        /// Gets a list of <see cref="IHttpExceptionHandler"/>.
+        /// Gets a snapshot of <see cref="IHttpExceptionHandler"/>s associated with this instance's handlers.
         /// <remarks>
         /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned list is also a copied version of the handlers. More info is
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
         /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
         /// </remarks>
         /// </summary>
@@ -149,11 +149,11 @@ namespace Google.Apis.Http
         }
 
         /// <summary>
-        /// Gets a list of <see cref="IHttpExecuteInterceptor"/>.
+        /// Gets a snapshot of <see cref="IHttpExecuteInterceptor"/>s associated with this instance's interceptors.
         /// <remarks>
         /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned list is also a copied version of the interceptors. More info is
-        /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the interceptors. More info
+        /// is available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
         /// </remarks>
         /// </summary>
         public IEnumerable<IHttpExecuteInterceptor> ExecuteInterceptors
