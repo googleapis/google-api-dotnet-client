@@ -238,7 +238,7 @@ namespace Google.Apis.Tests.Apis.Http
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var interceptor = new InterceptorMessageHandler.Interceptor();
-            configurableHanlder.ExecuteInterceptors.Add(interceptor);
+            configurableHanlder.AddExecuteInterceptor(interceptor);
 
             using (var client = new HttpClient(configurableHanlder))
             {
@@ -265,8 +265,8 @@ namespace Google.Apis.Tests.Apis.Http
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var interceptor = new InterceptorMessageHandler.Interceptor();
-            configurableHanlder.ExecuteInterceptors.Add(interceptor);
-            configurableHanlder.UnsuccessfulResponseHandlers.Add(new TrueUnsuccessfulResponseHandler());
+            configurableHanlder.AddExecuteInterceptor(interceptor);
+            configurableHanlder.AddUnsuccessfulResponseHandler(new TrueUnsuccessfulResponseHandler());
 
             using (var client = new HttpClient(configurableHanlder))
             {
@@ -333,7 +333,7 @@ namespace Google.Apis.Tests.Apis.Http
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var unsuccessfulHandler = new UnsuccessfulResponseMessageHandler.ServiceUnavailableResponseHandler();
-            configurableHanlder.UnsuccessfulResponseHandlers.Add(unsuccessfulHandler);
+            configurableHanlder.AddUnsuccessfulResponseHandler(unsuccessfulHandler);
 
             using (var client = new HttpClient(configurableHanlder))
             {
@@ -471,7 +471,7 @@ namespace Google.Apis.Tests.Apis.Http
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var exceptionHandler = new ExceptionMessageHandler.ExceptionHandler { Handle = handle };
-            configurableHanlder.ExceptionHandlers.Add(exceptionHandler);
+            configurableHanlder.AddExceptionHandler(exceptionHandler);
 
             using (var client = new HttpClient(configurableHanlder))
             {
@@ -652,7 +652,7 @@ namespace Google.Apis.Tests.Apis.Http
 
             var configurableHanlder = new ConfigurableMessageHandler(handler);
             var boHandler = new MockBackOffHandler(initializer);
-            configurableHanlder.ExceptionHandlers.Add(boHandler);
+            configurableHanlder.AddExceptionHandler(boHandler);
 
             int boHandleCount = 0;
             // if an exception should be thrown and the handler can handle it then calculate the handle count by the 
@@ -772,7 +772,7 @@ namespace Google.Apis.Tests.Apis.Http
                     NumTries = numTries
                 };
             var boHandler = new MockBackOffHandler(initializer);
-            configurableHanlder.UnsuccessfulResponseHandlers.Add(boHandler);
+            configurableHanlder.AddUnsuccessfulResponseHandler(boHandler);
 
             int boHandleCount = 0;
             if (initializer.HandleUnsuccessfulResponseFunc != null &&
@@ -860,7 +860,7 @@ namespace Google.Apis.Tests.Apis.Http
                 {
                     NumTries = 10
                 };
-            configurableHanlder.UnsuccessfulResponseHandlers.Add(new TrueUnsuccessfulResponseHandler());
+            configurableHanlder.AddUnsuccessfulResponseHandler(new TrueUnsuccessfulResponseHandler());
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Put, "https://test-unsuccessful-handler");
@@ -989,7 +989,7 @@ namespace Google.Apis.Tests.Apis.Http
             if (handle)
             {
                 var unsuccessfulHandler = new UnsuccessfulResponseMessageHandler.ServiceUnavailableResponseHandler();
-                configurableHanlder.UnsuccessfulResponseHandlers.Add(unsuccessfulHandler);
+                configurableHanlder.AddUnsuccessfulResponseHandler(unsuccessfulHandler);
             }
 
             using (var client = new HttpClient(configurableHanlder))

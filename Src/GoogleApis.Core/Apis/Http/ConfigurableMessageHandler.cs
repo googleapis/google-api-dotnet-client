@@ -52,6 +52,16 @@ namespace Google.Apis.Http
 
         #region IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler and IHttpExecuteInterceptor lists
 
+        #region Lock objects
+
+        // The following lock objects are used to lock the list of handlers and interceptors in order to be able to
+        // iterate over them from several threads and to keep this class thread-safe.
+        private readonly object unsuccessfulResponseHandlersLock = new object();
+        private readonly object exceptionHandlersLock = new object();
+        private readonly object executeInterceptorsLock = new object();
+
+        #endregion
+
         /// <summary>A list of <see cref="IHttpUnsuccessfulResponseHandler"/>.</summary>
         private readonly IList<IHttpUnsuccessfulResponseHandler> unsuccessfulResponseHandlers =
             new List<IHttpUnsuccessfulResponseHandler>();
@@ -64,22 +74,115 @@ namespace Google.Apis.Http
         private readonly IList<IHttpExecuteInterceptor> executeInterceptors =
             new List<IHttpExecuteInterceptor>();
 
-        /// <summary>Gets a list of <see cref="IHttpUnsuccessfulResponseHandler"/>.</summary>
-        public IList<IHttpUnsuccessfulResponseHandler> UnsuccessfulResponseHandlers
+        /// <summary>
+        /// Gets a <b>snapshot</b> of <see cref="IHttpUnsuccessfulResponseHandler"/>s associated with this instance.
+        /// <remarks>
+        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
+        /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// </remarks>
+        /// </summary>
+        public IEnumerable<IHttpUnsuccessfulResponseHandler> UnsuccessfulResponseHandlers
         {
-            get { return unsuccessfulResponseHandlers; }
+            get
+            {
+                lock (unsuccessfulResponseHandlersLock)
+                {
+                    return unsuccessfulResponseHandlers.ToList();
+                }
+            }
         }
 
-        /// <summary>Gets a list of <see cref="IHttpExceptionHandler"/>.</summary>
-        public IList<IHttpExceptionHandler> ExceptionHandlers
+        /// <summary>Adds the specified handler to the list of unsuccessful response handlers.</summary>
+        public void AddUnsuccessfulResponseHandler(IHttpUnsuccessfulResponseHandler handler)
         {
-            get { return exceptionHandlers; }
+            lock (unsuccessfulResponseHandlersLock)
+            {
+                unsuccessfulResponseHandlers.Add(handler);
+            }
         }
 
-        /// <summary>Gets a list of <see cref="IHttpExecuteInterceptor"/>.</summary>
-        public IList<IHttpExecuteInterceptor> ExecuteInterceptors
+        /// <summary>Removes the specified handler from the list of unsuccessful response handlers.</summary>
+        public void RemoveUnsuccessfulResponseHandler(IHttpUnsuccessfulResponseHandler handler)
         {
-            get { return executeInterceptors; }
+            lock (unsuccessfulResponseHandlersLock)
+            {
+                unsuccessfulResponseHandlers.Remove(handler);
+            }
+        }
+
+        /// <summary>
+        /// Gets a <b>snapshot</b> of <see cref="IHttpExceptionHandler"/>s associated with this instance.
+        /// <remarks>
+        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
+        /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// </remarks>
+        /// </summary>
+        public IEnumerable<IHttpExceptionHandler> ExceptionHandlers
+        {
+            get
+            {
+                lock (exceptionHandlersLock)
+                {
+                    return exceptionHandlers.ToList();
+                }
+            }
+        }
+
+        /// <summary>Adds the specified handler to the list of exception handlers.</summary>
+        public void AddExceptionHandler(IHttpExceptionHandler handler)
+        {
+            lock (exceptionHandlersLock)
+            {
+                exceptionHandlers.Add(handler);
+            }
+        }
+
+        /// <summary>Removes the specified handler from the list of exception handlers.</summary>
+        public void RemoveExceptionHandler(IHttpExceptionHandler handler)
+        {
+            lock (exceptionHandlersLock)
+            {
+                exceptionHandlers.Remove(handler);
+            }
+        }
+
+        /// <summary>
+        /// Gets a <b>snapshot</b> of <see cref="IHttpExecuteInterceptor"/>s associated with this instance.
+        /// <remarks>
+        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
+        /// keep this class thread-safe. The returned enumerable is a snapshot version of the interceptors. More info
+        /// is available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// </remarks>
+        /// </summary>
+        public IEnumerable<IHttpExecuteInterceptor> ExecuteInterceptors
+        {
+            get
+            {
+                lock (executeInterceptorsLock)
+                {
+                    return executeInterceptors.ToList();
+                }
+            }
+        }
+
+        /// <summary>Adds the specified interceptor to the list of execute interceptors.</summary>
+        public void AddExecuteInterceptor(IHttpExecuteInterceptor interceptor)
+        {
+            lock (executeInterceptorsLock)
+            {
+                executeInterceptors.Add(interceptor);
+            }
+        }
+
+        /// <summary>Removes the specified interceptor from the list of execute interceptors.</summary>
+        public void RemoveExecuteInterceptor(IHttpExecuteInterceptor interceptor)
+        {
+            lock (executeInterceptorsLock)
+            {
+                executeInterceptors.Remove(interceptor);
+            }
         }
 
         #endregion
@@ -186,8 +289,15 @@ namespace Google.Apis.Http
                 }
                 lastException = null;
 
+                // We keep a local list of the interceptors, since we can't call await inside lock.
+                IEnumerable<IHttpExecuteInterceptor> interceptors;
+                lock (executeInterceptorsLock)
+                {
+                    interceptors = executeInterceptors.ToList();
+                }
+
                 // Intercept the request.
-                foreach (var interceptor in executeInterceptors)
+                foreach (var interceptor in interceptors)
                 {
                     await interceptor.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
                 }
@@ -213,8 +323,15 @@ namespace Google.Apis.Http
                 {
                     var exceptionHandled = false;
 
+                    // We keep a local list of the handlers, since we can't call await inside lock.
+                    IEnumerable<IHttpExceptionHandler> handlers;
+                    lock (exceptionHandlersLock)
+                    {
+                        handlers = exceptionHandlers.ToList();
+                    }
+
                     // Try to handle the exception with each handler.
-                    foreach (var handler in exceptionHandlers)
+                    foreach (var handler in handlers)
                     {
                         exceptionHandled |= await handler.HandleExceptionAsync(new HandleExceptionArgs
                             {
@@ -249,8 +366,14 @@ namespace Google.Apis.Http
                     {
                         bool errorHandled = false;
 
+                        // We keep a local list of the handlers, since we can't call await inside lock.
+                        IEnumerable<IHttpUnsuccessfulResponseHandler> handlers;
+                        lock (unsuccessfulResponseHandlersLock)
+                        {
+                            handlers = unsuccessfulResponseHandlers.ToList();
+                        }
                         // Try to handle the abnormal HTTP response with each handler.
-                        foreach (var handler in unsuccessfulResponseHandlers)
+                        foreach (var handler in handlers)
                         {
                             errorHandled |= await handler.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
                                 {
