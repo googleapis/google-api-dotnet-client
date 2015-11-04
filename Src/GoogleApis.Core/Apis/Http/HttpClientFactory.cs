@@ -54,7 +54,7 @@ namespace Google.Apis.Http
         {
             var handler = new HttpClientHandler();
 
-            // If the framework supports redirect configuration, set it to false, because ConfigurableMessageHnalder 
+            // If the framework supports redirect configuration, set it to false, because ConfigurableMessageHandler 
             // handles redirect.
             if (handler.SupportsRedirectConfiguration)
             {

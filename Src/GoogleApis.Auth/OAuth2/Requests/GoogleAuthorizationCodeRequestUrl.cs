@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string AccessType { get; set; }
 
         /// <summary>
-        /// Gets pr sets prompt for consent behavior <c>auto</c> to request auto-approval or<c>force</c> to force the 
+        /// Gets or sets prompt for consent behavior <c>auto</c> to request auto-approval or<c>force</c> to force the 
         /// approval UI to show, or <c>null</c> for the default behavior.
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("approval_prompt", Google.Apis.Util.RequestParameterType.Query)]
