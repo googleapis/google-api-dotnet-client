@@ -60,7 +60,7 @@ namespace Google.Apis.Tests.Apis.Download
             /// <summary>Gets or sets the chunk size to send.</summary>
             public int ChunkSize { get; set; }
 
-            /// <summary>Sets the status code to return for simulating errors.</summary>
+            /// <summary>Gets or sets the status code in case we simulate an error.</summary>
             public HttpStatusCode StatusCode { get; set; }
 
             /// <summary>Gets or sets the cancellation token used to cancel a request in the middle.</summary>
@@ -231,7 +231,7 @@ namespace Google.Apis.Tests.Apis.Download
                     try
                     {
                         var result = downloader.DownloadAsync(downloadUri, outputStream,
-                                         handler.CancellationTokenSource.Token).Result;
+                            handler.CancellationTokenSource.Token).Result;
                         Assert.AreEqual(0, handler.CancelRequestNum);
                     }
                     catch (AggregateException ex)
