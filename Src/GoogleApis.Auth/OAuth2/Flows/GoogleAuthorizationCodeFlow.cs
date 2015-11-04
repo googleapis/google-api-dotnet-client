@@ -35,11 +35,15 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+        /// <summary>Gets or sets the include granted scopes indicator.</summary>
+        private bool? includeGrantedScopes { get; set; }
+
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
+            includeGrantedScopes = initializer.IncludeGrantedScopes;
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -48,7 +52,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
             {
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
-                RedirectUri = redirectUri
+                RedirectUri = redirectUri,
+                IncludeGrantedScopes = (includeGrantedScopes.HasValue)
+                    ? includeGrantedScopes.Value.ToString().ToLower() : null
             };
         }
 
@@ -77,6 +83,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
+
+            /// <summary>Gets or sets the indicator for including granted scopes for incremental authorization.</summary>
+            public bool? IncludeGrantedScopes { get; set; }
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
