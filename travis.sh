@@ -13,4 +13,4 @@ OUTDIR=bin/Release
 # as they are tricky to build under Mono.
 xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
 
-$NUNIT Src/GoogleApis.Tests/$OUTDIR/Google.Apis.Tests.dll Src/GoogleApis.Auth.Tests/$OUTDIR/Google.Apis.Auth.Tests.dll Src/GoogleApis.Apis.DotNet4.Tests/$OUTDIR/Google.Apis.Auth.DotNet4.Tests.dll
+$NUNIT Src/GoogleApis.Tests/$OUTDIR/Google.Apis.Tests.dll Src/GoogleApis.Auth.Tests/$OUTDIR/Google.Apis.Auth.Tests.dll Src/GoogleApis.Auth.DotNet4.Tests/$OUTDIR/Google.Apis.Auth.DotNet4.Tests.dll
