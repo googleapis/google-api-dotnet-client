@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -56,6 +57,8 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>The Metadata header response indicating Google.</summary>
         private const string GoogleMetadataHeader = "Google";
+
+        private const string NotOnGceMessage = "Could not reach the Google Compute Engine metadata service. That is alright if this application is not running on GCE.";
 
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
@@ -160,7 +163,13 @@ namespace Google.Apis.Auth.OAuth2
             }
             catch (HttpRequestException)
             {
-                Logger.Debug("Could not reach the Google Compute Engine metadata service. That is alright if this application is not running on GCE.");
+                Logger.Debug(NotOnGceMessage);
+                return false;
+            }
+            catch (WebException)
+            {
+                // On Mono, NameResolutionFailure is of System.Net.WebException.
+                Logger.Debug(NotOnGceMessage);
                 return false;
             }
             catch (OperationCanceledException)
