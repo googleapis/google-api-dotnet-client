@@ -675,7 +675,9 @@ namespace Google.Apis.Tests.Apis.Http
                 catch (AggregateException ae)
                 {
                     Assert.True(throwException);
-                    Assert.That(ae.InnerException.Message, Is.EqualTo(handler.Exception.Message));
+                    // Don't compare exception messages because for TaskCanceledException the message
+                    // on Mono is different if there is a task associated with the exception.
+                    Assert.AreEqual(handler.Exception.GetType(), ae.InnerException.GetType());
                 }
 
                 Assert.That(boHandler.Waits.Count, Is.EqualTo(boHandleCount));
