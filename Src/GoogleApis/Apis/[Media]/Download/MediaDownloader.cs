@@ -182,7 +182,9 @@ namespace Google.Apis.Download
                 // Add each query parameter. each pair contains the key [0] and then its value [1].
                 foreach (var p in pairs)
                 {
-                    builder.AddParameter(RequestParameterType.Query, p[0], p[1]);
+                    var key = Uri.UnescapeDataString(p[0]);
+                    var value = p.Length == 2 ? Uri.UnescapeDataString(p[1]) : "";
+                    builder.AddParameter(RequestParameterType.Query, key, value);
                 }
             }
             builder.AddParameter(RequestParameterType.Query, "alt", "media");
@@ -206,6 +208,16 @@ namespace Google.Apis.Download
                     using (var response = await service.HttpClient.SendAsync(request, cancellationToken).
                         ConfigureAwait(false))
                     {
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            var error = await service.DeserializeError(response).ConfigureAwait(false);
+                            throw new GoogleApiException(service.Name, error.ToString())
+                            {
+                                Error = error,
+                                HttpStatusCode = response.StatusCode
+                            };
+                        }
+
                         // Read the content and copy to the parameter's stream.
                         var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                         responseStream.CopyTo(stream);
