@@ -1,0 +1,4 @@
+language: csharp
+solution: GoogleApisClient.sln
+script:
+  - ./travis.sh
