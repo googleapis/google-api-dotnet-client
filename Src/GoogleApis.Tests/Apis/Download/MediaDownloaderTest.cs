@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -59,6 +60,9 @@ namespace Google.Apis.Tests.Apis.Download
             /// <summary>Gets or sets the chunk size to send.</summary>
             public int ChunkSize { get; set; }
 
+            /// <summary>Gets or sets the status code in case we simulate an error.</summary>
+            public HttpStatusCode StatusCode { get; set; }
+
             /// <summary>Gets or sets the cancellation token used to cancel a request in the middle.</summary>
             public CancellationTokenSource CancellationTokenSource { get; set; }
 
@@ -86,22 +90,25 @@ namespace Google.Apis.Tests.Apis.Download
                 Assert.That(request.Headers.Range, Is.EqualTo(new RangeHeaderValue(bytesRead,
                     bytesRead + ChunkSize - 1)));
 
-                // read the current data from the stream
-                var contentLength = StreamContent.Length;
-                byte[] buffer = new byte[ChunkSize];
-                int currentRead = StreamContent.Read(buffer, 0, ChunkSize);
-                var readStream = new MemoryStream(buffer, 0, currentRead);
-
                 // prepare the response to send back
                 var response = new HttpResponseMessage();
-                response.Content = new StreamContent(readStream);
-                response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-                response.Content.Headers.ContentLength = currentRead;
-                response.Content.Headers.ContentRange = new ContentRangeHeaderValue(bytesRead,
-                    bytesRead + currentRead - 1, contentLength);
+                response.StatusCode = StatusCode;
+                if (StatusCode == HttpStatusCode.OK)
+                {
+                    // read the current data from the stream
+                    var contentLength = StreamContent.Length;
+                    byte[] buffer = new byte[ChunkSize];
+                    int currentRead = StreamContent.Read(buffer, 0, ChunkSize);
+                    var readStream = new MemoryStream(buffer, 0, currentRead);
 
-                bytesRead += currentRead;
+                    response.Content = new StreamContent(readStream);
+                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                    response.Content.Headers.ContentLength = currentRead;
+                    response.Content.Headers.ContentRange = new ContentRangeHeaderValue(bytesRead,
+                        bytesRead + currentRead - 1, contentLength);
 
+                    bytesRead += currentRead;
+                }
                 tcs.SetResult(response);
                 return tcs.Task;
             }
@@ -129,6 +136,20 @@ namespace Google.Apis.Tests.Apis.Download
         public void Download_SingleChunk_UriContainsQueryParameters()
         {
             Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a=1&b=2");
+        }
+
+        /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
+        [Test]
+        public void Download_SingleChunk_UriContainsEncodedQueryParameters()
+        {
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a=foo%2Fbar");
+        }
+
+        /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
+        [Test]
+        public void Download_SingleChunk_UriContainsValuelessQueryParameters()
+        {
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a&b=1");
         }
 
         /// <summary>
@@ -174,6 +195,7 @@ namespace Google.Apis.Tests.Apis.Download
             StreamContent.Position = 0;
 
             var handler = new MultipleChunksMessageHandler();
+            handler.StatusCode = HttpStatusCode.OK;
             handler.ChunkSize = chunkSize;
             handler.DownloadUri = new Uri(downloadUri +
                 (downloadUri.Contains("?") ? "&" : "?") + "alt=media");
@@ -209,7 +231,7 @@ namespace Google.Apis.Tests.Apis.Download
                     try
                     {
                         var result = downloader.DownloadAsync(downloadUri, outputStream,
-                        handler.CancellationTokenSource.Token).Result;
+                            handler.CancellationTokenSource.Token).Result;
                         Assert.AreEqual(0, handler.CancelRequestNum);
                     }
                     catch (AggregateException ex)
@@ -243,6 +265,41 @@ namespace Google.Apis.Tests.Apis.Download
                     int length = outputStream.Read(read, 0, 1000);
                     Assert.That(Encoding.UTF8.GetString(read, 0, length), Is.EqualTo(MediaContent));
                 }
+            }
+        }
+
+        /// <summary>Tests that download reports errors.</summary>
+        [Test]
+        public void Download_Error()
+        {
+            var downloadUri = "http://www.sample.com?alt=media";
+            var chunkSize = 100;
+            // reset the steam
+            StreamContent.Position = 0;
+
+            var handler = new MultipleChunksMessageHandler();
+            handler.StatusCode = HttpStatusCode.BadRequest;
+            handler.ChunkSize = chunkSize;
+            handler.DownloadUri = new Uri(downloadUri);
+
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                }))
+            {
+                var downloader = new MediaDownloader(service);
+                downloader.ChunkSize = chunkSize;
+                IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
+                downloader.ProgressChanged += (p) =>
+                    {
+                        progressList.Add(p);
+                    };
+
+                var outputStream = new MemoryStream();
+                downloader.Download(downloadUri, outputStream);
+
+                var lastProgress = progressList.LastOrDefault();
+                Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
             }
         }
     }

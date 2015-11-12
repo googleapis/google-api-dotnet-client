@@ -184,14 +184,27 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
 
             Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
             Assert.IsTrue(credential.IsCreateScopedRequired);
+        }
+
+        /// <summary>Test that adding scopes to GoogleCredential backed by a ServiceAccountCredential works correctly.</summary>
+        [Test]
+        public async Task GetDefaultCredential_ServiceAccountCredential_CreateScoped()
+        {
+            // Setup fake environment variables and credential file contents.
+            var credentialFilepath = "TempFilePath.json";
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFilepath);
+            credentialProvider.SetFileContents(credentialFilepath, DummyServiceAccountCredentialFileContents);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
 
             var scopes = new[] { "https://www.googleapis.com/auth/cloud-platform" };
             var scopedCredential = credential.CreateScoped(scopes);
             Assert.AreNotSame(credential, scopedCredential);
-
-            Assert.IsInstanceOf(typeof(ServiceAccountCredential), scopedCredential.UnderlyingCredential);
             Assert.IsFalse(scopedCredential.IsCreateScopedRequired);
-            CollectionAssert.AreEqual(scopes, ((ServiceAccountCredential) scopedCredential.UnderlyingCredential).Scopes);
+            CollectionAssert.AreEqual(scopes, ((ServiceAccountCredential)scopedCredential.UnderlyingCredential).Scopes);
+
+            scopedCredential = credential.CreateScoped("scope1", "scope2");  // Test the params overload
+            CollectionAssert.AreEqual(new[] { "scope1", "scope2" }, ((ServiceAccountCredential)scopedCredential.UnderlyingCredential).Scopes);
         }
 
         #endregion

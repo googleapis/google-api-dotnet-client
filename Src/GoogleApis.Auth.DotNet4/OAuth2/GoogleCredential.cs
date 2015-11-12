@@ -122,6 +122,12 @@ namespace Google.Apis.Auth.OAuth2
             return this;
         }
 
+        /// <summary>If the credential supports scopes, creates a copy with the specified scopes, otherwise it returns the same instance.</summary>
+        public GoogleCredential CreateScoped(params string[] scopes)
+        {
+            return CreateScoped((IEnumerable<string>) scopes);
+        }
+
         #region IConfigurableHttpClientInitializer
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)

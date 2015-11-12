@@ -21,6 +21,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -226,8 +227,8 @@ Content-Length: 202
                 var boundary = contentType.Parameters.First().ToString().Substring("boundary=".Length).
                     Replace("\"", "");
                 var expectedContent = ExpectedContentMessage.Replace("BOUNDARY", boundary);
-                var actuallContent = request.Content.ReadAsStringAsync().Result;
-                Assert.That(actuallContent, Is.EqualTo(expectedContent));
+                var actualContent = request.Content.ReadAsStringAsync().Result;
+                Assert.That(NormalizeLineEndings(actualContent), Is.EqualTo(expectedContent));
 
                 #endregion
 
@@ -384,7 +385,7 @@ Content-Length: 202
                     boundary = line.Substring(2);
                 }
 
-                Assert.AreEqual(ExpectedContentMessage.Replace("BOUNDARY", boundary), requestStr);
+                Assert.AreEqual(ExpectedContentMessage.Replace("BOUNDARY", boundary), NormalizeLineEndings(requestStr));
             }
         }
 
@@ -407,7 +408,7 @@ Content-Length:  40
                     });
                 var content = BatchRequest.CreateIndividualRequest(request).Result;
                 var requestStr = content.ReadAsStringAsync().Result;
-                Assert.AreEqual(expectedMessage, requestStr);
+                Assert.AreEqual(expectedMessage, NormalizeLineEndings(requestStr));
             }
         }
 
@@ -427,7 +428,12 @@ hello world
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             var requestStr = BatchRequest.CreateRequestContentString(request).Result;
-            Assert.AreEqual(expectedMessage, requestStr);
+            Assert.AreEqual(expectedMessage, NormalizeLineEndings(requestStr));
+        }
+
+        // Line endings in HttpContent are different between mono & .NET.
+        private static string NormalizeLineEndings(string s) {
+            return Regex.Replace(s, @"\r\n|\n", "\r\n");
         }
     }
 }
