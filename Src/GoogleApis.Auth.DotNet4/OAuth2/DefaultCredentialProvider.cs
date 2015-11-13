@@ -37,7 +37,9 @@ namespace Google.Apis.Auth.OAuth2
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<DefaultCredentialProvider>();
 
-        /// <summary>Environment variable override which stores the default application credentials file path.</summary>
+        /// <summary>
+        /// Environment variable override which stores the default application credentials file path.
+        /// </summary>
         public const string CredentialEnvironmentVariable = "GOOGLE_APPLICATION_CREDENTIALS";
 
         /// <summary>Well known file which stores the default application credentials.</summary>
@@ -53,7 +55,8 @@ namespace Google.Apis.Auth.OAuth2
         private const string CloudSDKConfigDirectoryWindows = "gcloud";
 
         /// <summary>Help link to the application default credentials feature.</summary>
-        private const string HelpPermalink = "https://developers.google.com/accounts/docs/application-default-credentials";
+        private const string HelpPermalink = 
+            "https://developers.google.com/accounts/docs/application-default-credentials";
 
         /// <summary>GCloud configuration directory on Linux/Mac, relative to $HOME.</summary>
         private static readonly string CloudSDKConfigDirectoryUnix = Path.Combine(".config", "gcloud");
@@ -90,13 +93,14 @@ namespace Google.Apis.Auth.OAuth2
                 }
                 catch (Exception e)
                 {
-                    // Catching generic exception type because any corrupted file could manifest in different ways including 
-                    // but not limited to the System, System.IO or from the Newtonsoft.Json namespace.
-                    throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
-                                            + "\nPlease check the value of the Environment Variable {2}",
-                                            credentialPath,
-                                            e.Message,
-                                            CredentialEnvironmentVariable));
+                    // Catching generic exception type because any corrupted file could manifest in different ways
+                    // including but not limited to the System, System.IO or from the Newtonsoft.Json namespace.
+                    throw new InvalidOperationException(
+                        String.Format("Error reading credential file from location {0}: {1}"
+                            + "\nPlease check the value of the Environment Variable {2}",
+                            credentialPath,
+                            e.Message,
+                            CredentialEnvironmentVariable));
                 }
             }
             
@@ -120,10 +124,11 @@ namespace Google.Apis.Auth.OAuth2
                 }
                 catch (Exception e)
                 {
-                    throw new InvalidOperationException(String.Format("Error reading credential file from location {0}: {1}"
-                                        + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
-                                        credentialPath,
-                                        e.Message));
+                    throw new InvalidOperationException(
+                        String.Format("Error reading credential file from location {0}: {1}"
+                            + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
+                            credentialPath,
+                            e.Message));
                 }
             }
 
@@ -136,11 +141,12 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             // If everything we tried has failed, throw an exception.
-            throw new InvalidOperationException(String.Format("The Application Default Credentials are not available. They are available if running"
-                + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
-                + " pointing to a file defining the credentials. See {1} for more information.",
-                CredentialEnvironmentVariable,
-                HelpPermalink));
+            throw new InvalidOperationException(
+                String.Format("The Application Default Credentials are not available. They are available if running"
+                    + " in Google Compute Engine. Otherwise, the environment variable {0} must be defined"
+                    + " pointing to a file defining the credentials. See {1} for more information.",
+                    CredentialEnvironmentVariable,
+                    HelpPermalink));
         }
 
         /// <summary>Creates a default credential from a JSON file.</summary>
@@ -178,10 +184,13 @@ namespace Google.Apis.Auth.OAuth2
                     return new GoogleCredential(CreateUserCredentialFromJson(credentialParameters));
 
                 case JsonCredentialParameters.ServiceAccountCredentialType:
-                    return GoogleCredential.FromCredential(CreateServiceAccountCredentialFromJson(credentialParameters));
+                    return GoogleCredential.FromCredential(
+                        CreateServiceAccountCredentialFromJson(credentialParameters));
                 
                 default:
-                    throw new InvalidOperationException(String.Format("Error creating credential from JSON. Unrecognized credential type {0}.", credentialParameters.Type));
+                    throw new InvalidOperationException(
+                        String.Format("Error creating credential from JSON. Unrecognized credential type {0}.", 
+                            credentialParameters.Type));
             }
         }
 
@@ -213,7 +222,8 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
-        private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(JsonCredentialParameters credentialParameters)
+        private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(
+            JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.ServiceAccountCredentialType ||
                 string.IsNullOrEmpty(credentialParameters.ClientEmail) ||
@@ -243,13 +253,19 @@ namespace Google.Apis.Auth.OAuth2
             return Path.Combine(CloudSDKConfigDirectoryWindows, WellKnownCredentialsFile);
         }
 
-        /// <summary>Gets the environment variable. This method is protected so it could be overriden for testing purposes only.</summary>
+        /// <summary>
+        /// Gets the environment variable. 
+        /// This method is protected so it could be overriden for testing purposes only.
+        /// </summary>
         protected virtual string GetEnvironmentVariable(string variableName)
         {
             return Environment.GetEnvironmentVariable(variableName);
         }
 
-        /// <summary>Opens file as a stream. This method is protected so it could be overriden for testing purposes only.</summary>
+        /// <summary>
+        /// Opens file as a stream.
+        /// This method is protected so it could be overriden for testing purposes only.
+        /// </summary>
         protected virtual Stream GetStream(string filePath)
         {
             return new FileStream(filePath, FileMode.Open);

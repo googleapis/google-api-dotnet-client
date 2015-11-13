@@ -188,7 +188,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="authUri">The URI the returned token will grant access to.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The access token.</returns>
-        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!HasScopes && authUri != null)
             {
@@ -260,13 +261,17 @@ namespace Google.Apis.Auth.OAuth2
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
         }
 
-        /// <summary>Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.</summary>
+        /// <summary>
+        /// Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
+        /// </summary>
         private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
         {
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
-            var base64PrivateKey = pkcs8PrivateKey.Replace(PrivateKeyPrefix, "").Replace("\n", "").Replace(PrivateKeySuffix, "");
+            var base64PrivateKey = pkcs8PrivateKey.Replace(PrivateKeyPrefix, "").Replace("\n", "")
+                .Replace(PrivateKeySuffix, "");
             var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
-            RsaPrivateCrtKeyParameters crtParameters = (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+            RsaPrivateCrtKeyParameters crtParameters =
+                (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
             return DotNetUtilities.ToRSAParameters(crtParameters);
         }
 

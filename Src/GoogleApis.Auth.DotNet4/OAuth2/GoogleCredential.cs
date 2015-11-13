@@ -47,28 +47,37 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize 
+        /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize
         /// the whole application.</para>
         /// <para>The ambient credentials are determined as following order:</para>
         /// <list type="number">
-        /// <item> 
-        /// <description>The environment variable GOOGLE_APPLICATION_CREDENTIALS is checked. If this variable is specified, it 
-        /// should point to a file that defines the credentials. The simplest way to get a credential for this purpose is to 
-        /// create a service account using the <a href="https://console.developers.google.com">Google Developers Console</a> in 
-        /// the section APIs &amp; Auth, in the sub-section Credentials. Create a service account or choose an existing one and 
-        /// select Generate new JSON key. Set the environment variable to the path of the JSON file downloaded.</description> 
-        /// </item> 
-        /// <item> 
-        /// <description>If you have installed the Google Cloud SDK on your machine and have run the command 
-        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>, your identity can be used as 
-        /// a proxy to test code calling APIs from that machine.</description> 
-        /// </item> 
-        /// <item> 
-        /// <description>If you are running in Google Compute Engine production, the built-in service account associated with the 
-        /// virtual machine instance will be used.</description> 
+        /// <item>
+        /// <description>
+        /// The environment variable GOOGLE_APPLICATION_CREDENTIALS is checked. If this variable is specified, it
+        /// should point to a file that defines the credentials. The simplest way to get a credential for this purpose
+        /// is to create a service account using the
+        /// <a href="https://console.developers.google.com">Google Developers Console</a> in the section APIs &amp;
+        /// Auth, in the sub-section Credentials. Create a service account or choose an existing one and select
+        /// Generate new JSON key. Set the environment variable to the path of the JSON file downloaded.
+        /// </description>
         /// </item>
         /// <item>
-        /// <description>If all previous steps have failed, <c>InvalidOperationException</c> is thrown.</description>
+        /// <description>
+        /// If you have installed the Google Cloud SDK on your machine and have run the command
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>, your identity can
+        /// be used as a proxy to test code calling APIs from that machine.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// If you are running in Google Compute Engine production, the built-in service account associated with the
+        /// virtual machine instance will be used.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// If all previous steps have failed, <c>InvalidOperationException</c> is thrown.
+        /// </description>
         /// </item>
         /// </list>
         /// </summary>
@@ -90,25 +99,30 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// <para>Returns <c>true</c> only if this credential type has no scopes by default and requires 
+        /// <para>Returns <c>true</c> only if this credential type has no scopes by default and requires
         /// a call to <see cref="CreateScoped"/> before use.</para>
         ///
-        /// <para>Credentials need to have scopes in them before they can be used to access Google services. 
-        /// Some Credential types have scopes built-in, and some dont. This property indicates whether 
+        /// <para>Credentials need to have scopes in them before they can be used to access Google services.
+        /// Some Credential types have scopes built-in, and some don't. This property indicates whether
         /// the Credential type has scopes built-in.</para>
         /// 
         /// <list type="number">
-        /// <item> 
-        /// <description><see cref="ComputeCredential"/> has scopes built-in. Nothing additional is required.</description> 
-        /// </item> 
-        /// <item> 
-        /// <description><see cref="UserCredential"/> has scopes built-in, as they were obtained during the consent 
-        /// screen. Nothing additional is required.</description> 
-        /// </item> 
-        /// <item> 
-        /// <description><see cref="ServiceAccountCredential"/> does not have scopes built-in by default. Caller should 
-        /// invoke <see cref="CreateScoped"/> to add scopes to the credential.</description> 
-        /// </item> 
+        /// <item>
+        /// <description>
+        /// <see cref="ComputeCredential"/> has scopes built-in. Nothing additional is required.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// <see cref="UserCredential"/> has scopes built-in, as they were obtained during the consent
+        /// screen. Nothing additional is required.</description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// <see cref="ServiceAccountCredential"/> does not have scopes built-in by default. Caller should
+        /// invoke <see cref="CreateScoped"/> to add scopes to the credential.
+        /// </description>
+        /// </item>
         /// </list>
         /// </summary>
         public virtual bool IsCreateScopedRequired
@@ -116,13 +130,19 @@ namespace Google.Apis.Auth.OAuth2
             get { return false; }
         }
 
-        /// <summary>If the credential supports scopes, creates a copy with the specified scopes, otherwise it returns the same instance.</summary>
+        /// <summary>
+        /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
+        /// instance.
+        /// </summary>
         public virtual GoogleCredential CreateScoped(IEnumerable<string> scopes)
         {
             return this;
         }
 
-        /// <summary>If the credential supports scopes, creates a copy with the specified scopes, otherwise it returns the same instance.</summary>
+        /// <summary>
+        /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
+        /// instance.
+        /// </summary>
         public GoogleCredential CreateScoped(params string[] scopes)
         {
             return CreateScoped((IEnumerable<string>) scopes);
@@ -161,15 +181,13 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.
-        /// We need this subclass because wrapping <c>ServiceAccountCredential</c> (unlike other wrapped credential types)
-        /// requires special handling for <c>IsCreateScopedRequired</c> and <c>CreateScoped</c> members.
+        /// We need this subclass because wrapping <c>ServiceAccountCredential</c> (unlike other wrapped credential
+        /// types) requires special handling for <c>IsCreateScopedRequired</c> and <c>CreateScoped</c> members.
         /// </summary>
         internal class ServiceAccountGoogleCredential : GoogleCredential
         {
             public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
-                : base(credential)
-            {
-            }
+                : base(credential) { }
 
             #region GoogleCredential overrides
 
