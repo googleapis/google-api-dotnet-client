@@ -75,22 +75,18 @@ namespace Google.Apis.Http
             new List<IHttpExecuteInterceptor>();
 
         /// <summary>
-        /// Gets a <b>snapshot</b> of <see cref="IHttpUnsuccessfulResponseHandler"/>s associated with this instance.
+        /// Gets a list of <see cref="IHttpUnsuccessfulResponseHandler"/>s.
         /// <remarks>
-        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
-        /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// Since version 1.10, <see cref="AddUnsuccessfulResponseHandler"/> and
+        /// <see cref="RemoveUnsuccessfulResponseHandler"/> were added in order to keep this class thread-safe.
+        /// More information is available on
+        /// <a href="https://github.com/google/google-api-dotnet-client/issues/592">#592</a>.
         /// </remarks>
         /// </summary>
-        public IEnumerable<IHttpUnsuccessfulResponseHandler> UnsuccessfulResponseHandlers
+        [Obsolete("Use AddUnsuccessfulResponseHandler or RemoveUnsuccessfulResponseHandler instead.")]
+        public IList<IHttpUnsuccessfulResponseHandler> UnsuccessfulResponseHandlers
         {
-            get
-            {
-                lock (unsuccessfulResponseHandlersLock)
-                {
-                    return unsuccessfulResponseHandlers.ToList();
-                }
-            }
+            get { return unsuccessfulResponseHandlers; }
         }
 
         /// <summary>Adds the specified handler to the list of unsuccessful response handlers.</summary>
@@ -112,22 +108,17 @@ namespace Google.Apis.Http
         }
 
         /// <summary>
-        /// Gets a <b>snapshot</b> of <see cref="IHttpExceptionHandler"/>s associated with this instance.
+        /// Gets a list of <see cref="IHttpExceptionHandler"/>s.
         /// <remarks>
-        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned enumerable is a snapshot version of the handlers. More info is
-        /// available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// Since version 1.10, <see cref="AddExceptionHandler"/> and <see cref="RemoveExceptionHandler"/> were added
+        /// in order to keep this class thread-safe.  More information is available on
+        /// <a href="https://github.com/google/google-api-dotnet-client/issues/592">#592</a>.
         /// </remarks>
         /// </summary>
-        public IEnumerable<IHttpExceptionHandler> ExceptionHandlers
+        [Obsolete("Use AddExceptionHandler or RemoveExceptionHandler instead.")]
+        public IList<IHttpExceptionHandler> ExceptionHandlers
         {
-            get
-            {
-                lock (exceptionHandlersLock)
-                {
-                    return exceptionHandlers.ToList();
-                }
-            }
+            get { return exceptionHandlers; }
         }
 
         /// <summary>Adds the specified handler to the list of exception handlers.</summary>
@@ -149,22 +140,17 @@ namespace Google.Apis.Http
         }
 
         /// <summary>
-        /// Gets a <b>snapshot</b> of <see cref="IHttpExecuteInterceptor"/>s associated with this instance.
+        /// Gets a list of <see cref="IHttpExecuteInterceptor"/>s.
         /// <remarks>
-        /// Since version 1.10, the return value had been changed from <c>IList</c> to <c>IEnumerable</c> in order to
-        /// keep this class thread-safe. The returned enumerable is a snapshot version of the interceptors. More info
-        /// is available on <a href="https://github.com/google/google-api-dotnet-client/issues/592">Issue 592</a>.
+        /// Since version 1.10, <see cref="AddExecuteInterceptor"/> and <see cref="RemoveExecuteInterceptor"/> were
+        /// added in order to keep this class thread-safe.  More information is available on
+        /// <a href="https://github.com/google/google-api-dotnet-client/issues/592">#592</a>.
         /// </remarks>
         /// </summary>
-        public IEnumerable<IHttpExecuteInterceptor> ExecuteInterceptors
+        [Obsolete("Use AddExecuteInterceptor or RemoveExecuteInterceptor instead.")]
+        public IList<IHttpExecuteInterceptor> ExecuteInterceptors
         {
-            get
-            {
-                lock (executeInterceptorsLock)
-                {
-                    return executeInterceptors.ToList();
-                }
-            }
+            get { return executeInterceptors; }
         }
 
         /// <summary>Adds the specified interceptor to the list of execute interceptors.</summary>
