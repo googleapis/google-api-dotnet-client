@@ -37,9 +37,8 @@ namespace Google.Apis.Services
 {
     /// <summary>
     /// A base class for a client service which provides common mechanism for all services, like 
-    /// serialization and GZip support.  Although this class isn't thread-safe (it contains a reference to
-    /// <see cref="HttpClient"/> which isn't thread-safe itself), it's recommended to create a single service for
-    /// several server calls.
+    /// serialization and GZip support.  It should be safe to use a single service instance to make server requests
+    /// concurrently from multiple threads. 
     /// This class adds a special <see cref="Google.Apis.Http.IHttpExecuteInterceptor"/> to the 
     /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> execute interceptor list, which uses the given 
     /// Authenticator. It calls to its applying authentication method, and injects the "Authorization" header in the 
