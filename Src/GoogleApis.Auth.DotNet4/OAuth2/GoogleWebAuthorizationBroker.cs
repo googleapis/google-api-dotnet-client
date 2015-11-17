@@ -113,14 +113,17 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthorizeAsyncCore(
+        public static async Task<UserCredential> AuthorizeAsyncCore(
             GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
             CancellationToken taskCancellationToken, IDataStore dataStore = null,
             bool? includeGrantedScopes = null)
         {
             initializer.Scopes = scopes;
             initializer.DataStore = dataStore ?? new FileDataStore(Folder);
-            initializer.IncludeGrantedScopes = includeGrantedScopes;
+            if (includeGrantedScopes.HasValue)
+            {
+                initializer.IncludeGrantedScopes = includeGrantedScopes.Value;
+            }
             var flow = new GoogleAuthorizationCodeFlow(initializer);
 
             // Create an authorization code installed app instance and authorize the user.

@@ -86,5 +86,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns><c>true</c> if the token was revoked successfully.</returns>        
         Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken);
+
+        /// <summary>
+        /// Indicates if a new token needs to be retrieved and stored regardless of normal circumstances.
+        /// </summary>
+        /// <returns></returns>
+        bool ShouldForceTokenRetrieval();
     }
 }

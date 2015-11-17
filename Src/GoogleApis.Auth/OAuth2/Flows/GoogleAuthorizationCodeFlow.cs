@@ -78,13 +78,23 @@ namespace Google.Apis.Auth.OAuth2.Flows
             await DeleteTokenAsync(userId, taskCancellationToken);
         }
 
+        public override bool ShouldForceTokenRetrieval() 
+        {
+            if (includeGrantedScopes.HasValue && includeGrantedScopes.Value == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>An initializer class for Google authorization code flow. </summary>
         public new class Initializer : AuthorizationCodeFlow.Initializer
         {
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
 
-            /// <summary>Gets or sets the indicator for including granted scopes for incremental authorization.</summary>
+            /// <summary>Gets or sets the optional indicator for including granted scopes for incremental authorization.</summary>
             public bool? IncludeGrantedScopes { get; set; }
 
             /// <summary>

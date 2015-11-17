@@ -64,7 +64,7 @@ namespace Google.Apis.Auth.OAuth2
 
             // If the stored token is null or it doesn't have a refresh token and the access token is expired we need 
             // to retrieve a new authorization code.
-            if (token == null || (token.RefreshToken == null && token.IsExpired(flow.Clock)))
+            if (token == null || Flow.ShouldForceTokenRetrieval() || (token.RefreshToken == null && token.IsExpired(flow.Clock)))
             {
                 // Create an authorization code request.
                 var redirectUri = CodeReceiver.RedirectUri;
