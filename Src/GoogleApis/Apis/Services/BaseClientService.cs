@@ -36,8 +36,9 @@ using Google.Apis.Testing;
 namespace Google.Apis.Services
 {
     /// <summary>
-    /// A thread-safe base class for a client service which provides common mechanism for all services, like 
-    /// serialization and GZip support.
+    /// A base class for a client service which provides common mechanism for all services, like 
+    /// serialization and GZip support.  It should be safe to use a single service instance to make server requests
+    /// concurrently from multiple threads. 
     /// This class adds a special <see cref="Google.Apis.Http.IHttpExecuteInterceptor"/> to the 
     /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> execute interceptor list, which uses the given 
     /// Authenticator. It calls to its applying authentication method, and injects the "Authorization" header in the 
