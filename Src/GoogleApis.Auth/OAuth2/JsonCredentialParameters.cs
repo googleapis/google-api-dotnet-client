@@ -25,36 +25,60 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary>Holder for credential parameters read from JSON credential file. Fields are union of parameters for all supported credential types.</summary>
+    /// <summary
+    /// Holder for credential parameters read from JSON credential file.
+    /// Fields are union of parameters for all supported credential types.
+    /// </summary>
     public class JsonCredentialParameters
     {
-        /// <summary>UserCredential is created by the gcloud sdk tool when the user runs <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
+        /// <summary>
+        /// UserCredential is created by the GCloud SDK tool when the user runs
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
+        /// </summary>
         public const string AuthorizedUserCredentialType = "authorized_user";
         
-        /// <summary>ServiceAccountCredential is downloaded by the user from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
+        /// <summary>
+        /// ServiceAccountCredential is downloaded by the user from
+        /// <a href="https://console.developers.google.com">Google Developers Console</a>.
+        /// </summary>
         public const string ServiceAccountCredentialType = "service_account";
 
         /// <summary>Type of the credential.</summary>
         [Newtonsoft.Json.JsonProperty("type")]
         public string Type { get; set; }
 
-        /// <summary>Cliend Id associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
+        /// <summary>
+        /// Client Id associated with UserCredential created by
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("client_id")]
         public string ClientId { get; set; }
 
-        /// <summary>Client Secret associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
+        /// <summary>
+        /// Client Secret associated with UserCredential created by
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
         
-        /// <summary>Client Email associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a></summary>
+        /// <summary>
+        /// Client Email associated with ServiceAccountCredential obtained from
+        /// <a href="https://console.developers.google.com">Google Developers Console</a>
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("client_email")]
         public string ClientEmail { get; set; }
 
-        /// <summary>Private Key associated with ServiceAccountCredential obtained from <a href="https://console.developers.google.com">Google Developers Console</a>.</summary>
+        /// <summary>
+        /// Private Key associated with ServiceAccountCredential obtained from
+        /// <a href="https://console.developers.google.com">Google Developers Console</a>.
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("private_key")]
         public string PrivateKey { get; set; }
 
-        /// <summary>Refresh Token associated with UserCredential created by <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">gcloud auth login</a>.</summary>
+        /// <summary>
+        /// Refresh Token associated with UserCredential created by
+        /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
     }

@@ -165,7 +165,8 @@ namespace Google.Apis.Auth.OAuth2
 
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken).ConfigureAwait(false);
+            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken)
+                .ConfigureAwait(false);
             AccessMethod.Intercept(request, accessToken);
         }
 
@@ -194,7 +195,8 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets an access token to authorize a request. If the existing token has expired, try to refresh it first.
         /// <seealso cref="ITokenAccess.GetAccessTokenForRequestAsync"/>
         /// </summary>
-        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Token == null || Token.IsExpired(Clock))
             {
