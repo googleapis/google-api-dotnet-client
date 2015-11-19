@@ -8,6 +8,7 @@ This module generates a an Objective-C client library for a Discovery based API.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
+import re
 from googleapis.codegen import api
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import data_types
@@ -44,6 +45,9 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
                  # making request on behalf of lots of users.
       'quotaUser',  # Another form of userIp.
       ]
+
+  # Regex to match properties needing the NS_RETURNS_NOT_RETAINED directive.
+  _NOT_RETAINED = re.compile('^(new|copy|mutableCopy)')
 
   def __init__(self, discovery, options=None):
     super(ObjCGenerator, self).__init__(ObjCApi,
@@ -170,6 +174,11 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
     else:
       prop.SetTemplateValue('attributes', 'nonatomic, retain')
 
+    # Properties starting with certain strings will cause a clang warning about
+    # naming conventions unless we add a directive to stop it.
+    if self._NOT_RETAINED.match(prop.codeName):
+      prop.SetTemplateValue('clangDirective', ' NS_RETURNS_NOT_RETAINED')
+
     if isinstance(prop.data_type, data_types.ArrayDataType):
       # Add comment showing type of array elements
       prop.SetTemplateValue('typeComment',
@@ -255,6 +264,15 @@ class ObjCLanguageModel(language_model.LanguageModel):
       'unsigned', 'void', 'volatile', 'while', '_Bool', '_Complex',
       '_Imaginary',
       ]
+  # C/C++ keywords (including C99 and C++ 0x11)
+  _CPP_KEYWORDS = [
+      'and', 'alignas', 'alignof', 'bitand', 'bitor', 'bool', 'catch', 'compl',
+      'constexpr', 'decltype', 'default', 'delete', 'explicit', 'export',
+      'false', 'friend', 'mutable', 'namespace', 'new', 'noexcept', 'not',
+      'nullptr', 'operator', 'or', 'private', 'protected', 'public', 'template',
+      'this', 'throw', 'true', 'try', 'typeid', 'typename', 'using', 'virtual',
+      'xor', 'restrict',
+      ]
   _NAMES_TO_AVOID = [
       'bool', 'bycopy', 'byref', 'class', 'id', 'imp', 'in', 'inout', 'nil',
       'no', 'null', 'object', 'oneway', 'out', 'protocol', 'sel', 'self',
@@ -264,12 +282,13 @@ class ObjCLanguageModel(language_model.LanguageModel):
   # These names were things we had reserved in the past. It might be overly
   # broad
   _MORE_NAMES_TO_AVOID = [
-      'any', 'boolean', 'integer', 'namespace', 'number', 'true', 'false',
+      'any', 'boolean', 'integer', 'number',
       ]
 
   # We can not create classes which match a ObjC keyword or built in object
   # type.
-  RESERVED_CLASS_NAMES = _OBJC_KEYWORDS + _NAMES_TO_AVOID + _MORE_NAMES_TO_AVOID
+  RESERVED_CLASS_NAMES = (_OBJC_KEYWORDS + _CPP_KEYWORDS + _NAMES_TO_AVOID +
+                          _MORE_NAMES_TO_AVOID)
 
   # We can not create data members which are in GTLObject.
   RESERVED_MEMBER_NAMES = RESERVED_CLASS_NAMES + [
