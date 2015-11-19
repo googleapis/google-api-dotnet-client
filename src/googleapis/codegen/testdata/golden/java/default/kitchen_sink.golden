@@ -47,7 +47,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
         com.google.api.client.googleapis.GoogleUtils.MINOR_VERSION >= 15,
         "You are currently running with version %s of google-api-client. " +
         "You need at least version 1.15 of google-api-client to run version " +
-        "1.20.0-SNAPSHOT of the kitch_sink library.", com.google.api.client.googleapis.GoogleUtils.VERSION);
+        "1.21.0-SNAPSHOT of the kitch_sink library.", com.google.api.client.googleapis.GoogleUtils.VERSION);
   }
 
   /**
@@ -8030,8 +8030,8 @@ public final class VoteList extends com.google.api.client.json.GenericJson {
 
   <groupId>com.google.apis</groupId>
   <artifactId>google-api-services-kitch_sink</artifactId>
-  <version>v1-revsnapshot-1.20.0-SNAPSHOT</version>
-  <name>kitch_sink v1-revsnapshot-1.20.0-SNAPSHOT</name>
+  <version>v1-revsnapshot-1.21.0-SNAPSHOT</version>
+  <name>kitch_sink v1-revsnapshot-1.21.0-SNAPSHOT</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>
@@ -8080,11 +8080,11 @@ public final class VoteList extends com.google.api.client.json.GenericJson {
           <links>
             <link>http://docs.oracle.com/javase/7/docs/api</link>
           
-            <link>http://javadoc.google-http-java-client.googlecode.com/hg/1.20.0-SNAPSHOT</link>
+            <link>http://javadoc.google-http-java-client.googlecode.com/hg/1.21.0-SNAPSHOT</link>
           
-            <link>http://javadoc.google-oauth-java-client.googlecode.com/hg/1.20.0-SNAPSHOT</link>
+            <link>http://javadoc.google-oauth-java-client.googlecode.com/hg/1.21.0-SNAPSHOT</link>
           
-            <link>http://javadoc.google-api-java-client.googlecode.com/hg/1.20.0-SNAPSHOT</link>
+            <link>http://javadoc.google-api-java-client.googlecode.com/hg/1.21.0-SNAPSHOT</link>
           </links>
         </configuration>
       </plugin>
@@ -8096,7 +8096,7 @@ public final class VoteList extends com.google.api.client.json.GenericJson {
     <dependency>
       <groupId>com.google.api-client</groupId>
       <artifactId>google-api-client</artifactId>
-      <version>1.20.0-SNAPSHOT</version>
+      <version>1.21.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

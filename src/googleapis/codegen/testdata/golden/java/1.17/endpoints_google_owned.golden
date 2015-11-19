@@ -1113,7 +1113,7 @@ public final class HelloGreeting extends com.google.api.client.json.GenericJson 
   </parent>
 
   <groupId>com.google.apis</groupId>
-  <artifactId>google-api-services-cloud-platform-EccoDomaniIeri</artifactId>
+  <artifactId>google-api-services-cloud-platform-eccodomaniieri</artifactId>
   <version>v1-revsnapshot-1.17.1-rc-SNAPSHOT</version>
   <name>Schmecken Sie Gut v1-revsnapshot-1.17.1-rc-SNAPSHOT</name>
   <packaging>jar</packaging>
