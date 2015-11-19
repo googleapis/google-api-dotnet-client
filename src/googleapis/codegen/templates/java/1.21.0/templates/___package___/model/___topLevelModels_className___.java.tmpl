@@ -1,0 +1,44 @@
+{% language java %}{% collapsenewlines %}{% call_template _file_header %}
+
+package {{ model.module.name }};
+
+/**{% filter block_comment %}
+ * {% if model.description %}{{ model.description }}{% else %}Model definition for {{ model.className }}.{% endif %}
+ *
+ * <p>
+ * This is the Java data model class that specifies how to parse/serialize into the JSON that is
+ * transmitted over HTTP when working with the {{ api.title }}. For a detailed explanation see:
+ * {% endfilter %}
+ * <a href="https://developers.google.com/api-client-library/java/google-http-java-client/json">https://developers.google.com/api-client-library/java/google-http-java-client/json</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+{% filter noblanklines %}
+@SuppressWarnings("javadoc")
+{% if model.is_variant_base %}
+public class {{ model.className }} extends com.google.api.client.json.GenericJson {
+{% elif model.superClass %}
+public final class {{ model.className }} extends {{ model.superClass }} {
+{% else %}
+public final class {{ model.className }} extends com.google.api.client.json.GenericJson {
+{% endif %}{% endfilter %}
+
+{% filter noblanklines %}
+{% if model.is_variant_base %}
+  protected {{ model.className }}(java.lang.String typeValue) {
+    this.{{ model.discriminant.memberName }} = typeValue;
+  }
+
+  public {{ model.className }}() {}
+{% elif model.discriminantValue %}
+  /** Constructs {{ model.className }}. **/
+  public {{ model.className }}() {
+    super({% literal model.discriminantValue %});
+  }
+{% endif %}{% endfilter %}
+
+{% call_template _model_content_def current_model=model %}
+
+{% for child in model.children %}{% indent %}{% call_template _model_def model=child %}{% endindent %}
+{% endfor %}}{% endcollapsenewlines %}

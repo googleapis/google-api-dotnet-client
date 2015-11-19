@@ -1,0 +1,15 @@
+{% comment %}
+TODO: not schema.reference does not capture the complete solution to b/8167652.
+      There should instead be a mechanism to get the right answer easily.
+{% endcomment %}
+{% if not schema.builtIn and not schema.reference %}  static {
+{% if schema.arrayOf %}
+    // hack to force ProGuard to consider {{ schema.safeClassName }}Items used, since otherwise it would be stripped out
+    // see https://github.com/google/google-api-java-client/issues/543
+    com.google.api.client.util.Data.nullOf({{ schema.safeClassName }}Items.class);
+{% else %}
+    // hack to force ProGuard to consider {{ schema.safeClassName }} used, since otherwise it would be stripped out
+    // see https://github.com/google/google-api-java-client/issues/543
+    com.google.api.client.util.Data.nullOf({{ schema.safeClassName }}.class);
+{% endif %}
+  }{% endif %}
