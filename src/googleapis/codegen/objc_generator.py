@@ -50,11 +50,12 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
   _NOT_RETAINED = re.compile('^(new|copy|mutableCopy)')
 
   def __init__(self, discovery, options=None):
-    super(ObjCGenerator, self).__init__(ObjCApi,
-                                        discovery,
-                                        language='objc',
-                                        language_model=ObjCLanguageModel(),
-                                        options=options)
+    super(ObjCGenerator, self).__init__(
+        ObjCApi,
+        discovery,
+        language='objc',
+        language_model=ObjCLanguageModel(options),
+        options=options)
 
   def AnnotateSchema(self, unused_api, schema):
     schema.SetTemplateValue('superClass', 'GTLObject')
@@ -250,7 +251,7 @@ class ObjCLanguageModel(language_model.LanguageModel):
       ('string', None): 'NSString',
       ('string', 'byte'): 'NSString',
       ('string', 'date'): 'NSString',
-      ('string', 'date-time'): 'NSString',
+      ('string', 'date-time'): 'GTLDateTime',
       ('string', 'int64'): 'NSNumber',
       ('string', 'uint64'): 'NSNumber',
       }
@@ -279,22 +280,28 @@ class ObjCLanguageModel(language_model.LanguageModel):
       'string', 'super', 'yes', 'atomic', 'nonatomic', 'retain',
       ]
 
-  # These names were things we had reserved in the past. It might be overly
-  # broad
-  _MORE_NAMES_TO_AVOID = [
-      'any', 'boolean', 'integer', 'number',
-      ]
-
   # We can not create classes which match a ObjC keyword or built in object
   # type.
-  RESERVED_CLASS_NAMES = (_OBJC_KEYWORDS + _CPP_KEYWORDS + _NAMES_TO_AVOID +
-                          _MORE_NAMES_TO_AVOID)
+  RESERVED_CLASS_NAMES = _OBJC_KEYWORDS + _CPP_KEYWORDS + _NAMES_TO_AVOID
 
-  # We can not create data members which are in GTLObject.
+  # We can not create data members which are in NSObject or GTLObject.
   RESERVED_MEMBER_NAMES = RESERVED_CLASS_NAMES + [
-      'description', 'id'
+      # NSObject methods
+      'description', 'debugDescription', 'finalize', 'hash', 'dealloc', 'init',
+      'superclass', 'retain', 'release', 'autorelease', 'retainCount', 'zone',
+      'isProxy', 'classForCoder',
+      # Foundation protocol methods
+      'copy', 'copyWithZone', 'mutableCopy', 'mutableCopyWithZone',
+      # GTLObject methods
+      'JSON', 'JSONString', 'surrogates', 'userProperties',
+      'additionalJSONKeys', 'additionalProperties', 'userData',
+      'fieldsDescription',
       ]
   reserved_words = RESERVED_MEMBER_NAMES
+
+  def __init__(self, options=None):
+    super(ObjCLanguageModel, self).__init__()
+    self._options = options
 
   def GetCodeTypeFromDictionary(self, def_dict):
     """Convert a json primitive type to a suitable ObjC type name.
@@ -323,10 +330,7 @@ class ObjCLanguageModel(language_model.LanguageModel):
     return ret
 
   def DefaultContainerPathForOwner(self, module):
-    path = module.owner_name.lower()
-    if module.owner_domain == 'google.com' and not module.package_path:
-      path += '/api/services'
-    return path
+    return '/'.join(utilities.ReversedDomainComponents(module.owner_domain))
 
 
 class ObjCApi(api.Api):

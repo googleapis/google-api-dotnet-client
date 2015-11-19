@@ -22,8 +22,8 @@
 + (instancetype){{method.queryCodeName}} {
   NSString *methodName = {% literal method.wireName %};
   {{ api.query }} *query = [self queryWithMethodName:methodName];
-  query.expectedObjectClass = [{{ method.responseType.codeType }} class];
-  return query;
+{% if method.responseType.codeType != 'void' %}  query.expectedObjectClass = [{{ method.responseType.codeType }} class];
+{% endif %}  return query;
 }
 {% endfor %}
 @end

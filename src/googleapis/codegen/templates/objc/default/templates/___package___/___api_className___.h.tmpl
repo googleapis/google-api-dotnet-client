@@ -12,12 +12,9 @@
 // Description:
 //   {{ api.description }}
 
-{% if options.useSingleSourceFile %}
-{% call_template _monolithic_h_impl %}
-{% else %}#import "{{ api.className }}Constants.h"
+#import "{{ api.className }}Constants.h"
 
 {% for model in api.models %}#import "{{ model.className }}.h"
 {% endfor %}
 {% if api.query %}#import "{{ api.query }}.h"
 {% endif %}#import "{{ api.serviceName }}.h"
-{% endif %}
