@@ -988,7 +988,7 @@ package gov.nasa.helloworld.model;
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the Schmecken Sie Gut. For a detailed explanation see:
- * <a href="http://code.google.com/p/google-http-java-client/wiki/JSON">http://code.google.com/p/google-http-java-client/wiki/JSON</a>
+ * <a href="https://developers.google.com/api-client-library/java/google-http-java-client/json">https://developers.google.com/api-client-library/java/google-http-java-client/json</a>
  * </p>
  *
  * @author Google, Inc.
@@ -1005,7 +1005,7 @@ public final class HelloGreetingCollection extends com.google.api.client.json.Ge
 
   static {
     // hack to force ProGuard to consider HelloGreeting used, since otherwise it would be stripped out
-    // see http://code.google.com/p/google-api-java-client/issues/detail?id=528
+    // see https://github.com/google/google-api-java-client/issues/543
     com.google.api.client.util.Data.nullOf(HelloGreeting.class);
   }
 
@@ -1062,7 +1062,7 @@ package gov.nasa.helloworld.model;
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the Schmecken Sie Gut. For a detailed explanation see:
- * <a href="http://code.google.com/p/google-http-java-client/wiki/JSON">http://code.google.com/p/google-http-java-client/wiki/JSON</a>
+ * <a href="https://developers.google.com/api-client-library/java/google-http-java-client/json">https://developers.google.com/api-client-library/java/google-http-java-client/json</a>
  * </p>
  *
  * @author Google, Inc.
