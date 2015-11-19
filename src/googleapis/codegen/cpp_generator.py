@@ -521,6 +521,10 @@ class CppLanguageModel(language_model.LanguageModel):
                              ImportDefinition([date_h])),
         ('string', 'date-time'): (self.client_namespace_ + '::DateTime',
                                   ImportDefinition([date_time_h])),
+        ('string', 'google-datetime'): ('string',
+                                        ImportDefinition(['<string>'])),
+        ('string', 'google-duration'): ('string',
+                                        ImportDefinition(['<string>'])),
         ('string', 'int64'): ('int64', ImportDefinition([integral_type_h])),
         ('string', 'uint64'): ('uint64', ImportDefinition([integral_type_h])),
         }
