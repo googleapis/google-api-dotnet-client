@@ -112,7 +112,7 @@ namespace Google.Apis.Auth.OAuth2
             tcsAuthorizationCodeResponse.TrySetCanceled();
         }
 
-        /// <summary>Removes <see cref="RootPage_BackKeyPress" as the root page callback./></summary>
+        /// <summary>Removes <see cref="RootPage_BackKeyPress"/> as the root page callback.</summary>
         void RemoveBackKeyPressCallback()
         {
             PhoneApplicationFrame rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;

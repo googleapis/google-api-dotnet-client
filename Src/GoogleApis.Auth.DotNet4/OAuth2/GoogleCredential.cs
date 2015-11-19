@@ -100,7 +100,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// <para>Returns <c>true</c> only if this credential type has no scopes by default and requires
-        /// a call to <see cref="CreateScoped"/> before use.</para>
+        /// a call to <see cref="o:CreateScoped"/> before use.</para>
         ///
         /// <para>Credentials need to have scopes in them before they can be used to access Google services.
         /// Some Credential types have scopes built-in, and some don't. This property indicates whether
@@ -120,7 +120,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <item>
         /// <description>
         /// <see cref="ServiceAccountCredential"/> does not have scopes built-in by default. Caller should
-        /// invoke <see cref="CreateScoped"/> to add scopes to the credential.
+        /// invoke <see cref="o:CreateScoped"/> to add scopes to the credential.
         /// </description>
         /// </item>
         /// </list>
