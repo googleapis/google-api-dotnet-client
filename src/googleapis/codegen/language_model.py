@@ -478,7 +478,7 @@ class LanguageModel(object):
       if policy.conflict_policy:
         return self.TransformString(variable, s, policy.conflict_policy)
       else:
-        return s + '__'  # Ugly, but works everywhere.
+        return name + '__'  # Ugly, but works everywhere.
     return name
 
   def ApplyFormat(self, variable, name, policy):
