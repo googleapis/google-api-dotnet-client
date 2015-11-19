@@ -23,7 +23,8 @@ def GetMavenArtifactId(api_name, package_path='', canonical_name='',
   # obeying canonicalName unconditionally; were that done this
   # would have to change likewise for our tests to pass.
   if package_path and canonical_name:
-    api_name = canonical_name.replace(' ', '')
+    api_name = canonical_name.lower().replace(' ', '')
+
   parts = []
   if owner_domain == 'google.com':
     parts.extend(['google', 'api', 'services'])

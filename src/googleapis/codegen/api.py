@@ -189,7 +189,13 @@ class Api(template_objects.CodeObject):
     # TODO(user): Introduce a breaking change where we always prefer
     # canonicalName.
     if self.values.get('packagePath'):
-      base = self.values.get('canonicalName') or base
+      # Lowercase the canonical name only for non-cloud-endpoints Google APIs.
+      # This is to avoid breaking changes to existing Google-owned Cloud
+      # Endpoints APIs.
+      if self.values.get('rootUrl').find('.googleapis.com') > 0:
+        base = self.values.get('canonicalName').lower() or base
+      else:
+        base = self.values.get('canonicalName') or base
     if self.values.get('version_module'):
       base = '%s/%s' % (base, self.values['versionNoDots'])
     self._module = template_objects.Module(package_path=base,

@@ -177,6 +177,29 @@ class JavaLanguageModelTest(basetest.TestCase):
     gen = MakeGen('my-custom_app.appspot.com')
     self.assertEquals('com/appspot/my_custom_app/fake', gen.api.module.path)
 
+  def testDefaultPathWithPackagePathAndCanonicalName(self):
+    """Test the package path generation."""
+    def MakeGen():
+      api_def = {
+          'name': 'fake',
+          'version': 'v1',
+          'rootUrl': 'https://www.googleapis.com/',
+          'servicePath': 'fake/v1',
+          'ownerDomain': 'google.com',
+          'packagePath': 'my/path',
+          'canonicalName': 'Canonical Name'
+      }
+      gen = java_generator.BaseJavaGenerator(
+          api_def, options={'google_api': True})
+      gen.AnnotateApiForLanguage(gen.api)
+      return gen
+
+    gen = MakeGen()
+    self.assertEquals('com/google/api/services/my/path/canonicalname',
+                      gen.api.module.path)
+    self.assertEquals('com/google/api/services/my/path/canonicalname/model',
+                      gen.api.model_module.path)
+
   def testAllowedCharacters(self):
     # make sure $ is allowed in a name and that @ is not
 
