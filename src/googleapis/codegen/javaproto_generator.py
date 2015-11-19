@@ -56,6 +56,7 @@ class JavaProtoGenerator(api_library_generator.ApiLibraryGenerator):
         if not name:
           raise ValueError('missing externalTypeName for %s (%s of method %s)'
                            % (schema['id'], attr, method['rpcMethod']))
-        proto_name = 'TO_BE_COMPUTED.' + name[name.rfind('.')+1:]
+        java_name = schema.get('javaTypeName')
+        proto_name = java_name or 'TO_BE_COMPUTED.' + name[name.rfind('.')+1:]
         schema.SetTemplateValue('protoFullClassName', proto_name)
 
