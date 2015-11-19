@@ -595,9 +595,9 @@ class AuthScope(template_objects.CodeObject):
     """
     super(AuthScope, self).__init__(def_dict, api, wire_name=value)
     self._module = api.module
+    self.SetTemplateValue('value', value)
     while value.endswith('/'):
       value = value[:-1]
-    self.SetTemplateValue('value', value)
     if 'description' not in self.values:
       self.SetTemplateValue('description', value)
 

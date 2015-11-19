@@ -4285,7 +4285,7 @@ package com.google.api.services.kitch_sink;
 public class KitchSinkScopes {
 
   /** A non googleapis.com scope. */
-  public static final String MAIL_GOOGLE_COM = "https://mail.google.com";
+  public static final String MAIL_GOOGLE_COM = "https://mail.google.com/";
 
   /** a product level scope. */
   public static final String PRODUCT = "https://www.googleapis.com/auth/product";

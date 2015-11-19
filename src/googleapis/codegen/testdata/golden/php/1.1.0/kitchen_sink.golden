@@ -31,7 +31,7 @@
 class Google_Service_KitchSink extends Google_Service
 {
   /** A non googleapis.com scope. */
-  const MAIL_GOOGLE_COM = "https://mail.google.com";
+  const MAIL_GOOGLE_COM = "https://mail.google.com/";
   /** a product level scope. */
   const PRODUCT = "https://www.googleapis.com/auth/product";
   /** A typical scope. */

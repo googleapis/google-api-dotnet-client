@@ -701,7 +701,7 @@ namespace Google.Apis.KitchSink.v1
         public class Scope
         {
             /// <summary>A non googleapis.com scope</summary>
-            public static string MailGoogleCom = "https://mail.google.com";
+            public static string MailGoogleCom = "https://mail.google.com/";
 
             /// <summary>a product level scope</summary>
             public static string Product = "https://www.googleapis.com/auth/product";

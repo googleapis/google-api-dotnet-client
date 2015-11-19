@@ -153,7 +153,7 @@ public interface KitchSink extends RequestFactory {
   public enum KitchSinkAuthScope implements AuthScope {
 
     /** A non googleapis.com scope */
-    MAIL_GOOGLE_COM("https://mail.google.com"),
+    MAIL_GOOGLE_COM("https://mail.google.com/"),
 
     /** a product level scope */
     PRODUCT("https://www.googleapis.com/auth/product"),

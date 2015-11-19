@@ -298,7 +298,7 @@ class KitchSink extends SomeApiBaseClass  {
 // OAuth2 scopes which may be required for some methods in this API
 
   /** OAuth2 scope: A non googleapis.com scope */
-  public static const string MAIL_GOOGLE_COM_SCOPE = 'https://mail.google.com';
+  public static const string MAIL_GOOGLE_COM_SCOPE = 'https://mail.google.com/';
 
   /** OAuth2 scope: a product level scope */
   public static const string PRODUCT_SCOPE = 'https://www.googleapis.com/auth/product';

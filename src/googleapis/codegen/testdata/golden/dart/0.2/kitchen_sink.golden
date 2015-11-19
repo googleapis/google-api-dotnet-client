@@ -239,7 +239,7 @@ class KitchSinkApi extends BrowserClient {
 
 
   /** OAuth2 scope: A non googleapis.com scope */
-  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com";
+  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com/";
 
   /** OAuth2 scope: a product level scope */
   static const core.String PRODUCT_SCOPE = "https://www.googleapis.com/auth/product";
@@ -3698,7 +3698,7 @@ class KitchSinkApi extends ConsoleClient {
 
 
   /** OAuth2 scope: A non googleapis.com scope */
-  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com";
+  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com/";
 
   /** OAuth2 scope: a product level scope */
   static const core.String PRODUCT_SCOPE = "https://www.googleapis.com/auth/product";

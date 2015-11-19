@@ -887,7 +887,7 @@ const StringPiece KitchSinkService::googleapis_API_GENERATOR(
   "google-apis-code-generator 1.5.1 / 0.1.4");
 
 
-const StringPiece KitchSinkService::SCOPES::MAIL_GOOGLE_COM("https://mail.google.com");
+const StringPiece KitchSinkService::SCOPES::MAIL_GOOGLE_COM("https://mail.google.com/");
 
 const StringPiece KitchSinkService::SCOPES::PRODUCT("https://www.googleapis.com/auth/product");
 

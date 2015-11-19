@@ -269,7 +269,7 @@ class ApiTest(basetest.TestCase):
                       scope.GetTemplateValue('description'))
     scope = AuthScope(api, 'https://www.googleapis.com/auth/trim.slashes//', {})
     self.assertEquals('TRIM_SLASHES', scope.GetTemplateValue('name'))
-    self.assertEquals('https://www.googleapis.com/auth/trim.slashes',
+    self.assertEquals('https://www.googleapis.com/auth/trim.slashes//',
                       scope.GetTemplateValue('value'))
     scope = AuthScope(api,
                       'https://www.googleapis.com/auth/product',
@@ -280,6 +280,8 @@ class ApiTest(basetest.TestCase):
                       {'description': 'A non-googleapis.com scope'})
     self.assertEquals('MAIL_GOOGLE_COM', scope.GetTemplateValue('name'))
     self.assertEquals('mail.google.com', scope.GetTemplateValue('lastPart'))
+    self.assertEquals('https://mail.google.com/',
+                      scope.GetTemplateValue('value'))
     scope = AuthScope(api,
                       'https://mail.google.com/abc',
                       {'description': 'A non-googleapis.com scope'})
