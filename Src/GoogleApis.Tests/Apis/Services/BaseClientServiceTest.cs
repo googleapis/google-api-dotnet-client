@@ -261,6 +261,10 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.Null(service.HttpClientInitializer);
             Assert.True(service.GZipEnabled);
 
+            // Disable "<member> is obsolete" warning for these uses.
+            // MessageHandler no longer provides a supported way for clients to query the list of handlers,
+            // but we rely on the obsolete property as an implementation detail here.
+            #pragma warning disable 618
             // Back-off handler for unsuccessful response (503) is added by default.
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.FirstOrDefault(),
@@ -270,6 +274,7 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.Count, Is.EqualTo(1));
             Assert.That(service.HttpClient.MessageHandler.ExecuteInterceptors.FirstOrDefault(),
                 Is.InstanceOf<MaxUrlLengthInterceptor>());
+            #pragma warning restore 618
         }
 
         #endregion
