@@ -53,7 +53,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
-                IncludeGrantedScopes = (includeGrantedScopes.HasValue)
+                IncludeGrantedScopes = includeGrantedScopes.HasValue
                     ? includeGrantedScopes.Value.ToString().ToLower() : null
             };
         }
@@ -80,7 +80,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         public override bool ShouldForceTokenRetrieval() 
         {
-            return includeGrantedScopes.HasValue && includeGrantedScopes.Value == true;
+            return includeGrantedScopes.HasValue && includeGrantedScopes.Value;
         }
 
         /// <summary>An initializer class for Google authorization code flow. </summary>

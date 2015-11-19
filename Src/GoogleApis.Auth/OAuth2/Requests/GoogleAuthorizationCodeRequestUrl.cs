@@ -51,9 +51,9 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <summary>
         /// Gets or sets the include granted scopes to determine if this authorization request should use
         /// incremental authorization (https://developers.google.com/+/web/api/rest/oauth#incremental-auth).
-        /// If this is provided with the value <c>true</c>, and the authorization request is granted, the 
-        /// authorization will include any previous authorizations granted to this user/application combination 
-        /// for other scopes. Default value is <c>false</c> and will be omitted unless explicitly indicated.
+        /// If true and the authorization request is granted, the authorization will include any previous 
+        /// authorizations granted to this user/application combination for other scopes. Default value is 
+        /// false and will be omitted unless explicitly indicated.
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes", Google.Apis.Util.RequestParameterType.Query)]
         public string IncludeGrantedScopes { get; set; }
