@@ -49,11 +49,11 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string LoginHint { get; set; }
 
         /// <summary>
-        /// Gets or sets the Include Granted Scopes to determine if this authorization request should use
-        /// incremental authorization. If this is provided with the value <c>true</c>, and the authorization 
-        /// request is granted, the authorization will include any previous authorizations granted to this 
-        /// user/application combination for other scopes. Default value is <c>false</c> and will be omitted
-        /// unless explicitly indicated.
+        /// Gets or sets the include granted scopes to determine if this authorization request should use
+        /// incremental authorization (https://developers.google.com/+/web/api/rest/oauth#incremental-auth).
+        /// If this is provided with the value <c>true</c>, and the authorization request is granted, the 
+        /// authorization will include any previous authorizations granted to this user/application combination 
+        /// for other scopes. Default value is <c>false</c> and will be omitted unless explicitly indicated.
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes", Google.Apis.Util.RequestParameterType.Query)]
         public string IncludeGrantedScopes { get; set; }
@@ -66,7 +66,6 @@ namespace Google.Apis.Auth.OAuth2.Requests
             : base(authorizationServerUrl)
         {
             AccessType = "offline";
-            IncludeGrantedScopes = null;
         }
     }
 }

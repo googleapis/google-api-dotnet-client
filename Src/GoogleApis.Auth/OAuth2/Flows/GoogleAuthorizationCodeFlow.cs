@@ -80,12 +80,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         public override bool ShouldForceTokenRetrieval() 
         {
-            if (includeGrantedScopes.HasValue && includeGrantedScopes.Value == true)
-            {
-                return true;
-            }
-
-            return false;
+            return includeGrantedScopes.HasValue && includeGrantedScopes.Value == true;
         }
 
         /// <summary>An initializer class for Google authorization code flow. </summary>

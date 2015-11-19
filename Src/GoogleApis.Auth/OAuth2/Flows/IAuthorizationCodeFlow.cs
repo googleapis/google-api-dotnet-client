@@ -90,7 +90,6 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>
         /// Indicates if a new token needs to be retrieved and stored regardless of normal circumstances.
         /// </summary>
-        /// <returns></returns>
         bool ShouldForceTokenRetrieval();
     }
 }

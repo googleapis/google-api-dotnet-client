@@ -50,14 +50,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>User credential.</returns>
         public static async Task<UserCredential> AuthorizeAsync(ClientSecrets clientSecrets,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
-            IDataStore dataStore = null, bool? includeGrantedScopes = null)
+            IDataStore dataStore = null)
         {
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecrets = clientSecrets,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore,
-                includeGrantedScopes).ConfigureAwait(false);
+            return await AuthorizeAsync(initializer, scopes, user, taskCancellationToken, dataStore)
+                .ConfigureAwait(false);
         }
 
         /// <summary>Asynchronously authorizes the specified user.</summary>
@@ -77,14 +77,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>User credential.</returns>
         public static async Task<UserCredential> AuthorizeAsync(Stream clientSecretsStream,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
-            IDataStore dataStore = null, bool? includeGrantedScopes = null)
+            IDataStore dataStore = null)
         {
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecretsStream = clientSecretsStream,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken,
-                dataStore, includeGrantedScopes).ConfigureAwait(false);
+            return await AuthorizeAsync(initializer, scopes, user, taskCancellationToken, dataStore)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -113,22 +113,17 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        public static async Task<UserCredential> AuthorizeAsyncCore(
+        public static async Task<UserCredential> AuthorizeAsync(
             GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
-            CancellationToken taskCancellationToken, IDataStore dataStore = null,
-            bool? includeGrantedScopes = null)
+            CancellationToken taskCancellationToken, IDataStore dataStore = null)
         {
             initializer.Scopes = scopes;
             initializer.DataStore = dataStore ?? new FileDataStore(Folder);
-            if (includeGrantedScopes.HasValue)
-            {
-                initializer.IncludeGrantedScopes = includeGrantedScopes.Value;
-            }
             var flow = new GoogleAuthorizationCodeFlow(initializer);
 
             // Create an authorization code installed app instance and authorize the user.
-            return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver())
-                .AuthorizeAsync(user, taskCancellationToken).ConfigureAwait(false);
+            return await new AuthorizationCodeInstalledApp(flow, new LocalServerCodeReceiver()).AuthorizeAsync
+                (user, taskCancellationToken).ConfigureAwait(false);
         }
     }
 }
