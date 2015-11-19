@@ -3825,11 +3825,6 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
         super(KitchSink.this, "PUT", REST_PATH, content, com.google.api.services.kitch_sink.model.Vote.class);
         this.seriesId = com.google.api.client.util.Preconditions.checkNotNull(seriesId, "Required parameter seriesId must be specified.");
         this.submissionId = com.google.api.client.util.Preconditions.checkNotNull(submissionId, "Required parameter submissionId must be specified.");
-        if (!getSuppressPatternChecks()) {
-          com.google.api.client.util.Preconditions.checkArgument(SUBMISSION_ID_PATTERN.matcher(submissionId).matches(),
-              "Parameter submissionId must conform to the pattern " +
-              "\\d{3},\\d{3},\\d{3}");
-        }
       }
 
       @Override
@@ -3879,11 +3874,6 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
 
       /** The decimal ID of the Submission within the Series. */
       public Update setSubmissionId(Integer submissionId) {
-        if (!getSuppressPatternChecks()) {
-          com.google.api.client.util.Preconditions.checkArgument(SUBMISSION_ID_PATTERN.matcher(submissionId).matches(),
-              "Parameter submissionId must conform to the pattern " +
-              "\\d{3},\\d{3},\\d{3}");
-        }
         this.submissionId = submissionId;
         return this;
       }
