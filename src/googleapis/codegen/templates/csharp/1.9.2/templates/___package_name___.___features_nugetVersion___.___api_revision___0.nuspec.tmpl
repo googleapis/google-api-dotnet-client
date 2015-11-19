@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>{{ api.module.name }}</id>
+        <version>{{ features.nugetVersion }}.{{ api.revision }}0</version>
+        <title>{{ api.module.name }} Client Library</title>
+        <authors>{% if api.ownerName == 'Google' %}Google Inc.{% else %}{{ api.ownerName }}{% endif %}</authors>
+        <owners>{% if api.ownerName == 'Google' %}peleyal{% endif %}</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://code.google.com/p/google-api-dotnet-client/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>{{ api.ownerName }} APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
+          Supported Platforms:
+
+          - .NET Framework 4 and 4.5
+
+          - Windows Store apps
+
+          - Windows Phone 8 and 8.1
+
+          - Portable Class Libraries
+
+          More documentation on the API is available at:
+          https://developers.google.com/api-client-library/dotnet/apis/{{ api.name }}/{{ api.version }}
+
+          The package source code is available at:
+          https://developers.google.com/resources/api-libraries/download/{{ api.name }}/{{ api.version }}/csharp
+        </description>
+        <tags>{{ api.ownerName }}</tags>
+        <dependencies>
+            <group>
+                <dependency id="Google.Apis" version="{{ features.releaseVersion }}" />{% if api.authscopes %}
+                <dependency id="Google.Apis.Auth" version="{{ features.releaseVersion }}" />{% endif %}
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\{{ api.module.name }}.dll" />
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\{{ api.module.name }}.pdb" />
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\{{ api.module.name }}.xml" />
+    </files>
+</package>
