@@ -210,7 +210,7 @@ class JavaLanguageModel(language_model.LanguageModel):
   # We can not create classes which match a Java keyword or built in object
   # type.
   RESERVED_CLASS_NAMES = _JAVA_KEYWORDS + _SPECIAL_CLASS_NAMES + [
-      'float', 'integer', 'object', 'string', 'true', 'false',
+      'float', 'integer', 'object', 'string', 'true', 'false', 'null'
       ]
 
   allowed_characters = '$'
