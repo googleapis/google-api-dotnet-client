@@ -7,7 +7,7 @@ export "kitch_sink_v1_api_client.dart";
 import "dart:core" as core;
 import "dart:html" as html;
 import "dart:async" as async;
-import "dart:json" as JSON;
+import "dart:convert";
 import "package:js/js.dart" as js;
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
@@ -20,7 +20,7 @@ library kitch_sink_v1_api_client;
 
 import "dart:core" as core;
 import "dart:async" as async;
-import "dart:json" as JSON;
+import "dart:convert";
 
 part "src/common/client.dart";
 part "src/common/schemas.dart";
@@ -37,7 +37,7 @@ import "dart:core" as core;
 import "dart:io" as io;
 import "dart:async" as async;
 import "dart:uri" as uri;
-import "dart:json" as JSON;
+import "dart:convert";
 import "package:http/http.dart" as http;
 import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
 
@@ -110,7 +110,7 @@ abstract class BrowserClient extends Client {
       var request = js.context.gapi.client.request(js.map(requestData));
       var callback = new js.Callback.once((jsonResp, rawResp) {
         if (jsonResp is core.bool && jsonResp == false) {
-          var raw = JSON.parse(rawResp);
+          var raw = JSON.decode(rawResp);
           if (raw["gapiRequest"]["data"]["status"] >= 400) {
             completer.completeError(new APIRequestException("JS Client - ${raw["gapiRequest"]["data"]["status"]} ${raw["gapiRequest"]["data"]["statusText"]} - ${raw["gapiRequest"]["data"]["body"]}"));
           } else {
@@ -152,7 +152,7 @@ abstract class BrowserClient extends Client {
 
     request.onLoadEnd.listen((_) {
       if (request.status == 200) {
-        var data = JSON.parse(request.responseText);
+        var data = JSON.decode(request.responseText);
         completer.complete(data);
       } else {
         if (request.status == 0) {
@@ -165,7 +165,7 @@ abstract class BrowserClient extends Client {
             url = new oauth.UrlPattern(path).generate(urlParams, {});
             _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
               .then((response) {
-                var data = JSON.parse(response);
+                var data = JSON.decode(response);
                 completer.complete(data);
               })
               .catchError((e) {
@@ -178,7 +178,7 @@ abstract class BrowserClient extends Client {
           if (request.responseText != null) {
             var errorJson;
             try {
-              errorJson = JSON.parse(request.responseText);
+              errorJson = JSON.decode(request.responseText);
             } on core.FormatException {
               errorJson = null;
             }
@@ -1823,7 +1823,7 @@ class Geometry {
   }
 
   /** Return String representation of Geometry */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -1856,7 +1856,7 @@ class GeometryCollection {
   }
 
   /** Return String representation of GeometryCollection */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -1883,7 +1883,7 @@ class GeometryPolygon {
   }
 
   /** Return String representation of GeometryPolygon */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -1918,7 +1918,7 @@ class GeometryReference {
   }
 
   /** Return String representation of GeometryReference */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -1961,7 +1961,7 @@ class LatLong {
   }
 
   /** Return String representation of LatLong */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -1981,7 +1981,7 @@ class ModeratorTopicsResourcePartial {
   }
 
   /** Return String representation of ModeratorTopicsResourcePartial */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2024,7 +2024,7 @@ class Profile {
   }
 
   /** Return String representation of Profile */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2075,7 +2075,7 @@ class ProfileAttribution {
   }
 
   /** Return String representation of ProfileAttribution */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2102,7 +2102,7 @@ class ProfileId {
   }
 
   /** Return String representation of ProfileId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2129,7 +2129,7 @@ class Rule {
   }
 
   /** Return String representation of Rule */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2164,7 +2164,7 @@ class RuleSubmissions {
   }
 
   /** Return String representation of RuleSubmissions */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2247,7 +2247,7 @@ class Series {
   }
 
   /** Return String representation of Series */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2330,7 +2330,7 @@ class SeriesCounters {
   }
 
   /** Return String representation of SeriesCounters */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2357,7 +2357,7 @@ class SeriesCountersCounters {
   }
 
   /** Return String representation of SeriesCountersCounters */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2384,7 +2384,7 @@ class SeriesId {
   }
 
   /** Return String representation of SeriesId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2425,7 +2425,7 @@ class SeriesList {
   }
 
   /** Return String representation of SeriesList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2552,7 +2552,7 @@ class Submission {
   }
 
   /** Return String representation of Submission */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2597,7 +2597,7 @@ class SubmissionAttribution {
   }
 
   /** Return String representation of SubmissionAttribution */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2640,7 +2640,7 @@ class SubmissionCounters {
   }
 
   /** Return String representation of SubmissionCounters */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2675,7 +2675,7 @@ class SubmissionId {
   }
 
   /** Return String representation of SubmissionId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2716,7 +2716,7 @@ class SubmissionList {
   }
 
   /** Return String representation of SubmissionList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2751,7 +2751,7 @@ class SubmissionParentSubmissionId {
   }
 
   /** Return String representation of SubmissionParentSubmissionId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2771,7 +2771,7 @@ class SubmissionTranslations {
   }
 
   /** Return String representation of SubmissionTranslations */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2822,7 +2822,7 @@ class Tag {
   }
 
   /** Return String representation of Tag */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2865,7 +2865,7 @@ class TagId {
   }
 
   /** Return String representation of TagId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2885,7 +2885,7 @@ class TagList {
   }
 
   /** Return String representation of TagList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -2960,7 +2960,7 @@ class Topic {
   }
 
   /** Return String representation of Topic */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3049,7 +3049,7 @@ class Topic2 {
   }
 
   /** Return String representation of Topic2 */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3116,7 +3116,7 @@ class Topic2Counters {
   }
 
   /** Return String representation of Topic2Counters */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3151,7 +3151,7 @@ class Topic2Id {
   }
 
   /** Return String representation of Topic2Id */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3218,7 +3218,7 @@ class TopicCounters {
   }
 
   /** Return String representation of TopicCounters */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3253,7 +3253,7 @@ class TopicId {
   }
 
   /** Return String representation of TopicId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3294,7 +3294,7 @@ class TopicList {
   }
 
   /** Return String representation of TopicList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3329,7 +3329,7 @@ class TopicRules {
   }
 
   /** Return String representation of TopicRules */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3364,7 +3364,7 @@ class TopicRulesSubmissions {
   }
 
   /** Return String representation of TopicRulesSubmissions */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3399,7 +3399,7 @@ class TopicRulesVotes {
   }
 
   /** Return String representation of TopicRulesVotes */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3434,7 +3434,7 @@ class Translation {
   }
 
   /** Return String representation of Translation */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3485,7 +3485,7 @@ class Vote {
   }
 
   /** Return String representation of Vote */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3505,7 +3505,7 @@ class VoteId {
   }
 
   /** Return String representation of VoteId */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -3546,7 +3546,7 @@ class VoteList {
   }
 
   /** Return String representation of VoteList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 === end: ./google_api_kitch_sink_v1/lib/src/common/schemas.dart
@@ -3593,7 +3593,7 @@ abstract class ConsoleClient extends Client {
 
       if (method.toLowerCase() == "get") {
         client.get(url).then((http.Response response) {
-          var data = JSON.parse(response.body);
+          var data = JSON.decode(response.body);
           completer.complete(data);
           clientDummyCompleter.complete(null);
         }, onError: (async.AsyncError error) {
@@ -3620,7 +3620,7 @@ abstract class ConsoleClient extends Client {
           response.transform(new io.StringDecoder()).listen((core.String data) => onResponseBody.write(data),
               onError: (error) => completer.completeError(new APIRequestException("POST stream error: $error")),
               onDone: () {
-                var data = JSON.parse(onResponseBody.toString());
+                var data = JSON.decode(onResponseBody.toString());
                 completer.complete(data);
                 clientDummyCompleter.complete(null);
                 postHttpClient.close();

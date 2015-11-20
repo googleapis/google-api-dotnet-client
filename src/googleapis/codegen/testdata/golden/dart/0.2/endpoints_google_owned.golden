@@ -7,7 +7,7 @@ export "helloworld_v1_api_client.dart";
 import "dart:core" as core;
 import "dart:html" as html;
 import "dart:async" as async;
-import "dart:json" as JSON;
+import "dart:convert";
 import "package:js/js.dart" as js;
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
@@ -20,7 +20,7 @@ library helloworld_v1_api_client;
 
 import "dart:core" as core;
 import "dart:async" as async;
-import "dart:json" as JSON;
+import "dart:convert";
 
 part "src/common/client.dart";
 part "src/common/schemas.dart";
@@ -37,7 +37,7 @@ import "dart:core" as core;
 import "dart:io" as io;
 import "dart:async" as async;
 import "dart:uri" as uri;
-import "dart:json" as JSON;
+import "dart:convert";
 import "package:http/http.dart" as http;
 import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
 
@@ -110,7 +110,7 @@ abstract class BrowserClient extends Client {
       var request = js.context.gapi.client.request(js.map(requestData));
       var callback = new js.Callback.once((jsonResp, rawResp) {
         if (jsonResp is core.bool && jsonResp == false) {
-          var raw = JSON.parse(rawResp);
+          var raw = JSON.decode(rawResp);
           if (raw["gapiRequest"]["data"]["status"] >= 400) {
             completer.completeError(new APIRequestException("JS Client - ${raw["gapiRequest"]["data"]["status"]} ${raw["gapiRequest"]["data"]["statusText"]} - ${raw["gapiRequest"]["data"]["body"]}"));
           } else {
@@ -152,7 +152,7 @@ abstract class BrowserClient extends Client {
 
     request.onLoadEnd.listen((_) {
       if (request.status == 200) {
-        var data = JSON.parse(request.responseText);
+        var data = JSON.decode(request.responseText);
         completer.complete(data);
       } else {
         if (request.status == 0) {
@@ -165,7 +165,7 @@ abstract class BrowserClient extends Client {
             url = new oauth.UrlPattern(path).generate(urlParams, {});
             _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
               .then((response) {
-                var data = JSON.parse(response);
+                var data = JSON.decode(response);
                 completer.complete(data);
               })
               .catchError((e) {
@@ -178,7 +178,7 @@ abstract class BrowserClient extends Client {
           if (request.responseText != null) {
             var errorJson;
             try {
-              errorJson = JSON.parse(request.responseText);
+              errorJson = JSON.decode(request.responseText);
             } on core.FormatException {
               errorJson = null;
             }
@@ -527,7 +527,7 @@ class HelloGreeting {
   }
 
   /** Return String representation of HelloGreeting */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 
@@ -561,7 +561,7 @@ class HelloGreetingCollection {
   }
 
   /** Return String representation of HelloGreetingCollection */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }
 
 === end: ./google_api_helloworld_v1/lib/src/common/schemas.dart
@@ -608,7 +608,7 @@ abstract class ConsoleClient extends Client {
 
       if (method.toLowerCase() == "get") {
         client.get(url).then((http.Response response) {
-          var data = JSON.parse(response.body);
+          var data = JSON.decode(response.body);
           completer.complete(data);
           clientDummyCompleter.complete(null);
         }, onError: (async.AsyncError error) {
@@ -635,7 +635,7 @@ abstract class ConsoleClient extends Client {
           response.transform(new io.StringDecoder()).listen((core.String data) => onResponseBody.write(data),
               onError: (error) => completer.completeError(new APIRequestException("POST stream error: $error")),
               onDone: () {
-                var data = JSON.parse(onResponseBody.toString());
+                var data = JSON.decode(onResponseBody.toString());
                 completer.complete(data);
                 clientDummyCompleter.complete(null);
                 postHttpClient.close();
