@@ -71,5 +71,5 @@ class {{ model.className }} {
   }
 
   /** Return String representation of {{ model.className }} */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 }

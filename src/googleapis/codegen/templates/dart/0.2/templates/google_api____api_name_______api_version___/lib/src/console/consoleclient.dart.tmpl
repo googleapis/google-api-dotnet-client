@@ -40,7 +40,7 @@ abstract class ConsoleClient extends Client {
 
       if (method.toLowerCase() == "get") {
         client.get(url).then((http.Response response) {
-          var data = JSON.parse(response.body);
+          var data = JSON.decode(response.body);
           completer.complete(data);
           clientDummyCompleter.complete(null);
         }, onError: (async.AsyncError error) {
@@ -67,7 +67,7 @@ abstract class ConsoleClient extends Client {
           response.transform(new io.StringDecoder()).listen((core.String data) => onResponseBody.write(data),
               onError: (error) => completer.completeError(new APIRequestException("POST stream error: $error")),
               onDone: () {
-                var data = JSON.parse(onResponseBody.toString());
+                var data = JSON.decode(onResponseBody.toString());
                 completer.complete(data);
                 clientDummyCompleter.complete(null);
                 postHttpClient.close();
