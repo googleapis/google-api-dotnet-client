@@ -35,8 +35,10 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+        public readonly bool? includeGrantedScopes;
+
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
-        private bool? includeGrantedScopes { get; set; }
+        public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
@@ -53,8 +55,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
-                IncludeGrantedScopes = includeGrantedScopes.HasValue
-                    ? includeGrantedScopes.Value.ToString().ToLower() : null
+                IncludeGrantedScopes = IncludeGrantedScopes.HasValue
+                    ? IncludeGrantedScopes.Value.ToString().ToLower() : null
             };
         }
 
@@ -80,7 +82,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         public override bool ShouldForceTokenRetrieval() 
         {
-            return includeGrantedScopes.HasValue && includeGrantedScopes.Value;
+            return IncludeGrantedScopes.HasValue && IncludeGrantedScopes.Value;
         }
 
         /// <summary>An initializer class for Google authorization code flow. </summary>
