@@ -54,7 +54,8 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// If true and the authorization request is granted, the authorization will include any previous 
         /// authorizations granted to this user/application combination for other scopes.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes", Google.Apis.Util.RequestParameterType.Query)]
+        [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes",
+            Google.Apis.Util.RequestParameterType.Query)]
         public string IncludeGrantedScopes { get; set; }
 
         /// <summary>
