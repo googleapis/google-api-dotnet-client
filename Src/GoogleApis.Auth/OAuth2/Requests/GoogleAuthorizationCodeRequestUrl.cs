@@ -49,6 +49,14 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string LoginHint { get; set; }
 
         /// <summary>
+        /// Gets or sets a collection of user defined query parameters to facilitate any not explicitly supported
+        /// by the library which will be included in the resultant authentication URL.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("user_defined_query_parameters",
+            Google.Apis.Util.RequestParameterType.UserDefiniedQueries)]
+        public System.Collections.Generic.KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+
+        /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets
         /// the <see cref="AccessType"/> to <c>offline</c>.
         /// </summary>
