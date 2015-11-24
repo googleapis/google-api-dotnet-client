@@ -121,7 +121,17 @@ namespace Google.Apis.Requests.Parameters
                 // Call action with the type name and value.
                 if (propertyType.IsValueType || value != null)
                 {
-                    action(attribute.Type, name, value);
+                    if (attribute.Type == RequestParameterType.UserDefiniedQueries)
+                    {
+                        foreach (var pair in (KeyValuePair<string, string>[])value)
+                        {
+                            action(RequestParameterType.Query, pair.Key, pair.Value);
+                        }
+                    }
+                    else
+                    { 
+                        action(attribute.Type, name, value);
+                    }
                 }
             }
         }

@@ -49,6 +49,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string LoginHint { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the include granted scopes to determine if this authorization request should use
         /// incremental authorization (https://developers.google.com/+/web/api/rest/oauth#incremental-auth).
         /// If true and the authorization request is granted, the authorization will include any previous 
@@ -58,6 +59,14 @@ namespace Google.Apis.Auth.OAuth2.Requests
         [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes",
             Google.Apis.Util.RequestParameterType.Query)]
         public string IncludeGrantedScopes { get; set; }
+=======
+        /// Gets or sets a collection of user defined query parameters to facilitate any not explicitly supported
+        /// by the library which will be included in the resultant authentication URL.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("user_defined_query_parameters",
+            Google.Apis.Util.RequestParameterType.UserDefiniedQueries)]
+        public System.Collections.Generic.KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+>>>>>>> Added support for custom auth query parameters and unit test.
 
         /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets
