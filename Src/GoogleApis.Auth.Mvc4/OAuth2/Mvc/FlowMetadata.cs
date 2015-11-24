@@ -22,7 +22,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc
 {
     /// <summary>
     /// Flow metadata abstract class which contains the reference to the
-    /// <see cref="Google.Apis.Auth.OAuth2.FlowsIAuthorizationCodeFlow"/> and
+    /// <see cref="Google.Apis.Auth.OAuth2.Flows.IAuthorizationCodeFlow"/> and
     /// method to get the user identifier.
     /// </summary>
     public abstract class FlowMetadata

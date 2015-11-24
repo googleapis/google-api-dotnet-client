@@ -53,7 +53,7 @@ namespace Google.Apis.Auth.OAuth2
     public class ServiceAccountCredential : ServiceCredential
     {
         /// <summary>An initializer class for the service account credential. </summary>
-        public class Initializer : ServiceCredential.Initializer
+        new public class Initializer : ServiceCredential.Initializer
         {
             /// <summary>Gets the service account ID (typically an e-mail address).</summary>
             public string Id { get; private set; }

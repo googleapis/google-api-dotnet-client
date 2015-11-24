@@ -32,7 +32,6 @@ namespace Google.Apis.Auth.OAuth2
     /// interacting server to server. For example, a service account credential could be used to access Google Cloud
     /// Storage from a web application without a user's involvement.
     /// <para>
-    /// See also: <see cref="Google.Apis.Auth.OAuth2.ServiceAccountCredential"/>.
     /// <code>ServiceAccountCredential</code> inherits from this class in order to support Service Account. More
     /// details available at: https://developers.google.com/accounts/docs/OAuth2ServiceAccount.
     /// <see cref="Google.Apis.Auth.OAuth2.ComputeCredential"/> is another example for a class that inherits from this

@@ -31,14 +31,16 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 verification code receiver for Windows Phone 8.1 application that opens a Google account form so the
     /// users can enter their credentials and accept the application access to their token.
     /// 
-    /// This broker's most important method is <see cref="ReceiveCodeAsync"/>.
+    /// This broker's most important method is
+    /// <see cref="ReceiveCodeAsync(AuthorizationCodeRequestUrl,CancellationToken)"/>.
     /// The first time it is being called, it calls <code>WebAuthenticationBroker.AuthenticateAndContinue</code>
     /// so the users can authorize the app to access their private resources. While calling this method the app is
     /// suspended.
     /// 
     /// When the app is being activated again, the developer MUST store the auth result (which may contain the access
     /// code or an error) in the storage with the <code>SerializableWebAuthResult.Name</code> key.
-    /// Then when the auth framework calls again the <see cref="ReceiveCodeAsync"/> it looks in the storage to find
+    /// Then when the auth framework calls again the
+    /// <see cref="ReceiveCodeAsync(AuthorizationCodeRequestUrl,CancellationToken)"/> it looks in the storage to find
     /// the auth result, and if a code was received the framework will convert it in turn to access and refresh tokens.
     /// </summary>
     public class AuthorizationCodeBroker : ICodeReceiver

@@ -25,7 +25,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
-    /// <summary
+    /// <summary>
     /// Holder for credential parameters read from JSON credential file.
     /// Fields are union of parameters for all supported credential types.
     /// </summary>

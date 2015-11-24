@@ -77,9 +77,14 @@ namespace Google.Apis.Auth.OAuth2.Flows
             Assert.NotNull(flow.Scopes);
             Assert.That(flow.TokenServerUrl, Is.EqualTo("https://token.com"));
 
+            // Disable "<member> is obsolete" warning for these uses.
+            // MessageHandler no longer provides a supported way for clients to query the list of handlers,
+            // but we rely on the obsolete property as an implementation detail here.
+            #pragma warning disable 618
             Assert.That(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count(), Is.EqualTo(1));
             Assert.That(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.First(),
                 Is.InstanceOf<BackOffHandler>());
+            #pragma warning restore 618
         }
 
         #endregion
