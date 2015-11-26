@@ -268,7 +268,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         protected virtual Stream GetStream(string filePath)
         {
-            return new FileStream(filePath, FileMode.Open);
+            return new FileStream(filePath, FileMode.Open, FileAccess.Read);
         }
     }
 }
