@@ -26,6 +26,7 @@ namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
     /// Thread-safe OAuth 2.0 authorization code flow for an installed application that persists end-user credentials.
+    /// Incremental authorization is not supported for installed app authorization.
     /// </summary>
     public class AuthorizationCodeInstalledApp : IAuthorizationCodeInstalledApp
     {

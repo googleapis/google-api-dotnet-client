@@ -19,6 +19,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Auth.OAuth2.Requests;
 
 namespace Google.Apis.Auth.OAuth2.Web
@@ -102,7 +103,7 @@ namespace Google.Apis.Auth.OAuth2.Web
 
             // If the stored token is null or it doesn't have a refresh token and the access token is expired, we need 
             // to retrieve a new access token.
-            if (token == null || (token.RefreshToken == null && token.IsExpired(flow.Clock)))
+            if (ShouldRequestAuthorizationCode(token))
             {
                 // Create an authorization code request.
                 AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(redirectUri);
@@ -123,6 +124,18 @@ namespace Google.Apis.Auth.OAuth2.Web
             }
 
             return new AuthResult { Credential = new UserCredential(flow, userId, token) };
+        }
+
+        /// <summary>
+        /// Determines the need for retrieval of a new authorization code, based on the given token and the 
+        /// authorization code flow.
+        /// </summary>
+        public bool ShouldRequestAuthorizationCode(TokenResponse token)
+        {
+            // If the flow includes a parameter that requires a new token, if the stored token is null or it doesn't
+            // have a refresh token and the access token is expired we need to retrieve a new authorization code.
+            return Flow.ShouldForceTokenRetrieval() || token == null || (token.RefreshToken == null
+                && token.IsExpired(flow.Clock));
         }
     }
 }
