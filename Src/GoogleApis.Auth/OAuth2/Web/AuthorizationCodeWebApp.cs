@@ -101,8 +101,7 @@ namespace Google.Apis.Auth.OAuth2.Web
             // Try to load a token from the data store.
             var token = await Flow.LoadTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);
 
-            // If the stored token is null or it doesn't have a refresh token and the access token is expired, we need 
-            // to retrieve a new access token.
+            // Check if a new authorization code is needed.
             if (ShouldRequestAuthorizationCode(token))
             {
                 // Create an authorization code request.
@@ -132,6 +131,7 @@ namespace Google.Apis.Auth.OAuth2.Web
         /// </summary>
         public bool ShouldRequestAuthorizationCode(TokenResponse token)
         {
+            // TODO: This code should be shared between this class and AuthorizationCodeInstalledApp.
             // If the flow includes a parameter that requires a new token, if the stored token is null or it doesn't
             // have a refresh token and the access token is expired we need to retrieve a new authorization code.
             return Flow.ShouldForceTokenRetrieval() || token == null || (token.RefreshToken == null
