@@ -19,8 +19,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Auth.OAuth2.Requests;
+using Google.Apis.Auth.OAuth2.Responses;
 
 namespace Google.Apis.Auth.OAuth2.Web
 {
