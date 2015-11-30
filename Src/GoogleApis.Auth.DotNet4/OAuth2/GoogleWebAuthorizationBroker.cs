@@ -56,7 +56,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecrets = clientSecrets,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore)
+            return await AuthorizeAsync(initializer, scopes, user, taskCancellationToken, dataStore)
                 .ConfigureAwait(false);
         }
 
@@ -83,7 +83,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ClientSecretsStream = clientSecretsStream,
             };
-            return await AuthorizeAsyncCore(initializer, scopes, user, taskCancellationToken, dataStore)
+            return await AuthorizeAsync(initializer, scopes, user, taskCancellationToken, dataStore)
                 .ConfigureAwait(false);
         }
 
@@ -113,7 +113,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthorizeAsyncCore(
+        public static async Task<UserCredential> AuthorizeAsync(
             GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
             CancellationToken taskCancellationToken, IDataStore dataStore = null)
         {

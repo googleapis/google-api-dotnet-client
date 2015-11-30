@@ -35,11 +35,17 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+        public readonly bool? includeGrantedScopes;
+
+        /// <summary>Gets or sets the include granted scopes indicator.</summary>
+        public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
+
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
+            includeGrantedScopes = initializer.IncludeGrantedScopes;
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -48,7 +54,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
             {
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
-                RedirectUri = redirectUri
+                RedirectUri = redirectUri,
+                IncludeGrantedScopes = IncludeGrantedScopes.HasValue
+                    ? IncludeGrantedScopes.Value.ToString().ToLower() : null
             };
         }
 
@@ -72,11 +80,19 @@ namespace Google.Apis.Auth.OAuth2.Flows
             await DeleteTokenAsync(userId, taskCancellationToken);
         }
 
+        public override bool ShouldForceTokenRetrieval() 
+        {
+            return IncludeGrantedScopes.HasValue && IncludeGrantedScopes.Value;
+        }
+
         /// <summary>An initializer class for Google authorization code flow. </summary>
         public new class Initializer : AuthorizationCodeFlow.Initializer
         {
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
+
+            /// <summary>Gets or sets the optional indicator for including granted scopes for incremental authorization.</summary>
+            public bool? IncludeGrantedScopes { get; set; }
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 

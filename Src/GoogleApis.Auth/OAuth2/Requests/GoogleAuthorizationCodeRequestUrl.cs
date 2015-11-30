@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string AccessType { get; set; }
 
         /// <summary>
-        /// Gets pr sets prompt for consent behavior <c>auto</c> to request auto-approval or<c>force</c> to force the 
+        /// Gets or sets prompt for consent behavior <c>auto</c> to request auto-approval or<c>force</c> to force the 
         /// approval UI to show, or <c>null</c> for the default behavior.
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("approval_prompt", Google.Apis.Util.RequestParameterType.Query)]
@@ -47,6 +47,17 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("login_hint", Google.Apis.Util.RequestParameterType.Query)]
         public string LoginHint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the include granted scopes to determine if this authorization request should use
+        /// incremental authorization (https://developers.google.com/+/web/api/rest/oauth#incremental-auth).
+        /// If true and the authorization request is granted, the authorization will include any previous 
+        /// authorizations granted to this user/application combination for other scopes.
+        /// </summary>
+        /// <remarks>Currently unsupported for installed apps.</remarks>
+        [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes",
+            Google.Apis.Util.RequestParameterType.Query)]
+        public string IncludeGrantedScopes { get; set; }
 
         /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets

@@ -270,6 +270,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
             throw new NotImplementedException("The OAuth 2.0 protocol does not support token revocation.");
         }
 
+        public virtual bool ShouldForceTokenRetrieval() { return false; }
+
         #endregion
 
         /// <summary>Stores the token in the <see cref="DataStore"/>.</summary>
