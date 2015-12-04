@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,11 +36,17 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+        private readonly KeyValuePair<string, string>[] userDefinedQueryParams;
+
+        /// <summary>Gets the user defined query parameters.</summary>
+        public KeyValuePair<string, string>[] UserDefinedQueryParams { get { return userDefinedQueryParams; } }
+
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
+            userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -48,7 +55,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
             {
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
-                RedirectUri = redirectUri
+                RedirectUri = redirectUri,
+                UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
 
@@ -77,6 +85,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
+
+            /// <summary>Gets or sets the optional user defined query parameters.</summary>
+            public KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
