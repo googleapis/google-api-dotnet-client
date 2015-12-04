@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -65,8 +66,12 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("user_defined_query_parameters",
             Google.Apis.Util.RequestParameterType.UserDefiniedQueries)]
+<<<<<<< HEAD
         public System.Collections.Generic.KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
 >>>>>>> Added support for custom auth query parameters and unit test.
+=======
+        public KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+>>>>>>> Added ability to add to initializer through public broker method.
 
         /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets

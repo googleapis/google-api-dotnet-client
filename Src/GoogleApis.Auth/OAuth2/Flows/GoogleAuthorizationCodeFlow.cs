@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,17 +36,28 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+<<<<<<< HEAD
         public readonly bool? includeGrantedScopes;
 
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
+=======
+        private readonly KeyValuePair<string, string>[] userDefinedQueryParams;
+
+        /// <summary>Gets the user defined query parameters.</summary>
+        public KeyValuePair<string, string>[] UserDefinedQueryParams { get { return userDefinedQueryParams; } }
+>>>>>>> Added ability to add to initializer through public broker method.
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
+<<<<<<< HEAD
             includeGrantedScopes = initializer.IncludeGrantedScopes;
+=======
+            userDefinedQueryParams = initializer.UserDefinedQueryParams;
+>>>>>>> Added ability to add to initializer through public broker method.
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -55,8 +67,12 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 ClientId = ClientSecrets.ClientId,
                 Scope = string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
+<<<<<<< HEAD
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null
+=======
+                UserDefinedQueryParams = UserDefinedQueryParams
+>>>>>>> Added ability to add to initializer through public broker method.
             };
         }
 
@@ -91,8 +107,13 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
 
+<<<<<<< HEAD
             /// <summary>Gets or sets the optional indicator for including granted scopes for incremental authorization.</summary>
             public bool? IncludeGrantedScopes { get; set; }
+=======
+            /// <summary>Gets or sets the optional user defined query parameters.</summary>
+            public KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+>>>>>>> Added ability to add to initializer through public broker method.
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
