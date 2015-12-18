@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 
 using Google.Apis.Http;
 using Google.Apis.Logging;
+using Google.Apis.Media;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Testing;
@@ -548,13 +549,7 @@ namespace Google.Apis.Upload
                 Logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
             }
-
-            var error = await Service.DeserializeError(response).ConfigureAwait(false);
-            throw new GoogleApiException(Service.Name, error.ToString())
-            {
-                Error = error,
-                HttpStatusCode = response.StatusCode
-            };
+            throw await MediaApiErrorHandling.ExceptionForResponseAsync(Service, response).ConfigureAwait(false);
         }
 
         /// <summary>A callback when the media was uploaded successfully.</summary>

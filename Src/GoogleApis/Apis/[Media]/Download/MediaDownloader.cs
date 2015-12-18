@@ -22,6 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Logging;
+using Google.Apis.Media;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Util;
@@ -210,12 +211,7 @@ namespace Google.Apis.Download
                     {
                         if (!response.IsSuccessStatusCode)
                         {
-                            var error = await service.DeserializeError(response).ConfigureAwait(false);
-                            throw new GoogleApiException(service.Name, error.ToString())
-                            {
-                                Error = error,
-                                HttpStatusCode = response.StatusCode
-                            };
+                            throw await MediaApiErrorHandling.ExceptionForResponseAsync(service, response).ConfigureAwait(false);
                         }
 
                         // Read the content and copy to the parameter's stream.

@@ -88,6 +88,7 @@
     <Compile Include="Apis\[Media]\Download\IDownloadProgress.cs" />
     <Compile Include="Apis\[Media]\Download\IMediaDownloader.cs" />
     <Compile Include="Apis\[Media]\Download\MediaDownloader.cs" />
+    <Compile Include="Apis\[Media]\MediaApiErrorHandling.cs" />
     <Compile Include="Apis\[Media]\Upload\IUploadProgress.cs" />
     <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

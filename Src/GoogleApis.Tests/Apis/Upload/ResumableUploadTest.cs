@@ -341,6 +341,8 @@ anim id est laborum.";
             /// <summary>Get or sets indication if the first call after resuming should fail or not.</summary>
             public bool ErrorOnResume { get; set; }
 
+            public string ErrorMessage { get; set; }
+
             public MultipleChunksMessageHandler(bool knownSize, ServerError supportedError, int len, int chunkSize,
                 bool alwaysFailFromFirstError = false)
             {
@@ -400,22 +402,7 @@ anim id est laborum.";
                         else if (supportedError == ServerError.NotFound)
                         {
                             response.StatusCode = HttpStatusCode.NotFound;
-                            var error = @"{
-                                            ""error"": {
-                                                ""errors"": [
-                                                    {
-                                                        ""domain"": ""global"",
-                                                        ""reason"": ""required"",
-                                                        ""message"": ""Login Required"",
-                                                        ""locationType"": ""header"",
-                                                        ""location"": ""Authorization""
-                                                    }
-                                                ],
-                                                ""code"": 401,
-                                                ""message"": ""Login Required""
-                                            }
-                                          }";
-                            response.Content = new StringContent(error);
+                            response.Content = new StringContent(ErrorMessage);
                         }
                         else
                         {
@@ -748,6 +735,21 @@ anim id est laborum.";
         private void SubtestTestChunkUpload(bool knownSize, int expectedCalls, ServerError error = ServerError.None,
             int chunkSize = 100, int readBytesOnError = 0)
         {
+            string jsonError =
+                @"{ ""error"": {
+                    ""errors"": [
+                        {
+                            ""domain"": ""global"",
+                            ""reason"": ""required"",
+                            ""message"": ""Login Required"",
+                            ""locationType"": ""header"",
+                            ""location"": ""Authorization""
+                        }
+                    ],
+                    ""code"": 401,
+                    ""message"": ""Login Required""
+                  }}";
+
             // If an error isn't supported by the media upload (4xx) - the upload fails.
             // Otherwise, we simulate server 503 error or exception, as following:
             // On the 3th chunk (4th chunk including the initial request), we mimic an error. 
@@ -756,8 +758,11 @@ anim id est laborum.";
             // From that point the server works as expected, and received the last chunks successfully
             var payload = Encoding.UTF8.GetBytes(UploadTestData);
 
-            var handler = new MultipleChunksMessageHandler(knownSize, error, payload.Length, chunkSize);
-            handler.ReadBytesOnError = readBytesOnError;
+            var handler = new MultipleChunksMessageHandler(knownSize, error, payload.Length, chunkSize)
+            {
+                ErrorMessage = jsonError,
+                ReadBytesOnError = readBytesOnError
+            };
             using (var service = new MockClientService(new BaseClientService.Initializer()
                 {
                     HttpClientFactory = new MockHttpClientFactory(handler)
@@ -776,9 +781,12 @@ anim id est laborum.";
                 {
                     // Upload fails.
                     Assert.That(lastProgress.Status, Is.EqualTo(UploadStatus.Failed));
-                    Assert.True(lastProgress.Exception.Message.Contains(
+                    var exception = (GoogleApiException) lastProgress.Exception;
+                    Assert.True(exception.Message.Contains(
                          @"Message[Login Required] Location[Authorization - header] Reason[required] Domain[global]"),
                          "Error message is invalid");
+                    // Check we have the parsed form too.
+                    Assert.That(exception.Error.Message == "Login Required");
                 }
                 else
                 {
@@ -786,6 +794,41 @@ anim id est laborum.";
                     Assert.That(payload, Is.EqualTo(handler.ReceivedData.ToArray()));
                 }
                 Assert.That(handler.Calls, Is.EqualTo(expectedCalls));
+            }
+        }
+
+        /// <summary>
+        /// Special case of the upload failure, with a plain-text error message. (Any non-JSON response
+        /// will go through this path.)
+        /// </summary>
+        [Test]
+        public void TestChunkUpload_PlaintextError()
+        {
+            var payload = Encoding.UTF8.GetBytes(UploadTestData);
+
+            var handler = new MultipleChunksMessageHandler(true, ServerError.NotFound, payload.Length, 100)
+            {
+                ErrorMessage = "Not Found"
+            };
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                }))
+            {
+                var stream = new MemoryStream(payload);
+                var upload = new MockResumableUpload(service, stream, "text/plain", 100);
+
+                IUploadProgress lastProgress = null;
+                upload.ProgressChanged += (p) => lastProgress = p;
+                upload.Upload();
+
+                Assert.NotNull(lastProgress);
+
+                // Upload fails, and we can't parse the error response as JSON.
+                Assert.That(lastProgress.Status, Is.EqualTo(UploadStatus.Failed));
+                var exception = (GoogleApiException) lastProgress.Exception;
+                Assert.That(exception.Message == "Not Found");
+                Assert.IsNull(exception.Error);
             }
         }
 
