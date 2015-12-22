@@ -20,11 +20,17 @@ This module generates C# code from a Google API discovery documents.
 
 __author__ = 'aiuto@google.com (Tony Aiuto)'
 
+import datetime
+import time
+
 from googleapis.codegen import api
 from googleapis.codegen import api_library_generator
 from googleapis.codegen import language_model
 from googleapis.codegen import schema
 from googleapis.codegen import utilities
+
+# Epoch for numbering API revisions, one per day.
+_REVISION_ZERO_DATE = datetime.date(2015, 1, 1)
 
 
 class CSharpLanguageModel(language_model.LanguageModel):
@@ -205,26 +211,57 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
 
   def AnnotateApi(self, the_api):
     """Annotate a Api with C# specific elements."""
-    the_api.values['revision'] = self._GetValidRevision(
+    the_api.values['revision'] = self._GetRevisionNumber(
         the_api.values['revision'])
     super(CSharpGenerator, self).AnnotateApi(the_api)
 
-  def _GetValidRevision(self, rev):
-    """Get a valid revision (non negative numeric and less or equal than 65535).
+  def _GetRevisionNumber(self, rev):
+    """Turn the API revision string into a number.
+
+    Tries to parse the revision string as YYYYMMDD and return the number of
+    days since _REVISION_ZERO_DATE. If that doesn't work, tries to parse
+    the revision string as a number.
+
+    Will return a positive number. Doesn't guarantee the number is actually
+    valid for a revision number, i.e. less than 65535. 
 
     Args:
-      rev: revision number
+      rev: revision string
     Returns:
-      A valid revision number.
+      A revision number.
+    Raises:
+      ValueError: if the result would be invalid (e.g. too large)
     """
 
     try:
-      valid_rev = int(rev)
-      if valid_rev > 65535 or valid_rev < 0:
+      # Google's API discovery documents name revisions as "YYYYMMDD".
+      # If the revision parses in that format, return the number of days
+      # since an epoch. The tuple from strptime is designed to be passed
+      # to the date constructor: [0:3] retrieves year, month, day.
+      rev_date = datetime.date(*time.strptime(rev, '%Y%m%d')[0:3])
+      if rev_date < _REVISION_ZERO_DATE:
+        # Return 0 for older revisions. We don't need to worry about
+        # collisions because we introduced the "days since epoch" behavior
+        # in a new minor release.
         return 0
-      return valid_rev
+
+      # Return the number of full days since "zero".
+      # Add a half-day to round up.
+      half_day = datetime.timedelta(0.5)
+      return (rev_date - _REVISION_ZERO_DATE + half_day).days
     except ValueError:
-      return 0
+      pass
+
+    try:
+      # In other cases, revision may just be a number.
+      rev_num = int(rev)
+      if rev_num > 0:
+        return rev_num
+    except ValueError:
+      pass
+
+    # Give up.
+    raise ValueError("Cannot infer valid revision number")
 
 
 class CSharpApi(api.Api):
