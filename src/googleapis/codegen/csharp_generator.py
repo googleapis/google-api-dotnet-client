@@ -211,8 +211,12 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
 
   def AnnotateApi(self, the_api):
     """Annotate a Api with C# specific elements."""
-    the_api.values['revision'] = self._GetRevisionNumber(
-        the_api.values['revision'])
+    if the_api.values['name'] == 'discovery':
+      # TOTALLY LEGIT
+      the_api.values['revisionInt16'] = 0
+    else:
+      the_api.values['revisionInt16'] = self._GetRevisionNumber(
+          the_api.values['revision'])
     super(CSharpGenerator, self).AnnotateApi(the_api)
 
   def _GetRevisionNumber(self, rev):
