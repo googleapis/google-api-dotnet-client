@@ -2,7 +2,7 @@
 {% call_template _time_stamp %}
 
 /**
- * \mainpage
+ * \brief
  *   {{ api.title }} Version {{ api.version }}
  *
  * \section ApiInfo API Version Information
@@ -31,12 +31,6 @@
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
-
-namespace {{ api.module.name }}.Data
-{{% noblank recurse %}
-{% for model in api.models %}{% if not model.parent %}{% indent %}{% call_template _model model=model %}{% endindent %}{% endif %}{% endfor %}
-{% endnoblank %}
-}
 
 namespace {{ api.module.name }}
 {{% indent %}
@@ -117,3 +111,9 @@ public static string {{ authscope.constantName }} = {% literal authscope.value %
 
 {% call_template _base_request %}
 {% for resource in api.resources %}{% eol %}{% call_template _resource resource=resource %}{% eol %}{% endfor %}{% endindent %}}
+
+namespace {{ api.module.name }}.Data
+{{% noblank recurse %}
+{% for model in api.models %}{% if not model.parent %}{% indent %}{% call_template _model model=model %}{% endindent %}{% endif %}{% endfor %}
+{% endnoblank %}
+}
