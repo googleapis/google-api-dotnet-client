@@ -42,6 +42,13 @@
       <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.pdb" target="lib\net40\Google.Apis.Auth.PlatformServices.pdb" />
       <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.xml" target="lib\net40\Google.Apis.Auth.PlatformServices.xml" />
 
+      <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\net45\Google.Apis.Auth.dll" />
+      <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\net45\Google.Apis.Auth.pdb" />
+      <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\net45\Google.Apis.Auth.xml" />
+      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.dll" target="lib\net45\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.pdb" target="lib\net45\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.xml" target="lib\net45\Google.Apis.Auth.PlatformServices.xml" />
+
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\win81\Google.Apis.Auth.dll" />
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\win81\Google.Apis.Auth.pdb" />
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\win81\Google.Apis.Auth.xml" />

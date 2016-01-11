@@ -44,6 +44,13 @@
       <file src="Src\Support\GoogleApis.DotNet4\bin\ReleaseSigned\Google.Apis.PlatformServices.pdb" target="lib\net40\Google.Apis.PlatformServices.pdb" />
       <file src="Src\Support\GoogleApis.DotNet4\bin\ReleaseSigned\Google.Apis.PlatformServices.xml" target="lib\net40\Google.Apis.PlatformServices.xml" />
 
+      <file src="Src\Support\GoogleApis\Net45\bin\ReleaseSigned\Google.Apis.dll" target="lib\net45\Google.Apis.dll" />
+      <file src="Src\Support\GoogleApis\Net45\bin\ReleaseSigned\Google.Apis.pdb" target="lib\net45\Google.Apis.pdb" />
+      <file src="Src\Support\GoogleApis\Net45\bin\ReleaseSigned\Google.Apis.xml" target="lib\net45\Google.Apis.xml" />
+      <file src="Src\Support\GoogleApis.DotNet4\bin\ReleaseSigned\Google.Apis.PlatformServices.dll" target="lib\net45\Google.Apis.PlatformServices.dll" />
+      <file src="Src\Support\GoogleApis.DotNet4\bin\ReleaseSigned\Google.Apis.PlatformServices.pdb" target="lib\net45\Google.Apis.PlatformServices.pdb" />
+      <file src="Src\Support\GoogleApis.DotNet4\bin\ReleaseSigned\Google.Apis.PlatformServices.xml" target="lib\net45\Google.Apis.PlatformServices.xml" />
+
       <file src="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.dll" target="lib\win81\Google.Apis.dll" />
       <file src="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.pdb" target="lib\win81\Google.Apis.pdb" />
       <file src="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.xml" target="lib\win81\Google.Apis.xml" />
