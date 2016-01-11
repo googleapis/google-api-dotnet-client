@@ -1304,25 +1304,25 @@ class TagsResource extends Resource {
 
   // Method TagsResource.List
   /**
-   * A method with a parameters named |id| and |object|
+   * A method with a parameters named |id| and |else|
    *
    * [id] - id is a reserved word in Objective-C
    *
-   * [object] - A parameter name Object.
+   * [else_] - A parameter name 'else'.
    *
    * [optParams] - Additional query parameters.
    */
-  async.Future<TagList> list(core.String id, core.String object, {core.Map optParams}) {
+  async.Future<TagList> list(core.String id, core.String else_, {core.Map optParams}) {
     var completer = new async.Completer();
-    var url = "series/{id}/submissions/{object}/tags";
+    var url = "series/{id}/submissions/{else}/tags";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
     if (id == null) paramErrors.add("id is required");
     if (id != null) urlParams["id"] = id;
-    if (object == null) paramErrors.add("object is required");
-    if (object != null) urlParams["object"] = object;
+    if (else_ == null) paramErrors.add("else_ is required");
+    if (else_ != null) urlParams["else"] = else_;
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {
@@ -2257,6 +2257,8 @@ class SeriesCounters {
 
   SeriesCountersCounters counters;
 
+  core.int else_;
+
   core.int minusVotes;
 
   core.int noneVotes;
@@ -2267,8 +2269,6 @@ class SeriesCounters {
 
   core.String users;
 
-  core.int videoSubmissions;
-
   /** Create new SeriesCounters from JSON data. */
   SeriesCounters.fromJson(core.Map json) {
     if (json.containsKey("anonymousSubmissions")) {
@@ -2276,6 +2276,9 @@ class SeriesCounters {
     }
     if (json.containsKey("counters")) {
       counters = new SeriesCountersCounters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("else")) {
+      else_ = json["else"];
     }
     if (json.containsKey("minus_votes")) {
       minusVotes = json["minus_votes"];
@@ -2292,9 +2295,6 @@ class SeriesCounters {
     if (json.containsKey("users")) {
       users = json["users"];
     }
-    if (json.containsKey("videoSubmissions")) {
-      videoSubmissions = json["videoSubmissions"];
-    }
   }
 
   /** Create JSON object for SeriesCounters. */
@@ -2306,6 +2306,9 @@ class SeriesCounters {
     }
     if (counters != null) {
       output["counters"] = counters.toJson();
+    }
+    if (else_ != null) {
+      output["else"] = else_;
     }
     if (minusVotes != null) {
       output["minus_votes"] = minusVotes;
@@ -2321,9 +2324,6 @@ class SeriesCounters {
     }
     if (users != null) {
       output["users"] = users;
-    }
-    if (videoSubmissions != null) {
-      output["videoSubmissions"] = videoSubmissions;
     }
 
     return output;

@@ -153,8 +153,9 @@
       "users": {
        "$ref": "LinkType"
       },
-      "videoSubmissions": {
-       "type": "integer"
+      "else": {
+       "type": "integer",
+       "note": "'else' is a reserved word in every language."
       }
      }
     },
@@ -1281,10 +1282,10 @@
      }
     },
     "list": {
-     "path": "series/{id}/submissions/{object}/tags",
+     "path": "series/{id}/submissions/{else}/tags",
      "id": "moderator.tags.list",
      "httpMethod": "GET",
-     "description": "A method with a parameters named |id| and |object|",
+     "description": "A method with a parameters named |id| and |else|",
      "parameters": {
       "id": {
        "description": "id is a reserved word in Objective-C",
@@ -1292,9 +1293,9 @@
        "location": "path",
        "required": true
       },
-      "object": {
-       "description": "A parameter name Object.",
-       "note": "Reserved word in C#. See bug list",
+      "else": {
+       "description": "A parameter name 'else'.",
+       "note": "Reserved word in C# (and all languages). See bug list",
        "type": "string",
        "location": "path",
        "required": true

@@ -879,19 +879,19 @@ class GeometryReference : public googleapis_client::JsonCppData {
 
 namespace google_kitch_sink_api {
 
-const StringPiece KitchSinkService::googleapis_API_NAME("kitch_sink");
+const char KitchSinkService::googleapis_API_NAME[] = {"kitch_sink"};
 
-const StringPiece KitchSinkService::googleapis_API_VERSION("v1");
+const char KitchSinkService::googleapis_API_VERSION[] = {"v1"};
 
-const StringPiece KitchSinkService::googleapis_API_GENERATOR(
-  "google-apis-code-generator 1.5.1 / 0.1.4");
+const char KitchSinkService::googleapis_API_GENERATOR[] = {
+  "google-apis-code-generator 1.5.1 / 0.1.4"};
 
 
-const StringPiece KitchSinkService::SCOPES::MAIL_GOOGLE_COM("https://mail.google.com/");
+const char KitchSinkService::SCOPES::MAIL_GOOGLE_COM[] = {"https://mail.google.com/"};
 
-const StringPiece KitchSinkService::SCOPES::PRODUCT("https://www.googleapis.com/auth/product");
+const char KitchSinkService::SCOPES::PRODUCT[] = {"https://www.googleapis.com/auth/product"};
 
-const StringPiece KitchSinkService::SCOPES::USERINFO_EMAIL("https://www.googleapis.com/auth/userinfo.email");
+const char KitchSinkService::SCOPES::USERINFO_EMAIL[] = {"https://www.googleapis.com/auth/userinfo.email"};
 KitchSinkServiceBaseRequest::KitchSinkServiceBaseRequest(
       const googleapis_client::ClientService* service,
       googleapis_client::AuthorizationCredential* credential,
@@ -1717,13 +1717,13 @@ TagsResource_InsertMethod::~TagsResource_InsertMethod() {
 
 // Standard constructor.
 TagsResource_ListMethod::TagsResource_ListMethod(
-    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& object)
+    const KitchSinkService* _service_, googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& else__)
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{id}/submissions/{object}/tags")),
+        StrCat(_service_->service_url(), "series/{id}/submissions/{else}/tags")),
       id_(id.as_string()),
-      object_(object.as_string()) {
+      else_(else__.as_string()) {
 }
 
 // Standard destructor.
@@ -1740,9 +1740,9 @@ TagsResource_ListMethod::~TagsResource_ListMethod() {
         id_, config, target);
     return googleapis_client::StatusOk();
   }
-  if (variable_name == "object") {
+  if (variable_name == "else") {
     googleapis_client::UriTemplate::AppendValue(
-        object_, config, target);
+        else_, config, target);
     return googleapis_client::StatusOk();
   }
   return KitchSinkServiceBaseRequest::AppendVariable(
@@ -2345,8 +2345,8 @@ TagsResource_InsertMethod* KitchSinkService::TagsResource::NewInsertMethod(googl
 }
 
 
-TagsResource_ListMethod* KitchSinkService::TagsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& object) const {
-  return new TagsResource_ListMethod(service_, _credential_, id, object);
+TagsResource_ListMethod* KitchSinkService::TagsResource::NewListMethod(googleapis_client::AuthorizationCredential* _credential_, const StringPiece& id, const StringPiece& else__) const {
+  return new TagsResource_ListMethod(service_, _credential_, id, else__);
 }
 
 KitchSinkService::TopicsResource::TopicsResource(KitchSinkService* service)
@@ -4830,13 +4830,13 @@ class TagsResource_ListMethod : public KitchSinkServiceBaseRequest {
    *            In practice this is supplied by the user code that is
    *            creating the method instance.
    * @param[in] id id is a reserved word in Objective-C.
-   * @param[in] object A parameter name Object.
+   * @param[in] else__ A parameter name 'else'.
    */
   TagsResource_ListMethod(
       const KitchSinkService* _service_,
       googleapis_client::AuthorizationCredential* _credential_,
       const StringPiece& id,
-      const StringPiece& object);
+      const StringPiece& else__);
 
   /**
    * Standard destructor.
@@ -4876,7 +4876,7 @@ class TagsResource_ListMethod : public KitchSinkServiceBaseRequest {
 
  private:
   string id_;
-  string object_;
+  string else_;
   DISALLOW_COPY_AND_ASSIGN(TagsResource_ListMethod);
 };
 
@@ -5995,17 +5995,17 @@ class KitchSinkService : public googleapis_client::ClientService {
   /**
    * The name of the API that this was generated from.
    */
-  static const StringPiece googleapis_API_NAME;
+  static const char googleapis_API_NAME[];
 
   /**
    * The version of the API that this interface was generated from.
    */
-  static const StringPiece googleapis_API_VERSION;
+  static const char googleapis_API_VERSION[];
 
   /**
    * The code generator used to generate this API.
    */
-  static const StringPiece googleapis_API_GENERATOR;
+  static const char googleapis_API_GENERATOR[];
 
 
   /**
@@ -6775,14 +6775,14 @@ class KitchSinkService : public googleapis_client::ClientService {
      * @param[in] _credential_  Can be NULL.
      *            NULL credentials will not authorize the request.
      * @param[in] id id is a reserved word in Objective-C.
-     * @param[in] object A parameter name Object.
+     * @param[in] else__ A parameter name 'else'.
      * @returns  The caller should <code>Execute</code> the method instance,
      *           then destroy it when they are finished.
      */
     TagsResource_ListMethod* NewListMethod(
         googleapis_client::AuthorizationCredential* _credential_,
         const StringPiece& id,
-        const StringPiece& object) const;
+        const StringPiece& else__) const;
 
    private:
     KitchSinkService* service_;
@@ -7159,17 +7159,17 @@ class KitchSinkService : public googleapis_client::ClientService {
     /**
      * A non googleapis.com scope.
      */
-    static const StringPiece MAIL_GOOGLE_COM;
+    static const char MAIL_GOOGLE_COM[];
 
     /**
      * a product level scope.
      */
-    static const StringPiece PRODUCT;
+    static const char PRODUCT[];
 
     /**
      * A typical scope.
      */
-    static const StringPiece USERINFO_EMAIL;
+    static const char USERINFO_EMAIL[];
 
    private:
     SCOPES();  // Never instantiated.
@@ -8832,6 +8832,40 @@ class Series : public googleapis_client::JsonCppData {
     }
 
     /**
+     * Determine if the '<code>else</code>' attribute was set.
+     *
+     * @return true if the '<code>else</code>' attribute was set.
+     */
+    bool has_else() const {
+      return Storage().isMember("else");
+    }
+
+    /**
+     * Clears the '<code>else</code>' attribute.
+     */
+    void clear_else() {
+      MutableStorage()->removeMember("else");
+    }
+
+
+    /**
+     * Get the value of the '<code>else</code>' attribute.
+     */
+    int32 get_else() const {
+      const Json::Value& storage = Storage("else");
+      return googleapis_client::JsonValueToCppValueHelper<int32 >(storage);
+    }
+
+    /**
+     * Change the '<code>else</code>' attribute.
+     * @param[in] value The new value.
+     */
+    void set_else(int32 value) {
+      googleapis_client::SetJsonValueFromCppValueHelper<int32 >(
+        value, MutableStorage("else"));
+    }
+
+    /**
      * Determine if the '<code>minus_votes</code>' attribute was set.
      *
      * @return true if the '<code>minus_votes</code>' attribute was set.
@@ -8999,40 +9033,6 @@ class Series : public googleapis_client::JsonCppData {
      */
     void set_users(const StringPiece& value) {
       *MutableStorage("users") = value.data();
-    }
-
-    /**
-     * Determine if the '<code>videoSubmissions</code>' attribute was set.
-     *
-     * @return true if the '<code>videoSubmissions</code>' attribute was set.
-     */
-    bool has_video_submissions() const {
-      return Storage().isMember("videoSubmissions");
-    }
-
-    /**
-     * Clears the '<code>videoSubmissions</code>' attribute.
-     */
-    void clear_video_submissions() {
-      MutableStorage()->removeMember("videoSubmissions");
-    }
-
-
-    /**
-     * Get the value of the '<code>videoSubmissions</code>' attribute.
-     */
-    int32 get_video_submissions() const {
-      const Json::Value& storage = Storage("videoSubmissions");
-      return googleapis_client::JsonValueToCppValueHelper<int32 >(storage);
-    }
-
-    /**
-     * Change the '<code>videoSubmissions</code>' attribute.
-     * @param[in] value The new value.
-     */
-    void set_video_submissions(int32 value) {
-      googleapis_client::SetJsonValueFromCppValueHelper<int32 >(
-        value, MutableStorage("videoSubmissions"));
     }
 
    private:

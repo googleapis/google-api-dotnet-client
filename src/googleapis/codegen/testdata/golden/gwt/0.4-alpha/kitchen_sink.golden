@@ -708,13 +708,13 @@ public interface KitchSink extends RequestFactory {
       InsertRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
     }
     /**
-     * A method with a parameters named |id| and |object|
+     * A method with a parameters named |id| and |else|
      *
      *
      * @param id id is a reserved word in Objective-C
-     * @param kitch_sinkObject A parameter name Object.
+     * @param kitch_sinkElse A parameter name 'else'.
      */
-    ListRequest list(@PropertyName("id") String id, @PropertyName("object") String kitch_sinkObject);
+    ListRequest list(@PropertyName("id") String id, @PropertyName("else") String kitch_sinkElse);
 
     /**
      * Request object to call the "moderator.tags.list" method.
@@ -726,9 +726,9 @@ public interface KitchSink extends RequestFactory {
       @PropertyName("id")
       ListRequest setId(@PropertyName("id") String id);
 
-      /** A parameter name Object. */
-      @PropertyName("object")
-      ListRequest setKitch_sinkObject(@PropertyName("object") String kitch_sinkObject);
+      /** A parameter name 'else'. */
+      @PropertyName("else")
+      ListRequest setKitch_sinkElse(@PropertyName("else") String kitch_sinkElse);
     }
   }
   /**
@@ -1685,6 +1685,13 @@ public interface SeriesCounters extends ValueProxy {
   SeriesCounters setCounters(SeriesCountersCounters counters);
 
   
+  @PropertyName("else")
+  Integer getKitch_sinkElse();
+
+  @PropertyName("else")
+  SeriesCounters setKitch_sinkElse(Integer kitch_sinkElse);
+
+  
   @PropertyName("minus_votes")
   Integer getMinusVotes();
 
@@ -1718,13 +1725,6 @@ public interface SeriesCounters extends ValueProxy {
 
   @PropertyName("users")
   SeriesCounters setUsers(String users);
-
-  
-  @PropertyName("videoSubmissions")
-  Integer getVideoSubmissions();
-
-  @PropertyName("videoSubmissions")
-  SeriesCounters setVideoSubmissions(Integer videoSubmissions);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCounters.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesId.java

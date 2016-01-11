@@ -729,13 +729,13 @@ public interface KitchSink extends RequestFactory {
       InsertRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
     }
     /**
-     * A method with a parameters named |id| and |object|
+     * A method with a parameters named |id| and |else|
      *
      *
      * @param id id is a reserved word in Objective-C
-     * @param object__ A parameter name Object.
+     * @param else__ A parameter name 'else'.
      */
-    ListRequest list(@PropertyName("id") String id, @PropertyName("object") String object__);
+    ListRequest list(@PropertyName("id") String id, @PropertyName("else") String else__);
 
     /**
      * Request object to call the "moderator.tags.list" method.
@@ -747,9 +747,9 @@ public interface KitchSink extends RequestFactory {
       @PropertyName("id")
       ListRequest setId(@PropertyName("id") String id);
 
-      /** A parameter name Object. */
-      @PropertyName("object")
-      ListRequest setObject(@PropertyName("object") String object__);
+      /** A parameter name 'else'. */
+      @PropertyName("else")
+      ListRequest setElse(@PropertyName("else") String else__);
     }
   }
   /**
@@ -1706,6 +1706,13 @@ public interface SeriesCounters extends ValueProxy {
   SeriesCounters setCounters(SeriesCountersCounters counters);
 
   
+  @PropertyName("else")
+  Integer getElse();
+
+  @PropertyName("else")
+  SeriesCounters setElse(Integer else__);
+
+  
   @PropertyName("minus_votes")
   Integer getMinusVotes();
 
@@ -1739,13 +1746,6 @@ public interface SeriesCounters extends ValueProxy {
 
   @PropertyName("users")
   SeriesCounters setUsers(String users);
-
-  
-  @PropertyName("videoSubmissions")
-  Integer getVideoSubmissions();
-
-  @PropertyName("videoSubmissions")
-  SeriesCounters setVideoSubmissions(Integer videoSubmissions);
 }
 === end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCounters.java
 === begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesId.java

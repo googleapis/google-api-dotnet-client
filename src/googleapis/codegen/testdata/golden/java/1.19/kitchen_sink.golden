@@ -2582,7 +2582,7 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
       }
     }
     /**
-     * A method with a parameters named |id| and |object|
+     * A method with a parameters named |id| and |else|
      *
      * Create a request for the method "tags.list".
      *
@@ -2590,21 +2590,21 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
      * parameters, call the {@link List#execute()} method to invoke the remote operation.
      *
      * @param id id is a reserved word in Objective-C
-     * @param object__ A parameter name Object.
+     * @param else__ A parameter name 'else'.
      * @return the request
      */
-    public List list(java.lang.String id, java.lang.String object__) throws java.io.IOException {
-      List result = new List(id, object__);
+    public List list(java.lang.String id, java.lang.String else__) throws java.io.IOException {
+      List result = new List(id, else__);
       initialize(result);
       return result;
     }
 
     public class List extends KitchSinkRequest<com.google.api.services.kitch_sink.model.TagList> {
 
-      private static final String REST_PATH = "series/{id}/submissions/{object}/tags";
+      private static final String REST_PATH = "series/{id}/submissions/{else}/tags";
 
       /**
-       * A method with a parameters named |id| and |object|
+       * A method with a parameters named |id| and |else|
        *
        * Create a request for the method "tags.list".
        *
@@ -2614,13 +2614,13 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
        * must be called to initialize this instance immediately after invoking the constructor. </p>
        *
        * @param id id is a reserved word in Objective-C
-       * @param object__ A parameter name Object.
+       * @param else__ A parameter name 'else'.
        * @since 1.13
        */
-      protected List(java.lang.String id, java.lang.String object__) {
+      protected List(java.lang.String id, java.lang.String else__) {
         super(KitchSink.this, "GET", REST_PATH, null, com.google.api.services.kitch_sink.model.TagList.class);
         this.id = com.google.api.client.util.Preconditions.checkNotNull(id, "Required parameter id must be specified.");
-        this.object__ = com.google.api.client.util.Preconditions.checkNotNull(object__, "Required parameter object__ must be specified.");
+        this.else__ = com.google.api.client.util.Preconditions.checkNotNull(else__, "Required parameter else__ must be specified.");
       }
 
       @Override
@@ -2664,19 +2664,19 @@ public class KitchSink extends com.google.api.client.googleapis.services.json.Ab
         return this;
       }
 
-      /** A parameter name Object. */
-      @com.google.api.client.util.Key("object")
-      private java.lang.String object__;
+      /** A parameter name 'else'. */
+      @com.google.api.client.util.Key("else")
+      private java.lang.String else__;
 
-      /** A parameter name Object.
+      /** A parameter name 'else'.
        */
-      public java.lang.String getObject() {
-        return object__;
+      public java.lang.String getElse() {
+        return else__;
       }
 
-      /** A parameter name Object. */
-      public List setObject(java.lang.String object__) {
-        this.object__ = object__;
+      /** A parameter name 'else'. */
+      public List setElse(java.lang.String else__) {
+        this.else__ = else__;
         return this;
       }
 
@@ -5366,6 +5366,12 @@ public final class Series extends com.google.api.client.json.GenericJson {
     /**
      * The value may be {@code null}.
      */
+    @com.google.api.client.util.Key("else")
+    private Integer else__;
+
+    /**
+     * The value may be {@code null}.
+     */
     @com.google.api.client.util.Key("minus_votes")
     private Integer minusVotes;
 
@@ -5394,12 +5400,6 @@ public final class Series extends com.google.api.client.json.GenericJson {
     private java.lang.String users;
 
     /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private Integer videoSubmissions;
-
-    /**
      * @return value or {@code null} for none
      */
     public Integer getAnonymousSubmissions() {
@@ -5426,6 +5426,21 @@ public final class Series extends com.google.api.client.json.GenericJson {
      */
     public Counters setCounters(SeriesCountersCounters counters) {
       this.counters = counters;
+      return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public Integer getElse() {
+      return else__;
+    }
+
+    /**
+     * @param else__ else__ or {@code null} for none
+     */
+    public Counters setElse(Integer else__) {
+      this.else__ = else__;
       return this;
     }
 
@@ -5501,21 +5516,6 @@ public final class Series extends com.google.api.client.json.GenericJson {
      */
     public Counters setUsers(java.lang.String users) {
       this.users = users;
-      return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public Integer getVideoSubmissions() {
-      return videoSubmissions;
-    }
-
-    /**
-     * @param videoSubmissions videoSubmissions or {@code null} for none
-     */
-    public Counters setVideoSubmissions(Integer videoSubmissions) {
-      this.videoSubmissions = videoSubmissions;
       return this;
     }
 

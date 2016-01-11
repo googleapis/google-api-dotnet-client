@@ -453,7 +453,7 @@ class Google_Service_KitchSink extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'series/{id}/submissions/{object}/tags',
+              'path' => 'series/{id}/submissions/{else}/tags',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'id' => array(
@@ -461,7 +461,7 @@ class Google_Service_KitchSink extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'object' => array(
+                'else' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -1163,16 +1163,16 @@ class Google_Service_KitchSink_Tags_Resource extends Google_Service_Resource
   }
 
   /**
-   * A method with a parameters named |id| and |object| (tags.listTags)
+   * A method with a parameters named |id| and |else| (tags.listTags)
    *
    * @param string $id id is a reserved word in Objective-C
-   * @param string $object A parameter name Object.
+   * @param string $else A parameter name 'else'.
    * @param array $optParams Optional parameters.
    * @return Google_Service_KitchSink_TagList
    */
-  public function listTags($id, $object, $optParams = array())
+  public function listTags($id, $else, $optParams = array())
   {
-    $params = array('id' => $id, 'object' => $object);
+    $params = array('id' => $id, 'else' => $else);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_KitchSink_TagList");
   }
@@ -1737,12 +1737,12 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   public $anonymousSubmissions;
   protected $countersType = 'Google_Service_KitchSink_SeriesCountersCounters';
   protected $countersDataType = '';
+  public $else;
   public $minusVotes;
   public $noneVotes;
   public $plusVotes;
   public $submissions;
   public $users;
-  public $videoSubmissions;
 
 
   public function setAnonymousSubmissions($anonymousSubmissions)
@@ -1760,6 +1760,14 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   public function getCounters()
   {
     return $this->counters;
+  }
+  public function setElse($else)
+  {
+    $this->else = $else;
+  }
+  public function getElse()
+  {
+    return $this->else;
   }
   public function setMinusVotes($minusVotes)
   {
@@ -1800,14 +1808,6 @@ class Google_Service_KitchSink_SeriesCounters extends Google_Model
   public function getUsers()
   {
     return $this->users;
-  }
-  public function setVideoSubmissions($videoSubmissions)
-  {
-    $this->videoSubmissions = $videoSubmissions;
-  }
-  public function getVideoSubmissions()
-  {
-    return $this->videoSubmissions;
   }
 }
 

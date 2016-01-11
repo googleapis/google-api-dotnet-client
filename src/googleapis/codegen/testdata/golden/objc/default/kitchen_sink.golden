@@ -134,7 +134,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkGeometryCollection : GTLObject
 
 
-@property (nonatomic, retain) NSArray *geometries;  // of GTLKitchSinkGeometry
+@property(nonatomic, retain) NSArray *geometries;  // of GTLKitchSinkGeometry
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkGeometryCollection.h
@@ -233,7 +233,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkGeometry : GTLObject
 
 
-@property (nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *type;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkGeometry.h
@@ -323,7 +323,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkGeometryPolygon : GTLObject
 
 
-@property (nonatomic, copy) NSString *coordinates;
+@property(nonatomic, copy) NSString *coordinates;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkGeometryPolygon.h
@@ -413,10 +413,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkGeometryReference : GTLObject
 
 
-@property (nonatomic, copy) NSString *coordinates;
+@property(nonatomic, copy) NSString *coordinates;
 
 
-@property (nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *type;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkGeometryReference.h
@@ -581,13 +581,13 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkLatLong : GTLObject
 
 
-@property (nonatomic, retain) NSNumber *latitude;
+@property(nonatomic, retain) NSNumber *latitude;
 
 
-@property (nonatomic, copy) NSString *location;
+@property(nonatomic, copy) NSString *location;
 
 
-@property (nonatomic, retain) NSNumber *longitude;
+@property(nonatomic, retain) NSNumber *longitude;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkLatLong.h
@@ -766,13 +766,13 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkProfile : GTLObject
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkProfileAttribution *attribution;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkProfileAttribution *attribution;  // object
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkProfileId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkProfileId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkProfile.h
@@ -874,7 +874,7 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkRule : GTLObject
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkRuleSubmissions *submissions;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkRuleSubmissions *submissions;  // object
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkRule.h
@@ -969,28 +969,28 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkSeries : GTLObject
 
 
-@property (nonatomic, retain) NSNumber *anonymousSubmissionAllowed;
+@property(nonatomic, retain) NSNumber *anonymousSubmissionAllowed;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSeriesCounters *counters;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSeriesCounters *counters;  // object
 
 
-@property (nonatomic, copy) NSString *descriptionProperty;
+@property(nonatomic, copy) NSString *descriptionProperty;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSeriesId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSeriesId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *name;
 
 
-@property (nonatomic, retain) NSNumber *numTopics;
+@property(nonatomic, retain) NSNumber *numTopics;
 
 
-@property (nonatomic, retain) NSNumber *videoSubmissionAllowed;
+@property(nonatomic, retain) NSNumber *videoSubmissionAllowed;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkSeries.h
@@ -1044,10 +1044,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkSeriesList : GTLCollectionObject
 
 
-@property (nonatomic, retain) NSArray *items;  // of GTLKitchSinkSeries
+@property(nonatomic, retain) NSArray *items;  // of GTLKitchSinkSeries
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkSeriesList.h
@@ -1202,40 +1202,40 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkSubmission : GTLObject
 
 
-@property (nonatomic, copy) NSString *@attachmentUrl;
+@property(nonatomic, copy) NSString *@attachmentUrl;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionAttribution *attribution;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionAttribution *attribution;  // object
 
 
-@property (nonatomic, copy) NSString *author;
+@property(nonatomic, copy) NSString *author;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionCounters *counters;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionCounters *counters;  // object
 
 
-@property (nonatomic, retain) NSNumber *created;
+@property(nonatomic, retain) NSNumber *created;
 
 
-@property (nonatomic, retain) NSArray *geo;  // of GTLKitchSinkLatLong
+@property(nonatomic, retain) NSArray *geo;  // of GTLKitchSinkLatLong
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionParentSubmissionId *parentSubmissionId;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkSubmissionParentSubmissionId *parentSubmissionId;  // object
 
 
-@property (nonatomic, copy) NSString *text;
+@property(nonatomic, copy) NSString *text;
 
 
-@property (nonatomic, retain) NSArray *topics;  // of GTLKitchSinkModeratorTopicsResourcePartial
+@property(nonatomic, retain) NSArray *topics;  // of GTLKitchSinkModeratorTopicsResourcePartial
 
 
-@property (nonatomic, retain) NSDictionary *translations;  // object
+@property(nonatomic, retain) NSDictionary *translations;  // object
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkSubmission.h
@@ -1289,10 +1289,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkSubmissionList : GTLCollectionObject
 
 
-@property (nonatomic, retain) NSArray *items;  // of GTLKitchSinkSubmission
+@property(nonatomic, retain) NSArray *items;  // of GTLKitchSinkSubmission
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkSubmissionList.h
@@ -1454,16 +1454,16 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkTag : GTLObject
 
 
-@property (nonatomic, retain) GTLKitchSinkGeometry *geometry;
+@property(nonatomic, retain) GTLKitchSinkGeometry *geometry;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTagId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTagId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, copy) NSString *text;
+@property(nonatomic, copy) NSString *text;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkTag.h
@@ -1568,28 +1568,28 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkTopic2 : GTLObject
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTopic2Counters *counters;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTopic2Counters *counters;  // object
 
 
-@property (nonatomic, copy) NSString *descriptionProperty;
+@property(nonatomic, copy) NSString *descriptionProperty;
 
 
-@property (nonatomic, retain) GTLKitchSinkSubmission *featuredSubmission;
+@property(nonatomic, retain) GTLKitchSinkSubmission *featuredSubmission;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTopic2Id *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTopic2Id *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *name;
 
 
-@property (nonatomic, copy) NSString *presenter;
+@property(nonatomic, copy) NSString *presenter;
 
 
-@property (nonatomic, retain) NSArray *rules;  // of GTLKitchSinkRule
+@property(nonatomic, retain) NSArray *rules;  // of GTLKitchSinkRule
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkTopic2.h
@@ -1703,25 +1703,25 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkTopic : GTLObject
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicCounters *counters;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicCounters *counters;  // object
 
 
-@property (nonatomic, copy) NSString *descriptionProperty;
+@property(nonatomic, copy) NSString *descriptionProperty;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *name;
 
 
-@property (nonatomic, copy) NSString *presenter;
+@property(nonatomic, copy) NSString *presenter;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicRules *rules;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkTopicRules *rules;  // object
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkTopic.h
@@ -1775,10 +1775,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkTopicList : GTLCollectionObject
 
 
-@property (nonatomic, retain) NSArray *items;  // of GTLKitchSinkTopic
+@property(nonatomic, retain) NSArray *items;  // of GTLKitchSinkTopic
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkTopicList.h
@@ -1927,10 +1927,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkTranslation : GTLObject
 
 
-@property (nonatomic, copy) NSString *lang;
+@property(nonatomic, copy) NSString *lang;
 
 
-@property (nonatomic, copy) NSString *text;
+@property(nonatomic, copy) NSString *text;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkTranslation.h
@@ -2022,16 +2022,16 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkVote : GTLObject
 
 
-@property (nonatomic, copy) NSString *flag;
+@property(nonatomic, copy) NSString *flag;
 
 
-@property (nonatomic, retain) GTLKitchSinkGTLKitchSinkVoteId *identifier;  // object
+@property(nonatomic, retain) GTLKitchSinkGTLKitchSinkVoteId *identifier;  // object
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 
-@property (nonatomic, copy) NSString *vote;
+@property(nonatomic, copy) NSString *vote;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkVote.h
@@ -2085,10 +2085,10 @@ NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";
 @interface GTLKitchSinkVoteList : GTLCollectionObject
 
 
-@property (nonatomic, retain) NSArray *items;  // of GTLKitchSinkVote
+@property(nonatomic, retain) NSArray *items;  // of GTLKitchSinkVote
 
 
-@property (nonatomic, copy) NSString *kind;
+@property(nonatomic, copy) NSString *kind;
 
 @end
 === end: ./google/api/services/kitch_sink/GTLKitchSinkVoteList.h

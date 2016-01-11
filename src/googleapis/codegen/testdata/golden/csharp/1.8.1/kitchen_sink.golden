@@ -242,6 +242,9 @@ namespace Google.Apis.KitchSink.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("counters")]
             public virtual CountersData.CountersDataSchema Counters { get; set; } 
 
+            [Newtonsoft.Json.JsonPropertyAttribute("else")]
+            public virtual System.Nullable<int> Else__ { get; set; } 
+
             [Newtonsoft.Json.JsonPropertyAttribute("minus_votes")]
             public virtual System.Nullable<int> MinusVotes { get; set; } 
 
@@ -256,9 +259,6 @@ namespace Google.Apis.KitchSink.v1.Data
 
             [Newtonsoft.Json.JsonPropertyAttribute("users")]
             public virtual string Users { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("videoSubmissions")]
-            public virtual System.Nullable<int> VideoSubmissions { get; set; } 
 
             
 
@@ -2812,24 +2812,24 @@ namespace Google.Apis.KitchSink.v1
 
         }
 
-        /// <summary>A method with a parameters named |id| and |object|</summary>
+        /// <summary>A method with a parameters named |id| and |else|</summary>
         /// <param name="id">id is a reserved word in Objective-C</param>
-        /// <param name="kitch_sinkObject">A parameter
-        /// name Object.</param>
-        public virtual ListRequest List(string id, string kitch_sinkObject)
+        /// <param name="kitch_sinkElse">A parameter name
+        /// 'else'.</param>
+        public virtual ListRequest List(string id, string kitch_sinkElse)
         {
-            return new ListRequest(service, id, kitch_sinkObject);
+            return new ListRequest(service, id, kitch_sinkElse);
         }
 
-        /// <summary>A method with a parameters named |id| and |object|</summary>
+        /// <summary>A method with a parameters named |id| and |else|</summary>
         public class ListRequest : KitchSinkBaseServiceRequest<Google.Apis.KitchSink.v1.Data.TagList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string id, string kitch_sinkObject)
+            public ListRequest(Google.Apis.Services.IClientService service, string id, string kitch_sinkElse)
                 : base(service)
             {
                 Id = id;
-                KitchSinkObject = kitch_sinkObject;
+                KitchSinkElse = kitch_sinkElse;
                 InitParameters();
             }
 
@@ -2838,9 +2838,9 @@ namespace Google.Apis.KitchSink.v1
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
 
-            /// <summary>A parameter name Object.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string KitchSinkObject { get; private set; }
+            /// <summary>A parameter name 'else'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("else", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string KitchSinkElse { get; private set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2858,7 +2858,7 @@ namespace Google.Apis.KitchSink.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "series/{id}/submissions/{object}/tags"; }
+                get { return "series/{id}/submissions/{else}/tags"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2876,9 +2876,9 @@ namespace Google.Apis.KitchSink.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "object", new Google.Apis.Discovery.Parameter
+                    "else", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "object",
+                        Name = "else",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
