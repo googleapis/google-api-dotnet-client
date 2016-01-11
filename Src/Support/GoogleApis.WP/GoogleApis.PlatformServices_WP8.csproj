@@ -100,7 +100,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\code\google.apis.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseSigned|x86'">
     <OutputPath>bin\x86\ReleaseSigned\</OutputPath>
@@ -113,7 +113,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\code\google.apis.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseSigned|ARM'">
     <OutputPath>bin\ARM\ReleaseSigned\</OutputPath>
@@ -125,7 +125,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\code\google.apis.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Apis\Util\Protect\DataProtection.cs" />
