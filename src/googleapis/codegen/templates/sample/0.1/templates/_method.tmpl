@@ -16,7 +16,7 @@
 Future{% if method.responseType.className %}<{{ method.responseType.className }}>{% endif %} {{ method.codeName }}({% parameter_list %}
     {% for p in method.requiredParameters %}
       {% parameter %}
-        {% call_template _parameter_type param=p %} {{ p.codeName }}
+        {% call_template _parameter_type param=p %} {{ p.parameterName }}
       {% end_parameter %}
     {% endfor %}
     {% if method.requestType %}
@@ -27,14 +27,14 @@ Future{% if method.responseType.className %}<{{ method.responseType.className }}
     {% for p in method.optionalParameters %}
       {% parameter %}
         {% if forloop.first %}{% templatetag openbrace %}{% endif %}
-        {% call_template _parameter_type param=p %} {{ p.codeName }}
+        {% call_template _parameter_type param=p %} {{ p.parameterName }}
         {% if forloop.last %}{% templatetag closebrace %}{% endif %}
         {% end_parameter %}
     {% endfor %}
   {% end_parameter_list %}) {
 
   {% for p in method.pathParameters %}
-  pathParams[{% literal p.wireName %}] = {{ p.codeName }};
+  pathParams[{% literal p.wireName %}] = {{ p.parameterName }};
   {% endfor %}
 
   {% for p in method.queryParameters %}

@@ -47,6 +47,8 @@ class SampleLanguageModel(language_model.LanguageModel):
   setter_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE,
       format_string='set{name}')
+  parameter_name_policy = language_model.NamingPolicy(
+      format_string='{name}', separator='_')
 
   _SCHEMA_TYPE_TO_LANGUAGE_TYPE = {
       'any': 'object',

@@ -39,11 +39,11 @@ class {{ api.className }} extends SomeApiBaseClass  {
   string applicationName;
 
   {{ api.className }} get _$service => this;
-  {% for r in api.resources %}{{ r.className }} _{{ r.codeName }};
-  {{ r.className }} get {{ r.codeName }} => _{{ r.codeName }};
+  {% for r in api.resources %}{{ r.className }} _{{ r.parameterName }};
+  {{ r.className }} get {{ r.parameterName }} => {{ r.memberName }};
   {% endfor %}
 {% for param in api.parameters %}{% indent %}{% doc_comment_if param.description %}
-{% call_template _parameter_type %} {{ param.codeName }};{% endindent %}
+{% call_template _parameter_type %} {{ param.parameterName }};{% endindent %}
 
 {% endfor %}
 

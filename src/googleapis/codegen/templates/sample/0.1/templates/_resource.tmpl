@@ -8,12 +8,12 @@ class {{ resource.className }} extends SomeRootClass {
   {{ api.className }} service_handle;
 
   // Loop over all resources here to declare variables
-  {% for r in resource.resources %}final {{ r.className }} {{ r.codeName }};
+  {% for r in resource.resources %}final {{ r.className }} {{ r.memberName }};
   {% endfor %}
 
   // Note that I just write this stuff with the indent I want
   {% for r in resource.resources %},
-  {{ r.codeName }} = new {{ r.className }}(service_handle);
+  {{ r.memberName }} = new {{ r.className }}(service_handle);
   {% endfor %}
 
 {% indent %}
