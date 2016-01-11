@@ -76,23 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apis\Requests\BatchRequest.cs" />
-    <Compile Include="Apis\Requests\ClientServiceRequest.cs" />
-    <Compile Include="Apis\Requests\ETagAction.cs" />
-    <Compile Include="Apis\Requests\HttpRequestMessageExtenstions.cs" />
-    <Compile Include="Apis\Requests\IClientServiceRequest.cs" />
-    <Compile Include="Apis\Requests\IDirectResponseSchema.cs" />
-    <Compile Include="Apis\Services\BaseClientService.cs" />
-    <Compile Include="Apis\Services\IClientService.cs" />
-    <Compile Include="Apis\[Media]\Download\IDownloadProgress.cs" />
-    <Compile Include="Apis\[Media]\Download\IMediaDownloader.cs" />
-    <Compile Include="Apis\[Media]\Download\MediaDownloader.cs" />
-    <Compile Include="Apis\[Media]\MediaApiErrorHandling.cs" />
-    <Compile Include="Apis\[Media]\Upload\IUploadProgress.cs" />
-    <Compile Include="Apis\[Media]\Upload\ResumableUpload.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -142,6 +125,7 @@
       <Name>GoogleApis.Core_Portable</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\GoogleApis_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

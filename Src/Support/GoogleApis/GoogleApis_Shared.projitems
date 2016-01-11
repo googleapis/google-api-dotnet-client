@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0e73cb06-de95-493e-8de3-114e41ddd0c9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>GoogleApis</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\BatchRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\ClientServiceRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\ETagAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\HttpRequestMessageExtenstions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\IClientServiceRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\IDirectResponseSchema.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\BaseClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\IClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IDownloadProgress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IMediaDownloader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\MediaDownloader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\MediaApiErrorHandling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\IUploadProgress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\ResumableUpload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>

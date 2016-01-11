@@ -68,44 +68,6 @@
     <AssemblyOriginatorKeyFile>..\..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="JsonWebSignature.cs" />
-    <Compile Include="JsonWebToken.cs" />
-    <Compile Include="OAuth2\ComputeCredential.cs" />
-    <Compile Include="OAuth2\ICredential.cs" />
-    <Compile Include="OAuth2\ITokenAccess.cs" />
-    <Compile Include="OAuth2\JsonCredentialParameters.cs" />
-    <Compile Include="OAuth2\Requests\GoogleRevokeTokenRequest.cs" />
-    <Compile Include="OAuth2\ServiceCredential.cs" />
-    <Compile Include="OAuth2\Web\AuthorizationCodeWebApp.cs" />
-    <Compile Include="GoogleJsonWebSignature.cs" />
-    <Compile Include="OAuth2\Web\AuthWebUtility.cs" />
-    <Compile Include="OAuth2\Flows\IAuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\AuthorizationCodeInstalledApp.cs" />
-    <Compile Include="OAuth2\BearerToken.cs" />
-    <Compile Include="OAuth2\Requests\TokenRequestExtenstions.cs" />
-    <Compile Include="OAuth2\UserCredential.cs" />
-    <Compile Include="OAuth2\Flows\AuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\ClientSecrets.cs" />
-    <Compile Include="OAuth2\Flows\GoogleAuthorizationCodeFlow.cs" />
-    <Compile Include="OAuth2\IAccessMethod.cs" />
-    <Compile Include="OAuth2\IAuthorizationCodeInstalledApp.cs" />
-    <Compile Include="OAuth2\ICodeReceiver.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrl.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationCodeTokenRequest.cs" />
-    <Compile Include="OAuth2\Requests\GoogleAssertionTokenRequest.cs" />
-    <Compile Include="OAuth2\Requests\GoogleAuthorizationCodeRequestUrl.cs" />
-    <Compile Include="OAuth2\Responses\AuthorizationCodeResponseUrl.cs" />
-    <Compile Include="OAuth2\Requests\AuthorizationRequestUrl.cs" />
-    <Compile Include="OAuth2\GoogleClientSecrets.cs" />
-    <Compile Include="OAuth2\GoogleConsts.cs" />
-    <Compile Include="OAuth2\Requests\RefreshTokenRequest.cs" />
-    <Compile Include="OAuth2\Responses\TokenErrorResponse.cs" />
-    <Compile Include="OAuth2\Requests\TokenRequest.cs" />
-    <Compile Include="OAuth2\Responses\TokenResponse.cs" />
-    <Compile Include="OAuth2\Responses\TokenResponseException.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -156,6 +118,7 @@
       <Name>GoogleApis.Core_Portable</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\GoogleApis.Auth_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
