@@ -1,9 +1,9 @@
-const StringPiece {{ api.className}}::googleapis_API_NAME("{{ api.name }}");
+const char {{ api.className}}::googleapis_API_NAME[] = {"{{ api.name }}"};
 
-const StringPiece {{ api.className}}::googleapis_API_VERSION("{{ api.version }}");
+const char {{ api.className}}::googleapis_API_VERSION[] = {"{{ api.version }}"};
 
-const StringPiece {{ api.className}}::googleapis_API_GENERATOR(
-  "{{ tool.name }} {{ tool.version }} / {{ features.releaseVersion }}");
+const char {{ api.className}}::googleapis_API_GENERATOR[] = {
+  "{{ tool.name }} {{ tool.version }} / {{ features.releaseVersion }}"};
 
 {% call_template _service_scopes_cc api=api %}
 {% call_template _base_method_cc api=api %}

@@ -9,7 +9,7 @@ class SCOPES {
 {% doc_comment noblock %}
 {{ authscope.description }}
 {% enddoc_comment %}
-static const StringPiece {{ authscope.name|upper }};
+static const char {{ authscope.name|upper }}[];
 {% endfor %}{% endindent %}
  private:
   SCOPES();  // Never instantiated.

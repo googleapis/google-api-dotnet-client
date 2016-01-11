@@ -50,17 +50,17 @@ class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
   /**
    * The name of the API that this was generated from.
    */
-  static const StringPiece googleapis_API_NAME;
+  static const char googleapis_API_NAME[];
 
   /**
    * The version of the API that this interface was generated from.
    */
-  static const StringPiece googleapis_API_VERSION;
+  static const char googleapis_API_VERSION[];
 
   /**
    * The code generator used to generate this API.
    */
-  static const StringPiece googleapis_API_GENERATOR;
+  static const char googleapis_API_GENERATOR[];
 
 {% for resource in api.resources %}
 {% indent %}{% call_template _resource_h resource=resource %}{% endindent %}
