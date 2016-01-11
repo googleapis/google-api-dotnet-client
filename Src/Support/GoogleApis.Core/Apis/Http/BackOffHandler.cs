@@ -22,6 +22,10 @@ using System.Threading.Tasks;
 using Google.Apis.Logging;
 using Google.Apis.Util;
 
+#if NET45
+using TaskEx = System.Threading.Tasks.Task;
+#endif
+
 namespace Google.Apis.Http
 {
     /// <summary>
