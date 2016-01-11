@@ -1,0 +1,45 @@
+<Project ToolsVersion="12.0" DefaultTargets="Build;Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Build">
+    <ItemGroup>
+      <_SolutionFile Include="Src\Support\GoogleApisClient.sln">
+        <AdditionalProperties>
+          Configuration=ReleaseSigned
+        </AdditionalProperties>
+      </_SolutionFile>
+    </ItemGroup>
+
+    <Exec Command="nuget restore &quot;%(_SolutionFile.FullPath)&quot;" />
+
+    <MSBuild Projects="@(_SolutionFile)" BuildInParallel="True" Targets="Build"/>
+  </Target>
+
+  <!--
+    Set GoogleApisVersion to major.minor.revision from Google.Apis.Core.dll.
+  -->
+  <Target Name="GetGoogleApisVersion">
+    <GetAssemblyIdentity
+        AssemblyFiles="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.Core.dll">
+      <Output TaskParameter="Assemblies" ItemName="GoogleApisAssembly" />
+    </GetAssemblyIdentity>
+
+    <PropertyGroup>
+      <!--
+        Parse and reformat the version, keeping the first three components.
+      -->
+      <GoogleApisVersion>$(
+        [System.Version]::Parse(%(GoogleApisAssembly.Version)).ToString(3)
+      )</GoogleApisVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="Package" DependsOnTargets="GetGoogleApisVersion">
+    <MakeDir Directories="NuPkgs\Support" />
+
+    <ItemGroup>
+      <NuSpec Include="Src\Support\**\*.nuspec" />
+    </ItemGroup>
+
+    <!-- Run 'nuget pack' for each .nuspec found. -->
+    <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -BasePath . -OutputDirectory NuPkgs\Support -Version $(GoogleApisVersion)" />
+  </Target>
+</Project>
