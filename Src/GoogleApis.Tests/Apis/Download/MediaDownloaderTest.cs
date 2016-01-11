@@ -28,10 +28,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 using Google.Apis.Download;
-using Google.Apis.Json;
 using Google.Apis.Services;
-using Google.Apis.Requests;
-using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Download
 {
@@ -40,7 +37,22 @@ namespace Google.Apis.Tests.Apis.Download
     class MediaDownloaderTest
     {
         /// <summary>The content the "server" uses to send to the client.</summary>
-        private static readonly byte[] MediaContent = Encoding.UTF8.GetBytes("Media content goes here. This is an example of test content.");
+        static string MediaContent = @"Media content goes here. This is an example of test content.";
+
+        /// <summary>The stream the "server" uses to send to the client.</summary>
+        static Stream StreamContent;
+
+        [TestFixtureSetUp]
+        public static void AllTestsSetUp()
+        {
+            StreamContent = new MemoryStream(Encoding.UTF8.GetBytes(MediaContent));
+        }
+
+        [TestFixtureTearDown]
+        public static void AllTestsTearDown()
+        {
+            StreamContent.Dispose();
+        }
 
         /// <summary> An handler which demonstrate a client download which contains multiple chunks. </summary>
         private class MultipleChunksMessageHandler : CountableMessageHandler
@@ -60,30 +72,8 @@ namespace Google.Apis.Tests.Apis.Download
             /// <summary>Gets or sets the download Uri.</summary>
             public Uri DownloadUri { get; set; }
 
-            /// <summary>Content to stream for success requests.</summary>
-            internal Stream StreamContent { get; set; }
-
-            /// <summary>Content to return (in UTF-8) for error requests.</summary>
-            internal string ErrorResponse { get; set; }
-
             /// <summary>The number of bytes this "server" has sent so far.</summary>
             private long bytesRead;
-
-            /// <summary>
-            /// Constructor which uses the given content for StreamContent.
-            /// </summary>
-            internal MultipleChunksMessageHandler(byte[] content)
-            {
-                StreamContent = new MemoryStream(content);
-            }
-
-            /// <summary>
-            /// Constructor which sets StreamContent to an initially-empty stream.
-            /// </summary>
-            internal MultipleChunksMessageHandler()
-            {
-                StreamContent = new MemoryStream();
-            }
 
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
@@ -119,10 +109,6 @@ namespace Google.Apis.Tests.Apis.Download
 
                     bytesRead += currentRead;
                 }
-                else
-                {
-                    response.Content = new StreamContent(new MemoryStream(Encoding.UTF8.GetBytes(ErrorResponse)));
-                }
                 tcs.SetResult(response);
                 return tcs.Task;
             }
@@ -133,15 +119,15 @@ namespace Google.Apis.Tests.Apis.Download
         public void Download_MultipleChunks()
         {
             Subtest_Download_Chunks(2);
-            Subtest_Download_Chunks(MediaContent.Length - 1);
+            Subtest_Download_Chunks((int)StreamContent.Length - 1);
         }
 
         /// <summary>Tests that download works in case the server returns a single chunk to the client.</summary>
         [Test]
         public void Download_SingleChunk()
         {
-            Subtest_Download_Chunks(MediaContent.Length);
-            Subtest_Download_Chunks(MediaContent.Length + 1);
+            Subtest_Download_Chunks((int)StreamContent.Length);
+            Subtest_Download_Chunks((int)StreamContent.Length + 1);
             Subtest_Download_Chunks(100);
         }
 
@@ -149,21 +135,21 @@ namespace Google.Apis.Tests.Apis.Download
         [Test]
         public void Download_SingleChunk_UriContainsQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a=1&b=2");
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a=1&b=2");
         }
 
         /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
         [Test]
         public void Download_SingleChunk_UriContainsEncodedQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a=foo%2Fbar");
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a=foo%2Fbar");
         }
 
         /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
         [Test]
         public void Download_SingleChunk_UriContainsValuelessQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a&b=1");
+            Subtest_Download_Chunks((int)StreamContent.Length, true, 0, "https://www.sample.com?a&b=1");
         }
 
         /// <summary>
@@ -173,7 +159,7 @@ namespace Google.Apis.Tests.Apis.Download
         public void DownloadAsync_MultipleChunks()
         {
             Subtest_Download_Chunks(2, false);
-            Subtest_Download_Chunks(MediaContent.Length - 1, false);
+            Subtest_Download_Chunks((int)StreamContent.Length - 1, false);
         }
 
         /// <summary>
@@ -182,8 +168,8 @@ namespace Google.Apis.Tests.Apis.Download
         [Test]
         public void DownloadAsync_SingleChunk()
         {
-            Subtest_Download_Chunks(MediaContent.Length, false);
-            Subtest_Download_Chunks(MediaContent.Length + 1, false);
+            Subtest_Download_Chunks((int)StreamContent.Length, false);
+            Subtest_Download_Chunks((int)StreamContent.Length + 1, false);
             Subtest_Download_Chunks(100, false);
         }
 
@@ -194,7 +180,7 @@ namespace Google.Apis.Tests.Apis.Download
         public void DownloadAsync_Cancel()
         {
             Subtest_Download_Chunks(2, false, 3);
-            Subtest_Download_Chunks(MediaContent.Length - 1, false, 1);
+            Subtest_Download_Chunks((int)StreamContent.Length - 1, false, 1);
         }
 
         /// <summary>A helper test to test sync and async downloads.</summary>
@@ -205,7 +191,10 @@ namespace Google.Apis.Tests.Apis.Download
         private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelRequest = 0,
             string downloadUri = "http://www.sample.com")
         {
-            var handler = new MultipleChunksMessageHandler(MediaContent);
+            // reset the steam
+            StreamContent.Position = 0;
+
+            var handler = new MultipleChunksMessageHandler();
             handler.StatusCode = HttpStatusCode.OK;
             handler.ChunkSize = chunkSize;
             handler.DownloadUri = new Uri(downloadUri +
@@ -218,8 +207,11 @@ namespace Google.Apis.Tests.Apis.Download
             }
             handler.CancellationTokenSource = new CancellationTokenSource();
 
-            int expectedCalls = (int)Math.Ceiling((double) MediaContent.Length / chunkSize);
-            using (var service = CreateMockClientService(handler))
+            int expectedCalls = (int)Math.Ceiling((double)StreamContent.Length / chunkSize);
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                }))
             {
                 var downloader = new MediaDownloader(service);
                 downloader.ChunkSize = chunkSize;
@@ -266,31 +258,34 @@ namespace Google.Apis.Tests.Apis.Download
                     Assert.NotNull(lastProgress);
                     Assert.Null(lastProgress.Exception);
                     Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Completed));
-                    Assert.That(lastProgress.BytesDownloaded, Is.EqualTo(MediaContent.Length));
+                    Assert.That(lastProgress.BytesDownloaded, Is.EqualTo(StreamContent.Length));
 
-                    byte[] actual = outputStream.ToArray();
-                    CollectionAssert.AreEqual(MediaContent, actual);
+                    byte[] read = new byte[1000];
+                    outputStream.Position = 0;
+                    int length = outputStream.Read(read, 0, 1000);
+                    Assert.That(Encoding.UTF8.GetString(read, 0, length), Is.EqualTo(MediaContent));
                 }
             }
         }
 
-        /// <summary>Tests that download reports errors, deserializing a JSON response correctly.</summary>
+        /// <summary>Tests that download reports errors.</summary>
         [Test]
-        public void Download_Error_JsonResponse()
+        public void Download_Error()
         {
-            var downloadUri = "http://www.sample.com";
+            var downloadUri = "http://www.sample.com?alt=media";
             var chunkSize = 100;
-            var error = new RequestError { Code = 12345, Message = "Text", Errors = new[] { new SingleError { Message = "Nested error" } } };
-            var response = new StandardResponse<object> { Error = error };
-            var responseText = new NewtonsoftJsonSerializer().Serialize(response);
+            // reset the steam
+            StreamContent.Position = 0;
 
-            var handler = new MultipleChunksMessageHandler { ErrorResponse = responseText };
+            var handler = new MultipleChunksMessageHandler();
             handler.StatusCode = HttpStatusCode.BadRequest;
             handler.ChunkSize = chunkSize;
-            // The media downloader adds the parameter...
-            handler.DownloadUri = new Uri(downloadUri + "?alt=media");
+            handler.DownloadUri = new Uri(downloadUri);
 
-            using (var service = CreateMockClientService(handler))
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+                {
+                    HttpClientFactory = new MockHttpClientFactory(handler)
+                }))
             {
                 var downloader = new MediaDownloader(service);
                 downloader.ChunkSize = chunkSize;
@@ -305,58 +300,7 @@ namespace Google.Apis.Tests.Apis.Download
 
                 var lastProgress = progressList.LastOrDefault();
                 Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
-                GoogleApiException exception = (GoogleApiException) lastProgress.Exception;
-                Assert.That(exception.HttpStatusCode, Is.EqualTo(handler.StatusCode));
-                // Just a smattering of checks - if these two pass, it's surely okay.
-                Assert.That(exception.Error.Code, Is.EqualTo(error.Code));
-                Assert.That(exception.Error.Errors[0].Message, Is.EqualTo(error.Errors[0].Message));
             }
-        }
-
-        [Test]
-        public void Download_Error_PlaintextResponse()
-        {
-            var downloadUri = "http://www.sample.com";
-            var chunkSize = 100;
-            var responseText = "Not Found";
-
-            var handler = new MultipleChunksMessageHandler { ErrorResponse = responseText };
-            handler.StatusCode = HttpStatusCode.NotFound;
-            handler.ChunkSize = chunkSize;
-            // The media downloader adds the parameter...
-            handler.DownloadUri = new Uri(downloadUri + "?alt=media");
-
-            using (var service = CreateMockClientService(handler))
-            {
-                var downloader = new MediaDownloader(service);
-                downloader.ChunkSize = chunkSize;
-                IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
-                downloader.ProgressChanged += (p) =>
-                {
-                    progressList.Add(p);
-                };
-
-                var outputStream = new MemoryStream();
-                downloader.Download(downloadUri, outputStream);
-
-                var lastProgress = progressList.LastOrDefault();
-                Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
-                GoogleApiException exception = (GoogleApiException) lastProgress.Exception;
-                Assert.That(exception.HttpStatusCode, Is.EqualTo(handler.StatusCode));
-                Assert.That(exception.Message, Is.EqualTo(responseText));
-                Assert.IsNull(exception.Error);
-            }
-        }
-
-        /// <summary>
-        /// Creates a mock client service whose HTTP client factory uses the specified message handler.
-        /// </summary>
-        private static IClientService CreateMockClientService(HttpMessageHandler handler)
-        {
-            return new MockClientService(new BaseClientService.Initializer
-            {
-                HttpClientFactory = new MockHttpClientFactory(handler)
-            });
         }
     }
 }

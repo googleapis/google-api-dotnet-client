@@ -71,6 +71,9 @@ namespace Google.Apis.Util
         Path,
 
         /// <summary>A query parameter which is inserted into the query portion of the request URI.</summary>
-        Query
+        Query,
+
+        /// <summary>A group of user-defined parameters that will be added in to the query portion of the request URI.</summary>
+        UserDefiniedQueries
     }
 }
