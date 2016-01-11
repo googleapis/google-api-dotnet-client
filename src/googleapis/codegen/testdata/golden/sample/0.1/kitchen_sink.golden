@@ -312,12 +312,12 @@ class Featured extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Series series;
+  final Series _series;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  series = new Series(service_handle);
+  _series = new Series(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -363,12 +363,12 @@ class Global extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Series series;
+  final Series _series;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  series = new Series(service_handle);
+  _series = new Series(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -428,12 +428,12 @@ class My extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Series series;
+  final Series _series;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  series = new Series(service_handle);
+  _series = new Series(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -479,12 +479,12 @@ class Myrecent extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Private private;
+  final Private _private;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  private = new Private(service_handle);
+  _private = new Private(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -671,15 +671,15 @@ class Series extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Responses responses;
-  final Submissions submissions;
+  final Responses _responses;
+  final Submissions _submissions;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  responses = new Responses(service_handle);
+  _responses = new Responses(service_handle);
   ,
-  submissions = new Submissions(service_handle);
+  _submissions = new Submissions(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -1022,15 +1022,15 @@ class Tags extends SomeRootClass {
 
     // Method
     /**
-     * A method with a parameters named |id| and |object|
+     * A method with a parameters named |id| and |else|
      *
      * [id] id is a reserved word in Objective-C
-     * [object] A parameter name Object.
+     * [else] A parameter name 'else'.
      */
-    Future<TagList> list(str id, str object) {
+    Future<TagList> list(str id, str else) {
       pathParams['id'] = id;
-      pathParams['object'] = object;
-      string path = 'series/{id}/submissions/{object}/tags';
+      pathParams['else'] = else;
+      string path = 'series/{id}/submissions/{else}/tags';
       string url = new UrlPattern(_service.rootUrl + "/" + path)
           .expand(pathParams, queryParams);
       request = new http.Request($url, 'GET')
@@ -1048,12 +1048,12 @@ class Topics extends SomeRootClass {
   KitchSink service_handle;
 
   // Loop over all resources here to declare variables
-  final Submissions submissions;
+  final Submissions _submissions;
   
 
   // Note that I just write this stuff with the indent I want
   ,
-  submissions = new Submissions(service_handle);
+  _submissions = new Submissions(service_handle);
   
 
   // but here all the things are in an indent block because then I can control
@@ -1881,6 +1881,10 @@ class Series extends SomeBaseModelClass {
     SeriesCountersCounters _counters;
 
     //
+    // JSON name: 'else'
+    long _else;
+
+    //
     // JSON name: 'minus_votes'
     long _minus_votes;
 
@@ -1900,10 +1904,6 @@ class Series extends SomeBaseModelClass {
     // JSON name: 'users'
     str _users;
 
-    //
-    // JSON name: 'videoSubmissions'
-    long _videoSubmissions;
-
     // Getters and setters might go here
     long getAnonymousSubmissions() {
       return _anonymousSubmissions;
@@ -1916,6 +1916,12 @@ class Series extends SomeBaseModelClass {
     }
     void setCounters(SeriesCountersCounters v) {
       _counters = v;
+    }
+    long getElse() {
+      return _else;
+    }
+    void setElse(long v) {
+      _else = v;
     }
     long getMinus_votes() {
       return _minus_votes;
@@ -1946,12 +1952,6 @@ class Series extends SomeBaseModelClass {
     }
     void setUsers(str v) {
       _users = v;
-    }
-    long getVideoSubmissions() {
-      return _videoSubmissions;
-    }
-    void setVideoSubmissions(long v) {
-      _videoSubmissions = v;
     }
 
     """Schema Series.SeriesCounters.SeriesCountersCounters { model.description
@@ -2011,6 +2011,10 @@ class SeriesCounters extends SomeBaseModelClass {
   SeriesCountersCounters _counters;
 
   // 
+  // JSON name: 'else'
+  long _else;
+
+  // 
   // JSON name: 'minus_votes'
   long _minus_votes;
 
@@ -2030,10 +2034,6 @@ class SeriesCounters extends SomeBaseModelClass {
   // JSON name: 'users'
   str _users;
 
-  // 
-  // JSON name: 'videoSubmissions'
-  long _videoSubmissions;
-
   // Getters and setters might go here
   long getAnonymousSubmissions() {
     return _anonymousSubmissions;
@@ -2046,6 +2046,12 @@ class SeriesCounters extends SomeBaseModelClass {
   }
   void setCounters(SeriesCountersCounters v) {
     _counters = v;
+  }
+  long getElse() {
+    return _else;
+  }
+  void setElse(long v) {
+    _else = v;
   }
   long getMinus_votes() {
     return _minus_votes;
@@ -2076,12 +2082,6 @@ class SeriesCounters extends SomeBaseModelClass {
   }
   void setUsers(str v) {
     _users = v;
-  }
-  long getVideoSubmissions() {
-    return _videoSubmissions;
-  }
-  void setVideoSubmissions(long v) {
-    _videoSubmissions = v;
   }
 
   """Schema Series.SeriesCounters.SeriesCountersCounters { model.description }}
@@ -4153,6 +4153,10 @@ class Series extends SomeBaseModelClass {
     SeriesCountersCounters _counters;
 
     //
+    // JSON name: "else"
+    long _else;
+
+    //
     // JSON name: "minus_votes"
     long _minus_votes;
 
@@ -4172,10 +4176,6 @@ class Series extends SomeBaseModelClass {
     // JSON name: "users"
     str _users;
 
-    //
-    // JSON name: "videoSubmissions"
-    long _videoSubmissions;
-
     // Getters and setters might go here
     long getAnonymousSubmissions() {
       return _anonymousSubmissions;
@@ -4188,6 +4188,12 @@ class Series extends SomeBaseModelClass {
     }
     void setCounters(SeriesCountersCounters v) {
       _counters = v;
+    }
+    long getElse() {
+      return _else;
+    }
+    void setElse(long v) {
+      _else = v;
     }
     long getMinus_votes() {
       return _minus_votes;
@@ -4218,12 +4224,6 @@ class Series extends SomeBaseModelClass {
     }
     void setUsers(str v) {
       _users = v;
-    }
-    long getVideoSubmissions() {
-      return _videoSubmissions;
-    }
-    void setVideoSubmissions(long v) {
-      _videoSubmissions = v;
     }
 
     /**
