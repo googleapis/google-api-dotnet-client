@@ -65,7 +65,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("user_defined_query_parameters",
             Google.Apis.Util.RequestParameterType.UserDefiniedQueries)]
-        public KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 
         /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets

@@ -40,10 +40,10 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
-        private readonly KeyValuePair<string, string>[] userDefinedQueryParams;
+        private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
 
         /// <summary>Gets the user defined query parameters.</summary>
-        public KeyValuePair<string, string>[] UserDefinedQueryParams { get { return userDefinedQueryParams; } }
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get { return userDefinedQueryParams; } }
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
@@ -102,7 +102,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             public bool? IncludeGrantedScopes { get; set; }
 
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
-            public KeyValuePair<string, string>[] UserDefinedQueryParams { get; set; }
+            public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 

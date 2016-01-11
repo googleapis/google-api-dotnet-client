@@ -20,6 +20,7 @@ using System.Net.Http;
 using System.Linq;
 using System.Reflection;
 
+using Google.Apis.Logging;
 using Google.Apis.Util;
 
 namespace Google.Apis.Requests.Parameters
@@ -29,6 +30,9 @@ namespace Google.Apis.Requests.Parameters
     /// </summary>
     public static class ParameterUtils
     {
+        //TODO: Find out how to resolve the issue with setting up the Logger:
+        //private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ParameterUtils>();
+
         /// <summary>
         /// Creates a <see cref="System.Net.Http.FormUrlEncodedContent"/> with all the specified parameters in 
         /// the input request. It uses reflection to iterate over all properties with
@@ -123,9 +127,16 @@ namespace Google.Apis.Requests.Parameters
                 {
                     if (attribute.Type == RequestParameterType.UserDefiniedQueries)
                     {
-                        foreach (var pair in (KeyValuePair<string, string>[])value)
+                        if (value.GetType() == typeof(IEnumerable<KeyValuePair<string, string>>))
                         {
-                            action(RequestParameterType.Query, pair.Key, pair.Value);
+                            foreach (var pair in (IEnumerable<KeyValuePair<string, string>>)value)
+                            {
+                                action(RequestParameterType.Query, pair.Key, pair.Value);
+                            }
+                        }
+                        else
+                        {
+                            //Do logging here
                         }
                     }
                     else
