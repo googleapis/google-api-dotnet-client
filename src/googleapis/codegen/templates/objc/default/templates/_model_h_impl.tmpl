@@ -13,8 +13,8 @@
 {% doc_comment_if model.description %}
 
 @interface {{ model.className }} : {{ model.superClass }}
-{% if model.arrayOf %}@property (retain) {{ model.codeType }} items;{% endif %}{% for property in model.properties %}
+{% if model.arrayOf %}@property(retain) {{ model.codeType }} items;{% endif %}{% for property in model.properties %}
 {% doc_comment_if property.description %}
-@property ({{ property.attributes }}) {{ property.codeType }} *{{ property.codeName }}{{ property.clangDirective }};{% if property.typeComment %}  // {{ property.typeComment }}{% endif %}
+@property({{ property.attributes }}) {{ property.codeType }} *{{ property.codeName }}{{ property.clangDirective }};{% if property.typeComment %}  // {{ property.typeComment }}{% endif %}
 {% endfor %}
 @end
