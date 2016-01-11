@@ -45,5 +45,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Responses\TokenResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Responses\TokenResponseException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

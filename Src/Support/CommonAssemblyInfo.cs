@@ -16,4 +16,15 @@ limitations under the License.
 
 using System.Reflection;
 
-[assembly: AssemblyTitle("Google.Apis.Auth.DotNet4.Tests")]
+// Attributes common to all assemblies.
+
+[assembly: AssemblyCompany("Google Inc")]
+[assembly: AssemblyCopyright("Copyright 2015 Google Inc")]
+
+[assembly: AssemblyVersion("1.10.0.*")]
+
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]

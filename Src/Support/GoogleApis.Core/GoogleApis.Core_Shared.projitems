@@ -50,5 +50,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApplicationContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GoogleApiException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

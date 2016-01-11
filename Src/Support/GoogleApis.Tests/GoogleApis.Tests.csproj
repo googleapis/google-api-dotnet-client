@@ -148,6 +148,9 @@
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
     <Compile Include="ApplicationContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="GoogleApiExceptionTests.cs" />
     <Compile Include="Apis\Utils\UtilitiesTest.cs" />
     <Compile Include="[Mock]\CountableMessageHandler.cs" />

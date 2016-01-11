@@ -14,23 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Resources;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
 [assembly: AssemblyTitle("Google.Apis.Auth")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Google Inc")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © Google Inc 2013")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-// The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
-// The form "{Major}.{Minor}.*" will automatically update the build and revision,
-// and "{Major}.{Minor}.{Build}.*" will update just the revision.
-[assembly: AssemblyVersion("1.10.0.*")]

@@ -24,5 +24,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\IUploadProgress.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\ResumableUpload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
