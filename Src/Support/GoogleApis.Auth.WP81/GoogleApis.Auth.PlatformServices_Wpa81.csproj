@@ -94,21 +94,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApis.Auth\GoogleApis.Auth.csproj">
+    <ProjectReference Include="..\GoogleApis.Auth\Portable\GoogleApis.Auth_Portable.csproj">
       <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
-      <Name>GoogleApis.Auth</Name>
+      <Name>GoogleApis.Auth_Portable</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+    <ProjectReference Include="..\GoogleApis.Core\Portable\GoogleApis.Core_Portable.csproj">
       <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
-      <Name>GoogleApis.Core</Name>
+      <Name>GoogleApis.Core_Portable</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.WP81\GoogleApis.WP81.csproj">
+    <ProjectReference Include="..\GoogleApis.WP81\GoogleApis.PlatformServices_Wpa81.csproj">
       <Project>{176657cd-57f0-4358-b358-ed8b90d8af39}</Project>
-      <Name>GoogleApis.WP81</Name>
+      <Name>GoogleApis.PlatformServices_Wpa81</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+    <ProjectReference Include="..\GoogleApis\Portable\GoogleApis_Portable.csproj">
       <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
-      <Name>GoogleApis</Name>
+      <Name>GoogleApis_Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

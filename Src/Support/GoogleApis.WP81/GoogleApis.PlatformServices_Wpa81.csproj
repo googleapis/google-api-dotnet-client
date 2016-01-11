@@ -90,16 +90,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
-      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
-      <Name>GoogleApis.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
-      <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
-      <Name>GoogleApis</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -118,6 +108,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Core\Portable\GoogleApis.Core_Portable.csproj">
+      <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
+      <Name>GoogleApis.Core_Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis\Portable\GoogleApis_Portable.csproj">
+      <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
+      <Name>GoogleApis_Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

@@ -132,16 +132,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
-      <Project>{DB18F3A6-B16A-477B-A7B1-C2B116D1BFB0}</Project>
-      <Name>GoogleApis.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
-      <Project>{826CF988-EEE8-4B75-8F53-B7E851A17BAA}</Project>
-      <Name>GoogleApis</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -173,6 +163,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Core\Portable\GoogleApis.Core_Portable.csproj">
+      <Project>{DB18F3A6-B16A-477B-A7B1-C2B116D1BFB0}</Project>
+      <Name>GoogleApis.Core_Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis\Portable\GoogleApis_Portable.csproj">
+      <Project>{826CF988-EEE8-4B75-8F53-B7E851A17BAA}</Project>
+      <Name>GoogleApis_Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

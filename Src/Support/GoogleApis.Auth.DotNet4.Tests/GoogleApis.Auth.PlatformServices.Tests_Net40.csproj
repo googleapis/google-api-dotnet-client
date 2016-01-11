@@ -102,17 +102,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleApis.Auth.DotNet4\GoogleApis.Auth.DotNet4.csproj">
+    <ProjectReference Include="..\GoogleApis.Auth.DotNet4\GoogleApis.Auth.PlatformServices_Net40.csproj">
       <Project>{8cfbf8d2-64cb-4703-a5b0-f9ef4de41fa7}</Project>
-      <Name>GoogleApis.Auth.DotNet4</Name>
+      <Name>GoogleApis.Auth.PlatformServices_Net40</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.Auth\GoogleApis.Auth.csproj">
+    <ProjectReference Include="..\GoogleApis.Auth\Portable\GoogleApis.Auth_Portable.csproj">
       <Project>{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}</Project>
-      <Name>GoogleApis.Auth</Name>
+      <Name>GoogleApis.Auth_Portable</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+    <ProjectReference Include="..\GoogleApis.Core\Portable\GoogleApis.Core_Portable.csproj">
       <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
-      <Name>GoogleApis.Core</Name>
+      <Name>GoogleApis.Core_Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

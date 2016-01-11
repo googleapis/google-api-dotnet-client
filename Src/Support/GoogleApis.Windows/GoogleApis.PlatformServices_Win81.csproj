@@ -107,13 +107,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\GoogleApis.Core\GoogleApis.Core.csproj">
+    <ProjectReference Include="..\GoogleApis.Core\Portable\GoogleApis.Core_Portable.csproj">
       <Project>{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}</Project>
-      <Name>GoogleApis.Core</Name>
+      <Name>GoogleApis.Core_Portable</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleApis\GoogleApis.csproj">
+    <ProjectReference Include="..\GoogleApis\Portable\GoogleApis_Portable.csproj">
       <Project>{826cf988-eee8-4b75-8f53-b7e851a17baa}</Project>
-      <Name>GoogleApis</Name>
+      <Name>GoogleApis_Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
