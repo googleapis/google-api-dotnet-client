@@ -24,14 +24,15 @@
         </description>
         <tags>Google</tags>
       <dependencies>
+        <group targetFramework="net45">
+          <dependency id="Newtonsoft.Json" version="7.0.1" />
+        </group>
         <group>
+          <!-- Fallback group, used if nothing else matches. -->
           <dependency id="Microsoft.Bcl" version="1.1.10" />
           <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
           <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
           <dependency id="Microsoft.Net.Http" version="2.2.29" />
-          <dependency id="Newtonsoft.Json" version="7.0.1" />
-        </group>
-        <group targetFramework="net45">
           <dependency id="Newtonsoft.Json" version="7.0.1" />
         </group>
       </dependencies>

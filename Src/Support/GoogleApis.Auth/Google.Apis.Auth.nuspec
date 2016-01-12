@@ -25,11 +25,12 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-          <group>
-            <dependency id="Google.Apis.Core" version="$version$" />
-          </group>
           <group targetFramework=".NETFramework4.0">
             <dependency id="BouncyCastle" version="1.7.0" />
+            <dependency id="Google.Apis.Core" version="$version$" />
+          </group>
+          <group>
+            <!-- Fallback group, used if nothing else matches. -->
             <dependency id="Google.Apis.Core" version="$version$" />
           </group>
         </dependencies>
