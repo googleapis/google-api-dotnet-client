@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" .\SupportLibraries.proj /fl /m:16 /p:VisualStudioVersion=14.0
