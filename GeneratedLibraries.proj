@@ -1,0 +1,99 @@
+<Project ToolsVersion="12.0" DefaultTargets="Clean;UpdateDiscoveryDocuments;Generate;Build;Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    This project file requires that 'nuget' and 'python' (version 2)
+    be in the user's %PATH%.
+  -->
+
+  <Target Name="Clean">
+    <!-- Remove downloaded or generated artifacts. -->
+    <RemoveDir Directories="DiscoveryJson;Src/Generated;NuPkgs/Generated" />
+  </Target>
+
+  <Target Name="UpdateDiscoveryDocuments">
+    <MakeDir Directories="DiscoveryJson" />
+    <!-- 'python -u' turns off buffering so status is printed line-by-line. -->
+    <Exec Command="python -u get_discovery_documents.py --destination_dir .\DiscoveryJson" />
+  </Target>
+
+  <Target Name="Generate">
+    <PropertyGroup>
+      <_GenerateLibraryTool>ClientGenerator\generate_library.cmd</_GenerateLibraryTool>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_DiscoveryDocument Include="DiscoveryJson\*.json" />
+    </ItemGroup>
+
+    <MakeDir Directories="Src\Generated" />
+    <Exec Command="&quot;$(_GenerateLibraryTool)&quot; --input=&quot;%(_DiscoveryDocument.FullPath)&quot; --language=csharp --output_dir=Src\Generated" />
+  </Target>
+
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">ReleaseSigned</Configuration>
+  </PropertyGroup>
+
+  <!-- Warnings to disable -->
+  <PropertyGroup>
+    <!-- XML comment on 'construct' has badly formed XML — 'reason' -->
+    <NoWarn>$(NoWarn);1570</NoWarn>
+
+    <!-- XML comment is not placed on a valid language element -->
+    <NoWarn>$(NoWarn);1587</NoWarn>
+
+    <!-- Missing XML comment for publicly visible type or member 'Type_or_Member' -->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <!--
+    Create a list of generated projects. This has to be done in a target,
+    rather than at toplevel, because these projects don't exist until
+    the Generate target has run.
+  -->
+  <Target Name="BuildProjectList">
+    <!-- Generated libraries that don't compile -->
+    <ItemGroup>
+      <!-- Last released May 2015 (1.9.0.1030) -->
+      <BrokenProject Include="Src\Generated\Google.Apis.Games.v1\*" />
+
+      <!-- Last released April 2014 (1.8.1.1750) -->
+      <BrokenProject Include="Src\Generated\Google.Apis.IdentityToolkit.v3\*" />
+
+      <!-- Last released Jan 2015 (1.9.0.860) -->
+      <BrokenProject Include="Src\Generated\Google.Apis.Oauth2.v1\*" />
+    </ItemGroup>
+
+    <!-- All generated libraries except the broken ones listed above -->
+    <ItemGroup>
+      <Project Include="Src\Generated\*\*.csproj" Exclude="@(BrokenProject)">
+        <!--
+          TODO(mmdriley): Maybe we should add this metadata in the Build target?
+        -->
+        <AdditionalProperties>
+          Configuration=$(Configuration);
+          NoWarn=$(NoWarn)
+        </AdditionalProperties>
+      </Project>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="BuildProjectList">
+    <!--
+      We only need to restore packages for one API, since they have identical
+      packages.config. The choice of the discovery API is mostly arbitrary;
+      it's an API that's always likely to be there.
+    -->
+    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\packages.config -PackagesDirectory Src\Generated\packages" />
+
+    <MSBuild Projects="@(Project)" BuildInParallel="True" Targets="Build" />
+  </Target>
+
+  <Target Name="Package" DependsOnTargets="BuildProjectList">
+    <MakeDir Directories="NuPkgs\Generated" />
+
+    <ItemGroup>
+      <NuSpec Include="Src\Generated\*\*.nuspec" Exclude="@(BrokenProject)" />
+    </ItemGroup>
+
+    <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -OutputDirectory NuPkgs\Generated" />
+  </Target>
+</Project>
