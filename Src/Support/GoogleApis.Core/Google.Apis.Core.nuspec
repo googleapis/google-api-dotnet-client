@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Core</id>
+        <version>$version$</version>
+        <title>Google APIs Core Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>google-apis-packages</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://developers.google.com/api-client-library/dotnet</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, Data-store, logging and so on.
+
+          Supported Platforms:
+
+          - .NET Framework 4
+
+          - Windows Store apps
+
+          - Windows Phone 8 and 8.1
+          
+          - Portable Class Libraries
+        </description>
+        <tags>Google</tags>
+      <dependencies>
+        <group targetFramework="net45">
+          <dependency id="Newtonsoft.Json" version="7.0.1" />
+        </group>
+        <group>
+          <!-- Fallback group, used if nothing else matches. -->
+          <dependency id="Microsoft.Bcl" version="1.1.10" />
+          <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+          <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+          <dependency id="Microsoft.Net.Http" version="2.2.29" />
+          <dependency id="Newtonsoft.Json" version="7.0.1" />
+        </group>
+      </dependencies>
+    </metadata>
+    <files>
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.dll"
+        target="lib\net45\Google.Apis.Core.dll" />
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.pdb"
+        target="lib\net45\Google.Apis.Core.pdb" />
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.xml"
+        target="lib\net45\Google.Apis.Core.xml" />
+
+      <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll" />
+      <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.pdb" />
+      <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.xml" />
+      
+      <file src="Resources\License.txt" target="License.txt" />
+    </files>
+</package>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b195969c-aaa6-47f8-928e-691ad872fd03</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>GoogleApis.Core_Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Discovery\DiscoveryVersion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Discovery\Features.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Discovery\IParameter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Discovery\Parameter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\BackOffHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\ConfigurableHttpClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\ConfigurableMessageHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\ExponentialBackOffInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\HttpClientFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\HttpConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\HttpExtenstions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IConfigurableHttpClientInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IHttpClientFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IHttpExceptionHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IHttpExecuteInterceptor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IHttpUnsuccessfulResponseHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\MaxUrlLengthInterceptor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\ISerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\IJsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\NullLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\Parameters\ParameterCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\Parameters\ParameterUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\Parameters\ParameterValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\RequestBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\RequestError.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\SingleError.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Testing\VisibleForTestOnly.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\ExponentialBackOff.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\IBackOff.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\IClock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Repeatable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\RequestParameterAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\StandardResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Store\IDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\StringValueAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Utilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GoogleApiException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -7,4 +7,13 @@
 Backup*
 *.suo
 *.user
-*.xml
+
+msbuild.log
+TestResult.xml
+
+/NuPkgs/
+
+# Ignore documentation XML files that are produced as part of C# builds.
+# TODO: Move these to bin or obj.
+/Src/Support/**/*.xml
+/Src/Generated/**/*.xml
