@@ -87,6 +87,28 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Returns the Application Default Credentials (ambient credentials) for the application, synchronously.
+        /// </summary>
+        /// <remarks>
+        /// See <see cref="GetApplicationDefaultAsync"/> for more details on the Application Default Credentials. If you
+        /// are writing an application using asynchronous operations, it is encouraged that you use that method. However,
+        /// if you are writing an application using synchronous operations this method is safe to call, even from a thread
+        /// associated with a single-thread synchronization context such as a Windows Forms UI. The call will block until
+        /// the credentials are available (or an exception is thrown) but will not attempt re-entrancy within the
+        /// synchronization context. So for example, if you call this from a Windows Forms UI thread, the UI will freeze
+        /// until the method completes, but it will not deadlock.
+        /// </remarks>
+        /// <returns>The Application Default Credentials (ambient credentials) for the application.</returns>
+        public static GoogleCredential GetApplicationDefault()
+        {
+            // Everywhere we await a task internally, we use ConfigureAwait(false). Therefore even if this is called on
+            // a thread associated with a single-thread synchronization context (e.g. WinForms, WPF) the continuations
+            // will execute safely in the thread-pool. (This is the approach we use elsewhere for synchronous requests,
+            // e.g. ClientServiceRequest.Execute.)
+            return defaultCredentialProvider.GetDefaultCredentialAsync().Result;
+        }
+
+        /// <summary>
         /// Loads credential from stream containing JSON credential data.
         /// <para>
         /// The stream can contain a Service Account key file in JSON format from the Google Developers
