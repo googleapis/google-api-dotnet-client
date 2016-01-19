@@ -28,7 +28,7 @@ setup(
              'googleapis.codegen.script_stubs:RunExpandTemplates')
             ]},
     include_package_data=True,
-    install_requires=['django',
+    install_requires=['django<1.9',
                       'httplib2',
                       'google-apputils',
                       'python-gflags',
