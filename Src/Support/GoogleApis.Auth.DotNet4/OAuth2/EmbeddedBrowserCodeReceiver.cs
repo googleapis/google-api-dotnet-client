@@ -38,21 +38,38 @@ namespace Google.Apis.Auth.OAuth2
             get { return GoogleAuthConsts.LocalhostRedirectUri; }
         }
 
-        public async Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="taskCancellationToken"></param>
+        /// <returns></returns>
+        public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
-            // Create the web authentication user control and add it to the current window.
-            var webAuthDialog = new AuthorizationDialog();
+            var tcs = new TaskCompletionSource<AuthorizationCodeResponseUrl>();
+
             try
             {
-                return await webAuthDialog.Launch(url.Build());
+                var webAuthDialog = new AuthorizationDialog(url.Build());
+                webAuthDialog.ShowDialog();
+                if (webAuthDialog.ResponseUrl == null)
+                {
+                    tcs.SetCanceled();
+                }
+                else
+                {
+                    tcs.SetResult(webAuthDialog.ResponseUrl);
+                }
+                return tcs.Task;
             }
-            finally
+            catch (Exception ex)
             {
-                // TODO: Is any cleanup needed? Dialog should be able to close itself.
+                tcs.SetException(ex);
+                return tcs.Task;
             }
         }
-
+        
         #endregion
     }
 }
