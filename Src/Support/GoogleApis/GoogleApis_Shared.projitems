@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\HttpRequestMessageExtenstions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\IClientServiceRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\IDirectResponseSchema.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\PageStreamer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\BaseClientService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\IClientService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IDownloadProgress.cs" />
