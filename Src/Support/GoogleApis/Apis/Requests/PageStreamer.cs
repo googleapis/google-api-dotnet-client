@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Google.Apis.Requests
 {
-    // TODO(jskeet and LindaLawton): Add an example in the doc comment.
+    // TODO(jskeet): Make sure one of our samples uses this.
 
     /// <summary>
     /// A page streamer is a helper to provide both synchronous and asynchronous page streaming
@@ -33,6 +33,22 @@ namespace Google.Apis.Requests
     /// and then use the instance methods to obtain paginated results.
     /// </para>
     /// </remarks>
+    /// <example>
+    /// To construct a page streamer to return snippets from the YouTube v3 Data API, you might use code
+    /// such as the following. The pattern for other APIs would be very similar, with the <c>request.PageToken</c>,
+    /// <c>response.NextPageToken</c> and <c>response.Items</c> properties potentially having different names. Constructing
+    /// the page streamer doesn't require any service references or authentication, so it's completely safe to perform this
+    /// in a type initializer.
+    /// <code><![CDATA[
+    /// using Google.Apis.YouTube.v3;
+    /// using Google.Apis.YouTube.v3.Data;
+    /// ...
+    /// private static readonly snippetPageStreamer = new PageStreamer<SearchResult, SearchResource.ListRequest, SearchListResponse, string>(
+    ///     (request, token) => request.PageToken = token,
+    ///     response => response.NextPageToken,
+    ///     response => response.Items);
+    /// ]]></code>
+    /// </example>
     /// <typeparam name="TResource">The type of resource being paginated</typeparam>
     /// <typeparam name="TRequest">The type of request used to fetch pages</typeparam>
     /// <typeparam name="TResponse">The type of response obtained when fetching pages</typeparam>
