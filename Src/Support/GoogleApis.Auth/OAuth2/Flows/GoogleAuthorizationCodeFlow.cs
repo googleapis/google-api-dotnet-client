@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,6 +41,12 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
 
+        private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
+
+        /// <summary>Gets the user defined query parameters.</summary>
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams
+        { get { return userDefinedQueryParams; } }
+
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
@@ -56,7 +63,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 Scope = string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
-                    ? IncludeGrantedScopes.Value.ToString().ToLower() : null
+                    ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
+                UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
 
@@ -93,6 +101,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             /// <summary>Gets or sets the optional indicator for including granted scopes for incremental authorization.</summary>
             public bool? IncludeGrantedScopes { get; set; }
+
+            /// <summary>Gets or sets the optional user defined query parameters.</summary>
+            public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
