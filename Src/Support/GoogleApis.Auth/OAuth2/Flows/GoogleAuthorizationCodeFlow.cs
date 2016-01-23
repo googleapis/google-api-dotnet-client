@@ -45,7 +45,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         /// <summary>Gets the user defined query parameters.</summary>
         public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams
-        { get { return userDefinedQueryParams; } }
+        { 
+            get { return userDefinedQueryParams; } 
+        }
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)

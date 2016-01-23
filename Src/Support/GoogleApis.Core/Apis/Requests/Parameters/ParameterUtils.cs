@@ -30,8 +30,7 @@ namespace Google.Apis.Requests.Parameters
     /// </summary>
     public static class ParameterUtils
     {
-        //TODO: Find out how to resolve the issue with setting up the Logger:
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ParameterUtils>();
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType(typeof(ParameterUtils));
 
         /// <summary>
         /// Creates a <see cref="System.Net.Http.FormUrlEncodedContent"/> with all the specified parameters in 
@@ -125,7 +124,7 @@ namespace Google.Apis.Requests.Parameters
                 // Call action with the type name and value.
                 if (propertyType.IsValueType || value != null)
                 {
-                    if (attribute.Type == RequestParameterType.UserDefiniedQueries)
+                    if (attribute.Type == RequestParameterType.UserDefinedQueries)
                     {
                         if (value.GetType() == typeof(IEnumerable<KeyValuePair<string, string>>))
                         {
@@ -135,8 +134,9 @@ namespace Google.Apis.Requests.Parameters
                             }
                         }
                         else
-                        {   
-                            //Do logging here
+                        {
+                            Logger.Warning("Parameter marked with RequestParameterType.UserDefinedQueries attribute " +
+                                "was not of type IEnumerable<KeyValuePair<string, string>> and will be skipped.");
                         }
                     }
                     else

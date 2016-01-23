@@ -35,8 +35,7 @@ namespace Google.Apis.Tests.Apis.Requests
             [Google.Apis.Util.RequestParameterAttribute("second_query_param", Google.Apis.Util.RequestParameterType.Query)]
             public string SecondParam { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute("user_defined_query_parameters",
-                Google.Apis.Util.RequestParameterType.UserDefiniedQueries)]
+            [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
             public System.Collections.Generic.KeyValuePair<string, string>[] ParamsCollecetion { get; set; }
 
             public System.Uri Build()
