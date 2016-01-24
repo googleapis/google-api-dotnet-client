@@ -55,6 +55,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
             includeGrantedScopes = initializer.IncludeGrantedScopes;
+            userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
