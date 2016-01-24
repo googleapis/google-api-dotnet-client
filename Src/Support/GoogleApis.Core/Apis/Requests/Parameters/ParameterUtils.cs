@@ -126,7 +126,7 @@ namespace Google.Apis.Requests.Parameters
                 {
                     if (attribute.Type == RequestParameterType.UserDefinedQueries)
                     {
-                        if (value.GetType() == typeof(IEnumerable<KeyValuePair<string, string>>))
+                        if (typeof(IEnumerable<KeyValuePair<string, string>>).IsAssignableFrom(value.GetType()))
                         {
                             foreach (var pair in (IEnumerable<KeyValuePair<string, string>>)value)
                             {

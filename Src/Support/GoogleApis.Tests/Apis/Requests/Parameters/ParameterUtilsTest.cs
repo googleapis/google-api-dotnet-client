@@ -36,7 +36,7 @@ namespace Google.Apis.Tests.Apis.Requests
             public string SecondParam { get; set; }
 
             [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
-            public System.Collections.Generic.KeyValuePair<string, string>[] ParamsCollecetion { get; set; }
+            public List<KeyValuePair<string, string>> ParamsCollection { get; set; }
 
             public System.Uri Build()
             {
@@ -56,7 +56,7 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 FirstParam = "firstOne",
                 SecondParam = "secondOne",
-                ParamsCollecetion = new KeyValuePair<string, string>[]{
+                ParamsCollection = new List<KeyValuePair<string, string>>{
                     new KeyValuePair<string,string>("customParam1","customVal1"),
                     new KeyValuePair<string,string>("customParam2","customVal2")
                 }
