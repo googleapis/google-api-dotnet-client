@@ -26,7 +26,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// OAuth 2.0 verification code receiver for Windows Phone that opens an embedded Google account form to enter the
+    /// OAuth 2.0 verification code receiver for Windows Forms that opens an embedded Google account dialog to enter the
     /// user's credentials and accepts the application access to its token.
     /// </summary>
     public class EmbeddedBrowserCodeReceiver : ICodeReceiver
@@ -38,12 +38,6 @@ namespace Google.Apis.Auth.OAuth2
             get { return GoogleAuthConsts.LocalhostRedirectUri; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="taskCancellationToken"></param>
-        /// <returns></returns>
         public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
