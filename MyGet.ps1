@@ -21,10 +21,9 @@ PrintHeader("Building SupportLibraries.proj")
 # Build the Generated code (i.e. the specific API clients).
 PrintHeader("Building GeneratedLibraries.proj")
 
-get-command python.exe
-dir c:\python34\
-
 # Install dependent Python libraries.
+python -V
+python -m ensurepip
 python -m pip list
 python -m pip install django==1.7
 python -m pip install httplib2
