@@ -24,6 +24,7 @@ PrintHeader("Building GeneratedLibraries.proj")
 # Install dependent Python libraries.
 python -V
 python -m ensurepip
+python -m pip install -U pip
 python -m pip list
 python -m pip install django==1.7
 python -m pip install httplib2
