@@ -306,7 +306,7 @@ class TemplateHelpersTest(basetest.TestCase):
     source = 'abc {% call_template ../_out_of_dir %} def'
     template = django_template.Template(source)
     rendered = template.render(self._GetContext({
-        'template_dir': os.path.join(self._TEST_DATA_DIR, 'templates'),
+        'template_dir': os.path.join(self._TEST_DATA_DIR, 'languages'),
         }))
     self.assertEquals('abc OUT OF DIR def', rendered)
 
@@ -582,7 +582,7 @@ class TemplateHelpersTest(basetest.TestCase):
 
   def testCache(self):
     loader = template_helpers.CachingTemplateLoader()
-    template_dir = os.path.join(self._TEST_DATA_DIR, 'templates')
+    template_dir = os.path.join(self._TEST_DATA_DIR, 'languages')
     test_path = os.path.join(template_dir, 'java/1.0dev/test.tmpl')
     stable_path = os.path.join(template_dir, 'java/1.0/test.tmpl')
     loader.GetTemplate(test_path, template_dir)

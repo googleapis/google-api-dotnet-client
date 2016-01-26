@@ -12,12 +12,11 @@ from googleapis.codegen import targets
 class BaseTargetsTest(basetest.TestCase):
 
   def setUp(self):
-    testdata_dir = os.path.join(os.path.dirname(__file__),
-                                'testdata')
+    testdata_dir = os.path.join(os.path.dirname(__file__), 'testdata')
 
     self.targets = targets.Targets(
         os.path.join(testdata_dir, 'targets_test.json'),
-        os.path.join(testdata_dir, 'templates'))
+        os.path.join(testdata_dir, 'languages'))
 
 
 class TargetsTest(BaseTargetsTest):

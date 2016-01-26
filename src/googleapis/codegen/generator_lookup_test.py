@@ -40,7 +40,7 @@ class GeneratorLookupTest(basetest.TestCase):
 
   def testVersionFromFeature(self):
     template_root = os.path.join(os.path.dirname(__file__),
-                                 'testdata/templates')
+                                 'testdata/languages')
     targets.Targets.SetDefaultTemplateRoot(template_root)
     features_path = os.path.join(template_root,
                                  'java/generator_test/features.json')

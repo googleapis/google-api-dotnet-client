@@ -107,10 +107,9 @@ class Targets(object):
   def GetDefaultTemplateRoot():
     return Targets._default_template_root
 
-
   # Set the initial template root.
   _default_template_root = os.path.join(os.path.dirname(__file__),
-                                        'templates')
+                                        'languages')
 
   # Whether to use variation release versions when calculating template paths.
   use_versioned_paths = False

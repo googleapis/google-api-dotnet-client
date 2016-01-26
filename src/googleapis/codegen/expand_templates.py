@@ -120,7 +120,7 @@ def main(unused_argv):
   else:
     # Not described by targets.json. The template dir should just be down
     # in the language specific folder
-    template_dir = os.path.join(os.path.dirname(__file__), 'templates',
+    template_dir = os.path.join(os.path.dirname(__file__), 'languages',
                                 FLAGS.language)
     features = None
     generator_name = FLAGS.language
