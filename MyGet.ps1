@@ -32,6 +32,13 @@ py -m pip install google-apputils
 py -m pip install google-api-python-client
 py -m pip list
 
+Write-Host "Trying to call pip3 directly."
+C:\Python34\Scripts\pip3.exe install django==1.7
+C:\Python34\Scripts\pip3.exe install httplib2
+C:\Python34\Scripts\pip3.exe install google-apputils
+C:\Python34\Scripts\pip3.exe install google-api-python-client
+C:\Python34\Scripts\pip3.exe list
+
 Write-Host "Installing via python"
 python -V
 python -m ensurepip --upgrade
