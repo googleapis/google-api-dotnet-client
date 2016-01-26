@@ -30,4 +30,11 @@ PrintHeader("Building GeneratedLibraries.proj")
 # This is because the Clean target tries to delete a file locked by and
 # msbuild process still in memory (but waiting for work). To fix:
 #   taskkill /im msbuild.exe /f
+
+# Install dependent Python libraries.
+pip install django==1.7
+pip install httplib2
+pip install google-apputils
+pip install google-api-python-client
+
 & $msbuild14 /m GeneratedLibraries.proj
