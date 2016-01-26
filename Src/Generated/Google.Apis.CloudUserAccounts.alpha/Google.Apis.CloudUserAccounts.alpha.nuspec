@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.CloudUserAccounts.alpha</id>
+        <version>1.10.0.266</version>
+        <title>Google.Apis.CloudUserAccounts.alpha Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>google-apis-packages</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>Google Clouduseraccounts alpha API client library</summary>
+        <description>
+          Google APIs Client Library for working with Clouduseraccounts alpha.
+          Supported Platforms:
+
+          - .NET Framework 4 and 4.5
+
+          - Windows Store apps
+
+          - Windows Phone 8 and 8.1
+
+          - Portable Class Libraries
+
+          More documentation on the API is available at:
+          https://developers.google.com/api-client-library/dotnet/apis/clouduseraccounts/alpha
+
+          The package source code is available at:
+          https://developers.google.com/resources/api-libraries/download/clouduseraccounts/alpha/csharp
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+            <group>
+                <dependency id="Google.Apis" version="1.10.0" />
+                <dependency id="Google.Apis.Auth" version="1.10.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\ReleaseSigned\Google.Apis.CloudUserAccounts.alpha.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.CloudUserAccounts.alpha.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.CloudUserAccounts.alpha.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.CloudUserAccounts.alpha.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.CloudUserAccounts.alpha.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.CloudUserAccounts.alpha.xml" />
+    </files>
+</package>
