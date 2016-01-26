@@ -16,7 +16,18 @@ import argparse
 import json
 from operator import itemgetter
 import os
-import urllib2
+
+# The MyGet build machine only has Python3 installed, but we wish to keep using
+# Python2 until the language's dying breath. Do some import schenanigans so
+# that it works with both versions.
+try:
+  # Python 2.x
+  from urllib2 import Request
+  from urllib2 import urlopen
+except ImportError:
+  # Python 3.x
+  from urllib.request import Request
+  from urllib.request import urlopen
 
 
 def GetDiscoveryDocuments(destination_dir):
@@ -31,8 +42,8 @@ def GetDiscoveryDocuments(destination_dir):
   # Make sure the Discovery server never treats us as a Google-internal client.
   headers = {'X-User-Ip': '0.0.0.0'}
 
-  discovery_request = urllib2.Request(discovery_endpoint, headers=headers)
-  discovery_json = urllib2.urlopen(discovery_request)
+  discovery_request = Request(discovery_endpoint, headers=headers)
+  discovery_json = urlopen(discovery_request)
   discovery = json.load(discovery_json)
 
   if not os.path.exists(destination_dir):
@@ -43,8 +54,8 @@ def GetDiscoveryDocuments(destination_dir):
     filename = os.path.join(destination_dir, filename)
 
     api_url = api['discoveryRestUrl']
-    api_request = urllib2.Request(api_url, headers=headers)
-    api_json = urllib2.urlopen(api_request)
+    api_request = Request(api_url, headers=headers)
+    api_json = urlopen(api_request)
 
     # Use binary mode to ensure the file is written exactly as received.
     with open(filename, 'wb') as discovery_file:
