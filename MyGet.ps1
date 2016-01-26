@@ -22,9 +22,11 @@ PrintHeader("Building SupportLibraries.proj")
 PrintHeader("Building GeneratedLibraries.proj")
 
 # Install dependent Python libraries.
+py -m pip install --upgrade pip
 py -m pip install django==1.7
 py -m pip install httplib2
 py -m pip install google-apputils
 py -m pip install google-api-python-client
+py -m pip list
 
 & $msbuild14 /m /nr:false GeneratedLibraries.proj
