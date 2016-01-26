@@ -43,8 +43,9 @@ def GetDiscoveryDocuments(destination_dir):
   headers = {'X-User-Ip': '0.0.0.0'}
 
   discovery_request = Request(discovery_endpoint, headers=headers)
-  discovery_json = urlopen(discovery_request)
-  discovery = json.load(discovery_json)
+  discovery_response = urlopen(discovery_request)
+  discovery_json = discovery_response.read().decode("utf-8")
+  discovery = json.loads(discovery_json)
 
   if not os.path.exists(destination_dir):
     os.makedirs(destination_dir)

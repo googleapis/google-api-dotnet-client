@@ -24,4 +24,10 @@ PrintHeader("Building GeneratedLibraries.proj")
 
 # Build the Generated code (i.e. the specific API clients).
 PrintHeader("Building GeneratedLibraries.proj")
+# Note: When running multiple times on the same machine this may fail with:
+#   error MSB3231: Unable to remove directory "Src/Generated". Access to the
+#   path 'Microsoft.Bcl.Build.Tasks.dll' is denied.
+# This is because the Clean target tries to delete a file locked by and
+# msbuild process still in memory (but waiting for work). To fix:
+#   taskkill /im msbuild.exe /f
 & $msbuild14 /m GeneratedLibraries.proj
