@@ -21,18 +21,14 @@ PrintHeader("Building SupportLibraries.proj")
 # Build the Generated code (i.e. the specific API clients).
 PrintHeader("Building GeneratedLibraries.proj")
 
-# Install dependent Python libraries.
-Get-Command python
-Get-Command pip
-Get-Command pip2
-Get-Command pip3
-cd Env:
-dir
+get-command python.exe
+dir c:\python34\
 
+# Install dependent Python libraries.
+python -m pip list
 python -m pip install django==1.7
 python -m pip install httplib2
 python -m pip install google-apputils
 python -m pip install google-api-python-client
-python -m pip list
 
 & $msbuild14 /m /nr:false GeneratedLibraries.proj
