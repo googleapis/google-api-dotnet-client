@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Dfareporting.v2_2</id>
+        <version>1.10.0.312</version>
+        <title>Google.Apis.Dfareporting.v2_2 Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>google-apis-packages</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>Google Dfareporting v2.2 API client library</summary>
+        <description>
+          Google APIs Client Library for working with Dfareporting v2.2.
+          Supported Platforms:
+
+          - .NET Framework 4 and 4.5
+
+          - Windows Store apps
+
+          - Windows Phone 8 and 8.1
+
+          - Portable Class Libraries
+
+          More documentation on the API is available at:
+          https://developers.google.com/api-client-library/dotnet/apis/dfareporting/v2.2
+
+          The package source code is available at:
+          https://developers.google.com/resources/api-libraries/download/dfareporting/v2.2/csharp
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+            <group>
+                <dependency id="Google.Apis" version="1.10.0" />
+                <dependency id="Google.Apis.Auth" version="1.10.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\ReleaseSigned\Google.Apis.Dfareporting.v2_2.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Dfareporting.v2_2.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.Dfareporting.v2_2.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Dfareporting.v2_2.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.Dfareporting.v2_2.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Dfareporting.v2_2.xml" />
+    </files>
+</package>
