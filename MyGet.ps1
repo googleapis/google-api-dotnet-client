@@ -12,7 +12,7 @@ function PrintHeader($message) {
 
 Write-Host ".NET Client Libraries, build shard $Env:BuildShard"
 
-# TODO(chrsmith): Document why we require VS v14 to build.
+# Just needs to be a version installed on the system.
 [Environment]::SetEnvironmentVariable(
     "VisualStudioVersion",
     "14.0",
@@ -21,7 +21,7 @@ Write-Host ".NET Client Libraries, build shard $Env:BuildShard"
 $msbuild14 = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 
 # Build the Support libraries.
-PrintHeader("Building SupportLibraries.proj")
+PrintHeader "Building SupportLibraries.proj"
 & $msbuild14 /m /nr:false SupportLibraries.proj
 
 # TODO(chrsmith): Run unit tests as applicable.
@@ -29,7 +29,7 @@ PrintHeader("Building SupportLibraries.proj")
 # venerable System.Net.Http.Primitives assembly.
 
 # Install dependent Python libraries.
-PrintHeader("Installing Python dependencies")
+PrintHeader "Installing Python dependencies"
 python -V
 python -m ensurepip --upgrade
 python -m pip list
@@ -39,5 +39,5 @@ python -m pip install google-apputils
 python -m pip install google-api-python-client
 
 # Build the Generated code (i.e. the specific API clients).
-PrintHeader("Building GeneratedLibraries.proj")
+PrintHeader "Building GeneratedLibraries.proj"
 & $msbuild14 /m /nr:false GeneratedLibraries.proj
