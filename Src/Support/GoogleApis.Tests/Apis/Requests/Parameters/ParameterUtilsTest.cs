@@ -24,6 +24,7 @@ using Google.Apis.Requests.Parameters;
 
 namespace Google.Apis.Tests.Apis.Requests
 {
+    /// <summary>Tests for <see cref="Google.Apis.Requests.Parameters.ParameterUtils"/>.</summary>
     [TestFixture]
     public class ParameterUtilsTest
     {
@@ -32,7 +33,7 @@ namespace Google.Apis.Tests.Apis.Requests
             [Google.Apis.Util.RequestParameterAttribute("first_query_param", Google.Apis.Util.RequestParameterType.Query)]
             public string FirstParam { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute("second_query_param", Google.Apis.Util.RequestParameterType.Query)]
+            [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.Query)]
             public string SecondParam { get; set; }
 
             [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
@@ -64,8 +65,13 @@ namespace Google.Apis.Tests.Apis.Requests
 
             var result = request.Build().AbsoluteUri;
 
+            //parameter was given a name and a value, so both appear in the uri
             Assert.That(result, Contains.Substring("first_query_param=firstOne"));
-            Assert.That(result, Contains.Substring("second_query_param=secondOne"));
+            
+            //parameter was given value only, so the name is the name of the property in lower case
+            Assert.That(result, Contains.Substring("secondparam=secondOne"));
+
+            //custom parameters are key value pairs representing parameter names and values respectively
             Assert.That(result, Contains.Substring("customParam1=customVal1"));
             Assert.That(result, Contains.Substring("customParam2=customVal2"));
         }
