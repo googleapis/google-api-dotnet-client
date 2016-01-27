@@ -13,11 +13,7 @@ function PrintHeader($message) {
 Write-Host ".NET Client Libraries, build shard $Env:BuildShard"
 
 # Just needs to be a version installed on the system.
-[Environment]::SetEnvironmentVariable(
-    "VisualStudioVersion",
-    "14.0",
-    "User")
-
+$Env:VisualStudioVersion = "14.0"
 $msbuild14 = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\MSBuild.exe"
 
 # Build the Support libraries.
