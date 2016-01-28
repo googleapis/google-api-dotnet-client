@@ -64,7 +64,11 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// Gets or sets a collection of user defined query parameters to facilitate any not explicitly supported
         /// by the library which will be included in the resultant authentication URL.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
+        /// <remarks>
+        /// The name of this parameter is used only for the constructor and will not end up in the resultant query string.
+        /// </remarks>
+        [Google.Apis.Util.RequestParameterAttribute("user_defined_query_params",
+            Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
         public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 
         /// <summary>

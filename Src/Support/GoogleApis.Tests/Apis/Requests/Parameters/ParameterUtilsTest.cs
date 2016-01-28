@@ -33,10 +33,10 @@ namespace Google.Apis.Tests.Apis.Requests
             [Google.Apis.Util.RequestParameterAttribute("first_query_param", Google.Apis.Util.RequestParameterType.Query)]
             public string FirstParam { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.Query)]
+            [Google.Apis.Util.RequestParameterAttribute("second_query_param", Google.Apis.Util.RequestParameterType.Query)]
             public string SecondParam { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute(Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
+            [Google.Apis.Util.RequestParameterAttribute("query_param_attribute_name", Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
             public List<KeyValuePair<string, string>> ParamsCollection { get; set; }
 
             public System.Uri Build()
@@ -69,11 +69,14 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.That(result, Contains.Substring("first_query_param=firstOne"));
             
             //parameter was given value only, so the name is the name of the property in lower case
-            Assert.That(result, Contains.Substring("secondparam=secondOne"));
+            Assert.That(result, Contains.Substring("second_query_param=secondOne"));
 
             //custom parameters are key value pairs representing parameter names and values respectively
             Assert.That(result, Contains.Substring("customParam1=customVal1"));
             Assert.That(result, Contains.Substring("customParam2=customVal2"));
+
+            //assert that the parameter name for the custom parameters does not carry through to the result
+            Assert.IsFalse(result.Contains("query_param_attribute_name"));
         }
     }
 }

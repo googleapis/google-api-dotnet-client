@@ -51,13 +51,6 @@ namespace Google.Apis.Util
         }
 
         /// <summary>Constructs a new property attribute to be a part of a REST URI.</summary>
-        /// <param name="type">The type of the parameter, either Path, Query or UserDefinedQueries.</param>
-        public RequestParameterAttribute(RequestParameterType type)
-        {
-            this.type = type;
-        }
-
-        /// <summary>Constructs a new property attribute to be a part of a REST URI.</summary>
         /// <param name="name">
         /// The name of the parameter. If the parameter is a path parameter this name will be used to substitute the 
         /// string value into the path, replacing {name}. If the parameter is a query parameter, this parameter will be
