@@ -173,12 +173,21 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IHttpUnsuccessfulResponseHandler
 
+        // DO NOT SUBMIT UNTIL THIS IS DONE!
+        // TODO(chrsmith): Document this method, and the reason for the code
+        // below.
         public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
             // TODO(peleyal): check WWW-Authenticate header.
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return !Object.Equals(Token.AccessToken, AccessMethod.GetAccessToken(args.Request))
+                bool tokensEqual = false;
+                if (Token != null)
+                {
+                    tokensEqual = Object.Equals(
+                        Token.AccessToken, AccessMethod.GetAccessToken(args.Request));
+                }
+                return !tokensEqual
                     || await RequestAccessTokenAsync(args.CancellationToken).ConfigureAwait(false);
             }
 
