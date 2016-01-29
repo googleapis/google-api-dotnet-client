@@ -73,7 +73,10 @@ namespace Google.Apis.Util
         /// <summary>A query parameter which is inserted into the query portion of the request URI.</summary>
         Query,
 
-        /// <summary>A group of user-defined parameters that will be added in to the query portion of the request URI.</summary>
+        /// <summary>
+        /// A group of user-defined parameters that will be added in to the query portion of the request URI. If this
+        /// type is being used, the name of the RequestParameterAttirbute is meaningless.
+        /// </summary>
         UserDefinedQueries
     }
 }

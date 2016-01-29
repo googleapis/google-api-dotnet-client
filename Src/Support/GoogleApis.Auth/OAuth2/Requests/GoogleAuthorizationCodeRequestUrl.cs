@@ -65,7 +65,8 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// by the library which will be included in the resultant authentication URL.
         /// </summary>
         /// <remarks>
-        /// The name of this parameter is used only for the constructor and will not end up in the resultant query string.
+        /// The name of this parameter is used only for the constructor and will not end up in the resultant query
+        /// string.
         /// </remarks>
         [Google.Apis.Util.RequestParameterAttribute("user_defined_query_params",
             Google.Apis.Util.RequestParameterType.UserDefinedQueries)]

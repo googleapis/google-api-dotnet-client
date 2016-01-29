@@ -80,10 +80,6 @@ namespace Google.Apis.Auth.OAuth2.Flows
             Assert.AreEqual(request.RedirectUri, "TestRedirectUri");
         }
 
-        [Test]
-        public void RevokeTokenAsyncTest()
-        {
-            //TODO
-        }
+        //TODO(squid808): Add tests for RevokeToken.
     }
 }
