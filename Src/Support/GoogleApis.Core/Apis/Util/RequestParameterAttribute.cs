@@ -56,7 +56,7 @@ namespace Google.Apis.Util
         /// string value into the path, replacing {name}. If the parameter is a query parameter, this parameter will be
         /// added to the query string, in the format "name=value".
         /// </param>
-        /// <param name="type">The type of the parameter, either Path or Query.</param>
+        /// <param name="type">The type of the parameter, either Path, Query or UserDefinedQueries.</param>
         public RequestParameterAttribute(string name, RequestParameterType type)
         {
             this.name = name;
@@ -64,13 +64,19 @@ namespace Google.Apis.Util
         }
     }
 
-    /// <summary>Describe the type of this parameter (Path or Query).</summary>
+    /// <summary>Describe the type of this parameter (Path, Query or UserDefinedQueries).</summary>
     public enum RequestParameterType
     {
         /// <summary>A path parameter which is inserted into the path portion of the request URI.</summary>
         Path,
 
         /// <summary>A query parameter which is inserted into the query portion of the request URI.</summary>
-        Query
+        Query,
+
+        /// <summary>
+        /// A group of user-defined parameters that will be added in to the query portion of the request URI. If this
+        /// type is being used, the name of the RequestParameterAttirbute is meaningless.
+        /// </summary>
+        UserDefinedQueries
     }
 }
