@@ -20,6 +20,7 @@ using System.Net.Http;
 using System.Linq;
 using System.Reflection;
 
+using Google.Apis.Logging;
 using Google.Apis.Util;
 
 namespace Google.Apis.Requests.Parameters
@@ -29,6 +30,8 @@ namespace Google.Apis.Requests.Parameters
     /// </summary>
     public static class ParameterUtils
     {
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType(typeof(ParameterUtils));
+
         /// <summary>
         /// Creates a <see cref="System.Net.Http.FormUrlEncodedContent"/> with all the specified parameters in 
         /// the input request. It uses reflection to iterate over all properties with
@@ -111,7 +114,7 @@ namespace Google.Apis.Requests.Parameters
                     continue;
                 }
 
-                // Get the name of this parameter from the attribute, if it doesn't exist take a lower-case variant of 
+                // Get the name of this parameter from the attribute, if it doesn't exist take a lower-case variant of
                 // property name.
                 string name = attribute.Name ?? property.Name.ToLower();
 
@@ -121,7 +124,25 @@ namespace Google.Apis.Requests.Parameters
                 // Call action with the type name and value.
                 if (propertyType.IsValueType || value != null)
                 {
-                    action(attribute.Type, name, value);
+                    if (attribute.Type == RequestParameterType.UserDefinedQueries)
+                    {
+                        if (typeof(IEnumerable<KeyValuePair<string, string>>).IsAssignableFrom(value.GetType()))
+                        {
+                            foreach (var pair in (IEnumerable<KeyValuePair<string, string>>)value)
+                            {
+                                action(RequestParameterType.Query, pair.Key, pair.Value);
+                            }
+                        }
+                        else
+                        {
+                            Logger.Warning("Parameter marked with RequestParameterType.UserDefinedQueries attribute " +
+                                "was not of type IEnumerable<KeyValuePair<string, string>> and will be skipped.");
+                        }
+                    }
+                    else
+                    {
+                        action(attribute.Type, name, value);
+                    }
                 }
             }
         }

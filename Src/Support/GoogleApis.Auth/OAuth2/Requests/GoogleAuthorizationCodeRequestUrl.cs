@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -58,6 +59,18 @@ namespace Google.Apis.Auth.OAuth2.Requests
         [Google.Apis.Util.RequestParameterAttribute("include_granted_scopes",
             Google.Apis.Util.RequestParameterType.Query)]
         public string IncludeGrantedScopes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a collection of user defined query parameters to facilitate any not explicitly supported
+        /// by the library which will be included in the resultant authentication URL.
+        /// </summary>
+        /// <remarks>
+        /// The name of this parameter is used only for the constructor and will not end up in the resultant query
+        /// string.
+        /// </remarks>
+        [Google.Apis.Util.RequestParameterAttribute("user_defined_query_params",
+            Google.Apis.Util.RequestParameterType.UserDefinedQueries)]
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 
         /// <summary>
         /// Constructs a new authorization code request with the given authorization server URL. This constructor sets

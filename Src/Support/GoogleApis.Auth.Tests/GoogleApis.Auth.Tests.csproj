@@ -100,6 +100,7 @@
     <Compile Include="OAuth2\ComputeCredentialTests.cs" />
     <Compile Include="OAuth2\Flows\AuthorizationCodeFlowTests.cs" />
     <Compile Include="OAuth2\BearerTokenTests.cs" />
+    <Compile Include="OAuth2\Flows\GoogleAuthorizationCodeFlowTests.cs" />
     <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrlTests.cs" />
     <Compile Include="OAuth2\Requests\AuthorizationCodeTokenRequestTests.cs" />
     <Compile Include="OAuth2\Requests\GoogleAuthorizationCodeRequestUrlTest.cs" />
