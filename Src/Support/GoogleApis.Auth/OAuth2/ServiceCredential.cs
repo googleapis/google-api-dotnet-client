@@ -173,12 +173,24 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IHttpUnsuccessfulResponseHandler
 
+        /// <summary>
+        /// Decorates unsuccessful responses, returns true if the response gets modified.
+        /// See IHttpUnsuccessfulResponseHandler for more information. 
+        /// </summary>
         public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
+            // If the response was unauthorized, request a new access token so that the original
+            // request can be retried.
             // TODO(peleyal): check WWW-Authenticate header.
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return !Object.Equals(Token.AccessToken, AccessMethod.GetAccessToken(args.Request))
+                bool tokensEqual = false;
+                if (Token != null)
+                {
+                    tokensEqual = Object.Equals(
+                        Token.AccessToken, AccessMethod.GetAccessToken(args.Request));
+                }
+                return !tokensEqual
                     || await RequestAccessTokenAsync(args.CancellationToken).ConfigureAwait(false);
             }
 
