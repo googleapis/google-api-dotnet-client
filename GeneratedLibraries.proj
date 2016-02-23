@@ -1,21 +1,30 @@
-<Project ToolsVersion="12.0" DefaultTargets="Clean;UpdateDiscoveryDocuments;Generate;Build;Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Repackage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--
     This project file requires that 'nuget' and 'python' (version 2)
     be in the user's %PATH%.
+
+    Targets other than 'Build' support very primitive incrementality: if the
+    folder they're going to create is already there, they are skipped.
+
+    To build libraries and create packages from existing code:
+      msbuild GeneratedLibraries.proj
+
+    To update discovery documents and generate new code:
+      msbuild GeneratedLibraries.proj /t:Regenerate
   -->
 
-  <Target Name="Clean">
-    <!-- Remove downloaded or generated artifacts. -->
-    <RemoveDir Directories="DiscoveryJson;Src/Generated;NuPkgs/Generated" />
-  </Target>
-
-  <Target Name="UpdateDiscoveryDocuments">
+  <!-- Download discovery documents used as input to code generation. -->
+  <Target Name="DownloadDiscoveryDocuments"
+      Condition="!Exists('DiscoveryJson')">
     <MakeDir Directories="DiscoveryJson" />
+
     <!-- 'python -u' turns off buffering so status is printed line-by-line. -->
     <Exec Command="python -u get_discovery_documents.py --destination_dir .\DiscoveryJson" />
   </Target>
 
-  <Target Name="Generate">
+  <!-- Generate library projects from discovery documents. -->
+  <Target Name="Generate" DependsOnTargets="DownloadDiscoveryDocuments"
+      Condition="!Exists('Src\Generated')">
     <PropertyGroup>
       <_GenerateLibraryTool>ClientGenerator\generate_library.cmd</_GenerateLibraryTool>
     </PropertyGroup>
@@ -25,6 +34,7 @@
     </ItemGroup>
 
     <MakeDir Directories="Src\Generated" />
+
     <Exec Command="&quot;$(_GenerateLibraryTool)&quot; --input=&quot;%(_DiscoveryDocument.FullPath)&quot; --language=csharp --output_dir=Src\Generated" />
   </Target>
 
@@ -76,7 +86,13 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="Build" DependsOnTargets="BuildProjectList">
+  <!--
+    Build generated projects.
+
+    This target isn't gated by a !Exists condition; instead we rely on C#'s
+    incremental build.
+  -->
+  <Target Name="Build" DependsOnTargets="Generate;BuildProjectList">
     <!--
       We only need to restore packages for one API, since they have identical
       packages.config. The choice of the discovery API is mostly arbitrary;
@@ -87,7 +103,9 @@
     <MSBuild Projects="@(Project)" BuildInParallel="True" Targets="Build" />
   </Target>
 
-  <Target Name="Package" DependsOnTargets="BuildProjectList">
+  <!-- Create NuGet packages with binaries built from generated projects. -->
+  <Target Name="Package" DependsOnTargets="BuildProjectList;Build"
+      Condition="!Exists('NuPkgs\Generated')">
     <MakeDir Directories="NuPkgs\Generated" />
 
     <ItemGroup>
@@ -96,4 +114,20 @@
 
     <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -OutputDirectory NuPkgs\Generated" />
   </Target>
+
+  <!-- Remove packages for generated libraries. -->
+  <Target Name="CleanPackages">
+    <RemoveDir Directories="NuPkgs\Generated" />
+  </Target>
+
+  <!-- Force creating new packages from existing generated code. -->
+  <Target Name="Repackage" DependsOnTargets="CleanPackages;Package" />
+
+  <!-- Remove all downloaded and generated artifacts. -->
+  <Target Name="Clean">
+    <RemoveDir Directories="DiscoveryJson;Src\Generated;NuPkgs\Generated" />
+  </Target>
+
+  <!-- Generate libraries from scratch. -->
+  <Target Name="Regenerate" DependsOnTargets="Clean;Generate" />
 </Project>

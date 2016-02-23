@@ -38,7 +38,7 @@ namespace Google.Apis.Media
             IClientService service,
             HttpResponseMessage response)
         {
-            // If we can't even read the response, let that excpetion bubble up, just as it would have done
+            // If we can't even read the response, let that exception bubble up, just as it would have done
             // if the error had been occurred when sending the request.
             string responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             RequestError parsedError = null;
@@ -53,7 +53,7 @@ namespace Google.Apis.Media
             }
             catch (JsonException)
             {
-                // Just make do with a null RequestError, and the response text set to the body of the response.
+                // Just make do with a null RequestError, and the message set to the body of the response.
                 // The contents of the caught exception aren't particularly useful - we don't need to include it
                 // as a cause, for example. The expectation is that the exception returned by this method (below)
                 // will be thrown by the caller.
