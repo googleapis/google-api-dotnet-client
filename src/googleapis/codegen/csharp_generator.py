@@ -180,7 +180,9 @@ class CSharpGenerator(api_library_generator.ApiLibraryGenerator):
     #
     # TODO(user): Refactor so the language can affect the entire module
     # path at once.
-    package_path = options.get('package_path', discovery.get('packagePath'))
+    package_path = options.get('package_path')
+    if package_path is None:
+      package_path = discovery.get('packagePath')
     if package_path:
       options['package_path'] = '.'.join(
           [s[0].upper() + s[1:] for s in package_path.split('.') if s])
