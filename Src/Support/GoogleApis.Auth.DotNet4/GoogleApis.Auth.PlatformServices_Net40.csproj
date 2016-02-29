@@ -63,7 +63,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.IO">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
     </Reference>
@@ -90,7 +89,6 @@
     <Reference Include="System.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,13 +96,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OAuth2\AuthorizationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OAuth2\AuthorizationDialog.Designer.cs">
-      <DependentUpon>AuthorizationDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OAuth2\EmbeddedBrowserCodeReceiver.cs" />
     <Compile Include="OAuth2\GoogleCredential.cs" />
     <Compile Include="OAuth2\DefaultCredentialProvider.cs" />
     <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
@@ -133,11 +124,6 @@
       <Project>{c4da0abe-2c2e-4bb8-9881-5ff80b0c1afd}</Project>
       <Name>GoogleApis.PlatformServices_Net40</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="OAuth2\AuthorizationDialog.resx">
-      <DependentUpon>AuthorizationDialog.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

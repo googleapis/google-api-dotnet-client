@@ -1,4 +1,4 @@
-﻿namespace Google.Apis.Auth.OAuth2
+﻿namespace Google.Apis.Auth.OAuth2.WinForms
 {
     partial class AuthorizationDialog
     {

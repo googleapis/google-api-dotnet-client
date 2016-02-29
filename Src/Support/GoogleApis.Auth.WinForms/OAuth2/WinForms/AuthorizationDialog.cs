@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 using Google.Apis.Auth.OAuth2.Responses;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.WinForms
 {
     public partial class AuthorizationDialog : Form
     {
@@ -38,23 +38,26 @@ namespace Google.Apis.Auth.OAuth2
             // Set the browser to the initial uri.
             authWebBrowser.Navigate(authUri);
             // Need to track when the results has been received.
-            // The event is fired whenever the browser finishes a web request.
+            // Installed applications use an out-of-band redirect URI.
             // When the user clicks Accept or Deny, the redirected response will
-            // cause this event to fire and the URL will contain the authorization resposne.
-            authWebBrowser.DocumentCompleted += authWebBrowser_DocumentCompleted;
+            // be in the title of the web page.
+            authWebBrowser.DocumentTitleChanged += authWebBrowser_TitleChanged;
         }
 
-        private void authWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        private void authWebBrowser_TitleChanged(object sender, EventArgs e)
         {
-            // It is assumed this dialog is being used by an installed application.
-            // The code or the error should be received by localhost.
-            if (e.Url.Host == "localhost")
+            // The result always comes back 
+            var browser = (WebBrowser)sender;
+            if (browser.Url.AbsolutePath == new Uri( GoogleAuthConsts.ApprovalUrl).AbsolutePath)
             {
-                var query = e.Url.Query.Substring(1);
+                // Per API documentation, the reponse is after the first space in the title.
+                var query = browser.DocumentTitle.Substring(browser.DocumentTitle.IndexOf(" ") + 1);
                 ResponseUrl = new AuthorizationCodeResponseUrl(query);
                 // Dialog is no longer neeed.
                 this.Close();
             }
+            else
+                System.Diagnostics.Trace.TraceInformation(browser.Url.AbsolutePath);
         }
     }
 }

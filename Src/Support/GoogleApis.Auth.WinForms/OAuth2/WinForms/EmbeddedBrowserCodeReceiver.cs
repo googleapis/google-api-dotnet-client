@@ -23,7 +23,7 @@ using System.Windows.Forms;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 
-namespace Google.Apis.Auth.OAuth2
+namespace Google.Apis.Auth.OAuth2.WinForms
 {
     /// <summary>
     /// OAuth 2.0 verification code receiver for Windows Forms that opens an embedded Google account dialog to enter the
@@ -35,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2
 
         public string RedirectUri
         {
-            get { return GoogleAuthConsts.LocalhostRedirectUri; }
+            get { return GoogleAuthConsts.InstalledAppRedirectUri; }
         }
 
         public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Google.Apis.Auth.WinForms</id>
+        <version>$version$</version>
+        <title>Google APIs Auth WinForms Extensions</title>
+        <authors>Google Inc.</authors>
+        <owners>google-apis-packages</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://developers.google.com/api-client-library/dotnet</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          The Google APIs Client Library is a runtime client for working with Google Services.
+          The WinForms extension library contains a code receiver that incorporates a UI dialog with an embedded web browser to make the OAuth2 "dance" easier.
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+          <dependency id="Google.Apis.Auth" version="$version$" />
+        </dependencies>
+    </metadata>
+    <files>
+      <file src="Src\Support\GoogleApis.Auth.WinForms\bin\ReleaseSigned\Google.Apis.Auth.WinForms.dll" target="lib\net40\Google.Apis.Auth.WinForms.dll" />
+      <file src="Src\Support\GoogleApis.Auth.WinForms\bin\ReleaseSigned\Google.Apis.Auth.WinForms.pdb" target="lib\net40\Google.Apis.Auth.WinForms.pdb" />
+      <file src="Src\Support\GoogleApis.Auth.WinForms\bin\ReleaseSigned\Google.Apis.Auth.WinForms.xml" target="lib\net40\Google.Apis.Auth.WinForms.xml" />
+      
+      <file src="Resources\License.txt" target="License.txt" />
+    </files>
+</package>
