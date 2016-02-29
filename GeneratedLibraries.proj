@@ -104,7 +104,7 @@
   </Target>
 
   <!-- Create NuGet packages with binaries built from generated projects. -->
-  <Target Name="Package" DependsOnTargets="BuildProjectList;Build"
+  <Target Name="Package" DependsOnTargets="Build;BuildProjectList"
       Condition="!Exists('NuPkgs\Generated')">
     <MakeDir Directories="NuPkgs\Generated" />
 
