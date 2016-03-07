@@ -2,5 +2,5 @@
   "language": "csharp",
   "description": "C# libraries for Google APIs.",
   "releaseVersion": "1.10.0",
-  "nugetVersion": "1.10.0"
+  "nugetVersion": "1.10.1"
 }
