@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/management/'>AdSense Management API</a>
  *      <tr><th>API Version<td>v1.2
- *      <tr><th>API Rev<td>20160112 (376)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/management/'>
  *              https://developers.google.com/adsense/management/</a>
@@ -3758,7 +3758,8 @@ namespace Google.Apis.AdSense.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        /// deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
         public virtual AdUnit.ContentAdsSettingsData ContentAdsSettings { get; set; } 
 
@@ -3766,7 +3767,7 @@ namespace Google.Apis.AdSense.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customStyle")]
         public virtual AdStyle CustomStyle { get; set; } 
 
-        /// <summary>Settings specific to feed ads (AFF).</summary>
+        /// <summary>Settings specific to feed ads (AFF) - deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedAdsSettings")]
         public virtual AdUnit.FeedAdsSettingsData FeedAdsSettings { get; set; } 
 
@@ -3779,7 +3780,7 @@ namespace Google.Apis.AdSense.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to WAP mobile content ads (AFMC) - deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileContentAdsSettings")]
         public virtual AdUnit.MobileContentAdsSettingsData MobileContentAdsSettings { get; set; } 
 
@@ -3804,7 +3805,8 @@ namespace Google.Apis.AdSense.v1_2.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        /// deprecated).</summary>
         public class ContentAdsSettingsData
         {
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
@@ -3839,7 +3841,7 @@ namespace Google.Apis.AdSense.v1_2.Data
             }
         }    
 
-        /// <summary>Settings specific to feed ads (AFF).</summary>
+        /// <summary>Settings specific to feed ads (AFF) - deprecated.</summary>
         public class FeedAdsSettingsData
         {
             /// <summary>The position of the ads relative to the feed entries.</summary>
@@ -3860,7 +3862,7 @@ namespace Google.Apis.AdSense.v1_2.Data
 
         }    
 
-        /// <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to WAP mobile content ads (AFMC) - deprecated.</summary>
         public class MobileContentAdsSettingsData
         {
             /// <summary>The markup language to use for this ad unit.</summary>
@@ -3999,10 +4001,10 @@ namespace Google.Apis.AdSense.v1_2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
             public virtual string Description { get; set; } 
 
-            /// <summary>The locations in which ads appear. (Only valid for content and mobile content ads). Acceptable
-            /// values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT,
-            /// BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads
-            /// are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.</summary>
+            /// <summary>The locations in which ads appear. (Only valid for content and mobile content ads
+            /// (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT,
+            /// MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable
+            /// values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
             public virtual string Location { get; set; } 
 

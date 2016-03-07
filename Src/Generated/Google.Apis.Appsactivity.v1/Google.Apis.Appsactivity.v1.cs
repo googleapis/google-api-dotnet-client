@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/activity/'>Google Apps Activity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20150723 (203)
+ *      <tr><th>API Rev<td>20160129 (393)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/activity/'>
  *              https://developers.google.com/google-apps/activity/</a>
@@ -634,9 +634,19 @@ namespace Google.Apis.Appsactivity.v1.Data
     /// <summary>A representation of a user.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A boolean which indicates whether the specified User was deleted. If true, name, photo and
+        /// permission_id will be omitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeleted")]
+        public virtual System.Nullable<bool> IsDeleted { get; set; } 
+
         /// <summary>The displayable name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The permission ID associated with this user. Equivalent to the Drive API's permission ID for this
+        /// user, returned as part of the Drive Permissions resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
+        public virtual string PermissionId { get; set; } 
 
         /// <summary>The profile photo of the user. Not present if the user has no profile photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photo")]

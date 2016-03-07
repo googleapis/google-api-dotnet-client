@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151112 (315)
+ *      <tr><th>API Rev<td>20160209 (404)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>
  *              https://developers.google.com/tag-manager/api/v1/</a>
@@ -286,8 +286,10 @@ namespace Google.Apis.TagManager.v1
             public ContainersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                environments = new EnvironmentsResource(service);
                 folders = new FoldersResource(service);
                 moveFolders = new MoveFoldersResource(service);
+                reauthorizeEnvironments = new ReauthorizeEnvironmentsResource(service);
                 tags = new TagsResource(service);
                 triggers = new TriggersResource(service);
                 variables = new VariablesResource(service);
@@ -295,6 +297,598 @@ namespace Google.Apis.TagManager.v1
 
             }
 
+            private readonly EnvironmentsResource environments;
+
+            /// <summary>Gets the Environments resource.</summary>
+            public virtual EnvironmentsResource Environments
+            {
+                get { return environments; }
+            }
+
+            /// <summary>The "environments" collection of methods.</summary>
+            public class EnvironmentsResource
+            {
+                private const string Resource = "environments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EnvironmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a GTM Environment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId)
+                {
+                    return new CreateRequest(service, body, accountId, containerId);
+                }
+
+                /// <summary>Creates a GTM Environment.</summary>
+                public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a GTM Environment.</summary>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                /// <param name="environmentId">The GTM Environment ID.</param>
+                public virtual DeleteRequest Delete(string accountId, string containerId, string environmentId)
+                {
+                    return new DeleteRequest(service, accountId, containerId, environmentId);
+                }
+
+                /// <summary>Deletes a GTM Environment.</summary>
+                public class DeleteRequest : TagManagerBaseServiceRequest<string>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        EnvironmentId = environmentId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+                    /// <summary>The GTM Environment ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string EnvironmentId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments/{environmentId}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets a GTM Environment.</summary>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                /// <param name="environmentId">The GTM Environment ID.</param>
+                public virtual GetRequest Get(string accountId, string containerId, string environmentId)
+                {
+                    return new GetRequest(service, accountId, containerId, environmentId);
+                }
+
+                /// <summary>Gets a GTM Environment.</summary>
+                public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        EnvironmentId = environmentId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+                    /// <summary>The GTM Environment ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string EnvironmentId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments/{environmentId}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists all GTM Environments of a GTM Container.</summary>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                public virtual ListRequest List(string accountId, string containerId)
+                {
+                    return new ListRequest(service, accountId, containerId);
+                }
+
+                /// <summary>Lists all GTM Environments of a GTM Container.</summary>
+                public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListEnvironmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                /// <param name="environmentId">The GTM Environment ID.</param>
+                public virtual PatchRequest Patch(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                {
+                    return new PatchRequest(service, body, accountId, containerId, environmentId);
+                }
+
+                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
+                public class PatchRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        EnvironmentId = environmentId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+                    /// <summary>The GTM Environment ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string EnvironmentId { get; private set; }
+
+                    /// <summary>When provided, this fingerprint must match the fingerprint of the environment in
+                    /// storage.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Fingerprint { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments/{environmentId}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fingerprint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fingerprint",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates a GTM Environment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                /// <param name="environmentId">The GTM Environment ID.</param>
+                public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                {
+                    return new UpdateRequest(service, body, accountId, containerId, environmentId);
+                }
+
+                /// <summary>Updates a GTM Environment.</summary>
+                public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
+                {
+                    /// <summary>Constructs a new Update request.</summary>
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        EnvironmentId = environmentId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+                    /// <summary>The GTM Environment ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string EnvironmentId { get; private set; }
+
+                    /// <summary>When provided, this fingerprint must match the fingerprint of the environment in
+                    /// storage.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Fingerprint { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "update"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PUT"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/environments/{environmentId}"; }
+                    }
+
+                    /// <summary>Initializes Update parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fingerprint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fingerprint",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
             private readonly FoldersResource folders;
 
             /// <summary>Gets the Folders resource.</summary>
@@ -915,25 +1509,27 @@ namespace Google.Apis.TagManager.v1
 
 
                 /// <summary>Moves entities to a GTM Folder.</summary>
+                /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
                 /// <param name="containerId">The GTM Container
                 /// ID.</param>
                 /// <param name="folderId">The GTM Folder ID.</param>
-                public virtual UpdateRequest Update(string accountId, string containerId, string folderId)
+                public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                 {
-                    return new UpdateRequest(service, accountId, containerId, folderId);
+                    return new UpdateRequest(service, body, accountId, containerId, folderId);
                 }
 
                 /// <summary>Moves entities to a GTM Folder.</summary>
                 public class UpdateRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                         : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
                         FolderId = folderId;
+                        Body = body;
                         InitParameters();
                     }
 
@@ -962,6 +1558,12 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> VariableId { get; set; }
 
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1037,6 +1639,129 @@ namespace Google.Apis.TagManager.v1
                                 Name = "variableId",
                                 IsRequired = false,
                                 ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly ReauthorizeEnvironmentsResource reauthorizeEnvironments;
+
+            /// <summary>Gets the ReauthorizeEnvironments resource.</summary>
+            public virtual ReauthorizeEnvironmentsResource ReauthorizeEnvironments
+            {
+                get { return reauthorizeEnvironments; }
+            }
+
+            /// <summary>The "reauthorize_environments" collection of methods.</summary>
+            public class ReauthorizeEnvironmentsResource
+            {
+                private const string Resource = "reauthorizeEnvironments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReauthorizeEnvironmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The GTM Account ID.</param>
+                /// <param name="containerId">The GTM Container
+                /// ID.</param>
+                /// <param name="environmentId">The GTM Environment ID.</param>
+                public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                {
+                    return new UpdateRequest(service, body, accountId, containerId, environmentId);
+                }
+
+                /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
+                public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
+                {
+                    /// <summary>Constructs a new Update request.</summary>
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ContainerId = containerId;
+                        EnvironmentId = environmentId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The GTM Account ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The GTM Container ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ContainerId { get; private set; }
+
+                    /// <summary>The GTM Environment ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string EnvironmentId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "update"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PUT"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}"; }
+                    }
+
+                    /// <summary>Initializes Update parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -4511,6 +5236,63 @@ namespace Google.Apis.TagManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a Google Tag Manager Environment. Note that a user can create, delete and update
+    /// environments of type USER, but can only update the enable_debug and url fields of environments of other
+    /// types.</summary>
+    public class Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GTM Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The environment authorization code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
+        public virtual string AuthorizationCode { get; set; } 
+
+        /// <summary>The last update time-stamp for the authorization code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationTimestampMs")]
+        public virtual System.Nullable<long> AuthorizationTimestampMs { get; set; } 
+
+        /// <summary>GTM Container ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
+        public virtual string ContainerId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
+        public virtual string ContainerVersionId { get; set; } 
+
+        /// <summary>The environment description. Can be set or changed only on USER type environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Whether or not to enable debug by default on for the environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDebug")]
+        public virtual System.Nullable<bool> EnableDebug { get; set; } 
+
+        /// <summary>GTM Environment ID uniquely identifies the GTM Environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentId")]
+        public virtual string EnvironmentId { get; set; } 
+
+        /// <summary>The fingerprint of the GTM environment as computed at storage time. This value is recomputed
+        /// whenever the environment is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>The environment display name. Can be set or changed only on USER type environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The type of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Default preview page url for the environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Google Tag Manager Folder.</summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4601,6 +5383,17 @@ namespace Google.Apis.TagManager.v1.Data
         /// <summary>All Containers of a GTM Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>List Environments Response.</summary>
+    public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All Environments of a GTM Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

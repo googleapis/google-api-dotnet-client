@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20151209 (342)
+ *      <tr><th>API Rev<td>20160219 (414)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -97,15 +97,6 @@ namespace Google.Apis.Dataproc.v1alpha1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>Administrate log data for your projects</summary>
-            public static string LoggingAdmin = "https://www.googleapis.com/auth/logging.admin";
-
-            /// <summary>View log data for your projects</summary>
-            public static string LoggingRead = "https://www.googleapis.com/auth/logging.read";
-
-            /// <summary>Submit log data for your projects</summary>
-            public static string LoggingWrite = "https://www.googleapis.com/auth/logging.write";
 
         }
 
@@ -653,110 +644,95 @@ namespace Google.Apis.Dataproc.v1alpha1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            clusters = new ClustersResource(service);
-            jobs = new JobsResource(service);
+            regions = new RegionsResource(service);
 
         }
 
-        private readonly ClustersResource clusters;
+        private readonly RegionsResource regions;
 
-        /// <summary>Gets the Clusters resource.</summary>
-        public virtual ClustersResource Clusters
+        /// <summary>Gets the Regions resource.</summary>
+        public virtual RegionsResource Regions
         {
-            get { return clusters; }
+            get { return regions; }
         }
 
-        /// <summary>The "clusters" collection of methods.</summary>
-        public class ClustersResource
+        /// <summary>The "regions" collection of methods.</summary>
+        public class RegionsResource
         {
-            private const string Resource = "clusters";
+            private const string Resource = "regions";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public ClustersResource(Google.Apis.Services.IClientService service)
+            public RegionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                agents = new AgentsResource(service);
-                tasks = new TasksResource(service);
+                clusters = new ClustersResource(service);
+                jobs = new JobsResource(service);
 
             }
 
-            private readonly AgentsResource agents;
+            private readonly ClustersResource clusters;
 
-            /// <summary>Gets the Agents resource.</summary>
-            public virtual AgentsResource Agents
+            /// <summary>Gets the Clusters resource.</summary>
+            public virtual ClustersResource Clusters
             {
-                get { return agents; }
+                get { return clusters; }
             }
 
-            /// <summary>The "agents" collection of methods.</summary>
-            public class AgentsResource
+            /// <summary>The "clusters" collection of methods.</summary>
+            public class ClustersResource
             {
-                private const string Resource = "agents";
+                private const string Resource = "clusters";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public AgentsResource(Google.Apis.Services.IClientService service)
+                public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
 
                 }
 
 
-                /// <summary>Add a new agent to Dataproc's view of a cluster. This is the first Dataproc method that an
-                /// agent should invoke after starting. If an agent has already been created with the given agent_id
-                /// within the same cluster, this method will return a Conflict status code and the agent is expected to
-                /// call GetAgent to retrieve the last registration and subsequently call UpdateAgent, if
-                /// required.</summary>
+                /// <summary>Request to create a cluster in a project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Project ID that this agent is associated with</param>
-                /// <param
-                /// name="clusterUuid">Cluster that this agent is associated with</param>
-                /// <param name="agentId">[Required] Agent
-                /// ID being registered.</param>
-                public virtual CreateRequest Create(Google.Apis.Dataproc.v1alpha1.Data.Agent body, string projectId, string clusterUuid, string agentId)
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the request.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region)
                 {
-                    return new CreateRequest(service, body, projectId, clusterUuid, agentId);
+                    return new CreateRequest(service, body, projectId, region);
                 }
 
-                /// <summary>Add a new agent to Dataproc's view of a cluster. This is the first Dataproc method that an
-                /// agent should invoke after starting. If an agent has already been created with the given agent_id
-                /// within the same cluster, this method will return a Conflict status code and the agent is expected to
-                /// call GetAgent to retrieve the last registration and subsequently call UpdateAgent, if
-                /// required.</summary>
-                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Agent>
+                /// <summary>Request to create a cluster in a project.</summary>
+                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Agent body, string projectId, string clusterUuid, string agentId)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
-                        AgentId = agentId;
+                        Region = region;
                         Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>Project ID that this agent is associated with</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Cluster that this agent is associated with</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
-
-                    /// <summary>[Required] Agent ID being registered.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("agentId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AgentId { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.Agent Body { get; set; }
+                    Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -770,13 +746,13 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "PUT"; }
+                        get { return "POST"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/agents/{agentId}"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -794,18 +770,9 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "agentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "agentId",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -815,45 +782,43 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Delete an agent from Dataproc's view of a cluster. Deleting an agent is not required, but
-                /// could be used in a shutdown sequence to indicate to Dataproc that the agent is to be considered dead
-                /// and all agent-owned resources and tasks are free to be re-distributed.</summary>
-                /// <param name="projectId">The agent's project.</param>
-                /// <param name="clusterUuid">The agent's
-                /// cluster.</param>
-                /// <param name="agentId">The agent.</param>
-                public virtual DeleteRequest Delete(string projectId, string clusterUuid, string agentId)
+                /// <summary>Request to delete a cluster in a project.</summary>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">[Required] The cluster name.</param>
+                public virtual DeleteRequest Delete(string projectId, string region, string clusterName)
                 {
-                    return new DeleteRequest(service, projectId, clusterUuid, agentId);
+                    return new DeleteRequest(service, projectId, region, clusterName);
                 }
 
-                /// <summary>Delete an agent from Dataproc's view of a cluster. Deleting an agent is not required, but
-                /// could be used in a shutdown sequence to indicate to Dataproc that the agent is to be considered dead
-                /// and all agent-owned resources and tasks are free to be re-distributed.</summary>
-                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Empty>
+                /// <summary>Request to delete a cluster in a project.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string clusterUuid, string agentId)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
-                        AgentId = agentId;
+                        Region = region;
+                        ClusterName = clusterName;
                         InitParameters();
                     }
 
 
-                    /// <summary>The agent's project.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The agent's cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
-                    /// <summary>The agent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("agentId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AgentId { get; private set; }
+                    /// <summary>[Required] The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -871,7 +836,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/agents/{agentId}"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -889,18 +854,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "agentId", new Google.Apis.Discovery.Parameter
+                            "clusterName", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "agentId",
+                                Name = "clusterName",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -910,41 +875,43 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Retrieve an agent.</summary>
-                /// <param name="projectId">The agent's project ID.</param>
-                /// <param name="clusterUuid">The agent's
-                /// cluster.</param>
-                /// <param name="agentId">The agent's ID.</param>
-                public virtual GetRequest Get(string projectId, string clusterUuid, string agentId)
+                /// <summary>Request to get the resource representation for a cluster in a project.</summary>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">[Required] The cluster name.</param>
+                public virtual GetRequest Get(string projectId, string region, string clusterName)
                 {
-                    return new GetRequest(service, projectId, clusterUuid, agentId);
+                    return new GetRequest(service, projectId, region, clusterName);
                 }
 
-                /// <summary>Retrieve an agent.</summary>
-                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Agent>
+                /// <summary>Request to get the resource representation for a cluster in a project.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Cluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string clusterUuid, string agentId)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
-                        AgentId = agentId;
+                        Region = region;
+                        ClusterName = clusterName;
                         InitParameters();
                     }
 
 
-                    /// <summary>The agent's project ID.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The agent's cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
-                    /// <summary>The agent's ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("agentId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AgentId { get; private set; }
+                    /// <summary>[Required] The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -962,7 +929,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/agents/{agentId}"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -980,18 +947,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "agentId", new Google.Apis.Discovery.Parameter
+                            "clusterName", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "agentId",
+                                Name = "clusterName",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1001,41 +968,42 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>List all agents Dataproc is aware of within a cluster.</summary>
-                /// <param name="projectId">The project from which to list agents.</param>
-                /// <param name="clusterUuid">The cluster
-                /// from which to list agents.</param>
-                public virtual ListRequest List(string projectId, string clusterUuid)
+                /// <summary>Request a list of all regions/{region}/clusters in a project.</summary>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the request.</param>
+                public virtual ListRequest List(string projectId, string region)
                 {
-                    return new ListRequest(service, projectId, clusterUuid);
+                    return new ListRequest(service, projectId, region);
                 }
 
-                /// <summary>List all agents Dataproc is aware of within a cluster.</summary>
-                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListAgentsResponse>
+                /// <summary>Request a list of all regions/{region}/clusters in a project.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string clusterUuid)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
+                        Region = region;
                         InitParameters();
                     }
 
 
-                    /// <summary>The project from which to list agents.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The cluster from which to list agents.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
-                    /// <summary>Requested page size for listing.</summary>
+                    /// <summary>The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Page continuation token.</summary>
+                    /// <summary>The standard List page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1055,7 +1023,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/agents"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1073,9 +1041,9 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1103,51 +1071,58 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Update Dataproc's view of an agent. This is currently used to provide a is_healthy bit, but
-                /// is expected to be extended to include daemon information and VM metrics for inclusion in cloud
-                /// metrics.</summary>
+                /// <summary>Request to update a cluster in a project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The agent's project.</param>
-                /// <param name="clusterUuid">The cluster on which the
-                /// agent is running.</param>
-                /// <param name="agentId">[Required] ID of agent sending the update.</param>
-                public virtual UpdateRequest Update(Google.Apis.Dataproc.v1alpha1.Data.Agent body, string projectId, string clusterUuid, string agentId)
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project the cluster belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">[Required] The cluster name.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region, string clusterName)
                 {
-                    return new UpdateRequest(service, body, projectId, clusterUuid, agentId);
+                    return new PatchRequest(service, body, projectId, region, clusterName);
                 }
 
-                /// <summary>Update Dataproc's view of an agent. This is currently used to provide a is_healthy bit, but
-                /// is expected to be extended to include daemon information and VM metrics for inclusion in cloud
-                /// metrics.</summary>
-                public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Agent>
+                /// <summary>Request to update a cluster in a project.</summary>
+                public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
                 {
-                    /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Agent body, string projectId, string clusterUuid, string agentId)
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region, string clusterName)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
-                        AgentId = agentId;
+                        Region = region;
+                        ClusterName = clusterName;
                         Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>The agent's project.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project the cluster belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The cluster on which the agent is running.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
-                    /// <summary>[Required] ID of agent sending the update.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("agentId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AgentId { get; private set; }
+                    /// <summary>[Required] The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+                    /// <summary>[Required] Specifies the path, relative to Cluster, of the field to update. For
+                    /// example, to change the number of workers in a cluster to 5, the update_mask parameter would be
+                    /// specified as "configuration.worker_configuration.num_instances," and the PATCH request body
+                    /// would specify the new value, as follows: { "configuration":{ "workerConfiguration":{
+                    /// "numInstances":"5" } } } Note: Currently, configuration.worker_configuration.num_instances is
+                    /// the only field that can be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.Agent Body { get; set; }
+                    Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1155,22 +1130,22 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "update"; }
+                        get { return "patch"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "PUT"; }
+                        get { return "PATCH"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/agents/{agentId}"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
-                    /// <summary>Initializes Update parameter list.</summary>
+                    /// <summary>Initializes Patch parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1185,20 +1160,29 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "agentId", new Google.Apis.Discovery.Parameter
+                            "clusterName", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "agentId",
+                                Name = "clusterName",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1206,77 +1190,75 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
             }
-            private readonly TasksResource tasks;
+            private readonly JobsResource jobs;
 
-            /// <summary>Gets the Tasks resource.</summary>
-            public virtual TasksResource Tasks
+            /// <summary>Gets the Jobs resource.</summary>
+            public virtual JobsResource Jobs
             {
-                get { return tasks; }
+                get { return jobs; }
             }
 
-            /// <summary>The "tasks" collection of methods.</summary>
-            public class TasksResource
+            /// <summary>The "jobs" collection of methods.</summary>
+            public class JobsResource
             {
-                private const string Resource = "tasks";
+                private const string Resource = "jobs";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public TasksResource(Google.Apis.Services.IClientService service)
+                public JobsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
 
                 }
 
 
-                /// <summary>Obtain a lease on one or more tasks. Any given task may be in any state and each agent is
-                /// expected to start any non-started tasks and to monitor any YarnApplications spawned by any already
-                /// running tasks. It's expected that monitoring previously launched tasks will be more prevalent when
-                /// drivers are run entirely within YARN containers. While there's a single lease expiration time, in
-                /// the event of multiple tasks being leased to the agent in a single call, each task has a unique lease
-                /// and status must be reported before the lease times out or the task can be considered orphaned. The
-                /// service will determine how many tasks to lease to agents in a single call.</summary>
+                /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
+                /// regions/{region}/jobs:list or regions/{region}/jobs:get.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The project id of the agent.</param>
-                /// <param name="clusterUuid">The cluster id of the
-                /// agent.</param>
-                public virtual LeaseRequest Lease(Google.Apis.Dataproc.v1alpha1.Data.LeaseTasksRequest body, string projectId, string clusterUuid)
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="jobId">[Required] The job ID.</param>
+                public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string region, string jobId)
                 {
-                    return new LeaseRequest(service, body, projectId, clusterUuid);
+                    return new CancelRequest(service, body, projectId, region, jobId);
                 }
 
-                /// <summary>Obtain a lease on one or more tasks. Any given task may be in any state and each agent is
-                /// expected to start any non-started tasks and to monitor any YarnApplications spawned by any already
-                /// running tasks. It's expected that monitoring previously launched tasks will be more prevalent when
-                /// drivers are run entirely within YARN containers. While there's a single lease expiration time, in
-                /// the event of multiple tasks being leased to the agent in a single call, each task has a unique lease
-                /// and status must be reported before the lease times out or the task can be considered orphaned. The
-                /// service will determine how many tasks to lease to agents in a single call.</summary>
-                public class LeaseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.LeaseTasksResponse>
+                /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
+                /// regions/{region}/jobs:list or regions/{region}/jobs:get.</summary>
+                public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
                 {
-                    /// <summary>Constructs a new Lease request.</summary>
-                    public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.LeaseTasksRequest body, string projectId, string clusterUuid)
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string region, string jobId)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
+                        Region = region;
+                        JobId = jobId;
                         Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>The project id of the agent.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The cluster id of the agent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>[Required] The job ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.LeaseTasksRequest Body { get; set; }
+                    Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1284,7 +1266,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "lease"; }
+                        get { return "cancel"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
@@ -1296,10 +1278,10 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/tasks:lease"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel"; }
                     }
 
-                    /// <summary>Initializes Lease parameter list.</summary>
+                    /// <summary>Initializes Cancel parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1314,9 +1296,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1326,70 +1317,66 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Report status for a task and extend the lease provided for the task.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The project id of the agent.</param>
-                /// <param name="clusterUuid">The cluster id of the
-                /// agent.</param>
-                /// <param name="taskId">The task that is being reported on.</param>
-                public virtual ReportRequest Report(Google.Apis.Dataproc.v1alpha1.Data.ReportTaskStatusRequest body, string projectId, string clusterUuid, string taskId)
+                /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
+                /// returns `FAILED_PRECONDITION`.</summary>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="jobId">[Required] The job ID.</param>
+                public virtual DeleteRequest Delete(string projectId, string region, string jobId)
                 {
-                    return new ReportRequest(service, body, projectId, clusterUuid, taskId);
+                    return new DeleteRequest(service, projectId, region, jobId);
                 }
 
-                /// <summary>Report status for a task and extend the lease provided for the task.</summary>
-                public class ReportRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ReportTaskStatusResponse>
+                /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
+                /// returns `FAILED_PRECONDITION`.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
                 {
-                    /// <summary>Constructs a new Report request.</summary>
-                    public ReportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.ReportTaskStatusRequest body, string projectId, string clusterUuid, string taskId)
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
                         : base(service)
                     {
                         ProjectId = projectId;
-                        ClusterUuid = clusterUuid;
-                        TaskId = taskId;
-                        Body = body;
+                        Region = region;
+                        JobId = jobId;
                         InitParameters();
                     }
 
 
-                    /// <summary>The project id of the agent.</summary>
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The cluster id of the agent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ClusterUuid { get; private set; }
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
 
-                    /// <summary>The task that is being reported on.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("taskId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string TaskId { get; private set; }
+                    /// <summary>[Required] The job ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
 
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.ReportTaskStatusRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "report"; }
+                        get { return "delete"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "POST"; }
+                        get { return "DELETE"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/clusters/{clusterUuid}/tasks/{taskId}:report"; }
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
                     }
 
-                    /// <summary>Initializes Report parameter list.</summary>
+                    /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1404,18 +1391,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "region", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "taskId", new Google.Apis.Discovery.Parameter
+                            "jobId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "taskId",
+                                Name = "jobId",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1424,752 +1411,184 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
                 }
-            }
 
-            /// <summary>Request to create a cluster in a project.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
-            /// to.</param>
-            public virtual CreateRequest Create(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId)
-            {
-                return new CreateRequest(service, body, projectId);
-            }
-
-            /// <summary>Request to create a cluster in a project.</summary>
-            public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId)
-                    : base(service)
+                /// <summary>Gets the resource representation for a job in a project.</summary>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="jobId">[Required] The job ID.</param>
+                public virtual GetRequest Get(string projectId, string region, string jobId)
                 {
-                    ProjectId = projectId;
-                    Body = body;
-                    InitParameters();
+                    return new GetRequest(service, projectId, region, jobId);
                 }
 
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
-                /// to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
+                /// <summary>Gets the resource representation for a job in a project.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
                 {
-                    get { return "create"; }
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        JobId = jobId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>[Required] The job ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
 
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
+                /// <summary>Submits a job to a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
+                /// to.</param>
+                /// <param name="region">[Required] The Dataproc region in which to handle the request.</param>
+                public virtual SubmitRequest Submit(Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId, string region)
                 {
-                    get { return "POST"; }
+                    return new SubmitRequest(service, body, projectId, region);
                 }
 
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
+                /// <summary>Submits a job to a cluster.</summary>
+                public class SubmitRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
                 {
-                    get { return "v1alpha1/projects/{projectId}/clusters"; }
+                    /// <summary>Constructs a new Submit request.</summary>
+                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId, string region)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>[Required] The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "submit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs:submit"; }
+                    }
+
+                    /// <summary>Initializes Submit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Request to delete a cluster in a project.</summary>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
-            /// to.</param>
-            /// <param name="clusterName">[Required] The cluster name.</param>
-            public virtual DeleteRequest Delete(string projectId, string clusterName)
-            {
-                return new DeleteRequest(service, projectId, clusterName);
-            }
-
-            /// <summary>Request to delete a cluster in a project.</summary>
-            public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string clusterName)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    ClusterName = clusterName;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
-                /// to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The cluster name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ClusterName { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/clusters/{clusterName}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clusterName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clusterName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Request to get the resource representation for a cluster in a project.</summary>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
-            /// to.</param>
-            /// <param name="clusterName">[Required] The cluster name.</param>
-            public virtual GetRequest Get(string projectId, string clusterName)
-            {
-                return new GetRequest(service, projectId, clusterName);
-            }
-
-            /// <summary>Request to get the resource representation for a cluster in a project.</summary>
-            public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Cluster>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string clusterName)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    ClusterName = clusterName;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
-                /// to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The cluster name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ClusterName { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/clusters/{clusterName}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clusterName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clusterName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Request a list of all clusters in a project.</summary>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the cluster belongs
-            /// to.</param>
-            public virtual ListRequest List(string projectId)
-            {
-                return new ListRequest(service, projectId);
-            }
-
-            /// <summary>Request a list of all clusters in a project.</summary>
-            public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListClustersResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the cluster belongs
-                /// to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>The standard List page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard List page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/clusters"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Request to update a cluster in a project.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project the cluster belongs
-            /// to.</param>
-            /// <param name="clusterName">[Required] The cluster name.</param>
-            public virtual PatchRequest Patch(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string clusterName)
-            {
-                return new PatchRequest(service, body, projectId, clusterName);
-            }
-
-            /// <summary>Request to update a cluster in a project.</summary>
-            public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string clusterName)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    ClusterName = clusterName;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project the cluster belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The cluster name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ClusterName { get; private set; }
-
-                /// <summary>[Required] Specifies the path, relative to Cluster, of the field to update. For example, to
-                /// change the number of workers in a cluster to 5, the update_mask parameter would be specified as
-                /// "configuration.worker_configuration.num_instances," and the PATCH request body would specify the new
-                /// value, as follows: { "configuration":{ "workerConfiguration":{ "numInstances":"5" } } } Note:
-                /// Currently, configuration.worker_configuration.num_instances is the only field that can be
-                /// updated.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string UpdateMask { get; set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "patch"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "PATCH"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/clusters/{clusterName}"; }
-                }
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clusterName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clusterName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
-        private readonly JobsResource jobs;
-
-        /// <summary>Gets the Jobs resource.</summary>
-        public virtual JobsResource Jobs
-        {
-            get { return jobs; }
-        }
-
-        /// <summary>The "jobs" collection of methods.</summary>
-        public class JobsResource
-        {
-            private const string Resource = "jobs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public JobsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-            /// jobs:list or jobs:get.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
-            /// to.</param>
-            /// <param name="jobId">[Required] The job ID.</param>
-            public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string jobId)
-            {
-                return new CancelRequest(service, body, projectId, jobId);
-            }
-
-            /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-            /// jobs:list or jobs:get.</summary>
-            public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
-            {
-                /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string jobId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    JobId = jobId;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The job ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string JobId { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "cancel"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/jobs/{jobId}:cancel"; }
-                }
-
-                /// <summary>Initializes Cancel parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
-            /// returns `FAILED_PRECONDITION`.</summary>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
-            /// to.</param>
-            /// <param name="jobId">[Required] The job ID.</param>
-            public virtual DeleteRequest Delete(string projectId, string jobId)
-            {
-                return new DeleteRequest(service, projectId, jobId);
-            }
-
-            /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
-            /// returns `FAILED_PRECONDITION`.</summary>
-            public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    JobId = jobId;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The job ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string JobId { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/jobs/{jobId}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Gets the resource representation for a job in a project.</summary>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs
-            /// to.</param>
-            /// <param name="jobId">[Required] The job ID.</param>
-            public virtual GetRequest Get(string projectId, string jobId)
-            {
-                return new GetRequest(service, projectId, jobId);
-            }
-
-            /// <summary>Gets the resource representation for a job in a project.</summary>
-            public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string jobId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    JobId = jobId;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>[Required] The job ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string JobId { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/jobs/{jobId}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Submits a job to a cluster.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">[Required] The ID of the Google Cloud Platform project that the job belongs to.</param>
-            public virtual SubmitRequest Submit(Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId)
-            {
-                return new SubmitRequest(service, body, projectId);
-            }
-
-            /// <summary>Submits a job to a cluster.</summary>
-            public class SubmitRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
-            {
-                /// <summary>Constructs a new Submit request.</summary>
-                public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>[Required] The ID of the Google Cloud Platform project that the job belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "submit"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha1/projects/{projectId}/jobs:submit"; }
-                }
-
-                /// <summary>Initializes Submit parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
             }
         }
     }
@@ -2177,32 +1596,6 @@ namespace Google.Apis.Dataproc.v1alpha1
 
 namespace Google.Apis.Dataproc.v1alpha1.Data
 {    
-
-    /// <summary>A record for a single agent within Dataproc.</summary>
-    public class Agent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Required] 64 characters matching the regular expression: [a-z0-9.-]{1,64} An agent chosen ID. This
-        /// should typically be the hostname of the GCE virtual machine on which the agent is currently
-        /// running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
-        public virtual string AgentId { get; set; } 
-
-        /// <summary>The version of this agent in HTTP User-Agent Header value format (RFC 2616 section 14.43), e.g.,
-        /// "Dataproc-Agent/1.2".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
-        public virtual string AgentVersion { get; set; } 
-
-        /// <summary>[Out] the last time this agent checked-in with Dataproc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastAgentUpdateTime")]
-        public virtual string LastAgentUpdateTime { get; set; } 
-
-        /// <summary>Agent status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
 
     /// <summary>A request to cancel a job.</summary>
     public class CancelJobRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2331,6 +1724,60 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata describing the operation.</summary>
+    public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the cluster for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; } 
+
+        /// <summary>Cluster UUId for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; } 
+
+        /// <summary>[Output-only] Short description of operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output-only] The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>[Output-only] Current operation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterOperationStatus Status { get; set; } 
+
+        /// <summary>[Output-only] The previous operation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
+        public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The status of the operation.</summary>
+    public class ClusterOperationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A message containing any operation metadata details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; } 
+
+        /// <summary>A message containing the detailed operation state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
+        public virtual string InnerState { get; set; } 
+
+        /// <summary>A message containing the operation state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time this state was entered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
+        public virtual string StateStartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The status of a cluster and its instances.</summary>
     public class ClusterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2355,6 +1802,18 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     {
         /// <summary>[Output-only] The Google Cloud Storage URI of the diagnostic output. This will be a plain text file
         /// with summary of collected diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
+        public virtual string OutputUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The location of diagnostic output.</summary>
+    public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] The Google Cloud Storage URI of the diagnostic output. This is a plain text file with
+        /// a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
 
@@ -2393,9 +1852,15 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// all instances in the cluster.</summary>
     public class GceClusterConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Google Compute Engine network to be used for machine communications. Inbound SSH connections
-        /// are necessary to complete cluster configuration. Example "compute.googleapis.com/projects/[project_id]
-        /// /zones/us-east1-a/default".</summary>
+        /// <summary>The Google Compute Engine metadata entries to add to all instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+
+        /// <summary>The Google Compute Engine network to be used for machine communications. Cannot be specified with
+        /// subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project
+        /// is used, if it exists. Cannot be a "Custom Subnet Network" (see
+        /// https://cloud.google.com/compute/docs/subnetworks for more information). Example:
+        /// `compute.googleapis.com/projects/[project_id]/regions/global/default`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
 
@@ -2404,6 +1869,15 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         /// and "auth.googleapis.com/devstorage.full_control".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; } 
+
+        /// <summary>The Google Compute Engine subnetwork to be used for machine communications. Cannot be specified
+        /// with network_uri. Example: `compute.googleapis.com/projects/[project_id]/regions/us-east1/sub0`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
+        public virtual string SubnetworkUri { get; set; } 
+
+        /// <summary>The Google Compute Engine tags to add to all instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
         /// <summary>[Required] The zone where the Google Compute Engine cluster will be located. Example:
         /// "compute.googleapis.com/projects/[project_id] /zones/us-east1-a".</summary>
@@ -2723,60 +2197,6 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to lease tasks for execution by an agent.</summary>
-    public class LeaseTasksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The agent's id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
-        public virtual string AgentId { get; set; } 
-
-        /// <summary>The current timestamp at the worker.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentAgentTime")]
-        public virtual string CurrentAgentTime { get; set; } 
-
-        /// <summary>The requested initial lease period.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedLeaseDuration")]
-        public virtual string RequestedLeaseDuration { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A Response for task leasing.</summary>
-    public class LeaseTasksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The worker-local lease expiration time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("leaseExpirationTime")]
-        public virtual string LeaseExpirationTime { get; set; } 
-
-        /// <summary>The interval at which status should be reported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportStatusInterval")]
-        public virtual string ReportStatusInterval { get; set; } 
-
-        /// <summary>A list of tasks that have been leased.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
-        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response to ListAgents</summary>
-    public class ListAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of agents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
-        public virtual System.Collections.Generic.IList<Agent> Agents { get; set; } 
-
-        /// <summary>The token to send to ListAgents to acquire any following pages. Will be empty for last
-        /// page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2938,6 +2358,10 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
+        /// <summary>[Output-only] Short description of operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
@@ -2953,6 +2377,10 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         /// <summary>The time that the operation was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
+
+        /// <summary>[Output-only] The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
 
         /// <summary>The time that the operation was started by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -3098,40 +2526,6 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to report task status, which may result in the corresponding lease being extended.</summary>
-    public class ReportTaskStatusRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The id of the agent reporting task status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
-        public virtual string AgentId { get; set; } 
-
-        /// <summary>The current timestamp at the worker.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
-        public virtual string CurrentWorkerTime { get; set; } 
-
-        /// <summary>Status for a single task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual TaskStatus Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A response to a task status report.</summary>
-    public class ReportTaskStatusResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>New task lease expiration timestamp in worker-local time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("leaseExpirationTime")]
-        public virtual string LeaseExpirationTime { get; set; } 
-
-        /// <summary>The interval at which status should be reported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportStatusInterval")]
-        public virtual string ReportStatusInterval { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Specifies the selection and configuration of software inside the cluster.</summary>
     public class SoftwareConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3139,6 +2533,13 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         /// [0-9]+\.[0-9]+. If unspecified it will default to latest version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 
+
+        /// <summary>[Optional] The properties to set on daemon configuration files. Property keys are specified in
+        /// "prefix:property" format, such as "core:fs.defaultFS". The following are supported prefixes and their
+        /// mappings: core - core-site.xml hdfs - hdfs-site.xml mapred - mapred-site.xml yarn - yarn-site.xml hive -
+        /// hive-site.xml pig - pig.properties spark - spark-defaults.conf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3271,294 +2672,6 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         /// <summary>[Required] The job resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Status of cluster configuration task.</summary>
-    public class SystemTaskStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The outcome of reconfiguration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A single Task for agent execution. A task in Cloud Dataproc is a unit of work originating with the
-    /// Cloud Dataproc service and intended for execution on a Cloud Dataproc agent. The most straightforward example of
-    /// a Task in Cloud Dataproc is one corresponding to an end-user originated Job. This task is then allocated to an
-    /// available agent for execution. Other examples of Cloud Dataproc Tasks could include executing system-maintenance
-    /// scripts, periodic agent upgrades, etc. Using the example of a Task corresponding to a Job, the flow through
-    /// Cloud Dataproc will appear as: - The end-user submits a Job to Cloud Dataproc for execution. - The Cloud
-    /// Dataproc service determines the best Cluster to execute the Job on and creates a Task for the job. - An agent
-    /// polls Cloud Dataproc for outstanding Tasks via the LeaseTasks method and the Task created in step 2 is provided
-    /// to the agent. - During execution of the Task, the agent updates the Task status via the ReportTaskStatus method.
-    /// - Upon completion of a Task, the agent will finally ReportTaskStatus with a TaskStatus indicating the status of
-    /// the driver application's exit status. - The Cloud Dataproc service updates the status of the user-submitted Job
-    /// using the Task status reported by the agent.</summary>
-    public class Task : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Configuration for this task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual TaskConfiguration Configuration { get; set; } 
-
-        /// <summary>The status of a task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual TaskStatus Status { get; set; } 
-
-        /// <summary>System defined task id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
-        public virtual string TaskId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A system task corresponding to a request for Master node to update configuration based on provided
-    /// values.</summary>
-    public class TaskClusterConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>New nodes to register with cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addMembers")]
-        public virtual System.Collections.Generic.IList<string> AddMembers { get; set; } 
-
-        /// <summary>Existing nodes to decommission.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removeMembers")]
-        public virtual System.Collections.Generic.IList<string> RemoveMembers { get; set; } 
-
-        /// <summary>Type of configuration change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration for a Dataproc Task.</summary>
-    public class TaskConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cluster reconfiguration task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterConfiguration")]
-        public virtual TaskClusterConfiguration ClusterConfiguration { get; set; } 
-
-        /// <summary>Configuration of a Job-based task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jobConfiguration")]
-        public virtual TaskJobConfiguration JobConfiguration { get; set; } 
-
-        /// <summary>Execute cluster maintenance command.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceCommand")]
-        public virtual TaskMaintenanceCommand MaintenanceCommand { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A task corresponding to a single job execution request.</summary>
-    public class TaskJobConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required archives for the driver program or distributed program. Used by Hadoop, Spark, and PySpark
-        /// jobs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
-        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
-
-        /// <summary>Arguments for the driver program. Used by Hadoop, Spark, and PySpark jobs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
-
-        /// <summary>True to continue processing pig or hive queries if an earlier query fails.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
-        public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
-
-        /// <summary>[Output-only] If present, the location of miscellaneous control files which may be used as part of
-        /// job setup and handling. If not present, control files may be placed in the same location as
-        /// driver_output_uri.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
-        public virtual string DriverControlFilesUri { get; set; } 
-
-        /// <summary>[Output-only] A URI pointing to the location of the stdin of the job's driver program, only set if
-        /// the job is interactive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverInputUri")]
-        public virtual string DriverInputUri { get; set; } 
-
-        /// <summary>Output URI for driver output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverOutputUri")]
-        public virtual string DriverOutputUri { get; set; } 
-
-        /// <summary>Required files for the driver program or distributed program. Used by Hadoop, Spark, and PySpark
-        /// jobs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
-        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
-
-        /// <summary>[Optional] If set to true, then the driver's stdin will be kept open and driver_input_uri will be
-        /// set to provide a path at which additional input can be sent to the driver.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("interactive")]
-        public virtual System.Nullable<bool> Interactive { get; set; } 
-
-        /// <summary>JAR files that are required by the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
-
-        /// <summary>Logging configuration for the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual TaskLoggingConfiguration LoggingConfiguration { get; set; } 
-
-        /// <summary>A class name that is contained either in core Hadoop or Spark libraries or within a JAR specified
-        /// within jar_file_uris.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
-        public virtual string MainClass { get; set; } 
-
-        /// <summary>A JAR containing the main driver and containing a METADATA entry for a main class contained within
-        /// the jar.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
-        public virtual string MainJarFileUri { get; set; } 
-
-        /// <summary>The main Python file for a PySpark application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mainPythonFileUri")]
-        public virtual string MainPythonFileUri { get; set; } 
-
-        /// <summary>Properties for the submitted job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
-
-        /// <summary>URIs of files required by the PySpark application</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
-        public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; } 
-
-        /// <summary>A URI of a file containing queries</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
-        public virtual string QueryFileUri { get; set; } 
-
-        /// <summary>A list of queries specified within the API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
-        public virtual TaskQueryList QueryList { get; set; } 
-
-        /// <summary>Variables to be substituted in Pig and Hive scripts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
-
-        /// <summary>The user that the job should be attributed to in Hadoop as a posix-style username. If the user is
-        /// not a member of the system's user-database, the task will be started as a system account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("submittedBy")]
-        public virtual string SubmittedBy { get; set; } 
-
-        /// <summary>The type of the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Status of a single job-based task.</summary>
-    public class TaskJobStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If the driver has exited, its exit code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverExitCode")]
-        public virtual System.Nullable<int> DriverExitCode { get; set; } 
-
-        /// <summary>The state of the driver.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverState")]
-        public virtual string DriverState { get; set; } 
-
-        /// <summary>A list of YARN applications that have been launched for this task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
-        public virtual System.Collections.Generic.IList<TaskYarnApplication> YarnApplications { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Logging configuration for the task.</summary>
-    public class TaskLoggingConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Map of logger name to log4j log level.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logLevels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> LogLevels { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A system task corresponding to a request to run a maintenance command on targeted agent.</summary>
-    public class TaskMaintenanceCommand : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Arguments to pass to the script.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
-
-        /// <summary>The environment variables.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Environment { get; set; } 
-
-        /// <summary>The executable is stored on GCS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
-        public virtual string GcsUri { get; set; } 
-
-        /// <summary>The executable is a file on agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localPath")]
-        public virtual string LocalPath { get; set; } 
-
-        /// <summary>The GCS URI where executable output will be stored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scriptOutputUri")]
-        public virtual string ScriptOutputUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A list of queries to execute as part of the task.</summary>
-    public class TaskQueryList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The queries to execute. The format of the queries is task-type dependent, but in each case each
-        /// query should be executed within its own invocation of the interpreter for that task type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<string> Queries { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Status for a single Task.</summary>
-    public class TaskStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status of the Job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jobStatus")]
-        public virtual TaskJobStatus JobStatus { get; set; } 
-
-        /// <summary>The status of the SystemTask.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemTaskStatus")]
-        public virtual SystemTaskStatus SystemTaskStatus { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>YARN applications that have been associated with a task.</summary>
-    public class TaskYarnApplication : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>YARN application id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<int> Id { get; set; } 
-
-        /// <summary>YARN application name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The progress of the YARN application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual System.Nullable<float> Progress { get; set; } 
-
-        /// <summary>The state of the YARN application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>The tracking URL for the YARN application. This URL may or may not be accessible from outside the
-        /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
-        public virtual string TrackingUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

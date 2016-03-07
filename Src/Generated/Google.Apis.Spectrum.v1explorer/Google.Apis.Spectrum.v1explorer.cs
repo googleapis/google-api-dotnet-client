@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/spectrum'>Google Spectrum Database API</a>
  *      <tr><th>API Version<td>v1explorer
- *      <tr><th>API Rev<td>20151209 (342)
+ *      <tr><th>API Rev<td>20160206 (401)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/spectrum'>
  *              http://developers.google.com/spectrum</a>

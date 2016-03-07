@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/sqjyY2N7dCTgnhKe3A21zI8WqUg\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/zyg1d1q0ZiPsgtBlXjvRMcBLPek\"",
  "discoveryVersion": "v1",
  "id": "gamesManagement:v1management",
  "name": "gamesManagement",
  "canonicalName": "Games Management",
  "version": "v1management",
- "revision": "20160119",
+ "revision": "20160224",
  "title": "Google Play Game Services Management API",
  "description": "The Management API for Google Play Game Services.",
  "ownerDomain": "google.com",
@@ -74,7 +74,7 @@
      "description": "Share your Google+ profile information and view and manage your game activity"
     },
     "https://www.googleapis.com/auth/plus.login": {
-     "description": "Know your basic profile info and list of people in your circles."
+     "description": "Know the list of people in your circles, your age range, and language"
     }
    }
   }
@@ -315,6 +315,10 @@
        "description": "The given name of this player. In some places, this is known as the first name."
       }
      }
+    },
+    "originalPlayerId": {
+     "type": "string",
+     "description": "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs."
     },
     "playerId": {
      "type": "string",

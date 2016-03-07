@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/domains/'>Google+ Domains API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160123 (387)
+ *      <tr><th>API Rev<td>20160302 (426)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/domains/'>
  *              https://developers.google.com/+/domains/</a>
@@ -107,7 +107,7 @@ namespace Google.Apis.PlusDomains.v1
             /// you.</summary>
             public static string PlusCirclesWrite = "https://www.googleapis.com/auth/plus.circles.write";
 
-            /// <summary>Know your basic profile info and list of people in your circles.</summary>
+            /// <summary>Know the list of people in your circles, your age range, and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
             /// <summary>Know who you are on Google</summary>

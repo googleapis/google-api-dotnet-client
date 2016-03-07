@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20151201 (334)
+ *      <tr><th>API Rev<td>20160222 (417)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -619,7 +619,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
 
-        /// <summary>Deletes a resource containing information about a database inside a Cloud SQL instance.</summary>
+        /// <summary>Deletes a database from a Cloud SQL instance.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
         /// name="instance">Database instance ID. This does not include the project ID.</param>
@@ -630,7 +630,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new DeleteRequest(service, project, instance, database);
         }
 
-        /// <summary>Deletes a resource containing information about a database inside a Cloud SQL instance.</summary>
+        /// <summary>Deletes a database from a Cloud SQL instance.</summary>
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1244,7 +1244,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
 
-        /// <summary>Creates a Cloud SQL instance as a clone of the source instance.</summary>
+        /// <summary>Creates a Cloud SQL instance as a clone of the source instance. The API is not ready for Second
+        /// Generation instances yet.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the source as well as the clone Cloud SQL instance.</param>
         /// <param
@@ -1255,7 +1256,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new CloneRequest(service, body, project, instance);
         }
 
-        /// <summary>Creates a Cloud SQL instance as a clone of the source instance.</summary>
+        /// <summary>Creates a Cloud SQL instance as a clone of the source instance. The API is not ready for Second
+        /// Generation instances yet.</summary>
         public class CloneRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Clone request.</summary>
@@ -3966,11 +3968,20 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>A Cloud SQL instance resource.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current disk usage of the instance in bytes.</summary>
+        /// <summary>FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container. SECOND_GEN: A newer
+        /// Cloud SQL backend that runs in a Compute Engine VM. EXTERNAL: A MySQL server that is not managed by
+        /// Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
+        public virtual string BackendType { get; set; } 
+
+        /// <summary>The current disk usage of the instance in bytes. This property has been deprecated. Users should
+        /// use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please
+        /// see https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for
+        /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 
 
-        /// <summary>The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults to MYSQL_5_5. The
+        /// <summary>The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults to MYSQL_5_6. The
         /// databaseVersion can not be changed after instance creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; } 
@@ -3979,7 +3990,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The name and status of the failover replica. Only applies to Second Generation instances.</summary>
+        /// <summary>The name and status of the failover replica. This property is applicable only to Second Generation
+        /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverReplica")]
         public virtual DatabaseInstance.FailoverReplicaData FailoverReplica { get; set; } 
 
@@ -3993,7 +4005,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; } 
 
-        /// <summary>The IPv6 address assigned to the instance.</summary>
+        /// <summary>The IPv6 address assigned to the instance. This property is applicable only to First Generation
+        /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; } 
 
@@ -4022,8 +4035,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; } 
 
-        /// <summary>The geographical region. Can be us-central, asia-east1 or europe-west1. Defaults to us-central. The
-        /// region can not be changed after instance creation.</summary>
+        /// <summary>The geographical region. Can be us-central (FIRST_GEN instances only), us-central1 (SECOND_GEN
+        /// instances only), asia-east1 or europe-west1. Defaults to us-central or us-central1 depending on the instance
+        /// type (First Generation or Second Generation). The region can not be changed after instance
+        /// creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -4043,7 +4058,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaCert")]
         public virtual SslCert ServerCaCert { get; set; } 
 
-        /// <summary>The service account email address assigned to the instance.</summary>
+        /// <summary>The service account email address assigned to the instance. This property is applicable only to
+        /// Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmailAddress")]
         public virtual string ServiceAccountEmailAddress { get; set; } 
 
@@ -4059,14 +4075,23 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>If the instance state is SUSPENDED, the reason for the suspension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual System.Collections.Generic.IList<string> SuspensionReason { get; set; } 
+
         
 
-        /// <summary>The name and status of the failover replica. Only applies to Second Generation instances.</summary>
+        /// <summary>The name and status of the failover replica. This property is applicable only to Second Generation
+        /// instances.</summary>
         public class FailoverReplicaData
         {
+            /// <summary>The availability status of the failover replica. A false status indicates that the failover
+            /// replica is out of sync. The master can only failover to the falover replica when the status is
+            /// true.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("available")]
             public virtual System.Nullable<bool> Available { get; set; } 
 
+            /// <summary>The name of the failover replica.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; } 
 
@@ -4730,11 +4755,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The activation policy for this instance. This specifies when the instance should be activated and
         /// is applicable only when the instance state is RUNNABLE. This can be one of the following. ALWAYS: The
         /// instance should always be active. NEVER: The instance should never be activated. ON_DEMAND: The instance is
-        /// activated upon receiving requests.</summary>
+        /// activated upon receiving requests; only applicable to First Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activationPolicy")]
         public virtual string ActivationPolicy { get; set; } 
 
-        /// <summary>The App Engine app IDs that can access this instance.</summary>
+        /// <summary>The App Engine app IDs that can access this instance. This property is only applicable to First
+        /// Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedGaeApplications")]
         public virtual System.Collections.Generic.IList<string> AuthorizedGaeApplications { get; set; } 
 
@@ -4743,17 +4769,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual BackupConfiguration BackupConfiguration { get; set; } 
 
         /// <summary>Configuration specific to read replica instances. Indicates whether database flags for crash-safe
-        /// replication are enabled.</summary>
+        /// replication are enabled. This property is only applicable to First Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crashSafeReplicationEnabled")]
         public virtual System.Nullable<bool> CrashSafeReplicationEnabled { get; set; } 
 
-        /// <summary>The size of data disk, in GB. Only supported for 2nd Generation instances. The data disk size
-        /// minimum is 10GB.</summary>
+        /// <summary>The size of data disk, in GB. The data disk size minimum is 10GB. This property is only applicable
+        /// to Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskSizeGb")]
         public virtual System.Nullable<long> DataDiskSizeGb { get; set; } 
 
-        /// <summary>The type of data disk. Only supported for 2nd Generation instances. The default type is
-        /// SSD.</summary>
+        /// <summary>The type of data disk. Only supported for Second Generation instances. The default type is PD_SSD.
+        /// This property is only applicable to Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskType")]
         public virtual string DataDiskType { get; set; } 
 
@@ -4767,7 +4793,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<bool> DatabaseReplicationEnabled { get; set; } 
 
         /// <summary>The settings for IP Management. This allows to enable or disable the instance IP and manage which
-        /// external networks can connect to the instance.</summary>
+        /// external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation
+        /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual IpConfiguration IpConfiguration { get; set; } 
 
@@ -4776,21 +4803,23 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The location preference settings. This allows the instance to be located as near as possible to
-        /// either an App Engine app or GCE zone for better performance.</summary>
+        /// either an App Engine app or GCE zone for better performance. App Engine co-location is only applicable to
+        /// First Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationPreference")]
         public virtual LocationPreference LocationPreference { get; set; } 
 
         /// <summary>The maintenance window for this instance. This specifies when the instance may be restarted for
-        /// maintenance purposes.</summary>
+        /// maintenance purposes. This property is only applicable to Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; } 
 
-        /// <summary>The pricing plan for this instance. This can be either PER_USE or PACKAGE.</summary>
+        /// <summary>The pricing plan for this instance. This can be either PER_USE or PACKAGE. Only PER_USE is
+        /// supported for Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingPlan")]
         public virtual string PricingPlan { get; set; } 
 
-        /// <summary>The type of replication this instance uses. This can be either ASYNCHRONOUS or
-        /// SYNCHRONOUS.</summary>
+        /// <summary>The type of replication this instance uses. This can be either ASYNCHRONOUS or SYNCHRONOUS. This
+        /// property is only applicable to First Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationType")]
         public virtual string ReplicationType { get; set; } 
 
@@ -5008,8 +5037,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; } 
 
         /// <summary>The host name from which the user can connect. For insert operations, host defaults to an empty
-        /// string. For update operations, host is specified as part of the request URL. The host name is not mutable
-        /// with this API.</summary>
+        /// string. For update operations, host is specified as part of the request URL. The host name cannot be updated
+        /// after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 

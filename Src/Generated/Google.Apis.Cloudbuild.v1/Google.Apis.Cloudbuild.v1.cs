@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160121 (385)
+ *      <tr><th>API Rev<td>20160303 (427)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Cloudbuild.v1
+namespace Google.Apis.CloudBuild.v1
 {
-    /// <summary>The Cloudbuild Service.</summary>
-    public class CloudbuildService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudBuild Service.</summary>
+    public class CloudBuildService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,12 +56,12 @@ namespace Google.Apis.Cloudbuild.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudbuildService() :
+        public CloudBuildService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudbuildService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudBuildService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             operations = new OperationsResource(this);
@@ -119,11 +119,11 @@ namespace Google.Apis.Cloudbuild.v1
         }
     }
 
-    ///<summary>A base abstract class for Cloudbuild requests.</summary>
-    public abstract class CloudbuildBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudBuild requests.</summary>
+    public abstract class CloudBuildBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudbuildBaseServiceRequest instance.</summary>
-        protected CloudbuildBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudBuildBaseServiceRequest instance.</summary>
+        protected CloudBuildBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -210,7 +210,7 @@ namespace Google.Apis.Cloudbuild.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Cloudbuild parameter list.</summary>
+        /// <summary>Initializes CloudBuild parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -361,7 +361,7 @@ namespace Google.Apis.Cloudbuild.v1
 
         /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
-        public class GetRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.Operation>
+        public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -429,7 +429,7 @@ namespace Google.Apis.Cloudbuild.v1
         ///
         /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
         /// schemes, such as `users/operations`.</summary>
-        public class ListRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.ListOperationsResponse>
+        public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -565,16 +565,16 @@ namespace Google.Apis.Cloudbuild.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">ID of the project.</param>
             /// <param name="id">ID of the build.</param>
-            public virtual CancelRequest Cancel(Google.Apis.Cloudbuild.v1.Data.CancelBuildRequest body, string projectId, string id)
+            public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string projectId, string id)
             {
                 return new CancelRequest(service, body, projectId, id);
             }
 
             /// <summary>Cancels a requested build in progress.</summary>
-            public class CancelRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.Build>
+            public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbuild.v1.Data.CancelBuildRequest body, string projectId, string id)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string projectId, string id)
                     : base(service)
                 {
                     ProjectId = projectId;
@@ -594,7 +594,7 @@ namespace Google.Apis.Cloudbuild.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Cloudbuild.v1.Data.CancelBuildRequest Body { get; set; }
+                Google.Apis.CloudBuild.v1.Data.CancelBuildRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -650,7 +650,7 @@ namespace Google.Apis.Cloudbuild.v1
             /// to GetBuild to determine its status (e.g., success or failure).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">ID of the project.</param>
-            public virtual CreateRequest Create(Google.Apis.Cloudbuild.v1.Data.Build body, string projectId)
+            public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.Build body, string projectId)
             {
                 return new CreateRequest(service, body, projectId);
             }
@@ -659,10 +659,10 @@ namespace Google.Apis.Cloudbuild.v1
             ///
             /// The long-running Operation returned by this method will include the ID of the build, which can be passed
             /// to GetBuild to determine its status (e.g., success or failure).</summary>
-            public class CreateRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.Operation>
+            public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbuild.v1.Data.Build body, string projectId)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.Build body, string projectId)
                     : base(service)
                 {
                     ProjectId = projectId;
@@ -677,7 +677,7 @@ namespace Google.Apis.Cloudbuild.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Cloudbuild.v1.Data.Build Body { get; set; }
+                Google.Apis.CloudBuild.v1.Data.Build Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -733,7 +733,7 @@ namespace Google.Apis.Cloudbuild.v1
             ///
             /// The Build that is returned includes its status (e.g., success or failure, or in-progress), and timing
             /// information.</summary>
-            public class GetRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.Build>
+            public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string projectId, string id)
@@ -813,7 +813,7 @@ namespace Google.Apis.Cloudbuild.v1
             ///
             /// Previously requested builds may still be in-progress, or may have finished successfully or
             /// unsuccessfully.</summary>
-            public class ListRequest : CloudbuildBaseServiceRequest<Google.Apis.Cloudbuild.v1.Data.ListBuildsResponse>
+            public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string projectId)
@@ -894,7 +894,7 @@ namespace Google.Apis.Cloudbuild.v1
     }
 }
 
-namespace Google.Apis.Cloudbuild.v1.Data
+namespace Google.Apis.CloudBuild.v1.Data
 {    
 
     /// <summary>A build resource in the Container Builder API.
@@ -1071,7 +1071,7 @@ namespace Google.Apis.Cloudbuild.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping above, the `name` should have the format of
+        /// If you use the default HTTP mapping, the `name` should have the format of
         /// `operations/some/unique/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -1094,10 +1094,6 @@ namespace Google.Apis.Cloudbuild.v1.Data
         /// <summary>Images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; } 
-
-        /// <summary>Revision ID of the source that was built.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
-        public virtual string Revision { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1188,7 +1184,7 @@ namespace Google.Apis.Cloudbuild.v1.Data
 
         /// <summary>Google Cloud Storage object containing source.
         ///
-        /// This object must be a gzipped archive file (.tgz) containing source to build.</summary>
+        /// This object must be a gzipped archive file (.tar.gz) containing source to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; } 
 

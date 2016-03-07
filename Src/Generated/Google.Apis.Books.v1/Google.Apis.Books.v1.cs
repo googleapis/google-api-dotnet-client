@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151218 (351)
+ *      <tr><th>API Rev<td>20160113 (377)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -4195,10 +4195,6 @@ namespace Google.Apis.Books.v1
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Source { get; set; }
 
-            /// <summary>List of target ids used for experiments or user segments</summary>
-            [Google.Apis.Util.RequestParameterAttribute("targetIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> TargetIds { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4245,15 +4241,6 @@ namespace Google.Apis.Books.v1
                     "source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4521,10 +4508,6 @@ namespace Google.Apis.Books.v1
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Source { get; set; }
 
-            /// <summary>List of target ids used for experiments or user segments</summary>
-            [Google.Apis.Util.RequestParameterAttribute("targetIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> TargetIds { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4571,15 +4554,6 @@ namespace Google.Apis.Books.v1
                     "source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "targetIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "targetIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5646,10 +5620,6 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Source { get; set; }
 
-                /// <summary>List of target ids used for experiments or user segments</summary>
-                [Google.Apis.Util.RequestParameterAttribute("targetIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> TargetIds { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -5696,15 +5666,6 @@ namespace Google.Apis.Books.v1
                         "source", new Google.Apis.Discovery.Parameter
                         {
                             Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "targetIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "targetIds",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160119 (383)
+ *      <tr><th>API Rev<td>20160302 (426)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
@@ -3926,14 +3926,16 @@ namespace Google.Apis.Genomics.v1beta2
 
         }
 
-        /// <summary>Deletes the contents of a variant set. The variant set object is not deleted.</summary>
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not
+        /// reversible.</summary>
         /// <param name="variantSetId">The ID of the variant set to be deleted.</param>
         public virtual DeleteRequest Delete(string variantSetId)
         {
             return new DeleteRequest(service, variantSetId);
         }
 
-        /// <summary>Deletes the contents of a variant set. The variant set object is not deleted.</summary>
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not
+        /// reversible.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4119,7 +4121,7 @@ namespace Google.Apis.Genomics.v1beta2
         /// <summary>Creates variant data by asynchronously importing the provided information.
         ///
         /// The variants for import will be merged with any existing data and each other according to the behavior of
-        /// mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some
+        /// mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some
         /// data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields
         /// will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF
         /// headers are appended to the metadata already in a variant set.</summary>
@@ -4133,7 +4135,7 @@ namespace Google.Apis.Genomics.v1beta2
         /// <summary>Creates variant data by asynchronously importing the provided information.
         ///
         /// The variants for import will be merged with any existing data and each other according to the behavior of
-        /// mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some
+        /// mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some
         /// data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields
         /// will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF
         /// headers are appended to the metadata already in a variant set.</summary>
@@ -4930,7 +4932,7 @@ namespace Google.Apis.Genomics.v1beta2.Data
     /// <summary>The variant data import request.</summary>
     public class ImportVariantsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The format of the variant data being imported. If unspecified, defaults to to "VCF".</summary>
+        /// <summary>The format of the variant data being imported. If unspecified, defaults to "VCF".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
 
@@ -5588,7 +5590,7 @@ namespace Google.Apis.Genomics.v1beta2.Data
     /// reference.</summary>
     public class ReferenceBound : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the reference associated with this ReferenceBound.</summary>
+        /// <summary>The name of the reference associated with this reference bound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceName")]
         public virtual string ReferenceName { get; set; } 
 
@@ -6090,9 +6092,9 @@ namespace Google.Apis.Genomics.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<long> End { get; set; } 
 
-        /// <summary>The maximum number of calls to return in a single page. Note that this limit may be exceeded; at
-        /// least one variant is always returned per page, even if it has more calls than this limit. If unspecified,
-        /// defaults to 5000. The maximum value is 10000.</summary>
+        /// <summary>The maximum number of calls to return in a single page. Note that this limit may be exceeded in the
+        /// event that a matching variant contains more calls than the requested maximum. If unspecified, defaults to
+        /// 5000. The maximum value is 10000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCalls")]
         public virtual System.Nullable<int> MaxCalls { get; set; } 
 

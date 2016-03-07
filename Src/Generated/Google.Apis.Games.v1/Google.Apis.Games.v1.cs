@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160119 (383)
+ *      <tr><th>API Rev<td>20160224 (419)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -114,7 +114,7 @@ namespace Google.Apis.Games.v1
             /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
 
-            /// <summary>Know your basic profile info and list of people in your circles.</summary>
+            /// <summary>Know the list of people in your circles, your age range, and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
         }
@@ -3436,6 +3436,9 @@ namespace Google.Apis.Games.v1
                 /// <summary>List only social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+                /// <summary>List only social scores, not respecting the fACL.</summary>
+                [Google.Apis.Util.StringValueAttribute("SOCIAL_1P")]
+                SOCIAL1P,
             }
 
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
@@ -3595,6 +3598,9 @@ namespace Google.Apis.Games.v1
                 /// <summary>List only social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+                /// <summary>List only social scores, not respecting the fACL.</summary>
+                [Google.Apis.Util.StringValueAttribute("SOCIAL_1P")]
+                SOCIAL1P,
             }
 
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
@@ -6481,6 +6487,12 @@ namespace Google.Apis.Games.v1.Data
         /// fields may not be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual Player.NameData Name { get; set; } 
+
+        /// <summary>The player ID that was used for this player the first time they signed into the game in question.
+        /// This is only populated for calls to player.get for the requesting player, only if the player ID has
+        /// subsequently changed, and only to clients that support remapping player IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalPlayerId")]
+        public virtual string OriginalPlayerId { get; set; } 
 
         /// <summary>The ID of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]

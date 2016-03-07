@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160112 (376)
+ *      <tr><th>API Rev<td>20160229 (424)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -90,6 +90,7 @@ namespace Google.Apis.Compute.v1
             routes = new RoutesResource(this);
             snapshots = new SnapshotsResource(this);
             sslCertificates = new SslCertificatesResource(this);
+            subnetworks = new SubnetworksResource(this);
             targetHttpProxies = new TargetHttpProxiesResource(this);
             targetHttpsProxies = new TargetHttpsProxiesResource(this);
             targetInstances = new TargetInstancesResource(this);
@@ -358,6 +359,14 @@ namespace Google.Apis.Compute.v1
             get { return sslCertificates; }
         }
 
+        private readonly SubnetworksResource subnetworks;
+
+        /// <summary>Gets the Subnetworks resource.</summary>
+        public virtual SubnetworksResource Subnetworks
+        {
+            get { return subnetworks; }
+        }
+
         private readonly TargetHttpProxiesResource targetHttpProxies;
 
         /// <summary>Gets the TargetHttpProxies resource.</summary>
@@ -600,7 +609,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -609,14 +619,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -694,8 +704,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified address resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="address">Name of the address resource to delete.</param>
         public virtual DeleteRequest Delete(string project, string region, string address)
         {
@@ -720,7 +730,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -785,8 +795,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Returns the specified address resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="address">Name of the address resource to return.</param>
         public virtual GetRequest Get(string project, string region, string address)
         {
@@ -811,7 +821,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -878,8 +888,8 @@ namespace Google.Apis.Compute.v1
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Address body, string project, string region)
         {
             return new InsertRequest(service, body, project, region);
@@ -904,7 +914,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -960,16 +970,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of address resources contained within the specified region.</summary>
+        /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual ListRequest List(string project, string region)
         {
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of address resources contained within the specified region.</summary>
+        /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AddressList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -986,7 +996,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -999,7 +1009,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1008,14 +1019,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1149,7 +1160,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1158,14 +1170,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1241,17 +1253,17 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified autoscaler resource.</summary>
+        /// <summary>Deletes the specified autoscaler.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
-        /// <param name="autoscaler">Name of the persistent autoscaler resource to delete.</param>
+        /// <param name="autoscaler">Name of the autoscaler to delete.</param>
         public virtual DeleteRequest Delete(string project, string zone, string autoscaler)
         {
             return new DeleteRequest(service, project, zone, autoscaler);
         }
 
-        /// <summary>Deletes the specified autoscaler resource.</summary>
+        /// <summary>Deletes the specified autoscaler.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1269,11 +1281,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the persistent autoscaler resource to delete.</summary>
+            /// <summary>Name of the autoscaler to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
@@ -1332,17 +1344,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified autoscaler resource.</summary>
+        /// <summary>Returns the specified autoscaler resource. Get a list of available autoscalers by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
-        /// <param name="autoscaler">Name of the persistent autoscaler resource to return.</param>
+        /// <param name="autoscaler">Name of the autoscaler to return.</param>
         public virtual GetRequest Get(string project, string zone, string autoscaler)
         {
             return new GetRequest(service, project, zone, autoscaler);
         }
 
-        /// <summary>Returns the specified autoscaler resource.</summary>
+        /// <summary>Returns the specified autoscaler resource. Get a list of available autoscalers by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Autoscaler>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1360,11 +1374,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the persistent autoscaler resource to return.</summary>
+            /// <summary>Name of the autoscaler to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
@@ -1423,19 +1437,17 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an autoscaler resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone)
         {
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates an autoscaler resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -1453,7 +1465,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
@@ -1509,16 +1521,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of autoscaler resources contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
         public virtual ListRequest List(string project, string zone)
         {
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of autoscaler resources contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AutoscalerList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1535,7 +1547,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
@@ -1548,7 +1560,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1557,14 +1570,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1649,20 +1662,20 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates an autoscaler resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
+        /// supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
-        /// <param name="autoscaler">Name of the autoscaler resource to update.</param>
+        /// <param name="autoscaler">Name of the autoscaler to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone, string autoscaler)
         {
             return new PatchRequest(service, body, project, zone, autoscaler);
         }
 
-        /// <summary>Updates an autoscaler resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
+        /// supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1681,11 +1694,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the autoscaler resource to update.</summary>
+            /// <summary>Name of the autoscaler to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; private set; }
 
@@ -1750,19 +1763,17 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates an autoscaler resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
         public virtual UpdateRequest Update(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone)
         {
             return new UpdateRequest(service, body, project, zone);
         }
 
-        /// <summary>Updates an autoscaler resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1780,11 +1791,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the autoscaler resource to update.</summary>
+            /// <summary>Name of the autoscaler to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
@@ -1942,7 +1953,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified BackendService resource.</summary>
+        /// <summary>Returns the specified BackendService resource. Get a list of available backend services by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to return.</param>
@@ -1951,7 +1963,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, backendService);
         }
 
-        /// <summary>Returns the specified BackendService resource.</summary>
+        /// <summary>Returns the specified BackendService resource. Get a list of available backend services by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2206,7 +2219,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -2215,14 +2229,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -2491,14 +2505,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of disk type resources.</summary>
+        /// <summary>Retrieves an aggregated list of disk types.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of disk type resources.</summary>
+        /// <summary>Retrieves an aggregated list of disk types.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -2523,7 +2537,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -2532,14 +2547,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -2615,17 +2630,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified disk type resource.</summary>
+        /// <summary>Returns the specified disk type. Get a list of available disk types by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="diskType">Name of the disk type resource to return.</param>
+        /// <param name="diskType">Name of the disk type to return.</param>
         public virtual GetRequest Get(string project, string zone, string diskType)
         {
             return new GetRequest(service, project, zone, diskType);
         }
 
-        /// <summary>Returns the specified disk type resource.</summary>
+        /// <summary>Returns the specified disk type. Get a list of available disk types by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2647,7 +2664,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the disk type resource to return.</summary>
+            /// <summary>Name of the disk type to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("diskType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DiskType { get; private set; }
 
@@ -2706,7 +2723,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of disk type resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of disk types available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -2715,7 +2732,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of disk type resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of disk types available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2745,7 +2762,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -2754,14 +2772,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -2895,7 +2913,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -2904,14 +2923,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -3181,7 +3200,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns a specified persistent disk.</summary>
+        /// <summary>Returns a specified persistent disk. Get a list of available persistent disks by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -3191,7 +3211,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, disk);
         }
 
-        /// <summary>Returns a specified persistent disk.</summary>
+        /// <summary>Returns a specified persistent disk. Get a list of available persistent disks by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Disk>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3272,8 +3293,9 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a persistent disk in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a persistent disk in the specified project using the data in the request. You can create a
+        /// disk with a sourceImage, a sourceSnapshot, or create an empty 200 GB data disk by omitting all properties.
+        /// You can also create a disk that is larger than the default size by specifying the sizeGb property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -3283,8 +3305,9 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates a persistent disk in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a persistent disk in the specified project using the data in the request. You can create a
+        /// disk with a sourceImage, a sourceSnapshot, or create an empty 200 GB data disk by omitting all properties.
+        /// You can also create a disk that is larger than the default size by specifying the sizeGb property.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -3410,7 +3433,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -3419,14 +3443,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -3528,16 +3552,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified firewall resource.</summary>
+        /// <summary>Deletes the specified firewall.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="firewall">Name of the firewall
-        /// resource to delete.</param>
+        /// <param name="firewall">Name of the firewall rule
+        /// to delete.</param>
         public virtual DeleteRequest Delete(string project, string firewall)
         {
             return new DeleteRequest(service, project, firewall);
         }
 
-        /// <summary>Deletes the specified firewall resource.</summary>
+        /// <summary>Deletes the specified firewall.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3554,7 +3578,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall resource to delete.</summary>
+            /// <summary>Name of the firewall rule to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -3604,16 +3628,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified firewall resource.</summary>
+        /// <summary>Returns the specified firewall.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="firewall">Name of the firewall
-        /// resource to return.</param>
+        /// <param name="firewall">Name of the firewall rule
+        /// to return.</param>
         public virtual GetRequest Get(string project, string firewall)
         {
             return new GetRequest(service, project, firewall);
         }
 
-        /// <summary>Returns the specified firewall resource.</summary>
+        /// <summary>Returns the specified firewall.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Firewall>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3630,7 +3654,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall resource to return.</summary>
+            /// <summary>Name of the firewall rule to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -3680,8 +3704,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a firewall resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Firewall body, string project)
@@ -3689,8 +3712,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a firewall resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -3750,14 +3772,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of firewall resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of firewall resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.FirewallList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3782,7 +3804,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -3791,14 +3814,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -3874,18 +3897,18 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall resource with the data included in the request. This method supports
+        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
         /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="firewall">Name of the firewall
-        /// resource to update.</param>
+        /// <param name="firewall">Name of the firewall rule
+        /// to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Firewall body, string project, string firewall)
         {
             return new PatchRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall resource with the data included in the request. This method supports
+        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
         /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -3904,7 +3927,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall resource to update.</summary>
+            /// <summary>Name of the firewall rule to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -3960,17 +3983,17 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall resource with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="firewall">Name of the firewall
-        /// resource to update.</param>
+        /// <param name="firewall">Name of the firewall rule
+        /// to update.</param>
         public virtual UpdateRequest Update(Google.Apis.Compute.v1.Data.Firewall body, string project, string firewall)
         {
             return new UpdateRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall resource with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3988,7 +4011,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall resource to update.</summary>
+            /// <summary>Name of the firewall rule to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -4093,7 +4116,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -4102,14 +4126,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -4496,7 +4520,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -4505,14 +4530,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -4792,7 +4817,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified address resource.</summary>
+        /// <summary>Returns the specified address resource. Get a list of available addresses by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="address">Name of the address
         /// resource to return.</param>
@@ -4801,7 +4827,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, address);
         }
 
-        /// <summary>Returns the specified address resource.</summary>
+        /// <summary>Returns the specified address resource. Get a list of available addresses by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Address>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4938,14 +4965,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of global address resources.</summary>
+        /// <summary>Retrieves a list of global addresses.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of global address resources.</summary>
+        /// <summary>Retrieves a list of global addresses.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AddressList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4970,7 +4997,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -4979,14 +5007,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -5155,7 +5183,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified ForwardingRule resource.</summary>
+        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to return.</param>
@@ -5164,7 +5193,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Returns the specified ForwardingRule resource.</summary>
+        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRule>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5333,7 +5363,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -5342,14 +5373,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -5560,7 +5591,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -5569,14 +5601,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -5728,7 +5760,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the specified Operations resource.</summary>
+        /// <summary>Retrieves the specified Operations resource. Get a list of operations by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
         /// resource to return.</param>
@@ -5737,7 +5770,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, operation);
         }
 
-        /// <summary>Retrieves the specified Operations resource.</summary>
+        /// <summary>Retrieves the specified Operations resource. Get a list of operations by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5836,7 +5870,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -5845,14 +5880,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -6021,7 +6056,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified HttpHealthCheck resource.</summary>
+        /// <summary>Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
         /// HttpHealthCheck resource to return.</param>
@@ -6030,7 +6066,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, httpHealthCheck);
         }
 
-        /// <summary>Returns the specified HttpHealthCheck resource.</summary>
+        /// <summary>Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpHealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -6199,7 +6236,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -6208,14 +6246,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -6556,7 +6594,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified HttpsHealthCheck resource.</summary>
+        /// <summary>Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
         /// HttpsHealthCheck resource to return.</param>
@@ -6565,7 +6604,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, httpsHealthCheck);
         }
 
-        /// <summary>Returns the specified HttpsHealthCheck resource.</summary>
+        /// <summary>Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpsHealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -6734,7 +6774,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -6743,14 +6784,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -7015,7 +7056,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified image resource.</summary>
+        /// <summary>Deletes the specified image.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Name of the image resource to
         /// delete.</param>
@@ -7024,7 +7065,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, image);
         }
 
-        /// <summary>Deletes the specified image resource.</summary>
+        /// <summary>Deletes the specified image.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -7178,7 +7219,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified image resource.</summary>
+        /// <summary>Returns the specified image. Get a list of available images by making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Name of the image resource to
         /// return.</param>
@@ -7187,7 +7228,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, image);
         }
 
-        /// <summary>Returns the specified image resource.</summary>
+        /// <summary>Returns the specified image. Get a list of available images by making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Image>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7254,8 +7295,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an image resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an image in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Image body, string project)
@@ -7263,8 +7303,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates an image resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an image in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7366,7 +7405,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -7375,14 +7415,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -7617,7 +7657,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -7626,14 +7667,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -7913,7 +7954,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group. Get a list of available
+        /// managed instance groups by making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -7924,7 +7966,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group. Get a list of available
+        /// managed instance groups by making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManager>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -8138,7 +8181,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -8147,14 +8191,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -8791,8 +8835,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds a list of instances to the specified instance group. Read  Adding instances for more
-        /// information.</summary>
+        /// <summary>Adds a list of instances to the specified instance group. All of the instances in the instance
+        /// group must be in the same network/subnetwork. Read  Adding instances for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -8804,8 +8848,8 @@ namespace Google.Apis.Compute.v1
             return new AddInstancesRequest(service, body, project, zone, instanceGroup);
         }
 
-        /// <summary>Adds a list of instances to the specified instance group. Read  Adding instances for more
-        /// information.</summary>
+        /// <summary>Adds a list of instances to the specified instance group. All of the instances in the instance
+        /// group must be in the same network/subnetwork. Read  Adding instances for more information.</summary>
         public class AddInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddInstances request.</summary>
@@ -8925,7 +8969,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -8934,14 +8979,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -9113,7 +9158,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified instance group resource.</summary>
+        /// <summary>Returns the specified instance group. Get a list of available instance groups by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// instance group is located.</param>
@@ -9123,7 +9169,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, instanceGroup);
         }
 
-        /// <summary>Returns the specified instance group resource.</summary>
+        /// <summary>Returns the specified instance group. Get a list of available instance groups by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9329,7 +9376,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -9338,14 +9386,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -9479,7 +9527,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -9488,14 +9537,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -9814,7 +9863,9 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified instance template.</summary>
+        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
+        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
+        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -9823,7 +9874,9 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Deletes the specified instance template.</summary>
+        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
+        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
+        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -9890,7 +9943,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified instance template resource.</summary>
+        /// <summary>Returns the specified instance template. Get a list of available instance templates by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template.</param>
@@ -9899,7 +9953,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Returns the specified instance template resource.</summary>
+        /// <summary>Returns the specified instance template. Get a list of available instance templates by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceTemplate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -10072,7 +10127,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -10081,14 +10137,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -10296,14 +10352,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves aggregated list of instance resources.</summary>
+        /// <summary>Retrieves aggregated list of instances.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves aggregated list of instance resources.</summary>
+        /// <summary>Retrieves aggregated list of instances.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -10328,7 +10384,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -10337,14 +10394,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -10425,7 +10482,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="instance">Instance name.</param>
+        /// <param name="instance">The instance name for this request.</param>
         public virtual AttachDiskRequest AttachDisk(Google.Apis.Compute.v1.Data.AttachedDisk body, string project, string zone, string instance)
         {
             return new AttachDiskRequest(service, body, project, zone, instance);
@@ -10454,7 +10511,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Instance name.</summary>
+            /// <summary>The instance name for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
@@ -10842,7 +10899,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified instance resource.</summary>
+        /// <summary>Returns the specified Instance resource. Get a list of available instances by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -10852,7 +10910,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the specified instance resource.</summary>
+        /// <summary>Returns the specified Instance resource. Get a list of available instances by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Instance>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -11126,7 +11185,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of instance resources contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -11135,7 +11194,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves the list of instance resources contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -11165,7 +11224,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -11174,14 +11234,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -11475,6 +11535,107 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"\w[\w.-]{0,254}",
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual SetMachineTypeRequest SetMachineType(Google.Apis.Compute.v1.Data.InstancesSetMachineTypeRequest body, string project, string zone, string instance)
+        {
+            return new SetMachineTypeRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the
+        /// request.</summary>
+        public class SetMachineTypeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetMachineType request.</summary>
+            public SetMachineTypeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstancesSetMachineTypeRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstancesSetMachineTypeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setMachineType"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setMachineType"; }
+            }
+
+            /// <summary>Initializes SetMachineType parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -11984,16 +12145,18 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified license resource.</summary>
+        /// <summary>Returns the specified License resource. Get a list of available licenses by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="license">Name of the license
+        /// <param name="license">Name of the License
         /// resource to return.</param>
         public virtual GetRequest Get(string project, string license)
         {
             return new GetRequest(service, project, license);
         }
 
-        /// <summary>Returns the specified license resource.</summary>
+        /// <summary>Returns the specified License resource. Get a list of available licenses by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.License>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -12010,7 +12173,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the license resource to return.</summary>
+            /// <summary>Name of the License resource to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("license", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string License { get; private set; }
 
@@ -12077,14 +12240,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of machine type resources.</summary>
+        /// <summary>Retrieves an aggregated list of machine types.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of machine type resources.</summary>
+        /// <summary>Retrieves an aggregated list of machine types.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -12109,7 +12272,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -12118,14 +12282,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -12201,17 +12365,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified machine type resource.</summary>
+        /// <summary>Returns the specified machine type. Get a list of available machine types by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="machineType">Name of the machine type resource to return.</param>
+        /// <param name="machineType">Name of the machine type to return.</param>
         public virtual GetRequest Get(string project, string zone, string machineType)
         {
             return new GetRequest(service, project, zone, machineType);
         }
 
-        /// <summary>Returns the specified machine type resource.</summary>
+        /// <summary>Returns the specified machine type. Get a list of available machine types by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -12233,7 +12399,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the machine type resource to return.</summary>
+            /// <summary>Name of the machine type to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("machineType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MachineType { get; private set; }
 
@@ -12292,7 +12458,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of machine type resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of machine types available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -12301,7 +12467,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of machine type resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of machine types available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -12331,7 +12497,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -12340,14 +12507,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -12449,16 +12616,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified network resource.</summary>
+        /// <summary>Deletes the specified network.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="network">Name of the network
-        /// resource to delete.</param>
+        /// <param name="network">Name of the network to
+        /// delete.</param>
         public virtual DeleteRequest Delete(string project, string network)
         {
             return new DeleteRequest(service, project, network);
         }
 
-        /// <summary>Deletes the specified network resource.</summary>
+        /// <summary>Deletes the specified network.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -12475,7 +12642,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the network resource to delete.</summary>
+            /// <summary>Name of the network to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
@@ -12525,16 +12692,18 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified network resource.</summary>
+        /// <summary>Returns the specified network. Get a list of available networks by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="network">Name of the network
-        /// resource to return.</param>
+        /// <param name="network">Name of the network to
+        /// return.</param>
         public virtual GetRequest Get(string project, string network)
         {
             return new GetRequest(service, project, network);
         }
 
-        /// <summary>Returns the specified network resource.</summary>
+        /// <summary>Returns the specified network. Get a list of available networks by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Network>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -12551,7 +12720,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the network resource to return.</summary>
+            /// <summary>Name of the network to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
@@ -12601,8 +12770,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a network resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a network in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Network body, string project)
@@ -12610,8 +12778,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a network resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a network in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -12671,14 +12838,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of network resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of networks available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of network resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of networks available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -12703,7 +12870,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -12712,14 +12880,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -12812,14 +12980,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified project resource.</summary>
+        /// <summary>Returns the specified Project resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetRequest Get(string project)
         {
             return new GetRequest(service, project);
         }
 
-        /// <summary>Returns the specified project resource.</summary>
+        /// <summary>Returns the specified Project resource.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -13167,8 +13335,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified region-specific Operations resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="operation">Name of the Operations resource to delete.</param>
         public virtual DeleteRequest Delete(string project, string region, string operation)
         {
@@ -13193,7 +13361,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the region scoping this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -13258,8 +13426,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the specified region-specific Operations resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="operation">Name of the Operations resource to return.</param>
         public virtual GetRequest Get(string project, string region, string operation)
         {
@@ -13284,7 +13452,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the region scoping this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -13349,8 +13517,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves a list of Operation resources contained within the specified region.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual ListRequest List(string project, string region)
         {
             return new ListRequest(service, project, region);
@@ -13373,7 +13541,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the region scoping this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -13386,7 +13554,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -13395,14 +13564,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -13504,7 +13673,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified region resource.</summary>
+        /// <summary>Returns the specified Region resource. Get a list of available regions by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region resource
         /// to return.</param>
@@ -13513,7 +13683,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region);
         }
 
-        /// <summary>Returns the specified region resource.</summary>
+        /// <summary>Returns the specified Region resource. Get a list of available regions by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Region>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -13612,7 +13783,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -13621,14 +13793,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -13721,16 +13893,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified route resource.</summary>
+        /// <summary>Deletes the specified Route resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="route">Name of the route resource to
+        /// <param name="route">Name of the Route resource to
         /// delete.</param>
         public virtual DeleteRequest Delete(string project, string route)
         {
             return new DeleteRequest(service, project, route);
         }
 
-        /// <summary>Deletes the specified route resource.</summary>
+        /// <summary>Deletes the specified Route resource.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -13747,7 +13919,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the route resource to delete.</summary>
+            /// <summary>Name of the Route resource to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("route", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Route { get; private set; }
 
@@ -13797,16 +13969,18 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified route resource.</summary>
+        /// <summary>Returns the specified Route resource. Get a list of available routes by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="route">Name of the route resource to
+        /// <param name="route">Name of the Route resource to
         /// return.</param>
         public virtual GetRequest Get(string project, string route)
         {
             return new GetRequest(service, project, route);
         }
 
-        /// <summary>Returns the specified route resource.</summary>
+        /// <summary>Returns the specified Route resource. Get a list of available routes by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Route>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -13823,7 +13997,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the route resource to return.</summary>
+            /// <summary>Name of the Route resource to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("route", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Route { get; private set; }
 
@@ -13873,7 +14047,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a route resource in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Route body, string project)
@@ -13881,7 +14055,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a route resource in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -13941,14 +14115,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of route resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of route resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouteList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -13973,7 +14147,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -13982,14 +14157,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -14166,7 +14341,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified Snapshot resource.</summary>
+        /// <summary>Returns the specified Snapshot resource. Get a list of available snapshots by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="snapshot">Name of the Snapshot
         /// resource to return.</param>
@@ -14175,7 +14351,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, snapshot);
         }
 
-        /// <summary>Returns the specified Snapshot resource.</summary>
+        /// <summary>Returns the specified Snapshot resource. Get a list of available snapshots by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Snapshot>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -14274,7 +14451,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -14283,14 +14461,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -14459,7 +14637,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified SslCertificate resource.</summary>
+        /// <summary>Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslCertificate">Name of the
         /// SslCertificate resource to return.</param>
@@ -14468,7 +14647,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, sslCertificate);
         }
 
-        /// <summary>Returns the specified SslCertificate resource.</summary>
+        /// <summary>Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -14637,7 +14817,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -14646,14 +14827,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -14697,6 +14878,557 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "subnetworks" collection of methods.</summary>
+    public class SubnetworksResource
+    {
+        private const string Resource = "subnetworks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SubnetworksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an aggregated list of subnetworks.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of subnetworks.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SubnetworkAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/subnetworks"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified subnetwork.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string subnetwork)
+        {
+            return new DeleteRequest(service, project, region, subnetwork);
+        }
+
+        /// <summary>Deletes the specified subnetwork.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks by making a list()
+        /// request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to return.</param>
+        public virtual GetRequest Get(string project, string region, string subnetwork)
+        {
+            return new GetRequest(service, project, region, subnetwork);
+        }
+
+        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks by making a list()
+        /// request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Subnetwork>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Subnetwork body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Subnetwork body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Subnetwork Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SubnetworkList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -14822,7 +15554,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified TargetHttpProxy resource.</summary>
+        /// <summary>Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
         /// TargetHttpProxy resource to return.</param>
@@ -14831,7 +15564,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, targetHttpProxy);
         }
 
-        /// <summary>Returns the specified TargetHttpProxy resource.</summary>
+        /// <summary>Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -15000,7 +15734,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -15009,14 +15744,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -15096,7 +15831,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
-        /// TargetHttpProxy resource whose URL map is to be set.</param>
+        /// TargetHttpProxy to set a URL map for.</param>
         public virtual SetUrlMapRequest SetUrlMap(Google.Apis.Compute.v1.Data.UrlMapReference body, string project, string targetHttpProxy)
         {
             return new SetUrlMapRequest(service, body, project, targetHttpProxy);
@@ -15120,7 +15855,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the TargetHttpProxy resource whose URL map is to be set.</summary>
+            /// <summary>Name of the TargetHttpProxy to set a URL map for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
@@ -15269,7 +16004,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
         /// TargetHttpsProxy resource to return.</param>
@@ -15278,7 +16014,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, targetHttpsProxy);
         }
 
-        /// <summary>Returns the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -15447,7 +16184,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -15456,14 +16194,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -15543,7 +16281,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
-        /// TargetHttpsProxy resource whose SSLCertificate is to be set.</param>
+        /// TargetHttpsProxy resource to set an SslCertificates resource for.</param>
         public virtual SetSslCertificatesRequest SetSslCertificates(Google.Apis.Compute.v1.Data.TargetHttpsProxiesSetSslCertificatesRequest body, string project, string targetHttpsProxy)
         {
             return new SetSslCertificatesRequest(service, body, project, targetHttpsProxy);
@@ -15567,7 +16305,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the TargetHttpsProxy resource whose SSLCertificate is to be set.</summary>
+            /// <summary>Name of the TargetHttpsProxy resource to set an SslCertificates resource for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
@@ -15756,7 +16494,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -15765,14 +16504,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -15939,7 +16678,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified TargetInstance resource.</summary>
+        /// <summary>Returns the specified TargetInstance resource. Get a list of available target instances by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
         /// request.</param>
@@ -15949,7 +16689,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, targetInstance);
         }
 
-        /// <summary>Returns the specified TargetInstance resource.</summary>
+        /// <summary>Returns the specified TargetInstance resource. Get a list of available target instances by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetInstance>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -16155,7 +16896,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -16164,14 +16906,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -16273,18 +17015,19 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds health check URL to targetPool.</summary>
+        /// <summary>Adds health check URLs to a target pool.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"></param>
-        /// <param name="region">Name of the region scoping this request.</param>
-        ///
-        /// <param name="targetPool">Name of the TargetPool resource to which health_check_url is to be added.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="targetPool">Name of the target pool to add a health check
+        /// to.</param>
         public virtual AddHealthCheckRequest AddHealthCheck(Google.Apis.Compute.v1.Data.TargetPoolsAddHealthCheckRequest body, string project, string region, string targetPool)
         {
             return new AddHealthCheckRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Adds health check URL to targetPool.</summary>
+        /// <summary>Adds health check URLs to a target pool.</summary>
         public class AddHealthCheckRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddHealthCheck request.</summary>
@@ -16299,7 +17042,7 @@ namespace Google.Apis.Compute.v1
             }
 
 
-
+            /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -16307,7 +17050,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetPool resource to which health_check_url is to be added.</summary>
+            /// <summary>Name of the target pool to add a health check to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
@@ -16372,18 +17115,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Adds instance URL to targetPool.</summary>
+        /// <summary>Adds an instance to a target pool.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"></param>
-        /// <param name="region">Name of the region scoping this request.</param>
-        ///
-        /// <param name="targetPool">Name of the TargetPool resource to which instance_url is to be added.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="targetPool">Name of the TargetPool resource to add instances
+        /// to.</param>
         public virtual AddInstanceRequest AddInstance(Google.Apis.Compute.v1.Data.TargetPoolsAddInstanceRequest body, string project, string region, string targetPool)
         {
             return new AddInstanceRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Adds instance URL to targetPool.</summary>
+        /// <summary>Adds an instance to a target pool.</summary>
         public class AddInstanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddInstance request.</summary>
@@ -16398,7 +17142,7 @@ namespace Google.Apis.Compute.v1
             }
 
 
-
+            /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -16406,7 +17150,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetPool resource to which instance_url is to be added.</summary>
+            /// <summary>Name of the TargetPool resource to add instances to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
@@ -16503,7 +17247,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -16512,14 +17257,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -16595,7 +17340,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified TargetPool resource.</summary>
+        /// <summary>Deletes the specified target pool.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -16605,7 +17350,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, targetPool);
         }
 
-        /// <summary>Deletes the specified TargetPool resource.</summary>
+        /// <summary>Deletes the specified target pool.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -16686,7 +17431,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified TargetPool resource.</summary>
+        /// <summary>Returns the specified target pool. Get a list of available target pools by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -16696,7 +17442,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, targetPool);
         }
 
-        /// <summary>Returns the specified TargetPool resource.</summary>
+        /// <summary>Returns the specified target pool. Get a list of available target pools by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPool>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -16777,20 +17524,21 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the most recent health check results for each IP for the given instance that is referenced by
-        /// the given TargetPool.</summary>
+        /// <summary>Gets the most recent health check results for each IP for the instance that is referenced by the
+        /// given target pool.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"></param>
-        /// <param name="region">Name of the region scoping this request.</param>
-        ///
-        /// <param name="targetPool">Name of the TargetPool resource to which the queried instance belongs.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="targetPool">Name of the TargetPool resource to which the queried instance
+        /// belongs.</param>
         public virtual GetHealthRequest GetHealth(Google.Apis.Compute.v1.Data.InstanceReference body, string project, string region, string targetPool)
         {
             return new GetHealthRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Gets the most recent health check results for each IP for the given instance that is referenced by
-        /// the given TargetPool.</summary>
+        /// <summary>Gets the most recent health check results for each IP for the instance that is referenced by the
+        /// given target pool.</summary>
         public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPoolInstanceHealth>
         {
             /// <summary>Constructs a new GetHealth request.</summary>
@@ -16805,7 +17553,7 @@ namespace Google.Apis.Compute.v1
             }
 
 
-
+            /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -16878,7 +17626,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a TargetPool resource in the specified project and region using the data included in the
+        /// <summary>Creates a target pool in the specified project and region using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -16889,7 +17637,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a TargetPool resource in the specified project and region using the data included in the
+        /// <summary>Creates a target pool in the specified project and region using the data included in the
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -16964,7 +17712,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of TargetPool resources available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -16973,7 +17721,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of TargetPool resources available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPoolList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -17003,7 +17751,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -17012,14 +17761,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -17104,18 +17853,18 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes health check URL from targetPool.</summary>
+        /// <summary>Removes health check URL from a target pool.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"></param>
-        /// <param name="region">Name of the region scoping this request.</param>
-        ///
-        /// <param name="targetPool">Name of the TargetPool resource to which health_check_url is to be removed.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="targetPool">Name of the target pool to remove health checks from.</param>
         public virtual RemoveHealthCheckRequest RemoveHealthCheck(Google.Apis.Compute.v1.Data.TargetPoolsRemoveHealthCheckRequest body, string project, string region, string targetPool)
         {
             return new RemoveHealthCheckRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Removes health check URL from targetPool.</summary>
+        /// <summary>Removes health check URL from a target pool.</summary>
         public class RemoveHealthCheckRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveHealthCheck request.</summary>
@@ -17130,15 +17879,15 @@ namespace Google.Apis.Compute.v1
             }
 
 
-
+            /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the region scoping this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetPool resource to which health_check_url is to be removed.</summary>
+            /// <summary>Name of the target pool to remove health checks from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
@@ -17203,18 +17952,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes instance URL from targetPool.</summary>
+        /// <summary>Removes instance URL from a target pool.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"></param>
-        /// <param name="region">Name of the region scoping this request.</param>
-        ///
-        /// <param name="targetPool">Name of the TargetPool resource to which instance_url is to be removed.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="targetPool">Name of the TargetPool resource to remove instances
+        /// from.</param>
         public virtual RemoveInstanceRequest RemoveInstance(Google.Apis.Compute.v1.Data.TargetPoolsRemoveInstanceRequest body, string project, string region, string targetPool)
         {
             return new RemoveInstanceRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Removes instance URL from targetPool.</summary>
+        /// <summary>Removes instance URL from a target pool.</summary>
         public class RemoveInstanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveInstance request.</summary>
@@ -17229,7 +17979,7 @@ namespace Google.Apis.Compute.v1
             }
 
 
-
+            /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -17237,7 +17987,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetPool resource to which instance_url is to be removed.</summary>
+            /// <summary>Name of the TargetPool resource to remove instances from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
@@ -17302,19 +18052,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes backup pool configurations.</summary>
+        /// <summary>Changes a backup target pool's configurations.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
-        /// <param name="targetPool">Name of the TargetPool resource for which the backup is to be
-        /// set.</param>
+        /// <param name="targetPool">Name of the TargetPool resource to set a backup pool
+        /// for.</param>
         public virtual SetBackupRequest SetBackup(Google.Apis.Compute.v1.Data.TargetReference body, string project, string region, string targetPool)
         {
             return new SetBackupRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Changes backup pool configurations.</summary>
+        /// <summary>Changes a backup target pool's configurations.</summary>
         public class SetBackupRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetBackup request.</summary>
@@ -17337,11 +18087,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetPool resource for which the backup is to be set.</summary>
+            /// <summary>Name of the TargetPool resource to set a backup pool for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>New failoverRatio value for the containing target pool.</summary>
+            /// <summary>New failoverRatio value for the target pool.</summary>
             [Google.Apis.Util.RequestParameterAttribute("failoverRatio", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<float> FailoverRatio { get; set; }
 
@@ -17432,14 +18182,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of target VPN gateways .</summary>
+        /// <summary>Retrieves an aggregated list of target VPN gateways.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of target VPN gateways .</summary>
+        /// <summary>Retrieves an aggregated list of target VPN gateways.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGatewayAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -17464,7 +18214,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -17473,14 +18224,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -17556,18 +18307,17 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified TargetVpnGateway resource.</summary>
+        /// <summary>Deletes the specified target VPN gateway.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
-        /// <param name="targetVpnGateway">Name of the TargetVpnGateway resource to
-        /// delete.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="targetVpnGateway">Name of the target VPN gateway to delete.</param>
         public virtual DeleteRequest Delete(string project, string region, string targetVpnGateway)
         {
             return new DeleteRequest(service, project, region, targetVpnGateway);
         }
 
-        /// <summary>Deletes the specified TargetVpnGateway resource.</summary>
+        /// <summary>Deletes the specified target VPN gateway.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -17585,11 +18335,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetVpnGateway resource to delete.</summary>
+            /// <summary>Name of the target VPN gateway to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetVpnGateway { get; private set; }
 
@@ -17648,18 +18398,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified TargetVpnGateway resource.</summary>
+        /// <summary>Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a
+        /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
-        /// <param name="targetVpnGateway">Name of the TargetVpnGateway resource to
-        /// return.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="targetVpnGateway">Name of the target VPN gateway to return.</param>
         public virtual GetRequest Get(string project, string region, string targetVpnGateway)
         {
             return new GetRequest(service, project, region, targetVpnGateway);
         }
 
-        /// <summary>Returns the specified TargetVpnGateway resource.</summary>
+        /// <summary>Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a
+        /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGateway>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -17677,11 +18428,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the TargetVpnGateway resource to return.</summary>
+            /// <summary>Name of the target VPN gateway to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetVpnGateway { get; private set; }
 
@@ -17740,19 +18491,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a TargetVpnGateway resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a target VPN gateway in the specified project and region using the data included in the
+        /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetVpnGateway body, string project, string region)
         {
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a TargetVpnGateway resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a target VPN gateway in the specified project and region using the data included in the
+        /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -17770,7 +18521,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -17826,18 +18577,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of TargetVpnGateway resources available to the specified project and
-        /// region.</summary>
+        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual ListRequest List(string project, string region)
         {
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of TargetVpnGateway resources available to the specified project and
-        /// region.</summary>
+        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGatewayList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -17854,7 +18603,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -17867,7 +18616,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -17876,14 +18626,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -18061,7 +18811,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified UrlMap resource.</summary>
+        /// <summary>Returns the specified UrlMap resource. Get a list of available URL maps by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
         /// to return.</param>
@@ -18070,7 +18821,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, urlMap);
         }
 
-        /// <summary>Returns the specified UrlMap resource.</summary>
+        /// <summary>Returns the specified UrlMap resource. Get a list of available URL maps by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMap>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -18239,7 +18991,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -18248,14 +19001,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -18634,7 +19387,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -18643,14 +19397,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -18728,8 +19482,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified VpnTunnel resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="vpnTunnel">Name of the VpnTunnel resource to delete.</param>
         public virtual DeleteRequest Delete(string project, string region, string vpnTunnel)
         {
@@ -18754,7 +19508,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -18817,17 +19571,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified VpnTunnel resource.</summary>
+        /// <summary>Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         /// <param name="vpnTunnel">Name of the VpnTunnel resource to return.</param>
         public virtual GetRequest Get(string project, string region, string vpnTunnel)
         {
             return new GetRequest(service, project, region, vpnTunnel);
         }
 
-        /// <summary>Returns the specified VpnTunnel resource.</summary>
+        /// <summary>Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnTunnel>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -18845,7 +19601,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -18912,8 +19668,8 @@ namespace Google.Apis.Compute.v1
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.VpnTunnel body, string project, string region)
         {
             return new InsertRequest(service, body, project, region);
@@ -18938,7 +19694,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -18996,8 +19752,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">The name of the region for
-        /// this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
         public virtual ListRequest List(string project, string region)
         {
             return new ListRequest(service, project, region);
@@ -19020,7 +19776,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>The name of the region for this request.</summary>
+            /// <summary>Name of the region for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
@@ -19033,7 +19789,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -19042,14 +19799,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -19153,7 +19910,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified zone-specific Operations resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
         /// <param name="operation">Name of the Operations resource to delete.</param>
         public virtual DeleteRequest Delete(string project, string zone, string operation)
@@ -19179,7 +19936,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
@@ -19244,7 +20001,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the specified zone-specific Operations resource.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for this
         /// request.</param>
         /// <param name="operation">Name of the Operations resource to return.</param>
         public virtual GetRequest Get(string project, string zone, string operation)
@@ -19270,7 +20027,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
@@ -19335,7 +20092,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves a list of Operation resources contained within the specified zone.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone scoping this
+        /// <param name="zone">Name of the zone for
         /// request.</param>
         public virtual ListRequest List(string project, string zone)
         {
@@ -19359,7 +20116,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the zone scoping this request.</summary>
+            /// <summary>Name of the zone for request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
@@ -19372,7 +20129,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -19381,14 +20139,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -19490,7 +20248,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified zone resource.</summary>
+        /// <summary>Returns the specified Zone resource. Get a list of available zones by making a list()
+        /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone resource to
         /// return.</param>
@@ -19499,7 +20258,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone);
         }
 
-        /// <summary>Returns the specified zone resource.</summary>
+        /// <summary>Returns the specified Zone resource. Get a list of available zones by making a list()
+        /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Zone>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -19566,14 +20326,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of zone resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of zone resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ZoneList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -19598,7 +20358,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -19607,14 +20368,14 @@ namespace Google.Apis.Compute.v1
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -19746,7 +20507,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -19807,7 +20568,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of address resources.</summary>
+    /// <summary>Contains a list of addresses.</summary>
     public class AddressList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -19815,7 +20576,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Address resources.</summary>
+        /// <summary>[Output Only] A list of addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Address> Items { get; set; } 
 
@@ -19878,7 +20639,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -19929,8 +20690,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initializeParams")]
         public virtual AttachedDiskInitializeParams InitializeParams { get; set; } 
 
-        /// <summary>Specifies the disk interface to use for attaching this disk, either SCSI or NVME. The default is
-        /// SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.</summary>
+        /// <summary>Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The
+        /// default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a
+        /// persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance
+        /// characteristics of SCSI over NVMe, see Local SSD performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; } 
 
@@ -20007,9 +20770,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
+    /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
+    /// read Autoscaling Groups of Instances.</summary>
     public class Autoscaler : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Autoscaling configuration.</summary>
+        /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
+        /// policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
+        ///
+        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.8 or
+        /// 80%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingPolicy")]
         public virtual AutoscalingPolicy AutoscalingPolicy { get; set; } 
 
@@ -20027,7 +20797,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Type of the resource.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#autoscaler for autoscalers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -20043,7 +20813,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>URL of Instance Group Manager or Replica Pool which will be controlled by Autoscaler.</summary>
+        /// <summary>URL of the managed instance group that this autoscaler will scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -20066,7 +20836,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,AutoscalersScopedList> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#autoscalerAggregatedList for aggregated lists of
+        /// autoscalers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -20085,7 +20856,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of persistent autoscaler resources.</summary>
+    /// <summary>Contains a list of Autoscaler resources.</summary>
     public class AutoscalerList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -20097,7 +20868,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Autoscaler> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#autoscalerList for lists of autoscalers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -20118,11 +20889,12 @@ namespace Google.Apis.Compute.v1.Data
 
     public class AutoscalersScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of autoscalers contained in this scope.</summary>
+        /// <summary>[Output Only] List of autoscalers contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalers")]
         public virtual System.Collections.Generic.IList<Autoscaler> Autoscalers { get; set; } 
 
-        /// <summary>Informational warning which replaces the list of autoscalers when the list is empty.</summary>
+        /// <summary>[Output Only] Informational warning which replaces the list of autoscalers when the list is
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
         public virtual AutoscalersScopedList.WarningData Warning { get; set; } 
 
@@ -20130,7 +20902,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Informational warning which replaces the list of autoscalers when the list is empty.</summary>
+        /// <summary>[Output Only] Informational warning which replaces the list of autoscalers when the list is
+        /// empty.</summary>
         public class WarningData
         {
             /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
@@ -20154,7 +20927,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -20171,20 +20944,22 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Cloud Autoscaler policy.</summary>
     public class AutoscalingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of seconds that the Autoscaler should wait between two succeeding changes to the number
-        /// of virtual machines. You should define an interval that is at least as long as the initialization time of a
-        /// virtual machine and the time it may take for replica pool to create the virtual machine. The default is 60
-        /// seconds.</summary>
+        /// <summary>The number of seconds that the autoscaler should wait before it starts collecting information from
+        /// a new instance. This prevents the autoscaler from collecting information when the instance is initializing,
+        /// during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds.
+        ///
+        /// Virtual machine initialization times might vary because of numerous factors. We recommend that you test how
+        /// long an instance may take to initialize. To do this, create an instance and time the startup
+        /// process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriodSec")]
         public virtual System.Nullable<int> CoolDownPeriodSec { get; set; } 
 
-        /// <summary>TODO(jbartosik): Add support for scaling based on muliple utilization metrics (take max
-        /// recommendation). Exactly one utilization policy should be provided. Configuration parameters of CPU based
-        /// autoscaling policy.</summary>
+        /// <summary>Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU
+        /// utilization of a managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
         public virtual AutoscalingPolicyCpuUtilization CpuUtilization { get; set; } 
 
-        /// <summary>Configuration parameters of autoscaling based on custom metric.</summary>
+        /// <summary>Configuration parameters of autoscaling based on a custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetricUtilizations")]
         public virtual System.Collections.Generic.IList<AutoscalingPolicyCustomMetricUtilization> CustomMetricUtilizations { get; set; } 
 
@@ -20192,14 +20967,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingUtilization")]
         public virtual AutoscalingPolicyLoadBalancingUtilization LoadBalancingUtilization { get; set; } 
 
-        /// <summary>The maximum number of replicas that the Autoscaler can scale up to. This field is required for
-        /// config to be effective. Maximum number of replicas should be not lower than minimal number of replicas.
-        /// Absolute limit for this value is defined in Autoscaler backend.</summary>
+        /// <summary>The maximum number of instances that the autoscaler can scale up to. This is required when creating
+        /// or updating an autoscaler. The maximum number of replicas should not be lower than minimal number of
+        /// replicas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNumReplicas")]
         public virtual System.Nullable<int> MaxNumReplicas { get; set; } 
 
-        /// <summary>The minimum number of replicas that the Autoscaler can scale down to. Can't be less than 0. If not
-        /// provided Autoscaler will choose default value depending on maximal number of replicas.</summary>
+        /// <summary>The minimum number of replicas that the autoscaler can scale down to. This cannot be less than 0.
+        /// If not provided, autoscaler will choose a default value depending on maximum number of instances
+        /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNumReplicas")]
         public virtual System.Nullable<int> MinNumReplicas { get; set; } 
 
@@ -20210,9 +20986,15 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>CPU utilization policy.</summary>
     public class AutoscalingPolicyCpuUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The target utilization that the Autoscaler should maintain. It is represented as a fraction of used
-        /// cores. For example: 6 cores used in 8-core VM are represented here as 0.75. Must be a float value between
-        /// (0, 1]. If not defined, the default is 0.8.</summary>
+        /// <summary>The target CPU utilization that the autoscaler should maintain. Must be a float value in the range
+        /// (0, 1]. If not specified, the default is 0.8.
+        ///
+        /// If the CPU level is below the target utilization, the autoscaler scales down the number of instances until
+        /// it reaches the minimum number of instances you specified or until the average CPU of your instances reaches
+        /// the target utilization.
+        ///
+        /// If the average CPU is above the target utilization, the autoscaler scales up until it reaches the maximum
+        /// number of instances you specified or until the average utilization reaches the target utilization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
@@ -20223,18 +21005,25 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier of the metric. It should be a Cloud Monitoring metric. The metric can not have negative
-        /// values. The metric should be an utilization metric (increasing number of VMs handling requests x times
-        /// should reduce average value of the metric roughly x times). For example you could use:
-        /// compute.googleapis.com/instance/network/received_bytes_count.</summary>
+        /// <summary>The identifier of the Cloud Monitoring metric. The metric cannot have negative values and should be
+        /// a utilization metric, which means that the number of virtual machines handling requests should increase or
+        /// decrease proportionally to the metric. The metric must also have a label of
+        /// compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not
+        /// guarantee that the metric is valid.
+        ///
+        /// For example, the following is a valid metric: compute.googleapis.com/instance/network/received_bytes_count
+        ///
+        /// The following is not a valid metric because it does not increase or decrease based on usage:
+        /// compute.googleapis.com/instance/cpu/reserved_cores</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>Target value of the metric which Autoscaler should maintain. Must be a positive value.</summary>
+        /// <summary>Target value of the metric which autoscaler should maintain. Must be a positive value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
-        /// <summary>Defines type in which utilization_target is expressed.</summary>
+        /// <summary>Defines how target utilization value is expressed for a Cloud Monitoring metric. Either GAUGE,
+        /// DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTargetType")]
         public virtual string UtilizationTargetType { get; set; } 
 
@@ -20242,13 +21031,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Load balancing utilization policy.</summary>
+    /// <summary>Configuration parameters of autoscaling based on load balancing.</summary>
     public class AutoscalingPolicyLoadBalancingUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fraction of backend capacity utilization (set in HTTP load balancing configuration) that Autoscaler
-        /// should maintain. Must be a positive float value. If not defined, the default is 0.8. For example if your
-        /// maxRatePerInstance capacity (in HTTP Load Balancing configuration) is set at 10 and you would like to keep
-        /// number of instances such that each instance receives 7 QPS on average, set this to 0.7.</summary>
+        /// <summary>Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that
+        /// autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
@@ -20259,8 +21046,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Message containing information of one individual backend.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the balancing mode for this backend. The default is UTILIZATION but available values are
-        /// UTILIZATION and RATE.</summary>
+        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is
+        /// UTILIZATION. Valid values are UTILIZATION and RATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -20286,12 +21073,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
-        /// <summary>The max requests per second (RPS) of the group. Can be used with either balancing mode, but
-        /// required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.</summary>
+        /// <summary>The max requests per second (RPS) of the group. Can be used with either RATE or UTILIZATION
+        /// balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRate")]
         public virtual System.Nullable<int> MaxRate { get; set; } 
 
-        /// <summary>The max requests per second (RPS) that a single backed instance can handle. This is used to
+        /// <summary>The max requests per second (RPS) that a single backend instance can handle.This is used to
         /// calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or
         /// maxRatePerInstance must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRatePerInstance")]
@@ -20357,11 +21145,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
-        /// <summary>Name of backend port. The same name should appear in the resource views referenced by this service.
-        /// Required.</summary>
+        /// <summary>Name of backend port. The same name should appear in the instance groups referenced by this
+        /// service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portName")]
         public virtual string PortName { get; set; } 
 
+        /// <summary>The protocol this BackendService uses to communicate with backends.
+        ///
+        /// Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
@@ -20487,11 +21278,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastDetachTimestamp")]
         public virtual string LastDetachTimestamp { get; set; } 
 
-        /// <summary>Any applicable publicly visible licenses.</summary>
+        /// <summary>[Output Only] Any applicable publicly visible licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -20529,14 +21320,24 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
         ///
-        /// where vYYYYMMDD is the image version. The fully-qualified URL will also work in both cases.</summary>
+        /// where vYYYYMMDD is the image version. The fully-qualified URL will also work in both cases.
+        ///
+        /// You can also specify the latest image for a private image family by replacing the image name suffix with
+        /// family/family-name. For example:
+        ///
+        /// global/images/family/my-private-family
+        ///
+        /// Or you can specify an image family from a publicly-available project. For example, to use the latest Debian
+        /// 7 from the debian-cloud project, make sure to include the project in the URL:
+        ///
+        /// projects/debian-cloud/global/images/family/debian-7</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
-        /// <summary>The ID value of the image used to create this disk. This value identifies the exact image that was
-        /// used to create this persistent disk. For example, if you created the persistent disk from an image that was
-        /// later deleted and recreated under the same name, the source image ID would identify the exact version of the
-        /// image that was used.</summary>
+        /// <summary>[Output Only] The ID value of the image used to create this disk. This value identifies the exact
+        /// image that was used to create this persistent disk. For example, if you created the persistent disk from an
+        /// image that was later deleted and recreated under the same name, the source image ID would identify the exact
+        /// version of the image that was used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
         public virtual string SourceImageId { get; set; } 
 
@@ -20559,12 +21360,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>URL of the disk type resource describing which disk type to use to create the disk; provided by the
-        /// client when the disk is created.</summary>
+        /// <summary>URL of the disk type resource describing which disk type to use to create the disk. Provide this
+        /// when creating the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Links to the users of the disk (attached instances) in form:
+        /// <summary>[Output Only] Links to the users of the disk (attached instances) in form:
         /// project/zones/zone/instances/instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<string> Users { get; set; } 
@@ -20641,8 +21442,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class DiskMoveRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL of the destination zone to move the disk to. This can be a full or partial URL. For
-        /// example, the following are all valid URLs to a zone: -
+        /// <summary>The URL of the destination zone to move the disk. This can be a full or partial URL. For example,
+        /// the following are all valid URLs to a zone: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone - projects/project/zones/zone -
         /// zones/zone</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationZone")]
@@ -20658,7 +21459,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A disk type resource.</summary>
+    /// <summary>A DiskType resource.</summary>
     public class DiskType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -20737,7 +21538,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of disk type resources.</summary>
+    /// <summary>Contains a list of disk types.</summary>
     public class DiskTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -20808,7 +21609,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -20862,7 +21663,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -20876,7 +21677,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A Firewall resource.</summary>
+    /// <summary>Represents a Firewall resource.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of rules specified by this firewall. Each rule specifies a protocol and port-range tuple
@@ -20953,8 +21754,8 @@ namespace Google.Apis.Compute.v1.Data
         public class AllowedData
         {
             /// <summary>The IP protocol that is allowed for this rule. The protocol type is required when creating a
-            /// firewall. This value can either be one of the following well known protocol strings (tcp, udp, icmp,
-            /// esp, ah, sctp), or the IP protocol number.</summary>
+            /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
+            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -20969,7 +21770,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Contains a list of Firewall resources.</summary>
+    /// <summary>Contains a list of firewalls.</summary>
     public class FirewallList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -21080,7 +21881,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,ForwardingRulesScopedList> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#forwardingRuleAggregatedList for lists of forwarding
+        /// rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -21167,7 +21969,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -21181,6 +21983,9 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>A full or valid partial URL to a health check. For example, the following are valid URLs: -
+    /// https://www.googleapis.com/compute/beta/projects/project-id/global/httpHealthChecks/health-check - projects
+    /// /project-id/global/httpHealthChecks/health-check - global/httpHealthChecks/health-check</summary>
     public class HealthCheckReference : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
@@ -21268,7 +22073,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Type of the resource.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health
+        /// checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -21284,7 +22090,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
-        /// <summary>The request path of the HTTP health check request. The default value is "/".</summary>
+        /// <summary>The request path of the HTTP health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
@@ -21538,7 +22344,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Contains a list of Image resources.</summary>
+    /// <summary>Contains a list of images.</summary>
     public class ImageList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -21606,7 +22412,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>Full or partial URL of the machine type resource to use for this instance, in the format:
-        /// zones/zone/machineTypes/ machine-type. This is provided by the client when the instance is created. For
+        /// zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For
         /// example, the following is a valid partial url to a predefined machine type:
         ///
         /// zones/us-central1-f/machineTypes/n1-standard-1
@@ -21664,7 +22470,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>A list of tags to appy to this instance. Tags are used to identify valid sources or targets for
+        /// <summary>A list of tags to apply to this instance. Tags are used to identify valid sources or targets for
         /// network firewalls and are specified by the client during instance creation. The tags can be later modified
         /// by the setTags method. Each tag within the list must comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -21749,7 +22555,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
 
-        /// <summary>[Output Only] The URL of the network to which all instances in the instance group belong.</summary>
+        /// <summary>The URL of the network to which all instances in the instance group belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
@@ -21760,6 +22566,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] The total number of instances in the instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
+
+        /// <summary>The URL of the subnetwork to which all instances in the instance group belong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
 
         /// <summary>[Output Only] The URL of the zone where the instance group is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -21832,9 +22642,6 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>InstanceGroupManagers
-    ///
-    /// Next available tag: 20</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The base instance name to use for instances in this group. The value must be 1-58 characters long.
@@ -22103,7 +22910,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -22250,7 +23057,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -22281,7 +23088,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of instance resources.</summary>
+    /// <summary>Contains a list of instances.</summary>
     public class InstanceList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -22289,7 +23096,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Instance resources.</summary>
+        /// <summary>[Output Only] A list of instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Instance> Items { get; set; } 
 
@@ -22315,7 +23122,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstanceMoveRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL of the destination zone to move the instance to. This can be a full or partial URL. For
+        /// <summary>The URL of the destination zone to move the instance. This can be a full or partial URL. For
         /// example, the following are all valid URLs to a zone: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone - projects/project/zones/zone -
         /// zones/zone</summary>
@@ -22528,7 +23335,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -22540,6 +23347,17 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class InstancesSetMachineTypeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full or partial URL of the machine type resource. See Machine Types for a full list of machine
+        /// types. For example: zones/us-central1-f/machineTypes/n1-standard-1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A license resource.</summary>
@@ -22672,7 +23490,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of Machine Type resources.</summary>
+    /// <summary>Contains a list of machine types.</summary>
     public class MachineTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -22742,7 +23560,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -22823,7 +23641,7 @@ namespace Google.Apis.Compute.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -22891,13 +23709,21 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A network resource.</summary>
+    /// <summary>Represents a Network resource. Read Networks and Firewalls for more information.</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range of internal addresses that are legal on this network. This range is a CIDR specification,
         /// for example: 192.168.0.0/16. Provided by the client when the network is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; } 
+
+        /// <summary>When set to true, the network is created in "auto subnet mode". When set to false, the network is
+        /// in "custom subnet mode".
+        ///
+        /// In "auto subnet mode", a newly created network is assigned the default CIDR of 10.128.0.0/9 and it
+        /// automatically creates one subnetwork per region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreateSubnetworks")]
+        public virtual System.Nullable<bool> AutoCreateSubnetworks { get; set; } 
 
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -22933,6 +23759,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Server-defined fully-qualified URLs for all subnetworks in this network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<string> Subnetworks { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22970,11 +23800,20 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 
+        /// <summary>The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do
+        /// not provide this property. If the network is in auto subnet mode, providing the subnetwork is optional. If
+        /// the network is in custom subnet mode, then this field should be specified. If you specify this property, you
+        /// can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
+        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/subnetworks/subnetwork -
+        /// zones/zone/subnetworks/subnetwork</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains a list of Network resources.</summary>
+    /// <summary>Contains a list of networks.</summary>
     public class NetworkList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
@@ -23008,7 +23847,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique client ID generated by the server.</summary>
+        /// <summary>[Output Only] Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -23051,7 +23890,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#operation for operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -23059,7 +23898,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The type of operation, which can be insert, update, or delete.</summary>
+        /// <summary>[Output Only] The type of operation, such as insert, update, or delete, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
@@ -23069,7 +23908,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the operation resides. Only available when performing
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
         /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
@@ -23097,7 +23936,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation is modifying.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -23110,8 +23949,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the operation resides. Only available when performing per-zone
-        /// operations.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -23135,7 +23974,7 @@ namespace Google.Apis.Compute.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -23170,7 +24009,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -23223,7 +24062,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] The Operation resources.</summary>
+        /// <summary>[Output Only] A list of Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Operation> Items { get; set; } 
 
@@ -23286,7 +24125,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -23348,7 +24187,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Project resource. Projects can only be created in the Google Developers Console. Unless marked
+    /// <summary>A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked
     /// otherwise, values can only be modified in the console.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23508,15 +24347,18 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The route resource. A Route is a rule that specifies how certain packets should be handled by the
-    /// virtual network. Routes are associated with instances by tags and the set of Routes for a particular instance is
-    /// called its routing table. For each packet leaving a instance, the system searches that instance's routing table
-    /// for a single best matching Route. Routes match packets by destination IP address, preferring smaller or more
-    /// specific ranges over larger ones. If there is a tie, the system selects the Route with the smallest priority
-    /// value. If there is still a tie, it uses the layer three and four packet headers to select just one of the
-    /// remaining matching Routes. The packet is then forwarded as specified by the nextHop field of the winning Route
-    /// -- either to another instance destination, a instance gateway or a Google Compute Engien-operated gateway.
-    /// Packets that do not match any Route in the sending instance's routing table are dropped.</summary>
+    /// <summary>Represents a Route resource. A route specifies how certain packets should be handled by the network.
+    /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
+    /// routing table.
+    ///
+    /// For each packet leaving a instance, the system searches that instance's routing table for a single best matching
+    /// route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger
+    /// ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie,
+    /// it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet
+    /// is then forwarded as specified by the nextHop field of the winning route - either to another instance
+    /// destination, a instance gateway or a Google Compute Engine-operated gateway.
+    ///
+    /// Packets that do not match any route in the sending instance's routing table are dropped.</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -23541,7 +24383,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -23622,7 +24464,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -23636,7 +24478,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Contains a list of route resources.</summary>
+    /// <summary>Contains a list of Route resources.</summary>
     public class RouteList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
@@ -23677,7 +24519,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Defines the maintenance behavior for this instance. For standard instances, the default behavior is
         /// MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more
-        /// information, see Setting maintenance behavior.</summary>
+        /// information, see Setting Instance Scheduling Options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onHostMaintenance")]
         public virtual string OnHostMaintenance { get; set; } 
 
@@ -23749,7 +24591,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Public visible licenses.</summary>
+        /// <summary>[Output Only] A list of public visible licenses that apply to this snapshot. This can be because
+        /// the original image had licenses attached (such as a Windows image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
@@ -23775,7 +24618,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskId")]
         public virtual string SourceDiskId { get; set; } 
 
-        /// <summary>[Output Only] The status of the snapshot.</summary>
+        /// <summary>[Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or
+        /// UPLOADING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -23785,7 +24629,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<long> StorageBytes { get; set; } 
 
         /// <summary>[Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a
-        /// result of shared storage reallocation.</summary>
+        /// result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot
+        /// is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytesStatus")]
         public virtual string StorageBytesStatus { get; set; } 
 
@@ -23901,6 +24746,177 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Subnetwork resource.</summary>
+    public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The gateway address for default routes to reach destination addresses outside this
+        /// subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayAddress")]
+        public virtual string GatewayAddress { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>The range of internal addresses that are owned by this subnetwork. Provide this property when you
+        /// create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping
+        /// within a network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of the resource, provided by the client when initially creating the resource. The name
+        /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
+        /// and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The URL of the network to which this subnetwork belongs, provided by the client when initially
+        /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where the Subnetwork resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SubnetworkAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output] A map of scoped Subnetwork lists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,SubnetworksScopedList> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#subnetworkAggregatedList for aggregated lists of
+        /// subnetworks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of Subnetwork resources.</summary>
+    public class SubnetworkList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The Subnetwork resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Subnetwork> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#subnetworkList for lists of subnetworks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SubnetworksScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of subnetworks contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<Subnetwork> Subnetworks { get; set; } 
+
+        /// <summary>An informational warning that appears when the list of addresses is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual SubnetworksScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>An informational warning that appears when the list of addresses is empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
     /// <summary>A set of instance tags.</summary>
     public class Tags : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23942,7 +24958,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -23974,7 +24990,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<TargetHttpProxy> Items { get; set; } 
 
-        /// <summary>Type of resource. Always compute#targetHttpProxyList for lists of Target HTTP proxies.</summary>
+        /// <summary>Type of resource. Always compute#targetHttpProxyList for lists of target HTTP proxies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -23995,8 +25011,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetHttpsProxiesSetSslCertificatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>New set of URLs to SslCertificate resources to associate with this TargetHttpProxy. Currently
-        /// exactly one ssl certificate must be specified.</summary>
+        /// <summary>New set of SslCertificate resources to associate with this TargetHttpsProxy resource. Currently
+        /// exactly one SslCertificate resource must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
@@ -24021,8 +25037,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#targetHttpsProxy for target HTTPS
-        /// proxies.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -24039,11 +25054,14 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string SelfLink { get; set; } 
 
         /// <summary>URLs to SslCertificate resources that are used to authenticate connections between users and the
-        /// load balancer. Currently exactly one SSL certificate must be specified.</summary>
+        /// load balancer. Currently, exactly one SSL certificate must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
-        /// <summary>URL to the UrlMap resource that defines the mapping from URL to the BackendService.</summary>
+        /// <summary>A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to
+        /// the BackendService. For example, the following are all valid URLs for specifying a URL map: -
+        /// https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map - projects/project/global/urlMaps
+        /// /url-map - global/urlMaps/url-map</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlMap")]
         public virtual string UrlMap { get; set; } 
 
@@ -24063,7 +25081,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<TargetHttpsProxy> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>Type of resource. Always compute#targetHttpsProxyList for lists of target HTTPS proxies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -24100,7 +25118,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>The URL to the instance that terminates the relevant traffic.</summary>
+        /// <summary>A URL to the virtual machine instance that handles traffic for this target instance. When creating
+        /// a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual
+        /// machine. For example, the following are all valid URLs: -
+        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance -
+        /// projects/project/zones/zone/instances/instance - zones/zone/instances/instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
@@ -24232,7 +25254,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -24247,7 +25269,7 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources,
-    /// and the fallback TargetPool.</summary>
+    /// and the fallback target pool.</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -24298,7 +25320,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>A list of resource URLs to the member virtual machines serving this pool. They must live in zones
+        /// <summary>A list of resource URLs to the virtual machine instances serving this pool. They must live in zones
         /// contained in the same region as this pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
@@ -24341,11 +25363,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped target pool lists.</summary>
+        /// <summary>[Output Only] A map of scoped target pool lists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,TargetPoolsScopedList> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#targetPoolAggregatedList for aggregated lists of
+        /// target pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -24369,7 +25392,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
         public virtual System.Collections.Generic.IList<HealthStatus> HealthStatus { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#targetPoolInstanceHealth when checking the health of
+        /// an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -24388,7 +25412,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<TargetPool> Items { get; set; } 
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#targetPoolList for lists of target pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -24409,7 +25433,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetPoolsAddHealthCheckRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Health check URLs to be added to targetPool.</summary>
+        /// <summary>A list of HttpHealthCheck resources to add to the target pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<HealthCheckReference> HealthChecks { get; set; } 
 
@@ -24419,7 +25443,10 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetPoolsAddInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URLs of the instances to be added to targetPool.</summary>
+        /// <summary>A full or partial URL to an instance to add to this target pool. This can be a full or partial URL.
+        /// For example, the following are valid URLs: - https://www.googleapis.com/compute/v1/projects/project-
+        /// id/zones/zone/instances/instance-name - projects/project-id/zones/zone/instances/instance-name -
+        /// zones/zone/instances/instance-name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<InstanceReference> Instances { get; set; } 
 
@@ -24429,7 +25456,10 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetPoolsRemoveHealthCheckRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Health check URLs to be removed from targetPool.</summary>
+        /// <summary>Health check URL to be removed. This can be a full or valid partial URL. For example, the following
+        /// are valid URLs: - https://www.googleapis.com/compute/beta/projects/project/global/httpHealthChecks/health-
+        /// check - projects/project/global/httpHealthChecks/health-check - global/httpHealthChecks/health-
+        /// check</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<HealthCheckReference> HealthChecks { get; set; } 
 
@@ -24439,7 +25469,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetPoolsRemoveInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URLs of the instances to be removed from targetPool.</summary>
+        /// <summary>URLs of the instances to be removed from target pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<InstanceReference> Instances { get; set; } 
 
@@ -24485,7 +25515,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -24508,6 +25538,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a Target VPN gateway resource.</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -24533,7 +25564,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -24559,7 +25590,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using
-        /// compute.vpntunnels.insert and associated to a VPN gateway.</summary>
+        /// compute.vpntunnels.insert method and associated to a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tunnels")]
         public virtual System.Collections.Generic.IList<string> Tunnels { get; set; } 
 
@@ -24668,7 +25699,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -24916,7 +25947,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
+        public virtual System.Collections.Generic.IList<string> LocalTrafficSelector { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
@@ -24949,8 +25985,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>URL of the VPN gateway to which this VPN tunnel is associated. Provided by the client when the VPN
-        /// tunnel is created.</summary>
+        /// <summary>URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the
+        /// VPN tunnel is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVpnGateway")]
         public virtual string TargetVpnGateway { get; set; } 
 
@@ -25057,7 +26093,7 @@ namespace Google.Apis.Compute.v1.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]

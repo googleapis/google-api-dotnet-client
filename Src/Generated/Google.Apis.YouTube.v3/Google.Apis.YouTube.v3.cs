@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160111 (375)
+ *      <tr><th>API Rev<td>20160222 (417)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -5520,7 +5520,7 @@ namespace Google.Apis.YouTube.v3
 
             /// <summary>The maxResults parameter specifies the maximum number of messages that should be returned in
             /// the result set.</summary>
-            /// [default: 200]
+            /// [default: 500]
             /// [minimum: 200]
             /// [maximum: 2000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5595,7 +5595,7 @@ namespace Google.Apis.YouTube.v3
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "200",
+                        DefaultValue = "500",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11185,15 +11185,6 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class ChannelId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class ChannelListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Etag of this resource.</summary>
@@ -11477,12 +11468,17 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Basic details about a channel, including title, description and thumbnails.</summary>
+    /// <summary>Basic details about a channel, including title, description and thumbnails. Next available id:
+    /// 15.</summary>
     public class ChannelSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The country of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
+
+        /// <summary>The custom url of the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customUrl")]
+        public virtual string CustomUrl { get; set; } 
 
         /// <summary>The language of the channel's default title and description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
@@ -11650,7 +11646,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The id of the author's YouTube channel, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
-        public virtual ChannelId AuthorChannelId { get; set; } 
+        public virtual object AuthorChannelId { get; set; } 
 
         /// <summary>Link to the author's YouTube channel, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelUrl")]
@@ -14193,6 +14189,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
         public virtual string PrevPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; } 

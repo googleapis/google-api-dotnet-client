@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160119 (383)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2421,6 +2421,107 @@ namespace Google.Apis.Bigquery.v2
 namespace Google.Apis.Bigquery.v2.Data
 {    
 
+    public class BigtableColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are:
+        /// TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the
+        /// setting at this level takes precedence if 'encoding' is set at both levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; } 
+
+        /// <summary>[Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match
+        /// [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field
+        /// name in queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; } 
+
+        /// <summary>[Optional] If this is set, only the latest version of value in this column are exposed.
+        /// 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes
+        /// precedence if 'onlyReadLatest' is set at both levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
+        public virtual System.Nullable<bool> OnlyReadLatest { get; set; } 
+
+        /// <summary>[Required] Qualifier of the column. Columns in the parent column family that has this exact
+        /// qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the
+        /// qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column
+        /// field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field
+        /// identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as
+        /// field_name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifierEncoded")]
+        public virtual string QualifierEncoded { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifierString")]
+        public virtual string QualifierString { get; set; } 
+
+        /// <summary>[Optional] The type to convert the value in cells of this column. The values are expected to be
+        /// encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
+        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. 'type' can also be
+        /// set at the column family level. However, the setting at this level takes precedence if 'type' is set at both
+        /// levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BigtableColumnFamily : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] Lists of columns that should be exposed as individual fields as opposed to a list of
+        /// (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as
+        /// .. Other columns can be accessed as a list through .Column field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; } 
+
+        /// <summary>[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are:
+        /// TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
+        /// 'columns' and specifying an encoding for it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; } 
+
+        /// <summary>Identifier of the column family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyId")]
+        public virtual string FamilyId { get; set; } 
+
+        /// <summary>[Optional] If this is set only the latest version of value are exposed for all columns in this
+        /// column family. This can be overridden for a specific column by listing that column in 'columns' and
+        /// specifying a different setting for that column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
+        public virtual System.Nullable<bool> OnlyReadLatest { get; set; } 
+
+        /// <summary>[Optional] The type to convert the value in cells of this column family. The values are expected to
+        /// be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
+        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. This can be
+        /// overridden for a specific column by listing that column in 'columns' and specifying a type for it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BigtableOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] List of column families to expose in the table schema along with their types. This list
+        /// restricts the column families that can be referenced in queries and specifies their value types. You can use
+        /// this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all
+        /// column families are present in the table schema and their values are read as BYTES. During a query only the
+        /// column families referenced in that query are read from Bigtable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
+        public virtual System.Collections.Generic.IList<BigtableColumnFamily> ColumnFamilies { get; set; } 
+
+        /// <summary>[Optional] If field is true, then the column families that are not specified in columnFamilies list
+        /// are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnspecifiedColumnFamilies")]
+        public virtual System.Nullable<bool> IgnoreUnspecifiedColumnFamilies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CsvOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If
@@ -2728,8 +2829,18 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class ExternalDataConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Experimental] Try to detect schema and format options automatically. Any option specified
+        /// explicitly will be honored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
+        public virtual System.Nullable<bool> Autodetect { get; set; } 
+
+        /// <summary>[Optional] Additional options if sourceFormat is set to BIGTABLE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
+        public virtual BigtableOptions BigtableOptions { get; set; } 
+
         /// <summary>[Optional] The compression type of the data source. Possible values include GZIP and NONE. The
-        /// default value is NONE. This setting is ignored for Google Cloud Datastore backups.</summary>
+        /// default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and
+        /// Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; } 
 
@@ -2741,33 +2852,38 @@ namespace Google.Apis.Bigquery.v2.Data
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
         /// records, and if there are too many bad records, an invalid error is returned in the job result. The default
         /// value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing
-        /// columns JSON: Named values that don't match any column names Google Cloud Datastore backups: This setting is
-        /// ignored.</summary>
+        /// columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored.
+        /// Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; } 
 
         /// <summary>[Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the
         /// number of bad records exceeds this value, an invalid error is returned in the job result. The default value
-        /// is 0, which requires that all records are valid. This setting is ignored for Google Cloud Datastore
-        /// backups.</summary>
+        /// is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google
+        /// Cloud Datastore backups and Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; } 
 
         /// <summary>[Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is
-        /// disallowed for Google Cloud Datastore backups.</summary>
+        /// disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
 
         /// <summary>[Required] The data format. For CSV files, specify "CSV". For newline-delimited JSON, specify
-        /// "NEWLINE_DELIMITED_JSON". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP".</summary>
+        /// "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify
+        /// "DATASTORE_BACKUP". [Experimental] For Google Cloud Bigtable, specify "BIGTABLE". Please note that reading
+        /// from Google Cloud Bigtable is experimental and has to be enabled for your project. Please contact Google
+        /// Cloud Support to enable this for your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; } 
 
-        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud Storage. Each URI can
-        /// contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load
-        /// jobs apply to external data sources, plus an additional limit of 10 GB maximum size across all URIs. For
-        /// Google Cloud Datastore backups, exactly one URI can be specified, and it must end with '.backup_info'. Also,
-        /// the '*' wildcard character is not allowed.</summary>
+        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
+        /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
+        /// limits related to load jobs apply to external data sources, plus an additional limit of 10 GB maximum size
+        /// across all URIs. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully
+        /// specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly
+        /// one URI can be specified, and it must end with '.backup_info'. Also, the '*' wildcard character is not
+        /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
 
@@ -3113,11 +3229,19 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
-        /// <summary>[Experimental] If querying an external data source outside of BigQuery, describes the data format,
+        /// <summary>[Optional] If querying an external data source outside of BigQuery, describes the data format,
         /// location and other properties of the data source. By defining these properties, the data source can then be
         /// queried as if it were a standard BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
+
+        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
+        /// value is true. If set to false, the query will use BigQuery's updated SQL dialect with improved standards
+        /// compliance. When using BigQuery's updated SQL, the values of allowLargeResults and flattenResults are
+        /// ignored. Queries with useLegacySql set to false will be run as if allowLargeResults is true and
+        /// flattenResults is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
+        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
         /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
         /// cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only
@@ -3306,6 +3430,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; } 
 
+        /// <summary>[Output-only, Experimental] Referenced tables for the job. Queries that reference more than 50
+        /// tables will not have a complete list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
+        public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; } 
+
         /// <summary>[Output-only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
         public virtual System.Nullable<long> TotalBytesBilled { get; set; } 
@@ -3476,6 +3605,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutMs")]
         public virtual System.Nullable<long> TimeoutMs { get; set; } 
 
+        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
+        /// value is true. If set to false, the query will use BigQuery's updated SQL dialect with improved standards
+        /// compliance. When using BigQuery's updated SQL, the values of allowLargeResults and flattenResults are
+        /// ignored. Queries with useLegacySql set to false will be run as if allowLargeResults is true and
+        /// flattenResults is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
+        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+
         /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
         /// cache that will be flushed whenever tables in the query are modified. The default value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
@@ -3579,8 +3716,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; } 
 
-        /// <summary>[Experimental] Describes the data format, location, and other properties of a table stored outside
-        /// of BigQuery. By defining these properties, the data source can then be queried as if it were a standard
+        /// <summary>[Optional] Describes the data format, location, and other properties of a table stored outside of
+        /// BigQuery. By defining these properties, the data source can then be queried as if it were a standard
         /// BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataConfiguration")]
         public virtual ExternalDataConfiguration ExternalDataConfiguration { get; set; } 
@@ -3676,8 +3813,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skipInvalidRows")]
         public virtual System.Nullable<bool> SkipInvalidRows { get; set; } 
 
-        /// <summary>[Optional] If specified, treats the destination table as a base template, and inserts the rows into
-        /// an instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance
+        /// <summary>[Experimental] If specified, treats the destination table as a base template, and inserts the rows
+        /// into an instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance
         /// table, using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-
         /// into-bigquery#template-tables for considerations when working with templates tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateSuffix")]

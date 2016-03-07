@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/bOZDqB1yTTABx0YoXUwyoRS4JFA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/F_K6MVY9j8N3PQYhK6DYbetN31E\"",
  "discoveryVersion": "v1",
  "id": "cloudmonitoring:v2beta2",
  "name": "cloudmonitoring",
  "canonicalName": "Cloud Monitoring",
  "version": "v2beta2",
- "revision": "20160120",
+ "revision": "20160228",
  "title": "Cloud Monitoring API",
- "description": "API for accessing Google Cloud and API monitoring data.",
+ "description": "Accesses Google Cloud Monitoring data.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Dataflow.v1b3</id>
-        <version>1.10.0.379</version>
+        <version>1.10.1.421</version>
         <title>Google.Apis.Dataflow.v1b3 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -26,7 +26,7 @@
           https://developers.google.com/api-client-library/dotnet/apis/dataflow/v1b3
 
           The package source code is available at:
-          https://developers.google.com/resources/api-libraries/download/dataflow/v1b3/csharp
+          https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
         </description>
         <tags>Google</tags>
         <dependencies>

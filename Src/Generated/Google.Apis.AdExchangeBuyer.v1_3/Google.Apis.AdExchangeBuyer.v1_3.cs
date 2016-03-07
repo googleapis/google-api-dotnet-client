@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20160118 (382)
+ *      <tr><th>API Rev<td>20160229 (424)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -2395,6 +2395,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
         /// <summary>The name of the advertiser this deal is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiser")]
         public virtual string Advertiser { get; set; } 
+
+        /// <summary>Whether the publisher for this deal is eligible for alcohol ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowsAlcohol")]
+        public virtual System.Nullable<bool> AllowsAlcohol { get; set; } 
 
         /// <summary>The currency code that applies to the fixed_cpm value. If not set then assumed to be USD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
