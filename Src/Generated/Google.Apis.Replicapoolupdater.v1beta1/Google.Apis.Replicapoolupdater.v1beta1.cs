@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service'>Google Compute Engine Instance Group Updater API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160107 (371)
+ *      <tr><th>API Rev<td>20160229 (424)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service'>
  *              https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service</a>

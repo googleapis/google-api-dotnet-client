@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.admin.Reports.reports_v1</id>
-        <version>1.10.0.316</version>
-        <title>Google.Apis.admin.Reports.reports_v1 Client Library</title>
+        <id>Google.Apis.Admin.Reports.reports_v1</id>
+        <version>1.10.1.316</version>
+        <title>Google.Apis.Admin.Reports.reports_v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -26,7 +26,7 @@
           https://developers.google.com/api-client-library/dotnet/apis/admin/reports_v1
 
           The package source code is available at:
-          https://developers.google.com/resources/api-libraries/download/admin/reports_v1/csharp
+          https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
         </description>
         <tags>Google</tags>
         <dependencies>
@@ -37,8 +37,8 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\Google.Apis.admin.Reports.reports_v1.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.admin.Reports.reports_v1.dll" />
-        <file src="bin\ReleaseSigned\Google.Apis.admin.Reports.reports_v1.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.admin.Reports.reports_v1.pdb" />
-        <file src="bin\ReleaseSigned\Google.Apis.admin.Reports.reports_v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.admin.Reports.reports_v1.xml" />
+        <file src="bin\ReleaseSigned\Google.Apis.Admin.Reports.reports_v1.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Admin.Reports.reports_v1.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.Admin.Reports.reports_v1.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Admin.Reports.reports_v1.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.Admin.Reports.reports_v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Admin.Reports.reports_v1.xml" />
     </files>
 </package>

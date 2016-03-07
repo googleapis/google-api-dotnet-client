@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160112 (376)
+ *      <tr><th>API Rev<td>20160225 (420)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1317,10 +1317,11 @@ namespace Google.Apis.Cloudresourcemanager.v1beta1
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
         /// starts, as indicated by a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored. The caller
         /// must have modify permissions for this Project.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
-        public virtual UndeleteRequest Undelete(string projectId)
+        public virtual UndeleteRequest Undelete(Google.Apis.Cloudresourcemanager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
         {
-            return new UndeleteRequest(service, projectId);
+            return new UndeleteRequest(service, body, projectId);
         }
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
@@ -1330,10 +1331,11 @@ namespace Google.Apis.Cloudresourcemanager.v1beta1
         public class UndeleteRequest : CloudresourcemanagerBaseServiceRequest<Google.Apis.Cloudresourcemanager.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, string projectId)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudresourcemanager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
                 : base(service)
             {
                 ProjectId = projectId;
+                Body = body;
                 InitParameters();
             }
 
@@ -1342,6 +1344,12 @@ namespace Google.Apis.Cloudresourcemanager.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudresourcemanager.v1beta1.Data.UndeleteProjectRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1579,8 +1587,8 @@ namespace Google.Apis.Cloudresourcemanager.v1beta1.Data
     /// to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A
     /// `role` is a named list of permissions defined by IAM. **Example** { "bindings": [ { "role": "roles/owner",
     /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com"] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For a
-    /// description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
+    /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
+    /// a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
@@ -1700,6 +1708,13 @@ namespace Google.Apis.Cloudresourcemanager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request sent to the UndeleteProject method.</summary>
+    public class UndeleteProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

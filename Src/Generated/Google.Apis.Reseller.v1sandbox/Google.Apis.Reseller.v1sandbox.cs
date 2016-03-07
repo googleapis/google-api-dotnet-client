@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1sandbox
- *      <tr><th>API Rev<td>20151110 (313)
+ *      <tr><th>API Rev<td>20160229 (424)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -339,7 +339,7 @@ namespace Google.Apis.Reseller.v1sandbox
 
 
             /// <summary>An auth token needed for inserting a customer for which domain already exists. Can be generated
-            /// at https://www.google.com/a/cpanel//TransferToken. Optional.</summary>
+            /// at https://admin.google.com/TransferToken. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerAuthToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerAuthToken { get; set; }
 
@@ -1569,6 +1569,10 @@ namespace Google.Apis.Reseller.v1sandbox.Data
         /// <summary>Creation time of this subscription in milliseconds since Unix epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; } 
+
+        /// <summary>Primary domain name of the customer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerDomain")]
+        public virtual string CustomerDomain { get; set; } 
 
         /// <summary>The id of the customer to whom the subscription belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]

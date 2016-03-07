@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/BmpE0eLeAbD_9NGMSvsFpOIoFtQ\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/bX5S9M7lJGwgprr7lCRPBwz9SoA\"",
  "discoveryVersion": "v1",
  "id": "adsensehost:v4.1",
  "name": "adsensehost",
  "canonicalName": "AdSense Host",
  "version": "v4.1",
- "revision": "20160112",
+ "revision": "20160301",
  "title": "AdSense Host API",
- "description": "Gives AdSense Hosts access to report generation, ad code generation, and publisher management capabilities.",
+ "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -260,7 +260,7 @@
     },
     "contentAdsSettings": {
      "type": "object",
-     "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC).",
+     "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).",
      "properties": {
       "backupOption": {
        "type": "object",
@@ -305,7 +305,7 @@
     },
     "mobileContentAdsSettings": {
      "type": "object",
-     "description": "Settings specific to WAP mobile content ads (AFMC).",
+     "description": "Settings specific to WAP mobile content ads (AFMC - deprecated).",
      "properties": {
       "markupLanguage": {
        "type": "string",
@@ -380,7 +380,7 @@
     },
     "productCodes": {
      "type": "array",
-     "description": "The products to associate with the user. Options: AFC, AFF, AFS, AFMC",
+     "description": "The products to associate with the user. Options: AFC, AFG, AFV, AFS (deprecated), AFMC (deprecated)",
      "items": {
       "type": "string"
      }
@@ -1138,8 +1138,8 @@
        "enumDescriptions": [
         "AdSense For Content",
         "AdSense For Games",
-        "AdSense For Mobile Content",
-        "AdSense For Search",
+        "AdSense For Mobile Content - deprecated",
+        "AdSense For Search - deprecated",
         "AdSense For Video"
        ],
        "repeated": true,

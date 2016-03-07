@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Service Registry API V1 Version alpha
+ *   Google Cloud Service Registry API Version alpha
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>Google Cloud Service Registry API V1</a>
+ *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>Google Cloud Service Registry API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160111 (375)
+ *      <tr><th>API Rev<td>20160225 (420)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>
  *              https://developers.google.com/cloud-serviceregistry/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Service Registry API V1 can be found at
+ * The complete API documentation for using Google Cloud Service Registry API can be found at
  * <a href='https://developers.google.com/cloud-serviceregistry/'>https://developers.google.com/cloud-serviceregistry/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -92,7 +92,7 @@ namespace Google.Apis.ServiceRegistry.alpha
             get { return "serviceregistry/alpha/projects/"; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Service Registry API V1.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Service Registry API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -519,7 +519,8 @@ namespace Google.Apis.ServiceRegistry.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -528,14 +529,14 @@ namespace Google.Apis.ServiceRegistry.alpha
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -925,7 +926,8 @@ namespace Google.Apis.ServiceRegistry.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -934,14 +936,14 @@ namespace Google.Apis.ServiceRegistry.alpha
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1104,17 +1106,12 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<string> Networks { get; set; } 
 
-        /// <summary>Google Cloud projects for which the name of this endpoint should be resolvable through
-        /// DNS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<string> Projects { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>A response containing a partial list of Endpoints and a page token used to build the next request if
-    /// the request has been truncated. Next available tag: 5</summary>
+    /// the request has been truncated. Next available tag: 6</summary>
     public class EndpointsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The endpoints contained in this response.</summary>
@@ -1135,7 +1132,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
     /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique client ID generated by the server.</summary>
+        /// <summary>[Output Only] Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -1178,7 +1175,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#operation for operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1186,7 +1183,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The type of operation, which can be insert, update, or delete.</summary>
+        /// <summary>[Output Only] The type of operation, such as insert, update, or delete, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
@@ -1196,7 +1193,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the operation resides. Only available when performing
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
         /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
@@ -1224,7 +1221,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation is modifying.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -1237,8 +1234,8 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the operation resides. Only available when performing per-zone
-        /// operations.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -1262,7 +1259,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -1297,7 +1294,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]

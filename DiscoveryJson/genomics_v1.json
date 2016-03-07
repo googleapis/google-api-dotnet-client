@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/qPtKo5eur7m9GaF4kcaRLDbEXho\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/hALYXo8ybL-2tjJliTY4Rr-Kr5Y\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1",
  "name": "genomics",
  "version": "v1",
- "revision": "20160120",
+ "revision": "20160224",
  "title": "Genomics API",
- "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignements, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
+ "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -186,7 +186,7 @@
   "Policy": {
    "id": "Policy",
    "type": "object",
-   "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM. **Example** { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } For a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).",
+   "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM. **Example** { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\", ] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } For a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).",
    "properties": {
     "version": {
      "type": "integer",
@@ -899,6 +899,16 @@
      "type": "string",
      "description": "The end position of the range on the reference, 0-based exclusive. If specified, `referenceName` must also be specified.",
      "format": "int64"
+    },
+    "shard": {
+     "type": "integer",
+     "description": "Restricts results to a shard containing approximately `1/totalShards` of the normal response payload for this query. Results from a sharded request are disjoint from those returned by all queries which differ only in their shard parameter. A shard may yield 0 results; this is especially likely for large values of `totalShards`. Valid values are `[0, totalShards)`.",
+     "format": "int32"
+    },
+    "totalShards": {
+     "type": "integer",
+     "description": "Specifying `totalShards` causes a disjoint subset of the normal response payload to be returned for each query with a unique `shard` parameter specified. A best effort is made to yield equally sized shards. Sharding can be used to distribute processing amongst workers, where each worker is assigned a unique `shard` number and all workers specify the same `totalShards` number. The union of reads returned for all sharded queries `[0, totalShards)` is equal to those returned by a single unsharded query. Queries for different values of `totalShards` with common divisors will share shard boundaries. For example, streaming `shard` 2 of 5 `totalShards` yields the same results as streaming `shard`s 4 and 5 of 10 `totalShards`. This property can be leveraged for adaptive retries.",
+     "format": "int32"
     }
    }
   },
@@ -1190,7 +1200,7 @@
    "properties": {
     "referenceName": {
      "type": "string",
-     "description": "The name of the reference associated with this ReferenceBound."
+     "description": "The name of the reference associated with this reference bound."
     },
     "upperBound": {
      "type": "string",
@@ -1371,7 +1381,7 @@
     },
     "maxCalls": {
      "type": "integer",
-     "description": "The maximum number of calls to return in a single page. Note that this limit may be exceeded; at least one variant is always returned per page, even if it has more calls than this limit. If unspecified, defaults to 5000. The maximum value is 10000.",
+     "description": "The maximum number of calls to return in a single page. Note that this limit may be exceeded in the event that a matching variant contains more calls than the requested maximum. If unspecified, defaults to 5000. The maximum value is 10000.",
      "format": "int32"
     }
    }
@@ -1516,6 +1526,23 @@
       "items": {
        "type": "any"
       }
+     }
+    }
+   }
+  },
+  "MergeVariantsRequest": {
+   "id": "MergeVariantsRequest",
+   "type": "object",
+   "properties": {
+    "variantSetId": {
+     "type": "string",
+     "description": "The destination variant set."
+    },
+    "variants": {
+     "type": "array",
+     "description": "The variants to be merged with existing variants.",
+     "items": {
+      "$ref": "Variant"
      }
     }
    }
@@ -2595,6 +2622,22 @@
       "https://www.googleapis.com/auth/genomics.readonly"
      ]
     },
+    "merge": {
+     "id": "genomics.variants.merge",
+     "path": "v1/variants:merge",
+     "httpMethod": "POST",
+     "description": "Merges the given variants with existing variants. For the definitions of variants and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.",
+     "request": {
+      "$ref": "MergeVariantsRequest"
+     },
+     "response": {
+      "$ref": "Empty"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/genomics"
+     ]
+    },
     "stream": {
      "id": "genomics.variants.stream",
      "path": "v1/variants:stream",
@@ -2705,7 +2748,7 @@
      "id": "genomics.variantsets.delete",
      "path": "v1/variantsets/{variantSetId}",
      "httpMethod": "DELETE",
-     "description": "Deletes the contents of a variant set. The variant set object is not deleted. For the definitions of variant sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)",
+     "description": "Deletes a variant set including all variants, call sets, and calls within. This is not reversible. For the definitions of variant sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)",
      "parameters": {
       "variantSetId": {
        "type": "string",

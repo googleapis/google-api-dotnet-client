@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/MjgZXJDKaX04QpeY6UKkxOV6pHA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/zKZwimhEpR_byEjPybP-Haq7bHs\"",
  "discoveryVersion": "v1",
  "id": "adsense:v1.4",
  "name": "adsense",
  "canonicalName": "AdSense",
  "version": "v1.4",
- "revision": "20160112",
+ "revision": "20160301",
  "title": "AdSense Management API",
- "description": "Gives AdSense publishers access to their inventory and the ability to generate reports",
+ "description": "Accesses AdSense publishers' inventory and generates performance reports.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -154,10 +154,6 @@
      "type": "boolean",
      "description": "Whether this ad client is opted in to ARC."
     },
-    "arcReviewMode": {
-     "type": "string",
-     "description": "ARC review mode this ad client is in. Empty if the client is not opted in to ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW."
-    },
     "id": {
      "type": "string",
      "description": "Unique identifier of this ad client."
@@ -283,7 +279,7 @@
     },
     "contentAdsSettings": {
      "type": "object",
-     "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC).",
+     "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).",
      "properties": {
       "backupOption": {
        "type": "object",
@@ -319,7 +315,7 @@
     },
     "feedAdsSettings": {
      "type": "object",
-     "description": "Settings specific to feed ads (AFF).",
+     "description": "Settings specific to feed ads (AFF) - deprecated.",
      "properties": {
       "adPosition": {
        "type": "string",
@@ -352,7 +348,7 @@
     },
     "mobileContentAdsSettings": {
      "type": "object",
-     "description": "Settings specific to WAP mobile content ads (AFMC).",
+     "description": "Settings specific to WAP mobile content ads (AFMC) - deprecated.",
      "properties": {
       "markupLanguage": {
        "type": "string",
@@ -572,7 +568,7 @@
       },
       "location": {
        "type": "string",
-       "description": "The locations in which ads appear. (Only valid for content and mobile content ads). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."
+       "description": "The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."
       },
       "siteLanguage": {
        "type": "string",

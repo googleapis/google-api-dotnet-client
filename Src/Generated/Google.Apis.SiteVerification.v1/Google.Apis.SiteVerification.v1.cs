@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/site-verification/'>Google Site Verification API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151007 (279)
+ *      <tr><th>API Rev<td>20160228 (423)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/site-verification/'>
  *              https://developers.google.com/site-verification/</a>

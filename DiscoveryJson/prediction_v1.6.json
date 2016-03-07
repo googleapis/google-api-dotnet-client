@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/saX__Q0d7_qzkXazPBy7Qj8cYUs\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Rb8Il9CxYvuIPXx3em3nY6uZPfg\"",
  "discoveryVersion": "v1",
  "id": "prediction:v1.6",
  "name": "prediction",
  "version": "v1.6",
- "revision": "20151102",
+ "revision": "20160304",
  "title": "Prediction API",
  "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
  "ownerDomain": "google.com",
@@ -489,9 +489,8 @@
      }
     },
     "outputValue": {
-     "type": "number",
-     "description": "The estimated regression value (Regression models only).",
-     "format": "double"
+     "type": "string",
+     "description": "The estimated regression value (Regression models only)."
     },
     "selfLink": {
      "type": "string",

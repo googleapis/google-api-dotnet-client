@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/f6mRIQ8wrr0OUFAXPVNFOEqXrFQ\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/emwdUwZj4z8Lfj39vjO3dsDdRpA\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20160111",
+ "revision": "20160222",
  "title": "YouTube Data API",
  "description": "Programmatic access to YouTube features.",
  "ownerDomain": "google.com",
@@ -974,15 +974,6 @@
     }
    }
   },
-  "ChannelId": {
-   "id": "ChannelId",
-   "type": "object",
-   "properties": {
-    "value": {
-     "type": "string"
-    }
-   }
-  },
   "ChannelListResponse": {
    "id": "ChannelListResponse",
    "type": "object",
@@ -1345,11 +1336,15 @@
   "ChannelSnippet": {
    "id": "ChannelSnippet",
    "type": "object",
-   "description": "Basic details about a channel, including title, description and thumbnails.",
+   "description": "Basic details about a channel, including title, description and thumbnails. Next available id: 15.",
    "properties": {
     "country": {
      "type": "string",
      "description": "The country of the channel."
+    },
+    "customUrl": {
+     "type": "string",
+     "description": "The custom url of the channel."
     },
     "defaultLanguage": {
      "type": "string",
@@ -1534,7 +1529,7 @@
    "description": "Basic details about a comment, such as its author and text.",
    "properties": {
     "authorChannelId": {
-     "$ref": "ChannelId",
+     "type": "any",
      "description": "The id of the author's YouTube channel, if any."
     },
     "authorChannelUrl": {
@@ -2364,6 +2359,7 @@
      "type": "string",
      "description": "The video's rating from South Africa's Film and Publication Board.",
      "enum": [
+      "fpb10",
       "fpb1012Pg",
       "fpb13",
       "fpb16",
@@ -2376,6 +2372,7 @@
       "fpbXx"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -5353,6 +5350,9 @@
      "type": "string",
      "description": "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."
     },
+    "regionCode": {
+     "type": "string"
+    },
     "tokenPagination": {
      "$ref": "TokenPagination"
     },
@@ -6781,6 +6781,7 @@
       "copyright",
       "duplicate",
       "inappropriate",
+      "legal",
       "length",
       "termsOfUse",
       "trademark",
@@ -6788,6 +6789,7 @@
       "uploaderAccountSuspended"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -8667,7 +8669,7 @@
       "maxResults": {
        "type": "integer",
        "description": "The maxResults parameter specifies the maximum number of messages that should be returned in the result set.",
-       "default": "200",
+       "default": "500",
        "format": "uint32",
        "minimum": "200",
        "maximum": "2000",

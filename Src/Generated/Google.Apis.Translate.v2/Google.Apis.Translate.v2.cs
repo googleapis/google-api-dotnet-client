@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/translate/v2/using_rest'>Translate API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20141123 (0)
+ *      <tr><th>API Rev<td>20160217 (412)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/translate/v2/using_rest'>
  *              https://developers.google.com/translate/v2/using_rest</a>

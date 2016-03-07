@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160115 (379)
+ *      <tr><th>API Rev<td>20160226 (421)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -2754,6 +2754,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A task which initializes part of a streaming Dataflow job.</summary>
     public class StreamingSetupTask : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The user has requested drain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drain")]
+        public virtual System.Nullable<bool> Drain { get; set; } 
+
         /// <summary>The TCP port on which the worker should listen for messages from other streaming computation
         /// workers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receiveWorkPort")]
@@ -3263,6 +3267,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("poolArgs")]
         public virtual System.Collections.Generic.IDictionary<string,object> PoolArgs { get; set; } 
 
+        /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
+        /// "zones/ZONE/subnetworks/SUBNETWORK".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
+
         /// <summary>Settings passed through to Google Compute Engine workers when using the standard Dataflow task
         /// runner. Users should ignore this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskrunnerSettings")]
@@ -3278,6 +3287,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// choose a reasonable default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teardownPolicy")]
         public virtual string TeardownPolicy { get; set; } 
+
+        /// <summary>Docker container image that executes Dataflow worker harness, residing in Google Container
+        /// Registry. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerHarnessContainerImage")]
+        public virtual string WorkerHarnessContainerImage { get; set; } 
 
         /// <summary>Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a
         /// reasonable default.</summary>

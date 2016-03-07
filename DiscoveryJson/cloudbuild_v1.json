@@ -9,7 +9,7 @@
       }
     }
   },
-  "description": "The Google Cloud Container Builder API lets you build container images in the cloud.",
+  "description": "Builds container images in the cloud.",
   "protocol": "rest",
   "title": "Google Cloud Container Builder API",
   "resources": {
@@ -297,7 +297,7 @@
           "type": "object"
         },
         "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping above, the\n`name` should have the format of `operations/some/unique/name`.",
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
           "type": "string"
         }
       },
@@ -327,7 +327,7 @@
           "type": "string"
         },
         "object": {
-          "description": "Google Cloud Storage object containing source.\n\nThis object must be a gzipped archive file (.tgz) containing source to\nbuild.",
+          "description": "Google Cloud Storage object containing source.\n\nThis object must be a gzipped archive file (.tar.gz) containing source to\nbuild.",
           "type": "string"
         }
       },
@@ -343,10 +343,6 @@
           "items": {
             "$ref": "BuiltImage"
           }
-        },
-        "revision": {
-          "description": "Revision ID of the source that was built.",
-          "type": "string"
         }
       },
       "type": "object",
@@ -509,13 +505,14 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160121",
+  "revision": "20160303",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version_module": "True",
+  "canonicalName": "Cloud Build",
   "discoveryVersion": "v1",
   "parameters": {
     "access_token": {

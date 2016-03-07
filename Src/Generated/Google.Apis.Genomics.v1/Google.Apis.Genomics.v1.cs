@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160120 (384)
+ *      <tr><th>API Rev<td>20160224 (419)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -3139,6 +3139,69 @@ namespace Google.Apis.Genomics.v1
 
         }
 
+        /// <summary>Merges the given variants with existing variants. For the definitions of variants and other
+        /// genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-
+        /// google-genomics) Each variant will be merged with an existing variant that matches its reference sequence,
+        /// start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
+        /// When variants are merged, the call information from the new variant is added to the existing variant, and
+        /// other fields (such as key/value pairs) are discarded.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual MergeRequest Merge(Google.Apis.Genomics.v1.Data.MergeVariantsRequest body)
+        {
+            return new MergeRequest(service, body);
+        }
+
+        /// <summary>Merges the given variants with existing variants. For the definitions of variants and other
+        /// genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-
+        /// google-genomics) Each variant will be merged with an existing variant that matches its reference sequence,
+        /// start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
+        /// When variants are merged, the call information from the new variant is added to the existing variant, and
+        /// other fields (such as key/value pairs) are discarded.</summary>
+        public class MergeRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Merge request.</summary>
+            public MergeRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.MergeVariantsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.MergeVariantsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "merge"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/variants:merge"; }
+            }
+
+            /// <summary>Initializes Merge parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Updates a variant. For the definitions of variants and other genomics resources, see [Fundamentals
         /// of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) This method supports
         /// patch semantics. Returns the modified variant without its calls.</summary>
@@ -3416,8 +3479,8 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Deletes the contents of a variant set. The variant set object is not deleted. For the definitions
-        /// of variant sets and other genomics resources, see [Fundamentals of Google
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not reversible.
+        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
         /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
         /// <param name="variantSetId">The ID of the variant set to be deleted.</param>
         public virtual DeleteRequest Delete(string variantSetId)
@@ -3425,8 +3488,8 @@ namespace Google.Apis.Genomics.v1
             return new DeleteRequest(service, variantSetId);
         }
 
-        /// <summary>Deletes the contents of a variant set. The variant set object is not deleted. For the definitions
-        /// of variant sets and other genomics resources, see [Fundamentals of Google
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not reversible.
+        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
         /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
@@ -4171,6 +4234,20 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class MergeVariantsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The destination variant set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantSetId")]
+        public virtual string VariantSetId { get; set; } 
+
+        /// <summary>The variants to be merged with existing variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<Variant> Variants { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4243,8 +4320,8 @@ namespace Google.Apis.Genomics.v1.Data
     /// to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A
     /// `role` is a named list of permissions defined by IAM. **Example** { "bindings": [ { "role": "roles/owner",
     /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com"] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For a
-    /// description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
+    /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
+    /// a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
@@ -4596,7 +4673,7 @@ namespace Google.Apis.Genomics.v1.Data
     /// reference.</summary>
     public class ReferenceBound : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the reference associated with this ReferenceBound.</summary>
+        /// <summary>The name of the reference associated with this reference bound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceName")]
         public virtual string ReferenceName { get; set; } 
 
@@ -4953,9 +5030,9 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<long> End { get; set; } 
 
-        /// <summary>The maximum number of calls to return in a single page. Note that this limit may be exceeded; at
-        /// least one variant is always returned per page, even if it has more calls than this limit. If unspecified,
-        /// defaults to 5000. The maximum value is 10000.</summary>
+        /// <summary>The maximum number of calls to return in a single page. Note that this limit may be exceeded in the
+        /// event that a matching variant contains more calls than the requested maximum. If unspecified, defaults to
+        /// 5000. The maximum value is 10000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCalls")]
         public virtual System.Nullable<int> MaxCalls { get; set; } 
 
@@ -5086,10 +5163,28 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referenceName")]
         public virtual string ReferenceName { get; set; } 
 
+        /// <summary>Restricts results to a shard containing approximately `1/totalShards` of the normal response
+        /// payload for this query. Results from a sharded request are disjoint from those returned by all queries which
+        /// differ only in their shard parameter. A shard may yield 0 results; this is especially likely for large
+        /// values of `totalShards`. Valid values are `[0, totalShards)`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shard")]
+        public virtual System.Nullable<int> Shard { get; set; } 
+
         /// <summary>The start position of the range on the reference, 0-based inclusive. If specified, `referenceName`
         /// must also be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>Specifying `totalShards` causes a disjoint subset of the normal response payload to be returned for
+        /// each query with a unique `shard` parameter specified. A best effort is made to yield equally sized shards.
+        /// Sharding can be used to distribute processing amongst workers, where each worker is assigned a unique
+        /// `shard` number and all workers specify the same `totalShards` number. The union of reads returned for all
+        /// sharded queries `[0, totalShards)` is equal to those returned by a single unsharded query. Queries for
+        /// different values of `totalShards` with common divisors will share shard boundaries. For example, streaming
+        /// `shard` 2 of 5 `totalShards` yields the same results as streaming `shard`s 4 and 5 of 10 `totalShards`. This
+        /// property can be leveraged for adaptive retries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalShards")]
+        public virtual System.Nullable<int> TotalShards { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/q7HuPi4zz1Oz_O1187etqiN47V4\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gy50rt5mi9f3hPLBxQXMXQbu1CY\"",
  "discoveryVersion": "v1",
  "id": "youtubereporting:v1",
  "name": "youtubereporting",
  "canonicalName": "YouTube Reporting",
  "version": "v1",
- "revision": "20151026",
+ "revision": "20160301",
  "title": "YouTube Reporting API",
- "description": "An API to schedule reporting jobs and download the resulting bulk data reports about YouTube channels, videos etc. in the form of CSV files.",
+ "description": "Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -173,7 +173,7 @@
     },
     "name": {
      "type": "string",
-     "description": "The name of the job (max. 100 characters). TODO(lanthaler) Clarify what this will actually be used for"
+     "description": "The name of the job (max. 100 characters)."
     },
     "createTime": {
      "type": "string",
@@ -265,7 +265,7 @@
      "parameters": {
       "resourceName": {
        "type": "string",
-       "description": "Name of the media that is being downloaded. See [][ByteStream.ReadRequest.resource_name].",
+       "description": "Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.",
        "required": true,
        "pattern": "^.*$",
        "location": "path"
