@@ -45,9 +45,10 @@ namespace Google.Apis.Media
             string message = responseText;
             try
             {
-                parsedError = service.Serializer.Deserialize<StandardResponse<object>>(responseText).Error;
-                if (parsedError != null)
+                var parsedResponse = service.Serializer.Deserialize<StandardResponse<object>>(responseText);
+                if (parsedResponse != null && parsedResponse.Error != null)
                 {
+                    parsedError = parsedResponse.Error;
                     message = parsedError.ToString();
                 }
             }
