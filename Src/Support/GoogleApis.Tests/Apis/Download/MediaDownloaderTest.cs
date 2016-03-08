@@ -314,11 +314,12 @@ namespace Google.Apis.Tests.Apis.Download
         }
 
         [Test]
-        public void Download_Error_PlaintextResponse()
+        [TestCase("Not Found")]
+        [TestCase("")]
+        public void Download_Error_PlaintextResponse(string responseText)
         {
             var downloadUri = "http://www.sample.com";
             var chunkSize = 100;
-            var responseText = "Not Found";
 
             var handler = new MultipleChunksMessageHandler { ErrorResponse = responseText };
             handler.StatusCode = HttpStatusCode.NotFound;
