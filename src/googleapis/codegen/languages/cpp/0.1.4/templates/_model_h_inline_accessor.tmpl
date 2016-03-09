@@ -1,0 +1,15 @@
+{% for property in current_model.properties %}{% if property.useSplitAccessor %}
+
+{% doc_comment noblock %}
+Inline accessors for {% if parent_model %}{{ parent_model.className }}::{% endif %}{{ current_model.className }}.{{ property.wireName }}.
+{% enddoc_comment %}
+
+inline const {{ property.codeType }} {% if parent_model %}{{ parent_model.className }}::{% endif %}{{ current_model.className }}::{{ property.getterName }}() const {
+  const Json::Value& storage = Storage("{{ property.wireName }}");
+  return {{ api.client_namespace }}::JsonValueToCppValueHelper<{{ property.codeType }} >(storage);
+}
+
+inline {{ property.codeType }} {% if parent_model %}{{ parent_model.className }}::{% endif %}{{ current_model.className }}::mutable_{{ property.wireName }}() {
+  Json::Value* storage = MutableStorage("{{ property.wireName }}");
+  return {{ api.client_namespace }}::JsonValueToMutableCppValueHelper<{{ property.codeType }} >(storage);
+}{% endif %}{% endfor %}{% if not parent_model and current_model.children %}{% for child in current_model.children %}{% call_template _model_h_inline_accessor parent_model=current_model current_model=child %}{% endfor %}{% endif %}

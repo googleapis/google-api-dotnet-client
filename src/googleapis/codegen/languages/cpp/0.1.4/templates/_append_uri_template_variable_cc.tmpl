@@ -1,0 +1,13 @@
+{#---------------------------------------------------------------------------#}
+{# TODO(aiuto): "if variable.data_type.arrayOf" is the right way to do this  #}
+{# I would have changed it but there is no unit test for it, so I'm pretty   #}
+{# sure the array branch is untested. It does not happen in our APIs anyway, #}
+{# so I am not spending time on it.                                          #}
+{% if variable.data_type.json_type == 'array' %}
+  {{ api.client_namespace }}::AppendIteratorToUrl(
+    {{ variable.memberName }}.begin(), {{ variable.memberName }}.end(),
+    "{{ variable.wireName }}", target);
+{% else %}
+  {{ api.client_namespace }}::UriTemplate::AppendValue(
+      {{ variable.memberName }}, config, target);
+{% endif %}
