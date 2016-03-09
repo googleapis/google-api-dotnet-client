@@ -123,7 +123,7 @@ class ApiTest(basetest.TestCase):
                           'rpcMethod': 'rpc',
                           'httpMethod': 'Not GET/POST/PUT/DELETE',
                           'parameters': {}
-                          })
+                      })
 
   def testRequiredParameterList(self):
     """Make sure we are computing required parameters correctly."""
@@ -383,7 +383,7 @@ class ApiTest(basetest.TestCase):
     api = LoadApi({
         'basePath': '/will/not/be/used/',
         'baseUrl': custom_url
-        })
+    })
     self.assertEquals('https://foo.com/', api.values['rootUrl'])
     self.assertEquals('bar/baz/', api.values['servicePath'])
 
@@ -393,7 +393,7 @@ class ApiTest(basetest.TestCase):
         'baseUrl': 'https://bar.com/not/used/',
         'rootUrl': 'https://foo.com/',
         'servicePath': 'bar/baz/',
-        })
+    })
     self.assertEquals('https://foo.com/', api.values['rootUrl'])
     self.assertEquals('bar/baz/', api.values['servicePath'])
 
@@ -403,7 +403,7 @@ class ApiTest(basetest.TestCase):
         'basePath': '/_ah/api/fake/v1/',
         'rootUrl': 'https://localhost.appspot.com/_ah/api/',
         'servicePath': 'fake/v1/',
-        })
+    })
     self.assertEquals('https://localhost.appspot.com/_ah/api/',
                       api.values['rootUrl'])
     self.assertEquals('fake/v1/', api.values['servicePath'])
