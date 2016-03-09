@@ -962,7 +962,7 @@ FeaturedResource_SeriesResource_ListMethod::FeaturedResource_SeriesResource_List
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/featured")) {
+        "series/featured") {
 }
 
 // Standard destructor.
@@ -979,7 +979,7 @@ GlobalResource_SeriesResource_ListMethod::GlobalResource_SeriesResource_ListMeth
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "search")),
+        "search"),
       _have_max_results_(false),
       _have_q_(false),
       _have_start_index_(false) {
@@ -1029,7 +1029,7 @@ MyResource_SeriesResource_ListMethod::MyResource_SeriesResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/@me/mine")) {
+        "series/@me/mine") {
 }
 
 // Standard destructor.
@@ -1046,7 +1046,7 @@ MyrecentResource_PrivateResource_ListMethod::MyrecentResource_PrivateResource_Li
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/@me/recent")) {
+        "series/@me/recent") {
 }
 
 // Standard destructor.
@@ -1060,7 +1060,7 @@ ProfilesResource_GetMethod::ProfilesResource_GetMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "profiles/@me")) {
+        "profiles/@me") {
 }
 
 // Standard destructor.
@@ -1074,7 +1074,7 @@ ProfilesResource_UpdateMethod::ProfilesResource_UpdateMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::PUT,
-        StrCat(_service_->service_url(), "profiles/@me")) {
+        "profiles/@me") {
   AddJsonContentToRequest(&__request_content__);
 }
 
@@ -1102,7 +1102,7 @@ ResponsesResource_InsertMethod::ResponsesResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
       _service_, _credential_,
       googleapis_client::HttpRequest::POST,
-      StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses")),
+      "series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses"),
       series_id_(series_id),
       topic_id_(topic_id),
       parent_submission_id_(parent_submission_id),
@@ -1119,7 +1119,7 @@ ResponsesResource_InsertMethod::ResponsesResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses")),
+        "series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses"),
       series_id_(series_id),
       topic_id_(topic_id),
       parent_submission_id_(parent_submission_id),
@@ -1186,7 +1186,7 @@ ResponsesResource_ListMethod::ResponsesResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/responses")),
+        "series/{seriesId}/submissions/{submissionId}/responses"),
       series_id_(series_id),
       submission_id_(submission_id),
       _have_author_(false),
@@ -1259,7 +1259,7 @@ SeriesResource_GetMethod::SeriesResource_GetMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}")),
+        "series/{seriesId}"),
       series_id_(series_id) {
 }
 
@@ -1301,7 +1301,7 @@ SeriesResource_InsertMethod::SeriesResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series")) {
+        "series") {
   if (_media_content_reader_) {
     googleapis_client::MediaUploader* uploader =
         new googleapis_client::MediaUploader(
@@ -1326,7 +1326,7 @@ SeriesResource_ListMethod::SeriesResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series")),
+        "series"),
       _have_max_results_(false),
       _have_q_(false),
       _have_start_index_(false) {
@@ -1373,7 +1373,7 @@ SeriesResource_UpdateMethod::SeriesResource_UpdateMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::PUT,
-        StrCat(_service_->service_url(), "series/{seriesId}")),
+        "series/{seriesId}"),
       series_id_(series_id) {
   AddJsonContentToRequest(&__request_content__);
 }
@@ -1406,7 +1406,7 @@ SeriesResource_ResponsesResource_ListMethod::SeriesResource_ResponsesResource_Li
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/responses")),
+        "series/{seriesId}/responses"),
       series_id_(series_id),
       q_(q.as_string()),
       _have_author_(false),
@@ -1479,7 +1479,7 @@ SeriesResource_SubmissionsResource_ListMethod::SeriesResource_SubmissionsResourc
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions")),
+        "series/{seriesId}/submissions"),
       series_id_(series_id),
       _have_author_(false),
       _have_has_attached_video_(false),
@@ -1553,7 +1553,7 @@ SubmissionsResource_GetMethod::SubmissionsResource_GetMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}")),
+        "series/{seriesId}/submissions/{submissionId}"),
       series_id_(series_id),
       submission_id_(submission_id),
       _have_lang_(false) {
@@ -1598,7 +1598,7 @@ SubmissionsResource_InsertMethod::SubmissionsResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}/submissions")),
+        "series/{seriesId}/topics/{topicId}/submissions"),
       series_id_(series_id),
       topic_id_(topic_id),
       _have_anonymous_(false) {
@@ -1644,7 +1644,7 @@ TagsResource_DeleteMethod::TagsResource_DeleteMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::DELETE,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/tags/{tagId}")),
+        "series/{seriesId}/submissions/{submissionId}/tags/{tagId}"),
       series_id_(series_id),
       submission_id_(submission_id),
       tag_id_(tag_id.as_string()) {
@@ -1685,7 +1685,7 @@ TagsResource_InsertMethod::TagsResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/tags")),
+        "series/{seriesId}/submissions/{submissionId}/tags"),
       series_id_(series_id),
       submission_id_(submission_id) {
   AddJsonContentToRequest(&__request_content__);
@@ -1721,7 +1721,7 @@ TagsResource_ListMethod::TagsResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{id}/submissions/{else}/tags")),
+        "series/{id}/submissions/{else}/tags"),
       id_(id.as_string()),
       else_(else__.as_string()) {
 }
@@ -1756,7 +1756,7 @@ TopicsResource_GetMethod::TopicsResource_GetMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}")),
+        "series/{seriesId}/topics/{topicId}"),
       series_id_(series_id),
       topic_id_(topic_id) {
 }
@@ -1791,7 +1791,7 @@ TopicsResource_InsertMethod::TopicsResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics")),
+        "series/{seriesId}/topics"),
       series_id_(series_id) {
   AddJsonContentToRequest(&__request_content__);
 }
@@ -1821,7 +1821,7 @@ TopicsResource_ListMethod::TopicsResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics")),
+        "series/{seriesId}/topics"),
       series_id_(series_id),
       _have_max_results_(false),
       _have_mode_(false),
@@ -1881,7 +1881,7 @@ TopicsResource_UpdateMethod::TopicsResource_UpdateMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::PUT,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}")),
+        "series/{seriesId}/topics/{topicId}"),
       series_id_(series_id),
       topic_id_(topic_id) {
   AddJsonContentToRequest(&__request_content__);
@@ -1920,7 +1920,7 @@ TopicsResource_SubmissionsResource_ListMethod::TopicsResource_SubmissionsResourc
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/topics/{topicId}/submissions")),
+        "series/{seriesId}/topics/{topicId}/submissions"),
       series_id_(series_id),
       topic_id_(topic_id),
       _have_author_(false),
@@ -1993,7 +1993,7 @@ VotesResource_GetMethod::VotesResource_GetMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/votes/@me")),
+        "series/{seriesId}/submissions/{submissionId}/votes/@me"),
       series_id_(series_id),
       submission_id_(submission_id),
       _have_user_id_(false) {
@@ -2038,7 +2038,7 @@ VotesResource_InsertMethod::VotesResource_InsertMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::POST,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submissionId}/votes/@me")),
+        "series/{seriesId}/submissions/{submissionId}/votes/@me"),
       series_id_(series_id),
       submission_id_(submission_id) {
   AddJsonContentToRequest(&__request_content__);
@@ -2074,7 +2074,7 @@ VotesResource_ListMethod::VotesResource_ListMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::GET,
-        StrCat(_service_->service_url(), "series/{seriesId}/votes/@me")),
+        "series/{seriesId}/votes/@me"),
       series_id_(series_id),
       _have_start_index_(false) {
 }
@@ -2113,7 +2113,7 @@ VotesResource_UpdateMethod::VotesResource_UpdateMethod(
     : KitchSinkServiceBaseRequest(
         _service_, _credential_,
         googleapis_client::HttpRequest::PUT,
-        StrCat(_service_->service_url(), "series/{seriesId}/submissions/{submission_id}/votes/@me")),
+        "series/{seriesId}/submissions/{submission_id}/votes/@me"),
       series_id_(series_id),
       submission_id_(submission_id),
       _have_user_id_(false) {

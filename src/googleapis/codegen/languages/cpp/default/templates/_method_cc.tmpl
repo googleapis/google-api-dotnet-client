@@ -29,7 +29,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
 {#-------------------------------------------------------------------------#}
   _service_, _credential_,
   {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
-  StrCat(_service_->service_url(), "{{ method.path }}")){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}
+  "{{ method.path }}"){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}
   uploader_.reset(new {{ api.client_namespace }}::MediaUploader(
       &SIMPLE_MEDIA_UPLOAD,
       _service_->url_root(),
@@ -83,7 +83,7 @@ const {{ api.client_namespace }}::MediaUploadSpec
 {#-------------------------------------------------------------------------#}
     _service_, _credential_,
     {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
-    StrCat(_service_->service_url(), "{{ method.path }}")){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}{% if method.mediaUpload %}
+    "{{ method.path }}"){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}{% if method.mediaUpload %}
 {# TODO(ewiseblatt): We're assuming SIMPLE for now, but this should take #}
 {# the set of choices (a class variable) and allow them to be restricted #}
 {# later, such as by resetting the choices or setting the preferred choice #}
