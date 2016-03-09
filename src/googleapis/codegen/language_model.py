@@ -513,6 +513,12 @@ class LanguageModel(object):
         parent = variable.parent
         if parent:
           parent_name = parent.GetTemplateValue('wireName') or parent_name
+      if hasattr(variable, 'schema'):
+        # This lets the format string access all template values on schema,
+        # which is powerful but potentially flaky if the schema changes.
+        expansions['schema'] = variable.schema
+      expansions['variable_name'] = self.ApplyCaseTransform(
+          variable.GetTemplateValue('wireName') or '', policy)
     expansions['parent_name'] = self.ApplyCaseTransform(parent_name,
                                                         policy)
     # TODO(user): Expand the range of things available.

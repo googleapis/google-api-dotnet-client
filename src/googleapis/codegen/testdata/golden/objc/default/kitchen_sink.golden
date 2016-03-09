@@ -37,9 +37,9 @@
 #endif
 
 // GTLKitchSinkGTLKitchSinkSeriesCounters - Users
-GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_DOWNLOAD;  // "DOWNLOAD"
-GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_THUMBNAIL;  // "THUMBNAIL"
-GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_PDF;  // "PDF"
+GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Download;  // "DOWNLOAD"
+GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Thumbnail;  // "THUMBNAIL"
+GTL_EXTERN NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Pdf;  // "PDF"
 
 // GTLKitchSinkGeometryReference - Type
 GTL_EXTERN NSString * const kGTLKitchSinkGeometryReference_Type_Polygon;  // "Polygon"
@@ -77,9 +77,9 @@ GTL_EXTERN NSString * const kGTLKitchSinkGeometryReference_Type_Polygon;  // "Po
 #import "GTLKitchSinkConstants.h"
 
 // GTLKitchSinkGTLKitchSinkSeriesCounters - Users
-NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_DOWNLOAD = @"DOWNLOAD";
-NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_THUMBNAIL = @"THUMBNAIL";
-NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_PDF = @"PDF";
+NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Download = @"DOWNLOAD";
+NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Thumbnail = @"THUMBNAIL";
+NSString * const kGTLKitchSinkGTLKitchSinkSeriesCounters_Users_Pdf = @"PDF";
 
 // GTLKitchSinkGeometryReference - Type
 NSString * const kGTLKitchSinkGeometryReference_Type_Polygon = @"Polygon";

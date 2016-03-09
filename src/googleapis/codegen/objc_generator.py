@@ -135,39 +135,43 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
       # Set superclass if schema has an items array.
       schema.SetTemplateValue('superClass', 'GTLCollectionObject')
 
-    self.AnnotateParameterOrProperty(prop, schema)
+    self.AnnotateParameterOrProperty(prop, schema, api_object)
 
     # It appears that data_types.Enum is not actually used
     # TODO(user): Once enum properties are handled properly with
     # data_types.Enum, fix this workaround.
     enum_values = prop.data_type.values.get('enum')
     if enum_values and not isinstance(schema, data_types.SchemaReference):
-      descriptions = prop.data_type.values.get('enumDescriptions')
-      class_name = schema.GetTemplateValue('className')
-      property_name = prop.codeName[0].upper() + prop.codeName[1:]
-      enum_elements = [
-          {
-              'value': enum_values[i],
-              'description': descriptions and descriptions[i],
-              'constantName': 'k%s_%s_%s' % (
-                  class_name, property_name,
-                  enum_values[i][0].upper() + enum_values[i][1:])
-          }
-          for i in range(len(enum_values))]
-      enum = {
-          'comment': '%s - %s' % (class_name, property_name),
-          'className': class_name,
-          'propertyName': property_name,
-          'elements': enum_elements,
-      }
-      enums = api_object.GetTemplateValue('enums')
-      enums.append(enum)
-      api_object.SetTemplateValue('enums', sorted(enums))
+      self.AnnotateEnum(api_object, prop, schema, enum_values)
+
+  def AnnotateEnum(self, api_object, prop, schema, enum_values):
+    descriptions = prop.data_type.values.get('enumDescriptions')
+    class_name = schema.GetTemplateValue('className')
+    property_name = prop.codeName[0].upper() + prop.codeName[1:]
+    enum_elements = [
+        {
+            'value': enum_values[i],
+            'description': descriptions and descriptions[i],
+            'constantName': self.language_model.TransformString(
+                prop,
+                enum_values[i].lower(),
+                self.language_model.constant_policy)
+        }
+        for i in range(len(enum_values))]
+    enum = {
+        'comment': '%s - %s' % (class_name, property_name),
+        'className': class_name,
+        'propertyName': property_name,
+        'elements': enum_elements,
+    }
+    enums = api_object.GetTemplateValue('enums')
+    enums.append(enum)
+    api_object.SetTemplateValue('enums', sorted(enums))
 
   def AnnotateParameter(self, method, parameter):
-    self.AnnotateParameterOrProperty(parameter, method.api)
+    self.AnnotateParameterOrProperty(parameter, method.api, method.api)
 
-  def AnnotateParameterOrProperty(self, prop, schema):
+  def AnnotateParameterOrProperty(self, prop, schema, api_object):
     """Common annotations that apply to both parameters and properties."""
     # Property attributes depend on type
     if prop.data_type.code_type == 'NSString':
@@ -189,6 +193,10 @@ class ObjCGenerator(api_library_generator.ApiLibraryGenerator):
       # If there are any array properties then we need to generate an
       # arrayPropertyToClassMap method.
       schema.SetTemplateValue('arrayPropertyToClassMap', True)
+      # If it is an array of enum values then we need to handle the enum type.
+      enum_values = prop.data_type['baseType'].values.get('enum')
+      if enum_values:
+        self.AnnotateEnum(api_object, prop, schema, enum_values)
     elif prop.data_type.code_type in ['NSNumber', 'NSString']:
       if prop.data_type.json_format:
         prop.SetTemplateValue(
@@ -231,7 +239,7 @@ class ObjCLanguageModel(language_model.LanguageModel):
   map_of_policy = language_model.NamingPolicy(format_string='NSDictionary')
   constant_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE,
-      format_string='k{className}_{propertyName}_{name}')
+      format_string='k{schema.className}_{variable_name}_{name}')
   query_method_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE,
       format_string='queryFor{name}')
