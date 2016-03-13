@@ -72,7 +72,7 @@ namespace Google.Apis.Util.Store
             var serialized = NewtonsoftJsonSerializer.Instance.Serialize(value);
             var filePath = Path.Combine(folderPath, GenerateStoredKey(key, typeof(T)));
             File.WriteAllText(filePath, serialized);
-            return TaskEx.Delay(0);
+            return Task.Delay(0);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Google.Apis.Util.Store
             {
                 File.Delete(filePath);
             }
-            return TaskEx.Delay(0);
+            return Task.Delay(0);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Google.Apis.Util.Store
                 Directory.CreateDirectory(folderPath);
             }
 
-            return TaskEx.Delay(0);
+            return Task.Delay(0);
         }
 
         /// <summary>Creates a unique stored key based on the key and the class type.</summary>

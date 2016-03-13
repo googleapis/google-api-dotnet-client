@@ -109,7 +109,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
             // Task to await when fetching pages; defaults to an already completed task,
             // but can be set to another task to allow for more fine-grained interaction.
-            internal Task gateKeeper = TaskEx.FromResult(0);
+            internal Task gateKeeper = Task.FromResult(0);
             internal List<Page> Pages { get; private set; }
             internal string Name { get; set; }
 

@@ -15,7 +15,7 @@
 
           Supported Platforms:
 
-          - .NET Framework 4
+          - .NET Framework 4.5
 
           - Windows Store apps
 
@@ -25,8 +25,13 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-          <group targetFramework=".NETFramework4.0">
+          <group targetFramework="net45">
+            <!--
+              BouncyCastle is required by the Net45 version of
+              Google.Apis.Auth.PlatformServices.
+            -->
             <dependency id="BouncyCastle" version="1.7.0" />
+
             <dependency id="Google.Apis.Core" version="$version$" />
           </group>
           <group>
@@ -36,13 +41,6 @@
         </dependencies>
     </metadata>
     <files>
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\net40\Google.Apis.Auth.dll" />
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\net40\Google.Apis.Auth.pdb" />
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\net40\Google.Apis.Auth.xml" />
-      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.dll" target="lib\net40\Google.Apis.Auth.PlatformServices.dll" />
-      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.pdb" target="lib\net40\Google.Apis.Auth.PlatformServices.pdb" />
-      <file src="Src\Support\GoogleApis.Auth.DotNet4\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.xml" target="lib\net40\Google.Apis.Auth.PlatformServices.xml" />
-
       <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\net45\Google.Apis.Auth.dll" />
       <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\net45\Google.Apis.Auth.pdb" />
       <file src="Src\Support\GoogleApis.Auth\Net45\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\net45\Google.Apis.Auth.xml" />
@@ -71,9 +69,9 @@
       <file src="Src\Support\GoogleApis.Auth.WP81\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.pdb" target="lib\wpa81\Google.Apis.Auth.PlatformServices.pdb" />
       <file src="Src\Support\GoogleApis.Auth.WP81\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.xml" target="lib\wpa81\Google.Apis.Auth.PlatformServices.xml" />
 
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.dll" />
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.pdb" />
-      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.xml" />
+      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.dll" />
+      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.pdb" />
+      <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.xml" />
       
       <file src="Resources\License.txt" target="License.txt" />
     </files>

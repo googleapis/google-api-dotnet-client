@@ -47,7 +47,7 @@ namespace Google.Apis.Tests
         protected override Task Wait(TimeSpan ts, CancellationToken cancellationToken)
         {
             Waits.Add(ts);
-            return TaskEx.Delay(0);
+            return Task.Delay(0);
         }
     }
 }
