@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160229 (424)
+ *      <tr><th>API Rev<td>20160310 (434)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -70,6 +70,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             creatives = new CreativesResource(this);
             marketplacedeals = new MarketplacedealsResource(this);
             marketplacenotes = new MarketplacenotesResource(this);
+            marketplaceprivateauction = new MarketplaceprivateauctionResource(this);
             performanceReport = new PerformanceReportResource(this);
             pretargetingConfig = new PretargetingConfigResource(this);
             products = new ProductsResource(this);
@@ -157,6 +158,14 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         public virtual MarketplacenotesResource Marketplacenotes
         {
             get { return marketplacenotes; }
+        }
+
+        private readonly MarketplaceprivateauctionResource marketplaceprivateauction;
+
+        /// <summary>Gets the Marketplaceprivateauction resource.</summary>
+        public virtual MarketplaceprivateauctionResource Marketplaceprivateauction
+        {
+            get { return marketplaceprivateauction; }
         }
 
         private readonly PerformanceReportResource performanceReport;
@@ -1882,6 +1891,76 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         DefaultValue = null,
                         Pattern = null,
                     });
+            }
+
+        }
+    }
+
+    /// <summary>The "marketplaceprivateauction" collection of methods.</summary>
+    public class MarketplaceprivateauctionResource
+    {
+        private const string Resource = "marketplaceprivateauction";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MarketplaceprivateauctionResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Update a given private auction proposal</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateproposalRequest Updateproposal(Google.Apis.AdExchangeBuyer.v1_4.Data.UpdatePrivateAuctionProposalRequest body)
+        {
+            return new UpdateproposalRequest(service, body);
+        }
+
+        /// <summary>Update a given private auction proposal</summary>
+        public class UpdateproposalRequest : AdExchangeBuyerBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Updateproposal request.</summary>
+            public UpdateproposalRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyer.v1_4.Data.UpdatePrivateAuctionProposalRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AdExchangeBuyer.v1_4.Data.UpdatePrivateAuctionProposalRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateproposal"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "privateauction/{private_auction_id}/updateproposal"; }
+            }
+
+            /// <summary>Initializes Updateproposal parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
             }
 
         }
@@ -4978,6 +5057,32 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>The width of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UpdatePrivateAuctionProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The externalDealId of the deal to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDealId")]
+        public virtual string ExternalDealId { get; set; } 
+
+        /// <summary>Optional note to be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual MarketplaceNote Note { get; set; } 
+
+        /// <summary>The private auction id to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateAuctionId")]
+        public virtual string PrivateAuctionId { get; set; } 
+
+        /// <summary>The current revision number of the proposal to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalRevisionNumber")]
+        public virtual System.Nullable<long> ProposalRevisionNumber { get; set; } 
+
+        /// <summary>The proposed action on the private auction proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAction")]
+        public virtual string UpdateAction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160113 (377)
+ *      <tr><th>API Rev<td>20160226 (421)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -5431,6 +5431,10 @@ namespace Google.Apis.Books.v1
                     UPLOADED,
                 }
 
+                /// <summary>ISO-3166-1 code to override the IP-based location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Country { get; set; }
+
                 /// <summary>ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for generating
                 /// recommendations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
@@ -5499,6 +5503,15 @@ namespace Google.Apis.Books.v1
                         "acquireMethod", new Google.Apis.Discovery.Parameter
                         {
                             Name = "acquireMethod",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "country", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "country",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7579,6 +7592,9 @@ namespace Google.Apis.Books.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("pcampaign_id")]
         public virtual string PcampaignId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("show_notification_settings_action")]
         public virtual System.Nullable<bool> ShowNotificationSettingsAction { get; set; } 

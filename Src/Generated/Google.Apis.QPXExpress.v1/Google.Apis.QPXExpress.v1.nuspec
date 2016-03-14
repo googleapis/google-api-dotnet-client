@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.QPXExpress.v1</id>
-        <version>1.10.1.0</version>
+        <version>1.10.1.431</version>
         <title>Google.Apis.QPXExpress.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

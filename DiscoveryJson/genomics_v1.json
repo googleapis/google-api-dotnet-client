@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/hALYXo8ybL-2tjJliTY4Rr-Kr5Y\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/qCQMvlo_ZXGIICMrFbqIqkBC444\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1",
  "name": "genomics",
  "version": "v1",
- "revision": "20160224",
+ "revision": "20160309",
  "title": "Genomics API",
- "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
+ "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {

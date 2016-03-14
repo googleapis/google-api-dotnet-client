@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>Google Cloud Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20151123 (326)
+ *      <tr><th>API Rev<td>20160309 (433)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>
  *              https://cloud.google.com/tools/cloud-debugger</a>
@@ -733,6 +733,11 @@ namespace Google.Apis.Clouddebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
 
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -775,6 +780,15 @@ namespace Google.Apis.Clouddebugger.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clientVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -808,6 +822,11 @@ namespace Google.Apis.Clouddebugger.v2
                     /// <summary>ID of the breakpoint to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
+
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -848,6 +867,15 @@ namespace Google.Apis.Clouddebugger.v2
                                 Name = "breakpointId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clientVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -912,6 +940,11 @@ namespace Google.Apis.Clouddebugger.v2
                     /// should be called again with the same `wait_token`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
+
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -991,6 +1024,15 @@ namespace Google.Apis.Clouddebugger.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clientVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -1019,6 +1061,11 @@ namespace Google.Apis.Clouddebugger.v2
                     /// <summary>ID of the debuggee where the breakpoint is to be set.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
+
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1059,6 +1106,15 @@ namespace Google.Apis.Clouddebugger.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clientVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -1089,6 +1145,11 @@ namespace Google.Apis.Clouddebugger.v2
                 /// debuggees that are active.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                /// `google.com/intellij/v1`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClientVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1127,6 +1188,15 @@ namespace Google.Apis.Clouddebugger.v2
                         "includeInactive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeInactive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1199,6 +1269,11 @@ namespace Google.Apis.Clouddebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isFinalState")]
         public virtual System.Nullable<bool> IsFinalState { get; set; } 
 
+        /// <summary>A set of custom breakpoint properties, populated by the agent, to be displayed to the
+        /// user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Breakpoint source location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual SourceLocation Location { get; set; } 
@@ -1237,7 +1312,7 @@ namespace Google.Apis.Clouddebugger.v2.Data
         /// can have all of its data stored once in this table. The stack frame variables then would hold only a
         /// reference to it. The variable `var_table_index` field is an index into this repeated field. The stored
         /// objects are nameless and get their name from the referencing variable. The effective variable is a merge of
-        /// the referencing veariable and the referenced variable.</summary>
+        /// the referencing variable and the referenced variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableTable")]
         public virtual System.Collections.Generic.IList<Variable> VariableTable { get; set; } 
 

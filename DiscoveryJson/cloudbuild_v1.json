@@ -322,6 +322,11 @@
     "StorageSource": {
       "description": "StorageSource describes the location of the source in an archive file in\nGoogle Cloud Storage.",
       "properties": {
+        "generation": {
+          "description": "Google Cloud Storage generation for the object. If the generation is\nomitted, the latest generation will be used.",
+          "type": "string",
+          "format": "int64"
+        },
         "bucket": {
           "description": "Google Cloud Storage bucket containing source (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
           "type": "string"
@@ -505,7 +510,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160303",
+  "revision": "20160314",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

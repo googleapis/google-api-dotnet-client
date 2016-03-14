@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160224 (419)
+ *      <tr><th>API Rev<td>20160309 (433)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -582,109 +582,9 @@ namespace Google.Apis.Genomics.v1alpha2
         public PipelinesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            controllerConfig = new ControllerConfigResource(service);
 
         }
 
-        private readonly ControllerConfigResource controllerConfig;
-
-        /// <summary>Gets the ControllerConfig resource.</summary>
-        public virtual ControllerConfigResource ControllerConfig
-        {
-            get { return controllerConfig; }
-        }
-
-        /// <summary>The "controller_config" collection of methods.</summary>
-        public class ControllerConfigResource
-        {
-            private const string Resource = "controllerConfig";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public ControllerConfigResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Gets controller configuration information. Should only be called by VMs created by the
-            /// Pipelines Service and not by end users.</summary>
-            /// <param name="operationId">The operation to retrieve controller configuration for.</param>
-            public virtual GetRequest Get(string operationId)
-            {
-                return new GetRequest(service, operationId);
-            }
-
-            /// <summary>Gets controller configuration information. Should only be called by VMs created by the
-            /// Pipelines Service and not by end users.</summary>
-            public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ControllerConfig>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string operationId)
-                    : base(service)
-                {
-                    OperationId = operationId;
-                    InitParameters();
-                }
-
-
-                /// <summary>The operation to retrieve controller configuration for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string OperationId { get; private set; }
-
-
-                [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ulong> ValidationToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha2/pipelines/controller_config/{operationId}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "operationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "operationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "validationToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validationToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
 
         /// <summary>Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than
         /// `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used
@@ -864,6 +764,79 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
+        /// <summary>Gets controller configuration information. Should only be called by VMs created by the Pipelines
+        /// Service and not by end users.</summary>
+        public virtual GetControllerConfigRequest GetControllerConfig()
+        {
+            return new GetControllerConfigRequest(service);
+        }
+
+        /// <summary>Gets controller configuration information. Should only be called by VMs created by the Pipelines
+        /// Service and not by end users.</summary>
+        public class GetControllerConfigRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ControllerConfig>
+        {
+            /// <summary>Constructs a new GetControllerConfig request.</summary>
+            public GetControllerConfigRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The operation to retrieve controller configuration for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OperationId { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> ValidationToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getControllerConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines:getControllerConfig"; }
+            }
+
+            /// <summary>Initializes GetControllerConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "operationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "operationId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "validationToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validationToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Lists pipelines. Caller must have READ permission to the project.</summary>
         public virtual ListRequest List()
         {
@@ -1023,20 +996,22 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Updates status of a given operation. Should only be called by VMs created by the Pipelines Service
-        /// and not by end users.</summary>
+        /// <summary>Sets status of a given operation. All timestamps are sent on each call, and the whole series of
+        /// events is replaced, in case intermediate calls are lost. Should only be called by VMs created by the
+        /// Pipelines Service and not by end users.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual UpdateStatusRequest UpdateStatus(Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest body)
+        public virtual SetOperationStatusRequest SetOperationStatus(Google.Apis.Genomics.v1alpha2.Data.SetOperationStatusRequest body)
         {
-            return new UpdateStatusRequest(service, body);
+            return new SetOperationStatusRequest(service, body);
         }
 
-        /// <summary>Updates status of a given operation. Should only be called by VMs created by the Pipelines Service
-        /// and not by end users.</summary>
-        public class UpdateStatusRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
+        /// <summary>Sets status of a given operation. All timestamps are sent on each call, and the whole series of
+        /// events is replaced, in case intermediate calls are lost. Should only be called by VMs created by the
+        /// Pipelines Service and not by end users.</summary>
+        public class SetOperationStatusRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
         {
-            /// <summary>Constructs a new UpdateStatus request.</summary>
-            public UpdateStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest body)
+            /// <summary>Constructs a new SetOperationStatus request.</summary>
+            public SetOperationStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1alpha2.Data.SetOperationStatusRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1046,7 +1021,7 @@ namespace Google.Apis.Genomics.v1alpha2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest Body { get; set; }
+            Google.Apis.Genomics.v1alpha2.Data.SetOperationStatusRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1054,7 +1029,7 @@ namespace Google.Apis.Genomics.v1alpha2
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
-                get { return "update_status"; }
+                get { return "setOperationStatus"; }
             }
 
             ///<summary>Gets the HTTP method.</summary>
@@ -1066,10 +1041,10 @@ namespace Google.Apis.Genomics.v1alpha2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1alpha2/pipelines:update_status"; }
+                get { return "v1alpha2/pipelines:setOperationStatus"; }
             }
 
-            /// <summary>Initializes UpdateStatus parameter list.</summary>
+            /// <summary>Initializes SetOperationStatus parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1563,6 +1538,29 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to set operation status. Should only be used by VMs created by the Pipelines Service and not by
+    /// end users.</summary>
+    public class SetOperationStatusRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampEvents")]
+        public virtual System.Collections.Generic.IList<TimestampEvent> TimestampEvents { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("validationToken")]
+        public virtual System.Nullable<ulong> ValidationToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
@@ -1616,29 +1614,6 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The time this event occured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual string Timestamp { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request to update operation status. Should only be used by VMs created by the Pipelines Service and not
-    /// by end users.</summary>
-    public class UpdateStatusRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("timestampEvents")]
-        public virtual System.Collections.Generic.IList<TimestampEvent> TimestampEvents { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("validationToken")]
-        public virtual System.Nullable<ulong> ValidationToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

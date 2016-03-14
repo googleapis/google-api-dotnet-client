@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta5
- *      <tr><th>API Rev<td>20160223 (418)
+ *      <tr><th>API Rev<td>20160314 (438)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -1006,7 +1006,7 @@ namespace Google.Apis.Appengine.v1beta5
                 }
 
                 /// <summary>Updates an existing version. Note: UNIMPLEMENTED.</summary>
-                public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Version>
+                public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
                     public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta5.Data.Version body, string appsId, string servicesId, string versionsId)
@@ -1604,7 +1604,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
         public virtual string DefaultBucket { get; set; } 
 
-        /// <summary>Determines the cookie expiration policy for the application.</summary>
+        /// <summary>Determines the cookie expiration policy for the application. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCookieExpiration")]
         public virtual string DefaultCookieExpiration { get; set; } 
 
@@ -1613,7 +1613,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string DefaultHostname { get; set; } 
 
         /// <summary>HTTP path dispatch rules for requests to the app that do not explicitly target a service or
-        /// version. The rules are order-dependent.</summary>
+        /// version. The rules are order-dependent. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
@@ -1621,9 +1621,10 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The location from which the application will be run. Choices are "us" for United States and "eu"
-        /// for European Union. Application instances will run out of data centers in the chosen location and all of the
-        /// application's End User Content will be stored at rest in the chosen location. The default is "us".</summary>
+        /// <summary>The location from which the application will be run. Application instances will run out of data
+        /// centers in the chosen location and all of the application's End User Content will be stored at rest. The
+        /// default is "us-central". Choices are: "us-central" - Central US "europe-west" - Western Europe "us-east1" -
+        /// Eastern US</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -1999,7 +2000,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping above, the `name` should have the format of
+        /// If you use the default HTTP mapping, the `name` should have the format of
         /// `operations/some/unique/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/vcHwFj9oUgGXFm1JrBjoH-LeGlY\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/JBDR7NQ0khaaR6R6F4HTbP8DGwA\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20160229",
+ "revision": "20160310",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -2085,6 +2085,33 @@
      "format": "int32"
     }
    }
+  },
+  "UpdatePrivateAuctionProposalRequest": {
+   "id": "UpdatePrivateAuctionProposalRequest",
+   "type": "object",
+   "properties": {
+    "externalDealId": {
+     "type": "string",
+     "description": "The externalDealId of the deal to be updated."
+    },
+    "note": {
+     "$ref": "MarketplaceNote",
+     "description": "Optional note to be added."
+    },
+    "privateAuctionId": {
+     "type": "string",
+     "description": "The private auction id to be updated."
+    },
+    "proposalRevisionNumber": {
+     "type": "string",
+     "description": "The current revision number of the proposal to be updated.",
+     "format": "int64"
+    },
+    "updateAction": {
+     "type": "string",
+     "description": "The proposed action on the private auction proposal."
+    }
+   }
   }
  },
  "resources": {
@@ -2675,6 +2702,25 @@
      ],
      "response": {
       "$ref": "GetOrderNotesResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/adexchange.buyer"
+     ]
+    }
+   }
+  },
+  "marketplaceprivateauction": {
+   "methods": {
+    "updateproposal": {
+     "id": "adexchangebuyer.marketplaceprivateauction.updateproposal",
+     "path": "privateauction/{private_auction_id}/updateproposal",
+     "httpMethod": "POST",
+     "description": "Update a given private auction proposal",
+     "parameterOrder": [
+      "private_auction_id"
+     ],
+     "request": {
+      "$ref": "UpdatePrivateAuctionProposalRequest"
      },
      "scopes": [
       "https://www.googleapis.com/auth/adexchange.buyer"

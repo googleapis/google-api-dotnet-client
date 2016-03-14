@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/2Ar_hXPHmnxe2mV6uxVVcPSU_1Y\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/fQ7gMSQqLPLbacQ9HzpdBnMKn-E\"",
  "discoveryVersion": "v1",
  "id": "books:v1",
  "name": "books",
  "version": "v1",
- "revision": "20160113",
+ "revision": "20160226",
  "title": "Books API",
  "description": "Lets you search for books and manage your Google Books library.",
  "ownerDomain": "google.com",
@@ -1142,8 +1142,7 @@
      "type": "string"
     },
     "dont_show_notification": {
-     "type": "boolean",
-     "default": "false"
+     "type": "boolean"
     },
     "iconUrl": {
      "type": "string"
@@ -1157,6 +1156,9 @@
      "type": "string"
     },
     "pcampaign_id": {
+     "type": "string"
+    },
+    "reason": {
      "type": "string"
     },
     "show_notification_settings_action": {
@@ -4301,6 +4303,11 @@
           "User uploaded books"
          ],
          "repeated": true,
+         "location": "query"
+        },
+        "country": {
+         "type": "string",
+         "description": "ISO-3166-1 code to override the IP-based location.",
          "location": "query"
         },
         "locale": {

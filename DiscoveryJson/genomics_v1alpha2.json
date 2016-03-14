@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Ew7uJtCvtBtC91IhtqB2TFZFFcU\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/K_wzskcn2jvdodbK2S8nKuOk_bc\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1alpha2",
  "name": "genomics",
  "version": "v1alpha2",
- "revision": "20160224",
+ "revision": "20160309",
  "title": "Genomics API",
- "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
+ "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -540,10 +540,10 @@
     }
    }
   },
-  "UpdateStatusRequest": {
-   "id": "UpdateStatusRequest",
+  "SetOperationStatusRequest": {
+   "id": "SetOperationStatusRequest",
    "type": "object",
-   "description": "Request to update operation status. Should only be used by VMs created by the Pipelines Service and not by end users.",
+   "description": "Request to set operation status. Should only be used by VMs created by the Pipelines Service and not by end users.",
    "properties": {
     "operationId": {
      "type": "string"
@@ -887,13 +887,38 @@
       "https://www.googleapis.com/auth/genomics"
      ]
     },
-    "update_status": {
-     "id": "genomics.pipelines.update_status",
-     "path": "v1alpha2/pipelines:update_status",
+    "getControllerConfig": {
+     "id": "genomics.pipelines.getControllerConfig",
+     "path": "v1alpha2/pipelines:getControllerConfig",
+     "httpMethod": "GET",
+     "description": "Gets controller configuration information. Should only be called by VMs created by the Pipelines Service and not by end users.",
+     "parameters": {
+      "operationId": {
+       "type": "string",
+       "description": "The operation to retrieve controller configuration for.",
+       "location": "query"
+      },
+      "validationToken": {
+       "type": "string",
+       "format": "uint64",
+       "location": "query"
+      }
+     },
+     "response": {
+      "$ref": "ControllerConfig"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/genomics"
+     ]
+    },
+    "setOperationStatus": {
+     "id": "genomics.pipelines.setOperationStatus",
+     "path": "v1alpha2/pipelines:setOperationStatus",
      "httpMethod": "PUT",
-     "description": "Updates status of a given operation. Should only be called by VMs created by the Pipelines Service and not by end users.",
+     "description": "Sets status of a given operation. All timestamps are sent on each call, and the whole series of events is replaced, in case intermediate calls are lost. Should only be called by VMs created by the Pipelines Service and not by end users.",
      "request": {
-      "$ref": "UpdateStatusRequest"
+      "$ref": "SetOperationStatusRequest"
      },
      "response": {
       "$ref": "Empty"
@@ -902,41 +927,6 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/genomics"
      ]
-    }
-   },
-   "resources": {
-    "controller_config": {
-     "methods": {
-      "get": {
-       "id": "genomics.pipelines.controller_config.get",
-       "path": "v1alpha2/pipelines/controller_config/{operationId}",
-       "httpMethod": "GET",
-       "description": "Gets controller configuration information. Should only be called by VMs created by the Pipelines Service and not by end users.",
-       "parameters": {
-        "operationId": {
-         "type": "string",
-         "description": "The operation to retrieve controller configuration for.",
-         "required": true,
-         "location": "path"
-        },
-        "validationToken": {
-         "type": "string",
-         "format": "uint64",
-         "location": "query"
-        }
-       },
-       "parameterOrder": [
-        "operationId"
-       ],
-       "response": {
-        "$ref": "ControllerConfig"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/cloud-platform",
-        "https://www.googleapis.com/auth/genomics"
-       ]
-      }
-     }
     }
    }
   }
