@@ -205,7 +205,7 @@ namespace Google.Apis.Tests.Apis.Http
                 {
                     ++Calls;
                     request.Headers.Add(InjectedHeader, InjectedValue);
-                    return TaskEx.Delay(0);
+                    return Task.Delay(0);
                 }
             }
         }
