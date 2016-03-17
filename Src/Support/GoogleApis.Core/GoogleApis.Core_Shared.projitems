@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\StandardResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Store\IDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\StringValueAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\UriPatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Utilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApplicationContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GoogleApiException.cs" />
