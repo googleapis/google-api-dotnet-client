@@ -43,7 +43,7 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.admin.Directory.directory_v1
+namespace Google.Apis.Admin.Directory.directory_v1
 {
     /// <summary>The Directory Service.</summary>
     public class DirectoryService : Google.Apis.Services.BaseClientService
@@ -575,7 +575,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Get information about an ASP issued by a user.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Asp>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Asp>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string userKey, int codeId)
@@ -651,7 +651,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>List the ASPs issued by a user.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Asps>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Asps>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -723,7 +723,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
         /// <summary>Stop watching resources through this channel</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual StopRequest Stop(Google.Apis.admin.Directory.directory_v1.Data.Channel body)
+        public virtual StopRequest Stop(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
             return new StopRequest(service, body);
         }
@@ -732,7 +732,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         public class StopRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Channel body)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
                 : base(service)
             {
                 Body = body;
@@ -742,7 +742,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Channel Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Channel Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -801,7 +801,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Chrome OS Device</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customerId, string deviceId)
@@ -900,7 +900,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Chrome OS Devices of a customer (paginated)</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevices>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevices>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customerId)
@@ -1088,16 +1088,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="deviceId">Immutable id
         /// of Chrome OS Device</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
             return new PatchRequest(service, body, customerId, deviceId);
         }
 
         /// <summary>Update Chrome OS Device. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -1133,7 +1133,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1197,16 +1197,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="deviceId">Immutable id
         /// of Chrome OS Device</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
             return new UpdateRequest(service, body, customerId, deviceId);
         }
 
         /// <summary>Update Chrome OS Device</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -1242,7 +1242,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.ChromeOsDevice Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1326,7 +1326,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrives a customer.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Customer>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customerKey)
@@ -1381,16 +1381,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Updates a customer. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerKey">Id of the customer to be updated</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Customer body, string customerKey)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
         {
             return new PatchRequest(service, body, customerKey);
         }
 
         /// <summary>Updates a customer. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Customer>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Customer body, string customerKey)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
                 : base(service)
             {
                 CustomerKey = customerKey;
@@ -1405,7 +1405,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Customer Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Customer Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1449,16 +1449,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Updates a customer.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerKey">Id of the customer to be updated</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Customer body, string customerKey)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
         {
             return new UpdateRequest(service, body, customerKey);
         }
 
         /// <summary>Updates a customer.</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Customer>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Customer body, string customerKey)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
                 : base(service)
             {
                 CustomerKey = customerKey;
@@ -1473,7 +1473,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Customer Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Customer Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1617,7 +1617,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a domain alias of the customer.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.DomainAlias>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customer, string domainAliasName)
@@ -1686,16 +1686,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Inserts a Domain alias of the customer.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable id of the Google Apps account.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.DomainAlias body, string customer)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias body, string customer)
         {
             return new InsertRequest(service, body, customer);
         }
 
         /// <summary>Inserts a Domain alias of the customer.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.DomainAlias>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.DomainAlias body, string customer)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias body, string customer)
                 : base(service)
             {
                 Customer = customer;
@@ -1710,7 +1710,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.DomainAlias Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1759,7 +1759,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domain aliases of the customer.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.DomainAliases>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.DomainAliases>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -1927,7 +1927,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrives a domain of the customer.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Domains>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Domains>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customer, string domainName)
@@ -1996,16 +1996,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Inserts a domain of the customer.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable id of the Google Apps account.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Domains body, string customer)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Domains body, string customer)
         {
             return new InsertRequest(service, body, customer);
         }
 
         /// <summary>Inserts a domain of the customer.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Domains>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Domains>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Domains body, string customer)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Domains body, string customer)
                 : base(service)
             {
                 Customer = customer;
@@ -2020,7 +2020,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Domains Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Domains Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -2069,7 +2069,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domains of the customer.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Domains2>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Domains2>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -2241,16 +2241,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <summary>Add a alias for the group</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="groupKey">Email or immutable Id of the group</param>
-            public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Alias body, string groupKey)
+            public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string groupKey)
             {
                 return new InsertRequest(service, body, groupKey);
             }
 
             /// <summary>Add a alias for the group</summary>
-            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Alias>
+            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Alias>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Alias body, string groupKey)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string groupKey)
                     : base(service)
                 {
                     GroupKey = groupKey;
@@ -2265,7 +2265,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.Alias Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.Alias Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -2314,7 +2314,7 @@ namespace Google.Apis.admin.Directory.directory_v1
             }
 
             /// <summary>List all aliases for a group</summary>
-            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Aliases>
+            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Aliases>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string groupKey)
@@ -2435,7 +2435,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Group</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Group>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string groupKey)
@@ -2489,16 +2489,16 @@ namespace Google.Apis.admin.Directory.directory_v1
 
         /// <summary>Create Group</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Group body)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Group body)
         {
             return new InsertRequest(service, body);
         }
 
         /// <summary>Create Group</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Group>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Group body)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Group body)
                 : base(service)
             {
                 Body = body;
@@ -2508,7 +2508,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Group Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Group Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -2547,7 +2547,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all groups in a domain (paginated)</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Groups>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Groups>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -2658,16 +2658,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
         /// object</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Group body, string groupKey)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
             return new PatchRequest(service, body, groupKey);
         }
 
         /// <summary>Update Group. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Group>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Group body, string groupKey)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
                 : base(service)
             {
                 GroupKey = groupKey;
@@ -2682,7 +2682,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Group Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Group Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -2727,16 +2727,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
         /// object</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Group body, string groupKey)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
             return new UpdateRequest(service, body, groupKey);
         }
 
         /// <summary>Update Group</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Group>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Group body, string groupKey)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
                 : base(service)
             {
                 GroupKey = groupKey;
@@ -2751,7 +2751,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Group Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Group Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -2895,7 +2895,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Group Member</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Member>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string groupKey, string memberKey)
@@ -2964,16 +2964,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Add user to the specified group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">Email or immutable Id of the group</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey)
         {
             return new InsertRequest(service, body, groupKey);
         }
 
         /// <summary>Add user to the specified group.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Member>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey)
                 : base(service)
             {
                 GroupKey = groupKey;
@@ -2988,7 +2988,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Member Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Member Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -3037,7 +3037,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all members in a group (paginated)</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Members>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Members>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string groupKey)
@@ -3135,16 +3135,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// object</param>
         /// <param name="memberKey">Email or immutable Id of the user. If Id, it should match with id of
         /// member object</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
             return new PatchRequest(service, body, groupKey, memberKey);
         }
 
         /// <summary>Update membership of a user in the specified group. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Member>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
                 : base(service)
             {
                 GroupKey = groupKey;
@@ -3164,7 +3164,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Member Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Member Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -3220,16 +3220,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// object</param>
         /// <param name="memberKey">Email or immutable Id of the user. If Id, it should match with id of
         /// member object</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
             return new UpdateRequest(service, body, groupKey, memberKey);
         }
 
         /// <summary>Update membership of a user in the specified group.</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Member>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
                 : base(service)
             {
                 GroupKey = groupKey;
@@ -3249,7 +3249,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Member Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Member Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -3321,7 +3321,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="resourceId">Immutable
         /// id of Mobile Device</param>
-        public virtual ActionRequest Action(Google.Apis.admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
+        public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
         {
             return new ActionRequest(service, body, customerId, resourceId);
         }
@@ -3330,7 +3330,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         public class ActionRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Action request.</summary>
-            public ActionRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
+            public ActionRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -3350,7 +3350,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.MobileDeviceAction Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -3486,7 +3486,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Mobile Device</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.MobileDevice>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MobileDevice>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customerId, string resourceId)
@@ -3585,7 +3585,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Mobile Devices of a customer (paginated)</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.MobileDevices>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MobileDevices>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customerId)
@@ -3875,7 +3875,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a notification.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Notification>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customer, string notificationId)
@@ -3950,7 +3950,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a list of notifications.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Notifications>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notifications>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -4047,16 +4047,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customer">The unique ID for the customer's Google account.</param>
         /// <param
         /// name="notificationId">The unique ID of the notification.</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
         {
             return new PatchRequest(service, body, customer, notificationId);
         }
 
         /// <summary>Updates a notification. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Notification>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
                 : base(service)
             {
                 Customer = customer;
@@ -4076,7 +4076,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Notification Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Notification Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -4131,16 +4131,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customer">The unique ID for the customer's Google account.</param>
         /// <param
         /// name="notificationId">The unique ID of the notification.</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
         {
             return new UpdateRequest(service, body, customer, notificationId);
         }
 
         /// <summary>Updates a notification.</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Notification>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Notification>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
                 : base(service)
             {
                 Customer = customer;
@@ -4160,7 +4160,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Notification Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Notification Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -4313,7 +4313,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Organization Unit</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.OrgUnit>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
@@ -4382,16 +4382,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Add Organization Unit</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable id of the Google Apps account</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
         {
             return new InsertRequest(service, body, customerId);
         }
 
         /// <summary>Add Organization Unit</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.OrgUnit>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4406,7 +4406,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -4455,7 +4455,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Organization Units</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.OrgUnits>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnits>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customerId)
@@ -4549,16 +4549,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="orgUnitPath">Full path
         /// of the organization unit or its Id</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new PatchRequest(service, body, customerId, orgUnitPath);
         }
 
         /// <summary>Update Organization Unit. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.OrgUnit>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4578,7 +4578,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -4633,16 +4633,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="orgUnitPath">Full path
         /// of the organization unit or its Id</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new UpdateRequest(service, body, customerId, orgUnitPath);
         }
 
         /// <summary>Update Organization Unit</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.OrgUnit>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -4662,7 +4662,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -4737,7 +4737,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all privileges for a customer.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Privileges>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Privileges>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -4919,7 +4919,7 @@ namespace Google.Apis.admin.Directory.directory_v1
             }
 
             /// <summary>Retrieves a calendar resource.</summary>
-            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.CalendarResource>
+            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string customer, string calendarResourceId)
@@ -4990,16 +4990,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
-            public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer)
+            public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer)
             {
                 return new InsertRequest(service, body, customer);
             }
 
             /// <summary>Inserts a calendar resource.</summary>
-            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.CalendarResource>
+            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer)
                     : base(service)
                 {
                     Customer = customer;
@@ -5015,7 +5015,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -5065,7 +5065,7 @@ namespace Google.Apis.admin.Directory.directory_v1
             }
 
             /// <summary>Retrieves a list of calendar resources for an account.</summary>
-            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.CalendarResources>
+            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResources>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -5152,16 +5152,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to update.</param>
-            public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
+            public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
             {
                 return new PatchRequest(service, body, customer, calendarResourceId);
             }
 
             /// <summary>Updates a calendar resource. This method supports patch semantics.</summary>
-            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.CalendarResource>
+            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
                     : base(service)
                 {
                     Customer = customer;
@@ -5182,7 +5182,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -5238,16 +5238,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to update.</param>
-            public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
+            public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
             {
                 return new UpdateRequest(service, body, customer, calendarResourceId);
             }
 
             /// <summary>Updates a calendar resource.</summary>
-            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.CalendarResource>
+            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
                     : base(service)
                 {
                     Customer = customer;
@@ -5268,7 +5268,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -5422,7 +5422,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve a role assignment.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.RoleAssignment>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customer, string roleAssignmentId)
@@ -5491,16 +5491,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Creates a role assignment.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
         {
             return new InsertRequest(service, body, customer);
         }
 
         /// <summary>Creates a role assignment.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.RoleAssignment>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
                 : base(service)
             {
                 Customer = customer;
@@ -5515,7 +5515,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.RoleAssignment Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -5564,7 +5564,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all roleAssignments.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.RoleAssignments>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignments>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -5775,7 +5775,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a role.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Role>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customer, string roleId)
@@ -5844,16 +5844,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Creates a role.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer)
         {
             return new InsertRequest(service, body, customer);
         }
 
         /// <summary>Creates a role.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Role>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer)
                 : base(service)
             {
                 Customer = customer;
@@ -5868,7 +5868,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Role Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Role Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -5917,7 +5917,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all the roles in a domain.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Roles>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Roles>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customer)
@@ -6002,16 +6002,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Apps account.</param>
         /// <param name="roleId">Immutable ID of
         /// the role.</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
             return new PatchRequest(service, body, customer, roleId);
         }
 
         /// <summary>Updates a role. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Role>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
                 : base(service)
             {
                 Customer = customer;
@@ -6031,7 +6031,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Role Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Role Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -6086,16 +6086,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Apps account.</param>
         /// <param name="roleId">Immutable ID of
         /// the role.</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
             return new UpdateRequest(service, body, customer, roleId);
         }
 
         /// <summary>Updates a role.</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Role>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
                 : base(service)
             {
                 Customer = customer;
@@ -6115,7 +6115,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Role Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Role Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -6268,7 +6268,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve schema</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Schema>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string customerId, string schemaKey)
@@ -6337,16 +6337,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Create schema.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable id of the Google Apps account</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId)
         {
             return new InsertRequest(service, body, customerId);
         }
 
         /// <summary>Create schema.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Schema>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -6361,7 +6361,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Schema Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Schema Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -6410,7 +6410,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all schemas for a customer</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Schemas>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schemas>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string customerId)
@@ -6467,16 +6467,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema.</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
             return new PatchRequest(service, body, customerId, schemaKey);
         }
 
         /// <summary>Update schema. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Schema>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -6496,7 +6496,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Schema Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Schema Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -6551,16 +6551,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <param name="customerId">Immutable id of the Google Apps account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema.</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
             return new UpdateRequest(service, body, customerId, schemaKey);
         }
 
         /// <summary>Update schema</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Schema>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
                 : base(service)
             {
                 CustomerId = customerId;
@@ -6580,7 +6580,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Schema Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Schema Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -6736,7 +6736,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Get information about an access token issued by a user.</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Token>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Token>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string userKey, string clientId)
@@ -6812,7 +6812,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Returns the set of tokens specified user has issued to 3rd party applications.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Tokens>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Tokens>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -6986,16 +6986,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <summary>Add a alias for the user</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable Id of the user</param>
-            public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.Alias body, string userKey)
+            public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string userKey)
             {
                 return new InsertRequest(service, body, userKey);
             }
 
             /// <summary>Add a alias for the user</summary>
-            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Alias>
+            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Alias>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Alias body, string userKey)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string userKey)
                     : base(service)
                 {
                     UserKey = userKey;
@@ -7010,7 +7010,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.Alias Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.Alias Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -7059,7 +7059,7 @@ namespace Google.Apis.admin.Directory.directory_v1
             }
 
             /// <summary>List all aliases for a user</summary>
-            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Aliases>
+            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Aliases>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -7138,16 +7138,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <summary>Watch for changes in user aliases list</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable Id of the user</param>
-            public virtual WatchRequest Watch(Google.Apis.admin.Directory.directory_v1.Data.Channel body, string userKey)
+            public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
             {
                 return new WatchRequest(service, body, userKey);
             }
 
             /// <summary>Watch for changes in user aliases list</summary>
-            public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Channel>
+            public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Channel>
             {
                 /// <summary>Constructs a new Watch request.</summary>
-                public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Channel body, string userKey)
+                public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
                     : base(service)
                 {
                     UserKey = userKey;
@@ -7177,7 +7177,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.Channel Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.Channel Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -7319,7 +7319,7 @@ namespace Google.Apis.admin.Directory.directory_v1
             }
 
             /// <summary>Retrieve photo of a user</summary>
-            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.UserPhoto>
+            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -7374,16 +7374,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <summary>Add a photo for the user. This method supports patch semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable Id of the user</param>
-            public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
+            public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
                 return new PatchRequest(service, body, userKey);
             }
 
             /// <summary>Add a photo for the user. This method supports patch semantics.</summary>
-            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.UserPhoto>
+            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
                     : base(service)
                 {
                     UserKey = userKey;
@@ -7398,7 +7398,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.UserPhoto Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -7442,16 +7442,16 @@ namespace Google.Apis.admin.Directory.directory_v1
             /// <summary>Add a photo for the user</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable Id of the user</param>
-            public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
+            public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
                 return new UpdateRequest(service, body, userKey);
             }
 
             /// <summary>Add a photo for the user</summary>
-            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.UserPhoto>
+            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
                     : base(service)
                 {
                     UserKey = userKey;
@@ -7466,7 +7466,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.admin.Directory.directory_v1.Data.UserPhoto Body { get; set; }
+                Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -7576,7 +7576,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>retrieve user</summary>
-        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.User>
+        public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -7697,16 +7697,16 @@ namespace Google.Apis.admin.Directory.directory_v1
 
         /// <summary>create user.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.Directory.directory_v1.Data.User body)
+        public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.User body)
         {
             return new InsertRequest(service, body);
         }
 
         /// <summary>create user.</summary>
-        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.User>
+        public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.User body)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.User body)
                 : base(service)
             {
                 Body = body;
@@ -7716,7 +7716,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.User Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.User Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -7755,7 +7755,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve either deleted users or all users in a domain (paginated)</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Users>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Users>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -8030,7 +8030,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>change admin status of a user</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">Email or immutable Id of the user as admin</param>
-        public virtual MakeAdminRequest MakeAdmin(Google.Apis.admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
+        public virtual MakeAdminRequest MakeAdmin(Google.Apis.Admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
         {
             return new MakeAdminRequest(service, body, userKey);
         }
@@ -8039,7 +8039,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         public class MakeAdminRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new MakeAdmin request.</summary>
-            public MakeAdminRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
+            public MakeAdminRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
                 : base(service)
             {
                 UserKey = userKey;
@@ -8054,7 +8054,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.UserMakeAdmin Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.UserMakeAdmin Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -8098,16 +8098,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>update user. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">Email or immutable Id of the user. If Id, it should match with id of user object</param>
-        public virtual PatchRequest Patch(Google.Apis.admin.Directory.directory_v1.Data.User body, string userKey)
+        public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
             return new PatchRequest(service, body, userKey);
         }
 
         /// <summary>update user. This method supports patch semantics.</summary>
-        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.User>
+        public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.User body, string userKey)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
                 : base(service)
             {
                 UserKey = userKey;
@@ -8122,7 +8122,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.User Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.User Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -8166,7 +8166,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>Undelete a deleted user</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">The immutable id of the user</param>
-        public virtual UndeleteRequest Undelete(Google.Apis.admin.Directory.directory_v1.Data.UserUndelete body, string userKey)
+        public virtual UndeleteRequest Undelete(Google.Apis.Admin.Directory.directory_v1.Data.UserUndelete body, string userKey)
         {
             return new UndeleteRequest(service, body, userKey);
         }
@@ -8175,7 +8175,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         public class UndeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.UserUndelete body, string userKey)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.UserUndelete body, string userKey)
                 : base(service)
             {
                 UserKey = userKey;
@@ -8190,7 +8190,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.UserUndelete Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.UserUndelete Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -8234,16 +8234,16 @@ namespace Google.Apis.admin.Directory.directory_v1
         /// <summary>update user</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">Email or immutable Id of the user. If Id, it should match with id of user object</param>
-        public virtual UpdateRequest Update(Google.Apis.admin.Directory.directory_v1.Data.User body, string userKey)
+        public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
             return new UpdateRequest(service, body, userKey);
         }
 
         /// <summary>update user</summary>
-        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.User>
+        public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.User body, string userKey)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
                 : base(service)
             {
                 UserKey = userKey;
@@ -8258,7 +8258,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.User Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.User Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -8301,16 +8301,16 @@ namespace Google.Apis.admin.Directory.directory_v1
 
         /// <summary>Watch for changes in users list</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual WatchRequest Watch(Google.Apis.admin.Directory.directory_v1.Data.Channel body)
+        public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
             return new WatchRequest(service, body);
         }
 
         /// <summary>Watch for changes in users list</summary>
-        public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.Channel>
+        public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Directory.directory_v1.Data.Channel body)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
                 : base(service)
             {
                 Body = body;
@@ -8446,7 +8446,7 @@ namespace Google.Apis.admin.Directory.directory_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Directory.directory_v1.Data.Channel Body { get; set; }
+            Google.Apis.Admin.Directory.directory_v1.Data.Channel Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -8732,7 +8732,7 @@ namespace Google.Apis.admin.Directory.directory_v1
         }
 
         /// <summary>Returns the current set of valid backup verification codes for the specified user.</summary>
-        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.admin.Directory.directory_v1.Data.VerificationCodes>
+        public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.VerificationCodes>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string userKey)
@@ -8787,7 +8787,7 @@ namespace Google.Apis.admin.Directory.directory_v1
     }
 }
 
-namespace Google.Apis.admin.Directory.directory_v1.Data
+namespace Google.Apis.Admin.Directory.directory_v1.Data
 {    
 
     /// <summary>JSON template for Alias object in Directory API.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20151215 (348)
+ *      <tr><th>API Rev<td>20160226 (421)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -5805,11 +5805,11 @@ namespace Google.Apis.Analytics.v3
             }
 
             /// <summary>Gets a view (profile) to which the user has access.</summary>
-            /// <param name="accountId">Account ID to retrieve the goal for.</param>
-            /// <param name="webPropertyId">Web
-            /// property ID to retrieve the goal for.</param>
-            /// <param name="profileId">View (Profile) ID to retrieve the goal
-            /// for.</param>
+            /// <param name="accountId">Account ID to retrieve the view (profile) for.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID to retrieve the view (profile) for.</param>
+            /// <param
+            /// name="profileId">View (Profile) ID to retrieve the view (profile) for.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId)
             {
                 return new GetRequest(service, accountId, webPropertyId, profileId);
@@ -5829,15 +5829,15 @@ namespace Google.Apis.Analytics.v3
                 }
 
 
-                /// <summary>Account ID to retrieve the goal for.</summary>
+                /// <summary>Account ID to retrieve the view (profile) for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to retrieve the goal for.</summary>
+                /// <summary>Web property ID to retrieve the view (profile) for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>View (Profile) ID to retrieve the goal for.</summary>
+                /// <summary>View (Profile) ID to retrieve the view (profile) for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProfileId { get; private set; }
 

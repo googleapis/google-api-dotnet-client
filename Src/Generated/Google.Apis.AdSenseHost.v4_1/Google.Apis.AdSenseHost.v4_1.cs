@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/host/'>AdSense Host API</a>
  *      <tr><th>API Version<td>v4.1
- *      <tr><th>API Rev<td>20160112 (376)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/host/'>
  *              https://developers.google.com/adsense/host/</a>
@@ -1725,10 +1725,10 @@ namespace Google.Apis.AdSenseHost.v4_1
                 /// <summary>AdSense For Games</summary>
                 [Google.Apis.Util.StringValueAttribute("AFG")]
                 AFG,
-                /// <summary>AdSense For Mobile Content</summary>
+                /// <summary>AdSense For Mobile Content - deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("AFMC")]
                 AFMC,
-                /// <summary>AdSense For Search</summary>
+                /// <summary>AdSense For Search - deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("AFS")]
                 AFS,
                 /// <summary>AdSense For Video</summary>
@@ -2971,7 +2971,8 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        /// deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
         public virtual AdUnit.ContentAdsSettingsData ContentAdsSettings { get; set; } 
 
@@ -2988,7 +2989,7 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to WAP mobile content ads (AFMC - deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileContentAdsSettings")]
         public virtual AdUnit.MobileContentAdsSettingsData MobileContentAdsSettings { get; set; } 
 
@@ -3009,7 +3010,8 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+        /// deprecated).</summary>
         public class ContentAdsSettingsData
         {
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
@@ -3045,7 +3047,7 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
             }
         }    
 
-        /// <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        /// <summary>Settings specific to WAP mobile content ads (AFMC - deprecated).</summary>
         public class MobileContentAdsSettingsData
         {
             /// <summary>The markup language to use for this ad unit.</summary>
@@ -3103,7 +3105,8 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The products to associate with the user. Options: AFC, AFF, AFS, AFMC</summary>
+        /// <summary>The products to associate with the user. Options: AFC, AFG, AFV, AFS (deprecated), AFMC
+        /// (deprecated)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCodes")]
         public virtual System.Collections.Generic.IList<string> ProductCodes { get; set; } 
 

@@ -22,12 +22,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Google.Apis.admin.Directory.directory_v1")]
+[assembly: AssemblyTitle("Google.Apis.Admin.Directory.directory_v1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Google.Apis.admin.Directory.directory_v1")]
+[assembly: AssemblyProduct("Google.Apis.Admin.Directory.directory_v1")]
 [assembly: AssemblyCompany("Google Inc.")]
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.10.0.341")]
+[assembly: AssemblyVersion("1.10.1.341")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160120 (384)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -523,6 +523,14 @@ namespace Google.Apis.IdentityToolkit.v3
             }
 
 
+            /// <summary>Delegated GCP project number of the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("delegatedProjectNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DelegatedProjectNumber { get; set; }
+
+            /// <summary>GCP project number of the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectNumber { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -547,6 +555,24 @@ namespace Google.Apis.IdentityToolkit.v3
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "delegatedProjectNumber", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "delegatedProjectNumber",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "projectNumber", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectNumber",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -747,6 +773,59 @@ namespace Google.Apis.IdentityToolkit.v3
 
         }
 
+        /// <summary>Set project configuration.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SetProjectConfigRequest SetProjectConfig(Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySetProjectConfigRequest body)
+        {
+            return new SetProjectConfigRequest(service, body);
+        }
+
+        /// <summary>Set project configuration.</summary>
+        public class SetProjectConfigRequest : IdentityToolkitBaseServiceRequest<Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySetProjectConfigResponse>
+        {
+            /// <summary>Constructs a new SetProjectConfig request.</summary>
+            public SetProjectConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySetProjectConfigRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySetProjectConfigRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setProjectConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "setProjectConfig"; }
+            }
+
+            /// <summary>Initializes SetProjectConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Sign out user.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SignOutUserRequest SignOutUser(Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySignOutUserRequest body)
@@ -792,6 +871,59 @@ namespace Google.Apis.IdentityToolkit.v3
             }
 
             /// <summary>Initializes SignOutUser parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Signup new user.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SignupNewUserRequest SignupNewUser(Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySignupNewUserRequest body)
+        {
+            return new SignupNewUserRequest(service, body);
+        }
+
+        /// <summary>Signup new user.</summary>
+        public class SignupNewUserRequest : IdentityToolkitBaseServiceRequest<Google.Apis.IdentityToolkit.v3.Data.SignupNewUserResponse>
+        {
+            /// <summary>Constructs a new SignupNewUser request.</summary>
+            public SignupNewUserRequest(Google.Apis.Services.IClientService service, Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySignupNewUserRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.IdentityToolkit.v3.Data.IdentitytoolkitRelyingpartySignupNewUserRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "signupNewUser"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "signupNewUser"; }
+            }
+
+            /// <summary>Initializes SignupNewUser parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1087,6 +1219,37 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Template for an email template.</summary>
+    public class EmailTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; } 
+
+        /// <summary>Email body format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; } 
+
+        /// <summary>From address of the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("from")]
+        public virtual string From { get; set; } 
+
+        /// <summary>From display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromDisplayName")]
+        public virtual string FromDisplayName { get; set; } 
+
+        /// <summary>Reply-to address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyTo")]
+        public virtual string ReplyTo { get; set; } 
+
+        /// <summary>Subject of the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response of getting account information.</summary>
     public class GetAccountInfoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1195,6 +1358,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to delete account.</summary>
     public class IdentitytoolkitRelyingpartyDeleteAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
         /// <summary>The local ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]
         public virtual string LocalId { get; set; } 
@@ -1206,6 +1374,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to download user account in batch.</summary>
     public class IdentitytoolkitRelyingpartyDownloadAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
         /// <summary>The max number of results to return in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; } 
@@ -1221,6 +1394,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to get the account information.</summary>
     public class IdentitytoolkitRelyingpartyGetAccountInfoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
         /// <summary>The list of emails of the users to inquiry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual System.Collections.Generic.IList<string> Email { get; set; } 
@@ -1248,6 +1426,14 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; } 
 
+        /// <summary>Authorized domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedDomains")]
+        public virtual System.Collections.Generic.IList<string> AuthorizedDomains { get; set; } 
+
+        /// <summary>Change email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeEmailTemplate")]
+        public virtual EmailTemplate ChangeEmailTemplate { get; set; } 
+
         /// <summary>OAuth2 provider configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual System.Collections.Generic.IList<IdpConfig> IdpConfig { get; set; } 
@@ -1255,6 +1441,18 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>Project ID of the relying party.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
+
+        /// <summary>Reset password email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordTemplate")]
+        public virtual EmailTemplate ResetPasswordTemplate { get; set; } 
+
+        /// <summary>Whether to use email sending provided by Firebear.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useEmailSending")]
+        public virtual System.Nullable<bool> UseEmailSending { get; set; } 
+
+        /// <summary>Verify email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyEmailTemplate")]
+        public virtual EmailTemplate VerifyEmailTemplate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1299,6 +1497,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
         public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
 
+        /// <summary>The attributes users request to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteAttribute")]
+        public virtual System.Collections.Generic.IList<string> DeleteAttribute { get; set; } 
+
         /// <summary>Whether to disable the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableUser")]
         public virtual System.Nullable<bool> DisableUser { get; set; } 
@@ -1335,9 +1537,17 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
+        /// <summary>The photo url of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; } 
+
         /// <summary>The associated IDPs of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual System.Collections.Generic.IList<string> Provider { get; set; } 
+
+        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
+        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
 
         /// <summary>Mark the user to upgrade to federated login.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeToFederatedLogin")]
@@ -1346,6 +1556,57 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>Timestamp in seconds for valid login token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validSince")]
         public virtual System.Nullable<long> ValidSince { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to set the project configuration.</summary>
+    public class IdentitytoolkitRelyingpartySetProjectConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to allow password user sign in or sign up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPasswordUser")]
+        public virtual System.Nullable<bool> AllowPasswordUser { get; set; } 
+
+        /// <summary>Browser API key, needed when making http request to Apiary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
+        public virtual string ApiKey { get; set; } 
+
+        /// <summary>Change email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeEmailTemplate")]
+        public virtual EmailTemplate ChangeEmailTemplate { get; set; } 
+
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
+        /// <summary>Oauth2 provider configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual System.Collections.Generic.IList<IdpConfig> IdpConfig { get; set; } 
+
+        /// <summary>Reset password email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordTemplate")]
+        public virtual EmailTemplate ResetPasswordTemplate { get; set; } 
+
+        /// <summary>Whether to use email sending provided by Firebear.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useEmailSending")]
+        public virtual System.Nullable<bool> UseEmailSending { get; set; } 
+
+        /// <summary>Verify email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyEmailTemplate")]
+        public virtual EmailTemplate VerifyEmailTemplate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response of setting the project configuration.</summary>
+    public class IdentitytoolkitRelyingpartySetProjectConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Project ID of the relying party.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1377,9 +1638,53 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to signup new user, create anonymous user or anonymous user reauth.</summary>
+    public class IdentitytoolkitRelyingpartySignupNewUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The captcha challenge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("captchaChallenge")]
+        public virtual string CaptchaChallenge { get; set; } 
+
+        /// <summary>Response to the captcha.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("captchaResponse")]
+        public virtual string CaptchaResponse { get; set; } 
+
+        /// <summary>The name of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The GITKit token of the authenticated user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
+
+        /// <summary>Instance id token of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; } 
+
+        /// <summary>The new password of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; } 
+
+        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
+        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to upload user account in batch.</summary>
     public class IdentitytoolkitRelyingpartyUploadAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
         /// <summary>The password hash algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashAlgorithm")]
         public virtual string HashAlgorithm { get; set; } 
@@ -1411,6 +1716,15 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to verify the IDP assertion.</summary>
     public class IdentitytoolkitRelyingpartyVerifyAssertionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
+        /// <summary>The GITKit token of the authenticated user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
+
         /// <summary>Instance id token of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
@@ -1432,6 +1746,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("returnRefreshToken")]
         public virtual System.Nullable<bool> ReturnRefreshToken { get; set; } 
 
+        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
+        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
+
         /// <summary>Session ID, which should match the one in previous createAuthUri request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
         public virtual string SessionId { get; set; } 
@@ -1446,6 +1764,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>Instance id token of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
+
+        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
+        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
 
         /// <summary>The custom token to verify</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
@@ -1475,6 +1797,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
+        /// <summary>The GITKit token of the authenticated user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
+
         /// <summary>Instance id token of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
@@ -1486,6 +1812,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The GITKit token for the non-trusted IDP, which is to be confirmed by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingIdToken")]
         public virtual string PendingIdToken { get; set; } 
+
+        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
+        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1579,6 +1909,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
+        /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
+        /// seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; } 
+
         /// <summary>The Gitkit id token to login the newly sign up user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
         public virtual string IdToken { get; set; } 
@@ -1591,9 +1926,17 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newEmail")]
         public virtual string NewEmail { get; set; } 
 
+        /// <summary>The photo url of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; } 
+
         /// <summary>The user's profiles at the associated IdPs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerUserInfo")]
         public virtual System.Collections.Generic.IList<SetAccountInfoResponse.ProviderUserInfoData> ProviderUserInfo { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1615,6 +1958,42 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             public virtual string ProviderId { get; set; } 
 
         }
+    }    
+
+    /// <summary>Response of signing up new user, creating anonymous user or anonymous user reauth.</summary>
+    public class SignupNewUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
+        /// seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; } 
+
+        /// <summary>The Gitkit id token to login the newly sign up user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
+
+        /// <summary>The fixed string "identitytoolkit#SignupNewUserResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The RP local ID of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
+        public virtual string LocalId { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Respone of uploading accounts in batch.</summary>
@@ -1706,6 +2085,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
             public virtual string DisplayName { get; set; } 
 
+            /// <summary>User's email at IDP.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("email")]
+            public virtual string Email { get; set; } 
+
             /// <summary>User's identifier at IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("federatedId")]
             public virtual string FederatedId { get; set; } 
@@ -1718,6 +2101,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             /// and yahoo.com. For other OpenID IdPs it's the OP identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
             public virtual string ProviderId { get; set; } 
+
+            /// <summary>User's raw identifier directly returned from IDP.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("rawId")]
+            public virtual string RawId { get; set; } 
 
         }
     }    
@@ -1762,6 +2149,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
         public virtual System.Nullable<bool> EmailVerified { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
+        /// seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; } 
 
         /// <summary>The unique ID identifies the IdP account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("federatedId")]
@@ -1833,6 +2225,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScope")]
         public virtual string OauthScope { get; set; } 
 
+        /// <summary>The OAuth1 access token secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthTokenSecret")]
+        public virtual string OauthTokenSecret { get; set; } 
+
         /// <summary>The original email stored in the mapping storage. It's returned when the federated ID is associated
         /// to a different email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalEmail")]
@@ -1849,6 +2245,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
         public virtual string ProviderId { get; set; } 
 
+        /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; } 
+
         /// <summary>The timezone of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
@@ -1864,6 +2264,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Response from verifying a custom token</summary>
     public class VerifyCustomTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
+        /// seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; } 
+
         /// <summary>The GITKit token for authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
         public virtual string IdToken { get; set; } 
@@ -1871,6 +2276,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The fixed string "identitytoolkit#VerifyCustomTokenResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1886,6 +2295,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The email returned by the IdP. NOTE: The federated login user may not own the email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
+        /// seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; } 
 
         /// <summary>The GITKit token for authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
@@ -1915,6 +2329,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The URI of the user's photo at IdP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
         public virtual string PhotoUrl { get; set; } 
+
+        /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; } 
 
         /// <summary>Whether the email is registered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registered")]

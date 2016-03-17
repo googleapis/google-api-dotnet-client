@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/access/user-accounts/api/latest/'>Cloud User Accounts API</a>
  *      <tr><th>API Version<td>vm_alpha
- *      <tr><th>API Rev<td>20150924 (266)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/access/user-accounts/api/latest/'>
  *              https://cloud.google.com/compute/docs/access/user-accounts/api/latest/</a>
@@ -459,19 +459,32 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             public virtual string Project { get; private set; }
 
             /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+            /// {expression} must be in the format: field_name comparison_string literal_string.
             ///
-            /// The FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The
-            /// LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field
-            /// (string, number, boolean). For string fields, the literal value is interpreted as a regular expression
-            /// using RE2 syntax. The literal value must match the entire field.
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.</summary>
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Maximum count of results to be returned.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -490,8 +503,8 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Use this parameter if you want to list the next page of results.
-            /// Set pageToken to the nextPageToken returned by a previous list request.</summary>
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -991,19 +1004,32 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             public virtual string Project { get; private set; }
 
             /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+            /// {expression} must be in the format: field_name comparison_string literal_string.
             ///
-            /// The FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The
-            /// LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field
-            /// (string, number, boolean). For string fields, the literal value is interpreted as a regular expression
-            /// using RE2 syntax. The literal value must match the entire field.
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.</summary>
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Maximum count of results to be returned.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1022,8 +1048,8 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Use this parameter if you want to list the next page of results.
-            /// Set pageToken to the nextPageToken returned by a previous list request.</summary>
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1528,19 +1554,32 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             public virtual string Instance { get; private set; }
 
             /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+            /// {expression} must be in the format: field_name comparison_string literal_string.
             ///
-            /// The FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The
-            /// LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field
-            /// (string, number, boolean). For string fields, the literal value is interpreted as a regular expression
-            /// using RE2 syntax. The literal value must match the entire field.
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.</summary>
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Maximum count of results to be returned.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1559,8 +1598,8 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Use this parameter if you want to list the next page of results.
-            /// Set pageToken to the nextPageToken returned by a previous list request.</summary>
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2078,19 +2117,32 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             public virtual string Project { get; private set; }
 
             /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+            /// {expression} must be in the format: field_name comparison_string literal_string.
             ///
-            /// The FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The
-            /// LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field
-            /// (string, number, boolean). For string fields, the literal value is interpreted as a regular expression
-            /// using RE2 syntax. The literal value must match the entire field.
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.</summary>
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
+            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
+            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
+            /// and filter results based on label values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Maximum count of results to be returned.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -2109,8 +2161,8 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Use this parameter if you want to list the next page of results.
-            /// Set pageToken to the nextPageToken returned by a previous list request.</summary>
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -2453,6 +2505,25 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha
 namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
 {    
 
+    /// <summary>Enables "data access" audit logging for a service and specifies a list of members that are log-
+    /// exempted.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
+        /// specified above. Follows the same format of Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for "data access" audit logging. For example,
+        /// `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all
+        /// services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A list of authorized public keys for a user account.</summary>
     public class AuthorizedKeysView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2473,7 +2544,7 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following formats:
+        /// following values:
         ///
         /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
         /// account.
@@ -2739,8 +2810,7 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
     /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] An optional identifier specified by the client when the mutation was initiated. Must
-        /// be unique for all Operation resources in the project.</summary>
+        /// <summary>[Output Only] Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -2748,7 +2818,13 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>[Output Only] The time that this operation was completed. This is in RFC3339 text format.</summary>
+        /// <summary>[Output Only] A textual description of the operation, which is set when the operation is
+        /// created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The time that this operation was completed. This value is in RFC3339 text
+        /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
@@ -2762,20 +2838,22 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorMessage")]
         public virtual string HttpErrorMessage { get; set; } 
 
-        /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
-        /// such as 404.</summary>
+        /// <summary>[Output Only] If the operation fails, this field contains the HTTP error status code that was
+        /// returned. For example, a 404 means the resource was not found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
         public virtual System.Nullable<int> HttpErrorStatusCode { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] The time that this operation was requested. This is in RFC3339 text format.</summary>
+        /// <summary>[Output Only] The time that this operation was requested. This value is in RFC3339 text
+        /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#operation for operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -2783,19 +2861,18 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] Type of the operation, such as insert, compute.instanceGroups.update, or
-        /// compute.instanceGroups.delete.</summary>
+        /// <summary>[Output Only] The type of operation, such as insert, update, or delete, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
         /// <summary>[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement
-        /// that this be linear or support any granularity of operations. This should not be used to guess at when the
+        /// that this be linear or support any granularity of operations. This should not be used to guess when the
         /// operation will be complete. This number should monotonically increase as the operation progresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the operation resides. Only applicable for regional
-        /// resources.</summary>
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
+        /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -2803,12 +2880,12 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The time that this operation was started by the server. This is in RFC3339 text
+        /// <summary>[Output Only] The time that this operation was started by the server. This value is in RFC3339 text
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
-        /// <summary>[Output Only] Status of the operation. Can be one of the following: PENDING, RUNNING, or
+        /// <summary>[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or
         /// DONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
@@ -2817,11 +2894,12 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>[Output Only] Unique target ID which identifies a particular incarnation of the target.</summary>
+        /// <summary>[Output Only] The unique target ID, which identifies a specific incarnation of the target
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] URL of the resource the operation is mutating.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -2834,7 +2912,8 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the operation resides.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -2858,7 +2937,7 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -2872,15 +2951,17 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
 
         public class WarningsData
         {
-            /// <summary>[Output Only] The warning type identifier for this warning.</summary>
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
             public virtual string Code { get; set; } 
 
-            /// <summary>[Output Only] Metadata for this warning in key: value format.</summary>
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
 
-            /// <summary>[Output Only] Optional human-readable details for this warning.</summary>
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
             public virtual string Message { get; set; } 
 
@@ -2888,7 +2969,12 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
 
             public class DataData
             {
-                /// <summary>[Output Only] A key for the warning data.</summary>
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
                 public virtual string Key { get; set; } 
 
@@ -2903,11 +2989,12 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
     /// <summary>Contains a list of Operation resources.</summary>
     public class OperationList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] The Operation resources.</summary>
+        /// <summary>[Output Only] A list of Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Operation> Items { get; set; } 
 
@@ -2915,7 +3002,10 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncate.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2937,21 +3027,38 @@ namespace Google.Apis.CloudUserAccounts.vm_alpha.Data
     /// **Example**
     ///
     /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role": "roles/viewer",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
     /// "members": ["user:sean@example.com"] } ] }
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies audit logging configs for "data access". "data access": generally refers to data
+        /// reads/writes and admin reads. "admin activity": generally refers to admin writes.
+        ///
+        /// Note: `AuditConfig` doesn't apply to "admin activity", which always enables audit logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
         /// `role`. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
-        /// <summary>Can be used to perform a read-modify-write.</summary>
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
+        public virtual System.Nullable<bool> IamOwned { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 

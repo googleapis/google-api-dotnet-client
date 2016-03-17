@@ -43,7 +43,7 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.admin.Reports.reports_v1
+namespace Google.Apis.Admin.Reports.reports_v1
 {
     /// <summary>The Reports Service.</summary>
     public class ReportsService : Google.Apis.Services.BaseClientService
@@ -288,7 +288,7 @@ namespace Google.Apis.admin.Reports.reports_v1
         }
 
         /// <summary>Retrieves a list of activities for a specific customer and application.</summary>
-        public class ListRequest : ReportsBaseServiceRequest<Google.Apis.admin.Reports.reports_v1.Data.Activities>
+        public class ListRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Activities>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string userKey, string applicationName)
@@ -469,16 +469,16 @@ namespace Google.Apis.admin.Reports.reports_v1
         /// is specified as the userKey, it returns usageReports for all users.</param>
         /// <param
         /// name="applicationName">Application name for which the events are to be retrieved.</param>
-        public virtual WatchRequest Watch(Google.Apis.admin.Reports.reports_v1.Data.Channel body, string userKey, string applicationName)
+        public virtual WatchRequest Watch(Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, string applicationName)
         {
             return new WatchRequest(service, body, userKey, applicationName);
         }
 
         /// <summary>Push changes to activities</summary>
-        public class WatchRequest : ReportsBaseServiceRequest<Google.Apis.admin.Reports.reports_v1.Data.Channel>
+        public class WatchRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Reports.reports_v1.Data.Channel body, string userKey, string applicationName)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, string applicationName)
                 : base(service)
             {
                 UserKey = userKey;
@@ -535,7 +535,7 @@ namespace Google.Apis.admin.Reports.reports_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Reports.reports_v1.Data.Channel Body { get; set; }
+            Google.Apis.Admin.Reports.reports_v1.Data.Channel Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -676,7 +676,7 @@ namespace Google.Apis.admin.Reports.reports_v1
 
         /// <summary>Stop watching resources through this channel</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual StopRequest Stop(Google.Apis.admin.Reports.reports_v1.Data.Channel body)
+        public virtual StopRequest Stop(Google.Apis.Admin.Reports.reports_v1.Data.Channel body)
         {
             return new StopRequest(service, body);
         }
@@ -685,7 +685,7 @@ namespace Google.Apis.admin.Reports.reports_v1
         public class StopRequest : ReportsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.Reports.reports_v1.Data.Channel body)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body)
                 : base(service)
             {
                 Body = body;
@@ -695,7 +695,7 @@ namespace Google.Apis.admin.Reports.reports_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.Reports.reports_v1.Data.Channel Body { get; set; }
+            Google.Apis.Admin.Reports.reports_v1.Data.Channel Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -754,7 +754,7 @@ namespace Google.Apis.admin.Reports.reports_v1
 
         /// <summary>Retrieves a report which is a collection of properties / statistics for a specific
         /// customer.</summary>
-        public class GetRequest : ReportsBaseServiceRequest<Google.Apis.admin.Reports.reports_v1.Data.UsageReports>
+        public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string date)
@@ -874,7 +874,7 @@ namespace Google.Apis.admin.Reports.reports_v1
         }
 
         /// <summary>Retrieves a report which is a collection of properties / statistics for a set of users.</summary>
-        public class GetRequest : ReportsBaseServiceRequest<Google.Apis.admin.Reports.reports_v1.Data.UsageReports>
+        public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string userKey, string date)
@@ -1009,7 +1009,7 @@ namespace Google.Apis.admin.Reports.reports_v1
     }
 }
 
-namespace Google.Apis.admin.Reports.reports_v1.Data
+namespace Google.Apis.Admin.Reports.reports_v1.Data
 {    
 
     /// <summary>JSON template for a collection of activites.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160104 (368)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>

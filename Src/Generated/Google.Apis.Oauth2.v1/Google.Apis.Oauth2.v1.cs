@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>Google OAuth2 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160120 (384)
+ *      <tr><th>API Rev<td>20160217 (412)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>
  *              https://developers.google.com/accounts/docs/OAuth2</a>
@@ -94,7 +94,7 @@ namespace Google.Apis.Oauth2.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google OAuth2 API.</summary>
         public class Scope
         {
-            /// <summary>Know your basic profile info and list of people in your circles.</summary>
+            /// <summary>Know the list of people in your circles, your age range, and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
             /// <summary>Know who you are on Google</summary>

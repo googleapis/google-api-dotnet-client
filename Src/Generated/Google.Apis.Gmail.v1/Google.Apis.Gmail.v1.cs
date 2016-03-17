@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151214 (347)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -646,6 +646,11 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
+                /// <summary>Include drafts from SPAM and TRASH in the results.</summary>
+                /// [default: false]
+                [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
+
                 /// <summary>Maximum number of drafts to return.</summary>
                 /// [default: 100]
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -686,6 +691,15 @@ namespace Google.Apis.Gmail.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = "me",
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeSpamTrash", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeSpamTrash",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "false",
                             Pattern = null,
                         });
                     RequestParameters.Add(
@@ -1798,6 +1812,79 @@ namespace Google.Apis.Gmail.v1
                     }
 
                 }
+            }
+
+            /// <summary>Deletes many messages by message ID. Provides no guarantees that messages were not already
+            /// deleted or even existed at all.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+            /// user.</param>
+            public virtual BatchDeleteRequest BatchDelete(Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest body, string userId)
+            {
+                return new BatchDeleteRequest(service, body, userId);
+            }
+
+            /// <summary>Deletes many messages by message ID. Provides no guarantees that messages were not already
+            /// deleted or even existed at all.</summary>
+            public class BatchDeleteRequest : GmailBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new BatchDelete request.</summary>
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest body, string userId)
+                    : base(service)
+                {
+                    UserId = userId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The user's email address. The special value me can be used to indicate the authenticated
+                /// user.</summary>
+                /// [default: me]
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string UserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "batchDelete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{userId}/messages/batchDelete"; }
+                }
+
+                /// <summary>Initializes BatchDelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                }
+
             }
 
             /// <summary>Immediately and permanently deletes the specified message. This operation cannot be undone.
@@ -3764,6 +3851,16 @@ namespace Google.Apis.Gmail.v1
 
 namespace Google.Apis.Gmail.v1.Data
 {    
+
+    public class BatchDeleteMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IDs of the messages to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A draft email in the user's mailbox.</summary>
     public class Draft : Google.Apis.Requests.IDirectResponseSchema

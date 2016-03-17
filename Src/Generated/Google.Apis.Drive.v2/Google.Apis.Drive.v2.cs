@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160114 (378)
+ *      <tr><th>API Rev<td>20160225 (420)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2237,6 +2237,105 @@ namespace Google.Apis.Drive.v2
             {
                 base.InitParameters();
 
+            }
+
+        }
+
+        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content.</summary>
+        /// <param name="fileId">The ID of the file.</param>
+        /// <param name="mimeType">The MIME type of the format
+        /// requested for this export.</param>
+        public virtual ExportRequest Export(string fileId, string mimeType)
+        {
+            return new ExportRequest(service, fileId, mimeType);
+        }
+
+        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content.</summary>
+        public class ExportRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Export request.</summary>
+            public ExportRequest(Google.Apis.Services.IClientService service, string fileId, string mimeType)
+                : base(service)
+            {
+                FileId = fileId;
+                MimeType = mimeType;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the file.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>The MIME type of the format requested for this export.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mimeType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MimeType { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "export"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "files/{fileId}/export"; }
+            }
+
+            /// <summary>Initializes Export parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "fileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "mimeType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mimeType",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                MediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
 
         }
@@ -7449,6 +7548,10 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>Whether the current user can comment on the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
         public virtual System.Nullable<bool> CanComment { get; set; } 
+
+        /// <summary>Whether the current user has read access to the Revisions resource of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
+        public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
 
         /// <summary>Whether the file can be copied by the current user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyable")]

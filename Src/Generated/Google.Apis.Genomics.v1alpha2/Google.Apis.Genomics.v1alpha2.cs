@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160120 (384)
+ *      <tr><th>API Rev<td>20160224 (419)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -65,6 +65,7 @@ namespace Google.Apis.Genomics.v1alpha2
             : base(initializer)
         {
             operations = new OperationsResource(this);
+            pipelines = new PipelinesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -110,6 +111,14 @@ namespace Google.Apis.Genomics.v1alpha2
         public virtual OperationsResource Operations
         {
             get { return operations; }
+        }
+
+        private readonly PipelinesResource pipelines;
+
+        /// <summary>Gets the Pipelines resource.</summary>
+        public virtual PipelinesResource Pipelines
+        {
+            get { return pipelines; }
         }
     }
 
@@ -560,6 +569,515 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
     }
+
+    /// <summary>The "pipelines" collection of methods.</summary>
+    public class PipelinesResource
+    {
+        private const string Resource = "pipelines";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PipelinesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            controllerConfig = new ControllerConfigResource(service);
+
+        }
+
+        private readonly ControllerConfigResource controllerConfig;
+
+        /// <summary>Gets the ControllerConfig resource.</summary>
+        public virtual ControllerConfigResource ControllerConfig
+        {
+            get { return controllerConfig; }
+        }
+
+        /// <summary>The "controller_config" collection of methods.</summary>
+        public class ControllerConfigResource
+        {
+            private const string Resource = "controllerConfig";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ControllerConfigResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets controller configuration information. Should only be called by VMs created by the
+            /// Pipelines Service and not by end users.</summary>
+            /// <param name="operationId">The operation to retrieve controller configuration for.</param>
+            public virtual GetRequest Get(string operationId)
+            {
+                return new GetRequest(service, operationId);
+            }
+
+            /// <summary>Gets controller configuration information. Should only be called by VMs created by the
+            /// Pipelines Service and not by end users.</summary>
+            public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ControllerConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string operationId)
+                    : base(service)
+                {
+                    OperationId = operationId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The operation to retrieve controller configuration for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string OperationId { get; private set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ulong> ValidationToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1alpha2/pipelines/controller_config/{operationId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "operationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "operationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "validationToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validationToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than
+        /// `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used
+        /// to run the pipeline. Caller must have WRITE permission to the project.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Genomics.v1alpha2.Data.Pipeline body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than
+        /// `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used
+        /// to run the pipeline. Caller must have WRITE permission to the project.</summary>
+        public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Pipeline>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1alpha2.Data.Pipeline body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1alpha2.Data.Pipeline Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Deletes a pipeline based on ID. Caller must have WRITE permission to the project.</summary>
+        /// <param name="pipelineId">Caller must have WRITE access to the project in which this pipeline is
+        /// defined.</param>
+        public virtual DeleteRequest Delete(string pipelineId)
+        {
+            return new DeleteRequest(service, pipelineId);
+        }
+
+        /// <summary>Deletes a pipeline based on ID. Caller must have WRITE permission to the project.</summary>
+        public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string pipelineId)
+                : base(service)
+            {
+                PipelineId = pipelineId;
+                InitParameters();
+            }
+
+
+            /// <summary>Caller must have WRITE access to the project in which this pipeline is defined.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pipelineId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PipelineId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines/{pipelineId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pipelineId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pipelineId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a pipeline based on ID. Caller must have READ permission to the project.</summary>
+        /// <param name="pipelineId">Caller must have READ access to the project in which this pipeline is defined.</param>
+        public virtual GetRequest Get(string pipelineId)
+        {
+            return new GetRequest(service, pipelineId);
+        }
+
+        /// <summary>Retrieves a pipeline based on ID. Caller must have READ permission to the project.</summary>
+        public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Pipeline>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string pipelineId)
+                : base(service)
+            {
+                PipelineId = pipelineId;
+                InitParameters();
+            }
+
+
+            /// <summary>Caller must have READ access to the project in which this pipeline is defined.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pipelineId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PipelineId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines/{pipelineId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pipelineId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pipelineId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists pipelines. Caller must have READ permission to the project.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists pipelines. Caller must have READ permission to the project.</summary>
+        public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ListPipelinesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The name of the project to search for pipelines. Caller must have READ access to this
+            /// project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
+            /// <summary>Optional. Pipelines with names that match this prefix should be returned. If unspecified, all
+            /// pipelines in the project, up to `pageSize`, will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NamePrefix { get; set; }
+
+            /// <summary>Optional. Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. Token to use to indicate where to start getting results. If unspecified, returns the
+            /// first page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "namePrefix", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "namePrefix",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Runs a pipeline. If `pipelineId` is specified in the request, then run a saved pipeline. If
+        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy. The caller must have
+        /// READ permission to the project where the pipeline is stored and WRITE permission to the project where the
+        /// pipeline will be run, as VMs will be created and storage will be used.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual RunRequest Run(Google.Apis.Genomics.v1alpha2.Data.RunPipelineRequest body)
+        {
+            return new RunRequest(service, body);
+        }
+
+        /// <summary>Runs a pipeline. If `pipelineId` is specified in the request, then run a saved pipeline. If
+        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy. The caller must have
+        /// READ permission to the project where the pipeline is stored and WRITE permission to the project where the
+        /// pipeline will be run, as VMs will be created and storage will be used.</summary>
+        public class RunRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Operation>
+        {
+            /// <summary>Constructs a new Run request.</summary>
+            public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1alpha2.Data.RunPipelineRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1alpha2.Data.RunPipelineRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "run"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines:run"; }
+            }
+
+            /// <summary>Initializes Run parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Updates status of a given operation. Should only be called by VMs created by the Pipelines Service
+        /// and not by end users.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateStatusRequest UpdateStatus(Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest body)
+        {
+            return new UpdateStatusRequest(service, body);
+        }
+
+        /// <summary>Updates status of a given operation. Should only be called by VMs created by the Pipelines Service
+        /// and not by end users.</summary>
+        public class UpdateStatusRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
+        {
+            /// <summary>Constructs a new UpdateStatus request.</summary>
+            public UpdateStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1alpha2.Data.UpdateStatusRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update_status"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1alpha2/pipelines:update_status"; }
+            }
+
+            /// <summary>Initializes UpdateStatus parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.Genomics.v1alpha2.Data
@@ -568,6 +1086,101 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stores the information that the controller will fetch from the server in order to run. Should only be
+    /// used by VMs created by the Pipelines Service and not by end users.</summary>
+    public class ControllerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
+        public virtual string Cmd { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Disks { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsLogPath")]
+        public virtual string GcsLogPath { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSinks")]
+        public virtual System.Collections.Generic.IDictionary<string,RepeatedString> GcsSinks { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSources")]
+        public virtual System.Collections.Generic.IDictionary<string,RepeatedString> GcsSources { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("vars")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Vars { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Google Compute Engine disk resource specification.</summary>
+    public class Disk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies whether or not to delete the disk when the pipeline completes. This field is applicable
+        /// only for newly created disks. See https://cloud.google.com/compute/docs/reference/latest/instances#resource
+        /// for more details. Optional. At create time means that an auto delete disk may be used. At run time, means it
+        /// should be used. Cannot be true at run time if false at create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
+        public virtual System.Nullable<bool> AutoDelete { get; set; } 
+
+        /// <summary>Required at create time and cannot be overridden at run time. Specifies the path in the docker
+        /// container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the
+        /// parameter has `localPath` `inputs/file.txt`, the docker container can access the data at
+        /// `/mnt/disk/inputs/file.txt`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
+        public virtual string MountPoint { get; set; } 
+
+        /// <summary>Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63
+        /// characters. The name "boot" is reserved for system use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specifies how a sourced-base persistent disk will be mounted. See
+        /// https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only
+        /// be set at create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+
+        /// <summary>The size of the disk. This field is not applicable for local SSD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; } 
+
+        /// <summary>The full or partial URL of the persistent disk to attach. See
+        /// https://cloud.google.com/compute/docs/reference/latest/instances#resource and
+        /// https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>Required. The type of the disk to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Docker execuctor specification.</summary>
+    public class DockerExecutor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The command string to run. Parameters that do not have `localCopy` specified should be
+        /// used as environment variables, while those that do can be accessed at the defined paths.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
+        public virtual string Cmd { get; set; } 
+
+        /// <summary>Required. Image name from either Docker Hub or Google Container Repository. Users that run
+        /// pipelines must have READ access to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
+        public virtual string ImageName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -614,6 +1227,56 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response of ListPipelines. Contains at most `pageSize` pipelines. If it contains `pageSize`
+    /// pipelines, and more pipelines exist, then `nextPageToken` will be populated and should be used as the
+    /// `pageToken` argument to a subsequent ListPipelines request.</summary>
+    public class ListPipelinesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The token to use to get the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The matched pipelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelines")]
+        public virtual System.Collections.Generic.IList<Pipeline> Pipelines { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>LocalCopy defines how a remote file should be copied to and from the VM.</summary>
+    public class LocalCopy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the disk where this parameter is located. Can be the name of one of the disks
+        /// specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a
+        /// mount point of `/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual string Disk { get; set; } 
+
+        /// <summary>Required. The path within the user's docker container where this input should be localized to and
+        /// from, relative to the specified disk's mount point. For example: file.txt,</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The logging options for the pipeline run.</summary>
+    public class LoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location in Google Cloud Storage to which the pipeline logs will be copied. Can be specified as
+        /// a fully qualified directory path, in which case logs will be output with a unique identifier as the filename
+        /// in that directory, or as a fully specified path, which must end in `.log`, in which case that path will be
+        /// used, and the user must ensure that logs are not overwritten. Stdout and stderr logs from the run are also
+        /// generated and output as `-stdout.log` and `-stderr.log`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
+        public virtual string GcsPath { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -686,6 +1349,220 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The pipeline object. Represents a transformation from a set of input parameters to a set of output
+    /// parameters. The transformation is defined as a docker image and command to run within that image. Each pipeline
+    /// is run on a Google Compute Engine VM. A pipeline can be created with the `create` method and then later run with
+    /// the `run` method, or a pipeline can be defined and run all at once with the `run` method.</summary>
+    public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-specified description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Specifies the docker run information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docker")]
+        public virtual DockerExecutor Docker { get; set; } 
+
+        /// <summary>Input parameters of the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IList<PipelineParameter> InputParameters { get; set; } 
+
+        /// <summary>Required. A user specified pipeline name that does not have to be unique. This name can be used for
+        /// filtering Pipelines in ListPipelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output parameters of the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameters")]
+        public virtual System.Collections.Generic.IList<PipelineParameter> OutputParameters { get; set; } 
+
+        /// <summary>Unique pipeline id that is generated by the service when CreatePipeline is called. Cannot be
+        /// specified in the Pipeline used in the CreatePipelineRequest, and will be populated in the response to
+        /// CreatePipeline and all subsequent Get and List calls. Indicates that the service has registered this
+        /// pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineId")]
+        public virtual string PipelineId { get; set; } 
+
+        /// <summary>Required. The project in which to create the pipeline. The caller must have WRITE access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores
+        /// * minimumRamGb</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual PipelineResources Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters facilitate setting and delivering data into the pipeline's execution environment. They are
+    /// defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then
+    /// the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment
+    /// variable with the given name. A default value can be optionally specified at create time. The default can be
+    /// overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If
+    /// `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on
+    /// the Docker container where the pipeline computation is run. At run time, the Google Cloud Storage paths can be
+    /// overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a
+    /// key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after
+    /// pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the
+    /// following `PipelineParameter`, specified in the `inputParameters` list: ``` {name: "input_file", localCopy:
+    /// {path: "file.txt", disk: "pd1"}} ``` where `disk` is defined in the `PipelineResources` object as: ``` {name:
+    /// "pd1", mountPoint: "/mnt/disk/"} ``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1`
+    /// to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs
+    /// map, such as: ``` inputs["input_file"] = "gs://my-bucket/bar.txt" ``` This would generate the following gsutil
+    /// call: ``` gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt ``` The file `/mnt/pd1/file.txt` maps to
+    /// `/mnt/disk/file.txt` in the Docker container. Note that we do not use `cp -r`, so for inputs, the Google Cloud
+    /// Storage path (runtime value) must be a file or a glob, while the local path must be a file or a directory,
+    /// respectively. For outputs, the direction of the copy is reversed: ``` gsutil cp /mnt/disk/file.txt gs://my-
+    /// bucket/bar.txt ``` Again note that there is no `-r`, so the Google Cloud Storage path (runtime value) must be a
+    /// file or a directory, while the local path can be a file or a glob, respectively. One restriction, due to docker
+    /// limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a
+    /// file.</summary>
+    public class PipelineParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then
+        /// this must be a Google Cloud Storage path beginning with `gs://`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; } 
+
+        /// <summary>Optional. Human-readable description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on
+        /// the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`)
+        /// must be the remote path where the file should be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localCopy")]
+        public virtual LocalCopy LocalCopy { get; set; } 
+
+        /// <summary>Required. Name of the parameter - the pipeline runner uses this string as the key to the input and
+        /// output maps in RunPipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The system resources for the pipeline run.</summary>
+    public class PipelineResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disks to attach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
+
+        /// <summary>Required at create time; optional at run time. The minimum number of cores to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumCpuCores")]
+        public virtual System.Nullable<int> MinimumCpuCores { get; set; } 
+
+        /// <summary>Required at create time; optional at run time. The minimum amount of RAM to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumRamGb")]
+        public virtual System.Nullable<double> MinimumRamGb { get; set; } 
+
+        /// <summary>Optional. At create time means that preemptible machines may be used for the run. At run time,
+        /// means they should be used. Cannot be true at run time if false at create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
+        public virtual System.Nullable<bool> Preemptible { get; set; } 
+
+        /// <summary>List of Google Compute Engine availability zones to which resource creation will restricted. If
+        /// empty, any zone may be chosen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RepeatedString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The pipeline run arguments.</summary>
+    public class RunPipelineArgs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. For callers to use in filtering operations returned by this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
+        /// <summary>Pipeline input arguments; keys are defined in the pipeline documentation. All input parameters that
+        /// do not have default values must be specified. If parameters with defaults are specified here, the defaults
+        /// will be overridden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Inputs { get; set; } 
+
+        /// <summary>Required. Logging options. Used by the service to communicate results to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logging")]
+        public virtual LoggingOptions Logging { get; set; } 
+
+        /// <summary>Pipeline output arguments; keys are defined in the pipeline documentation. All output parameters of
+        /// without default values must be specified. If parameters with defaults are specified here, the defaults will
+        /// be overridden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Outputs { get; set; } 
+
+        /// <summary>Required. The project in which to run the pipeline. The caller must have WRITER access to all
+        /// Google Cloud services and resources (e.g. Google Compute Engine) will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>Specifies resource requirements/overrides for the pipeline run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual PipelineResources Resources { get; set; } 
+
+        /// <summary>Required. The Google Cloud Service Account that will be used to access data and services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual ServiceAccount ServiceAccount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request to run a pipeline. If `pipelineId` is specified, it refers to a saved pipeline created with
+    /// CreatePipeline and set as the `pipelineId` of the returned Pipeline object. If `ephemeralPipeline` is specified,
+    /// that pipeline is run once with the given args and not saved. It is an error to specify both `pipelineId` and
+    /// `ephemeralPipeline`. `pipelineArgs` must be specified.</summary>
+    public class RunPipelineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A new pipeline object to run once and then delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralPipeline")]
+        public virtual Pipeline EphemeralPipeline { get; set; } 
+
+        /// <summary>The arguments to use when running this pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineArgs")]
+        public virtual RunPipelineArgs PipelineArgs { get; set; } 
+
+        /// <summary>The already created pipeline to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineId")]
+        public virtual string PipelineId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Google Cloud Service Account.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Email address of the service account. 'default' is a valid option and uses the compute
+        /// service account associated with the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>Required. List of scopes to be made available for this service account. Should include *
+        /// https://www.googleapis.com/auth/genomics * https://www.googleapis.com/auth/compute *
+        /// https://www.googleapis.com/auth/devstorage.full_control</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
@@ -724,6 +1601,44 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stores the list of events and times they occured for major events in job execution.</summary>
+    public class TimestampEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String indicating the type of event</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The time this event occured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to update operation status. Should only be used by VMs created by the Pipelines Service and not
+    /// by end users.</summary>
+    public class UpdateStatusRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampEvents")]
+        public virtual System.Collections.Generic.IList<TimestampEvent> TimestampEvents { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("validationToken")]
+        public virtual System.Nullable<ulong> ValidationToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

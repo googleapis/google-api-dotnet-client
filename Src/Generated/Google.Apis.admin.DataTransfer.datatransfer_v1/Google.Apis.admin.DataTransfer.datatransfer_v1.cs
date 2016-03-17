@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>Admin Data Transfer API</a>
  *      <tr><th>API Version<td>datatransfer_v1
- *      <tr><th>API Rev<td>20151124 (327)
+ *      <tr><th>API Rev<td>20160223 (418)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>
  *              https://developers.google.com/admin-sdk/data-transfer/</a>
@@ -43,7 +43,7 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.admin.DataTransfer.datatransfer_v1
+namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
 {
     /// <summary>The DataTransfer Service.</summary>
     public class DataTransferService : Google.Apis.Services.BaseClientService
@@ -267,7 +267,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>Retrieves information about an application for the given application ID.</summary>
-        public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.admin.DataTransfer.datatransfer_v1.Data.Application>
+        public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.Application>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long applicationId)
@@ -326,7 +326,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>Lists the applications available for data transfer for a customer.</summary>
-        public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.admin.DataTransfer.datatransfer_v1.Data.ApplicationsListResponse>
+        public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.ApplicationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -431,7 +431,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>Retrieves a data transfer request by its resource ID.</summary>
-        public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
+        public class GetRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string dataTransferId)
@@ -486,16 +486,16 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
 
         /// <summary>Inserts a data transfer request.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual InsertRequest Insert(Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
+        public virtual InsertRequest Insert(Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
         {
             return new InsertRequest(service, body);
         }
 
         /// <summary>Inserts a data transfer request.</summary>
-        public class InsertRequest : DataTransferBaseServiceRequest<Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
+        public class InsertRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
                 : base(service)
             {
                 Body = body;
@@ -505,7 +505,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfer Body { get; set; }
+            Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -544,7 +544,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>Lists the transfers for a customer by source user, destination user, or status.</summary>
-        public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.admin.DataTransfer.datatransfer_v1.Data.DataTransfersListResponse>
+        public class ListRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -664,7 +664,7 @@ namespace Google.Apis.admin.DataTransfer.datatransfer_v1
     }
 }
 
-namespace Google.Apis.admin.DataTransfer.datatransfer_v1.Data
+namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 {    
 
     /// <summary>The JSON template for an Application resource.</summary>

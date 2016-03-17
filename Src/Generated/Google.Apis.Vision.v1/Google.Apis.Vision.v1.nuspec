@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.MapsEngine.v1</id>
-        <version>1.10.0.335</version>
-        <title>Google.Apis.MapsEngine.v1 Client Library</title>
+        <id>Google.Apis.Vision.v1</id>
+        <version>1.10.1.427</version>
+        <title>Google.Apis.Vision.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <summary>Google Mapsengine v1 API client library</summary>
+        <summary>Google Vision v1 API client library</summary>
         <description>
-          Google APIs Client Library for working with Mapsengine v1.
+          Google APIs Client Library for working with Vision v1.
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
@@ -23,10 +23,10 @@
           - Portable Class Libraries
 
           More documentation on the API is available at:
-          https://developers.google.com/api-client-library/dotnet/apis/mapsengine/v1
+          https://developers.google.com/api-client-library/dotnet/apis/vision/v1
 
           The package source code is available at:
-          https://developers.google.com/resources/api-libraries/download/mapsengine/v1/csharp
+          https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
         </description>
         <tags>Google</tags>
         <dependencies>
@@ -37,8 +37,8 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\Google.Apis.MapsEngine.v1.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.MapsEngine.v1.dll" />
-        <file src="bin\ReleaseSigned\Google.Apis.MapsEngine.v1.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.MapsEngine.v1.pdb" />
-        <file src="bin\ReleaseSigned\Google.Apis.MapsEngine.v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.MapsEngine.v1.xml" />
+        <file src="bin\ReleaseSigned\Google.Apis.Vision.v1.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Vision.v1.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.Vision.v1.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Vision.v1.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.Vision.v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Vision.v1.xml" />
     </files>
 </package>

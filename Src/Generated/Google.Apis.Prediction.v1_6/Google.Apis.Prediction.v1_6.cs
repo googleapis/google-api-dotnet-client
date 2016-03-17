@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>Prediction API</a>
  *      <tr><th>API Version<td>v1.6
- *      <tr><th>API Rev<td>20151102 (305)
+ *      <tr><th>API Rev<td>20160304 (428)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>
  *              https://developers.google.com/prediction/docs/developer-guide</a>
@@ -1332,7 +1332,7 @@ namespace Google.Apis.Prediction.v1_6.Data
 
         /// <summary>The estimated regression value (Regression models only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputValue")]
-        public virtual System.Nullable<double> OutputValue { get; set; } 
+        public virtual string OutputValue { get; set; } 
 
         /// <summary>A URL to re-request this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

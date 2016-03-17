@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160106 (370)
+ *      <tr><th>API Rev<td>20160229 (424)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1689,7 +1689,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
 
-        /// <summary>Deletes the binding between the MDM and enterprise. This is now deprecated; use this to unenroll
+        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated; use this to unenroll
         /// customers that were previously enrolled with the 'insert' call, then enroll them again with the 'enroll'
         /// call.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -1698,7 +1698,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new DeleteRequest(service, enterpriseId);
         }
 
-        /// <summary>Deletes the binding between the MDM and enterprise. This is now deprecated; use this to unenroll
+        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated; use this to unenroll
         /// customers that were previously enrolled with the 'insert' call, then enroll them again with the 'enroll'
         /// call.</summary>
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
@@ -1753,15 +1753,15 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Enrolls an enterprise with the calling MDM.</summary>
+        /// <summary>Enrolls an enterprise with the calling EMM.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="token">The token provided by the enterprise to register the MDM.</param>
+        /// <param name="token">The token provided by the enterprise to register the EMM.</param>
         public virtual EnrollRequest Enroll(Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token)
         {
             return new EnrollRequest(service, body, token);
         }
 
-        /// <summary>Enrolls an enterprise with the calling MDM.</summary>
+        /// <summary>Enrolls an enterprise with the calling EMM.</summary>
         public class EnrollRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new Enroll request.</summary>
@@ -1774,7 +1774,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The token provided by the enterprise to register the MDM.</summary>
+            /// <summary>The token provided by the enterprise to register the EMM.</summary>
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; private set; }
 
@@ -1941,16 +1941,16 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Establishes the binding between the MDM and an enterprise. This is now deprecated; use enroll
+        /// <summary>Establishes the binding between the EMM and an enterprise. This is now deprecated; use enroll
         /// instead.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="token">The token provided by the enterprise to register the MDM.</param>
+        /// <param name="token">The token provided by the enterprise to register the EMM.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token)
         {
             return new InsertRequest(service, body, token);
         }
 
-        /// <summary>Establishes the binding between the MDM and an enterprise. This is now deprecated; use enroll
+        /// <summary>Establishes the binding between the EMM and an enterprise. This is now deprecated; use enroll
         /// instead.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Enterprise>
         {
@@ -1964,7 +1964,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The token provided by the enterprise to register the MDM.</summary>
+            /// <summary>The token provided by the enterprise to register the EMM.</summary>
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; private set; }
 
@@ -2071,7 +2071,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sends a test push notification to validate the MDM integration with the Google Cloud Pub/Sub
+        /// <summary>Sends a test push notification to validate the EMM integration with the Google Cloud Pub/Sub
         /// service for this enterprise.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SendTestPushNotificationRequest SendTestPushNotification(string enterpriseId)
@@ -2079,7 +2079,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SendTestPushNotificationRequest(service, enterpriseId);
         }
 
-        /// <summary>Sends a test push notification to validate the MDM integration with the Google Cloud Pub/Sub
+        /// <summary>Sends a test push notification to validate the EMM integration with the Google Cloud Pub/Sub
         /// service for this enterprise.</summary>
         public class SendTestPushNotificationRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesSendTestPushNotificationResponse>
         {
@@ -2269,14 +2269,14 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Unenrolls an enterprise from the calling MDM.</summary>
+        /// <summary>Unenrolls an enterprise from the calling EMM.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual UnenrollRequest Unenroll(string enterpriseId)
         {
             return new UnenrollRequest(service, enterpriseId);
         }
 
-        /// <summary>Unenrolls an enterprise from the calling MDM.</summary>
+        /// <summary>Unenrolls an enterprise from the calling EMM.</summary>
         public class UnenrollRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unenroll request.</summary>
@@ -4193,8 +4193,12 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Updates the set of Android app permissions for this app that have been accepted by the
-        /// enterprise.</summary>
+        /// <summary>This method has been deprecated. To programmatically approve applications, you must use the iframe
+        /// mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information,
+        /// see the  Play EMM API usage requirements.
+        ///
+        /// The updatePermissions method (deprecated) updates the set of Android app permissions for this app that have
+        /// been accepted by the enterprise.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
@@ -4204,8 +4208,12 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UpdatePermissionsRequest(service, body, enterpriseId, productId);
         }
 
-        /// <summary>Updates the set of Android app permissions for this app that have been accepted by the
-        /// enterprise.</summary>
+        /// <summary>This method has been deprecated. To programmatically approve applications, you must use the iframe
+        /// mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information,
+        /// see the  Play EMM API usage requirements.
+        ///
+        /// The updatePermissions method (deprecated) updates the set of Android app permissions for this app that have
+        /// been accepted by the enterprise.</summary>
         public class UpdatePermissionsRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions>
         {
             /// <summary>Constructs a new UpdatePermissions request.</summary>
@@ -5319,7 +5327,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
 
         /// <summary>Generates a token (activation code) to allow this user to configure their work account in the
-        /// Android Setup Wizard. Revokes any previously generated token.</summary>
+        /// Android Setup Wizard. Revokes any previously generated token.
+        ///
+        /// This call only works with Google managed accounts.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -5329,7 +5339,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Generates a token (activation code) to allow this user to configure their work account in the
-        /// Android Setup Wizard. Revokes any previously generated token.</summary>
+        /// Android Setup Wizard. Revokes any previously generated token.
+        ///
+        /// This call only works with Google managed accounts.</summary>
         public class GenerateTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UserToken>
         {
             /// <summary>Constructs a new GenerateToken request.</summary>
@@ -5548,7 +5560,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Looks up a user by email address. This only works for Google managed users.</summary>
+        /// <summary>Looks up a user by their primary email address.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="email">The exact primary email
         /// address of the user to look up.</param>
@@ -5557,7 +5569,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, email);
         }
 
-        /// <summary>Looks up a user by email address. This only works for Google managed users.</summary>
+        /// <summary>Looks up a user by their primary email address.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5979,7 +5991,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A device resource represents a mobile device managed by the MDM and belonging to a specific enterprise
+    /// <summary>A device resource represents a mobile device managed by the EMM and belonging to a specific enterprise
     /// user.
     ///
     /// This collection cannot be modified via the API; it is automatically populated as devices are set up to be
@@ -5996,9 +6008,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The mechanism by which this device is managed by the MDM. "managedDevice" means that the MDM's app
-        /// is a device owner. "managedProfile" means that the MDM's app is the profile owner (and there is a separate
-        /// personal profile which is not managed). "containerApp" means that the MDM's app is managing the Android for
+        /// <summary>The mechanism by which this device is managed by the EMM. "managedDevice" means that the EMM's app
+        /// is a device owner. "managedProfile" means that the EMM's app is the profile owner (and there is a separate
+        /// personal profile which is not managed). "containerApp" means that the EMM's app is managing the Android for
         /// Work container app on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -6042,20 +6054,20 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An enterprise resource represents a binding between an organisation and their MDM.
+    /// <summary>An enterprise resource represents a binding between an organisation and their EMM.
     ///
     /// To create an enterprise, an admin of the enterprise must first go through a Play for Work sign-up flow. At the
     /// end of this the admin will be presented with a token (a short opaque alphanumeric string). They must then
-    /// present this to the MDM, who then supplies it to the enroll method. Until this is done the MDM will not have any
+    /// present this to the EMM, who then supplies it to the enroll method. Until this is done the EMM will not have any
     /// access to the enterprise.
     ///
-    /// After calling enroll the MDM should call setAccount to specify the service account that will be allowed to act
+    /// After calling enroll the EMM should call setAccount to specify the service account that will be allowed to act
     /// on behalf of the enterprise, which will be required for access to the enterprise's data through this API. Only
     /// one call of setAccount is allowed for a given enterprise; the only way to change the account later is to
     /// unenroll the enterprise and enroll it again (obtaining a new token).
     ///
-    /// The MDM can unenroll an enterprise in order to sever the binding between them. Re-enrolling an enterprise is
-    /// possible, but requires a new token to be retrieved. Enterprises.unenroll requires the MDM's credentials (as
+    /// The EMM can unenroll an enterprise in order to sever the binding between them. Re-enrolling an enterprise is
+    /// possible, but requires a new token to be retrieved. Enterprises.unenroll requires the EMM's credentials (as
     /// enroll does), not the enterprise's. Enterprises.unenroll can only be used for enterprises that were previously
     /// enrolled with the enroll call. Any enterprises that were enrolled using the (deprecated) Enterprises.insert call
     /// must be unenrolled with Enterprises.delete and can then be re-enrolled using the Enterprises.enroll call.
@@ -6139,7 +6151,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     ///
     /// It should always be true that a user has an app installed on one of their devices only if they have an
     /// entitlement to it. So if an entitlement is deleted, the app will be uninstalled from all devices. Similarly if
-    /// the user installs an app (and is permitted to do so), or the MDM triggers an install of the app, an entitlement
+    /// the user installs an app (and is permitted to do so), or the EMM triggers an install of the app, an entitlement
     /// to that app is automatically created. If this is impossible - e.g. the enterprise has not purchased sufficient
     /// licenses - then installation fails.
     ///
@@ -6361,7 +6373,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// for the app can be created.
     ///
     /// The permissions collection is read-only. The information provided for each permission (localized name and
-    /// description) is intended to be used in the MDM user interface when obtaining consent from the
+    /// description) is intended to be used in the EMM user interface when obtaining consent from the
     /// enterprise.</summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6391,7 +6403,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// outside that enterprise.)
     ///
     /// The information provided for each product (localized name, icon, link to the full Google Play details page) is
-    /// intended to allow a basic representation of the product within an MDM user interface.</summary>
+    /// intended to allow a basic representation of the product within an EMM user interface.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>App versions currently available for this product. The returned list contains only public versions.
@@ -6661,9 +6673,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>A user resource represents an individual user within the enterprise's domain.
     ///
     /// Note that each user is associated with a Google account based on the user's corporate email address (which must
-    /// be in one of the enterprise's domains). As part of installing an MDM app to manage a device the Google account
-    /// must be provisioned to the device, and so the user resource must be created before that. This can be done using
-    /// the Google Admin SDK Directory API.
+    /// be in one of the enterprise's domains). As part of installing the EMM's DPC app to manage a device the Google
+    /// account must be provisioned to the device, and so the user resource must be created before that. This can be
+    /// done using the Google Admin SDK Directory API.
     ///
     /// The ID for a user is an opaque string. It can be retrieved using the list method queried by the user's primary
     /// email address.</summary>
@@ -6688,7 +6700,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>A UserToken is used by a user when setting up a managed device or profile with their work account on a
-    /// device. When the user enters their email address and token (activation code) the appropriate MDM app can be
+    /// device. When the user enters their email address and token (activation code) the appropriate EMM app can be
     /// automatically downloaded.</summary>
     public class UserToken : Google.Apis.Requests.IDirectResponseSchema
     {

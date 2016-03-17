@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/3TZb9pJUcpA5KrLperTiOBHtcMA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/TL15SCjr77AOU2DmVX156flg8x0\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",

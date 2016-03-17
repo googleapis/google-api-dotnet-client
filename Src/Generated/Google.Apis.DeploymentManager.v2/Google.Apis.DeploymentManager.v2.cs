@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160104 (368)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -648,7 +648,8 @@ namespace Google.Apis.DeploymentManager.v2
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -657,14 +658,14 @@ namespace Google.Apis.DeploymentManager.v2
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -803,11 +804,11 @@ namespace Google.Apis.DeploymentManager.v2
             }
 
             /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
-            /// not actually alter or instantiate these resources. This allows you to preview what your deployment looks
-            /// like. You can use this intent to preview how an update would affect your deployment. You must provide a
-            /// target.config with a configuration if this is set to true. After previewing a deployment, you can deploy
-            /// your resources by making a request with the update() or you can cancelPreview() to remove the preview
-            /// altogether. Note that the deployment will still exist after you cancel the preview and you must
+            /// not actually alter or instantiate these resources. This allows you to preview what your deployment will
+            /// look like. You can use this intent to preview how an update would affect your deployment. You must
+            /// provide a target.config with a configuration if this is set to true. After previewing a deployment, you
+            /// can deploy your resources by making a request with the update() or you can cancelPreview() to remove the
+            /// preview altogether. Note that the deployment will still exist after you cancel the preview and you must
             /// separately delete this deployment if you want to remove it.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
@@ -1039,11 +1040,11 @@ namespace Google.Apis.DeploymentManager.v2
             }
 
             /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
-            /// not actually alter or instantiate these resources. This allows you to preview what your deployment looks
-            /// like. You can use this intent to preview how an update would affect your deployment. You must provide a
-            /// target.config with a configuration if this is set to true. After previewing a deployment, you can deploy
-            /// your resources by making a request with the update() or you can cancelPreview() to remove the preview
-            /// altogether. Note that the deployment will still exist after you cancel the preview and you must
+            /// not actually alter or instantiate these resources. This allows you to preview what your deployment will
+            /// look like. You can use this intent to preview how an update would affect your deployment. You must
+            /// provide a target.config with a configuration if this is set to true. After previewing a deployment, you
+            /// can deploy your resources by making a request with the update() or you can cancelPreview() to remove the
+            /// preview altogether. Note that the deployment will still exist after you cancel the preview and you must
             /// separately delete this deployment if you want to remove it.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
@@ -1276,7 +1277,8 @@ namespace Google.Apis.DeploymentManager.v2
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1285,14 +1287,14 @@ namespace Google.Apis.DeploymentManager.v2
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1502,7 +1504,8 @@ namespace Google.Apis.DeploymentManager.v2
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1511,14 +1514,14 @@ namespace Google.Apis.DeploymentManager.v2
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1742,7 +1745,8 @@ namespace Google.Apis.DeploymentManager.v2
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1751,14 +1755,14 @@ namespace Google.Apis.DeploymentManager.v2
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -1892,7 +1896,8 @@ namespace Google.Apis.DeploymentManager.v2
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
             ///
             /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
             /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
@@ -1901,14 +1906,14 @@ namespace Google.Apis.DeploymentManager.v2
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions meaning that resources must match all expressions to pass the
-            /// filters.</summary>
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that Compute Engine should return. If the number of
-            /// available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to
-            /// get the next page of results in subsequent list requests.</summary>
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
             /// [default: 500]
             /// [minimum: 0]
             /// [maximum: 500]
@@ -2023,6 +2028,13 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
+        /// <summary>Map of labels; provided by the client when the resource is created or updated. Specifically: Label
+        /// keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the
+        /// regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; } 
+
         /// <summary>[Output Only] URL of the manifest representing the last manifest that was successfully
         /// deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
@@ -2055,12 +2067,43 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class DeploymentLabelEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output Only] Map of labels; provided by the client when the resource is created or updated.
+        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
+        /// expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<DeploymentUpdateLabelEntry> Labels { get; set; } 
+
         /// <summary>[Output Only] URL of the manifest representing the update configuration of this
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeploymentUpdateLabelEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2074,7 +2117,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// new update request while another user attempts to cancel a preview, this would prevent one of the requests).
         ///
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
-        /// deployment. To get the latest fingerprint value, perform a get() request to a deployment.</summary>
+        /// deployment. To get the latest fingerprint value, perform a get() request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -2106,7 +2149,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// while another user attempts to stop an ongoing update request, this would prevent a collision).
         ///
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
-        /// deployment. To get the latest fingerprint value, perform a get() request to a deployment.</summary>
+        /// deployment. To get the latest fingerprint value, perform a get() request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -2186,7 +2229,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique client ID generated by the server.</summary>
+        /// <summary>[Output Only] Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -2229,7 +2272,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#operation for operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -2237,7 +2280,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The type of operation, which can be insert, update, or delete.</summary>
+        /// <summary>[Output Only] The type of operation, such as insert, update, or delete, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
@@ -2247,7 +2290,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the operation resides. Only available when performing
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
         /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
@@ -2275,7 +2318,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation is modifying.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -2288,8 +2331,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the operation resides. Only available when performing per-zone
-        /// operations.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -2313,7 +2356,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -2348,7 +2391,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -2458,7 +2501,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -2526,7 +2569,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; } 
 
-                /// <summary>[Output Only] Indicates the field in the request which caused the error. This property is
+                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; } 
@@ -2561,7 +2604,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
                 /// for warnings where there are no results in a list request for a particular zone, this key might be
                 /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource, and a suggested replacement, or a warning about invalid network settings (for
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]

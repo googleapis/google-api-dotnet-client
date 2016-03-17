@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151026 (298)
+ *      <tr><th>API Rev<td>20160301 (425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -892,7 +892,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <summary>Method for media download. Download is supported on the URI
         /// `/v1/media/{+name}?alt=media`.</summary>
         /// <param name="resourceName">Name of the media that is being downloaded. See
-        /// [][ByteStream.ReadRequest.resource_name].</param>
+        /// ByteStream.ReadRequest.resource_name.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
@@ -912,8 +912,7 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded. See
-            /// [][ByteStream.ReadRequest.resource_name].</summary>
+            /// <summary>Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1107,8 +1106,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The name of the job (max. 100 characters). TODO(lanthaler) Clarify what this will actually be used
-        /// for</summary>
+        /// <summary>The name of the job (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
