@@ -240,7 +240,14 @@ namespace Google.Apis.Tests.Apis.Download
                     {
                         var result = downloader.DownloadAsync(downloadUri, outputStream,
                             handler.CancellationTokenSource.Token).Result;
-                        Assert.AreEqual(0, handler.CancelRequestNum);
+                        if (result.Exception == null)
+                        {
+                            Assert.AreEqual(0, handler.CancelRequestNum);
+                        }
+                        else
+                        {
+                            Assert.IsInstanceOf<OperationCanceledException>(result.Exception);
+                        }
                     }
                     catch (AggregateException ex)
                     {

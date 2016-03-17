@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/0KmOdwW680Mg7pP7u4v6scX_AHY\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/0HKk2qVFNFj4BfRYktkIsjDiv2o\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20160229",
+ "revision": "20160302",
  "title": "Compute Engine API",
  "description": "API for the Google Compute Engine service.",
  "ownerDomain": "google.com",

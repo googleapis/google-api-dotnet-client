@@ -283,7 +283,14 @@ namespace Google.Apis.Requests
                     {
                         headers = response.Content.Headers;
                     }
-                    headers.Add(keyValue.Key, keyValue.Value);
+
+                    // Use TryAddWithoutValidation rather than Add because Mono's validation is
+                    // improperly strict. https://bugzilla.xamarin.com/show_bug.cgi?id=39569
+                    if (!headers.TryAddWithoutValidation(keyValue.Key, keyValue.Value))
+                    {
+                        throw new FormatException(String.Format(
+                            "Could not parse header {0} from batch reply", keyValue.Key));
+                    }
                 }
 
                 // TODO(peleyal): ContentLength header is x while the "real" content that we read from the stream is 

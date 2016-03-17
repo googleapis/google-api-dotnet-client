@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160204 (399)
+ *      <tr><th>API Rev<td>20160303 (427)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6086,6 +6086,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The hour of the day the feed file should be fetched (0-23).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<long> Hour { get; set; } 
+
+        /// <summary>The minute of the hour the feed file should be fetched (0-59). Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minuteOfHour")]
+        public virtual System.Nullable<long> MinuteOfHour { get; set; } 
 
         /// <summary>An optional password for fetch_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]

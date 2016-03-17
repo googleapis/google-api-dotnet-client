@@ -985,11 +985,11 @@ anim id est laborum.";
                 try
                 {
                     var result = upload.UploadAsync(handler.CancellationTokenSource.Token).Result;
-                    Assert.Fail("Upload should be canceled");
+                    Assert.IsInstanceOf<OperationCanceledException>(result.Exception, "Upload should have been canceled");
                 }
                 catch (AggregateException ex)
                 {
-                    Assert.IsInstanceOf<TaskCanceledException>(ex.InnerException);
+                    Assert.IsInstanceOf<TaskCanceledException>(ex.InnerException, "Upload should have been canceled");
                 }
 
                 Assert.That(handler.Calls, Is.EqualTo(cancelRequest));

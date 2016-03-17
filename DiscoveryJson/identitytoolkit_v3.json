@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/nfCyqmqnrlJ6MjQNrp2-CYmRqMw\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Vhnx4zZ8SuEciaFfePvjr4AMNX0\"",
  "discoveryVersion": "v1",
  "id": "identitytoolkit:v3",
  "name": "identitytoolkit",
  "canonicalName": "Identity Toolkit",
  "version": "v3",
- "revision": "20160301",
+ "revision": "20160304",
  "title": "Google Identity Toolkit API",
  "description": "Help the third party sites to implement federated login.",
  "ownerDomain": "google.com",
@@ -293,6 +293,10 @@
      "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
      "format": "int64"
     },
+    "idToken": {
+     "type": "string",
+     "description": "The GITKit token or STS id token of the authenticated user."
+    },
     "localId": {
      "type": "string",
      "description": "The local ID of the user."
@@ -451,6 +455,13 @@
     "deleteAttribute": {
      "type": "array",
      "description": "The attributes users request to delete.",
+     "items": {
+      "type": "string"
+     }
+    },
+    "deleteProvider": {
+     "type": "array",
+     "description": "The IDPs the user request to delete.",
      "items": {
       "type": "string"
      }

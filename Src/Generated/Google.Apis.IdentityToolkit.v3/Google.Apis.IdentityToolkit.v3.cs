@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160301 (425)
+ *      <tr><th>API Rev<td>20160304 (428)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1363,6 +1363,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
         public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
 
+        /// <summary>The GITKit token or STS id token of the authenticated user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
+
         /// <summary>The local ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]
         public virtual string LocalId { get; set; } 
@@ -1500,6 +1504,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The attributes users request to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteAttribute")]
         public virtual System.Collections.Generic.IList<string> DeleteAttribute { get; set; } 
+
+        /// <summary>The IDPs the user request to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteProvider")]
+        public virtual System.Collections.Generic.IList<string> DeleteProvider { get; set; } 
 
         /// <summary>Whether to disable the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableUser")]

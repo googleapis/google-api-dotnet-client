@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Google Cloud Network Performance Monitoring API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20150508 (127)
+ *      <tr><th>API Rev<td>20160309 (433)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>

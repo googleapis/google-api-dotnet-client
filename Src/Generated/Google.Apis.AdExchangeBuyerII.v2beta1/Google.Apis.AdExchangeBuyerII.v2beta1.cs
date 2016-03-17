@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160229 (424)
+ *      <tr><th>API Rev<td>20160311 (435)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>
@@ -1435,7 +1435,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class ClientUserInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Numerical account ID of the client buyer that the invited user is associated with. The value of
-        /// this field is ignored in insert and update operations.</summary>
+        /// this field is ignored in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
         public virtual System.Nullable<long> ClientAccountId { get; set; } 
 

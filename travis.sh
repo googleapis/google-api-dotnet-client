@@ -13,7 +13,7 @@ cd Src/Support
 # as they are tricky to build under Mono.
 xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
 
-OUTDIR=bin/Release
+OUTDIR=bin/ReleaseSigned
 
 mono "${NUNIT}" \
     "GoogleApis.Tests/${OUTDIR}/Google.Apis.Tests.dll" \

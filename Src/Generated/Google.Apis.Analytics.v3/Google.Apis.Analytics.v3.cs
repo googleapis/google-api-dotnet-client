@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160226 (421)
+ *      <tr><th>API Rev<td>20160308 (432)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -4292,7 +4292,7 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Updates an existing view (profile). This method supports patch semantics.</summary>
+            /// <summary>Updates an existing goal. This method supports patch semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">Account ID to update the goal.</param>
             /// <param name="webPropertyId">Web property ID
@@ -4305,7 +4305,7 @@ namespace Google.Apis.Analytics.v3
                 return new PatchRequest(service, body, accountId, webPropertyId, profileId, goalId);
             }
 
-            /// <summary>Updates an existing view (profile). This method supports patch semantics.</summary>
+            /// <summary>Updates an existing goal. This method supports patch semantics.</summary>
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -4407,7 +4407,7 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Updates an existing view (profile).</summary>
+            /// <summary>Updates an existing goal.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">Account ID to update the goal.</param>
             /// <param name="webPropertyId">Web property ID
@@ -4420,7 +4420,7 @@ namespace Google.Apis.Analytics.v3
                 return new UpdateRequest(service, body, accountId, webPropertyId, profileId, goalId);
             }
 
-            /// <summary>Updates an existing view (profile).</summary>
+            /// <summary>Updates an existing goal.</summary>
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.Goal>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -9033,6 +9033,10 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>Indicates whether this account is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
+
         /// <summary>Time the account was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string UpdatedRaw { get; set; }
@@ -9161,6 +9165,10 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Account name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Indicates whether this account is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
 
         /// <summary>List of web properties under this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webProperties")]
@@ -11392,6 +11400,10 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("siteSearchQueryParameters")]
         public virtual string SiteSearchQueryParameters { get; set; } 
 
+        /// <summary>Indicates whether this view (profile) is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
+
         /// <summary>Whether or not Analytics will strip search category parameters from the URLs in your
         /// reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stripSiteSearchCategoryParameters")]
@@ -11610,6 +11622,10 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>View (profile) name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Indicates whether this view (profile) is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
 
         /// <summary>View (Profile) type. Supported types: WEB or APP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -12229,6 +12245,10 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<ProfileSummary> Profiles { get; set; } 
 
+        /// <summary>Indicates whether this web property is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
+
         /// <summary>Website url for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
         public virtual string WebsiteUrl { get; set; } 
@@ -12355,6 +12375,10 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Link for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Indicates whether this web property is starred or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starred")]
+        public virtual System.Nullable<bool> Starred { get; set; } 
 
         /// <summary>Time this web property was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]

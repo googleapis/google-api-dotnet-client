@@ -459,7 +459,7 @@
           "type": "string"
         },
         "clientAccountId": {
-          "description": "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in insert and update operations.",
+          "description": "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations.",
           "type": "string",
           "format": "int64"
         },
@@ -599,7 +599,7 @@
       "id": "ListClientsResponse"
     }
   },
-  "revision": "20160229",
+  "revision": "20160311",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

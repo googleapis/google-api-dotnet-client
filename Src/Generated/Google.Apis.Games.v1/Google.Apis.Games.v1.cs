@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160224 (419)
+ *      <tr><th>API Rev<td>20160309 (433)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -5335,7 +5335,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether the the current steps for the achievement has reached the number of steps required to
+        /// <summary>Whether the current steps for the achievement has reached the number of steps required to
         /// unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
         public virtual System.Nullable<bool> NewlyUnlocked { get; set; } 
@@ -5629,6 +5629,11 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>This is a JSON template for a third party application verification response resource.</summary>
     public class ApplicationVerifyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An alternate ID that was once used for the player that was issued the auth token used in this
+        /// request. (This field is not normally populated.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternate_player_id")]
+        public virtual string AlternatePlayerId { get; set; } 
+
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// games#applicationVerifyResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

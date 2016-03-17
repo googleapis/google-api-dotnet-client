@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/sOTtGIhBrGRLc0_FlU9VkPbZAm0\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Ne9agwVqzB7mhydEKzb51sWzgug\"",
  "discoveryVersion": "v1",
  "id": "appengine:v1beta4",
  "name": "appengine",
  "version": "v1beta4",
- "revision": "20160223",
+ "revision": "20160314",
  "title": "Google App Engine Admin API",
- "description": "The Google App Engine Admin API enables developers to provision and manage their App Engine applications.",
+ "description": "Provisions and manages App Engine applications.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -125,7 +125,7 @@
     },
     "dispatchRules": {
      "type": "array",
-     "description": "HTTP path dispatch rules for requests to the app that do not explicitly target a module or version. The rules are order-dependent.",
+     "description": "HTTP path dispatch rules for requests to the app that do not explicitly target a module or version. The rules are order-dependent. @OutputOnly",
      "items": {
       "$ref": "UrlDispatchRule"
      }
@@ -136,7 +136,7 @@
     },
     "location": {
      "type": "string",
-     "description": "The location from which the application will be run. Choices are \"us-central\" for United States and \"europe-west\" for European Union. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest in the chosen location. The default is \"us-central\"."
+     "description": "The location from which the application will be run. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest. The default is \"us-central\". Choices are: \"us-central\" - Central US \"europe-west\" - Western Europe \"us-east1\" - Eastern US"
     },
     "codeBucket": {
      "type": "string",
@@ -144,7 +144,7 @@
     },
     "defaultCookieExpiration": {
      "type": "string",
-     "description": "Determines the cookie expiration policy for the application."
+     "description": "Determines the cookie expiration policy for the application. @OutputOnly"
     },
     "defaultHostname": {
      "type": "string",
@@ -913,7 +913,7 @@
    "properties": {
     "name": {
      "type": "string",
-     "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping above, the `name` should have the format of `operations/some/unique/name`."
+     "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should have the format of `operations/some/unique/name`."
     },
     "metadata": {
      "type": "object",

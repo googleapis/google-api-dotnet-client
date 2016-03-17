@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160303 (427)
+ *      <tr><th>API Rev<td>20160314 (438)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1181,6 +1181,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; } 
+
+        /// <summary>Google Cloud Storage generation for the object. If the generation is omitted, the latest generation
+        /// will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; } 
 
         /// <summary>Google Cloud Storage object containing source.
         ///
