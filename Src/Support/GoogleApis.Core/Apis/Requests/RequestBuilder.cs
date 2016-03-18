@@ -31,6 +31,11 @@ namespace Google.Apis.Requests
     /// <see cref="CreateRequest"/> from the query and path parameters of a REST call.</summary>
     public class RequestBuilder
     {
+        static RequestBuilder()
+        {
+            UriPatcher.PatchUriQuirks();
+        }
+
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<RequestBuilder>();
 
         /// <summary>Pattern to get the groups that are part of the path.</summary>
