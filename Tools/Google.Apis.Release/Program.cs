@@ -124,7 +124,8 @@ namespace Google.Apis.Release
                     "Google.Apis.Core.VERSION.nuspec", 
                     "Google.Apis.VERSION.nuspec", 
                     "Google.Apis.Auth.VERSION.nuspec", 
-                    "Google.Apis.Auth.Mvc.VERSION.nuspec"
+                    "Google.Apis.Auth.Mvc.VERSION.nuspec",
+                    "Google.Apis.Auth.WinForms.VERSION.nuspec"
                 };
             }
         }
