@@ -19,9 +19,9 @@ using System.Reflection;
 // Attributes common to all assemblies.
 
 [assembly: AssemblyCompany("Google Inc")]
-[assembly: AssemblyCopyright("Copyright 2015 Google Inc")]
+[assembly: AssemblyCopyright("Copyright 2016 Google Inc")]
 
-[assembly: AssemblyVersion("1.10.0.*")]
+[assembly: AssemblyVersion("1.11.0.*")]
 
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
