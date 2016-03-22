@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Spectrum.v1explorer</id>
-        <version>1.10.1.401</version>
+        <version>1.11.0.401</version>
         <title>Google.Apis.Spectrum.v1explorer Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -14,7 +14,7 @@
           Google APIs Client Library for working with Spectrum v1explorer.
           Supported Platforms:
 
-          - .NET Framework 4 and 4.5
+          - .NET Framework 4.5
 
           - Windows Store apps
 
@@ -31,13 +31,13 @@
         <tags>Google</tags>
         <dependencies>
             <group>
-                <dependency id="Google.Apis" version="1.10.0" />
+                <dependency id="Google.Apis" version="1.11.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Spectrum.v1explorer.dll" />
-        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Spectrum.v1explorer.pdb" />
-        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Spectrum.v1explorer.xml" />
+        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Spectrum.v1explorer.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Spectrum.v1explorer.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.Spectrum.v1explorer.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Spectrum.v1explorer.xml" />
     </files>
 </package>

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/K0urKFIju1s7Sdw5a9XX-KoLHWg\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/DGXUmmLvAlye32gxa1cK0WlmJaw\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160309",
+ "revision": "20160317",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",
@@ -2724,7 +2724,7 @@
      "id": "genomics.datasets.delete",
      "path": "datasets/{datasetId}",
      "httpMethod": "DELETE",
-     "description": "Deletes a dataset.",
+     "description": "Deletes a dataset and all of its contents (all read group sets, reference sets, variant sets, call sets, annotation sets, etc.) This is reversible (up to one week after the deletion) via the UndeleteDataset operation.",
      "parameters": {
       "datasetId": {
        "type": "string",
@@ -3564,7 +3564,7 @@
      "id": "genomics.variantsets.importVariants",
      "path": "variantsets/{variantSetId}/importVariants",
      "httpMethod": "POST",
-     "description": "Creates variant data by asynchronously importing the provided information.\n\nThe variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
+     "description": "Creates variant data by asynchronously importing the provided information.\n\nThe variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some data will be arbitrarily discarded unless otherwise specified in the InfoMergeConfig field of ImportVariantsRequest. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
      "parameters": {
       "variantSetId": {
        "type": "string",
@@ -3592,7 +3592,7 @@
      "id": "genomics.variantsets.mergeVariants",
      "path": "variantsets/{variantSetId}/mergeVariants",
      "httpMethod": "POST",
-     "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.",
+     "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant. Variant info fields are merged as specified in the InfoMergeConfig field of the MergeVariantsRequest.",
      "parameters": {
       "variantSetId": {
        "type": "string",

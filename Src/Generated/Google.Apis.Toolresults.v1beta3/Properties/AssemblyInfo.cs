@@ -22,12 +22,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Google.Apis.Toolresults.v1beta3")]
+[assembly: AssemblyTitle("Google.Apis.ToolResults.v1beta3")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Google.Apis.Toolresults.v1beta3")]
+[assembly: AssemblyProduct("Google.Apis.ToolResults.v1beta3")]
 [assembly: AssemblyCompany("Google Inc.")]
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.10.1.437")]
+[assembly: AssemblyVersion("1.11.0.445")]

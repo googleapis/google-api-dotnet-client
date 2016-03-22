@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Licensing.v1</id>
-        <version>1.10.1.243</version>
+        <version>1.11.0.243</version>
         <title>Google.Apis.Licensing.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -14,7 +14,7 @@
           Google APIs Client Library for working with Licensing v1.
           Supported Platforms:
 
-          - .NET Framework 4 and 4.5
+          - .NET Framework 4.5
 
           - Windows Store apps
 
@@ -31,14 +31,14 @@
         <tags>Google</tags>
         <dependencies>
             <group>
-                <dependency id="Google.Apis" version="1.10.0" />
-                <dependency id="Google.Apis.Auth" version="1.10.0" />
+                <dependency id="Google.Apis" version="1.11.0" />
+                <dependency id="Google.Apis.Auth" version="1.11.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.dll" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Licensing.v1.dll" />
-        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.pdb" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Licensing.v1.pdb" />
-        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.xml" target="lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Licensing.v1.xml" />
+        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Licensing.v1.dll" />
+        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Licensing.v1.pdb" />
+        <file src="bin\ReleaseSigned\Google.Apis.Licensing.v1.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Licensing.v1.xml" />
     </files>
 </package>

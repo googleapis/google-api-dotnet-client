@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/JBDR7NQ0khaaR6R6F4HTbP8DGwA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/8LJ6NH-SkmG6IW8fPAoQYMmK1DI\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20160310",
+ "revision": "20160318",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -1740,6 +1740,10 @@
      "type": "string",
      "description": "The unique id for the product (readonly)"
     },
+    "publisherProfileId": {
+     "type": "string",
+     "description": "Id of the publisher profile for a given seller. A (seller.account_id, publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can call the PublisherProfiles::List endpoint to get a list of publisher profiles for a given seller."
+    },
     "revisionNumber": {
      "type": "string",
      "description": "The revision number of the product. (readonly)",
@@ -1769,7 +1773,8 @@
      "description": "The negotiable terms of the deal (buyer-readonly)"
     },
     "webPropertyCode": {
-     "type": "string"
+     "type": "string",
+     "description": "The web property code for the seller. This field is meant to be copied over as is when creating deals."
     }
    }
   },
@@ -1887,6 +1892,10 @@
    "id": "PublisherProfileApiProto",
    "type": "object",
    "properties": {
+    "accountId": {
+     "type": "string",
+     "description": "The account id of the seller."
+    },
     "buyerPitchStatement": {
      "type": "string",
      "description": "A pitch statement for the buyer"
@@ -1921,7 +1930,7 @@
     },
     "profileId": {
      "type": "integer",
-     "description": "Unique id for the publisher profile",
+     "description": "The pair of (seller.account_id, profile_id) uniquely identifies a publisher profile for a given publisher.",
      "format": "int32"
     },
     "publisherDomains": {
@@ -2097,10 +2106,6 @@
     "note": {
      "$ref": "MarketplaceNote",
      "description": "Optional note to be added."
-    },
-    "privateAuctionId": {
-     "type": "string",
-     "description": "The private auction id to be updated."
     },
     "proposalRevisionNumber": {
      "type": "string",
@@ -2713,11 +2718,19 @@
    "methods": {
     "updateproposal": {
      "id": "adexchangebuyer.marketplaceprivateauction.updateproposal",
-     "path": "privateauction/{private_auction_id}/updateproposal",
+     "path": "privateauction/{privateAuctionId}/updateproposal",
      "httpMethod": "POST",
      "description": "Update a given private auction proposal",
+     "parameters": {
+      "privateAuctionId": {
+       "type": "string",
+       "description": "The private auction id to be updated.",
+       "required": true,
+       "location": "path"
+      }
+     },
      "parameterOrder": [
-      "private_auction_id"
+      "privateAuctionId"
      ],
      "request": {
       "$ref": "UpdatePrivateAuctionProposalRequest"

@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/oDGCBWQ3TbSodDSQVvns_CkjrJY\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/dJKSnf5EgOW_-QQkAYY5L_kLZfk\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160302",
+ "revision": "20160316",
  "title": "Google Play EMM API",
- "description": "Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.",
+ "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -339,7 +339,7 @@
   "Enterprise": {
    "id": "Enterprise",
    "type": "object",
-   "description": "An enterprise resource represents a binding between an organisation and their EMM.\n\nTo create an enterprise, an admin of the enterprise must first go through a Play for Work sign-up flow. At the end of this the admin will be presented with a token (a short opaque alphanumeric string). They must then present this to the EMM, who then supplies it to the enroll method. Until this is done the EMM will not have any access to the enterprise.\n\nAfter calling enroll the EMM should call setAccount to specify the service account that will be allowed to act on behalf of the enterprise, which will be required for access to the enterprise's data through this API. Only one call of setAccount is allowed for a given enterprise; the only way to change the account later is to unenroll the enterprise and enroll it again (obtaining a new token).\n\nThe EMM can unenroll an enterprise in order to sever the binding between them. Re-enrolling an enterprise is possible, but requires a new token to be retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll does), not the enterprise's. Enterprises.unenroll can only be used for enterprises that were previously enrolled with the enroll call. Any enterprises that were enrolled using the (deprecated) Enterprises.insert call must be unenrolled with Enterprises.delete and can then be re-enrolled using the Enterprises.enroll call.\n\nThe ID for an enterprise is an opaque string. It is returned by insert and enroll and can also be retrieved if the enterprise's primary domain is known using the list method.",
+   "description": "An enterprise resource represents a binding between an organization and their EMM.\n\nTo create an enterprise, an admin of the enterprise must first go through a Play for Work sign-up flow. At the end of this the admin will be presented with a token (a short opaque alphanumeric string). They must then present this to the EMM, who then supplies it to the enroll method. Until this is done the EMM will not have any access to the enterprise.\n\nAfter calling enroll the EMM should call setAccount to specify the service account that will be allowed to act on behalf of the enterprise, which will be required for access to the enterprise's data through this API. Only one call of setAccount is allowed for a given enterprise; the only way to change the account later is to unenroll the enterprise and enroll it again (obtaining a new token).\n\nThe EMM can unenroll an enterprise in order to sever the binding between them. Re-enrolling an enterprise is possible, but requires a new token to be retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll does), not the enterprise's. Enterprises.unenroll can only be used for enterprises that were previously enrolled with the enroll call. Any enterprises that were enrolled using the (deprecated) Enterprises.insert call must be unenrolled with Enterprises.delete and can then be re-enrolled using the Enterprises.enroll call.\n\nThe ID for an enterprise is an opaque string. It is returned by insert and enroll and can also be retrieved if the enterprise's primary domain is known using the list method.",
    "properties": {
     "id": {
      "type": "string",
@@ -634,7 +634,7 @@
     },
     "iconUrl": {
      "type": "string",
-     "description": "A link to an image that can be used as an icon for the product."
+     "description": "A link to an image that can be used as an icon for the product. This image is suitable for use at up to 512px x 512px."
     },
     "kind": {
      "type": "string",
@@ -652,6 +652,10 @@
     "requiresContainerApp": {
      "type": "boolean",
      "description": "Whether this app can only be installed on devices using the Android for Work container app."
+    },
+    "smallIconUrl": {
+     "type": "string",
+     "description": "A link to a smaller image that can be used as an icon for the product. This image is suitable for use at up to 128px x 128px."
     },
     "title": {
      "type": "string",
@@ -879,7 +883,7 @@
     },
     "primaryEmail": {
      "type": "string",
-     "description": "The user's primary email, e.g. \"jsmith@example.com\". Will always be set for Google managed users and not set for EMM managed users."
+     "description": "The user's primary email, e.g. \"jsmith@example.com\"."
     }
    }
   },
@@ -1689,7 +1693,7 @@
       },
       "entitlementId": {
        "type": "string",
-       "description": "The ID of the entitlement, e.g. \"app:com.google.android.gm\".",
+       "description": "The ID of the entitlement (a product ID), e.g. \"app:com.google.android.gm\".",
        "required": true,
        "location": "path"
       },
@@ -1723,7 +1727,7 @@
       },
       "entitlementId": {
        "type": "string",
-       "description": "The ID of the entitlement, e.g. \"app:com.google.android.gm\".",
+       "description": "The ID of the entitlement (a product ID), e.g. \"app:com.google.android.gm\".",
        "required": true,
        "location": "path"
       },
@@ -1790,7 +1794,7 @@
       },
       "entitlementId": {
        "type": "string",
-       "description": "The ID of the entitlement, e.g. \"app:com.google.android.gm\".",
+       "description": "The ID of the entitlement (a product ID), e.g. \"app:com.google.android.gm\".",
        "required": true,
        "location": "path"
       },
@@ -1835,7 +1839,7 @@
       },
       "entitlementId": {
        "type": "string",
-       "description": "The ID of the entitlement, e.g. \"app:com.google.android.gm\".",
+       "description": "The ID of the entitlement (a product ID), e.g. \"app:com.google.android.gm\".",
        "required": true,
        "location": "path"
       },
