@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.CivicInfo.v2</id>
-        <version>1.11.0.231</version>
+        <version>1.11.1.231</version>
         <title>Google.Apis.CivicInfo.v2 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -31,7 +31,7 @@
         <tags>Google</tags>
         <dependencies>
             <group>
-                <dependency id="Google.Apis" version="1.11.0" />
+                <dependency id="Google.Apis" version="1.11.1" />
             </group>
         </dependencies>
     </metadata>

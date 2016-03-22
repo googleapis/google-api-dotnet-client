@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Coordinate.v1</id>
-        <version>1.11.0.222</version>
+        <version>1.11.1.222</version>
         <title>Google.Apis.Coordinate.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -31,8 +31,8 @@
         <tags>Google</tags>
         <dependencies>
             <group>
-                <dependency id="Google.Apis" version="1.11.0" />
-                <dependency id="Google.Apis.Auth" version="1.11.0" />
+                <dependency id="Google.Apis" version="1.11.1" />
+                <dependency id="Google.Apis.Auth" version="1.11.1" />
             </group>
         </dependencies>
     </metadata>
