@@ -1,4 +1,4 @@
-<Project ToolsVersion="12.0" DefaultTargets="Repackage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--
     This project file requires that 'nuget' and 'python' (version 2)
     be in the user's %PATH%.
@@ -115,19 +115,12 @@
     <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -OutputDirectory NuPkgs\Generated" />
   </Target>
 
-  <!-- Remove packages for generated libraries. -->
-  <Target Name="CleanPackages">
-    <RemoveDir Directories="NuPkgs\Generated" />
-  </Target>
-
-  <!-- Force creating new packages from existing generated code. -->
-  <Target Name="Repackage" DependsOnTargets="CleanPackages;Package" />
-
   <!-- Remove all downloaded and generated artifacts. -->
-  <Target Name="Clean">
+  <Target Name="Reset">
     <RemoveDir Directories="DiscoveryJson;Src\Generated;NuPkgs\Generated" />
   </Target>
 
-  <!-- Generate libraries from scratch. -->
-  <Target Name="Regenerate" DependsOnTargets="Clean;Generate" />
+  <!-- Some common bundled targets. -->
+  <Target Name="GenerateFromScratch" DependsOnTargets="Reset;Generate" />
+  <Target Name="PackageFromScratch" DependsOnTargets="Reset;Package" />
 </Project>
