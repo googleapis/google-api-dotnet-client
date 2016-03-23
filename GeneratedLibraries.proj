@@ -10,7 +10,10 @@
       msbuild GeneratedLibraries.proj
 
     To update discovery documents and generate new code:
-      msbuild GeneratedLibraries.proj /t:Regenerate
+      msbuild GeneratedLibraries.proj /t:GenerateFromScratch
+    
+    To update everything -- discovery documents, code, and packages:
+      msbuild GeneratedLibraries.proj /t:PackageFromScratch
   -->
 
   <!-- Download discovery documents used as input to code generation. -->
