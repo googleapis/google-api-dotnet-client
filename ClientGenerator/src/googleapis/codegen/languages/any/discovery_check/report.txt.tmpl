@@ -1,0 +1,29 @@
+{% filter noblanklines %}
+generated_by: {{ tool.name }} {{ tool.version }}
+{% if tool.buildDate %}tool_build_date: {{ tool.buildDate }}{% endif %}
+generated_at: {{ tool.runDate }} {{ tool.runTime }}
+
+api:{{ api.name }}
+version:{{ api.version }}
+{% if api.revision %}revision: {{ api.revision }}{% endif %}
+
+Description: {{ api.description }}
+
+api_documentation: {{ api.documentationLink }}
+
+servicePath: {{ api.servicePath }}
+rootUrl: {{ api.rootUrl }}
+title: {{ api.title }}
+{% for icon in api.icons %}
+icons.{{ icon }}: {{ icon }} To be fixed
+{% endfor %}
+
+{% if api.dataWrapper %}data_wrapper: 1{% endif %}
+{% endfilter %}
+
+{% for s in api.models %}
+{% call_template _model model s %}{% endfor %}
+{% for r in api.resources %}
+{% call_template _resource resource r %}{% endfor %}
+{% for m in api.methods %}
+{% call_template _method method m %}{% endfor %}

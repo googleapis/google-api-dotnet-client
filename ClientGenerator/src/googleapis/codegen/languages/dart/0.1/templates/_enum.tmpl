@@ -1,0 +1,29 @@
+{% comment %}
+  Renders an enumeration type.
+  [param] the parameter with the enumerated type
+{% endcomment %}// Enum {{ param.parentPath|join:"." }}.{{ param.enumType.className }}
+class {{ param.enumType.codeType }} extends core.Object implements core.Hashable {
+{% for name_value in param.enumType.pairs %}  {% doc_comment_if name_value.2 %}
+  const {{ param.enumType.codeType }} {{ name_value.0 }} = const {{ param.enumType.codeType }}._internal({% literal name_value.1 %}, {{ forloop.counter0 }});
+{% endfor %}
+  /** All values of this enumeration */
+  const core.List<{{ param.enumType.codeType }}> values = const <{{ param.enumType.codeType }}>[{% for name_value in param.enumType.pairs %}
+    {{ name_value.0 }},{% endfor %}
+  ];
+
+  /** Map from string representation to enumeration value */
+  const _valuesMap = const <{{ param.enumType.codeType }}>{ {% for name_value in param.enumType.pairs %}
+    {% literal name_value.1 %}: {{ name_value.0 }},{% endfor %}
+  };
+
+  /** Get the enumeration value with a specified string representation, or null if none matches. */
+  static {{ param.enumType.codeType }} valueOf(core.String item) => _valuesMap[item];
+
+  final core.int _ordinal;
+  final core.String _value;
+  const {{ param.enumType.codeType }}._internal(core.String this._value, core.int this._ordinal);
+
+  /** Get the string representation of an enumeration value */
+  toString() => _value;
+  hashCode() => _ordinal ^ {% literal param.enumType.className %}.hashCode();
+}

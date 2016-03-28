@@ -1,0 +1,43 @@
+{% noblank %}{% doc_comment_if parameter.description %}
+{% if parameter.default %}{% eol %}/// [default: {{ parameter.default }}]{% endif %}
+{% if parameter.minimum %}{% eol %}/// [minimum: {{ parameter.minimum }}]{% endif %}
+{% if parameter.maximum %}{% eol %}/// [maximum: {{ parameter.maximum }}]{% endif %} {% endnoblank %}
+[Google.Apis.Util.RequestParameterAttribute({% literal parameter.wireName %}, Google.Apis.Util.RequestParameterType.{% camel_case parameter.location %})]
+{% noeol %}
+public virtual
+  {% if parameter.enumType %}
+    {% if parameter.required %}
+ {% camel_case parameter.codeName %}Enum
+    {% else %}
+ System.Nullable<{% camel_case parameter.codeName %}Enum>
+    {% endif %}
+  {% else %}
+    {% if parameter.repeated %}
+ Google.Apis.Util.Repeatable<string>
+    {% else %}
+      {% if parameter.required %}
+ {{ parameter.requiredType }}
+      {% else %}
+ {{ parameter.codeType }}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+{% sp %} {% camel_case parameter.codeName %} { get;
+ {% if parameter.required %}
+ private
+ {% endif %}
+ set; }
+{% endnoeol %}
+{% if parameter.enumType %}
+{% doc_comment_if parameter.description %}
+public enum {% camel_case parameter.enumType.className %}Enum
+{
+{% noblank %}{% for element in parameter.enumType.elements %}
+{% indent %}
+{% doc_comment_if element.description %}
+[Google.Apis.Util.StringValueAttribute("{{ element.value }}")]
+{{ element.constantName }},
+{% endindent %}
+{% endfor %}{% endnoblank %}}
+{% endif %}

@@ -1,0 +1,21 @@
+  {% if param.pattern %}
+    {% if param.repeated %}
+    if (!getSuppressPatternChecks()) {
+      for (String {{ param.memberName }}Elem : {{ param.memberName }}) {
+        {% if param.code_type == 'java.util.List<java.lang.String>' %}
+        com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}Elem).matches(),
+            "Parameter {{ param.memberName }} elements must conform to the pattern " +
+            {% literal param.pattern %});
+        {% endif %}
+      }
+    }
+    {% else %}
+      {% if param.code_type == 'java.lang.String' %}
+    if (!getSuppressPatternChecks()) {
+      com.google.api.client.util.Preconditions.checkArgument({{param.constantName}}_PATTERN.matcher({{ param.memberName }}).matches(),
+          "Parameter {{ param.memberName }} must conform to the pattern " +
+          {% literal param.pattern %});
+    }
+      {% endif %}
+    {% endif %}
+  {% endif %}

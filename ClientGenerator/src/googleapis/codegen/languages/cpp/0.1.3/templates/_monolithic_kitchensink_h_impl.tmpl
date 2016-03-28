@@ -1,0 +1,37 @@
+#include "{{ api.base_include_path }}/integral_types.h"
+#include "{{ api.base_include_path }}/macros.h"
+#include "{{ api.client_include_path }}/data/jsoncpp_data.h"
+#include "{{ api.client_include_path }}/service/client_service.h"
+#include "{{ api.client_include_path }}/service/media_uploader.h"
+#include "{{ api.client_include_path }}/service/service_request_pager.h"
+#include "{{ api.client_include_path }}/util/status.h"
+#include "{{ api.client_include_path }}/util/uri_template.h"
+
+#define {{ api.module.name }}_model {{ api.module.name }}
+namespace {{ api.module.name }} {
+{% if api.global_namespace %}using namespace {{ api.global_namespace }};{% endif %}
+
+{# Forward declare all the model classes #}
+{% for m in api.sortedTopLevelModels %}
+class {{ m.className }};{% endfor %}
+{# The defines in the loops below just guard against including this file #}
+{# and the individual header files #}
+{% for m in api.sortedTopLevelModels %}
+#ifndef {{ m.include_guard }}
+{% call_template _model_h_impl current_model=m %}
+#endif  // {{ m.include_guard }}
+{% endfor %}
+{# Now that the model classes are declared, #}
+{# define the inline accessor methods, and finish up the include guards. #}
+{% for m in api.sortedTopLevelModels %}
+#ifndef {{ m.include_guard }}
+#define {{ m.include_guard }}{% call_template _model_h_inline_accessor current_model=m %}
+#endif  // {{ m.include_guard }}
+{% endfor %}
+
+#ifndef {{ api.module.name|upper }}_{{ api.filename|upper }}_H_
+#define {{ api.module.name|upper }}_{{ api.filename|upper }}_H_
+{% call_template _service_impl_h api=api %}
+#endif  // {{ api.module.name|upper }}_{{ api.filename|upper }}_H_
+
+}  // namespace {{ api.module.name }}

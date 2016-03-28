@@ -1,0 +1,41 @@
+/**
+ * Acts as message factory for accessing {{ resource.name }} data.
+ *
+ * @ingroup ServiceClass
+ */
+class {{ resource.className }} {
+ public:
+  /**
+   * Standard constructor.
+   *
+   * @param[in] service  The service instance is used to bind to the
+   *            methods created from this resource instance.  This will be
+   *            the service that methods are invoked on.
+   */
+  explicit {{ resource.className }}({{ api.className }}* service);
+
+  /**
+   * Standard destructor.
+   */
+  ~{{ resource.className }}() {}
+{% for subresource in resource.resources %}{% indent %}
+{% call_template _resource_h resource=subresource %}
+/**
+ * Gets the {{ subresource.wireName }} resource method factory.
+ *
+ * @return {{ subresource.className }} for creating methods.
+ */
+const {{ subresource.className }}& {{ subresource.getterName }}() const {
+  return {{ subresource.memberName }};
+}
+
+{% endindent %}{% endfor %}
+{% indent %}{% for method in resource.methods %}
+{% call_template _method_factory_h method=method %}
+{% endfor %}{% endindent %}
+ private:
+  {{ api.className }}* service_;{% for subresource in resource.resources %}
+  {{ subresource.className }} {{ subresource.memberName }};{% endfor %}
+
+  DISALLOW_COPY_AND_ASSIGN({{ resource.className }});
+};

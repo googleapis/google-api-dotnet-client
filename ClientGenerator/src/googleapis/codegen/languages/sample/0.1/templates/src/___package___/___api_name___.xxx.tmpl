@@ -1,0 +1,92 @@
+{% language python %}
+// Copyright 2013 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+{% comment %}
+  Renders an API class.
+{% endcomment %}
+
+// library {{ api.name }} {{ api.version }}
+
+// package {{ api.module.name }}
+
+import the stuff you need to import here
+
+// API {{ api.className }}
+/**{% filter block_comment %}
+ * {{ api.description }}
+ * {% endfilter %}
+ */
+class {{ api.className }} extends SomeApiBaseClass  {
+
+  /** The API root, such as [:https://www.googleapis.com:] */
+  string rootUrl;
+  /** How we should identify ourselves to the service. */
+  http.Authenticator authenticator;
+  /** The client library version */
+  string clientVersion = '{{ features.releaseVersion }}.{{ api.revision }}';
+  /** The application name, used in the user-agent header */
+  string applicationName;
+
+  {{ api.className }} get _$service => this;
+  {% for r in api.resources %}{{ r.className }} _{{ r.parameterName }};
+  {{ r.className }} get {{ r.parameterName }} => {{ r.memberName }};
+  {% endfor %}
+{% for param in api.parameters %}{% indent %}{% doc_comment_if param.description %}
+{% call_template _parameter_type %} {{ param.parameterName }};{% endindent %}
+
+{% endfor %}
+
+  {{ api.className }}({this.rootUrl:{% literal api.rootUrl api.servicePath %},
+                      applicationName, this.authenticator}) :
+      this.applicationName = applicationName;
+  {
+   {% for r in api.resources %}
+    {{ r.memberName }} = new {{ r.className }}._internal(this);
+   {% endfor %}
+  }
+
+  string get userAgent {
+    return "${applicationName}{{ api.name }}/{{ api.version }}/{{ api.revision }} google-api-something-client/{{ features.releaseVersion }}";
+  }
+
+{% for m in api.methods %}
+{% indent %}{% call_template _method method=m %}{% endindent %}
+{% endfor %}
+{% collapsenewlines %}
+
+// OAuth2 scopes which may be required for some methods in this API
+{% for s in api.authscopes %}
+  /** OAuth2 scope: {{ s.description }} */
+  public static const string {{ s.constantName }}_SCOPE = {% literal s.value %};
+{% endfor %}}
+
+{% for r in api.resources %}
+{% call_template _resource resource=r %}
+{% endfor %}
+
+{% for param in api.parameters %}
+{% if param.enumType %}{% call_template _enum type=param.enumType %}{% endif %}
+{% endfor %}
+
+{% for m in api.methods %}
+{% for param in m.parameters %}
+{% if param.enumType %}{% call_template _enum type=param.enumType %}{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% endcollapsenewlines %}
+// Models in the top level
+{% for model in api.models %}
+{% call_template _model_def model=model %}
+{% endfor %}

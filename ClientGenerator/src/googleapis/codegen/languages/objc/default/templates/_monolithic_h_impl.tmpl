@@ -1,0 +1,11 @@
+{% language objc %}
+{% call_template ___package___/___api_className___Constants.h %}
+
+{% for model in api.models %}
+{% call_template ___package___/___topLevelModels_className___.h model=model %}
+{% endfor %}
+
+{% if api.query %}
+{% call_template  ___package___/___api_query___.h %}
+{% endif %}
+{% call_template ___package___/___api_serviceName___.h %}

@@ -1,0 +1,5448 @@
+=== begin: ./pubspec.yaml
+# This is a Dart pubspec file. It exists here just to show you a file which
+# is not part of the rest of the source, which you want to appear at the top
+# level of output.
+name: kitch_sink_v1
+description: >
+  An API with every strange thing in it
+version: 0.1.snapshot
+author: Google Inc.
+=== end: ./pubspec.yaml
+=== begin: ./src/1/2/3/4/x.txt
+// Path: 1/2/3/4/x.txt.
+Content for level 4.
+=== end: ./src/1/2/3/4/x.txt
+=== begin: ./src/1/2/3/x.txt
+// Path: 1/2/3/x.txt.
+Content for level 3.
+=== end: ./src/1/2/3/x.txt
+=== begin: ./src/1/2/x.txt
+// Path: 1/2/x.txt.
+Content for level 2.
+=== end: ./src/1/2/x.txt
+=== begin: ./src/1/x.txt
+// Path: 1/x.txt.
+Content for level 1.
+=== end: ./src/1/x.txt
+=== begin: ./src/com/google/kitch_sink/GeometryCollection.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .GeometryCollection { model.description }} <p> Your explanation here.
+ */
+class GeometryCollection extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "geometries"
+  com::google::kitch_sink::Array<Geometry> _geometries;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Geometry> getGeometries() {
+    return _geometries;
+  }
+  void setGeometries(com::google::kitch_sink::Array<Geometry> v) {
+    _geometries = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/GeometryCollection.xxx
+=== begin: ./src/com/google/kitch_sink/GeometryPolygon.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .GeometryPolygon { model.description }} <p> Your explanation here.
+ */
+class GeometryPolygon extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "coordinates"
+  str _coordinates;
+
+  // Getters and setters might go here
+  str getCoordinates() {
+    return _coordinates;
+  }
+  void setCoordinates(str v) {
+    _coordinates = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/GeometryPolygon.xxx
+=== begin: ./src/com/google/kitch_sink/GeometryReference.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .GeometryReference { model.description }} <p> Your explanation here.
+ */
+class GeometryReference extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "coordinates"
+  str _coordinates;
+
+  // 
+  // JSON name: "type"
+  str _type;
+
+  // Getters and setters might go here
+  str getCoordinates() {
+    return _coordinates;
+  }
+  void setCoordinates(str v) {
+    _coordinates = v;
+  }
+  str getType() {
+    return _type;
+  }
+  void setType(str v) {
+    _type = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/GeometryReference.xxx
+=== begin: ./src/com/google/kitch_sink/Geometry.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Geometry { model.description }} <p> Your explanation here.
+ */
+class Geometry extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "type"
+  str _type;
+
+  // Getters and setters might go here
+  str getType() {
+    return _type;
+  }
+  void setType(str v) {
+    _type = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Geometry.xxx
+=== begin: ./src/com/google/kitch_sink/kitch_sink.xxx
+
+// Copyright 2013 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+// library kitch_sink v1
+
+// package com::google::kitch_sink
+
+import the stuff you need to import here
+
+// API KitchSink
+/**
+ * An API with every strange thing in it
+ */
+class KitchSink extends SomeApiBaseClass  {
+
+  /** The API root, such as [:https://www.googleapis.com:] */
+  string rootUrl;
+  /** How we should identify ourselves to the service. */
+  http.Authenticator authenticator;
+  /** The client library version */
+  string clientVersion = '0.1.snapshot';
+  /** The application name, used in the user-agent header */
+  string applicationName;
+
+  KitchSink get _$service => this;
+  Featured _featured;
+  Featured get featured => _featured;
+  Global _global;
+  Global get global => _global;
+  My _my;
+  My get my => _my;
+  Myrecent _myrecent;
+  Myrecent get myrecent => _myrecent;
+  Profiles _profiles;
+  Profiles get profiles => _profiles;
+  Responses _responses;
+  Responses get responses => _responses;
+  Series _series;
+  Series get series => _series;
+  Submissions _submissions;
+  Submissions get submissions => _submissions;
+  Tags _tags;
+  Tags get tags => _tags;
+  Topics _topics;
+  Topics get topics => _topics;
+  Votes _votes;
+  Votes get votes => _votes;
+  
+  """An Enum API parameter#
+  str alt;
+
+  """An _ delimited API parameter#
+  str oauth_token;
+
+  """A camelCased API parameter#
+  bool prettyPrint;
+
+
+
+  KitchSink({this.rootUrl:'https://www.googleapis.com/sink/v1/',
+                      applicationName, this.authenticator}) :
+      this.applicationName = applicationName;
+  {
+   
+    _featured = new Featured._internal(this);
+   
+    _global = new Global._internal(this);
+   
+    _my = new My._internal(this);
+   
+    _myrecent = new Myrecent._internal(this);
+   
+    _profiles = new Profiles._internal(this);
+   
+    _responses = new Responses._internal(this);
+   
+    _series = new Series._internal(this);
+   
+    _submissions = new Submissions._internal(this);
+   
+    _tags = new Tags._internal(this);
+   
+    _topics = new Topics._internal(this);
+   
+    _votes = new Votes._internal(this);
+   
+  }
+
+  string get userAgent {
+    return "${applicationName}kitch_sink/v1/snapshot google-api-something-client/0.1";
+  }
+
+
+
+
+// OAuth2 scopes which may be required for some methods in this API
+
+  /** OAuth2 scope: A non googleapis.com scope */
+  public static const string MAIL_GOOGLE_COM_SCOPE = 'https://mail.google.com/';
+
+  /** OAuth2 scope: a product level scope */
+  public static const string PRODUCT_SCOPE = 'https://www.googleapis.com/auth/product';
+
+  /** OAuth2 scope: A typical scope */
+  public static const string USERINFO_EMAIL_SCOPE = 'https://www.googleapis.com/auth/userinfo.email';
+}
+
+// Resource 
+class Featured extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Series _series;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _series = new Series(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+  }
+
+    // subresources
+
+    // Resource
+    class Series extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Lists the featured series.
+         *
+         */
+        Future<SeriesList> list() {
+          string path = 'series/featured';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class Global extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Series _series;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _series = new Series(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+  }
+
+    // subresources
+
+    // Resource
+    class Series extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Searches the public series and returns the search results.
+         *
+         * [max_results] Maximum number of results to return.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [q] Search query.
+         * [start_index] Index of the first result to be retrieved.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         */
+        Future<SeriesList> list({
+                long max_results, str q, long start_index
+                }) {
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          string path = 'search';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class My extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Series _series;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _series = new Series(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+  }
+
+    // subresources
+
+    // Resource
+    class Series extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Lists all series created by the authenticated user.
+         *
+         */
+        Future<SeriesList> list() {
+          string path = 'series/@me/mine';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class Myrecent extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Private _private;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _private = new Private(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+  }
+
+    // subresources
+
+    // Resource
+    class Private extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Resource using a name which is a keyword in many languages, to check their
+         * handling.
+         *
+         */
+        Future<SeriesList> list() {
+          string path = 'series/@me/recent';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class Profiles extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Returns the profile information for the authenticated user.
+     *
+     */
+    Future<Profile> get() {
+      string path = 'profiles/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Updates the profile information for the authenticated user.
+     *
+     * [content] the Profile
+     */
+    Future<Profile> update(Profile content;) {
+      string path = 'profiles/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'PUT')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Resource 
+class Responses extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Inserts a response for the specified submission in the specified topic within
+     * the specified series.
+     *
+     * [content] the Submission
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [topicId] The decimal ID of the Topic within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [parentSubmissionId] The decimal ID of the parent Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [anonymous] Set to true to mark the new submission as anonymous.
+     */
+    Future<Submission> insert(long seriesId, long topicId, long parentSubmissionId, Submission content;, {
+            bool anonymous
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['topicId'] = topicId;
+      pathParams['parentSubmissionId'] = parentSubmissionId;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Lists or searches the responses for the specified submission within the
+     * specified series and returns the search results.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [author] Restricts the results to submissions by a specific author.
+     * [hasAttachedVideo] Specifies whether to restrict to submissions that have videos attached.
+     * [q] Search query.
+     * [sort] Sort order.
+     * [start_index] Index of the first result to be retrieved.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<SubmissionList> list(long seriesId, long submissionId, {
+            str author, bool hasAttachedVideo, str q, str sort, long start_index
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/submissions/{submissionId}/responses';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Resource 
+class Series extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Responses _responses;
+  final Submissions _submissions;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _responses = new Responses(service_handle);
+  ,
+  _submissions = new Submissions(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Returns the specified series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Series> get(long seriesId) {
+      pathParams['seriesId'] = seriesId;
+      string path = 'series/{seriesId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Media method without request data.
+     *
+     */
+    Future<Series> insert() {
+      string path = 'series';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Searches the series and returns the search results.
+     *
+     * [max_results] Maximum number of results to return.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [q] Search query.
+     * [start_index] Index of the first result to be retrieved.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<SeriesList> list({
+            long max_results, str q, long start_index
+            }) {
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      string path = 'series';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Updates the specified series.
+     *
+     * [content] the Series
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Series> update(long seriesId, Series content;) {
+      pathParams['seriesId'] = seriesId;
+      string path = 'series/{seriesId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'PUT')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+    // Resource
+    class Responses extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Searches the responses for the specified series and returns the search
+         * results.
+         *
+         * [seriesId] The decimal ID of the Series.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [q] Search query - a required query parameter.
+         * [author] Restricts the results to submissions by a specific author.
+         * [hasAttachedVideo] Specifies whether to restrict to submissions that have videos attached.
+         * [max_results] Maximum number of results to return.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [sort] Sort order.
+         * [start_index] Index of the first result to be retrieved.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         */
+        Future<SeriesList> list(long seriesId, str q, {
+                str author, bool hasAttachedVideo, long max_results, str sort, long start_index
+                }) {
+          pathParams['seriesId'] = seriesId;
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          string path = 'series/{seriesId}/responses';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+    // Resource
+    class Submissions extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Searches the submissions for the specified series and returns the search
+         * results.
+         *
+         * [seriesId] The decimal ID of the Series.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [author] Restricts the results to submissions by a specific author.
+         * [hasAttachedVideo] Specifies whether to restrict to submissions that have videos attached.
+         * [lang] The language code for the language the client prefers resuls in.
+         * [q] Search query.
+         * [sort] Sort order.
+         * [start_index] Index of the first result to be retrieved.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         */
+        Future<SubmissionList> list(long seriesId, {
+                str author, bool hasAttachedVideo, str lang, str q, str sort, long start_index
+                }) {
+          pathParams['seriesId'] = seriesId;
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          string path = 'series/{seriesId}/submissions';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class Submissions extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Returns the specified submission within the specified series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [lang] The language code for the language the client prefers resuls in.
+     */
+    Future<Submission> get(long seriesId, long submissionId, {
+            str lang
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/submissions/{submissionId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Inserts a new submission in the specified topic within the specified series.
+     *
+     * [content] the Submission
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [topicId] The decimal ID of the Topic within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [anonymous] Set to true to mark the new submission as anonymous.
+     */
+    Future<Submission> insert(long seriesId, long topicId, Submission content;, {
+            bool anonymous
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['topicId'] = topicId;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/topics/{topicId}/submissions';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Resource 
+class Tags extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Deletes the specified tag from the specified submission within the specified
+     * series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [tagId]
+     */
+    Future delete(long seriesId, long submissionId, str tagId) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      pathParams['tagId'] = tagId;
+      string path = 'series/{seriesId}/submissions/{submissionId}/tags/{tagId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'DELETE')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Inserts a new tag for the specified submission within the specified series.
+     *
+     * [content] the Tag
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Tag> insert(long seriesId, long submissionId, Tag content;) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      string path = 'series/{seriesId}/submissions/{submissionId}/tags';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * A method with a parameters named |id| and |else|
+     *
+     * [id] id is a reserved word in Objective-C
+     * [else] A parameter name 'else'.
+     */
+    Future<TagList> list(str id, str else) {
+      pathParams['id'] = id;
+      pathParams['else'] = else;
+      string path = 'series/{id}/submissions/{else}/tags';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Resource 
+class Topics extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  final Submissions _submissions;
+  
+
+  // Note that I just write this stuff with the indent I want
+  ,
+  _submissions = new Submissions(service_handle);
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Returns the specified topic from the specified series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [topicId] The decimal ID of the Topic within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Topic2> get(long seriesId, long topicId) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['topicId'] = topicId;
+      string path = 'series/{seriesId}/topics/{topicId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Inserts a new topic into the specified series.
+     *
+     * [content] the Topic
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Topic> insert(long seriesId, Topic content;) {
+      pathParams['seriesId'] = seriesId;
+      string path = 'series/{seriesId}/topics';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Searches the topics within the specified series and returns the search
+     * results.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [max_results] Maximum number of results to return.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [mode]
+     * [q] Search query.
+     * [start_index] Index of the first result to be retrieved.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<TopicList> list(long seriesId, {
+            long max_results, str mode, str q, long start_index
+            }) {
+      pathParams['seriesId'] = seriesId;
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/topics';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Updates the specified topic within the specified series.
+     *
+     * [content] the Topic
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [topicId] The decimal ID of the Topic within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Topic> update(long seriesId, long topicId, Topic content;) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['topicId'] = topicId;
+      string path = 'series/{seriesId}/topics/{topicId}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'PUT')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+  // Enum KitchSink.Topics.List.Mode
+  //
+  class Mode {
+
+    // A value with a @, to show we make constant names the right way.
+    const str AUTO = '@auto';
+
+    // boring
+    const str NORMAL = 'Normal';
+
+    // this should be kMixItUp in some languages
+    const str MIX_IT_UP = 'mix_it_up';
+
+  }
+
+    // subresources
+
+    // Resource
+    class Submissions extends SomeRootClass {
+      KitchSink service_handle;
+
+      // Loop over all resources here to declare variables
+
+      // Note that I just write this stuff with the indent I want
+
+      // but here all the things are in an indent block because then I can control
+      // how they are indenting better.
+
+        // Method
+        /**
+         * Searches the submissions for the specified topic within the specified series
+         * and returns the search results.
+         *
+         * [seriesId] The decimal ID of the Series.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [topicId] The decimal ID of the Topic within the Series.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         * [author] Restricts the results to submissions by a specific author.
+         * [hasAttachedVideo] Specifies whether to restrict to submissions that have videos attached.
+         * [q] Search query.
+         * [sort] Sort order.
+         * [start_index] Index of the first result to be retrieved.
+
+         Minimum: 0.
+         Maximum: 4294967295.
+         */
+        Future<SubmissionList> list(long seriesId, long topicId, {
+                str author, bool hasAttachedVideo, str q, str sort, long start_index
+                }) {
+          pathParams['seriesId'] = seriesId;
+          pathParams['topicId'] = topicId;
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          // do something different with queryParameters
+          string path = 'series/{seriesId}/topics/{topicId}/submissions';
+          string url = new UrlPattern(_service.rootUrl + "/" + path)
+              .expand(pathParams, queryParams);
+          request = new http.Request($url, 'GET')
+          // authentication might wrap the request here.
+          return request
+        }
+      }
+
+        // subresources
+
+    } // end of class definition
+
+} // end of class definition
+
+// Resource 
+class Votes extends SomeRootClass {
+  KitchSink service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+     * Returns the votes by the authenticated user for the specified submission
+     * within the specified series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [userId]
+     */
+    Future<Vote> get(long seriesId, long submissionId, {
+            str userId
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/submissions/{submissionId}/votes/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Inserts a new vote by the authenticated user for the specified submission
+     * within the specified series.
+     *
+     * [content] the Vote
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submissionId] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<Vote> insert(long seriesId, long submissionId, Vote content;) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submissionId'] = submissionId;
+      string path = 'series/{seriesId}/submissions/{submissionId}/votes/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Lists the votes by the authenticated user for the given series.
+     *
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [start_index] Index of the first result to be retrieved.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     */
+    Future<VoteList> list(long seriesId, {
+            long start_index
+            }) {
+      pathParams['seriesId'] = seriesId;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/votes/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+     * Updates the votes by the authenticated user for the specified submission
+     * within the specified series.
+     *
+     * [content] the Vote
+     * [seriesId] The decimal ID of the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [submission_id] The decimal ID of the Submission within the Series.
+
+     Minimum: 0.
+     Maximum: 4294967295.
+     * [userId]
+     */
+    Future<Vote> update(long seriesId, long submission_id, Vote content;, {
+            str userId
+            }) {
+      pathParams['seriesId'] = seriesId;
+      pathParams['submission_id'] = submission_id;
+      // do something different with queryParameters
+      string path = 'series/{seriesId}/submissions/{submission_id}/votes/@me';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'PUT')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Enum KitchSink.Alt
+// An Enum API parameter
+class Alt {
+
+  // The meaning for the enun value 'json'
+  const str JSON = 'json';
+
+}
+
+
+// Models in the top level
+
+
+
+"""Schema .Geometry { model.description }} <p> Your explanation here.
+# 
+class Geometry extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'type'
+  str _type;
+
+  // Getters and setters might go here
+  str getType() {
+    return _type;
+  }
+  void setType(str v) {
+    _type = v;
+  }
+
+}
+
+
+
+"""Schema .GeometryCollection { model.description }} <p> Your explanation here.
+# 
+class GeometryCollection extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'geometries'
+  com::google::kitch_sink::Array<Geometry> _geometries;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Geometry> getGeometries() {
+    return _geometries;
+  }
+  void setGeometries(com::google::kitch_sink::Array<Geometry> v) {
+    _geometries = v;
+  }
+
+}
+
+
+
+"""Schema .GeometryPolygon { model.description }} <p> Your explanation here.
+# 
+class GeometryPolygon extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'coordinates'
+  str _coordinates;
+
+  // Getters and setters might go here
+  str getCoordinates() {
+    return _coordinates;
+  }
+  void setCoordinates(str v) {
+    _coordinates = v;
+  }
+
+}
+
+
+
+"""Schema .GeometryReference { model.description }} <p> Your explanation here.
+# 
+class GeometryReference extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'coordinates'
+  str _coordinates;
+
+  // 
+  // JSON name: 'type'
+  str _type;
+
+  // Getters and setters might go here
+  str getCoordinates() {
+    return _coordinates;
+  }
+  void setCoordinates(str v) {
+    _coordinates = v;
+  }
+  str getType() {
+    return _type;
+  }
+  void setType(str v) {
+    _type = v;
+  }
+
+}
+
+
+
+"""Schema .LatLong { model.description }} <p> Your explanation here.
+# 
+class LatLong extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'latitude'
+  float _latitude;
+
+  // 
+  // JSON name: 'location'
+  str _location;
+
+  // 
+  // JSON name: 'longitude'
+  float _longitude;
+
+  // Getters and setters might go here
+  float getLatitude() {
+    return _latitude;
+  }
+  void setLatitude(float v) {
+    _latitude = v;
+  }
+  str getLocation() {
+    return _location;
+  }
+  void setLocation(str v) {
+    _location = v;
+  }
+  float getLongitude() {
+    return _longitude;
+  }
+  void setLongitude(float v) {
+    _longitude = v;
+  }
+
+}
+
+
+
+"""Schema .ModeratorTopicsResourcePartial { model.description }} <p> Your
+"""explanation here.
+# 
+class ModeratorTopicsResourcePartial extends SomeBaseModelClass {
+
+  // Getters and setters might go here
+
+}
+
+
+
+"""Schema .Profile { model.description }} <p> Your explanation here.
+# 
+class Profile extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'attribution'
+  ProfileAttribution _attribution;
+
+  // 
+  // JSON name: 'id'
+  ProfileId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // Getters and setters might go here
+  ProfileAttribution getAttribution() {
+    return _attribution;
+  }
+  void setAttribution(ProfileAttribution v) {
+    _attribution = v;
+  }
+  ProfileId getId() {
+    return _id;
+  }
+  void setId(ProfileId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+  """Schema Profile.ProfileAttribution { model.description }} <p> Your
+  """explanation here.
+  #
+  class ProfileAttribution extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'avatarUrl'
+    str _avatarUrl;
+
+    //
+    // JSON name: 'displayName'
+    str _displayName;
+
+    //
+    // JSON name: 'geo'
+    LatLong _geo;
+
+    //
+    // JSON name: 'location'
+    str _location;
+
+    // Getters and setters might go here
+    str getAvatarUrl() {
+      return _avatarUrl;
+    }
+    void setAvatarUrl(str v) {
+      _avatarUrl = v;
+    }
+    str getDisplayName() {
+      return _displayName;
+    }
+    void setDisplayName(str v) {
+      _displayName = v;
+    }
+    LatLong getGeo() {
+      return _geo;
+    }
+    void setGeo(LatLong v) {
+      _geo = v;
+    }
+    str getLocation() {
+      return _location;
+    }
+    void setLocation(str v) {
+      _location = v;
+    }
+
+  }
+
+  """Schema Profile.ProfileId { model.description }} <p> Your explanation here.
+  #
+  class ProfileId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'user'
+    str _user;
+
+    // Getters and setters might go here
+    str getUser() {
+      return _user;
+    }
+    void setUser(str v) {
+      _user = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Profile.ProfileAttribution { model.description }} <p> Your explanation
+"""here.
+# 
+class ProfileAttribution extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'avatarUrl'
+  str _avatarUrl;
+
+  // 
+  // JSON name: 'displayName'
+  str _displayName;
+
+  // 
+  // JSON name: 'geo'
+  LatLong _geo;
+
+  // 
+  // JSON name: 'location'
+  str _location;
+
+  // Getters and setters might go here
+  str getAvatarUrl() {
+    return _avatarUrl;
+  }
+  void setAvatarUrl(str v) {
+    _avatarUrl = v;
+  }
+  str getDisplayName() {
+    return _displayName;
+  }
+  void setDisplayName(str v) {
+    _displayName = v;
+  }
+  LatLong getGeo() {
+    return _geo;
+  }
+  void setGeo(LatLong v) {
+    _geo = v;
+  }
+  str getLocation() {
+    return _location;
+  }
+  void setLocation(str v) {
+    _location = v;
+  }
+
+}
+
+
+
+"""Schema Profile.ProfileId { model.description }} <p> Your explanation here.
+# 
+class ProfileId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'user'
+  str _user;
+
+  // Getters and setters might go here
+  str getUser() {
+    return _user;
+  }
+  void setUser(str v) {
+    _user = v;
+  }
+
+}
+
+
+
+"""Schema .Rule { model.description }} <p> Your explanation here.
+# 
+class Rule extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'submissions'
+  RuleSubmissions _submissions;
+
+  // Getters and setters might go here
+  RuleSubmissions getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(RuleSubmissions v) {
+    _submissions = v;
+  }
+
+  """Schema Rule.RuleSubmissions { model.description }} <p> Your explanation
+  """here.
+  #
+  class RuleSubmissions extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'close'
+    long _close;
+
+    //
+    // JSON name: 'open'
+    long _open;
+
+    // Getters and setters might go here
+    long getClose() {
+      return _close;
+    }
+    void setClose(long v) {
+      _close = v;
+    }
+    long getOpen() {
+      return _open;
+    }
+    void setOpen(long v) {
+      _open = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Rule.RuleSubmissions { model.description }} <p> Your explanation here.
+# 
+class RuleSubmissions extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'close'
+  long _close;
+
+  // 
+  // JSON name: 'open'
+  long _open;
+
+  // Getters and setters might go here
+  long getClose() {
+    return _close;
+  }
+  void setClose(long v) {
+    _close = v;
+  }
+  long getOpen() {
+    return _open;
+  }
+  void setOpen(long v) {
+    _open = v;
+  }
+
+}
+
+
+
+"""Schema .Series { model.description }} <p> Your explanation here.
+# 
+class Series extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'anonymousSubmissionAllowed'
+  bool _anonymousSubmissionAllowed;
+
+  // 
+  // JSON name: 'counters'
+  SeriesCounters _counters;
+
+  // 
+  // JSON name: 'description'
+  str _description;
+
+  // 
+  // JSON name: 'id'
+  SeriesId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'name'
+  str _name;
+
+  // 
+  // JSON name: 'numTopics'
+  long _numTopics;
+
+  // 
+  // JSON name: 'videoSubmissionAllowed'
+  bool _videoSubmissionAllowed;
+
+  // Getters and setters might go here
+  bool getAnonymousSubmissionAllowed() {
+    return _anonymousSubmissionAllowed;
+  }
+  void setAnonymousSubmissionAllowed(bool v) {
+    _anonymousSubmissionAllowed = v;
+  }
+  SeriesCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(SeriesCounters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  SeriesId getId() {
+    return _id;
+  }
+  void setId(SeriesId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  long getNumTopics() {
+    return _numTopics;
+  }
+  void setNumTopics(long v) {
+    _numTopics = v;
+  }
+  bool getVideoSubmissionAllowed() {
+    return _videoSubmissionAllowed;
+  }
+  void setVideoSubmissionAllowed(bool v) {
+    _videoSubmissionAllowed = v;
+  }
+
+  """Schema Series.SeriesCounters { model.description }} <p> Your explanation
+  """here.
+  #
+  class SeriesCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'anonymousSubmissions'
+    long _anonymousSubmissions;
+
+    //
+    // JSON name: 'counters'
+    SeriesCountersCounters _counters;
+
+    //
+    // JSON name: 'else'
+    long _else;
+
+    //
+    // JSON name: 'minus_votes'
+    long _minus_votes;
+
+    //
+    // JSON name: 'none_votes'
+    long _none_votes;
+
+    //
+    // JSON name: 'plus_votes'
+    long _plus_votes;
+
+    //
+    // JSON name: 'submissions'
+    long _submissions;
+
+    //
+    // JSON name: 'users'
+    str _users;
+
+    // Getters and setters might go here
+    long getAnonymousSubmissions() {
+      return _anonymousSubmissions;
+    }
+    void setAnonymousSubmissions(long v) {
+      _anonymousSubmissions = v;
+    }
+    SeriesCountersCounters getCounters() {
+      return _counters;
+    }
+    void setCounters(SeriesCountersCounters v) {
+      _counters = v;
+    }
+    long getElse() {
+      return _else;
+    }
+    void setElse(long v) {
+      _else = v;
+    }
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    str getUsers() {
+      return _users;
+    }
+    void setUsers(str v) {
+      _users = v;
+    }
+
+    """Schema Series.SeriesCounters.SeriesCountersCounters { model.description
+    """}} <p> Your explanation here.
+    #
+    class SeriesCountersCounters extends SomeBaseModelClass {
+
+      //
+      // JSON name: 'all-votes'
+      long _all_votes;
+
+      // Getters and setters might go here
+      long getAllVotes() {
+        return _all_votes;
+      }
+      void setAllVotes(long v) {
+        _all_votes = v;
+      }
+
+    }
+
+  }
+
+  """Schema Series.SeriesId { model.description }} <p> Your explanation here.
+  #
+  class SeriesId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Series.SeriesCounters { model.description }} <p> Your explanation
+"""here.
+# 
+class SeriesCounters extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'anonymousSubmissions'
+  long _anonymousSubmissions;
+
+  // 
+  // JSON name: 'counters'
+  SeriesCountersCounters _counters;
+
+  // 
+  // JSON name: 'else'
+  long _else;
+
+  // 
+  // JSON name: 'minus_votes'
+  long _minus_votes;
+
+  // 
+  // JSON name: 'none_votes'
+  long _none_votes;
+
+  // 
+  // JSON name: 'plus_votes'
+  long _plus_votes;
+
+  // 
+  // JSON name: 'submissions'
+  long _submissions;
+
+  // 
+  // JSON name: 'users'
+  str _users;
+
+  // Getters and setters might go here
+  long getAnonymousSubmissions() {
+    return _anonymousSubmissions;
+  }
+  void setAnonymousSubmissions(long v) {
+    _anonymousSubmissions = v;
+  }
+  SeriesCountersCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(SeriesCountersCounters v) {
+    _counters = v;
+  }
+  long getElse() {
+    return _else;
+  }
+  void setElse(long v) {
+    _else = v;
+  }
+  long getMinus_votes() {
+    return _minus_votes;
+  }
+  void setMinus_votes(long v) {
+    _minus_votes = v;
+  }
+  long getNone_votes() {
+    return _none_votes;
+  }
+  void setNone_votes(long v) {
+    _none_votes = v;
+  }
+  long getPlus_votes() {
+    return _plus_votes;
+  }
+  void setPlus_votes(long v) {
+    _plus_votes = v;
+  }
+  long getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(long v) {
+    _submissions = v;
+  }
+  str getUsers() {
+    return _users;
+  }
+  void setUsers(str v) {
+    _users = v;
+  }
+
+  """Schema Series.SeriesCounters.SeriesCountersCounters { model.description }}
+  """<p> Your explanation here.
+  #
+  class SeriesCountersCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'all-votes'
+    long _all_votes;
+
+    // Getters and setters might go here
+    long getAllVotes() {
+      return _all_votes;
+    }
+    void setAllVotes(long v) {
+      _all_votes = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Series.SeriesCounters.SeriesCountersCounters { model.description }}
+"""<p> Your explanation here.
+# 
+class SeriesCountersCounters extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'all-votes'
+  long _all_votes;
+
+  // Getters and setters might go here
+  long getAllVotes() {
+    return _all_votes;
+  }
+  void setAllVotes(long v) {
+    _all_votes = v;
+  }
+
+}
+
+
+
+"""Schema Series.SeriesId { model.description }} <p> Your explanation here.
+# 
+class SeriesId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+
+}
+
+
+
+"""Schema .SeriesList { model.description }} <p> Your explanation here.
+# 
+class SeriesList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'items'
+  com::google::kitch_sink::Array<Series> _items;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Series> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Series> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+
+"""Schema .Submission { model.description }} <p> Your explanation here.
+# 
+class Submission extends SomeBaseModelClass {
+
+  // 
+  // JSON name: '@attachmentUrl'
+  str _attachmentUrl;
+
+  // 
+  // JSON name: 'attribution'
+  SubmissionAttribution _attribution;
+
+  // 
+  // JSON name: 'author'
+  str _author;
+
+  // 
+  // JSON name: 'counters'
+  SubmissionCounters _counters;
+
+  // 
+  // JSON name: 'created'
+  long _created;
+
+  // 
+  // JSON name: 'geo'
+  com::google::kitch_sink::Array<LatLong> _geo;
+
+  // 
+  // JSON name: 'id'
+  SubmissionId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'parentSubmissionId'
+  SubmissionParentSubmissionId _parentSubmissionId;
+
+  // 
+  // JSON name: 'text'
+  str _text;
+
+  // 
+  // JSON name: 'topics'
+  com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> _topics;
+
+  // 
+  // JSON name: 'translations'
+  Map<string, Translation> _translations;
+
+  // Getters and setters might go here
+  str getAttachmentUrl() {
+    return _attachmentUrl;
+  }
+  void setAttachmentUrl(str v) {
+    _attachmentUrl = v;
+  }
+  SubmissionAttribution getAttribution() {
+    return _attribution;
+  }
+  void setAttribution(SubmissionAttribution v) {
+    _attribution = v;
+  }
+  str getAuthor() {
+    return _author;
+  }
+  void setAuthor(str v) {
+    _author = v;
+  }
+  SubmissionCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(SubmissionCounters v) {
+    _counters = v;
+  }
+  long getCreated() {
+    return _created;
+  }
+  void setCreated(long v) {
+    _created = v;
+  }
+  com::google::kitch_sink::Array<LatLong> getGeo() {
+    return _geo;
+  }
+  void setGeo(com::google::kitch_sink::Array<LatLong> v) {
+    _geo = v;
+  }
+  SubmissionId getId() {
+    return _id;
+  }
+  void setId(SubmissionId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  SubmissionParentSubmissionId getParentSubmissionId() {
+    return _parentSubmissionId;
+  }
+  void setParentSubmissionId(SubmissionParentSubmissionId v) {
+    _parentSubmissionId = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+  com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> getTopics() {
+    return _topics;
+  }
+  void setTopics(com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> v) {
+    _topics = v;
+  }
+  Map<string, Translation> getTranslations() {
+    return _translations;
+  }
+  void setTranslations(Map<string, Translation> v) {
+    _translations = v;
+  }
+
+  """Schema Submission.SubmissionAttribution { model.description }} <p> Your
+  """explanation here.
+  #
+  class SubmissionAttribution extends SomeBaseModelClass {
+
+    // A member with a $ in the name
+    // JSON name: '$avatarUrl'
+    str _avatarUrl;
+
+    // A member with a $ in the name, but if you strip it, you get a reserved word
+    // JSON name: '$object'
+    str _object;
+
+    //
+    // JSON name: 'location'
+    str _location;
+
+    // Getters and setters might go here
+    str getAvatarUrl() {
+      return _avatarUrl;
+    }
+    void setAvatarUrl(str v) {
+      _avatarUrl = v;
+    }
+    str getObject() {
+      return _object;
+    }
+    void setObject(str v) {
+      _object = v;
+    }
+    str getLocation() {
+      return _location;
+    }
+    void setLocation(str v) {
+      _location = v;
+    }
+
+  }
+
+  """Schema Submission.SubmissionCounters { model.description }} <p> Your
+  """explanation here.
+  #
+  class SubmissionCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'minus_votes'
+    long _minus_votes;
+
+    //
+    // JSON name: 'none_votes'
+    long _none_votes;
+
+    //
+    // JSON name: 'plus_votes'
+    long _plus_votes;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+
+  }
+
+  """Schema Submission.SubmissionId { model.description }} <p> Your explanation
+  """here.
+  #
+  class SubmissionId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    //
+    // JSON name: 'submissionId'
+    long _submissionId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+
+  }
+
+  """Schema Submission.SubmissionParentSubmissionId { model.description }} <p>
+  """Your explanation here.
+  #
+  class SubmissionParentSubmissionId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    //
+    // JSON name: 'submissionId'
+    long _submissionId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Submission.SubmissionAttribution { model.description }} <p> Your
+"""explanation here.
+# 
+class SubmissionAttribution extends SomeBaseModelClass {
+
+  // A member with a $ in the name
+  // JSON name: '$avatarUrl'
+  str _avatarUrl;
+
+  // A member with a $ in the name, but if you strip it, you get a reserved word
+  // JSON name: '$object'
+  str _object;
+
+  // 
+  // JSON name: 'location'
+  str _location;
+
+  // Getters and setters might go here
+  str getAvatarUrl() {
+    return _avatarUrl;
+  }
+  void setAvatarUrl(str v) {
+    _avatarUrl = v;
+  }
+  str getObject() {
+    return _object;
+  }
+  void setObject(str v) {
+    _object = v;
+  }
+  str getLocation() {
+    return _location;
+  }
+  void setLocation(str v) {
+    _location = v;
+  }
+
+}
+
+
+
+"""Schema Submission.SubmissionCounters { model.description }} <p> Your
+"""explanation here.
+# 
+class SubmissionCounters extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'minus_votes'
+  long _minus_votes;
+
+  // 
+  // JSON name: 'none_votes'
+  long _none_votes;
+
+  // 
+  // JSON name: 'plus_votes'
+  long _plus_votes;
+
+  // Getters and setters might go here
+  long getMinus_votes() {
+    return _minus_votes;
+  }
+  void setMinus_votes(long v) {
+    _minus_votes = v;
+  }
+  long getNone_votes() {
+    return _none_votes;
+  }
+  void setNone_votes(long v) {
+    _none_votes = v;
+  }
+  long getPlus_votes() {
+    return _plus_votes;
+  }
+  void setPlus_votes(long v) {
+    _plus_votes = v;
+  }
+
+}
+
+
+
+"""Schema Submission.SubmissionId { model.description }} <p> Your explanation
+"""here.
+# 
+class SubmissionId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // 
+  // JSON name: 'submissionId'
+  long _submissionId;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+  long getSubmissionId() {
+    return _submissionId;
+  }
+  void setSubmissionId(long v) {
+    _submissionId = v;
+  }
+
+}
+
+
+
+"""Schema .SubmissionList { model.description }} <p> Your explanation here.
+# 
+class SubmissionList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'items'
+  com::google::kitch_sink::Array<Submission> _items;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Submission> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Submission> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+
+"""Schema Submission.SubmissionParentSubmissionId { model.description }} <p>
+"""Your explanation here.
+# 
+class SubmissionParentSubmissionId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // 
+  // JSON name: 'submissionId'
+  long _submissionId;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+  long getSubmissionId() {
+    return _submissionId;
+  }
+  void setSubmissionId(long v) {
+    _submissionId = v;
+  }
+
+}
+
+
+
+
+
+"""Schema .Tag { model.description }} <p> Your explanation here.
+# 
+class Tag extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'geometry'
+  Geometry _geometry;
+
+  // 
+  // JSON name: 'id'
+  TagId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'text'
+  str _text;
+
+  // Getters and setters might go here
+  Geometry getGeometry() {
+    return _geometry;
+  }
+  void setGeometry(Geometry v) {
+    _geometry = v;
+  }
+  TagId getId() {
+    return _id;
+  }
+  void setId(TagId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+
+  """Schema Tag.TagId { model.description }} <p> Your explanation here.
+  #
+  class TagId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    //
+    // JSON name: 'submissionId'
+    long _submissionId;
+
+    //
+    // JSON name: 'tag'
+    str _tag;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+    str getTag() {
+      return _tag;
+    }
+    void setTag(str v) {
+      _tag = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Tag.TagId { model.description }} <p> Your explanation here.
+# 
+class TagId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // 
+  // JSON name: 'submissionId'
+  long _submissionId;
+
+  // 
+  // JSON name: 'tag'
+  str _tag;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+  long getSubmissionId() {
+    return _submissionId;
+  }
+  void setSubmissionId(long v) {
+    _submissionId = v;
+  }
+  str getTag() {
+    return _tag;
+  }
+  void setTag(str v) {
+    _tag = v;
+  }
+
+}
+
+
+
+
+
+"""Schema .Topic { model.description }} <p> Your explanation here.
+# 
+class Topic extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'counters'
+  TopicCounters _counters;
+
+  // 
+  // JSON name: 'description'
+  str _description;
+
+  // 
+  // JSON name: 'id'
+  TopicId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'name'
+  str _name;
+
+  // 
+  // JSON name: 'presenter'
+  str _presenter;
+
+  // 
+  // JSON name: 'rules'
+  TopicRules _rules;
+
+  // Getters and setters might go here
+  TopicCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(TopicCounters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  TopicId getId() {
+    return _id;
+  }
+  void setId(TopicId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  str getPresenter() {
+    return _presenter;
+  }
+  void setPresenter(str v) {
+    _presenter = v;
+  }
+  TopicRules getRules() {
+    return _rules;
+  }
+  void setRules(TopicRules v) {
+    _rules = v;
+  }
+
+  """Schema Topic.TopicCounters { model.description }} <p> Your explanation
+  """here.
+  #
+  class TopicCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'minus_votes'
+    long _minus_votes;
+
+    //
+    // JSON name: 'none_votes'
+    long _none_votes;
+
+    //
+    // JSON name: 'plus_votes'
+    long _plus_votes;
+
+    //
+    // JSON name: 'submissions'
+    long _submissions;
+
+    //
+    // JSON name: 'users'
+    long _users;
+
+    //
+    // JSON name: 'videoSubmissions'
+    long _videoSubmissions;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    long getUsers() {
+      return _users;
+    }
+    void setUsers(long v) {
+      _users = v;
+    }
+    long getVideoSubmissions() {
+      return _videoSubmissions;
+    }
+    void setVideoSubmissions(long v) {
+      _videoSubmissions = v;
+    }
+
+  }
+
+  """Schema Topic.TopicId { model.description }} <p> Your explanation here.
+  #
+  class TopicId extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    //
+    // JSON name: 'topicId'
+    long _topicId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getTopicId() {
+      return _topicId;
+    }
+    void setTopicId(long v) {
+      _topicId = v;
+    }
+
+  }
+
+  """Schema Topic.TopicRules { model.description }} <p> Your explanation here.
+  #
+  class TopicRules extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'submissions'
+    TopicRulesSubmissions _submissions;
+
+    //
+    // JSON name: 'votes'
+    TopicRulesVotes _votes;
+
+    // Getters and setters might go here
+    TopicRulesSubmissions getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(TopicRulesSubmissions v) {
+      _submissions = v;
+    }
+    TopicRulesVotes getVotes() {
+      return _votes;
+    }
+    void setVotes(TopicRulesVotes v) {
+      _votes = v;
+    }
+
+    """Schema Topic.TopicRules.TopicRulesSubmissions { model.description }} <p>
+    """Your explanation here.
+    #
+    class TopicRulesSubmissions extends SomeBaseModelClass {
+
+      //
+      // JSON name: 'close'
+      long _close;
+
+      //
+      // JSON name: 'open'
+      long _open;
+
+      // Getters and setters might go here
+      long getClose() {
+        return _close;
+      }
+      void setClose(long v) {
+        _close = v;
+      }
+      long getOpen() {
+        return _open;
+      }
+      void setOpen(long v) {
+        _open = v;
+      }
+
+    }
+
+    """Schema Topic.TopicRules.TopicRulesVotes { model.description }} <p> Your
+    """explanation here.
+    #
+    class TopicRulesVotes extends SomeBaseModelClass {
+
+      //
+      // JSON name: 'close'
+      long _close;
+
+      //
+      // JSON name: 'open'
+      long _open;
+
+      // Getters and setters might go here
+      long getClose() {
+        return _close;
+      }
+      void setClose(long v) {
+        _close = v;
+      }
+      long getOpen() {
+        return _open;
+      }
+      void setOpen(long v) {
+        _open = v;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+"""Schema .Topic2 { model.description }} <p> Your explanation here.
+# 
+class Topic2 extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'counters'
+  Topic2Counters _counters;
+
+  // 
+  // JSON name: 'description'
+  str _description;
+
+  // 
+  // JSON name: 'featuredSubmission'
+  Submission _featuredSubmission;
+
+  // 
+  // JSON name: 'id'
+  Topic2Id _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'name'
+  str _name;
+
+  // 
+  // JSON name: 'presenter'
+  str _presenter;
+
+  // 
+  // JSON name: 'rules'
+  com::google::kitch_sink::Array<Rule> _rules;
+
+  // Getters and setters might go here
+  Topic2Counters getCounters() {
+    return _counters;
+  }
+  void setCounters(Topic2Counters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  Submission getFeaturedSubmission() {
+    return _featuredSubmission;
+  }
+  void setFeaturedSubmission(Submission v) {
+    _featuredSubmission = v;
+  }
+  Topic2Id getId() {
+    return _id;
+  }
+  void setId(Topic2Id v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  str getPresenter() {
+    return _presenter;
+  }
+  void setPresenter(str v) {
+    _presenter = v;
+  }
+  com::google::kitch_sink::Array<Rule> getRules() {
+    return _rules;
+  }
+  void setRules(com::google::kitch_sink::Array<Rule> v) {
+    _rules = v;
+  }
+
+  """Schema Topic2.Topic2Counters { model.description }} <p> Your explanation
+  """here.
+  #
+  class Topic2Counters extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'minus_votes'
+    long _minus_votes;
+
+    //
+    // JSON name: 'none_votes'
+    long _none_votes;
+
+    //
+    // JSON name: 'plus_votes'
+    long _plus_votes;
+
+    //
+    // JSON name: 'submissions'
+    long _submissions;
+
+    //
+    // JSON name: 'users'
+    long _users;
+
+    //
+    // JSON name: 'videoSubmissions'
+    long _videoSubmissions;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    long getUsers() {
+      return _users;
+    }
+    void setUsers(long v) {
+      _users = v;
+    }
+    long getVideoSubmissions() {
+      return _videoSubmissions;
+    }
+    void setVideoSubmissions(long v) {
+      _videoSubmissions = v;
+    }
+
+  }
+
+  """Schema Topic2.Topic2Id { model.description }} <p> Your explanation here.
+  #
+  class Topic2Id extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'seriesId'
+    long _seriesId;
+
+    //
+    // JSON name: 'topicId'
+    long _topicId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getTopicId() {
+      return _topicId;
+    }
+    void setTopicId(long v) {
+      _topicId = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Topic2.Topic2Counters { model.description }} <p> Your explanation
+"""here.
+# 
+class Topic2Counters extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'minus_votes'
+  long _minus_votes;
+
+  // 
+  // JSON name: 'none_votes'
+  long _none_votes;
+
+  // 
+  // JSON name: 'plus_votes'
+  long _plus_votes;
+
+  // 
+  // JSON name: 'submissions'
+  long _submissions;
+
+  // 
+  // JSON name: 'users'
+  long _users;
+
+  // 
+  // JSON name: 'videoSubmissions'
+  long _videoSubmissions;
+
+  // Getters and setters might go here
+  long getMinus_votes() {
+    return _minus_votes;
+  }
+  void setMinus_votes(long v) {
+    _minus_votes = v;
+  }
+  long getNone_votes() {
+    return _none_votes;
+  }
+  void setNone_votes(long v) {
+    _none_votes = v;
+  }
+  long getPlus_votes() {
+    return _plus_votes;
+  }
+  void setPlus_votes(long v) {
+    _plus_votes = v;
+  }
+  long getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(long v) {
+    _submissions = v;
+  }
+  long getUsers() {
+    return _users;
+  }
+  void setUsers(long v) {
+    _users = v;
+  }
+  long getVideoSubmissions() {
+    return _videoSubmissions;
+  }
+  void setVideoSubmissions(long v) {
+    _videoSubmissions = v;
+  }
+
+}
+
+
+
+"""Schema Topic2.Topic2Id { model.description }} <p> Your explanation here.
+# 
+class Topic2Id extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // 
+  // JSON name: 'topicId'
+  long _topicId;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+  long getTopicId() {
+    return _topicId;
+  }
+  void setTopicId(long v) {
+    _topicId = v;
+  }
+
+}
+
+
+
+"""Schema Topic.TopicCounters { model.description }} <p> Your explanation here.
+# 
+class TopicCounters extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'minus_votes'
+  long _minus_votes;
+
+  // 
+  // JSON name: 'none_votes'
+  long _none_votes;
+
+  // 
+  // JSON name: 'plus_votes'
+  long _plus_votes;
+
+  // 
+  // JSON name: 'submissions'
+  long _submissions;
+
+  // 
+  // JSON name: 'users'
+  long _users;
+
+  // 
+  // JSON name: 'videoSubmissions'
+  long _videoSubmissions;
+
+  // Getters and setters might go here
+  long getMinus_votes() {
+    return _minus_votes;
+  }
+  void setMinus_votes(long v) {
+    _minus_votes = v;
+  }
+  long getNone_votes() {
+    return _none_votes;
+  }
+  void setNone_votes(long v) {
+    _none_votes = v;
+  }
+  long getPlus_votes() {
+    return _plus_votes;
+  }
+  void setPlus_votes(long v) {
+    _plus_votes = v;
+  }
+  long getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(long v) {
+    _submissions = v;
+  }
+  long getUsers() {
+    return _users;
+  }
+  void setUsers(long v) {
+    _users = v;
+  }
+  long getVideoSubmissions() {
+    return _videoSubmissions;
+  }
+  void setVideoSubmissions(long v) {
+    _videoSubmissions = v;
+  }
+
+}
+
+
+
+"""Schema Topic.TopicId { model.description }} <p> Your explanation here.
+# 
+class TopicId extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'seriesId'
+  long _seriesId;
+
+  // 
+  // JSON name: 'topicId'
+  long _topicId;
+
+  // Getters and setters might go here
+  long getSeriesId() {
+    return _seriesId;
+  }
+  void setSeriesId(long v) {
+    _seriesId = v;
+  }
+  long getTopicId() {
+    return _topicId;
+  }
+  void setTopicId(long v) {
+    _topicId = v;
+  }
+
+}
+
+
+
+"""Schema .TopicList { model.description }} <p> Your explanation here.
+# 
+class TopicList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'items'
+  com::google::kitch_sink::Array<Topic> _items;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Topic> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Topic> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+
+"""Schema Topic.TopicRules { model.description }} <p> Your explanation here.
+# 
+class TopicRules extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'submissions'
+  TopicRulesSubmissions _submissions;
+
+  // 
+  // JSON name: 'votes'
+  TopicRulesVotes _votes;
+
+  // Getters and setters might go here
+  TopicRulesSubmissions getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(TopicRulesSubmissions v) {
+    _submissions = v;
+  }
+  TopicRulesVotes getVotes() {
+    return _votes;
+  }
+  void setVotes(TopicRulesVotes v) {
+    _votes = v;
+  }
+
+  """Schema Topic.TopicRules.TopicRulesSubmissions { model.description }} <p>
+  """Your explanation here.
+  #
+  class TopicRulesSubmissions extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'close'
+    long _close;
+
+    //
+    // JSON name: 'open'
+    long _open;
+
+    // Getters and setters might go here
+    long getClose() {
+      return _close;
+    }
+    void setClose(long v) {
+      _close = v;
+    }
+    long getOpen() {
+      return _open;
+    }
+    void setOpen(long v) {
+      _open = v;
+    }
+
+  }
+
+  """Schema Topic.TopicRules.TopicRulesVotes { model.description }} <p> Your
+  """explanation here.
+  #
+  class TopicRulesVotes extends SomeBaseModelClass {
+
+    //
+    // JSON name: 'close'
+    long _close;
+
+    //
+    // JSON name: 'open'
+    long _open;
+
+    // Getters and setters might go here
+    long getClose() {
+      return _close;
+    }
+    void setClose(long v) {
+      _close = v;
+    }
+    long getOpen() {
+      return _open;
+    }
+    void setOpen(long v) {
+      _open = v;
+    }
+
+  }
+
+}
+
+
+
+"""Schema Topic.TopicRules.TopicRulesSubmissions { model.description }} <p> Your
+"""explanation here.
+# 
+class TopicRulesSubmissions extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'close'
+  long _close;
+
+  // 
+  // JSON name: 'open'
+  long _open;
+
+  // Getters and setters might go here
+  long getClose() {
+    return _close;
+  }
+  void setClose(long v) {
+    _close = v;
+  }
+  long getOpen() {
+    return _open;
+  }
+  void setOpen(long v) {
+    _open = v;
+  }
+
+}
+
+
+
+"""Schema Topic.TopicRules.TopicRulesVotes { model.description }} <p> Your
+"""explanation here.
+# 
+class TopicRulesVotes extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'close'
+  long _close;
+
+  // 
+  // JSON name: 'open'
+  long _open;
+
+  // Getters and setters might go here
+  long getClose() {
+    return _close;
+  }
+  void setClose(long v) {
+    _close = v;
+  }
+  long getOpen() {
+    return _open;
+  }
+  void setOpen(long v) {
+    _open = v;
+  }
+
+}
+
+
+
+"""Schema .Translation { model.description }} <p> Your explanation here.
+# 
+class Translation extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'lang'
+  str _lang;
+
+  // 
+  // JSON name: 'text'
+  str _text;
+
+  // Getters and setters might go here
+  str getLang() {
+    return _lang;
+  }
+  void setLang(str v) {
+    _lang = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+
+}
+
+
+
+"""Schema .Vote { model.description }} <p> Your explanation here.
+# 
+class Vote extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'flag'
+  str _flag;
+
+  // 
+  // JSON name: 'id'
+  VoteId _id;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // 
+  // JSON name: 'vote'
+  str _vote;
+
+  // Getters and setters might go here
+  str getFlag() {
+    return _flag;
+  }
+  void setFlag(str v) {
+    _flag = v;
+  }
+  VoteId getId() {
+    return _id;
+  }
+  void setId(VoteId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getVote() {
+    return _vote;
+  }
+  void setVote(str v) {
+    _vote = v;
+  }
+
+  """Schema Vote.VoteId { model.description }} <p> Your explanation here.
+  #
+  class VoteId extends SomeBaseModelClass {
+
+    // Getters and setters might go here
+
+  }
+
+}
+
+
+
+"""Schema Vote.VoteId { model.description }} <p> Your explanation here.
+# 
+class VoteId extends SomeBaseModelClass {
+
+  // Getters and setters might go here
+
+}
+
+
+
+"""Schema .VoteList { model.description }} <p> Your explanation here.
+# 
+class VoteList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'items'
+  com::google::kitch_sink::Array<Vote> _items;
+
+  // 
+  // JSON name: 'kind'
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Vote> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Vote> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+=== end: ./src/com/google/kitch_sink/kitch_sink.xxx
+=== begin: ./src/com/google/kitch_sink/LatLong.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .LatLong { model.description }} <p> Your explanation here.
+ */
+class LatLong extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "latitude"
+  float _latitude;
+
+  // 
+  // JSON name: "location"
+  str _location;
+
+  // 
+  // JSON name: "longitude"
+  float _longitude;
+
+  // Getters and setters might go here
+  float getLatitude() {
+    return _latitude;
+  }
+  void setLatitude(float v) {
+    _latitude = v;
+  }
+  str getLocation() {
+    return _location;
+  }
+  void setLocation(str v) {
+    _location = v;
+  }
+  float getLongitude() {
+    return _longitude;
+  }
+  void setLongitude(float v) {
+    _longitude = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/LatLong.xxx
+=== begin: ./src/com/google/kitch_sink/ModeratorTopicsResourcePartial.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .ModeratorTopicsResourcePartial { model.description }} <p> Your explanation here.
+ */
+class ModeratorTopicsResourcePartial extends SomeBaseModelClass {
+
+  // Getters and setters might go here
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/ModeratorTopicsResourcePartial.xxx
+=== begin: ./src/com/google/kitch_sink/Profile.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Profile { model.description }} <p> Your explanation here.
+ */
+class Profile extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "attribution"
+  ProfileAttribution _attribution;
+
+  // 
+  // JSON name: "id"
+  ProfileId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // Getters and setters might go here
+  ProfileAttribution getAttribution() {
+    return _attribution;
+  }
+  void setAttribution(ProfileAttribution v) {
+    _attribution = v;
+  }
+  ProfileId getId() {
+    return _id;
+  }
+  void setId(ProfileId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+  /**
+   * Schema Profile.ProfileAttribution { model.description }} <p> Your explanation here.
+   */
+  class ProfileAttribution extends SomeBaseModelClass {
+
+    //
+    // JSON name: "avatarUrl"
+    str _avatarUrl;
+
+    //
+    // JSON name: "displayName"
+    str _displayName;
+
+    //
+    // JSON name: "geo"
+    LatLong _geo;
+
+    //
+    // JSON name: "location"
+    str _location;
+
+    // Getters and setters might go here
+    str getAvatarUrl() {
+      return _avatarUrl;
+    }
+    void setAvatarUrl(str v) {
+      _avatarUrl = v;
+    }
+    str getDisplayName() {
+      return _displayName;
+    }
+    void setDisplayName(str v) {
+      _displayName = v;
+    }
+    LatLong getGeo() {
+      return _geo;
+    }
+    void setGeo(LatLong v) {
+      _geo = v;
+    }
+    str getLocation() {
+      return _location;
+    }
+    void setLocation(str v) {
+      _location = v;
+    }
+
+  }
+
+  /**
+   * Schema Profile.ProfileId { model.description }} <p> Your explanation here.
+   */
+  class ProfileId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "user"
+    str _user;
+
+    // Getters and setters might go here
+    str getUser() {
+      return _user;
+    }
+    void setUser(str v) {
+      _user = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Profile.xxx
+=== begin: ./src/com/google/kitch_sink/Rule.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Rule { model.description }} <p> Your explanation here.
+ */
+class Rule extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "submissions"
+  RuleSubmissions _submissions;
+
+  // Getters and setters might go here
+  RuleSubmissions getSubmissions() {
+    return _submissions;
+  }
+  void setSubmissions(RuleSubmissions v) {
+    _submissions = v;
+  }
+
+  /**
+   * Schema Rule.RuleSubmissions { model.description }} <p> Your explanation here.
+   */
+  class RuleSubmissions extends SomeBaseModelClass {
+
+    //
+    // JSON name: "close"
+    long _close;
+
+    //
+    // JSON name: "open"
+    long _open;
+
+    // Getters and setters might go here
+    long getClose() {
+      return _close;
+    }
+    void setClose(long v) {
+      _close = v;
+    }
+    long getOpen() {
+      return _open;
+    }
+    void setOpen(long v) {
+      _open = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Rule.xxx
+=== begin: ./src/com/google/kitch_sink/SeriesList.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .SeriesList { model.description }} <p> Your explanation here.
+ */
+class SeriesList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "items"
+  com::google::kitch_sink::Array<Series> _items;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Series> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Series> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/SeriesList.xxx
+=== begin: ./src/com/google/kitch_sink/Series.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Series { model.description }} <p> Your explanation here.
+ */
+class Series extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "anonymousSubmissionAllowed"
+  bool _anonymousSubmissionAllowed;
+
+  // 
+  // JSON name: "counters"
+  SeriesCounters _counters;
+
+  // 
+  // JSON name: "description"
+  str _description;
+
+  // 
+  // JSON name: "id"
+  SeriesId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "name"
+  str _name;
+
+  // 
+  // JSON name: "numTopics"
+  long _numTopics;
+
+  // 
+  // JSON name: "videoSubmissionAllowed"
+  bool _videoSubmissionAllowed;
+
+  // Getters and setters might go here
+  bool getAnonymousSubmissionAllowed() {
+    return _anonymousSubmissionAllowed;
+  }
+  void setAnonymousSubmissionAllowed(bool v) {
+    _anonymousSubmissionAllowed = v;
+  }
+  SeriesCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(SeriesCounters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  SeriesId getId() {
+    return _id;
+  }
+  void setId(SeriesId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  long getNumTopics() {
+    return _numTopics;
+  }
+  void setNumTopics(long v) {
+    _numTopics = v;
+  }
+  bool getVideoSubmissionAllowed() {
+    return _videoSubmissionAllowed;
+  }
+  void setVideoSubmissionAllowed(bool v) {
+    _videoSubmissionAllowed = v;
+  }
+
+  /**
+   * Schema Series.SeriesCounters { model.description }} <p> Your explanation here.
+   */
+  class SeriesCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: "anonymousSubmissions"
+    long _anonymousSubmissions;
+
+    //
+    // JSON name: "counters"
+    SeriesCountersCounters _counters;
+
+    //
+    // JSON name: "else"
+    long _else;
+
+    //
+    // JSON name: "minus_votes"
+    long _minus_votes;
+
+    //
+    // JSON name: "none_votes"
+    long _none_votes;
+
+    //
+    // JSON name: "plus_votes"
+    long _plus_votes;
+
+    //
+    // JSON name: "submissions"
+    long _submissions;
+
+    //
+    // JSON name: "users"
+    str _users;
+
+    // Getters and setters might go here
+    long getAnonymousSubmissions() {
+      return _anonymousSubmissions;
+    }
+    void setAnonymousSubmissions(long v) {
+      _anonymousSubmissions = v;
+    }
+    SeriesCountersCounters getCounters() {
+      return _counters;
+    }
+    void setCounters(SeriesCountersCounters v) {
+      _counters = v;
+    }
+    long getElse() {
+      return _else;
+    }
+    void setElse(long v) {
+      _else = v;
+    }
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    str getUsers() {
+      return _users;
+    }
+    void setUsers(str v) {
+      _users = v;
+    }
+
+    /**
+     * Schema Series.SeriesCounters.SeriesCountersCounters { model.description }} <p> Your
+     * explanation here.
+     */
+    class SeriesCountersCounters extends SomeBaseModelClass {
+
+      //
+      // JSON name: "all-votes"
+      long _all_votes;
+
+      // Getters and setters might go here
+      long getAllVotes() {
+        return _all_votes;
+      }
+      void setAllVotes(long v) {
+        _all_votes = v;
+      }
+
+    }
+
+  }
+
+  /**
+   * Schema Series.SeriesId { model.description }} <p> Your explanation here.
+   */
+  class SeriesId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Series.xxx
+=== begin: ./src/com/google/kitch_sink/SubmissionList.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .SubmissionList { model.description }} <p> Your explanation here.
+ */
+class SubmissionList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "items"
+  com::google::kitch_sink::Array<Submission> _items;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Submission> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Submission> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/SubmissionList.xxx
+=== begin: ./src/com/google/kitch_sink/Submission.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Submission { model.description }} <p> Your explanation here.
+ */
+class Submission extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "@attachmentUrl"
+  str _attachmentUrl;
+
+  // 
+  // JSON name: "attribution"
+  SubmissionAttribution _attribution;
+
+  // 
+  // JSON name: "author"
+  str _author;
+
+  // 
+  // JSON name: "counters"
+  SubmissionCounters _counters;
+
+  // 
+  // JSON name: "created"
+  long _created;
+
+  // 
+  // JSON name: "geo"
+  com::google::kitch_sink::Array<LatLong> _geo;
+
+  // 
+  // JSON name: "id"
+  SubmissionId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "parentSubmissionId"
+  SubmissionParentSubmissionId _parentSubmissionId;
+
+  // 
+  // JSON name: "text"
+  str _text;
+
+  // 
+  // JSON name: "topics"
+  com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> _topics;
+
+  // 
+  // JSON name: "translations"
+  Map<string, Translation> _translations;
+
+  // Getters and setters might go here
+  str getAttachmentUrl() {
+    return _attachmentUrl;
+  }
+  void setAttachmentUrl(str v) {
+    _attachmentUrl = v;
+  }
+  SubmissionAttribution getAttribution() {
+    return _attribution;
+  }
+  void setAttribution(SubmissionAttribution v) {
+    _attribution = v;
+  }
+  str getAuthor() {
+    return _author;
+  }
+  void setAuthor(str v) {
+    _author = v;
+  }
+  SubmissionCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(SubmissionCounters v) {
+    _counters = v;
+  }
+  long getCreated() {
+    return _created;
+  }
+  void setCreated(long v) {
+    _created = v;
+  }
+  com::google::kitch_sink::Array<LatLong> getGeo() {
+    return _geo;
+  }
+  void setGeo(com::google::kitch_sink::Array<LatLong> v) {
+    _geo = v;
+  }
+  SubmissionId getId() {
+    return _id;
+  }
+  void setId(SubmissionId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  SubmissionParentSubmissionId getParentSubmissionId() {
+    return _parentSubmissionId;
+  }
+  void setParentSubmissionId(SubmissionParentSubmissionId v) {
+    _parentSubmissionId = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+  com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> getTopics() {
+    return _topics;
+  }
+  void setTopics(com::google::kitch_sink::Array<ModeratorTopicsResourcePartial> v) {
+    _topics = v;
+  }
+  Map<string, Translation> getTranslations() {
+    return _translations;
+  }
+  void setTranslations(Map<string, Translation> v) {
+    _translations = v;
+  }
+
+  /**
+   * Schema Submission.SubmissionAttribution { model.description }} <p> Your explanation here.
+   */
+  class SubmissionAttribution extends SomeBaseModelClass {
+
+    // A member with a $ in the name
+    // JSON name: "$avatarUrl"
+    str _avatarUrl;
+
+    // A member with a $ in the name, but if you strip it, you get a reserved word
+    // JSON name: "$object"
+    str _object;
+
+    //
+    // JSON name: "location"
+    str _location;
+
+    // Getters and setters might go here
+    str getAvatarUrl() {
+      return _avatarUrl;
+    }
+    void setAvatarUrl(str v) {
+      _avatarUrl = v;
+    }
+    str getObject() {
+      return _object;
+    }
+    void setObject(str v) {
+      _object = v;
+    }
+    str getLocation() {
+      return _location;
+    }
+    void setLocation(str v) {
+      _location = v;
+    }
+
+  }
+
+  /**
+   * Schema Submission.SubmissionCounters { model.description }} <p> Your explanation here.
+   */
+  class SubmissionCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: "minus_votes"
+    long _minus_votes;
+
+    //
+    // JSON name: "none_votes"
+    long _none_votes;
+
+    //
+    // JSON name: "plus_votes"
+    long _plus_votes;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+
+  }
+
+  /**
+   * Schema Submission.SubmissionId { model.description }} <p> Your explanation here.
+   */
+  class SubmissionId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    //
+    // JSON name: "submissionId"
+    long _submissionId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+
+  }
+
+  /**
+   * Schema Submission.SubmissionParentSubmissionId { model.description }} <p> Your explanation
+   * here.
+   */
+  class SubmissionParentSubmissionId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    //
+    // JSON name: "submissionId"
+    long _submissionId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Submission.xxx
+=== begin: ./src/com/google/kitch_sink/TagList.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+
+=== end: ./src/com/google/kitch_sink/TagList.xxx
+=== begin: ./src/com/google/kitch_sink/Tag.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Tag { model.description }} <p> Your explanation here.
+ */
+class Tag extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "geometry"
+  Geometry _geometry;
+
+  // 
+  // JSON name: "id"
+  TagId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "text"
+  str _text;
+
+  // Getters and setters might go here
+  Geometry getGeometry() {
+    return _geometry;
+  }
+  void setGeometry(Geometry v) {
+    _geometry = v;
+  }
+  TagId getId() {
+    return _id;
+  }
+  void setId(TagId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+
+  /**
+   * Schema Tag.TagId { model.description }} <p> Your explanation here.
+   */
+  class TagId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    //
+    // JSON name: "submissionId"
+    long _submissionId;
+
+    //
+    // JSON name: "tag"
+    str _tag;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getSubmissionId() {
+      return _submissionId;
+    }
+    void setSubmissionId(long v) {
+      _submissionId = v;
+    }
+    str getTag() {
+      return _tag;
+    }
+    void setTag(str v) {
+      _tag = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Tag.xxx
+=== begin: ./src/com/google/kitch_sink/Topic2.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Topic2 { model.description }} <p> Your explanation here.
+ */
+class Topic2 extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "counters"
+  Topic2Counters _counters;
+
+  // 
+  // JSON name: "description"
+  str _description;
+
+  // 
+  // JSON name: "featuredSubmission"
+  Submission _featuredSubmission;
+
+  // 
+  // JSON name: "id"
+  Topic2Id _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "name"
+  str _name;
+
+  // 
+  // JSON name: "presenter"
+  str _presenter;
+
+  // 
+  // JSON name: "rules"
+  com::google::kitch_sink::Array<Rule> _rules;
+
+  // Getters and setters might go here
+  Topic2Counters getCounters() {
+    return _counters;
+  }
+  void setCounters(Topic2Counters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  Submission getFeaturedSubmission() {
+    return _featuredSubmission;
+  }
+  void setFeaturedSubmission(Submission v) {
+    _featuredSubmission = v;
+  }
+  Topic2Id getId() {
+    return _id;
+  }
+  void setId(Topic2Id v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  str getPresenter() {
+    return _presenter;
+  }
+  void setPresenter(str v) {
+    _presenter = v;
+  }
+  com::google::kitch_sink::Array<Rule> getRules() {
+    return _rules;
+  }
+  void setRules(com::google::kitch_sink::Array<Rule> v) {
+    _rules = v;
+  }
+
+  /**
+   * Schema Topic2.Topic2Counters { model.description }} <p> Your explanation here.
+   */
+  class Topic2Counters extends SomeBaseModelClass {
+
+    //
+    // JSON name: "minus_votes"
+    long _minus_votes;
+
+    //
+    // JSON name: "none_votes"
+    long _none_votes;
+
+    //
+    // JSON name: "plus_votes"
+    long _plus_votes;
+
+    //
+    // JSON name: "submissions"
+    long _submissions;
+
+    //
+    // JSON name: "users"
+    long _users;
+
+    //
+    // JSON name: "videoSubmissions"
+    long _videoSubmissions;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    long getUsers() {
+      return _users;
+    }
+    void setUsers(long v) {
+      _users = v;
+    }
+    long getVideoSubmissions() {
+      return _videoSubmissions;
+    }
+    void setVideoSubmissions(long v) {
+      _videoSubmissions = v;
+    }
+
+  }
+
+  /**
+   * Schema Topic2.Topic2Id { model.description }} <p> Your explanation here.
+   */
+  class Topic2Id extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    //
+    // JSON name: "topicId"
+    long _topicId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getTopicId() {
+      return _topicId;
+    }
+    void setTopicId(long v) {
+      _topicId = v;
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Topic2.xxx
+=== begin: ./src/com/google/kitch_sink/TopicList.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .TopicList { model.description }} <p> Your explanation here.
+ */
+class TopicList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "items"
+  com::google::kitch_sink::Array<Topic> _items;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Topic> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Topic> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/TopicList.xxx
+=== begin: ./src/com/google/kitch_sink/Topic.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Topic { model.description }} <p> Your explanation here.
+ */
+class Topic extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "counters"
+  TopicCounters _counters;
+
+  // 
+  // JSON name: "description"
+  str _description;
+
+  // 
+  // JSON name: "id"
+  TopicId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "name"
+  str _name;
+
+  // 
+  // JSON name: "presenter"
+  str _presenter;
+
+  // 
+  // JSON name: "rules"
+  TopicRules _rules;
+
+  // Getters and setters might go here
+  TopicCounters getCounters() {
+    return _counters;
+  }
+  void setCounters(TopicCounters v) {
+    _counters = v;
+  }
+  str getDescription() {
+    return _description;
+  }
+  void setDescription(str v) {
+    _description = v;
+  }
+  TopicId getId() {
+    return _id;
+  }
+  void setId(TopicId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getName() {
+    return _name;
+  }
+  void setName(str v) {
+    _name = v;
+  }
+  str getPresenter() {
+    return _presenter;
+  }
+  void setPresenter(str v) {
+    _presenter = v;
+  }
+  TopicRules getRules() {
+    return _rules;
+  }
+  void setRules(TopicRules v) {
+    _rules = v;
+  }
+
+  /**
+   * Schema Topic.TopicCounters { model.description }} <p> Your explanation here.
+   */
+  class TopicCounters extends SomeBaseModelClass {
+
+    //
+    // JSON name: "minus_votes"
+    long _minus_votes;
+
+    //
+    // JSON name: "none_votes"
+    long _none_votes;
+
+    //
+    // JSON name: "plus_votes"
+    long _plus_votes;
+
+    //
+    // JSON name: "submissions"
+    long _submissions;
+
+    //
+    // JSON name: "users"
+    long _users;
+
+    //
+    // JSON name: "videoSubmissions"
+    long _videoSubmissions;
+
+    // Getters and setters might go here
+    long getMinus_votes() {
+      return _minus_votes;
+    }
+    void setMinus_votes(long v) {
+      _minus_votes = v;
+    }
+    long getNone_votes() {
+      return _none_votes;
+    }
+    void setNone_votes(long v) {
+      _none_votes = v;
+    }
+    long getPlus_votes() {
+      return _plus_votes;
+    }
+    void setPlus_votes(long v) {
+      _plus_votes = v;
+    }
+    long getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(long v) {
+      _submissions = v;
+    }
+    long getUsers() {
+      return _users;
+    }
+    void setUsers(long v) {
+      _users = v;
+    }
+    long getVideoSubmissions() {
+      return _videoSubmissions;
+    }
+    void setVideoSubmissions(long v) {
+      _videoSubmissions = v;
+    }
+
+  }
+
+  /**
+   * Schema Topic.TopicId { model.description }} <p> Your explanation here.
+   */
+  class TopicId extends SomeBaseModelClass {
+
+    //
+    // JSON name: "seriesId"
+    long _seriesId;
+
+    //
+    // JSON name: "topicId"
+    long _topicId;
+
+    // Getters and setters might go here
+    long getSeriesId() {
+      return _seriesId;
+    }
+    void setSeriesId(long v) {
+      _seriesId = v;
+    }
+    long getTopicId() {
+      return _topicId;
+    }
+    void setTopicId(long v) {
+      _topicId = v;
+    }
+
+  }
+
+  /**
+   * Schema Topic.TopicRules { model.description }} <p> Your explanation here.
+   */
+  class TopicRules extends SomeBaseModelClass {
+
+    //
+    // JSON name: "submissions"
+    TopicRulesSubmissions _submissions;
+
+    //
+    // JSON name: "votes"
+    TopicRulesVotes _votes;
+
+    // Getters and setters might go here
+    TopicRulesSubmissions getSubmissions() {
+      return _submissions;
+    }
+    void setSubmissions(TopicRulesSubmissions v) {
+      _submissions = v;
+    }
+    TopicRulesVotes getVotes() {
+      return _votes;
+    }
+    void setVotes(TopicRulesVotes v) {
+      _votes = v;
+    }
+
+    /**
+     * Schema Topic.TopicRules.TopicRulesSubmissions { model.description }} <p> Your explanation
+     * here.
+     */
+    class TopicRulesSubmissions extends SomeBaseModelClass {
+
+      //
+      // JSON name: "close"
+      long _close;
+
+      //
+      // JSON name: "open"
+      long _open;
+
+      // Getters and setters might go here
+      long getClose() {
+        return _close;
+      }
+      void setClose(long v) {
+        _close = v;
+      }
+      long getOpen() {
+        return _open;
+      }
+      void setOpen(long v) {
+        _open = v;
+      }
+
+    }
+
+    /**
+     * Schema Topic.TopicRules.TopicRulesVotes { model.description }} <p> Your explanation here.
+     */
+    class TopicRulesVotes extends SomeBaseModelClass {
+
+      //
+      // JSON name: "close"
+      long _close;
+
+      //
+      // JSON name: "open"
+      long _open;
+
+      // Getters and setters might go here
+      long getClose() {
+        return _close;
+      }
+      void setClose(long v) {
+        _close = v;
+      }
+      long getOpen() {
+        return _open;
+      }
+      void setOpen(long v) {
+        _open = v;
+      }
+
+    }
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Topic.xxx
+=== begin: ./src/com/google/kitch_sink/Translation.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Translation { model.description }} <p> Your explanation here.
+ */
+class Translation extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "lang"
+  str _lang;
+
+  // 
+  // JSON name: "text"
+  str _text;
+
+  // Getters and setters might go here
+  str getLang() {
+    return _lang;
+  }
+  void setLang(str v) {
+    _lang = v;
+  }
+  str getText() {
+    return _text;
+  }
+  void setText(str v) {
+    _text = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Translation.xxx
+=== begin: ./src/com/google/kitch_sink/VoteList.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .VoteList { model.description }} <p> Your explanation here.
+ */
+class VoteList extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "items"
+  com::google::kitch_sink::Array<Vote> _items;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // Getters and setters might go here
+  com::google::kitch_sink::Array<Vote> getItems() {
+    return _items;
+  }
+  void setItems(com::google::kitch_sink::Array<Vote> v) {
+    _items = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/VoteList.xxx
+=== begin: ./src/com/google/kitch_sink/Vote.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::kitch_sink;
+
+/**
+ * Schema .Vote { model.description }} <p> Your explanation here.
+ */
+class Vote extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "flag"
+  str _flag;
+
+  // 
+  // JSON name: "id"
+  VoteId _id;
+
+  // 
+  // JSON name: "kind"
+  str _kind;
+
+  // 
+  // JSON name: "vote"
+  str _vote;
+
+  // Getters and setters might go here
+  str getFlag() {
+    return _flag;
+  }
+  void setFlag(str v) {
+    _flag = v;
+  }
+  VoteId getId() {
+    return _id;
+  }
+  void setId(VoteId v) {
+    _id = v;
+  }
+  str getKind() {
+    return _kind;
+  }
+  void setKind(str v) {
+    _kind = v;
+  }
+  str getVote() {
+    return _vote;
+  }
+  void setVote(str v) {
+    _vote = v;
+  }
+
+  /**
+   * Schema Vote.VoteId { model.description }} <p> Your explanation here.
+   */
+  class VoteId extends SomeBaseModelClass {
+
+    // Getters and setters might go here
+
+  }
+
+}
+
+
+=== end: ./src/com/google/kitch_sink/Vote.xxx
+=== begin: ./src/README
+This language happens to place the source output in a src folder within
+the package. There is nothing inherently important w.r.t the library
+generator in doing so.
+=== end: ./src/README

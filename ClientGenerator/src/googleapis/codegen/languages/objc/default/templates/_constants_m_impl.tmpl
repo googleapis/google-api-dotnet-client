@@ -1,0 +1,4 @@
+{% language objc %}{% for enum in api.enums %}
+// {{enum.className}} - {{ enum.propertyName }}
+{% for element in enum.elements %}NSString * const {{ element.constantName }} = {% literal element.value %};
+{% endfor %}{% endfor %}

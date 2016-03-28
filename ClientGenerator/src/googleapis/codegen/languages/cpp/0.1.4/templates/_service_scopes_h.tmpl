@@ -1,0 +1,18 @@
+{% if api.authscopes %}{% doc_comment noblock %}
+Declares the OAuth2.0 scopes used within {{ api.title }}
+
+These scopes shoudl be used when asking for credentials to invoke methods
+in the {{ api.className }}.
+{% enddoc_comment %}
+class SCOPES {
+ public:{% indent %}{% for authscope in api.authscopes %}
+{% doc_comment noblock %}
+{{ authscope.description }}
+{% enddoc_comment %}
+static const char {{ authscope.name|upper }}[];
+{% endfor %}{% endindent %}
+ private:
+  SCOPES();  // Never instantiated.
+  ~SCOPES();  // Never instantiated.
+};
+{% endif %}

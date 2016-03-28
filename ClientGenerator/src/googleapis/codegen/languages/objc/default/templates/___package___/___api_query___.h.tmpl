@@ -1,0 +1,56 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.query }}.h
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+// Classes:
+//   {{ api.query }} ({{ api.methods|length }} custom class methods, {{ api.allParameters|length }} custom properties)
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLQuery.h"
+#else
+  #import "GTLQuery.h"
+#endif
+{% if api.importManager %}
+{% filter noblanklines %}
+{% for import in api.importManager.type_dependencies %}
+@class {{ import }};
+{% endfor %}
+{% endfilter %}
+{% endif %}
+@interface {{ api.query }} : GTLQuery
+
+//
+// Parameters valid on all methods.
+//
+{% for parameter in api.parameters %}
+{% doc_comment_if parameter.description %}
+@property({{ parameter.attributes }}) {{ parameter.codeType }} {% if not parameter.noPointer %}*{% endif %}{{ parameter.codeName }}{{ property.clangDirective }};{% if parameter.typeComment %}  // {{ parameter.typeComment }}{% endif %}
+{% endfor %}
+//
+// Method-specific parameters; see the comments below for more information.
+//
+{% for parameter in api.methodParameters %}{% doc_comment_if parameter.description %}
+@property({{ parameter.attributes }}) {{ parameter.codeType }} {% if not parameter.noPointer %}*{% endif %}{{ parameter.codeName }}{{ property.clangDirective }};{% if parameter.typeComment %}  // {{ parameter.typeComment }}{% endif %}
+{% endfor %}
+#pragma mark -
+// These create a GTLQueryProximityBeacon object.
+{% for method in api.methods %}
+// Method: {{ method.wireName }}
+{% doc_comment_if method.description %}
+//  Optional:
+{% for parameter in method.parameters %}//   {{ parameter.codeName }}: {{ parameter.description }}
+{% endfor %}// Fetches a {{ method.responseType.codeType }}.
++ (instancetype){{method.queryCodeName}};
+{% endfor %}
+@end

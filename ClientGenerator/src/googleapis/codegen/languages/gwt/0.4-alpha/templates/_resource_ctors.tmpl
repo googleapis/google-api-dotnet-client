@@ -1,0 +1,4 @@
+/** Returns the {@link #{{ resource.className }}Context} context. */
+{{ resource.contextCodeType }}Context {{ resource.contextCodeName }}();
+{% for r in resource.resources %}
+{% call_template _resource_ctors resource=r %}{% endfor %}

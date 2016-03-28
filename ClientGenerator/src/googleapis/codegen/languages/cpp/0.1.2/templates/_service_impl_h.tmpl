@@ -1,0 +1,131 @@
+/**
+ * \mainpage
+ *   {{ api.title }} Version {{ api.version }}
+ *
+ * \section ApiInfo API Version Information
+ *    <table>
+ *      <tr><th>API
+ *          <td><a href='{{ api.documentationLink }}'>{{ api.title }}</a>
+ *      <tr><th>API Version<td>{{ api.version }}
+ *      <tr><th>API Rev<td>{{ api.revision }}
+ *      <tr><th>API Docs
+ *          <td><a href='{{ api.documentationLink }}'>
+ *              {{ api.documentationLink }}</a>
+ *      <tr><th>Discovery Name<td>{{ api.name }}{% if options.include_timestamp %}
+ *      <tr><th>Generated At<td>{{ tool.runDate }} {{ tool.runTime }}
+ *      <tr><th>C++ Generator<td>{{ tool.name }}
+ *      <tr><th>Generator Version
+ *          <td>{{ tool.version }} / c++={{ features.releaseVersion }}
+ *      <tr><th>Generator Build<td>{{ tool.buildDate }}{% endif %}
+ *    </table>
+ *
+ * \section ForMoreInfo For More Information
+ *
+ * The complete API documentation for using {{ api.title }} can be found at
+ * <a href='{{ api.documentationLink }}'>{{ api.documentationLink }}</a>.
+ *
+ * For more information about the Google APIs Client Library for C++, see
+ * <a href='https://developers.google.com/api-client-library/cpp/start/get_started'>
+ * https://developers.google.com/api-client-library/cpp/start/get_started</a>
+ */
+class {{ api.className }};
+
+{% call_template _base_method_h api=api %}
+{% for resource in api.resources %}
+
+{% call_template _resource_method_h resource=resource %}
+{% endfor %}
+{% for method in api.methods %}{% call_template _method_h method=method %}{% endfor %}
+
+/**
+ * Service definition for {{ api.className }} ({{ api.version }}).
+ *
+ * @ingroup ServiceClass
+ *
+ * For more information about this service, see the API Documentation at
+ * <a href='{{ api.documentationLink }}'>'{{ api.documentationLink }}</a>
+ */
+class {{ api.className}} : public {{ api.client_namespace }}::ClientService {
+ public:
+   /**
+    * The name of the API that this was generated from.
+    */
+   static const StringPiece googleapis_API_NAME;
+
+   /**
+    * The version of the API that this interface was generated from.
+    */
+   static const StringPiece googleapis_API_VERSION;
+
+   /**
+    * The code generator used to generate this API.
+    */
+   static const StringPiece googleapis_API_GENERATOR;
+
+{% indent %}{% for resource in api.resources %}
+{% indent %}{% call_template _resource_h resource=resource %}{% endindent %}
+{% endfor %}
+{% for method in api.methods %}{% call_template _method_factory_h method=method %}{% endfor %}
+{% endindent %}
+
+  /**
+   * Standard constructor.
+   *
+   * @param[in] transport  The transport to use when creating methods to invoke
+   *                       on this service instance.
+   */
+  explicit {{ api.className }}({{ api.client_namespace }}::HttpTransport* transport);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~{{ api.className }}();
+{% for resource in api.resources %}
+  /**
+   * Gets the {{ resource.name }} resource method factory.
+   *
+   * @return {{ resource.className }} for creating methods.
+   */
+  const {{ resource.className }}& {{ resource.getterName }}() const {
+    return {{ resource.memberName }};
+  }
+
+{% endfor %}{% indent %}{% call_template _service_scopes_h api=api %}
+{% endindent %}
+ private:
+{% indent %}{% for resource in api.resources %}{{ resource.className }} {{ resource.memberName }};
+{% endfor %}{% endindent %}
+  DISALLOW_COPY_AND_ASSIGN({{ api.className }});
+};
+
+
+/**
+ * @defgroup DataObject {{ api.title }} Data Objects
+ *
+ * The data objects are used as parameters and responses from service requests.
+ * For more information about using data objects, see the
+ * <a href='https://developers.google.com/api-client-library/cpp/'>
+ * Google APIs Client Library for C++ Developers's Guide</a>.
+ */
+
+/**
+ * @defgroup ServiceClass {{ api.title }} Service
+ *
+ * The service classes contain information about accessing and using the
+ * {{ api.title }} cloud service.
+ *
+ * For more information about using services, see the
+ * <a href='https://developers.google.com/api-client-library/cpp/'>
+ * Google APIs Client Library for C++ Developers's Guide</a>.
+ */
+
+/**
+ * @defgroup ServiceMethod {{ api.title }} Service Methods
+ *
+ * The service method classes are used to create and invoke methods in the
+ * {{ api.className }} to access the {{ api.title }}.
+ *
+ * For more information about using services, see the
+ * <a href='https://developers.google.com/api-client-library/cpp/'>
+ * Google APIs Client Library for C++ Developers's Guide</a>.
+ */

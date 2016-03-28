@@ -1,0 +1,334 @@
+=== begin: ./pubspec.yaml
+# This is a Dart pubspec file. It exists here just to show you a file which
+# is not part of the rest of the source, which you want to appear at the top
+# level of output.
+name: helloworld_v1
+description: >
+  helloworld API v1.
+version: 0.1.snapshot
+author: Google Inc.
+=== end: ./pubspec.yaml
+=== begin: ./src/1/2/3/4/x.txt
+// Path: 1/2/3/4/x.txt.
+Content for level 4.
+=== end: ./src/1/2/3/4/x.txt
+=== begin: ./src/1/2/3/x.txt
+// Path: 1/2/3/x.txt.
+Content for level 3.
+=== end: ./src/1/2/3/x.txt
+=== begin: ./src/1/2/x.txt
+// Path: 1/2/x.txt.
+Content for level 2.
+=== end: ./src/1/2/x.txt
+=== begin: ./src/1/x.txt
+// Path: 1/x.txt.
+Content for level 1.
+=== end: ./src/1/x.txt
+=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::cloud::platform::EccoDomaniIeri;
+
+/**
+ * Schema .HelloGreetingCollection { model.description }} <p> Your explanation here.
+ */
+class HelloGreetingCollection extends SomeBaseModelClass {
+
+  // Greeting that stores a message.
+  // JSON name: "items"
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> _items;
+
+  // Getters and setters might go here
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> getItems() {
+    return _items;
+  }
+  void setItems(com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> v) {
+    _items = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreetingCollection.xxx
+=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+// I might put standard imports here.
+
+package com::google::cloud::platform::EccoDomaniIeri;
+
+/**
+ * Schema .HelloGreeting { model.description }} <p> Your explanation here.
+ */
+class HelloGreeting extends SomeBaseModelClass {
+
+  // 
+  // JSON name: "message"
+  str _message;
+
+  // Getters and setters might go here
+  str getMessage() {
+    return _message;
+  }
+  void setMessage(str v) {
+    _message = v;
+  }
+
+}
+
+
+=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/HelloGreeting.xxx
+=== begin: ./src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
+
+// Copyright 2013 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+// library helloworld v1
+
+// package com::google::cloud::platform::EccoDomaniIeri
+
+import the stuff you need to import here
+
+// API EccoDomaniIeri
+/**
+ * helloworld API v1.
+ */
+class EccoDomaniIeri extends SomeApiBaseClass  {
+
+  /** The API root, such as [:https://www.googleapis.com:] */
+  string rootUrl;
+  /** How we should identify ourselves to the service. */
+  http.Authenticator authenticator;
+  /** The client library version */
+  string clientVersion = '0.1.snapshot';
+  /** The application name, used in the user-agent header */
+  string applicationName;
+
+  EccoDomaniIeri get _$service => this;
+  Greetings _greetings;
+  Greetings get greetings => _greetings;
+  
+  """Data format for the response.#
+  str alt;
+
+  """Selector specifying which fields to include in a partial response.#
+  str fields;
+
+  """API key. Your API key identifies your project and provides you with API
+  """access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+  #
+  str key;
+
+  """OAuth 2.0 token for the current user.#
+  str oauth_token;
+
+  """Returns response with indentations and line breaks.#
+  bool prettyPrint;
+
+  """Available to use for quota purposes for server-side applications. Can be
+  """any arbitrary string assigned to a user, but should not exceed 40
+  """characters. Overrides userIp if both are provided.
+  #
+  str quotaUser;
+
+  """IP address of the site where the request originates. Use this if you want
+  """to enforce per-user limits.
+  #
+  str userIp;
+
+
+
+  EccoDomaniIeri({this.rootUrl:'https://peer-pontus.appspot.com/_ah/api/helloworld/v1/',
+                      applicationName, this.authenticator}) :
+      this.applicationName = applicationName;
+  {
+   
+    _greetings = new Greetings._internal(this);
+   
+  }
+
+  string get userAgent {
+    return "${applicationName}helloworld/v1/snapshot google-api-something-client/0.1";
+  }
+
+
+
+
+// OAuth2 scopes which may be required for some methods in this API
+
+  /** OAuth2 scope: View your email address */
+  public static const string USERINFO_EMAIL_SCOPE = 'https://www.googleapis.com/auth/userinfo.email';
+}
+
+// Resource 
+class Greetings extends SomeRootClass {
+  EccoDomaniIeri service_handle;
+
+  // Loop over all resources here to declare variables
+  
+
+  // Note that I just write this stuff with the indent I want
+  
+
+  // but here all the things are in an indent block because then I can control
+  // how they are indenting better.
+
+    // Method
+    /**
+
+     *
+     */
+    Future<HelloGreeting> authed() {
+      string path = 'hellogreeting/authed';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+
+     *
+     * [id]
+     */
+    Future<HelloGreeting> getGreeting(long id) {
+      pathParams['id'] = id;
+      string path = 'hellogreeting/{id}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+
+     *
+     */
+    Future<HelloGreetingCollection> listGreeting() {
+      string path = 'hellogreeting';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'GET')
+      // authentication might wrap the request here.
+      return request
+    }
+
+    // Method
+    /**
+
+     *
+     * [content] the HelloGreeting
+     * [times]
+     */
+    Future<HelloGreeting> multiply(long times, HelloGreeting content;) {
+      pathParams['times'] = times;
+      string path = 'hellogreeting/{times}';
+      string url = new UrlPattern(_service.rootUrl + "/" + path)
+          .expand(pathParams, queryParams);
+      request = new http.Request($url, 'POST')
+      // authentication might wrap the request here.
+      return request
+    }
+  }
+
+    // subresources
+
+} // end of class definition
+
+// Enum EccoDomaniIeri.Alt
+// Data format for the response.
+class Alt {
+
+  // Responses with Content-Type of application/json
+  const str JSON = 'json';
+
+}
+
+
+// Models in the top level
+
+
+
+"""Schema .HelloGreeting { model.description }} <p> Your explanation here.
+# 
+class HelloGreeting extends SomeBaseModelClass {
+
+  // 
+  // JSON name: 'message'
+  str _message;
+
+  // Getters and setters might go here
+  str getMessage() {
+    return _message;
+  }
+  void setMessage(str v) {
+    _message = v;
+  }
+
+}
+
+
+
+"""Schema .HelloGreetingCollection { model.description }} <p> Your explanation
+"""here.
+# 
+class HelloGreetingCollection extends SomeBaseModelClass {
+
+  // Greeting that stores a message.
+  // JSON name: 'items'
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> _items;
+
+  // Getters and setters might go here
+  com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> getItems() {
+    return _items;
+  }
+  void setItems(com::google::cloud::platform::EccoDomaniIeri::Array<HelloGreeting> v) {
+    _items = v;
+  }
+
+}
+
+=== end: ./src/com/google/cloud/platform/EccoDomaniIeri/helloworld.xxx
+=== begin: ./src/README
+This language happens to place the source output in a src folder within
+the package. There is nothing inherently important w.r.t the library
+generator in doing so.
+=== end: ./src/README

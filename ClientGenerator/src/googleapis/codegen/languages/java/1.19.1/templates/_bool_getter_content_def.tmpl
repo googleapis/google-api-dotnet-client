@@ -1,0 +1,27 @@
+{% filter noblanklines %}
+  /**
+   * Convenience method that returns only {@link Boolean#TRUE} or {@link Boolean#FALSE}.
+   *
+   * <p>
+   * Boolean properties can have four possible values:
+   * {@code null}, {@link com.google.api.client.util.Data#NULL_BOOLEAN}, {@link Boolean#TRUE}
+   * or {@link Boolean#FALSE}.
+   * </p>
+   *
+   * <p>
+   * This method returns {@link Boolean#TRUE} if the default of the property is {@link Boolean#TRUE}
+   * and it is {@code null} or {@link com.google.api.client.util.Data#NULL_BOOLEAN}.
+   * {@link Boolean#FALSE} is returned if the default of the property is {@link Boolean#FALSE} and
+   * it is {@code null} or {@link com.google.api.client.util.Data#NULL_BOOLEAN}.
+   * </p>
+   *
+   * <p>
+   *{% filter block_comment %}{{ property.description }}{% endfilter %}
+   * </p>
+   */
+  public boolean is{{ property.memberName|capfirst }}() {
+    if ({{ property.memberName }} == null || {{ property.memberName }} == com.google.api.client.util.Data.NULL_BOOLEAN) {
+      return {{ property.default }};
+    }
+    return {{ property.memberName }};
+  }{% endfilter %}

@@ -1,0 +1,163 @@
+{% doc_comment_if method.description %}{% noblank %}
+{% filter block_comment %}
+{% if method.requestType %}/// <param name="body">The body of the request.</param>{% endif %}{% eol %}
+{% endfilter %}
+{% filter block_comment %}
+{% for param in method.requiredParameters %}/// <param name={% literal param.codeName %}>{{ param.description }}</param>{% eol %}{% endfor %}
+{% endfilter %}
+{% filter block_comment %}
+/// <param name="stream">The stream to upload.</param>{% eol %}
+{% endfilter %}
+{% filter block_comment %}
+/// <param name="contentType">The content type of the stream to upload.</param>{% eol %}
+{% endfilter %}
+{% endnoblank %}{% noeol %}
+public virtual {{ method.className }}MediaUpload {{ method.className }}({% parameter_list %}
+
+{% if method.requestType %}
+{% parameter %}
+{{ method.requestType.fullClassName }} body
+{% end_parameter %}
+{% endif %}
+
+{% for p in method.requiredParameters %}
+  {% parameter %}
+ {% if p.enumType %}
+{{ method.className }}MediaUpload.{% camel_case p.enumType.className %}Enum
+ {% elif p.repeated %}
+Google.Apis.Util.Repeatable<string>
+ {% else %}
+{{ p.requiredType }}
+ {% endif %}{{ p.codeName }}
+  {% end_parameter %}
+{% endfor %}
+
+{% parameter %}
+System.IO.Stream stream
+{% end_parameter %}
+
+{% parameter %}
+string contentType
+{% end_parameter %}
+
+{% end_parameter_list %})
+{% endnoeol %}
+{
+{% indent %}return new {{ method.className }}MediaUpload({% parameter_list %}
+
+{% parameter %}
+service
+{% end_parameter %}
+
+{% if method.requestType %}
+{% parameter %}
+body
+{% end_parameter %}
+{% endif %}
+
+{% for p in method.requiredParameters %}
+{% parameter %}
+{{ p.codeName }}
+{% end_parameter %}
+{% endfor %}
+
+{% parameter %}
+stream
+{% end_parameter %}
+
+{% parameter %}
+contentType
+{% end_parameter %}
+
+{% end_parameter_list %});{% endindent %}
+}
+
+/// <summary>{{ method.className }} media upload which supports resumable upload.</summary>
+{% noeol %}
+public class {{ method.className }}MediaUpload : Google.Apis.Upload.ResumableUpload
+<
+{% if method.requestType %}{{ method.requestType.fullClassName }}{% else %}string{% endif %}
+{% if not method.responseType.isVoid %}, {{ method.responseType.fullClassName }}{% endif %}
+>{% endnoeol %}
+{
+{% indent %}{% for parameter in api.parameters %}
+{% call_template _parameter parameter=parameter %}
+{% endfor %}{% endindent %}
+{% indent %}{% for p in method.parameters %}
+{% call_template _parameter parameter=p %}
+{% endfor %}{% endindent %}
+    /// <summary>Constructs a new {{ method.className }} media upload instance.</summary>
+    public {{ method.className }}MediaUpload({% parameter_list %}
+{% parameter %}
+Google.Apis.Services.IClientService service
+{% end_parameter %}
+
+{% if method.requestType %}
+{% parameter %}
+{{ method.requestType.fullClassName }} body
+{% end_parameter %}
+{% endif %}
+
+{% for p in method.requiredParameters %}
+  {% parameter %}
+    {% if p.enumType %}
+{{ method.className }}MediaUpload.{% camel_case p.enumType.className %}Enum
+    {% elif p.repeated %}
+Google.Apis.Util.Repeatable<string>
+    {% else %}
+{{ p.requiredType }}
+    {% endif %} {{ p.codeName }}
+  {% end_parameter %}
+{% endfor %}
+
+{% parameter %}
+System.IO.Stream stream
+{% end_parameter %}
+
+{% parameter %}
+string contentType
+{% end_parameter %}
+
+{% end_parameter_list %})
+        : base({% parameter_list %}
+
+{% parameter %}
+service
+{% end_parameter %}
+
+{% parameter %}
+string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{{ method.path}}")
+{% end_parameter %}
+
+{% parameter %}
+"{{ method.httpMethod }}"
+{% end_parameter %}
+
+{% parameter %}
+stream
+{% end_parameter %}
+
+{% parameter %}
+contentType
+{% end_parameter %}
+
+{% end_parameter_list %})
+{% indent %}{
+{% filter noblanklines %}
+
+{% indent %}
+
+{% for p in method.requiredParameters %}
+{% camel_case p.codeName %} = {{ p.codeName }};
+{% endfor %}
+
+{% if method.requestType %}
+Body = body;
+{% endif %}
+
+{% endindent %}
+
+{% endfilter %}
+}{% endindent %}
+}
+

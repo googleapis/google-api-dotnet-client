@@ -1,0 +1,4 @@
+{% if api.authscopes %}{% for authscope in api.authscopes %}
+const char {{ api.className }}::SCOPES::{{ authscope.name|upper }}[] = {"{{ authscope.value }}"};
+{% endfor %}
+{% endif %}

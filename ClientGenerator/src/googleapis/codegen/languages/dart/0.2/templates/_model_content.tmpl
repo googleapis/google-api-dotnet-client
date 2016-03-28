@@ -1,0 +1,75 @@
+{% comment %}
+  Renders a model class.
+  [model] the schema object for the type.
+{% endcomment %}
+class {{ model.className }} {
+{% for property in model.properties %}
+{% filter noblanklines %}
+{% if property.description %}
+  /** {{ property.description }} */
+{% endif %}
+  {{ property.codeType }} {{ property.codeName }};
+{% endfilter %}
+{% endfor %}
+{% filter noblanklines %}
+  /** Create new {{ model.className }} from JSON data. */
+  {{ model.className }}.fromJson(core.Map json) {
+{% for property in model.properties %}
+    if (json.containsKey({% literal property.wireName %})) {
+{% if property.data_type.arrayOf %}
+      {{ property.codeName }} = [];
+      json[{% literal property.wireName %}].forEach((item) {
+        {% if property.data_type.baseType.builtIn %}
+        {{ property.codeName }}.add(item);
+        {% else %}
+        {{ property.codeName }}.add(new {{ property.data_type.baseType.className }}.fromJson(item));
+        {% endif %}
+      });
+{% else %}
+      {% if property.data_type.builtIn %}
+      {{ property.codeName }} = json[{% literal property.wireName %}];
+      {% else %}
+      {{ property.codeName }} = new {{ property.data_type.className }}.fromJson(json[{% literal property.wireName %}]);
+      {% endif %}
+{% endif %}
+    }
+{% endfor %}
+  }
+{% endfilter %}
+
+  /** Create JSON object for {{ model.className }}. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+{% filter noblanklines %}
+    {% for property in model.properties %}
+    if ({{ property.codeName }} != null) {
+    {% if property.data_type.arrayOf %}
+      output[{% literal property.wireName %}] = new core.List();
+      {{ property.codeName }}.forEach((item) {
+        {% if property.data_type.baseType.builtIn %}
+        output[{% literal property.wireName %}].add(item);
+        {% else %}
+        output[{% literal property.wireName %}].add(item.toJson());
+        {% endif %}
+      });
+    {% else %}
+      {% if property.data_type.builtIn %}
+      output[{% literal property.wireName %}] = {{ property.codeName }};
+      {% else %}
+      output[{% literal property.wireName %}] = {{ property.codeName }}.toJson();
+      {% endif %}
+    {% endif %}
+    {% comment %}
+      TODO(timarmstrong): Handle maps as well.
+    {% endcomment %}
+    }
+    {% endfor %}
+{% endfilter %}
+
+    return output;
+  }
+
+  /** Return String representation of {{ model.className }} */
+  core.String toString() => JSON.encode(this.toJson());
+}

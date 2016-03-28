@@ -1,0 +1,18 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.className }}Constants.m
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+#import "{{ api.className }}Constants.h"
+{% call_template _constants_m_impl %}

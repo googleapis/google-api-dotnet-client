@@ -1,0 +1,19 @@
+{% if current_model.children %}{% for child in current_model.children %}{% call_template _model_cc guarded_model=child %}{% endfor %}{% endif %}
+// Object factory method (static).
+{{ current_model.packageRelativeClassName }}* {{ current_model.packageRelativeClassName }}::New() {
+  return new {{ api.client_namespace }}::JsonCppCapsule<{{ current_model.className }}>;
+}
+
+// Standard immutable constructor.
+{{ current_model.packageRelativeClassName }}::{{ current_model.className }}(const Json::Value& storage)
+  : {{ api.client_namespace }}::JsonCppData(storage) {
+}
+
+// Standard mutable constructor.
+{{ current_model.packageRelativeClassName }}::{{ current_model.className }}(Json::Value* storage)
+  : {{ api.client_namespace }}::JsonCppData(storage) {
+}
+
+// Standard destructor.
+{{ current_model.packageRelativeClassName }}::~{{ current_model.className }}() {
+}

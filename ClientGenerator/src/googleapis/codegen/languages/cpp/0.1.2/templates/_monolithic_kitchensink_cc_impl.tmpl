@@ -1,0 +1,18 @@
+#include "{{ api.module.path }}{% if api.module.path != '' %}/{% endif %}{{ api.kitchensink }}.h"
+#include <string>
+#include "{{ api.client_include_path }}/data/data_reader.h"
+#include "{{ api.client_include_path }}/service/media_uploader.h"
+#include "{{ api.client_include_path }}/transport/http_request.h"
+#include "{{ api.client_include_path }}/transport/http_transport.h"
+#include "{{ api.client_include_path }}/util/status.h"
+#include "{{ api.client_include_path }}/util/uri_utils.h"
+#include "{{ api.strings_include_path }}/strcat.h"
+
+namespace {{ api.module.name }} {
+
+{% call_template _service_impl_cc api=api %}
+
+{% for m in api.models %}{% if not m.parent %}
+{% call_template _model_cc_impl current_model=m %}{% endif %}{% endfor %}
+
+}  // namespace {{ api.module.name }} {

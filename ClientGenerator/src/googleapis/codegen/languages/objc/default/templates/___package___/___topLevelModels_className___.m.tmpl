@@ -1,0 +1,20 @@
+{% language objc %}{% copyright_block %}
+
+//
+//  {{ model.className }}.m
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+// Classes:
+//   {{ model.className }} (0 custom class methods, {{ model.properties|length }} custom properties)
+
+#import "{{ model.className }}.h"
+{% if model.importManager %}
+{% imports model %}{% endimports %}
+{% endif %}
+{% call_template _model_m_impl model=model %}

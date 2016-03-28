@@ -1,0 +1,7 @@
+{% comment %}
+  Renders a description of a parameter, including default, minimum, and maximum values.
+{% endcomment %}[{{ parameter.parameterName }}] {% filter java_parameter_wrap %}{{ parameter.description }}
+{% if parameter.default %} Default: {{ parameter.default }}.{% endif %}
+{% if parameter.minimum %} Minimum: {{ parameter.minimum }}.{% endif %}
+{% if parameter.maximum %} Maximum: {{ parameter.maximum }}.{% endif %}
+{% endfilter %}

@@ -1,0 +1,95 @@
+{% if current_model.arrayOf %}
+@com.google.api.client.util.Key
+{{ current_model.safeCodeType}} items;
+{% endif %}{% for property in current_model.properties %}
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * The value may be {@code null}.
+   */
+  @com.google.api.client.util.Key{% if not property.member_name_is_json_name %}("{{ property.wireName }}"){% endif %}{% if property.requiresJsonString %} @com.google.api.client.json.JsonString{% endif %}
+  {% if property.is_variant_key %}
+  @com.google.api.client.json.JsonPolymorphicTypeMap(typeDefinitions={
+  {% for key, ref in property.variant_map.items %}
+    @com.google.api.client.json.JsonPolymorphicTypeMap.TypeDef(key = {% literal key %}, ref = {{ ref.safe_code_type }}.class),
+  {% endfor %}})
+  {% endif %}
+  {% if features.thin_models %}public{% else %}private{% endif %} {{ property.safeCodeType }} {{ property.memberName }};
+{% endfilter %}
+
+{% filter noblanklines %}
+  {% if property.data_type.isContainer %}
+{% call_template _proguard_content_def schema=property.data_type.baseType %}
+  {% endif %}
+{% endfilter %}
+{% endfor %}
+{% if not features.thin_models %}{% for property in current_model.properties %}
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+{% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
+   * @see #decode{{ property.memberName|capfirst }}()
+{% endifequal %}{% endifequal %}
+   * @return value or {@code null} for none
+   */
+{% endfilter %}
+  public {{ property.safeCodeType }} {{ property.getterName }}() {
+    return {{ property.memberName }};
+  }
+{% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * @see #{{ property.getterName }}()
+   * @return Base64 decoded value or {@code null} for none
+   *
+   * @since 1.14
+   */
+  public byte[] decode{{ property.memberName|capfirst }}() {
+    return com.google.api.client.util.Base64.decodeBase64({{ property.memberName }});
+  }
+{% endifequal %}{% endifequal %}
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+{% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
+   * @see #encode{{ property.memberName|capfirst }}()
+{% endifequal %}{% endifequal %}
+   * @param {{property.memberName }} {{property.memberName }} or {@code null} for none
+   */
+{% endfilter %}
+  public {{ current_model.safeClassName }} {{ property.setterName }}({{ property.safeCodeType }} {{property.memberName }}) {
+    this.{{ property.memberName }} = {{ property.memberName }};
+    return this;
+  }
+{% ifequal property.safeCodeType "java.lang.String" %}{% ifequal property.format "byte" %}
+  /**{% filter block_comment %}
+   * {{ property.description }}{% endfilter %}
+   * @see #{{ property.setterName }}()
+   *
+   * <p>
+   * The value is encoded Base64 or {@code null} for none.
+   * </p>
+   *
+   * @since 1.14
+   */
+  public {{ current_model.safeClassName }} encode{{ property.memberName|capfirst }}(byte[] {{property.memberName}}) {
+    this.{{ property.memberName }} = com.google.api.client.util.Base64.encodeBase64URLSafeString({{ property.memberName }});
+    return this;
+  }
+{% endifequal %}{% endifequal %}
+{% ifequal property.codeType "java.lang.Boolean" %}{% ifnotequal property.default null %}
+{% call_template _bool_getter_content_def property=property %}
+{% endifnotequal %}{% endifequal %}{% endfor %}{% endif %}
+{% if not features.thin_models %}
+
+  @Override
+  public {{ current_model.safeClassName }} set(String fieldName, Object value) {
+    return ({{ current_model.safeClassName }}) super.set(fieldName, value);
+  }
+
+  @Override
+  public {{ current_model.safeClassName }} clone() {
+    return ({{ current_model.safeClassName }}) super.clone();
+  }
+{% endif %}
+

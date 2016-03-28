@@ -1,0 +1,4 @@
+{% comment %}
+  Renders an expression evaluating to a function from JSON to value of a particular type.
+  [type] the data type.
+{% endcomment %}{% if type.arrayOf %}map({% call_template _parse type=type.baseType %}){% else %}{% if type.mapOf %}mapValues({% call_template _parse type=type.baseType %}){% else %}{% if type.builtIn and not type.reference %}identity{% else %}{{ type.className }}.parse{% endif %}{% endif %}{% endif %}

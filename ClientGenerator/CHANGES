@@ -1,0 +1,134 @@
+Change Summary
+
+2015-03-24 / Version 1.5.1
+* Update locations of repositories that have moved from code.google.com to
+  github.com.
+* Some fixes for Discovery using rpcPath rather than servicePath.
+* Split Schema code to schema.py.
+* Lift the monolithic source handling out of C++ and make it a general flag
+  so Objective-C can use it too.
+* C++ fixes & improvements:
+  - url parameters of the form startIndex -> start_index.
+  - scoped_ptr->std:unique_ptr
+* Java fixes for media handling methods.
+* Objective-C almost feature parity with existing generator.
+* Update GWT generator to use naming policies. Fixes bugs with enums that had
+  @ in their names.
+* Support for Schemas which are just enums.
+* Update PHP reserved word list.
+
+
+2014-10-14 / Version 1.5.0
+* Add NamingPolicy concept to define how to assemble names. Use extensively in
+  C++ & C# templates.  E.g: from:
+    {{ property.codeType }} get_{{ property.wireName }}() const {
+  to:
+    {{ property.codeType }} {{ property.getterName }}() const {
+* Add sample template tree to generate HTML docs for an API.
+* Stop writing time stamps into .zip files so output is deterministic
+* New template tags: bool, write.
+* Support for variant data types (E.g. GeoJSON). Only used in Java so far.
+* Allow @ as the leading character in property & parameter names.
+* Support for more scope patterns.
+* Improved ExecuteAsync and media support in C++.
+* Numerous C++, C# and PHP fixes.
+
+
+2013-08-19 / Version 1.4.2
+* Added support for C#.
+* Line length in the block_comment filter now varies according to language.
+* Django 1.4 is now supported.
+
+
+2013-07-04 / Version 1.4.1
+* Started migration to LanguageModel based on setting policy rather than
+  implementing naming methods.
+* Fix for parameters which are repeated enums
+* Make Constants for the values of an Enum, rather than just dumb strings.
+
+
+2013-06-11 / Version 1.4
+* New call_template syntax
+* New tags: noeol/noblank
+* More tests
+* Some type system cleanups
+* Added a sample language generator
+* Several fixes w.r.t. class paths in java
+* Reorganize code tree extensively
+* Better handling of modules w.r.t LanguageModel
+* Snapshot of newest Dart & PHP support
+
+
+2013-03-14
+* Update to Python 2.7
+* rename templates from 'stable' to explicitly versioned.
+* Many changes to the Java surface in preparation for the 1.14 series.
+* Allow comments in the json configuration files.
+* Allow expansion of variables in the features.json files.
+* Improved code coverage.
+* Fixes to parent lineage in parsed API structure.
+* Fixed the time stamp and copyright blocks so they can be easily disabled
+  (for doing side-by-side testing).
+* Allow alternate generated package names via new discovery fields.
+* Renamed uses of 'package' meaning "a unit of code in a programming" language
+  to the term "module". All CodeObjects now belong to a module.
+* Better type specifications for array and map types.
+* Sort resources, methods and parameters so that we do not get random different
+  in emitted code in each run.
+* Preliminary support for yet another Dart style.
+* Allow Dart source bundle to be .tgz format.
+* support for canonicalName in Discovery.
+
+
+1.2.0
+
+2012-08-29
+* Roll up of dozens of changes to the generator structure.
+* Addition of a rough Dart binding.
+* Many changes to the Java surface to reflect new features.
+
+
+1.1.1
+
+2011-10-20
+* add DataType classes to replace the use of strings for types.
+  - Completely rework the interpretation of JsonSchema into DataTypes to
+    make them clearer.
+* A large set of refactorings in an ongoing effort to make Api definitions
+  distinct from the language we will generate in
+  - add LanguageModel, which each language subclasses to provide utililes
+    for formatting DataTypes for use in templates
+  - defer creation of codeType from API parsing to code generation, using
+    the pair of LanguageModel and DataType to emit the right thing.
+* Add Packages to the things which can appear in code. Use package.name in
+  templates rather than explictly building relative paths.
+* Add a parent/child relationship between data models. This is to pave the
+  way for generators which represent anonymous classes as nested classes.
+* Add tags for building parameter lists. This moved the code to create those
+  lists from Annotators buried in the per-language generators out to templates.
+* Add a 'call_template' tag to make it factor out common template idioms.
+
+2011-07-13
+* Fix django usage for PHP generator
+* Fix autoescape problem with django 1.x vs. 0.96
+
+2011-07-25
+* Added experimental C# generator. This is just a placeholder for now. It does
+  not generate code that works yet.
+
+2011-07-27
+* Support for additionalProperties when used as a pure map.
+* Update to g.a.j.c 1.5
+
+2011-08-01
+* Added experimental Go generator. This is just a placeholder for now. It does
+  not generate code that works yet.
+
+2011-08-05
+* Added experimental Objective-C generator. This is just a placeholder for now.   It does not generate code that works yet.
+
+2011-08-10
+* Update Java surface to 1.2.0-beta
+
+2011-08-19
+* Various refactorings to make packaging easier.

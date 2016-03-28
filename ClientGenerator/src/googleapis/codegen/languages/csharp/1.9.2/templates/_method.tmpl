@@ -1,0 +1,157 @@
+{% doc_comment_if method.description %}
+{% noblank %}
+{% filter block_comment %}
+{% if method.requestType %}/// <param name="body">The body of the request.</param>{% eol %}{% endif %}
+{% endfilter %}
+{% filter block_comment %}
+{% for param in method.requiredParameters %}/// <param name={% literal param.codeName %}>{{ param.description }}</param>{% eol %}{% endfor %}
+{% endfilter %}
+{% endnoblank %}{% noeol %}
+public virtual {{ method.className }}Request {{ method.className }}({% parameter_list %}
+{% if method.requestType %}
+    {% parameter %}
+{{ method.requestType.fullClassName }} body
+    {% end_parameter %}
+{% endif %}
+
+{% for p in method.requiredParameters %}
+    {% parameter %}
+      {% if p.enumType %}
+{{ method.className }}Request.{% camel_case p.enumType.className %}Enum
+      {% elif p.repeated %}
+Google.Apis.Util.Repeatable<string>
+      {% else %}
+{{ p.requiredType }}
+      {% endif %}
+ {{ p.codeName }}
+    {% end_parameter %}
+{% endfor %}
+{% end_parameter_list %})
+{% endnoeol %}
+{
+{% noeol %}{% indent %}return new {{ method.className }}Request({% parameter_list %}
+{% parameter %}
+{{ service }}
+{% end_parameter %}
+{% if method.requestType %}
+  {% parameter %}
+body
+  {% end_parameter %}
+{% endif %}
+{% for p in method.requiredParameters %}
+  {% parameter %}
+{{ p.codeName }}
+  {% end_parameter %}
+{% endfor %}
+{% end_parameter_list %});{% endindent %}{% endnoeol %}
+}
+
+{% doc_comment_if method.description %}
+{% noeol %}
+public class {{ method.className }}Request : {{ api.className }}
+BaseServiceRequest<
+{% if method.responseType.isVoid %}
+string
+{% else %}
+{{ method.responseType.fullClassName }}
+{% endif %}>
+{% endnoeol %}
+{
+{% indent %}/// <summary>Constructs a new {{ method.className }} request.</summary>
+{% noeol %}
+public {{ method.className }}Request(
+{% parameter_list %}
+
+    {% parameter %}
+        Google.Apis.Services.IClientService service
+    {% end_parameter %}
+
+    {% if method.requestType %}
+        {% parameter %}
+            {{ method.requestType.fullClassName }} body
+        {% end_parameter %}
+    {% endif %}
+
+    {% for p in method.requiredParameters %}
+        {% parameter %}
+            {% if p.enumType %}
+ {{ method.className }}Request.{% camel_case p.enumType.className %}Enum
+            {% elif p.repeated %}
+ Google.Apis.Util.Repeatable<string>
+            {% else %}
+ {{ p.requiredType }}
+            {% endif %}
+ {{ p.codeName }}
+        {% end_parameter %}
+    {% endfor %}
+{% end_parameter_list %})
+
+{% endnoeol %}
+    : base(service)
+{
+{% filter noblanklines %}{% indent %}
+{% for p in method.requiredParameters %}
+{% camel_case p.memberName %} = {{ p.codeName }};
+{% endfor %}
+{% if method.requestType %}Body = body;{% endif %}
+{% if method.supportsMediaDownload %}MediaDownloader = new Google.Apis.Download.MediaDownloader(service);{% endif %}
+InitParameters();
+{% endindent %}{% endfilter %}
+}
+
+{% for p in method.parameters %}
+{% call_template _parameter parameter=p %}
+{% endfor %}
+{% if method.requestType %}
+/// <summary>Gets or sets the body of this request.</summary>
+{{ method.requestType.fullClassName }} Body { get; set; }
+
+///<summary>Returns the body of the request.</summary>
+protected override object GetBody() { return Body; }
+{% endif %}
+///<summary>Gets the method name.</summary>
+public override string MethodName
+{
+    get { return "{{ method.wireName }}"; }
+}
+
+///<summary>Gets the HTTP method.</summary>
+public override string HttpMethod
+{
+    get { return "{{ method.httpMethod }}"; }
+}
+
+///<summary>Gets the REST path.</summary>
+public override string RestPath
+{
+    get { return "{{ method.path }}"; }
+}
+
+/// <summary>Initializes {{ method.className }} parameter list.</summary>
+{% call_template _init_parameters parameters=method.parameters %}
+{% if method.supportsMediaDownload %}
+/// <summary>Gets the media downloader.</summary>
+public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+/// <summary>Synchronously download the media into the given stream.</summary>
+public virtual void Download(System.IO.Stream stream)
+{
+    MediaDownloader.Download(this.GenerateRequestUri(), stream);
+}
+
+/// <summary>Asynchronously download the media into the given stream.</summary>
+public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+{
+    return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+}
+
+/// <summary>Asynchronously download the media into the given stream.</summary>
+public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+    System.Threading.CancellationToken cancellationToken)
+{
+    return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+}
+{% endif %}{% endindent %}
+}
+
+{% if method.supportsMediaUpload %}{% call_template _method_resumable method=method %}{% endif %}

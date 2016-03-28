@@ -1,0 +1,29 @@
+{% if method.responseType.isVoid %}
+<p>If successful, this method returns an empty response body.</p>
+
+{% elif method.responseType.isList %}
+<p>If successful, this method returns a response body with the following structure:</p>
+<section>
+<pre class="prettyprint">
+{% call_template _resource_alt_json schema=method.responseType %}
+</pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% call_template _resource_property_row schema=method.responseType %}
+  </tbody>
+</table>
+
+</section>
+
+{% else %}
+<p>If successful, this method returns a <a href="{% call_template _link_generator item=method.responseType %}">{{ method.responseType.className }} resource</a> in the response body.</p>
+
+{% endif %}

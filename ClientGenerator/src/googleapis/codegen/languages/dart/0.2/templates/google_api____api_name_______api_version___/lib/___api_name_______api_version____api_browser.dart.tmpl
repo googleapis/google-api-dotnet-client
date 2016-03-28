@@ -1,0 +1,15 @@
+library {{ api.name }}_{{ api.version }}_api_browser;
+
+import "{{ api.name }}_{{ api.version }}_api_client.dart";
+export "{{ api.name }}_{{ api.version }}_api_client.dart";
+
+import "dart:core" as core;
+import "dart:html" as html;
+import "dart:async" as async;
+import "dart:convert";
+import "package:js/js.dart" as js;
+import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
+
+part "src/browser/browserclient.dart";
+part "src/browser/{{ api.name }}.dart";
+

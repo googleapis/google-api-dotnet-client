@@ -1,0 +1,14 @@
+{% language cpp %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+#ifndef  {{ api.module.name|upper }}_{{ api.kitchensink|upper }}_H_
+#define  {{ api.module.name|upper }}_{{ api.kitchensink|upper }}_H_
+{% if options.useSingleSourceFile %}
+{% call_template _monolithic_kitchensink_h_impl api=api %}
+{% else %}
+{% for m in api.sortedTopLevelModels %}#include "{{ m.include_path }}"
+{% endfor %}
+#include "{{ api.include_path }}"
+{% endif %}
+
+#endif  // {{ api.module.name|upper }}_{{ api.kitchensink|upper }}_H_

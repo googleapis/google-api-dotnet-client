@@ -1,0 +1,25 @@
+{% noeol %}
+
+{% comment %}
+resource.parent can be another resource or the API. The parent.parent lookup
+makes sure that the link starts at the top level resources and doesn't try to
+get the wireName of the API.
+{% endcomment %}
+{% if resource.parent.parent %}
+
+{% with children="/"|add:resource.wireName|add:children %}
+{% call_template _resource_path resource=resource.parent children=children %}
+{% endwith %}
+
+{% else %}
+
+{% comment %}
+We need a way to inject the relative root of this documentation set into this
+template, just before the slash. Maybe we can grab it from api.documentation
+and process that some way.
+{% endcomment %}
+/{{ resource.wireName }}{{ children }}.html
+
+{% endif %}
+
+{% endnoeol %}

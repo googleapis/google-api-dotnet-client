@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>{{ api.module.name }}</id>
+        <version>{{ features.nugetVersion }}.{{ api.revisionInt16 }}</version>
+        <title>{{ api.module.name }} Client Library</title>
+        <authors>Google Inc.</authors>
+        <owners>google-apis-packages</owners>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>Google {% camel_case api.name %} {{ api.version }} API client library</summary>
+        <description>
+          Google APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
+          Supported Platforms:
+
+          - .NET Framework 4.5
+
+          - Windows Store apps
+
+          - Windows Phone 8 and 8.1
+
+          - Portable Class Libraries
+
+          More documentation on the API is available at:
+          https://developers.google.com/api-client-library/dotnet/apis/{{ api.name }}/{{ api.version }}
+
+          The package source code is available at:
+          https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
+        </description>
+        <tags>Google</tags>
+        <dependencies>
+            <group>
+                <dependency id="Google.Apis" version="{{ features.releaseVersion }}" />{% if api.authscopes %}
+                <dependency id="Google.Apis.Auth" version="{{ features.releaseVersion }}" />{% endif %}
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.dll" />
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.pdb" />
+        <file src="bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.xml" />
+    </files>
+</package>

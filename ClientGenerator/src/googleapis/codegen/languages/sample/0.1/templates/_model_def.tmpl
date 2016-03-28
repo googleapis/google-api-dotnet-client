@@ -1,0 +1,46 @@
+{% collapsenewlines %}
+{% comment %} Args: model
+Emits the class declaration for a schema, and all its children.
+{% endcomment %}
+{% if model.isSchema %}
+
+{% doc_comment %}
+Schema {{ model.parentPath|join:"." }}.{{ model.className }}
+{ model.description }}
+<p>
+Your explanation here.
+{% enddoc_comment %}
+class {{ model.className }} extends SomeBaseModelClass {
+{% for property in model.properties %}
+  // {{ property.description }}
+  // JSON name: {% literal property.wireName %}
+  {{ property.codeType }} {{ property.memberName }};
+{% endfor %}
+
+{% filter noblanklines %}
+  // Getters and setters might go here
+  {% for property in model.properties %}
+  {{ property.codeType }} {{ property.getterName }}() {
+    return {{ property.memberName }};
+  }
+  {% comment %}We used 'v' as the variable. What if codeTYpe was 'v'?{% endcomment %}
+  void {{ property.setterName }}({{ property.codeType }} v) {
+    {{ property.memberName }} = v;
+  }
+  {% endfor %}
+{% endfilter %}
+
+{% for child in model.children %}
+{% indent %}{% call_template _model_def model=child %}{% endindent %}
+{% endfor %}
+}
+
+{% else %}
+
+{% comment %}Do the children of the map or array.{% endcomment %}
+{% for child in model.children %}
+{% call_template _model_def model=child %}
+{% endfor %}
+
+{% endif %}
+{% endcollapsenewlines %}

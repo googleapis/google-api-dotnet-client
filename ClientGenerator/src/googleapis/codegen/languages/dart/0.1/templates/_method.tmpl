@@ -1,0 +1,63 @@
+{% comment %}
+  Renders a method body.
+  [method] the method to render.
+{% endcomment %}// Method {{ method.contextCodeType }}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}{% endif %}
+ * {% endfilter %}
+ * {% if method.requestType %}
+ *    * [content] the {{ method.requestType.className }}{% endif %}{% for param in method.requiredParameters %}
+ *    * [{{ param.codeName }}] {% emit_parameter_doc param %}{% endfor %}{% for param in method.optionalParameters %}
+ *    * [{{ param.codeName }}] {% emit_parameter_doc param %}{% endfor %}
+ */
+{% filter noblanklines %}
+core.Future{% if method.responseType.className %}<{{ method.responseType.className }}>{% endif %} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}{% parameter %}
+      {% call_template _parameter_type param=p %} {{ p.codeName }}
+    {% end_parameter %}{% endfor %}
+    {% if method.requestType %}{% parameter %}
+      {{ method.requestType.className }} content
+    {% end_parameter %}{% endif %}
+    {% for p in method.optionalParameters %}{% parameter %}
+      {% if forloop.first %}{% templatetag openbrace %}{% endif %}{% call_template _parameter_type param=p %} {{ p.codeName }}{% if forloop.last %}{% templatetag closebrace %}{% endif %}
+    {% end_parameter %}{% endfor %}
+  {% end_parameter_list %}) {
+
+  final $queryParams = {};
+  final $headers = {};
+  final $pathParams = {};
+
+  {% for p in method.pathParameters %}
+  $pathParams[{% literal p.wireName %}] = {{ p.codeName }};
+  {% endfor %}
+
+  {% for p in method.queryParameters %}
+  if (?{{ p.codeName }}) $queryParams[{% literal p.wireName %}] = {{ p.codeName }};
+  {% endfor %}
+
+  {% for p in api.parameters %}
+  {% if p.wireName == "oauth_token" %}
+  if (_$service.{{ p.codeName }} != null) $headers["Authorization"] = "Bearer ${_$service.{{ p.codeName }}}";
+  {% else %}
+  if (_$service.{{ p.codeName }} != null) $queryParams[{% literal p.wireName %}] = _$service.{{ p.codeName }};
+  {% endif %}
+  {% endfor %}
+
+  $headers["X-JavaScript-User-Agent"] = _$service.userAgent;
+
+  {% if method.requestType %}
+  $headers["Content-Type"] = "application/json";
+  final $body = JSON.stringify({% call_template _serialize type=method.requestType %}(content));
+  {% endif %}
+
+  final $path = {% literal method.path %};
+  final $url = new UrlPattern("${_$service.baseUrl}${$path}").generate($pathParams, $queryParams);
+  final $http = new http.Request($url, {% literal method.httpMethod %}, $headers);
+  final $authenticatedHttp = (_$service.authenticator == null)
+      ? new core.Future.immediate($http)
+      : _$service.authenticator.authenticate($http);
+  return $authenticatedHttp
+      .chain((final $req) => $req.request({% if method.requestType %}$body{% endif %}))
+      .transform((final $text) => {% call_template _parse type=method.responseType %}(JSON.parse($text)));
+}
+{% endfilter %}

@@ -1,0 +1,12 @@
+{{ resource.packageRelativeClassName }}::{{ resource.className }}({{ api.className }}* service)
+  : service_(service){% for subresource in resource.resources %}, {{ subresource.memberName }}(service){% endfor %} {
+}
+
+{% for method in resource.methods %}
+
+{% call_template _method_factory_cc method=method %}
+{% endfor %}
+
+{% for subresource in resource.resources %}
+{% call_template _resource_cc resource=subresource %}
+{% endfor %}

@@ -1,0 +1,24 @@
+method {{% indent %}
+name: {{ method.wireName }}
+id: {{ method.id }}
+path: {{ method.path }}
+httpMethod: {{ method.httpMethod }}
+description: {{ method.description }}
+{% filter noblanklines %}
+{% if method.requestType %}request_type: {{ method.requestType.id }}{% endif %}
+{% if method.responseType %}response_type: {{ method.responseType.id }}{% endif %}
+{% endfilter %}
+{% for param in method.parameters %}
+parameter: {{ param.wireName }} {{% indent %}
+{% filter noblanklines %}
+description:{{ param.description }}
+type: {{ param.code_type }}
+required: {{ param.required }}
+location: {{ param.location }}
+repeated: {{ param.repeated }}
+{% if param.default %} default: {{ param.default }}{% endif %}
+{% if param.minimum %} minimum: {{ param.minimum }}{% endif %}
+{% if param.maximum %} maximum: {{ param.maximum }}{% endif %}
+{% endfilter %}
+{% endindent %}}{% endfor %}
+{% endindent %}}

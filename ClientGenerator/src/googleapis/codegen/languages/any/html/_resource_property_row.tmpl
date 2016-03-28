@@ -1,0 +1,10 @@
+{% for prop in schema.properties %}
+<tr>
+<td><code><span class="quiet">{% call_template _property_path schema=schema %}</span>{{ prop.wireName }}</code></td>
+<td><code class="apitype">{{ prop.type }}</code></td>
+<td>{% checksummed_div %}{{ schema.wireName}}-{{ prop.wireName }}-description{% divbody %}{{ prop.description }}{% endchecksummed_div %}</td>
+</tr>
+{% if prop.data_type.isSchema and prop.data_type.anonymous %}
+{% call_template _resource_property_row schema prop.data_type %}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,18 @@
+# This is a CMake file for {{ api.title }} {{api.version }}
+# using the Google APIs Client Library for C++.
+#
+# See http://google.github.io/google-api-cpp-client/latest/start/get_started
+# for more information about what to do with this file.
+
+project ({{ api.module.name }})
+
+# These sources assume that the CMakeLists.txt in ../.. added itself to
+# the include directories so that include paths are specified explicitly
+# with the directory #include "{{ api.module.path }}/..."
+add_library({{ api.module.name }} STATIC{% for m in api.models %}{% if not m.parent %}
+            {{ m.filename}}.cc{% endif %}{% endfor %}
+            {{ api.filename }}.cc)
+target_link_libraries({{ api.module.name }} googleapis_http)
+target_link_libraries({{ api.module.name }} googleapis_internal)
+target_link_libraries({{ api.module.name }} googleapis_jsoncpp)
+target_link_libraries({{ api.module.name }} googleapis_utils)

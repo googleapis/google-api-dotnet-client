@@ -1,0 +1,79 @@
+/**
+ * Implements a common base method for all methods within the {{ api.className }}.
+ *
+ * This class defines all the attributes common across all methods.
+ * It does not pertain to any specific service API so is not normally
+ * explicitly instantiated.
+ */
+class {{ api.className }}BaseRequest
+      : public {{ api.client_namespace }}::ClientServiceRequest {
+ public:
+  /**
+   * Standard constructor.
+   *
+   * @param[in] service  The service instance to send to when executed.
+   *        In practice this will be supplied internally by the service
+   *        when it acts as a method factory.
+   *
+   * @param[in] credential  If not NULL then the credential to authorize with.
+   *        In practice this is supplied by the user code that is creating
+   *        the method instance.
+   *
+   * @param[in] method  The HTTP method to use for the underlying HTTP request.
+   *        In practice this is specified by the particular API endpoint and
+   *        supplied internally by the derived class for that endpoint.
+   *
+   * @param[in] uri_template  The <a href='http://tools.ietf.org/html/rfc6570'>
+   *        RFC 6570 URI Template</a> specifying the url to invoke
+   *        The parameters in the template should be resolvable attributes.
+   *        In practice this parameter is supplied internally by the derived
+   *        class for the endpoint.
+   */
+  {{ api.className }}BaseRequest(
+      const {{ api.client_namespace }}::ClientService* service,
+      {{ api.client_namespace }}::AuthorizationCredential* credential,
+      {{ api.client_namespace }}::HttpRequest::HttpMethod method,
+      const StringPiece& uri_template);
+
+  /**
+   * Standard destructor.
+   */
+  virtual ~{{ api.className }}BaseRequest();{% if api.parameters %}
+{% call_template _access_method_attributes_h parameters=api.parameters %}
+
+  /**
+   * Appends variable value to the target string.
+   *
+   * This is a helper function used to resolve templated variables in the
+   * URI supplied to the constructor.
+   *
+   * @param[in] variable_name  The name of the templated variable.
+   * @param[in] config  A pass-through parameter used for lists and maps.
+   * @param[in, out] target The string to append the value to.
+   */
+  virtual {{ api.status_type }} AppendVariable(
+      const StringPiece& variable_name,
+      const {{ api.client_namespace }}::UriTemplateConfig& config,
+      string* target);
+
+  /**
+   * Appends the optional query parameters to the target URL.
+   *
+   * @param[in, out] target  The URL string to append to.
+   */
+  virtual {{ api.status_type }} AppendOptionalQueryParameters(string* target);
+{% endif %}
+
+ protected:
+  /**
+   * Prepares the method's HTTP request to send body content as JSON.
+   *
+   * Only to be used for method constructors.
+   */
+  void AddJsonContentToRequest(const {{ api.client_namespace }}::JsonCppData *content);
+
+ private:
+{% call_template _declare_method_attributes_h parameters=api.parameters %}
+
+  DISALLOW_COPY_AND_ASSIGN({{ api.className }}BaseRequest);
+};

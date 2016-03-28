@@ -1,0 +1,8 @@
+{% language cpp %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+{% if options.useSingleSourceFile %}
+{% call_template _monolithic_kitchensink_cc_impl api=api %}
+{% else %}
+{% halt %} {# do not emit this file at all if using multiple source files #}
+{% endif %}

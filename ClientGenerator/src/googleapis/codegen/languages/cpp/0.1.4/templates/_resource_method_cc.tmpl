@@ -1,0 +1,7 @@
+{% for method in resource.methods %}
+{% call_template _method_cc method=method %}
+{% endfor %}
+
+{% for subresource in resource.resources %}
+{% call_template _resource_method_cc resource=subresource %}
+{% endfor %}

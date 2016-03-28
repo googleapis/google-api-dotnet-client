@@ -1,0 +1,4 @@
+part of {{ api.name }}_{{ api.version }}_api_client;
+{% for model in api.models %}
+{% call_template _model_content model=model %}
+{% endfor %}

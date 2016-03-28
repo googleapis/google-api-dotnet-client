@@ -1,0 +1,140 @@
+{% doc_comment noblock %}
+Implements the {{ method.name }} method.
+
+@ingroup ServiceMethod
+
+This class uses the Command Pattern. Construct an instance with the required parameters, then set any additional optional parameters by using the attribute setters. To invoke the method, call <code>Execute</code>.
+{% if method.scopes %}
+One or more of these authorization scopes are required for this method:{% for s in method.scopes %}
+{{ s }}{% endfor %}{% else %}
+No authorization scopes are required for this method.{% endif %}
+{% enddoc_comment %}
+class {{ method.className }} : public {{ api.className }}BaseRequest {
+ public:{% indent %}{% if method.requestType and method.mediaUpload %}
+{% doc_comment noblock %}
+The standard constructor takes all the required method parameters.
+
+@deprecated in favor constructor that includes the media upload parameters.
+
+@param[in] _service_  The service instance to send to when executed.
+@param[in] _credential_  If not NULL, the credential to authorize with.
+           In practice this is supplied by the user code that is
+           creating the method instance.{% for p in method.requiredParameters %}
+@param[in] {{ p.parameterName }} {{ p.description }}
+{% endfor %}
+@param[in] _content_ The data object to {{ method.name }}.
+{% enddoc_comment %}
+{{ method.className }}({% indent %}
+    const {{ api.className }}* _service_,
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType and not method.mediaUpload %},
+    const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %});{% endindent %}{% endif %}
+{% doc_comment noblock %}
+The standard constructor takes all the required method parameters.
+@param[in] _service_  The service instance to send to when executed.
+@param[in] _credential_  If not NULL, the credential to authorize with.
+           In practice this is supplied by the user code that is
+           creating the method instance.{% for p in method.requiredParameters %}
+@param[in] {{ p.parameterName }} {{ p.description }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %}
+@param[in] _metadata_ The metadata object to {{ method.name }}. If this
+           is NULL then do not upload any metadata.{% else %}
+@param[in] _content_ The data object to {{ method.name }}.{% endif %}{% endif %}{% if method.mediaUpload %}
+@param[in] _media_content_type_ The content type of the data in the
+           _media_content_reader_.
+@param[in] _media_content_reader_ The media content to {{ method.name }}. If
+           this is NULL then do not upload any media and ignore
+           _media_content_type_.{% endif %}
+{% enddoc_comment %}
+{{ method.className }}(
+    const {{ api.className }}* _service_,
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %},
+    const {{ method.requestType.packageRelativeClassName }}* _metadata_{% else %},
+    const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}{% endif %}{% if method.mediaUpload %},
+    const StringPiece& _media_content_type_,
+    {{ api.client_namespace }}::DataReader* _media_content_reader_{% endif %});
+
+{% doc_comment noblock %}
+Standard destructor.
+{% enddoc_comment %}
+virtual ~{{ method.className }}();{% if method.parameters %}
+{% call_template _access_method_attributes_h parameters=method.parameters %}
+
+{% doc_comment noblock %}
+Appends variable value to the target string.
+
+This is a helper function used to resolve templated variables in the URI.
+
+@param[in] variable_name  The name of the templated variable.
+@param[in] config  A pass-through parameter used for lists and maps.
+@param[in, out] target The string to append the value to.
+{% enddoc_comment %}
+virtual {{ api.status_type }} AppendVariable(
+      const StringPiece& variable_name,
+      const {{ api.client_namespace }}::UriTemplateConfig& config,
+      string* target);
+{% if method.queryParameters %}
+{% doc_comment noblock %}
+Appends the optional query parameters to the target URL.
+
+@param[in, out] target  The URL string to append to.
+{% enddoc_comment %}
+virtual {{ api.status_type }} AppendOptionalQueryParameters(string* target);
+{% endif %}{% endif %}
+{% if method.responseType.className %}
+{% doc_comment noblock %}
+Executes the method and parses the response into a data object on success.
+
+@param[out] data Loads from the response payload JSON data on success.
+
+@return Success if an HTTP 2xx response was received. Otherwise the
+        status indicates the reason for failure. Finer detail may be
+        available from the underlying http_request to distinguish the
+        transport_status from the overal HTTP request status.
+{% enddoc_comment %}
+{{ api.status_type }} ExecuteAndParseResponse(
+    {{ method.responseType.className }}* data) {
+  return {{ api.className }}BaseRequest::ExecuteAndParseResponse(data);
+}
+{% endif %}{% if method.mediaUpload %}
+
+{% doc_comment noblock %}
+Returns MediaUploader for uploading the content.
+{% enddoc_comment %}
+{% for key,value in method.mediaUpload.protocols.items %}
+{% doc_comment noblock %}
+Returns the specification for media upload using the {{ key }} protocol.
+{% enddoc_comment %}
+static const {{ api.client_namespace }}::MediaUploadSpec {{ key|upper }}_MEDIA_UPLOAD;{% endfor %}
+{% endif %}{% if method.supportsMediaDownload %}
+{% doc_comment noblock %}
+Determine if the request should use Media Download for the response.
+
+@return true for media download, false otherwise.
+{% enddoc_comment %}
+bool get_use_media_download() const   {
+  return {{ api.className }}BaseRequest::get_use_media_download();
+}
+
+{% doc_comment noblock %}
+Sets whether Media Download should be used for the response data.
+
+@param[in] use true to use media download, false otherwise.
+{% enddoc_comment %}
+void set_use_media_download(bool use) {
+  {{ api.className }}BaseRequest::set_use_media_download(use);
+}
+{% endif %}{% endindent %}
+{% filter noblanklines %}
+ private:
+{% call_template _declare_method_attributes_h parameters=method.parameters %}{% if method.mediaUpload %}{# the uploader in the base class handles the content #}
+{% elif method.requestType %}  string _content_;{% endif %}
+  DISALLOW_COPY_AND_ASSIGN({{ method.className }});
+{% endfilter %}
+};
+{% if method.isPageable %}
+typedef {{ api.client_namespace }}::ServiceRequestPager<
+            {{ method.className }},
+            {{ method.responseType.className }}>
+        {{ method.className }}Pager;
+{% endif %}

@@ -1,0 +1,8 @@
+name: {{ model.wireName }}
+kind: {{ model.kind }}
+id: {{ model.id }}
+description: {{ model.description }}{% for prop in model.properties %}
+property {{ prop.wireName }} {
+  description: {{ prop.description }}
+  type: {{ prop.codeType }}
+}{% endfor %}

@@ -1,0 +1,50 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.serviceName }}.h
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+// Classes:
+//   {{ api.serviceName }} (0 custom class methods, 0 custom properties)
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLService.h"
+#else
+  #import "GTLService.h"
+#endif
+
+@interface {{ api.serviceName }} : GTLService
+
+// No new methods
+{% if api.query %}
+// Clients should create a standard query with any of the class methods in
+// {{ api.query }}.h. The query can the be sent with GTLService's
+// execute methods,
+//
+//   - (GTLServiceTicket *)executeQuery:(GTLQuery *)query
+//                    completionHandler:(void (^)(GTLServiceTicket *ticket,
+//                                                id object, NSError *error))handler;
+// or
+//   - (GTLServiceTicket *)executeQuery:(GTLQuery *)query
+//                             delegate:(id)delegate
+//                    didFinishSelector:(SEL)finishedSelector;
+//
+// where finishedSelector has a signature of:
+//
+//   - (void)serviceTicket:(GTLServiceTicket *)ticket
+//      finishedWithObject:(id)object
+//                   error:(NSError *)error;
+//
+// The object passed to the completion handler or delegate method
+// is a subclass of GTLObject, determined by the query method executed.
+{% endif %}
+@end
