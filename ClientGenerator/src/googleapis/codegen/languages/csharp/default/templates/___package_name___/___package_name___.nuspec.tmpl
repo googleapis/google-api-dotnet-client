@@ -14,7 +14,7 @@
           Google APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
           Supported Platforms:
 
-          - .NET Framework 4.5
+          - .NET Framework 4 and 4.5
 
           - Windows Store apps
 
@@ -30,15 +30,30 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-            <group>
+            <!--
+              After v{{ features.oldCompatibleVersion }} of Google.Apis, we
+              trimmed the list of supported target frameworks. For projects
+              still targeting e.g. .NET 4.0 we add a reference to an older
+              version of Google.Apis.
+            -->
+            <group targetFramework="portable-net45+netcore45+wpa81+wp8">
                 <dependency id="Google.Apis" version="{{ features.releaseVersion }}" />{% if api.authscopes %}
                 <dependency id="Google.Apis.Auth" version="{{ features.releaseVersion }}" />{% endif %}
+            </group>
+            <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
+                <!-- Use [version] to require exact match. -->
+                <dependency id="Google.Apis" version="[{{ features.oldCompatibleVersion }}]" />{% if api.authscopes %}
+                <dependency id="Google.Apis.Auth" version="[{{ features.oldCompatibleVersion }}]" />{% endif %}
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.dll" />
-        <file src="bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.pdb" />
-        <file src="bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.xml" />
+        <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.dll" />
+        <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.xml" />
+
+        <file src="Profile328\bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.dll" />
+        <file src="Profile328\bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\{{ api.module.name }}.xml" />
     </files>
 </package>

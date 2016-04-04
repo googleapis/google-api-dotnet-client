@@ -66,18 +66,18 @@
     <!-- Generated libraries that don't compile -->
     <ItemGroup>
       <!-- Last released May 2015 (1.9.0.1030) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.Games.v1\*" />
+      <BrokenProject Include="Src\Generated\Google.Apis.Games.v1\**" />
 
       <!-- Last released April 2014 (1.8.1.1750) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.IdentityToolkit.v3\*" />
+      <BrokenProject Include="Src\Generated\Google.Apis.IdentityToolkit.v3\**" />
 
       <!-- Last released Jan 2015 (1.9.0.860) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.Oauth2.v1\*" />
+      <BrokenProject Include="Src\Generated\Google.Apis.Oauth2.v1\**" />
     </ItemGroup>
 
     <!-- All generated libraries except the broken ones listed above -->
     <ItemGroup>
-      <Project Include="Src\Generated\*\*.csproj" Exclude="@(BrokenProject)">
+      <Project Include="Src\Generated\**\*.csproj" Exclude="@(BrokenProject)">
         <!--
           TODO(mmdriley): Maybe we should add this metadata in the Build target?
         -->
@@ -101,7 +101,8 @@
       packages.config. The choice of the discovery API is mostly arbitrary;
       it's an API that's always likely to be there.
     -->
-    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\packages.config -PackagesDirectory Src\Generated\packages" />
+    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile259\packages.config -PackagesDirectory Src\Generated\packages" />
+    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile328\packages.config -PackagesDirectory Src\Generated\packages" />
 
     <MSBuild Projects="@(Project)" BuildInParallel="True" Targets="Build" />
   </Target>
